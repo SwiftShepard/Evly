@@ -1,18 +1,21 @@
 ---
 import Wordmark from "@/components/ui/Wordmark.astro";
+import { url } from "@/lib/url";
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 
 const links = [
-  { href: "/vehicules", label: "Véhicules" },
-  { href: "/comparer", label: "Comparer" },
-  { href: "/simulateur", label: "Simulateur" },
-  { href: "/recommandation", label: "Recommandation" },
-  { href: "/methodologie", label: "Méthodologie" },
+  { href: url("/vehicules"), label: "Véhicules" },
+  { href: url("/comparer"), label: "Comparer" },
+  { href: url("/simulateur"), label: "Simulateur" },
+  { href: url("/recommandation"), label: "Recommandation" },
+  { href: url("/methodologie"), label: "Méthodologie" },
 ];
 
 function isActive(href: string): boolean {
-  if (href === "/") return pathname === "/";
+  const plain = href.replace(base, "") || "/";
+  if (plain === "/") return pathname === "/" || pathname === base;
   return pathname === href || pathname.startsWith(href + "/");
 }
 ---
@@ -22,7 +25,7 @@ function isActive(href: string): boolean {
 >
   <div class="container-edit flex items-center justify-between h-14 md:h-16">
     <a
-      href="/"
+      href={url("/")}
       class="flex items-baseline gap-3 group focus-visible:outline-none min-h-[44px] py-2"
       aria-label="Evly — accueil"
     >

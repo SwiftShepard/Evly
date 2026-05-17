@@ -15,6 +15,7 @@ import VehicleConfigSelector from "@/components/vehicle/VehicleConfigSelector.ts
 import { getAllVehicles, getVehicleBySlug } from "@/lib/vehicles";
 import { getSource, getSources, type TrustLevel } from "@/data/sources";
 import { formatDate, formatHours, formatPrice } from "@/lib/format";
+import { url } from "@/lib/url";
 
 export function getStaticPaths() {
   return getAllVehicles().map((vehicle) => ({
@@ -154,9 +155,9 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
   <!-- Fil d'ariane -->
   <div class="container-edit pt-4 md:pt-6 fade-rise">
     <nav aria-label="Fil d'ariane" class="font-mono text-[11px] md:text-xs text-[var(--color-text-faint)] flex items-center gap-2 flex-wrap">
-      <a href="/" class="hover:text-[var(--color-text-muted)] min-h-[44px] inline-flex items-center">Accueil</a>
+      <a href={url("/")} class="hover:text-[var(--color-text-muted)] min-h-[44px] inline-flex items-center">Accueil</a>
       <span aria-hidden="true">/</span>
-      <a href="/vehicules" class="hover:text-[var(--color-text-muted)] min-h-[44px] inline-flex items-center">Véhicules</a>
+      <a href={url("/vehicules")} class="hover:text-[var(--color-text-muted)] min-h-[44px] inline-flex items-center">Véhicules</a>
       <span aria-hidden="true">/</span>
       <span class="text-[var(--color-text-muted)] inline-flex items-center min-h-[44px]">{vehicle.brand} {vehicle.model}</span>
     </nav>
@@ -546,7 +547,7 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                     <span class="label-eyebrow">Dernière mise à jour</span>
                     <span class="font-mono text-sm text-[var(--color-text)]">{formatDate(vehicle.lastUpdated)}</span>
                   </div>
-                  <a href="/methodologie#sources" class="font-mono text-xs text-[var(--color-accent)] hover:underline self-start min-h-[44px] inline-flex items-center">Méthodologie complète ↗</a>
+                  <a href={url("/methodologie") + "#sources"} class="font-mono text-xs text-[var(--color-accent)] hover:underline self-start min-h-[44px] inline-flex items-center">Méthodologie complète ↗</a>
                 </div>
                 <ol class="lg:col-span-8 flex flex-col">
                   {sources.map((source, idx) => (

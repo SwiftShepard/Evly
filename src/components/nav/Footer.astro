@@ -1,5 +1,6 @@
 ---
 import Wordmark from "@/components/ui/Wordmark.astro";
+import { url } from "@/lib/url";
 
 const year = new Date().getFullYear();
 
@@ -7,26 +8,26 @@ const cols = [
   {
     title: "Comparer",
     links: [
-      { href: "/vehicules", label: "Tous les véhicules" },
-      { href: "/comparer", label: "Comparateur multi" },
-      { href: "/simulateur", label: "Simulateur TCO" },
-      { href: "/recommandation", label: "Recommandation guidée" },
+      { href: url("/vehicules"), label: "Tous les véhicules" },
+      { href: url("/comparer"), label: "Comparateur multi" },
+      { href: url("/simulateur"), label: "Simulateur TCO" },
+      { href: url("/recommandation"), label: "Recommandation guidée" },
     ],
   },
   {
     title: "Méthodologie",
     links: [
-      { href: "/methodologie", label: "Notre approche" },
-      { href: "/methodologie#protocoles", label: "Protocoles de test" },
-      { href: "/methodologie#sources", label: "Nos sources" },
-      { href: "/methodologie#limites", label: "Limites & honnêteté" },
+      { href: url("/methodologie"), label: "Notre approche" },
+      { href: url("/methodologie") + "#protocoles", label: "Protocoles de test" },
+      { href: url("/methodologie") + "#sources", label: "Nos sources" },
+      { href: url("/methodologie") + "#limites", label: "Limites & honnêteté" },
     ],
   },
   {
     title: "Projet",
     links: [
       { href: "https://github.com/", label: "Code source" },
-      { href: "/methodologie#contact", label: "Contact" },
+      { href: url("/methodologie") + "#contact", label: "Contact" },
     ],
   },
 ];

@@ -3,6 +3,7 @@ import "@/styles/global.css";
 import Navigation from "@/components/nav/Navigation.astro";
 import Footer from "@/components/nav/Footer.astro";
 import { ViewTransitions } from "astro:transitions";
+import { url } from "@/lib/url";
 
 interface Props {
   title: string;
@@ -41,8 +42,8 @@ const fullTitle = title.includes("Evly") || title.includes("evly")
     <link rel="canonical" href={canonicalURL.toString()} />
     {noindex && <meta name="robots" content="noindex,nofollow" />}
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="alternate" type="application/rss+xml" title="Evly" href="/rss.xml" />
+    <link rel="icon" type="image/svg+xml" href={url("/favicon.svg")} />
+    <link rel="alternate" type="application/rss+xml" title="Evly" href={url("/rss.xml")} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />

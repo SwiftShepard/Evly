@@ -7,6 +7,7 @@ import Wordmark from "@/components/ui/Wordmark.astro";
 import VehicleImage from "@/components/ui/VehicleImage.astro";
 import { getAllVehicles } from "@/lib/vehicles";
 import { formatPrice } from "@/lib/format";
+import { url } from "@/lib/url";
 
 const vehicles = getAllVehicles();
 const totalVehicles = vehicles.length;
@@ -38,10 +39,10 @@ const description =
         </p>
 
         <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3 fade-rise fade-rise-delay-3">
-          <a href="/vehicules" class="btn-interactive btn-glow inline-flex items-center gap-2 px-5 py-3 bg-[var(--color-accent)] text-[var(--color-accent-on)] text-sm font-medium tracking-tight min-h-[44px] hover:bg-[var(--color-accent-dim)] transition-colors rounded-[var(--radius-tile-sm)]">
+          <a href={url("/vehicules")} class="btn-interactive btn-glow inline-flex items-center gap-2 px-5 py-3 bg-[var(--color-accent)] text-[var(--color-accent-on)] text-sm font-medium tracking-tight min-h-[44px] hover:bg-[var(--color-accent-dim)] transition-colors rounded-[var(--radius-tile-sm)]">
             Explorer les véhicules
           </a>
-          <a href="/comparer" class="btn-interactive inline-flex items-center gap-2 px-5 py-3 border border-[var(--color-border-strong)] text-[var(--color-text)] text-sm font-medium tracking-tight min-h-[44px] hover:bg-[var(--color-bg-subtle)] transition-colors rounded-[var(--radius-tile-sm)]">
+          <a href={url("/comparer")} class="btn-interactive inline-flex items-center gap-2 px-5 py-3 border border-[var(--color-border-strong)] text-[var(--color-text)] text-sm font-medium tracking-tight min-h-[44px] hover:bg-[var(--color-bg-subtle)] transition-colors rounded-[var(--radius-tile-sm)]">
             Comparateur configurable
           </a>
         </div>
@@ -89,7 +90,7 @@ const description =
       {vehicles.map((v) => {
         const cheapest = v.trims.reduce((a, b) => (a.price_EUR < b.price_EUR ? a : b));
         return (
-          <Tile size="2x1" variant="default" href={`/vehicules/${v.slug}`} ariaLabel={`Fiche ${v.brand} ${v.model}`} class="reveal">
+          <Tile size="2x1" variant="default" href={url(`/vehicules/${v.slug}`)} ariaLabel={`Fiche ${v.brand} ${v.model}`} class="reveal">
             <div class="flex items-center justify-between gap-3 mb-4">
               <span class="label-eyebrow">{v.brand} · {v.segment.split(" — ")[0] ?? v.segment}</span>
               <div class="flex items-center gap-2 flex-wrap justify-end">
@@ -136,7 +137,7 @@ const description =
       })}
 
       <!-- Comparateur -->
-      <Tile size="2x1" variant="accent" href="/comparer" ariaLabel="Comparateur configurable" class="reveal">
+      <Tile size="2x1" variant="accent" href={url("/comparer")} ariaLabel="Comparateur configurable" class="reveal">
         <div class="flex items-center gap-3 mb-4">
           <span class="label-eyebrow">Nouveau</span>
           <span aria-hidden="true" class="arrow-animate ml-auto font-mono text-[var(--color-text-faint)]">→</span>
@@ -150,7 +151,7 @@ const description =
       </Tile>
 
       <!-- Méthodologie -->
-      <Tile size="2x1" variant="elevated" href="/methodologie" ariaLabel="Page méthodologie" class="reveal">
+      <Tile size="2x1" variant="elevated" href={url("/methodologie")} ariaLabel="Page méthodologie" class="reveal">
         <div class="flex items-center gap-3 mb-4">
           <span class="label-eyebrow">Comment on mesure</span>
           <span aria-hidden="true" class="arrow-animate ml-auto font-mono text-[var(--color-text-faint)]">→</span>

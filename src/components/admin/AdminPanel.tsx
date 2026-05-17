@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
+import { url } from "@/lib/url";
 
 /* ---------------------------------------------------------------- */
 /* Types                                                             */
@@ -440,7 +441,7 @@ export default function AdminPanel({ vehicles }: { vehicles: VehicleAdminRow[] }
           onChange={(e) => setSearch(e.target.value)}
           style={{ background: "#161616", border: "1px solid #282828", borderRadius: 6, padding: "4px 10px", color: "#e5e5e5", fontSize: 12, fontFamily: "monospace", outline: "none", width: 180 }}
         />
-        <a href="/vehicules" style={{ fontSize: 11, color: "#444", textDecoration: "none" }}>→ Site</a>
+        <a href={url("/vehicules")} style={{ fontSize: 11, color: "#444", textDecoration: "none" }}>→ Site</a>
       </div>
 
       {/* ── Summary cards ── */}
