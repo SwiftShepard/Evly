@@ -52,31 +52,41 @@ const counts = {
     <div class="container-edit">
       <BentoGrid>
         {/* ───────── HERO ───────── */}
-        <Tile size="full" variant="elevated">
-          <div class="flex items-center gap-4 mb-6 fade-rise fade-rise-delay-1">
+        <Tile size="full" variant="elevated" class="md:!p-12 lg:!p-16">
+          <div class="flex items-center gap-3 md:gap-4 mb-10 md:mb-14 fade-rise">
             <span class="font-mono text-xs text-[var(--color-text-faint)]">DOSSIER</span>
             <span class="label-eyebrow">Leasing social électrique</span>
           </div>
-          <h1 class="display-1 max-w-3xl fade-rise fade-rise-delay-2">
-            À partir de 95 €/mois, sans apport.
-            <span class="text-[var(--color-text-muted)]"> Qui peut, comment, et pourquoi tant de modèles éligibles sont absents.</span>
+
+          {/* H1 punchy — une ligne max */}
+          <h1 class="display-1 max-w-4xl fade-rise fade-rise-delay-1">
+            À partir de 95 €/mois,
+            <span class="text-[var(--color-text-muted)]">sans apport.</span>
           </h1>
-          <p class="mt-6 text-[var(--color-text-muted)] text-base md:text-lg max-w-2xl fade-rise fade-rise-delay-3">
-            Le leasing social est une LLD/LOA subventionnée par les <strong class="text-[var(--color-text)]">Certificats d'Économie d'Énergie (CEE)</strong>. Loyer plafonné à 200 €/mois, généralement entre 95 € et 150 € selon le modèle, sans apport. Évly décortique le mécanisme réel, les critères ADEME, et liste les véhicules qui <em>devraient</em> y figurer mais que les constructeurs n'ont pas (encore) inscrits.
+
+          {/* Sous-titre éditorial — visiblement plus petit */}
+          <p class="mt-6 md:mt-8 font-display text-xl md:text-2xl lg:text-3xl font-medium tracking-[-0.01em] leading-[1.2] text-[var(--color-text-muted)] max-w-3xl fade-rise fade-rise-delay-2">
+            Qui peut, comment, et pourquoi tant de modèles éligibles sont absents.
           </p>
 
-          <div class="mt-8 pt-6 border-t border-[var(--color-border)] grid grid-cols-3 gap-4 max-w-2xl">
-            <div class="flex flex-col gap-1">
-              <span data-numeric class="display-stat text-3xl md:text-4xl text-[var(--color-accent)]">{counts.official}</span>
-              <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Éligibles officiels</span>
+          {/* Description body — petit */}
+          <p class="mt-8 md:mt-10 text-sm md:text-base text-[var(--color-text-muted)] max-w-2xl leading-relaxed fade-rise fade-rise-delay-3">
+            LLD/LOA subventionnée par les <strong class="text-[var(--color-text)]">Certificats d'Économie d'Énergie (CEE)</strong>. Loyer plafonné à 200 €/mois, généralement 95–150 € selon le modèle. Evly décortique le mécanisme réel, les critères ADEME, et liste les véhicules qui <em>devraient</em> y figurer mais que les constructeurs n'ont pas inscrits.
+          </p>
+
+          {/* Stats — séparées clairement par border-top */}
+          <div class="mt-12 md:mt-16 pt-6 border-t border-[var(--color-border)] grid grid-cols-3 gap-4 md:gap-8 max-w-2xl fade-rise fade-rise-delay-3">
+            <div class="flex flex-col gap-1.5">
+              <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-accent)]">{counts.official}</span>
+              <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Éligibles<br/>officiels</span>
             </div>
-            <div class="flex flex-col gap-1">
-              <span data-numeric class="display-stat text-3xl md:text-4xl text-[var(--color-warning)]">{counts.ademe}</span>
-              <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Compatibles ADEME</span>
+            <div class="flex flex-col gap-1.5">
+              <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-warning)]">{counts.ademe}</span>
+              <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Compatibles<br/>ADEME</span>
             </div>
-            <div class="flex flex-col gap-1">
-              <span data-numeric class="display-stat text-3xl md:text-4xl text-[var(--color-text-muted)]">{counts.potential}</span>
-              <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Sous réserve constructeur</span>
+            <div class="flex flex-col gap-1.5">
+              <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-text-muted)]">{counts.potential}</span>
+              <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Sous réserve<br/>constructeur</span>
             </div>
           </div>
         </Tile>
@@ -187,7 +197,7 @@ const counts = {
                 </div>
               </div>
               <p class="mt-3 text-[12px] text-[var(--color-text-faint)] font-mono leading-relaxed">
-                Évly estime ces scores à partir du pays de production déclaré. Le score officiel ADEME requiert un dossier constructeur — d'où la frontière nette entre <em>compatible</em> et <em>officiel</em>.
+                Evly estime ces scores à partir du pays de production déclaré. Le score officiel ADEME requiert un dossier constructeur — d'où la frontière nette entre <em>compatible</em> et <em>officiel</em>.
               </p>
             </div>
           </div>
@@ -198,53 +208,89 @@ const counts = {
           <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.1] mb-3">
             Prime CEE VE — l'alternative pour l'achat direct.
           </h2>
-          <p class="text-sm md:text-base text-[var(--color-text-muted)] max-w-3xl mb-3">
-            Depuis le 1<sup>er</sup> juillet 2025, l'ex-bonus écologique passe par les Certificats d'Économie d'Énergie. <strong class="text-[var(--color-text)]">Même pot que le leasing social</strong>, mais appliqué autrement : remise sur facture à l'achat / LOA / LLD classique, au lieu d'absorber le premier loyer d'une location subventionnée.
+          <p class="text-sm md:text-base text-[var(--color-text-muted)] max-w-3xl mb-2">
+            <strong class="text-[var(--color-text)]">Même pot CEE que le leasing social</strong>, appliqué autrement : remise sur facture à l'achat / LOA / LLD classique, au lieu d'absorber le premier loyer d'une location subventionnée.
           </p>
-          <p class="text-sm text-[var(--color-text-muted)] max-w-3xl mb-6">
-            Réservée aux VE &lt; 47 000 €, &lt; 2 400 kg, écoscorés ADEME ≥ 60. Le montant n'est plus fixé par l'État : il dépend du cours CEE et des négociations entre constructeurs et obligés énergéticiens (EDF, TotalEnergies, ENGIE…).
+          <p class="text-[12px] text-[var(--color-text-faint)] font-mono mb-8">
+            Éligibilité : VE &lt; 47 000 € · &lt; 2 400 kg · écoscore ADEME ≥ 60
           </p>
 
-          <div class="grid md:grid-cols-3 gap-4 md:gap-6">
-            <div class="bg-[var(--color-bg-subtle)] p-5 rounded-[var(--radius-tile-sm)] border border-[var(--color-border)]">
-              <span class="label-eyebrow">Autres ménages</span>
-              <p class="font-display text-3xl mt-2 text-[var(--color-text)]">≈ 3 500 €</p>
-              <p class="text-xs text-[var(--color-text-muted)] mt-2">Base CEE indicative — varie selon le cours</p>
-            </div>
-            <div class="bg-[var(--color-bg-subtle)] p-5 rounded-[var(--radius-tile-sm)] border border-[var(--color-border)]">
-              <span class="label-eyebrow">Ménages modestes</span>
-              <p class="font-display text-3xl mt-2 text-[var(--color-text)]">≈ 4 700 €</p>
-              <p class="text-xs text-[var(--color-text-muted)] mt-2">Non précaires — base CEE renforcée</p>
-            </div>
-            <div class="bg-[color-mix(in_srgb,var(--color-accent)_8%,transparent)] p-5 rounded-[var(--radius-tile-sm)] border border-[var(--color-accent-dim)]">
-              <span class="label-eyebrow" style="color:var(--color-accent)">Ménages précaires</span>
-              <p class="font-display text-3xl mt-2 text-[var(--color-accent)]">≈ 5 700 €</p>
-              <p class="text-xs text-[var(--color-text-muted)] mt-2">Base CEE max — avant surbonus européen</p>
+          {/* CHIFFRE PHARE */}
+          <div class="p-6 md:p-8 rounded-[var(--radius-tile-sm)] border border-[var(--color-accent-dim)] bg-[color-mix(in_srgb,var(--color-accent)_6%,transparent)] mb-8">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
+              <div>
+                <span class="label-eyebrow" style="color:var(--color-accent)">Maximum atteignable</span>
+                <p class="font-display text-5xl md:text-6xl mt-2 text-[var(--color-accent)] font-semibold tracking-[-0.02em]">7 700 €</p>
+              </div>
+              <p class="font-mono text-xs md:text-sm text-[var(--color-text-muted)] md:text-right md:max-w-xs">
+                5 700 € base précaire <br/>+ 2 000 € surbonus batterie produite en UE
+              </p>
             </div>
           </div>
 
-          <div class="mt-6 grid md:grid-cols-2 gap-4">
-            <div class="p-5 border-l-2 border-[var(--color-accent)] bg-[color-mix(in_srgb,var(--color-accent)_5%,transparent)]">
-              <span class="label-eyebrow" style="color:var(--color-accent)">Jusqu'à 7 700 €</span>
-              <p class="font-display text-2xl mt-2 text-[var(--color-accent)]">si batterie produite en UE</p>
-              <p class="text-xs text-[var(--color-text-muted)] mt-2">Base 5 700 € (précaire) + surbonus 2 000 € pour batterie européenne.</p>
+          {/* DÉCOMPOSITION : BASE × SURBONUS */}
+          <div class="grid md:grid-cols-12 gap-6 md:gap-10">
+            {/* Base par ménage */}
+            <div class="md:col-span-7">
+              <span class="label-eyebrow">Base CEE selon revenus</span>
+              <div class="mt-4 divide-y divide-[var(--color-border)]">
+                <div class="flex items-baseline justify-between py-3">
+                  <div class="flex flex-col">
+                    <span class="text-sm text-[var(--color-text)]">Autres ménages</span>
+                    <span class="text-[11px] text-[var(--color-text-faint)] font-mono">RFR/part &gt; 16 300 €</span>
+                  </div>
+                  <span data-numeric class="font-display text-2xl font-medium">≈ 3 500 €</span>
+                </div>
+                <div class="flex items-baseline justify-between py-3">
+                  <div class="flex flex-col">
+                    <span class="text-sm text-[var(--color-text)]">Ménages modestes</span>
+                    <span class="text-[11px] text-[var(--color-text-faint)] font-mono">RFR/part &le; 16 300 €</span>
+                  </div>
+                  <span data-numeric class="font-display text-2xl font-medium">≈ 4 700 €</span>
+                </div>
+                <div class="flex items-baseline justify-between py-3">
+                  <div class="flex flex-col">
+                    <span class="text-sm text-[var(--color-text)] font-medium">Ménages précaires</span>
+                    <span class="text-[11px] text-[var(--color-text-faint)] font-mono">RFR/part &le; 7 100 €</span>
+                  </div>
+                  <span data-numeric class="font-display text-2xl font-semibold text-[var(--color-accent)]">≈ 5 700 €</span>
+                </div>
+              </div>
             </div>
-            <div class="p-5 border-l-2 border-[var(--color-warning)] bg-[color-mix(in_srgb,var(--color-warning)_5%,transparent)]">
-              <span class="label-eyebrow" style="color:var(--color-warning)">Jusqu'à 5 750 €</span>
-              <p class="font-display text-2xl mt-2 text-[var(--color-warning)]">si véhicule produit en UE</p>
-              <p class="text-xs text-[var(--color-text-muted)] mt-2">Assemblage européen sans batterie européenne — pas de surbonus batterie.</p>
+
+            {/* Surbonus */}
+            <div class="md:col-span-5 md:border-l md:border-[var(--color-border)] md:pl-8 flex flex-col">
+              <span class="label-eyebrow">Surbonus européen</span>
+              <div class="mt-4 p-4 border-l-2 border-[var(--color-accent)] bg-[color-mix(in_srgb,var(--color-accent)_4%,transparent)]">
+                <p class="font-mono text-[11px] text-[var(--color-accent)]">+ 1 200 à 2 000 €</p>
+                <p class="font-display text-lg md:text-xl mt-1.5 text-[var(--color-text)] leading-tight">
+                  Si <strong class="text-[var(--color-accent)]">batterie produite en UE</strong>
+                </p>
+              </div>
+              <p class="mt-4 text-xs text-[var(--color-text-muted)] leading-relaxed">
+                L'assemblage du véhicule en Europe améliore l'écoscore ADEME (donc l'éligibilité tout court), mais le surbonus est strictement réservé aux batteries européennes — pour soutenir les gigafactories du continent.
+              </p>
             </div>
           </div>
 
-          <div class="mt-6 p-5 border border-[var(--color-danger)] rounded-[var(--radius-tile-sm)] bg-[color-mix(in_srgb,var(--color-danger)_5%,transparent)]">
-            <span class="label-eyebrow" style="color:var(--color-danger)">Non cumulable</span>
-            <p class="mt-2 text-sm md:text-base text-[var(--color-text)]">
-              Un même véhicule ne peut pas bénéficier à la fois de la Prime CEE VE (achat) et du leasing social (location subventionnée) — c'est le même pot CEE, appliqué une seule fois. À l'achat : remise sur facture. En leasing social : 1<sup>er</sup> loyer absorbé + mensualités réduites.
-            </p>
-          </div>
+          {/* MÉCANISME CEE */}
+          <details class="mt-8 border border-[var(--color-border)] rounded-[var(--radius-tile-sm)] group">
+            <summary class="cursor-pointer p-4 flex items-center justify-between text-sm font-mono uppercase tracking-[0.08em] text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors">
+              <span>Comment fonctionne le CEE ?</span>
+              <span class="text-[var(--color-text-faint)] group-open:rotate-180 transition-transform">↓</span>
+            </summary>
+            <div class="px-4 pb-4 text-sm text-[var(--color-text-muted)] leading-relaxed">
+              Les fournisseurs d'énergie (EDF, TotalEnergies, ENGIE…) sont obligés par l'État de financer des actions d'économie d'énergie sous peine de pénalités. Cette obligation finance notamment les rénovations thermiques, pompes à chaleur, et désormais l'aide à l'achat de véhicules électriques. Le montant n'est pas fixé par l'État : il dépend du cours du marché CEE et des négociations entre constructeurs et obligés.
+            </div>
+          </details>
 
-          <p class="mt-5 text-[12px] text-[var(--color-text-faint)] font-mono">
-            Montants indicatifs publiés par le gouvernement (communiqué du 26 novembre 2025) — susceptibles d'évoluer avec le cours des CEE. La liste officielle des véhicules à batterie UE éligibles au surbonus est sur le site de l'ADEME.
+          {/* NON CUMUL — version légère */}
+          <p class="mt-6 text-sm text-[var(--color-text-muted)] leading-relaxed border-l-2 border-[var(--color-border-strong)] pl-4">
+            <strong class="text-[var(--color-text)]">Non cumulable</strong> avec le leasing social. Un même véhicule passe par un seul des deux dispositifs. À l'achat : remise sur facture. En leasing social : 1<sup>er</sup> loyer absorbé + mensualités réduites.
+          </p>
+
+          <p class="mt-6 text-[11px] text-[var(--color-text-faint)] font-mono">
+            Source : communiqué gouvernement du 26 novembre 2025. Liste officielle des véhicules à batterie UE éligibles au surbonus disponible sur le site de l'ADEME.
           </p>
         </Tile>
 
@@ -290,8 +336,14 @@ const counts = {
             <Tag tone="accent" mono>{counts.official} modèles</Tag>
           </div>
           <p class="text-sm text-[var(--color-text-muted)] mt-4 max-w-3xl">
-            Ces véhicules ont passé l'audit ADEME complet et leur constructeur s'est engagé contractuellement dans le dispositif. Ce sont les seuls qu'un ménage éligible peut commander aujourd'hui en leasing social — loyer entre 95 € et 150 €/mois selon le modèle, sans apport.
+            Ces véhicules ont passé l'audit ADEME complet et leur constructeur s'est engagé contractuellement dans le dispositif. Loyer entre 95 € et 150 €/mois selon le modèle, sans apport.
           </p>
+          <div class="mt-5 p-4 border border-[var(--color-border)] rounded-[var(--radius-tile-sm)] bg-[var(--color-bg-subtle)]">
+            <span class="label-eyebrow">Aussi au programme — non encore couverts par Evly</span>
+            <p class="mt-2 text-sm text-[var(--color-text-muted)] leading-relaxed">
+              Opel Corsa Electric, Opel Mokka Electric, Fiat 500e, Fiat Grande Panda, Jeep Avenger, Cupra Born et Nissan Leaf font partie du référentiel officiel 2024-2025 mais ne disposent pas encore d'une fiche détaillée sur Evly. Au total, la liste officielle compte une trentaine de modèles selon la période et le réseau de distribution.
+            </p>
+          </div>
         </Tile>
 
         {grouped["official"].map((v) => {
@@ -464,7 +516,7 @@ const counts = {
             Le leasing social ne devrait pas dépendre du bon vouloir des constructeurs.
           </h2>
           <p class="mt-6 text-[var(--color-text-muted)] text-base md:text-lg max-w-3xl leading-relaxed">
-            Évly ne reçoit aucune rémunération constructeur et n'a aucun intérêt à pousser tel ou tel modèle. La liste des véhicules <em>compatibles ADEME mais absents</em> est publique pour une raison : tant que le programme repose sur l'engagement volontaire des marques, le citoyen éligible est privé de choix qu'il devrait avoir.
+            Evly ne reçoit aucune rémunération constructeur et n'a aucun intérêt à pousser tel ou tel modèle. La liste des véhicules <em>compatibles ADEME mais absents</em> est publique pour une raison : tant que le programme repose sur l'engagement volontaire des marques, le citoyen éligible est privé de choix qu'il devrait avoir.
           </p>
           <div class="mt-8 pt-6 border-t border-[var(--color-border)] flex flex-col md:flex-row gap-4">
             <a
@@ -483,7 +535,7 @@ const counts = {
             </a>
           </div>
           <p class="mt-6 text-[12px] text-[var(--color-text-faint)] font-mono">
-            Les scores ADEME indicatifs sont estimés par Évly à partir du pays d'assemblage et du contenu batterie publié. Le score officiel ADEME requiert un dossier constructeur déposé auprès des services de l'État.
+            Les scores ADEME indicatifs sont estimés par Evly à partir du pays d'assemblage et du contenu batterie publié. Le score officiel ADEME requiert un dossier constructeur déposé auprès des services de l'État.
           </p>
         </Tile>
       </BentoGrid>

@@ -15,7 +15,11 @@
       "Bash(Write-Output \"done\")",
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "WebSearch",
+      "WebFetch(domain:www.peugeot.fr)",
+      "WebFetch(domain:www.caradisiac.com)",
+      "Bash(node scripts/update-peugeot.mjs)"
     ]
   }
 }

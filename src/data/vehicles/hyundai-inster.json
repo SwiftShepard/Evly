@@ -91,14 +91,9 @@
       ]
     }
   ],
-  "leasingSocialEligible": false,
+  "leasingSocialEligible": true,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [
-    {
-      "label": "Prime CEE VE",
-      "amount_EUR": 4000
-    }
-  ],
+  "availableAids": [],
   "configurations": [
     {
       "id": "hyundai-inster-intuitive",

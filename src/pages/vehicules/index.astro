@@ -12,10 +12,26 @@ import type { Vehicle } from "@/data/schemas";
 
 const vehicles = getAllVehicles();
 
+// Véhicules considérés comme utilitaires / professionnels (flottes, navette VIP, ludospaces pro, vans Combi)
+const UTILITY_SLUGS = new Set([
+  "peugeot-e-rifter",
+  "peugeot-e-traveller",
+  "peugeot-e-expert-combi",
+  "citroen-e-berlingo",
+  "citroen-e-spacetourer",
+  "renault-kangoo",
+  "renault-grand-kangoo",
+  "hyundai-staria",
+  "kia-pv5-passenger",
+]);
+
 function getCategory(v: Vehicle) {
+  // Utilitaire prend la priorité (avant Monospace pour récupérer e-Traveller, Staria, etc.)
+  if (UTILITY_SLUGS.has(v.slug)) return "Utilitaire";
+
   const body = v.bodyType.toLowerCase();
   const segment = v.segment.toLowerCase();
-  
+
   if (body.includes("monospace") || body.includes("van") || v.variant.toLowerCase().includes("monospace")) return "Monospace";
   if (body.includes("quadricycle") || v.segment.includes("quadricycle")) return "Quadricycle";
   if (segment.includes("a") || (segment.includes("b") && body.includes("suv")) || body.includes("urbain")) return "Mini-SUV";
@@ -23,7 +39,7 @@ function getCategory(v: Vehicle) {
   if (segment.includes("b") || body.includes("citadine")) return "Citadine";
   if (segment.includes("c") || body.includes("compacte")) return "Compacte";
   if (body.includes("berline") || body.includes("hatchback") || segment.includes("d")) return "Berline";
-  
+
   return "SUV";
 }
 
@@ -43,7 +59,7 @@ function isDaily(v: Vehicle) {
   return s.includes("a") || s.includes("b") || s.includes("c");
 }
 
-const categories = ["Mini-SUV", "SUV", "Compacte", "Berline", "Citadine", "Monospace", "Quadricycle"];
+const categories = ["Mini-SUV", "SUV", "Compacte", "Berline", "Citadine", "Monospace", "Utilitaire", "Quadricycle"];
 const brands = ["Renault", "Peugeot", "Citroën", "Tesla", "BYD", "MG", "Volkswagen", "Kia", "Hyundai", "Leapmotor", "Mobilize"];
 
 const budgetFilters = [

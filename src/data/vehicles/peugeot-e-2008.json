@@ -2,43 +2,43 @@
   "slug": "peugeot-e-2008",
   "brand": "Peugeot",
   "model": "E-2008",
-  "variant": "51 kWh",
+  "variant": "54 kWh",
   "bodyType": "SUV urbain",
   "segment": "B",
   "productionCountry": "Espagne",
-  "assemblyPlant": "Ulsan",
+  "assemblyPlant": "Vigo",
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
   "power_kW": 115,
-  "power_hp": 204,
-  "torque_Nm": 300,
+  "power_hp": 156,
+  "torque_Nm": 260,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
-  "topSpeed_kmh": 160,
-  "usableCapacity_kWh": 48.1,
-  "grossCapacity_kWh": 51,
+  "acceleration_0_100_s": 8.6,
+  "topSpeed_kmh": 150,
+  "usableCapacity_kWh": 54,
+  "grossCapacity_kWh": 55,
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1700,
   "wltp_max_km": 406,
-  "wltp_min_km": 390,
+  "wltp_min_km": 406,
   "realRange": {
-    "mixed_km": 300,
+    "mixed_km": 310,
     "highway_130_km": 200,
-    "urban_km": 360,
+    "urban_km": 380,
     "winter_minus5_km": 240,
-    "confidence": "tested"
+    "confidence": "estimated"
   },
-  "consumption_mixed_kWh_per_100km": 15,
+  "consumption_mixed_kWh_per_100km": 15.2,
   "consumption_highway_kWh_per_100km": 21,
   "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.32,
   "chargingDC": {
     "peakPower_kW": 100,
     "time_10_80_min": 30,
-    "kWh_added_30min": 35,
-    "confidence": "tested"
+    "kWh_added_30min": 34,
+    "confidence": "estimated"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
@@ -52,23 +52,27 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 77
+      "power": 92
     },
     {
       "soc": 10,
       "power": 100
     },
     {
+      "soc": 20,
+      "power": 100
+    },
+    {
       "soc": 50,
-      "power": 77
+      "power": 71
     },
     {
       "soc": 80,
-      "power": 38
+      "power": 32
     },
     {
       "soc": 100,
-      "power": 8
+      "power": 6
     }
   ],
   "rangeTests": [],
@@ -82,16 +86,43 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Allure",
-      "price_EUR": 40250,
-      "batteryUsed": "51 kWh",
+      "name": "Style 54 kWh",
+      "price_EUR": 38500,
+      "batteryUsed": "54 kWh",
       "equipmentHighlights": [
-        "Design affirmé",
-        "i-Cockpit 3D"
+        "Climatisation auto",
+        "i-Cockpit"
+      ]
+    },
+    {
+      "name": "Allure 54 kWh",
+      "price_EUR": 40300,
+      "batteryUsed": "54 kWh",
+      "equipmentHighlights": [
+        "Caméra recul",
+        "i-Cockpit 10\""
+      ]
+    },
+    {
+      "name": "GT 54 kWh",
+      "price_EUR": 42200,
+      "batteryUsed": "54 kWh",
+      "equipmentHighlights": [
+        "i-Cockpit 3D",
+        "ADML niveau 2"
+      ]
+    },
+    {
+      "name": "GT Exclusive 54 kWh",
+      "price_EUR": 44100,
+      "batteryUsed": "54 kWh",
+      "equipmentHighlights": [
+        "Toit pano ouvrant",
+        "Sièges AGR"
       ]
     }
   ],
-  "leasingSocialEligible": false,
+  "leasingSocialEligible": true,
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
@@ -101,49 +132,212 @@
   ],
   "configurations": [
     {
-      "id": "peugeot-e-2008-allure",
-      "label": "E-2008 Allure",
+      "id": "peugeot-e-2008-style-54",
+      "label": "Style · 54 kWh",
       "battery": "standard",
-      "trim": "Allure",
-      "wheelSize_inches": 18,
+      "trim": "Style",
+      "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 40250,
+      "price_EUR": 38500,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 406,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_consumption_kWh_100km": 15.2,
       "realRange": {
-        "mixed_km": 300,
+        "mixed_km": 310,
         "highway_130_km": 200,
-        "urban_km": 360,
+        "urban_km": 380,
         "winter_minus5_km": 240,
-        "confidence": "tested"
+        "confidence": "estimated"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 35,
+      "chargingDC_kWh_30min": 34,
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 77
+          "power": 92
         },
         {
           "soc": 10,
           "power": 100
         },
         {
+          "soc": 20,
+          "power": 100
+        },
+        {
           "soc": 50,
-          "power": 77
+          "power": 71
         },
         {
           "soc": 80,
-          "power": 38
+          "power": 32
         },
         {
           "soc": 100,
-          "power": 8
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "peugeot-e-2008-allure-54",
+      "label": "Allure · 54 kWh",
+      "battery": "standard",
+      "trim": "Allure",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 40300,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 406,
+      "wltp_consumption_kWh_100km": 15.2,
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 200,
+        "urban_km": 380,
+        "winter_minus5_km": 240,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 34,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "peugeot-e-2008-gt-54",
+      "label": "GT · 54 kWh",
+      "battery": "standard",
+      "trim": "GT",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 42200,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 406,
+      "wltp_consumption_kWh_100km": 15.2,
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 200,
+        "urban_km": 380,
+        "winter_minus5_km": 240,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 34,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "peugeot-e-2008-gt-exclusive-54",
+      "label": "GT Exclusive · 54 kWh",
+      "battery": "standard",
+      "trim": "GT Exclusive",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 44100,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 406,
+      "wltp_consumption_kWh_100km": 15.2,
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 200,
+        "urban_km": 380,
+        "winter_minus5_km": 240,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 34,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
         }
       ],
       "availability": "available",

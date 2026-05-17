@@ -5,24 +5,39 @@ import Tile from "@/components/ui/Tile.astro";
 import Tag from "@/components/ui/Tag.astro";
 import Wordmark from "@/components/ui/Wordmark.astro";
 import VehicleImage from "@/components/ui/VehicleImage.astro";
+import BrandLogo from "@/components/ui/BrandLogo.astro";
 import { getAllVehicles } from "@/lib/vehicles";
 import { formatPrice } from "@/lib/format";
 import { url } from "@/lib/url";
+import { getLeasingStatus } from "@/lib/leasing";
 
 const vehicles = getAllVehicles();
 const totalVehicles = vehicles.length;
 const totalTests = vehicles.reduce((sum, v) => sum + v.rangeTests.length, 0);
 const totalConfigs = vehicles.reduce((sum, v) => sum + v.configurations.length, 0);
 
+// "À la une" — 2 catégories de véhicules pour scroll rows
+const cheapestOf = (v: (typeof vehicles)[number]) => Math.min(...v.trims.map((t) => t.price_EUR));
+
+const leasingOfficial = vehicles
+  .filter((v) => getLeasingStatus(v) === "official")
+  .sort((a, b) => cheapestOf(a) - cheapestOf(b))
+  .slice(0, 8);
+
+const ademeCompat = vehicles
+  .filter((v) => getLeasingStatus(v) === "ademe-compatible")
+  .sort((a, b) => cheapestOf(a) - cheapestOf(b))
+  .slice(0, 8);
+
 const description =
-  "Evly — l'électrique mesuré. Comparateur indépendant de véhicules électriques pour le marché français, agrégeant les tests d'autonomie réelle de Bjørn Nyland, EVKX, ArenaEV et la presse VE française.";
+  "Evly — l'électrique mesuré. Comparateur indépendant français : tests d'autonomie réelle (Bjørn Nyland, EVKX, presse FR), dossier leasing social, advocacy consommateur. Aucune publicité, aucun lien affilié.";
 ---
 
 <BaseLayout title="Evly — l'électrique mesuré" description={description}>
   <div class="container-edit py-6 md:py-10">
     <BentoGrid>
 
-      <!-- HERO TILE -->
+      {/* ═════════ HERO ═════════ */}
       <Tile size="full" variant="elevated" class="md:!p-12 lg:!p-16">
         <div class="flex items-center gap-3 md:gap-4 mb-8 md:mb-12 fade-rise">
           <Wordmark size="lg" />
@@ -42,128 +57,289 @@ const description =
           <a href={url("/vehicules")} class="btn-interactive btn-glow inline-flex items-center gap-2 px-5 py-3 bg-[var(--color-accent)] text-[var(--color-accent-on)] text-sm font-medium tracking-tight min-h-[44px] hover:bg-[var(--color-accent-dim)] transition-colors rounded-[var(--radius-tile-sm)]">
             Explorer les véhicules
           </a>
-          <a href={url("/comparer")} class="btn-interactive inline-flex items-center gap-2 px-5 py-3 border border-[var(--color-border-strong)] text-[var(--color-text)] text-sm font-medium tracking-tight min-h-[44px] hover:bg-[var(--color-bg-subtle)] transition-colors rounded-[var(--radius-tile-sm)]">
-            Comparateur configurable
+          <a href={url("/leasing-social")} class="btn-interactive inline-flex items-center gap-2 px-5 py-3 border border-[var(--color-border-strong)] text-[var(--color-text)] text-sm font-medium tracking-tight min-h-[44px] hover:bg-[var(--color-bg-subtle)] transition-colors rounded-[var(--radius-tile-sm)]">
+            Dossier leasing social
           </a>
         </div>
-      </Tile>
 
-      <!-- 1x1 stats projet -->
-      <Tile size="1x1" label="Véhicules couverts" class="reveal">
-        <div class="flex flex-col gap-1.5 mt-auto">
-          <div class="flex items-baseline gap-1.5">
-            <span data-numeric data-count={totalVehicles} class="display-stat text-5xl md:text-6xl">0</span>
-            <span class="font-mono text-xs text-[var(--color-text-faint)]">/ ~10</span>
-          </div>
-          <span class="font-mono text-[11px] text-[var(--color-text-faint)]">prévus en V5</span>
+        {/* Mini-stats inline sous le hero */}
+        <div class="mt-12 md:mt-16 pt-6 border-t border-[var(--color-border)] flex flex-wrap items-baseline gap-x-8 gap-y-3 font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--color-text-faint)] fade-rise fade-rise-delay-3">
+          <span><span data-numeric class="text-[var(--color-text)] text-sm">{totalVehicles}</span> véhicules couverts</span>
+          <span><span data-numeric class="text-[var(--color-accent)] text-sm">{totalTests}</span> tests agrégés</span>
+          <span><span data-numeric class="text-[var(--color-text)] text-sm">{totalConfigs}</span> configurations comparables</span>
         </div>
       </Tile>
 
-      <Tile size="1x1" label="Tests agrégés" class="reveal">
-        <div class="flex flex-col gap-1.5 mt-auto">
-          <div class="flex items-baseline gap-1.5">
-            <span data-numeric data-count={totalTests} class="display-stat text-5xl md:text-6xl text-[var(--color-accent)]">0</span>
-          </div>
-          <span class="font-mono text-[11px] text-[var(--color-text-faint)]">Nyland · presse FR · Touring</span>
+      {/* ═════════ CHEMINS D'ENTRÉE ═════════ */}
+      <Tile size="full" variant="default" class="!bg-transparent !border-0 !p-0">
+        <div class="flex flex-wrap items-baseline justify-between gap-3 mb-2">
+          <span class="font-mono text-xs text-[var(--color-text-faint)]">01 · Par où commencer ?</span>
         </div>
-      </Tile>
-
-      <Tile size="1x1" label="Configurations" class="reveal">
-        <div class="flex flex-col gap-1.5 mt-auto">
-          <div class="flex items-baseline gap-1.5">
-            <span data-numeric data-count={totalConfigs} class="display-stat text-5xl md:text-6xl">0</span>
-          </div>
-          <span class="font-mono text-[11px] text-[var(--color-text-faint)]">comparables</span>
-        </div>
-      </Tile>
-
-      <Tile size="1x1" label="Hébergement" class="reveal">
-        <div class="flex flex-col gap-1.5 mt-auto">
-          <div class="flex items-baseline gap-1.5">
-            <span data-numeric data-count="0" class="display-stat text-5xl md:text-6xl">0<span class="text-base ml-1 font-mono">€</span></span>
-          </div>
-          <span class="font-mono text-[11px] text-[var(--color-text-faint)]">Cloudflare Pages, statique</span>
-        </div>
-      </Tile>
-
-      <!-- Vehicule cards -->
-      {vehicles.map((v) => {
-        const cheapest = v.trims.reduce((a, b) => (a.price_EUR < b.price_EUR ? a : b));
-        return (
-          <Tile size="2x1" variant="default" href={url(`/vehicules/${v.slug}`)} ariaLabel={`Fiche ${v.brand} ${v.model}`} class="reveal">
-            <div class="flex items-center justify-between gap-3 mb-4">
-              <span class="label-eyebrow">{v.brand} · {v.segment.split(" — ")[0] ?? v.segment}</span>
-              <div class="flex items-center gap-2 flex-wrap justify-end">
-                {v.leasingSocialEligible && <Tag tone="accent" mono>Leasing social</Tag>}
-                <Tag tone="outline" mono>{v.architecture_V} V</Tag>
-                {v.configurations.length > 0 && <Tag tone="outline" mono>{v.configurations.length} configs</Tag>}
-              </div>
-            </div>
-            <div class="flex items-end gap-3 mb-6">
-              <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.05]">
-                {v.model}
-                <span class="block text-[var(--color-text-muted)] text-lg md:text-xl mt-1 font-medium">{v.variant}</span>
-              </h2>
-              <div class="flex-1 flex justify-center items-end">
-                <VehicleImage
-                  slug={v.slug}
-                  alt={`${v.brand} ${v.model}`}
-                  class="w-28 h-14"
-                />
-              </div>
-            </div>
-            <div class="grid grid-cols-3 gap-4 mt-auto pt-5 border-t border-[var(--color-border)]">
-              <div class="flex flex-col gap-1">
-                <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Auto.</span>
-                <div class="flex items-baseline gap-1">
-                  <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-accent)]">{v.realRange.mixed_km}</span>
-                  <span class="font-mono text-[11px] text-[var(--color-text-faint)]">km</span>
-                </div>
-              </div>
-              <div class="flex flex-col gap-1">
-                <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">DC</span>
-                <div class="flex items-baseline gap-1">
-                  <span data-numeric class="display-stat text-2xl md:text-3xl">{v.chargingDC.peakPower_kW}</span>
-                  <span class="font-mono text-[11px] text-[var(--color-text-faint)]">kW</span>
-                </div>
-              </div>
-              <div class="flex flex-col gap-1">
-                <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Dès</span>
-                <span data-numeric class="display-stat text-2xl md:text-3xl">{formatPrice(cheapest.price_EUR)}</span>
-              </div>
-            </div>
-          </Tile>
-        );
-      })}
-
-      <!-- Comparateur -->
-      <Tile size="2x1" variant="accent" href={url("/comparer")} ariaLabel="Comparateur configurable" class="reveal">
-        <div class="flex items-center gap-3 mb-4">
-          <span class="label-eyebrow">Nouveau</span>
-          <span aria-hidden="true" class="arrow-animate ml-auto font-mono text-[var(--color-text-faint)]">→</span>
-        </div>
-        <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.1] mb-3">
-          Comparateur configurable
+        <h2 class="font-display text-3xl md:text-4xl font-semibold tracking-[-0.015em] leading-[1.1] mb-2">
+          Trois chemins selon ton besoin.
         </h2>
-        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mt-auto">
-          Jusqu'à 4 véhicules côte-à-côte. Chaque carte ajustable par batterie, finition et jantes. Tous les chiffres proviennent de sources documentées.
+        <p class="text-sm text-[var(--color-text-muted)] max-w-2xl">
+          Évly est conçu pour des recherches précises — pas pour scroller au hasard. Choisis ton entrée.
         </p>
       </Tile>
 
-      <!-- Méthodologie -->
-      <Tile size="2x1" variant="elevated" href={url("/methodologie")} ariaLabel="Page méthodologie" class="reveal">
+      <Tile size="2x1" variant="accent" href={url("/leasing-social")} ariaLabel="Dossier leasing social" class="reveal">
         <div class="flex items-center gap-3 mb-4">
-          <span class="label-eyebrow">Comment on mesure</span>
+          <span class="label-eyebrow">A · Budget contraint</span>
           <span aria-hidden="true" class="arrow-animate ml-auto font-mono text-[var(--color-text-faint)]">→</span>
         </div>
-        <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.1] mb-3">
-          Le WLTP n'est pas une référence d'usage.
-        </h2>
+        <h3 class="font-display text-xl md:text-2xl font-semibold tracking-[-0.015em] leading-[1.15] mb-3">
+          Je cherche en leasing social.
+        </h3>
         <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mt-auto">
-          Cinq sections : approche, protocoles (Nyland / WLTP / EPA / presse FR), formule TCO transparente, registre des sources avec niveaux de confiance, limites éditoriales assumées.
+          À partir de 95 €/mois, sans apport. Dossier complet : critères ADEME, conditions ménage, et la liste des véhicules qui <em>devraient</em> y être mais que les constructeurs n'ont pas inscrits.
+        </p>
+      </Tile>
+
+      <Tile size="2x1" variant="default" href={url("/comparer")} ariaLabel="Comparateur configurable" class="reveal">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="label-eyebrow">B · Comparaison fine</span>
+          <span aria-hidden="true" class="arrow-animate ml-auto font-mono text-[var(--color-text-faint)]">→</span>
+        </div>
+        <h3 class="font-display text-xl md:text-2xl font-semibold tracking-[-0.015em] leading-[1.15] mb-3">
+          Je veux comparer 2 à 4 modèles.
+        </h3>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mt-auto">
+          Sélection multi-véhicules côte-à-côte. Chaque carte ajustable par batterie, finition et jantes — toutes les données sourcées et datées.
+        </p>
+      </Tile>
+
+      <Tile size="2x1" variant="default" href={url("/recommandation")} ariaLabel="Recommandation personnalisée" class="reveal">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="label-eyebrow">C · Aide à la décision</span>
+          <span aria-hidden="true" class="arrow-animate ml-auto font-mono text-[var(--color-text-faint)]">→</span>
+        </div>
+        <h3 class="font-display text-xl md:text-2xl font-semibold tracking-[-0.015em] leading-[1.15] mb-3">
+          Je veux une reco perso.
+        </h3>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mt-auto">
+          Quelques questions sur ton usage (km/an, autoroute, budget, foyer), et Évly te ressort les 3-5 véhicules les plus pertinents avec le pourquoi.
+        </p>
+      </Tile>
+
+      {/* ═════════ À LA UNE — LIGNE 1 : LEASING OFFICIEL ═════════ */}
+      <Tile size="full" variant="default" class="!bg-transparent !border-0 !p-0 !mt-4">
+        <div class="flex flex-wrap items-baseline justify-between gap-3 mb-2">
+          <span class="font-mono text-xs text-[var(--color-text-faint)]">02 · À la une</span>
+          <a href={url("/leasing-social")} class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors">Tout voir →</a>
+        </div>
+        <h2 class="font-display text-3xl md:text-4xl font-semibold tracking-[-0.015em] leading-[1.1] mb-2">
+          Leasing social officiel.
+          <span class="block text-[var(--color-accent)] text-lg md:text-xl mt-1.5 font-medium">
+            Les véhicules engagés contractuellement par leurs constructeurs.
+          </span>
+        </h2>
+      </Tile>
+
+      <Tile size="full" variant="default" class="!bg-transparent !border-0 !p-0">
+        <div class="featured-scroll-row">
+          {leasingOfficial.map((v) => {
+            const cheapest = cheapestOf(v);
+            return (
+              <a href={url(`/vehicules/${v.slug}`)} class="featured-card" aria-label={`Fiche ${v.brand} ${v.model}`}>
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <div class="flex items-center gap-1.5 text-[var(--color-text-muted)]">
+                    <BrandLogo brand={v.brand} class="w-3.5 h-3.5" />
+                    <span class="label-eyebrow text-[9px]">{v.brand}</span>
+                  </div>
+                  <Tag tone="accent" mono>Officiel</Tag>
+                </div>
+                <div class="flex items-end justify-between gap-2 mb-4">
+                  <h3 class="font-display text-lg md:text-xl font-semibold tracking-[-0.015em] leading-[1.05]">
+                    {v.model}
+                    <span class="block text-[var(--color-text-muted)] text-xs md:text-sm mt-1 font-medium">{v.variant}</span>
+                  </h3>
+                  <VehicleImage slug={v.slug} alt={`${v.brand} ${v.model}`} class="w-20 h-12 flex-shrink-0" />
+                </div>
+                <div class="grid grid-cols-2 gap-3 mt-auto pt-3 border-t border-[var(--color-border)]">
+                  <div class="flex flex-col gap-0.5">
+                    <span class="font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Auto.</span>
+                    <div class="flex items-baseline gap-1">
+                      <span data-numeric class="display-stat text-xl text-[var(--color-accent)]">{v.realRange.mixed_km}</span>
+                      <span class="font-mono text-[10px] text-[var(--color-text-faint)]">km</span>
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-0.5">
+                    <span class="font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Dès</span>
+                    <span data-numeric class="display-stat text-xl">{formatPrice(cheapest)}</span>
+                  </div>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </Tile>
+
+      {/* ═════════ À LA UNE — LIGNE 2 : DEVRAIENT Y ÊTRE ═════════ */}
+      <Tile size="full" variant="default" class="!bg-transparent !border-0 !p-0 !mt-4">
+        <h2 class="font-display text-3xl md:text-4xl font-semibold tracking-[-0.015em] leading-[1.1] mb-2">
+          Ils devraient y être.
+          <span class="block text-[var(--color-warning)] text-lg md:text-xl mt-1.5 font-medium">
+            Critères ADEME validés, constructeur absent du programme.
+          </span>
+        </h2>
+      </Tile>
+
+      <Tile size="full" variant="default" class="!bg-transparent !border-0 !p-0">
+        <div class="featured-scroll-row">
+          {ademeCompat.map((v) => {
+            const cheapest = cheapestOf(v);
+            return (
+              <a href={url(`/vehicules/${v.slug}`)} class="featured-card" aria-label={`Fiche ${v.brand} ${v.model}`}>
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <div class="flex items-center gap-1.5 text-[var(--color-text-muted)]">
+                    <BrandLogo brand={v.brand} class="w-3.5 h-3.5" />
+                    <span class="label-eyebrow text-[9px]">{v.brand}</span>
+                  </div>
+                  <Tag tone="warning" mono>ADEME</Tag>
+                </div>
+                <div class="flex items-end justify-between gap-2 mb-4">
+                  <h3 class="font-display text-lg md:text-xl font-semibold tracking-[-0.015em] leading-[1.05]">
+                    {v.model}
+                    <span class="block text-[var(--color-text-muted)] text-xs md:text-sm mt-1 font-medium">{v.variant}</span>
+                  </h3>
+                  <VehicleImage slug={v.slug} alt={`${v.brand} ${v.model}`} class="w-20 h-12 flex-shrink-0" />
+                </div>
+                <div class="grid grid-cols-2 gap-3 mt-auto pt-3 border-t border-[var(--color-border)]">
+                  <div class="flex flex-col gap-0.5">
+                    <span class="font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Auto.</span>
+                    <div class="flex items-baseline gap-1">
+                      <span data-numeric class="display-stat text-xl text-[var(--color-accent)]">{v.realRange.mixed_km}</span>
+                      <span class="font-mono text-[10px] text-[var(--color-text-faint)]">km</span>
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-0.5">
+                    <span class="font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Dès</span>
+                    <span data-numeric class="display-stat text-xl">{formatPrice(cheapest)}</span>
+                  </div>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </Tile>
+
+      {/* ═════════ POSITION ÉDITORIALE ═════════ */}
+      <Tile size="full" variant="elevated" class="!mt-4">
+        <div class="flex items-center gap-4 mb-6">
+          <span class="font-mono text-xs text-[var(--color-text-faint)]">03 · Position éditoriale</span>
+        </div>
+        <h2 class="display-2 max-w-3xl mb-6">
+          Pourquoi Evly.
+        </h2>
+        <p class="text-[var(--color-text-muted)] text-base md:text-lg max-w-3xl leading-relaxed mb-10">
+          Le marché des VE est saturé de comparateurs alimentés par la publicité constructeur ou les commissions de leasing. Evly se positionne ailleurs : <strong class="text-[var(--color-text)]">données mesurées, sources tracées, zéro rémunération marque</strong>.
+        </p>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 pt-6 border-t border-[var(--color-border)]">
+          <div class="flex flex-col gap-2">
+            <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-accent)]">01</span>
+            <h3 class="font-display text-lg font-semibold tracking-[-0.01em]">Indépendance</h3>
+            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">
+              Aucun lien affilié, aucune rémunération constructeur, aucune publicité. Le site tourne sur un hébergement gratuit (Cloudflare Pages).
+            </p>
+          </div>
+          <div class="flex flex-col gap-2">
+            <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-accent)]">02</span>
+            <h3 class="font-display text-lg font-semibold tracking-[-0.01em]">Sources tracées</h3>
+            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">
+              Chaque chiffre porte un niveau de confiance (mesuré, constructeur, estimé). Tests Bjørn Nyland, EVKX, ArenaEV, presse VE française et catalogues officiels.
+            </p>
+          </div>
+          <div class="flex flex-col gap-2">
+            <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-accent)]">03</span>
+            <h3 class="font-display text-lg font-semibold tracking-[-0.01em]">Méthodologie ouverte</h3>
+            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">
+              Protocoles documentés (WLTP vs autonomie réelle, formule TCO, score ADEME). Les limites éditoriales sont assumées noir sur blanc.
+            </p>
+          </div>
+          <div class="flex flex-col gap-2">
+            <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-accent)]">04</span>
+            <h3 class="font-display text-lg font-semibold tracking-[-0.01em]">Advocacy consommateur</h3>
+            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">
+              Quand un véhicule remplit objectivement les critères mais qu'un constructeur refuse de s'engager, Evly le dit. Information + pression commerciale.
+            </p>
+          </div>
+        </div>
+      </Tile>
+
+      {/* ═════════ MÉTHODOLOGIE ═════════ */}
+      <Tile size="2x1" variant="default" href={url("/methodologie")} ariaLabel="Méthodologie complète" class="reveal">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="label-eyebrow">04 · Comment on mesure</span>
+          <span aria-hidden="true" class="arrow-animate ml-auto font-mono text-[var(--color-text-faint)]">→</span>
+        </div>
+        <h3 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.1] mb-3">
+          Le WLTP n'est pas une référence d'usage.
+        </h3>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mt-auto">
+          Approche, protocoles (Nyland / WLTP / EPA / presse FR), formule TCO transparente, registre des sources avec niveaux de confiance, limites assumées.
+        </p>
+      </Tile>
+
+      <Tile size="2x1" variant="accent" href={url("/vehicules")} ariaLabel="Explorer tous les véhicules" class="reveal">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="label-eyebrow">05 · Tout le catalogue</span>
+          <span aria-hidden="true" class="arrow-animate ml-auto font-mono text-[var(--color-text-faint)]">→</span>
+        </div>
+        <h3 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.1] mb-3">
+          Explorer les {totalVehicles} véhicules.
+        </h3>
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mt-auto">
+          Filtres multicritères (marque, carrosserie, budget, leasing social, recharge rapide, made in Europe), tri par autonomie réelle, ratio km/€, recharge DC.
         </p>
       </Tile>
 
     </BentoGrid>
   </div>
+
+  <style>
+    /* Carrousel horizontal des cards "à la une" */
+    .featured-scroll-row {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 4px 0 16px 0;
+      scrollbar-width: thin;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+    }
+    .featured-scroll-row::-webkit-scrollbar { height: 6px; }
+    .featured-scroll-row::-webkit-scrollbar-track { background: transparent; }
+    .featured-scroll-row::-webkit-scrollbar-thumb {
+      background: var(--color-border);
+      border-radius: 3px;
+    }
+    .featured-scroll-row::-webkit-scrollbar-thumb:hover { background: var(--color-border-strong); }
+
+    .featured-card {
+      flex: 0 0 auto;
+      width: 260px;
+      min-height: 180px;
+      padding: 16px;
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-tile-sm);
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+      scroll-snap-align: start;
+    }
+    .featured-card:hover {
+      border-color: var(--color-border-strong);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px -8px rgba(0, 0, 0, 0.12);
+    }
+    @media (min-width: 768px) {
+      .featured-card { width: 280px; }
+    }
+  </style>
 </BaseLayout>

@@ -129,7 +129,7 @@
       ]
     }
   ],
-  "leasingSocialEligible": false,
+  "leasingSocialEligible": true,
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {

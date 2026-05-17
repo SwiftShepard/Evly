@@ -2,35 +2,35 @@
   "slug": "peugeot-e-408",
   "brand": "Peugeot",
   "model": "E-408",
-  "variant": "58.2 kWh",
+  "variant": "58 kWh",
   "bodyType": "Crossover Fastback",
   "segment": "C",
   "productionCountry": "France",
-  "assemblyPlant": "Ulsan",
+  "assemblyPlant": "Mulhouse",
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
-  "power_kW": 157,
-  "power_hp": 204,
-  "torque_Nm": 300,
+  "power_kW": 155,
+  "power_hp": 210,
+  "torque_Nm": 345,
   "drivetrain": "FWD",
   "motors": 1,
   "acceleration_0_100_s": 7.5,
-  "topSpeed_kmh": 160,
-  "usableCapacity_kWh": 58.2,
+  "topSpeed_kmh": 170,
+  "usableCapacity_kWh": 58,
   "grossCapacity_kWh": 61,
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1700,
   "wltp_max_km": 453,
-  "wltp_min_km": 440,
+  "wltp_min_km": 453,
   "realRange": {
-    "mixed_km": 360,
-    "highway_130_km": 240,
-    "urban_km": 430,
+    "mixed_km": 355,
+    "highway_130_km": 235,
+    "urban_km": 425,
     "winter_minus5_km": 280,
     "confidence": "estimated"
   },
-  "consumption_mixed_kWh_per_100km": 15,
+  "consumption_mixed_kWh_per_100km": 15.4,
   "consumption_highway_kWh_per_100km": 21,
   "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.28,
@@ -52,23 +52,27 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 92
+      "power": 110
     },
     {
       "soc": 10,
       "power": 120
     },
     {
+      "soc": 20,
+      "power": 120
+    },
+    {
       "soc": 50,
-      "power": 92
+      "power": 85
     },
     {
       "soc": 80,
-      "power": 46
+      "power": 38
     },
     {
       "soc": 100,
-      "power": 9
+      "power": 7
     }
   ],
   "rangeTests": [],
@@ -82,12 +86,30 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Allure",
-      "price_EUR": 43900,
-      "batteryUsed": "58.2 kWh",
+      "name": "Allure 58 kWh",
+      "price_EUR": 42700,
+      "batteryUsed": "58 kWh",
       "equipmentHighlights": [
-        "Batterie NMC",
-        "Design disruptif"
+        "i-Cockpit 10\"",
+        "Caméra recul"
+      ]
+    },
+    {
+      "name": "GT 58 kWh",
+      "price_EUR": 45250,
+      "batteryUsed": "58 kWh",
+      "equipmentHighlights": [
+        "i-Cockpit 3D",
+        "ADML niveau 2"
+      ]
+    },
+    {
+      "name": "GT Exclusive 58 kWh",
+      "price_EUR": 47600,
+      "batteryUsed": "58 kWh",
+      "equipmentHighlights": [
+        "Toit pano",
+        "Hi-Fi Focal · sièges AGR"
       ]
     }
   ],
@@ -101,22 +123,22 @@
   ],
   "configurations": [
     {
-      "id": "peugeot-e-408-allure",
-      "label": "E-408 Allure",
+      "id": "peugeot-e-408-allure-58",
+      "label": "Allure · 58 kWh",
       "battery": "standard",
       "trim": "Allure",
-      "wheelSize_inches": 18,
+      "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 43900,
+      "price_EUR": 42700,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 453,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_consumption_kWh_100km": 15.4,
       "realRange": {
-        "mixed_km": 360,
-        "highway_130_km": 240,
-        "urban_km": 430,
+        "mixed_km": 355,
+        "highway_130_km": 235,
+        "urban_km": 425,
         "winter_minus5_km": 280,
         "confidence": "estimated"
       },
@@ -127,23 +149,133 @@
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 92
+          "power": 110
         },
         {
           "soc": 10,
           "power": 120
         },
         {
+          "soc": 20,
+          "power": 120
+        },
+        {
           "soc": 50,
-          "power": 92
+          "power": 85
         },
         {
           "soc": 80,
-          "power": 46
+          "power": 38
         },
         {
           "soc": 100,
-          "power": 9
+          "power": 7
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "peugeot-e-408-gt-58",
+      "label": "GT · 58 kWh",
+      "battery": "standard",
+      "trim": "GT",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 45250,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 453,
+      "wltp_consumption_kWh_100km": 15.4,
+      "realRange": {
+        "mixed_km": 355,
+        "highway_130_km": 235,
+        "urban_km": 425,
+        "winter_minus5_km": 280,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 120,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 110
+        },
+        {
+          "soc": 10,
+          "power": 120
+        },
+        {
+          "soc": 20,
+          "power": 120
+        },
+        {
+          "soc": 50,
+          "power": 85
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "peugeot-e-408-gt-exclusive-58",
+      "label": "GT Exclusive · 58 kWh",
+      "battery": "standard",
+      "trim": "GT Exclusive",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 47600,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 453,
+      "wltp_consumption_kWh_100km": 15.4,
+      "realRange": {
+        "mixed_km": 355,
+        "highway_130_km": 235,
+        "urban_km": 425,
+        "winter_minus5_km": 280,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 120,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 110
+        },
+        {
+          "soc": 10,
+          "power": 120
+        },
+        {
+          "soc": 20,
+          "power": 120
+        },
+        {
+          "soc": 50,
+          "power": 85
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 100,
+          "power": 7
         }
       ],
       "availability": "available",

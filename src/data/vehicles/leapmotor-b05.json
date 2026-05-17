@@ -97,12 +97,7 @@
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [
-    {
-      "label": "Prime CEE VE",
-      "amount_EUR": 4000
-    }
-  ],
+  "availableAids": [],
   "configurations": [
     {
       "id": "leapmotor-b05-pro",
@@ -242,7 +237,7 @@
       "Accord Stellantis : production en Europe prévue 2027 (Espagne) → future éligibilité leasing social"
     ],
     "weaknesses": [
-      "Production en Chine uniquement : score ADEME défavorable, Prime CEE VE limitée — pas de surbonus européen",
+      "Production en Chine uniquement : score ADEME insuffisant → aucune Prime CEE VE possible aujourd'hui",
       "Info-divertissement et finitions perfectibles face aux références européennes"
     ],
     "idealUserProfile": "Future candidate idéale au leasing social européen. Dès 2027, la production espagnole ouvrira l'accès au leasing social. Idéale pour les familles cherchant un rapport prix/prestations hors normes et prêtes à anticiper la transition vers les aides maximales.",
