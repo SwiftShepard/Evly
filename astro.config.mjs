@@ -83,7 +83,8 @@ const adminApiPlugin = {
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://evly.eu',
+  site: 'https://SwiftShepard.github.io/Evly',
+  base: '/Evly',
   output: 'static',
   trailingSlash: 'never',
   build: {
