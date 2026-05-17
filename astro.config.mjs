@@ -86,7 +86,7 @@ export default defineConfig({
   site: 'https://SwiftShepard.github.io/Evly',
   base: '/Evly',
   output: 'static',
-  trailingSlash: 'never',
+  trailingSlash: 'always',
   build: {
     format: 'directory',
     inlineStylesheets: 'auto',
