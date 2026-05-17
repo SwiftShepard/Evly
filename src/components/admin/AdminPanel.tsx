@@ -186,7 +186,7 @@ function JsonEditor({
           ✏ {vehicle ? `${vehicle.brand} ${vehicle.model}` : state.slug}
         </span>
         <a
-          href={`/vehicules/${state.slug}`}
+          href={url(`/vehicules/${state.slug}`)}
           target="_blank"
           rel="noopener"
           style={{ fontSize: 10, color: "#444", textDecoration: "none", flexShrink: 0 }}

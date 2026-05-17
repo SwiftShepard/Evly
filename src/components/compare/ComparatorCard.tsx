@@ -3,6 +3,7 @@ import type { Vehicle, VehicleConfiguration } from "@/data/schemas";
 import ConfigSelector from "./ConfigSelector";
 import ChargingSparkline from "./ChargingSparkline";
 import AnimatedNumber from "@/components/ui/AnimatedNumber";
+import { url } from "@/lib/url";
 import { X } from "lucide-react";
 
 interface Props {
@@ -309,7 +310,7 @@ export default function ComparatorCard({
         style={{ borderTop: "0.5px solid var(--color-border)" }}
       >
         <a
-          href={`/vehicules/${vehicle.slug}?config=${config.id}`}
+          href={url(`/vehicules/${vehicle.slug}?config=${config.id}`)}
           className="flex items-center justify-between gap-2 text-xs font-medium transition-colors"
           style={{ color: "var(--color-text-muted)" }}
           onMouseEnter={(e) => {
