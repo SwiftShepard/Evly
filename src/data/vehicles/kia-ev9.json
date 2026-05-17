@@ -9,21 +9,18 @@
   "assemblyPlant": "Ulsan",
   "releaseYear": 2024,
   "marketAvailability": "Disponible en Europe",
-
   "power_kW": 283,
   "power_hp": 385,
   "torque_Nm": 700,
   "drivetrain": "AWD",
   "motors": 2,
-  "acceleration_0_100_s": 6.0,
+  "acceleration_0_100_s": 6,
   "topSpeed_kmh": 200,
-
   "usableCapacity_kWh": 99.8,
-  "grossCapacity_kWh": 107.0,
+  "grossCapacity_kWh": 107,
   "chemistry": "NMC",
   "architecture_V": 800,
   "mass_kg": 2621,
-
   "wltp_max_km": 563,
   "wltp_min_km": 505,
   "realRange": {
@@ -33,12 +30,10 @@
     "winter_minus5_km": 355,
     "confidence": "tested"
   },
-
   "consumption_mixed_kWh_per_100km": 20.5,
   "consumption_highway_kWh_per_100km": 28.5,
-  "consumption_winter_kWh_per_100km": 26.0,
+  "consumption_winter_kWh_per_100km": 26,
   "dragCoefficient_Cx": 0.28,
-
   "chargingDC": {
     "peakPower_kW": 240,
     "time_10_80_min": 24,
@@ -54,26 +49,58 @@
   "v2l": true,
   "v2g": false,
   "v2l_option_EUR": null,
-
   "chargingCurve": [
-    { "soc": 0,   "power": 170 },
-    { "soc": 5,   "power": 205 },
-    { "soc": 10,  "power": 240 },
-    { "soc": 20,  "power": 240 },
-    { "soc": 30,  "power": 232 },
-    { "soc": 40,  "power": 218 },
-    { "soc": 50,  "power": 196 },
-    { "soc": 60,  "power": 162 },
-    { "soc": 70,  "power": 112 },
-    { "soc": 80,  "power": 64  },
-    { "soc": 90,  "power": 32  },
-    { "soc": 100, "power": 14  }
+    {
+      "soc": 0,
+      "power": 170
+    },
+    {
+      "soc": 5,
+      "power": 205
+    },
+    {
+      "soc": 10,
+      "power": 240
+    },
+    {
+      "soc": 20,
+      "power": 240
+    },
+    {
+      "soc": 30,
+      "power": 232
+    },
+    {
+      "soc": 40,
+      "power": 218
+    },
+    {
+      "soc": 50,
+      "power": 196
+    },
+    {
+      "soc": 60,
+      "power": 162
+    },
+    {
+      "soc": 70,
+      "power": 112
+    },
+    {
+      "soc": 80,
+      "power": 64
+    },
+    {
+      "soc": 90,
+      "power": 32
+    },
+    {
+      "soc": 100,
+      "power": 14
+    }
   ],
-
   "rangeTests": [],
-
   "thousandKmChallenge": null,
-
   "length_mm": 5010,
   "width_mm": 1980,
   "height_mm": 1755,
@@ -81,7 +108,6 @@
   "trunkCapacity_L": 333,
   "trunkCapacityFolded_L": 2318,
   "frunkCapacity_L": null,
-
   "trims": [
     {
       "name": "Air RWD",
@@ -120,16 +146,14 @@
       ]
     }
   ],
-
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
+      "label": "Prime CEE VE",
       "amount_EUR": 4000
     }
   ],
-
   "configurations": [
     {
       "id": "std-air-rwd-99-19",
@@ -156,18 +180,54 @@
       "chargingDC_10_80_min": 24,
       "chargingDC_kWh_30min": 72,
       "chargingCurve": [
-        { "soc": 0,   "power": 170 },
-        { "soc": 5,   "power": 205 },
-        { "soc": 10,  "power": 240 },
-        { "soc": 20,  "power": 240 },
-        { "soc": 30,  "power": 232 },
-        { "soc": 40,  "power": 218 },
-        { "soc": 50,  "power": 196 },
-        { "soc": 60,  "power": 162 },
-        { "soc": 70,  "power": 112 },
-        { "soc": 80,  "power": 64  },
-        { "soc": 90,  "power": 32  },
-        { "soc": 100, "power": 14  }
+        {
+          "soc": 0,
+          "power": 170
+        },
+        {
+          "soc": 5,
+          "power": 205
+        },
+        {
+          "soc": 10,
+          "power": 240
+        },
+        {
+          "soc": 20,
+          "power": 240
+        },
+        {
+          "soc": 30,
+          "power": 232
+        },
+        {
+          "soc": 40,
+          "power": 218
+        },
+        {
+          "soc": 50,
+          "power": 196
+        },
+        {
+          "soc": 60,
+          "power": 162
+        },
+        {
+          "soc": 70,
+          "power": 112
+        },
+        {
+          "soc": 80,
+          "power": 64
+        },
+        {
+          "soc": 90,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 14
+        }
       ],
       "availability": "available",
       "notes": "Moteur RWD 160 kW (218 ch), 0-100 en ~9,4 s. 563 km WLTP — meilleure autonomie de la gamme EV9. Masse 2 493 kg."
@@ -197,18 +257,54 @@
       "chargingDC_10_80_min": 24,
       "chargingDC_kWh_30min": 72,
       "chargingCurve": [
-        { "soc": 0,   "power": 170 },
-        { "soc": 5,   "power": 205 },
-        { "soc": 10,  "power": 240 },
-        { "soc": 20,  "power": 240 },
-        { "soc": 30,  "power": 232 },
-        { "soc": 40,  "power": 218 },
-        { "soc": 50,  "power": 196 },
-        { "soc": 60,  "power": 162 },
-        { "soc": 70,  "power": 112 },
-        { "soc": 80,  "power": 64  },
-        { "soc": 90,  "power": 32  },
-        { "soc": 100, "power": 14  }
+        {
+          "soc": 0,
+          "power": 170
+        },
+        {
+          "soc": 5,
+          "power": 205
+        },
+        {
+          "soc": 10,
+          "power": 240
+        },
+        {
+          "soc": 20,
+          "power": 240
+        },
+        {
+          "soc": 30,
+          "power": 232
+        },
+        {
+          "soc": 40,
+          "power": 218
+        },
+        {
+          "soc": 50,
+          "power": 196
+        },
+        {
+          "soc": 60,
+          "power": 162
+        },
+        {
+          "soc": 70,
+          "power": 112
+        },
+        {
+          "soc": 80,
+          "power": 64
+        },
+        {
+          "soc": 90,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 14
+        }
       ],
       "availability": "available",
       "notes": "Finition premium : sièges pivotants 2e rangée, toit pano, Meridian, pompe à chaleur. RWD 160 kW. La finition idéale pour un usage familial 7 places."
@@ -238,24 +334,59 @@
       "chargingDC_10_80_min": 24,
       "chargingDC_kWh_30min": 72,
       "chargingCurve": [
-        { "soc": 0,   "power": 170 },
-        { "soc": 5,   "power": 205 },
-        { "soc": 10,  "power": 240 },
-        { "soc": 20,  "power": 240 },
-        { "soc": 30,  "power": 232 },
-        { "soc": 40,  "power": 218 },
-        { "soc": 50,  "power": 196 },
-        { "soc": 60,  "power": 162 },
-        { "soc": 70,  "power": 112 },
-        { "soc": 80,  "power": 64  },
-        { "soc": 90,  "power": 32  },
-        { "soc": 100, "power": 14  }
+        {
+          "soc": 0,
+          "power": 170
+        },
+        {
+          "soc": 5,
+          "power": 205
+        },
+        {
+          "soc": 10,
+          "power": 240
+        },
+        {
+          "soc": 20,
+          "power": 240
+        },
+        {
+          "soc": 30,
+          "power": 232
+        },
+        {
+          "soc": 40,
+          "power": 218
+        },
+        {
+          "soc": 50,
+          "power": 196
+        },
+        {
+          "soc": 60,
+          "power": 162
+        },
+        {
+          "soc": 70,
+          "power": 112
+        },
+        {
+          "soc": 80,
+          "power": 64
+        },
+        {
+          "soc": 90,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 14
+        }
       ],
       "availability": "available",
       "notes": "AWD : moteur arrière 160 kW + avant 123 kW = 283 kW système (385 ch). 0-100 en 6,0 s. Jantes 20\" → -58 km vs RWD. Masse 2 621 kg."
     }
   ],
-
   "warranty": {
     "vehicle_years": 7,
     "vehicle_km": 150000,
@@ -263,16 +394,32 @@
     "battery_km": 160000,
     "battery_soh_minimum_percent": 70
   },
-
   "keyFeatures": [
-    { "category": "confort",      "label": "7 vraies places avec 3e rangée escamotable électriquement — empattement 3,10 m" },
-    { "category": "technologie",  "label": "800V DC 240 kW — 10-80 % en 24 min pour 99,8 kWh : performance de charge inégalée en SUV 7 places" },
-    { "category": "technologie",  "label": "V2L 3,6 kW + V2G compatible — véhicule utilisable comme source d'énergie domestique" },
-    { "category": "confort",      "label": "Sièges 2e rangée pivotants (Earth) — configuration salon face à face unique dans la catégorie" },
-    { "category": "securite",     "label": "AWD 283 kW (GT-Line) — 0-100 en 6,0 s pour un SUV de 2,6 tonnes : prestations dynamiques surprenantes" },
-    { "category": "technologie",  "label": "Coffre 2 318 L à plat (7 places rabattues) + frunk — modularité maximale" }
+    {
+      "category": "confort",
+      "label": "7 vraies places avec 3e rangée escamotable électriquement — empattement 3,10 m"
+    },
+    {
+      "category": "technologie",
+      "label": "800V DC 240 kW — 10-80 % en 24 min pour 99,8 kWh : performance de charge inégalée en SUV 7 places"
+    },
+    {
+      "category": "technologie",
+      "label": "V2L 3,6 kW + V2G compatible — véhicule utilisable comme source d'énergie domestique"
+    },
+    {
+      "category": "confort",
+      "label": "Sièges 2e rangée pivotants (Earth) — configuration salon face à face unique dans la catégorie"
+    },
+    {
+      "category": "securite",
+      "label": "AWD 283 kW (GT-Line) — 0-100 en 6,0 s pour un SUV de 2,6 tonnes : prestations dynamiques surprenantes"
+    },
+    {
+      "category": "technologie",
+      "label": "Coffre 2 318 L à plat (7 places rabattues) + frunk — modularité maximale"
+    }
   ],
-
   "verdict": {
     "strengths": [
       "Le seul SUV 7 places électrique avec charge 800V 240 kW — 10-80 % en 24 min malgré 99,8 kWh",
@@ -289,8 +436,11 @@
     "idealUserProfile": "Grande famille (5 à 7 personnes) qui voyage régulièrement sur longues distances et souhaite le confort premium avec l'autonomie adéquate.",
     "notIdealFor": "Conducteur urbain seul ou en couple — le gabarit et le prix ne se justifient pas sans usage régulier des 7 places."
   },
-
   "lastUpdated": "2026-05-17",
-  "sources": ["nyland", "kia-fr", "lachaineev"],
+  "sources": [
+    "nyland",
+    "kia-fr",
+    "lachaineev"
+  ],
   "imageCredit": "Kia Media — visuel presse 2024"
 }

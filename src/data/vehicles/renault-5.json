@@ -9,21 +9,18 @@
   "assemblyPlant": "Douai (ElectriCity)",
   "releaseYear": 2024,
   "marketAvailability": "Disponible en France",
-
   "power_kW": 110,
   "power_hp": 150,
   "torque_Nm": 245,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 8.0,
+  "acceleration_0_100_s": 8,
   "topSpeed_kmh": 150,
-
   "usableCapacity_kWh": 52,
   "grossCapacity_kWh": 55,
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1449,
-
   "wltp_max_km": 410,
   "wltp_min_km": 395,
   "realRange": {
@@ -33,12 +30,10 @@
     "winter_minus5_km": 275,
     "confidence": "tested"
   },
-
   "consumption_mixed_kWh_per_100km": 15.5,
   "consumption_highway_kWh_per_100km": 21.5,
   "consumption_winter_kWh_per_100km": 18.5,
   "dragCoefficient_Cx": 0.29,
-
   "chargingDC": {
     "peakPower_kW": 100,
     "time_10_80_min": 30,
@@ -54,29 +49,63 @@
   "v2l": true,
   "v2g": true,
   "v2l_option_EUR": null,
-
   "chargingCurve": [
-    { "soc": 0,   "power": 82 },
-    { "soc": 5,   "power": 96 },
-    { "soc": 10,  "power": 100 },
-    { "soc": 20,  "power": 100 },
-    { "soc": 30,  "power": 98 },
-    { "soc": 40,  "power": 93 },
-    { "soc": 50,  "power": 83 },
-    { "soc": 60,  "power": 67 },
-    { "soc": 70,  "power": 46 },
-    { "soc": 80,  "power": 26 },
-    { "soc": 90,  "power": 14 },
-    { "soc": 100, "power": 7  }
+    {
+      "soc": 0,
+      "power": 82
+    },
+    {
+      "soc": 5,
+      "power": 96
+    },
+    {
+      "soc": 10,
+      "power": 100
+    },
+    {
+      "soc": 20,
+      "power": 100
+    },
+    {
+      "soc": 30,
+      "power": 98
+    },
+    {
+      "soc": 40,
+      "power": 93
+    },
+    {
+      "soc": 50,
+      "power": 83
+    },
+    {
+      "soc": 60,
+      "power": 67
+    },
+    {
+      "soc": 70,
+      "power": 46
+    },
+    {
+      "soc": 80,
+      "power": 26
+    },
+    {
+      "soc": 90,
+      "power": 14
+    },
+    {
+      "soc": 100,
+      "power": 7
+    }
   ],
-
   "rangeTests": [
     {
       "sourceId": "lachaineev",
       "testDate": "2024-05",
       "speed_kmh": 120,
       "range_km": 240,
-      "consumption_kWh_100km": 21.0,
+      "consumption_kWh_100km": 21,
       "temperature_C": 15,
       "wheelSize_inches": 18,
       "tyreModel": null,
@@ -85,9 +114,7 @@
       "notes": "Version 52 kWh. Test autoroutier à vitesse soutenue."
     }
   ],
-
   "thousandKmChallenge": null,
-
   "length_mm": 3922,
   "width_mm": 1770,
   "height_mm": 1500,
@@ -95,7 +122,6 @@
   "trunkCapacity_L": 326,
   "trunkCapacityFolded_L": 1106,
   "frunkCapacity_L": null,
-
   "trims": [
     {
       "name": "Techno (40 kWh)",
@@ -146,16 +172,14 @@
       ]
     }
   ],
-
   "leasingSocialEligible": true,
   "leasingSocial_EUR_per_month": 119,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
+      "label": "Prime CEE VE",
       "amount_EUR": 4000
     }
   ],
-
   "configurations": [
     {
       "id": "std-techno-40-18",
@@ -182,18 +206,54 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 32,
       "chargingCurve": [
-        { "soc": 0,   "power": 65 },
-        { "soc": 5,   "power": 76 },
-        { "soc": 10,  "power": 80 },
-        { "soc": 20,  "power": 80 },
-        { "soc": 30,  "power": 78 },
-        { "soc": 40,  "power": 74 },
-        { "soc": 50,  "power": 65 },
-        { "soc": 60,  "power": 50 },
-        { "soc": 70,  "power": 34 },
-        { "soc": 80,  "power": 18 },
-        { "soc": 90,  "power": 10 },
-        { "soc": 100, "power": 5  }
+        {
+          "soc": 0,
+          "power": 65
+        },
+        {
+          "soc": 5,
+          "power": 76
+        },
+        {
+          "soc": 10,
+          "power": 80
+        },
+        {
+          "soc": 20,
+          "power": 80
+        },
+        {
+          "soc": 30,
+          "power": 78
+        },
+        {
+          "soc": 40,
+          "power": 74
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 60,
+          "power": 50
+        },
+        {
+          "soc": 70,
+          "power": 34
+        },
+        {
+          "soc": 80,
+          "power": 18
+        },
+        {
+          "soc": 90,
+          "power": 10
+        },
+        {
+          "soc": 100,
+          "power": 5
+        }
       ],
       "availability": "available",
       "notes": "Moteur 70 kW (95 ch), couple 225 Nm, 0-100 en ~11,4 s. Configuration d'entrée de gamme, éligible leasing social à 119 €/mois. Batterie 40 kWh utiles."
@@ -223,18 +283,54 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 32,
       "chargingCurve": [
-        { "soc": 0,   "power": 65 },
-        { "soc": 5,   "power": 76 },
-        { "soc": 10,  "power": 80 },
-        { "soc": 20,  "power": 80 },
-        { "soc": 30,  "power": 78 },
-        { "soc": 40,  "power": 74 },
-        { "soc": 50,  "power": 65 },
-        { "soc": 60,  "power": 50 },
-        { "soc": 70,  "power": 34 },
-        { "soc": 80,  "power": 18 },
-        { "soc": 90,  "power": 10 },
-        { "soc": 100, "power": 5  }
+        {
+          "soc": 0,
+          "power": 65
+        },
+        {
+          "soc": 5,
+          "power": 76
+        },
+        {
+          "soc": 10,
+          "power": 80
+        },
+        {
+          "soc": 20,
+          "power": 80
+        },
+        {
+          "soc": 30,
+          "power": 78
+        },
+        {
+          "soc": 40,
+          "power": 74
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 60,
+          "power": 50
+        },
+        {
+          "soc": 70,
+          "power": 34
+        },
+        {
+          "soc": 80,
+          "power": 18
+        },
+        {
+          "soc": 90,
+          "power": 10
+        },
+        {
+          "soc": 100,
+          "power": 5
+        }
       ],
       "availability": "available",
       "notes": "Moteur 70 kW (95 ch). Finition supérieure : sièges chauffants, rétros électriques, chargeur induction, volant chauffant. Mêmes performances que Techno 40 kWh."
@@ -265,7 +361,7 @@
           "testDate": "2024-05",
           "speed_kmh": 120,
           "range_km": 240,
-          "consumption_kWh_100km": 21.0,
+          "consumption_kWh_100km": 21,
           "temperature_C": 15,
           "wheelSize_inches": 18,
           "tyreModel": null,
@@ -278,18 +374,54 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 47,
       "chargingCurve": [
-        { "soc": 0,   "power": 82 },
-        { "soc": 5,   "power": 96 },
-        { "soc": 10,  "power": 100 },
-        { "soc": 20,  "power": 100 },
-        { "soc": 30,  "power": 98 },
-        { "soc": 40,  "power": 93 },
-        { "soc": 50,  "power": 83 },
-        { "soc": 60,  "power": 67 },
-        { "soc": 70,  "power": 46 },
-        { "soc": 80,  "power": 26 },
-        { "soc": 90,  "power": 14 },
-        { "soc": 100, "power": 7  }
+        {
+          "soc": 0,
+          "power": 82
+        },
+        {
+          "soc": 5,
+          "power": 96
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 30,
+          "power": 98
+        },
+        {
+          "soc": 40,
+          "power": 93
+        },
+        {
+          "soc": 50,
+          "power": 83
+        },
+        {
+          "soc": 60,
+          "power": 67
+        },
+        {
+          "soc": 70,
+          "power": 46
+        },
+        {
+          "soc": 80,
+          "power": 26
+        },
+        {
+          "soc": 90,
+          "power": 14
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "Moteur 110 kW (150 ch), couple 245 Nm, 0-100 en 8,0 s. Le meilleur ratio prix/autonomie de la gamme. Batterie 52 kWh utiles."
@@ -323,7 +455,6 @@
       "notes": "Sommet de gamme Renault 5. Jacquard exclusif, BOSE, toit ouvrant, finitions bicolores signature. Mêmes performances que Evolution 52 kWh."
     }
   ],
-
   "warranty": {
     "vehicle_years": 5,
     "vehicle_km": 100000,
@@ -331,16 +462,32 @@
     "battery_km": 160000,
     "battery_soh_minimum_percent": 70
   },
-
   "keyFeatures": [
-    { "category": "technologie", "label": "V2L + V2G de série — 3,7 kW bidirectionnel, alimente la maison via Mobilize Power Solutions" },
-    { "category": "technologie", "label": "OpenR Link avec Google intégré — Navi, Play Store, assistant vocal natif" },
-    { "category": "confort",    "label": "Fabriquée à Douai (ElectriCity) — 100 % France, empreinte carbone parmi les plus basses du segment" },
-    { "category": "securite",   "label": "Pack Drive Assist Plus de série sur Evolution : angle mort actif, aide au stationnement, freinage d'urgence" },
-    { "category": "design",     "label": "Design rétro modernisé inspiré de la Renault 5 de 1972 — voiture de l'année 2024" },
-    { "category": "confort",    "label": "Coffre 326 L + sous-coffre câbles dédié, 1 106 L sièges rabattus à plat" }
+    {
+      "category": "technologie",
+      "label": "V2L + V2G de série — 3,7 kW bidirectionnel, alimente la maison via Mobilize Power Solutions"
+    },
+    {
+      "category": "technologie",
+      "label": "OpenR Link avec Google intégré — Navi, Play Store, assistant vocal natif"
+    },
+    {
+      "category": "confort",
+      "label": "Fabriquée à Douai (ElectriCity) — 100 % France, empreinte carbone parmi les plus basses du segment"
+    },
+    {
+      "category": "securite",
+      "label": "Pack Drive Assist Plus de série sur Evolution : angle mort actif, aide au stationnement, freinage d'urgence"
+    },
+    {
+      "category": "design",
+      "label": "Design rétro modernisé inspiré de la Renault 5 de 1972 — voiture de l'année 2024"
+    },
+    {
+      "category": "confort",
+      "label": "Coffre 326 L + sous-coffre câbles dédié, 1 106 L sièges rabattus à plat"
+    }
   ],
-
   "verdict": {
     "strengths": [
       "Leasing social à 119 €/mois (Techno 40 kWh) — l'accès au VE neuf le moins cher du marché mainstream en 2024",
@@ -358,8 +505,11 @@
     "idealUserProfile": "Citadin ou périurbain effectuant 30 à 80 km/jour. Le Techno 40 kWh à 119 €/mois est le meilleur point d'entrée dans le VE neuf. L'Evolution 52 kWh à 33 490 € offre 360 km réels — largement suffisant pour un usage national polyvalent.",
     "notIdealFor": "Grand rouleur autoroutier dépassant régulièrement 350 km d'un trait : le pic à 80–100 kW allonge les escales de recharge face à un véhicule 130 kW+ (Kia EV4, Model 3…)."
   },
-
   "lastUpdated": "2026-05-17",
-  "sources": ["nyland", "lachaineev", "renault-fr"],
+  "sources": [
+    "nyland",
+    "lachaineev",
+    "renault-fr"
+  ],
   "imageCredit": "Renault France — visuel presse 2024"
 }

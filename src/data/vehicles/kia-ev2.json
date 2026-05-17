@@ -9,7 +9,6 @@
   "assemblyPlant": "Žilina",
   "releaseYear": 2026,
   "marketAvailability": "Attendu en Europe courant 2026",
-
   "power_kW": 115,
   "power_hp": 156,
   "torque_Nm": 255,
@@ -17,13 +16,11 @@
   "motors": 1,
   "acceleration_0_100_s": 9.5,
   "topSpeed_kmh": 160,
-
   "usableCapacity_kWh": 61,
   "grossCapacity_kWh": 65,
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1450,
-
   "wltp_max_km": 470,
   "wltp_min_km": 320,
   "realRange": {
@@ -33,12 +30,10 @@
     "winter_minus5_km": 305,
     "confidence": "estimated"
   },
-
-  "consumption_mixed_kWh_per_100km": 14.0,
+  "consumption_mixed_kWh_per_100km": 14,
   "consumption_highway_kWh_per_100km": 22.5,
   "consumption_winter_kWh_per_100km": 17.5,
   "dragCoefficient_Cx": 0.29,
-
   "chargingDC": {
     "peakPower_kW": 100,
     "time_10_80_min": 31,
@@ -48,32 +43,64 @@
   "chargingAC": {
     "onboardCharger_kW": 11,
     "phases": 3,
-    "time_0_100_h": 6.0
+    "time_0_100_h": 6
   },
   "plugAndCharge": false,
   "v2l": false,
   "v2g": false,
   "v2l_option_EUR": null,
-
   "chargingCurve": [
-    { "soc": 0,   "power": 78  },
-    { "soc": 5,   "power": 90  },
-    { "soc": 10,  "power": 100 },
-    { "soc": 20,  "power": 100 },
-    { "soc": 30,  "power": 95  },
-    { "soc": 40,  "power": 84  },
-    { "soc": 50,  "power": 70  },
-    { "soc": 60,  "power": 52  },
-    { "soc": 70,  "power": 34  },
-    { "soc": 80,  "power": 18  },
-    { "soc": 90,  "power": 9   },
-    { "soc": 100, "power": 3   }
+    {
+      "soc": 0,
+      "power": 78
+    },
+    {
+      "soc": 5,
+      "power": 90
+    },
+    {
+      "soc": 10,
+      "power": 100
+    },
+    {
+      "soc": 20,
+      "power": 100
+    },
+    {
+      "soc": 30,
+      "power": 95
+    },
+    {
+      "soc": 40,
+      "power": 84
+    },
+    {
+      "soc": 50,
+      "power": 70
+    },
+    {
+      "soc": 60,
+      "power": 52
+    },
+    {
+      "soc": 70,
+      "power": 34
+    },
+    {
+      "soc": 80,
+      "power": 18
+    },
+    {
+      "soc": 90,
+      "power": 9
+    },
+    {
+      "soc": 100,
+      "power": 3
+    }
   ],
-
   "rangeTests": [],
-
   "thousandKmChallenge": null,
-
   "length_mm": 4040,
   "width_mm": 1760,
   "height_mm": 1565,
@@ -81,7 +108,6 @@
   "trunkCapacity_L": 350,
   "trunkCapacityFolded_L": 1100,
   "frunkCapacity_L": null,
-
   "trims": [
     {
       "name": "Standard Air",
@@ -144,16 +170,14 @@
       ]
     }
   ],
-
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
+      "label": "Prime CEE VE",
       "amount_EUR": 4000
     }
   ],
-
   "configurations": [
     {
       "id": "std-air-42-16",
@@ -180,18 +204,54 @@
       "chargingDC_10_80_min": 29,
       "chargingDC_kWh_30min": 32,
       "chargingCurve": [
-        { "soc": 0,   "power": 60 },
-        { "soc": 5,   "power": 72 },
-        { "soc": 10,  "power": 80 },
-        { "soc": 20,  "power": 80 },
-        { "soc": 30,  "power": 76 },
-        { "soc": 40,  "power": 66 },
-        { "soc": 50,  "power": 54 },
-        { "soc": 60,  "power": 40 },
-        { "soc": 70,  "power": 26 },
-        { "soc": 80,  "power": 14 },
-        { "soc": 90,  "power": 8  },
-        { "soc": 100, "power": 3  }
+        {
+          "soc": 0,
+          "power": 60
+        },
+        {
+          "soc": 5,
+          "power": 72
+        },
+        {
+          "soc": 10,
+          "power": 80
+        },
+        {
+          "soc": 20,
+          "power": 80
+        },
+        {
+          "soc": 30,
+          "power": 76
+        },
+        {
+          "soc": 40,
+          "power": 66
+        },
+        {
+          "soc": 50,
+          "power": 54
+        },
+        {
+          "soc": 60,
+          "power": 40
+        },
+        {
+          "soc": 70,
+          "power": 26
+        },
+        {
+          "soc": 80,
+          "power": 14
+        },
+        {
+          "soc": 90,
+          "power": 8
+        },
+        {
+          "soc": 100,
+          "power": 3
+        }
       ],
       "availability": "upcoming",
       "notes": "Moteur 100 kW (136 ch). Batterie Standard 42 kWh, DC bridé à 80 kW. Prix d'attaque — données estimées avant commercialisation."
@@ -208,7 +268,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 333,
-      "wltp_consumption_kWh_100km": 15.0,
+      "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 275,
         "highway_130_km": 174,
@@ -221,18 +281,54 @@
       "chargingDC_10_80_min": 29,
       "chargingDC_kWh_30min": 32,
       "chargingCurve": [
-        { "soc": 0,   "power": 60 },
-        { "soc": 5,   "power": 72 },
-        { "soc": 10,  "power": 80 },
-        { "soc": 20,  "power": 80 },
-        { "soc": 30,  "power": 76 },
-        { "soc": 40,  "power": 66 },
-        { "soc": 50,  "power": 54 },
-        { "soc": 60,  "power": 40 },
-        { "soc": 70,  "power": 26 },
-        { "soc": 80,  "power": 14 },
-        { "soc": 90,  "power": 8  },
-        { "soc": 100, "power": 3  }
+        {
+          "soc": 0,
+          "power": 60
+        },
+        {
+          "soc": 5,
+          "power": 72
+        },
+        {
+          "soc": 10,
+          "power": 80
+        },
+        {
+          "soc": 20,
+          "power": 80
+        },
+        {
+          "soc": 30,
+          "power": 76
+        },
+        {
+          "soc": 40,
+          "power": 66
+        },
+        {
+          "soc": 50,
+          "power": 54
+        },
+        {
+          "soc": 60,
+          "power": 40
+        },
+        {
+          "soc": 70,
+          "power": 26
+        },
+        {
+          "soc": 80,
+          "power": 14
+        },
+        {
+          "soc": 90,
+          "power": 8
+        },
+        {
+          "soc": 100,
+          "power": 3
+        }
       ],
       "availability": "upcoming",
       "notes": "Confort urbain complet : double écran, sièges chauffants, caméra. Jantes 17\" → légère pénalité autonomie vs Air 16\"."
@@ -262,18 +358,54 @@
       "chargingDC_10_80_min": 29,
       "chargingDC_kWh_30min": 32,
       "chargingCurve": [
-        { "soc": 0,   "power": 60 },
-        { "soc": 5,   "power": 72 },
-        { "soc": 10,  "power": 80 },
-        { "soc": 20,  "power": 80 },
-        { "soc": 30,  "power": 76 },
-        { "soc": 40,  "power": 66 },
-        { "soc": 50,  "power": 54 },
-        { "soc": 60,  "power": 40 },
-        { "soc": 70,  "power": 26 },
-        { "soc": 80,  "power": 14 },
-        { "soc": 90,  "power": 8  },
-        { "soc": 100, "power": 3  }
+        {
+          "soc": 0,
+          "power": 60
+        },
+        {
+          "soc": 5,
+          "power": 72
+        },
+        {
+          "soc": 10,
+          "power": 80
+        },
+        {
+          "soc": 20,
+          "power": 80
+        },
+        {
+          "soc": 30,
+          "power": 76
+        },
+        {
+          "soc": 40,
+          "power": 66
+        },
+        {
+          "soc": 50,
+          "power": 54
+        },
+        {
+          "soc": 60,
+          "power": 40
+        },
+        {
+          "soc": 70,
+          "power": 26
+        },
+        {
+          "soc": 80,
+          "power": 14
+        },
+        {
+          "soc": 90,
+          "power": 8
+        },
+        {
+          "soc": 100,
+          "power": 3
+        }
       ],
       "availability": "upcoming",
       "notes": "Pack sportif GT-Line sur batterie Standard. HUD, caméra 360°, jantes design. Même batterie 42 kWh que Earth."
@@ -290,7 +422,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 470,
-      "wltp_consumption_kWh_100km": 14.0,
+      "wltp_consumption_kWh_100km": 14,
       "realRange": {
         "mixed_km": 388,
         "highway_130_km": 245,
@@ -303,18 +435,54 @@
       "chargingDC_10_80_min": 31,
       "chargingDC_kWh_30min": 44,
       "chargingCurve": [
-        { "soc": 0,   "power": 78  },
-        { "soc": 5,   "power": 90  },
-        { "soc": 10,  "power": 100 },
-        { "soc": 20,  "power": 100 },
-        { "soc": 30,  "power": 95  },
-        { "soc": 40,  "power": 84  },
-        { "soc": 50,  "power": 70  },
-        { "soc": 60,  "power": 52  },
-        { "soc": 70,  "power": 34  },
-        { "soc": 80,  "power": 18  },
-        { "soc": 90,  "power": 9   },
-        { "soc": 100, "power": 3   }
+        {
+          "soc": 0,
+          "power": 78
+        },
+        {
+          "soc": 5,
+          "power": 90
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 30,
+          "power": 95
+        },
+        {
+          "soc": 40,
+          "power": 84
+        },
+        {
+          "soc": 50,
+          "power": 70
+        },
+        {
+          "soc": 60,
+          "power": 52
+        },
+        {
+          "soc": 70,
+          "power": 34
+        },
+        {
+          "soc": 80,
+          "power": 18
+        },
+        {
+          "soc": 90,
+          "power": 9
+        },
+        {
+          "soc": 100,
+          "power": 3
+        }
       ],
       "availability": "upcoming",
       "notes": "Moteur 115 kW (156 ch), batterie LR 61 kWh, DC 100 kW. 470 km WLTP — réduit les contraintes de recharge au quotidien. Pompe à chaleur de série."
@@ -344,24 +512,59 @@
       "chargingDC_10_80_min": 31,
       "chargingDC_kWh_30min": 44,
       "chargingCurve": [
-        { "soc": 0,   "power": 78  },
-        { "soc": 5,   "power": 90  },
-        { "soc": 10,  "power": 100 },
-        { "soc": 20,  "power": 100 },
-        { "soc": 30,  "power": 95  },
-        { "soc": 40,  "power": 84  },
-        { "soc": 50,  "power": 70  },
-        { "soc": 60,  "power": 52  },
-        { "soc": 70,  "power": 34  },
-        { "soc": 80,  "power": 18  },
-        { "soc": 90,  "power": 9   },
-        { "soc": 100, "power": 3   }
+        {
+          "soc": 0,
+          "power": 78
+        },
+        {
+          "soc": 5,
+          "power": 90
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 30,
+          "power": 95
+        },
+        {
+          "soc": 40,
+          "power": 84
+        },
+        {
+          "soc": 50,
+          "power": 70
+        },
+        {
+          "soc": 60,
+          "power": 52
+        },
+        {
+          "soc": 70,
+          "power": 34
+        },
+        {
+          "soc": 80,
+          "power": 18
+        },
+        {
+          "soc": 90,
+          "power": 9
+        },
+        {
+          "soc": 100,
+          "power": 3
+        }
       ],
       "availability": "upcoming",
       "notes": "Finition sport ultime sur LR : cuir synthétique, HUD, caméra 360°, pack hiver. Légère pénalité autonomie vs Earth LR (équipements supplémentaires)."
     }
   ],
-
   "warranty": {
     "vehicle_years": 7,
     "vehicle_km": 150000,
@@ -369,16 +572,32 @@
     "battery_km": 150000,
     "battery_soh_minimum_percent": 70
   },
-
   "keyFeatures": [
-    { "category": "confort",      "label": "Gabarit 4,04 m — maniabilité urbaine maximale, stationnement facilité, passage en centre-ville aisé" },
-    { "category": "technologie",  "label": "DC 100 kW (LR) — 10-80 % en 29 min : recharge rapide exceptionnelle pour une citadine B" },
-    { "category": "confort",      "label": "Production Slovaquie (Žilina) — éligibilité bonus écologique garantie, pas de restriction origine" },
-    { "category": "securite",     "label": "Aide au freinage d'urgence de série — sécurité active sur toutes les finitions" },
-    { "category": "confort",      "label": "Coffre 350 L / 1 100 L rabattu — capacité de chargement généreuse pour la catégorie B" },
-    { "category": "design",       "label": "GT-Line disponible dès 30 490€ — look sportif accessible sans compromis sur la garantie" }
+    {
+      "category": "confort",
+      "label": "Gabarit 4,04 m — maniabilité urbaine maximale, stationnement facilité, passage en centre-ville aisé"
+    },
+    {
+      "category": "technologie",
+      "label": "DC 100 kW (LR) — 10-80 % en 29 min : recharge rapide exceptionnelle pour une citadine B"
+    },
+    {
+      "category": "confort",
+      "label": "Production Slovaquie (Žilina) — éligibilité bonus écologique garantie, pas de restriction origine"
+    },
+    {
+      "category": "securite",
+      "label": "Aide au freinage d'urgence de série — sécurité active sur toutes les finitions"
+    },
+    {
+      "category": "confort",
+      "label": "Coffre 350 L / 1 100 L rabattu — capacité de chargement généreuse pour la catégorie B"
+    },
+    {
+      "category": "design",
+      "label": "GT-Line disponible dès 30 490€ — look sportif accessible sans compromis sur la garantie"
+    }
   ],
-
   "verdict": {
     "strengths": [
       "Prix d'entrée ~20 000€ après bonus (Air Standard) : parmi les électriques les plus accessibles d'Europe",
@@ -395,8 +614,10 @@
     "idealUserProfile": "Conducteur urbain ou périurbain cherchant sa première voiture électrique accessible, produite en Europe, avec une gamme complète de finitions.",
     "notIdealFor": "Grand rouleur autoroutier régulier — l'EV3 Standard Range (350 km à 130 km/h) sera plus adapté pour le même budget en LR."
   },
-
   "lastUpdated": "2026-05-17",
-  "sources": ["kia-fr", "lachaineev"],
+  "sources": [
+    "kia-fr",
+    "lachaineev"
+  ],
   "imageCredit": "Kia Media — visuel presse 2024"
 }

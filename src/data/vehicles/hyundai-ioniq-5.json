@@ -33,7 +33,7 @@
   },
   "consumption_mixed_kWh_per_100km": 16.5,
   "consumption_highway_kWh_per_100km": 24.5,
-  "consumption_winter_kWh_per_100km": 22.0,
+  "consumption_winter_kWh_per_100km": 22,
   "dragCoefficient_Cx": 0.288,
   "chargingDC": {
     "peakPower_kW": 240,
@@ -133,7 +133,7 @@
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
+      "label": "Prime CEE VE",
       "amount_EUR": 4000
     }
   ],
@@ -253,7 +253,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra-rapides."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-05-17",
   "sources": [
     "nyland",
     "lachaineev"

@@ -9,7 +9,6 @@
   "assemblyPlant": "Douai (ElectriCity)",
   "releaseYear": 2025,
   "marketAvailability": "Disponible en France",
-
   "power_kW": 160,
   "power_hp": 218,
   "torque_Nm": 300,
@@ -17,13 +16,11 @@
   "motors": 1,
   "acceleration_0_100_s": 7.9,
   "topSpeed_kmh": 170,
-
   "usableCapacity_kWh": 77,
   "grossCapacity_kWh": 82,
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1700,
-
   "wltp_max_km": 460,
   "wltp_min_km": 430,
   "realRange": {
@@ -33,12 +30,10 @@
     "winter_minus5_km": 310,
     "confidence": "estimated"
   },
-
   "consumption_mixed_kWh_per_100km": 16.5,
-  "consumption_highway_kWh_per_100km": 23.0,
+  "consumption_highway_kWh_per_100km": 23,
   "consumption_winter_kWh_per_100km": 19.5,
   "dragCoefficient_Cx": 0.29,
-
   "chargingDC": {
     "peakPower_kW": 130,
     "time_10_80_min": 38,
@@ -48,32 +43,64 @@
   "chargingAC": {
     "onboardCharger_kW": 11,
     "phases": 3,
-    "time_0_100_h": 8.0
+    "time_0_100_h": 8
   },
   "plugAndCharge": false,
   "v2l": true,
   "v2g": false,
   "v2l_option_EUR": null,
-
   "chargingCurve": [
-    { "soc": 0,   "power": 105 },
-    { "soc": 5,   "power": 122 },
-    { "soc": 10,  "power": 130 },
-    { "soc": 20,  "power": 130 },
-    { "soc": 30,  "power": 128 },
-    { "soc": 40,  "power": 120 },
-    { "soc": 50,  "power": 108 },
-    { "soc": 60,  "power": 88  },
-    { "soc": 70,  "power": 62  },
-    { "soc": 80,  "power": 38  },
-    { "soc": 90,  "power": 20  },
-    { "soc": 100, "power": 8   }
+    {
+      "soc": 0,
+      "power": 105
+    },
+    {
+      "soc": 5,
+      "power": 122
+    },
+    {
+      "soc": 10,
+      "power": 130
+    },
+    {
+      "soc": 20,
+      "power": 130
+    },
+    {
+      "soc": 30,
+      "power": 128
+    },
+    {
+      "soc": 40,
+      "power": 120
+    },
+    {
+      "soc": 50,
+      "power": 108
+    },
+    {
+      "soc": 60,
+      "power": 88
+    },
+    {
+      "soc": 70,
+      "power": 62
+    },
+    {
+      "soc": 80,
+      "power": 38
+    },
+    {
+      "soc": 90,
+      "power": 20
+    },
+    {
+      "soc": 100,
+      "power": 8
+    }
   ],
-
   "rangeTests": [],
-
   "thousandKmChallenge": null,
-
   "length_mm": 4143,
   "width_mm": 1797,
   "height_mm": 1568,
@@ -81,7 +108,6 @@
   "trunkCapacity_L": 420,
   "trunkCapacityFolded_L": 1332,
   "frunkCapacity_L": null,
-
   "trims": [
     {
       "name": "Techno (52 kWh)",
@@ -132,16 +158,14 @@
       ]
     }
   ],
-
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
+      "label": "Prime CEE VE",
       "amount_EUR": 4000
     }
   ],
-
   "configurations": [
     {
       "id": "std-techno-52-18",
@@ -168,18 +192,54 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 47,
       "chargingCurve": [
-        { "soc": 0,   "power": 82 },
-        { "soc": 5,   "power": 96 },
-        { "soc": 10,  "power": 100 },
-        { "soc": 20,  "power": 100 },
-        { "soc": 30,  "power": 98 },
-        { "soc": 40,  "power": 93 },
-        { "soc": 50,  "power": 83 },
-        { "soc": 60,  "power": 67 },
-        { "soc": 70,  "power": 46 },
-        { "soc": 80,  "power": 26 },
-        { "soc": 90,  "power": 14 },
-        { "soc": 100, "power": 7  }
+        {
+          "soc": 0,
+          "power": 82
+        },
+        {
+          "soc": 5,
+          "power": 96
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 30,
+          "power": 98
+        },
+        {
+          "soc": 40,
+          "power": 93
+        },
+        {
+          "soc": 50,
+          "power": 83
+        },
+        {
+          "soc": 60,
+          "power": 67
+        },
+        {
+          "soc": 70,
+          "power": 46
+        },
+        {
+          "soc": 80,
+          "power": 26
+        },
+        {
+          "soc": 90,
+          "power": 14
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "Moteur 110 kW (150 ch), couple 245 Nm, 0-100 en ~9,5 s. Batterie 52 kWh utiles. DC 100 kW."
@@ -209,18 +269,54 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 47,
       "chargingCurve": [
-        { "soc": 0,   "power": 82 },
-        { "soc": 5,   "power": 96 },
-        { "soc": 10,  "power": 100 },
-        { "soc": 20,  "power": 100 },
-        { "soc": 30,  "power": 98 },
-        { "soc": 40,  "power": 93 },
-        { "soc": 50,  "power": 83 },
-        { "soc": 60,  "power": 67 },
-        { "soc": 70,  "power": 46 },
-        { "soc": 80,  "power": 26 },
-        { "soc": 90,  "power": 14 },
-        { "soc": 100, "power": 7  }
+        {
+          "soc": 0,
+          "power": 82
+        },
+        {
+          "soc": 5,
+          "power": 96
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 30,
+          "power": 98
+        },
+        {
+          "soc": 40,
+          "power": 93
+        },
+        {
+          "soc": 50,
+          "power": 83
+        },
+        {
+          "soc": 60,
+          "power": 67
+        },
+        {
+          "soc": 70,
+          "power": 46
+        },
+        {
+          "soc": 80,
+          "power": 26
+        },
+        {
+          "soc": 90,
+          "power": 14
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "Moteur 110 kW (150 ch). Finition supérieure : sièges chauffants, rétros électriques, induction."
@@ -250,18 +346,54 @@
       "chargingDC_10_80_min": 38,
       "chargingDC_kWh_30min": 57,
       "chargingCurve": [
-        { "soc": 0,   "power": 105 },
-        { "soc": 5,   "power": 122 },
-        { "soc": 10,  "power": 130 },
-        { "soc": 20,  "power": 130 },
-        { "soc": 30,  "power": 128 },
-        { "soc": 40,  "power": 120 },
-        { "soc": 50,  "power": 108 },
-        { "soc": 60,  "power": 88  },
-        { "soc": 70,  "power": 62  },
-        { "soc": 80,  "power": 38  },
-        { "soc": 90,  "power": 20  },
-        { "soc": 100, "power": 8   }
+        {
+          "soc": 0,
+          "power": 105
+        },
+        {
+          "soc": 5,
+          "power": 122
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 20,
+          "power": 130
+        },
+        {
+          "soc": 30,
+          "power": 128
+        },
+        {
+          "soc": 40,
+          "power": 120
+        },
+        {
+          "soc": 50,
+          "power": 108
+        },
+        {
+          "soc": 60,
+          "power": 88
+        },
+        {
+          "soc": 70,
+          "power": 62
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 90,
+          "power": 20
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "Moteur 160 kW (218 ch), pompe à chaleur de série. Batterie 77 kWh utiles. DC 130 kW."
@@ -295,7 +427,6 @@
       "notes": "Jantes 20\" → autonomie -5 % vs 18\". Finition sportive signature Alpine, suspension pilotée."
     }
   ],
-
   "warranty": {
     "vehicle_years": 5,
     "vehicle_km": 100000,
@@ -303,16 +434,32 @@
     "battery_km": 160000,
     "battery_soh_minimum_percent": 70
   },
-
   "keyFeatures": [
-    { "category": "technologie", "label": "V2L de série (3,7 kW) — charge vélos, camping, outils" },
-    { "category": "technologie", "label": "OpenR Link avec Google intégré — Navi, Play Store, assistant vocal" },
-    { "category": "design",     "label": "Design rétro modernisé inspiré de la 4L — icône française revisitée" },
-    { "category": "securite",   "label": "Pack Drive Assist Plus : angle mort actif, freinage d'urgence, aide parking" },
-    { "category": "confort",    "label": "Fabrication Douai (ElectriCity) — mêmes ateliers que la R5, bilan carbone optimisé" },
-    { "category": "confort",    "label": "Coffre 420 L, vrai plancher plat sièges rabattus (1 332 L)" }
+    {
+      "category": "technologie",
+      "label": "V2L de série (3,7 kW) — charge vélos, camping, outils"
+    },
+    {
+      "category": "technologie",
+      "label": "OpenR Link avec Google intégré — Navi, Play Store, assistant vocal"
+    },
+    {
+      "category": "design",
+      "label": "Design rétro modernisé inspiré de la 4L — icône française revisitée"
+    },
+    {
+      "category": "securite",
+      "label": "Pack Drive Assist Plus : angle mort actif, freinage d'urgence, aide parking"
+    },
+    {
+      "category": "confort",
+      "label": "Fabrication Douai (ElectriCity) — mêmes ateliers que la R5, bilan carbone optimisé"
+    },
+    {
+      "category": "confort",
+      "label": "Coffre 420 L, vrai plancher plat sièges rabattus (1 332 L)"
+    }
   ],
-
   "verdict": {
     "strengths": [
       "Long Range 77 kWh : 405 km réels en mixte, 272 km à 130 km/h — largement suffisant pour les vacances",
@@ -330,8 +477,11 @@
     "idealUserProfile": "Famille urbaine ou périurbaine cherchant un SUV compact polyvalent. L'Evolution 52 kWh à 36 490 € est le point d'entrée le plus rationnel ; le LR 77 kWh à 41 490 € pour les grands rouleurs.",
     "notIdealFor": "Conducteur nécessitant une vraie traction intégrale (neige/montagne) ou souhaitant les temps de charge ultra-rapides d'un 800 V."
   },
-
   "lastUpdated": "2026-05-17",
-  "sources": ["nyland", "lachaineev", "renault-fr"],
+  "sources": [
+    "nyland",
+    "lachaineev",
+    "renault-fr"
+  ],
   "imageCredit": "Renault France — visuel presse 2025"
 }

@@ -31,9 +31,9 @@
     "winter_minus5_km": 360,
     "confidence": "bjorn_nyland"
   },
-  "consumption_mixed_kWh_per_100km": 16.0,
+  "consumption_mixed_kWh_per_100km": 16,
   "consumption_highway_kWh_per_100km": 23.5,
-  "consumption_winter_kWh_per_100km": 21.0,
+  "consumption_winter_kWh_per_100km": 21,
   "dragCoefficient_Cx": 0.28,
   "chargingDC": {
     "peakPower_kW": 175,
@@ -123,7 +123,7 @@
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
+      "label": "Prime CEE VE",
       "amount_EUR": 4000
     }
   ],
@@ -140,7 +140,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 550,
-      "wltp_consumption_kWh_100km": 16.0,
+      "wltp_consumption_kWh_100km": 16,
       "realRange": {
         "mixed_km": 450,
         "highway_130_km": 315,
@@ -243,7 +243,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra-rapides."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-05-17",
   "sources": [
     "nyland",
     "lachaineev"

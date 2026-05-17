@@ -53,7 +53,7 @@ const budgetFilters = [
 ];
 const specificFilters = [
   { label: "Leasing social", value: "leasing" },
-  { label: "Bonus éco", value: "bonus" },
+  { label: "Prime CEE", value: "bonus" },
   { label: "Recharge rapide", value: "fast-charge" },
   { label: "Made in Europe", value: "eu" },
   { label: "Familiale", value: "familiale" },
@@ -61,7 +61,7 @@ const specificFilters = [
 
 const europeanCountries = ["France", "Allemagne", "Slovaquie", "Rép. Tchèque", "Pologne", "Espagne", "Italie", "Belgique", "Suède", "Slovénie", "Hongrie", "Autriche", "Portugal"];
 function isEU(v: Vehicle) { return europeanCountries.includes(v.productionCountry); }
-function hasBonus(v: Vehicle) { return v.availableAids?.some(a => a.label.toLowerCase().includes("bonus")) ?? false; }
+function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|bonus/i.test(a.label)) ?? false; }
 ---
 
 <BaseLayout
@@ -175,7 +175,7 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => a.label.toLowe
                 <div
                   id="price-mode-toggle"
                   class="price-toggle-group"
-                  title="Aides estimées sous conditions de ressources. Bonus éco et leasing social cumulables pour les ménages éligibles."
+                  title="Aides estimées sous conditions de ressources. Prime CEE VE et leasing social non cumulables — il faut choisir."
                 >
                   <button class="price-toggle-btn" data-mode="gross" data-active="true">Brut</button>
                   <button class="price-toggle-btn" data-mode="aided">Après aides</button>

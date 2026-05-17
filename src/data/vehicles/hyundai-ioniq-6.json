@@ -31,8 +31,8 @@
     "winter_minus5_km": 400,
     "confidence": "bjorn_nyland"
   },
-  "consumption_mixed_kWh_per_100km": 14.0,
-  "consumption_highway_kWh_per_100km": 18.0,
+  "consumption_mixed_kWh_per_100km": 14,
+  "consumption_highway_kWh_per_100km": 18,
   "consumption_winter_kWh_per_100km": 17.5,
   "dragCoefficient_Cx": 0.21,
   "chargingDC": {
@@ -91,7 +91,7 @@
       "testDate": "2023-04",
       "speed_kmh": 120,
       "range_km": 400,
-      "consumption_kWh_100km": 18.0,
+      "consumption_kWh_100km": 18,
       "temperature_C": 15,
       "wheelSize_inches": 18,
       "tyreModel": null,
@@ -133,7 +133,7 @@
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
+      "label": "Prime CEE VE",
       "amount_EUR": 4000
     }
   ],
@@ -150,7 +150,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 614,
-      "wltp_consumption_kWh_100km": 14.0,
+      "wltp_consumption_kWh_100km": 14,
       "realRange": {
         "mixed_km": 500,
         "highway_130_km": 365,
@@ -178,7 +178,7 @@
           "testDate": "2023-04",
           "speed_kmh": 120,
           "range_km": 400,
-          "consumption_kWh_100km": 18.0,
+          "consumption_kWh_100km": 18,
           "temperature_C": 15,
           "wheelSize_inches": 18,
           "tyreModel": null,
@@ -253,7 +253,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra-rapides."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-05-17",
   "sources": [
     "nyland",
     "lachaineev"

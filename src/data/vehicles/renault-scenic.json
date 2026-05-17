@@ -9,7 +9,6 @@
   "assemblyPlant": "Douai (ElectriCity)",
   "releaseYear": 2024,
   "marketAvailability": "Disponible en France",
-
   "power_kW": 160,
   "power_hp": 220,
   "torque_Nm": 300,
@@ -17,13 +16,11 @@
   "motors": 1,
   "acceleration_0_100_s": 8.4,
   "topSpeed_kmh": 170,
-
   "usableCapacity_kWh": 87,
   "grossCapacity_kWh": 92,
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1850,
-
   "wltp_max_km": 625,
   "wltp_min_km": 400,
   "realRange": {
@@ -34,12 +31,10 @@
     "winter_minus5_km": 380,
     "confidence": "bjorn_nyland"
   },
-
-  "consumption_mixed_kWh_per_100km": 15.0,
-  "consumption_highway_kWh_per_100km": 21.0,
-  "consumption_winter_kWh_per_100km": 19.0,
+  "consumption_mixed_kWh_per_100km": 15,
+  "consumption_highway_kWh_per_100km": 21,
+  "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.28,
-
   "chargingDC": {
     "peakPower_kW": 150,
     "time_10_80_min": 37,
@@ -55,22 +50,56 @@
   "v2l": false,
   "v2g": false,
   "v2l_option_EUR": null,
-
   "chargingCurve": [
-    { "soc": 0,   "power": 110 },
-    { "soc": 5,   "power": 135 },
-    { "soc": 10,  "power": 150 },
-    { "soc": 20,  "power": 150 },
-    { "soc": 30,  "power": 145 },
-    { "soc": 40,  "power": 130 },
-    { "soc": 50,  "power": 108 },
-    { "soc": 60,  "power": 80  },
-    { "soc": 70,  "power": 52  },
-    { "soc": 80,  "power": 28  },
-    { "soc": 90,  "power": 14  },
-    { "soc": 100, "power": 6   }
+    {
+      "soc": 0,
+      "power": 110
+    },
+    {
+      "soc": 5,
+      "power": 135
+    },
+    {
+      "soc": 10,
+      "power": 150
+    },
+    {
+      "soc": 20,
+      "power": 150
+    },
+    {
+      "soc": 30,
+      "power": 145
+    },
+    {
+      "soc": 40,
+      "power": 130
+    },
+    {
+      "soc": 50,
+      "power": 108
+    },
+    {
+      "soc": 60,
+      "power": 80
+    },
+    {
+      "soc": 70,
+      "power": 52
+    },
+    {
+      "soc": 80,
+      "power": 28
+    },
+    {
+      "soc": 90,
+      "power": 14
+    },
+    {
+      "soc": 100,
+      "power": 6
+    }
   ],
-
   "rangeTests": [
     {
       "sourceId": "nyland",
@@ -99,9 +128,7 @@
       "notes": "Scénic E-Tech EV87. Test Nyland 120 km/h."
     }
   ],
-
   "thousandKmChallenge": null,
-
   "length_mm": 4470,
   "width_mm": 1860,
   "height_mm": 1570,
@@ -109,7 +136,6 @@
   "trunkCapacity_L": 545,
   "trunkCapacityFolded_L": 1670,
   "frunkCapacity_L": null,
-
   "trims": [
     {
       "name": "Equilibre (EV60)",
@@ -160,16 +186,14 @@
       ]
     }
   ],
-
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
+      "label": "Prime CEE VE",
       "amount_EUR": 4000
     }
   ],
-
   "configurations": [
     {
       "id": "std-equilibre-ev60-18",
@@ -196,18 +220,54 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 50,
       "chargingCurve": [
-        { "soc": 0,   "power": 108 },
-        { "soc": 5,   "power": 124 },
-        { "soc": 10,  "power": 130 },
-        { "soc": 20,  "power": 130 },
-        { "soc": 30,  "power": 125 },
-        { "soc": 40,  "power": 112 },
-        { "soc": 50,  "power": 90  },
-        { "soc": 60,  "power": 68  },
-        { "soc": 70,  "power": 44  },
-        { "soc": 80,  "power": 22  },
-        { "soc": 90,  "power": 11  },
-        { "soc": 100, "power": 5   }
+        {
+          "soc": 0,
+          "power": 108
+        },
+        {
+          "soc": 5,
+          "power": 124
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 20,
+          "power": 130
+        },
+        {
+          "soc": 30,
+          "power": 125
+        },
+        {
+          "soc": 40,
+          "power": 112
+        },
+        {
+          "soc": 50,
+          "power": 90
+        },
+        {
+          "soc": 60,
+          "power": 68
+        },
+        {
+          "soc": 70,
+          "power": 44
+        },
+        {
+          "soc": 80,
+          "power": 22
+        },
+        {
+          "soc": 90,
+          "power": 11
+        },
+        {
+          "soc": 100,
+          "power": 5
+        }
       ],
       "availability": "available",
       "notes": "Moteur 125 kW (170 ch), couple 300 Nm, 0-100 en ~9,4 s. Batterie 60 kWh utiles. DC 130 kW. Jantes 18\" = meilleure autonomie."
@@ -237,18 +297,54 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 50,
       "chargingCurve": [
-        { "soc": 0,   "power": 108 },
-        { "soc": 5,   "power": 124 },
-        { "soc": 10,  "power": 130 },
-        { "soc": 20,  "power": 130 },
-        { "soc": 30,  "power": 125 },
-        { "soc": 40,  "power": 112 },
-        { "soc": 50,  "power": 90  },
-        { "soc": 60,  "power": 68  },
-        { "soc": 70,  "power": 44  },
-        { "soc": 80,  "power": 22  },
-        { "soc": 90,  "power": 11  },
-        { "soc": 100, "power": 5   }
+        {
+          "soc": 0,
+          "power": 108
+        },
+        {
+          "soc": 5,
+          "power": 124
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 20,
+          "power": 130
+        },
+        {
+          "soc": 30,
+          "power": 125
+        },
+        {
+          "soc": 40,
+          "power": 112
+        },
+        {
+          "soc": 50,
+          "power": 90
+        },
+        {
+          "soc": 60,
+          "power": 68
+        },
+        {
+          "soc": 70,
+          "power": 44
+        },
+        {
+          "soc": 80,
+          "power": 22
+        },
+        {
+          "soc": 90,
+          "power": 11
+        },
+        {
+          "soc": 100,
+          "power": 5
+        }
       ],
       "availability": "available",
       "notes": "Moteur 125 kW (170 ch). Finition : sièges chauffants, induction, toit Solarbay. Jantes 20\" → -7 % d'autonomie."
@@ -265,7 +361,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 620,
-      "wltp_consumption_kWh_100km": 15.0,
+      "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 490,
         "highway_130_km": 355,
@@ -306,18 +402,54 @@
       "chargingDC_10_80_min": 37,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
-        { "soc": 0,   "power": 110 },
-        { "soc": 5,   "power": 135 },
-        { "soc": 10,  "power": 150 },
-        { "soc": 20,  "power": 150 },
-        { "soc": 30,  "power": 145 },
-        { "soc": 40,  "power": 130 },
-        { "soc": 50,  "power": 108 },
-        { "soc": 60,  "power": 80  },
-        { "soc": 70,  "power": 52  },
-        { "soc": 80,  "power": 28  },
-        { "soc": 90,  "power": 14  },
-        { "soc": 100, "power": 6   }
+        {
+          "soc": 0,
+          "power": 110
+        },
+        {
+          "soc": 5,
+          "power": 135
+        },
+        {
+          "soc": 10,
+          "power": 150
+        },
+        {
+          "soc": 20,
+          "power": 150
+        },
+        {
+          "soc": 30,
+          "power": 145
+        },
+        {
+          "soc": 40,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 108
+        },
+        {
+          "soc": 60,
+          "power": 80
+        },
+        {
+          "soc": 70,
+          "power": 52
+        },
+        {
+          "soc": 80,
+          "power": 28
+        },
+        {
+          "soc": 90,
+          "power": 14
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "Moteur 160 kW (220 ch), couple 300 Nm, 0-100 en 8,4 s. Batterie 87 kWh utiles. DC 150 kW — données Nyland confirmées."
@@ -334,7 +466,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 620,
-      "wltp_consumption_kWh_100km": 15.0,
+      "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 490,
         "highway_130_km": 355,
@@ -352,7 +484,6 @@
       "notes": "Sommet de gamme Scénic E-Tech. Cuir nappa, Harman Kardon 9 HP, toit ouvrant, affichage tête haute wide. Mêmes performances que Techno EV87."
     }
   ],
-
   "warranty": {
     "vehicle_years": 5,
     "vehicle_km": 100000,
@@ -360,16 +491,32 @@
     "battery_km": 160000,
     "battery_soh_minimum_percent": 70
   },
-
   "keyFeatures": [
-    { "category": "technologie", "label": "EV87 150 kW DC — 55 kWh en 30 min, 10-80 % en 37 min : l'un des meilleurs du segment" },
-    { "category": "confort",    "label": "Coffre 545 L — le plus généreux du segment C, 1 670 L à plat : espace famille exceptionnel" },
-    { "category": "design",     "label": "Toit Solarbay (verre électrochrome) — intimité réglable en 3 positions sans volets mécaniques" },
-    { "category": "confort",    "label": "Fabriqué à Douai (ElectriCity) — production française, aides État garanties, empreinte carbone optimisée" },
-    { "category": "securite",   "label": "Pack Drive Assist Plus de série sur Techno : angle mort actif, aide parking, freinage d'urgence" },
-    { "category": "technologie", "label": "Deux tailles de batterie (EV60 / EV87) — de l'usage urbain aux grands voyages" }
+    {
+      "category": "technologie",
+      "label": "EV87 150 kW DC — 55 kWh en 30 min, 10-80 % en 37 min : l'un des meilleurs du segment"
+    },
+    {
+      "category": "confort",
+      "label": "Coffre 545 L — le plus généreux du segment C, 1 670 L à plat : espace famille exceptionnel"
+    },
+    {
+      "category": "design",
+      "label": "Toit Solarbay (verre électrochrome) — intimité réglable en 3 positions sans volets mécaniques"
+    },
+    {
+      "category": "confort",
+      "label": "Fabriqué à Douai (ElectriCity) — production française, aides État garanties, empreinte carbone optimisée"
+    },
+    {
+      "category": "securite",
+      "label": "Pack Drive Assist Plus de série sur Techno : angle mort actif, aide parking, freinage d'urgence"
+    },
+    {
+      "category": "technologie",
+      "label": "Deux tailles de batterie (EV60 / EV87) — de l'usage urbain aux grands voyages"
+    }
   ],
-
   "verdict": {
     "strengths": [
       "EV87 : 490 km réels en mixte, 355 km à 130 km/h — l'une des meilleures autonomies du segment C",
@@ -387,8 +534,11 @@
     "idealUserProfile": "Famille cherchant le plus grand espace intérieur du segment C avec une vraie autonomie voyage. L'EV87 Techno à 46 990 € est le point d'équilibre idéal. L'EV60 Equilibre à 39 990 € pour un usage mixte urbain/périurbain.",
     "notIdealFor": "Conducteur seul en usage urbain strict (masse élevée) ou souhaitant le V2L/V2G pour alimenter son domicile."
   },
-
   "lastUpdated": "2026-05-17",
-  "sources": ["nyland", "lachaineev", "renault-fr"],
+  "sources": [
+    "nyland",
+    "lachaineev",
+    "renault-fr"
+  ],
   "imageCredit": "Renault France — visuel presse 2024"
 }

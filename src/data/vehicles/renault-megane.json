@@ -9,7 +9,6 @@
   "assemblyPlant": "Douai (ElectriCity)",
   "releaseYear": 2022,
   "marketAvailability": "Disponible en France",
-
   "power_kW": 160,
   "power_hp": 220,
   "torque_Nm": 300,
@@ -17,13 +16,11 @@
   "motors": 1,
   "acceleration_0_100_s": 7.4,
   "topSpeed_kmh": 160,
-
   "usableCapacity_kWh": 60,
   "grossCapacity_kWh": 65,
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1636,
-
   "wltp_max_km": 470,
   "wltp_min_km": 280,
   "realRange": {
@@ -34,12 +31,10 @@
     "winter_minus5_km": 310,
     "confidence": "bjorn_nyland"
   },
-
   "consumption_mixed_kWh_per_100km": 15.5,
-  "consumption_highway_kWh_per_100km": 22.0,
+  "consumption_highway_kWh_per_100km": 22,
   "consumption_winter_kWh_per_100km": 19.5,
   "dragCoefficient_Cx": 0.29,
-
   "chargingDC": {
     "peakPower_kW": 130,
     "time_10_80_min": 30,
@@ -49,28 +44,62 @@
   "chargingAC": {
     "onboardCharger_kW": 22,
     "phases": 3,
-    "time_0_100_h": 3.0
+    "time_0_100_h": 3
   },
   "plugAndCharge": false,
   "v2l": false,
   "v2g": false,
   "v2l_option_EUR": null,
-
   "chargingCurve": [
-    { "soc": 0,   "power": 108 },
-    { "soc": 5,   "power": 124 },
-    { "soc": 10,  "power": 130 },
-    { "soc": 20,  "power": 130 },
-    { "soc": 30,  "power": 125 },
-    { "soc": 40,  "power": 112 },
-    { "soc": 50,  "power": 90  },
-    { "soc": 60,  "power": 68  },
-    { "soc": 70,  "power": 44  },
-    { "soc": 80,  "power": 22  },
-    { "soc": 90,  "power": 11  },
-    { "soc": 100, "power": 5   }
+    {
+      "soc": 0,
+      "power": 108
+    },
+    {
+      "soc": 5,
+      "power": 124
+    },
+    {
+      "soc": 10,
+      "power": 130
+    },
+    {
+      "soc": 20,
+      "power": 130
+    },
+    {
+      "soc": 30,
+      "power": 125
+    },
+    {
+      "soc": 40,
+      "power": 112
+    },
+    {
+      "soc": 50,
+      "power": 90
+    },
+    {
+      "soc": 60,
+      "power": 68
+    },
+    {
+      "soc": 70,
+      "power": 44
+    },
+    {
+      "soc": 80,
+      "power": 22
+    },
+    {
+      "soc": 90,
+      "power": 11
+    },
+    {
+      "soc": 100,
+      "power": 5
+    }
   ],
-
   "rangeTests": [
     {
       "sourceId": "nyland",
@@ -99,9 +128,7 @@
       "notes": "Mégane E-Tech EV60. Test Nyland autoroutier à 120 km/h."
     }
   ],
-
   "thousandKmChallenge": null,
-
   "length_mm": 4199,
   "width_mm": 1768,
   "height_mm": 1505,
@@ -109,7 +136,6 @@
   "trunkCapacity_L": 440,
   "trunkCapacityFolded_L": 1332,
   "frunkCapacity_L": null,
-
   "trims": [
     {
       "name": "Equilibre (EV40)",
@@ -160,16 +186,14 @@
       ]
     }
   ],
-
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
+      "label": "Prime CEE VE",
       "amount_EUR": 4000
     }
   ],
-
   "configurations": [
     {
       "id": "std-equilibre-ev40-18",
@@ -196,18 +220,54 @@
       "chargingDC_10_80_min": 29,
       "chargingDC_kWh_30min": 28,
       "chargingCurve": [
-        { "soc": 0,   "power": 65  },
-        { "soc": 5,   "power": 78  },
-        { "soc": 10,  "power": 85  },
-        { "soc": 20,  "power": 80  },
-        { "soc": 30,  "power": 70  },
-        { "soc": 40,  "power": 58  },
-        { "soc": 50,  "power": 44  },
-        { "soc": 60,  "power": 32  },
-        { "soc": 70,  "power": 20  },
-        { "soc": 80,  "power": 12  },
-        { "soc": 90,  "power": 7   },
-        { "soc": 100, "power": 3   }
+        {
+          "soc": 0,
+          "power": 65
+        },
+        {
+          "soc": 5,
+          "power": 78
+        },
+        {
+          "soc": 10,
+          "power": 85
+        },
+        {
+          "soc": 20,
+          "power": 80
+        },
+        {
+          "soc": 30,
+          "power": 70
+        },
+        {
+          "soc": 40,
+          "power": 58
+        },
+        {
+          "soc": 50,
+          "power": 44
+        },
+        {
+          "soc": 60,
+          "power": 32
+        },
+        {
+          "soc": 70,
+          "power": 20
+        },
+        {
+          "soc": 80,
+          "power": 12
+        },
+        {
+          "soc": 90,
+          "power": 7
+        },
+        {
+          "soc": 100,
+          "power": 3
+        }
       ],
       "availability": "available",
       "notes": "Moteur 96 kW (130 ch), couple 250 Nm, 0-100 en ~10,5 s. Batterie ~38 kWh utiles (EV40). DC 85 kW. Jantes 18\" = meilleure autonomie."
@@ -224,7 +284,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 280,
-      "wltp_consumption_kWh_100km": 16.0,
+      "wltp_consumption_kWh_100km": 16,
       "realRange": {
         "mixed_km": 240,
         "highway_130_km": 158,
@@ -237,18 +297,54 @@
       "chargingDC_10_80_min": 29,
       "chargingDC_kWh_30min": 28,
       "chargingCurve": [
-        { "soc": 0,   "power": 65  },
-        { "soc": 5,   "power": 78  },
-        { "soc": 10,  "power": 85  },
-        { "soc": 20,  "power": 80  },
-        { "soc": 30,  "power": 70  },
-        { "soc": 40,  "power": 58  },
-        { "soc": 50,  "power": 44  },
-        { "soc": 60,  "power": 32  },
-        { "soc": 70,  "power": 20  },
-        { "soc": 80,  "power": 12  },
-        { "soc": 90,  "power": 7   },
-        { "soc": 100, "power": 3   }
+        {
+          "soc": 0,
+          "power": 65
+        },
+        {
+          "soc": 5,
+          "power": 78
+        },
+        {
+          "soc": 10,
+          "power": 85
+        },
+        {
+          "soc": 20,
+          "power": 80
+        },
+        {
+          "soc": 30,
+          "power": 70
+        },
+        {
+          "soc": 40,
+          "power": 58
+        },
+        {
+          "soc": 50,
+          "power": 44
+        },
+        {
+          "soc": 60,
+          "power": 32
+        },
+        {
+          "soc": 70,
+          "power": 20
+        },
+        {
+          "soc": 80,
+          "power": 12
+        },
+        {
+          "soc": 90,
+          "power": 7
+        },
+        {
+          "soc": 100,
+          "power": 3
+        }
       ],
       "availability": "available",
       "notes": "Moteur 96 kW (130 ch). Finition supérieure : écran 12\", sièges chauffants, induction. Jantes 20\" → -7 % d'autonomie."
@@ -306,18 +402,54 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
-        { "soc": 0,   "power": 108 },
-        { "soc": 5,   "power": 124 },
-        { "soc": 10,  "power": 130 },
-        { "soc": 20,  "power": 130 },
-        { "soc": 30,  "power": 125 },
-        { "soc": 40,  "power": 112 },
-        { "soc": 50,  "power": 90  },
-        { "soc": 60,  "power": 68  },
-        { "soc": 70,  "power": 44  },
-        { "soc": 80,  "power": 22  },
-        { "soc": 90,  "power": 11  },
-        { "soc": 100, "power": 5   }
+        {
+          "soc": 0,
+          "power": 108
+        },
+        {
+          "soc": 5,
+          "power": 124
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 20,
+          "power": 130
+        },
+        {
+          "soc": 30,
+          "power": 125
+        },
+        {
+          "soc": 40,
+          "power": 112
+        },
+        {
+          "soc": 50,
+          "power": 90
+        },
+        {
+          "soc": 60,
+          "power": 68
+        },
+        {
+          "soc": 70,
+          "power": 44
+        },
+        {
+          "soc": 80,
+          "power": 22
+        },
+        {
+          "soc": 90,
+          "power": 11
+        },
+        {
+          "soc": 100,
+          "power": 5
+        }
       ],
       "availability": "available",
       "notes": "Moteur 160 kW (220 ch), couple 300 Nm, 0-100 en 7,4 s. Batterie 60 kWh utiles. DC 130 kW — données Nyland confirmées."
@@ -352,7 +484,6 @@
       "notes": "Sommet de gamme Mégane E-Tech. Cuir/Alcantara, toit ouvrant, Harman Kardon, affichage tête haute. Mêmes performances que Techno EV60."
     }
   ],
-
   "warranty": {
     "vehicle_years": 5,
     "vehicle_km": 100000,
@@ -360,16 +491,32 @@
     "battery_km": 160000,
     "battery_soh_minimum_percent": 70
   },
-
   "keyFeatures": [
-    { "category": "technologie", "label": "Chargeur AC 22 kW en option — recharge complète en 3h à domicile ou sur borne publique" },
-    { "category": "technologie", "label": "DC 130 kW sur EV60 — 55 kWh en 30 min, 10-80 % en 30 min sur autoroute" },
-    { "category": "design",     "label": "Fabriquée à Douai (ElectriCity) — même usine que la R5 et le R4, bilan carbone optimisé" },
-    { "category": "securite",   "label": "Pack Drive Assist Plus : angle mort actif, freinage d'urgence, aide parking automatique" },
-    { "category": "confort",    "label": "Coffre 440 L — le plus grand du segment C compact, plancher plat sièges rabattus (1 332 L)" },
-    { "category": "technologie", "label": "Deux tailles de batterie (EV40 / EV60) pour calibrer le budget à l'usage réel" }
+    {
+      "category": "technologie",
+      "label": "Chargeur AC 22 kW en option — recharge complète en 3h à domicile ou sur borne publique"
+    },
+    {
+      "category": "technologie",
+      "label": "DC 130 kW sur EV60 — 55 kWh en 30 min, 10-80 % en 30 min sur autoroute"
+    },
+    {
+      "category": "design",
+      "label": "Fabriquée à Douai (ElectriCity) — même usine que la R5 et le R4, bilan carbone optimisé"
+    },
+    {
+      "category": "securite",
+      "label": "Pack Drive Assist Plus : angle mort actif, freinage d'urgence, aide parking automatique"
+    },
+    {
+      "category": "confort",
+      "label": "Coffre 440 L — le plus grand du segment C compact, plancher plat sièges rabattus (1 332 L)"
+    },
+    {
+      "category": "technologie",
+      "label": "Deux tailles de batterie (EV40 / EV60) pour calibrer le budget à l'usage réel"
+    }
   ],
-
   "verdict": {
     "strengths": [
       "EV60 : 390 km réels en mixte, 250 km à 130 km/h — autonomie suffisante pour tous les grands trajets",
@@ -387,8 +534,11 @@
     "idealUserProfile": "Conducteur cherchant une vraie berline compacte polyvalente avec une grande autonomie. L'EV60 à 42 490 € est le meilleur rapport performance/autonomie ; l'EV40 à 35 490 € pour les petits budgets.",
     "notIdealFor": "Conducteur ayant besoin de V2L/V2G ou souhaitant les vitesses de charge ultra-rapides d'un 800 V."
   },
-
   "lastUpdated": "2026-05-17",
-  "sources": ["nyland", "lachaineev", "renault-fr"],
+  "sources": [
+    "nyland",
+    "lachaineev",
+    "renault-fr"
+  ],
   "imageCredit": "Renault France — visuel presse 2022"
 }

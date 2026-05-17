@@ -9,7 +9,6 @@
   "assemblyPlant": "Ulsan",
   "releaseYear": 2025,
   "marketAvailability": "Disponible en Europe",
-
   "power_kW": 150,
   "power_hp": 204,
   "torque_Nm": 310,
@@ -17,13 +16,11 @@
   "motors": 1,
   "acceleration_0_100_s": 7.3,
   "topSpeed_kmh": 185,
-
   "usableCapacity_kWh": 81.4,
   "grossCapacity_kWh": 84.6,
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1680,
-
   "wltp_max_km": 640,
   "wltp_min_km": 542,
   "realRange": {
@@ -33,12 +30,10 @@
     "winter_minus5_km": 420,
     "confidence": "estimated"
   },
-
   "consumption_mixed_kWh_per_100km": 14.2,
   "consumption_highway_kWh_per_100km": 21.5,
-  "consumption_winter_kWh_per_100km": 18.0,
+  "consumption_winter_kWh_per_100km": 18,
   "dragCoefficient_Cx": 0.22,
-
   "chargingDC": {
     "peakPower_kW": 128,
     "time_10_80_min": 31,
@@ -54,26 +49,58 @@
   "v2l": true,
   "v2g": false,
   "v2l_option_EUR": null,
-
   "chargingCurve": [
-    { "soc": 0,   "power": 105 },
-    { "soc": 5,   "power": 120 },
-    { "soc": 10,  "power": 128 },
-    { "soc": 20,  "power": 128 },
-    { "soc": 30,  "power": 125 },
-    { "soc": 40,  "power": 112 },
-    { "soc": 50,  "power": 95  },
-    { "soc": 60,  "power": 72  },
-    { "soc": 70,  "power": 50  },
-    { "soc": 80,  "power": 30  },
-    { "soc": 90,  "power": 15  },
-    { "soc": 100, "power": 6   }
+    {
+      "soc": 0,
+      "power": 105
+    },
+    {
+      "soc": 5,
+      "power": 120
+    },
+    {
+      "soc": 10,
+      "power": 128
+    },
+    {
+      "soc": 20,
+      "power": 128
+    },
+    {
+      "soc": 30,
+      "power": 125
+    },
+    {
+      "soc": 40,
+      "power": 112
+    },
+    {
+      "soc": 50,
+      "power": 95
+    },
+    {
+      "soc": 60,
+      "power": 72
+    },
+    {
+      "soc": 70,
+      "power": 50
+    },
+    {
+      "soc": 80,
+      "power": 30
+    },
+    {
+      "soc": 90,
+      "power": 15
+    },
+    {
+      "soc": 100,
+      "power": 6
+    }
   ],
-
   "rangeTests": [],
-
   "thousandKmChallenge": null,
-
   "length_mm": 4450,
   "width_mm": 1850,
   "height_mm": 1455,
@@ -81,7 +108,6 @@
   "trunkCapacity_L": 490,
   "trunkCapacityFolded_L": 1350,
   "frunkCapacity_L": 20,
-
   "trims": [
     {
       "name": "Standard Range Air",
@@ -132,16 +158,14 @@
       ]
     }
   ],
-
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
+      "label": "Prime CEE VE",
       "amount_EUR": 4000
     }
   ],
-
   "configurations": [
     {
       "id": "std-air-583-17",
@@ -168,18 +192,54 @@
       "chargingDC_10_80_min": 31,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        { "soc": 0,   "power": 62 },
-        { "soc": 5,   "power": 73 },
-        { "soc": 10,  "power": 80 },
-        { "soc": 20,  "power": 80 },
-        { "soc": 30,  "power": 76 },
-        { "soc": 40,  "power": 68 },
-        { "soc": 50,  "power": 56 },
-        { "soc": 60,  "power": 42 },
-        { "soc": 70,  "power": 28 },
-        { "soc": 80,  "power": 15 },
-        { "soc": 90,  "power": 8  },
-        { "soc": 100, "power": 3  }
+        {
+          "soc": 0,
+          "power": 62
+        },
+        {
+          "soc": 5,
+          "power": 73
+        },
+        {
+          "soc": 10,
+          "power": 80
+        },
+        {
+          "soc": 20,
+          "power": 80
+        },
+        {
+          "soc": 30,
+          "power": 76
+        },
+        {
+          "soc": 40,
+          "power": 68
+        },
+        {
+          "soc": 50,
+          "power": 56
+        },
+        {
+          "soc": 60,
+          "power": 42
+        },
+        {
+          "soc": 70,
+          "power": 28
+        },
+        {
+          "soc": 80,
+          "power": 15
+        },
+        {
+          "soc": 90,
+          "power": 8
+        },
+        {
+          "soc": 100,
+          "power": 3
+        }
       ],
       "availability": "available",
       "notes": "Moteur 115 kW (156 ch). DC limité à 80 kW. Cx 0,22 exceptionnel : 542 km WLTP malgré seulement 58 kWh. Rapport volume/autonomie remarquable."
@@ -209,18 +269,54 @@
       "chargingDC_10_80_min": 31,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
-        { "soc": 0,   "power": 105 },
-        { "soc": 5,   "power": 120 },
-        { "soc": 10,  "power": 128 },
-        { "soc": 20,  "power": 128 },
-        { "soc": 30,  "power": 125 },
-        { "soc": 40,  "power": 112 },
-        { "soc": 50,  "power": 95  },
-        { "soc": 60,  "power": 72  },
-        { "soc": 70,  "power": 50  },
-        { "soc": 80,  "power": 30  },
-        { "soc": 90,  "power": 15  },
-        { "soc": 100, "power": 6   }
+        {
+          "soc": 0,
+          "power": 105
+        },
+        {
+          "soc": 5,
+          "power": 120
+        },
+        {
+          "soc": 10,
+          "power": 128
+        },
+        {
+          "soc": 20,
+          "power": 128
+        },
+        {
+          "soc": 30,
+          "power": 125
+        },
+        {
+          "soc": 40,
+          "power": 112
+        },
+        {
+          "soc": 50,
+          "power": 95
+        },
+        {
+          "soc": 60,
+          "power": 72
+        },
+        {
+          "soc": 70,
+          "power": 50
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 90,
+          "power": 15
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "Moteur 150 kW (204 ch), DC 128 kW. Grâce au Cx 0,22, le fastback LR atteint 640 km WLTP et 530 km réels — meilleur segment C 400V."
@@ -250,18 +346,54 @@
       "chargingDC_10_80_min": 31,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
-        { "soc": 0,   "power": 105 },
-        { "soc": 5,   "power": 120 },
-        { "soc": 10,  "power": 128 },
-        { "soc": 20,  "power": 128 },
-        { "soc": 30,  "power": 125 },
-        { "soc": 40,  "power": 112 },
-        { "soc": 50,  "power": 95  },
-        { "soc": 60,  "power": 72  },
-        { "soc": 70,  "power": 50  },
-        { "soc": 80,  "power": 30  },
-        { "soc": 90,  "power": 15  },
-        { "soc": 100, "power": 6   }
+        {
+          "soc": 0,
+          "power": 105
+        },
+        {
+          "soc": 5,
+          "power": 120
+        },
+        {
+          "soc": 10,
+          "power": 128
+        },
+        {
+          "soc": 20,
+          "power": 128
+        },
+        {
+          "soc": 30,
+          "power": 125
+        },
+        {
+          "soc": 40,
+          "power": 112
+        },
+        {
+          "soc": 50,
+          "power": 95
+        },
+        {
+          "soc": 60,
+          "power": 72
+        },
+        {
+          "soc": 70,
+          "power": 50
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 90,
+          "power": 15
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "Confort premium : toit pano, chauffants/ventilés, Meridian, pompe à chaleur. Jantes 19\" → -22 km WLTP vs Air 18\"."
@@ -291,24 +423,59 @@
       "chargingDC_10_80_min": 31,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
-        { "soc": 0,   "power": 105 },
-        { "soc": 5,   "power": 120 },
-        { "soc": 10,  "power": 128 },
-        { "soc": 20,  "power": 128 },
-        { "soc": 30,  "power": 125 },
-        { "soc": 40,  "power": 112 },
-        { "soc": 50,  "power": 95  },
-        { "soc": 60,  "power": 72  },
-        { "soc": 70,  "power": 50  },
-        { "soc": 80,  "power": 30  },
-        { "soc": 90,  "power": 15  },
-        { "soc": 100, "power": 6   }
+        {
+          "soc": 0,
+          "power": 105
+        },
+        {
+          "soc": 5,
+          "power": 120
+        },
+        {
+          "soc": 10,
+          "power": 128
+        },
+        {
+          "soc": 20,
+          "power": 128
+        },
+        {
+          "soc": 30,
+          "power": 125
+        },
+        {
+          "soc": 40,
+          "power": 112
+        },
+        {
+          "soc": 50,
+          "power": 95
+        },
+        {
+          "soc": 60,
+          "power": 72
+        },
+        {
+          "soc": 70,
+          "power": 50
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 90,
+          "power": 15
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "Pack sportif GT-Line : look agressif, cuir Nappa, HUD. Même roues 19\" que Earth → autonomie similaire."
     }
   ],
-
   "warranty": {
     "vehicle_years": 7,
     "vehicle_km": 150000,
@@ -316,16 +483,32 @@
     "battery_km": 150000,
     "battery_soh_minimum_percent": 70
   },
-
   "keyFeatures": [
-    { "category": "design",       "label": "Cx 0,22 — l'un des coefficients de traînée les plus bas du marché, clé du 640 km WLTP" },
-    { "category": "technologie",  "label": "DC 128 kW (LR) — 10-80 % en 31 min malgré la plateforme 400V" },
-    { "category": "technologie",  "label": "V2L 2,2 kW de série — alimentation externe bidirectionnelle" },
-    { "category": "confort",      "label": "Frunk 20 L + coffre 490 L — meilleure habitabilité de sa catégorie" },
-    { "category": "securite",     "label": "Highway Drive Assist — maintien de voie + distance + détection de somnolence" },
-    { "category": "design",       "label": "Silhouette fastback basse (H 1,455 m) — distinction visuelle forte face aux SUV compacts" }
+    {
+      "category": "design",
+      "label": "Cx 0,22 — l'un des coefficients de traînée les plus bas du marché, clé du 640 km WLTP"
+    },
+    {
+      "category": "technologie",
+      "label": "DC 128 kW (LR) — 10-80 % en 31 min malgré la plateforme 400V"
+    },
+    {
+      "category": "technologie",
+      "label": "V2L 2,2 kW de série — alimentation externe bidirectionnelle"
+    },
+    {
+      "category": "confort",
+      "label": "Frunk 20 L + coffre 490 L — meilleure habitabilité de sa catégorie"
+    },
+    {
+      "category": "securite",
+      "label": "Highway Drive Assist — maintien de voie + distance + détection de somnolence"
+    },
+    {
+      "category": "design",
+      "label": "Silhouette fastback basse (H 1,455 m) — distinction visuelle forte face aux SUV compacts"
+    }
   ],
-
   "verdict": {
     "strengths": [
       "Cx 0,22 : coefficient de traînée exceptionnel → 640 km WLTP / 530 km réels en LR — record segment C 400V",
@@ -342,8 +525,10 @@
     "idealUserProfile": "Grand rouleur qui veut la plus grande autonomie possible dans le segment C, avec un design de berline fastback à la place d'un SUV.",
     "notIdealFor": "Conducteur prioritisant une charge ultra-rapide 800V — l'EV6 sera alors plus adapté pour le même budget."
   },
-
   "lastUpdated": "2026-05-17",
-  "sources": ["kia-fr", "lachaineev"],
+  "sources": [
+    "kia-fr",
+    "lachaineev"
+  ],
   "imageCredit": "Kia Media — visuel presse 2025"
 }

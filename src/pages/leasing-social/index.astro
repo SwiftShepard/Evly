@@ -1,0 +1,492 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BentoGrid from "@/components/ui/BentoGrid.astro";
+import Tile from "@/components/ui/Tile.astro";
+import Tag from "@/components/ui/Tag.astro";
+import BrandLogo from "@/components/ui/BrandLogo.astro";
+import VehicleImage from "@/components/ui/VehicleImage.astro";
+import { getAllVehicles } from "@/lib/vehicles";
+import { formatPrice } from "@/lib/format";
+import { url } from "@/lib/url";
+import {
+  getLeasingStatus,
+  LEASING_LABELS,
+  LEASING_PRICE_CAP_EUR,
+  type LeasingStatus,
+} from "@/lib/leasing";
+
+const vehicles = getAllVehicles();
+
+// Group vehicles by leasing status
+const grouped: Record<LeasingStatus, typeof vehicles> = {
+  "official": [],
+  "ademe-compatible": [],
+  "potential": [],
+  "not-eligible": [],
+};
+for (const v of vehicles) {
+  grouped[getLeasingStatus(v)].push(v);
+}
+
+// Sort each group by cheapest price
+for (const k of Object.keys(grouped) as LeasingStatus[]) {
+  grouped[k].sort(
+    (a, b) =>
+      Math.min(...a.trims.map((t) => t.price_EUR)) -
+      Math.min(...b.trims.map((t) => t.price_EUR)),
+  );
+}
+
+const counts = {
+  official: grouped["official"].length,
+  ademe: grouped["ademe-compatible"].length,
+  potential: grouped["potential"].length,
+};
+---
+
+<BaseLayout
+  title="Leasing social — comprendre, comparer, exiger | Evly"
+  description="Le dispositif leasing social à 100 €/mois expliqué : conditions, score ADEME, bonus écologique. Liste des véhicules officiellement éligibles et de ceux qui devraient l'être."
+>
+  <div class="py-6 md:py-10">
+    <div class="container-edit">
+      <BentoGrid>
+        {/* ───────── HERO ───────── */}
+        <Tile size="full" variant="elevated">
+          <div class="flex items-center gap-4 mb-6 fade-rise fade-rise-delay-1">
+            <span class="font-mono text-xs text-[var(--color-text-faint)]">DOSSIER</span>
+            <span class="label-eyebrow">Leasing social électrique</span>
+          </div>
+          <h1 class="display-1 max-w-3xl fade-rise fade-rise-delay-2">
+            À partir de 95 €/mois, sans apport.
+            <span class="text-[var(--color-text-muted)]"> Qui peut, comment, et pourquoi tant de modèles éligibles sont absents.</span>
+          </h1>
+          <p class="mt-6 text-[var(--color-text-muted)] text-base md:text-lg max-w-2xl fade-rise fade-rise-delay-3">
+            Le leasing social est une LLD/LOA subventionnée par les <strong class="text-[var(--color-text)]">Certificats d'Économie d'Énergie (CEE)</strong>. Loyer plafonné à 200 €/mois, généralement entre 95 € et 150 € selon le modèle, sans apport. Évly décortique le mécanisme réel, les critères ADEME, et liste les véhicules qui <em>devraient</em> y figurer mais que les constructeurs n'ont pas (encore) inscrits.
+          </p>
+
+          <div class="mt-8 pt-6 border-t border-[var(--color-border)] grid grid-cols-3 gap-4 max-w-2xl">
+            <div class="flex flex-col gap-1">
+              <span data-numeric class="display-stat text-3xl md:text-4xl text-[var(--color-accent)]">{counts.official}</span>
+              <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Éligibles officiels</span>
+            </div>
+            <div class="flex flex-col gap-1">
+              <span data-numeric class="display-stat text-3xl md:text-4xl text-[var(--color-warning)]">{counts.ademe}</span>
+              <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Compatibles ADEME</span>
+            </div>
+            <div class="flex flex-col gap-1">
+              <span data-numeric class="display-stat text-3xl md:text-4xl text-[var(--color-text-muted)]">{counts.potential}</span>
+              <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Sous réserve constructeur</span>
+            </div>
+          </div>
+        </Tile>
+
+        {/* ───────── COMMENT ÇA MARCHE ───────── */}
+        <Tile size="2x2" variant="default" label="01 · Mécanisme réel">
+          <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.1] mb-4">
+            Comment ça marche vraiment.
+          </h2>
+          <p class="text-sm md:text-base text-[var(--color-text-muted)] mb-5">
+            LLD ou LOA classique sur 3 ans minimum, mais avec une aide CEE qui <strong class="text-[var(--color-text)]">absorbe le premier loyer</strong> et tire les mensualités vers le bas.
+          </p>
+          <ul class="flex flex-col gap-3 text-sm">
+            <li class="flex gap-3 items-start">
+              <span class="font-mono text-[10px] mt-1 text-[var(--color-text-faint)]">01</span>
+              <span>Engagement <strong class="text-[var(--color-text)]">3 ans minimum</strong>, LOA ou LLD. Loyer plafonné à 200 €/mois, généralement 95-150 €.</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="font-mono text-[10px] mt-1 text-[var(--color-text-faint)]">02</span>
+              <span>Aide CEE jusqu'à <strong class="text-[var(--color-text)]">7 000 €</strong> par véhicule (édition 2025-2026), avancée par le loueur et déduite du 1<sup>er</sup> loyer — porté à <strong class="text-[var(--color-text)]">0 €</strong>.</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="font-mono text-[10px] mt-1 text-[var(--color-text-faint)]">03</span>
+              <span><strong class="text-[var(--color-text)]">Pas d'apport</strong> initial à avancer. Si un concessionnaire en demande, lire attentivement : assurance, entretien ou kilométrage additionnels probables.</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="font-mono text-[10px] mt-1 text-[var(--color-text-faint)]">04</span>
+              <span>Plafond <strong class="text-[var(--color-text)]">15 000 km/an</strong> inclus. Au-delà, surcoût au km.</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="font-mono text-[10px] mt-1 text-[var(--color-text-faint)]">05</span>
+              <span>Quota national limité — premier arrivé, premier servi.</span>
+            </li>
+          </ul>
+        </Tile>
+
+        {/* ───────── ÉLIGIBILITÉ MÉNAGE ───────── */}
+        <Tile size="2x2" variant="default" label="02 · Conditions ménage">
+          <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.1] mb-4">
+            Qui peut en bénéficier.
+          </h2>
+          <ul class="flex flex-col gap-3 text-sm">
+            <li class="flex gap-3 items-start">
+              <span class="font-mono text-[10px] mt-1 text-[var(--color-text-faint)]">A.</span>
+              <span><strong class="text-[var(--color-text)]">Revenu fiscal de référence (RFR) par part ≤ 15 400 €</strong> — accès au tarif principal à 100 €/mois.</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="font-mono text-[10px] mt-1 text-[var(--color-text-faint)]">B.</span>
+              <span>Résidence ou lieu de travail à <strong class="text-[var(--color-text)]">plus de 15 km du travail</strong>, OU plus de 8 000 km/an pour motifs professionnels.</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="font-mono text-[10px] mt-1 text-[var(--color-text-faint)]">C.</span>
+              <span>Majeur, résidant en France, titulaire du permis B.</span>
+            </li>
+            <li class="flex gap-3 items-start">
+              <span class="font-mono text-[10px] mt-1 text-[var(--color-text-faint)]">D.</span>
+              <span>Un seul dossier par foyer fiscal.</span>
+            </li>
+          </ul>
+          <p class="mt-5 text-[12px] text-[var(--color-text-faint)] font-mono">
+            Les seuils peuvent évoluer chaque année — vérifier sur <a href="https://mon-leasing-electrique.gouv.fr" target="_blank" rel="noopener" class="underline">mon-leasing-electrique.gouv.fr</a>.
+          </p>
+        </Tile>
+
+        {/* ───────── SCORE ADEME ───────── */}
+        <Tile size="full" variant="elevated" label="03 · Score environnemental ADEME">
+          <div class="grid md:grid-cols-12 gap-6 md:gap-10">
+            <div class="md:col-span-7">
+              <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.1] mb-4">
+                Le score ADEME, vrai filtre du dispositif.
+              </h2>
+              <p class="text-sm md:text-base text-[var(--color-text-muted)] mb-4">
+                Pour entrer dans le programme (et toucher le bonus écologique), un véhicule doit obtenir un <strong class="text-[var(--color-text)]">score environnemental ≥ 60/100</strong>. Ce score, calculé par l'ADEME, pondère l'empreinte carbone de la production du véhicule sur quatre axes.
+              </p>
+              <ul class="flex flex-col gap-2.5 text-sm">
+                <li class="flex gap-3 items-baseline">
+                  <span class="font-mono text-[10px] text-[var(--color-text-faint)]">40 %</span>
+                  <span><strong class="text-[var(--color-text)]">Fabrication de la batterie</strong> — chimie, lieu de production, mix énergétique du pays.</span>
+                </li>
+                <li class="flex gap-3 items-baseline">
+                  <span class="font-mono text-[10px] text-[var(--color-text-faint)]">30 %</span>
+                  <span><strong class="text-[var(--color-text)]">Assemblage du véhicule</strong> — empreinte CO₂ du site de production.</span>
+                </li>
+                <li class="flex gap-3 items-baseline">
+                  <span class="font-mono text-[10px] text-[var(--color-text-faint)]">15 %</span>
+                  <span><strong class="text-[var(--color-text)]">Acier de la caisse</strong> — origine et procédé.</span>
+                </li>
+                <li class="flex gap-3 items-baseline">
+                  <span class="font-mono text-[10px] text-[var(--color-text-faint)]">15 %</span>
+                  <span><strong class="text-[var(--color-text)]">Aluminium</strong> — sourcing et recyclage.</span>
+                </li>
+              </ul>
+            </div>
+            <div class="md:col-span-5 flex flex-col gap-4 md:border-l md:border-[var(--color-border)] md:pl-8">
+              <span class="label-eyebrow">Effet de la localisation</span>
+              <div class="flex flex-col gap-3">
+                <div class="flex items-baseline justify-between gap-3">
+                  <span class="text-sm">Assemblé en France/Espagne, batterie EU</span>
+                  <span data-numeric class="font-mono text-[var(--color-accent)] text-lg">~ 75 / 100</span>
+                </div>
+                <div class="flex items-baseline justify-between gap-3">
+                  <span class="text-sm">Assemblé en Europe, batterie asiatique</span>
+                  <span data-numeric class="font-mono text-[var(--color-warning)] text-lg">~ 62 / 100</span>
+                </div>
+                <div class="flex items-baseline justify-between gap-3">
+                  <span class="text-sm">Assemblé en Chine, batterie locale</span>
+                  <span data-numeric class="font-mono text-[var(--color-text-faint)] text-lg">~ 45 / 100</span>
+                </div>
+              </div>
+              <p class="mt-3 text-[12px] text-[var(--color-text-faint)] font-mono leading-relaxed">
+                Évly estime ces scores à partir du pays de production déclaré. Le score officiel ADEME requiert un dossier constructeur — d'où la frontière nette entre <em>compatible</em> et <em>officiel</em>.
+              </p>
+            </div>
+          </div>
+        </Tile>
+
+        {/* ───────── PRIME CEE VE ───────── */}
+        <Tile size="full" variant="default" label="04 · Prime CEE VE — achat direct">
+          <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.1] mb-3">
+            Prime CEE VE — l'alternative pour l'achat direct.
+          </h2>
+          <p class="text-sm md:text-base text-[var(--color-text-muted)] max-w-3xl mb-3">
+            Depuis le 1<sup>er</sup> juillet 2025, l'ex-bonus écologique passe par les Certificats d'Économie d'Énergie. <strong class="text-[var(--color-text)]">Même pot que le leasing social</strong>, mais appliqué autrement : remise sur facture à l'achat / LOA / LLD classique, au lieu d'absorber le premier loyer d'une location subventionnée.
+          </p>
+          <p class="text-sm text-[var(--color-text-muted)] max-w-3xl mb-6">
+            Réservée aux VE &lt; 47 000 €, &lt; 2 400 kg, écoscorés ADEME ≥ 60. Le montant n'est plus fixé par l'État : il dépend du cours CEE et des négociations entre constructeurs et obligés énergéticiens (EDF, TotalEnergies, ENGIE…).
+          </p>
+
+          <div class="grid md:grid-cols-3 gap-4 md:gap-6">
+            <div class="bg-[var(--color-bg-subtle)] p-5 rounded-[var(--radius-tile-sm)] border border-[var(--color-border)]">
+              <span class="label-eyebrow">Autres ménages</span>
+              <p class="font-display text-3xl mt-2 text-[var(--color-text)]">≈ 3 500 €</p>
+              <p class="text-xs text-[var(--color-text-muted)] mt-2">Base CEE indicative — varie selon le cours</p>
+            </div>
+            <div class="bg-[var(--color-bg-subtle)] p-5 rounded-[var(--radius-tile-sm)] border border-[var(--color-border)]">
+              <span class="label-eyebrow">Ménages modestes</span>
+              <p class="font-display text-3xl mt-2 text-[var(--color-text)]">≈ 4 700 €</p>
+              <p class="text-xs text-[var(--color-text-muted)] mt-2">Non précaires — base CEE renforcée</p>
+            </div>
+            <div class="bg-[color-mix(in_srgb,var(--color-accent)_8%,transparent)] p-5 rounded-[var(--radius-tile-sm)] border border-[var(--color-accent-dim)]">
+              <span class="label-eyebrow" style="color:var(--color-accent)">Ménages précaires</span>
+              <p class="font-display text-3xl mt-2 text-[var(--color-accent)]">≈ 5 700 €</p>
+              <p class="text-xs text-[var(--color-text-muted)] mt-2">Base CEE max — avant surbonus européen</p>
+            </div>
+          </div>
+
+          <div class="mt-6 grid md:grid-cols-2 gap-4">
+            <div class="p-5 border-l-2 border-[var(--color-accent)] bg-[color-mix(in_srgb,var(--color-accent)_5%,transparent)]">
+              <span class="label-eyebrow" style="color:var(--color-accent)">Jusqu'à 7 700 €</span>
+              <p class="font-display text-2xl mt-2 text-[var(--color-accent)]">si batterie produite en UE</p>
+              <p class="text-xs text-[var(--color-text-muted)] mt-2">Base 5 700 € (précaire) + surbonus 2 000 € pour batterie européenne.</p>
+            </div>
+            <div class="p-5 border-l-2 border-[var(--color-warning)] bg-[color-mix(in_srgb,var(--color-warning)_5%,transparent)]">
+              <span class="label-eyebrow" style="color:var(--color-warning)">Jusqu'à 5 750 €</span>
+              <p class="font-display text-2xl mt-2 text-[var(--color-warning)]">si véhicule produit en UE</p>
+              <p class="text-xs text-[var(--color-text-muted)] mt-2">Assemblage européen sans batterie européenne — pas de surbonus batterie.</p>
+            </div>
+          </div>
+
+          <div class="mt-6 p-5 border border-[var(--color-danger)] rounded-[var(--radius-tile-sm)] bg-[color-mix(in_srgb,var(--color-danger)_5%,transparent)]">
+            <span class="label-eyebrow" style="color:var(--color-danger)">Non cumulable</span>
+            <p class="mt-2 text-sm md:text-base text-[var(--color-text)]">
+              Un même véhicule ne peut pas bénéficier à la fois de la Prime CEE VE (achat) et du leasing social (location subventionnée) — c'est le même pot CEE, appliqué une seule fois. À l'achat : remise sur facture. En leasing social : 1<sup>er</sup> loyer absorbé + mensualités réduites.
+            </p>
+          </div>
+
+          <p class="mt-5 text-[12px] text-[var(--color-text-faint)] font-mono">
+            Montants indicatifs publiés par le gouvernement (communiqué du 26 novembre 2025) — susceptibles d'évoluer avec le cours des CEE. La liste officielle des véhicules à batterie UE éligibles au surbonus est sur le site de l'ADEME.
+          </p>
+        </Tile>
+
+        {/* ───────── COÛT RÉEL ATTENTION ───────── */}
+        <Tile size="full" variant="default" label="04bis · Lecture critique">
+          <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.1] mb-3">
+            Le "95 €/mois" affiché ne couvre pas tout.
+          </h2>
+          <p class="text-sm md:text-base text-[var(--color-text-muted)] max-w-3xl mb-6">
+            La mensualité communiquée par le constructeur n'inclut généralement pas l'assurance, l'entretien, les pneus, le dépassement kilométrique ni les frais de remise en état. Le coût réel "tout compris" peut grimper à <strong class="text-[var(--color-text)]">160-250 €/mois</strong>.
+          </p>
+          <div class="grid md:grid-cols-2 gap-4 md:gap-6">
+            <div class="p-5 border border-[var(--color-border)] rounded-[var(--radius-tile-sm)]">
+              <span class="label-eyebrow">Inclus dans le loyer</span>
+              <ul class="mt-3 flex flex-col gap-1.5 text-sm">
+                <li>· Location du véhicule</li>
+                <li>· Garantie constructeur</li>
+                <li>· Kilométrage de base (généralement 15 000 km/an)</li>
+              </ul>
+            </div>
+            <div class="p-5 border border-[var(--color-warning)] rounded-[var(--radius-tile-sm)] bg-[color-mix(in_srgb,var(--color-warning)_4%,transparent)]">
+              <span class="label-eyebrow" style="color:var(--color-warning)">À ajouter au budget réel</span>
+              <ul class="mt-3 flex flex-col gap-1.5 text-sm">
+                <li>· Assurance (30-80 €/mois)</li>
+                <li>· Entretien / révisions</li>
+                <li>· Pneus (usure / remplacement)</li>
+                <li>· Surcoût kilométrique au-delà du plafond</li>
+                <li>· Remise en état à la restitution</li>
+              </ul>
+            </div>
+          </div>
+        </Tile>
+
+        {/* ───────── CATÉGORIE A — OFFICIELS ───────── */}
+        <Tile size="full" variant="accent" label="A · Éligibles officiels">
+          <div class="flex flex-wrap items-end justify-between gap-4 mb-2">
+            <h2 class="font-display text-3xl md:text-4xl font-semibold tracking-[-0.015em] leading-[1.05]">
+              Les véhicules du programme.
+              <span class="block text-[var(--color-text-muted)] text-lg md:text-xl mt-2 font-medium">
+                Engagés par leurs constructeurs — 100 €/mois confirmés.
+              </span>
+            </h2>
+            <Tag tone="accent" mono>{counts.official} modèles</Tag>
+          </div>
+          <p class="text-sm text-[var(--color-text-muted)] mt-4 max-w-3xl">
+            Ces véhicules ont passé l'audit ADEME complet et leur constructeur s'est engagé contractuellement dans le dispositif. Ce sont les seuls qu'un ménage éligible peut commander aujourd'hui en leasing social — loyer entre 95 € et 150 €/mois selon le modèle, sans apport.
+          </p>
+        </Tile>
+
+        {grouped["official"].map((v) => {
+          const cheapest = v.trims.reduce((a, b) => (a.price_EUR < b.price_EUR ? a : b));
+          return (
+            <Tile size="2x1" variant="default" href={url(`/vehicules/${v.slug}`)} ariaLabel={`Fiche ${v.brand} ${v.model}`} class="reveal">
+              <div class="flex items-center justify-between gap-3 mb-4">
+                <div class="flex items-center gap-2 text-[var(--color-text-muted)]">
+                  <BrandLogo brand={v.brand} class="w-4 h-4" />
+                  <span class="label-eyebrow">{v.brand}</span>
+                </div>
+                <Tag tone="accent" mono>Éligible officiel</Tag>
+              </div>
+              <div class="flex items-end gap-3 mb-6">
+                <h3 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.05]">
+                  {v.model}
+                  <span class="block text-[var(--color-text-muted)] text-base md:text-lg mt-1 font-medium">{v.variant}</span>
+                </h3>
+                <div class="flex-1 flex justify-center items-end">
+                  <VehicleImage slug={v.slug} alt={`${v.brand} ${v.model}`} class="w-28 h-14" />
+                </div>
+              </div>
+              <div class="grid grid-cols-3 gap-4 mt-auto pt-5 border-t border-[var(--color-border)]">
+                <div class="flex flex-col gap-1">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Loyer dès</span>
+                  <div class="flex items-baseline gap-1">
+                    <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-accent)]">95</span>
+                    <span class="font-mono text-[11px] text-[var(--color-text-faint)]">€/mois*</span>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Prix neuf</span>
+                  <span data-numeric class="display-stat text-2xl md:text-3xl">{formatPrice(cheapest.price_EUR)}</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Origine</span>
+                  <span class="text-sm text-[var(--color-text)] mt-2">{v.productionCountry}</span>
+                </div>
+              </div>
+            </Tile>
+          );
+        })}
+
+        {/* ───────── CATÉGORIE B — COMPATIBLES ADEME ───────── */}
+        <Tile size="full" variant="elevated" label="B · Compatibles ADEME — pas encore dans le programme">
+          <div class="flex flex-wrap items-end justify-between gap-4 mb-2">
+            <h2 class="font-display text-3xl md:text-4xl font-semibold tracking-[-0.015em] leading-[1.05]">
+              Ceux qui devraient y être.
+              <span class="block text-[var(--color-warning)] text-lg md:text-xl mt-2 font-medium">
+                Critères ADEME validés, mais constructeur absent.
+              </span>
+            </h2>
+            <Tag tone="warning" mono>{counts.ademe} modèles</Tag>
+          </div>
+          <p class="text-sm text-[var(--color-text-muted)] mt-4 max-w-3xl">
+            Ces véhicules sont produits en Europe, sous le plafond de 47 000 €, et passent les critères ADEME sur le papier. Ils ne sont pourtant <strong class="text-[var(--color-text)]">pas inscrits au programme</strong> — soit par choix commercial du constructeur, soit faute de dossier déposé à temps.
+          </p>
+          <div class="mt-6 p-5 border-l-2 border-[var(--color-warning)] bg-[color-mix(in_srgb,var(--color-warning)_5%,transparent)]">
+            <p class="text-sm md:text-base text-[var(--color-text)] leading-relaxed">
+              <strong>Ce qu'on peut faire :</strong> Demander à votre concessionnaire pourquoi tel modèle n'est pas proposé en leasing social. La pression commerciale et médiatique a déjà conduit certains constructeurs (Renault, Stellantis) à élargir leur catalogue. C'est notamment ce qui a permis à la Renault 5 d'y entrer après plusieurs mois de demandes.
+            </p>
+          </div>
+        </Tile>
+
+        {grouped["ademe-compatible"].map((v) => {
+          const cheapest = v.trims.reduce((a, b) => (a.price_EUR < b.price_EUR ? a : b));
+          return (
+            <Tile size="2x1" variant="default" href={url(`/vehicules/${v.slug}`)} ariaLabel={`Fiche ${v.brand} ${v.model}`} class="reveal">
+              <div class="flex items-center justify-between gap-3 mb-4">
+                <div class="flex items-center gap-2 text-[var(--color-text-muted)]">
+                  <BrandLogo brand={v.brand} class="w-4 h-4" />
+                  <span class="label-eyebrow">{v.brand}</span>
+                </div>
+                <Tag tone="warning" mono>Compatible ADEME</Tag>
+              </div>
+              <div class="flex items-end gap-3 mb-6">
+                <h3 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.05]">
+                  {v.model}
+                  <span class="block text-[var(--color-text-muted)] text-base md:text-lg mt-1 font-medium">{v.variant}</span>
+                </h3>
+                <div class="flex-1 flex justify-center items-end">
+                  <VehicleImage slug={v.slug} alt={`${v.brand} ${v.model}`} class="w-28 h-14" />
+                </div>
+              </div>
+              <div class="grid grid-cols-3 gap-4 mt-auto pt-5 border-t border-[var(--color-border)]">
+                <div class="flex flex-col gap-1">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Dès</span>
+                  <span data-numeric class="display-stat text-2xl md:text-3xl">{formatPrice(cheapest.price_EUR)}</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Auto. réelle</span>
+                  <div class="flex items-baseline gap-1">
+                    <span data-numeric class="display-stat text-2xl md:text-3xl">{v.realRange.mixed_km}</span>
+                    <span class="font-mono text-[11px] text-[var(--color-text-faint)]">km</span>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Origine</span>
+                  <span class="text-sm text-[var(--color-text)] mt-2">{v.productionCountry}</span>
+                </div>
+              </div>
+            </Tile>
+          );
+        })}
+
+        {/* ───────── CATÉGORIE C — POTENTIELS HORS UE ───────── */}
+        <Tile size="full" variant="default" label="C · Sous réserve constructeur">
+          <div class="flex flex-wrap items-end justify-between gap-4 mb-2">
+            <h2 class="font-display text-3xl md:text-4xl font-semibold tracking-[-0.015em] leading-[1.05]">
+              Le bon prix, mais hors UE.
+              <span class="block text-[var(--color-text-muted)] text-lg md:text-xl mt-2 font-medium">
+                Score ADEME probablement insuffisant — pour l'instant.
+              </span>
+            </h2>
+            <Tag tone="outline" mono>{counts.potential} modèles</Tag>
+          </div>
+          <p class="text-sm text-[var(--color-text-muted)] mt-4 max-w-3xl">
+            Ces véhicules sont sous le plafond de prix mais leur production hors UE (Chine, Corée, Maroc) plombe leur score ADEME. Ils deviendraient éligibles si le constructeur relocalisait l'assemblage en Europe — cas du Leapmotor B05, dont l'usine espagnole est annoncée pour 2027.
+          </p>
+        </Tile>
+
+        {grouped["potential"].map((v) => {
+          const cheapest = v.trims.reduce((a, b) => (a.price_EUR < b.price_EUR ? a : b));
+          return (
+            <Tile size="2x1" variant="default" href={url(`/vehicules/${v.slug}`)} ariaLabel={`Fiche ${v.brand} ${v.model}`} class="reveal">
+              <div class="flex items-center justify-between gap-3 mb-4">
+                <div class="flex items-center gap-2 text-[var(--color-text-muted)]">
+                  <BrandLogo brand={v.brand} class="w-4 h-4" />
+                  <span class="label-eyebrow">{v.brand}</span>
+                </div>
+                <Tag tone="outline" mono>Sous réserve</Tag>
+              </div>
+              <div class="flex items-end gap-3 mb-6">
+                <h3 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.05]">
+                  {v.model}
+                  <span class="block text-[var(--color-text-muted)] text-base md:text-lg mt-1 font-medium">{v.variant}</span>
+                </h3>
+                <div class="flex-1 flex justify-center items-end">
+                  <VehicleImage slug={v.slug} alt={`${v.brand} ${v.model}`} class="w-28 h-14" />
+                </div>
+              </div>
+              <div class="grid grid-cols-3 gap-4 mt-auto pt-5 border-t border-[var(--color-border)]">
+                <div class="flex flex-col gap-1">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Dès</span>
+                  <span data-numeric class="display-stat text-2xl md:text-3xl">{formatPrice(cheapest.price_EUR)}</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Auto. réelle</span>
+                  <div class="flex items-baseline gap-1">
+                    <span data-numeric class="display-stat text-2xl md:text-3xl">{v.realRange.mixed_km}</span>
+                    <span class="font-mono text-[11px] text-[var(--color-text-faint)]">km</span>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Origine</span>
+                  <span class="text-sm text-[var(--color-text-muted)] mt-2">{v.productionCountry}</span>
+                </div>
+              </div>
+            </Tile>
+          );
+        })}
+
+        {/* ───────── ADVOCACY CTA ───────── */}
+        <Tile size="full" variant="elevated">
+          <div class="flex items-center gap-4 mb-6">
+            <span class="font-mono text-xs text-[var(--color-text-faint)]">FIN</span>
+            <span class="label-eyebrow">Position éditoriale</span>
+          </div>
+          <h2 class="display-2 max-w-3xl">
+            Le leasing social ne devrait pas dépendre du bon vouloir des constructeurs.
+          </h2>
+          <p class="mt-6 text-[var(--color-text-muted)] text-base md:text-lg max-w-3xl leading-relaxed">
+            Évly ne reçoit aucune rémunération constructeur et n'a aucun intérêt à pousser tel ou tel modèle. La liste des véhicules <em>compatibles ADEME mais absents</em> est publique pour une raison : tant que le programme repose sur l'engagement volontaire des marques, le citoyen éligible est privé de choix qu'il devrait avoir.
+          </p>
+          <div class="mt-8 pt-6 border-t border-[var(--color-border)] flex flex-col md:flex-row gap-4">
+            <a
+              href="https://mon-leasing-electrique.gouv.fr"
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center justify-center gap-2 px-5 py-3 border border-[var(--color-text)] text-sm font-mono tracking-tight hover:bg-[var(--color-text)] hover:text-[var(--color-bg)] transition-colors"
+            >
+              Vérifier mon éligibilité officielle ↗
+            </a>
+            <a
+              href={url("/vehicules")}
+              class="inline-flex items-center justify-center gap-2 px-5 py-3 border border-[var(--color-border-strong)] text-sm font-mono tracking-tight text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-text)] transition-colors"
+            >
+              Voir tous les véhicules →
+            </a>
+          </div>
+          <p class="mt-6 text-[12px] text-[var(--color-text-faint)] font-mono">
+            Les scores ADEME indicatifs sont estimés par Évly à partir du pays d'assemblage et du contenu batterie publié. Le score officiel ADEME requiert un dossier constructeur déposé auprès des services de l'État.
+          </p>
+        </Tile>
+      </BentoGrid>
+    </div>
+  </div>
+</BaseLayout>
