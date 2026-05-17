@@ -1,0 +1,197 @@
+{
+  "slug": "leapmotor-b05",
+  "brand": "Leapmotor",
+  "model": "B05",
+  "variant": "50 kWh",
+  "bodyType": "SUV urbain",
+  "segment": "B",
+  "productionCountry": "Pologne",
+  "assemblyPlant": "Ulsan",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 100,
+  "power_hp": 204,
+  "torque_Nm": 300,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 7.5,
+  "topSpeed_kmh": 160,
+  "usableCapacity_kWh": 50,
+  "grossCapacity_kWh": 50,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1700,
+  "wltp_max_km": 400,
+  "wltp_min_km": 380,
+  "realRange": {
+    "mixed_km": 310,
+    "highway_130_km": 200,
+    "urban_km": 380,
+    "winter_minus5_km": 240,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 15.0,
+  "consumption_highway_kWh_per_100km": 21.0,
+  "consumption_winter_kWh_per_100km": 19.0,
+  "dragCoefficient_Cx": 0.32,
+  "chargingDC": {
+    "peakPower_kW": 80,
+    "time_10_80_min": 30,
+    "kWh_added_30min": 30,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 6.5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 100
+    },
+    {
+      "soc": 10,
+      "power": 130
+    },
+    {
+      "soc": 50,
+      "power": 100
+    },
+    {
+      "soc": 80,
+      "power": 50
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4250,
+  "width_mm": 1800,
+  "height_mm": 1550,
+  "wheelbase_mm": 2700,
+  "trunkCapacity_L": 350,
+  "trunkCapacityFolded_L": 1200,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Design",
+      "price_EUR": 25400,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "Positionnement agressif",
+        "Compacte électrique"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Bonus Écologique",
+      "amount_EUR": 4000
+    }
+  ],
+  "configurations": [
+    {
+      "id": "leapmotor-b05-design",
+      "label": "B05 Design",
+      "battery": "standard",
+      "trim": "Design",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 25400,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 400,
+      "wltp_consumption_kWh_100km": 15.0,
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 200,
+        "urban_km": 380,
+        "winter_minus5_km": 240,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 80,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "upcoming",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "confort",
+      "label": "Sièges confort de haute qualité"
+    },
+    {
+      "category": "technologie",
+      "label": "Système d'infodivertissement avancé"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence"
+    },
+    {
+      "category": "design",
+      "label": "Signature lumineuse LED distinctive"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Bon compromis prix/autonomie",
+      "Confort de suspension"
+    ],
+    "weaknesses": [
+      "Vitesse de charge rapide en retrait",
+      "Info-divertissement perfectible"
+    ],
+    "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
+    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra-rapides."
+  },
+  "lastUpdated": "2026-05-16",
+  "sources": [
+    "nyland",
+    "lachaineev"
+  ],
+  "imageCredit": "Constructeur",
+  "availability": "upcoming"
+}

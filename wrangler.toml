@@ -1,0 +1,11 @@
+# Cloudflare Pages — config statique
+# Le binaire `wrangler` n'est pas requis pour le déploiement via Pages,
+# mais ce fichier sert de référence pour le projet et permet
+# l'usage de `wrangler pages dev ./dist` en local si besoin.
+
+name = "evly"
+compatibility_date = "2025-01-15"
+pages_build_output_dir = "./dist"
+
+[build]
+command = "npm run build"

@@ -1,0 +1,520 @@
+{
+  "slug": "tesla-model-y",
+  "brand": "Tesla",
+  "model": "Model Y",
+  "variant": "Propulsion",
+  "bodyType": "SUV familial",
+  "segment": "D",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Ulsan",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 220,
+  "power_hp": 204,
+  "torque_Nm": 300,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 7.5,
+  "topSpeed_kmh": 160,
+  "usableCapacity_kWh": 57.5,
+  "grossCapacity_kWh": 60,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1700,
+  "wltp_max_km": 455,
+  "wltp_min_km": 430,
+  "realRange": {
+    "mixed_km": 350,
+    "highway_130_km": 350,
+    "highway_120_km": 384,
+    "urban_km": 420,
+    "winter_minus5_km": 220,
+    "confidence": "bjorn_nyland"
+  },
+  "consumption_mixed_kWh_per_100km": 15.0,
+  "consumption_highway_kWh_per_100km": 21.0,
+  "consumption_winter_kWh_per_100km": 19.0,
+  "dragCoefficient_Cx": 0.23,
+  "chargingDC": {
+    "peakPower_kW": 170,
+    "time_10_80_min": 25,
+    "kWh_added_30min": 40,
+    "confidence": "tested"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 6.5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 100
+    },
+    {
+      "soc": 10,
+      "power": 130
+    },
+    {
+      "soc": 50,
+      "power": 100
+    },
+    {
+      "soc": 80,
+      "power": 50
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
+  ],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": "2024-06",
+      "speed_kmh": 90,
+      "range_km": 479,
+      "consumption_kWh_100km": 12.5,
+      "temperature_C": 20,
+      "wheelSize_inches": 19,
+      "tyreModel": null,
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Model Y Propulsion (Juniper). Berlin."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": "2024-06",
+      "speed_kmh": 120,
+      "range_km": 384,
+      "consumption_kWh_100km": 15.6,
+      "temperature_C": 20,
+      "wheelSize_inches": 19,
+      "tyreModel": null,
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": ""
+    }
+  ],
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 570,
+    "averageSpeed_kmh": 105.3,
+    "averageConsumption_Wh_km": 185,
+    "chargingStops": 4,
+    "averageTemperature_C": 20,
+    "testDate": "2024-06",
+    "videoUrl": null,
+    "confidence": "tested"
+  },
+  "length_mm": 4751,
+  "width_mm": 1921,
+  "height_mm": 1624,
+  "wheelbase_mm": 2700,
+  "trunkCapacity_L": 971,
+  "trunkCapacityFolded_L": 1200,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Propulsion",
+      "price_EUR": 40990,
+      "batteryUsed": "60 kWh BYD",
+      "equipmentHighlights": [
+        "Supercharge",
+        "Espace à bord exceptionnel"
+      ]
+    },
+    {
+      "name": "Grande Autonomie Prop",
+      "price_EUR": 44990,
+      "batteryUsed": "78 kWh NMC",
+      "equipmentHighlights": [
+        "600 km WLTP",
+        "Meilleur compromis"
+      ]
+    },
+    {
+      "name": "Grande Autonomie AWD",
+      "price_EUR": 48990,
+      "batteryUsed": "78 kWh NMC",
+      "equipmentHighlights": [
+        "Transmission Intégrale",
+        "Antibrouillards"
+      ]
+    },
+    {
+      "name": "Performance",
+      "price_EUR": 57990,
+      "batteryUsed": "78 kWh NMC",
+      "equipmentHighlights": [
+        "Jantes 21\"",
+        "Freins Performance"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Bonus Écologique",
+      "amount_EUR": 4000
+    }
+  ],
+  "configurations": [
+    {
+      "id": "tesla-model-y-propulsion",
+      "label": "Model Y Propulsion",
+      "battery": "standard",
+      "trim": "Propulsion",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 40990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 455,
+      "wltp_consumption_kWh_100km": 15.0,
+      "realRange": {
+        "mixed_km": 350,
+        "highway_130_km": 350,
+        "highway_120_km": 384,
+        "urban_km": 420,
+        "winter_minus5_km": 220,
+        "confidence": "bjorn_nyland"
+      },
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": "2024-06",
+          "speed_kmh": 90,
+          "range_km": 479,
+          "consumption_kWh_100km": 12.5,
+          "temperature_C": 20,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Model Y Propulsion (Juniper). Berlin."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": "2024-06",
+          "speed_kmh": 120,
+          "range_km": 384,
+          "consumption_kWh_100km": 15.6,
+          "temperature_C": 20,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": ""
+        }
+      ],
+      "chargingDC_peak_kW": 170,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "tesla-model-y-grande-autonomie-prop",
+      "label": "Model Y Grande Autonomie Prop",
+      "battery": "standard",
+      "trim": "Grande Autonomie Prop",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 44990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 455,
+      "wltp_consumption_kWh_100km": 15.0,
+      "realRange": {
+        "mixed_km": 350,
+        "highway_130_km": 350,
+        "highway_120_km": 384,
+        "urban_km": 420,
+        "winter_minus5_km": 220,
+        "confidence": "bjorn_nyland"
+      },
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": "2024-06",
+          "speed_kmh": 90,
+          "range_km": 479,
+          "consumption_kWh_100km": 12.5,
+          "temperature_C": 20,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Model Y Propulsion (Juniper). Berlin."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": "2024-06",
+          "speed_kmh": 120,
+          "range_km": 384,
+          "consumption_kWh_100km": 15.6,
+          "temperature_C": 20,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": ""
+        }
+      ],
+      "chargingDC_peak_kW": 170,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "tesla-model-y-grande-autonomie-awd",
+      "label": "Model Y Grande Autonomie AWD",
+      "battery": "standard",
+      "trim": "Grande Autonomie AWD",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 48990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 455,
+      "wltp_consumption_kWh_100km": 15.0,
+      "realRange": {
+        "mixed_km": 350,
+        "highway_130_km": 350,
+        "highway_120_km": 384,
+        "urban_km": 420,
+        "winter_minus5_km": 220,
+        "confidence": "bjorn_nyland"
+      },
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": "2024-06",
+          "speed_kmh": 90,
+          "range_km": 479,
+          "consumption_kWh_100km": 12.5,
+          "temperature_C": 20,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Model Y Propulsion (Juniper). Berlin."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": "2024-06",
+          "speed_kmh": 120,
+          "range_km": 384,
+          "consumption_kWh_100km": 15.6,
+          "temperature_C": 20,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": ""
+        }
+      ],
+      "chargingDC_peak_kW": 170,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "tesla-model-y-performance",
+      "label": "Model Y Performance",
+      "battery": "standard",
+      "trim": "Performance",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 57990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 455,
+      "wltp_consumption_kWh_100km": 15.0,
+      "realRange": {
+        "mixed_km": 350,
+        "highway_130_km": 350,
+        "highway_120_km": 384,
+        "urban_km": 420,
+        "winter_minus5_km": 220,
+        "confidence": "bjorn_nyland"
+      },
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": "2024-06",
+          "speed_kmh": 90,
+          "range_km": 479,
+          "consumption_kWh_100km": 12.5,
+          "temperature_C": 20,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Model Y Propulsion (Juniper). Berlin."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": "2024-06",
+          "speed_kmh": 120,
+          "range_km": 384,
+          "consumption_kWh_100km": 15.6,
+          "temperature_C": 20,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": ""
+        }
+      ],
+      "chargingDC_peak_kW": 170,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "confort",
+      "label": "Sièges confort de haute qualité"
+    },
+    {
+      "category": "technologie",
+      "label": "Système d'infodivertissement avancé"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence"
+    },
+    {
+      "category": "design",
+      "label": "Signature lumineuse LED distinctive"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Bon compromis prix/autonomie",
+      "Confort de suspension"
+    ],
+    "weaknesses": [
+      "Vitesse de charge rapide en retrait",
+      "Info-divertissement perfectible"
+    ],
+    "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
+    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra-rapides."
+  },
+  "lastUpdated": "2026-05-16",
+  "sources": [
+    "nyland",
+    "lachaineev"
+  ],
+  "imageCredit": "Constructeur"
+}

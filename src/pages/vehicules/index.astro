@@ -1,0 +1,316 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BentoGrid from "@/components/ui/BentoGrid.astro";
+import Tile from "@/components/ui/Tile.astro";
+import Tag from "@/components/ui/Tag.astro";
+import BrandLogo from "@/components/ui/BrandLogo.astro";
+import VehicleImage from "@/components/ui/VehicleImage.astro";
+import { getAllVehicles } from "@/lib/vehicles";
+import { formatPrice } from "@/lib/format";
+import type { Vehicle } from "@/data/schemas";
+
+const vehicles = getAllVehicles();
+
+function getCategory(v: Vehicle) {
+  const body = v.bodyType.toLowerCase();
+  const segment = v.segment.toLowerCase();
+  
+  if (body.includes("monospace") || body.includes("van") || v.variant.toLowerCase().includes("monospace")) return "Monospace";
+  if (body.includes("quadricycle") || v.segment.includes("quadricycle")) return "Quadricycle";
+  if (segment.includes("a") || (segment.includes("b") && body.includes("suv")) || body.includes("urbain")) return "Mini-SUV";
+  if (body.includes("suv") || body.includes("crossover")) return "SUV";
+  if (segment.includes("b") || body.includes("citadine")) return "Citadine";
+  if (segment.includes("c") || body.includes("compacte")) return "Compacte";
+  if (body.includes("berline") || body.includes("hatchback") || segment.includes("d")) return "Berline";
+  
+  return "SUV";
+}
+
+function isLeasing(v: Vehicle) {
+  const cheapestPrice = Math.min(...v.trims.map(t => t.price_EUR));
+  const europeCountries = ["France", "Allemagne", "Slovaquie", "Rép. Tchèque", "Pologne", "Espagne", "Italie", "Belgique", "Suède", "Slovénie"];
+  return cheapestPrice < 47000 && europeCountries.includes(v.productionCountry);
+}
+
+function isFamiliale(v: Vehicle) {
+  const s = v.segment.toLowerCase();
+  return s.includes("d") || s.includes("e") || v.bodyType.toLowerCase().includes("familial") || v.bodyType.toLowerCase().includes("monospace") || v.trunkCapacity_L > 450;
+}
+
+function isDaily(v: Vehicle) {
+  const s = v.segment.toLowerCase();
+  return s.includes("a") || s.includes("b") || s.includes("c");
+}
+
+const categories = ["Mini-SUV", "SUV", "Compacte", "Berline", "Citadine", "Monospace", "Quadricycle"];
+const brands = ["Renault", "Peugeot", "Citroën", "Tesla", "BYD", "MG", "Volkswagen", "Kia", "Hyundai", "Leapmotor", "Mobilize"];
+const usages = ["Familiale", "Daily", "Leasing social"];
+---
+
+<BaseLayout
+  title="Véhicules — Evly"
+  description="Liste exhaustive des véhicules électriques couverts par Evly. Filtrage multicritères par catégorie, marque et usage."
+>
+  <div class="py-6 md:py-10">
+    <div class="container-edit">
+      <div class="relative w-full flex flex-col">
+        
+        {/* Barre latérale (Filtres) débordant sur la gauche (Desktop) */}
+        <aside class="hidden xl:block absolute top-0 right-full mr-8 w-[240px] h-full z-10">
+          <div class="sticky top-24 flex flex-col gap-10 fade-rise">
+            
+            <div>
+              <h2 class="text-sm font-semibold tracking-tight text-[var(--color-text)] mb-5">Marques</h2>
+              <div class="flex flex-col gap-3">
+                {brands.map((b) => (
+                  <label class="flex items-center gap-3.5 text-base cursor-pointer hover:text-[var(--color-text)] text-[var(--color-text-muted)] transition-colors group">
+                    <input type="checkbox" value={b} class="filter-checkbox filter-brand w-5 h-5 rounded border border-[var(--color-border)] bg-[var(--color-bg-subtle)] checked:bg-[var(--color-accent)] checked:border-[var(--color-accent)] appearance-none cursor-pointer relative checked:after:content-[''] checked:after:absolute checked:after:left-[6px] checked:after:top-[2px] checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2 checked:after:border-[var(--color-bg)] checked:after:rotate-45" />
+                    <div class="flex items-center gap-2 group-hover:text-[var(--color-text)]">
+                      <BrandLogo brand={b} class="w-5 h-5" />
+                      <span>{b}</span>
+                    </div>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-sm font-semibold tracking-tight text-[var(--color-text)] mb-5">Catégories</h2>
+              <div class="flex flex-col gap-3">
+                {categories.map((c) => (
+                  <label class="flex items-center gap-3.5 text-base cursor-pointer hover:text-[var(--color-text)] text-[var(--color-text-muted)] transition-colors group">
+                    <input type="checkbox" value={c} class="filter-checkbox filter-cat w-5 h-5 rounded border border-[var(--color-border)] bg-[var(--color-bg-subtle)] checked:bg-[var(--color-accent)] checked:border-[var(--color-accent)] appearance-none cursor-pointer relative checked:after:content-[''] checked:after:absolute checked:after:left-[6px] checked:after:top-[2px] checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2 checked:after:border-[var(--color-bg)] checked:after:rotate-45" />
+                    <span class="group-hover:text-[var(--color-text)]">{c}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-sm font-semibold tracking-tight text-[var(--color-text)] mb-5">Usages</h2>
+              <div class="flex flex-col gap-3">
+                {usages.map((u) => (
+                  <label class="flex items-center gap-3.5 text-base cursor-pointer hover:text-[var(--color-text)] text-[var(--color-text-muted)] transition-colors group">
+                    <input type="checkbox" value={u} class="filter-checkbox filter-usage w-5 h-5 rounded border border-[var(--color-border)] bg-[var(--color-bg-subtle)] checked:bg-[var(--color-accent)] checked:border-[var(--color-accent)] appearance-none cursor-pointer relative checked:after:content-[''] checked:after:absolute checked:after:left-[6px] checked:after:top-[2px] checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2 checked:after:border-[var(--color-bg)] checked:after:rotate-45" />
+                    <span class="group-hover:text-[var(--color-text)]">{u}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </aside>
+
+        {/* Barre latérale (Mobile / Tablette) */}
+        <aside class="xl:hidden w-full mb-8 fade-rise">
+          <div class="flex flex-wrap gap-x-8 gap-y-6">
+            <div>
+              <h2 class="text-sm font-semibold tracking-tight text-[var(--color-text)] mb-3">Marques</h2>
+              <div class="flex flex-wrap gap-4">
+                {brands.map((b) => (
+                  <label class="flex items-center gap-2 text-sm cursor-pointer hover:text-[var(--color-text)] text-[var(--color-text-muted)] transition-colors group">
+                    <input type="checkbox" value={b} class="filter-checkbox filter-brand w-4 h-4 rounded border border-[var(--color-border)] bg-[var(--color-bg-subtle)] checked:bg-[var(--color-accent)] checked:border-[var(--color-accent)] appearance-none cursor-pointer relative checked:after:content-[''] checked:after:absolute checked:after:left-[5px] checked:after:top-[2px] checked:after:w-[4px] checked:after:h-[8px] checked:after:border-r-2 checked:after:border-b-2 checked:after:border-[var(--color-bg)] checked:after:rotate-45" />
+                    <div class="flex items-center gap-1.5 group-hover:text-[var(--color-text)]">
+                      <BrandLogo brand={b} class="w-4 h-4" />
+                      <span>{b}</span>
+                    </div>
+                  </label>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h2 class="text-sm font-semibold tracking-tight text-[var(--color-text)] mb-3">Catégories</h2>
+              <div class="flex flex-wrap gap-4">
+                {categories.map((c) => (
+                  <label class="flex items-center gap-2 text-sm cursor-pointer hover:text-[var(--color-text)] text-[var(--color-text-muted)] transition-colors group">
+                    <input type="checkbox" value={c} class="filter-checkbox filter-cat w-4 h-4 rounded border border-[var(--color-border)] bg-[var(--color-bg-subtle)] checked:bg-[var(--color-accent)] checked:border-[var(--color-accent)] appearance-none cursor-pointer relative checked:after:content-[''] checked:after:absolute checked:after:left-[5px] checked:after:top-[2px] checked:after:w-[4px] checked:after:h-[8px] checked:after:border-r-2 checked:after:border-b-2 checked:after:border-[var(--color-bg)] checked:after:rotate-45" />
+                    <span class="group-hover:text-[var(--color-text)]">{c}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h2 class="text-sm font-semibold tracking-tight text-[var(--color-text)] mb-3">Usages</h2>
+              <div class="flex flex-wrap gap-4">
+                {usages.map((u) => (
+                  <label class="flex items-center gap-2 text-sm cursor-pointer hover:text-[var(--color-text)] text-[var(--color-text-muted)] transition-colors group">
+                    <input type="checkbox" value={u} class="filter-checkbox filter-usage w-4 h-4 rounded border border-[var(--color-border)] bg-[var(--color-bg-subtle)] checked:bg-[var(--color-accent)] checked:border-[var(--color-accent)] appearance-none cursor-pointer relative checked:after:content-[''] checked:after:absolute checked:after:left-[5px] checked:after:top-[2px] checked:after:w-[4px] checked:after:h-[8px] checked:after:border-r-2 checked:after:border-b-2 checked:after:border-[var(--color-bg)] checked:after:rotate-45" />
+                    <span class="group-hover:text-[var(--color-text)]">{u}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        {/* Contenu principal aligné avec container-edit */}
+        <main class="w-full">
+          <BentoGrid>
+            <Tile size="full" variant="elevated">
+              <div class="flex items-center gap-4 mb-6 fade-rise fade-rise-delay-1">
+                <span class="font-mono text-xs text-[var(--color-text-faint)]">00</span>
+                <span class="label-eyebrow">Catalogue</span>
+              </div>
+              <h1 class="display-1 max-w-3xl fade-rise fade-rise-delay-2">
+                Tous les véhicules
+                <span class="text-[var(--color-text-muted)]">— mis à jour {new Date().getFullYear()}.</span>
+              </h1>
+              <p class="mt-6 text-[var(--color-text-muted)] text-sm md:text-base max-w-2xl fade-rise fade-rise-delay-3">
+                Sélectionnez vos critères de filtrage pour affiner la liste.
+              </p>
+              <div class="mt-8 pt-6 border-t border-[var(--color-border)] flex flex-wrap items-center gap-2 fade-rise fade-rise-delay-3">
+                <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)] mr-2">Trier</span>
+                <button class="sort-btn" data-sort="default" data-active="true">Défaut</button>
+                <button class="sort-btn" data-sort="price-asc">Prix ↑</button>
+                <button class="sort-btn" data-sort="price-desc">Prix ↓</button>
+                <button class="sort-btn" data-sort="range-desc">Autonomie réelle</button>
+                <button class="sort-btn" data-sort="dc-desc">Recharge DC</button>
+                <button class="sort-btn" data-sort="ratio-desc">Rapport km/€ ★</button>
+              </div>
+            </Tile>
+
+        {vehicles.map((v) => {
+          const cheapest = v.trims.reduce((a, b) => (a.price_EUR < b.price_EUR ? a : b));
+          const category = getCategory(v);
+          
+          const familial = isFamiliale(v) ? "Familiale" : "";
+          const daily = isDaily(v) ? "Daily" : "";
+          const leasing = isLeasing(v) ? "Leasing social" : "";
+          const usageTags = [familial, daily, leasing].filter(Boolean).join(",");
+
+          return (
+            <div
+              data-category={category}
+              data-brand={v.brand}
+              data-usage={usageTags}
+              data-price={cheapest.price_EUR}
+              data-range={v.realRange.mixed_km}
+              data-dc={v.chargingDC.peakPower_kW}
+              data-ratio={Math.round(v.realRange.mixed_km / cheapest.price_EUR * 10000)}
+              class="vehicle-card contents"
+            >
+              <Tile size="2x1" variant="default" href={`/vehicules/${v.slug}`} ariaLabel={`Fiche ${v.brand} ${v.model} ${v.variant}`} class="reveal">
+                <div class="flex items-center justify-between gap-3 mb-4">
+                  <div class="flex items-center gap-2 text-[var(--color-text-muted)]">
+                    <BrandLogo brand={v.brand} class="w-4 h-4" />
+                    <span class="label-eyebrow">{v.brand} · {v.segment.split(" — ")[0] ?? v.segment}</span>
+                  </div>
+                  <div class="flex items-center gap-2 flex-wrap justify-end">
+                    {isLeasing(v) && <Tag tone="accent" mono>Leasing social</Tag>}
+                    <Tag tone="outline" mono>{v.architecture_V} V</Tag>
+                  </div>
+                </div>
+                <div class="flex items-end gap-3 mb-6">
+                  <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.05]">
+                    {v.model}
+                    <span class="block text-[var(--color-text-muted)] text-lg md:text-xl mt-1 font-medium">{v.variant}</span>
+                  </h2>
+                  <div class="flex-1 flex justify-center items-end">
+                    <VehicleImage
+                      slug={v.slug}
+                      alt={`${v.brand} ${v.model}`}
+                      class="w-28 h-14"
+                    />
+                  </div>
+                </div>
+                <div class="grid grid-cols-3 gap-4 mt-auto pt-5 border-t border-[var(--color-border)]">
+                  <div class="flex flex-col gap-1">
+                    <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Auto.</span>
+                    <div class="flex items-baseline gap-1">
+                      <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-accent)]">{v.realRange.mixed_km}</span>
+                      <span class="font-mono text-[11px] text-[var(--color-text-faint)]">km</span>
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">DC</span>
+                    <div class="flex items-baseline gap-1">
+                      <span data-numeric class="display-stat text-2xl md:text-3xl">{v.chargingDC.peakPower_kW}</span>
+                      <span class="font-mono text-[11px] text-[var(--color-text-faint)]">kW</span>
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Dès</span>
+                    <span data-numeric class="display-stat text-2xl md:text-3xl">{formatPrice(cheapest.price_EUR)}</span>
+                  </div>
+                </div>
+              </Tile>
+            </div>
+          );
+        })}
+      </BentoGrid>
+    </main>
+  </div>
+
+  <script is:inline>
+    const checkboxes = document.querySelectorAll('.filter-checkbox');
+    const cards = document.querySelectorAll('.vehicle-card');
+    const sortBtns = document.querySelectorAll('.sort-btn');
+    const grid = document.querySelector('.bento-grid');
+    const originalOrder = Array.from(cards);
+
+    function updateFilters() {
+      const selectedBrands = Array.from(document.querySelectorAll('.filter-brand:checked')).map(cb => cb.value);
+      const selectedCats   = Array.from(document.querySelectorAll('.filter-cat:checked')).map(cb => cb.value);
+      const selectedUsages = Array.from(document.querySelectorAll('.filter-usage:checked')).map(cb => cb.value);
+
+      cards.forEach(card => {
+        const brand  = card.getAttribute('data-brand');
+        const cat    = card.getAttribute('data-category');
+        const usages = card.getAttribute('data-usage').split(',');
+
+        const ok = (selectedBrands.length === 0 || selectedBrands.includes(brand))
+                && (selectedCats.length   === 0 || selectedCats.includes(cat))
+                && (selectedUsages.length === 0 || selectedUsages.some(u => usages.includes(u)));
+
+        card.style.display = ok ? 'contents' : 'none';
+      });
+    }
+
+    function applySort(sortKey) {
+      sortBtns.forEach(btn => delete btn.dataset.active);
+      document.querySelector(`.sort-btn[data-sort="${sortKey}"]`).dataset.active = 'true';
+
+      const sorted = sortKey === 'default'
+        ? [...originalOrder]
+        : [...originalOrder].sort((a, b) => {
+            switch (sortKey) {
+              case 'price-asc':  return +a.dataset.price - +b.dataset.price;
+              case 'price-desc': return +b.dataset.price - +a.dataset.price;
+              case 'range-desc': return +b.dataset.range - +a.dataset.range;
+              case 'dc-desc':    return +b.dataset.dc    - +a.dataset.dc;
+              case 'ratio-desc': return +b.dataset.ratio - +a.dataset.ratio;
+              default:           return 0;
+            }
+          });
+
+      sorted.forEach(card => grid.appendChild(card));
+    }
+
+    checkboxes.forEach(cb => cb.addEventListener('change', updateFilters));
+    sortBtns.forEach(btn => btn.addEventListener('click', () => applySort(btn.dataset.sort)));
+  </script>
+
+  <style>
+    .sort-btn {
+      font-family: var(--font-mono, ui-monospace, monospace);
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      border: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      background: transparent;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+    .sort-btn:hover {
+      border-color: var(--color-border-strong);
+      color: var(--color-text);
+    }
+    .sort-btn[data-active] {
+      border-color: var(--color-text);
+      color: var(--color-text);
+    }
+  </style>
+</BaseLayout>

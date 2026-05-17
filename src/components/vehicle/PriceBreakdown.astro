@@ -1,0 +1,128 @@
+---
+import type { Vehicle } from "@/data/schemas";
+import { formatPrice } from "@/lib/format";
+
+interface Props {
+  vehicle: Vehicle;
+}
+
+const { vehicle } = Astro.props;
+const totalAids = vehicle.availableAids.reduce(
+  (sum, aid) => sum + aid.amount_EUR,
+  0
+);
+const cheapest = vehicle.trims.reduce((a, b) => (a.price_EUR < b.price_EUR ? a : b));
+const priceAfterAids = Math.max(0, cheapest.price_EUR - totalAids);
+---
+
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-px bg-[var(--color-border)]">
+  <!-- Trims -->
+  <div class="lg:col-span-7 bg-[var(--color-bg)] p-8 md:p-10">
+    <h3 class="label-eyebrow mb-6">Finitions disponibles</h3>
+    <div class="flex flex-col">
+      {
+        vehicle.trims.map((trim, idx) => (
+          <div
+            class:list={[
+              "py-6 grid grid-cols-12 gap-6 items-start",
+              idx !== vehicle.trims.length - 1 && "border-b border-[var(--color-border)]",
+            ]}
+          >
+            <div class="col-span-12 md:col-span-3 flex flex-col gap-2">
+              <span class="font-display text-2xl font-semibold tracking-[-0.01em]">
+                {trim.name}
+              </span>
+              <span class="font-mono text-xs text-[var(--color-text-faint)]">
+                {trim.batteryUsed}
+              </span>
+            </div>
+            <ul class="col-span-12 md:col-span-6 flex flex-col gap-1.5">
+              {trim.equipmentHighlights.map((eq) => (
+                <li class="text-sm text-[var(--color-text-muted)] before:content-['—'] before:mr-2 before:text-[var(--color-text-faint)]">
+                  {eq}
+                </li>
+              ))}
+            </ul>
+            <div class="col-span-12 md:col-span-3 flex md:justify-end">
+              <span
+                data-numeric
+                class="font-display text-2xl md:text-3xl font-semibold tabular tracking-[-0.01em]"
+              >
+                {formatPrice(trim.price_EUR)}
+              </span>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Aides + leasing social -->
+  <div class="lg:col-span-5 bg-[var(--color-bg)] p-8 md:p-10 flex flex-col gap-8">
+    <div>
+      <h3 class="label-eyebrow mb-6">Aides cumulables</h3>
+      {vehicle.availableAids.length === 0 ? (
+        <p class="text-sm text-[var(--color-text-muted)]">Aucune aide disponible.</p>
+      ) : (
+        <ul class="flex flex-col">
+          {vehicle.availableAids.map((aid, idx) => (
+            <li
+              class:list={[
+                "py-4 flex items-baseline justify-between gap-4",
+                idx !== vehicle.availableAids.length - 1 && "border-b border-[var(--color-border)]",
+              ]}
+            >
+              <div class="flex flex-col gap-1">
+                <span class="text-sm text-[var(--color-text)]">{aid.label}</span>
+                {aid.conditions && (
+                  <span class="text-xs text-[var(--color-text-faint)]">
+                    {aid.conditions}
+                  </span>
+                )}
+              </div>
+              <span
+                data-numeric
+                class="font-mono text-sm font-medium text-[var(--color-accent)] whitespace-nowrap"
+              >
+                – {formatPrice(aid.amount_EUR)}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <div
+        class="mt-6 pt-6 border-t border-[var(--color-border-strong)] flex items-baseline justify-between"
+      >
+        <span class="text-sm text-[var(--color-text-muted)]">
+          Prix net potentiel ({cheapest.name})
+        </span>
+        <span data-numeric class="font-display text-2xl font-semibold tabular">
+          {formatPrice(priceAfterAids)}
+        </span>
+      </div>
+    </div>
+
+    {
+      vehicle.leasingSocialEligible && vehicle.leasingSocial_EUR_per_month && (
+        <div class="border border-[var(--color-accent-dim)] p-6 flex flex-col gap-3">
+          <span class="label-eyebrow text-[var(--color-accent)]">
+            Leasing social éligible
+          </span>
+          <div class="flex items-baseline gap-2">
+            <span data-numeric class="display-stat text-4xl text-[var(--color-accent)]">
+              {vehicle.leasingSocial_EUR_per_month}
+            </span>
+            <span class="font-mono text-sm text-[var(--color-text-muted)]">
+              € / mois
+            </span>
+          </div>
+          <p class="text-xs text-[var(--color-text-muted)] leading-relaxed">
+            Loyer plafonné dans le cadre du dispositif gouvernemental, sous condition
+            de revenus. Disponible uniquement sur la finition Air avec batterie Standard.
+          </p>
+        </div>
+      )
+    }
+  </div>
+</div>

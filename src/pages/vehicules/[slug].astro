@@ -1,0 +1,618 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import BentoGrid from "@/components/ui/BentoGrid.astro";
+import Tile from "@/components/ui/Tile.astro";
+import TileStat from "@/components/ui/TileStat.astro";
+import Tag from "@/components/ui/Tag.astro";
+import SourceTooltip from "@/components/ui/SourceTooltip.astro";
+import MethodologyBadge from "@/components/ui/MethodologyBadge.astro";
+import ChargingCurve from "@/components/vehicle/ChargingCurve.tsx";
+import SeasonalRange from "@/components/vehicle/SeasonalRange.tsx";
+import SpeedConsumption from "@/components/vehicle/SpeedConsumption.tsx";
+import VehicleConfigSelector from "@/components/vehicle/VehicleConfigSelector.tsx";
+import { getAllVehicles, getVehicleBySlug } from "@/lib/vehicles";
+import { getSource, getSources, type TrustLevel } from "@/data/sources";
+import { formatDate, formatHours, formatPrice } from "@/lib/format";
+
+export function getStaticPaths() {
+  return getAllVehicles().map((vehicle) => ({
+    params: { slug: vehicle.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+if (!slug) throw new Error("Slug manquant");
+
+const vehicle = getVehicleBySlug(slug);
+if (!vehicle) {
+  return Astro.redirect("/404");
+}
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/vehicles/*');
+const imagePath = Object.keys(images).find((path) => path.startsWith(`/src/assets/vehicles/${slug}.`));
+let VehicleImage;
+if (imagePath) {
+  VehicleImage = (await images[imagePath]()).default;
+}
+
+const brandSlug = vehicle.brand.toLowerCase().replace('ë', 'e');
+const logos = import.meta.glob<{ default: ImageMetadata }>('/src/assets/logos/*');
+const logoPath = Object.keys(logos).find((path) => path.startsWith(`/src/assets/logos/${brandSlug}.`));
+let BrandLogo;
+if (logoPath) {
+  BrandLogo = (await logos[logoPath]()).default;
+}
+
+const sources = getSources(vehicle.sources);
+const sourceLabels: Record<string, string> = {};
+for (const id of vehicle.sources) {
+  const s = getSource(id);
+  if (s) sourceLabels[id] = s.name;
+}
+for (const test of vehicle.rangeTests) {
+  if (!sourceLabels[test.sourceId]) {
+    const s = getSource(test.sourceId);
+    if (s) sourceLabels[test.sourceId] = s.name;
+  }
+}
+
+const categoryLabels: Record<string, string> = {
+  securite: "Sécurité",
+  technologie: "Technologie",
+  confort: "Confort",
+  design: "Design",
+};
+const featuresByCategory = vehicle.keyFeatures.reduce<Record<string, string[]>>((acc, f) => {
+  if (!acc[f.category]) acc[f.category] = [];
+  acc[f.category]!.push(f.label);
+  return acc;
+}, {});
+
+const trustLabels: Record<TrustLevel, string> = {
+  high: "Confiance haute",
+  medium: "Confiance modérée",
+  low: "Confiance basse",
+};
+const trustTone: Record<TrustLevel, "accent" | "warning" | "danger"> = {
+  high: "accent",
+  medium: "warning",
+  low: "danger",
+};
+
+const confidenceLabel: Record<string, string> = {
+  tested: "Mesurée",
+  manufacturer: "Constructeur",
+  estimated: "Estimée",
+  pending: "En attente",
+};
+
+const tkc = vehicle.thousandKmChallenge;
+const tkcHasData = tkc !== null && (tkc.totalTime_minutes !== null || tkc.averageSpeed_kmh !== null || tkc.averageConsumption_Wh_km !== null || tkc.chargingStops !== null);
+const totalAids = vehicle.availableAids.reduce((sum, aid) => sum + aid.amount_EUR, 0);
+
+const cheapestTrim = vehicle.trims.reduce((a, b) => a.price_EUR < b.price_EUR ? a : b);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Car",
+  name: `${vehicle.brand} ${vehicle.model} ${vehicle.variant}`,
+  brand: { "@type": "Brand", name: vehicle.brand },
+  model: vehicle.model,
+  vehicleConfiguration: vehicle.variant,
+  bodyType: vehicle.bodyType,
+  fuelType: "Électrique",
+  vehicleEngine: {
+    "@type": "EngineSpecification",
+    enginePower: { "@type": "QuantitativeValue", value: vehicle.power_kW, unitCode: "KWT" },
+    fuelType: "Électrique",
+  },
+  vehicleTransmission: vehicle.drivetrain,
+  driveWheelConfiguration: vehicle.drivetrain,
+  numberOfAxles: 2,
+  productionDate: vehicle.releaseYear.toString(),
+  countryOfAssembly: vehicle.productionCountry,
+  offers: vehicle.trims.map((trim) => ({
+    "@type": "Offer",
+    name: trim.name,
+    price: trim.price_EUR,
+    priceCurrency: "EUR",
+    availability: "https://schema.org/InStock",
+  })),
+};
+
+const description = `${vehicle.brand} ${vehicle.model} ${vehicle.variant} : ${vehicle.realRange.mixed_km} km d'autonomie réelle mixte mesurée, ${vehicle.power_hp} ch, à partir de ${formatPrice(cheapestTrim.price_EUR)}. Fiche complète Evly.`;
+
+// Ensure we have at least one configuration to map over, fallback to a dummy one if empty to not break existing vehicles
+const configurations = vehicle.configurations.length > 0 ? vehicle.configurations : [{
+  id: "default",
+  label: vehicle.variant,
+  battery: "standard",
+  trim: vehicle.trims[0]?.name ?? "Standard",
+  wheelSize_inches: 18,
+  tyreType: "summer",
+  options: [],
+  price_EUR: cheapestTrim.price_EUR,
+  monthlyLease_EUR: vehicle.leasingSocial_EUR_per_month,
+  leasingSocialEligible: vehicle.leasingSocialEligible,
+  wltp_km: vehicle.wltp_max_km,
+  wltp_consumption_kWh_100km: vehicle.consumption_mixed_kWh_per_100km,
+  realRange: vehicle.realRange,
+  rangeTests: vehicle.rangeTests,
+  chargingDC_peak_kW: vehicle.chargingDC.peakPower_kW,
+  chargingDC_10_80_min: vehicle.chargingDC.time_10_80_min,
+  chargingDC_kWh_30min: vehicle.chargingDC.kWh_added_30min,
+  chargingCurve: vehicle.chargingCurve,
+  availability: "available",
+  notes: null
+} as any];
+
+---
+
+<BaseLayout title={`${vehicle.brand} ${vehicle.model} ${vehicle.variant}`} description={description} jsonLd={jsonLd}>
+  <!-- Fil d'ariane -->
+  <div class="container-edit pt-4 md:pt-6 fade-rise">
+    <nav aria-label="Fil d'ariane" class="font-mono text-[11px] md:text-xs text-[var(--color-text-faint)] flex items-center gap-2 flex-wrap">
+      <a href="/" class="hover:text-[var(--color-text-muted)] min-h-[44px] inline-flex items-center">Accueil</a>
+      <span aria-hidden="true">/</span>
+      <a href="/vehicules" class="hover:text-[var(--color-text-muted)] min-h-[44px] inline-flex items-center">Véhicules</a>
+      <span aria-hidden="true">/</span>
+      <span class="text-[var(--color-text-muted)] inline-flex items-center min-h-[44px]">{vehicle.brand} {vehicle.model}</span>
+    </nav>
+  </div>
+
+  <div class="container-edit py-6 md:py-10">
+    
+    {vehicle.configurations.length > 1 && (
+      <div class="mb-6 md:mb-8 fade-rise">
+        <VehicleConfigSelector client:load vehicle={vehicle} />
+      </div>
+    )}
+
+    <BentoGrid>
+      {configurations.map((config, index) => {
+        // Compute config-specific values
+        const nyland90 = config.rangeTests.find((t: any) => t.protocol === "nyland" && t.speed_kmh === 90);
+        const batteryCapacity = config.battery === "long-range" ? vehicle.usableCapacity_kWh : (vehicle.usableCapacity_kWh > 70 ? 58.3 : vehicle.usableCapacity_kWh); // approximation if no specific capacity
+        const nylandRangeEstimate = nyland90 ? Math.round((batteryCapacity / nyland90.consumption_kWh_100km) * 100) : null;
+        const priceAfterAids = Math.max(0, config.price_EUR - totalAids);
+        const realRangeMixed = config.realRange?.mixed_km ?? vehicle.realRange.mixed_km;
+        
+        return (
+          <div data-config-id={config.id} style={{ display: index === 0 ? "contents" : "none" }} class="config-wrapper">
+            <!-- HERO TILE -->
+            <Tile size="full" variant="elevated" class="md:!p-10 lg:!p-12">
+              <div class="flex flex-wrap items-center gap-x-4 gap-y-2 mb-6 md:mb-8 fade-rise">
+                <span class="label-eyebrow">{vehicle.segment}</span>
+                <span class="label-eyebrow">{vehicle.bodyType}</span>
+                <span class="label-eyebrow">{vehicle.drivetrain} · {vehicle.architecture_V} V</span>
+                {config.leasingSocialEligible && <Tag tone="accent" mono>Leasing social</Tag>}
+              </div>
+
+              <div class="flex flex-col gap-5 md:gap-6 relative">
+                {BrandLogo ? (
+                  <div class="h-5 md:h-6 mb-[-1rem] relative z-10 fade-rise fade-rise-delay-1 flex items-start">
+                    <img src={typeof BrandLogo === 'string' ? BrandLogo : BrandLogo.src} alt={vehicle.brand} class="h-full w-auto object-contain brand-logo" />
+                  </div>
+                ) : (
+                  <p class="font-mono text-xs md:text-sm text-[var(--color-text-muted)] fade-rise fade-rise-delay-1 relative z-10">{vehicle.brand}</p>
+                )}
+                <h1 class="display-1 fade-rise fade-rise-delay-1 md:max-w-[55%] relative z-10">
+                  {vehicle.model}
+                  <span class="block text-[var(--color-text-muted)] mt-1.5 text-[0.5em] md:text-[0.55em] tracking-[-0.01em] font-medium">
+                    {config.label}
+                  </span>
+                </h1>
+
+                {VehicleImage && (
+                  <div class="w-full md:absolute md:top-1/2 md:-translate-y-[60%] lg:-translate-y-1/2 md:right-0 md:w-[48%] lg:w-[55%] flex justify-center md:justify-end items-center pointer-events-none z-0 mt-4 md:mt-0">
+                    <img
+                      src={VehicleImage.src}
+                      alt={`${vehicle.brand} ${vehicle.model} ${vehicle.variant}`}
+                      loading="eager"
+                      class="w-[110%] max-w-[400px] md:w-[120%] md:max-w-[700px] h-auto object-contain vehicle-hero-img md:translate-x-8"
+                    />
+                  </div>
+                )}
+
+                <div class="mt-2 md:mt-4 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-end relative z-10">
+                  <div class="md:col-span-7 flex flex-col gap-2">
+                    <div class="flex items-center gap-2">
+                      <span class="label-eyebrow">
+                        {nyland90 ? "Autonomie estimée — Nyland 90 km/h" : "Autonomie réelle mixte mesurée"}
+                      </span>
+                      {nyland90 && <SourceTooltip sourceId="nyland" date={nyland90.testDate ?? undefined} />}
+                    </div>
+                    <div class="flex items-baseline gap-3 md:gap-4">
+                      <span data-numeric class="display-stat text-[var(--color-accent)] text-[clamp(4rem,16vw,10rem)] leading-[0.85]">
+                        {nylandRangeEstimate ?? realRangeMixed}
+                      </span>
+                      <span class="font-mono text-xl md:text-2xl text-[var(--color-text-faint)]">km</span>
+                    </div>
+                    {nyland90 ? (
+                      <p class="font-mono text-[11px] md:text-xs text-[var(--color-text-faint)] leading-relaxed">
+                        Conso mesurée à {nyland90.consumption_kWh_100km.toString().replace(".", ",")} kWh/100&nbsp;km, batterie utile {batteryCapacity.toString().replace(".", ",")} kWh — WLTP annoncée {config.wltp_km} km.
+                      </p>
+                    ) : (
+                      <p class="font-mono text-[11px] md:text-xs text-[var(--color-text-faint)] leading-relaxed">
+                        conso mixte {(config.wltp_consumption_kWh_100km ?? vehicle.consumption_mixed_kWh_per_100km).toString().replace(".", ",")} kWh/100&nbsp;km — WLTP annoncée {config.wltp_km ?? vehicle.wltp_max_km} km
+                      </p>
+                    )}
+                  </div>
+                  <div class="md:col-span-5 flex flex-col gap-3 md:items-end">
+                    <div class="flex flex-col gap-2 md:items-end">
+                      <span class="label-eyebrow">Prix config.</span>
+                      <span data-numeric class="display-stat text-4xl md:text-5xl">{formatPrice(config.price_EUR)}</span>
+                      <span class="font-mono text-[11px] text-[var(--color-text-faint)]">
+                        {config.leasingSocialEligible && config.monthlyLease_EUR
+                          ? `leasing social ${config.monthlyLease_EUR} €/mois`
+                          : "hors options"}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Tile>
+
+            <!-- Tuiles 1x1 : 0-100, puissance, vitesse max, Cx -->
+            <Tile size="1x1" label="0 → 100 km/h" class="reveal">
+              <TileStat value={vehicle.acceleration_0_100_s.toString().replace(".", ",")} unit="s" size="xl" />
+            </Tile>
+
+            <Tile size="1x1" label="Puissance" class="reveal">
+              <TileStat value={vehicle.power_hp.toString()} unit="ch" size="xl" hint={`${vehicle.power_kW} kW`} />
+            </Tile>
+
+            <Tile size="1x1" label="Vitesse max" class="reveal">
+              <TileStat value={vehicle.topSpeed_kmh.toString()} unit="km/h" size="xl" />
+            </Tile>
+
+            <Tile size="1x1" label="Cx aéro" class="reveal">
+              <TileStat value={vehicle.dragCoefficient_Cx.toString().replace(".", ",")} size="xl" tone="accent" />
+            </Tile>
+
+            <!-- 2x2 : conso/vitesse multi-sources (masqué si aucun test avec vitesse) -->
+            {(() => {
+              const tests = config.rangeTests.length > 0 ? config.rangeTests : vehicle.rangeTests;
+              return tests.some((t: any) => t.speed_kmh !== null) && (
+                <Tile size="2x2" variant="elevated" label="Conso / vitesse" class="reveal">
+                  <div class="flex items-center justify-between gap-3 -mt-2 mb-3">
+                    <h3 class="font-display text-base md:text-lg font-semibold tracking-[-0.01em]">Multi-sources mesurées</h3>
+                    <Tag tone="outline" mono>{tests.length} tests</Tag>
+                  </div>
+                  <SpeedConsumption client:visible tests={tests} sourceLabels={sourceLabels} vehicleName={`${vehicle.brand} ${vehicle.model} ${config.trim}`} />
+                </Tile>
+              );
+            })()}
+
+            <!-- 1x1 : capacité batterie -->
+            <Tile size="1x1" label="Batterie utile" class="reveal">
+              <TileStat value={batteryCapacity.toString().replace(".", ",")} unit="kWh" size="xl" hint={`${vehicle.chemistry} · ${vehicle.architecture_V} V`} />
+            </Tile>
+
+            <!-- 1x1 : pic DC -->
+            <Tile size="1x1" label="Pic DC" source={vehicle.chargingDC.confidence === "tested" ? "nyland" : undefined} class="reveal">
+              <TileStat value={(config.chargingDC_peak_kW ?? vehicle.chargingDC.peakPower_kW).toString()} unit="kW" size="xl" tone="accent" hint={`10 → 80 % en ${config.chargingDC_10_80_min ?? vehicle.chargingDC.time_10_80_min} min`} />
+            </Tile>
+
+            <!-- 2x2 : courbe de charge -->
+            <Tile size="2x2" variant="elevated" label="Courbe de charge DC" class="reveal">
+              <div class="flex items-center justify-between gap-3 -mt-2 mb-3">
+                <h3 class="font-display text-base md:text-lg font-semibold tracking-[-0.01em]">Puissance vs SoC</h3>
+                <Tag tone="outline" mono>{confidenceLabel[vehicle.chargingDC.confidence] ?? vehicle.chargingDC.confidence}</Tag>
+              </div>
+              {(config.chargingCurve ?? vehicle.chargingCurve) ? (
+                <ChargingCurve client:visible curve={config.chargingCurve ?? vehicle.chargingCurve!} peakPower_kW={config.chargingDC_peak_kW ?? vehicle.chargingDC.peakPower_kW} vehicleName={`${vehicle.brand} ${vehicle.model}`} />
+              ) : (
+                <p class="text-[var(--color-text-faint)] mt-4">Données non mesurées.</p>
+              )}
+            </Tile>
+
+            <!-- 2x1 : énergie ajoutée + recharge AC -->
+            <Tile size="2x1" label="Recharge AC complète" class="reveal">
+              <div class="grid grid-cols-2 gap-6 mt-auto">
+                <div class="flex flex-col gap-1.5">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">+30 min DC</span>
+                  <div class="flex items-baseline gap-1.5">
+                    <span data-numeric class="display-stat text-3xl md:text-4xl text-[var(--color-accent)]">{config.chargingDC_kWh_30min ?? vehicle.chargingDC.kWh_added_30min}</span>
+                    <span class="font-mono text-xs text-[var(--color-text-faint)]">kWh</span>
+                  </div>
+                  <span class="font-mono text-[11px] text-[var(--color-text-faint)]">
+                    ≈ {Math.round(((config.chargingDC_kWh_30min ?? vehicle.chargingDC.kWh_added_30min) / (config.wltp_consumption_kWh_100km ?? vehicle.consumption_mixed_kWh_per_100km)) * 100)} km mixte
+                  </span>
+                </div>
+                <div class="flex flex-col gap-1.5">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">0 → 100 % AC</span>
+                  <div class="flex items-baseline gap-1.5">
+                    <span data-numeric class="display-stat text-3xl md:text-4xl">{formatHours(vehicle.chargingAC.time_0_100_h)}</span>
+                  </div>
+                  <span class="font-mono text-[11px] text-[var(--color-text-faint)]">wallbox {vehicle.chargingAC.onboardCharger_kW} kW, {vehicle.chargingAC.phases} phases</span>
+                </div>
+              </div>
+            </Tile>
+
+            <!-- 2x2 : autonomie par usage (chart) -->
+            <Tile size="2x2" variant="elevated" label="Autonomie par usage" class="reveal">
+              <div class="flex items-center justify-between gap-3 -mt-2 mb-3">
+                <h3 class="font-display text-base md:text-lg font-semibold tracking-[-0.01em]">Quatre profils mesurés</h3>
+                <Tag tone="outline" mono>{confidenceLabel[config.realRange?.confidence ?? vehicle.realRange.confidence] ?? (config.realRange?.confidence ?? vehicle.realRange.confidence)}</Tag>
+              </div>
+              <SeasonalRange client:visible urban={config.realRange?.urban_km ?? vehicle.realRange.urban_km} mixed={config.realRange?.mixed_km ?? vehicle.realRange.mixed_km} highway={config.realRange?.highway_130_km ?? vehicle.realRange.highway_130_km} winter={config.realRange?.winter_minus5_km ?? vehicle.realRange.winter_minus5_km} vehicleName={`${vehicle.brand} ${vehicle.model} ${config.trim}`} />
+            </Tile>
+
+            <!-- 1x1 : écart WLTP -->
+            <Tile size="1x1" label="Écart WLTP / mixte" class="reveal">
+              <TileStat value={`–${Math.round((1 - (config.realRange?.mixed_km ?? vehicle.realRange.mixed_km) / (config.wltp_km ?? vehicle.wltp_max_km)) * 100)} %`} tone="warning" size="xl" hint="commun à tous les VE" />
+            </Tile>
+
+            <!-- 1x1 : pénalité hiver -->
+            <Tile size="1x1" label="Pénalité hiver −5°C" class="reveal">
+              <TileStat value={`–${Math.round((1 - (config.realRange?.winter_minus5_km ?? vehicle.realRange.winter_minus5_km) / (config.realRange?.mixed_km ?? vehicle.realRange.mixed_km)) * 100)} %`} tone="danger" size="xl" hint="sans préchauffage" />
+            </Tile>
+
+            <!-- 2x1 : 1000 km challenge -->
+            {tkc && (
+              <Tile size="2x1" variant={tkcHasData ? "accent" : "outlined"} label="1000 km challenge" source={tkc.sourceId} sourceDate={tkc.testDate ?? undefined} class="reveal">
+                <div class="flex items-center justify-between gap-3 -mt-2 mb-3">
+                  <h3 class="font-display text-base md:text-lg font-semibold tracking-[-0.01em]">Protocole Nyland</h3>
+                  <Tag tone={tkcHasData ? "accent" : "warning"} mono>{confidenceLabel[tkc.confidence] ?? tkc.confidence}</Tag>
+                </div>
+                {tkcHasData ? (
+                  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-auto">
+                    <div class="flex flex-col gap-1">
+                      <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Temps</span>
+                      <span data-numeric class="display-stat text-2xl md:text-3xl">{tkc.totalTime_minutes ?? "—"}<span class="text-sm text-[var(--color-text-faint)] ml-1 font-mono">min</span></span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                      <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Vit. moy</span>
+                      <span data-numeric class="display-stat text-2xl md:text-3xl">{tkc.averageSpeed_kmh ?? "—"}<span class="text-sm text-[var(--color-text-faint)] ml-1 font-mono">km/h</span></span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                      <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Conso</span>
+                      <span data-numeric class="display-stat text-2xl md:text-3xl">{tkc.averageConsumption_Wh_km ?? "—"}<span class="text-sm text-[var(--color-text-faint)] ml-1 font-mono">Wh/km</span></span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                      <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Arrêts</span>
+                      <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-accent)]">{tkc.chargingStops ?? "—"}</span>
+                    </div>
+                  </div>
+                ) : (
+                  <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Test publié par {sourceLabels[tkc.sourceId] ?? tkc.sourceId}. Valeurs en cours de vérification — Evly s'interdit toute estimation à la place de la mesure.</p>
+                )}
+                {tkc.videoUrl && (
+                  <a href={tkc.videoUrl} target="_blank" rel="noopener noreferrer" class="font-mono text-[11px] text-[var(--color-accent)] hover:underline mt-3 self-start min-h-[44px] inline-flex items-center">Voir la vidéo source ↗</a>
+                )}
+              </Tile>
+            )}
+
+            <!-- 3x1 : table des tests terrain -->
+            {(config.rangeTests.length > 0 ? config.rangeTests : vehicle.rangeTests).length > 0 && (
+              <Tile size="3x1" label="Tests terrain agrégés" class="reveal">
+                <div class="flex items-center justify-between gap-3 -mt-2 mb-4">
+                  <h3 class="font-display text-base md:text-lg font-semibold tracking-[-0.01em]">Chaque chiffre attribué à sa source</h3>
+                  <Tag tone="outline" mono>{Object.keys(sourceLabels).length} sources</Tag>
+                </div>
+                <div class="overflow-x-auto -mx-5 md:-mx-7">
+                  <table class="w-full text-sm min-w-[640px]">
+                    <thead>
+                      <tr class="text-left border-b border-[var(--color-border)]">
+                        <th class="label-eyebrow font-normal py-3 px-5 md:px-7">Source</th>
+                        <th class="label-eyebrow font-normal py-3 px-2 text-right">Vit.</th>
+                        <th class="label-eyebrow font-normal py-3 px-2 text-right">Conso</th>
+                        <th class="label-eyebrow font-normal py-3 px-2 text-right">Range</th>
+                        <th class="label-eyebrow font-normal py-3 px-2 text-right">T°</th>
+                        <th class="label-eyebrow font-normal py-3 px-5 md:px-7">Protocole</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {(config.rangeTests.length > 0 ? config.rangeTests : vehicle.rangeTests).map((test: any) => {
+                        const sourceName = sourceLabels[test.sourceId] ?? test.sourceId;
+                        return (
+                          <tr class="border-b border-[var(--color-border)] last:border-0 row-hover transition-colors">
+                            <td class="py-3 px-5 md:px-7">
+                              <div class="flex items-center gap-2 flex-wrap">
+                                <span class="text-[var(--color-text)]">{sourceName}</span>
+                                <SourceTooltip sourceId={test.sourceId} date={test.testDate ?? undefined} />
+                                {test.videoUrl && <a href={test.videoUrl} target="_blank" rel="noopener noreferrer" class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-accent)] hover:underline">vidéo ↗</a>}
+                              </div>
+                            </td>
+                            <td class="py-3 px-2 text-right font-mono tabular text-[var(--color-text-muted)] whitespace-nowrap">{test.speed_kmh ? `${test.speed_kmh}` : "—"}</td>
+                            <td class="py-3 px-2 text-right font-mono tabular text-[var(--color-accent)] whitespace-nowrap">{test.consumption_kWh_100km.toString().replace(".", ",")}</td>
+                            <td class="py-3 px-2 text-right font-mono tabular text-[var(--color-text-muted)] whitespace-nowrap">{test.range_km ? `${test.range_km}` : "—"}</td>
+                            <td class="py-3 px-2 text-right font-mono tabular text-[var(--color-text-muted)] whitespace-nowrap">{test.temperature_C !== null ? `${test.temperature_C}°` : "—"}</td>
+                            <td class="py-3 px-5 md:px-7"><MethodologyBadge protocol={test.protocol} speed_kmh={test.speed_kmh} wheelSize_inches={test.wheelSize_inches} /></td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </Tile>
+            )}
+
+            <!-- 2x1 : aides cumulables + prix net -->
+            <Tile size="2x1" variant="accent" label="Aides cumulables" class="reveal">
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mt-auto">
+                <ul class="md:col-span-7 flex flex-col gap-2">
+                  {vehicle.availableAids.map((aid) => (
+                    <li class="flex items-baseline justify-between gap-3 text-sm">
+                      <span class="text-[var(--color-text)]">{aid.label}</span>
+                      <span data-numeric class="font-mono text-[var(--color-accent)] whitespace-nowrap">– {formatPrice(aid.amount_EUR)}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div class="md:col-span-5 md:border-l md:border-[var(--color-border)] md:pl-6 flex flex-col gap-1">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Prix net potentiel</span>
+                  <span data-numeric class="display-stat text-3xl md:text-4xl">{formatPrice(priceAfterAids)}</span>
+                  <span class="font-mono text-[11px] text-[var(--color-text-faint)]">après {formatPrice(totalAids)} d'aides</span>
+                </div>
+              </div>
+            </Tile>
+
+            <!-- 2x1 : leasing social (conditionnel) -->
+            {config.leasingSocialEligible && config.monthlyLease_EUR && (
+              <Tile size="2x1" variant="accent" label="Leasing social" class="reveal">
+                <div class="flex items-end justify-between gap-6 mt-auto">
+                  <div class="flex flex-col gap-1">
+                    <span class="font-display text-lg font-semibold tracking-[-0.01em]">Loyer plafonné</span>
+                    <p class="text-xs text-[var(--color-text-muted)] leading-relaxed max-w-sm">
+                      Dispositif gouvernemental sous condition de revenus.
+                    </p>
+                  </div>
+                  <div class="flex items-baseline gap-2 shrink-0">
+                    <span data-numeric class="display-stat text-4xl md:text-5xl text-[var(--color-accent)]">{config.monthlyLease_EUR}</span>
+                    <span class="font-mono text-sm text-[var(--color-text-muted)]">€/mois</span>
+                  </div>
+                </div>
+              </Tile>
+            )}
+
+            <!-- full : équipements en colonnes (masqué si aucun équipement) -->
+            {Object.keys(featuresByCategory).length > 0 && (
+              <Tile size="full" label="Équipements structurants" class="reveal">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-2">
+                  {Object.entries(featuresByCategory).map(([cat, items]) => (
+                    <div class="flex flex-col gap-3">
+                      <h3 class="label-eyebrow">{categoryLabels[cat] ?? cat}</h3>
+                      <ul class="flex flex-col gap-2.5">
+                        {items.map((item) => (
+                          <li class="text-sm text-[var(--color-text-muted)] leading-relaxed before:content-['—'] before:mr-2 before:text-[var(--color-text-faint)]">{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </Tile>
+            )}
+
+            <!-- full : verdict (masqué si vide) -->
+            {(vehicle.verdict.strengths.length > 0 || vehicle.verdict.weaknesses.length > 0) && (
+            <Tile size="full" label="Verdict éditorial" class="reveal">
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 mt-2">
+                <div class="flex flex-col gap-5">
+                  <div class="flex items-center gap-3">
+                    <span class="w-1.5 h-1.5 bg-[var(--color-accent)] inline-block"></span>
+                    <h3 class="label-eyebrow text-[var(--color-accent)]">Forces</h3>
+                    <span data-numeric class="font-mono text-xs text-[var(--color-text-faint)] ml-auto">{vehicle.verdict.strengths.length.toString().padStart(2, "0")}</span>
+                  </div>
+                  <ol class="flex flex-col">
+                    {vehicle.verdict.strengths.map((s, i) => (
+                      <li class="py-3.5 border-b border-[var(--color-border)] last:border-0 flex gap-4">
+                        <span data-numeric class="font-mono text-[11px] text-[var(--color-text-faint)] pt-1 w-6 shrink-0">{String(i + 1).padStart(2, "0")}</span>
+                        <p class="text-[var(--color-text)] text-sm md:text-base leading-relaxed">{s}</p>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+                <div class="flex flex-col gap-5">
+                  <div class="flex items-center gap-3">
+                    <span class="w-1.5 h-1.5 bg-[var(--color-danger)] inline-block"></span>
+                    <h3 class="label-eyebrow text-[var(--color-danger)]">Faiblesses</h3>
+                    <span data-numeric class="font-mono text-xs text-[var(--color-text-faint)] ml-auto">{vehicle.verdict.weaknesses.length.toString().padStart(2, "0")}</span>
+                  </div>
+                  <ol class="flex flex-col">
+                    {vehicle.verdict.weaknesses.map((s, i) => (
+                      <li class="py-3.5 border-b border-[var(--color-border)] last:border-0 flex gap-4">
+                        <span data-numeric class="font-mono text-[11px] text-[var(--color-text-faint)] pt-1 w-6 shrink-0">{String(i + 1).padStart(2, "0")}</span>
+                        <p class="text-[var(--color-text)] text-sm md:text-base leading-relaxed">{s}</p>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-[var(--color-border)] mt-10">
+                <div class="bg-[var(--color-surface)] p-6 flex flex-col gap-3">
+                  <h3 class="label-eyebrow">Pour qui</h3>
+                  <p class="text-[var(--color-text)] text-base leading-relaxed">{vehicle.verdict.idealUserProfile}</p>
+                </div>
+                <div class="bg-[var(--color-surface)] p-6 flex flex-col gap-3">
+                  <h3 class="label-eyebrow">Pas pour</h3>
+                  <p class="text-[var(--color-text-muted)] text-base leading-relaxed">{vehicle.verdict.notIdealFor}</p>
+                </div>
+              </div>
+            </Tile>
+            )}
+
+            <!-- full : sources -->
+            <Tile size="full" label="Sources & méthodologie" class="reveal">
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-2">
+                <div class="lg:col-span-4 flex flex-col gap-4">
+                  <h2 class="display-2 text-2xl md:text-3xl">Transparence</h2>
+                  <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">
+                    Tests Nyland, supertests indépendants et fiche constructeur croisés. Chaque chiffre porte un niveau de confiance — <span class="font-mono text-[var(--color-accent)] text-xs">mesuré</span>, <span class="font-mono text-[var(--color-warning)] text-xs">constructeur</span>, <span class="font-mono text-[var(--color-text-muted)] text-xs">estimé</span> ou <span class="font-mono text-[var(--color-text-muted)] text-xs">pending</span>.
+                  </p>
+                  <div class="flex flex-col gap-1 mt-2">
+                    <span class="label-eyebrow">Dernière mise à jour</span>
+                    <span class="font-mono text-sm text-[var(--color-text)]">{formatDate(vehicle.lastUpdated)}</span>
+                  </div>
+                  <a href="/methodologie#sources" class="font-mono text-xs text-[var(--color-accent)] hover:underline self-start min-h-[44px] inline-flex items-center">Méthodologie complète ↗</a>
+                </div>
+                <ol class="lg:col-span-8 flex flex-col">
+                  {sources.map((source, idx) => (
+                    <li class:list={["py-4 grid grid-cols-12 gap-x-4 gap-y-2 items-baseline", idx !== sources.length - 1 && "border-b border-[var(--color-border)]"]}>
+                      <span data-numeric class="col-span-1 font-mono text-xs text-[var(--color-text-faint)]">{String(idx + 1).padStart(2, "0")}</span>
+                      <div class="col-span-12 md:col-span-7 flex flex-col gap-1">
+                        <a href={source.url} target="_blank" rel="noopener noreferrer" class="text-[var(--color-text)] text-base leading-snug hover:text-[var(--color-accent)] transition-colors min-h-[44px] inline-flex items-center">{source.name}</a>
+                        <span class="font-mono text-[11px] text-[var(--color-text-faint)]">{new URL(source.url).hostname.replace(/^www\./, "")} · {source.type}</span>
+                      </div>
+                      <span class="col-span-12 md:col-span-4 md:text-right">
+                        <Tag tone={trustTone[source.trustLevel]} mono>{trustLabels[source.trustLevel]}</Tag>
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </Tile>
+          </div>
+        );
+      })}
+    </BentoGrid>
+  </div>
+
+  <script is:inline>
+    // Init URL sync
+    const urlParams = new URLSearchParams(window.location.search);
+    const configParam = urlParams.get("config");
+    if (configParam) {
+      document.querySelectorAll(".config-wrapper").forEach((el) => {
+        el.style.display = el.getAttribute("data-config-id") === configParam ? "contents" : "none";
+      });
+    }
+
+    // Handle interactive toggle
+    window.addEventListener("config-changed", (e) => {
+      const id = e.detail.configId;
+      document.querySelectorAll(".config-wrapper").forEach((el) => {
+        el.style.display = el.getAttribute("data-config-id") === id ? "contents" : "none";
+      });
+      // Update URL without reload
+      const url = new URL(window.location.href);
+      url.searchParams.set("config", id);
+      window.history.replaceState(null, "", url.toString());
+    });
+  </script>
+
+<style>
+  .vehicle-hero-img {
+    background-color: transparent;
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    mix-blend-mode: multiply; /* Fait disparaître le fond blanc des JPG en mode clair */
+  }
+  .vehicle-hero-img:hover {
+    transform: scale(1.04) translateY(-4px);
+  }
+  :global([data-theme="dark"]) .vehicle-hero-img {
+    mix-blend-mode: normal; /* Garde l'image normale sur fond sombre (les PNG passeront bien) */
+    opacity: 0.95;
+  }
+  
+  .brand-logo {
+    transition: transform 0.3s ease;
+  }
+  .brand-logo:hover {
+    transform: scale(1.05);
+  }
+</style>
+
+</BaseLayout>

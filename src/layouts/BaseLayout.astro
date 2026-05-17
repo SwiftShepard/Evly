@@ -1,0 +1,198 @@
+---
+import "@/styles/global.css";
+import Navigation from "@/components/nav/Navigation.astro";
+import Footer from "@/components/nav/Footer.astro";
+import { ViewTransitions } from "astro:transitions";
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  ogImage = "/og-default.png",
+  jsonLd,
+  noindex = false,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const fullTitle = title.includes("Evly") || title.includes("evly")
+  ? title
+  : `${title} — Evly`;
+---
+
+<!doctype html>
+<html lang="fr" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#ffffff" />
+
+    <ViewTransitions />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL.toString()} />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title="Evly" href="/rss.xml" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL.toString()} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site).toString()} />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Evly" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:site" content="@evly" />
+
+    {
+      jsonLd && (
+        <script
+          is:inline
+          type="application/ld+json"
+          set:html={JSON.stringify(jsonLd)}
+        />
+      )
+    }
+  </head>
+  <body class="min-h-dvh flex flex-col">
+    {/* Reading progress bar */}
+    <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
+
+    <a
+      href="#contenu"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:bg-[var(--color-accent)] focus:text-[var(--color-accent-on)] focus:px-4 focus:py-2"
+    >
+      Aller au contenu
+    </a>
+    <Navigation />
+    <main id="contenu" class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+
+    {/* Scroll Reveal Observer + Reading Progress + Nav Scroll State */}
+    <script is:inline>
+      (function initAnimations() {
+        // Reduced motion check
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        // ------ Scroll Reveal via IntersectionObserver ------
+        function setupReveal() {
+          var elements = document.querySelectorAll('.reveal, .reveal-fade, .reveal-scale, .reveal-slide-left');
+          if (!elements.length) return;
+
+          var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                observer.unobserve(entry.target);
+              }
+            });
+          }, {
+            threshold: 0.08,
+            rootMargin: '0px 0px -40px 0px'
+          });
+
+          elements.forEach(function(el) { observer.observe(el); });
+        }
+
+        // ------ Reading Progress Bar ------
+        function setupProgress() {
+          var bar = document.getElementById('reading-progress');
+          if (!bar) return;
+
+          var ticking = false;
+          window.addEventListener('scroll', function() {
+            if (!ticking) {
+              window.requestAnimationFrame(function() {
+                var scrollTop = window.scrollY;
+                var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                var progress = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
+                bar.style.transform = 'scaleX(' + progress + ')';
+                ticking = false;
+              });
+              ticking = true;
+            }
+          }, { passive: true });
+        }
+
+        // ------ Nav Scroll State ------
+        function setupNavScroll() {
+          var nav = document.querySelector('.nav-header');
+          if (!nav) return;
+
+          var scrolled = false;
+          window.addEventListener('scroll', function() {
+            var isScrolled = window.scrollY > 10;
+            if (isScrolled !== scrolled) {
+              scrolled = isScrolled;
+              nav.classList.toggle('scrolled', scrolled);
+            }
+          }, { passive: true });
+        }
+
+        // ------ Stat counter animation ------
+        function setupCounters() {
+          var stats = document.querySelectorAll('[data-count]');
+          if (!stats.length) return;
+
+          var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                var el = entry.target;
+                var target = parseInt(el.getAttribute('data-count'), 10);
+                if (isNaN(target)) return;
+
+                var duration = 800;
+                var start = performance.now();
+                var startVal = 0;
+
+                function update(now) {
+                  var elapsed = now - start;
+                  var progress = Math.min(elapsed / duration, 1);
+                  // Ease out expo
+                  var eased = 1 - Math.pow(1 - progress, 3);
+                  el.textContent = Math.round(startVal + (target - startVal) * eased);
+                  if (progress < 1) requestAnimationFrame(update);
+                }
+                requestAnimationFrame(update);
+                observer.unobserve(el);
+              }
+            });
+          }, { threshold: 0.3 });
+
+          stats.forEach(function(el) { observer.observe(el); });
+        }
+
+        // Init all
+        setupReveal();
+        setupProgress();
+        setupNavScroll();
+        setupCounters();
+
+        // Re-init after Astro View Transitions navigate
+        document.addEventListener('astro:page-load', function() {
+          setupReveal();
+          setupProgress();
+          setupNavScroll();
+          setupCounters();
+        });
+      })();
+    </script>
+  </body>
+</html>

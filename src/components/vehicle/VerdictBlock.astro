@@ -1,0 +1,80 @@
+---
+import type { Vehicle } from "@/data/schemas";
+
+interface Props {
+  vehicle: Vehicle;
+}
+
+const { vehicle } = Astro.props;
+const { verdict } = vehicle;
+---
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-px bg-[var(--color-border)]">
+  <!-- Forces -->
+  <div class="bg-[var(--color-bg)] p-8 md:p-10 flex flex-col gap-6">
+    <div class="flex items-center gap-3">
+      <span class="w-1.5 h-1.5 bg-[var(--color-accent)] inline-block"></span>
+      <h3 class="label-eyebrow text-[var(--color-accent)]">Forces</h3>
+      <span data-numeric class="font-mono text-xs text-[var(--color-text-faint)] ml-auto">
+        {verdict.strengths.length.toString().padStart(2, "0")}
+      </span>
+    </div>
+    <ol class="flex flex-col">
+      {
+        verdict.strengths.map((s, i) => (
+          <li class="py-4 border-b border-[var(--color-border)] last:border-0 flex gap-5">
+            <span
+              data-numeric
+              class="font-mono text-xs text-[var(--color-text-faint)] pt-1 w-6 shrink-0"
+            >
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <p class="text-[var(--color-text)] text-base leading-relaxed">{s}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+
+  <!-- Faiblesses -->
+  <div class="bg-[var(--color-bg)] p-8 md:p-10 flex flex-col gap-6">
+    <div class="flex items-center gap-3">
+      <span class="w-1.5 h-1.5 bg-[var(--color-danger)] inline-block"></span>
+      <h3 class="label-eyebrow text-[var(--color-danger)]">Faiblesses</h3>
+      <span data-numeric class="font-mono text-xs text-[var(--color-text-faint)] ml-auto">
+        {verdict.weaknesses.length.toString().padStart(2, "0")}
+      </span>
+    </div>
+    <ol class="flex flex-col">
+      {
+        verdict.weaknesses.map((s, i) => (
+          <li class="py-4 border-b border-[var(--color-border)] last:border-0 flex gap-5">
+            <span
+              data-numeric
+              class="font-mono text-xs text-[var(--color-text-faint)] pt-1 w-6 shrink-0"
+            >
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <p class="text-[var(--color-text)] text-base leading-relaxed">{s}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+
+  <!-- Profil idéal -->
+  <div class="bg-[var(--color-bg)] p-8 md:p-10 flex flex-col gap-4">
+    <h3 class="label-eyebrow">Pour qui</h3>
+    <p class="text-[var(--color-text)] text-lg leading-relaxed">
+      {verdict.idealUserProfile}
+    </p>
+  </div>
+
+  <!-- Pas idéal pour -->
+  <div class="bg-[var(--color-bg)] p-8 md:p-10 flex flex-col gap-4">
+    <h3 class="label-eyebrow">Pas pour</h3>
+    <p class="text-[var(--color-text-muted)] text-lg leading-relaxed">
+      {verdict.notIdealFor}
+    </p>
+  </div>
+</div>

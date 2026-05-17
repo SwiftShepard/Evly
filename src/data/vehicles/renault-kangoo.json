@@ -1,0 +1,243 @@
+{
+  "slug": "renault-kangoo",
+  "brand": "Renault",
+  "model": "Kangoo E-Tech",
+  "variant": "45 kWh",
+  "bodyType": "Ludospace 5 portes",
+  "segment": "M — ludospace compact",
+  "productionCountry": "France",
+  "assemblyPlant": "Maubeuge",
+  "releaseYear": 2022,
+  "marketAvailability": "Disponible en France",
+
+  "power_kW": 90,
+  "power_hp": 122,
+  "torque_Nm": 245,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 13.0,
+  "topSpeed_kmh": 132,
+
+  "usableCapacity_kWh": 45,
+  "grossCapacity_kWh": 48,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1620,
+
+  "wltp_max_km": 285,
+  "wltp_min_km": 265,
+  "realRange": {
+    "mixed_km": 235,
+    "highway_130_km": 148,
+    "urban_km": 290,
+    "winter_minus5_km": 182,
+    "confidence": "estimated"
+  },
+
+  "consumption_mixed_kWh_per_100km": 17.0,
+  "consumption_highway_kWh_per_100km": 26.5,
+  "consumption_winter_kWh_per_100km": 21.0,
+  "dragCoefficient_Cx": 0.35,
+
+  "chargingDC": {
+    "peakPower_kW": 80,
+    "time_10_80_min": 37,
+    "kWh_added_30min": 27,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 5.5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+
+  "chargingCurve": [
+    { "soc": 0,   "power": 66 },
+    { "soc": 5,   "power": 76 },
+    { "soc": 10,  "power": 80 },
+    { "soc": 20,  "power": 80 },
+    { "soc": 30,  "power": 78 },
+    { "soc": 40,  "power": 72 },
+    { "soc": 50,  "power": 62 },
+    { "soc": 60,  "power": 48 },
+    { "soc": 70,  "power": 32 },
+    { "soc": 80,  "power": 18 },
+    { "soc": 90,  "power": 10 },
+    { "soc": 100, "power": 5  }
+  ],
+
+  "rangeTests": [],
+
+  "thousandKmChallenge": null,
+
+  "length_mm": 4486,
+  "width_mm": 1920,
+  "height_mm": 1840,
+  "wheelbase_mm": 2718,
+  "trunkCapacity_L": 775,
+  "trunkCapacityFolded_L": 2500,
+  "frunkCapacity_L": null,
+
+  "trims": [
+    {
+      "name": "Evolution",
+      "price_EUR": 37490,
+      "batteryUsed": "45 kWh",
+      "equipmentHighlights": [
+        "Portes coulissantes latérales",
+        "Banquette arrière modulable et amovible",
+        "Écran 10\" avec navigation connectée",
+        "Apple CarPlay / Android Auto sans fil",
+        "Régulateur de vitesse adaptatif"
+      ]
+    },
+    {
+      "name": "Techno",
+      "price_EUR": 40990,
+      "batteryUsed": "45 kWh",
+      "equipmentHighlights": [
+        "Sièges avant chauffants",
+        "Chargeur AC 22 kW en option",
+        "Caméra de recul 360°",
+        "Pack Drive Assist Plus : angle mort, aide parking",
+        "Jantes 17\" alliage"
+      ]
+    }
+  ],
+
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Bonus Écologique",
+      "amount_EUR": 4000
+    }
+  ],
+
+  "configurations": [
+    {
+      "id": "std-evolution-45-16",
+      "label": "Standard · Evolution · 45 kWh · 16\"",
+      "battery": "standard",
+      "trim": "Evolution",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 37490,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 285,
+      "wltp_consumption_kWh_100km": 17.0,
+      "realRange": {
+        "mixed_km": 235,
+        "highway_130_km": 148,
+        "urban_km": 290,
+        "winter_minus5_km": 182,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 80,
+      "chargingDC_10_80_min": 37,
+      "chargingDC_kWh_30min": 27,
+      "chargingCurve": [
+        { "soc": 0,   "power": 66 },
+        { "soc": 5,   "power": 76 },
+        { "soc": 10,  "power": 80 },
+        { "soc": 20,  "power": 80 },
+        { "soc": 30,  "power": 78 },
+        { "soc": 40,  "power": 72 },
+        { "soc": 50,  "power": 62 },
+        { "soc": 60,  "power": 48 },
+        { "soc": 70,  "power": 32 },
+        { "soc": 80,  "power": 18 },
+        { "soc": 90,  "power": 10 },
+        { "soc": 100, "power": 5  }
+      ],
+      "availability": "available",
+      "notes": "Moteur 90 kW (122 ch), couple 245 Nm, 0-100 en ~13 s. Batterie 45 kWh utiles. DC 80 kW — Cx 0,35 pénalise l'autonomie autoroutière."
+    },
+    {
+      "id": "std-techno-45-17",
+      "label": "Standard · Techno · 45 kWh · 17\"",
+      "battery": "standard",
+      "trim": "Techno",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 40990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 270,
+      "wltp_consumption_kWh_100km": 17.5,
+      "realRange": {
+        "mixed_km": 225,
+        "highway_130_km": 140,
+        "urban_km": 278,
+        "winter_minus5_km": 175,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 80,
+      "chargingDC_10_80_min": 37,
+      "chargingDC_kWh_30min": 27,
+      "chargingCurve": [
+        { "soc": 0,   "power": 66 },
+        { "soc": 5,   "power": 76 },
+        { "soc": 10,  "power": 80 },
+        { "soc": 20,  "power": 80 },
+        { "soc": 30,  "power": 78 },
+        { "soc": 40,  "power": 72 },
+        { "soc": 50,  "power": 62 },
+        { "soc": 60,  "power": 48 },
+        { "soc": 70,  "power": 32 },
+        { "soc": 80,  "power": 18 },
+        { "soc": 90,  "power": 10 },
+        { "soc": 100, "power": 5  }
+      ],
+      "availability": "available",
+      "notes": "Finition complète : sièges chauffants, caméra 360°, Drive Assist Plus. Jantes 17\" → légère pénalité autonomie."
+    }
+  ],
+
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+
+  "keyFeatures": [
+    { "category": "confort",    "label": "Coffre 775 L modulable — banquette coulissante et amovible, volume jusqu'à 2 500 L" },
+    { "category": "confort",    "label": "Portes coulissantes latérales — accès facilité enfants et chargement en espace contraint" },
+    { "category": "technologie", "label": "DC 80 kW — recharge 10-80 % en 37 min, compatible CCS sur toutes les bornes rapides" },
+    { "category": "confort",    "label": "Fabriqué à Maubeuge (France) — production nationale, aides État garanties" },
+    { "category": "securite",   "label": "Pack Drive Assist Plus sur Techno : angle mort actif, aide parking, freinage d'urgence" },
+    { "category": "design",     "label": "Hauteur 1,84 m — accès facilité aux sièges arrière, tenue de route SUV" }
+  ],
+
+  "verdict": {
+    "strengths": [
+      "Coffre 775 L modulable à plancher plat + banquette amovible — imbattable dans sa catégorie",
+      "Fabriqué à Maubeuge (France) : éligible aux aides État sans restriction d'origine",
+      "Polyvalence extrême : famille le week-end, transport professionnel léger en semaine",
+      "DC 80 kW : recharge quotidienne rapide sur borne publique, compatible CCS universellement"
+    ],
+    "weaknesses": [
+      "235 km réels en mixte, seulement 148 km à 130 km/h : non adapté aux longs trajets autoroutiers",
+      "Cx 0,35 pénalisant : consommation autoroutière élevée (26,5 kWh/100km à 130 km/h)",
+      "0-100 km/h en 13 s : usage autoroutier confortable mais pas sportif",
+      "Pas de V2L : dommage pour un véhicule polyvalent et un usage chantier/camping"
+    ],
+    "idealUserProfile": "Famille ou artisan cherchant un véhicule polyvalent à grande modularité. Idéal pour un usage mixte urbain/périurbain avec un chargement régulier.",
+    "notIdealFor": "Grand rouleur autoroutier (148 km à 130 km/h) ou conducteur sensible aux performances dynamiques."
+  },
+
+  "lastUpdated": "2026-05-17",
+  "sources": ["renault-fr", "lachaineev"],
+  "imageCredit": "Renault France — visuel presse 2022"
+}

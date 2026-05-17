@@ -1,0 +1,434 @@
+{
+  "slug": "vw-id7",
+  "brand": "Volkswagen",
+  "model": "ID.7",
+  "variant": "Pro 77 kWh",
+  "bodyType": "Berline",
+  "segment": "E",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Emden",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 210,
+  "power_hp": 204,
+  "torque_Nm": 300,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 7.5,
+  "topSpeed_kmh": 160,
+  "usableCapacity_kWh": 77,
+  "grossCapacity_kWh": 82,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1700,
+  "wltp_max_km": 621,
+  "wltp_min_km": 580,
+  "realRange": {
+    "mixed_km": 490,
+    "highway_130_km": 410,
+    "highway_120_km": 449,
+    "urban_km": 580,
+    "winter_minus5_km": 340,
+    "confidence": "bjorn_nyland"
+  },
+  "consumption_mixed_kWh_per_100km": 15.0,
+  "consumption_highway_kWh_per_100km": 21.0,
+  "consumption_winter_kWh_per_100km": 19.0,
+  "dragCoefficient_Cx": 0.23,
+  "chargingDC": {
+    "peakPower_kW": 175,
+    "time_10_80_min": 28,
+    "kWh_added_30min": 55,
+    "confidence": "tested"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 6.5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 100
+    },
+    {
+      "soc": 10,
+      "power": 130
+    },
+    {
+      "soc": 50,
+      "power": 100
+    },
+    {
+      "soc": 80,
+      "power": 50
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
+  ],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": "2024-01",
+      "speed_kmh": 90,
+      "range_km": 565,
+      "consumption_kWh_100km": 13.6,
+      "temperature_C": 10,
+      "wheelSize_inches": 19,
+      "tyreModel": null,
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "ID.7 Pro. Test hivernal léger."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": "2024-01",
+      "speed_kmh": 120,
+      "range_km": 449,
+      "consumption_kWh_100km": 17.2,
+      "temperature_C": 10,
+      "wheelSize_inches": 19,
+      "tyreModel": null,
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Très bon score malgré temp. basse."
+    }
+  ],
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 530,
+    "averageSpeed_kmh": 113.2,
+    "averageConsumption_Wh_km": 185,
+    "chargingStops": 3,
+    "averageTemperature_C": 10,
+    "testDate": "2024-01",
+    "videoUrl": null,
+    "confidence": "tested"
+  },
+  "length_mm": 4961,
+  "width_mm": 1862,
+  "height_mm": 1536,
+  "wheelbase_mm": 2700,
+  "trunkCapacity_L": 532,
+  "trunkCapacityFolded_L": 1200,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Pro",
+      "price_EUR": 54990,
+      "batteryUsed": "77 kWh NMC",
+      "equipmentHighlights": [
+        "Cx 0.23 record",
+        "Charge 175 kW"
+      ]
+    },
+    {
+      "name": "Pro S 86 kWh",
+      "price_EUR": 62990,
+      "batteryUsed": "86 kWh NMC",
+      "equipmentHighlights": [
+        "700 km WLTP",
+        "Autonomie maxi"
+      ]
+    },
+    {
+      "name": "Tourer",
+      "price_EUR": 57990,
+      "batteryUsed": "77 kWh NMC",
+      "equipmentHighlights": [
+        "Break caisson",
+        "Volume XXL"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Bonus Écologique",
+      "amount_EUR": 4000
+    }
+  ],
+  "configurations": [
+    {
+      "id": "vw-id7-pro",
+      "label": "ID.7 Pro",
+      "battery": "standard",
+      "trim": "Pro",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 54990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 621,
+      "wltp_consumption_kWh_100km": 15.0,
+      "realRange": {
+        "mixed_km": 490,
+        "highway_130_km": 410,
+        "highway_120_km": 449,
+        "urban_km": 580,
+        "winter_minus5_km": 340,
+        "confidence": "bjorn_nyland"
+      },
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": "2024-01",
+          "speed_kmh": 90,
+          "range_km": 565,
+          "consumption_kWh_100km": 13.6,
+          "temperature_C": 10,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "ID.7 Pro. Test hivernal léger."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": "2024-01",
+          "speed_kmh": 120,
+          "range_km": 449,
+          "consumption_kWh_100km": 17.2,
+          "temperature_C": 10,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Très bon score malgré temp. basse."
+        }
+      ],
+      "chargingDC_peak_kW": 175,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "vw-id7-pro-s-86-kwh",
+      "label": "ID.7 Pro S 86 kWh",
+      "battery": "standard",
+      "trim": "Pro S 86 kWh",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 62990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 621,
+      "wltp_consumption_kWh_100km": 15.0,
+      "realRange": {
+        "mixed_km": 490,
+        "highway_130_km": 410,
+        "highway_120_km": 449,
+        "urban_km": 580,
+        "winter_minus5_km": 340,
+        "confidence": "bjorn_nyland"
+      },
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": "2024-01",
+          "speed_kmh": 90,
+          "range_km": 565,
+          "consumption_kWh_100km": 13.6,
+          "temperature_C": 10,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "ID.7 Pro. Test hivernal léger."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": "2024-01",
+          "speed_kmh": 120,
+          "range_km": 449,
+          "consumption_kWh_100km": 17.2,
+          "temperature_C": 10,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Très bon score malgré temp. basse."
+        }
+      ],
+      "chargingDC_peak_kW": 175,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "vw-id7-tourer",
+      "label": "ID.7 Tourer",
+      "battery": "standard",
+      "trim": "Tourer",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 57990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 621,
+      "wltp_consumption_kWh_100km": 15.0,
+      "realRange": {
+        "mixed_km": 490,
+        "highway_130_km": 410,
+        "highway_120_km": 449,
+        "urban_km": 580,
+        "winter_minus5_km": 340,
+        "confidence": "bjorn_nyland"
+      },
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": "2024-01",
+          "speed_kmh": 90,
+          "range_km": 565,
+          "consumption_kWh_100km": 13.6,
+          "temperature_C": 10,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "ID.7 Pro. Test hivernal léger."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": "2024-01",
+          "speed_kmh": 120,
+          "range_km": 449,
+          "consumption_kWh_100km": 17.2,
+          "temperature_C": 10,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Très bon score malgré temp. basse."
+        }
+      ],
+      "chargingDC_peak_kW": 175,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "confort",
+      "label": "Sièges confort de haute qualité"
+    },
+    {
+      "category": "technologie",
+      "label": "Système d'infodivertissement avancé"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence"
+    },
+    {
+      "category": "design",
+      "label": "Signature lumineuse LED distinctive"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Bon compromis prix/autonomie",
+      "Confort de suspension"
+    ],
+    "weaknesses": [
+      "Vitesse de charge rapide en retrait",
+      "Info-divertissement perfectible"
+    ],
+    "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
+    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra-rapides."
+  },
+  "lastUpdated": "2026-05-16",
+  "sources": [
+    "nyland",
+    "lachaineev"
+  ],
+  "imageCredit": "Constructeur"
+}

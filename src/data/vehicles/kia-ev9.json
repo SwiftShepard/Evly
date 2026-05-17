@@ -1,0 +1,296 @@
+{
+  "slug": "kia-ev9",
+  "brand": "Kia",
+  "model": "EV9",
+  "variant": "99.8 kWh · 800V · 7 places",
+  "bodyType": "SUV 7 places",
+  "segment": "E — grand SUV familial",
+  "productionCountry": "Corée",
+  "assemblyPlant": "Ulsan",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible en Europe",
+
+  "power_kW": 283,
+  "power_hp": 385,
+  "torque_Nm": 700,
+  "drivetrain": "AWD",
+  "motors": 2,
+  "acceleration_0_100_s": 6.0,
+  "topSpeed_kmh": 200,
+
+  "usableCapacity_kWh": 99.8,
+  "grossCapacity_kWh": 107.0,
+  "chemistry": "NMC",
+  "architecture_V": 800,
+  "mass_kg": 2621,
+
+  "wltp_max_km": 563,
+  "wltp_min_km": 505,
+  "realRange": {
+    "mixed_km": 450,
+    "highway_130_km": 340,
+    "urban_km": 528,
+    "winter_minus5_km": 355,
+    "confidence": "tested"
+  },
+
+  "consumption_mixed_kWh_per_100km": 20.5,
+  "consumption_highway_kWh_per_100km": 28.5,
+  "consumption_winter_kWh_per_100km": 26.0,
+  "dragCoefficient_Cx": 0.28,
+
+  "chargingDC": {
+    "peakPower_kW": 240,
+    "time_10_80_min": 24,
+    "kWh_added_30min": 72,
+    "confidence": "tested"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 9.5
+  },
+  "plugAndCharge": true,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+
+  "chargingCurve": [
+    { "soc": 0,   "power": 170 },
+    { "soc": 5,   "power": 205 },
+    { "soc": 10,  "power": 240 },
+    { "soc": 20,  "power": 240 },
+    { "soc": 30,  "power": 232 },
+    { "soc": 40,  "power": 218 },
+    { "soc": 50,  "power": 196 },
+    { "soc": 60,  "power": 162 },
+    { "soc": 70,  "power": 112 },
+    { "soc": 80,  "power": 64  },
+    { "soc": 90,  "power": 32  },
+    { "soc": 100, "power": 14  }
+  ],
+
+  "rangeTests": [],
+
+  "thousandKmChallenge": null,
+
+  "length_mm": 5010,
+  "width_mm": 1980,
+  "height_mm": 1755,
+  "wheelbase_mm": 3100,
+  "trunkCapacity_L": 333,
+  "trunkCapacityFolded_L": 2318,
+  "frunkCapacity_L": null,
+
+  "trims": [
+    {
+      "name": "Air RWD",
+      "price_EUR": 64990,
+      "batteryUsed": "99.8 kWh",
+      "equipmentHighlights": [
+        "7 places avec 3e rangée escamotable électriquement",
+        "Double écran 12,3\" panoramique",
+        "Charge DC 240 kW (10-80 % en 24 min)",
+        "V2L 3,6 kW de série",
+        "Jantes 19\" alliage"
+      ]
+    },
+    {
+      "name": "Earth RWD",
+      "price_EUR": 69990,
+      "batteryUsed": "99.8 kWh",
+      "equipmentHighlights": [
+        "Sièges 2e rangée pivotants et chauffants",
+        "Toit ouvrant panoramique électrique",
+        "Pompe à chaleur de série",
+        "Jantes 19\" alliage premium",
+        "Son Meridian 14 haut-parleurs"
+      ]
+    },
+    {
+      "name": "GT-Line AWD",
+      "price_EUR": 78990,
+      "batteryUsed": "99.8 kWh",
+      "equipmentHighlights": [
+        "AWD — 283 kW / 385 ch, 0-100 en 6,0 s",
+        "Pack GT-Line : boucliers sport, jantes 20\"",
+        "Sièges cuir Nappa 6 places chauffants / ventilés",
+        "Head-up display augmenté",
+        "Système de conduite autonome niveau 2+"
+      ]
+    }
+  ],
+
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Bonus Écologique",
+      "amount_EUR": 4000
+    }
+  ],
+
+  "configurations": [
+    {
+      "id": "std-air-rwd-99-19",
+      "label": "Air RWD · 99.8 kWh · 19\"",
+      "battery": "standard",
+      "trim": "Air RWD",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 64990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 563,
+      "wltp_consumption_kWh_100km": 19.5,
+      "realRange": {
+        "mixed_km": 458,
+        "highway_130_km": 350,
+        "urban_km": 540,
+        "winter_minus5_km": 362,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 240,
+      "chargingDC_10_80_min": 24,
+      "chargingDC_kWh_30min": 72,
+      "chargingCurve": [
+        { "soc": 0,   "power": 170 },
+        { "soc": 5,   "power": 205 },
+        { "soc": 10,  "power": 240 },
+        { "soc": 20,  "power": 240 },
+        { "soc": 30,  "power": 232 },
+        { "soc": 40,  "power": 218 },
+        { "soc": 50,  "power": 196 },
+        { "soc": 60,  "power": 162 },
+        { "soc": 70,  "power": 112 },
+        { "soc": 80,  "power": 64  },
+        { "soc": 90,  "power": 32  },
+        { "soc": 100, "power": 14  }
+      ],
+      "availability": "available",
+      "notes": "Moteur RWD 160 kW (218 ch), 0-100 en ~9,4 s. 563 km WLTP — meilleure autonomie de la gamme EV9. Masse 2 493 kg."
+    },
+    {
+      "id": "std-earth-rwd-99-19",
+      "label": "Earth RWD · 99.8 kWh · 19\"",
+      "battery": "standard",
+      "trim": "Earth RWD",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 69990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 541,
+      "wltp_consumption_kWh_100km": 20.3,
+      "realRange": {
+        "mixed_km": 443,
+        "highway_130_km": 338,
+        "urban_km": 523,
+        "winter_minus5_km": 350,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 240,
+      "chargingDC_10_80_min": 24,
+      "chargingDC_kWh_30min": 72,
+      "chargingCurve": [
+        { "soc": 0,   "power": 170 },
+        { "soc": 5,   "power": 205 },
+        { "soc": 10,  "power": 240 },
+        { "soc": 20,  "power": 240 },
+        { "soc": 30,  "power": 232 },
+        { "soc": 40,  "power": 218 },
+        { "soc": 50,  "power": 196 },
+        { "soc": 60,  "power": 162 },
+        { "soc": 70,  "power": 112 },
+        { "soc": 80,  "power": 64  },
+        { "soc": 90,  "power": 32  },
+        { "soc": 100, "power": 14  }
+      ],
+      "availability": "available",
+      "notes": "Finition premium : sièges pivotants 2e rangée, toit pano, Meridian, pompe à chaleur. RWD 160 kW. La finition idéale pour un usage familial 7 places."
+    },
+    {
+      "id": "std-gt-line-awd-99-20",
+      "label": "GT-Line AWD · 99.8 kWh · 20\"",
+      "battery": "standard",
+      "trim": "GT-Line AWD",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 78990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 505,
+      "wltp_consumption_kWh_100km": 21.8,
+      "realRange": {
+        "mixed_km": 412,
+        "highway_130_km": 315,
+        "urban_km": 487,
+        "winter_minus5_km": 325,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 240,
+      "chargingDC_10_80_min": 24,
+      "chargingDC_kWh_30min": 72,
+      "chargingCurve": [
+        { "soc": 0,   "power": 170 },
+        { "soc": 5,   "power": 205 },
+        { "soc": 10,  "power": 240 },
+        { "soc": 20,  "power": 240 },
+        { "soc": 30,  "power": 232 },
+        { "soc": 40,  "power": 218 },
+        { "soc": 50,  "power": 196 },
+        { "soc": 60,  "power": 162 },
+        { "soc": 70,  "power": 112 },
+        { "soc": 80,  "power": 64  },
+        { "soc": 90,  "power": 32  },
+        { "soc": 100, "power": 14  }
+      ],
+      "availability": "available",
+      "notes": "AWD : moteur arrière 160 kW + avant 123 kW = 283 kW système (385 ch). 0-100 en 6,0 s. Jantes 20\" → -58 km vs RWD. Masse 2 621 kg."
+    }
+  ],
+
+  "warranty": {
+    "vehicle_years": 7,
+    "vehicle_km": 150000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+
+  "keyFeatures": [
+    { "category": "confort",      "label": "7 vraies places avec 3e rangée escamotable électriquement — empattement 3,10 m" },
+    { "category": "technologie",  "label": "800V DC 240 kW — 10-80 % en 24 min pour 99,8 kWh : performance de charge inégalée en SUV 7 places" },
+    { "category": "technologie",  "label": "V2L 3,6 kW + V2G compatible — véhicule utilisable comme source d'énergie domestique" },
+    { "category": "confort",      "label": "Sièges 2e rangée pivotants (Earth) — configuration salon face à face unique dans la catégorie" },
+    { "category": "securite",     "label": "AWD 283 kW (GT-Line) — 0-100 en 6,0 s pour un SUV de 2,6 tonnes : prestations dynamiques surprenantes" },
+    { "category": "technologie",  "label": "Coffre 2 318 L à plat (7 places rabattues) + frunk — modularité maximale" }
+  ],
+
+  "verdict": {
+    "strengths": [
+      "Le seul SUV 7 places électrique avec charge 800V 240 kW — 10-80 % en 24 min malgré 99,8 kWh",
+      "563 km WLTP (RWD) et ~450 km réels : autonomie exceptionnelle pour un SUV familial de cette taille",
+      "7 places avec espace réel en 3e rangée grâce à l'empattement 3,10 m",
+      "V2L 3,6 kW de série — EV9 peut alimenter un campement ou une maison en coupure de courant"
+    ],
+    "weaknesses": [
+      "Masse 2 493-2 621 kg : consommation 28,5 kWh/100km sur autoroute — 340 km max à 130 km/h",
+      "Coffre 333 L avec toutes les rangées debout : limité pour un SUV de 5 mètres",
+      "Prix 65-79 k€ : réservé à une clientèle premium, concurrence des Tesla Model X et Rivian R1S",
+      "Chargeur AC 11 kW uniquement : recharge lente à domicile (9,5 h pour 100 %)"
+    ],
+    "idealUserProfile": "Grande famille (5 à 7 personnes) qui voyage régulièrement sur longues distances et souhaite le confort premium avec l'autonomie adéquate.",
+    "notIdealFor": "Conducteur urbain seul ou en couple — le gabarit et le prix ne se justifient pas sans usage régulier des 7 places."
+  },
+
+  "lastUpdated": "2026-05-17",
+  "sources": ["nyland", "kia-fr", "lachaineev"],
+  "imageCredit": "Kia Media — visuel presse 2024"
+}

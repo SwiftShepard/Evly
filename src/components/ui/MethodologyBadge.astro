@@ -1,0 +1,40 @@
+---
+import type { Protocol } from "@/data/schemas";
+
+interface Props {
+  protocol: Protocol;
+  speed_kmh?: number | null;
+  wheelSize_inches?: number | null;
+  class?: string;
+}
+
+const {
+  protocol,
+  speed_kmh = null,
+  wheelSize_inches = null,
+  class: className = "",
+} = Astro.props;
+
+const protocolLabels: Record<Protocol, string> = {
+  nyland: "Protocole Nyland",
+  wltp: "Cycle WLTP",
+  epa: "Cycle EPA",
+  manufacturer: "Donnée constructeur",
+  "tested-other": "Essai presse",
+};
+
+const parts: string[] = [protocolLabels[protocol]];
+if (speed_kmh) parts.push(`${speed_kmh} km/h`);
+if (wheelSize_inches) parts.push(`jantes ${wheelSize_inches}"`);
+---
+
+<span
+  class:list={[
+    "inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]",
+    className,
+  ]}
+>
+  <span class="w-1 h-1 bg-[var(--color-accent)] inline-block" aria-hidden="true"
+  ></span>
+  {parts.join(" · ")}
+</span>

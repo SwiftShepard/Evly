@@ -1,0 +1,21 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ComingSoon from "@/components/ui/ComingSoon.astro";
+---
+
+<BaseLayout
+  title="Simulateur TCO — Evly"
+  description="Simulateur de coût total de possession personnalisé : prix, aides, électricité, entretien, assurance et revente. En cours de développement."
+>
+  <ComingSoon
+    number="04"
+    eyebrow="Simulateur TCO"
+    title="Le vrai coût d'une électrique sur 5 ans."
+    description="Sliders pour votre kilométrage annuel, votre tarif d'électricité domicile, votre fréquence de recharge rapide. Recalcul instantané du coût total : achat, aides, énergie, entretien, assurance, perte de valeur."
+    features={[
+      "Recalcul live à chaque mouvement de slider — aucun bouton submit, aucun rechargement",
+      "Comparaison directe avec un équivalent thermique du même segment",
+      "Décomposition annuelle visuelle : ce que coûte vraiment chaque kilomètre",
+    ]}
+  />
+</BaseLayout>

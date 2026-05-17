@@ -1,0 +1,22 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  number?: string;
+  class?: string;
+}
+
+const { eyebrow, title, description, number, class: className = "" } = Astro.props;
+---
+
+<header class:list={["flex flex-col gap-4 pb-10 border-b border-[var(--color-border)]", className]}>
+  <div class="flex items-center gap-4">
+    {number && <span class="font-mono text-[var(--color-text-faint)] text-xs tabular">{number}</span>}
+    {eyebrow && <span class="label-eyebrow">{eyebrow}</span>}
+  </div>
+  <h2 class="display-2 max-w-3xl">{title}</h2>
+  {description && (
+    <p class="text-[var(--color-text-muted)] text-base md:text-lg max-w-2xl leading-relaxed">{description}</p>
+  )}
+</header>

@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(npx astro *)",
+      "Bash(grep -rn \"#[0-9a-fA-F]\\\\{3,8\\\\}\" --include=\"*.astro\" --include=\"*.tsx\" src)",
+      "Bash(node -e ' *)",
+      "Bash(python -c \"import json; data=json.load\\(open\\('src/data/vehicles/kia-ev4.json'\\)\\); print\\('configs:', len\\(data.get\\('configurations', []\\)\\)\\); [print\\(c['id']\\) for c in data.get\\('configurations', []\\)]\")",
+      "Bash(python -c ' *)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(New-Item -ItemType Directory -Path \"C:\\\\Users\\\\Valentin\\\\Desktop\\\\Evly\\\\src\\\\assets\\\\logos\" -Force)",
+      "Bash(Out-Null)",
+      "Bash(Write-Output \"done\")"
+    ]
+  }
+}

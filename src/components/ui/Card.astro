@@ -1,0 +1,54 @@
+---
+type PaddingKey = "none" | "sm" | "md" | "lg";
+
+interface Props {
+  as?: "div" | "article" | "section" | "li";
+  href?: string;
+  padding?: PaddingKey;
+  elevated?: boolean;
+  class?: string;
+}
+
+const {
+  as: Tag = "div",
+  href,
+  padding = "md" as PaddingKey,
+  elevated = false,
+  class: className = "",
+} = Astro.props as Props;
+
+const paddingMap: Record<PaddingKey, string> = {
+  none: "",
+  sm: "p-4",
+  md: "p-6",
+  lg: "p-8 md:p-10",
+};
+
+const surface = elevated
+  ? "bg-[var(--color-bg-elevated)]"
+  : "bg-transparent";
+
+const interactive = href
+  ? "transition-colors duration-200 ease-[var(--ease-editorial)] hover:bg-[var(--color-bg-subtle)] hover:border-[var(--color-border-strong)]"
+  : "";
+
+const classes = [
+  "border border-[var(--color-border)] block",
+  paddingMap[padding],
+  surface,
+  interactive,
+  className,
+];
+---
+
+{
+  href ? (
+    <a href={href} class:list={classes}>
+      <slot />
+    </a>
+  ) : (
+    <Tag class:list={classes}>
+      <slot />
+    </Tag>
+  )
+}

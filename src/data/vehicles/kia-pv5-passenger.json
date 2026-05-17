@@ -1,0 +1,296 @@
+{
+  "slug": "kia-pv5-passenger",
+  "brand": "Kia",
+  "model": "PV5 Passenger",
+  "variant": "51 kWh / 88.2 kWh",
+  "bodyType": "Monospace électrique",
+  "segment": "M — monospace modulaire",
+  "productionCountry": "Corée",
+  "assemblyPlant": "Hwaseong",
+  "releaseYear": 2025,
+  "marketAvailability": "Attendu en Europe courant 2025",
+
+  "power_kW": 150,
+  "power_hp": 204,
+  "torque_Nm": 310,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 11.5,
+  "topSpeed_kmh": 160,
+
+  "usableCapacity_kWh": 88.2,
+  "grossCapacity_kWh": 92,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2210,
+
+  "wltp_max_km": 400,
+  "wltp_min_km": 242,
+  "realRange": {
+    "mixed_km": 340,
+    "highway_130_km": 218,
+    "urban_km": 408,
+    "winter_minus5_km": 268,
+    "confidence": "estimated"
+  },
+
+  "consumption_mixed_kWh_per_100km": 22.5,
+  "consumption_highway_kWh_per_100km": 34.0,
+  "consumption_winter_kWh_per_100km": 28.5,
+  "dragCoefficient_Cx": 0.38,
+
+  "chargingDC": {
+    "peakPower_kW": 120,
+    "time_10_80_min": 35,
+    "kWh_added_30min": 52,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 8.5
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": true,
+  "v2l_option_EUR": null,
+
+  "chargingCurve": [
+    { "soc": 0,   "power": 92  },
+    { "soc": 5,   "power": 108 },
+    { "soc": 10,  "power": 120 },
+    { "soc": 20,  "power": 120 },
+    { "soc": 30,  "power": 115 },
+    { "soc": 40,  "power": 103 },
+    { "soc": 50,  "power": 87  },
+    { "soc": 60,  "power": 66  },
+    { "soc": 70,  "power": 45  },
+    { "soc": 80,  "power": 26  },
+    { "soc": 90,  "power": 13  },
+    { "soc": 100, "power": 5   }
+  ],
+
+  "rangeTests": [],
+
+  "thousandKmChallenge": null,
+
+  "length_mm": 4715,
+  "width_mm": 1920,
+  "height_mm": 1900,
+  "wheelbase_mm": 3100,
+  "trunkCapacity_L": 1200,
+  "trunkCapacityFolded_L": 4200,
+  "frunkCapacity_L": null,
+
+  "trims": [
+    {
+      "name": "Standard Active",
+      "price_EUR": 42000,
+      "batteryUsed": "Standard 51 kWh",
+      "equipmentHighlights": [
+        "Configuration 8 places passagers",
+        "Portes coulissantes électriques double",
+        "Écran 12,3\" + charge DC 100 kW",
+        "V2L + V2G de série",
+        "Plancher plat pour accessibilité PMR optionnel"
+      ]
+    },
+    {
+      "name": "Long Range Active",
+      "price_EUR": 48000,
+      "batteryUsed": "Long Range 88.2 kWh",
+      "equipmentHighlights": [
+        "Batterie 88.2 kWh — 400 km WLTP",
+        "Charge DC 120 kW (10-80 % en 35 min)",
+        "V2L 3,6 kW + V2G bidirectionnel",
+        "Modularité intérieure avancée",
+        "Highway Driving Assist"
+      ]
+    },
+    {
+      "name": "Long Range Earth",
+      "price_EUR": 53000,
+      "batteryUsed": "Long Range 88.2 kWh",
+      "equipmentHighlights": [
+        "Sièges passagers premium chauffants",
+        "Toit vitré panoramique",
+        "Système audio Meridian",
+        "Écran arrière passagers",
+        "Pack confort famille avancé"
+      ]
+    }
+  ],
+
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Bonus Écologique",
+      "amount_EUR": 4000
+    }
+  ],
+
+  "configurations": [
+    {
+      "id": "std-active-51-18",
+      "label": "Standard · Active · 51 kWh · 18\"",
+      "battery": "standard",
+      "trim": "Standard Active",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 42000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 242,
+      "wltp_consumption_kWh_100km": 24.0,
+      "realRange": {
+        "mixed_km": 198,
+        "highway_130_km": 128,
+        "urban_km": 240,
+        "winter_minus5_km": 155,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        { "soc": 0,   "power": 78  },
+        { "soc": 5,   "power": 90  },
+        { "soc": 10,  "power": 100 },
+        { "soc": 20,  "power": 100 },
+        { "soc": 30,  "power": 96  },
+        { "soc": 40,  "power": 86  },
+        { "soc": 50,  "power": 72  },
+        { "soc": 60,  "power": 55  },
+        { "soc": 70,  "power": 37  },
+        { "soc": 80,  "power": 21  },
+        { "soc": 90,  "power": 10  },
+        { "soc": 100, "power": 4   }
+      ],
+      "availability": "upcoming",
+      "notes": "Batterie Standard 51 kWh — usage navette urbaine et transport de proximité. Autonomie estimée (hors commercialisation). DC 100 kW max."
+    },
+    {
+      "id": "lr-active-882-18",
+      "label": "Long Range · Active · 88.2 kWh · 18\"",
+      "battery": "long-range",
+      "trim": "Long Range Active",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 48000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 400,
+      "wltp_consumption_kWh_100km": 22.5,
+      "realRange": {
+        "mixed_km": 340,
+        "highway_130_km": 218,
+        "urban_km": 408,
+        "winter_minus5_km": 268,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 120,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 52,
+      "chargingCurve": [
+        { "soc": 0,   "power": 92  },
+        { "soc": 5,   "power": 108 },
+        { "soc": 10,  "power": 120 },
+        { "soc": 20,  "power": 120 },
+        { "soc": 30,  "power": 115 },
+        { "soc": 40,  "power": 103 },
+        { "soc": 50,  "power": 87  },
+        { "soc": 60,  "power": 66  },
+        { "soc": 70,  "power": 45  },
+        { "soc": 80,  "power": 26  },
+        { "soc": 90,  "power": 13  },
+        { "soc": 100, "power": 5   }
+      ],
+      "availability": "upcoming",
+      "notes": "Batterie LR 88.2 kWh — 340 km réels en usage mixte navette/interurbain. DC 120 kW, V2G bidirectionnel. Données estimées pré-commercialisation."
+    },
+    {
+      "id": "lr-earth-882-18",
+      "label": "Long Range · Earth · 88.2 kWh · 18\"",
+      "battery": "long-range",
+      "trim": "Long Range Earth",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 53000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 388,
+      "wltp_consumption_kWh_100km": 23.2,
+      "realRange": {
+        "mixed_km": 328,
+        "highway_130_km": 210,
+        "urban_km": 392,
+        "winter_minus5_km": 258,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 120,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 52,
+      "chargingCurve": [
+        { "soc": 0,   "power": 92  },
+        { "soc": 5,   "power": 108 },
+        { "soc": 10,  "power": 120 },
+        { "soc": 20,  "power": 120 },
+        { "soc": 30,  "power": 115 },
+        { "soc": 40,  "power": 103 },
+        { "soc": 50,  "power": 87  },
+        { "soc": 60,  "power": 66  },
+        { "soc": 70,  "power": 45  },
+        { "soc": 80,  "power": 26  },
+        { "soc": 90,  "power": 13  },
+        { "soc": 100, "power": 5   }
+      ],
+      "availability": "upcoming",
+      "notes": "Finition premium passagers : Meridian, sièges chauffants, écran arrière. Légère pénalité consommation vs Active due à l'équipement."
+    }
+  ],
+
+  "warranty": {
+    "vehicle_years": 7,
+    "vehicle_km": 150000,
+    "battery_years": 7,
+    "battery_km": 150000,
+    "battery_soh_minimum_percent": 70
+  },
+
+  "keyFeatures": [
+    { "category": "confort",      "label": "Empattement 3,10 m — espace intérieur exceptionnel, passages de roues droits, plancher plat" },
+    { "category": "technologie",  "label": "V2G bidirectionnel de série — revente d'énergie au réseau ou alimentation domicile" },
+    { "category": "technologie",  "label": "V2L 3,6 kW — alimentation chantier, camping ou événement depuis le véhicule" },
+    { "category": "confort",      "label": "Portes coulissantes électriques doubles — embarquement facilité avec chargement ou PMR" },
+    { "category": "confort",      "label": "Volume modulable jusqu'à 4 200 L — transformation navette ↔ utilitaire sans outils" },
+    { "category": "securite",     "label": "Plateforme PBV dédiée — conçu nativement électrique, pas de conversion thermique" }
+  ],
+
+  "verdict": {
+    "strengths": [
+      "Plateforme PBV native EV : plancher plat, empattement 3,10 m — volume intérieur sans compromis thermique",
+      "V2G bidirectionnel de série : véhicule peut alimenter le domicile (jusqu'à 9,6 kW selon borne)",
+      "Modularité extrême : jusqu'à 8 places ou 4 200 L cargo — adapté aux deux usages",
+      "DC 120 kW (LR) : recharge rapide cohérente pour un véhicule à usage professionnel"
+    ],
+    "weaknesses": [
+      "Cx 0,38 élevé (corps de van) : consommation autoroutière importante (34 kWh/100km à 130 km/h)",
+      "218 km à 130 km/h (LR) : les trajets autoroutiers de plus de 2h nécessitent un arrêt charge",
+      "Masse 2 210 kg : dynamique de conduite limitée, freinages appuyés conseillés",
+      "Données encore estimées — lancement commercial à confirmer en Europe"
+    ],
+    "idealUserProfile": "Professionnel ou famille nombreuse cherchant un grand véhicule électrique polyvalent avec V2G/V2L pour usage mixte transport et énergie.",
+    "notIdealFor": "Grand rouleur autoroutier seul — la consommation élevée et l'autonomie limitée à haute vitesse rendent les longs trajets fastidieux."
+  },
+
+  "lastUpdated": "2026-05-17",
+  "sources": ["kia-fr", "lachaineev"],
+  "imageCredit": "Kia Media — visuel presse 2025"
+}

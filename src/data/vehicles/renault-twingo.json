@@ -1,0 +1,244 @@
+{
+  "slug": "renault-twingo",
+  "brand": "Renault",
+  "model": "Twingo E-Tech",
+  "variant": "40 kWh",
+  "bodyType": "Citadine 5 portes",
+  "segment": "A — mini citadine",
+  "productionCountry": "Slovénie",
+  "assemblyPlant": "Novo Mesto (Revoz)",
+  "releaseYear": 2026,
+  "marketAvailability": "Disponible en France",
+
+  "power_kW": 65,
+  "power_hp": 88,
+  "torque_Nm": 140,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 12.0,
+  "topSpeed_kmh": 130,
+
+  "usableCapacity_kWh": 40,
+  "grossCapacity_kWh": 42,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1050,
+
+  "wltp_max_km": 315,
+  "wltp_min_km": 285,
+  "realRange": {
+    "mixed_km": 270,
+    "highway_130_km": 165,
+    "urban_km": 340,
+    "winter_minus5_km": 210,
+    "confidence": "estimated"
+  },
+
+  "consumption_mixed_kWh_per_100km": 13.5,
+  "consumption_highway_kWh_per_100km": 21.5,
+  "consumption_winter_kWh_per_100km": 17.0,
+  "dragCoefficient_Cx": 0.30,
+
+  "chargingDC": {
+    "peakPower_kW": 80,
+    "time_10_80_min": 28,
+    "kWh_added_30min": 30,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 4.5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+
+  "chargingCurve": [
+    { "soc": 0,   "power": 66 },
+    { "soc": 5,   "power": 76 },
+    { "soc": 10,  "power": 80 },
+    { "soc": 20,  "power": 80 },
+    { "soc": 30,  "power": 78 },
+    { "soc": 40,  "power": 72 },
+    { "soc": 50,  "power": 62 },
+    { "soc": 60,  "power": 48 },
+    { "soc": 70,  "power": 32 },
+    { "soc": 80,  "power": 18 },
+    { "soc": 90,  "power": 10 },
+    { "soc": 100, "power": 5  }
+  ],
+
+  "rangeTests": [],
+
+  "thousandKmChallenge": null,
+
+  "length_mm": 3867,
+  "width_mm": 1760,
+  "height_mm": 1512,
+  "wheelbase_mm": 2492,
+  "trunkCapacity_L": 326,
+  "trunkCapacityFolded_L": 980,
+  "frunkCapacity_L": null,
+
+  "trims": [
+    {
+      "name": "Equilibre",
+      "price_EUR": 19990,
+      "batteryUsed": "40 kWh",
+      "equipmentHighlights": [
+        "Jantes 16\" alliage",
+        "Écran 10\" avec navigation connectée",
+        "Apple CarPlay / Android Auto sans fil",
+        "Régulateur de vitesse",
+        "Caméra de recul"
+      ]
+    },
+    {
+      "name": "Techno",
+      "price_EUR": 22990,
+      "batteryUsed": "40 kWh",
+      "equipmentHighlights": [
+        "Sièges avant chauffants",
+        "Chargeur à induction smartphone",
+        "Climatisation automatique bi-zone",
+        "Pack Drive Assist : aide au stationnement, freinage urgence",
+        "Jantes 16\" design exclusif"
+      ]
+    }
+  ],
+
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Bonus Écologique",
+      "amount_EUR": 4000
+    }
+  ],
+
+  "configurations": [
+    {
+      "id": "std-equilibre-40-16",
+      "label": "Standard · Equilibre · 40 kWh · 16\"",
+      "battery": "standard",
+      "trim": "Equilibre",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 19990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 315,
+      "wltp_consumption_kWh_100km": 13.5,
+      "realRange": {
+        "mixed_km": 270,
+        "highway_130_km": 165,
+        "urban_km": 340,
+        "winter_minus5_km": 210,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 80,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        { "soc": 0,   "power": 66 },
+        { "soc": 5,   "power": 76 },
+        { "soc": 10,  "power": 80 },
+        { "soc": 20,  "power": 80 },
+        { "soc": 30,  "power": 78 },
+        { "soc": 40,  "power": 72 },
+        { "soc": 50,  "power": 62 },
+        { "soc": 60,  "power": 48 },
+        { "soc": 70,  "power": 32 },
+        { "soc": 80,  "power": 18 },
+        { "soc": 90,  "power": 10 },
+        { "soc": 100, "power": 5  }
+      ],
+      "availability": "available",
+      "notes": "Moteur 65 kW (88 ch), couple 140 Nm, 0-100 en 12,0 s. Batterie 40 kWh utiles. DC 80 kW — recharge 10-80 % en 28 min."
+    },
+    {
+      "id": "std-techno-40-16",
+      "label": "Standard · Techno · 40 kWh · 16\"",
+      "battery": "standard",
+      "trim": "Techno",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 22990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 305,
+      "wltp_consumption_kWh_100km": 14.0,
+      "realRange": {
+        "mixed_km": 262,
+        "highway_130_km": 160,
+        "urban_km": 330,
+        "winter_minus5_km": 205,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 80,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        { "soc": 0,   "power": 66 },
+        { "soc": 5,   "power": 76 },
+        { "soc": 10,  "power": 80 },
+        { "soc": 20,  "power": 80 },
+        { "soc": 30,  "power": 78 },
+        { "soc": 40,  "power": 72 },
+        { "soc": 50,  "power": 62 },
+        { "soc": 60,  "power": 48 },
+        { "soc": 70,  "power": 32 },
+        { "soc": 80,  "power": 18 },
+        { "soc": 90,  "power": 10 },
+        { "soc": 100, "power": 5  }
+      ],
+      "availability": "available",
+      "notes": "Finition complète : sièges chauffants, climatisation auto, aide parking. Légère pénalité WLTP liée au poids des équipements."
+    }
+  ],
+
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+
+  "keyFeatures": [
+    { "category": "design",     "label": "Design rétro modernisé inspiré de la Twingo de 1992 — icône de la citadine française revisitée" },
+    { "category": "confort",    "label": "Masse 1 050 kg — légèreté record du segment électrique, agilité urbaine préservée" },
+    { "category": "technologie", "label": "DC 80 kW — recharge 10-80 % en 28 min, compatible toutes bornes rapides CCS" },
+    { "category": "securite",   "label": "Freinage d'urgence autonome et aide au stationnement de série sur Techno" },
+    { "category": "confort",    "label": "270 km réels en mixte — couvre confortablement une semaine d'usage urbain entre charges" },
+    { "category": "technologie", "label": "AC 11 kW tri-phasé — recharge complète en 4h30 sur une wallbox domestique" }
+  ],
+
+  "verdict": {
+    "strengths": [
+      "Prix d'entrée à 19 990 € — la citadine électrique neuve la plus accessible du marché",
+      "Masse 1 050 kg : légèreté que les autres EV citadins ne peuvent plus offrir",
+      "270 km réels en mixte : couvre 95 % des semaines d'usage urbain/périurbain",
+      "DC 80 kW : recharge 10-80 % en 28 min — un arrêt café sur autoroute suffit",
+      "Gabarit compact (3,87 m) : manœuvrabilité urbaine hors classe"
+    ],
+    "weaknesses": [
+      "165 km à 130 km/h : usage autoroutier limité, non adapté aux longs trajets réguliers",
+      "88 ch : 0-100 km/h en 12 s — confort en ville, mais lent sur voie rapide",
+      "Pas de V2L : aucune fonction bidirectionnelle — pas d'alimentation d'appareils externes",
+      "Coffre 326 L : correct mais pas extensible au-delà de 980 L sièges rabattus"
+    ],
+    "idealUserProfile": "Citadin pur ou second véhicule familial pour trajets courts. L'Equilibre à 19 990 € est l'entrée dans le VE neuf la plus économique du marché grand public.",
+    "notIdealFor": "Grand rouleur autoroutier ou conducteur cherchant de la puissance. Les 165 km à 130 km/h et les 12 s au 0-100 excluent un usage principalement autoroutier."
+  },
+
+  "lastUpdated": "2026-05-17",
+  "sources": ["renault-fr", "lachaineev"],
+  "imageCredit": "Renault France — visuel presse 2026"
+}

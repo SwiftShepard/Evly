@@ -1,0 +1,182 @@
+---
+import type { Vehicle } from "@/data/schemas";
+import {
+  formatHp,
+  formatHours,
+  formatKm,
+  formatKw,
+  formatKwh,
+  formatKwhPer100,
+  formatMm,
+  formatNm,
+  formatLiters,
+  formatPercent,
+  formatPrice,
+  formatSeconds,
+  formatVoltage,
+} from "@/lib/format";
+
+interface Props {
+  vehicle: Vehicle;
+}
+
+const { vehicle } = Astro.props;
+
+interface Row {
+  label: string;
+  value: string;
+  hint?: string;
+}
+
+interface Block {
+  title: string;
+  rows: Row[];
+}
+
+const blocks: Block[] = [
+  {
+    title: "Motorisation",
+    rows: [
+      {
+        label: "Puissance",
+        value: formatHp(vehicle.power_hp),
+        hint: formatKw(vehicle.power_kW),
+      },
+      { label: "Couple", value: formatNm(vehicle.torque_Nm) },
+      {
+        label: "Transmission",
+        value: vehicle.drivetrain,
+        hint: `${vehicle.motors} moteur${vehicle.motors > 1 ? "s" : ""}`,
+      },
+      { label: "0-100 km/h", value: formatSeconds(vehicle.acceleration_0_100_s) },
+      { label: "Vitesse max", value: formatKm(vehicle.topSpeed_kmh).replace("km", "km/h") },
+    ],
+  },
+  {
+    title: "Batterie",
+    rows: [
+      {
+        label: "Capacité utile",
+        value: formatKwh(vehicle.usableCapacity_kWh, 1),
+        hint: vehicle.grossCapacity_kWh
+          ? `brut ${formatKwh(vehicle.grossCapacity_kWh, 1)}`
+          : undefined,
+      },
+      { label: "Chimie", value: vehicle.chemistry },
+      { label: "Architecture", value: formatVoltage(vehicle.architecture_V) },
+      vehicle.mass_kg
+        ? { label: "Masse pack", value: `${vehicle.mass_kg} kg` }
+        : null,
+      { label: "Cx aérodynamique", value: vehicle.dragCoefficient_Cx.toString().replace(".", ",") },
+    ].filter((row): row is Row => row !== null),
+  },
+  {
+    title: "Recharge",
+    rows: [
+      { label: "Pic DC", value: formatKw(vehicle.chargingDC.peakPower_kW) },
+      {
+        label: "10 → 80 %",
+        value: `${vehicle.chargingDC.time_10_80_min} min`,
+        hint: `${vehicle.chargingDC.kWh_added_30min} kWh / 30 min`,
+      },
+      {
+        label: "AC embarqué",
+        value: `${vehicle.chargingAC.onboardCharger_kW} kW`,
+        hint: `${vehicle.chargingAC.phases} phases`,
+      },
+      { label: "0 → 100 % AC", value: formatHours(vehicle.chargingAC.time_0_100_h) },
+      { label: "Plug & Charge", value: vehicle.plugAndCharge ? "Oui" : "Non" },
+      {
+        label: "V2L",
+        value: vehicle.v2l ? "Oui" : "Non",
+        hint: vehicle.v2l_option_EUR
+          ? `option ${formatPrice(vehicle.v2l_option_EUR)}`
+          : undefined,
+      },
+    ],
+  },
+  {
+    title: "Dimensions",
+    rows: [
+      { label: "Longueur", value: formatMm(vehicle.length_mm) },
+      { label: "Largeur", value: formatMm(vehicle.width_mm) },
+      { label: "Hauteur", value: formatMm(vehicle.height_mm) },
+      { label: "Empattement", value: formatMm(vehicle.wheelbase_mm) },
+      {
+        label: "Coffre",
+        value: formatLiters(vehicle.trunkCapacity_L),
+        hint: `replié ${formatLiters(vehicle.trunkCapacityFolded_L)}`,
+      },
+    ],
+  },
+  {
+    title: "Garantie",
+    rows: [
+      {
+        label: "Véhicule",
+        value: `${vehicle.warranty.vehicle_years} ans`,
+        hint: `${vehicle.warranty.vehicle_km.toLocaleString("fr-FR")} km`,
+      },
+      {
+        label: "Batterie",
+        value: `${vehicle.warranty.battery_years} ans`,
+        hint: `${vehicle.warranty.battery_km.toLocaleString("fr-FR")} km`,
+      },
+      {
+        label: "SoH minimum",
+        value: formatPercent(vehicle.warranty.battery_soh_minimum_percent),
+        hint: "garanti à terme",
+      },
+    ],
+  },
+  {
+    title: "Consommation",
+    rows: [
+      {
+        label: "Mixte",
+        value: formatKwhPer100(vehicle.consumption_mixed_kWh_per_100km),
+      },
+      {
+        label: "Autoroute 130",
+        value: formatKwhPer100(vehicle.consumption_highway_kWh_per_100km),
+      },
+      {
+        label: "Hiver -5 °C",
+        value: formatKwhPer100(vehicle.consumption_winter_kWh_per_100km),
+      },
+    ],
+  },
+];
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[var(--color-border)]">
+  {
+    blocks.map((block) => (
+      <div class="bg-[var(--color-bg)] p-6 md:p-8 flex flex-col gap-5">
+        <h3 class="label-eyebrow">{block.title}</h3>
+        <dl class="flex flex-col">
+          {block.rows.map((row, idx) => (
+            <div
+              class:list={[
+                "flex items-baseline justify-between py-3 gap-4",
+                idx !== block.rows.length - 1 && "border-b border-[var(--color-border)]",
+              ]}
+            >
+              <dt class="text-sm text-[var(--color-text-muted)]">{row.label}</dt>
+              <dd class="flex flex-col items-end gap-0.5 text-right">
+                <span class="font-mono text-sm font-medium text-[var(--color-text)] tabular">
+                  {row.value}
+                </span>
+                {row.hint && (
+                  <span class="font-mono text-[11px] text-[var(--color-text-faint)] tabular">
+                    {row.hint}
+                  </span>
+                )}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    ))
+  }
+</div>

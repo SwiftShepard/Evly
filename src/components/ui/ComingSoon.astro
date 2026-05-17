@@ -1,0 +1,52 @@
+---
+import BentoGrid from "@/components/ui/BentoGrid.astro";
+import Tile from "@/components/ui/Tile.astro";
+
+interface Props {
+  number: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  features: string[];
+}
+
+const { number, eyebrow, title, description, features } = Astro.props;
+---
+
+<div class="container-edit py-6 md:py-10">
+  <BentoGrid>
+    <Tile size="full" variant="elevated">
+      <div class="flex items-center gap-4 mb-8 fade-rise">
+        <span class="font-mono text-xs text-[var(--color-text-faint)]">{number}</span>
+        <span class="label-eyebrow">{eyebrow}</span>
+        <span class="ml-2 inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] uppercase tracking-[0.16em] leading-none font-mono border border-[color-mix(in_srgb,var(--color-accent)_45%,var(--color-border-strong))] text-[var(--color-accent)] tag-pulse">
+          Bientôt
+        </span>
+      </div>
+
+      <h1 class="display-1 max-w-4xl fade-rise fade-rise-delay-1">{title}</h1>
+
+      <p class="mt-8 md:mt-10 text-base md:text-lg text-[var(--color-text-muted)] max-w-2xl leading-relaxed fade-rise fade-rise-delay-2">
+        {description}
+      </p>
+
+      <div class="mt-14 flex items-center gap-3 font-mono text-xs text-[var(--color-text-faint)] fade-rise fade-rise-delay-3">
+        <span class="w-8 h-px bg-[var(--color-accent)] divider-animated"></span>
+        En cours d'implémentation — prochaine itération
+      </div>
+    </Tile>
+
+    {
+      features.map((f, idx) => (
+        <Tile size="1x1" class="reveal">
+          <div class="flex flex-col gap-3 h-full">
+            <span data-numeric class="font-mono text-xs text-[var(--color-text-faint)]">
+              {String(idx + 1).padStart(2, "0")}
+            </span>
+            <p class="text-[var(--color-text)] text-sm leading-relaxed">{f}</p>
+          </div>
+        </Tile>
+      ))
+    }
+  </BentoGrid>
+</div>

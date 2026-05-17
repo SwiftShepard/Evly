@@ -1,0 +1,35 @@
+---
+type Tone = "neutral" | "accent" | "danger" | "warning" | "outline";
+
+interface Props {
+  tone?: Tone;
+  mono?: boolean;
+  class?: string;
+}
+
+const { tone = "neutral", mono = false, class: className = "" } = Astro.props;
+
+const toneClasses: Record<Tone, string> = {
+  neutral:
+    "bg-[var(--color-bg-subtle)] text-[var(--color-text-muted)] border border-[var(--color-border)]",
+  accent:
+    "bg-transparent text-[var(--color-accent)] border border-[var(--color-accent-dim)]",
+  danger:
+    "bg-transparent text-[var(--color-danger)] border border-[color-mix(in_srgb,var(--color-danger)_45%,var(--color-border-strong))]",
+  warning:
+    "bg-transparent text-[var(--color-warning)] border border-[color-mix(in_srgb,var(--color-warning)_45%,var(--color-border-strong))]",
+  outline:
+    "bg-transparent text-[var(--color-text-muted)] border border-[var(--color-border-strong)]",
+};
+---
+
+<span
+  class:list={[
+    "inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] uppercase tracking-[0.14em] leading-none whitespace-nowrap rounded-none",
+    mono ? "font-mono" : "",
+    toneClasses[tone],
+    className,
+  ]}
+>
+  <slot />
+</span>

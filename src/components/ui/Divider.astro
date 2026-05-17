@@ -1,0 +1,13 @@
+---
+interface Props {
+  strong?: boolean;
+  vertical?: boolean;
+  class?: string;
+}
+
+const { strong = false, vertical = false, class: className = "" } = Astro.props;
+const colorClass = strong ? "bg-[var(--color-border-strong)]" : "bg-[var(--color-border)]";
+const sizeClass = vertical ? "w-px h-full" : "h-px w-full";
+---
+
+<div class:list={[sizeClass, colorClass, className]} role="separator" aria-orientation={vertical ? "vertical" : "horizontal"}></div>

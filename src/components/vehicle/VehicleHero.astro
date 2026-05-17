@@ -1,0 +1,122 @@
+---
+import type { Vehicle } from "@/data/schemas";
+import { formatKm, formatPrice } from "@/lib/format";
+
+interface Props {
+  vehicle: Vehicle;
+}
+
+const { vehicle } = Astro.props;
+const cheapestTrim = vehicle.trims.reduce((a, b) =>
+  a.price_EUR < b.price_EUR ? a : b
+);
+---
+
+<section class="relative overflow-hidden border-b border-[var(--color-border)]">
+  <!-- Grille de fond très discrète : lignes verticales tous les 1/12 -->
+  <div
+    class="absolute inset-0 pointer-events-none opacity-[0.06]"
+    aria-hidden="true"
+    style="background-image: repeating-linear-gradient(to right, var(--color-text) 0 1px, transparent 1px 8.333%);"
+  >
+  </div>
+
+  <div class="container-edit pt-16 md:pt-24 pb-20 md:pb-32 relative">
+    <!-- Header méta -->
+    <div class="flex flex-wrap items-center gap-x-6 gap-y-2 mb-12 md:mb-20 fade-rise">
+      <span class="label-eyebrow">{vehicle.segment}</span>
+      <span class="label-eyebrow">Année modèle {vehicle.releaseYear}</span>
+      <span class="label-eyebrow">{vehicle.bodyType}</span>
+      <span class="label-eyebrow">{vehicle.drivetrain} · {vehicle.architecture_V} V</span>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-end">
+      <!-- Titre + variante -->
+      <div class="lg:col-span-7 flex flex-col gap-6">
+        <p class="font-mono text-sm text-[var(--color-text-muted)] fade-rise fade-rise-delay-1">
+          {vehicle.brand}
+        </p>
+        <h1 class="display-1 fade-rise fade-rise-delay-1">
+          {vehicle.model}
+          <span class="block text-[var(--color-text-muted)] mt-2 text-[0.55em] tracking-[-0.01em] font-medium">
+            {vehicle.variant}
+          </span>
+        </h1>
+        <p class="text-[var(--color-text-muted)] text-lg max-w-xl leading-relaxed fade-rise fade-rise-delay-2">
+          Berline compacte assemblée à <span class="text-[var(--color-text)]">{vehicle.assemblyPlant}</span>.
+          {vehicle.power_hp} ch, batterie {vehicle.usableCapacity_kWh.toString().replace(".", ",")} kWh utiles.
+        </p>
+      </div>
+
+      <!-- Chiffre signature : autonomie réelle -->
+      <div class="lg:col-span-5 flex flex-col items-start lg:items-end gap-3 fade-rise fade-rise-delay-3">
+        <span class="label-eyebrow">Autonomie réelle mixte</span>
+        <div class="flex items-baseline gap-3">
+          <span
+            data-numeric
+            class="display-stat text-[var(--color-accent)] text-[clamp(5rem,14vw,11rem)] leading-[0.85]"
+          >
+            {vehicle.realRange.mixed_km}
+          </span>
+          <span class="font-mono text-2xl text-[var(--color-text-faint)]">km</span>
+        </div>
+        <span class="font-mono text-xs text-[var(--color-text-faint)] lg:text-right max-w-xs">
+          mesurée à {vehicle.consumption_mixed_kWh_per_100km.toString().replace(".", ",")} kWh/100&nbsp;km — WLTP annoncée jusqu'à {formatKm(vehicle.wltp_max_km)}
+        </span>
+      </div>
+    </div>
+
+    <!-- Bandeau de stats -->
+    <div class="mt-20 md:mt-28 grid grid-cols-2 md:grid-cols-4 border-t border-[var(--color-border)]">
+      <div class="border-b md:border-b-0 md:border-r border-[var(--color-border)] py-6 md:py-8 pr-4">
+        <span class="label-eyebrow block mb-3">Puissance</span>
+        <div class="flex items-baseline gap-1.5">
+          <span data-numeric class="display-stat text-3xl md:text-4xl">{vehicle.power_hp}</span>
+          <span class="font-mono text-[var(--color-text-faint)] text-sm">ch</span>
+        </div>
+        <span class="font-mono text-xs text-[var(--color-text-faint)] mt-1 block">
+          {vehicle.power_kW} kW
+        </span>
+      </div>
+
+      <div class="border-b md:border-b-0 md:border-r border-[var(--color-border)] py-6 md:py-8 pr-4 md:pl-6">
+        <span class="label-eyebrow block mb-3">0-100 km/h</span>
+        <div class="flex items-baseline gap-1.5">
+          <span data-numeric class="display-stat text-3xl md:text-4xl">
+            {vehicle.acceleration_0_100_s.toString().replace(".", ",")}
+          </span>
+          <span class="font-mono text-[var(--color-text-faint)] text-sm">s</span>
+        </div>
+        <span class="font-mono text-xs text-[var(--color-text-faint)] mt-1 block">
+          vitesse max {vehicle.topSpeed_kmh} km/h
+        </span>
+      </div>
+
+      <div class="md:border-r border-[var(--color-border)] py-6 md:py-8 pr-4 md:pl-6">
+        <span class="label-eyebrow block mb-3">Recharge DC pic</span>
+        <div class="flex items-baseline gap-1.5">
+          <span data-numeric class="display-stat text-3xl md:text-4xl">{vehicle.chargingDC.peakPower_kW}</span>
+          <span class="font-mono text-[var(--color-text-faint)] text-sm">kW</span>
+        </div>
+        <span class="font-mono text-xs text-[var(--color-text-faint)] mt-1 block">
+          10 → 80 % en {vehicle.chargingDC.time_10_80_min} min
+        </span>
+      </div>
+
+      <div class="py-6 md:py-8 pr-4 md:pl-6">
+        <span class="label-eyebrow block mb-3">Prix d'accès</span>
+        <div class="flex items-baseline gap-1.5">
+          <span data-numeric class="display-stat text-3xl md:text-4xl">
+            {formatPrice(cheapestTrim.price_EUR)}
+          </span>
+        </div>
+        <span class="font-mono text-xs text-[var(--color-text-faint)] mt-1 block">
+          finition {cheapestTrim.name}
+          {vehicle.leasingSocialEligible && vehicle.leasingSocial_EUR_per_month
+            ? ` · leasing social ${vehicle.leasingSocial_EUR_per_month} €/mois`
+            : ""}
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

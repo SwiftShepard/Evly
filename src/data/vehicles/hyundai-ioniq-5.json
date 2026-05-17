@@ -1,0 +1,262 @@
+{
+  "slug": "hyundai-ioniq-5",
+  "brand": "Hyundai",
+  "model": "Ioniq 5",
+  "variant": "84 kWh",
+  "bodyType": "Crossover familial",
+  "segment": "D",
+  "productionCountry": "Corée",
+  "assemblyPlant": "Ulsan",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 168,
+  "power_hp": 228,
+  "torque_Nm": 350,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 7.3,
+  "topSpeed_kmh": 185,
+  "usableCapacity_kWh": 84,
+  "grossCapacity_kWh": 88,
+  "chemistry": "NMC",
+  "architecture_V": 800,
+  "mass_kg": 2000,
+  "wltp_max_km": 570,
+  "wltp_min_km": 530,
+  "realRange": {
+    "mixed_km": 410,
+    "highway_130_km": 265,
+    "highway_120_km": 289,
+    "urban_km": 490,
+    "winter_minus5_km": 340,
+    "confidence": "bjorn_nyland"
+  },
+  "consumption_mixed_kWh_per_100km": 16.5,
+  "consumption_highway_kWh_per_100km": 24.5,
+  "consumption_winter_kWh_per_100km": 22.0,
+  "dragCoefficient_Cx": 0.288,
+  "chargingDC": {
+    "peakPower_kW": 240,
+    "time_10_80_min": 18,
+    "kWh_added_30min": 70,
+    "confidence": "tested"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 6.5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 100
+    },
+    {
+      "soc": 10,
+      "power": 130
+    },
+    {
+      "soc": 50,
+      "power": 100
+    },
+    {
+      "soc": 80,
+      "power": 50
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
+  ],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": "2021-06",
+      "speed_kmh": 90,
+      "range_km": 488,
+      "consumption_kWh_100km": 15.1,
+      "temperature_C": 18,
+      "wheelSize_inches": 19,
+      "tyreModel": null,
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Test sur version 72.6 kWh, ajusté à 84 kWh estimé."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": "2021-06",
+      "speed_kmh": 120,
+      "range_km": 310,
+      "consumption_kWh_100km": 22.8,
+      "temperature_C": 18,
+      "wheelSize_inches": 19,
+      "tyreModel": null,
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": ""
+    }
+  ],
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 580,
+    "averageSpeed_kmh": 103.4,
+    "averageConsumption_Wh_km": 240,
+    "chargingStops": 4,
+    "averageTemperature_C": 18,
+    "testDate": "2021-06",
+    "videoUrl": null,
+    "confidence": "tested"
+  },
+  "length_mm": 4655,
+  "width_mm": 1890,
+  "height_mm": 1605,
+  "wheelbase_mm": 3000,
+  "trunkCapacity_L": 527,
+  "trunkCapacityFolded_L": 1587,
+  "frunkCapacity_L": 57,
+  "trims": [
+    {
+      "name": "Intuitive",
+      "price_EUR": 47500,
+      "batteryUsed": "84 kWh",
+      "equipmentHighlights": [
+        "Charge 800V",
+        "Ecran 12.3\""
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Bonus Écologique",
+      "amount_EUR": 4000
+    }
+  ],
+  "configurations": [
+    {
+      "id": "hyundai-ioniq-5-intuitive",
+      "label": "Ioniq 5 Intuitive",
+      "battery": "standard",
+      "trim": "Intuitive",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 47500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 570,
+      "wltp_consumption_kWh_100km": 16.5,
+      "realRange": {
+        "mixed_km": 410,
+        "highway_130_km": 265,
+        "highway_120_km": 289,
+        "urban_km": 490,
+        "winter_minus5_km": 340,
+        "confidence": "bjorn_nyland"
+      },
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": "2021-06",
+          "speed_kmh": 90,
+          "range_km": 488,
+          "consumption_kWh_100km": 15.1,
+          "temperature_C": 18,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Test sur version 72.6 kWh, ajusté à 84 kWh estimé."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": "2021-06",
+          "speed_kmh": 120,
+          "range_km": 310,
+          "consumption_kWh_100km": 22.8,
+          "temperature_C": 18,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": ""
+        }
+      ],
+      "chargingDC_peak_kW": 240,
+      "chargingDC_10_80_min": 18,
+      "chargingDC_kWh_30min": 70,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "confort",
+      "label": "Sièges confort de haute qualité"
+    },
+    {
+      "category": "technologie",
+      "label": "Système d'infodivertissement avancé"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence"
+    },
+    {
+      "category": "design",
+      "label": "Signature lumineuse LED distinctive"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Bon compromis prix/autonomie",
+      "Confort de suspension"
+    ],
+    "weaknesses": [
+      "Vitesse de charge rapide en retrait",
+      "Info-divertissement perfectible"
+    ],
+    "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
+    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra-rapides."
+  },
+  "lastUpdated": "2026-05-16",
+  "sources": [
+    "nyland",
+    "lachaineev"
+  ],
+  "imageCredit": "Constructeur"
+}

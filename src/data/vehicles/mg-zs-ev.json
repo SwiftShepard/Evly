@@ -1,0 +1,196 @@
+{
+  "slug": "mg-zs-ev",
+  "brand": "MG",
+  "model": "ZS EV",
+  "variant": "70 kWh Autonomie Étendue",
+  "bodyType": "SUV urbain",
+  "segment": "B",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Ulsan",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 115,
+  "power_hp": 204,
+  "torque_Nm": 300,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 7.5,
+  "topSpeed_kmh": 160,
+  "usableCapacity_kWh": 68.3,
+  "grossCapacity_kWh": 70,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1700,
+  "wltp_max_km": 440,
+  "wltp_min_km": 440,
+  "realRange": {
+    "mixed_km": 340,
+    "highway_130_km": 240,
+    "urban_km": 400,
+    "winter_minus5_km": 230,
+    "confidence": "tested"
+  },
+  "consumption_mixed_kWh_per_100km": 15.0,
+  "consumption_highway_kWh_per_100km": 21.0,
+  "consumption_winter_kWh_per_100km": 19.0,
+  "dragCoefficient_Cx": 0.33,
+  "chargingDC": {
+    "peakPower_kW": 92,
+    "time_10_80_min": 40,
+    "kWh_added_30min": 35,
+    "confidence": "tested"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 6.5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 100
+    },
+    {
+      "soc": 10,
+      "power": 130
+    },
+    {
+      "soc": 50,
+      "power": 100
+    },
+    {
+      "soc": 80,
+      "power": 50
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4323,
+  "width_mm": 1809,
+  "height_mm": 1649,
+  "wheelbase_mm": 2700,
+  "trunkCapacity_L": 448,
+  "trunkCapacityFolded_L": 1200,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Luxury Extended",
+      "price_EUR": 37990,
+      "batteryUsed": "70 kWh NMC",
+      "equipmentHighlights": [
+        "Toit ouvrant",
+        "Caméra 360°"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Bonus Écologique",
+      "amount_EUR": 4000
+    }
+  ],
+  "configurations": [
+    {
+      "id": "mg-zs-ev-luxury-extended",
+      "label": "ZS EV Luxury Extended",
+      "battery": "standard",
+      "trim": "Luxury Extended",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 37990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 440,
+      "wltp_consumption_kWh_100km": 15.0,
+      "realRange": {
+        "mixed_km": 340,
+        "highway_130_km": 240,
+        "urban_km": 400,
+        "winter_minus5_km": 230,
+        "confidence": "tested"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 92,
+      "chargingDC_10_80_min": 40,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "confort",
+      "label": "Sièges confort de haute qualité"
+    },
+    {
+      "category": "technologie",
+      "label": "Système d'infodivertissement avancé"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence"
+    },
+    {
+      "category": "design",
+      "label": "Signature lumineuse LED distinctive"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Bon compromis prix/autonomie",
+      "Confort de suspension"
+    ],
+    "weaknesses": [
+      "Vitesse de charge rapide en retrait",
+      "Info-divertissement perfectible"
+    ],
+    "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
+    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra-rapides."
+  },
+  "lastUpdated": "2026-05-16",
+  "sources": [
+    "nyland",
+    "lachaineev"
+  ],
+  "imageCredit": "Constructeur"
+}

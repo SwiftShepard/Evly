@@ -1,0 +1,55 @@
+---
+import { getSource } from "@/data/sources";
+
+interface Props {
+  sourceId: string;
+  date?: string;
+  class?: string;
+}
+
+const { sourceId, date, class: className = "" } = Astro.props;
+const source = getSource(sourceId);
+---
+
+{
+  source && (
+    <details class:list={["relative inline-block", className]}>
+      <summary
+        class="list-none cursor-pointer inline-flex items-center justify-center w-4 h-4 border border-[var(--color-border-strong)] text-[10px] font-mono text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-text-muted)] transition-colors focus-visible:outline-none align-middle"
+        aria-label={`Source : ${source.name}`}
+      >
+        i
+      </summary>
+      <div
+        class="tooltip-enter absolute z-30 top-full left-1/2 mt-2 w-72 bg-[var(--color-bg-elevated)] border border-[var(--color-border-strong)] p-4 flex flex-col gap-2 shadow-lg shadow-black/10"
+      >
+        <div class="flex items-center justify-between gap-3">
+          <span class="font-display font-semibold text-sm tracking-[-0.005em]">
+            {source.name}
+          </span>
+          <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">
+            {source.type}
+          </span>
+        </div>
+        <p class="text-xs text-[var(--color-text-muted)] leading-relaxed">
+          {source.description}
+        </p>
+        <div class="flex items-center justify-between gap-3 pt-2 border-t border-[var(--color-border)]">
+          {date && (
+            <span class="font-mono text-[10px] text-[var(--color-text-faint)]">
+              Test {date}
+            </span>
+          )}
+          <a
+            href={source.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-mono text-[10px] text-[var(--color-accent)] hover:underline ml-auto"
+          >
+            {new URL(source.url).hostname.replace(/^www\./, "")} ↗
+          </a>
+        </div>
+      </div>
+    </details>
+  )
+}

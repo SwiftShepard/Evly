@@ -1,0 +1,79 @@
+---
+import SourceTooltip from "@/components/ui/SourceTooltip.astro";
+
+type TileSize = "1x1" | "2x1" | "2x2" | "3x1" | "full";
+type TileVariant = "default" | "elevated" | "accent" | "outlined";
+
+interface Props {
+  size?: TileSize;
+  variant?: TileVariant;
+  href?: string;
+  label?: string;
+  source?: string;
+  sourceDate?: string;
+  ariaLabel?: string;
+  class?: string;
+}
+
+const {
+  size = "1x1",
+  variant = "default",
+  href,
+  label,
+  source,
+  sourceDate,
+  ariaLabel,
+  class: className = "",
+} = Astro.props;
+
+const showHeader = Boolean(label || source);
+const hasFooter = Astro.slots.has("footer");
+---
+
+{
+  href ? (
+    <a
+      href={href}
+      class:list={["bento-tile", className]}
+      data-size={size}
+      data-variant={variant}
+      aria-label={ariaLabel}
+    >
+      {showHeader && (
+        <div class="bento-tile-header">
+          {label ? <span class="label-eyebrow">{label}</span> : <span />}
+          {source && <SourceTooltip sourceId={source} date={sourceDate} />}
+        </div>
+      )}
+      <div class="flex-1 flex flex-col min-w-0">
+        <slot />
+      </div>
+      {hasFooter && (
+        <div class="mt-4 pt-4 border-t border-[var(--color-border)]">
+          <slot name="footer" />
+        </div>
+      )}
+    </a>
+  ) : (
+    <div
+      class:list={["bento-tile", className]}
+      data-size={size}
+      data-variant={variant}
+    >
+      {showHeader && (
+        <div class="bento-tile-header">
+          {label ? <span class="label-eyebrow">{label}</span> : <span />}
+          {source && <SourceTooltip sourceId={source} date={sourceDate} />}
+        </div>
+      )}
+      <div class="flex-1 flex flex-col min-w-0">
+        <slot />
+      </div>
+      {hasFooter && (
+        <div class="mt-4 pt-4 border-t border-[var(--color-border)]">
+          <slot name="footer" />
+        </div>
+      )}
+    </div>
+  )
+}

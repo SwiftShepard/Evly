@@ -1,0 +1,75 @@
+---
+type Size = "md" | "lg" | "xl" | "hero";
+type Tone = "default" | "accent" | "muted" | "danger" | "warning";
+
+interface Props {
+  value: string;
+  unit?: string;
+  hint?: string;
+  size?: Size;
+  tone?: Tone;
+  class?: string;
+}
+
+const {
+  value,
+  unit,
+  hint,
+  size = "lg",
+  tone = "default",
+  class: className = "",
+} = Astro.props;
+
+const sizeMap: Record<Size, string> = {
+  md: "text-3xl md:text-4xl",
+  lg: "text-4xl md:text-5xl",
+  xl: "text-5xl md:text-6xl",
+  hero: "text-6xl md:text-7xl lg:text-8xl",
+};
+
+const toneMap: Record<Tone, string> = {
+  default: "text-[var(--color-text)]",
+  accent: "text-[var(--color-accent)]",
+  muted: "text-[var(--color-text-muted)]",
+  danger: "text-[var(--color-danger)]",
+  warning: "text-[var(--color-warning)]",
+};
+
+const unitSizeMap: Record<Size, string> = {
+  md: "text-sm",
+  lg: "text-base",
+  xl: "text-lg",
+  hero: "text-xl md:text-2xl",
+};
+---
+
+<div
+  class:list={[
+    "flex flex-col gap-1.5 mt-auto",
+    className,
+  ]}
+>
+  <div class="flex items-baseline gap-2 flex-wrap">
+    <span
+      data-numeric
+      class:list={["display-stat", sizeMap[size], toneMap[tone]]}
+    >
+      {value}
+    </span>
+    {unit && (
+      <span
+        class:list={[
+          "font-mono text-[var(--color-text-faint)]",
+          unitSizeMap[size],
+        ]}
+      >
+        {unit}
+      </span>
+    )}
+  </div>
+  {hint && (
+    <span class="font-mono text-[11px] md:text-xs text-[var(--color-text-faint)] leading-snug">
+      {hint}
+    </span>
+  )}
+</div>

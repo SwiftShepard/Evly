@@ -1,0 +1,87 @@
+---
+import Wordmark from "@/components/ui/Wordmark.astro";
+
+const year = new Date().getFullYear();
+
+const cols = [
+  {
+    title: "Comparer",
+    links: [
+      { href: "/vehicules", label: "Tous les véhicules" },
+      { href: "/comparer", label: "Comparateur multi" },
+      { href: "/simulateur", label: "Simulateur TCO" },
+      { href: "/recommandation", label: "Recommandation guidée" },
+    ],
+  },
+  {
+    title: "Méthodologie",
+    links: [
+      { href: "/methodologie", label: "Notre approche" },
+      { href: "/methodologie#protocoles", label: "Protocoles de test" },
+      { href: "/methodologie#sources", label: "Nos sources" },
+      { href: "/methodologie#limites", label: "Limites & honnêteté" },
+    ],
+  },
+  {
+    title: "Projet",
+    links: [
+      { href: "https://github.com/", label: "Code source" },
+      { href: "/methodologie#contact", label: "Contact" },
+    ],
+  },
+];
+---
+
+<footer class="border-t border-[var(--color-border)] mt-32 reveal">
+  <div class="container-edit py-16">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+      <div class="md:col-span-5 flex flex-col gap-6">
+        <div class="flex items-baseline gap-3">
+          <Wordmark size="lg" />
+        </div>
+        <p class="font-mono text-sm text-[var(--color-accent)] tracking-tight">
+          L'électrique mesuré.
+        </p>
+        <p class="text-[var(--color-text-muted)] text-sm leading-relaxed max-w-md">
+          Evly agrège les données d'autonomie réelle et de recharge mesurées par Bjørn Nyland, EVKX, ArenaEV,
+          la presse VE française et les fiches constructeur officielles. Aucune publicité, aucun lien affilié, aucun tracking.
+        </p>
+        <div class="flex flex-col gap-1">
+          <span class="label-eyebrow">État du projet</span>
+          <span class="text-sm text-[var(--color-text-muted)] font-mono">
+            v0.2 · 2 modèles · mise à jour {year}
+          </span>
+        </div>
+      </div>
+
+      {
+        cols.map((col) => (
+          <div class="md:col-span-2 lg:col-span-2 flex flex-col gap-4">
+            <span class="label-eyebrow">{col.title}</span>
+            <ul class="flex flex-col gap-2">
+              {col.links.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="footer-link text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <div
+      class="mt-16 pt-8 border-t border-[var(--color-border)] flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+    >
+      <span class="label-eyebrow">© {year} Evly. L'électrique mesuré.</span>
+      <span class="font-mono text-xs text-[var(--color-text-faint)]">
+        Astro · Tailwind · TypeScript · Cloudflare Pages
+      </span>
+    </div>
+  </div>
+</footer>

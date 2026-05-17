@@ -1,0 +1,413 @@
+{
+  "slug": "kia-ev3",
+  "brand": "Kia",
+  "model": "EV3",
+  "variant": "58.3 kWh / 81.4 kWh",
+  "bodyType": "SUV compact",
+  "segment": "C — SUV compact",
+  "productionCountry": "Corée",
+  "assemblyPlant": "Ulsan",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible en Europe",
+
+  "power_kW": 150,
+  "power_hp": 204,
+  "torque_Nm": 283,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 7.7,
+  "topSpeed_kmh": 170,
+
+  "usableCapacity_kWh": 81.4,
+  "grossCapacity_kWh": 84.6,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1810,
+
+  "wltp_max_km": 605,
+  "wltp_min_km": 436,
+  "realRange": {
+    "mixed_km": 500,
+    "highway_130_km": 315,
+    "urban_km": 600,
+    "winter_minus5_km": 395,
+    "confidence": "tested"
+  },
+
+  "consumption_mixed_kWh_per_100km": 14.8,
+  "consumption_highway_kWh_per_100km": 22.5,
+  "consumption_winter_kWh_per_100km": 18.5,
+  "dragCoefficient_Cx": 0.26,
+
+  "chargingDC": {
+    "peakPower_kW": 128,
+    "time_10_80_min": 31,
+    "kWh_added_30min": 55,
+    "confidence": "tested"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 6.5
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+
+  "chargingCurve": [
+    { "soc": 0,   "power": 105 },
+    { "soc": 5,   "power": 120 },
+    { "soc": 10,  "power": 128 },
+    { "soc": 20,  "power": 128 },
+    { "soc": 30,  "power": 125 },
+    { "soc": 40,  "power": 112 },
+    { "soc": 50,  "power": 95  },
+    { "soc": 60,  "power": 72  },
+    { "soc": 70,  "power": 50  },
+    { "soc": 80,  "power": 30  },
+    { "soc": 90,  "power": 15  },
+    { "soc": 100, "power": 6   }
+  ],
+
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": "2024-09",
+      "speed_kmh": 90,
+      "range_km": 599,
+      "consumption_kWh_100km": 13.5,
+      "temperature_C": 20,
+      "wheelSize_inches": 19,
+      "tyreModel": null,
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Long Range 81.4 kWh — exceptionnel à 90 km/h"
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": "2024-09",
+      "speed_kmh": 120,
+      "range_km": 412,
+      "consumption_kWh_100km": 19.5,
+      "temperature_C": 20,
+      "wheelSize_inches": 19,
+      "tyreModel": null,
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Long Range 81.4 kWh"
+    }
+  ],
+
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 635,
+    "averageSpeed_kmh": 94.5,
+    "averageConsumption_Wh_km": 209,
+    "chargingStops": 5,
+    "averageTemperature_C": 15,
+    "testDate": "2024-09",
+    "videoUrl": null,
+    "confidence": "tested"
+  },
+
+  "length_mm": 4300,
+  "width_mm": 1850,
+  "height_mm": 1560,
+  "wheelbase_mm": 2680,
+  "trunkCapacity_L": 460,
+  "trunkCapacityFolded_L": 1250,
+  "frunkCapacity_L": 25,
+
+  "trims": [
+    {
+      "name": "Standard Range Air",
+      "price_EUR": 35990,
+      "batteryUsed": "Standard 58.3 kWh",
+      "equipmentHighlights": [
+        "Double écran 12,3\" (instrumentation + infotainment)",
+        "Charge AC 11 kW triphasé",
+        "Jantes 17\" alliage",
+        "Apple CarPlay / Android Auto sans fil",
+        "Aide au maintien de voie active"
+      ]
+    },
+    {
+      "name": "Long Range Air",
+      "price_EUR": 39990,
+      "batteryUsed": "Long Range 81.4 kWh",
+      "equipmentHighlights": [
+        "Batterie 81.4 kWh — 605 km WLTP",
+        "Charge DC 128 kW (10-80 % en 31 min)",
+        "V2L 2,2 kW de série",
+        "Jantes 17\" alliage",
+        "Highway Drive Assist (semi-autonomie autoroute)"
+      ]
+    },
+    {
+      "name": "Long Range Earth",
+      "price_EUR": 40990,
+      "batteryUsed": "Long Range 81.4 kWh",
+      "equipmentHighlights": [
+        "Toit ouvrant panoramique",
+        "Sièges avant chauffants et ventilés",
+        "Pompe à chaleur de série",
+        "Jantes 18\" alliage",
+        "Caméra 360° et aide au stationnement"
+      ]
+    },
+    {
+      "name": "Long Range GT-Line",
+      "price_EUR": 45990,
+      "batteryUsed": "Long Range 81.4 kWh",
+      "equipmentHighlights": [
+        "Pack GT-Line : boucliers sport, jantes 19\"",
+        "Sièges cuir Nappa chauffants / ventilés",
+        "Système audio Bose",
+        "Head-up display",
+        "Pack hiver intégral de série"
+      ]
+    }
+  ],
+
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Bonus Écologique",
+      "amount_EUR": 4000
+    }
+  ],
+
+  "configurations": [
+    {
+      "id": "std-air-583-17",
+      "label": "Standard · Air · 58.3 kWh · 17\"",
+      "battery": "standard",
+      "trim": "Standard Range Air",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 35990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 436,
+      "wltp_consumption_kWh_100km": 15.8,
+      "realRange": {
+        "mixed_km": 350,
+        "highway_130_km": 218,
+        "urban_km": 440,
+        "winter_minus5_km": 275,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 80,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        { "soc": 0,   "power": 62 },
+        { "soc": 5,   "power": 73 },
+        { "soc": 10,  "power": 80 },
+        { "soc": 20,  "power": 80 },
+        { "soc": 30,  "power": 76 },
+        { "soc": 40,  "power": 68 },
+        { "soc": 50,  "power": 56 },
+        { "soc": 60,  "power": 42 },
+        { "soc": 70,  "power": 28 },
+        { "soc": 80,  "power": 15 },
+        { "soc": 90,  "power": 8  },
+        { "soc": 100, "power": 3  }
+      ],
+      "availability": "available",
+      "notes": "Moteur 115 kW (156 ch). DC limité à 80 kW — idéal usage urbain et périurbain. 350 km réels couvrent la majorité des usages quotidiens."
+    },
+    {
+      "id": "lr-air-814-17",
+      "label": "Long Range · Air · 81.4 kWh · 17\"",
+      "battery": "long-range",
+      "trim": "Long Range Air",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 39990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 605,
+      "wltp_consumption_kWh_100km": 14.8,
+      "realRange": {
+        "mixed_km": 500,
+        "highway_130_km": 315,
+        "urban_km": 600,
+        "winter_minus5_km": 395,
+        "confidence": "tested"
+      },
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": "2024-09",
+          "speed_kmh": 90,
+          "range_km": 599,
+          "consumption_kWh_100km": 13.5,
+          "temperature_C": 20,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Test réalisé en jantes 19\" — légèrement optimiste pour la config 17\""
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": "2024-09",
+          "speed_kmh": 120,
+          "range_km": 412,
+          "consumption_kWh_100km": 19.5,
+          "temperature_C": 20,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": ""
+        }
+      ],
+      "chargingDC_peak_kW": 128,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0,   "power": 105 },
+        { "soc": 5,   "power": 120 },
+        { "soc": 10,  "power": 128 },
+        { "soc": 20,  "power": 128 },
+        { "soc": 30,  "power": 125 },
+        { "soc": 40,  "power": 112 },
+        { "soc": 50,  "power": 95  },
+        { "soc": 60,  "power": 72  },
+        { "soc": 70,  "power": 50  },
+        { "soc": 80,  "power": 30  },
+        { "soc": 90,  "power": 15  },
+        { "soc": 100, "power": 6   }
+      ],
+      "availability": "available",
+      "notes": "Moteur 150 kW (204 ch), DC 128 kW. 500 km réels en mixte — meilleur autonomie du segment C en 400V."
+    },
+    {
+      "id": "lr-earth-814-18",
+      "label": "Long Range · Earth · 81.4 kWh · 18\"",
+      "battery": "long-range",
+      "trim": "Long Range Earth",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 40990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 590,
+      "wltp_consumption_kWh_100km": 15.2,
+      "realRange": {
+        "mixed_km": 488,
+        "highway_130_km": 308,
+        "urban_km": 585,
+        "winter_minus5_km": 383,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 128,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0,   "power": 105 },
+        { "soc": 5,   "power": 120 },
+        { "soc": 10,  "power": 128 },
+        { "soc": 20,  "power": 128 },
+        { "soc": 30,  "power": 125 },
+        { "soc": 40,  "power": 112 },
+        { "soc": 50,  "power": 95  },
+        { "soc": 60,  "power": 72  },
+        { "soc": 70,  "power": 50  },
+        { "soc": 80,  "power": 30  },
+        { "soc": 90,  "power": 15  },
+        { "soc": 100, "power": 6   }
+      ],
+      "availability": "available",
+      "notes": "Finition confort : toit pano, sièges chauffants/ventilés, pompe à chaleur. Jantes 18\" → légère pénalité autonomie."
+    },
+    {
+      "id": "lr-gt-line-814-19",
+      "label": "Long Range · GT-Line · 81.4 kWh · 19\"",
+      "battery": "long-range",
+      "trim": "Long Range GT-Line",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 45990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 560,
+      "wltp_consumption_kWh_100km": 16.0,
+      "realRange": {
+        "mixed_km": 468,
+        "highway_130_km": 295,
+        "urban_km": 562,
+        "winter_minus5_km": 367,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 128,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0,   "power": 105 },
+        { "soc": 5,   "power": 120 },
+        { "soc": 10,  "power": 128 },
+        { "soc": 20,  "power": 128 },
+        { "soc": 30,  "power": 125 },
+        { "soc": 40,  "power": 112 },
+        { "soc": 50,  "power": 95  },
+        { "soc": 60,  "power": 72  },
+        { "soc": 70,  "power": 50  },
+        { "soc": 80,  "power": 30  },
+        { "soc": 90,  "power": 15  },
+        { "soc": 100, "power": 6   }
+      ],
+      "availability": "available",
+      "notes": "Pack GT-Line sport + cuir Nappa + Bose. Jantes 19\" pénalisent l'autonomie de 40 km vs Air 17\"."
+    }
+  ],
+
+  "warranty": {
+    "vehicle_years": 7,
+    "vehicle_km": 150000,
+    "battery_years": 7,
+    "battery_km": 150000,
+    "battery_soh_minimum_percent": 70
+  },
+
+  "keyFeatures": [
+    { "category": "technologie",  "label": "Charge DC 128 kW (LR) — 10-80 % en 31 min : aussi rapide que beaucoup d'architectures 800V" },
+    { "category": "technologie",  "label": "V2L 2,2 kW de série — alimente appareils externes jusqu'à 2 200 W" },
+    { "category": "confort",      "label": "Frunk 25 L + coffre 460 L — meilleur ratio volume/compacité du segment C" },
+    { "category": "securite",     "label": "Highway Drive Assist — semi-autonomie autoroute, maintien voie et gestion distance" },
+    { "category": "confort",      "label": "Pompe à chaleur (Earth/GT-Line) — autonomie hivernale préservée à -5 °C" },
+    { "category": "design",       "label": "Cx 0,26 — aérodynamisme remarquable pour un SUV compact, clé du 605 km WLTP" }
+  ],
+
+  "verdict": {
+    "strengths": [
+      "605 km WLTP et 500 km réels (LR) : meilleure autonomie du segment C en 400V",
+      "DC 128 kW en 400V : 10-80 % en 31 min — presque aussi rapide que les 800V concurrents",
+      "V2L de série sur Long Range — alimentation externe jusqu'à 2,2 kW",
+      "Standard Range 35 990€ / 436 km WLTP : entrée de gamme parmi les plus accessibles du C"
+    ],
+    "weaknesses": [
+      "Standard Range limité à 80 kW DC : recharge notablement plus lente sur longs trajets",
+      "Architecture 400V : pas d'ultra-charge 350 kW possible, même avec chargeur de pointe",
+      "Pas de version AWD disponible",
+      "GT-Line 19\" : pénalité autonomie de ~40 km — jantes 17\" restent le bon compromis"
+    ],
+    "idealUserProfile": "Conducteur principal cherchant un SUV compact alliant grande autonomie réelle et recharge rapide, sans compromis sur le budget global.",
+    "notIdealFor": "Conducteur qui veut une charge ultra-rapide 800V sur de très longs trajets — l'EV6 sera plus adapté."
+  },
+
+  "lastUpdated": "2026-05-17",
+  "sources": ["nyland", "kia-fr", "lachaineev"],
+  "imageCredit": "Kia Media — visuel presse 2024"
+}

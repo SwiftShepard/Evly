@@ -1,0 +1,737 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/jetbrains-mono";
+
+/* ----------------------------------------------------------------- */
+/* Tokens statiques — typo, container, easing, tuiles                 */
+/* (les couleurs sont gérées plus bas via [data-theme])               */
+/* ----------------------------------------------------------------- */
+
+@theme {
+  /* Typographie */
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, "SFMono-Regular",
+    monospace;
+
+  /* Tracking sur-mesure */
+  --tracking-display: -0.022em;
+  --tracking-section: -0.012em;
+  --tracking-label: 0.16em;
+
+  /* Conteneur */
+  --container-max: 1280px;
+
+  /* Easing */
+  --ease-editorial: cubic-bezier(0.2, 0.7, 0.1, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Tuiles (bento) */
+  --radius-tile: 20px;
+  --radius-tile-sm: 14px;
+  --tile-padding: 1.25rem;
+  --tile-padding-lg: 1.75rem;
+  --tile-gap: 0.75rem;
+  --tile-gap-lg: 1rem;
+}
+
+/* ----------------------------------------------------------------- */
+/* Palette — thème clair unique, fond blanc pur                       */
+/* ----------------------------------------------------------------- */
+
+:root {
+  color-scheme: light;
+
+  --color-bg: #ffffff;
+  --color-bg-elevated: #ffffff;
+  --color-bg-subtle: #f4f4f4;
+  --color-border: #e8e8e8;
+  --color-border-strong: #cecece;
+  --color-text: #0f0f0f;
+  --color-text-muted: #5a5a5a;
+  --color-text-faint: #9a9a9a;
+
+  /* Surfaces tuiles — blanc pur, images fond blanc intégrées */
+  --color-surface: #ffffff;
+  --color-surface-elevated: #ffffff;
+  --color-surface-accent: #edf5d4;
+
+  /* Accents — vert foncé, contraste suffisant sur blanc */
+  --color-accent: #3a5c12;
+  --color-accent-dim: #2d4a0e;
+  --color-accent-on: #ffffff;
+  --color-danger: #c03020;
+  --color-warning: #9b5a0a;
+
+  /* Glow pour hover tiles */
+  --glow-accent: rgba(58, 92, 18, 0.06);
+  --glow-accent-strong: rgba(58, 92, 18, 0.14);
+}
+
+/* ----------------------------------------------------------------- */
+/* Reset éditorial + transitions thème                                */
+/* ----------------------------------------------------------------- */
+
+@layer base {
+  html {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    min-height: 100dvh;
+    line-height: 1.7;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-accent-on);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .tabular,
+  [data-numeric] {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+}
+
+/* ----------------------------------------------------------------- */
+/* Utilitaires éditoriaux                                             */
+/* ----------------------------------------------------------------- */
+
+@layer utilities {
+  .container-edit {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-edit {
+      padding-inline: 2rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container-edit {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  .label-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-text-faint);
+  }
+
+  .hairline {
+    border-color: var(--color-border);
+  }
+
+  .hairline-strong {
+    border-color: var(--color-border-strong);
+  }
+
+  /* Display headlines avec tracking serré */
+  .display-1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: var(--tracking-display);
+    line-height: 0.95;
+    font-size: clamp(2.5rem, 6vw + 1rem, 5.25rem);
+  }
+
+  .display-2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: var(--tracking-section);
+    line-height: 1.05;
+    font-size: clamp(1.75rem, 3.5vw + 1rem, 3.25rem);
+  }
+
+  .display-stat {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: var(--tracking-display);
+    line-height: 0.9;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+
+  /* --------------------------------------------------------------- */
+  /* Système bento — tuiles                                           */
+  /* --------------------------------------------------------------- */
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--tile-gap);
+    grid-auto-rows: minmax(140px, auto);
+  }
+
+  @media (min-width: 768px) {
+    .bento-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--tile-gap-lg);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .bento-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .bento-tile {
+    background-color: var(--color-surface);
+    border: 0.5px solid var(--color-border);
+    border-radius: var(--radius-tile);
+    padding: var(--tile-padding);
+    display: flex;
+    flex-direction: column;
+    grid-column: span 1;
+    grid-row: span 1;
+    min-width: 0;
+    overflow: hidden;
+    position: relative;
+    /* Transition pour les effets hover */
+    transition:
+      background-color 350ms var(--ease-out-expo),
+      border-color 350ms var(--ease-out-expo),
+      box-shadow 350ms var(--ease-out-expo),
+      transform 500ms var(--ease-out-expo);
+  }
+
+  @media (min-width: 768px) {
+    .bento-tile {
+      padding: var(--tile-padding-lg);
+    }
+  }
+
+  .bento-tile[data-size="2x1"] {
+    grid-column: span 1;
+  }
+  @media (min-width: 768px) {
+    .bento-tile[data-size="2x1"] {
+      grid-column: span 2;
+    }
+  }
+
+  .bento-tile[data-size="2x2"] {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  @media (min-width: 768px) {
+    .bento-tile[data-size="2x2"] {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+  }
+
+  .bento-tile[data-size="3x1"] {
+    grid-column: span 1;
+  }
+  @media (min-width: 768px) {
+    .bento-tile[data-size="3x1"] {
+      grid-column: span 2;
+    }
+  }
+  @media (min-width: 1024px) {
+    .bento-tile[data-size="3x1"] {
+      grid-column: span 3;
+    }
+  }
+
+  .bento-tile[data-size="full"] {
+    grid-column: 1 / -1;
+  }
+
+  .bento-tile[data-variant="elevated"] {
+    background-color: var(--color-surface-elevated);
+  }
+  .bento-tile[data-variant="accent"] {
+    background-color: var(--color-surface-accent);
+    border-color: color-mix(in srgb, var(--color-accent) 35%, var(--color-border-strong));
+  }
+  .bento-tile[data-variant="outlined"] {
+    background-color: transparent;
+    border-color: var(--color-border-strong);
+  }
+
+  /* Hover desktop — lift + glow subtil */
+  @media (hover: hover) {
+    a.bento-tile {
+      cursor: pointer;
+    }
+    a.bento-tile:hover {
+      background-color: var(--color-surface-elevated);
+      border-color: var(--color-border-strong);
+      transform: translateY(-3px);
+      box-shadow:
+        0 8px 32px -6px rgba(0, 0, 0, 0.10),
+        0 2px 8px -2px rgba(0, 0, 0, 0.06);
+    }
+    a.bento-tile:active {
+      transform: translateY(-1px) scale(0.995);
+      transition-duration: 100ms;
+    }
+
+    /* Accent tiles keep their special border on hover */
+    a.bento-tile[data-variant="accent"]:hover {
+      border-color: color-mix(in srgb, var(--color-accent) 40%, var(--color-border-strong));
+      box-shadow:
+        0 8px 32px -6px rgba(0, 0, 0, 0.10),
+        0 2px 8px -2px rgba(0, 0, 0, 0.06);
+    }
+  }
+
+  /* Header de tuile : label + slot droite (typiquement source) */
+  .bento-tile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    min-height: 1.25rem;
+  }
+
+  /* --------------------------------------------------------------- */
+  /* Scroll Reveal System — driven by IntersectionObserver            */
+  /* --------------------------------------------------------------- */
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.8s var(--ease-out-expo),
+      transform 0.8s var(--ease-out-expo);
+    will-change: opacity, transform;
+  }
+
+  .reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger delays for grid children */
+  .reveal-stagger > .reveal:nth-child(1) { transition-delay: 0ms; }
+  .reveal-stagger > .reveal:nth-child(2) { transition-delay: 60ms; }
+  .reveal-stagger > .reveal:nth-child(3) { transition-delay: 120ms; }
+  .reveal-stagger > .reveal:nth-child(4) { transition-delay: 180ms; }
+  .reveal-stagger > .reveal:nth-child(5) { transition-delay: 240ms; }
+  .reveal-stagger > .reveal:nth-child(6) { transition-delay: 300ms; }
+  .reveal-stagger > .reveal:nth-child(7) { transition-delay: 360ms; }
+  .reveal-stagger > .reveal:nth-child(8) { transition-delay: 420ms; }
+  .reveal-stagger > .reveal:nth-child(9) { transition-delay: 480ms; }
+  .reveal-stagger > .reveal:nth-child(10) { transition-delay: 540ms; }
+  .reveal-stagger > .reveal:nth-child(n+11) { transition-delay: 600ms; }
+
+  /* Reveal variants */
+  .reveal-fade {
+    opacity: 0;
+    transition: opacity 0.8s var(--ease-out-expo);
+    will-change: opacity;
+  }
+  .reveal-fade.revealed {
+    opacity: 1;
+  }
+
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.95);
+    transition:
+      opacity 0.7s var(--ease-out-expo),
+      transform 0.7s var(--ease-spring);
+    will-change: opacity, transform;
+  }
+  .reveal-scale.revealed {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .reveal-slide-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition:
+      opacity 0.7s var(--ease-out-expo),
+      transform 0.7s var(--ease-out-expo);
+    will-change: opacity, transform;
+  }
+  .reveal-slide-left.revealed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* --------------------------------------------------------------- */
+  /* Animations éditoriales — page load (kept for hero etc.)          */
+  /* --------------------------------------------------------------- */
+
+  .fade-rise {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fade-rise 0.9s var(--ease-editorial) forwards;
+  }
+  .fade-rise-delay-1 {
+    animation-delay: 0.05s;
+  }
+  .fade-rise-delay-2 {
+    animation-delay: 0.12s;
+  }
+  .fade-rise-delay-3 {
+    animation-delay: 0.2s;
+  }
+  .fade-rise-delay-4 {
+    animation-delay: 0.3s;
+  }
+
+  @keyframes fade-rise {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* --------------------------------------------------------------- */
+  /* Micro-interactions — Buttons                                     */
+  /* --------------------------------------------------------------- */
+
+  .btn-interactive {
+    position: relative;
+    overflow: hidden;
+    transition:
+      background-color 250ms var(--ease-out-expo),
+      border-color 250ms var(--ease-out-expo),
+      color 250ms var(--ease-out-expo),
+      transform 250ms var(--ease-out-expo),
+      box-shadow 250ms var(--ease-out-expo);
+  }
+
+  @media (hover: hover) {
+    .btn-interactive:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.2);
+    }
+    .btn-interactive:active {
+      transform: translateY(0) scale(0.97);
+      transition-duration: 100ms;
+      box-shadow: none;
+    }
+  }
+
+  /* Primary button accent glow */
+  .btn-glow {
+    position: relative;
+  }
+  .btn-glow::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    box-shadow: 0 0 20px 4px var(--glow-accent-strong);
+    transition: opacity 350ms var(--ease-out-expo);
+    pointer-events: none;
+  }
+  @media (hover: hover) {
+    .btn-glow:hover::after {
+      opacity: 1;
+    }
+  }
+
+  /* --------------------------------------------------------------- */
+  /* Tag / Badge pulse on accent                                      */
+  /* --------------------------------------------------------------- */
+
+  .tag-pulse {
+    animation: tag-pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes tag-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  /* --------------------------------------------------------------- */
+  /* Navigation — scroll state + mobile menu animation                */
+  /* --------------------------------------------------------------- */
+
+  .nav-header {
+    transition:
+      background-color 250ms var(--ease-out-expo),
+      border-color 250ms var(--ease-out-expo),
+      box-shadow 250ms var(--ease-out-expo);
+  }
+
+  .nav-header.scrolled {
+    box-shadow: 0 1px 10px -2px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Mobile menu dropdown animation */
+  .mobile-menu {
+    transform-origin: top right;
+    animation: menu-enter 300ms var(--ease-out-expo) forwards;
+  }
+
+  @keyframes menu-enter {
+    from {
+      opacity: 0;
+      transform: scale(0.95) translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  /* Nav link underline animation */
+  .nav-link {
+    position: relative;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    right: 50%;
+    height: 1.5px;
+    background: var(--color-accent);
+    transition:
+      left 300ms var(--ease-out-expo),
+      right 300ms var(--ease-out-expo);
+    border-radius: 1px;
+  }
+  @media (hover: hover) {
+    .nav-link:hover::after {
+      left: 12px;
+      right: 12px;
+    }
+  }
+  .nav-link[aria-current="page"]::after {
+    left: 12px;
+    right: 12px;
+    background: var(--color-text);
+  }
+
+  /* --------------------------------------------------------------- */
+  /* Footer link hover effect                                         */
+  /* --------------------------------------------------------------- */
+
+  .footer-link {
+    position: relative;
+    transition: color 200ms var(--ease-out-expo);
+  }
+  .footer-link::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--color-accent);
+    transition: width 300ms var(--ease-out-expo);
+  }
+  @media (hover: hover) {
+    .footer-link:hover::after {
+      width: 100%;
+    }
+  }
+
+  /* --------------------------------------------------------------- */
+  /* Arrow animation for link tiles                                   */
+  /* --------------------------------------------------------------- */
+
+  .arrow-animate {
+    display: inline-block;
+    transition: transform 350ms var(--ease-out-expo);
+  }
+  @media (hover: hover) {
+    a:hover > .arrow-animate,
+    a:hover .arrow-animate {
+      transform: translateX(4px);
+    }
+  }
+
+  /* --------------------------------------------------------------- */
+  /* Stat counter animation                                           */
+  /* --------------------------------------------------------------- */
+
+  .stat-counter {
+    display: inline-block;
+    transition: transform 400ms var(--ease-spring);
+  }
+  .stat-counter.counting {
+    transform: scale(1.05);
+  }
+
+  /* --------------------------------------------------------------- */
+  /* Table row hover animation                                        */
+  /* --------------------------------------------------------------- */
+
+  .row-hover {
+    transition:
+      background-color 200ms var(--ease-out-expo),
+      transform 200ms var(--ease-out-expo);
+  }
+  @media (hover: hover) {
+    .row-hover:hover {
+      background-color: var(--color-bg-subtle);
+    }
+  }
+
+  /* --------------------------------------------------------------- */
+  /* Reading progress bar                                             */
+  /* --------------------------------------------------------------- */
+
+  .reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-dim));
+    z-index: 50;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 100ms linear;
+    pointer-events: none;
+  }
+
+  /* --------------------------------------------------------------- */
+  /* Smooth divider animation                                         */
+  /* --------------------------------------------------------------- */
+
+  .divider-animated {
+    position: relative;
+    overflow: hidden;
+  }
+  .divider-animated::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60px;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+    opacity: 0.4;
+    animation: divider-shimmer 4s var(--ease-out-expo) infinite;
+  }
+
+  @keyframes divider-shimmer {
+    0% { left: -100%; }
+    100% { left: 200%; }
+  }
+
+  /* --------------------------------------------------------------- */
+  /* Source tooltip animation                                         */
+  /* --------------------------------------------------------------- */
+
+  .tooltip-enter {
+    animation: tooltip-pop 250ms var(--ease-spring) forwards;
+  }
+
+  @keyframes tooltip-pop {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(-4px) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0) scale(1);
+    }
+  }
+
+  /* --------------------------------------------------------------- */
+  /* View Transitions — Astro                                         */
+  /* --------------------------------------------------------------- */
+
+  ::view-transition-old(root) {
+    animation: page-out 250ms var(--ease-out-expo) forwards;
+  }
+
+  ::view-transition-new(root) {
+    animation: page-in 350ms var(--ease-out-expo) forwards;
+  }
+
+  @keyframes page-out {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes page-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* --------------------------------------------------------------- */
+  /* Reduced motion — disable ALL animations                          */
+  /* --------------------------------------------------------------- */
+
+  @media (max-width: 767px) {
+    .fade-rise,
+    .fade-rise-delay-1,
+    .fade-rise-delay-2,
+    .fade-rise-delay-3,
+    .fade-rise-delay-4 {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-rise,
+    .fade-rise-delay-1,
+    .fade-rise-delay-2,
+    .fade-rise-delay-3,
+    .fade-rise-delay-4 {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+
+    .reveal,
+    .reveal-fade,
+    .reveal-scale,
+    .reveal-slide-left {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}

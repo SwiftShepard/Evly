@@ -1,0 +1,95 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BentoGrid from "@/components/ui/BentoGrid.astro";
+import Tile from "@/components/ui/Tile.astro";
+import ComparatorView from "@/components/compare/ComparatorView.tsx";
+import { getAllVehicles } from "@/lib/vehicles";
+
+const vehicles = getAllVehicles();
+
+// Serialize vehicles data for the React island
+const vehiclesData = vehicles.map((v) => ({
+  slug: v.slug,
+  brand: v.brand,
+  model: v.model,
+  variant: v.variant,
+  segment: v.segment,
+  bodyType: v.bodyType,
+  architecture_V: v.architecture_V,
+  power_kW: v.power_kW,
+  power_hp: v.power_hp,
+  torque_Nm: v.torque_Nm,
+  drivetrain: v.drivetrain,
+  motors: v.motors,
+  acceleration_0_100_s: v.acceleration_0_100_s,
+  topSpeed_kmh: v.topSpeed_kmh,
+  usableCapacity_kWh: v.usableCapacity_kWh,
+  grossCapacity_kWh: v.grossCapacity_kWh,
+  chemistry: v.chemistry,
+  mass_kg: v.mass_kg,
+  wltp_max_km: v.wltp_max_km,
+  wltp_min_km: v.wltp_min_km,
+  realRange: v.realRange,
+  consumption_mixed_kWh_per_100km: v.consumption_mixed_kWh_per_100km,
+  consumption_highway_kWh_per_100km: v.consumption_highway_kWh_per_100km,
+  consumption_winter_kWh_per_100km: v.consumption_winter_kWh_per_100km,
+  dragCoefficient_Cx: v.dragCoefficient_Cx,
+  chargingDC: v.chargingDC,
+  chargingAC: v.chargingAC,
+  plugAndCharge: v.plugAndCharge,
+  v2l: v.v2l,
+  v2g: v.v2g,
+  v2l_option_EUR: v.v2l_option_EUR,
+  chargingCurve: v.chargingCurve,
+  rangeTests: v.rangeTests,
+  thousandKmChallenge: v.thousandKmChallenge,
+  length_mm: v.length_mm,
+  width_mm: v.width_mm,
+  height_mm: v.height_mm,
+  wheelbase_mm: v.wheelbase_mm,
+  trunkCapacity_L: v.trunkCapacity_L,
+  trunkCapacityFolded_L: v.trunkCapacityFolded_L,
+  frunkCapacity_L: v.frunkCapacity_L,
+  trims: v.trims,
+  leasingSocialEligible: v.leasingSocialEligible,
+  leasingSocial_EUR_per_month: v.leasingSocial_EUR_per_month,
+  availableAids: v.availableAids,
+  configurations: v.configurations,
+  warranty: v.warranty,
+  keyFeatures: v.keyFeatures,
+  verdict: v.verdict,
+  lastUpdated: v.lastUpdated,
+  sources: v.sources,
+  imageCredit: v.imageCredit,
+  productionCountry: v.productionCountry,
+  assemblyPlant: v.assemblyPlant,
+  releaseYear: v.releaseYear,
+  marketAvailability: v.marketAvailability,
+}));
+---
+
+<BaseLayout
+  title="Comparer — Evly"
+  description="Comparateur multi-véhicules configurable : jusqu'à 4 modèles côte-à-côte, chaque carte ajustable par batterie, finition et jantes. Données réelles, pas de calcul masqué."
+>
+  <div class="container-edit py-6 md:py-10">
+    <!-- Hero -->
+    <div class="mb-8">
+      <div class="flex items-center gap-4 mb-6 fade-rise">
+        <span class="font-mono text-xs text-[var(--color-text-faint)]">03</span>
+        <span class="label-eyebrow">Comparateur</span>
+      </div>
+      <h1 class="display-1 max-w-4xl fade-rise fade-rise-delay-1">
+        Quatre véhicules,
+        <span class="text-[var(--color-text-muted)]">mille décisions de moins.</span>
+      </h1>
+      <p class="mt-6 text-base md:text-lg text-[var(--color-text-muted)] max-w-2xl leading-relaxed fade-rise fade-rise-delay-2">
+        Configurez chaque carte indépendamment — batterie, finition, jantes — et comparez en un coup d'œil.
+        Tous les chiffres proviennent de sources documentées.
+      </p>
+    </div>
+
+    <!-- Comparator island -->
+    <ComparatorView client:load vehicles={vehiclesData} />
+  </div>
+</BaseLayout>

@@ -1,0 +1,45 @@
+---
+type Variant = "primary" | "secondary" | "ghost";
+
+interface Props {
+  href?: string;
+  variant?: Variant;
+  type?: "button" | "submit";
+  ariaLabel?: string;
+  class?: string;
+}
+
+const {
+  href,
+  variant = "primary",
+  type = "button",
+  ariaLabel,
+  class: className = "",
+} = Astro.props;
+
+const base =
+  "inline-flex items-center gap-2 px-5 py-3 text-sm font-medium tracking-tight leading-none transition-colors duration-200 ease-[var(--ease-editorial)] focus:outline-none";
+
+const variants: Record<Variant, string> = {
+  primary:
+    "bg-[var(--color-accent)] text-[var(--color-bg)] hover:bg-[var(--color-accent-dim)] hover:text-[var(--color-text)]",
+  secondary:
+    "bg-transparent border border-[var(--color-border-strong)] text-[var(--color-text)] hover:border-[var(--color-text-muted)] hover:bg-[var(--color-bg-subtle)]",
+  ghost:
+    "bg-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text)]",
+};
+
+const classes = [base, variants[variant], className];
+---
+
+{
+  href ? (
+    <a href={href} class:list={classes} aria-label={ariaLabel}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class:list={classes} aria-label={ariaLabel}>
+      <slot />
+    </button>
+  )
+}

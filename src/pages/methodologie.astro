@@ -1,0 +1,314 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeader from "@/components/ui/SectionHeader.astro";
+import Tag from "@/components/ui/Tag.astro";
+import { allSources, type Source, type TrustLevel } from "@/data/sources";
+
+const sources = allSources();
+
+const trustOrder: Record<TrustLevel, number> = { high: 0, medium: 1, low: 2 };
+const trustLabels: Record<TrustLevel, string> = {
+  high: "Confiance haute",
+  medium: "Confiance modérée",
+  low: "Confiance basse",
+};
+const trustTone: Record<TrustLevel, "accent" | "warning" | "danger"> = {
+  high: "accent",
+  medium: "warning",
+  low: "danger",
+};
+
+const sortedSources: Source[] = [...sources].sort(
+  (a, b) => trustOrder[a.trustLevel] - trustOrder[b.trustLevel]
+);
+
+const protocols = [
+  {
+    id: "nyland",
+    name: "Protocole Bjørn Nyland",
+    body: "Le tester norvégien Bjørn Nyland a normalisé une série de mesures reproductibles : range test à vitesse stabilisée 90 et 120 km/h sur autoroute fermée, 1000 km challenge chronométré sur trajet réel, banana box test pour mesurer le volume utile du coffre. Sa spreadsheet publique compile les résultats de tous les VE testés, ce qui permet des comparaisons inter-modèles directes.",
+    link: "https://www.youtube.com/@bjornnyland",
+    sourceUrl:
+      "https://docs.google.com/spreadsheets/d/1upor1bSinLP0d7DAjEMyVMBSr-X-bUegmM3OvCqfdT0",
+  },
+  {
+    id: "wltp",
+    name: "Cycle WLTP",
+    body: "Worldwide Harmonized Light Vehicles Test Procedure. Référence réglementaire européenne depuis 2017. Cycle laboratoire de 30 minutes mêlant urbain, périurbain, route, autoroute, vitesse moyenne d'environ 47 km/h. Utile pour homologation et bonus, peu représentatif d'un usage autoroutier soutenu. Pénalité réelle vs WLTP typiquement comprise entre 15 et 30 %.",
+    link: "https://unece.org/transport/vehicle-regulations-wp29/standards/wltp",
+    sourceUrl: null,
+  },
+  {
+    id: "epa",
+    name: "Cycle EPA",
+    body: "Environmental Protection Agency, référence américaine. Plus conservative que la WLTP de 10 à 15 % en règle générale, ce qui en fait un meilleur proxy d'usage mixte réel pour un public européen. Peu de VE européens publient leurs chiffres EPA — quand c'est le cas, Evly les ajoute.",
+    link: "https://www.fueleconomy.gov",
+    sourceUrl: null,
+  },
+  {
+    id: "fr-press",
+    name: "Essais presse française",
+    body: "Caradisiac, Automobile Propre, L'Argus, Actua Auto. Protocoles variables d'un titre à l'autre : parcours routier mixte, supertest autoroutier (Lyon-Marseille ou similaire), essai hivernal. Automobile Propre est la source la plus rigoureuse côté FR avec ses « supertests » documentés. Caradisiac et L'Argus sont moins méthodiques mais restent utiles pour les essais de prise en main.",
+    link: "https://www.automobile-propre.com/supertest-vehicule-electrique/",
+    sourceUrl: null,
+  },
+];
+---
+
+<BaseLayout
+  title="Méthodologie — Evly"
+  description="Notre approche, nos protocoles de test, nos sources et nos limites. Evly agrège les données d'autonomie réelle de Bjørn Nyland, EVKX, ArenaEV et la presse VE française."
+>
+  <!-- Hero méthodologie -->
+  <section class="container-edit pt-16 md:pt-24 pb-16 border-b border-[var(--color-border)]">
+    <div class="flex items-center gap-4 mb-8 fade-rise">
+      <span class="font-mono text-xs text-[var(--color-text-faint)]">00</span>
+      <span class="label-eyebrow">Méthodologie</span>
+    </div>
+    <h1 class="display-1 max-w-4xl fade-rise fade-rise-delay-1">
+      Comment Evly choisit
+      <span class="text-[var(--color-text-muted)]">ses chiffres.</span>
+    </h1>
+    <p class="mt-10 text-lg md:text-xl text-[var(--color-text-muted)] max-w-2xl leading-relaxed fade-rise fade-rise-delay-2">
+      Tagline : <span class="text-[var(--color-accent)]">l'électrique mesuré</span>. Cela engage à plus qu'un slogan — chaque chiffre publié sur Evly est rattaché à une source identifiable, et chaque protocole est documenté ici.
+    </p>
+  </section>
+
+  <!-- Section 1 — Notre approche -->
+  <section class="container-edit py-20 md:py-28 reveal">
+    <SectionHeader
+      number="01"
+      eyebrow="Notre approche"
+      title="Le WLTP n'est pas une référence d'usage"
+      description="Il l'est pour l'homologation, pas pour la décision d'achat."
+    />
+    <div class="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div class="lg:col-span-7 flex flex-col gap-6 text-[var(--color-text-muted)] text-base md:text-lg leading-relaxed">
+        <p>
+          Le cycle WLTP, mesuré à vitesse moyenne d'environ 47 km/h, surévalue systématiquement l'autonomie réelle des véhicules électriques de 15 à 30 %. Les constructeurs communiquent leurs meilleurs chiffres ; l'acheteur a besoin de données comparables sur ce qui compte vraiment : autonomie autoroute, conso hivernale, temps de recharge effectif sur trajet long.
+        </p>
+        <p>
+          Evly agrège plusieurs protocoles de test indépendants pour donner une vue honnête : les range tests <span class="text-[var(--color-text)]">Bjørn Nyland</span> à 90 et 120 km/h, les courbes de charge mesurées par <span class="text-[var(--color-text)]">EVKX</span>, les essais structurés par <span class="text-[var(--color-text)]">ArenaEV</span>, les supertests d'<span class="text-[var(--color-text)]">Automobile Propre</span>, ainsi que la presse VE française et belge.
+        </p>
+        <p>
+          Chaque chiffre clé porte un niveau de confiance explicite : <span class="font-mono text-[var(--color-accent)] text-sm">mesuré</span>, <span class="font-mono text-[var(--color-warning)] text-sm">constructeur</span>, <span class="font-mono text-[var(--color-text-muted)] text-sm">estimé</span>, ou <span class="font-mono text-[var(--color-text-muted)] text-sm">pending</span> quand nous attendons une vérification.
+        </p>
+      </div>
+      <aside class="lg:col-span-5 bg-[var(--color-bg-elevated)] p-8 md:p-10 flex flex-col gap-6 border border-[var(--color-border)] reveal-scale">
+        <span class="label-eyebrow">Trois principes éditoriaux</span>
+        <ol class="flex flex-col gap-5">
+          <li class="flex gap-4">
+            <span class="font-mono text-xs text-[var(--color-text-faint)] pt-1 w-6">A.</span>
+            <p class="text-sm text-[var(--color-text)] leading-relaxed">Mesuré, pas WLTP — quand un essai indépendant existe, il prime.</p>
+          </li>
+          <li class="flex gap-4">
+            <span class="font-mono text-xs text-[var(--color-text-faint)] pt-1 w-6">B.</span>
+            <p class="text-sm text-[var(--color-text)] leading-relaxed">Argumenté, pas noté — aucun score sur 10, un verdict en texte.</p>
+          </li>
+          <li class="flex gap-4">
+            <span class="font-mono text-xs text-[var(--color-text-faint)] pt-1 w-6">C.</span>
+            <p class="text-sm text-[var(--color-text)] leading-relaxed">Tracé, pas anonyme — chaque chiffre lié à sa source.</p>
+          </li>
+        </ol>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Section 2 — Protocoles -->
+  <section id="protocoles" class="container-edit py-20 md:py-28 border-t border-[var(--color-border)] reveal">
+    <SectionHeader
+      number="02"
+      eyebrow="Protocoles"
+      title="Les protocoles que nous utilisons"
+      description="Aucun protocole n'est parfait, mais leur combinaison forme une vision honnête de l'usage réel. Chaque protocole reste cité explicitement à côté de la donnée qu'il produit."
+    />
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-px bg-[var(--color-border)]">
+      {
+        protocols.map((p, idx) => (
+          <div class="bg-[var(--color-bg)] p-8 md:p-10 flex flex-col gap-5">
+            <div class="flex items-center justify-between gap-3">
+              <span class="font-mono text-xs text-[var(--color-text-faint)]">
+                {String(idx + 1).padStart(2, "0")}
+              </span>
+              <Tag tone="outline" mono>
+                {p.id}
+              </Tag>
+            </div>
+            <h3 class="font-display text-2xl font-semibold tracking-[-0.01em]">
+              {p.name}
+            </h3>
+            <p class="text-[var(--color-text-muted)] leading-relaxed text-sm">
+              {p.body}
+            </p>
+            <div class="mt-auto pt-4 border-t border-[var(--color-border)] flex flex-col gap-1">
+              <a
+                href={p.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="font-mono text-xs text-[var(--color-accent)] hover:underline"
+              >
+                Source principale ↗
+              </a>
+              {p.sourceUrl && (
+                <a
+                  href={p.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="font-mono text-xs text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:underline"
+                >
+                  Données brutes ↗
+                </a>
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Section 3 — TCO -->
+  <section id="tco" class="container-edit py-20 md:py-28 border-t border-[var(--color-border)] reveal">
+    <SectionHeader
+      number="03"
+      eyebrow="Coût total de possession"
+      title="Notre formule TCO, sans boîte noire"
+      description="Le simulateur arrive en V3. La formule, elle, est publiée dès maintenant — un comparateur dont on cache la méthode est un comparateur qu'il ne faut pas croire."
+    />
+    <div class="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div class="lg:col-span-7 bg-[var(--color-bg-elevated)] border border-[var(--color-border)] p-8 md:p-10">
+        <pre class="font-mono text-xs md:text-sm text-[var(--color-text)] leading-relaxed overflow-x-auto whitespace-pre"><code>TCO = (Prix d'achat − Aides applicables)
+    + (Conso mixte × km/an × Prix kWh moyen) × Durée
+    + (Entretien annuel estimé) × Durée
+    + (Assurance annuelle estimée) × Durée
+    − (Valeur résiduelle estimée à Durée)</code></pre>
+      </div>
+      <ul class="lg:col-span-5 flex flex-col gap-4 text-sm text-[var(--color-text-muted)]">
+        <li class="flex gap-3">
+          <span class="font-mono text-[var(--color-accent)] mt-0.5">●</span>
+          <span><span class="text-[var(--color-text)]">Aides</span> : bonus écologique, prime à la conversion, leasing social, bonifications batterie UE — sourcées Service-Public.fr.</span>
+        </li>
+        <li class="flex gap-3">
+          <span class="font-mono text-[var(--color-accent)] mt-0.5">●</span>
+          <span><span class="text-[var(--color-text)]">Prix kWh</span> : moyenne pondérée 70 % domicile + 30 % rapide, ajustable dans le simulateur.</span>
+        </li>
+        <li class="flex gap-3">
+          <span class="font-mono text-[var(--color-accent)] mt-0.5">●</span>
+          <span><span class="text-[var(--color-text)]">Entretien</span> : ~0,015 €/km pour un VE (moitié du thermique équivalent), source ADEME 2024.</span>
+        </li>
+        <li class="flex gap-3">
+          <span class="font-mono text-[var(--color-accent)] mt-0.5">●</span>
+          <span><span class="text-[var(--color-text)]">Valeur résiduelle</span> : tables Largus à 5 ans, marquées <span class="font-mono text-[var(--color-warning)]">estimated</span> tant que le modèle n'a pas 3 ans d'historique.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Section 4 — Sources -->
+  <section id="sources" class="container-edit py-20 md:py-28 border-t border-[var(--color-border)] reveal">
+    <SectionHeader
+      number="04"
+      eyebrow="Sources"
+      title="Toutes les sources que nous citons"
+      description="Niveau de confiance attribué par Evly à partir du sérieux méthodologique de la source. Cliquer pour rejoindre la source originale — Evly ne reproduit jamais leur contenu éditorial."
+    />
+    <ol class="mt-12 flex flex-col">
+      {
+        sortedSources.map((source, idx) => (
+          <li
+            class:list={[
+              "py-6 grid grid-cols-12 gap-x-6 gap-y-3 items-start",
+              idx !== sortedSources.length - 1 && "border-b border-[var(--color-border)]",
+            ]}
+          >
+            <span data-numeric class="col-span-1 font-mono text-xs text-[var(--color-text-faint)] mt-1">
+              {String(idx + 1).padStart(2, "0")}
+            </span>
+            <div class="col-span-12 md:col-span-7 flex flex-col gap-2">
+              <div class="flex items-baseline gap-3 flex-wrap">
+                <a
+                  href={source.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="font-display text-lg font-semibold tracking-[-0.005em] text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors"
+                >
+                  {source.name}
+                </a>
+                <Tag tone={trustTone[source.trustLevel]} mono>
+                  {trustLabels[source.trustLevel]}
+                </Tag>
+                <Tag tone="outline" mono>{source.type}</Tag>
+              </div>
+              <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">
+                {source.description}
+              </p>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col gap-2 md:items-end md:text-right">
+              <a
+                href={source.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="font-mono text-xs text-[var(--color-accent)] hover:underline"
+              >
+                {new URL(source.url).hostname.replace(/^www\./, "")} ↗
+              </a>
+              {source.protocolUrl && (
+                <a
+                  href={source.protocolUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="font-mono text-xs text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:underline"
+                >
+                  Protocole / données brutes ↗
+                </a>
+              )}
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    <p class="mt-12 text-sm text-[var(--color-text-faint)] leading-relaxed max-w-3xl border-t border-[var(--color-border)] pt-8">
+      <span class="text-[var(--color-text-muted)]">Mention obligatoire.</span> Evly agrège des données publiques en citant systématiquement leur source. Nous ne reproduisons pas le contenu éditorial original — pour les essais complets, les analyses détaillées et le verdict de chaque tester, consultez les sources originales.
+    </p>
+  </section>
+
+  <!-- Section 5 — Limites -->
+  <section id="limites" class="container-edit py-20 md:py-28 border-t border-[var(--color-border)] reveal">
+    <SectionHeader
+      number="05"
+      eyebrow="Limites"
+      title="Ce que nous ne pouvons pas garantir"
+      description="Cette section existe parce que la transparence éditoriale doit aller jusqu'au bout."
+    />
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-px bg-[var(--color-border)]">
+      <div class="bg-[var(--color-bg)] p-8 flex flex-col gap-4">
+        <span class="label-eyebrow text-[var(--color-warning)]">Conditions variables</span>
+        <p class="text-[var(--color-text-muted)] leading-relaxed text-sm">
+          Température, pneumatiques, profil du conducteur, dénivelé, vent : tous influent sur la conso réelle. Deux tests sur le même véhicule à un mois d'écart peuvent diverger de 10 %. Nous citons systématiquement les conditions quand elles sont disponibles.
+        </p>
+      </div>
+      <div class="bg-[var(--color-bg)] p-8 flex flex-col gap-4">
+        <span class="label-eyebrow text-[var(--color-warning)]">Usage personnel</span>
+        <p class="text-[var(--color-text-muted)] leading-relaxed text-sm">
+          Votre autonomie dépend de votre usage : ratio autoroute, climat local, type de recharge accessible, style de conduite. Le simulateur TCO (V3) permettra d'ajuster ces hypothèses ; en attendant, lisez les chiffres comme des ordres de grandeur comparables, pas comme des promesses.
+        </p>
+      </div>
+      <div class="bg-[var(--color-bg)] p-8 flex flex-col gap-4">
+        <span class="label-eyebrow text-[var(--color-warning)]">Données datées</span>
+        <p class="text-[var(--color-text-muted)] leading-relaxed text-sm">
+          Le marché VE évolue vite : aides, prix catalogue, finitions, OTA modifient les fiches en continu. Chaque fiche Evly affiche sa date de dernière mise à jour. Au-delà de 6 mois, vérifiez les éléments tarifaires auprès du constructeur.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="container-edit py-20 md:py-28 border-t border-[var(--color-border)] reveal">
+    <SectionHeader number="06" eyebrow="Contact" title="Une erreur, une remarque ?" />
+    <div class="mt-12 max-w-2xl">
+      <p class="text-[var(--color-text-muted)] text-base leading-relaxed">
+        Evly est un projet personnel de démonstration technique et éditoriale. Toute correction factuelle, ajout de source ou suggestion de méthodologie est bienvenue via les canaux indiqués au pied de page ou directement sur le dépôt source.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
