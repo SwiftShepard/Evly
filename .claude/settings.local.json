@@ -19,7 +19,14 @@
       "WebSearch",
       "WebFetch(domain:www.peugeot.fr)",
       "WebFetch(domain:www.caradisiac.com)",
-      "Bash(node scripts/update-peugeot.mjs)"
+      "Bash(node scripts/update-peugeot.mjs)",
+      "Bash(grep -c \"EVLY ADMIN\" dist/admin/index.html)",
+      "Bash(ls dist/admin/)",
+      "Bash(grep -oE \"rm-auto-badge|Détecté[^<]{0,80}\" dist/admin/index.html)",
+      "Bash(grep -oE \"Détecté : [^<]{1,120}\" dist/admin/index.html)",
+      "Bash(find src/pages -name \"*admin*\" -o -path \"*api/admin*\")",
+      "Bash(ls src/pages/api)",
+      "Bash(git rm *)"
     ]
   }
 }

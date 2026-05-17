@@ -24,3 +24,8 @@ pnpm-debug.log*
 
 # Cloudflare
 .wrangler/
+
+# Admin (usage local uniquement — pas publié)
+src/pages/admin.astro
+src/components/admin/
+src/data/roadmap.ts
