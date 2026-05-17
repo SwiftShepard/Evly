@@ -2,42 +2,42 @@
   "slug": "leapmotor-b05",
   "brand": "Leapmotor",
   "model": "B05",
-  "variant": "50 kWh",
+  "variant": "Pro / ProMax",
   "bodyType": "SUV urbain",
   "segment": "B",
-  "productionCountry": "Pologne",
-  "assemblyPlant": "Ulsan",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Jinhua, Zhejiang (Chine)",
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
-  "power_kW": 100,
-  "power_hp": 204,
-  "torque_Nm": 300,
-  "drivetrain": "FWD",
+  "power_kW": 160,
+  "power_hp": 218,
+  "torque_Nm": 240,
+  "drivetrain": "RWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
-  "topSpeed_kmh": 160,
-  "usableCapacity_kWh": 50,
-  "grossCapacity_kWh": 50,
+  "acceleration_0_100_s": 6.7,
+  "topSpeed_kmh": 170,
+  "usableCapacity_kWh": 67.1,
+  "grossCapacity_kWh": null,
   "chemistry": "NMC",
   "architecture_V": 400,
-  "mass_kg": 1700,
-  "wltp_max_km": 400,
-  "wltp_min_km": 380,
+  "mass_kg": 1749,
+  "wltp_max_km": 482,
+  "wltp_min_km": 401,
   "realRange": {
     "mixed_km": 310,
-    "highway_130_km": 200,
-    "urban_km": 380,
+    "highway_130_km": 205,
+    "urban_km": 390,
     "winter_minus5_km": 240,
     "confidence": "estimated"
   },
-  "consumption_mixed_kWh_per_100km": 15.0,
+  "consumption_mixed_kWh_per_100km": 15.8,
   "consumption_highway_kWh_per_100km": 21.0,
-  "consumption_winter_kWh_per_100km": 19.0,
+  "consumption_winter_kWh_per_100km": 19.5,
   "dragCoefficient_Cx": 0.32,
   "chargingDC": {
-    "peakPower_kW": 80,
-    "time_10_80_min": 30,
-    "kWh_added_30min": 30,
+    "peakPower_kW": 140,
+    "time_10_80_min": 20,
+    "kWh_added_30min": 42,
     "confidence": "estimated"
   },
   "chargingAC": {
@@ -50,44 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    {
-      "soc": 0,
-      "power": 100
-    },
-    {
-      "soc": 10,
-      "power": 130
-    },
-    {
-      "soc": 50,
-      "power": 100
-    },
-    {
-      "soc": 80,
-      "power": 50
-    },
-    {
-      "soc": 100,
-      "power": 10
-    }
+    { "soc": 0,   "power": 130 },
+    { "soc": 10,  "power": 140 },
+    { "soc": 20,  "power": 140 },
+    { "soc": 50,  "power": 100 },
+    { "soc": 80,  "power": 45  },
+    { "soc": 100, "power": 8   }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
-  "length_mm": 4250,
-  "width_mm": 1800,
-  "height_mm": 1550,
-  "wheelbase_mm": 2700,
-  "trunkCapacity_L": 350,
-  "trunkCapacityFolded_L": 1200,
+  "length_mm": 4430,
+  "width_mm": 1880,
+  "height_mm": 1520,
+  "wheelbase_mm": 2735,
+  "trunkCapacity_L": 345,
+  "trunkCapacityFolded_L": 1400,
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Design",
+      "name": "Pro",
       "price_EUR": 25400,
-      "batteryUsed": "50 kWh",
+      "batteryUsed": "56.2 kWh",
       "equipmentHighlights": [
-        "Positionnement agressif",
-        "Compacte électrique"
+        "140 kW DC · 20 min 10–80 % estimé",
+        "19 pouces · suspension McPherson/Multilink"
       ]
     }
   ],
@@ -101,53 +87,74 @@
   ],
   "configurations": [
     {
-      "id": "leapmotor-b05-design",
-      "label": "B05 Design",
+      "id": "leapmotor-b05-pro",
+      "label": "B05 Pro — 56.2 kWh",
       "battery": "standard",
-      "trim": "Design",
-      "wheelSize_inches": 18,
+      "trim": "Pro",
+      "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
       "price_EUR": 25400,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 400,
-      "wltp_consumption_kWh_100km": 15.0,
+      "wltp_km": 401,
+      "wltp_consumption_kWh_100km": 15.8,
       "realRange": {
         "mixed_km": 310,
-        "highway_130_km": 200,
-        "urban_km": 380,
+        "highway_130_km": 205,
+        "urban_km": 390,
         "winter_minus5_km": 240,
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 80,
-      "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 30,
+      "chargingDC_peak_kW": 140,
+      "chargingDC_10_80_min": 20,
+      "chargingDC_kWh_30min": 42,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 100
-        },
-        {
-          "soc": 10,
-          "power": 130
-        },
-        {
-          "soc": 50,
-          "power": 100
-        },
-        {
-          "soc": 80,
-          "power": 50
-        },
-        {
-          "soc": 100,
-          "power": 10
-        }
+        { "soc": 0,   "power": 130 },
+        { "soc": 10,  "power": 140 },
+        { "soc": 20,  "power": 140 },
+        { "soc": 50,  "power": 100 },
+        { "soc": 80,  "power": 45  },
+        { "soc": 100, "power": 8   }
       ],
       "availability": "upcoming",
-      "notes": null
+      "notes": "Temps 30–80 % constructeur : 16 min."
+    },
+    {
+      "id": "leapmotor-b05-promax",
+      "label": "B05 ProMax — 67.1 kWh",
+      "battery": "long-range",
+      "trim": "ProMax",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": null,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 482,
+      "wltp_consumption_kWh_100km": 15.9,
+      "realRange": {
+        "mixed_km": 375,
+        "highway_130_km": 245,
+        "urban_km": 465,
+        "winter_minus5_km": 290,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 168,
+      "chargingDC_10_80_min": 22,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        { "soc": 0,   "power": 155 },
+        { "soc": 10,  "power": 168 },
+        { "soc": 20,  "power": 168 },
+        { "soc": 50,  "power": 120 },
+        { "soc": 80,  "power": 55  },
+        { "soc": 100, "power": 10  }
+      ],
+      "availability": "upcoming",
+      "notes": "Prix non communiqué. Temps 30–80 % constructeur : 17 min."
     }
   ],
   "warranty": {
@@ -160,11 +167,11 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "label": "Suspension McPherson/Multilink — confort de référence dans la catégorie"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "Charge DC 140 kW — parmi les plus rapides du segment B"
     },
     {
       "category": "securite",
@@ -172,22 +179,22 @@
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "Signature lumineuse LED distinctive · jantes 19 pouces"
     }
   ],
   "verdict": {
     "strengths": [
-      "Bon compromis prix/autonomie",
-      "Confort de suspension"
+      "Rapport qualité-prix exceptionnel dans sa catégorie — meilleur du segment",
+      "Accord Stellantis : production en Europe prévue 2027 (Espagne) → future éligibilité leasing social"
     ],
     "weaknesses": [
-      "Vitesse de charge rapide en retrait",
-      "Info-divertissement perfectible"
+      "Production en Chine uniquement : score ADEME défavorable, bonus écologique limité à 4 000 €",
+      "Info-divertissement et finitions perfectibles face aux références européennes"
     ],
-    "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
-    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra-rapides."
+    "idealUserProfile": "Future candidate idéale au leasing social européen. Dès 2027, la production espagnole ouvrira l'accès au leasing social. Idéale pour les familles cherchant un rapport prix/prestations hors normes et prêtes à anticiper la transition vers les aides maximales.",
+    "notIdealFor": "Acheteurs conditionnant leur achat au leasing social : la production chinoise actuelle exclut ce dispositif. Conducteurs à très fort kilométrage autoroutier nécessitant plus de 400 km d'autonomie réelle."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-05-17",
   "sources": [
     "nyland",
     "lachaineev"

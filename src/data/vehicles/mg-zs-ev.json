@@ -30,9 +30,9 @@
     "winter_minus5_km": 230,
     "confidence": "tested"
   },
-  "consumption_mixed_kWh_per_100km": 15.0,
-  "consumption_highway_kWh_per_100km": 21.0,
-  "consumption_winter_kWh_per_100km": 19.0,
+  "consumption_mixed_kWh_per_100km": 15,
+  "consumption_highway_kWh_per_100km": 21,
+  "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.33,
   "chargingDC": {
     "peakPower_kW": 92,
@@ -52,23 +52,23 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 100
+      "power": 71
     },
     {
       "soc": 10,
-      "power": 130
+      "power": 92
     },
     {
       "soc": 50,
-      "power": 100
+      "power": 71
     },
     {
       "soc": 80,
-      "power": 50
+      "power": 35
     },
     {
       "soc": 100,
-      "power": 10
+      "power": 7
     }
   ],
   "rangeTests": [],
@@ -112,7 +112,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 440,
-      "wltp_consumption_kWh_100km": 15.0,
+      "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 340,
         "highway_130_km": 240,
@@ -127,23 +127,23 @@
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 100
+          "power": 71
         },
         {
           "soc": 10,
-          "power": 130
+          "power": 92
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 71
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 35
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 7
         }
       ],
       "availability": "available",
@@ -187,7 +187,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra-rapides."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-05-17",
   "sources": [
     "nyland",
     "lachaineev"

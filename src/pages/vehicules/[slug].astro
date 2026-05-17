@@ -177,7 +177,7 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
         const nyland90 = config.rangeTests.find((t: any) => t.protocol === "nyland" && t.speed_kmh === 90);
         const batteryCapacity = config.battery === "long-range" ? vehicle.usableCapacity_kWh : (vehicle.usableCapacity_kWh > 70 ? 58.3 : vehicle.usableCapacity_kWh); // approximation if no specific capacity
         const nylandRangeEstimate = nyland90 ? Math.round((batteryCapacity / nyland90.consumption_kWh_100km) * 100) : null;
-        const priceAfterAids = Math.max(0, config.price_EUR - totalAids);
+        const priceAfterAids = config.price_EUR != null ? Math.max(0, config.price_EUR - totalAids) : null;
         const realRangeMixed = config.realRange?.mixed_km ?? vehicle.realRange.mixed_km;
         
         return (
@@ -244,11 +244,17 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                   <div class="md:col-span-5 flex flex-col gap-3 md:items-end">
                     <div class="flex flex-col gap-2 md:items-end">
                       <span class="label-eyebrow">Prix config.</span>
-                      <span data-numeric class="display-stat text-4xl md:text-5xl">{formatPrice(config.price_EUR)}</span>
+                      {config.price_EUR != null ? (
+                        <span data-numeric class="display-stat text-4xl md:text-5xl">{formatPrice(config.price_EUR)}</span>
+                      ) : (
+                        <span class="font-mono text-lg text-[var(--color-text-muted)]">Prix NC</span>
+                      )}
                       <span class="font-mono text-[11px] text-[var(--color-text-faint)]">
-                        {config.leasingSocialEligible && config.monthlyLease_EUR
-                          ? `leasing social ${config.monthlyLease_EUR} €/mois`
-                          : "hors options"}
+                        {config.price_EUR == null
+                          ? "prix non communiqué"
+                          : config.leasingSocialEligible && config.monthlyLease_EUR
+                            ? `leasing social ${config.monthlyLease_EUR} €/mois`
+                            : "hors options"}
                       </span>
                     </div>
                   </div>
@@ -445,8 +451,14 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                 </ul>
                 <div class="md:col-span-5 md:border-l md:border-[var(--color-border)] md:pl-6 flex flex-col gap-1">
                   <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Prix net potentiel</span>
-                  <span data-numeric class="display-stat text-3xl md:text-4xl">{formatPrice(priceAfterAids)}</span>
-                  <span class="font-mono text-[11px] text-[var(--color-text-faint)]">après {formatPrice(totalAids)} d'aides</span>
+                  {priceAfterAids != null ? (
+                    <>
+                      <span data-numeric class="display-stat text-3xl md:text-4xl">{formatPrice(priceAfterAids)}</span>
+                      <span class="font-mono text-[11px] text-[var(--color-text-faint)]">après {formatPrice(totalAids)} d'aides</span>
+                    </>
+                  ) : (
+                    <span class="font-mono text-sm text-[var(--color-text-faint)]">Prix non communiqué</span>
+                  )}
                 </div>
               </div>
             </Tile>

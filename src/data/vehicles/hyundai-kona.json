@@ -32,7 +32,7 @@
     "confidence": "bjorn_nyland"
   },
   "consumption_mixed_kWh_per_100km": 14.8,
-  "consumption_highway_kWh_per_100km": 21.0,
+  "consumption_highway_kWh_per_100km": 21,
   "consumption_winter_kWh_per_100km": 18.5,
   "dragCoefficient_Cx": 0.27,
   "chargingDC": {
@@ -53,23 +53,23 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 100
+      "power": 77
     },
     {
       "soc": 10,
-      "power": 130
-    },
-    {
-      "soc": 50,
       "power": 100
     },
     {
+      "soc": 50,
+      "power": 77
+    },
+    {
       "soc": 80,
-      "power": 50
+      "power": 38
     },
     {
       "soc": 100,
-      "power": 10
+      "power": 8
     }
   ],
   "rangeTests": [
@@ -193,23 +193,23 @@
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 100
+          "power": 77
         },
         {
           "soc": 10,
-          "power": 130
-        },
-        {
-          "soc": 50,
           "power": 100
         },
         {
+          "soc": 50,
+          "power": 77
+        },
+        {
           "soc": 80,
-          "power": 50
+          "power": 38
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 8
         }
       ],
       "availability": "available",
@@ -253,7 +253,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra-rapides."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-05-17",
   "sources": [
     "nyland",
     "lachaineev"

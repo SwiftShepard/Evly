@@ -32,7 +32,7 @@
     "confidence": "bjorn_nyland"
   },
   "consumption_mixed_kWh_per_100km": 15.5,
-  "consumption_highway_kWh_per_100km": 22.0,
+  "consumption_highway_kWh_per_100km": 22,
   "consumption_winter_kWh_per_100km": 19.5,
   "dragCoefficient_Cx": 0.27,
   "chargingDC": {
@@ -53,23 +53,23 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 100
+      "power": 92
     },
     {
       "soc": 10,
-      "power": 130
+      "power": 120
     },
     {
       "soc": 50,
-      "power": 100
+      "power": 92
     },
     {
       "soc": 80,
-      "power": 50
+      "power": 46
     },
     {
       "soc": 100,
-      "power": 10
+      "power": 9
     }
   ],
   "rangeTests": [
@@ -91,7 +91,7 @@
       "testDate": "2021-08",
       "speed_kmh": 120,
       "range_km": 274,
-      "consumption_kWh_100km": 21.0,
+      "consumption_kWh_100km": 21,
       "temperature_C": 18,
       "wheelSize_inches": 18,
       "tyreModel": null,
@@ -178,7 +178,7 @@
           "testDate": "2021-08",
           "speed_kmh": 120,
           "range_km": 274,
-          "consumption_kWh_100km": 21.0,
+          "consumption_kWh_100km": 21,
           "temperature_C": 18,
           "wheelSize_inches": 18,
           "tyreModel": null,
@@ -193,23 +193,23 @@
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 100
+          "power": 92
         },
         {
           "soc": 10,
-          "power": 130
+          "power": 120
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 92
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 46
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 9
         }
       ],
       "availability": "available",
@@ -253,7 +253,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra-rapides."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-05-17",
   "sources": [
     "nyland",
     "lachaineev"

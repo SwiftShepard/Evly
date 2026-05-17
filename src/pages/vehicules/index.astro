@@ -45,7 +45,23 @@ function isDaily(v: Vehicle) {
 
 const categories = ["Mini-SUV", "SUV", "Compacte", "Berline", "Citadine", "Monospace", "Quadricycle"];
 const brands = ["Renault", "Peugeot", "Citroën", "Tesla", "BYD", "MG", "Volkswagen", "Kia", "Hyundai", "Leapmotor", "Mobilize"];
-const usages = ["Familiale", "Daily", "Leasing social"];
+
+const budgetFilters = [
+  { label: "< 25 k€", value: "25000" },
+  { label: "< 35 k€", value: "35000" },
+  { label: "< 50 k€", value: "50000" },
+];
+const specificFilters = [
+  { label: "Leasing social", value: "leasing" },
+  { label: "Bonus éco", value: "bonus" },
+  { label: "Recharge rapide", value: "fast-charge" },
+  { label: "Made in Europe", value: "eu" },
+  { label: "Familiale", value: "familiale" },
+];
+
+const europeanCountries = ["France", "Allemagne", "Slovaquie", "Rép. Tchèque", "Pologne", "Espagne", "Italie", "Belgique", "Suède", "Slovénie", "Hongrie", "Autriche", "Portugal"];
+function isEU(v: Vehicle) { return europeanCountries.includes(v.productionCountry); }
+function hasBonus(v: Vehicle) { return v.availableAids?.some(a => a.label.toLowerCase().includes("bonus")) ?? false; }
 ---
 
 <BaseLayout
@@ -57,92 +73,80 @@ const usages = ["Familiale", "Daily", "Leasing social"];
       <div class="relative w-full flex flex-col">
         
         {/* Barre latérale (Filtres) débordant sur la gauche (Desktop) */}
-        <aside class="hidden xl:block absolute top-0 right-full mr-8 w-[240px] h-full z-10">
-          <div class="sticky top-24 flex flex-col gap-10 fade-rise">
-            
+        <aside class="hidden xl:block absolute top-0 right-full mr-8 w-[220px] h-full z-10">
+          <div class="sticky top-24 flex flex-col gap-7 fade-rise">
+
             <div>
-              <h2 class="text-sm font-semibold tracking-tight text-[var(--color-text)] mb-5">Marques</h2>
-              <div class="flex flex-col gap-3">
+              <p class="filter-section-label">Marques</p>
+              <div class="flex flex-wrap gap-1.5">
                 {brands.map((b) => (
-                  <label class="flex items-center gap-3.5 text-base cursor-pointer hover:text-[var(--color-text)] text-[var(--color-text-muted)] transition-colors group">
-                    <input type="checkbox" value={b} class="filter-checkbox filter-brand w-5 h-5 rounded border border-[var(--color-border)] bg-[var(--color-bg-subtle)] checked:bg-[var(--color-accent)] checked:border-[var(--color-accent)] appearance-none cursor-pointer relative checked:after:content-[''] checked:after:absolute checked:after:left-[6px] checked:after:top-[2px] checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2 checked:after:border-[var(--color-bg)] checked:after:rotate-45" />
-                    <div class="flex items-center gap-2 group-hover:text-[var(--color-text)]">
-                      <BrandLogo brand={b} class="w-5 h-5" />
-                      <span>{b}</span>
-                    </div>
-                  </label>
+                  <button class="filter-chip" data-filter="brand" data-value={b} aria-pressed="false">
+                    <BrandLogo brand={b} class="h-3 w-auto max-w-[32px] flex-shrink-0" />
+                    <span>{b}</span>
+                  </button>
                 ))}
               </div>
             </div>
 
             <div>
-              <h2 class="text-sm font-semibold tracking-tight text-[var(--color-text)] mb-5">Catégories</h2>
-              <div class="flex flex-col gap-3">
+              <p class="filter-section-label">Carrosserie</p>
+              <div class="flex flex-wrap gap-1.5">
                 {categories.map((c) => (
-                  <label class="flex items-center gap-3.5 text-base cursor-pointer hover:text-[var(--color-text)] text-[var(--color-text-muted)] transition-colors group">
-                    <input type="checkbox" value={c} class="filter-checkbox filter-cat w-5 h-5 rounded border border-[var(--color-border)] bg-[var(--color-bg-subtle)] checked:bg-[var(--color-accent)] checked:border-[var(--color-accent)] appearance-none cursor-pointer relative checked:after:content-[''] checked:after:absolute checked:after:left-[6px] checked:after:top-[2px] checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2 checked:after:border-[var(--color-bg)] checked:after:rotate-45" />
-                    <span class="group-hover:text-[var(--color-text)]">{c}</span>
-                  </label>
+                  <button class="filter-chip" data-filter="cat" data-value={c} aria-pressed="false">{c}</button>
                 ))}
               </div>
             </div>
 
             <div>
-              <h2 class="text-sm font-semibold tracking-tight text-[var(--color-text)] mb-5">Usages</h2>
-              <div class="flex flex-col gap-3">
-                {usages.map((u) => (
-                  <label class="flex items-center gap-3.5 text-base cursor-pointer hover:text-[var(--color-text)] text-[var(--color-text-muted)] transition-colors group">
-                    <input type="checkbox" value={u} class="filter-checkbox filter-usage w-5 h-5 rounded border border-[var(--color-border)] bg-[var(--color-bg-subtle)] checked:bg-[var(--color-accent)] checked:border-[var(--color-accent)] appearance-none cursor-pointer relative checked:after:content-[''] checked:after:absolute checked:after:left-[6px] checked:after:top-[2px] checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2 checked:after:border-[var(--color-bg)] checked:after:rotate-45" />
-                    <span class="group-hover:text-[var(--color-text)]">{u}</span>
-                  </label>
+              <p class="filter-section-label">Budget max</p>
+              <div class="flex flex-wrap gap-1.5">
+                {budgetFilters.map(({ label, value }) => (
+                  <button class="filter-chip" data-filter="budget" data-value={value} aria-pressed="false">{label}</button>
                 ))}
               </div>
             </div>
+
+            <div>
+              <p class="filter-section-label">Spécifique</p>
+              <div class="flex flex-wrap gap-1.5">
+                {specificFilters.map(({ label, value }) => (
+                  <button class="filter-chip" data-filter="specific" data-value={value} aria-pressed="false">{label}</button>
+                ))}
+              </div>
+            </div>
+
+            <button id="reset-filters" class="reset-btn" style="display:none">Tout effacer</button>
 
           </div>
         </aside>
 
-        {/* Barre latérale (Mobile / Tablette) */}
-        <aside class="xl:hidden w-full mb-8 fade-rise">
-          <div class="flex flex-wrap gap-x-8 gap-y-6">
-            <div>
-              <h2 class="text-sm font-semibold tracking-tight text-[var(--color-text)] mb-3">Marques</h2>
-              <div class="flex flex-wrap gap-4">
-                {brands.map((b) => (
-                  <label class="flex items-center gap-2 text-sm cursor-pointer hover:text-[var(--color-text)] text-[var(--color-text-muted)] transition-colors group">
-                    <input type="checkbox" value={b} class="filter-checkbox filter-brand w-4 h-4 rounded border border-[var(--color-border)] bg-[var(--color-bg-subtle)] checked:bg-[var(--color-accent)] checked:border-[var(--color-accent)] appearance-none cursor-pointer relative checked:after:content-[''] checked:after:absolute checked:after:left-[5px] checked:after:top-[2px] checked:after:w-[4px] checked:after:h-[8px] checked:after:border-r-2 checked:after:border-b-2 checked:after:border-[var(--color-bg)] checked:after:rotate-45" />
-                    <div class="flex items-center gap-1.5 group-hover:text-[var(--color-text)]">
-                      <BrandLogo brand={b} class="w-4 h-4" />
-                      <span>{b}</span>
-                    </div>
-                  </label>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h2 class="text-sm font-semibold tracking-tight text-[var(--color-text)] mb-3">Catégories</h2>
-              <div class="flex flex-wrap gap-4">
-                {categories.map((c) => (
-                  <label class="flex items-center gap-2 text-sm cursor-pointer hover:text-[var(--color-text)] text-[var(--color-text-muted)] transition-colors group">
-                    <input type="checkbox" value={c} class="filter-checkbox filter-cat w-4 h-4 rounded border border-[var(--color-border)] bg-[var(--color-bg-subtle)] checked:bg-[var(--color-accent)] checked:border-[var(--color-accent)] appearance-none cursor-pointer relative checked:after:content-[''] checked:after:absolute checked:after:left-[5px] checked:after:top-[2px] checked:after:w-[4px] checked:after:h-[8px] checked:after:border-r-2 checked:after:border-b-2 checked:after:border-[var(--color-bg)] checked:after:rotate-45" />
-                    <span class="group-hover:text-[var(--color-text)]">{c}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h2 class="text-sm font-semibold tracking-tight text-[var(--color-text)] mb-3">Usages</h2>
-              <div class="flex flex-wrap gap-4">
-                {usages.map((u) => (
-                  <label class="flex items-center gap-2 text-sm cursor-pointer hover:text-[var(--color-text)] text-[var(--color-text-muted)] transition-colors group">
-                    <input type="checkbox" value={u} class="filter-checkbox filter-usage w-4 h-4 rounded border border-[var(--color-border)] bg-[var(--color-bg-subtle)] checked:bg-[var(--color-accent)] checked:border-[var(--color-accent)] appearance-none cursor-pointer relative checked:after:content-[''] checked:after:absolute checked:after:left-[5px] checked:after:top-[2px] checked:after:w-[4px] checked:after:h-[8px] checked:after:border-r-2 checked:after:border-b-2 checked:after:border-[var(--color-bg)] checked:after:rotate-45" />
-                    <span class="group-hover:text-[var(--color-text)]">{u}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
+        {/* Filtres Mobile / Tablette — rangées défilantes */}
+        <div class="xl:hidden w-full mb-6 flex flex-col gap-2 fade-rise">
+          <div class="filter-scroll-row">
+            {brands.map((b) => (
+              <button class="filter-chip" data-filter="brand" data-value={b} aria-pressed="false">
+                <BrandLogo brand={b} class="h-3 w-auto max-w-[28px] flex-shrink-0" />
+                <span>{b}</span>
+              </button>
+            ))}
           </div>
-        </aside>
+          <div class="filter-scroll-row">
+            {categories.map((c) => (
+              <button class="filter-chip" data-filter="cat" data-value={c} aria-pressed="false">{c}</button>
+            ))}
+            <span class="filter-row-sep" />
+            {budgetFilters.map(({ label, value }) => (
+              <button class="filter-chip" data-filter="budget" data-value={value} aria-pressed="false">{label}</button>
+            ))}
+            <span class="filter-row-sep" />
+            {specificFilters.map(({ label, value }) => (
+              <button class="filter-chip" data-filter="specific" data-value={value} aria-pressed="false">{label}</button>
+            ))}
+          </div>
+          <div class="flex">
+            <button id="reset-filters-mobile" class="reset-btn" style="display:none">Tout effacer</button>
+          </div>
+        </div>
 
         {/* Contenu principal aligné avec container-edit */}
         <main class="w-full">
@@ -167,11 +171,22 @@ const usages = ["Familiale", "Daily", "Leasing social"];
                 <button class="sort-btn" data-sort="range-desc">Autonomie réelle</button>
                 <button class="sort-btn" data-sort="dc-desc">Recharge DC</button>
                 <button class="sort-btn" data-sort="ratio-desc">Rapport km/€ ★</button>
+                <span class="flex-1"></span>
+                <div
+                  id="price-mode-toggle"
+                  class="price-toggle-group"
+                  title="Aides estimées sous conditions de ressources. Bonus éco et leasing social cumulables pour les ménages éligibles."
+                >
+                  <button class="price-toggle-btn" data-mode="gross" data-active="true">Brut</button>
+                  <button class="price-toggle-btn" data-mode="aided">Après aides</button>
+                </div>
               </div>
             </Tile>
 
         {vehicles.map((v) => {
           const cheapest = v.trims.reduce((a, b) => (a.price_EUR < b.price_EUR ? a : b));
+          const totalAids = v.availableAids.reduce((s, a) => s + a.amount_EUR, 0);
+          const priceAided = Math.max(0, cheapest.price_EUR - totalAids);
           const category = getCategory(v);
           
           const familial = isFamiliale(v) ? "Familiale" : "";
@@ -185,9 +200,12 @@ const usages = ["Familiale", "Daily", "Leasing social"];
               data-brand={v.brand}
               data-usage={usageTags}
               data-price={cheapest.price_EUR}
+              data-price-aided={priceAided}
               data-range={v.realRange.mixed_km}
               data-dc={v.chargingDC.peakPower_kW}
               data-ratio={Math.round(v.realRange.mixed_km / cheapest.price_EUR * 10000)}
+              data-origin={isEU(v) ? "eu" : "other"}
+              data-bonus={hasBonus(v) ? "1" : "0"}
               class="vehicle-card contents"
             >
               <Tile size="2x1" variant="default" href={url(`/vehicules/${v.slug}`)} ariaLabel={`Fiche ${v.brand} ${v.model} ${v.variant}`} class="reveal">
@@ -230,8 +248,17 @@ const usages = ["Familiale", "Daily", "Leasing social"];
                     </div>
                   </div>
                   <div class="flex flex-col gap-1">
-                    <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Dès</span>
-                    <span data-numeric class="display-stat text-2xl md:text-3xl">{formatPrice(cheapest.price_EUR)}</span>
+                    <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">
+                      <span class="price-mode-gross">Dès</span>
+                      <span class="price-mode-aided">Après aides</span>
+                    </span>
+                    <div class="price-mode-gross">
+                      <span data-numeric class="display-stat text-2xl md:text-3xl">{formatPrice(cheapest.price_EUR)}</span>
+                    </div>
+                    <div class="price-mode-aided">
+                      <span data-numeric class="display-stat text-2xl md:text-3xl" style="color:var(--color-accent)">{formatPrice(priceAided)}</span>
+                      {totalAids > 0 && <span class="font-mono text-[10px] text-[var(--color-text-faint)]" style="text-decoration:line-through">{formatPrice(cheapest.price_EUR)}</span>}
+                    </div>
                   </div>
                 </div>
               </Tile>
@@ -243,55 +270,244 @@ const usages = ["Familiale", "Daily", "Leasing social"];
   </div>
 
   <script is:inline>
-    const checkboxes = document.querySelectorAll('.filter-checkbox');
-    const cards = document.querySelectorAll('.vehicle-card');
+    const chips    = document.querySelectorAll('.filter-chip');
+    const cards    = document.querySelectorAll('.vehicle-card');
     const sortBtns = document.querySelectorAll('.sort-btn');
-    const grid = document.querySelector('.bento-grid');
+    const grid     = document.querySelector('.bento-grid');
+    const resetBtns = document.querySelectorAll('#reset-filters, #reset-filters-mobile');
     const originalOrder = Array.from(cards);
 
+    // Price mode — 'gross' | 'aided'
+    let priceMode = 'gross';
+    let currentSort = 'default';
+
+    function getCardPrice(card) {
+      if (priceMode === 'aided') return +(card.dataset.priceAided ?? card.dataset.price);
+      return +card.dataset.price;
+    }
+
+    // Shared active state across desktop + mobile chip duplicates
+    const active = { brand: new Set(), cat: new Set(), budget: new Set(), specific: new Set() };
+
+    function getSelected(type) { return Array.from(active[type]); }
+
+    function syncChips(filter, value) {
+      document.querySelectorAll(`.filter-chip[data-filter="${filter}"][data-value="${value}"]`)
+        .forEach(c => c.setAttribute('aria-pressed', active[filter].has(value) ? 'true' : 'false'));
+    }
+
+    function updateResetVisibility() {
+      const any = Object.values(active).some(s => s.size > 0);
+      resetBtns.forEach(b => b.style.display = any ? '' : 'none');
+    }
+
     function updateFilters() {
-      const selectedBrands = Array.from(document.querySelectorAll('.filter-brand:checked')).map(cb => cb.value);
-      const selectedCats   = Array.from(document.querySelectorAll('.filter-cat:checked')).map(cb => cb.value);
-      const selectedUsages = Array.from(document.querySelectorAll('.filter-usage:checked')).map(cb => cb.value);
+      const selBrands   = getSelected('brand');
+      const selCats     = getSelected('cat');
+      const selBudgets  = getSelected('budget');
+      const selSpecific = getSelected('specific');
 
       cards.forEach(card => {
-        const brand  = card.getAttribute('data-brand');
-        const cat    = card.getAttribute('data-category');
-        const usages = card.getAttribute('data-usage').split(',');
+        const brand   = card.dataset.brand;
+        const cat     = card.dataset.category;
+        const price   = getCardPrice(card);
+        const dc      = +card.dataset.dc;
+        const origin  = card.dataset.origin;
+        const bonus   = card.dataset.bonus === '1';
+        const usages  = (card.dataset.usage || '').split(',').filter(Boolean);
 
-        const ok = (selectedBrands.length === 0 || selectedBrands.includes(brand))
-                && (selectedCats.length   === 0 || selectedCats.includes(cat))
-                && (selectedUsages.length === 0 || selectedUsages.some(u => usages.includes(u)));
-
+        let ok = true;
+        if (selBrands.length  && !selBrands.includes(brand)) ok = false;
+        if (selCats.length    && !selCats.includes(cat))     ok = false;
+        if (selBudgets.length) {
+          const maxBudget = Math.max(...selBudgets.map(Number));
+          if (price > maxBudget) ok = false;
+        }
+        if (selSpecific.length) {
+          for (const s of selSpecific) {
+            if (s === 'fast-charge' && dc < 100)                     { ok = false; break; }
+            if (s === 'eu'          && origin !== 'eu')               { ok = false; break; }
+            if (s === 'bonus'       && !bonus)                        { ok = false; break; }
+            if (s === 'leasing'     && !usages.includes('Leasing social')) { ok = false; break; }
+            if (s === 'familiale'   && !usages.includes('Familiale'))      { ok = false; break; }
+          }
+        }
         card.style.display = ok ? 'contents' : 'none';
       });
     }
 
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const f = chip.dataset.filter;
+        const v = chip.dataset.value;
+        if (active[f].has(v)) active[f].delete(v);
+        else                   active[f].add(v);
+        syncChips(f, v);
+        updateFilters();
+        updateResetVisibility();
+      });
+    });
+
+    resetBtns.forEach(btn => btn.addEventListener('click', () => {
+      Object.values(active).forEach(s => s.clear());
+      chips.forEach(c => c.setAttribute('aria-pressed', 'false'));
+      updateFilters();
+      updateResetVisibility();
+    }));
+
     function applySort(sortKey) {
+      currentSort = sortKey;
       sortBtns.forEach(btn => delete btn.dataset.active);
       document.querySelector(`.sort-btn[data-sort="${sortKey}"]`).dataset.active = 'true';
-
       const sorted = sortKey === 'default'
         ? [...originalOrder]
         : [...originalOrder].sort((a, b) => {
             switch (sortKey) {
-              case 'price-asc':  return +a.dataset.price - +b.dataset.price;
-              case 'price-desc': return +b.dataset.price - +a.dataset.price;
+              case 'price-asc':  return getCardPrice(a) - getCardPrice(b);
+              case 'price-desc': return getCardPrice(b) - getCardPrice(a);
               case 'range-desc': return +b.dataset.range - +a.dataset.range;
               case 'dc-desc':    return +b.dataset.dc    - +a.dataset.dc;
               case 'ratio-desc': return +b.dataset.ratio - +a.dataset.ratio;
               default:           return 0;
             }
           });
-
       sorted.forEach(card => grid.appendChild(card));
     }
 
-    checkboxes.forEach(cb => cb.addEventListener('change', updateFilters));
     sortBtns.forEach(btn => btn.addEventListener('click', () => applySort(btn.dataset.sort)));
+
+    // Price mode toggle
+    const priceBtns = document.querySelectorAll('.price-toggle-btn');
+    priceBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        priceMode = btn.dataset.mode;
+        priceBtns.forEach(b => delete b.dataset.active);
+        btn.dataset.active = 'true';
+        document.body.dataset.priceMode = priceMode;
+        updateFilters();
+        applySort(currentSort);
+      });
+    });
   </script>
 
   <style>
+    /* ── Filter chips ───────────────────────────────────── */
+    .filter-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--color-border);
+      background: transparent;
+      color: var(--color-text-muted);
+      font-family: var(--font-mono, ui-monospace, monospace);
+      font-size: 0.68rem;
+      letter-spacing: 0.025em;
+      cursor: pointer;
+      transition: background 0.12s, border-color 0.12s, color 0.12s, transform 0.08s;
+      white-space: nowrap;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      line-height: 1.2;
+    }
+    .filter-chip:hover {
+      background: var(--color-bg-subtle);
+      border-color: var(--color-border-strong);
+      color: var(--color-text);
+    }
+    .filter-chip:active { transform: scale(0.96); }
+    .filter-chip[aria-pressed="true"] {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: var(--color-accent-on);
+    }
+    .filter-chip[aria-pressed="true"]:hover {
+      background: var(--color-accent-dim);
+      border-color: var(--color-accent-dim);
+    }
+
+    /* ── Filter section label ───────────────────────────── */
+    .filter-section-label {
+      font-family: var(--font-mono, ui-monospace, monospace);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-faint);
+      margin-bottom: 8px;
+    }
+
+    /* ── Mobile scroll rows ─────────────────────────────── */
+    .filter-scroll-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .filter-scroll-row::-webkit-scrollbar { display: none; }
+    .filter-row-sep {
+      flex-shrink: 0;
+      width: 1px;
+      height: 18px;
+      background: var(--color-border);
+      margin: 0 2px;
+    }
+
+    /* ── Reset button ───────────────────────────────────── */
+    .reset-btn {
+      font-family: var(--font-mono, ui-monospace, monospace);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-faint);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      transition: color 0.12s;
+    }
+    .reset-btn:hover { color: var(--color-text-muted); }
+
+    /* ── Price mode toggle ──────────────────────────────── */
+    .price-toggle-group {
+      display: flex;
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .price-toggle-btn {
+      padding: 4px 12px;
+      font-family: var(--font-mono, ui-monospace, monospace);
+      font-size: 0.65rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      background: transparent;
+      border: none;
+      border-right: 1px solid var(--color-border);
+      cursor: pointer;
+      transition: background 0.1s, color 0.1s;
+      white-space: nowrap;
+    }
+    .price-toggle-btn:last-child { border-right: none; }
+    .price-toggle-btn:hover { background: var(--color-bg-subtle); color: var(--color-text); }
+    .price-toggle-btn[data-active] {
+      background: var(--color-accent);
+      color: var(--color-accent-on);
+    }
+
+    /* ── Price display in cards ─────────────────────────── */
+    .price-mode-aided { display: none; }
+    body[data-price-mode="aided"] .price-mode-gross { display: none; }
+    body[data-price-mode="aided"] .price-mode-aided { display: block; }
+    body[data-price-mode="aided"] div.price-mode-aided { display: flex; flex-direction: column; gap: 1px; }
+
+    /* ── Sort buttons ───────────────────────────────────── */
     .sort-btn {
       font-family: var(--font-mono, ui-monospace, monospace);
       font-size: 0.7rem;

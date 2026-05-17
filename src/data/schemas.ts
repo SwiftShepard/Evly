@@ -133,7 +133,7 @@ const VehicleConfigurationSchema = z.object({
   options: z.array(z.string()).default([]),
 
   // Données qui dépendent de la configuration
-  price_EUR: z.number().int().positive(),
+  price_EUR: z.number().int().positive().nullable(), // null = prix non encore communiqué
   monthlyLease_EUR: z.number().int().nonnegative().nullable(),
   leasingSocialEligible: z.boolean(),
 
@@ -254,6 +254,19 @@ export const VehicleSchema = z.object({
   sources: z.array(z.string().min(1)).min(1),
   imageCredit: z.string().min(1),
   imageUrl: z.string().url().optional(), // URL CDN de la photo constructeur
+}).superRefine((v, ctx) => {
+  // chargingCurve must not exceed the declared DC peak (vehicles with no DC charging are exempt)
+  if (v.chargingDC.peakPower_kW > 0) {
+    for (const pt of v.chargingCurve) {
+      if (pt.power > v.chargingDC.peakPower_kW * 1.05) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["chargingCurve"],
+          message: `Point SoC ${pt.soc}% affiche ${pt.power} kW mais le pic DC déclaré est ${v.chargingDC.peakPower_kW} kW — incohérence de données.`,
+        });
+      }
+    }
+  }
 });
 
 export type Vehicle = z.infer<typeof VehicleSchema>;

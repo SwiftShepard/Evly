@@ -58,6 +58,12 @@ export default function ConfigSelector({
   const isTrimAvailable = (battery: string, trim: string) =>
     configs.some((c) => c.battery === battery && c.trim === trim);
 
+  // Check if a battery/trim has a known price
+  const isBatteryPriced = (battery: string) =>
+    configs.some((c) => c.battery === battery && c.price_EUR !== null);
+  const isTrimPriced = (battery: string, trim: string) =>
+    configs.some((c) => c.battery === battery && c.trim === trim && c.price_EUR !== null);
+
   // Handle battery change — try to keep trim + wheels, fallback to first available
   const handleBatteryChange = (battery: string) => {
     let cfg = findConfig(battery, activeTrim, activeWheels);
@@ -171,11 +177,15 @@ export default function ConfigSelector({
           {batteries.length > 1 && (
             <SegmentedControl
               label="Batterie"
-              options={batteries.map((b) => ({
-                value: b,
-                label: batteryLabels[b] ?? b,
-                disabled: false,
-              }))}
+              options={batteries.map((b) => {
+                const priced = isBatteryPriced(b);
+                return {
+                  value: b,
+                  label: batteryLabels[b] ?? b,
+                  disabled: !priced,
+                  tooltip: !priced ? "Prix non communiqué" : undefined,
+                };
+              })}
               value={activeBattery}
               onChange={handleBatteryChange}
             />
@@ -185,11 +195,16 @@ export default function ConfigSelector({
           {allTrims.length > 1 && (
             <SegmentedControl
               label="Finition"
-              options={allTrims.map((t) => ({
-                value: t,
-                label: t,
-                disabled: !isTrimAvailable(activeBattery, t),
-              }))}
+              options={allTrims.map((t) => {
+                const available = isTrimAvailable(activeBattery, t);
+                const priced = available && isTrimPriced(activeBattery, t);
+                return {
+                  value: t,
+                  label: t,
+                  disabled: !available || !priced,
+                  tooltip: available && !priced ? "Prix non communiqué" : undefined,
+                };
+              })}
               value={activeTrim}
               onChange={handleTrimChange}
             />
@@ -222,6 +237,7 @@ interface SegmentOption {
   value: string;
   label: string;
   disabled: boolean;
+  tooltip?: string;
 }
 
 function SegmentedControl({
@@ -260,7 +276,7 @@ function SegmentedControl({
               disabled={opt.disabled}
               onClick={() => !opt.disabled && onChange(opt.value)}
               className="flex-1 py-1.5 px-2 text-center text-xs font-medium rounded-md transition-all duration-200"
-              title={opt.disabled ? "Configuration non disponible au catalogue" : undefined}
+              title={opt.disabled ? (opt.tooltip ?? "Configuration non disponible au catalogue") : undefined}
               style={{
                 backgroundColor: isActive ? "var(--color-surface-elevated)" : "transparent",
                 color: opt.disabled

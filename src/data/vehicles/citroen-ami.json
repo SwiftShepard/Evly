@@ -30,9 +30,9 @@
     "winter_minus5_km": 50,
     "confidence": "estimated"
   },
-  "consumption_mixed_kWh_per_100km": 15.0,
-  "consumption_highway_kWh_per_100km": 21.0,
-  "consumption_winter_kWh_per_100km": 19.0,
+  "consumption_mixed_kWh_per_100km": 15,
+  "consumption_highway_kWh_per_100km": 21,
+  "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.45,
   "chargingDC": {
     "peakPower_kW": 0,
@@ -41,9 +41,9 @@
     "confidence": "estimated"
   },
   "chargingAC": {
-    "onboardCharger_kW": 3.0,
+    "onboardCharger_kW": 3,
     "phases": 1,
-    "time_0_100_h": 3.0
+    "time_0_100_h": 3
   },
   "plugAndCharge": false,
   "v2l": false,
@@ -52,23 +52,23 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 100
+      "power": 0
     },
     {
       "soc": 10,
-      "power": 130
+      "power": 0
     },
     {
       "soc": 50,
-      "power": 100
+      "power": 0
     },
     {
       "soc": 80,
-      "power": 50
+      "power": 0
     },
     {
       "soc": 100,
-      "power": 10
+      "power": 0
     }
   ],
   "rangeTests": [],
@@ -112,7 +112,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 75,
-      "wltp_consumption_kWh_100km": 15.0,
+      "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 70,
         "highway_130_km": 0,
@@ -127,23 +127,23 @@
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 100
+          "power": 0
         },
         {
           "soc": 10,
-          "power": 130
+          "power": 0
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 0
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 0
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 0
         }
       ],
       "availability": "available",
@@ -187,7 +187,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra-rapides."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-05-17",
   "sources": [
     "nyland",
     "lachaineev"
