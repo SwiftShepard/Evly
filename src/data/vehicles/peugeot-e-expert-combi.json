@@ -232,15 +232,15 @@
   ],
   "verdict": {
     "strengths": [
-      "Volume utilitaire intelligent, 9 places + chargement modulable",
-      "Production française (Hordain), éligible Prime CEE VE selon plafond prix"
+      "Volume utilitaire intelligent : 9 places + chargement modulable",
+      "Production française (Hordain) : éligible Prime CEE VE selon plafond prix"
     ],
     "weaknesses": [
       "Autonomie réelle modeste sur autoroute (175 km en 75 kWh)",
       "Finition utilitaire face au E-Traveller plus confortable"
     ],
     "idealUserProfile": "Artisans, taxis, navettes professionnelles cherchant un grand volume électrique au meilleur prix de la gamme PSA. Adapté aux trajets urbains et périurbains.",
-    "notIdealFor": "Familles cherchant un véhicule passenger premium, préférer le E-Traveller. Gros rouleurs autoroutiers, autonomie limitée."
+    "notIdealFor": "Familles cherchant un véhicule passenger premium : préférer le E-Traveller. Gros rouleurs autoroutiers avec autonomie limitée."
   },
   "lastUpdated": "2026-05-17",
   "sources": [

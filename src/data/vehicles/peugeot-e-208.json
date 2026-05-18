@@ -2,43 +2,43 @@
   "slug": "peugeot-e-208",
   "brand": "Peugeot",
   "model": "E-208",
-  "variant": "51 kWh",
+  "variant": "50 / 54 kWh",
   "bodyType": "Citadine",
   "segment": "B",
-  "productionCountry": "Espagne",
-  "assemblyPlant": "Ulsan",
+  "productionCountry": "Slovaquie",
+  "assemblyPlant": "Trnava",
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
   "power_kW": 115,
-  "power_hp": 204,
-  "torque_Nm": 300,
+  "power_hp": 156,
+  "torque_Nm": 260,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
-  "topSpeed_kmh": 160,
-  "usableCapacity_kWh": 48.1,
-  "grossCapacity_kWh": 51,
+  "acceleration_0_100_s": 8.2,
+  "topSpeed_kmh": 150,
+  "usableCapacity_kWh": 54,
+  "grossCapacity_kWh": 55,
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1700,
   "wltp_max_km": 410,
-  "wltp_min_km": 400,
+  "wltp_min_km": 360,
   "realRange": {
-    "mixed_km": 320,
-    "highway_130_km": 210,
-    "urban_km": 380,
+    "mixed_km": 330,
+    "highway_130_km": 215,
+    "urban_km": 395,
     "winter_minus5_km": 250,
-    "confidence": "tested"
+    "confidence": "estimated"
   },
-  "consumption_mixed_kWh_per_100km": 15,
+  "consumption_mixed_kWh_per_100km": 14.6,
   "consumption_highway_kWh_per_100km": 21,
   "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.3,
   "chargingDC": {
     "peakPower_kW": 100,
     "time_10_80_min": 30,
-    "kWh_added_30min": 35,
-    "confidence": "tested"
+    "kWh_added_30min": 34,
+    "confidence": "estimated"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
@@ -52,23 +52,27 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 77
+      "power": 92
     },
     {
       "soc": 10,
       "power": 100
     },
     {
+      "soc": 20,
+      "power": 100
+    },
+    {
       "soc": 50,
-      "power": 77
+      "power": 71
     },
     {
       "soc": 80,
-      "power": 38
+      "power": 32
     },
     {
       "soc": 100,
-      "power": 8
+      "power": 6
     }
   ],
   "rangeTests": [],
@@ -82,68 +86,256 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Allure",
-      "price_EUR": 34100,
-      "batteryUsed": "51 kWh",
+      "name": "Style 50 kWh",
+      "price_EUR": 28400,
+      "batteryUsed": "50 kWh",
       "equipmentHighlights": [
-        "i-Cockpit",
-        "Moteur 156 ch"
+        "Climatisation auto",
+        "i-Cockpit 10\""
+      ]
+    },
+    {
+      "name": "Allure 50 kWh",
+      "price_EUR": 36500,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "Caméra recul",
+        "Pack Drive Assist"
+      ]
+    },
+    {
+      "name": "GT 54 kWh",
+      "price_EUR": 39700,
+      "batteryUsed": "54 kWh",
+      "equipmentHighlights": [
+        "Batterie 54 kWh exclusive · i-Cockpit 3D"
+      ]
+    },
+    {
+      "name": "GT Exclusive 54 kWh",
+      "price_EUR": 41600,
+      "batteryUsed": "54 kWh",
+      "equipmentHighlights": [
+        "Batterie 54 kWh · toit pano · sièges chauffants"
       ]
     }
   ],
-  "leasingSocialEligible": false,
+  "leasingSocialEligible": true,
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
+      "label": "Prime CEE VE",
       "amount_EUR": 4000
     }
   ],
   "configurations": [
     {
-      "id": "peugeot-e-208-allure",
-      "label": "E-208 Allure",
+      "id": "peugeot-e-208-style-50",
+      "label": "Style · 50 kWh",
       "battery": "standard",
-      "trim": "Allure",
-      "wheelSize_inches": 18,
+      "trim": "Style",
+      "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 34100,
+      "price_EUR": 28400,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 410,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_km": 360,
+      "wltp_consumption_kWh_100km": 14.8,
       "realRange": {
-        "mixed_km": 320,
-        "highway_130_km": 210,
-        "urban_km": 380,
-        "winter_minus5_km": 250,
-        "confidence": "tested"
+        "mixed_km": 290,
+        "highway_130_km": 190,
+        "urban_km": 350,
+        "winter_minus5_km": 220,
+        "confidence": "estimated"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 35,
+      "chargingDC_kWh_30min": 32,
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 77
+          "power": 92
         },
         {
           "soc": 10,
           "power": 100
         },
         {
+          "soc": 20,
+          "power": 100
+        },
+        {
           "soc": 50,
-          "power": 77
+          "power": 71
         },
         {
           "soc": 80,
-          "power": 38
+          "power": 32
         },
         {
           "soc": 100,
-          "power": 8
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "peugeot-e-208-allure-50",
+      "label": "Allure · 50 kWh",
+      "battery": "standard",
+      "trim": "Allure",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 36500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 360,
+      "wltp_consumption_kWh_100km": 14.8,
+      "realRange": {
+        "mixed_km": 290,
+        "highway_130_km": 190,
+        "urban_km": 350,
+        "winter_minus5_km": 220,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 32,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "peugeot-e-208-gt-54",
+      "label": "GT · 54 kWh",
+      "battery": "long-range",
+      "trim": "GT",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 39700,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 410,
+      "wltp_consumption_kWh_100km": 14.6,
+      "realRange": {
+        "mixed_km": 330,
+        "highway_130_km": 215,
+        "urban_km": 395,
+        "winter_minus5_km": 250,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 34,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "peugeot-e-208-gt-exclusive-54",
+      "label": "GT Exclusive · 54 kWh",
+      "battery": "long-range",
+      "trim": "GT Exclusive",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 41600,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 410,
+      "wltp_consumption_kWh_100km": 14.6,
+      "realRange": {
+        "mixed_km": 330,
+        "highway_130_km": 215,
+        "urban_km": 395,
+        "winter_minus5_km": 250,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 34,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
         }
       ],
       "availability": "available",
@@ -182,15 +374,15 @@
     ],
     "weaknesses": [
       "Vitesse de charge rapide en retrait",
-      "Infodivertissement perfectible"
+      "Info-divertissement perfectible"
     ],
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
-    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
+    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra-rapides."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-05-17",
   "sources": [
     "nyland",
-    "la-chaine-ev"
+    "lachaineev"
   ],
   "imageCredit": "Constructeur"
 }

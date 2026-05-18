@@ -2,43 +2,43 @@
   "slug": "peugeot-e-308",
   "brand": "Peugeot",
   "model": "E-308 & E-308 SW",
-  "variant": "51 kWh",
+  "variant": "Berline & SW · 55 kWh",
   "bodyType": "Berline compacte",
   "segment": "C",
   "productionCountry": "France",
-  "assemblyPlant": "Ulsan",
+  "assemblyPlant": "Mulhouse",
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
   "power_kW": 115,
-  "power_hp": 204,
-  "torque_Nm": 300,
+  "power_hp": 156,
+  "torque_Nm": 260,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
-  "topSpeed_kmh": 160,
-  "usableCapacity_kWh": 50.8,
-  "grossCapacity_kWh": 54,
+  "acceleration_0_100_s": 8.5,
+  "topSpeed_kmh": 170,
+  "usableCapacity_kWh": 55,
+  "grossCapacity_kWh": 58,
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1700,
-  "wltp_max_km": 416,
-  "wltp_min_km": 400,
+  "wltp_max_km": 450,
+  "wltp_min_km": 450,
   "realRange": {
-    "mixed_km": 330,
-    "highway_130_km": 220,
-    "urban_km": 390,
-    "winter_minus5_km": 260,
-    "confidence": "tested"
+    "mixed_km": 350,
+    "highway_130_km": 230,
+    "urban_km": 420,
+    "winter_minus5_km": 275,
+    "confidence": "estimated"
   },
-  "consumption_mixed_kWh_per_100km": 15,
+  "consumption_mixed_kWh_per_100km": 14.7,
   "consumption_highway_kWh_per_100km": 21,
   "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.28,
   "chargingDC": {
     "peakPower_kW": 100,
     "time_10_80_min": 30,
-    "kWh_added_30min": 38,
-    "confidence": "tested"
+    "kWh_added_30min": 36,
+    "confidence": "estimated"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
@@ -52,23 +52,27 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 77
+      "power": 92
     },
     {
       "soc": 10,
       "power": 100
     },
     {
+      "soc": 20,
+      "power": 100
+    },
+    {
       "soc": 50,
-      "power": 77
+      "power": 71
     },
     {
       "soc": 80,
-      "power": 38
+      "power": 32
     },
     {
       "soc": 100,
-      "power": 8
+      "power": 6
     }
   ],
   "rangeTests": [],
@@ -82,125 +86,502 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "E-308 Allure",
-      "price_EUR": 42500,
-      "batteryUsed": "51 kWh",
+      "name": "Berline Style 55 kWh",
+      "price_EUR": 42600,
+      "batteryUsed": "55 kWh",
       "equipmentHighlights": [
-        "i-Connect Advanced"
+        "i-Cockpit",
+        "Pack Drive Assist"
       ]
     },
     {
-      "name": "E-308 SW Allure",
-      "price_EUR": 43500,
-      "batteryUsed": "51 kWh",
+      "name": "Berline Allure 55 kWh",
+      "price_EUR": 44000,
+      "batteryUsed": "55 kWh",
       "equipmentHighlights": [
-        "Volume de coffre",
-        "Ligne de toit rallongée"
+        "i-Cockpit 10\"",
+        "Caméra recul"
+      ]
+    },
+    {
+      "name": "Berline GT 55 kWh",
+      "price_EUR": 46350,
+      "batteryUsed": "55 kWh",
+      "equipmentHighlights": [
+        "i-Cockpit 3D",
+        "Pack Drive Assist Plus"
+      ]
+    },
+    {
+      "name": "Berline GT Exclusive 55 kWh",
+      "price_EUR": 47950,
+      "batteryUsed": "55 kWh",
+      "equipmentHighlights": [
+        "Toit pano",
+        "Sièges AGR chauffants"
+      ]
+    },
+    {
+      "name": "SW Style 55 kWh",
+      "price_EUR": 42600,
+      "batteryUsed": "55 kWh",
+      "equipmentHighlights": [
+        "Break · coffre 608 L"
+      ]
+    },
+    {
+      "name": "SW Allure 55 kWh",
+      "price_EUR": 44000,
+      "batteryUsed": "55 kWh",
+      "equipmentHighlights": [
+        "Break · i-Cockpit 10\""
+      ]
+    },
+    {
+      "name": "SW GT 55 kWh",
+      "price_EUR": 46350,
+      "batteryUsed": "55 kWh",
+      "equipmentHighlights": [
+        "Break · i-Cockpit 3D"
+      ]
+    },
+    {
+      "name": "SW GT Exclusive 55 kWh",
+      "price_EUR": 47950,
+      "batteryUsed": "55 kWh",
+      "equipmentHighlights": [
+        "Break · toit pano · Sièges AGR"
       ]
     }
   ],
-  "leasingSocialEligible": false,
+  "leasingSocialEligible": true,
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
+      "label": "Prime CEE VE",
       "amount_EUR": 4000
     }
   ],
   "configurations": [
     {
-      "id": "peugeot-e-308-e-308-allure",
-      "label": "E-308 & E-308 SW E-308 Allure",
+      "id": "peugeot-e-308-berline-style-55",
+      "label": "Berline Style · 55 kWh",
       "battery": "standard",
-      "trim": "E-308 Allure",
-      "wheelSize_inches": 18,
+      "trim": "Berline Style",
+      "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 42500,
+      "price_EUR": 42600,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 416,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_km": 450,
+      "wltp_consumption_kWh_100km": 14.7,
       "realRange": {
-        "mixed_km": 330,
-        "highway_130_km": 220,
-        "urban_km": 390,
-        "winter_minus5_km": 260,
-        "confidence": "tested"
+        "mixed_km": 350,
+        "highway_130_km": 230,
+        "urban_km": 420,
+        "winter_minus5_km": 275,
+        "confidence": "estimated"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 38,
+      "chargingDC_kWh_30min": 36,
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 77
+          "power": 92
         },
         {
           "soc": 10,
           "power": 100
         },
         {
+          "soc": 20,
+          "power": 100
+        },
+        {
           "soc": 50,
-          "power": 77
+          "power": 71
         },
         {
           "soc": 80,
-          "power": 38
+          "power": 32
         },
         {
           "soc": 100,
-          "power": 8
+          "power": 6
         }
       ],
       "availability": "available",
       "notes": null
     },
     {
-      "id": "peugeot-e-308-e-308-sw-allure",
-      "label": "E-308 & E-308 SW E-308 SW Allure",
+      "id": "peugeot-e-308-berline-allure-55",
+      "label": "Berline Allure · 55 kWh",
       "battery": "standard",
-      "trim": "E-308 SW Allure",
-      "wheelSize_inches": 18,
+      "trim": "Berline Allure",
+      "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 43500,
+      "price_EUR": 44000,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 416,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_km": 450,
+      "wltp_consumption_kWh_100km": 14.7,
       "realRange": {
-        "mixed_km": 330,
-        "highway_130_km": 220,
-        "urban_km": 390,
-        "winter_minus5_km": 260,
-        "confidence": "tested"
+        "mixed_km": 350,
+        "highway_130_km": 230,
+        "urban_km": 420,
+        "winter_minus5_km": 275,
+        "confidence": "estimated"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 38,
+      "chargingDC_kWh_30min": 36,
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 77
+          "power": 92
         },
         {
           "soc": 10,
           "power": 100
         },
         {
+          "soc": 20,
+          "power": 100
+        },
+        {
           "soc": 50,
-          "power": 77
+          "power": 71
         },
         {
           "soc": 80,
-          "power": 38
+          "power": 32
         },
         {
           "soc": 100,
-          "power": 8
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "peugeot-e-308-berline-gt-55",
+      "label": "Berline GT · 55 kWh",
+      "battery": "standard",
+      "trim": "Berline GT",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 46350,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 450,
+      "wltp_consumption_kWh_100km": 14.7,
+      "realRange": {
+        "mixed_km": 350,
+        "highway_130_km": 230,
+        "urban_km": 420,
+        "winter_minus5_km": 275,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 36,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "peugeot-e-308-berline-gt-exclusive-55",
+      "label": "Berline GT Exclusive · 55 kWh",
+      "battery": "standard",
+      "trim": "Berline GT Exclusive",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 47950,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 450,
+      "wltp_consumption_kWh_100km": 14.7,
+      "realRange": {
+        "mixed_km": 350,
+        "highway_130_km": 230,
+        "urban_km": 420,
+        "winter_minus5_km": 275,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 36,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "peugeot-e-308-sw-style-55",
+      "label": "SW Style · 55 kWh",
+      "battery": "standard",
+      "trim": "SW Style",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 42600,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 450,
+      "wltp_consumption_kWh_100km": 14.7,
+      "realRange": {
+        "mixed_km": 350,
+        "highway_130_km": 230,
+        "urban_km": 420,
+        "winter_minus5_km": 275,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 36,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "peugeot-e-308-sw-allure-55",
+      "label": "SW Allure · 55 kWh",
+      "battery": "standard",
+      "trim": "SW Allure",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 44000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 450,
+      "wltp_consumption_kWh_100km": 14.7,
+      "realRange": {
+        "mixed_km": 350,
+        "highway_130_km": 230,
+        "urban_km": 420,
+        "winter_minus5_km": 275,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 36,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "peugeot-e-308-sw-gt-55",
+      "label": "SW GT · 55 kWh",
+      "battery": "standard",
+      "trim": "SW GT",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 46350,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 450,
+      "wltp_consumption_kWh_100km": 14.7,
+      "realRange": {
+        "mixed_km": 350,
+        "highway_130_km": 230,
+        "urban_km": 420,
+        "winter_minus5_km": 275,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 36,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "peugeot-e-308-sw-gt-exclusive-55",
+      "label": "SW GT Exclusive · 55 kWh",
+      "battery": "standard",
+      "trim": "SW GT Exclusive",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 47950,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 450,
+      "wltp_consumption_kWh_100km": 14.7,
+      "realRange": {
+        "mixed_km": 350,
+        "highway_130_km": 230,
+        "urban_km": 420,
+        "winter_minus5_km": 275,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 36,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
         }
       ],
       "availability": "available",
@@ -239,15 +620,15 @@
     ],
     "weaknesses": [
       "Vitesse de charge rapide en retrait",
-      "Infodivertissement perfectible"
+      "Info-divertissement perfectible"
     ],
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
-    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
+    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra-rapides."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-05-17",
   "sources": [
     "nyland",
-    "la-chaine-ev"
+    "lachaineev"
   ],
   "imageCredit": "Constructeur"
 }

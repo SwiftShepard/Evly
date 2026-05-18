@@ -2,42 +2,42 @@
   "slug": "peugeot-e-5008",
   "brand": "Peugeot",
   "model": "E-5008",
-  "variant": "73 kWh",
+  "variant": "73 / 97 kWh · 7 places · FWD/AWD",
   "bodyType": "SUV 7 places",
   "segment": "D",
   "productionCountry": "France",
-  "assemblyPlant": "Ulsan",
+  "assemblyPlant": "Sochaux",
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
-  "power_kW": 157,
-  "power_hp": 204,
-  "torque_Nm": 300,
+  "power_kW": 240,
+  "power_hp": 325,
+  "torque_Nm": 509,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
-  "topSpeed_kmh": 160,
-  "usableCapacity_kWh": 73,
-  "grossCapacity_kWh": 73,
+  "acceleration_0_100_s": 6.4,
+  "topSpeed_kmh": 170,
+  "usableCapacity_kWh": 97,
+  "grossCapacity_kWh": 98,
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1700,
-  "wltp_max_km": 502,
-  "wltp_min_km": 480,
+  "wltp_max_km": 668,
+  "wltp_min_km": 502,
   "realRange": {
-    "mixed_km": 400,
-    "highway_130_km": 270,
-    "urban_km": 480,
-    "winter_minus5_km": 310,
+    "mixed_km": 510,
+    "highway_130_km": 360,
+    "urban_km": 615,
+    "winter_minus5_km": 400,
     "confidence": "estimated"
   },
-  "consumption_mixed_kWh_per_100km": 15.0,
-  "consumption_highway_kWh_per_100km": 21.0,
-  "consumption_winter_kWh_per_100km": 19.0,
+  "consumption_mixed_kWh_per_100km": 17,
+  "consumption_highway_kWh_per_100km": 21,
+  "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.29,
   "chargingDC": {
     "peakPower_kW": 160,
-    "time_10_80_min": 30,
-    "kWh_added_30min": 50,
+    "time_10_80_min": 35,
+    "kWh_added_30min": 60,
     "confidence": "estimated"
   },
   "chargingAC": {
@@ -52,19 +52,23 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 100
+      "power": 147
     },
     {
       "soc": 10,
-      "power": 130
+      "power": 160
+    },
+    {
+      "soc": 20,
+      "power": 160
     },
     {
       "soc": 50,
-      "power": 100
+      "power": 114
     },
     {
       "soc": 80,
-      "power": 50
+      "power": 51
     },
     {
       "soc": 100,
@@ -82,12 +86,67 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Allure",
-      "price_EUR": 46990,
+      "name": "Allure 210 ch 73 kWh",
+      "price_EUR": 46690,
       "batteryUsed": "73 kWh",
       "equipmentHighlights": [
-        "7 places de série",
-        "Habitabilité"
+        "FWD 210 ch · 7 places"
+      ]
+    },
+    {
+      "name": "GT 210 ch 73 kWh",
+      "price_EUR": 51490,
+      "batteryUsed": "73 kWh",
+      "equipmentHighlights": [
+        "FWD 210 ch · 7 places · Hi-Fi"
+      ]
+    },
+    {
+      "name": "GT Exclusive 210 ch 73 kWh",
+      "price_EUR": 54290,
+      "batteryUsed": "73 kWh",
+      "equipmentHighlights": [
+        "FWD 210 ch · 7 places · toit pano"
+      ]
+    },
+    {
+      "name": "Allure 230 ch GA 97 kWh",
+      "price_EUR": 51290,
+      "batteryUsed": "97 kWh",
+      "equipmentHighlights": [
+        "FWD 230 ch · 7 places · Grande Autonomie"
+      ]
+    },
+    {
+      "name": "GT 230 ch GA 97 kWh",
+      "price_EUR": 55890,
+      "batteryUsed": "97 kWh",
+      "equipmentHighlights": [
+        "FWD 230 ch GA · 7 places · Hi-Fi Focal"
+      ]
+    },
+    {
+      "name": "GT Exclusive 230 ch GA 97 kWh",
+      "price_EUR": 58690,
+      "batteryUsed": "97 kWh",
+      "equipmentHighlights": [
+        "FWD 230 ch GA · 7 places · toit pano"
+      ]
+    },
+    {
+      "name": "GT 325 ch AWD 73 kWh",
+      "price_EUR": 55390,
+      "batteryUsed": "73 kWh",
+      "equipmentHighlights": [
+        "AWD 325 ch · 7 places · Hi-Fi"
+      ]
+    },
+    {
+      "name": "GT Exclusive 325 ch AWD 73 kWh",
+      "price_EUR": 57690,
+      "batteryUsed": "73 kWh",
+      "equipmentHighlights": [
+        "AWD 325 ch · 7 places · toit pano"
       ]
     }
   ],
@@ -95,28 +154,28 @@
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
+      "label": "Prime CEE VE",
       "amount_EUR": 4000
     }
   ],
   "configurations": [
     {
-      "id": "peugeot-e-5008-allure",
-      "label": "E-5008 Allure",
+      "id": "peugeot-e-5008-allure-210-ch-73",
+      "label": "Allure 210 ch · 73 kWh",
       "battery": "standard",
-      "trim": "Allure",
-      "wheelSize_inches": 18,
+      "trim": "Allure 210 ch",
+      "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 46990,
+      "price_EUR": 46690,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 502,
-      "wltp_consumption_kWh_100km": 15.0,
+      "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
-        "mixed_km": 400,
+        "mixed_km": 395,
         "highway_130_km": 270,
-        "urban_km": 480,
+        "urban_km": 475,
         "winter_minus5_km": 310,
         "confidence": "estimated"
       },
@@ -127,19 +186,394 @@
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 100
+          "power": 147
         },
         {
           "soc": 10,
-          "power": 130
+          "power": 160
+        },
+        {
+          "soc": 20,
+          "power": 160
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 114
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 51
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "peugeot-e-5008-gt-210-ch-73",
+      "label": "GT 210 ch · 73 kWh",
+      "battery": "standard",
+      "trim": "GT 210 ch",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 51490,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 502,
+      "wltp_consumption_kWh_100km": 16.5,
+      "realRange": {
+        "mixed_km": 395,
+        "highway_130_km": 270,
+        "urban_km": 475,
+        "winter_minus5_km": 310,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 147
+        },
+        {
+          "soc": 10,
+          "power": 160
+        },
+        {
+          "soc": 20,
+          "power": 160
+        },
+        {
+          "soc": 50,
+          "power": 114
+        },
+        {
+          "soc": 80,
+          "power": 51
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "peugeot-e-5008-gt-exclusive-210-ch-73",
+      "label": "GT Exclusive 210 ch · 73 kWh",
+      "battery": "standard",
+      "trim": "GT Exclusive 210 ch",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 54290,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 502,
+      "wltp_consumption_kWh_100km": 16.5,
+      "realRange": {
+        "mixed_km": 395,
+        "highway_130_km": 270,
+        "urban_km": 475,
+        "winter_minus5_km": 310,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 147
+        },
+        {
+          "soc": 10,
+          "power": 160
+        },
+        {
+          "soc": 20,
+          "power": 160
+        },
+        {
+          "soc": 50,
+          "power": 114
+        },
+        {
+          "soc": 80,
+          "power": 51
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "peugeot-e-5008-allure-230-ch-ga-97",
+      "label": "Allure 230 ch GA · 97 kWh",
+      "battery": "long-range",
+      "trim": "Allure 230 ch GA",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 51290,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 668,
+      "wltp_consumption_kWh_100km": 17,
+      "realRange": {
+        "mixed_km": 510,
+        "highway_130_km": 360,
+        "urban_km": 615,
+        "winter_minus5_km": 400,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 60,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 147
+        },
+        {
+          "soc": 10,
+          "power": 160
+        },
+        {
+          "soc": 20,
+          "power": 160
+        },
+        {
+          "soc": 50,
+          "power": 114
+        },
+        {
+          "soc": 80,
+          "power": 51
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "peugeot-e-5008-gt-230-ch-ga-97",
+      "label": "GT 230 ch GA · 97 kWh",
+      "battery": "long-range",
+      "trim": "GT 230 ch GA",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 55890,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 668,
+      "wltp_consumption_kWh_100km": 17,
+      "realRange": {
+        "mixed_km": 510,
+        "highway_130_km": 360,
+        "urban_km": 615,
+        "winter_minus5_km": 400,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 60,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 147
+        },
+        {
+          "soc": 10,
+          "power": 160
+        },
+        {
+          "soc": 20,
+          "power": 160
+        },
+        {
+          "soc": 50,
+          "power": 114
+        },
+        {
+          "soc": 80,
+          "power": 51
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "peugeot-e-5008-gt-exclusive-230-ch-ga-97",
+      "label": "GT Exclusive 230 ch GA · 97 kWh",
+      "battery": "long-range",
+      "trim": "GT Exclusive 230 ch GA",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 58690,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 668,
+      "wltp_consumption_kWh_100km": 17,
+      "realRange": {
+        "mixed_km": 510,
+        "highway_130_km": 360,
+        "urban_km": 615,
+        "winter_minus5_km": 400,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 60,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 147
+        },
+        {
+          "soc": 10,
+          "power": 160
+        },
+        {
+          "soc": 20,
+          "power": 160
+        },
+        {
+          "soc": 50,
+          "power": 114
+        },
+        {
+          "soc": 80,
+          "power": 51
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "peugeot-e-5008-gt-325-ch-awd-73",
+      "label": "GT 325 ch AWD · 73 kWh",
+      "battery": "standard",
+      "trim": "GT 325 ch AWD",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 55390,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 502,
+      "wltp_consumption_kWh_100km": 16.5,
+      "realRange": {
+        "mixed_km": 395,
+        "highway_130_km": 270,
+        "urban_km": 475,
+        "winter_minus5_km": 310,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 147
+        },
+        {
+          "soc": 10,
+          "power": 160
+        },
+        {
+          "soc": 20,
+          "power": 160
+        },
+        {
+          "soc": 50,
+          "power": 114
+        },
+        {
+          "soc": 80,
+          "power": 51
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "peugeot-e-5008-gt-exclusive-325-ch-awd-73",
+      "label": "GT Exclusive 325 ch AWD · 73 kWh",
+      "battery": "standard",
+      "trim": "GT Exclusive 325 ch AWD",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 57690,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 502,
+      "wltp_consumption_kWh_100km": 16.5,
+      "realRange": {
+        "mixed_km": 395,
+        "highway_130_km": 270,
+        "urban_km": 475,
+        "winter_minus5_km": 310,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 147
+        },
+        {
+          "soc": 10,
+          "power": 160
+        },
+        {
+          "soc": 20,
+          "power": 160
+        },
+        {
+          "soc": 50,
+          "power": 114
+        },
+        {
+          "soc": 80,
+          "power": 51
         },
         {
           "soc": 100,
@@ -182,15 +616,15 @@
     ],
     "weaknesses": [
       "Vitesse de charge rapide en retrait",
-      "Infodivertissement perfectible"
+      "Info-divertissement perfectible"
     ],
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
-    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
+    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra-rapides."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-05-17",
   "sources": [
     "nyland",
-    "la-chaine-ev"
+    "lachaineev"
   ],
   "imageCredit": "Constructeur"
 }
