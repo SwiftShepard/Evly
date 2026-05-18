@@ -1,0 +1,390 @@
+{
+  "slug": "opel-corsa-electric",
+  "brand": "Opel",
+  "model": "Corsa Electric",
+  "variant": "50 / 54 kWh",
+  "bodyType": "Citadine",
+  "segment": "B",
+  "productionCountry": "Espagne",
+  "assemblyPlant": "Saragosse",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 115,
+  "power_hp": 156,
+  "torque_Nm": 260,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 8.2,
+  "topSpeed_kmh": 150,
+  "usableCapacity_kWh": 54,
+  "grossCapacity_kWh": 55,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1530,
+  "wltp_max_km": 405,
+  "wltp_min_km": 357,
+  "realRange": {
+    "mixed_km": 320,
+    "highway_130_km": 205,
+    "urban_km": 380,
+    "winter_minus5_km": 250,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 14.6,
+  "consumption_highway_kWh_per_100km": 19.6,
+  "consumption_winter_kWh_per_100km": 18.6,
+  "dragCoefficient_Cx": 0.3,
+  "chargingDC": {
+    "peakPower_kW": 100,
+    "time_10_80_min": 30,
+    "kWh_added_30min": 50,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 4.7
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 92
+    },
+    {
+      "soc": 10,
+      "power": 100
+    },
+    {
+      "soc": 20,
+      "power": 100
+    },
+    {
+      "soc": 50,
+      "power": 71
+    },
+    {
+      "soc": 80,
+      "power": 32
+    },
+    {
+      "soc": 100,
+      "power": 6
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4060,
+  "width_mm": 1765,
+  "height_mm": 1435,
+  "wheelbase_mm": 2540,
+  "trunkCapacity_L": 309,
+  "trunkCapacityFolded_L": 1118,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Edition 50 kWh",
+      "price_EUR": 33500,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "Entrée de gamme",
+        "Caméra recul"
+      ]
+    },
+    {
+      "name": "GS 50 kWh",
+      "price_EUR": 36500,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "Look sportif",
+        "Sièges sport"
+      ]
+    },
+    {
+      "name": "GS 54 kWh",
+      "price_EUR": 39500,
+      "batteryUsed": "54 kWh",
+      "equipmentHighlights": [
+        "Look sportif",
+        "Sièges sport"
+      ]
+    },
+    {
+      "name": "Ultimate 54 kWh",
+      "price_EUR": 41500,
+      "batteryUsed": "54 kWh",
+      "equipmentHighlights": [
+        "Toit pano",
+        "Aides à la conduite niveau 2"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 4000
+    }
+  ],
+  "configurations": [
+    {
+      "id": "opel-corsa-electric-edition-50",
+      "label": "Edition · 50 kWh",
+      "battery": "standard",
+      "trim": "Edition",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 33500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 357,
+      "wltp_consumption_kWh_100km": 14.8,
+      "realRange": {
+        "mixed_km": 280,
+        "highway_130_km": 180,
+        "urban_km": 340,
+        "winter_minus5_km": 220,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "opel-corsa-electric-gs-50",
+      "label": "GS · 50 kWh",
+      "battery": "standard",
+      "trim": "GS",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 36500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 357,
+      "wltp_consumption_kWh_100km": 14.8,
+      "realRange": {
+        "mixed_km": 280,
+        "highway_130_km": 180,
+        "urban_km": 340,
+        "winter_minus5_km": 220,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "opel-corsa-electric-gs-54",
+      "label": "GS · 54 kWh",
+      "battery": "long-range",
+      "trim": "GS",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 39500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 405,
+      "wltp_consumption_kWh_100km": 14.6,
+      "realRange": {
+        "mixed_km": 320,
+        "highway_130_km": 205,
+        "urban_km": 380,
+        "winter_minus5_km": 250,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "opel-corsa-electric-ultimate-54",
+      "label": "Ultimate · 54 kWh",
+      "battery": "long-range",
+      "trim": "Ultimate",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 41500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 405,
+      "wltp_consumption_kWh_100km": 14.6,
+      "realRange": {
+        "mixed_km": 320,
+        "highway_130_km": 205,
+        "urban_km": 380,
+        "winter_minus5_km": 250,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "confort",
+      "label": "Climatisation automatique"
+    },
+    {
+      "category": "technologie",
+      "label": "Système multimédia tactile, compatible Apple CarPlay / Android Auto"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence avec détection piétons"
+    },
+    {
+      "category": "design",
+      "label": "Signature lumineuse LED"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Plateforme e-CMP éprouvée",
+      "Production espagnole : éligible Prime CEE VE"
+    ],
+    "weaknesses": [
+      "Habitabilité arrière limitée",
+      "Pas de pompe à chaleur sur Edition"
+    ],
+    "idealUserProfile": "Foyer urbain ou périurbain cherchant une citadine électrique fiable, finition sobre allemande, look discret.",
+    "notIdealFor": "Acheteur cherchant le maximum d'espace ou le look extraverti, préférer la 600e ou Avenger."
+  },
+  "lastUpdated": "2026-05-18",
+  "sources": [
+    "nyland",
+    "lachaineev"
+  ],
+  "imageCredit": "Constructeur"
+}

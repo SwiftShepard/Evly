@@ -60,7 +60,11 @@ function isDaily(v: Vehicle) {
 }
 
 const categories = ["Mini-SUV", "SUV", "Compacte", "Berline", "Citadine", "Monospace", "Utilitaire", "Quadricycle"];
-const brands = ["Renault", "Peugeot", "Citroën", "Tesla", "BYD", "MG", "Volkswagen", "Cupra", "Skoda", "Kia", "Hyundai", "Leapmotor", "Mobilize"];
+// Liste des marques dérivée dynamiquement des fiches en base, triée par ordre alphabétique.
+// Évite l'oubli manuel quand on ajoute une nouvelle marque.
+const brands = [...new Set(vehicles.map((v) => v.brand))].sort((a, b) =>
+  a.localeCompare(b, "fr", { sensitivity: "base" }),
+);
 
 const budgetFilters = [
   { label: "< 25 k€", value: "25000" },

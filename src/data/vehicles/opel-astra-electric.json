@@ -1,0 +1,388 @@
+{
+  "slug": "opel-astra-electric",
+  "brand": "Opel",
+  "model": "Astra Electric",
+  "variant": "Berline & Sports Tourer · 54 kWh",
+  "bodyType": "Berline compacte",
+  "segment": "C",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Rüsselsheim",
+  "releaseYear": 2023,
+  "marketAvailability": "Disponible",
+  "power_kW": 115,
+  "power_hp": 156,
+  "torque_Nm": 270,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 9.2,
+  "topSpeed_kmh": 170,
+  "usableCapacity_kWh": 54,
+  "grossCapacity_kWh": 55,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1718,
+  "wltp_max_km": 416,
+  "wltp_min_km": 416,
+  "realRange": {
+    "mixed_km": 330,
+    "highway_130_km": 215,
+    "urban_km": 395,
+    "winter_minus5_km": 255,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 14.7,
+  "consumption_highway_kWh_per_100km": 19.7,
+  "consumption_winter_kWh_per_100km": 18.7,
+  "dragCoefficient_Cx": 0.28,
+  "chargingDC": {
+    "peakPower_kW": 100,
+    "time_10_80_min": 30,
+    "kWh_added_30min": 50,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 92
+    },
+    {
+      "soc": 10,
+      "power": 100
+    },
+    {
+      "soc": 20,
+      "power": 100
+    },
+    {
+      "soc": 50,
+      "power": 71
+    },
+    {
+      "soc": 80,
+      "power": 32
+    },
+    {
+      "soc": 100,
+      "power": 6
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4374,
+  "width_mm": 1860,
+  "height_mm": 1470,
+  "wheelbase_mm": 2675,
+  "trunkCapacity_L": 352,
+  "trunkCapacityFolded_L": 1268,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Berline GS 54 kWh",
+      "price_EUR": 40200,
+      "batteryUsed": "54 kWh",
+      "equipmentHighlights": [
+        "Berline · pack sportif",
+        "Caméra 360°"
+      ]
+    },
+    {
+      "name": "Berline Ultimate 54 kWh",
+      "price_EUR": 43700,
+      "batteryUsed": "54 kWh",
+      "equipmentHighlights": [
+        "Toit pano",
+        "Aides niveau 2 augmenté"
+      ]
+    },
+    {
+      "name": "Sports Tourer GS 54 kWh",
+      "price_EUR": 41200,
+      "batteryUsed": "54 kWh",
+      "equipmentHighlights": [
+        "Break · coffre 516 L"
+      ]
+    },
+    {
+      "name": "Sports Tourer Ultimate 54 kWh",
+      "price_EUR": 44700,
+      "batteryUsed": "54 kWh",
+      "equipmentHighlights": [
+        "Break premium · toit pano"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 4000
+    }
+  ],
+  "configurations": [
+    {
+      "id": "opel-astra-electric-berline-gs-54",
+      "label": "Berline GS · 54 kWh",
+      "battery": "standard",
+      "trim": "Berline GS",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 40200,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 416,
+      "wltp_consumption_kWh_100km": 14.7,
+      "realRange": {
+        "mixed_km": 330,
+        "highway_130_km": 215,
+        "urban_km": 395,
+        "winter_minus5_km": 255,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "opel-astra-electric-berline-ultimate-54",
+      "label": "Berline Ultimate · 54 kWh",
+      "battery": "standard",
+      "trim": "Berline Ultimate",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 43700,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 416,
+      "wltp_consumption_kWh_100km": 14.7,
+      "realRange": {
+        "mixed_km": 330,
+        "highway_130_km": 215,
+        "urban_km": 395,
+        "winter_minus5_km": 255,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "opel-astra-electric-sports-tourer-gs-54",
+      "label": "Sports Tourer GS · 54 kWh",
+      "battery": "standard",
+      "trim": "Sports Tourer GS",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 41200,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 416,
+      "wltp_consumption_kWh_100km": 14.7,
+      "realRange": {
+        "mixed_km": 330,
+        "highway_130_km": 215,
+        "urban_km": 395,
+        "winter_minus5_km": 255,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "opel-astra-electric-sports-tourer-ultimate-54",
+      "label": "Sports Tourer Ultimate · 54 kWh",
+      "battery": "standard",
+      "trim": "Sports Tourer Ultimate",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 44700,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 416,
+      "wltp_consumption_kWh_100km": 14.7,
+      "realRange": {
+        "mixed_km": 330,
+        "highway_130_km": 215,
+        "urban_km": 395,
+        "winter_minus5_km": 255,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "confort",
+      "label": "Climatisation automatique"
+    },
+    {
+      "category": "technologie",
+      "label": "Système multimédia tactile, compatible Apple CarPlay / Android Auto"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence avec détection piétons"
+    },
+    {
+      "category": "design",
+      "label": "Signature lumineuse LED"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Production Rüsselsheim : qualité allemande perçue",
+      "Choix berline + break à mêmes tarifs"
+    ],
+    "weaknesses": [
+      "Autonomie 416 km WLTP en retrait des concurrents directs (e-308 : 416, Mégane : 450)",
+      "Cocoon arrière étroit"
+    ],
+    "idealUserProfile": "Cadre quotidien ou famille petite cherchant une compacte premium allemande. Mix domicile-travail + trajets routes.",
+    "notIdealFor": "Gros rouleur autoroutier : l'autonomie 130 km/h tombe sous les 220 km."
+  },
+  "lastUpdated": "2026-05-18",
+  "sources": [
+    "nyland",
+    "lachaineev"
+  ],
+  "imageCredit": "Constructeur"
+}

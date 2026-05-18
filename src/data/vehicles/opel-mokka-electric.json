@@ -1,0 +1,390 @@
+{
+  "slug": "opel-mokka-electric",
+  "brand": "Opel",
+  "model": "Mokka Electric",
+  "variant": "50 / 54 kWh",
+  "bodyType": "SUV urbain",
+  "segment": "B",
+  "productionCountry": "Espagne",
+  "assemblyPlant": "Saragosse",
+  "releaseYear": 2023,
+  "marketAvailability": "Disponible",
+  "power_kW": 115,
+  "power_hp": 156,
+  "torque_Nm": 260,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 9,
+  "topSpeed_kmh": 150,
+  "usableCapacity_kWh": 54,
+  "grossCapacity_kWh": 55,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1598,
+  "wltp_max_km": 406,
+  "wltp_min_km": 338,
+  "realRange": {
+    "mixed_km": 310,
+    "highway_130_km": 200,
+    "urban_km": 370,
+    "winter_minus5_km": 245,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 15.2,
+  "consumption_highway_kWh_per_100km": 20.2,
+  "consumption_winter_kWh_per_100km": 19.2,
+  "dragCoefficient_Cx": 0.32,
+  "chargingDC": {
+    "peakPower_kW": 100,
+    "time_10_80_min": 30,
+    "kWh_added_30min": 50,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 4.7
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 92
+    },
+    {
+      "soc": 10,
+      "power": 100
+    },
+    {
+      "soc": 20,
+      "power": 100
+    },
+    {
+      "soc": 50,
+      "power": 71
+    },
+    {
+      "soc": 80,
+      "power": 32
+    },
+    {
+      "soc": 100,
+      "power": 6
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4151,
+  "width_mm": 1791,
+  "height_mm": 1531,
+  "wheelbase_mm": 2557,
+  "trunkCapacity_L": 350,
+  "trunkCapacityFolded_L": 1105,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Edition 50 kWh",
+      "price_EUR": 36600,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "Entrée de gamme",
+        "Climatisation manuelle"
+      ]
+    },
+    {
+      "name": "GS 50 kWh",
+      "price_EUR": 39600,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "Look sportif",
+        "Caméra 360°"
+      ]
+    },
+    {
+      "name": "GS 54 kWh",
+      "price_EUR": 42600,
+      "batteryUsed": "54 kWh",
+      "equipmentHighlights": [
+        "Look sportif",
+        "Caméra 360°"
+      ]
+    },
+    {
+      "name": "Ultimate 54 kWh",
+      "price_EUR": 44900,
+      "batteryUsed": "54 kWh",
+      "equipmentHighlights": [
+        "Sellerie premium",
+        "Pack Drive Assist"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 4000
+    }
+  ],
+  "configurations": [
+    {
+      "id": "opel-mokka-electric-edition-50",
+      "label": "Edition · 50 kWh",
+      "battery": "standard",
+      "trim": "Edition",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 36600,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 338,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": {
+        "mixed_km": 265,
+        "highway_130_km": 170,
+        "urban_km": 320,
+        "winter_minus5_km": 205,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "opel-mokka-electric-gs-50",
+      "label": "GS · 50 kWh",
+      "battery": "standard",
+      "trim": "GS",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 39600,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 338,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": {
+        "mixed_km": 265,
+        "highway_130_km": 170,
+        "urban_km": 320,
+        "winter_minus5_km": 205,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "opel-mokka-electric-gs-54",
+      "label": "GS · 54 kWh",
+      "battery": "long-range",
+      "trim": "GS",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 42600,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 406,
+      "wltp_consumption_kWh_100km": 15.2,
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 200,
+        "urban_km": 370,
+        "winter_minus5_km": 245,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "opel-mokka-electric-ultimate-54",
+      "label": "Ultimate · 54 kWh",
+      "battery": "long-range",
+      "trim": "Ultimate",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 44900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 406,
+      "wltp_consumption_kWh_100km": 15.2,
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 200,
+        "urban_km": 370,
+        "winter_minus5_km": 245,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "confort",
+      "label": "Climatisation automatique"
+    },
+    {
+      "category": "technologie",
+      "label": "Système multimédia tactile, compatible Apple CarPlay / Android Auto"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence avec détection piétons"
+    },
+    {
+      "category": "design",
+      "label": "Signature lumineuse LED"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Design Opel Vizor reconnaissable",
+      "Plateforme partagée 2008/600e/Avenger"
+    ],
+    "weaknesses": [
+      "Habitabilité arrière compromise par la ligne de toit",
+      "Pas de pompe à chaleur sur Edition"
+    ],
+    "idealUserProfile": "Foyer urbain ou périurbain cherchant un mini-SUV au look affirmé. Mix urbain quotidien avec quelques sorties autoroute.",
+    "notIdealFor": "Famille de 4 à l'arrière sur longs trajets, l'espace est compté."
+  },
+  "lastUpdated": "2026-05-18",
+  "sources": [
+    "nyland",
+    "lachaineev"
+  ],
+  "imageCredit": "Constructeur"
+}

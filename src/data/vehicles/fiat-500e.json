@@ -1,0 +1,328 @@
+{
+  "slug": "fiat-500e",
+  "brand": "Fiat",
+  "model": "500e",
+  "variant": "42 kWh",
+  "bodyType": "Citadine",
+  "segment": "A",
+  "productionCountry": "Italie",
+  "assemblyPlant": "Mirafiori (Turin)",
+  "releaseYear": 2020,
+  "marketAvailability": "Disponible",
+  "power_kW": 87,
+  "power_hp": 118,
+  "torque_Nm": 220,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 9,
+  "topSpeed_kmh": 150,
+  "usableCapacity_kWh": 42,
+  "grossCapacity_kWh": 44,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1365,
+  "wltp_max_km": 320,
+  "wltp_min_km": 320,
+  "realRange": {
+    "mixed_km": 240,
+    "highway_130_km": 150,
+    "urban_km": 295,
+    "winter_minus5_km": 185,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 14.5,
+  "consumption_highway_kWh_per_100km": 19.5,
+  "consumption_winter_kWh_per_100km": 18.5,
+  "dragCoefficient_Cx": 0.31,
+  "chargingDC": {
+    "peakPower_kW": 85,
+    "time_10_80_min": 35,
+    "kWh_added_30min": 50,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 4.3
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 78
+    },
+    {
+      "soc": 10,
+      "power": 85
+    },
+    {
+      "soc": 20,
+      "power": 85
+    },
+    {
+      "soc": 50,
+      "power": 60
+    },
+    {
+      "soc": 80,
+      "power": 27
+    },
+    {
+      "soc": 100,
+      "power": 5
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 3632,
+  "width_mm": 1683,
+  "height_mm": 1527,
+  "wheelbase_mm": 2322,
+  "trunkCapacity_L": 185,
+  "trunkCapacityFolded_L": 550,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Pop 42 kWh",
+      "price_EUR": 27990,
+      "batteryUsed": "42 kWh",
+      "equipmentHighlights": [
+        "Climatisation manuelle",
+        "Écran 7\""
+      ]
+    },
+    {
+      "name": "Red 42 kWh",
+      "price_EUR": 30990,
+      "batteryUsed": "42 kWh",
+      "equipmentHighlights": [
+        "Édition (RED) caritative",
+        "Écran 10,25\""
+      ]
+    },
+    {
+      "name": "La Prima 42 kWh",
+      "price_EUR": 33990,
+      "batteryUsed": "42 kWh",
+      "equipmentHighlights": [
+        "Toit ouvrant panoramique",
+        "Sellerie cuir éco"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 4000
+    }
+  ],
+  "configurations": [
+    {
+      "id": "fiat-500e-pop-42",
+      "label": "Pop · 42 kWh",
+      "battery": "standard",
+      "trim": "Pop",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 27990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 320,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": {
+        "mixed_km": 240,
+        "highway_130_km": 150,
+        "urban_km": 295,
+        "winter_minus5_km": 185,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 85,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 78
+        },
+        {
+          "soc": 10,
+          "power": 85
+        },
+        {
+          "soc": 20,
+          "power": 85
+        },
+        {
+          "soc": 50,
+          "power": 60
+        },
+        {
+          "soc": 80,
+          "power": 27
+        },
+        {
+          "soc": 100,
+          "power": 5
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "fiat-500e-red-42",
+      "label": "Red · 42 kWh",
+      "battery": "standard",
+      "trim": "Red",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 30990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 320,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": {
+        "mixed_km": 240,
+        "highway_130_km": 150,
+        "urban_km": 295,
+        "winter_minus5_km": 185,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 85,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 78
+        },
+        {
+          "soc": 10,
+          "power": 85
+        },
+        {
+          "soc": 20,
+          "power": 85
+        },
+        {
+          "soc": 50,
+          "power": 60
+        },
+        {
+          "soc": 80,
+          "power": 27
+        },
+        {
+          "soc": 100,
+          "power": 5
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "fiat-500e-la-prima-42",
+      "label": "La Prima · 42 kWh",
+      "battery": "standard",
+      "trim": "La Prima",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 33990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 320,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": {
+        "mixed_km": 240,
+        "highway_130_km": 150,
+        "urban_km": 295,
+        "winter_minus5_km": 185,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 85,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 78
+        },
+        {
+          "soc": 10,
+          "power": 85
+        },
+        {
+          "soc": 20,
+          "power": 85
+        },
+        {
+          "soc": 50,
+          "power": 60
+        },
+        {
+          "soc": 80,
+          "power": 27
+        },
+        {
+          "soc": 100,
+          "power": 5
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "confort",
+      "label": "Climatisation automatique"
+    },
+    {
+      "category": "technologie",
+      "label": "Système multimédia tactile, compatible Apple CarPlay / Android Auto"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence avec détection piétons"
+    },
+    {
+      "category": "design",
+      "label": "Signature lumineuse LED"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Icône design Italie",
+      "Production Mirafiori (label « Made in Italy »)"
+    ],
+    "weaknesses": [
+      "Autonomie autoroute limitée (~150 km)",
+      "Habitabilité arrière restreinte"
+    ],
+    "idealUserProfile": "Foyer urbain ou périurbain, 2e voiture du couple, trajets quotidiens < 50 km. Le style et l'usage en font une citadine premium.",
+    "notIdealFor": "Familles avec adolescents ou grand rouleur autoroutier régulier, l'autonomie et l'habitabilité ne suivent pas."
+  },
+  "lastUpdated": "2026-05-18",
+  "sources": [
+    "nyland",
+    "lachaineev"
+  ],
+  "imageCredit": "Constructeur"
+}

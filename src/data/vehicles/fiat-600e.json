@@ -1,0 +1,266 @@
+{
+  "slug": "fiat-600e",
+  "brand": "Fiat",
+  "model": "600e",
+  "variant": "54 kWh",
+  "bodyType": "SUV urbain",
+  "segment": "B",
+  "productionCountry": "Pologne",
+  "assemblyPlant": "Tychy",
+  "releaseYear": 2023,
+  "marketAvailability": "Disponible",
+  "power_kW": 115,
+  "power_hp": 156,
+  "torque_Nm": 260,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 9,
+  "topSpeed_kmh": 150,
+  "usableCapacity_kWh": 54,
+  "grossCapacity_kWh": 55,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1615,
+  "wltp_max_km": 409,
+  "wltp_min_km": 409,
+  "realRange": {
+    "mixed_km": 315,
+    "highway_130_km": 200,
+    "urban_km": 380,
+    "winter_minus5_km": 245,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 14.6,
+  "consumption_highway_kWh_per_100km": 19.6,
+  "consumption_winter_kWh_per_100km": 18.6,
+  "dragCoefficient_Cx": 0.33,
+  "chargingDC": {
+    "peakPower_kW": 100,
+    "time_10_80_min": 27,
+    "kWh_added_30min": 50,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 4.7
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 92
+    },
+    {
+      "soc": 10,
+      "power": 100
+    },
+    {
+      "soc": 20,
+      "power": 100
+    },
+    {
+      "soc": 50,
+      "power": 71
+    },
+    {
+      "soc": 80,
+      "power": 32
+    },
+    {
+      "soc": 100,
+      "power": 6
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4171,
+  "width_mm": 1781,
+  "height_mm": 1523,
+  "wheelbase_mm": 2557,
+  "trunkCapacity_L": 360,
+  "trunkCapacityFolded_L": 1231,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Red 54 kWh",
+      "price_EUR": 36900,
+      "batteryUsed": "54 kWh",
+      "equipmentHighlights": [
+        "Édition (RED) caritative",
+        "Écran 10,25\""
+      ]
+    },
+    {
+      "name": "La Prima 54 kWh",
+      "price_EUR": 40900,
+      "batteryUsed": "54 kWh",
+      "equipmentHighlights": [
+        "Sellerie premium",
+        "Aides à la conduite niveau 2"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 4000
+    }
+  ],
+  "configurations": [
+    {
+      "id": "fiat-600e-red-54",
+      "label": "Red · 54 kWh",
+      "battery": "standard",
+      "trim": "Red",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 36900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 409,
+      "wltp_consumption_kWh_100km": 14.6,
+      "realRange": {
+        "mixed_km": 315,
+        "highway_130_km": 200,
+        "urban_km": 380,
+        "winter_minus5_km": 245,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "fiat-600e-la-prima-54",
+      "label": "La Prima · 54 kWh",
+      "battery": "standard",
+      "trim": "La Prima",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 40900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 409,
+      "wltp_consumption_kWh_100km": 14.6,
+      "realRange": {
+        "mixed_km": 315,
+        "highway_130_km": 200,
+        "urban_km": 380,
+        "winter_minus5_km": 245,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "confort",
+      "label": "Climatisation automatique"
+    },
+    {
+      "category": "technologie",
+      "label": "Système multimédia tactile, compatible Apple CarPlay / Android Auto"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence avec détection piétons"
+    },
+    {
+      "category": "design",
+      "label": "Signature lumineuse LED"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Plateforme e-CMP éprouvée (base 2008, Avenger, Mokka)",
+      "Production Tychy (UE) : éligible Prime CEE VE"
+    ],
+    "weaknesses": [
+      "Style controversé : design Fiat sur base Stellantis",
+      "Pas de pompe à chaleur de série"
+    ],
+    "idealUserProfile": "Famille urbaine cherchant le style Fiat sur une plateforme connue et bien rodée. Bon rapport prix/équipement.",
+    "notIdealFor": "Acheteurs cherchant la meilleure autonomie autoroute du segment, le 600e reste dans la moyenne."
+  },
+  "lastUpdated": "2026-05-18",
+  "sources": [
+    "nyland",
+    "lachaineev"
+  ],
+  "imageCredit": "Constructeur"
+}

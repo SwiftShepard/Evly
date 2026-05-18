@@ -1,0 +1,266 @@
+{
+  "slug": "opel-frontera-electric",
+  "brand": "Opel",
+  "model": "Frontera Electric",
+  "variant": "44 kWh",
+  "bodyType": "SUV familial",
+  "segment": "B",
+  "productionCountry": "Espagne",
+  "assemblyPlant": "Saragosse",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 83,
+  "power_hp": 113,
+  "torque_Nm": 124,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 12.1,
+  "topSpeed_kmh": 143,
+  "usableCapacity_kWh": 44,
+  "grossCapacity_kWh": 46,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1530,
+  "wltp_max_km": 305,
+  "wltp_min_km": 305,
+  "realRange": {
+    "mixed_km": 235,
+    "highway_130_km": 150,
+    "urban_km": 290,
+    "winter_minus5_km": 185,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 15.8,
+  "consumption_highway_kWh_per_100km": 20.8,
+  "consumption_winter_kWh_per_100km": 19.8,
+  "dragCoefficient_Cx": 0.34,
+  "chargingDC": {
+    "peakPower_kW": 100,
+    "time_10_80_min": 27,
+    "kWh_added_30min": 50,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 4
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 92
+    },
+    {
+      "soc": 10,
+      "power": 100
+    },
+    {
+      "soc": 20,
+      "power": 100
+    },
+    {
+      "soc": 50,
+      "power": 71
+    },
+    {
+      "soc": 80,
+      "power": 32
+    },
+    {
+      "soc": 100,
+      "power": 6
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4385,
+  "width_mm": 1795,
+  "height_mm": 1635,
+  "wheelbase_mm": 2670,
+  "trunkCapacity_L": 460,
+  "trunkCapacityFolded_L": 1600,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Edition 44 kWh",
+      "price_EUR": 29000,
+      "batteryUsed": "44 kWh",
+      "equipmentHighlights": [
+        "Entrée de gamme",
+        "5 places"
+      ]
+    },
+    {
+      "name": "GS 44 kWh",
+      "price_EUR": 31900,
+      "batteryUsed": "44 kWh",
+      "equipmentHighlights": [
+        "Look sportif",
+        "Caméra recul"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 4000
+    }
+  ],
+  "configurations": [
+    {
+      "id": "opel-frontera-electric-edition-44",
+      "label": "Edition · 44 kWh",
+      "battery": "standard",
+      "trim": "Edition",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 29000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 305,
+      "wltp_consumption_kWh_100km": 15.8,
+      "realRange": {
+        "mixed_km": 235,
+        "highway_130_km": 150,
+        "urban_km": 290,
+        "winter_minus5_km": 185,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "opel-frontera-electric-gs-44",
+      "label": "GS · 44 kWh",
+      "battery": "standard",
+      "trim": "GS",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 31900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 305,
+      "wltp_consumption_kWh_100km": 15.8,
+      "realRange": {
+        "mixed_km": 235,
+        "highway_130_km": 150,
+        "urban_km": 290,
+        "winter_minus5_km": 185,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "confort",
+      "label": "5 places (option 7 places sur version essence/PHEV uniquement)"
+    },
+    {
+      "category": "technologie",
+      "label": "Écran tactile 10\" central"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence"
+    },
+    {
+      "category": "design",
+      "label": "Style SUV familial assumé, pavillon haut"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Prix d'attaque parmi les plus bas du SUV familial électrique 2026",
+      "Habitabilité supérieure à un Mokka (segment B+)"
+    ],
+    "weaknesses": [
+      "Autonomie modeste (305 km WLTP, ~150 km autoroute)",
+      "113 ch seulement, performances limitées"
+    ],
+    "idealUserProfile": "Famille cherchant un SUV familial électrique au prix d'attaque le plus bas. Usage urbain et péri-urbain principal.",
+    "notIdealFor": "Gros rouleur ou usage autoroutier régulier : l'autonomie 305 km WLTP est juste."
+  },
+  "lastUpdated": "2026-05-18",
+  "sources": [
+    "nyland",
+    "lachaineev"
+  ],
+  "imageCredit": "Constructeur"
+}

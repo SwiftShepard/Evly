@@ -1,0 +1,261 @@
+{
+  "slug": "fiat-grande-panda",
+  "brand": "Fiat",
+  "model": "Grande Panda",
+  "variant": "44 kWh",
+  "bodyType": "Citadine",
+  "segment": "B",
+  "productionCountry": "Serbie",
+  "assemblyPlant": "Kragujevac",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 83,
+  "power_hp": 113,
+  "torque_Nm": 124,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 11.5,
+  "topSpeed_kmh": 132,
+  "usableCapacity_kWh": 44,
+  "grossCapacity_kWh": 46,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1500,
+  "wltp_max_km": 320,
+  "wltp_min_km": 320,
+  "realRange": {
+    "mixed_km": 245,
+    "highway_130_km": 155,
+    "urban_km": 300,
+    "winter_minus5_km": 190,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 15,
+  "consumption_highway_kWh_per_100km": 20,
+  "consumption_winter_kWh_per_100km": 19,
+  "dragCoefficient_Cx": 0.32,
+  "chargingDC": {
+    "peakPower_kW": 100,
+    "time_10_80_min": 27,
+    "kWh_added_30min": 50,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 4
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 92
+    },
+    {
+      "soc": 10,
+      "power": 100
+    },
+    {
+      "soc": 20,
+      "power": 100
+    },
+    {
+      "soc": 50,
+      "power": 71
+    },
+    {
+      "soc": 80,
+      "power": 32
+    },
+    {
+      "soc": 100,
+      "power": 6
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 3999,
+  "width_mm": 1763,
+  "height_mm": 1597,
+  "wheelbase_mm": 2540,
+  "trunkCapacity_L": 361,
+  "trunkCapacityFolded_L": 1240,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Pop 44 kWh",
+      "price_EUR": 24900,
+      "batteryUsed": "44 kWh",
+      "equipmentHighlights": [
+        "Tarif d'attaque",
+        "Câble de recharge intégré"
+      ]
+    },
+    {
+      "name": "La Prima 44 kWh",
+      "price_EUR": 28900,
+      "batteryUsed": "44 kWh",
+      "equipmentHighlights": [
+        "Toit pano",
+        "Sellerie premium"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "fiat-grande-panda-pop-44",
+      "label": "Pop · 44 kWh",
+      "battery": "standard",
+      "trim": "Pop",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 24900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 320,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": {
+        "mixed_km": 245,
+        "highway_130_km": 155,
+        "urban_km": 300,
+        "winter_minus5_km": 190,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "fiat-grande-panda-la-prima-44",
+      "label": "La Prima · 44 kWh",
+      "battery": "standard",
+      "trim": "La Prima",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 28900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 320,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": {
+        "mixed_km": 245,
+        "highway_130_km": 155,
+        "urban_km": 300,
+        "winter_minus5_km": 190,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "confort",
+      "label": "Climatisation automatique"
+    },
+    {
+      "category": "technologie",
+      "label": "Système multimédia tactile, compatible Apple CarPlay / Android Auto"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence avec détection piétons"
+    },
+    {
+      "category": "design",
+      "label": "Signature lumineuse LED"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Prix d'attaque le plus bas du segment B électrique en 2026",
+      "Câble de recharge intégré"
+    ],
+    "weaknesses": [
+      "Production Serbie : score ADEME bas, pas de Prime CEE VE",
+      "Performances modestes (113 ch)"
+    ],
+    "idealUserProfile": "Acheteur recherchant le ticket d'entrée le plus bas en VE familial compact. Idéal pour usage urbain et petite famille.",
+    "notIdealFor": "Acheteurs visant Prime CEE VE ou leasing social, production hors UE pénalisante pour les aides."
+  },
+  "lastUpdated": "2026-05-18",
+  "sources": [
+    "nyland",
+    "lachaineev"
+  ],
+  "imageCredit": "Constructeur"
+}

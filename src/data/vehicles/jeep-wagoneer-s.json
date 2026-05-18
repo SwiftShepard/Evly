@@ -1,0 +1,260 @@
+{
+  "slug": "jeep-wagoneer-s",
+  "brand": "Jeep",
+  "model": "Wagoneer S",
+  "variant": "100 kWh · AWD",
+  "bodyType": "SUV familial premium",
+  "segment": "E",
+  "productionCountry": "USA",
+  "assemblyPlant": "Toluca",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 447,
+  "power_hp": 600,
+  "torque_Nm": 834,
+  "drivetrain": "AWD",
+  "motors": 2,
+  "acceleration_0_100_s": 3.4,
+  "topSpeed_kmh": 200,
+  "usableCapacity_kWh": 100,
+  "grossCapacity_kWh": 108,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2654,
+  "wltp_max_km": 600,
+  "wltp_min_km": 600,
+  "realRange": {
+    "mixed_km": 440,
+    "highway_130_km": 290,
+    "urban_km": 530,
+    "winter_minus5_km": 350,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 19.5,
+  "consumption_highway_kWh_per_100km": 24.5,
+  "consumption_winter_kWh_per_100km": 23.5,
+  "dragCoefficient_Cx": 0.29,
+  "chargingDC": {
+    "peakPower_kW": 200,
+    "time_10_80_min": 23,
+    "kWh_added_30min": 100,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 11
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 184
+    },
+    {
+      "soc": 10,
+      "power": 200
+    },
+    {
+      "soc": 20,
+      "power": 200
+    },
+    {
+      "soc": 50,
+      "power": 142
+    },
+    {
+      "soc": 80,
+      "power": 64
+    },
+    {
+      "soc": 100,
+      "power": 12
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4895,
+  "width_mm": 1996,
+  "height_mm": 1664,
+  "wheelbase_mm": 2950,
+  "trunkCapacity_L": 425,
+  "trunkCapacityFolded_L": 1610,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Limited 100 kWh",
+      "price_EUR": 75000,
+      "batteryUsed": "100 kWh",
+      "equipmentHighlights": [
+        "AWD 600 ch · 0-100 en 3,4 s",
+        "McIntosh audio"
+      ]
+    },
+    {
+      "name": "Launch Edition 100 kWh",
+      "price_EUR": 85000,
+      "batteryUsed": "100 kWh",
+      "equipmentHighlights": [
+        "Édition lancement numérotée"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "jeep-wagoneer-s-limited-100",
+      "label": "Limited · 100 kWh",
+      "battery": "standard",
+      "trim": "Limited",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 75000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 600,
+      "wltp_consumption_kWh_100km": 19.5,
+      "realRange": {
+        "mixed_km": 440,
+        "highway_130_km": 290,
+        "urban_km": 530,
+        "winter_minus5_km": 350,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 200,
+      "chargingDC_10_80_min": 23,
+      "chargingDC_kWh_30min": 100,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 184
+        },
+        {
+          "soc": 10,
+          "power": 200
+        },
+        {
+          "soc": 20,
+          "power": 200
+        },
+        {
+          "soc": 50,
+          "power": 142
+        },
+        {
+          "soc": 80,
+          "power": 64
+        },
+        {
+          "soc": 100,
+          "power": 12
+        }
+      ],
+      "availability": "available",
+      "notes": "Transmission intégrale"
+    },
+    {
+      "id": "jeep-wagoneer-s-launch-edition-100",
+      "label": "Launch Edition · 100 kWh",
+      "battery": "standard",
+      "trim": "Launch Edition",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 85000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 600,
+      "wltp_consumption_kWh_100km": 19.5,
+      "realRange": {
+        "mixed_km": 440,
+        "highway_130_km": 290,
+        "urban_km": 530,
+        "winter_minus5_km": 350,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 200,
+      "chargingDC_10_80_min": 23,
+      "chargingDC_kWh_30min": 100,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 184
+        },
+        {
+          "soc": 10,
+          "power": 200
+        },
+        {
+          "soc": 20,
+          "power": 200
+        },
+        {
+          "soc": 50,
+          "power": 142
+        },
+        {
+          "soc": 80,
+          "power": 64
+        },
+        {
+          "soc": 100,
+          "power": 12
+        }
+      ],
+      "availability": "available",
+      "notes": "Transmission intégrale"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "confort",
+      "label": "Suspension pilotée McKinley active"
+    },
+    {
+      "category": "technologie",
+      "label": "Triple écran cabine (12 + 12,3 + 10,25 pouces)"
+    },
+    {
+      "category": "securite",
+      "label": "Aides à la conduite niveau 2 augmenté"
+    },
+    {
+      "category": "design",
+      "label": "Premier SUV électrique premium de Jeep"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Performances exceptionnelles (600 ch, 0-100 en 3,4 s)",
+      "Équipement premium digne d'un haut de gamme allemand"
+    ],
+    "weaknesses": [
+      "Production USA : hors plafond Prime CEE VE et leasing social",
+      "Consommation autoroute élevée (~21 kWh/100)"
+    ],
+    "idealUserProfile": "Acheteur premium recherchant un SUV électrique imposant, performant et bien équipé. Trajets mixtes principalement.",
+    "notIdealFor": "Acheteur sensible aux aides ou au TCO, Wagoneer S vise une clientèle premium qui n'optimise pas la fiscalité."
+  },
+  "lastUpdated": "2026-05-18",
+  "sources": [
+    "nyland",
+    "lachaineev"
+  ],
+  "imageCredit": "Constructeur"
+}
