@@ -64,7 +64,7 @@ export default function ConfigSelector({
   const isTrimPriced = (battery: string, trim: string) =>
     configs.some((c) => c.battery === battery && c.trim === trim && c.price_EUR !== null);
 
-  // Handle battery change — try to keep trim + wheels, fallback to first available
+  // Handle battery change, try to keep trim + wheels, fallback to first available
   const handleBatteryChange = (battery: string) => {
     let cfg = findConfig(battery, activeTrim, activeWheels);
     if (!cfg) {
@@ -99,14 +99,13 @@ export default function ConfigSelector({
     [configs]
   );
 
-  // Build battery labels dynamically:
-  //  - "long-range" → vehicle.usableCapacity_kWh (root = LR reference)
-  //  - "standard"   → smallest unique kWh value found in trims.batteryUsed
+  // Battery labels = juste la capacité utile : "58 kWh", "77 kWh".
+  //  - "long-range" → vehicle.usableCapacity_kWh (ref LR au top du JSON)
+  //  - "standard"   → plus petite capacité unique trouvée dans trims.batteryUsed
   const batteryLabels = useMemo(() => {
     const result: Record<string, string> = {};
     const lrKwh = Math.round(vehicle.usableCapacity_kWh);
 
-    // Parse all unique capacities from trims (handles "40 kWh", "58,3 kWh", "81,4 kWh"…)
     const parseKwh = (s: string) => {
       const m = s.match(/(\d+(?:[.,]\d+)?)/);
       return m ? Math.round(parseFloat(m[1].replace(",", "."))) : null;
@@ -121,11 +120,10 @@ export default function ConfigSelector({
 
     for (const battery of batteries) {
       if (battery === "long-range") {
-        result[battery] = `Long Range ${lrKwh}`;
+        result[battery] = `${lrKwh} kWh`;
       } else {
-        // Standard = smallest capacity strictly below LR, or fallback to smallest
         const stdKwh = uniqueKwh.find((k) => k < lrKwh) ?? uniqueKwh[0];
-        result[battery] = stdKwh ? `Standard ${stdKwh}` : "Standard";
+        result[battery] = stdKwh ? `${stdKwh} kWh` : "Standard";
       }
     }
     return result;
@@ -230,7 +228,7 @@ export default function ConfigSelector({
 }
 
 /* ---------------------------------------------------------------- */
-/* Segmented control — composant interne                             */
+/* Segmented control, composant interne                             */
 /* ---------------------------------------------------------------- */
 
 interface SegmentOption {

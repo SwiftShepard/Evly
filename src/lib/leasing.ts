@@ -45,7 +45,7 @@ export const LEASING_LABELS: Record<LeasingStatus, LeasingStatusInfo> = {
     label: "Éligible officiel",
     tone: "accent",
     description:
-      "Engagé par son constructeur dans le programme leasing social — 100 €/mois pour les ménages éligibles.",
+      "Engagé par son constructeur dans le programme leasing social, 100 €/mois pour les ménages éligibles.",
   },
   "ademe-compatible": {
     status: "ademe-compatible",
@@ -59,7 +59,7 @@ export const LEASING_LABELS: Record<LeasingStatus, LeasingStatusInfo> = {
     label: "Sous réserve constructeur",
     tone: "outline",
     description:
-      "Prix sous le plafond mais production hors UE — score ADEME probablement insuffisant. Activation dépendrait d'une localisation européenne.",
+      "Prix sous le plafond mais production hors UE, score ADEME probablement insuffisant. Activation dépendrait d'une localisation européenne.",
   },
   "not-eligible": {
     status: "not-eligible",

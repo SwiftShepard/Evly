@@ -60,7 +60,7 @@ function isDaily(v: Vehicle) {
 }
 
 const categories = ["Mini-SUV", "SUV", "Compacte", "Berline", "Citadine", "Monospace", "Utilitaire", "Quadricycle"];
-const brands = ["Renault", "Peugeot", "Citroën", "Tesla", "BYD", "MG", "Volkswagen", "Kia", "Hyundai", "Leapmotor", "Mobilize"];
+const brands = ["Renault", "Peugeot", "Citroën", "Tesla", "BYD", "MG", "Volkswagen", "Cupra", "Skoda", "Kia", "Hyundai", "Leapmotor", "Mobilize"];
 
 const budgetFilters = [
   { label: "< 25 k€", value: "25000" },
@@ -81,7 +81,7 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|b
 ---
 
 <BaseLayout
-  title="Véhicules — Evly"
+  title="Véhicules, Evly"
   description="Liste exhaustive des véhicules électriques couverts par Evly. Filtrage multicritères par catégorie, marque et usage."
 >
   <div class="py-6 md:py-10">
@@ -136,7 +136,7 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|b
           </div>
         </aside>
 
-        {/* Filtres Mobile / Tablette — rangées défilantes */}
+        {/* Filtres Mobile / Tablette, rangées défilantes */}
         <div class="xl:hidden w-full mb-6 flex flex-col gap-2 fade-rise">
           <div class="filter-scroll-row">
             {brands.map((b) => (
@@ -174,7 +174,7 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|b
               </div>
               <h1 class="display-1 max-w-3xl fade-rise fade-rise-delay-2">
                 Tous les véhicules
-                <span class="text-[var(--color-text-muted)]">— mis à jour {new Date().getFullYear()}.</span>
+                <span class="text-[var(--color-text-muted)]">· mis à jour {new Date().getFullYear()}.</span>
               </h1>
               <p class="mt-6 text-[var(--color-text-muted)] text-sm md:text-base max-w-2xl fade-rise fade-rise-delay-3">
                 Sélectionnez vos critères de filtrage pour affiner la liste.
@@ -191,7 +191,7 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|b
                 <div
                   id="price-mode-toggle"
                   class="price-toggle-group"
-                  title="Aides estimées sous conditions de ressources. Prime CEE VE et leasing social non cumulables — il faut choisir."
+                  title="Aides estimées sous conditions de ressources. Prime CEE VE et leasing social non cumulables, il faut choisir."
                 >
                   <button class="price-toggle-btn" data-mode="gross" data-active="true">Brut</button>
                   <button class="price-toggle-btn" data-mode="aided">Après aides</button>
@@ -228,7 +228,7 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|b
                 <div class="flex items-center justify-between gap-3 mb-4">
                   <div class="flex items-center gap-2 text-[var(--color-text-muted)]">
                     <BrandLogo brand={v.brand} class="w-4 h-4" />
-                    <span class="label-eyebrow">{v.brand} · {v.segment.split(" — ")[0] ?? v.segment}</span>
+                    <span class="label-eyebrow">{v.brand} · {v.segment.split(", ")[0] ?? v.segment}</span>
                   </div>
                   <div class="flex items-center gap-2 flex-wrap justify-end">
                     {isLeasing(v) && <Tag tone="accent" mono>Leasing social</Tag>}
@@ -293,7 +293,7 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|b
     const resetBtns = document.querySelectorAll('#reset-filters, #reset-filters-mobile');
     const originalOrder = Array.from(cards);
 
-    // Price mode — 'gross' | 'aided'
+    // Price mode, 'gross' | 'aided'
     let priceMode = 'gross';
     let currentSort = 'default';
 

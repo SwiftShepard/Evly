@@ -2,27 +2,27 @@
   "slug": "renault-scenic",
   "brand": "Renault",
   "model": "Scenic E-Tech",
-  "variant": "Long Range · EV87",
-  "bodyType": "SUV familial 5 portes",
-  "segment": "C — SUV familial",
+  "variant": "87 kWh",
+  "bodyType": "SUV familial",
+  "segment": "C",
   "productionCountry": "France",
-  "assemblyPlant": "Douai (ElectriCity)",
+  "assemblyPlant": "Ulsan",
   "releaseYear": 2024,
-  "marketAvailability": "Disponible en France",
+  "marketAvailability": "Disponible",
   "power_kW": 160,
-  "power_hp": 220,
+  "power_hp": 204,
   "torque_Nm": 300,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 8.4,
-  "topSpeed_kmh": 170,
+  "acceleration_0_100_s": 7.5,
+  "topSpeed_kmh": 160,
   "usableCapacity_kWh": 87,
   "grossCapacity_kWh": 92,
   "chemistry": "NMC",
   "architecture_V": 400,
-  "mass_kg": 1850,
+  "mass_kg": 1700,
   "wltp_max_km": 625,
-  "wltp_min_km": 400,
+  "wltp_min_km": 600,
   "realRange": {
     "mixed_km": 490,
     "highway_130_km": 355,
@@ -44,7 +44,7 @@
   "chargingAC": {
     "onboardCharger_kW": 11,
     "phases": 3,
-    "time_0_100_h": 9.5
+    "time_0_100_h": 6.5
   },
   "plugAndCharge": false,
   "v2l": false,
@@ -53,51 +53,23 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 110
-    },
-    {
-      "soc": 5,
-      "power": 135
+      "power": 100
     },
     {
       "soc": 10,
-      "power": 150
-    },
-    {
-      "soc": 20,
-      "power": 150
-    },
-    {
-      "soc": 30,
-      "power": 145
-    },
-    {
-      "soc": 40,
       "power": 130
     },
     {
       "soc": 50,
-      "power": 108
-    },
-    {
-      "soc": 60,
-      "power": 80
-    },
-    {
-      "soc": 70,
-      "power": 52
+      "power": 100
     },
     {
       "soc": 80,
-      "power": 28
-    },
-    {
-      "soc": 90,
-      "power": 14
+      "power": 50
     },
     {
       "soc": 100,
-      "power": 6
+      "power": 10
     }
   ],
   "rangeTests": [
@@ -112,7 +84,7 @@
       "tyreModel": null,
       "protocol": "nyland",
       "videoUrl": null,
-      "notes": "Scénic E-Tech EV87. Test Nyland à 90 km/h — excellent résultat."
+      "notes": "Scénic E-Tech 87 kWh. Très bon à 90."
     },
     {
       "sourceId": "nyland",
@@ -125,242 +97,49 @@
       "tyreModel": null,
       "protocol": "nyland",
       "videoUrl": null,
-      "notes": "Scénic E-Tech EV87. Test Nyland 120 km/h."
+      "notes": "Consommation plus élevée à haute vitesse."
     }
   ],
   "thousandKmChallenge": null,
   "length_mm": 4470,
   "width_mm": 1860,
   "height_mm": 1570,
-  "wheelbase_mm": 2785,
+  "wheelbase_mm": 2700,
   "trunkCapacity_L": 545,
-  "trunkCapacityFolded_L": 1670,
+  "trunkCapacityFolded_L": 1200,
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Equilibre (EV60)",
-      "price_EUR": 39990,
-      "batteryUsed": "60 kWh",
-      "equipmentHighlights": [
-        "Jantes 18\" alliage",
-        "Écran OpenR Link 12\" avec Google intégré",
-        "Apple CarPlay / Android Auto sans fil",
-        "Régulateur adaptatif intelligent",
-        "Caméra de recul"
-      ]
-    },
-    {
-      "name": "Techno (EV60)",
-      "price_EUR": 43490,
-      "batteryUsed": "60 kWh",
-      "equipmentHighlights": [
-        "Jantes 20\" alliage",
-        "Sièges avant chauffants",
-        "Chargeur à induction smartphone",
-        "Pack Drive Assist Plus : angle mort actif, aide parking",
-        "Toit Solarbay (verre électrochrome)"
-      ]
-    },
-    {
-      "name": "Techno (EV87)",
+      "name": "Techno",
       "price_EUR": 46990,
       "batteryUsed": "87 kWh",
       "equipmentHighlights": [
-        "Moteur 220 ch — DC 150 kW",
-        "Pompe à chaleur de série",
-        "Jantes 20\" alliage design",
-        "Suspension réglable",
-        "Éclairage ambiance intérieur"
-      ]
-    },
-    {
-      "name": "Iconic (EV87)",
-      "price_EUR": 51490,
-      "batteryUsed": "87 kWh",
-      "equipmentHighlights": [
-        "Sellerie cuir nappa premium",
-        "Toit ouvrant panoramique électrique",
-        "Système audio Harman Kardon 9 HP",
-        "Affichage tête haute couleur wide",
-        "Jantes 20\" exclusive Iconic"
+        "Toit Solarbay",
+        "OpenR Link"
       ]
     }
   ],
-  "leasingSocialEligible": true,
+  "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Prime CEE VE",
+      "label": "Bonus Écologique",
       "amount_EUR": 4000
     }
   ],
   "configurations": [
     {
-      "id": "std-equilibre-ev60-18",
-      "label": "Standard · Equilibre · EV60 · 18\"",
+      "id": "renault-scenic-techno",
+      "label": "Scenic E-Tech Techno",
       "battery": "standard",
-      "trim": "Equilibre (EV60)",
+      "trim": "Techno",
       "wheelSize_inches": 18,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 39990,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 430,
-      "wltp_consumption_kWh_100km": 15.5,
-      "realRange": {
-        "mixed_km": 380,
-        "highway_130_km": 260,
-        "urban_km": 470,
-        "winter_minus5_km": 295,
-        "confidence": "estimated"
-      },
-      "rangeTests": [],
-      "chargingDC_peak_kW": 130,
-      "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 50,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 108
-        },
-        {
-          "soc": 5,
-          "power": 124
-        },
-        {
-          "soc": 10,
-          "power": 130
-        },
-        {
-          "soc": 20,
-          "power": 130
-        },
-        {
-          "soc": 30,
-          "power": 125
-        },
-        {
-          "soc": 40,
-          "power": 112
-        },
-        {
-          "soc": 50,
-          "power": 90
-        },
-        {
-          "soc": 60,
-          "power": 68
-        },
-        {
-          "soc": 70,
-          "power": 44
-        },
-        {
-          "soc": 80,
-          "power": 22
-        },
-        {
-          "soc": 90,
-          "power": 11
-        },
-        {
-          "soc": 100,
-          "power": 5
-        }
-      ],
-      "availability": "available",
-      "notes": "Moteur 125 kW (170 ch), couple 300 Nm, 0-100 en ~9,4 s. Batterie 60 kWh utiles. DC 130 kW. Jantes 18\" = meilleure autonomie."
-    },
-    {
-      "id": "std-techno-ev60-20",
-      "label": "Standard · Techno · EV60 · 20\"",
-      "battery": "standard",
-      "trim": "Techno (EV60)",
-      "wheelSize_inches": 20,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 43490,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 400,
-      "wltp_consumption_kWh_100km": 16.5,
-      "realRange": {
-        "mixed_km": 355,
-        "highway_130_km": 240,
-        "urban_km": 445,
-        "winter_minus5_km": 278,
-        "confidence": "estimated"
-      },
-      "rangeTests": [],
-      "chargingDC_peak_kW": 130,
-      "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 50,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 108
-        },
-        {
-          "soc": 5,
-          "power": 124
-        },
-        {
-          "soc": 10,
-          "power": 130
-        },
-        {
-          "soc": 20,
-          "power": 130
-        },
-        {
-          "soc": 30,
-          "power": 125
-        },
-        {
-          "soc": 40,
-          "power": 112
-        },
-        {
-          "soc": 50,
-          "power": 90
-        },
-        {
-          "soc": 60,
-          "power": 68
-        },
-        {
-          "soc": 70,
-          "power": 44
-        },
-        {
-          "soc": 80,
-          "power": 22
-        },
-        {
-          "soc": 90,
-          "power": 11
-        },
-        {
-          "soc": 100,
-          "power": 5
-        }
-      ],
-      "availability": "available",
-      "notes": "Moteur 125 kW (170 ch). Finition : sièges chauffants, induction, toit Solarbay. Jantes 20\" → -7 % d'autonomie."
-    },
-    {
-      "id": "lr-techno-ev87-20",
-      "label": "Long Range · Techno · EV87 · 20\"",
-      "battery": "long-range",
-      "trim": "Techno (EV87)",
-      "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
       "price_EUR": 46990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 620,
+      "wltp_km": 625,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 490,
@@ -382,7 +161,7 @@
           "tyreModel": null,
           "protocol": "nyland",
           "videoUrl": null,
-          "notes": "Scénic E-Tech EV87 Techno. Test Nyland à 90 km/h."
+          "notes": "Scénic E-Tech 87 kWh. Très bon à 90."
         },
         {
           "sourceId": "nyland",
@@ -395,7 +174,7 @@
           "tyreModel": null,
           "protocol": "nyland",
           "videoUrl": null,
-          "notes": "Scénic E-Tech EV87. Test Nyland 120 km/h."
+          "notes": "Consommation plus élevée à haute vitesse."
         }
       ],
       "chargingDC_peak_kW": 150,
@@ -404,84 +183,27 @@
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 110
-        },
-        {
-          "soc": 5,
-          "power": 135
+          "power": 100
         },
         {
           "soc": 10,
-          "power": 150
-        },
-        {
-          "soc": 20,
-          "power": 150
-        },
-        {
-          "soc": 30,
-          "power": 145
-        },
-        {
-          "soc": 40,
           "power": 130
         },
         {
           "soc": 50,
-          "power": 108
-        },
-        {
-          "soc": 60,
-          "power": 80
-        },
-        {
-          "soc": 70,
-          "power": 52
+          "power": 100
         },
         {
           "soc": 80,
-          "power": 28
-        },
-        {
-          "soc": 90,
-          "power": 14
+          "power": 50
         },
         {
           "soc": 100,
-          "power": 6
+          "power": 10
         }
       ],
       "availability": "available",
-      "notes": "Moteur 160 kW (220 ch), couple 300 Nm, 0-100 en 8,4 s. Batterie 87 kWh utiles. DC 150 kW — données Nyland confirmées."
-    },
-    {
-      "id": "lr-iconic-ev87-20",
-      "label": "Long Range · Iconic · EV87 · 20\"",
-      "battery": "long-range",
-      "trim": "Iconic (EV87)",
-      "wheelSize_inches": 20,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 51490,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 620,
-      "wltp_consumption_kWh_100km": 15,
-      "realRange": {
-        "mixed_km": 490,
-        "highway_130_km": 355,
-        "highway_120_km": 390,
-        "urban_km": 580,
-        "winter_minus5_km": 380,
-        "confidence": "bjorn_nyland"
-      },
-      "rangeTests": [],
-      "chargingDC_peak_kW": 150,
-      "chargingDC_10_80_min": 37,
-      "chargingDC_kWh_30min": 55,
-      "chargingCurve": null,
-      "availability": "available",
-      "notes": "Sommet de gamme Scénic E-Tech. Cuir nappa, Harman Kardon 9 HP, toit ouvrant, affichage tête haute wide. Mêmes performances que Techno EV87."
+      "notes": null
     }
   ],
   "warranty": {
@@ -493,52 +215,38 @@
   },
   "keyFeatures": [
     {
+      "category": "confort",
+      "label": "Sièges confort de haute qualité"
+    },
+    {
       "category": "technologie",
-      "label": "EV87 150 kW DC — 55 kWh en 30 min, 10-80 % en 37 min : l'un des meilleurs du segment"
-    },
-    {
-      "category": "confort",
-      "label": "Coffre 545 L — le plus généreux du segment C, 1 670 L à plat : espace famille exceptionnel"
-    },
-    {
-      "category": "design",
-      "label": "Toit Solarbay (verre électrochrome) — intimité réglable en 3 positions sans volets mécaniques"
-    },
-    {
-      "category": "confort",
-      "label": "Fabriqué à Douai (ElectriCity) — production française, aides État garanties, empreinte carbone optimisée"
+      "label": "Système d'infodivertissement avancé"
     },
     {
       "category": "securite",
-      "label": "Pack Drive Assist Plus de série sur Techno : angle mort actif, aide parking, freinage d'urgence"
+      "label": "Freinage automatique d'urgence"
     },
     {
-      "category": "technologie",
-      "label": "Deux tailles de batterie (EV60 / EV87) — de l'usage urbain aux grands voyages"
+      "category": "design",
+      "label": "Signature lumineuse LED distinctive"
     }
   ],
   "verdict": {
     "strengths": [
-      "EV87 : 490 km réels en mixte, 355 km à 130 km/h — l'une des meilleures autonomies du segment C",
-      "DC 150 kW sur EV87 : 55 kWh en 30 min, 10-80 % en 37 min — très efficace malgré la grande batterie",
-      "Coffre 545 L + 1 670 L à plat : le plus grand SUV familial de la gamme Renault",
-      "Cx 0,28 exceptionnel pour un SUV familial : contribue à l'efficience sur route",
-      "Fabriqué à Douai (France) — éligible aux aides État, bilan carbone parmi les meilleurs du segment"
+      "Bon compromis prix/autonomie",
+      "Confort de suspension"
     ],
     "weaknesses": [
-      "EV60 170ch : 380 km réels en mixte sur 18\", 240 km à 130 km/h — honorable mais pas exceptionnel",
-      "Masse 1 850 kg : pénalise l'efficience urbaine vs une berline compacte",
-      "Pas de V2L ni V2G : absence des fonctions bidirectionnelles présentes sur R5/R4",
-      "Architecture 400 V : pic à 150 kW correct mais inférieur aux 800 V coréens"
+      "Vitesse de charge rapide en retrait",
+      "Infodivertissement perfectible"
     ],
-    "idealUserProfile": "Famille cherchant le plus grand espace intérieur du segment C avec une vraie autonomie voyage. L'EV87 Techno à 46 990 € est le point d'équilibre idéal. L'EV60 Equilibre à 39 990 € pour un usage mixte urbain/périurbain.",
-    "notIdealFor": "Conducteur seul en usage urbain strict (masse élevée) ou souhaitant le V2L/V2G pour alimenter son domicile."
+    "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
+    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-17",
+  "lastUpdated": "2026-05-18",
   "sources": [
     "nyland",
-    "lachaineev",
-    "renault-fr"
+    "la-chaine-ev"
   ],
-  "imageCredit": "Renault France — visuel presse 2024"
+  "imageCredit": "Constructeur"
 }

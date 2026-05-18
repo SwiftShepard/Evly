@@ -221,7 +221,7 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                   <div class="md:col-span-7 flex flex-col gap-2">
                     <div class="flex items-center gap-2">
                       <span class="label-eyebrow">
-                        {nyland90 ? "Autonomie estimée — Nyland 90 km/h" : "Autonomie réelle mixte mesurée"}
+                        {nyland90 ? "Autonomie estimée, Nyland 90 km/h" : "Autonomie réelle mixte mesurée"}
                       </span>
                       {nyland90 && <SourceTooltip sourceId="nyland" date={nyland90.testDate ?? undefined} />}
                     </div>
@@ -233,11 +233,11 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                     </div>
                     {nyland90 ? (
                       <p class="font-mono text-[11px] md:text-xs text-[var(--color-text-faint)] leading-relaxed">
-                        Conso mesurée à {nyland90.consumption_kWh_100km.toString().replace(".", ",")} kWh/100&nbsp;km, batterie utile {batteryCapacity.toString().replace(".", ",")} kWh — WLTP annoncée {config.wltp_km} km.
+                        Conso mesurée à {nyland90.consumption_kWh_100km.toString().replace(".", ",")} kWh/100&nbsp;km, batterie utile {batteryCapacity.toString().replace(".", ",")} kWh, WLTP annoncée {config.wltp_km} km.
                       </p>
                     ) : (
                       <p class="font-mono text-[11px] md:text-xs text-[var(--color-text-faint)] leading-relaxed">
-                        conso mixte {(config.wltp_consumption_kWh_100km ?? vehicle.consumption_mixed_kWh_per_100km).toString().replace(".", ",")} kWh/100&nbsp;km — WLTP annoncée {config.wltp_km ?? vehicle.wltp_max_km} km
+                        conso mixte {(config.wltp_consumption_kWh_100km ?? vehicle.consumption_mixed_kWh_per_100km).toString().replace(".", ",")} kWh/100&nbsp;km, WLTP annoncée {config.wltp_km ?? vehicle.wltp_max_km} km
                       </p>
                     )}
                   </div>
@@ -350,12 +350,12 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
 
             <!-- 1x1 : écart WLTP -->
             <Tile size="1x1" label="Écart WLTP / mixte" class="reveal">
-              <TileStat value={`–${Math.round((1 - (config.realRange?.mixed_km ?? vehicle.realRange.mixed_km) / (config.wltp_km ?? vehicle.wltp_max_km)) * 100)} %`} tone="warning" size="xl" hint="commun à tous les VE" />
+              <TileStat value={`-${Math.round((1 - (config.realRange?.mixed_km ?? vehicle.realRange.mixed_km) / (config.wltp_km ?? vehicle.wltp_max_km)) * 100)} %`} tone="warning" size="xl" hint="commun à tous les VE" />
             </Tile>
 
             <!-- 1x1 : pénalité hiver -->
             <Tile size="1x1" label="Pénalité hiver −5°C" class="reveal">
-              <TileStat value={`–${Math.round((1 - (config.realRange?.winter_minus5_km ?? vehicle.realRange.winter_minus5_km) / (config.realRange?.mixed_km ?? vehicle.realRange.mixed_km)) * 100)} %`} tone="danger" size="xl" hint="sans préchauffage" />
+              <TileStat value={`-${Math.round((1 - (config.realRange?.winter_minus5_km ?? vehicle.realRange.winter_minus5_km) / (config.realRange?.mixed_km ?? vehicle.realRange.mixed_km)) * 100)} %`} tone="danger" size="xl" hint="sans préchauffage" />
             </Tile>
 
             <!-- 2x1 : 1000 km challenge -->
@@ -369,23 +369,23 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                   <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-auto">
                     <div class="flex flex-col gap-1">
                       <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Temps</span>
-                      <span data-numeric class="display-stat text-2xl md:text-3xl">{tkc.totalTime_minutes ?? "—"}<span class="text-sm text-[var(--color-text-faint)] ml-1 font-mono">min</span></span>
+                      <span data-numeric class="display-stat text-2xl md:text-3xl">{tkc.totalTime_minutes ?? "n/c"}<span class="text-sm text-[var(--color-text-faint)] ml-1 font-mono">min</span></span>
                     </div>
                     <div class="flex flex-col gap-1">
                       <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Vit. moy</span>
-                      <span data-numeric class="display-stat text-2xl md:text-3xl">{tkc.averageSpeed_kmh ?? "—"}<span class="text-sm text-[var(--color-text-faint)] ml-1 font-mono">km/h</span></span>
+                      <span data-numeric class="display-stat text-2xl md:text-3xl">{tkc.averageSpeed_kmh ?? "n/c"}<span class="text-sm text-[var(--color-text-faint)] ml-1 font-mono">km/h</span></span>
                     </div>
                     <div class="flex flex-col gap-1">
                       <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Conso</span>
-                      <span data-numeric class="display-stat text-2xl md:text-3xl">{tkc.averageConsumption_Wh_km ?? "—"}<span class="text-sm text-[var(--color-text-faint)] ml-1 font-mono">Wh/km</span></span>
+                      <span data-numeric class="display-stat text-2xl md:text-3xl">{tkc.averageConsumption_Wh_km ?? "n/c"}<span class="text-sm text-[var(--color-text-faint)] ml-1 font-mono">Wh/km</span></span>
                     </div>
                     <div class="flex flex-col gap-1">
                       <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Arrêts</span>
-                      <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-accent)]">{tkc.chargingStops ?? "—"}</span>
+                      <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-accent)]">{tkc.chargingStops ?? "n/c"}</span>
                     </div>
                   </div>
                 ) : (
-                  <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Test publié par {sourceLabels[tkc.sourceId] ?? tkc.sourceId}. Valeurs en cours de vérification — Evly s'interdit toute estimation à la place de la mesure.</p>
+                  <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Test publié par {sourceLabels[tkc.sourceId] ?? tkc.sourceId}. Valeurs en cours de vérification, Evly s'interdit toute estimation à la place de la mesure.</p>
                 )}
                 {tkc.videoUrl && (
                   <a href={tkc.videoUrl} target="_blank" rel="noopener noreferrer" class="font-mono text-[11px] text-[var(--color-accent)] hover:underline mt-3 self-start min-h-[44px] inline-flex items-center">Voir la vidéo source ↗</a>
@@ -424,10 +424,10 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                                 {test.videoUrl && <a href={test.videoUrl} target="_blank" rel="noopener noreferrer" class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-accent)] hover:underline">vidéo ↗</a>}
                               </div>
                             </td>
-                            <td class="py-3 px-2 text-right font-mono tabular text-[var(--color-text-muted)] whitespace-nowrap">{test.speed_kmh ? `${test.speed_kmh}` : "—"}</td>
+                            <td class="py-3 px-2 text-right font-mono tabular text-[var(--color-text-muted)] whitespace-nowrap">{test.speed_kmh ? `${test.speed_kmh}` : "n/c"}</td>
                             <td class="py-3 px-2 text-right font-mono tabular text-[var(--color-accent)] whitespace-nowrap">{test.consumption_kWh_100km.toString().replace(".", ",")}</td>
-                            <td class="py-3 px-2 text-right font-mono tabular text-[var(--color-text-muted)] whitespace-nowrap">{test.range_km ? `${test.range_km}` : "—"}</td>
-                            <td class="py-3 px-2 text-right font-mono tabular text-[var(--color-text-muted)] whitespace-nowrap">{test.temperature_C !== null ? `${test.temperature_C}°` : "—"}</td>
+                            <td class="py-3 px-2 text-right font-mono tabular text-[var(--color-text-muted)] whitespace-nowrap">{test.range_km ? `${test.range_km}` : "n/c"}</td>
+                            <td class="py-3 px-2 text-right font-mono tabular text-[var(--color-text-muted)] whitespace-nowrap">{test.temperature_C !== null ? `${test.temperature_C}°` : "n/c"}</td>
                             <td class="py-3 px-5 md:px-7"><MethodologyBadge protocol={test.protocol} speed_kmh={test.speed_kmh} wheelSize_inches={test.wheelSize_inches} /></td>
                           </tr>
                         );
@@ -445,7 +445,7 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                   {vehicle.availableAids.map((aid) => (
                     <li class="flex items-baseline justify-between gap-3 text-sm">
                       <span class="text-[var(--color-text)]">{aid.label}</span>
-                      <span data-numeric class="font-mono text-[var(--color-accent)] whitespace-nowrap">– {formatPrice(aid.amount_EUR)}</span>
+                      <span data-numeric class="font-mono text-[var(--color-accent)] whitespace-nowrap">- {formatPrice(aid.amount_EUR)}</span>
                     </li>
                   ))}
                 </ul>
@@ -490,7 +490,7 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                       <h3 class="label-eyebrow">{categoryLabels[cat] ?? cat}</h3>
                       <ul class="flex flex-col gap-2.5">
                         {items.map((item) => (
-                          <li class="text-sm text-[var(--color-text-muted)] leading-relaxed before:content-['—'] before:mr-2 before:text-[var(--color-text-faint)]">{item}</li>
+                          <li class="text-sm text-[var(--color-text-muted)] leading-relaxed before:content-['•'] before:mr-2 before:text-[var(--color-text-faint)]">{item}</li>
                         ))}
                       </ul>
                     </div>
@@ -553,7 +553,7 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                 <div class="lg:col-span-4 flex flex-col gap-4">
                   <h2 class="display-2 text-2xl md:text-3xl">Transparence</h2>
                   <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">
-                    Tests Nyland, supertests indépendants et fiche constructeur croisés. Chaque chiffre porte un niveau de confiance — <span class="font-mono text-[var(--color-accent)] text-xs">mesuré</span>, <span class="font-mono text-[var(--color-warning)] text-xs">constructeur</span>, <span class="font-mono text-[var(--color-text-muted)] text-xs">estimé</span> ou <span class="font-mono text-[var(--color-text-muted)] text-xs">pending</span>.
+                    Tests Nyland, supertests indépendants et fiche constructeur croisés. Chaque chiffre porte un niveau de confiance, <span class="font-mono text-[var(--color-accent)] text-xs">mesuré</span>, <span class="font-mono text-[var(--color-warning)] text-xs">constructeur</span>, <span class="font-mono text-[var(--color-text-muted)] text-xs">estimé</span> ou <span class="font-mono text-[var(--color-text-muted)] text-xs">pending</span>.
                   </p>
                   <div class="flex flex-col gap-1 mt-2">
                     <span class="label-eyebrow">Dernière mise à jour</span>

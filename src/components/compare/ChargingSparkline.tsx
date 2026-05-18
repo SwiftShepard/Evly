@@ -12,7 +12,7 @@ interface Props {
 }
 
 /**
- * Sparkline de la courbe de charge DC — Canvas pur, pas de Chart.js.
+ * Sparkline de la courbe de charge DC, Canvas pur, pas de Chart.js.
  * Léger et instantané.
  */
 function ChargingSparklineInner({ curve, width = 200, height = 40 }: Props) {

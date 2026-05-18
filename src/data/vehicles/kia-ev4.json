@@ -4,12 +4,11 @@
   "model": "EV4",
   "variant": "Berline compacte électrique",
   "bodyType": "Hatchback 5 portes",
-  "segment": "C — berline compacte",
+  "segment": "C, berline compacte",
   "productionCountry": "Slovaquie",
   "assemblyPlant": "Žilina (usine 100 % électricité renouvelable)",
   "releaseYear": 2026,
   "marketAvailability": "Commandes ouvertes en France, livraisons à partir du T1 2026",
-
   "power_kW": 150,
   "power_hp": 204,
   "torque_Nm": 283,
@@ -17,13 +16,11 @@
   "motors": 1,
   "acceleration_0_100_s": 7.4,
   "topSpeed_kmh": 170,
-
   "usableCapacity_kWh": 81.4,
   "grossCapacity_kWh": 84.6,
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1850,
-
   "wltp_max_km": 625,
   "wltp_min_km": 410,
   "realRange": {
@@ -33,12 +30,10 @@
     "winter_minus5_km": 400,
     "confidence": "tested"
   },
-
   "consumption_mixed_kWh_per_100km": 15.8,
   "consumption_highway_kWh_per_100km": 22.1,
   "consumption_winter_kWh_per_100km": 20.4,
   "dragCoefficient_Cx": 0.23,
-
   "chargingDC": {
     "peakPower_kW": 128,
     "time_10_80_min": 31,
@@ -55,20 +50,55 @@
   "v2g": false,
   "v2l_option_EUR": 1550,
   "chargingCurve": [
-    { "soc": 0, "power": 110 },
-    { "soc": 5, "power": 120 },
-    { "soc": 10, "power": 128 },
-    { "soc": 20, "power": 128 },
-    { "soc": 30, "power": 125 },
-    { "soc": 40, "power": 118 },
-    { "soc": 50, "power": 110 },
-    { "soc": 60, "power": 95 },
-    { "soc": 70, "power": 78 },
-    { "soc": 80, "power": 58 },
-    { "soc": 90, "power": 36 },
-    { "soc": 100, "power": 14 }
+    {
+      "soc": 0,
+      "power": 110
+    },
+    {
+      "soc": 5,
+      "power": 120
+    },
+    {
+      "soc": 10,
+      "power": 128
+    },
+    {
+      "soc": 20,
+      "power": 128
+    },
+    {
+      "soc": 30,
+      "power": 125
+    },
+    {
+      "soc": 40,
+      "power": 118
+    },
+    {
+      "soc": 50,
+      "power": 110
+    },
+    {
+      "soc": 60,
+      "power": 95
+    },
+    {
+      "soc": 70,
+      "power": 78
+    },
+    {
+      "soc": 80,
+      "power": 58
+    },
+    {
+      "soc": 90,
+      "power": 36
+    },
+    {
+      "soc": 100,
+      "power": 14
+    }
   ],
-
   "rangeTests": [
     {
       "sourceId": "nyland",
@@ -173,7 +203,6 @@
     "videoUrl": "https://www.youtube.com/watch?v=w_3W15PT9Z4",
     "confidence": "pending"
   },
-
   "length_mm": 4430,
   "width_mm": 1860,
   "height_mm": 1480,
@@ -181,10 +210,9 @@
   "trunkCapacity_L": 435,
   "trunkCapacityFolded_L": 1415,
   "frunkCapacity_L": null,
-
   "trims": [
     {
-      "name": "Air (Standard)",
+      "name": "Air",
       "price_EUR": 38290,
       "batteryUsed": "58,3 kWh",
       "equipmentHighlights": [
@@ -196,7 +224,7 @@
       ]
     },
     {
-      "name": "Earth (Standard)",
+      "name": "Earth",
       "price_EUR": 40590,
       "batteryUsed": "58,3 kWh",
       "equipmentHighlights": [
@@ -208,7 +236,7 @@
       ]
     },
     {
-      "name": "Air (Long Range)",
+      "name": "Air",
       "price_EUR": 42890,
       "batteryUsed": "81,4 kWh",
       "equipmentHighlights": [
@@ -220,7 +248,7 @@
       ]
     },
     {
-      "name": "Earth (Long Range)",
+      "name": "Earth",
       "price_EUR": 45190,
       "batteryUsed": "81,4 kWh",
       "equipmentHighlights": [
@@ -232,7 +260,7 @@
       ]
     },
     {
-      "name": "GT-Line (Long Range)",
+      "name": "GT-Line",
       "price_EUR": 46990,
       "batteryUsed": "81,4 kWh",
       "equipmentHighlights": [
@@ -257,7 +285,6 @@
       "amount_EUR": 1000
     }
   ],
-
   "configurations": [
     {
       "id": "std-air-17",
@@ -324,18 +351,54 @@
       "chargingDC_10_80_min": 29,
       "chargingDC_kWh_30min": 41,
       "chargingCurve": [
-        { "soc": 0, "power": 95 },
-        { "soc": 5, "power": 105 },
-        { "soc": 10, "power": 108 },
-        { "soc": 20, "power": 108 },
-        { "soc": 30, "power": 105 },
-        { "soc": 40, "power": 102 },
-        { "soc": 50, "power": 95 },
-        { "soc": 60, "power": 80 },
-        { "soc": 70, "power": 65 },
-        { "soc": 80, "power": 48 },
-        { "soc": 90, "power": 30 },
-        { "soc": 100, "power": 12 }
+        {
+          "soc": 0,
+          "power": 95
+        },
+        {
+          "soc": 5,
+          "power": 105
+        },
+        {
+          "soc": 10,
+          "power": 108
+        },
+        {
+          "soc": 20,
+          "power": 108
+        },
+        {
+          "soc": 30,
+          "power": 105
+        },
+        {
+          "soc": 40,
+          "power": 102
+        },
+        {
+          "soc": 50,
+          "power": 95
+        },
+        {
+          "soc": 60,
+          "power": 80
+        },
+        {
+          "soc": 70,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 48
+        },
+        {
+          "soc": 90,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 12
+        }
       ],
       "availability": "available",
       "notes": "Éligible leasing social. Batterie 58,3 kWh utiles."
@@ -370,7 +433,7 @@
     },
     {
       "id": "lr-air-17",
-      "label": "Long Range · Air · 17\"",
+      "label": "· Air · 17\"",
       "battery": "long-range",
       "trim": "Air",
       "wheelSize_inches": 17,
@@ -393,25 +456,61 @@
       "chargingDC_10_80_min": 31,
       "chargingDC_kWh_30min": 57,
       "chargingCurve": [
-        { "soc": 0, "power": 110 },
-        { "soc": 5, "power": 120 },
-        { "soc": 10, "power": 128 },
-        { "soc": 20, "power": 128 },
-        { "soc": 30, "power": 125 },
-        { "soc": 40, "power": 118 },
-        { "soc": 50, "power": 110 },
-        { "soc": 60, "power": 95 },
-        { "soc": 70, "power": 78 },
-        { "soc": 80, "power": 58 },
-        { "soc": 90, "power": 36 },
-        { "soc": 100, "power": 14 }
+        {
+          "soc": 0,
+          "power": 110
+        },
+        {
+          "soc": 5,
+          "power": 120
+        },
+        {
+          "soc": 10,
+          "power": 128
+        },
+        {
+          "soc": 20,
+          "power": 128
+        },
+        {
+          "soc": 30,
+          "power": 125
+        },
+        {
+          "soc": 40,
+          "power": 118
+        },
+        {
+          "soc": 50,
+          "power": 110
+        },
+        {
+          "soc": 60,
+          "power": 95
+        },
+        {
+          "soc": 70,
+          "power": 78
+        },
+        {
+          "soc": 80,
+          "power": 58
+        },
+        {
+          "soc": 90,
+          "power": 36
+        },
+        {
+          "soc": 100,
+          "power": 14
+        }
       ],
       "availability": "available",
       "notes": "Long Range en jantes 17\", autonomie supérieure aux 19\". Pompe à chaleur de série."
     },
     {
       "id": "lr-earth-17",
-      "label": "Long Range · Earth · 17\"",
+      "label": "· Earth · 17\"",
       "battery": "long-range",
       "trim": "Earth",
       "wheelSize_inches": 17,
@@ -439,7 +538,7 @@
     },
     {
       "id": "lr-gt-line-19",
-      "label": "Long Range · GT-Line · 19\"",
+      "label": "· GT-Line · 19\"",
       "battery": "long-range",
       "trim": "GT-Line",
       "wheelSize_inches": 19,
@@ -515,24 +614,59 @@
       "chargingDC_10_80_min": 31,
       "chargingDC_kWh_30min": 57,
       "chargingCurve": [
-        { "soc": 0, "power": 110 },
-        { "soc": 5, "power": 120 },
-        { "soc": 10, "power": 128 },
-        { "soc": 20, "power": 128 },
-        { "soc": 30, "power": 125 },
-        { "soc": 40, "power": 118 },
-        { "soc": 50, "power": 110 },
-        { "soc": 60, "power": 95 },
-        { "soc": 70, "power": 78 },
-        { "soc": 80, "power": 58 },
-        { "soc": 90, "power": 36 },
-        { "soc": 100, "power": 14 }
+        {
+          "soc": 0,
+          "power": 110
+        },
+        {
+          "soc": 5,
+          "power": 120
+        },
+        {
+          "soc": 10,
+          "power": 128
+        },
+        {
+          "soc": 20,
+          "power": 128
+        },
+        {
+          "soc": 30,
+          "power": 125
+        },
+        {
+          "soc": 40,
+          "power": 118
+        },
+        {
+          "soc": 50,
+          "power": 110
+        },
+        {
+          "soc": 60,
+          "power": 95
+        },
+        {
+          "soc": 70,
+          "power": 78
+        },
+        {
+          "soc": 80,
+          "power": 58
+        },
+        {
+          "soc": 90,
+          "power": 36
+        },
+        {
+          "soc": 100,
+          "power": 14
+        }
       ],
       "availability": "available",
       "notes": "Configuration testée par Nyland. Jantes 19\" = autonomie réduite vs 17\"."
     }
   ],
-
   "warranty": {
     "vehicle_years": 7,
     "vehicle_km": 150000,
@@ -540,24 +674,52 @@
     "battery_km": 160000,
     "battery_soh_minimum_percent": 70
   },
-
   "keyFeatures": [
-    { "category": "securite", "label": "Régulateur adaptatif avec maintien dans la voie (NSCC)" },
-    { "category": "securite", "label": "Freinage d'urgence avec détection vélos / piétons" },
-    { "category": "securite", "label": "Surveillance des angles morts active" },
-    { "category": "technologie", "label": "Plug & Charge sur le réseau Ionity et IECharge" },
-    { "category": "technologie", "label": "Connected Car Services 7 ans inclus" },
-    { "category": "technologie", "label": "Mises à jour OTA infodivertissement et batterie" },
-    { "category": "confort", "label": "Pompe à chaleur de série sur toutes les finitions Long Range" },
-    { "category": "confort", "label": "Coffre 435 L à seuil bas, sous-coffre dédié aux câbles" },
-    { "category": "design", "label": "Cx record du segment à 0,23" },
-    { "category": "design", "label": "Finition GT-Line exclusive avec amortissement piloté" }
+    {
+      "category": "securite",
+      "label": "Régulateur adaptatif avec maintien dans la voie (NSCC)"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage d'urgence avec détection vélos / piétons"
+    },
+    {
+      "category": "securite",
+      "label": "Surveillance des angles morts active"
+    },
+    {
+      "category": "technologie",
+      "label": "Plug & Charge sur le réseau Ionity et IECharge"
+    },
+    {
+      "category": "technologie",
+      "label": "Connected Car Services 7 ans inclus"
+    },
+    {
+      "category": "technologie",
+      "label": "Mises à jour OTA infodivertissement et batterie"
+    },
+    {
+      "category": "confort",
+      "label": "Pompe à chaleur de série sur toutes les finitions Long Range"
+    },
+    {
+      "category": "confort",
+      "label": "Coffre 435 L à seuil bas, sous-coffre dédié aux câbles"
+    },
+    {
+      "category": "design",
+      "label": "Cx record du segment à 0,23"
+    },
+    {
+      "category": "design",
+      "label": "Finition GT-Line exclusive avec amortissement piloté"
+    }
   ],
-
   "verdict": {
     "strengths": [
       "Autonomie réelle ~490 km en mixte (Long Range GT-Line), top du segment compact",
-      "Éligible leasing social à 189 €/mois en Standard Air — quasi-unique sur ce niveau de prestation",
+      "Éligible leasing social à 189 €/mois en Standard Air, quasi-unique sur ce niveau de prestation",
       "Recharge rapide ajoute 57 kWh en 30 min (Long Range), 41 kWh (Standard)",
       "Pompe à chaleur de série sur Long Range, hivers nettement mieux gérés",
       "Garantie constructeur 7 ans / 150 000 km, leader sur le segment"
@@ -566,14 +728,13 @@
       "Architecture 400 V, pic de charge 128 kW : en retrait des EV6/EV9 (800 V)",
       "Autonomie autoroute Standard limitante (~265 km réels à 130 km/h)",
       "Prix qui grimpe vite avec les options (proche de 50 000 € en GT-Line équipée)",
-      "Finition GT-Line indisponible avec batterie Standard — gamme contrainte",
+      "Finition GT-Line indisponible avec batterie Standard, gamme contrainte",
       "Pas de version traction intégrale possible"
     ],
     "idealUserProfile": "Foyer dont elle est l'unique voiture, qui effectue plusieurs trajets longue distance par mois. Le Standard Air à 38 290 € est l'achat le plus accessible ; le Long Range Air à 42 890 € le plus rationnel pour un usage mixte.",
     "notIdealFor": "Conducteur strictement urbain n'ayant jamais besoin de plus de 200 km : la Standard suffit. Voyageurs autoroutiers très fréquents trouveront la charge 400 V en retrait des architectures 800 V."
   },
-
-  "lastUpdated": "2026-04-22",
+  "lastUpdated": "2026-05-18",
   "sources": [
     "nyland",
     "insideevs-de",
@@ -584,5 +745,5 @@
     "largus",
     "kia-fr"
   ],
-  "imageCredit": "Kia France — visuel presse 2026"
+  "imageCredit": "Kia France, visuel presse 2026"
 }

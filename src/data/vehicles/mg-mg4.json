@@ -31,9 +31,9 @@
     "winter_minus5_km": 250,
     "confidence": "bjorn_nyland"
   },
-  "consumption_mixed_kWh_per_100km": 15,
-  "consumption_highway_kWh_per_100km": 21,
-  "consumption_winter_kWh_per_100km": 19,
+  "consumption_mixed_kWh_per_100km": 15.0,
+  "consumption_highway_kWh_per_100km": 21.0,
+  "consumption_winter_kWh_per_100km": 19.0,
   "dragCoefficient_Cx": 0.28,
   "chargingDC": {
     "peakPower_kW": 135,
@@ -157,7 +157,12 @@
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [],
+  "availableAids": [
+    {
+      "label": "Bonus Écologique",
+      "amount_EUR": 4000
+    }
+  ],
   "configurations": [
     {
       "id": "mg-mg4-standard",
@@ -171,7 +176,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 450,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_consumption_kWh_100km": 15.0,
       "realRange": {
         "mixed_km": 360,
         "highway_130_km": 282,
@@ -248,7 +253,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 450,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_consumption_kWh_100km": 15.0,
       "realRange": {
         "mixed_km": 360,
         "highway_130_km": 282,
@@ -325,7 +330,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 450,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_consumption_kWh_100km": 15.0,
       "realRange": {
         "mixed_km": 360,
         "highway_130_km": 282,
@@ -402,7 +407,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 450,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_consumption_kWh_100km": 15.0,
       "realRange": {
         "mixed_km": 360,
         "highway_130_km": 282,
@@ -500,15 +505,15 @@
     ],
     "weaknesses": [
       "Vitesse de charge rapide en retrait",
-      "Info-divertissement perfectible"
+      "Infodivertissement perfectible"
     ],
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
-    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra-rapides."
+    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-17",
+  "lastUpdated": "2026-05-16",
   "sources": [
     "nyland",
-    "lachaineev"
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

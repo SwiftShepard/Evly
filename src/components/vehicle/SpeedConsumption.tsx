@@ -115,7 +115,7 @@ export default function SpeedConsumption({
         callbacks: {
           title: (items) => (items[0] ? `${items[0].parsed.x} km/h` : ""),
           label: (ctx) =>
-            `${ctx.dataset.label} — ${ctx.parsed.y} kWh/100 km`,
+            `${ctx.dataset.label}, ${ctx.parsed.y} kWh/100 km`,
         },
       },
     },

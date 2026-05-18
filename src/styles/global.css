@@ -3,7 +3,7 @@
 @import "@fontsource-variable/jetbrains-mono";
 
 /* ----------------------------------------------------------------- */
-/* Tokens statiques — typo, container, easing, tuiles                 */
+/* Tokens statiques, typo, container, easing, tuiles                 */
 /* (les couleurs sont gérées plus bas via [data-theme])               */
 /* ----------------------------------------------------------------- */
 
@@ -37,7 +37,7 @@
 }
 
 /* ----------------------------------------------------------------- */
-/* Palette — thème clair unique, fond blanc pur                       */
+/* Palette, thème clair unique, fond blanc pur                       */
 /* ----------------------------------------------------------------- */
 
 :root {
@@ -52,12 +52,12 @@
   --color-text-muted: #5a5a5a;
   --color-text-faint: #9a9a9a;
 
-  /* Surfaces tuiles — blanc pur, images fond blanc intégrées */
+  /* Surfaces tuiles, blanc pur, images fond blanc intégrées */
   --color-surface: #ffffff;
   --color-surface-elevated: #ffffff;
   --color-surface-accent: #edf5d4;
 
-  /* Accents — vert foncé, contraste suffisant sur blanc */
+  /* Accents, vert foncé, contraste suffisant sur blanc */
   --color-accent: #3a5c12;
   --color-accent-dim: #2d4a0e;
   --color-accent-on: #ffffff;
@@ -177,7 +177,7 @@
   }
 
   /* --------------------------------------------------------------- */
-  /* Système bento — tuiles                                           */
+  /* Système bento, tuiles                                           */
   /* --------------------------------------------------------------- */
 
   .bento-grid {
@@ -276,7 +276,7 @@
     border-color: var(--color-border-strong);
   }
 
-  /* Hover desktop — lift + glow subtil */
+  /* Hover desktop, lift + glow subtil */
   @media (hover: hover) {
     a.bento-tile {
       cursor: pointer;
@@ -314,7 +314,7 @@
   }
 
   /* --------------------------------------------------------------- */
-  /* Scroll Reveal System — driven by IntersectionObserver            */
+  /* Scroll Reveal System, driven by IntersectionObserver            */
   /* --------------------------------------------------------------- */
 
   .reveal {
@@ -381,7 +381,7 @@
   }
 
   /* --------------------------------------------------------------- */
-  /* Animations éditoriales — page load (kept for hero etc.)          */
+  /* Animations éditoriales, page load (kept for hero etc.)          */
   /* --------------------------------------------------------------- */
 
   .fade-rise {
@@ -410,7 +410,7 @@
   }
 
   /* --------------------------------------------------------------- */
-  /* Micro-interactions — Buttons                                     */
+  /* Micro-interactions, Buttons                                     */
   /* --------------------------------------------------------------- */
 
   .btn-interactive {
@@ -470,7 +470,7 @@
   }
 
   /* --------------------------------------------------------------- */
-  /* Navigation — scroll state + mobile menu animation                */
+  /* Navigation, scroll state + mobile menu animation                */
   /* --------------------------------------------------------------- */
 
   .nav-header {
@@ -658,7 +658,7 @@
   }
 
   /* --------------------------------------------------------------- */
-  /* View Transitions — Astro                                         */
+  /* View Transitions, Astro                                         */
   /* --------------------------------------------------------------- */
 
   ::view-transition-old(root) {
@@ -692,7 +692,7 @@
   }
 
   /* --------------------------------------------------------------- */
-  /* Reduced motion — disable ALL animations                          */
+  /* Reduced motion, disable ALL animations                          */
   /* --------------------------------------------------------------- */
 
   @media (max-width: 767px) {

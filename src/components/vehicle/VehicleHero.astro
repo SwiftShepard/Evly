@@ -61,7 +61,7 @@ const cheapestTrim = vehicle.trims.reduce((a, b) =>
           <span class="font-mono text-2xl text-[var(--color-text-faint)]">km</span>
         </div>
         <span class="font-mono text-xs text-[var(--color-text-faint)] lg:text-right max-w-xs">
-          mesurée à {vehicle.consumption_mixed_kWh_per_100km.toString().replace(".", ",")} kWh/100&nbsp;km — WLTP annoncée jusqu'à {formatKm(vehicle.wltp_max_km)}
+          mesurée à {vehicle.consumption_mixed_kWh_per_100km.toString().replace(".", ",")} kWh/100&nbsp;km, WLTP annoncée jusqu'à {formatKm(vehicle.wltp_max_km)}
         </span>
       </div>
     </div>

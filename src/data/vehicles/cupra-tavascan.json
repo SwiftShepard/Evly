@@ -1,0 +1,261 @@
+{
+  "slug": "cupra-tavascan",
+  "brand": "Cupra",
+  "model": "Tavascan",
+  "variant": "77 kWh · Endurance / VZ",
+  "bodyType": "SUV coupé",
+  "segment": "D",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Anhui (JV SAIC-Volkswagen)",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 250,
+  "power_hp": 340,
+  "torque_Nm": 545,
+  "drivetrain": "AWD",
+  "motors": 2,
+  "acceleration_0_100_s": 5.6,
+  "topSpeed_kmh": 180,
+  "usableCapacity_kWh": 77,
+  "grossCapacity_kWh": 82,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2280,
+  "wltp_max_km": 568,
+  "wltp_min_km": 568,
+  "realRange": {
+    "mixed_km": 410,
+    "highway_130_km": 265,
+    "urban_km": 490,
+    "winter_minus5_km": 320,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 17.2,
+  "consumption_highway_kWh_per_100km": 21,
+  "consumption_winter_kWh_per_100km": 19.5,
+  "dragCoefficient_Cx": 0.27,
+  "chargingDC": {
+    "peakPower_kW": 135,
+    "time_10_80_min": 30,
+    "kWh_added_30min": 70,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 7.5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 124
+    },
+    {
+      "soc": 10,
+      "power": 135
+    },
+    {
+      "soc": 20,
+      "power": 135
+    },
+    {
+      "soc": 50,
+      "power": 96
+    },
+    {
+      "soc": 80,
+      "power": 43
+    },
+    {
+      "soc": 100,
+      "power": 8
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4644,
+  "width_mm": 1861,
+  "height_mm": 1597,
+  "wheelbase_mm": 2766,
+  "trunkCapacity_L": 540,
+  "trunkCapacityFolded_L": 1410,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Endurance RWD (210 kW) 77 kWh",
+      "price_EUR": 52900,
+      "batteryUsed": "77 kWh",
+      "equipmentHighlights": [
+        "RWD 210 kW · 286 ch · WLTP 568 km",
+        "Configuration la plus efficiente"
+      ]
+    },
+    {
+      "name": "VZ AWD (250 kW) 77 kWh",
+      "price_EUR": 58500,
+      "batteryUsed": "77 kWh",
+      "equipmentHighlights": [
+        "AWD 250 kW · 340 ch · 0-100 en 5,6 s",
+        "WLTP réduit à 522 km par AWD"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "cupra-tavascan-endurance-rwd-210-kw--77",
+      "label": "Endurance RWD (210 kW) · 77 kWh",
+      "battery": "standard",
+      "trim": "Endurance RWD (210 kW)",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 52900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 568,
+      "wltp_consumption_kWh_100km": 17.2,
+      "realRange": {
+        "mixed_km": 410,
+        "highway_130_km": 265,
+        "urban_km": 490,
+        "winter_minus5_km": 320,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 135,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 70,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 124
+        },
+        {
+          "soc": 10,
+          "power": 135
+        },
+        {
+          "soc": 20,
+          "power": 135
+        },
+        {
+          "soc": 50,
+          "power": 96
+        },
+        {
+          "soc": 80,
+          "power": 43
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "cupra-tavascan-vz-awd-250-kw--77",
+      "label": "VZ AWD (250 kW) · 77 kWh",
+      "battery": "standard",
+      "trim": "VZ AWD (250 kW)",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 58500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 568,
+      "wltp_consumption_kWh_100km": 17.2,
+      "realRange": {
+        "mixed_km": 410,
+        "highway_130_km": 265,
+        "urban_km": 490,
+        "winter_minus5_km": 320,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 135,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 70,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 124
+        },
+        {
+          "soc": 10,
+          "power": 135
+        },
+        {
+          "soc": 20,
+          "power": 135
+        },
+        {
+          "soc": 50,
+          "power": 96
+        },
+        {
+          "soc": 80,
+          "power": 43
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "Transmission intégrale 4Drive"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "SUV coupé Cupra, silhouette agressive, jantes 20-21\""
+    },
+    {
+      "category": "technologie",
+      "label": "Plateforme MEB · DC 135 kW"
+    },
+    {
+      "category": "confort",
+      "label": "Habitacle 5 places · 540 L coffre"
+    },
+    {
+      "category": "securite",
+      "label": "Pack Travel Assist + freinage urgence"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Châssis bien réglé pour un SUV coupé · 0-100 en 5,6 s en VZ",
+      "Habitabilité supérieure au Born tout en gardant l'ADN sport"
+    ],
+    "weaknesses": [
+      "Production en Chine (JV Volkswagen-SAIC) → score ADEME défavorable, aucune Prime CEE VE",
+      "Prix hors plafond CEE (>47 000 €), aucune aide à l'achat"
+    ],
+    "idealUserProfile": "Acheteur cherchant un SUV coupé sportif et n'étant pas dépendant des aides à l'achat. Profile premium urbain/extra-urbain.",
+    "notIdealFor": "Tout acheteur visant la Prime CEE VE ou le leasing social, production chinoise + prix exclus du dispositif."
+  },
+  "lastUpdated": "2026-05-18",
+  "sources": [
+    "nyland",
+    "lachaineev"
+  ],
+  "imageCredit": "Constructeur"
+}

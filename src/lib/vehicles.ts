@@ -16,7 +16,7 @@ const vehicles: Vehicle[] = Object.entries(modules)
     const result = VehicleSchema.safeParse(raw);
     if (!result.success) {
       const message = result.error.issues
-        .map((i) => `  • ${i.path.join(".")} — ${i.message}`)
+        .map((i) => `  • ${i.path.join(".")}, ${i.message}`)
         .join("\n");
       throw new Error(
         `Fiche véhicule invalide dans ${path} :\n${message}\n` +

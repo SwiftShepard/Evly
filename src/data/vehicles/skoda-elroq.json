@@ -1,0 +1,390 @@
+{
+  "slug": "skoda-elroq",
+  "brand": "Skoda",
+  "model": "Elroq",
+  "variant": "52 / 59 / 77 kWh",
+  "bodyType": "Mini-SUV",
+  "segment": "B",
+  "productionCountry": "Rép. Tchèque",
+  "assemblyPlant": "Mladá Boleslav",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 210,
+  "power_hp": 286,
+  "torque_Nm": 545,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 6.6,
+  "topSpeed_kmh": 180,
+  "usableCapacity_kWh": 77,
+  "grossCapacity_kWh": 82,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2050,
+  "wltp_max_km": 580,
+  "wltp_min_km": 375,
+  "realRange": {
+    "mixed_km": 440,
+    "highway_130_km": 290,
+    "urban_km": 530,
+    "winter_minus5_km": 340,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 14.9,
+  "consumption_highway_kWh_per_100km": 19,
+  "consumption_winter_kWh_per_100km": 17.5,
+  "dragCoefficient_Cx": 0.26,
+  "chargingDC": {
+    "peakPower_kW": 175,
+    "time_10_80_min": 28,
+    "kWh_added_30min": 80,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 7
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 161
+    },
+    {
+      "soc": 10,
+      "power": 175
+    },
+    {
+      "soc": 20,
+      "power": 175
+    },
+    {
+      "soc": 50,
+      "power": 124
+    },
+    {
+      "soc": 80,
+      "power": 56
+    },
+    {
+      "soc": 100,
+      "power": 11
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4488,
+  "width_mm": 1884,
+  "height_mm": 1625,
+  "wheelbase_mm": 2765,
+  "trunkCapacity_L": 470,
+  "trunkCapacityFolded_L": 1580,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "50 (52 kWh · 125 kW FWD) 52 kWh",
+      "price_EUR": 32000,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "170 ch · WLTP 375 km",
+        "Entrée de gamme"
+      ]
+    },
+    {
+      "name": "60 (59 kWh · 150 kW FWD) 52 kWh",
+      "price_EUR": 36500,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "204 ch · WLTP 437 km",
+        "Batterie intermédiaire 59 kWh utile"
+      ]
+    },
+    {
+      "name": "85 (77 kWh · 210 kW RWD) 77 kWh",
+      "price_EUR": 41500,
+      "batteryUsed": "77 kWh",
+      "equipmentHighlights": [
+        "286 ch · WLTP 580 km · DC 175 kW",
+        "Pompe à chaleur de série"
+      ]
+    },
+    {
+      "name": "85 Sportline (77 kWh · 210 kW RWD) 77 kWh",
+      "price_EUR": 44900,
+      "batteryUsed": "77 kWh",
+      "equipmentHighlights": [
+        "Châssis sport · sièges enveloppants",
+        "Jantes 20\""
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 4000
+    }
+  ],
+  "configurations": [
+    {
+      "id": "skoda-elroq-50-52-kwh-125-kw-fwd--52",
+      "label": "50 (52 kWh · 125 kW FWD) · 52 kWh",
+      "battery": "standard",
+      "trim": "50 (52 kWh · 125 kW FWD)",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 32000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 375,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": {
+        "mixed_km": 285,
+        "highway_130_km": 180,
+        "urban_km": 340,
+        "winter_minus5_km": 220,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 145,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 60,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 133
+        },
+        {
+          "soc": 10,
+          "power": 145
+        },
+        {
+          "soc": 20,
+          "power": 145
+        },
+        {
+          "soc": 50,
+          "power": 103
+        },
+        {
+          "soc": 80,
+          "power": 46
+        },
+        {
+          "soc": 100,
+          "power": 9
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "skoda-elroq-60-59-kwh-150-kw-fwd--52",
+      "label": "60 (59 kWh · 150 kW FWD) · 52 kWh",
+      "battery": "standard",
+      "trim": "60 (59 kWh · 150 kW FWD)",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 36500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 375,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": {
+        "mixed_km": 285,
+        "highway_130_km": 180,
+        "urban_km": 340,
+        "winter_minus5_km": 220,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 145,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 60,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 133
+        },
+        {
+          "soc": 10,
+          "power": 145
+        },
+        {
+          "soc": 20,
+          "power": 145
+        },
+        {
+          "soc": 50,
+          "power": 103
+        },
+        {
+          "soc": 80,
+          "power": 46
+        },
+        {
+          "soc": 100,
+          "power": 9
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "skoda-elroq-85-77-kwh-210-kw-rwd--77",
+      "label": "85 (77 kWh · 210 kW RWD) · 77 kWh",
+      "battery": "long-range",
+      "trim": "85 (77 kWh · 210 kW RWD)",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 41500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 580,
+      "wltp_consumption_kWh_100km": 14.9,
+      "realRange": {
+        "mixed_km": 440,
+        "highway_130_km": 290,
+        "urban_km": 530,
+        "winter_minus5_km": 340,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 175,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 80,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 161
+        },
+        {
+          "soc": 10,
+          "power": 175
+        },
+        {
+          "soc": 20,
+          "power": 175
+        },
+        {
+          "soc": 50,
+          "power": 124
+        },
+        {
+          "soc": 80,
+          "power": 56
+        },
+        {
+          "soc": 100,
+          "power": 11
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "skoda-elroq-85-sportline-77-kwh-210-kw-rwd--77",
+      "label": "85 Sportline (77 kWh · 210 kW RWD) · 77 kWh",
+      "battery": "long-range",
+      "trim": "85 Sportline (77 kWh · 210 kW RWD)",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 44900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 580,
+      "wltp_consumption_kWh_100km": 14.9,
+      "realRange": {
+        "mixed_km": 440,
+        "highway_130_km": 290,
+        "urban_km": 530,
+        "winter_minus5_km": 340,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 175,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 80,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 161
+        },
+        {
+          "soc": 10,
+          "power": 175
+        },
+        {
+          "soc": 20,
+          "power": 175
+        },
+        {
+          "soc": 50,
+          "power": 124
+        },
+        {
+          "soc": 80,
+          "power": 56
+        },
+        {
+          "soc": 100,
+          "power": 11
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Tech-Deck Face, nouveau langage Skoda sans calandre"
+    },
+    {
+      "category": "technologie",
+      "label": "DC jusqu'à 175 kW (85) · pompe à chaleur de série"
+    },
+    {
+      "category": "confort",
+      "label": "470 L coffre · habitabilité segment supérieur"
+    },
+    {
+      "category": "securite",
+      "label": "9 airbags · Travel Assist niveau 2"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Production tchèque → éligible Prime CEE VE pour toute la gamme (≤ 47 000 €)",
+      "Excellent compromis taille / autonomie / prix dans le segment B-SUV"
+    ],
+    "weaknesses": [
+      "Logiciel ID.Software hérité VW, UX perfectible",
+      "Version d'entrée 50 (FWD 170 ch · 375 km WLTP) un peu juste pour gros rouleurs"
+    ],
+    "idealUserProfile": "Famille urbaine ou périurbaine cherchant un SUV compact polyvalent en dessous du plafond Prime CEE VE, avec un grand coffre pour la catégorie.",
+    "notIdealFor": "Conducteur sportif cherchant un châssis tranchant, l'Elroq reste un SUV confort avant tout."
+  },
+  "lastUpdated": "2026-05-18",
+  "sources": [
+    "nyland",
+    "lachaineev"
+  ],
+  "imageCredit": "Constructeur"
+}

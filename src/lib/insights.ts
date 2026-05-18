@@ -1,6 +1,6 @@
 /**
  * Génère des insights comparatifs déterministes à partir des cartes configurées.
- * Pure logique conditionnelle — pas d'IA, pas d'appel API.
+ * Pure logique conditionnelle, pas d'IA, pas d'appel API.
  */
 
 import type { Vehicle, VehicleConfiguration } from "@/data/schemas";

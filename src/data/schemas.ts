@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 /**
- * Schéma véhicule électrique — exhaustif, configurable.
+ * Schéma véhicule électrique, exhaustif, configurable.
  * Ce schéma est la source de vérité de toute fiche : si une fiche
  * ne le valide pas, le build casse, garantissant la cohérence
  * éditoriale et l'absence de fiches squelettiques.
@@ -80,7 +80,7 @@ const VerdictSchema = z.object({
 });
 
 /* ---------------------------------------------------------------- */
-/* Tests terrain — autonomie/conso attribuée à une source unique     */
+/* Tests terrain, autonomie/conso attribuée à une source unique     */
 /* ---------------------------------------------------------------- */
 
 const ProtocolSchema = z.enum([
@@ -118,7 +118,7 @@ const ThousandKmChallengeSchema = z.object({
 });
 
 /* ---------------------------------------------------------------- */
-/* Configuration véhicule — combinaison documentée (comparateur)     */
+/* Configuration véhicule, combinaison documentée (comparateur)     */
 /* ---------------------------------------------------------------- */
 
 const VehicleConfigurationSchema = z.object({
@@ -192,7 +192,7 @@ export const VehicleSchema = z.object({
   architecture_V: z.union([z.literal(400), z.literal(800)]),
   mass_kg: z.number().positive().nullable(),
 
-  // Autonomie (de la config par défaut — pour fiches existantes)
+  // Autonomie (de la config par défaut, pour fiches existantes)
   wltp_max_km: z.number().int().positive(),
   wltp_min_km: z.number().int().positive(),
   realRange: RealRangeSchema,
@@ -262,7 +262,7 @@ export const VehicleSchema = z.object({
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
           path: ["chargingCurve"],
-          message: `Point SoC ${pt.soc}% affiche ${pt.power} kW mais le pic DC déclaré est ${v.chargingDC.peakPower_kW} kW — incohérence de données.`,
+          message: `Point SoC ${pt.soc}% affiche ${pt.power} kW mais le pic DC déclaré est ${v.chargingDC.peakPower_kW} kW, incohérence de données.`,
         });
       }
     }

@@ -38,7 +38,7 @@ const priceAfterAids = Math.max(0, cheapest.price_EUR - totalAids);
             </div>
             <ul class="col-span-12 md:col-span-6 flex flex-col gap-1.5">
               {trim.equipmentHighlights.map((eq) => (
-                <li class="text-sm text-[var(--color-text-muted)] before:content-['—'] before:mr-2 before:text-[var(--color-text-faint)]">
+                <li class="text-sm text-[var(--color-text-muted)] before:content-['•'] before:mr-2 before:text-[var(--color-text-faint)]">
                   {eq}
                 </li>
               ))}
@@ -84,7 +84,7 @@ const priceAfterAids = Math.max(0, cheapest.price_EUR - totalAids);
                 data-numeric
                 class="font-mono text-sm font-medium text-[var(--color-accent)] whitespace-nowrap"
               >
-                – {formatPrice(aid.amount_EUR)}
+                - {formatPrice(aid.amount_EUR)}
               </span>
             </li>
           ))}

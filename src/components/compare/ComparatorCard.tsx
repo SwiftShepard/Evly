@@ -84,7 +84,7 @@ export default function ComparatorCard({
             className="font-mono text-[10px] uppercase tracking-[0.14em]"
             style={{ color: "var(--color-text-faint)" }}
           >
-            {vehicle.brand} · {vehicle.segment.split(" — ")[0]}
+            {vehicle.brand} · {vehicle.segment.split(", ")[0]}
           </span>
           <h3
             className="text-lg font-semibold tracking-tight leading-tight"

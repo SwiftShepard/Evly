@@ -3,7 +3,7 @@
  *
  * Chaque source documente un éditeur (tester, magazine, constructeur,
  * agrégateur, source réglementaire). Les fiches véhicule référencent
- * ces sources par leur `id` court — soit via `vehicle.sources`, soit
+ * ces sources par leur `id` court, soit via `vehicle.sources`, soit
  * via `vehicle.rangeTests[].sourceId`.
  *
  * Niveau de confiance :

@@ -50,30 +50,12 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    {
-      "soc": 0,
-      "power": 130
-    },
-    {
-      "soc": 10,
-      "power": 140
-    },
-    {
-      "soc": 20,
-      "power": 140
-    },
-    {
-      "soc": 50,
-      "power": 100
-    },
-    {
-      "soc": 80,
-      "power": 45
-    },
-    {
-      "soc": 100,
-      "power": 8
-    }
+    { "soc": 0,   "power": 130 },
+    { "soc": 10,  "power": 140 },
+    { "soc": 20,  "power": 140 },
+    { "soc": 50,  "power": 100 },
+    { "soc": 80,  "power": 45  },
+    { "soc": 100, "power": 8   }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -90,8 +72,8 @@
       "price_EUR": 25400,
       "batteryUsed": "56.2 kWh",
       "equipmentHighlights": [
-        "140 kW DC · 20 min 10–80 % estimé",
-        "19 pouces · suspension McPherson/Multilink"
+        "140 kW DC, 20 min 10-80 % estimé",
+        "19 pouces, suspension McPherson/Multilink"
       ]
     }
   ],
@@ -101,7 +83,7 @@
   "configurations": [
     {
       "id": "leapmotor-b05-pro",
-      "label": "B05 Pro — 56.2 kWh",
+      "label": "B05 Pro, 56.2 kWh",
       "battery": "standard",
       "trim": "Pro",
       "wheelSize_inches": 19,
@@ -124,37 +106,19 @@
       "chargingDC_10_80_min": 20,
       "chargingDC_kWh_30min": 42,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 130
-        },
-        {
-          "soc": 10,
-          "power": 140
-        },
-        {
-          "soc": 20,
-          "power": 140
-        },
-        {
-          "soc": 50,
-          "power": 100
-        },
-        {
-          "soc": 80,
-          "power": 45
-        },
-        {
-          "soc": 100,
-          "power": 8
-        }
+        { "soc": 0,   "power": 130 },
+        { "soc": 10,  "power": 140 },
+        { "soc": 20,  "power": 140 },
+        { "soc": 50,  "power": 100 },
+        { "soc": 80,  "power": 45  },
+        { "soc": 100, "power": 8   }
       ],
-      "availability": "upcoming",
-      "notes": "Temps 30–80 % constructeur : 16 min."
+      "availability": "available",
+      "notes": "Temps 30-80 % constructeur : 16 min."
     },
     {
       "id": "leapmotor-b05-promax",
-      "label": "B05 ProMax — 67.1 kWh",
+      "label": "B05 ProMax, 67.1 kWh",
       "battery": "long-range",
       "trim": "ProMax",
       "wheelSize_inches": 19,
@@ -177,33 +141,15 @@
       "chargingDC_10_80_min": 22,
       "chargingDC_kWh_30min": 50,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 155
-        },
-        {
-          "soc": 10,
-          "power": 168
-        },
-        {
-          "soc": 20,
-          "power": 168
-        },
-        {
-          "soc": 50,
-          "power": 120
-        },
-        {
-          "soc": 80,
-          "power": 55
-        },
-        {
-          "soc": 100,
-          "power": 10
-        }
+        { "soc": 0,   "power": 155 },
+        { "soc": 10,  "power": 168 },
+        { "soc": 20,  "power": 168 },
+        { "soc": 50,  "power": 120 },
+        { "soc": 80,  "power": 55  },
+        { "soc": 100, "power": 10  }
       ],
       "availability": "upcoming",
-      "notes": "Prix non communiqué. Temps 30–80 % constructeur : 17 min."
+      "notes": "Prix non communiqué. Temps 30-80 % constructeur : 17 min."
     }
   ],
   "warranty": {
@@ -214,40 +160,25 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    {
-      "category": "confort",
-      "label": "Suspension McPherson/Multilink — confort de référence dans la catégorie"
-    },
-    {
-      "category": "technologie",
-      "label": "Charge DC 140 kW — parmi les plus rapides du segment B"
-    },
-    {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
-    },
-    {
-      "category": "design",
-      "label": "Signature lumineuse LED distinctive · jantes 19 pouces"
-    }
+    { "category": "confort", "label": "Suspension McPherson/Multilink, confort de référence dans la catégorie" },
+    { "category": "technologie", "label": "Charge DC 140 kW, parmi les plus rapides du segment B" },
+    { "category": "securite", "label": "Freinage automatique d'urgence" },
+    { "category": "design", "label": "Signature lumineuse LED distinctive, jantes 19 pouces" }
   ],
   "verdict": {
     "strengths": [
-      "Rapport qualité-prix exceptionnel dans sa catégorie — meilleur du segment",
-      "Accord Stellantis : production en Europe prévue 2027 (Espagne) → future éligibilité leasing social"
+      "Rapport qualité-prix exceptionnel dans sa catégorie, meilleur du segment",
+      "Accord Stellantis : production en Europe prévue 2027 (Espagne), future éligibilité leasing social"
     ],
     "weaknesses": [
-      "Production en Chine uniquement : score ADEME insuffisant → aucune Prime CEE VE possible aujourd'hui",
+      "Production en Chine uniquement : score ADEME insuffisant, aucune Prime CEE VE possible aujourd'hui",
       "Info-divertissement et finitions perfectibles face aux références européennes"
     ],
     "idealUserProfile": "Future candidate idéale au leasing social européen. Dès 2027, la production espagnole ouvrira l'accès au leasing social. Idéale pour les familles cherchant un rapport prix/prestations hors normes et prêtes à anticiper la transition vers les aides maximales.",
     "notIdealFor": "Acheteurs conditionnant leur achat au leasing social : la production chinoise actuelle exclut ce dispositif. Conducteurs à très fort kilométrage autoroutier nécessitant plus de 400 km d'autonomie réelle."
   },
-  "lastUpdated": "2026-05-17",
-  "sources": [
-    "nyland",
-    "lachaineev"
-  ],
+  "lastUpdated": "2026-05-18",
+  "sources": ["nyland", "lachaineev"],
   "imageCredit": "Constructeur",
   "availability": "upcoming"
 }

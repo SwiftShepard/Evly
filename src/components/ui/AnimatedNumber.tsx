@@ -15,7 +15,7 @@ export default function AnimatedNumber({
   value,
   format,
   durationMs = 500,
-  fallback = "—",
+  fallback = "n/c",
 }: Props) {
   const [displayValue, setDisplayValue] = useState(value);
   const targetValue = useRef(value);

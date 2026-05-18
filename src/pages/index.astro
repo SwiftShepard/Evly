@@ -16,7 +16,7 @@ const totalVehicles = vehicles.length;
 const totalTests = vehicles.reduce((sum, v) => sum + v.rangeTests.length, 0);
 const totalConfigs = vehicles.reduce((sum, v) => sum + v.configurations.length, 0);
 
-// "À la une" — 2 catégories de véhicules pour scroll rows
+// "À la une", 2 catégories de véhicules pour scroll rows
 const cheapestOf = (v: (typeof vehicles)[number]) => Math.min(...v.trims.map((t) => t.price_EUR));
 
 const leasingOfficial = vehicles
@@ -30,10 +30,10 @@ const ademeCompat = vehicles
   .slice(0, 8);
 
 const description =
-  "Evly — l'électrique mesuré. Comparateur indépendant français : tests d'autonomie réelle (Bjørn Nyland, EVKX, presse FR), dossier leasing social, advocacy consommateur. Aucune publicité, aucun lien affilié.";
+  "Evly, l'électrique mesuré. Comparateur indépendant français : tests d'autonomie réelle (Bjørn Nyland, EVKX, presse FR), dossier leasing social, advocacy consommateur. Aucune publicité, aucun lien affilié.";
 ---
 
-<BaseLayout title="Evly — l'électrique mesuré" description={description}>
+<BaseLayout title="Evly, l'électrique mesuré" description={description}>
   <div class="container-edit py-6 md:py-10">
     <BentoGrid>
 
@@ -41,7 +41,7 @@ const description =
       <Tile size="full" variant="elevated" class="md:!p-12 lg:!p-16">
         <div class="flex items-center gap-3 md:gap-4 mb-8 md:mb-12 fade-rise">
           <Wordmark size="lg" />
-          <span class="label-eyebrow hidden sm:inline">Édition 2026 — France</span>
+          <span class="label-eyebrow hidden sm:inline">Édition 2026, France</span>
         </div>
 
         <h1 class="display-1 max-w-4xl fade-rise fade-rise-delay-1">
@@ -79,7 +79,7 @@ const description =
           Trois chemins selon ton besoin.
         </h2>
         <p class="text-sm text-[var(--color-text-muted)] max-w-2xl">
-          Évly est conçu pour des recherches précises — pas pour scroller au hasard. Choisis ton entrée.
+          Évly est conçu pour des recherches précises, pas pour scroller au hasard. Choisis ton entrée.
         </p>
       </Tile>
 
@@ -105,7 +105,7 @@ const description =
           Je veux comparer 2 à 4 modèles.
         </h3>
         <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mt-auto">
-          Sélection multi-véhicules côte-à-côte. Chaque carte ajustable par batterie, finition et jantes — toutes les données sourcées et datées.
+          Sélection multi-véhicules côte-à-côte. Chaque carte ajustable par batterie, finition et jantes, toutes les données sourcées et datées.
         </p>
       </Tile>
 
@@ -122,7 +122,7 @@ const description =
         </p>
       </Tile>
 
-      {/* ═════════ À LA UNE — LIGNE 1 : LEASING OFFICIEL ═════════ */}
+      {/* ═════════ À LA UNE, LIGNE 1 : LEASING OFFICIEL ═════════ */}
       <Tile size="full" variant="default" class="!bg-transparent !border-0 !p-0 !mt-4">
         <div class="flex flex-wrap items-baseline justify-between gap-3 mb-2">
           <span class="font-mono text-xs text-[var(--color-text-faint)]">02 · À la une</span>
@@ -175,7 +175,7 @@ const description =
         </div>
       </Tile>
 
-      {/* ═════════ À LA UNE — LIGNE 2 : DEVRAIENT Y ÊTRE ═════════ */}
+      {/* ═════════ À LA UNE, LIGNE 2 : DEVRAIENT Y ÊTRE ═════════ */}
       <Tile size="full" variant="default" class="!bg-transparent !border-0 !p-0 !mt-4">
         <h2 class="font-display text-3xl md:text-4xl font-semibold tracking-[-0.015em] leading-[1.1] mb-2">
           Ils devraient y être.

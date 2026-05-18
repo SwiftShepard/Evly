@@ -1,0 +1,390 @@
+{
+  "slug": "skoda-enyaq",
+  "brand": "Skoda",
+  "model": "Enyaq",
+  "variant": "63 / 77 kWh",
+  "bodyType": "SUV",
+  "segment": "C",
+  "productionCountry": "Rép. Tchèque",
+  "assemblyPlant": "Mladá Boleslav",
+  "releaseYear": 2021,
+  "marketAvailability": "Disponible",
+  "power_kW": 250,
+  "power_hp": 340,
+  "torque_Nm": 545,
+  "drivetrain": "AWD",
+  "motors": 2,
+  "acceleration_0_100_s": 5.4,
+  "topSpeed_kmh": 180,
+  "usableCapacity_kWh": 77,
+  "grossCapacity_kWh": 82,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2200,
+  "wltp_max_km": 580,
+  "wltp_min_km": 423,
+  "realRange": {
+    "mixed_km": 445,
+    "highway_130_km": 290,
+    "urban_km": 535,
+    "winter_minus5_km": 345,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 15.5,
+  "consumption_highway_kWh_per_100km": 20,
+  "consumption_winter_kWh_per_100km": 18.5,
+  "dragCoefficient_Cx": 0.257,
+  "chargingDC": {
+    "peakPower_kW": 175,
+    "time_10_80_min": 28,
+    "kWh_added_30min": 80,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 8
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 161
+    },
+    {
+      "soc": 10,
+      "power": 175
+    },
+    {
+      "soc": 20,
+      "power": 175
+    },
+    {
+      "soc": 50,
+      "power": 124
+    },
+    {
+      "soc": 80,
+      "power": 56
+    },
+    {
+      "soc": 100,
+      "power": 11
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4658,
+  "width_mm": 1879,
+  "height_mm": 1622,
+  "wheelbase_mm": 2765,
+  "trunkCapacity_L": 585,
+  "trunkCapacityFolded_L": 1710,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "60 (132 kW RWD) 63 kWh",
+      "price_EUR": 37200,
+      "batteryUsed": "63 kWh",
+      "equipmentHighlights": [
+        "132 kW · 180 ch · WLTP 423 km",
+        "DC 145 kW"
+      ]
+    },
+    {
+      "name": "85 (210 kW RWD) 77 kWh",
+      "price_EUR": 41700,
+      "batteryUsed": "77 kWh",
+      "equipmentHighlights": [
+        "210 kW · 286 ch · WLTP 580 km",
+        "DC 175 kW · pompe à chaleur"
+      ]
+    },
+    {
+      "name": "85x (210 kW AWD) 77 kWh",
+      "price_EUR": 45200,
+      "batteryUsed": "77 kWh",
+      "equipmentHighlights": [
+        "AWD 210 kW · 286 ch",
+        "WLTP 553 km (réduit par AWD)"
+      ]
+    },
+    {
+      "name": "vRS (250 kW AWD) 77 kWh",
+      "price_EUR": 55900,
+      "batteryUsed": "77 kWh",
+      "equipmentHighlights": [
+        "AWD 250 kW · 340 ch · 0-100 en 5,4 s",
+        "Châssis sport DCC"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 4000
+    }
+  ],
+  "configurations": [
+    {
+      "id": "skoda-enyaq-60-132-kw-rwd--63",
+      "label": "60 (132 kW RWD) · 63 kWh",
+      "battery": "standard",
+      "trim": "60 (132 kW RWD)",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 37200,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 423,
+      "wltp_consumption_kWh_100km": 16,
+      "realRange": {
+        "mixed_km": 320,
+        "highway_130_km": 210,
+        "urban_km": 385,
+        "winter_minus5_km": 250,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 145,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 60,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 133
+        },
+        {
+          "soc": 10,
+          "power": 145
+        },
+        {
+          "soc": 20,
+          "power": 145
+        },
+        {
+          "soc": 50,
+          "power": 103
+        },
+        {
+          "soc": 80,
+          "power": 46
+        },
+        {
+          "soc": 100,
+          "power": 9
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "skoda-enyaq-85-210-kw-rwd--77",
+      "label": "85 (210 kW RWD) · 77 kWh",
+      "battery": "long-range",
+      "trim": "85 (210 kW RWD)",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 41700,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 580,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": {
+        "mixed_km": 445,
+        "highway_130_km": 290,
+        "urban_km": 535,
+        "winter_minus5_km": 345,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 175,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 80,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 161
+        },
+        {
+          "soc": 10,
+          "power": 175
+        },
+        {
+          "soc": 20,
+          "power": 175
+        },
+        {
+          "soc": 50,
+          "power": 124
+        },
+        {
+          "soc": 80,
+          "power": 56
+        },
+        {
+          "soc": 100,
+          "power": 11
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "skoda-enyaq-85x-210-kw-awd--77",
+      "label": "85x (210 kW AWD) · 77 kWh",
+      "battery": "long-range",
+      "trim": "85x (210 kW AWD)",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 45200,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 580,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": {
+        "mixed_km": 445,
+        "highway_130_km": 290,
+        "urban_km": 535,
+        "winter_minus5_km": 345,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 175,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 80,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 161
+        },
+        {
+          "soc": 10,
+          "power": 175
+        },
+        {
+          "soc": 20,
+          "power": 175
+        },
+        {
+          "soc": 50,
+          "power": 124
+        },
+        {
+          "soc": 80,
+          "power": 56
+        },
+        {
+          "soc": 100,
+          "power": 11
+        }
+      ],
+      "availability": "available",
+      "notes": "Transmission intégrale 4Drive"
+    },
+    {
+      "id": "skoda-enyaq-vrs-250-kw-awd--77",
+      "label": "vRS (250 kW AWD) · 77 kWh",
+      "battery": "long-range",
+      "trim": "vRS (250 kW AWD)",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 55900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 580,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": {
+        "mixed_km": 445,
+        "highway_130_km": 290,
+        "urban_km": 535,
+        "winter_minus5_km": 345,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 175,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 80,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 161
+        },
+        {
+          "soc": 10,
+          "power": 175
+        },
+        {
+          "soc": 20,
+          "power": 175
+        },
+        {
+          "soc": 50,
+          "power": 124
+        },
+        {
+          "soc": 80,
+          "power": 56
+        },
+        {
+          "soc": 100,
+          "power": 11
+        }
+      ],
+      "availability": "available",
+      "notes": "Transmission intégrale 4Drive"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "confort",
+      "label": "Coffre 585 L · habitabilité de référence dans le segment"
+    },
+    {
+      "category": "technologie",
+      "label": "DC 175 kW (82 kWh) · pompe à chaleur de série"
+    },
+    {
+      "category": "securite",
+      "label": "Travel Assist niveau 2 · 9 airbags"
+    },
+    {
+      "category": "design",
+      "label": "Calandre Crystal Face lumineuse (option)"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Production tchèque (Mladá Boleslav) → éligible Prime CEE VE",
+      "Espace intérieur et coffre parmi les meilleurs du segment SUV C"
+    ],
+    "weaknesses": [
+      "Logiciel ID.Software hérité du groupe VW, historiquement perfectible",
+      "vRS dépasse largement le plafond Prime CEE VE (55 900 €)"
+    ],
+    "idealUserProfile": "Famille cherchant un SUV électrique polyvalent à grand coffre, avec un rapport prestations/prix solide et une fabrication européenne.",
+    "notIdealFor": "Acheteur recherchant un design tranché ou un infodivertissement irréprochable."
+  },
+  "lastUpdated": "2026-05-18",
+  "sources": [
+    "nyland",
+    "lachaineev"
+  ],
+  "imageCredit": "Constructeur"
+}

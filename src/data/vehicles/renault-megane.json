@@ -2,13 +2,13 @@
   "slug": "renault-megane",
   "brand": "Renault",
   "model": "Megane E-Tech",
-  "variant": "Long Range · EV60",
+  "variant": "EV60",
   "bodyType": "Hatchback 5 portes",
-  "segment": "C — berline compacte",
+  "segment": "C",
   "productionCountry": "France",
-  "assemblyPlant": "Douai (ElectriCity)",
-  "releaseYear": 2022,
-  "marketAvailability": "Disponible en France",
+  "assemblyPlant": "Douai",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
   "power_kW": 160,
   "power_hp": 220,
   "torque_Nm": 300,
@@ -22,29 +22,29 @@
   "architecture_V": 400,
   "mass_kg": 1636,
   "wltp_max_km": 470,
-  "wltp_min_km": 280,
+  "wltp_min_km": 450,
   "realRange": {
     "mixed_km": 390,
     "highway_130_km": 250,
-    "highway_120_km": 280,
+    "highway_120_km": 274,
     "urban_km": 480,
     "winter_minus5_km": 310,
     "confidence": "bjorn_nyland"
   },
   "consumption_mixed_kWh_per_100km": 15.5,
-  "consumption_highway_kWh_per_100km": 22,
+  "consumption_highway_kWh_per_100km": 22.0,
   "consumption_winter_kWh_per_100km": 19.5,
   "dragCoefficient_Cx": 0.29,
   "chargingDC": {
     "peakPower_kW": 130,
     "time_10_80_min": 30,
-    "kWh_added_30min": 55,
+    "kWh_added_30min": 45,
     "confidence": "tested"
   },
   "chargingAC": {
     "onboardCharger_kW": 22,
     "phases": 3,
-    "time_0_100_h": 3
+    "time_0_100_h": 3.1
   },
   "plugAndCharge": false,
   "v2l": false,
@@ -53,51 +53,23 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 108
-    },
-    {
-      "soc": 5,
-      "power": 124
+      "power": 100
     },
     {
       "soc": 10,
       "power": 130
     },
     {
-      "soc": 20,
-      "power": 130
-    },
-    {
-      "soc": 30,
-      "power": 125
-    },
-    {
-      "soc": 40,
-      "power": 112
-    },
-    {
       "soc": 50,
-      "power": 90
-    },
-    {
-      "soc": 60,
-      "power": 68
-    },
-    {
-      "soc": 70,
-      "power": 44
+      "power": 100
     },
     {
       "soc": 80,
-      "power": 22
-    },
-    {
-      "soc": 90,
-      "power": 11
+      "power": 50
     },
     {
       "soc": 100,
-      "power": 5
+      "power": 10
     }
   ],
   "rangeTests": [
@@ -112,7 +84,7 @@
       "tyreModel": null,
       "protocol": "nyland",
       "videoUrl": null,
-      "notes": "Mégane E-Tech EV60. Test Nyland estival à 90 km/h."
+      "notes": "Test Nyland estival"
     },
     {
       "sourceId": "nyland",
@@ -125,7 +97,7 @@
       "tyreModel": null,
       "protocol": "nyland",
       "videoUrl": null,
-      "notes": "Mégane E-Tech EV60. Test Nyland autoroutier à 120 km/h."
+      "notes": "Test Nyland 120km/h"
     }
   ],
   "thousandKmChallenge": null,
@@ -138,234 +110,50 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Equilibre (EV40)",
-      "price_EUR": 35490,
-      "batteryUsed": "40 kWh",
-      "equipmentHighlights": [
-        "Jantes 18\" alliage",
-        "Écran OpenR 9\" avec navigation connectée",
-        "Apple CarPlay / Android Auto sans fil",
-        "Régulateur de vitesse adaptatif",
-        "Caméra de recul"
-      ]
-    },
-    {
-      "name": "Techno (EV40)",
-      "price_EUR": 38990,
-      "batteryUsed": "40 kWh",
-      "equipmentHighlights": [
-        "Jantes 20\" design Mégane",
-        "Écran OpenR Link 12\" avec Google intégré",
-        "Sièges avant chauffants",
-        "Chargeur à induction smartphone",
-        "Pack Drive Assist Plus : angle mort actif, aide parking"
-      ]
-    },
-    {
-      "name": "Techno (EV60)",
-      "price_EUR": 42490,
+      "name": "Equilibre",
+      "price_EUR": 38000,
       "batteryUsed": "60 kWh",
       "equipmentHighlights": [
-        "Moteur 220 ch — 0-100 km/h en 7,4 s",
-        "DC 130 kW — 30 min de 10 à 80 %",
-        "Chargeur AC 22 kW en option",
-        "Pompe à chaleur en option",
-        "Éclairage ambiance intérieur"
+        "Jantes 18\"",
+        "Ecran 9\""
       ]
     },
     {
-      "name": "Iconic (EV60)",
-      "price_EUR": 46990,
+      "name": "Techno",
+      "price_EUR": 40000,
       "batteryUsed": "60 kWh",
       "equipmentHighlights": [
-        "Sellerie cuir/Alcantara",
-        "Toit ouvrant panoramique",
-        "Système audio Harman Kardon",
-        "Affichage tête haute couleur",
-        "Jantes 20\" exclusive Iconic"
+        "Jantes 20\"",
+        "Ecran 12\""
       ]
     }
   ],
-  "leasingSocialEligible": true,
+  "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Prime CEE VE",
+      "label": "Bonus Écologique",
       "amount_EUR": 4000
     }
   ],
   "configurations": [
     {
-      "id": "std-equilibre-ev40-18",
-      "label": "Standard · Equilibre · EV40 · 18\"",
+      "id": "renault-megane-equilibre",
+      "label": "Megane E-Tech Equilibre",
       "battery": "standard",
-      "trim": "Equilibre (EV40)",
+      "trim": "Equilibre",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 35490,
+      "price_EUR": 38000,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 300,
-      "wltp_consumption_kWh_100km": 15.2,
-      "realRange": {
-        "mixed_km": 255,
-        "highway_130_km": 170,
-        "urban_km": 320,
-        "winter_minus5_km": 205,
-        "confidence": "estimated"
-      },
-      "rangeTests": [],
-      "chargingDC_peak_kW": 85,
-      "chargingDC_10_80_min": 29,
-      "chargingDC_kWh_30min": 28,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 65
-        },
-        {
-          "soc": 5,
-          "power": 78
-        },
-        {
-          "soc": 10,
-          "power": 85
-        },
-        {
-          "soc": 20,
-          "power": 80
-        },
-        {
-          "soc": 30,
-          "power": 70
-        },
-        {
-          "soc": 40,
-          "power": 58
-        },
-        {
-          "soc": 50,
-          "power": 44
-        },
-        {
-          "soc": 60,
-          "power": 32
-        },
-        {
-          "soc": 70,
-          "power": 20
-        },
-        {
-          "soc": 80,
-          "power": 12
-        },
-        {
-          "soc": 90,
-          "power": 7
-        },
-        {
-          "soc": 100,
-          "power": 3
-        }
-      ],
-      "availability": "available",
-      "notes": "Moteur 96 kW (130 ch), couple 250 Nm, 0-100 en ~10,5 s. Batterie ~38 kWh utiles (EV40). DC 85 kW. Jantes 18\" = meilleure autonomie."
-    },
-    {
-      "id": "std-techno-ev40-20",
-      "label": "Standard · Techno · EV40 · 20\"",
-      "battery": "standard",
-      "trim": "Techno (EV40)",
-      "wheelSize_inches": 20,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 38990,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 280,
-      "wltp_consumption_kWh_100km": 16,
-      "realRange": {
-        "mixed_km": 240,
-        "highway_130_km": 158,
-        "urban_km": 305,
-        "winter_minus5_km": 192,
-        "confidence": "estimated"
-      },
-      "rangeTests": [],
-      "chargingDC_peak_kW": 85,
-      "chargingDC_10_80_min": 29,
-      "chargingDC_kWh_30min": 28,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 65
-        },
-        {
-          "soc": 5,
-          "power": 78
-        },
-        {
-          "soc": 10,
-          "power": 85
-        },
-        {
-          "soc": 20,
-          "power": 80
-        },
-        {
-          "soc": 30,
-          "power": 70
-        },
-        {
-          "soc": 40,
-          "power": 58
-        },
-        {
-          "soc": 50,
-          "power": 44
-        },
-        {
-          "soc": 60,
-          "power": 32
-        },
-        {
-          "soc": 70,
-          "power": 20
-        },
-        {
-          "soc": 80,
-          "power": 12
-        },
-        {
-          "soc": 90,
-          "power": 7
-        },
-        {
-          "soc": 100,
-          "power": 3
-        }
-      ],
-      "availability": "available",
-      "notes": "Moteur 96 kW (130 ch). Finition supérieure : écran 12\", sièges chauffants, induction. Jantes 20\" → -7 % d'autonomie."
-    },
-    {
-      "id": "lr-techno-ev60-20",
-      "label": "Long Range · Techno · EV60 · 20\"",
-      "battery": "long-range",
-      "trim": "Techno (EV60)",
-      "wheelSize_inches": 20,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 42490,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 450,
+      "wltp_km": 470,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
         "mixed_km": 390,
         "highway_130_km": 250,
-        "highway_120_km": 280,
+        "highway_120_km": 274,
         "urban_km": 480,
         "winter_minus5_km": 310,
         "confidence": "bjorn_nyland"
@@ -382,7 +170,7 @@
           "tyreModel": null,
           "protocol": "nyland",
           "videoUrl": null,
-          "notes": "Mégane E-Tech EV60 Techno 20\". Test Nyland estival."
+          "notes": "Test Nyland estival"
         },
         {
           "sourceId": "nyland",
@@ -395,93 +183,113 @@
           "tyreModel": null,
           "protocol": "nyland",
           "videoUrl": null,
-          "notes": "Mégane E-Tech EV60. Test Nyland 120 km/h."
+          "notes": "Test Nyland 120km/h"
         }
       ],
       "chargingDC_peak_kW": 130,
       "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 55,
+      "chargingDC_kWh_30min": 45,
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 108
-        },
-        {
-          "soc": 5,
-          "power": 124
+          "power": 100
         },
         {
           "soc": 10,
           "power": 130
         },
         {
-          "soc": 20,
-          "power": 130
-        },
-        {
-          "soc": 30,
-          "power": 125
-        },
-        {
-          "soc": 40,
-          "power": 112
-        },
-        {
           "soc": 50,
-          "power": 90
-        },
-        {
-          "soc": 60,
-          "power": 68
-        },
-        {
-          "soc": 70,
-          "power": 44
+          "power": 100
         },
         {
           "soc": 80,
-          "power": 22
-        },
-        {
-          "soc": 90,
-          "power": 11
+          "power": 50
         },
         {
           "soc": 100,
-          "power": 5
+          "power": 10
         }
       ],
       "availability": "available",
-      "notes": "Moteur 160 kW (220 ch), couple 300 Nm, 0-100 en 7,4 s. Batterie 60 kWh utiles. DC 130 kW — données Nyland confirmées."
+      "notes": null
     },
     {
-      "id": "lr-iconic-ev60-20",
-      "label": "Long Range · Iconic · EV60 · 20\"",
-      "battery": "long-range",
-      "trim": "Iconic (EV60)",
-      "wheelSize_inches": 20,
+      "id": "renault-megane-techno",
+      "label": "Megane E-Tech Techno",
+      "battery": "standard",
+      "trim": "Techno",
+      "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 46990,
+      "price_EUR": 40000,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 450,
+      "wltp_km": 470,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
         "mixed_km": 390,
         "highway_130_km": 250,
-        "highway_120_km": 280,
+        "highway_120_km": 274,
         "urban_km": 480,
         "winter_minus5_km": 310,
         "confidence": "bjorn_nyland"
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": "2022-08",
+          "speed_kmh": 90,
+          "range_km": 405,
+          "consumption_kWh_100km": 14.8,
+          "temperature_C": 21,
+          "wheelSize_inches": 20,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Test Nyland estival"
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": "2022-08",
+          "speed_kmh": 120,
+          "range_km": 280,
+          "consumption_kWh_100km": 21.4,
+          "temperature_C": 21,
+          "wheelSize_inches": 20,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Test Nyland 120km/h"
+        }
+      ],
       "chargingDC_peak_kW": 130,
       "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 55,
-      "chargingCurve": null,
+      "chargingDC_kWh_30min": 45,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
       "availability": "available",
-      "notes": "Sommet de gamme Mégane E-Tech. Cuir/Alcantara, toit ouvrant, Harman Kardon, affichage tête haute. Mêmes performances que Techno EV60."
+      "notes": null
     }
   ],
   "warranty": {
@@ -493,52 +301,38 @@
   },
   "keyFeatures": [
     {
-      "category": "technologie",
-      "label": "Chargeur AC 22 kW en option — recharge complète en 3h à domicile ou sur borne publique"
+      "category": "confort",
+      "label": "Sièges confort de haute qualité"
     },
     {
       "category": "technologie",
-      "label": "DC 130 kW sur EV60 — 55 kWh en 30 min, 10-80 % en 30 min sur autoroute"
-    },
-    {
-      "category": "design",
-      "label": "Fabriquée à Douai (ElectriCity) — même usine que la R5 et le R4, bilan carbone optimisé"
+      "label": "Système d'infodivertissement avancé"
     },
     {
       "category": "securite",
-      "label": "Pack Drive Assist Plus : angle mort actif, freinage d'urgence, aide parking automatique"
+      "label": "Freinage automatique d'urgence"
     },
     {
-      "category": "confort",
-      "label": "Coffre 440 L — le plus grand du segment C compact, plancher plat sièges rabattus (1 332 L)"
-    },
-    {
-      "category": "technologie",
-      "label": "Deux tailles de batterie (EV40 / EV60) pour calibrer le budget à l'usage réel"
+      "category": "design",
+      "label": "Signature lumineuse LED distinctive"
     }
   ],
   "verdict": {
     "strengths": [
-      "EV60 : 390 km réels en mixte, 250 km à 130 km/h — autonomie suffisante pour tous les grands trajets",
-      "DC 130 kW sur EV60 : 55 kWh en 30 min — un des meilleurs de sa génération",
-      "Option chargeur AC 22 kW unique dans le segment : recharge domestique ultra-rapide en 3h",
-      "Coffre 440 L : meilleur volume du segment C compact",
-      "Fabriquée à Douai — éligible aux aides État, empreinte carbone réduite"
+      "Bon compromis prix/autonomie",
+      "Confort de suspension"
     ],
     "weaknesses": [
-      "EV40 (85 kW DC) : temps de recharge plus longs sur autoroute que l'EV60",
-      "EV40 130ch : 255 km réels en mixte, 170 km à 130 km/h — insuffisant pour les longs trajets",
-      "Pas de V2L ni V2G : en retrait de la R5 et R4 sur les fonctions bidirectionnelles",
-      "Architecture 400 V : pic à 130 kW correct mais inférieur aux 800 V coréens"
+      "Vitesse de charge rapide en retrait",
+      "Infodivertissement perfectible"
     ],
-    "idealUserProfile": "Conducteur cherchant une vraie berline compacte polyvalente avec une grande autonomie. L'EV60 à 42 490 € est le meilleur rapport performance/autonomie ; l'EV40 à 35 490 € pour les petits budgets.",
-    "notIdealFor": "Conducteur ayant besoin de V2L/V2G ou souhaitant les vitesses de charge ultra-rapides d'un 800 V."
+    "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
+    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-17",
+  "lastUpdated": "2026-05-16",
   "sources": [
     "nyland",
-    "lachaineev",
-    "renault-fr"
+    "la-chaine-ev"
   ],
-  "imageCredit": "Renault France — visuel presse 2022"
+  "imageCredit": "Constructeur"
 }

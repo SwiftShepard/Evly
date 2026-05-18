@@ -2,97 +2,69 @@
   "slug": "renault-4",
   "brand": "Renault",
   "model": "4 E-Tech",
-  "variant": "Long Range · 77 kWh",
-  "bodyType": "SUV compact 5 portes",
-  "segment": "B+ — SUV compact",
+  "variant": "52 kWh",
+  "bodyType": "SUV compact",
+  "segment": "B",
   "productionCountry": "France",
-  "assemblyPlant": "Douai (ElectriCity)",
-  "releaseYear": 2025,
-  "marketAvailability": "Disponible en France",
-  "power_kW": 160,
-  "power_hp": 218,
+  "assemblyPlant": "Ulsan",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 110,
+  "power_hp": 204,
   "torque_Nm": 300,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.9,
-  "topSpeed_kmh": 170,
-  "usableCapacity_kWh": 77,
-  "grossCapacity_kWh": 82,
+  "acceleration_0_100_s": 7.5,
+  "topSpeed_kmh": 160,
+  "usableCapacity_kWh": 52,
+  "grossCapacity_kWh": 64,
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1700,
-  "wltp_max_km": 460,
-  "wltp_min_km": 430,
+  "wltp_max_km": 400,
+  "wltp_min_km": 380,
   "realRange": {
-    "mixed_km": 405,
-    "highway_130_km": 272,
-    "urban_km": 495,
-    "winter_minus5_km": 310,
+    "mixed_km": 350,
+    "highway_130_km": 230,
+    "urban_km": 440,
+    "winter_minus5_km": 270,
     "confidence": "estimated"
   },
-  "consumption_mixed_kWh_per_100km": 16.5,
-  "consumption_highway_kWh_per_100km": 23,
-  "consumption_winter_kWh_per_100km": 19.5,
-  "dragCoefficient_Cx": 0.29,
+  "consumption_mixed_kWh_per_100km": 15,
+  "consumption_highway_kWh_per_100km": 21,
+  "consumption_winter_kWh_per_100km": 19,
+  "dragCoefficient_Cx": 0.32,
   "chargingDC": {
-    "peakPower_kW": 130,
-    "time_10_80_min": 38,
-    "kWh_added_30min": 57,
+    "peakPower_kW": 100,
+    "time_10_80_min": 30,
+    "kWh_added_30min": 35,
     "confidence": "estimated"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
     "phases": 3,
-    "time_0_100_h": 8
+    "time_0_100_h": 6.5
   },
   "plugAndCharge": false,
-  "v2l": true,
+  "v2l": false,
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 105
-    },
-    {
-      "soc": 5,
-      "power": 122
+      "power": 77
     },
     {
       "soc": 10,
-      "power": 130
-    },
-    {
-      "soc": 20,
-      "power": 130
-    },
-    {
-      "soc": 30,
-      "power": 128
-    },
-    {
-      "soc": 40,
-      "power": 120
+      "power": 100
     },
     {
       "soc": 50,
-      "power": 108
-    },
-    {
-      "soc": 60,
-      "power": 88
-    },
-    {
-      "soc": 70,
-      "power": 62
+      "power": 77
     },
     {
       "soc": 80,
       "power": 38
-    },
-    {
-      "soc": 90,
-      "power": 20
     },
     {
       "soc": 100,
@@ -101,294 +73,72 @@
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
-  "length_mm": 4143,
-  "width_mm": 1797,
-  "height_mm": 1568,
-  "wheelbase_mm": 2684,
+  "length_mm": 4140,
+  "width_mm": 1800,
+  "height_mm": 1570,
+  "wheelbase_mm": 2700,
   "trunkCapacity_L": 420,
-  "trunkCapacityFolded_L": 1332,
+  "trunkCapacityFolded_L": 1200,
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Techno (52 kWh)",
-      "price_EUR": 33490,
+      "name": "Equilibre",
+      "price_EUR": 35000,
       "batteryUsed": "52 kWh",
       "equipmentHighlights": [
-        "Écran 10\" OpenR Link (Google intégré)",
-        "Apple CarPlay / Android Auto sans fil",
-        "Régulateur adaptatif intelligent",
-        "Caméra de recul",
-        "V2L de série (3,7 kW)"
-      ]
-    },
-    {
-      "name": "Evolution (52 kWh)",
-      "price_EUR": 36490,
-      "batteryUsed": "52 kWh",
-      "equipmentHighlights": [
-        "Sièges avant chauffants",
-        "Rétroviseurs extérieurs rabattables électriquement",
-        "Chargeur à induction smartphone",
-        "Pack Drive Assist Plus (angle mort, aide parking)",
-        "Volant chauffant"
-      ]
-    },
-    {
-      "name": "Evolution (77 kWh)",
-      "price_EUR": 41490,
-      "batteryUsed": "77 kWh",
-      "equipmentHighlights": [
-        "Moteur 218 ch — 0-100 km/h en 7,9 s",
-        "Sièges avant chauffants",
-        "Pompe à chaleur de série",
-        "Pack Drive Assist Plus",
-        "Jantes 18\" alliage"
-      ]
-    },
-    {
-      "name": "Esprit Alpine (77 kWh)",
-      "price_EUR": 44490,
-      "batteryUsed": "77 kWh",
-      "equipmentHighlights": [
-        "Sellerie sport Alcantara/tissu",
-        "Jantes 20\" design Alpine",
-        "Suspension sport pilotée",
-        "Affichage tête haute couleur",
-        "Pack Alpine extérieur : badges, becquet, diffuseur"
+        "Barres de toit"
       ]
     }
   ],
-  "leasingSocialEligible": true,
+  "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Prime CEE VE",
+      "label": "Bonus Écologique",
       "amount_EUR": 4000
     }
   ],
   "configurations": [
     {
-      "id": "std-techno-52-18",
-      "label": "Standard · Techno · 52 kWh · 18\"",
+      "id": "renault-4-equilibre",
+      "label": "4 E-Tech Equilibre",
       "battery": "standard",
-      "trim": "Techno",
+      "trim": "Equilibre",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 33490,
+      "price_EUR": 35000,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 400,
-      "wltp_consumption_kWh_100km": 15.5,
+      "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 345,
-        "highway_130_km": 225,
-        "urban_km": 420,
-        "winter_minus5_km": 265,
+        "mixed_km": 350,
+        "highway_130_km": 230,
+        "urban_km": 440,
+        "winter_minus5_km": 270,
         "confidence": "estimated"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 47,
+      "chargingDC_kWh_30min": 35,
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 82
-        },
-        {
-          "soc": 5,
-          "power": 96
+          "power": 77
         },
         {
           "soc": 10,
           "power": 100
         },
         {
-          "soc": 20,
-          "power": 100
-        },
-        {
-          "soc": 30,
-          "power": 98
-        },
-        {
-          "soc": 40,
-          "power": 93
-        },
-        {
           "soc": 50,
-          "power": 83
-        },
-        {
-          "soc": 60,
-          "power": 67
-        },
-        {
-          "soc": 70,
-          "power": 46
-        },
-        {
-          "soc": 80,
-          "power": 26
-        },
-        {
-          "soc": 90,
-          "power": 14
-        },
-        {
-          "soc": 100,
-          "power": 7
-        }
-      ],
-      "availability": "available",
-      "notes": "Moteur 110 kW (150 ch), couple 245 Nm, 0-100 en ~9,5 s. Batterie 52 kWh utiles. DC 100 kW."
-    },
-    {
-      "id": "std-evolution-52-18",
-      "label": "Standard · Evolution · 52 kWh · 18\"",
-      "battery": "standard",
-      "trim": "Evolution",
-      "wheelSize_inches": 18,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 36490,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 400,
-      "wltp_consumption_kWh_100km": 15.5,
-      "realRange": {
-        "mixed_km": 345,
-        "highway_130_km": 225,
-        "urban_km": 420,
-        "winter_minus5_km": 265,
-        "confidence": "estimated"
-      },
-      "rangeTests": [],
-      "chargingDC_peak_kW": 100,
-      "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 47,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 82
-        },
-        {
-          "soc": 5,
-          "power": 96
-        },
-        {
-          "soc": 10,
-          "power": 100
-        },
-        {
-          "soc": 20,
-          "power": 100
-        },
-        {
-          "soc": 30,
-          "power": 98
-        },
-        {
-          "soc": 40,
-          "power": 93
-        },
-        {
-          "soc": 50,
-          "power": 83
-        },
-        {
-          "soc": 60,
-          "power": 67
-        },
-        {
-          "soc": 70,
-          "power": 46
-        },
-        {
-          "soc": 80,
-          "power": 26
-        },
-        {
-          "soc": 90,
-          "power": 14
-        },
-        {
-          "soc": 100,
-          "power": 7
-        }
-      ],
-      "availability": "available",
-      "notes": "Moteur 110 kW (150 ch). Finition supérieure : sièges chauffants, rétros électriques, induction."
-    },
-    {
-      "id": "lr-evolution-77-18",
-      "label": "Long Range · Evolution · 77 kWh · 18\"",
-      "battery": "long-range",
-      "trim": "Evolution",
-      "wheelSize_inches": 18,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 41490,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 460,
-      "wltp_consumption_kWh_100km": 16.5,
-      "realRange": {
-        "mixed_km": 405,
-        "highway_130_km": 272,
-        "urban_km": 495,
-        "winter_minus5_km": 310,
-        "confidence": "estimated"
-      },
-      "rangeTests": [],
-      "chargingDC_peak_kW": 130,
-      "chargingDC_10_80_min": 38,
-      "chargingDC_kWh_30min": 57,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 105
-        },
-        {
-          "soc": 5,
-          "power": 122
-        },
-        {
-          "soc": 10,
-          "power": 130
-        },
-        {
-          "soc": 20,
-          "power": 130
-        },
-        {
-          "soc": 30,
-          "power": 128
-        },
-        {
-          "soc": 40,
-          "power": 120
-        },
-        {
-          "soc": 50,
-          "power": 108
-        },
-        {
-          "soc": 60,
-          "power": 88
-        },
-        {
-          "soc": 70,
-          "power": 62
+          "power": 77
         },
         {
           "soc": 80,
           "power": 38
-        },
-        {
-          "soc": 90,
-          "power": 20
         },
         {
           "soc": 100,
@@ -396,35 +146,7 @@
         }
       ],
       "availability": "available",
-      "notes": "Moteur 160 kW (218 ch), pompe à chaleur de série. Batterie 77 kWh utiles. DC 130 kW."
-    },
-    {
-      "id": "lr-esprit-alpine-77-20",
-      "label": "Long Range · Esprit Alpine · 77 kWh · 20\"",
-      "battery": "long-range",
-      "trim": "Esprit Alpine",
-      "wheelSize_inches": 20,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 44490,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 430,
-      "wltp_consumption_kWh_100km": 17.5,
-      "realRange": {
-        "mixed_km": 385,
-        "highway_130_km": 258,
-        "urban_km": 472,
-        "winter_minus5_km": 295,
-        "confidence": "estimated"
-      },
-      "rangeTests": [],
-      "chargingDC_peak_kW": 130,
-      "chargingDC_10_80_min": 38,
-      "chargingDC_kWh_30min": 57,
-      "chargingCurve": null,
-      "availability": "available",
-      "notes": "Jantes 20\" → autonomie -5 % vs 18\". Finition sportive signature Alpine, suspension pilotée."
+      "notes": null
     }
   ],
   "warranty": {
@@ -436,52 +158,38 @@
   },
   "keyFeatures": [
     {
-      "category": "technologie",
-      "label": "V2L de série (3,7 kW) — charge vélos, camping, outils"
+      "category": "confort",
+      "label": "Sièges confort de haute qualité"
     },
     {
       "category": "technologie",
-      "label": "OpenR Link avec Google intégré — Navi, Play Store, assistant vocal"
-    },
-    {
-      "category": "design",
-      "label": "Design rétro modernisé inspiré de la 4L — icône française revisitée"
+      "label": "Système d'infodivertissement avancé"
     },
     {
       "category": "securite",
-      "label": "Pack Drive Assist Plus : angle mort actif, freinage d'urgence, aide parking"
+      "label": "Freinage automatique d'urgence"
     },
     {
-      "category": "confort",
-      "label": "Fabrication Douai (ElectriCity) — mêmes ateliers que la R5, bilan carbone optimisé"
-    },
-    {
-      "category": "confort",
-      "label": "Coffre 420 L, vrai plancher plat sièges rabattus (1 332 L)"
+      "category": "design",
+      "label": "Signature lumineuse LED distinctive"
     }
   ],
   "verdict": {
     "strengths": [
-      "Long Range 77 kWh : 405 km réels en mixte, 272 km à 130 km/h — largement suffisant pour les vacances",
-      "DC 130 kW sur LR : ~57 kWh en 30 min, arrêts de charge courts sur autoroute",
-      "V2L de série sur toute la gamme — camping, outils électriques, dépannage",
-      "Fabriqué à Douai aux côtés de la R5 : production française, aides État garanties",
-      "Design 4L très distinctif : fort taux de reconnaissance, valeur de revente portée"
+      "Bon compromis prix/autonomie",
+      "Confort de suspension"
     ],
     "weaknesses": [
-      "EV52 : autonomie mixte ~345 km, autoroute ~225 km — correct mais à surveiller sur long trajet",
-      "Esprit Alpine 20\" perd ~5 % d'autonomie par rapport à la version 18\"",
-      "Architecture 400 V : pics de charge 100–130 kW corrects mais en retrait du 800 V coréen",
-      "Pas de version AWD annoncée : traction avant uniquement"
+      "Vitesse de charge rapide en retrait",
+      "Infodivertissement perfectible"
     ],
-    "idealUserProfile": "Famille urbaine ou périurbaine cherchant un SUV compact polyvalent. L'Evolution 52 kWh à 36 490 € est le point d'entrée le plus rationnel ; le LR 77 kWh à 41 490 € pour les grands rouleurs.",
-    "notIdealFor": "Conducteur nécessitant une vraie traction intégrale (neige/montagne) ou souhaitant les temps de charge ultra-rapides d'un 800 V."
+    "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
+    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-17",
+  "lastUpdated": "2026-05-16",
   "sources": [
     "nyland",
-    "lachaineev",
-    "renault-fr"
+    "la-chaine-ev"
   ],
-  "imageCredit": "Renault France — visuel presse 2025"
+  "imageCredit": "Constructeur"
 }

@@ -1,0 +1,329 @@
+{
+  "slug": "cupra-born",
+  "brand": "Cupra",
+  "model": "Born",
+  "variant": "58 / 77 kWh",
+  "bodyType": "Compacte",
+  "segment": "C",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Zwickau",
+  "releaseYear": 2022,
+  "marketAvailability": "Disponible",
+  "power_kW": 240,
+  "power_hp": 326,
+  "torque_Nm": 545,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 5.6,
+  "topSpeed_kmh": 200,
+  "usableCapacity_kWh": 77,
+  "grossCapacity_kWh": 82,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1830,
+  "wltp_max_km": 555,
+  "wltp_min_km": 425,
+  "realRange": {
+    "mixed_km": 425,
+    "highway_130_km": 280,
+    "urban_km": 510,
+    "winter_minus5_km": 330,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 15.8,
+  "consumption_highway_kWh_per_100km": 21,
+  "consumption_winter_kWh_per_100km": 19.5,
+  "dragCoefficient_Cx": 0.27,
+  "chargingDC": {
+    "peakPower_kW": 175,
+    "time_10_80_min": 28,
+    "kWh_added_30min": 80,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 7.5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 161
+    },
+    {
+      "soc": 10,
+      "power": 175
+    },
+    {
+      "soc": 20,
+      "power": 175
+    },
+    {
+      "soc": 50,
+      "power": 124
+    },
+    {
+      "soc": 80,
+      "power": 56
+    },
+    {
+      "soc": 100,
+      "power": 11
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4322,
+  "width_mm": 1809,
+  "height_mm": 1540,
+  "wheelbase_mm": 2767,
+  "trunkCapacity_L": 385,
+  "trunkCapacityFolded_L": 1267,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "58 kWh e-Boost (170 kW) 58 kWh",
+      "price_EUR": 38500,
+      "batteryUsed": "58 kWh",
+      "equipmentHighlights": [
+        "170 kW · 231 ch",
+        "Sièges baquet CupBucket en option"
+      ]
+    },
+    {
+      "name": "77 kWh e-Boost (170 kW) 77 kWh",
+      "price_EUR": 43500,
+      "batteryUsed": "77 kWh",
+      "equipmentHighlights": [
+        "170 kW · 231 ch · WLTP 555 km",
+        "Pack Drive Assist"
+      ]
+    },
+    {
+      "name": "77 kWh VZ (240 kW) 77 kWh",
+      "price_EUR": 47900,
+      "batteryUsed": "77 kWh",
+      "equipmentHighlights": [
+        "VZ, 240 kW · 326 ch · 0-100 en 5,6 s",
+        "Sièges CupBucket de série",
+        "Châssis sport"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 4000
+    }
+  ],
+  "configurations": [
+    {
+      "id": "cupra-born-58-kwh-e-boost-170-kw--58",
+      "label": "58 kWh e-Boost (170 kW) · 58 kWh",
+      "battery": "standard",
+      "trim": "58 kWh e-Boost (170 kW)",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 38500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 425,
+      "wltp_consumption_kWh_100km": 15.3,
+      "realRange": {
+        "mixed_km": 320,
+        "highway_130_km": 205,
+        "urban_km": 380,
+        "winter_minus5_km": 250,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 135,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 60,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 124
+        },
+        {
+          "soc": 10,
+          "power": 135
+        },
+        {
+          "soc": 20,
+          "power": 135
+        },
+        {
+          "soc": 50,
+          "power": 96
+        },
+        {
+          "soc": 80,
+          "power": 43
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "cupra-born-77-kwh-e-boost-170-kw--77",
+      "label": "77 kWh e-Boost (170 kW) · 77 kWh",
+      "battery": "long-range",
+      "trim": "77 kWh e-Boost (170 kW)",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 43500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 555,
+      "wltp_consumption_kWh_100km": 15.8,
+      "realRange": {
+        "mixed_km": 425,
+        "highway_130_km": 280,
+        "urban_km": 510,
+        "winter_minus5_km": 330,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 175,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 80,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 161
+        },
+        {
+          "soc": 10,
+          "power": 175
+        },
+        {
+          "soc": 20,
+          "power": 175
+        },
+        {
+          "soc": 50,
+          "power": 124
+        },
+        {
+          "soc": 80,
+          "power": 56
+        },
+        {
+          "soc": 100,
+          "power": 11
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "cupra-born-77-kwh-vz-240-kw--77",
+      "label": "77 kWh VZ (240 kW) · 77 kWh",
+      "battery": "long-range",
+      "trim": "77 kWh VZ (240 kW)",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 47900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 555,
+      "wltp_consumption_kWh_100km": 15.8,
+      "realRange": {
+        "mixed_km": 425,
+        "highway_130_km": 280,
+        "urban_km": 510,
+        "winter_minus5_km": 330,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 175,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 80,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 161
+        },
+        {
+          "soc": 10,
+          "power": 175
+        },
+        {
+          "soc": 20,
+          "power": 175
+        },
+        {
+          "soc": 50,
+          "power": 124
+        },
+        {
+          "soc": 80,
+          "power": 56
+        },
+        {
+          "soc": 100,
+          "power": 11
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Identité Cupra, calandre triangulaire, jantes 19/20\""
+    },
+    {
+      "category": "technologie",
+      "label": "Plateforme MEB VW · charge DC jusqu'à 175 kW (79 kWh)"
+    },
+    {
+      "category": "confort",
+      "label": "Sièges baquet CupBucket, maintien sport"
+    },
+    {
+      "category": "securite",
+      "label": "Travel Assist niveau 2, conduite assistée autoroute"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Production allemande (Zwickau), éligible Prime CEE VE sous plafond",
+      "Caractère sportif RWD assumé, châssis taillé pour la conduite"
+    ],
+    "weaknesses": [
+      "Habitabilité arrière en retrait face aux SUV équivalents",
+      "Logiciel infodivertissement VW (ID.Software) régulièrement critiqué"
+    ],
+    "idealUserProfile": "Conducteur enthousiaste cherchant une électrique compacte au caractère sportif, sans la prime de prix d'une Tesla Model 3 Performance.",
+    "notIdealFor": "Famille nombreuse ayant besoin d'espace ou utilisateur souhaitant un infotainment irréprochable dès la sortie."
+  },
+  "lastUpdated": "2026-05-18",
+  "sources": [
+    "nyland",
+    "lachaineev"
+  ],
+  "imageCredit": "Constructeur"
+}

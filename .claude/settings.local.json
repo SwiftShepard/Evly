@@ -26,7 +26,12 @@
       "Bash(grep -oE \"Détecté : [^<]{1,120}\" dist/admin/index.html)",
       "Bash(find src/pages -name \"*admin*\" -o -path \"*api/admin*\")",
       "Bash(ls src/pages/api)",
-      "Bash(git rm *)"
+      "Bash(git rm *)",
+      "Bash(node scripts/add-cupra-skoda.mjs)",
+      "Bash(sort -t: -k2 -nr)",
+      "Bash(node scripts/check-emdash.mjs)",
+      "Bash(grep -rn \"Standard \\\\${\\\\|Long Range \\\\${\\\\|Long Range\\\\b\" src/components/ src/pages/)",
+      "Bash(node scripts/strip-battery-words.mjs)"
     ]
   }
 }

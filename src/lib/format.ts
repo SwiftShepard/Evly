@@ -1,5 +1,5 @@
 /**
- * Formatters FR — chiffres, prix, distances, énergie, durées.
+ * Formatters FR, chiffres, prix, distances, énergie, durées.
  * Tous renvoient des chaînes prêtes à afficher (espaces insécables compris).
  */
 
