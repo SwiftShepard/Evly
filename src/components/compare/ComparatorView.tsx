@@ -1,9 +1,10 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import type { Vehicle, VehicleConfiguration } from "@/data/schemas";
 import ComparatorCard from "./ComparatorCard";
+import ComparisonTable from "./ComparisonTable";
 import VehicleSelectModal from "./VehicleSelectModal";
 import { generateInsights, type ConfiguredCard } from "@/lib/insights";
-import { Plus, Share2, Check, LayoutGrid, Rows3 } from "lucide-react";
+import { Plus, Share2, Check, LayoutGrid, Rows3, Table2 } from "lucide-react";
 
 interface CardState {
   slug: string;
@@ -24,6 +25,7 @@ export default function ComparatorView({ vehicles }: Props) {
   const [cards, setCards] = useState<CardState[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [viewMode, setViewMode] = useState<"cards" | "table">("cards");
   const [mobileLayout, setMobileLayout] = useState<"stacked" | "side-by-side">("stacked");
   const urlThrottle = useRef<number>(0);
 
@@ -182,8 +184,39 @@ export default function ComparatorView({ vehicles }: Props) {
         </div>
 
         <div className="flex items-center gap-2">
-          {/* Mobile layout toggle */}
-          {isMobile && cards.length >= 2 && (
+          {/* View mode toggle */}
+          {cards.length >= 1 && (
+            <div
+              className="flex gap-0.5 p-0.5 rounded-lg"
+              style={{ backgroundColor: "var(--color-bg-subtle)" }}
+            >
+              {(
+                [
+                  { mode: "cards" as const, icon: <LayoutGrid size={14} />, label: "Cartes" },
+                  { mode: "table" as const, icon: <Table2 size={14} />, label: "Tableau" },
+                ]
+              ).map(({ mode, icon, label }) => (
+                <button
+                  key={mode}
+                  type="button"
+                  onClick={() => setViewMode(mode)}
+                  className="p-1.5 rounded-md transition-all duration-200"
+                  style={{
+                    backgroundColor: viewMode === mode ? "var(--color-surface-elevated)" : "transparent",
+                    color: viewMode === mode ? "var(--color-text)" : "var(--color-text-faint)",
+                    boxShadow: viewMode === mode ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
+                  }}
+                  aria-label={label}
+                  title={label}
+                >
+                  {icon}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Mobile layout toggle (cards mode only) */}
+          {viewMode === "cards" && isMobile && cards.length >= 2 && (
             <div
               className="flex gap-0.5 p-0.5 rounded-lg"
               style={{ backgroundColor: "var(--color-bg-subtle)" }}
@@ -265,96 +298,109 @@ export default function ComparatorView({ vehicles }: Props) {
         </div>
       </div>
 
-      {/* Cards Grid */}
-      <div
-        className={
-          isMobile && mobileLayout === "side-by-side"
-            ? "flex gap-4 overflow-x-auto pb-4 -mx-4 px-4"
-            : "grid gap-4"
-        }
-        style={
-          isMobile && mobileLayout === "side-by-side"
-            ? {
-                scrollSnapType: "x mandatory",
-                WebkitOverflowScrolling: "touch",
-              }
-            : {
-                gridTemplateColumns:
-                  cards.length === 0
-                    ? "1fr"
-                    : isMobile
-                      ? "1fr"
-                      : cards.length <= 2
-                        ? "repeat(2, 1fr)"
-                        : cards.length === 3
-                          ? "repeat(3, 1fr)"
-                          : "repeat(4, 1fr)",
-              }
-        }
-      >
-        {configuredCards.map((cc, index) => (
-          <ComparatorCard
-            key={`${cc.vehicle.slug}-${index}`}
-            vehicle={cc.vehicle}
-            config={cc.config}
-            onConfigChange={(configId) => changeConfig(index, configId)}
-            onRemove={() => removeVehicle(index)}
-            isMobile={isMobile}
-          />
-        ))}
+      {/* Table view */}
+      {viewMode === "table" && (
+        <ComparisonTable
+          cards={configuredCards}
+          onRemove={removeVehicle}
+          onConfigChange={changeConfig}
+          onAdd={() => setShowModal(true)}
+          maxCards={MAX_CARDS}
+        />
+      )}
 
-        {/* Add card placeholder */}
-        {cards.length < MAX_CARDS && (
-          <button
-            type="button"
-            onClick={() => setShowModal(true)}
-            className="flex flex-col items-center justify-center gap-3 rounded-2xl transition-all duration-300 group min-h-[200px]"
-            style={{
-              border: "1.5px dashed var(--color-border-strong)",
-              backgroundColor: "transparent",
-              cursor: "pointer",
-              minWidth: isMobile && mobileLayout === "side-by-side" ? "300px" : undefined,
-              scrollSnapAlign:
-                isMobile && mobileLayout === "side-by-side" ? "center" : undefined,
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "var(--color-accent)";
-              e.currentTarget.style.backgroundColor = "var(--color-bg-subtle)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "var(--color-border-strong)";
-              e.currentTarget.style.backgroundColor = "transparent";
-            }}
-            aria-label="Ajouter un véhicule au comparatif"
-          >
-            <div
-              className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300"
+      {/* Cards Grid */}
+      {viewMode === "cards" && (
+        <div
+          className={
+            isMobile && mobileLayout === "side-by-side"
+              ? "flex gap-4 overflow-x-auto pb-4 -mx-4 px-4"
+              : "grid gap-4"
+          }
+          style={
+            isMobile && mobileLayout === "side-by-side"
+              ? {
+                  scrollSnapType: "x mandatory",
+                  WebkitOverflowScrolling: "touch",
+                }
+              : {
+                  gridTemplateColumns:
+                    cards.length === 0
+                      ? "1fr"
+                      : isMobile
+                        ? "1fr"
+                        : cards.length <= 2
+                          ? "repeat(2, 1fr)"
+                          : cards.length === 3
+                            ? "repeat(3, 1fr)"
+                            : "repeat(4, 1fr)",
+                }
+          }
+        >
+          {configuredCards.map((cc, index) => (
+            <ComparatorCard
+              key={`${cc.vehicle.slug}-${index}`}
+              vehicle={cc.vehicle}
+              config={cc.config}
+              onConfigChange={(configId) => changeConfig(index, configId)}
+              onRemove={() => removeVehicle(index)}
+              isMobile={isMobile}
+            />
+          ))}
+
+          {/* Add card placeholder */}
+          {cards.length < MAX_CARDS && (
+            <button
+              type="button"
+              onClick={() => setShowModal(true)}
+              className="flex flex-col items-center justify-center gap-3 rounded-2xl transition-all duration-300 group min-h-[200px]"
               style={{
-                backgroundColor: "var(--color-bg-subtle)",
-                border: "0.5px solid var(--color-border)",
+                border: "1.5px dashed var(--color-border-strong)",
+                backgroundColor: "transparent",
+                cursor: "pointer",
+                minWidth: isMobile && mobileLayout === "side-by-side" ? "300px" : undefined,
+                scrollSnapAlign:
+                  isMobile && mobileLayout === "side-by-side" ? "center" : undefined,
               }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "var(--color-accent)";
+                e.currentTarget.style.backgroundColor = "var(--color-bg-subtle)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "var(--color-border-strong)";
+                e.currentTarget.style.backgroundColor = "transparent";
+              }}
+              aria-label="Ajouter un véhicule au comparatif"
             >
-              <Plus
-                size={24}
-                style={{ color: "var(--color-accent)" }}
-                className="transition-transform duration-300 group-hover:scale-110"
-              />
-            </div>
-            <span
-              className="text-sm font-medium"
-              style={{ color: "var(--color-text-muted)" }}
-            >
-              Ajouter un véhicule
-            </span>
-            <span
-              className="font-mono text-[10px]"
-              style={{ color: "var(--color-text-faint)" }}
-            >
-              {MAX_CARDS - cards.length} emplacement{MAX_CARDS - cards.length > 1 ? "s" : ""} disponible{MAX_CARDS - cards.length > 1 ? "s" : ""}
-            </span>
-          </button>
-        )}
-      </div>
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300"
+                style={{
+                  backgroundColor: "var(--color-bg-subtle)",
+                  border: "0.5px solid var(--color-border)",
+                }}
+              >
+                <Plus
+                  size={24}
+                  style={{ color: "var(--color-accent)" }}
+                  className="transition-transform duration-300 group-hover:scale-110"
+                />
+              </div>
+              <span
+                className="text-sm font-medium"
+                style={{ color: "var(--color-text-muted)" }}
+              >
+                Ajouter un véhicule
+              </span>
+              <span
+                className="font-mono text-[10px]"
+                style={{ color: "var(--color-text-faint)" }}
+              >
+                {MAX_CARDS - cards.length} emplacement{MAX_CARDS - cards.length > 1 ? "s" : ""} disponible{MAX_CARDS - cards.length > 1 ? "s" : ""}
+              </span>
+            </button>
+          )}
+        </div>
+      )}
 
       {/* Insights Banner */}
       {insights.length > 0 && (
