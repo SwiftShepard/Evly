@@ -324,16 +324,9 @@ export default function ComparatorView({ vehicles }: Props) {
                   WebkitOverflowScrolling: "touch",
                 }
               : {
-                  gridTemplateColumns:
-                    cards.length === 0
-                      ? "1fr"
-                      : isMobile
-                        ? "1fr"
-                        : cards.length <= 2
-                          ? "repeat(2, 1fr)"
-                          : cards.length === 3
-                            ? "repeat(3, 1fr)"
-                            : "repeat(4, 1fr)",
+                  gridTemplateColumns: isMobile
+                    ? "1fr"
+                    : `repeat(${Math.min(cards.length + (cards.length < MAX_CARDS ? 1 : 0), MAX_CARDS)}, 1fr)`,
                 }
           }
         >

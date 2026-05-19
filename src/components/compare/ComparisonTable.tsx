@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, Fragment } from "react";
 import type { Vehicle, VehicleConfiguration } from "@/data/schemas";
 import type { ConfiguredCard } from "@/lib/insights";
 import ConfigSelector from "./ConfigSelector";
@@ -430,9 +430,9 @@ export default function ComparisonTable({ cards, onRemove, onConfigChange, onAdd
         {/* ── body ── */}
         <tbody>
           {SECTIONS.map((section, si) => (
-            <>
+            <Fragment key={`s-${si}`}>
               {/* Section header */}
-              <tr key={`s-${si}`}>
+              <tr>
                 <td
                   colSpan={totalCols + 1}
                   style={{
@@ -531,7 +531,7 @@ export default function ComparisonTable({ cards, onRemove, onConfigChange, onAdd
                   </tr>
                 );
               })}
-            </>
+            </Fragment>
           ))}
         </tbody>
       </table>

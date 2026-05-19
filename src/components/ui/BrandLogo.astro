@@ -33,7 +33,7 @@ for (const [path, content] of Object.entries(logoModules)) {
         .replace(/\s+width="[^"]*"/gi, "")
         .replace(/\s+height="[^"]*"/gi, "")
         .replace(/\s+class="[^"]*"/gi, "");
-      return `<svg${cleaned} class="${className}">`;
+      return `<svg${cleaned} fill="currentColor" class="${className}">`;
     });
     // Normalize hardcoded dark fills → currentColor (light/dark mode compat)
     patchedSvg = patchedSvg
@@ -103,6 +103,35 @@ const b = normalize(brand);
   <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
     <polygon points="7 2 17 2 22 7 22 17 17 22 7 22 2 17 2 7" />
     <text x="12" y="16" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold" stroke="none" fill="currentColor">MG</text>
+  </svg>
+) : b === "fiat" ? (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2l6 3v5c0 5-3 9-6 11-3-2-6-6-6-11V5l6-3z" />
+    <text x="12" y="15" text-anchor="middle" font-size="6" font-family="sans-serif" font-weight="bold" stroke="none" fill="currentColor">FIAT</text>
+  </svg>
+) : b === "jeep" ? (
+  <svg class={className} viewBox="0 0 24 24" fill="currentColor">
+    <rect x="2"  y="5" width="2.5" height="14" rx="1" />
+    <rect x="5.5" y="5" width="2.5" height="14" rx="1" />
+    <rect x="9"  y="5" width="2.5" height="14" rx="1" />
+    <rect x="12.5" y="5" width="2.5" height="14" rx="1" />
+    <rect x="16" y="5" width="2.5" height="14" rx="1" />
+    <rect x="19.5" y="5" width="2.5" height="14" rx="1" />
+  </svg>
+) : b === "cupra" ? (
+  <svg class={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 3L3 8.5v7L12 21l9-5.5v-7L12 3zm0 2.5l7 4.3v5.4L12 18.5l-7-3.3V9.8L12 5.5z" />
+  </svg>
+) : b === "opel" ? (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <path d="M12 5l-2 5h4l-4 9" />
+  </svg>
+) : b === "skoda" ? (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <path d="M9 8l5 4-5 4" />
+    <path d="M13 12h3" />
   </svg>
 ) : (
   <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

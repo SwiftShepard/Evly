@@ -8,6 +8,7 @@ import VehicleImage from "@/components/ui/VehicleImage.astro";
 import { getAllVehicles } from "@/lib/vehicles";
 import { formatPrice } from "@/lib/format";
 import { url } from "@/lib/url";
+import FavoriteButton from "@/components/ui/FavoriteButton";
 import type { Vehicle } from "@/data/schemas";
 
 const vehicles = getAllVehicles();
@@ -237,6 +238,7 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|b
                   <div class="flex items-center gap-2 flex-wrap justify-end">
                     {isLeasing(v) && <Tag tone="accent" mono>Leasing social</Tag>}
                     <Tag tone="outline" mono>{v.architecture_V} V</Tag>
+                    <FavoriteButton client:load slug={v.slug} size={15} />
                   </div>
                 </div>
                 <div class="flex items-end gap-3 mb-6">

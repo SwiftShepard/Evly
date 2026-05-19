@@ -1,0 +1,93 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { GLOSSARY, CATEGORIES } from "@/data/glossary";
+
+const grouped = Object.entries(CATEGORIES).map(([key, label]) => ({
+  key,
+  label,
+  entries: GLOSSARY.filter((e) => e.category === key),
+}));
+---
+
+<BaseLayout
+  title="Glossaire VE, Evly"
+  description="Tous les termes techniques du véhicule électrique expliqués simplement : batterie, recharge, autonomie, performance, aides."
+>
+  <section class="container-edit pt-16 md:pt-24 pb-16 border-b border-[var(--color-border)]">
+    <div class="flex items-center gap-4 mb-8 fade-rise">
+      <span class="font-mono text-xs text-[var(--color-text-faint)]">00</span>
+      <span class="label-eyebrow">Glossaire</span>
+    </div>
+    <h1 class="display-1 max-w-4xl fade-rise fade-rise-delay-1">
+      Le vocabulaire VE,
+      <span class="text-[var(--color-text-muted)]">sans jargon inutile.</span>
+    </h1>
+    <p class="mt-10 text-lg md:text-xl text-[var(--color-text-muted)] max-w-2xl leading-relaxed fade-rise fade-rise-delay-2">
+      kWh, SOC, V2G, LFP&hellip; Chaque terme utilisé sur Evly est défini ici
+      avec son contexte concret.
+    </p>
+  </section>
+
+  <nav class="container-edit py-6 border-b border-[var(--color-border)] sticky top-14 md:top-16 z-30 bg-[color-mix(in_srgb,var(--color-bg)_90%,transparent)] backdrop-blur-md">
+    <ul class="flex flex-wrap gap-2">
+      {grouped.map((g, i) => (
+        <li>
+          <a
+            href={`#cat-${g.key}`}
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono tracking-wide transition-colors border border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-accent)]"
+          >
+            <span class="text-[var(--color-text-faint)]">{String(i + 1).padStart(2, "0")}</span>
+            {g.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+
+  {grouped.map((g, gi) => (
+    <section
+      id={`cat-${g.key}`}
+      class="container-edit py-16 md:py-20 border-b border-[var(--color-border)] reveal"
+    >
+      <div class="flex items-center gap-4 mb-10">
+        <span class="font-mono text-xs text-[var(--color-text-faint)]">
+          {String(gi + 1).padStart(2, "0")}
+        </span>
+        <span class="label-eyebrow">{g.label}</span>
+      </div>
+
+      <dl class="grid grid-cols-1 gap-px bg-[var(--color-border)] rounded-xl overflow-hidden">
+        {g.entries.map((entry) => (
+          <div class="glossary-entry bg-[var(--color-bg)] p-6 md:p-8 flex flex-col gap-2">
+            <dt class="flex items-baseline gap-3 flex-wrap">
+              <span class="font-display text-lg font-semibold tracking-[-0.01em] text-[var(--color-text)]">
+                {entry.term}
+              </span>
+              {entry.abbr && (
+                <span class="font-mono text-sm text-[var(--color-accent)]">
+                  {entry.abbr}
+                </span>
+              )}
+            </dt>
+            <dd class="text-sm text-[var(--color-text-muted)] leading-relaxed max-w-3xl">
+              {entry.definition}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  ))}
+
+  <section class="container-edit py-16 md:py-20 reveal">
+    <p class="text-sm text-[var(--color-text-faint)] leading-relaxed max-w-3xl">
+      Ce glossaire est maintenu par Evly et mis à jour à chaque ajout de fiche véhicule.
+      Une définition manquante ou inexacte ? Signalez-la via les canaux indiqués au pied de page.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .glossary-entry:hover {
+    background-color: var(--color-bg-elevated);
+  }
+</style>
