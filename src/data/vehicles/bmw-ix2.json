@@ -1,0 +1,187 @@
+{
+  "slug": "bmw-ix2",
+  "brand": "BMW",
+  "model": "iX2",
+  "variant": "64.7 kWh",
+  "bodyType": "SUV Coupe",
+  "segment": "C",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Regensburg",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 230,
+  "power_hp": 313,
+  "torque_Nm": 494,
+  "drivetrain": "AWD",
+  "motors": 2,
+  "acceleration_0_100_s": 5.6,
+  "topSpeed_kmh": 180,
+  "usableCapacity_kWh": 64.7,
+  "grossCapacity_kWh": 66.5,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1995,
+  "wltp_max_km": 449,
+  "wltp_min_km": 394,
+  "realRange": {
+    "mixed_km": 330,
+    "highway_130_km": 240,
+    "urban_km": 405,
+    "winter_minus5_km": 265,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 18,
+  "consumption_highway_kWh_per_100km": 24,
+  "consumption_winter_kWh_per_100km": 22,
+  "dragCoefficient_Cx": 0.26,
+  "chargingDC": {
+    "peakPower_kW": 130,
+    "time_10_80_min": 29,
+    "kWh_added_30min": 40,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 6.5
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 85 },
+    { "soc": 10, "power": 130 },
+    { "soc": 30, "power": 115 },
+    { "soc": 50, "power": 80 },
+    { "soc": 80, "power": 35 },
+    { "soc": 100, "power": 7 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4554,
+  "width_mm": 1845,
+  "height_mm": 1590,
+  "wheelbase_mm": 2692,
+  "trunkCapacity_L": 525,
+  "trunkCapacityFolded_L": 1400,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "iX2 eDrive20",
+      "price_EUR": 49950,
+      "batteryUsed": "64.7 kWh",
+      "equipmentHighlights": [
+        "449 km WLTP",
+        "204 ch FWD",
+        "BMW iDrive 9"
+      ]
+    },
+    {
+      "name": "iX2 xDrive30",
+      "price_EUR": 54950,
+      "batteryUsed": "64.7 kWh",
+      "equipmentHighlights": [
+        "AWD 313 ch",
+        "417 km WLTP",
+        "M Sport disponible"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
+  "configurations": [
+    {
+      "id": "bmw-ix2-edrive20",
+      "label": "iX2 eDrive20",
+      "battery": "standard",
+      "trim": "iX2 eDrive20",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 49950,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 449,
+      "wltp_consumption_kWh_100km": 16.5,
+      "realRange": { "mixed_km": 330, "highway_130_km": 240, "urban_km": 405, "winter_minus5_km": 265, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        { "soc": 0, "power": 85 },
+        { "soc": 10, "power": 130 },
+        { "soc": 30, "power": 115 },
+        { "soc": 50, "power": 80 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "204 ch (150 kW), FWD"
+    },
+    {
+      "id": "bmw-ix2-xdrive30",
+      "label": "iX2 xDrive30",
+      "battery": "standard",
+      "trim": "iX2 xDrive30",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 54950,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 417,
+      "wltp_consumption_kWh_100km": 17.5,
+      "realRange": { "mixed_km": 310, "highway_130_km": 225, "urban_km": 385, "winter_minus5_km": 250, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        { "soc": 0, "power": 85 },
+        { "soc": 10, "power": 130 },
+        { "soc": 30, "power": 115 },
+        { "soc": 50, "power": 80 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "313 ch (230 kW), AWD xDrive"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 2,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "SUV Coupe compact au design sportif BMW" },
+    { "category": "technologie", "label": "BMW iDrive 9 et ecran courbe 10,7 pouces" },
+    { "category": "securite", "label": "Freinage automatique et parking automatique" },
+    { "category": "confort", "label": "Coffre genereux (525 L) et ligne de toit coupe" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Design SUV Coupe sportif et dynamique de conduite BMW",
+      "Assemble en Allemagne, eligible prime CEE"
+    ],
+    "weaknesses": [
+      "Charge DC limitee a 130 kW",
+      "Autonomie modeste (449 km WLTP max)"
+    ],
+    "idealUserProfile": "Conducteurs cherchant un SUV coupe premium compact et dynamique.",
+    "notIdealFor": "Gros rouleurs ou familles nombreuses."
+  },
+  "lastUpdated": "2026-05-20",
+  "sources": ["constructeur", "automobile-propre"],
+  "imageCredit": "Constructeur"
+}

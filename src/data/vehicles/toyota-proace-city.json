@@ -1,0 +1,184 @@
+{
+  "slug": "toyota-proace-city",
+  "brand": "Toyota",
+  "model": "Proace City Electric Verso",
+  "variant": "50 kWh",
+  "bodyType": "Ludospace",
+  "segment": "B",
+  "productionCountry": "Portugal",
+  "assemblyPlant": "Mangualde",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 100,
+  "power_hp": 136,
+  "torque_Nm": 260,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 11.2,
+  "topSpeed_kmh": 135,
+  "usableCapacity_kWh": 50,
+  "grossCapacity_kWh": 50,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1750,
+  "wltp_max_km": 330,
+  "wltp_min_km": 310,
+  "realRange": {
+    "mixed_km": 250,
+    "highway_130_km": 160,
+    "urban_km": 320,
+    "winter_minus5_km": 195,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 17,
+  "consumption_highway_kWh_per_100km": 22,
+  "consumption_winter_kWh_per_100km": 20,
+  "dragCoefficient_Cx": 0.34,
+  "chargingDC": {
+    "peakPower_kW": 100,
+    "time_10_80_min": 30,
+    "kWh_added_30min": 30,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0,   "power": 77 },
+    { "soc": 10,  "power": 100 },
+    { "soc": 50,  "power": 77 },
+    { "soc": 80,  "power": 38 },
+    { "soc": 100, "power": 8 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4403,
+  "width_mm": 1848,
+  "height_mm": 1831,
+  "wheelbase_mm": 2785,
+  "trunkCapacity_L": 775,
+  "trunkCapacityFolded_L": 1200,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Dynamic M",
+      "price_EUR": 37900,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "330 km WLTP",
+        "Portes coulissantes",
+        "Ecran 8 pouces"
+      ]
+    },
+    {
+      "name": "Dynamic L",
+      "price_EUR": 39900,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "310 km WLTP",
+        "Carrosserie longue (4,75 m)",
+        "7 places"
+      ]
+    }
+  ],
+  "leasingSocialEligible": true,
+  "leasingSocial_EUR_per_month": 179,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
+  "configurations": [
+    {
+      "id": "toyota-proace-city-dynamic-m",
+      "label": "Proace City Electric Verso Dynamic M",
+      "battery": "standard",
+      "trim": "Dynamic M",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 37900,
+      "monthlyLease_EUR": 179,
+      "leasingSocialEligible": true,
+      "wltp_km": 330,
+      "wltp_consumption_kWh_100km": 17,
+      "realRange": { "mixed_km": 250, "highway_130_km": 160, "urban_km": 320, "winter_minus5_km": 195, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        { "soc": 0,   "power": 77 },
+        { "soc": 10,  "power": 100 },
+        { "soc": 50,  "power": 77 },
+        { "soc": 80,  "power": 38 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "136 ch (100 kW), FWD, taille M"
+    },
+    {
+      "id": "toyota-proace-city-dynamic-l",
+      "label": "Proace City Electric Verso Dynamic L",
+      "battery": "standard",
+      "trim": "Dynamic L",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 39900,
+      "monthlyLease_EUR": 179,
+      "leasingSocialEligible": true,
+      "wltp_km": 310,
+      "wltp_consumption_kWh_100km": 17.5,
+      "realRange": { "mixed_km": 235, "highway_130_km": 150, "urban_km": 300, "winter_minus5_km": 185, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        { "soc": 0,   "power": 77 },
+        { "soc": 10,  "power": 100 },
+        { "soc": 50,  "power": 77 },
+        { "soc": 80,  "power": 38 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "136 ch (100 kW), FWD, taille L 7 places"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 3,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "confort", "label": "Portes coulissantes, habitabilite de reference" },
+    { "category": "technologie", "label": "Toyota Safety Sense de serie" },
+    { "category": "securite", "label": "Freinage automatique d'urgence, alerte franchissement de ligne" },
+    { "category": "design", "label": "Ludospace compact, version L jusqu'a 7 places" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Habitabilite et modularite de ludospace, portes coulissantes",
+      "Garantie Toyota, fiabilite reconnue"
+    ],
+    "weaknesses": [
+      "Charge DC limitee a 100 kW",
+      "Autonomie modeste sur autoroute"
+    ],
+    "idealUserProfile": "Familles cherchant un vehicule spacieux avec portes coulissantes et eligible au leasing social.",
+    "notIdealFor": "Gros rouleurs autoroutiers ou amateurs de conduite sportive."
+  },
+  "lastUpdated": "2026-05-20",
+  "sources": ["constructeur"],
+  "imageCredit": "Constructeur"
+}

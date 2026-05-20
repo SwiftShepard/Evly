@@ -1,0 +1,221 @@
+{
+  "slug": "zeekr-7x",
+  "brand": "Zeekr",
+  "model": "7X",
+  "variant": "100 kWh",
+  "bodyType": "SUV",
+  "segment": "D",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Ningbo",
+  "releaseYear": 2025,
+  "marketAvailability": "Disponible",
+  "power_kW": 310,
+  "power_hp": 421,
+  "torque_Nm": 440,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 5.6,
+  "topSpeed_kmh": 200,
+  "usableCapacity_kWh": 95,
+  "grossCapacity_kWh": 100,
+  "chemistry": "NMC",
+  "architecture_V": 800,
+  "mass_kg": 2475,
+  "wltp_max_km": 615,
+  "wltp_min_km": 480,
+  "realRange": {
+    "mixed_km": 460,
+    "highway_130_km": 335,
+    "urban_km": 570,
+    "winter_minus5_km": 365,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 20.5,
+  "consumption_highway_kWh_per_100km": 27,
+  "consumption_winter_kWh_per_100km": 25,
+  "dragCoefficient_Cx": 0.272,
+  "chargingDC": {
+    "peakPower_kW": 480,
+    "time_10_80_min": 16,
+    "kWh_added_30min": 80,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 10
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 300 },
+    { "soc": 10, "power": 480 },
+    { "soc": 30, "power": 420 },
+    { "soc": 50, "power": 300 },
+    { "soc": 80, "power": 90 },
+    { "soc": 100, "power": 15 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4788,
+  "width_mm": 1930,
+  "height_mm": 1656,
+  "wheelbase_mm": 2900,
+  "trunkCapacity_L": 539,
+  "trunkCapacityFolded_L": 1800,
+  "frunkCapacity_L": 42,
+  "trims": [
+    {
+      "name": "Core 75 kWh",
+      "price_EUR": 52990,
+      "batteryUsed": "75 kWh",
+      "equipmentHighlights": [
+        "480 km WLTP",
+        "Architecture 800 V",
+        "Ecran 16 pouces"
+      ]
+    },
+    {
+      "name": "Long Range 100 kWh",
+      "price_EUR": 57990,
+      "batteryUsed": "100 kWh",
+      "equipmentHighlights": [
+        "615 km WLTP",
+        "Charge 480 kW",
+        "Toit panoramique"
+      ]
+    },
+    {
+      "name": "Privilege 100 kWh",
+      "price_EUR": 62990,
+      "batteryUsed": "100 kWh",
+      "equipmentHighlights": [
+        "AWD 630 ch",
+        "0-100 en 3,8 s",
+        "Suspension pneumatique"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "zeekr-7x-core-75",
+      "label": "7X Core · 75 kWh",
+      "battery": "standard",
+      "trim": "Core 75 kWh",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 52990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 480,
+      "wltp_consumption_kWh_100km": 18.2,
+      "realRange": { "mixed_km": 365, "highway_130_km": 265, "urban_km": 450, "winter_minus5_km": 290, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 375,
+      "chargingDC_10_80_min": 16,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        { "soc": 0, "power": 240 },
+        { "soc": 10, "power": 375 },
+        { "soc": 30, "power": 340 },
+        { "soc": 50, "power": 250 },
+        { "soc": 80, "power": 75 },
+        { "soc": 100, "power": 12 }
+      ],
+      "availability": "available",
+      "notes": "421 ch (310 kW), RWD, LFP 75 kWh"
+    },
+    {
+      "id": "zeekr-7x-lr-100",
+      "label": "7X Long Range · 100 kWh",
+      "battery": "long-range",
+      "trim": "Long Range 100 kWh",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 57990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 615,
+      "wltp_consumption_kWh_100km": 18,
+      "realRange": { "mixed_km": 460, "highway_130_km": 335, "urban_km": 570, "winter_minus5_km": 365, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 480,
+      "chargingDC_10_80_min": 16,
+      "chargingDC_kWh_30min": 80,
+      "chargingCurve": [
+        { "soc": 0, "power": 300 },
+        { "soc": 10, "power": 480 },
+        { "soc": 30, "power": 420 },
+        { "soc": 50, "power": 300 },
+        { "soc": 80, "power": 90 },
+        { "soc": 100, "power": 15 }
+      ],
+      "availability": "available",
+      "notes": "421 ch (310 kW), RWD"
+    },
+    {
+      "id": "zeekr-7x-privilege-100",
+      "label": "7X Privilege · 100 kWh",
+      "battery": "long-range",
+      "trim": "Privilege 100 kWh",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 62990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 590,
+      "wltp_consumption_kWh_100km": 19,
+      "realRange": { "mixed_km": 440, "highway_130_km": 320, "urban_km": 545, "winter_minus5_km": 350, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 480,
+      "chargingDC_10_80_min": 16,
+      "chargingDC_kWh_30min": 80,
+      "chargingCurve": [
+        { "soc": 0, "power": 300 },
+        { "soc": 10, "power": 480 },
+        { "soc": 30, "power": 420 },
+        { "soc": 50, "power": 300 },
+        { "soc": 80, "power": 90 },
+        { "soc": 100, "power": 15 }
+      ],
+      "availability": "available",
+      "notes": "630 ch (463 kW), AWD, suspension pneumatique"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "SUV familial au design moderne et aerodynamique" },
+    { "category": "technologie", "label": "Architecture 800 V et charge jusqu'a 480 kW" },
+    { "category": "securite", "label": "Freinage automatique et aide a la conduite avancee" },
+    { "category": "confort", "label": "Frunk 42 L, coffre 539 L extensible a 1 800 L, V2L" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Charge ultra-rapide 480 kW (10-80 % en 16 min)",
+      "Coffre genereux 539 L / 1 800 L et frunk 42 L"
+    ],
+    "weaknesses": [
+      "Assemblage en Chine, aucune aide francaise",
+      "Marque Zeekr encore peu connue en France"
+    ],
+    "idealUserProfile": "Familles cherchant un SUV electrique performant avec charge ultra-rapide et grand coffre.",
+    "notIdealFor": "Acheteurs fideles aux marques etablies ou comptant sur les aides."
+  },
+  "lastUpdated": "2026-05-19",
+  "sources": ["constructeur", "automobile-propre"],
+  "imageCredit": "Constructeur"
+}

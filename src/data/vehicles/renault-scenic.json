@@ -2,7 +2,7 @@
   "slug": "renault-scenic",
   "brand": "Renault",
   "model": "Scenic E-Tech",
-  "variant": "87 kWh",
+  "variant": "60 & 87 kWh",
   "bodyType": "SUV familial",
   "segment": "C",
   "productionCountry": "France",
@@ -22,7 +22,7 @@
   "architecture_V": 400,
   "mass_kg": 1700,
   "wltp_max_km": 625,
-  "wltp_min_km": 600,
+  "wltp_min_km": 420,
   "realRange": {
     "mixed_km": 490,
     "highway_130_km": 355,
@@ -110,12 +110,42 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Techno",
-      "price_EUR": 46990,
+      "name": "Techno EV60",
+      "price_EUR": 41990,
+      "batteryUsed": "60 kWh",
+      "equipmentHighlights": [
+        "OpenR Link Google",
+        "Ecran 12 pouces"
+      ]
+    },
+    {
+      "name": "Techno EV87",
+      "price_EUR": 44990,
       "batteryUsed": "87 kWh",
       "equipmentHighlights": [
+        "OpenR Link Google",
         "Toit Solarbay",
-        "OpenR Link"
+        "Grande autonomie 625 km WLTP"
+      ]
+    },
+    {
+      "name": "Esprit Alpine EV87",
+      "price_EUR": 47500,
+      "batteryUsed": "87 kWh",
+      "equipmentHighlights": [
+        "Jantes 20 pouces",
+        "Volant Alpine",
+        "Sieges sport"
+      ]
+    },
+    {
+      "name": "Iconic EV87",
+      "price_EUR": 47990,
+      "batteryUsed": "87 kWh",
+      "equipmentHighlights": [
+        "Toit panoramique",
+        "Sieges chauffants massants",
+        "Conduite semi-autonome"
       ]
     }
   ],
@@ -123,87 +153,99 @@
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
-      "amount_EUR": 4000
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
     }
   ],
   "configurations": [
     {
-      "id": "renault-scenic-techno",
-      "label": "Scenic E-Tech Techno",
+      "id": "renault-scenic-techno-ev60",
+      "label": "Scenic Techno · 60 kWh",
       "battery": "standard",
-      "trim": "Techno",
-      "wheelSize_inches": 18,
+      "trim": "Techno EV60",
+      "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 46990,
+      "price_EUR": 41990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 420,
+      "wltp_consumption_kWh_100km": 16.3,
+      "realRange": { "mixed_km": 350, "highway_130_km": 240, "urban_km": 430, "winter_minus5_km": 275, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 130, "chargingDC_10_80_min": 30, "chargingDC_kWh_30min": 42,
+      "chargingCurve": [ { "soc": 0, "power": 95 }, { "soc": 10, "power": 130 }, { "soc": 50, "power": 95 }, { "soc": 80, "power": 45 }, { "soc": 100, "power": 10 } ],
+      "availability": "available",
+      "notes": "170 ch (125 kW)"
+    },
+    {
+      "id": "renault-scenic-techno-ev87",
+      "label": "Scenic Techno · 87 kWh",
+      "battery": "long-range",
+      "trim": "Techno EV87",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 44990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 625,
       "wltp_consumption_kWh_100km": 15,
-      "realRange": {
-        "mixed_km": 490,
-        "highway_130_km": 355,
-        "highway_120_km": 390,
-        "urban_km": 580,
-        "winter_minus5_km": 380,
-        "confidence": "bjorn_nyland"
-      },
+      "realRange": { "mixed_km": 490, "highway_130_km": 355, "urban_km": 580, "winter_minus5_km": 380, "confidence": "bjorn_nyland" },
       "rangeTests": [
-        {
-          "sourceId": "nyland",
-          "testDate": "2023-09",
-          "speed_kmh": 90,
-          "range_km": 562,
-          "consumption_kWh_100km": 15.5,
-          "temperature_C": 18,
-          "wheelSize_inches": 19,
-          "tyreModel": null,
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Scénic E-Tech 87 kWh. Très bon à 90."
-        },
-        {
-          "sourceId": "nyland",
-          "testDate": "2023-09",
-          "speed_kmh": 120,
-          "range_km": 390,
-          "consumption_kWh_100km": 22.3,
-          "temperature_C": 18,
-          "wheelSize_inches": 19,
-          "tyreModel": null,
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Consommation plus élevée à haute vitesse."
-        }
+        { "sourceId": "nyland", "testDate": "2023-09", "speed_kmh": 90, "range_km": 562, "consumption_kWh_100km": 15.5, "temperature_C": 18, "wheelSize_inches": 19, "tyreModel": null, "protocol": "nyland", "videoUrl": null, "notes": "Scenic E-Tech 87 kWh. Tres bon a 90." },
+        { "sourceId": "nyland", "testDate": "2023-09", "speed_kmh": 120, "range_km": 390, "consumption_kWh_100km": 22.3, "temperature_C": 18, "wheelSize_inches": 19, "tyreModel": null, "protocol": "nyland", "videoUrl": null, "notes": "Consommation plus elevee a haute vitesse." }
       ],
-      "chargingDC_peak_kW": 150,
-      "chargingDC_10_80_min": 37,
-      "chargingDC_kWh_30min": 55,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 100
-        },
-        {
-          "soc": 10,
-          "power": 130
-        },
-        {
-          "soc": 50,
-          "power": 100
-        },
-        {
-          "soc": 80,
-          "power": 50
-        },
-        {
-          "soc": 100,
-          "power": 10
-        }
-      ],
+      "chargingDC_peak_kW": 150, "chargingDC_10_80_min": 37, "chargingDC_kWh_30min": 55,
+      "chargingCurve": [ { "soc": 0, "power": 100 }, { "soc": 10, "power": 130 }, { "soc": 50, "power": 100 }, { "soc": 80, "power": 50 }, { "soc": 100, "power": 10 } ],
       "availability": "available",
-      "notes": null
+      "notes": "220 ch (160 kW)"
+    },
+    {
+      "id": "renault-scenic-esprit-alpine-ev87",
+      "label": "Scenic Esprit Alpine · 87 kWh",
+      "battery": "long-range",
+      "trim": "Esprit Alpine EV87",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 47500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 610,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": { "mixed_km": 480, "highway_130_km": 345, "urban_km": 570, "winter_minus5_km": 370, "confidence": "estimated" },
+      "rangeTests": [
+        { "sourceId": "nyland", "testDate": "2023-09", "speed_kmh": 90, "range_km": 562, "consumption_kWh_100km": 15.5, "temperature_C": 18, "wheelSize_inches": 19, "tyreModel": null, "protocol": "nyland", "videoUrl": null, "notes": "Scenic E-Tech 87 kWh. Tres bon a 90." },
+        { "sourceId": "nyland", "testDate": "2023-09", "speed_kmh": 120, "range_km": 390, "consumption_kWh_100km": 22.3, "temperature_C": 18, "wheelSize_inches": 19, "tyreModel": null, "protocol": "nyland", "videoUrl": null, "notes": "Consommation plus elevee a haute vitesse." }
+      ],
+      "chargingDC_peak_kW": 150, "chargingDC_10_80_min": 37, "chargingDC_kWh_30min": 55,
+      "chargingCurve": [ { "soc": 0, "power": 100 }, { "soc": 10, "power": 130 }, { "soc": 50, "power": 100 }, { "soc": 80, "power": 50 }, { "soc": 100, "power": 10 } ],
+      "availability": "available",
+      "notes": "220 ch (160 kW), jantes 20 pouces"
+    },
+    {
+      "id": "renault-scenic-iconic-ev87",
+      "label": "Scenic Iconic · 87 kWh",
+      "battery": "long-range",
+      "trim": "Iconic EV87",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 47990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 610,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": { "mixed_km": 480, "highway_130_km": 345, "urban_km": 570, "winter_minus5_km": 370, "confidence": "estimated" },
+      "rangeTests": [
+        { "sourceId": "nyland", "testDate": "2023-09", "speed_kmh": 90, "range_km": 562, "consumption_kWh_100km": 15.5, "temperature_C": 18, "wheelSize_inches": 19, "tyreModel": null, "protocol": "nyland", "videoUrl": null, "notes": "Scenic E-Tech 87 kWh. Tres bon a 90." },
+        { "sourceId": "nyland", "testDate": "2023-09", "speed_kmh": 120, "range_km": 390, "consumption_kWh_100km": 22.3, "temperature_C": 18, "wheelSize_inches": 19, "tyreModel": null, "protocol": "nyland", "videoUrl": null, "notes": "Consommation plus elevee a haute vitesse." }
+      ],
+      "chargingDC_peak_kW": 150, "chargingDC_10_80_min": 37, "chargingDC_kWh_30min": 55,
+      "chargingCurve": [ { "soc": 0, "power": 100 }, { "soc": 10, "power": 130 }, { "soc": 50, "power": 100 }, { "soc": 80, "power": 50 }, { "soc": 100, "power": 10 } ],
+      "availability": "available",
+      "notes": "220 ch (160 kW), full options"
     }
   ],
   "warranty": {

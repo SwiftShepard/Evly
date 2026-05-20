@@ -32,7 +32,7 @@
     "confidence": "bjorn_nyland"
   },
   "consumption_mixed_kWh_per_100km": 15.5,
-  "consumption_highway_kWh_per_100km": 22.0,
+  "consumption_highway_kWh_per_100km": 22,
   "consumption_winter_kWh_per_100km": 19.5,
   "dragCoefficient_Cx": 0.29,
   "chargingDC": {
@@ -110,186 +110,113 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Equilibre",
-      "price_EUR": 38000,
+      "name": "Techno",
+      "price_EUR": 39500,
       "batteryUsed": "60 kWh",
       "equipmentHighlights": [
-        "Jantes 18\"",
-        "Ecran 9\""
+        "OpenR Link Google",
+        "Ecran 12 pouces",
+        "Chargeur AC 22 kW"
       ]
     },
     {
-      "name": "Techno",
-      "price_EUR": 40000,
+      "name": "Esprit Alpine",
+      "price_EUR": 41500,
       "batteryUsed": "60 kWh",
       "equipmentHighlights": [
-        "Jantes 20\"",
-        "Ecran 12\""
+        "Jantes 20 pouces diamantees",
+        "Volant Alpine",
+        "Sieges sport"
+      ]
+    },
+    {
+      "name": "Iconic",
+      "price_EUR": 43000,
+      "batteryUsed": "60 kWh",
+      "equipmentHighlights": [
+        "Toit panoramique",
+        "Sieges chauffants",
+        "Conduite semi-autonome"
       ]
     }
   ],
-  "leasingSocialEligible": false,
-  "leasingSocial_EUR_per_month": null,
+  "leasingSocialEligible": true,
+  "leasingSocial_EUR_per_month": 195,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
-      "amount_EUR": 4000
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
     }
   ],
   "configurations": [
-    {
-      "id": "renault-megane-equilibre",
-      "label": "Megane E-Tech Equilibre",
-      "battery": "standard",
-      "trim": "Equilibre",
-      "wheelSize_inches": 18,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 38000,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 470,
-      "wltp_consumption_kWh_100km": 15.5,
-      "realRange": {
-        "mixed_km": 390,
-        "highway_130_km": 250,
-        "highway_120_km": 274,
-        "urban_km": 480,
-        "winter_minus5_km": 310,
-        "confidence": "bjorn_nyland"
-      },
-      "rangeTests": [
-        {
-          "sourceId": "nyland",
-          "testDate": "2022-08",
-          "speed_kmh": 90,
-          "range_km": 405,
-          "consumption_kWh_100km": 14.8,
-          "temperature_C": 21,
-          "wheelSize_inches": 20,
-          "tyreModel": null,
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Test Nyland estival"
-        },
-        {
-          "sourceId": "nyland",
-          "testDate": "2022-08",
-          "speed_kmh": 120,
-          "range_km": 280,
-          "consumption_kWh_100km": 21.4,
-          "temperature_C": 21,
-          "wheelSize_inches": 20,
-          "tyreModel": null,
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Test Nyland 120km/h"
-        }
-      ],
-      "chargingDC_peak_kW": 130,
-      "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 45,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 100
-        },
-        {
-          "soc": 10,
-          "power": 130
-        },
-        {
-          "soc": 50,
-          "power": 100
-        },
-        {
-          "soc": 80,
-          "power": 50
-        },
-        {
-          "soc": 100,
-          "power": 10
-        }
-      ],
-      "availability": "available",
-      "notes": null
-    },
     {
       "id": "renault-megane-techno",
       "label": "Megane E-Tech Techno",
       "battery": "standard",
       "trim": "Techno",
-      "wheelSize_inches": 18,
+      "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 40000,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 470,
+      "price_EUR": 39500,
+      "monthlyLease_EUR": 195,
+      "leasingSocialEligible": true,
+      "wltp_km": 468,
       "wltp_consumption_kWh_100km": 15.5,
-      "realRange": {
-        "mixed_km": 390,
-        "highway_130_km": 250,
-        "highway_120_km": 274,
-        "urban_km": 480,
-        "winter_minus5_km": 310,
-        "confidence": "bjorn_nyland"
-      },
+      "realRange": { "mixed_km": 390, "highway_130_km": 250, "urban_km": 480, "winter_minus5_km": 310, "confidence": "bjorn_nyland" },
       "rangeTests": [
-        {
-          "sourceId": "nyland",
-          "testDate": "2022-08",
-          "speed_kmh": 90,
-          "range_km": 405,
-          "consumption_kWh_100km": 14.8,
-          "temperature_C": 21,
-          "wheelSize_inches": 20,
-          "tyreModel": null,
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Test Nyland estival"
-        },
-        {
-          "sourceId": "nyland",
-          "testDate": "2022-08",
-          "speed_kmh": 120,
-          "range_km": 280,
-          "consumption_kWh_100km": 21.4,
-          "temperature_C": 21,
-          "wheelSize_inches": 20,
-          "tyreModel": null,
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Test Nyland 120km/h"
-        }
+        { "sourceId": "nyland", "testDate": "2022-08", "speed_kmh": 90, "range_km": 405, "consumption_kWh_100km": 14.8, "temperature_C": 21, "wheelSize_inches": 20, "tyreModel": null, "protocol": "nyland", "videoUrl": null, "notes": "Test Nyland estival" },
+        { "sourceId": "nyland", "testDate": "2022-08", "speed_kmh": 120, "range_km": 280, "consumption_kWh_100km": 21.4, "temperature_C": 21, "wheelSize_inches": 20, "tyreModel": null, "protocol": "nyland", "videoUrl": null, "notes": "Test Nyland 120km/h" }
       ],
-      "chargingDC_peak_kW": 130,
-      "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 45,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 100
-        },
-        {
-          "soc": 10,
-          "power": 130
-        },
-        {
-          "soc": 50,
-          "power": 100
-        },
-        {
-          "soc": 80,
-          "power": 50
-        },
-        {
-          "soc": 100,
-          "power": 10
-        }
-      ],
+      "chargingDC_peak_kW": 130, "chargingDC_10_80_min": 30, "chargingDC_kWh_30min": 45,
+      "chargingCurve": [ { "soc": 0, "power": 100 }, { "soc": 10, "power": 130 }, { "soc": 50, "power": 100 }, { "soc": 80, "power": 50 }, { "soc": 100, "power": 10 } ],
       "availability": "available",
-      "notes": null
+      "notes": "220 ch (160 kW)"
+    },
+    {
+      "id": "renault-megane-esprit-alpine",
+      "label": "Megane E-Tech Esprit Alpine",
+      "battery": "standard",
+      "trim": "Esprit Alpine",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 41500,
+      "monthlyLease_EUR": 195,
+      "leasingSocialEligible": true,
+      "wltp_km": 450,
+      "wltp_consumption_kWh_100km": 16,
+      "realRange": { "mixed_km": 380, "highway_130_km": 245, "urban_km": 470, "winter_minus5_km": 300, "confidence": "estimated" },
+      "rangeTests": [
+        { "sourceId": "nyland", "testDate": "2022-08", "speed_kmh": 90, "range_km": 405, "consumption_kWh_100km": 14.8, "temperature_C": 21, "wheelSize_inches": 20, "tyreModel": null, "protocol": "nyland", "videoUrl": null, "notes": "Test Nyland estival" },
+        { "sourceId": "nyland", "testDate": "2022-08", "speed_kmh": 120, "range_km": 280, "consumption_kWh_100km": 21.4, "temperature_C": 21, "wheelSize_inches": 20, "tyreModel": null, "protocol": "nyland", "videoUrl": null, "notes": "Test Nyland 120km/h" }
+      ],
+      "chargingDC_peak_kW": 130, "chargingDC_10_80_min": 30, "chargingDC_kWh_30min": 45,
+      "chargingCurve": [ { "soc": 0, "power": 100 }, { "soc": 10, "power": 130 }, { "soc": 50, "power": 100 }, { "soc": 80, "power": 50 }, { "soc": 100, "power": 10 } ],
+      "availability": "available",
+      "notes": "220 ch (160 kW), jantes 20 pouces diamantees"
+    },
+    {
+      "id": "renault-megane-iconic",
+      "label": "Megane E-Tech Iconic",
+      "battery": "standard",
+      "trim": "Iconic",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 43000,
+      "monthlyLease_EUR": 195,
+      "leasingSocialEligible": true,
+      "wltp_km": 450,
+      "wltp_consumption_kWh_100km": 16,
+      "realRange": { "mixed_km": 380, "highway_130_km": 245, "urban_km": 470, "winter_minus5_km": 300, "confidence": "estimated" },
+      "rangeTests": [
+        { "sourceId": "nyland", "testDate": "2022-08", "speed_kmh": 90, "range_km": 405, "consumption_kWh_100km": 14.8, "temperature_C": 21, "wheelSize_inches": 20, "tyreModel": null, "protocol": "nyland", "videoUrl": null, "notes": "Test Nyland estival" },
+        { "sourceId": "nyland", "testDate": "2022-08", "speed_kmh": 120, "range_km": 280, "consumption_kWh_100km": 21.4, "temperature_C": 21, "wheelSize_inches": 20, "tyreModel": null, "protocol": "nyland", "videoUrl": null, "notes": "Test Nyland 120km/h" }
+      ],
+      "chargingDC_peak_kW": 130, "chargingDC_10_80_min": 30, "chargingDC_kWh_30min": 45,
+      "chargingCurve": [ { "soc": 0, "power": 100 }, { "soc": 10, "power": 130 }, { "soc": 50, "power": 100 }, { "soc": 80, "power": 50 }, { "soc": 100, "power": 10 } ],
+      "availability": "available",
+      "notes": "220 ch (160 kW), full options"
     }
   ],
   "warranty": {

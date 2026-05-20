@@ -104,7 +104,7 @@ const SECTIONS: SectionDef[] = [
         bestIsMax: false,
       },
       {
-        label: "Aides",
+        label: "Aides max.*",
         getValue: (c) => {
           const total = c.vehicle.availableAids.reduce((s, a) => s + a.amount_EUR, 0);
           return total > 0 ? `-${fmtPrix(total)}` : null;
@@ -113,7 +113,7 @@ const SECTIONS: SectionDef[] = [
         bestIsMax: true,
       },
       {
-        label: "Après aides",
+        label: "Apres aides max.*",
         getValue: (c) => {
           if (c.config.price_EUR == null) return null;
           const aids = c.vehicle.availableAids.reduce((s, a) => s + a.amount_EUR, 0);

@@ -1,0 +1,221 @@
+{
+  "slug": "smart-5",
+  "brand": "Smart",
+  "model": "#5",
+  "variant": "100 kWh",
+  "bodyType": "SUV",
+  "segment": "D",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Xi'an",
+  "releaseYear": 2025,
+  "marketAvailability": "Disponible",
+  "power_kW": 250,
+  "power_hp": 340,
+  "torque_Nm": 543,
+  "drivetrain": "AWD",
+  "motors": 2,
+  "acceleration_0_100_s": 4.4,
+  "topSpeed_kmh": 200,
+  "usableCapacity_kWh": 96,
+  "grossCapacity_kWh": 100,
+  "chemistry": "NMC",
+  "architecture_V": 800,
+  "mass_kg": 2310,
+  "wltp_max_km": 740,
+  "wltp_min_km": 650,
+  "realRange": {
+    "mixed_km": 550,
+    "highway_130_km": 400,
+    "urban_km": 670,
+    "winter_minus5_km": 430,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 17.5,
+  "consumption_highway_kWh_per_100km": 24,
+  "consumption_winter_kWh_per_100km": 22,
+  "dragCoefficient_Cx": 0.264,
+  "chargingDC": {
+    "peakPower_kW": 280,
+    "time_10_80_min": 20,
+    "kWh_added_30min": 75,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 22,
+    "phases": 3,
+    "time_0_100_h": 5
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 200 },
+    { "soc": 10, "power": 280 },
+    { "soc": 30, "power": 250 },
+    { "soc": 50, "power": 180 },
+    { "soc": 80, "power": 75 },
+    { "soc": 100, "power": 12 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4705,
+  "width_mm": 1920,
+  "height_mm": 1705,
+  "wheelbase_mm": 2900,
+  "trunkCapacity_L": 530,
+  "trunkCapacityFolded_L": 1530,
+  "frunkCapacity_L": 72,
+  "trims": [
+    {
+      "name": "Pro+",
+      "price_EUR": 44990,
+      "batteryUsed": "100 kWh",
+      "equipmentHighlights": [
+        "Ecran 13 pouces",
+        "740 km WLTP",
+        "Architecture 800 V"
+      ]
+    },
+    {
+      "name": "Premium",
+      "price_EUR": 49990,
+      "batteryUsed": "100 kWh",
+      "equipmentHighlights": [
+        "Beats Audio",
+        "Sieges chauffants ventiles",
+        "Toit panoramique"
+      ]
+    },
+    {
+      "name": "Brabus",
+      "price_EUR": 55990,
+      "batteryUsed": "100 kWh",
+      "equipmentHighlights": [
+        "AWD 646 ch",
+        "0-100 en 3,4 s",
+        "Pack Brabus sport"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "smart-5-pro-plus",
+      "label": "Smart #5 Pro+",
+      "battery": "standard",
+      "trim": "Pro+",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 44990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 740,
+      "wltp_consumption_kWh_100km": 15.4,
+      "realRange": { "mixed_km": 550, "highway_130_km": 400, "urban_km": 670, "winter_minus5_km": 430, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 280,
+      "chargingDC_10_80_min": 20,
+      "chargingDC_kWh_30min": 75,
+      "chargingCurve": [
+        { "soc": 0, "power": 200 },
+        { "soc": 10, "power": 280 },
+        { "soc": 30, "power": 250 },
+        { "soc": 50, "power": 180 },
+        { "soc": 80, "power": 75 },
+        { "soc": 100, "power": 12 }
+      ],
+      "availability": "available",
+      "notes": "340 ch (250 kW), AWD"
+    },
+    {
+      "id": "smart-5-premium",
+      "label": "Smart #5 Premium",
+      "battery": "standard",
+      "trim": "Premium",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 49990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 720,
+      "wltp_consumption_kWh_100km": 15.8,
+      "realRange": { "mixed_km": 535, "highway_130_km": 390, "urban_km": 655, "winter_minus5_km": 420, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 280,
+      "chargingDC_10_80_min": 20,
+      "chargingDC_kWh_30min": 75,
+      "chargingCurve": [
+        { "soc": 0, "power": 200 },
+        { "soc": 10, "power": 280 },
+        { "soc": 30, "power": 250 },
+        { "soc": 50, "power": 180 },
+        { "soc": 80, "power": 75 },
+        { "soc": 100, "power": 12 }
+      ],
+      "availability": "available",
+      "notes": "340 ch (250 kW), AWD, full options"
+    },
+    {
+      "id": "smart-5-brabus",
+      "label": "Smart #5 Brabus",
+      "battery": "standard",
+      "trim": "Brabus",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 55990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 650,
+      "wltp_consumption_kWh_100km": 17.5,
+      "realRange": { "mixed_km": 490, "highway_130_km": 355, "urban_km": 600, "winter_minus5_km": 385, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 280,
+      "chargingDC_10_80_min": 20,
+      "chargingDC_kWh_30min": 75,
+      "chargingCurve": [
+        { "soc": 0, "power": 200 },
+        { "soc": 10, "power": 280 },
+        { "soc": 30, "power": 250 },
+        { "soc": 50, "power": 180 },
+        { "soc": 80, "power": 75 },
+        { "soc": 100, "power": 12 }
+      ],
+      "availability": "available",
+      "notes": "646 ch (475 kW), AWD Brabus"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 3,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "SUV familial au design moderne et aerodynamique" },
+    { "category": "technologie", "label": "Architecture 800 V et charge 280 kW" },
+    { "category": "securite", "label": "Freinage automatique et conduite semi-autonome" },
+    { "category": "confort", "label": "Frunk 72 L, V2L et charge AC 22 kW" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Architecture 800 V, charge 280 kW ultra-rapide",
+      "Autonomie exceptionnelle (740 km WLTP)"
+    ],
+    "weaknesses": [
+      "Assemblage en Chine, aucune aide francaise",
+      "Marque Smart encore meconnue sur le segment SUV familial"
+    ],
+    "idealUserProfile": "Gros rouleurs cherchant un SUV familial electrique avec charge ultra-rapide et grande autonomie.",
+    "notIdealFor": "Acheteurs fideles aux marques etablies ou comptant sur les aides a l'achat."
+  },
+  "lastUpdated": "2026-05-19",
+  "sources": ["la-chaine-ev"],
+  "imageCredit": "Constructeur"
+}

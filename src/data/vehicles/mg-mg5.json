@@ -82,29 +82,101 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Luxury Extended",
-      "price_EUR": 35990,
-      "batteryUsed": "61 kWh NMC",
+      "name": "Comfort 50.3 kWh",
+      "price_EUR": 30490,
+      "batteryUsed": "50.3 kWh",
       "equipmentHighlights": [
-        "Volume de coffre",
-        "Break familial"
+        "320 km WLTP",
+        "Ecran 10,25 pouces",
+        "Coffre 479 L"
+      ]
+    },
+    {
+      "name": "Luxury 50.3 kWh",
+      "price_EUR": 32490,
+      "batteryUsed": "50.3 kWh",
+      "equipmentHighlights": [
+        "320 km WLTP",
+        "Camera de recul",
+        "Sieges chauffants"
+      ]
+    },
+    {
+      "name": "Luxury 61 kWh",
+      "price_EUR": 35990,
+      "batteryUsed": "61 kWh",
+      "equipmentHighlights": [
+        "400 km WLTP",
+        "Camera de recul",
+        "Sieges chauffants"
       ]
     }
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [
-    {
-      "label": "Bonus Écologique",
-      "amount_EUR": 4000
-    }
-  ],
+  "availableAids": [],
   "configurations": [
     {
-      "id": "mg-mg5-luxury-extended",
-      "label": "MG5 Luxury Extended",
+      "id": "mg-mg5-comfort-50",
+      "label": "MG5 Comfort · 50.3 kWh",
       "battery": "standard",
-      "trim": "Luxury Extended",
+      "trim": "Comfort 50.3 kWh",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 30490,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 320,
+      "wltp_consumption_kWh_100km": 16,
+      "realRange": { "mixed_km": 245, "highway_130_km": 175, "urban_km": 300, "winter_minus5_km": 195, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 87,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 28,
+      "chargingCurve": [
+        { "soc": 0, "power": 67 },
+        { "soc": 10, "power": 87 },
+        { "soc": 50, "power": 67 },
+        { "soc": 80, "power": 33 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "156 ch (115 kW), FWD"
+    },
+    {
+      "id": "mg-mg5-luxury-50",
+      "label": "MG5 Luxury · 50.3 kWh",
+      "battery": "standard",
+      "trim": "Luxury 50.3 kWh",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 32490,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 320,
+      "wltp_consumption_kWh_100km": 16,
+      "realRange": { "mixed_km": 245, "highway_130_km": 175, "urban_km": 300, "winter_minus5_km": 195, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 87,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 28,
+      "chargingCurve": [
+        { "soc": 0, "power": 67 },
+        { "soc": 10, "power": 87 },
+        { "soc": 50, "power": 67 },
+        { "soc": 80, "power": 33 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "156 ch (115 kW), FWD, full options"
+    },
+    {
+      "id": "mg-mg5-luxury-61",
+      "label": "MG5 Luxury · 61 kWh",
+      "battery": "long-range",
+      "trim": "Luxury 61 kWh",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
@@ -113,41 +185,20 @@
       "leasingSocialEligible": false,
       "wltp_km": 400,
       "wltp_consumption_kWh_100km": 15,
-      "realRange": {
-        "mixed_km": 320,
-        "highway_130_km": 230,
-        "urban_km": 380,
-        "winter_minus5_km": 220,
-        "confidence": "tested"
-      },
+      "realRange": { "mixed_km": 320, "highway_130_km": 230, "urban_km": 380, "winter_minus5_km": 220, "confidence": "tested" },
       "rangeTests": [],
       "chargingDC_peak_kW": 87,
       "chargingDC_10_80_min": 40,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 67
-        },
-        {
-          "soc": 10,
-          "power": 87
-        },
-        {
-          "soc": 50,
-          "power": 67
-        },
-        {
-          "soc": 80,
-          "power": 33
-        },
-        {
-          "soc": 100,
-          "power": 7
-        }
+        { "soc": 0, "power": 67 },
+        { "soc": 10, "power": 87 },
+        { "soc": 50, "power": 67 },
+        { "soc": 80, "power": 33 },
+        { "soc": 100, "power": 7 }
       ],
       "availability": "available",
-      "notes": null
+      "notes": "156 ch (115 kW), FWD, full options"
     }
   ],
   "warranty": {

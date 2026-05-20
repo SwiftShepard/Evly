@@ -1,0 +1,226 @@
+{
+  "slug": "mercedes-eqb",
+  "brand": "Mercedes",
+  "model": "EQB",
+  "variant": "70.5 kWh",
+  "bodyType": "SUV",
+  "segment": "C",
+  "productionCountry": "Hongrie",
+  "assemblyPlant": "Kecskemet",
+  "releaseYear": 2022,
+  "marketAvailability": "Disponible",
+  "power_kW": 140,
+  "power_hp": 190,
+  "torque_Nm": 385,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 9.2,
+  "topSpeed_kmh": 160,
+  "usableCapacity_kWh": 70.5,
+  "grossCapacity_kWh": 73,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2175,
+  "wltp_max_km": 494,
+  "wltp_min_km": 388,
+  "realRange": {
+    "mixed_km": 365,
+    "highway_130_km": 265,
+    "urban_km": 450,
+    "winter_minus5_km": 290,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 18.5,
+  "consumption_highway_kWh_per_100km": 24,
+  "consumption_winter_kWh_per_100km": 22,
+  "dragCoefficient_Cx": 0.28,
+  "chargingDC": {
+    "peakPower_kW": 100,
+    "time_10_80_min": 32,
+    "kWh_added_30min": 42,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 7
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 70 },
+    { "soc": 10, "power": 100 },
+    { "soc": 30, "power": 90 },
+    { "soc": 50, "power": 65 },
+    { "soc": 80, "power": 30 },
+    { "soc": 100, "power": 6 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4684,
+  "width_mm": 1834,
+  "height_mm": 1706,
+  "wheelbase_mm": 2829,
+  "trunkCapacity_L": 495,
+  "trunkCapacityFolded_L": 1620,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "EQB 250+",
+      "price_EUR": 54250,
+      "batteryUsed": "70.5 kWh",
+      "equipmentHighlights": [
+        "494 km WLTP",
+        "7 places en option",
+        "MBUX 10,25 pouces"
+      ]
+    },
+    {
+      "name": "EQB 300 4MATIC",
+      "price_EUR": 57250,
+      "batteryUsed": "70.5 kWh",
+      "equipmentHighlights": [
+        "AWD 228 ch",
+        "465 km WLTP",
+        "Suspension confort"
+      ]
+    },
+    {
+      "name": "EQB 350 4MATIC",
+      "price_EUR": 60750,
+      "batteryUsed": "70.5 kWh",
+      "equipmentHighlights": [
+        "AWD 292 ch",
+        "440 km WLTP",
+        "Pack AMG Line"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
+  "configurations": [
+    {
+      "id": "mercedes-eqb-250",
+      "label": "EQB 250+",
+      "battery": "standard",
+      "trim": "EQB 250+",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 54250,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 494,
+      "wltp_consumption_kWh_100km": 16.8,
+      "realRange": { "mixed_km": 365, "highway_130_km": 265, "urban_km": 450, "winter_minus5_km": 290, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        { "soc": 0, "power": 70 },
+        { "soc": 10, "power": 100 },
+        { "soc": 30, "power": 90 },
+        { "soc": 50, "power": 65 },
+        { "soc": 80, "power": 30 },
+        { "soc": 100, "power": 6 }
+      ],
+      "availability": "available",
+      "notes": "190 ch (140 kW), FWD, 5 places (7 en option)"
+    },
+    {
+      "id": "mercedes-eqb-300",
+      "label": "EQB 300 4MATIC",
+      "battery": "standard",
+      "trim": "EQB 300 4MATIC",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 57250,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 465,
+      "wltp_consumption_kWh_100km": 17.5,
+      "realRange": { "mixed_km": 345, "highway_130_km": 250, "urban_km": 425, "winter_minus5_km": 275, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        { "soc": 0, "power": 70 },
+        { "soc": 10, "power": 100 },
+        { "soc": 30, "power": 90 },
+        { "soc": 50, "power": 65 },
+        { "soc": 80, "power": 30 },
+        { "soc": 100, "power": 6 }
+      ],
+      "availability": "available",
+      "notes": "228 ch (168 kW), AWD 4MATIC"
+    },
+    {
+      "id": "mercedes-eqb-350",
+      "label": "EQB 350 4MATIC",
+      "battery": "standard",
+      "trim": "EQB 350 4MATIC",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 60750,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 440,
+      "wltp_consumption_kWh_100km": 18.5,
+      "realRange": { "mixed_km": 330, "highway_130_km": 240, "urban_km": 410, "winter_minus5_km": 265, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        { "soc": 0, "power": 70 },
+        { "soc": 10, "power": 100 },
+        { "soc": 30, "power": 90 },
+        { "soc": 50, "power": 65 },
+        { "soc": 80, "power": 30 },
+        { "soc": 100, "power": 6 }
+      ],
+      "availability": "available",
+      "notes": "292 ch (215 kW), AWD 4MATIC"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 3,
+    "vehicle_km": 150000,
+    "battery_years": 10,
+    "battery_km": 250000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "SUV familial premium avec option 7 places" },
+    { "category": "technologie", "label": "MBUX avec ecran 10,25 pouces et navigation EV" },
+    { "category": "securite", "label": "Freinage automatique et assistance active" },
+    { "category": "confort", "label": "Coffre genereux (495 L) et modularite 7 places" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Seul SUV compact premium avec option 7 places",
+      "Assemble en Hongrie (UE), eligible prime CEE"
+    ],
+    "weaknesses": [
+      "Charge DC limitee a 100 kW",
+      "Consommation plus elevee que l'EQA (poids superieur)"
+    ],
+    "idealUserProfile": "Familles cherchant un SUV premium 7 places electrique.",
+    "notIdealFor": "Gros rouleurs frequents en charge rapide."
+  },
+  "lastUpdated": "2026-05-20",
+  "sources": ["constructeur", "automobile-propre"],
+  "imageCredit": "Constructeur"
+}

@@ -1,0 +1,221 @@
+{
+  "slug": "zeekr-x",
+  "brand": "Zeekr",
+  "model": "X",
+  "variant": "69 kWh",
+  "bodyType": "SUV compact",
+  "segment": "B",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Ningbo",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 200,
+  "power_hp": 272,
+  "torque_Nm": 343,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 5.8,
+  "topSpeed_kmh": 200,
+  "usableCapacity_kWh": 65,
+  "grossCapacity_kWh": 69,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1830,
+  "wltp_max_km": 415,
+  "wltp_min_km": 330,
+  "realRange": {
+    "mixed_km": 320,
+    "highway_130_km": 235,
+    "urban_km": 395,
+    "winter_minus5_km": 255,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 18,
+  "consumption_highway_kWh_per_100km": 25,
+  "consumption_winter_kWh_per_100km": 23,
+  "dragCoefficient_Cx": 0.28,
+  "chargingDC": {
+    "peakPower_kW": 150,
+    "time_10_80_min": 28,
+    "kWh_added_30min": 48,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 7
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 100 },
+    { "soc": 10, "power": 150 },
+    { "soc": 30, "power": 130 },
+    { "soc": 50, "power": 90 },
+    { "soc": 80, "power": 40 },
+    { "soc": 100, "power": 8 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4432,
+  "width_mm": 1836,
+  "height_mm": 1566,
+  "wheelbase_mm": 2750,
+  "trunkCapacity_L": 362,
+  "trunkCapacityFolded_L": 1095,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Core 49 kWh",
+      "price_EUR": 37990,
+      "batteryUsed": "49 kWh",
+      "equipmentHighlights": [
+        "330 km WLTP",
+        "Ecran 14,6 pouces",
+        "Toit panoramique"
+      ]
+    },
+    {
+      "name": "Long Range 61 kWh",
+      "price_EUR": 42990,
+      "batteryUsed": "61 kWh",
+      "equipmentHighlights": [
+        "405 km WLTP",
+        "Audio Harman Kardon",
+        "Sieges chauffants"
+      ]
+    },
+    {
+      "name": "Privilege 69 kWh",
+      "price_EUR": 47990,
+      "batteryUsed": "69 kWh",
+      "equipmentHighlights": [
+        "AWD 496 ch",
+        "0-100 en 3,7 s",
+        "415 km WLTP"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "zeekr-x-core-49",
+      "label": "Zeekr X Core · 49 kWh",
+      "battery": "standard",
+      "trim": "Core 49 kWh",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 37990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 330,
+      "wltp_consumption_kWh_100km": 17.3,
+      "realRange": { "mixed_km": 260, "highway_130_km": 195, "urban_km": 325, "winter_minus5_km": 210, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 150 },
+        { "soc": 30, "power": 130 },
+        { "soc": 50, "power": 85 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "272 ch (200 kW), RWD, LFP 49 kWh"
+    },
+    {
+      "id": "zeekr-x-lr-61",
+      "label": "Zeekr X Long Range · 61 kWh",
+      "battery": "long-range",
+      "trim": "Long Range 61 kWh",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 42990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 405,
+      "wltp_consumption_kWh_100km": 17.2,
+      "realRange": { "mixed_km": 310, "highway_130_km": 230, "urban_km": 385, "winter_minus5_km": 250, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 150 },
+        { "soc": 30, "power": 130 },
+        { "soc": 50, "power": 90 },
+        { "soc": 80, "power": 38 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "272 ch (200 kW), RWD"
+    },
+    {
+      "id": "zeekr-x-privilege-69",
+      "label": "Zeekr X Privilege · 69 kWh",
+      "battery": "long-range",
+      "trim": "Privilege 69 kWh",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 47990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 415,
+      "wltp_consumption_kWh_100km": 18.5,
+      "realRange": { "mixed_km": 320, "highway_130_km": 235, "urban_km": 395, "winter_minus5_km": 255, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 48,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 150 },
+        { "soc": 30, "power": 130 },
+        { "soc": 50, "power": 90 },
+        { "soc": 80, "power": 40 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "496 ch (365 kW), AWD"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "SUV compact premium au design expressif" },
+    { "category": "technologie", "label": "Ecran 14,6 pouces et audio Harman Kardon" },
+    { "category": "securite", "label": "Freinage automatique et aide a la conduite avancee" },
+    { "category": "confort", "label": "V2L, toit panoramique, sieges chauffants" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Version Privilege AWD 496 ch tres performante",
+      "Equipement premium de serie (Harman Kardon, toit pano)"
+    ],
+    "weaknesses": [
+      "Assemblage en Chine, aucune aide francaise",
+      "Charge DC limitee a 150 kW (pas de 800 V)"
+    ],
+    "idealUserProfile": "Conducteurs urbains cherchant un SUV compact premium sportif et bien equipe.",
+    "notIdealFor": "Gros rouleurs ou acheteurs comptant sur les aides a l'achat."
+  },
+  "lastUpdated": "2026-05-19",
+  "sources": ["constructeur", "automobile-propre"],
+  "imageCredit": "Constructeur"
+}

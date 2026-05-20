@@ -1,0 +1,265 @@
+{
+  "slug": "ford-capri",
+  "brand": "Ford",
+  "model": "Capri",
+  "variant": "77 kWh",
+  "bodyType": "SUV Coupe",
+  "segment": "D",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Cologne",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 210,
+  "power_hp": 286,
+  "torque_Nm": 545,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 6.4,
+  "topSpeed_kmh": 180,
+  "usableCapacity_kWh": 77,
+  "grossCapacity_kWh": 82,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2090,
+  "wltp_max_km": 627,
+  "wltp_min_km": 395,
+  "realRange": {
+    "mixed_km": 450,
+    "highway_130_km": 320,
+    "urban_km": 550,
+    "winter_minus5_km": 355,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 16.5,
+  "consumption_highway_kWh_per_100km": 22,
+  "consumption_winter_kWh_per_100km": 20,
+  "dragCoefficient_Cx": 0.26,
+  "chargingDC": {
+    "peakPower_kW": 185,
+    "time_10_80_min": 26,
+    "kWh_added_30min": 55,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 8
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 120 },
+    { "soc": 10, "power": 185 },
+    { "soc": 30, "power": 160 },
+    { "soc": 50, "power": 110 },
+    { "soc": 80, "power": 45 },
+    { "soc": 100, "power": 8 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4634,
+  "width_mm": 1872,
+  "height_mm": 1626,
+  "wheelbase_mm": 2767,
+  "trunkCapacity_L": 572,
+  "trunkCapacityFolded_L": 1510,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Capri 52 kWh",
+      "price_EUR": 42500,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "395 km WLTP",
+        "Ecran 14,6 pouces",
+        "Ford BlueCruise"
+      ]
+    },
+    {
+      "name": "Capri 77 kWh",
+      "price_EUR": 46400,
+      "batteryUsed": "77 kWh",
+      "equipmentHighlights": [
+        "627 km WLTP",
+        "Charge DC 185 kW",
+        "Coffre 572 L"
+      ]
+    },
+    {
+      "name": "Capri Premium 77 kWh",
+      "price_EUR": 50900,
+      "batteryUsed": "77 kWh",
+      "equipmentHighlights": [
+        "627 km WLTP",
+        "Toit panoramique",
+        "Audio B&O"
+      ]
+    },
+    {
+      "name": "Capri AWD 77 kWh",
+      "price_EUR": 53400,
+      "batteryUsed": "77 kWh",
+      "equipmentHighlights": [
+        "AWD 340 ch",
+        "592 km WLTP",
+        "Suspension adaptative"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
+  "configurations": [
+    {
+      "id": "ford-capri-52",
+      "label": "Capri · 52 kWh",
+      "battery": "standard",
+      "trim": "Capri 52 kWh",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 42500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 395,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": { "mixed_km": 300, "highway_130_km": 215, "urban_km": 370, "winter_minus5_km": 240, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 135,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        { "soc": 0, "power": 90 },
+        { "soc": 10, "power": 135 },
+        { "soc": 30, "power": 120 },
+        { "soc": 50, "power": 85 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "170 ch (125 kW), RWD"
+    },
+    {
+      "id": "ford-capri-77",
+      "label": "Capri · 77 kWh",
+      "battery": "long-range",
+      "trim": "Capri 77 kWh",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 46400,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 627,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": { "mixed_km": 450, "highway_130_km": 320, "urban_km": 550, "winter_minus5_km": 355, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 185,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 120 },
+        { "soc": 10, "power": 185 },
+        { "soc": 30, "power": 160 },
+        { "soc": 50, "power": 110 },
+        { "soc": 80, "power": 45 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "286 ch (210 kW), RWD"
+    },
+    {
+      "id": "ford-capri-premium-77",
+      "label": "Capri Premium · 77 kWh",
+      "battery": "long-range",
+      "trim": "Capri Premium 77 kWh",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 50900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 610,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": { "mixed_km": 440, "highway_130_km": 315, "urban_km": 540, "winter_minus5_km": 345, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 185,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 120 },
+        { "soc": 10, "power": 185 },
+        { "soc": 30, "power": 160 },
+        { "soc": 50, "power": 110 },
+        { "soc": 80, "power": 45 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "286 ch (210 kW), RWD, full options"
+    },
+    {
+      "id": "ford-capri-awd-77",
+      "label": "Capri AWD · 77 kWh",
+      "battery": "long-range",
+      "trim": "Capri AWD 77 kWh",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 53400,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 592,
+      "wltp_consumption_kWh_100km": 15.8,
+      "realRange": { "mixed_km": 420, "highway_130_km": 300, "urban_km": 515, "winter_minus5_km": 330, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 185,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 120 },
+        { "soc": 10, "power": 185 },
+        { "soc": 30, "power": 160 },
+        { "soc": 50, "power": 110 },
+        { "soc": 80, "power": 45 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "340 ch (250 kW), AWD bi-moteur"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "SUV Coupe sportif au design neo-retro" },
+    { "category": "technologie", "label": "Ecran 14,6 pouces et Ford BlueCruise" },
+    { "category": "securite", "label": "Freinage automatique et conduite semi-autonome" },
+    { "category": "confort", "label": "Coffre record du segment (572-1510 L) et Plug & Charge" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Assemble en Allemagne, eligible prime CEE (8 100 euros)",
+      "Coffre record (572 L) et autonomie genereuse (627 km WLTP)"
+    ],
+    "weaknesses": [
+      "Charge DC 185 kW correcte mais pas ultra-rapide",
+      "Versions Premium/AWD au-dessus du seuil CEE"
+    ],
+    "idealUserProfile": "Conducteurs cherchant un SUV coupe elegant avec grand coffre, eligible aux aides.",
+    "notIdealFor": "Acheteurs cherchant la charge ultra-rapide ou un SUV sureleve."
+  },
+  "lastUpdated": "2026-05-20",
+  "sources": ["constructeur", "automobile-propre"],
+  "imageCredit": "Constructeur"
+}

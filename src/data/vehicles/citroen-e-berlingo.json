@@ -82,72 +82,128 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Plus",
+      "name": "You M",
+      "price_EUR": 33900,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "345 km WLTP",
+        "Portes coulissantes",
+        "Ecran 10 pouces"
+      ]
+    },
+    {
+      "name": "Plus M",
       "price_EUR": 36900,
       "batteryUsed": "50 kWh",
       "equipmentHighlights": [
-        "Portes coulissantes",
-        "Nouvelle batterie LFP"
+        "345 km WLTP",
+        "Camera de recul",
+        "Sieges chauffants"
+      ]
+    },
+    {
+      "name": "Plus XL",
+      "price_EUR": 38400,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "320 km WLTP",
+        "Carrosserie XL (4,75 m)",
+        "7 places"
       ]
     }
   ],
-  "leasingSocialEligible": false,
-  "leasingSocial_EUR_per_month": null,
+  "leasingSocialEligible": true,
+  "leasingSocial_EUR_per_month": 149,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
-      "amount_EUR": 4000
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
     }
   ],
   "configurations": [
     {
-      "id": "citroen-e-berlingo-plus",
-      "label": "ë-Berlingo Plus",
+      "id": "citroen-e-berlingo-you-m",
+      "label": "ë-Berlingo You M",
       "battery": "standard",
-      "trim": "Plus",
-      "wheelSize_inches": 18,
+      "trim": "You M",
+      "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 36900,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
+      "price_EUR": 33900,
+      "monthlyLease_EUR": 149,
+      "leasingSocialEligible": true,
       "wltp_km": 345,
       "wltp_consumption_kWh_100km": 15,
-      "realRange": {
-        "mixed_km": 250,
-        "highway_130_km": 160,
-        "urban_km": 320,
-        "winter_minus5_km": 200,
-        "confidence": "tested"
-      },
+      "realRange": { "mixed_km": 250, "highway_130_km": 160, "urban_km": 320, "winter_minus5_km": 200, "confidence": "tested" },
       "rangeTests": [],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 30,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 77
-        },
-        {
-          "soc": 10,
-          "power": 100
-        },
-        {
-          "soc": 50,
-          "power": 77
-        },
-        {
-          "soc": 80,
-          "power": 38
-        },
-        {
-          "soc": 100,
-          "power": 8
-        }
+        { "soc": 0, "power": 77 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 77 },
+        { "soc": 80, "power": 38 },
+        { "soc": 100, "power": 8 }
       ],
       "availability": "available",
-      "notes": null
+      "notes": "136 ch (100 kW), FWD, taille M"
+    },
+    {
+      "id": "citroen-e-berlingo-plus-m",
+      "label": "ë-Berlingo Plus M",
+      "battery": "standard",
+      "trim": "Plus M",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 36900,
+      "monthlyLease_EUR": 149,
+      "leasingSocialEligible": true,
+      "wltp_km": 345,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": { "mixed_km": 250, "highway_130_km": 160, "urban_km": 320, "winter_minus5_km": 200, "confidence": "tested" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        { "soc": 0, "power": 77 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 77 },
+        { "soc": 80, "power": 38 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "136 ch (100 kW), FWD, taille M"
+    },
+    {
+      "id": "citroen-e-berlingo-plus-xl",
+      "label": "ë-Berlingo Plus XL",
+      "battery": "standard",
+      "trim": "Plus XL",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 38400,
+      "monthlyLease_EUR": 149,
+      "leasingSocialEligible": true,
+      "wltp_km": 320,
+      "wltp_consumption_kWh_100km": 16,
+      "realRange": { "mixed_km": 235, "highway_130_km": 150, "urban_km": 300, "winter_minus5_km": 185, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        { "soc": 0, "power": 77 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 77 },
+        { "soc": 80, "power": 38 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "136 ch (100 kW), FWD, taille XL 7 places"
     }
   ],
   "warranty": {

@@ -1,0 +1,182 @@
+{
+  "slug": "nio-et5",
+  "brand": "Nio",
+  "model": "ET5",
+  "variant": "75 kWh",
+  "bodyType": "Berline",
+  "segment": "D",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Hefei",
+  "releaseYear": 2023,
+  "marketAvailability": "Disponible en Europe",
+  "power_kW": 360,
+  "power_hp": 490,
+  "torque_Nm": 700,
+  "drivetrain": "AWD",
+  "motors": 2,
+  "acceleration_0_100_s": 4.3,
+  "topSpeed_kmh": 200,
+  "usableCapacity_kWh": 71,
+  "grossCapacity_kWh": 75,
+  "chemistry": "LFP",
+  "architecture_V": 400,
+  "mass_kg": 2215,
+  "wltp_max_km": 500,
+  "wltp_min_km": 410,
+  "realRange": {
+    "mixed_km": 370,
+    "highway_130_km": 270,
+    "urban_km": 460,
+    "winter_minus5_km": 295,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 19,
+  "consumption_highway_kWh_per_100km": 26,
+  "consumption_winter_kWh_per_100km": 24,
+  "dragCoefficient_Cx": 0.24,
+  "chargingDC": {
+    "peakPower_kW": 140,
+    "time_10_80_min": 30,
+    "kWh_added_30min": 48,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 7
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 100 },
+    { "soc": 10, "power": 140 },
+    { "soc": 30, "power": 125 },
+    { "soc": 50, "power": 90 },
+    { "soc": 80, "power": 40 },
+    { "soc": 100, "power": 8 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4790,
+  "width_mm": 1960,
+  "height_mm": 1499,
+  "wheelbase_mm": 2888,
+  "trunkCapacity_L": 386,
+  "trunkCapacityFolded_L": 1135,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "75 kWh",
+      "price_EUR": 49900,
+      "batteryUsed": "75 kWh",
+      "equipmentHighlights": [
+        "410 km WLTP",
+        "Battery Swap compatible",
+        "Cx 0,24 record"
+      ]
+    },
+    {
+      "name": "100 kWh",
+      "price_EUR": 49900,
+      "batteryUsed": "100 kWh",
+      "equipmentHighlights": [
+        "500 km WLTP",
+        "Battery Swap compatible",
+        "Audio 7.1.4 immersif"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "nio-et5-75",
+      "label": "ET5 · 75 kWh",
+      "battery": "standard",
+      "trim": "75 kWh",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 49900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 410,
+      "wltp_consumption_kWh_100km": 19.2,
+      "realRange": { "mixed_km": 315, "highway_130_km": 230, "urban_km": 395, "winter_minus5_km": 250, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 140,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 48,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 140 },
+        { "soc": 30, "power": 125 },
+        { "soc": 50, "power": 90 },
+        { "soc": 80, "power": 40 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "upcoming",
+      "notes": "490 ch (360 kW), AWD. Prix avec abonnement batterie (BaaS). Achat batterie : +12 000 euros"
+    },
+    {
+      "id": "nio-et5-100",
+      "label": "ET5 · 100 kWh",
+      "battery": "long-range",
+      "trim": "100 kWh",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 49900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 500,
+      "wltp_consumption_kWh_100km": 19.6,
+      "realRange": { "mixed_km": 370, "highway_130_km": 270, "urban_km": 460, "winter_minus5_km": 295, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 140,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 140 },
+        { "soc": 30, "power": 125 },
+        { "soc": 50, "power": 90 },
+        { "soc": 80, "power": 40 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "upcoming",
+      "notes": "490 ch (360 kW), AWD. Prix avec abonnement batterie (BaaS). Achat batterie : +21 000 euros"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "Berline sportive au Cx record de 0,24" },
+    { "category": "technologie", "label": "Battery Swap (echange batterie en 3 min)" },
+    { "category": "securite", "label": "LiDAR Innovusion et conduite autonome NIO Pilot" },
+    { "category": "confort", "label": "Audio immersif 7.1.4 et interieur premium" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Battery Swap : echange en 3 min, pas d'attente de charge",
+      "Cx record de 0,24 et performances AWD 490 ch"
+    ],
+    "weaknesses": [
+      "Pas encore disponible en France (Europe du Nord uniquement)",
+      "Tarification BaaS complexe (abonnement batterie)"
+    ],
+    "idealUserProfile": "Conducteurs interesses par le Battery Swap et cherchant une berline sportive premium.",
+    "notIdealFor": "Acheteurs en France cherchant un SAV de proximite ou un modele disponible immediatement."
+  },
+  "lastUpdated": "2026-05-19",
+  "sources": ["constructeur", "ev-database"],
+  "imageCredit": "Constructeur"
+}

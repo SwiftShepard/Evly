@@ -2,7 +2,7 @@
   "slug": "renault-5",
   "brand": "Renault",
   "model": "5 E-Tech",
-  "variant": "52 kWh",
+  "variant": "40 & 52 kWh",
   "bodyType": "Hatchback 5 portes",
   "segment": "B",
   "productionCountry": "France",
@@ -22,7 +22,7 @@
   "architecture_V": 400,
   "mass_kg": 1450,
   "wltp_max_km": 410,
-  "wltp_min_km": 400,
+  "wltp_min_km": 312,
   "realRange": {
     "mixed_km": 360,
     "highway_130_km": 240,
@@ -50,26 +50,11 @@
   "v2g": true,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    {
-      "soc": 0,
-      "power": 77
-    },
-    {
-      "soc": 10,
-      "power": 100
-    },
-    {
-      "soc": 50,
-      "power": 77
-    },
-    {
-      "soc": 80,
-      "power": 38
-    },
-    {
-      "soc": 100,
-      "power": 8
-    }
+    { "soc": 0, "power": 77 },
+    { "soc": 10, "power": 100 },
+    { "soc": 50, "power": 77 },
+    { "soc": 80, "power": 38 },
+    { "soc": 100, "power": 8 }
   ],
   "rangeTests": [
     {
@@ -96,43 +81,189 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Techno",
+      "name": "Five 40 kWh",
+      "price_EUR": 24990,
+      "batteryUsed": "40 kWh",
+      "equipmentHighlights": [
+        "Ecran 7 pouces",
+        "Climatisation manuelle"
+      ]
+    },
+    {
+      "name": "Evolution 40 kWh",
+      "price_EUR": 27990,
+      "batteryUsed": "40 kWh",
+      "equipmentHighlights": [
+        "Ecran 10 pouces",
+        "Charge DC 100 kW"
+      ]
+    },
+    {
+      "name": "Evolution 52 kWh",
+      "price_EUR": 30990,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "Ecran 10 pouces",
+        "Charge DC 100 kW",
+        "Jantes alliage 18 pouces"
+      ]
+    },
+    {
+      "name": "Techno 52 kWh",
       "price_EUR": 33490,
       "batteryUsed": "52 kWh",
       "equipmentHighlights": [
         "Ecran 10 pouces",
-        "V2L"
+        "V2L",
+        "Jantes alliage 18 pouces"
       ]
     },
     {
-      "name": "Iconic Cinq",
+      "name": "Iconic Cinq 52 kWh",
       "price_EUR": 35490,
       "batteryUsed": "52 kWh",
       "equipmentHighlights": [
-        "Sièges chauffants",
-        "Conduite semi autonome"
+        "Sieges chauffants",
+        "Conduite semi autonome",
+        "Toit vitré"
       ]
     }
   ],
   "leasingSocialEligible": true,
-  "leasingSocial_EUR_per_month": 119,
+  "leasingSocial_EUR_per_month": 120,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
-      "amount_EUR": 4000
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
     }
   ],
   "configurations": [
     {
-      "id": "renault-5-techno",
-      "label": "5 E-Tech Techno",
+      "id": "renault-5-five-40",
+      "label": "5 E-Tech Five · 40 kWh",
       "battery": "standard",
-      "trim": "Techno",
+      "trim": "Five 40 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 24990,
+      "monthlyLease_EUR": 120,
+      "leasingSocialEligible": true,
+      "wltp_km": 312,
+      "wltp_consumption_kWh_100km": 14.8,
+      "realRange": {
+        "mixed_km": 265,
+        "highway_130_km": 175,
+        "urban_km": 370,
+        "winter_minus5_km": 200,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 80,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 25,
+      "chargingCurve": [
+        { "soc": 0, "power": 55 },
+        { "soc": 10, "power": 80 },
+        { "soc": 50, "power": 60 },
+        { "soc": 80, "power": 30 },
+        { "soc": 100, "power": 6 }
+      ],
+      "availability": "available",
+      "notes": "Moteur 95 ch (70 kW)"
+    },
+    {
+      "id": "renault-5-evolution-40",
+      "label": "5 E-Tech Evolution · 40 kWh",
+      "battery": "standard",
+      "trim": "Evolution 40 kWh",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 27990,
+      "monthlyLease_EUR": 139,
+      "leasingSocialEligible": true,
+      "wltp_km": 312,
+      "wltp_consumption_kWh_100km": 14.8,
+      "realRange": {
+        "mixed_km": 265,
+        "highway_130_km": 175,
+        "urban_km": 370,
+        "winter_minus5_km": 200,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 27,
+      "chargingCurve": [
+        { "soc": 0, "power": 70 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 70 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "Moteur 120 ch (90 kW)"
+    },
+    {
+      "id": "renault-5-evolution-52",
+      "label": "5 E-Tech Evolution · 52 kWh",
+      "battery": "long-range",
+      "trim": "Evolution 52 kWh",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 30990,
+      "monthlyLease_EUR": 170,
+      "leasingSocialEligible": true,
+      "wltp_km": 410,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": {
+        "mixed_km": 360,
+        "highway_130_km": 240,
+        "urban_km": 450,
+        "winter_minus5_km": 280,
+        "confidence": "estimated"
+      },
+      "rangeTests": [
+        {
+          "sourceId": "la-chaine-ev",
+          "testDate": "2024-05",
+          "speed_kmh": 120,
+          "range_km": 240,
+          "consumption_kWh_100km": 21,
+          "temperature_C": 15,
+          "wheelSize_inches": 18,
+          "tyreModel": null,
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "notes": "Test autoroutier."
+        }
+      ],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        { "soc": 0, "power": 77 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 77 },
+        { "soc": 80, "power": 38 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "Moteur 150 ch (110 kW)"
+    },
+    {
+      "id": "renault-5-techno-52",
+      "label": "5 E-Tech Techno · 52 kWh",
+      "battery": "long-range",
+      "trim": "Techno 52 kWh",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
       "price_EUR": 33490,
-      "monthlyLease_EUR": 119,
+      "monthlyLease_EUR": 195,
       "leasingSocialEligible": true,
       "wltp_km": 410,
       "wltp_consumption_kWh_100km": 15.5,
@@ -162,40 +293,25 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 77
-        },
-        {
-          "soc": 10,
-          "power": 100
-        },
-        {
-          "soc": 50,
-          "power": 77
-        },
-        {
-          "soc": 80,
-          "power": 38
-        },
-        {
-          "soc": 100,
-          "power": 8
-        }
+        { "soc": 0, "power": 77 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 77 },
+        { "soc": 80, "power": 38 },
+        { "soc": 100, "power": 8 }
       ],
       "availability": "available",
-      "notes": null
+      "notes": "Moteur 150 ch (110 kW)"
     },
     {
-      "id": "renault-5-iconic-cinq",
-      "label": "5 E-Tech Iconic Cinq",
-      "battery": "standard",
-      "trim": "Iconic Cinq",
+      "id": "renault-5-iconic-cinq-52",
+      "label": "5 E-Tech Iconic Cinq · 52 kWh",
+      "battery": "long-range",
+      "trim": "Iconic Cinq 52 kWh",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
       "price_EUR": 35490,
-      "monthlyLease_EUR": 119,
+      "monthlyLease_EUR": 195,
       "leasingSocialEligible": true,
       "wltp_km": 410,
       "wltp_consumption_kWh_100km": 15.5,
@@ -225,29 +341,14 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 77
-        },
-        {
-          "soc": 10,
-          "power": 100
-        },
-        {
-          "soc": 50,
-          "power": 77
-        },
-        {
-          "soc": 80,
-          "power": 38
-        },
-        {
-          "soc": 100,
-          "power": 8
-        }
+        { "soc": 0, "power": 77 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 77 },
+        { "soc": 80, "power": 38 },
+        { "soc": 100, "power": 8 }
       ],
       "availability": "available",
-      "notes": null
+      "notes": "Moteur 150 ch (110 kW)"
     }
   ],
   "warranty": {
@@ -258,36 +359,25 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    {
-      "category": "confort",
-      "label": "Sièges confort de haute qualité"
-    },
-    {
-      "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
-    },
-    {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
-    },
-    {
-      "category": "design",
-      "label": "Signature lumineuse LED distinctive"
-    }
+    { "category": "confort", "label": "Sièges confort de haute qualité" },
+    { "category": "technologie", "label": "Système d'infodivertissement avancé" },
+    { "category": "securite", "label": "Freinage automatique d'urgence" },
+    { "category": "design", "label": "Signature lumineuse LED distinctive" }
   ],
   "verdict": {
     "strengths": [
-      "Bon compromis prix/autonomie",
-      "Confort de suspension"
+      "Gamme large de 24 990 a 35 490 euros",
+      "Bon compromis prix/autonomie sur la 52 kWh",
+      "V2L et V2G de serie"
     ],
     "weaknesses": [
-      "Vitesse de charge rapide en retrait",
-      "Infodivertissement perfectible"
+      "Vitesse de charge rapide en retrait (100 kW max)",
+      "Autonomie limitee sur la 40 kWh pour longs trajets"
     ],
-    "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
+    "idealUserProfile": "Urbains et périurbains cherchant une citadine électrique polyvalente au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-05-19",
   "sources": [
     "nyland",
     "la-chaine-ev"

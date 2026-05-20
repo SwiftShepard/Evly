@@ -237,14 +237,14 @@ export default function ComparatorCard({
           {totalAids > 0 && (
             <>
               <span className="font-mono text-[10px]" style={{ color: "var(--color-text-faint)" }}>
-                Aides : −<AnimatedNumber value={totalAids} format={fmtPrice} />
+                Aides max.* : −<AnimatedNumber value={totalAids} format={fmtPrice} />
               </span>
               <div className="flex items-baseline gap-2">
                 <span className="text-lg font-semibold tabular-nums" style={{ color: "var(--color-accent)" }}>
                   <AnimatedNumber value={netPrice} format={fmtPrice} />
                 </span>
                 <span className="font-mono text-[10px]" style={{ color: "var(--color-text-faint)" }}>
-                  après aides
+                  apres aides max.*
                 </span>
               </div>
             </>

@@ -99,6 +99,14 @@ export default function ConfigSelector({
     [configs]
   );
 
+  // Strip battery-capacity suffixes from trim labels for display
+  // e.g. "Techno 52 kWh" → "Techno", "Techno EV87" → "Techno"
+  const trimDisplayLabel = (trim: string) =>
+    trim
+      .replace(/\s+(?:EV)?\d+\s*kWh$/i, "")
+      .replace(/\s+EV\d+$/i, "")
+      .trim() || trim;
+
   // Battery labels = juste la capacité utile : "58 kWh", "77 kWh".
   //  - "long-range" → vehicle.usableCapacity_kWh (ref LR au top du JSON)
   //  - "standard"   → plus petite capacité unique trouvée dans trims.batteryUsed
@@ -189,18 +197,17 @@ export default function ConfigSelector({
             />
           )}
 
-          {/* Trim */}
-          {allTrims.length > 1 && (
+          {/* Trim — only show trims available for the active battery */}
+          {trimsForBattery.length > 1 && (
             <SegmentedControl
               label="Finition"
-              options={allTrims.map((t) => {
-                const available = isTrimAvailable(activeBattery, t);
-                const priced = available && isTrimPriced(activeBattery, t);
+              options={trimsForBattery.map((t) => {
+                const priced = isTrimPriced(activeBattery, t);
                 return {
                   value: t,
-                  label: t,
-                  disabled: !available || !priced,
-                  tooltip: available && !priced ? "Prix non communiqué" : undefined,
+                  label: trimDisplayLabel(t),
+                  disabled: !priced,
+                  tooltip: !priced ? "Prix non communiqué" : undefined,
                 };
               })}
               value={activeTrim}
@@ -258,7 +265,7 @@ function SegmentedControl({
         {label}
       </span>
       <div
-        className="flex gap-1 p-0.5 rounded-lg"
+        className="flex flex-wrap gap-1 p-0.5 rounded-lg"
         style={{ backgroundColor: "var(--color-bg-subtle)" }}
         role="radiogroup"
         aria-label={label}
@@ -273,7 +280,7 @@ function SegmentedControl({
               aria-checked={isActive}
               disabled={opt.disabled}
               onClick={() => !opt.disabled && onChange(opt.value)}
-              className="flex-1 py-1.5 px-2 text-center text-xs font-medium rounded-md transition-all duration-200"
+              className="flex-1 min-w-0 py-1.5 px-2 text-center text-xs font-medium rounded-md transition-all duration-200 truncate"
               title={opt.disabled ? (opt.tooltip ?? "Configuration non disponible au catalogue") : undefined}
               style={{
                 backgroundColor: isActive ? "var(--color-surface-elevated)" : "transparent",

@@ -1,0 +1,226 @@
+{
+  "slug": "mercedes-eqe",
+  "brand": "Mercedes",
+  "model": "EQE",
+  "variant": "90.6 kWh",
+  "bodyType": "Berline",
+  "segment": "E",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Bremen",
+  "releaseYear": 2023,
+  "marketAvailability": "Disponible",
+  "power_kW": 215,
+  "power_hp": 292,
+  "torque_Nm": 565,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 6.4,
+  "topSpeed_kmh": 210,
+  "usableCapacity_kWh": 90.6,
+  "grossCapacity_kWh": 96,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2355,
+  "wltp_max_km": 647,
+  "wltp_min_km": 505,
+  "realRange": {
+    "mixed_km": 470,
+    "highway_130_km": 340,
+    "urban_km": 580,
+    "winter_minus5_km": 375,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 18,
+  "consumption_highway_kWh_per_100km": 24,
+  "consumption_winter_kWh_per_100km": 22,
+  "dragCoefficient_Cx": 0.22,
+  "chargingDC": {
+    "peakPower_kW": 170,
+    "time_10_80_min": 32,
+    "kWh_added_30min": 55,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 22,
+    "phases": 3,
+    "time_0_100_h": 4.5
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 120 },
+    { "soc": 10, "power": 170 },
+    { "soc": 30, "power": 150 },
+    { "soc": 50, "power": 110 },
+    { "soc": 80, "power": 45 },
+    { "soc": 100, "power": 8 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4946,
+  "width_mm": 1961,
+  "height_mm": 1510,
+  "wheelbase_mm": 3120,
+  "trunkCapacity_L": 430,
+  "trunkCapacityFolded_L": 870,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "EQE 300+",
+      "price_EUR": 69900,
+      "batteryUsed": "90.6 kWh",
+      "equipmentHighlights": [
+        "647 km WLTP",
+        "Cx 0,22",
+        "AC 22 kW de serie"
+      ]
+    },
+    {
+      "name": "EQE 350+",
+      "price_EUR": 76900,
+      "batteryUsed": "90.6 kWh",
+      "equipmentHighlights": [
+        "620 km WLTP",
+        "292 ch",
+        "MBUX Hyperscreen en option"
+      ]
+    },
+    {
+      "name": "AMG EQE 43 4MATIC",
+      "price_EUR": 96900,
+      "batteryUsed": "90.6 kWh",
+      "equipmentHighlights": [
+        "AWD 476 ch",
+        "0-100 en 4,2 s",
+        "Chassis AMG RIDE CONTROL+"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
+  "configurations": [
+    {
+      "id": "mercedes-eqe-300",
+      "label": "EQE 300+",
+      "battery": "standard",
+      "trim": "EQE 300+",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 69900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 647,
+      "wltp_consumption_kWh_100km": 16.2,
+      "realRange": { "mixed_km": 470, "highway_130_km": 340, "urban_km": 580, "winter_minus5_km": 375, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 170,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 120 },
+        { "soc": 10, "power": 170 },
+        { "soc": 30, "power": 150 },
+        { "soc": 50, "power": 110 },
+        { "soc": 80, "power": 45 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "245 ch (180 kW), RWD, AC 22 kW"
+    },
+    {
+      "id": "mercedes-eqe-350",
+      "label": "EQE 350+",
+      "battery": "standard",
+      "trim": "EQE 350+",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 76900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 620,
+      "wltp_consumption_kWh_100km": 17,
+      "realRange": { "mixed_km": 455, "highway_130_km": 330, "urban_km": 560, "winter_minus5_km": 360, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 170,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 120 },
+        { "soc": 10, "power": 170 },
+        { "soc": 30, "power": 150 },
+        { "soc": 50, "power": 110 },
+        { "soc": 80, "power": 45 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "292 ch (215 kW), RWD"
+    },
+    {
+      "id": "mercedes-eqe-43",
+      "label": "AMG EQE 43 4MATIC",
+      "battery": "standard",
+      "trim": "AMG EQE 43 4MATIC",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 96900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 533,
+      "wltp_consumption_kWh_100km": 20,
+      "realRange": { "mixed_km": 390, "highway_130_km": 280, "urban_km": 480, "winter_minus5_km": 310, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 170,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 120 },
+        { "soc": 10, "power": 170 },
+        { "soc": 30, "power": 150 },
+        { "soc": 50, "power": 110 },
+        { "soc": 80, "power": 45 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "476 ch (350 kW), AWD 4MATIC, AMG"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 3,
+    "vehicle_km": 150000,
+    "battery_years": 10,
+    "battery_km": 250000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "Berline executive au Cx exceptionnel de 0,22" },
+    { "category": "technologie", "label": "MBUX Hyperscreen et AC 22 kW de serie" },
+    { "category": "securite", "label": "Conduite semi-autonome et freinage automatique" },
+    { "category": "confort", "label": "Empattement XXL (3,12 m) et silence de roulement" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Cx exceptionnel (0,22) et grande autonomie (647 km WLTP)",
+      "AC 22 kW de serie et finition premium Mercedes"
+    ],
+    "weaknesses": [
+      "Prix eleve (a partir de 69 900 euros)",
+      "Charge DC 170 kW correcte mais pas 800 V"
+    ],
+    "idealUserProfile": "Cadres et professionnels cherchant une berline electrique haut de gamme.",
+    "notIdealFor": "Acheteurs a budget limite ou cherchant un SUV."
+  },
+  "lastUpdated": "2026-05-20",
+  "sources": ["constructeur", "automobile-propre"],
+  "imageCredit": "Constructeur"
+}

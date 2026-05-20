@@ -1,0 +1,182 @@
+{
+  "slug": "xiaomi-su7",
+  "brand": "Xiaomi",
+  "model": "SU7",
+  "variant": "73.6 kWh",
+  "bodyType": "Berline",
+  "segment": "D",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Pekin",
+  "releaseYear": 2024,
+  "marketAvailability": "A venir en Europe",
+  "power_kW": 220,
+  "power_hp": 299,
+  "torque_Nm": 400,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 5.3,
+  "topSpeed_kmh": 210,
+  "usableCapacity_kWh": 70,
+  "grossCapacity_kWh": 73.6,
+  "chemistry": "LFP",
+  "architecture_V": 800,
+  "mass_kg": 1980,
+  "wltp_max_km": 700,
+  "wltp_min_km": 590,
+  "realRange": {
+    "mixed_km": 480,
+    "highway_130_km": 350,
+    "urban_km": 580,
+    "winter_minus5_km": 380,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 14.5,
+  "consumption_highway_kWh_per_100km": 20,
+  "consumption_winter_kWh_per_100km": 18,
+  "dragCoefficient_Cx": 0.195,
+  "chargingDC": {
+    "peakPower_kW": 360,
+    "time_10_80_min": 15,
+    "kWh_added_30min": 65,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 7
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 220 },
+    { "soc": 10, "power": 360 },
+    { "soc": 30, "power": 320 },
+    { "soc": 50, "power": 240 },
+    { "soc": 80, "power": 75 },
+    { "soc": 100, "power": 12 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4997,
+  "width_mm": 1963,
+  "height_mm": 1455,
+  "wheelbase_mm": 3000,
+  "trunkCapacity_L": 517,
+  "trunkCapacityFolded_L": 1050,
+  "frunkCapacity_L": 105,
+  "trims": [
+    {
+      "name": "Standard 73.6 kWh",
+      "price_EUR": 41000,
+      "batteryUsed": "73.6 kWh",
+      "equipmentHighlights": [
+        "700 km WLTP (est.)",
+        "Cx record 0,195",
+        "Architecture 800 V"
+      ]
+    },
+    {
+      "name": "Max 101 kWh",
+      "price_EUR": 56000,
+      "batteryUsed": "101 kWh",
+      "equipmentHighlights": [
+        "AWD 673 ch",
+        "0-100 en 2,8 s",
+        "Batterie CATL Qilin"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "xiaomi-su7-standard",
+      "label": "SU7 Standard · 73.6 kWh",
+      "battery": "standard",
+      "trim": "Standard 73.6 kWh",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 41000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 700,
+      "wltp_consumption_kWh_100km": 12.6,
+      "realRange": { "mixed_km": 480, "highway_130_km": 350, "urban_km": 580, "winter_minus5_km": 380, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 360,
+      "chargingDC_10_80_min": 15,
+      "chargingDC_kWh_30min": 60,
+      "chargingCurve": [
+        { "soc": 0, "power": 220 },
+        { "soc": 10, "power": 360 },
+        { "soc": 30, "power": 320 },
+        { "soc": 50, "power": 240 },
+        { "soc": 80, "power": 75 },
+        { "soc": 100, "power": 12 }
+      ],
+      "availability": "upcoming",
+      "notes": "299 ch (220 kW), RWD. Prix europeen estime. Lancement Europe prevu 2027."
+    },
+    {
+      "id": "xiaomi-su7-max",
+      "label": "SU7 Max · 101 kWh",
+      "battery": "long-range",
+      "trim": "Max 101 kWh",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 56000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 590,
+      "wltp_consumption_kWh_100km": 18,
+      "realRange": { "mixed_km": 440, "highway_130_km": 320, "urban_km": 540, "winter_minus5_km": 350, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 360,
+      "chargingDC_10_80_min": 18,
+      "chargingDC_kWh_30min": 80,
+      "chargingCurve": [
+        { "soc": 0, "power": 220 },
+        { "soc": 10, "power": 360 },
+        { "soc": 30, "power": 320 },
+        { "soc": 50, "power": 240 },
+        { "soc": 80, "power": 75 },
+        { "soc": 100, "power": 12 }
+      ],
+      "availability": "upcoming",
+      "notes": "673 ch (495 kW), AWD, CATL Qilin. Prix europeen estime."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "Berline sportive au Cx record de 0,195" },
+    { "category": "technologie", "label": "Architecture 800 V, ecosysteme Xiaomi integre" },
+    { "category": "securite", "label": "LiDAR et conduite autonome avancee" },
+    { "category": "confort", "label": "Frunk 105 L, ecran HUD et integration domotique" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Cx record absolu de 0,195, efficience exceptionnelle",
+      "Rapport prix/performances imbattable si prix europeen confirme"
+    ],
+    "weaknesses": [
+      "Pas encore disponible en Europe (prevu 2027)",
+      "Aucun reseau SAV en France"
+    ],
+    "idealUserProfile": "Early adopters interesses par la tech Xiaomi et cherchant une berline electrique ultra-efficiente.",
+    "notIdealFor": "Acheteurs cherchant un vehicule disponible immediatement avec SAV local."
+  },
+  "lastUpdated": "2026-05-19",
+  "sources": ["constructeur", "automobile-propre"],
+  "imageCredit": "Constructeur"
+}

@@ -2,152 +2,156 @@
   "slug": "renault-twingo",
   "brand": "Renault",
   "model": "Twingo E-Tech",
-  "variant": "40 kWh",
+  "variant": "27.4 kWh",
   "bodyType": "Citadine",
   "segment": "A",
   "productionCountry": "Slovénie",
-  "assemblyPlant": "Ulsan",
-  "releaseYear": 2024,
+  "assemblyPlant": "Novo Mesto",
+  "releaseYear": 2025,
   "marketAvailability": "Disponible",
-  "power_kW": 65,
-  "power_hp": 204,
-  "torque_Nm": 300,
+  "power_kW": 60,
+  "power_hp": 82,
+  "torque_Nm": 120,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
-  "topSpeed_kmh": 160,
-  "usableCapacity_kWh": 40,
-  "grossCapacity_kWh": 64,
-  "chemistry": "NMC",
+  "acceleration_0_100_s": 12.2,
+  "topSpeed_kmh": 135,
+  "usableCapacity_kWh": 27.4,
+  "grossCapacity_kWh": 30,
+  "chemistry": "LFP",
   "architecture_V": 400,
-  "mass_kg": 1700,
-  "wltp_max_km": 300,
-  "wltp_min_km": 250,
+  "mass_kg": 1190,
+  "wltp_max_km": 263,
+  "wltp_min_km": 240,
   "realRange": {
     "mixed_km": 220,
-    "highway_130_km": 140,
-    "urban_km": 280,
-    "winter_minus5_km": 180,
+    "highway_130_km": 145,
+    "urban_km": 310,
+    "winter_minus5_km": 170,
     "confidence": "estimated"
   },
-  "consumption_mixed_kWh_per_100km": 15,
-  "consumption_highway_kWh_per_100km": 21,
-  "consumption_winter_kWh_per_100km": 19,
-  "dragCoefficient_Cx": 0.3,
+  "consumption_mixed_kWh_per_100km": 13,
+  "consumption_highway_kWh_per_100km": 19,
+  "consumption_winter_kWh_per_100km": 16.5,
+  "dragCoefficient_Cx": 0.29,
   "chargingDC": {
-    "peakPower_kW": 80,
+    "peakPower_kW": 50,
     "time_10_80_min": 30,
-    "kWh_added_30min": 25,
+    "kWh_added_30min": 19,
     "confidence": "estimated"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
     "phases": 3,
-    "time_0_100_h": 6.5
+    "time_0_100_h": 3.5
   },
   "plugAndCharge": false,
   "v2l": false,
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    {
-      "soc": 0,
-      "power": 62
-    },
-    {
-      "soc": 10,
-      "power": 80
-    },
-    {
-      "soc": 50,
-      "power": 62
-    },
-    {
-      "soc": 80,
-      "power": 31
-    },
-    {
-      "soc": 100,
-      "power": 6
-    }
+    { "soc": 0, "power": 35 },
+    { "soc": 10, "power": 50 },
+    { "soc": 50, "power": 40 },
+    { "soc": 80, "power": 20 },
+    { "soc": 100, "power": 5 }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
-  "length_mm": 3600,
-  "width_mm": 1650,
-  "height_mm": 1540,
-  "wheelbase_mm": 2700,
-  "trunkCapacity_L": 220,
-  "trunkCapacityFolded_L": 1200,
+  "length_mm": 3760,
+  "width_mm": 1780,
+  "height_mm": 1490,
+  "wheelbase_mm": 2490,
+  "trunkCapacity_L": 265,
+  "trunkCapacityFolded_L": 780,
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Equilibre",
-      "price_EUR": 19990,
-      "batteryUsed": "40 kWh",
+      "name": "Evolution",
+      "price_EUR": 19500,
+      "batteryUsed": "27.4 kWh",
       "equipmentHighlights": [
-        "Design rétro",
-        "Ecran 10\""
+        "Ecran 7 pouces",
+        "Climatisation manuelle",
+        "Jantes 15 pouces"
+      ]
+    },
+    {
+      "name": "Techno",
+      "price_EUR": 21090,
+      "batteryUsed": "27.4 kWh",
+      "equipmentHighlights": [
+        "OpenR Link Google",
+        "Ecran 10 pouces",
+        "Chargeur AC 11 kW tri",
+        "Jantes alliage 16 pouces"
       ]
     }
   ],
-  "leasingSocialEligible": false,
-  "leasingSocial_EUR_per_month": null,
+  "leasingSocialEligible": true,
+  "leasingSocial_EUR_per_month": 99,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
-      "amount_EUR": 4000
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
     }
   ],
   "configurations": [
     {
-      "id": "renault-twingo-equilibre",
-      "label": "Twingo E-Tech Equilibre",
+      "id": "renault-twingo-evolution",
+      "label": "Twingo E-Tech Evolution",
       "battery": "standard",
-      "trim": "Equilibre",
-      "wheelSize_inches": 18,
+      "trim": "Evolution",
+      "wheelSize_inches": 15,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 19990,
+      "price_EUR": 19500,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 300,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_km": 263,
+      "wltp_consumption_kWh_100km": 12.6,
       "realRange": {
         "mixed_km": 220,
-        "highway_130_km": 140,
-        "urban_km": 280,
-        "winter_minus5_km": 180,
+        "highway_130_km": 145,
+        "urban_km": 310,
+        "winter_minus5_km": 170,
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 80,
-      "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 25,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 62
-        },
-        {
-          "soc": 10,
-          "power": 80
-        },
-        {
-          "soc": 50,
-          "power": 62
-        },
-        {
-          "soc": 80,
-          "power": 31
-        },
-        {
-          "soc": 100,
-          "power": 6
-        }
-      ],
+      "chargingDC_peak_kW": null,
+      "chargingDC_10_80_min": null,
+      "chargingDC_kWh_30min": null,
+      "chargingCurve": null,
       "availability": "available",
-      "notes": null
+      "notes": "82 ch (60 kW). Charge DC non disponible de serie (option Pack Advanced Charge ~490 euros, 50 kW). AC 7,4 kW mono."
+    },
+    {
+      "id": "renault-twingo-techno",
+      "label": "Twingo E-Tech Techno",
+      "battery": "standard",
+      "trim": "Techno",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 21090,
+      "monthlyLease_EUR": 99,
+      "leasingSocialEligible": true,
+      "wltp_km": 250,
+      "wltp_consumption_kWh_100km": 13.2,
+      "realRange": {
+        "mixed_km": 210,
+        "highway_130_km": 140,
+        "urban_km": 295,
+        "winter_minus5_km": 165,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": null,
+      "chargingDC_10_80_min": null,
+      "chargingDC_kWh_30min": null,
+      "chargingCurve": null,
+      "availability": "available",
+      "notes": "82 ch (60 kW). Charge DC non disponible de serie (option Pack Advanced Charge ~490 euros, 50 kW). AC 11 kW tri."
     }
   ],
   "warranty": {
@@ -158,38 +162,26 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    {
-      "category": "confort",
-      "label": "Sièges confort de haute qualité"
-    },
-    {
-      "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
-    },
-    {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
-    },
-    {
-      "category": "design",
-      "label": "Signature lumineuse LED distinctive"
-    }
+    { "category": "design", "label": "Design neo-retro compact et moderne" },
+    { "category": "confort", "label": "Rayon de braquage reduit, ideal en ville" },
+    { "category": "technologie", "label": "OpenR Link avec Google integre (Techno)" },
+    { "category": "securite", "label": "Freinage automatique d'urgence" }
   ],
   "verdict": {
     "strengths": [
-      "Bon compromis prix/autonomie",
-      "Confort de suspension"
+      "Prix d'entree tres competitif a 19 500 euros",
+      "Batterie LFP durable et adaptee a l'usage urbain",
+      "Legere et efficiente (13 kWh/100 km)"
     ],
     "weaknesses": [
-      "Vitesse de charge rapide en retrait",
-      "Infodivertissement perfectible"
+      "Charge DC en option seulement (50 kW)",
+      "Autonomie limitee pour les longs trajets (263 km WLTP)"
     ],
-    "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
-    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
+    "idealUserProfile": "Urbains cherchant une citadine electrique abordable pour les trajets quotidiens.",
+    "notIdealFor": "Gros rouleurs ou familles ayant besoin d'espace et d'autonomie autoroutiere."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-05-19",
   "sources": [
-    "nyland",
     "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"

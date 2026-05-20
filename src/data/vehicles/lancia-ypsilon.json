@@ -1,0 +1,184 @@
+{
+  "slug": "lancia-ypsilon",
+  "brand": "Lancia",
+  "model": "Ypsilon",
+  "variant": "51 kWh",
+  "bodyType": "Citadine",
+  "segment": "B",
+  "productionCountry": "Espagne",
+  "assemblyPlant": "Zaragoza",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 115,
+  "power_hp": 156,
+  "torque_Nm": 260,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 8.0,
+  "topSpeed_kmh": 150,
+  "usableCapacity_kWh": 51,
+  "grossCapacity_kWh": 54,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1530,
+  "wltp_max_km": 403,
+  "wltp_min_km": 390,
+  "realRange": {
+    "mixed_km": 310,
+    "highway_130_km": 200,
+    "urban_km": 390,
+    "winter_minus5_km": 245,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 15.2,
+  "consumption_highway_kWh_per_100km": 20,
+  "consumption_winter_kWh_per_100km": 18.5,
+  "dragCoefficient_Cx": 0.29,
+  "chargingDC": {
+    "peakPower_kW": 100,
+    "time_10_80_min": 30,
+    "kWh_added_30min": 35,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 5.5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0,   "power": 77 },
+    { "soc": 10,  "power": 100 },
+    { "soc": 50,  "power": 77 },
+    { "soc": 80,  "power": 38 },
+    { "soc": 100, "power": 8 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4080,
+  "width_mm": 1760,
+  "height_mm": 1440,
+  "wheelbase_mm": 2560,
+  "trunkCapacity_L": 305,
+  "trunkCapacityFolded_L": 1050,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Ypsilon",
+      "price_EUR": 39500,
+      "batteryUsed": "51 kWh",
+      "equipmentHighlights": [
+        "403 km WLTP",
+        "Ecran 10,25 pouces",
+        "SALA (conduite semi-autonome niveau 2)"
+      ]
+    },
+    {
+      "name": "Cassina",
+      "price_EUR": 43500,
+      "batteryUsed": "51 kWh",
+      "equipmentHighlights": [
+        "403 km WLTP",
+        "Sellerie Poltrona Frau",
+        "Toit panoramique"
+      ]
+    }
+  ],
+  "leasingSocialEligible": true,
+  "leasingSocial_EUR_per_month": 179,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
+  "configurations": [
+    {
+      "id": "lancia-ypsilon-ypsilon",
+      "label": "Ypsilon · 51 kWh",
+      "battery": "standard",
+      "trim": "Ypsilon",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 39500,
+      "monthlyLease_EUR": 179,
+      "leasingSocialEligible": true,
+      "wltp_km": 403,
+      "wltp_consumption_kWh_100km": 15.2,
+      "realRange": { "mixed_km": 310, "highway_130_km": 200, "urban_km": 390, "winter_minus5_km": 245, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        { "soc": 0,   "power": 77 },
+        { "soc": 10,  "power": 100 },
+        { "soc": 50,  "power": 77 },
+        { "soc": 80,  "power": 38 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "156 ch (115 kW), FWD"
+    },
+    {
+      "id": "lancia-ypsilon-cassina",
+      "label": "Ypsilon Cassina · 51 kWh",
+      "battery": "standard",
+      "trim": "Cassina",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 43500,
+      "monthlyLease_EUR": 179,
+      "leasingSocialEligible": true,
+      "wltp_km": 390,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": { "mixed_km": 300, "highway_130_km": 195, "urban_km": 380, "winter_minus5_km": 235, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        { "soc": 0,   "power": 77 },
+        { "soc": 10,  "power": 100 },
+        { "soc": 50,  "power": 77 },
+        { "soc": 80,  "power": 38 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "156 ch (115 kW), FWD, full options Poltrona Frau"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 3,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "confort", "label": "Sellerie Poltrona Frau (Cassina), interieur premium italien" },
+    { "category": "technologie", "label": "SALA : conduite semi-autonome niveau 2 de serie" },
+    { "category": "securite", "label": "Freinage automatique d'urgence, 6 airbags" },
+    { "category": "design", "label": "Design neo-retro italien, calandra Lancia iconique" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Design et finition premium pour le segment B",
+      "Plateforme Stellantis eprouvee, bonne autonomie WLTP"
+    ],
+    "weaknesses": [
+      "Charge DC limitee a 100 kW",
+      "Coffre compact (305 L)"
+    ],
+    "idealUserProfile": "Amateurs de design italien cherchant une citadine electrique premium avec un interieur soigne.",
+    "notIdealFor": "Familles ayant besoin d'un grand coffre ou gros rouleurs autoroutiers."
+  },
+  "lastUpdated": "2026-05-20",
+  "sources": ["constructeur"],
+  "imageCredit": "Constructeur"
+}

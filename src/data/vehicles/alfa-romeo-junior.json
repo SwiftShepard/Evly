@@ -1,0 +1,222 @@
+{
+  "slug": "alfa-romeo-junior",
+  "brand": "Alfa Romeo",
+  "model": "Junior",
+  "variant": "54 kWh",
+  "bodyType": "SUV compact",
+  "segment": "B",
+  "productionCountry": "Pologne",
+  "assemblyPlant": "Tychy",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 115,
+  "power_hp": 156,
+  "torque_Nm": 260,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 9.0,
+  "topSpeed_kmh": 150,
+  "usableCapacity_kWh": 54,
+  "grossCapacity_kWh": 54,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1560,
+  "wltp_max_km": 410,
+  "wltp_min_km": 400,
+  "realRange": {
+    "mixed_km": 315,
+    "highway_130_km": 210,
+    "urban_km": 400,
+    "winter_minus5_km": 250,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 15.5,
+  "consumption_highway_kWh_per_100km": 20.5,
+  "consumption_winter_kWh_per_100km": 19,
+  "dragCoefficient_Cx": 0.30,
+  "chargingDC": {
+    "peakPower_kW": 100,
+    "time_10_80_min": 30,
+    "kWh_added_30min": 37,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 5.5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0,   "power": 77 },
+    { "soc": 10,  "power": 100 },
+    { "soc": 50,  "power": 77 },
+    { "soc": 80,  "power": 38 },
+    { "soc": 100, "power": 8 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4173,
+  "width_mm": 1781,
+  "height_mm": 1530,
+  "wheelbase_mm": 2561,
+  "trunkCapacity_L": 400,
+  "trunkCapacityFolded_L": 1265,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Junior",
+      "price_EUR": 38500,
+      "batteryUsed": "54 kWh",
+      "equipmentHighlights": [
+        "410 km WLTP",
+        "Ecran 10,25 pouces",
+        "Jantes 18 pouces"
+      ]
+    },
+    {
+      "name": "Speciale",
+      "price_EUR": 42000,
+      "batteryUsed": "54 kWh",
+      "equipmentHighlights": [
+        "410 km WLTP",
+        "Sellerie cuir/Alcantara",
+        "Camera de recul"
+      ]
+    },
+    {
+      "name": "Veloce",
+      "price_EUR": 48000,
+      "batteryUsed": "54 kWh",
+      "equipmentHighlights": [
+        "280 ch AWD",
+        "0-100 en 5,9 s",
+        "Suspensions sport"
+      ]
+    }
+  ],
+  "leasingSocialEligible": true,
+  "leasingSocial_EUR_per_month": 199,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
+  "configurations": [
+    {
+      "id": "alfa-romeo-junior-junior",
+      "label": "Junior · 54 kWh",
+      "battery": "standard",
+      "trim": "Junior",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 38500,
+      "monthlyLease_EUR": 199,
+      "leasingSocialEligible": true,
+      "wltp_km": 410,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": { "mixed_km": 315, "highway_130_km": 210, "urban_km": 400, "winter_minus5_km": 250, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 37,
+      "chargingCurve": [
+        { "soc": 0,   "power": 77 },
+        { "soc": 10,  "power": 100 },
+        { "soc": 50,  "power": 77 },
+        { "soc": 80,  "power": 38 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "156 ch (115 kW), FWD"
+    },
+    {
+      "id": "alfa-romeo-junior-speciale",
+      "label": "Junior Speciale · 54 kWh",
+      "battery": "standard",
+      "trim": "Speciale",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 42000,
+      "monthlyLease_EUR": 199,
+      "leasingSocialEligible": true,
+      "wltp_km": 410,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": { "mixed_km": 315, "highway_130_km": 210, "urban_km": 400, "winter_minus5_km": 250, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 37,
+      "chargingCurve": [
+        { "soc": 0,   "power": 77 },
+        { "soc": 10,  "power": 100 },
+        { "soc": 50,  "power": 77 },
+        { "soc": 80,  "power": 38 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "156 ch (115 kW), FWD, finition haut de gamme"
+    },
+    {
+      "id": "alfa-romeo-junior-veloce",
+      "label": "Junior Veloce · 54 kWh",
+      "battery": "standard",
+      "trim": "Veloce",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 48000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 400,
+      "wltp_consumption_kWh_100km": 16,
+      "realRange": { "mixed_km": 300, "highway_130_km": 195, "urban_km": 370, "winter_minus5_km": 235, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 37,
+      "chargingCurve": [
+        { "soc": 0,   "power": 77 },
+        { "soc": 10,  "power": 100 },
+        { "soc": 50,  "power": 77 },
+        { "soc": 80,  "power": 38 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "280 ch (207 kW), AWD bi-moteur, suspensions sport"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 3,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "confort", "label": "Sieges sport Sabelt (Veloce), interieur premium" },
+    { "category": "technologie", "label": "Ecran 10,25 pouces, instrumentation digitale" },
+    { "category": "securite", "label": "Freinage automatique d'urgence, 6 airbags" },
+    { "category": "design", "label": "Scudetto Alfa Romeo, ligne sportive italienne" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Chassis et tenue de route sportive, ADN Alfa Romeo",
+      "Version Veloce AWD 280 ch pour les passionnes"
+    ],
+    "weaknesses": [
+      "Charge DC limitee a 100 kW",
+      "Prix eleve face a la concurrence Stellantis (Peugeot e-2008, Jeep Avenger)"
+    ],
+    "idealUserProfile": "Amateurs de conduite sportive cherchant un SUV compact electrique avec du caractere italien.",
+    "notIdealFor": "Acheteurs cherchant le meilleur rapport prix/prestations dans le segment B SUV."
+  },
+  "lastUpdated": "2026-05-20",
+  "sources": ["constructeur"],
+  "imageCredit": "Constructeur"
+}

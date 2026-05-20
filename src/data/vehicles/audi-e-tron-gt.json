@@ -1,0 +1,226 @@
+{
+  "slug": "audi-e-tron-gt",
+  "brand": "Audi",
+  "model": "e-tron GT",
+  "variant": "97 kWh",
+  "bodyType": "Berline",
+  "segment": "E",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Neckarsulm",
+  "releaseYear": 2022,
+  "marketAvailability": "Disponible",
+  "power_kW": 370,
+  "power_hp": 503,
+  "torque_Nm": 640,
+  "drivetrain": "AWD",
+  "motors": 2,
+  "acceleration_0_100_s": 3.5,
+  "topSpeed_kmh": 245,
+  "usableCapacity_kWh": 97,
+  "grossCapacity_kWh": 105,
+  "chemistry": "NMC",
+  "architecture_V": 800,
+  "mass_kg": 2340,
+  "wltp_max_km": 609,
+  "wltp_min_km": 495,
+  "realRange": {
+    "mixed_km": 430,
+    "highway_130_km": 310,
+    "urban_km": 530,
+    "winter_minus5_km": 340,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 21,
+  "consumption_highway_kWh_per_100km": 27,
+  "consumption_winter_kWh_per_100km": 25,
+  "dragCoefficient_Cx": 0.24,
+  "chargingDC": {
+    "peakPower_kW": 320,
+    "time_10_80_min": 18,
+    "kWh_added_30min": 70,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 22,
+    "phases": 3,
+    "time_0_100_h": 5
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 200 },
+    { "soc": 10, "power": 320 },
+    { "soc": 30, "power": 280 },
+    { "soc": 50, "power": 200 },
+    { "soc": 80, "power": 70 },
+    { "soc": 100, "power": 12 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4989,
+  "width_mm": 1964,
+  "height_mm": 1396,
+  "wheelbase_mm": 2900,
+  "trunkCapacity_L": 405,
+  "trunkCapacityFolded_L": 810,
+  "frunkCapacity_L": 81,
+  "trims": [
+    {
+      "name": "e-tron GT quattro",
+      "price_EUR": 105200,
+      "batteryUsed": "97 kWh",
+      "equipmentHighlights": [
+        "503 ch AWD",
+        "609 km WLTP",
+        "Architecture 800 V"
+      ]
+    },
+    {
+      "name": "RS e-tron GT",
+      "price_EUR": 150700,
+      "batteryUsed": "97 kWh",
+      "equipmentHighlights": [
+        "646 ch AWD",
+        "0-100 en 3,2 s",
+        "Chassis sport RS"
+      ]
+    },
+    {
+      "name": "RS e-tron GT performance",
+      "price_EUR": 210000,
+      "batteryUsed": "97 kWh",
+      "equipmentHighlights": [
+        "925 ch AWD",
+        "0-100 en 2,5 s",
+        "Couple 1 000 Nm"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
+  "configurations": [
+    {
+      "id": "audi-etron-gt-quattro",
+      "label": "e-tron GT quattro · 97 kWh",
+      "battery": "long-range",
+      "trim": "e-tron GT quattro",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 105200,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 609,
+      "wltp_consumption_kWh_100km": 18.5,
+      "realRange": { "mixed_km": 430, "highway_130_km": 310, "urban_km": 530, "winter_minus5_km": 340, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 320,
+      "chargingDC_10_80_min": 18,
+      "chargingDC_kWh_30min": 70,
+      "chargingCurve": [
+        { "soc": 0, "power": 200 },
+        { "soc": 10, "power": 320 },
+        { "soc": 30, "power": 280 },
+        { "soc": 50, "power": 200 },
+        { "soc": 80, "power": 70 },
+        { "soc": 100, "power": 12 }
+      ],
+      "availability": "available",
+      "notes": "503 ch (370 kW), AWD, AC 22 kW"
+    },
+    {
+      "id": "audi-rs-etron-gt",
+      "label": "RS e-tron GT · 97 kWh",
+      "battery": "long-range",
+      "trim": "RS e-tron GT",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 150700,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 560,
+      "wltp_consumption_kWh_100km": 20,
+      "realRange": { "mixed_km": 400, "highway_130_km": 290, "urban_km": 495, "winter_minus5_km": 320, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 320,
+      "chargingDC_10_80_min": 18,
+      "chargingDC_kWh_30min": 70,
+      "chargingCurve": [
+        { "soc": 0, "power": 200 },
+        { "soc": 10, "power": 320 },
+        { "soc": 30, "power": 280 },
+        { "soc": 50, "power": 200 },
+        { "soc": 80, "power": 70 },
+        { "soc": 100, "power": 12 }
+      ],
+      "availability": "available",
+      "notes": "646 ch (475 kW), AWD, RS"
+    },
+    {
+      "id": "audi-rs-etron-gt-perf",
+      "label": "RS e-tron GT performance · 97 kWh",
+      "battery": "long-range",
+      "trim": "RS e-tron GT performance",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 210000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 495,
+      "wltp_consumption_kWh_100km": 22.5,
+      "realRange": { "mixed_km": 360, "highway_130_km": 260, "urban_km": 445, "winter_minus5_km": 285, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 320,
+      "chargingDC_10_80_min": 18,
+      "chargingDC_kWh_30min": 70,
+      "chargingCurve": [
+        { "soc": 0, "power": 200 },
+        { "soc": 10, "power": 320 },
+        { "soc": 30, "power": 280 },
+        { "soc": 50, "power": 200 },
+        { "soc": 80, "power": 70 },
+        { "soc": 100, "power": 12 }
+      ],
+      "availability": "available",
+      "notes": "925 ch (680 kW), AWD, 1 000 Nm"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 2,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "Gran Turismo sportive au design sculptural" },
+    { "category": "technologie", "label": "Architecture 800 V, charge DC 320 kW et AC 22 kW" },
+    { "category": "securite", "label": "Freinage carbone-ceramique en option" },
+    { "category": "confort", "label": "Frunk 81 L, chassis pneumatique et Plug & Charge" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Performances extremes (jusqu'a 925 ch) et charge 800 V ultra-rapide",
+      "Assemble a la main en Allemagne (Neckarsulm)"
+    ],
+    "weaknesses": [
+      "Prix tres eleve (a partir de 105 200 euros)",
+      "Consommation elevee et autonomie reelle limitee sur autoroute"
+    ],
+    "idealUserProfile": "Passionnes de GT electriques cherchant performance et prestige.",
+    "notIdealFor": "Usage quotidien familial ou budget inferieur a 100 000 euros."
+  },
+  "lastUpdated": "2026-05-20",
+  "sources": ["constructeur", "automobile-propre"],
+  "imageCredit": "Constructeur"
+}

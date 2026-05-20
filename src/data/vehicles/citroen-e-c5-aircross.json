@@ -30,9 +30,9 @@
     "winter_minus5_km": 320,
     "confidence": "estimated"
   },
-  "consumption_mixed_kWh_per_100km": 15.0,
-  "consumption_highway_kWh_per_100km": 21.0,
-  "consumption_winter_kWh_per_100km": 19.0,
+  "consumption_mixed_kWh_per_100km": 15,
+  "consumption_highway_kWh_per_100km": 21,
+  "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.28,
   "chargingDC": {
     "peakPower_kW": 160,
@@ -82,12 +82,33 @@
   "frunkCapacity_L": null,
   "trims": [
     {
+      "name": "You",
+      "price_EUR": 38990,
+      "batteryUsed": "73 kWh",
+      "equipmentHighlights": [
+        "520 km WLTP",
+        "Ecran 10 pouces",
+        "Suspensions Advanced Comfort"
+      ]
+    },
+    {
+      "name": "Plus",
+      "price_EUR": 42990,
+      "batteryUsed": "73 kWh",
+      "equipmentHighlights": [
+        "520 km WLTP",
+        "Camera de recul",
+        "Sieges chauffants"
+      ]
+    },
+    {
       "name": "Max",
       "price_EUR": 46990,
       "batteryUsed": "73 kWh",
       "equipmentHighlights": [
-        "Plateforme STLA Medium",
-        "Suspensions Advanced Comfort"
+        "520 km WLTP",
+        "Toit panoramique",
+        "Chargeur smartphone induction"
       ]
     }
   ],
@@ -95,59 +116,94 @@
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
-      "amount_EUR": 4000
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
     }
   ],
   "configurations": [
     {
-      "id": "citroen-e-c5-aircross-max",
-      "label": "ë-C5 Aircross Max",
+      "id": "citroen-e-c5-aircross-you",
+      "label": "ë-C5 Aircross You",
       "battery": "standard",
-      "trim": "Max",
+      "trim": "You",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 46990,
+      "price_EUR": 38990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 520,
-      "wltp_consumption_kWh_100km": 15.0,
-      "realRange": {
-        "mixed_km": 400,
-        "highway_130_km": 280,
-        "urban_km": 480,
-        "winter_minus5_km": 320,
-        "confidence": "estimated"
-      },
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": { "mixed_km": 400, "highway_130_km": 280, "urban_km": 480, "winter_minus5_km": 320, "confidence": "estimated" },
       "rangeTests": [],
       "chargingDC_peak_kW": 160,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 50,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 100
-        },
-        {
-          "soc": 10,
-          "power": 130
-        },
-        {
-          "soc": 50,
-          "power": 100
-        },
-        {
-          "soc": 80,
-          "power": 50
-        },
-        {
-          "soc": 100,
-          "power": 10
-        }
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 130 },
+        { "soc": 50, "power": 100 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 10 }
       ],
       "availability": "available",
-      "notes": null
+      "notes": "218 ch (157 kW), FWD"
+    },
+    {
+      "id": "citroen-e-c5-aircross-plus",
+      "label": "ë-C5 Aircross Plus",
+      "battery": "standard",
+      "trim": "Plus",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 42990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 520,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": { "mixed_km": 400, "highway_130_km": 280, "urban_km": 480, "winter_minus5_km": 320, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 130 },
+        { "soc": 50, "power": 100 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "available",
+      "notes": "218 ch (157 kW), FWD"
+    },
+    {
+      "id": "citroen-e-c5-aircross-max",
+      "label": "ë-C5 Aircross Max",
+      "battery": "standard",
+      "trim": "Max",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 46990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 500,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": { "mixed_km": 385, "highway_130_km": 270, "urban_km": 470, "winter_minus5_km": 305, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 130 },
+        { "soc": 50, "power": 100 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "available",
+      "notes": "218 ch (157 kW), FWD, full options"
     }
   ],
   "warranty": {

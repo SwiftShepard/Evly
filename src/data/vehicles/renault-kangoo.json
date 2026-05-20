@@ -6,21 +6,21 @@
   "bodyType": "Ludospace",
   "segment": "C",
   "productionCountry": "France",
-  "assemblyPlant": "Ulsan",
+  "assemblyPlant": "Maubeuge",
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
   "power_kW": 90,
-  "power_hp": 204,
-  "torque_Nm": 300,
+  "power_hp": 122,
+  "torque_Nm": 245,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
-  "topSpeed_kmh": 160,
+  "acceleration_0_100_s": 12.6,
+  "topSpeed_kmh": 132,
   "usableCapacity_kWh": 45,
   "grossCapacity_kWh": 48,
   "chemistry": "NMC",
   "architecture_V": 400,
-  "mass_kg": 1700,
+  "mass_kg": 1900,
   "wltp_max_km": 285,
   "wltp_min_km": 265,
   "realRange": {
@@ -28,57 +28,42 @@
     "highway_130_km": 140,
     "urban_km": 260,
     "winter_minus5_km": 170,
-    "confidence": "tested"
+    "confidence": "estimated"
   },
-  "consumption_mixed_kWh_per_100km": 15,
-  "consumption_highway_kWh_per_100km": 21,
-  "consumption_winter_kWh_per_100km": 19,
+  "consumption_mixed_kWh_per_100km": 18.5,
+  "consumption_highway_kWh_per_100km": 25,
+  "consumption_winter_kWh_per_100km": 22,
   "dragCoefficient_Cx": 0.35,
   "chargingDC": {
     "peakPower_kW": 80,
     "time_10_80_min": 37,
     "kWh_added_30min": 27,
-    "confidence": "tested"
+    "confidence": "estimated"
   },
   "chargingAC": {
-    "onboardCharger_kW": 11,
+    "onboardCharger_kW": 22,
     "phases": 3,
-    "time_0_100_h": 6.5
+    "time_0_100_h": 3
   },
   "plugAndCharge": false,
   "v2l": false,
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    {
-      "soc": 0,
-      "power": 62
-    },
-    {
-      "soc": 10,
-      "power": 80
-    },
-    {
-      "soc": 50,
-      "power": 62
-    },
-    {
-      "soc": 80,
-      "power": 31
-    },
-    {
-      "soc": 100,
-      "power": 6
-    }
+    { "soc": 0, "power": 62 },
+    { "soc": 10, "power": 80 },
+    { "soc": 50, "power": 62 },
+    { "soc": 80, "power": 31 },
+    { "soc": 100, "power": 6 }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
   "length_mm": 4486,
   "width_mm": 1919,
   "height_mm": 1838,
-  "wheelbase_mm": 2700,
+  "wheelbase_mm": 2716,
   "trunkCapacity_L": 850,
-  "trunkCapacityFolded_L": 1200,
+  "trunkCapacityFolded_L": 2500,
   "frunkCapacity_L": null,
   "trims": [
     {
@@ -87,7 +72,19 @@
       "batteryUsed": "45 kWh",
       "equipmentHighlights": [
         "Portes coulissantes",
-        "Charge AC 22kW"
+        "Ecran 8 pouces",
+        "Charge AC 11 kW"
+      ]
+    },
+    {
+      "name": "Techno",
+      "price_EUR": 40800,
+      "batteryUsed": "45 kWh",
+      "equipmentHighlights": [
+        "OpenR Link Google",
+        "Charge AC 22 kW",
+        "Camera 360 degres",
+        "Sieges chauffants"
       ]
     }
   ],
@@ -95,8 +92,8 @@
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
-      "amount_EUR": 4000
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
     }
   ],
   "configurations": [
@@ -105,49 +102,68 @@
       "label": "Kangoo E-Tech Equilibre",
       "battery": "standard",
       "trim": "Equilibre",
-      "wheelSize_inches": 18,
+      "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
       "price_EUR": 37500,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 285,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_consumption_kWh_100km": 18,
       "realRange": {
         "mixed_km": 210,
         "highway_130_km": 140,
         "urban_km": 260,
         "winter_minus5_km": 170,
-        "confidence": "tested"
+        "confidence": "estimated"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 80,
       "chargingDC_10_80_min": 37,
       "chargingDC_kWh_30min": 27,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 62
-        },
-        {
-          "soc": 10,
-          "power": 80
-        },
-        {
-          "soc": 50,
-          "power": 62
-        },
-        {
-          "soc": 80,
-          "power": 31
-        },
-        {
-          "soc": 100,
-          "power": 6
-        }
+        { "soc": 0, "power": 62 },
+        { "soc": 10, "power": 80 },
+        { "soc": 50, "power": 62 },
+        { "soc": 80, "power": 31 },
+        { "soc": 100, "power": 6 }
       ],
       "availability": "available",
-      "notes": null
+      "notes": "122 ch (90 kW). Charge AC 11 kW mono/tri."
+    },
+    {
+      "id": "renault-kangoo-techno",
+      "label": "Kangoo E-Tech Techno",
+      "battery": "standard",
+      "trim": "Techno",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 40800,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 285,
+      "wltp_consumption_kWh_100km": 18,
+      "realRange": {
+        "mixed_km": 210,
+        "highway_130_km": 140,
+        "urban_km": 260,
+        "winter_minus5_km": 170,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 80,
+      "chargingDC_10_80_min": 37,
+      "chargingDC_kWh_30min": 27,
+      "chargingCurve": [
+        { "soc": 0, "power": 62 },
+        { "soc": 10, "power": 80 },
+        { "soc": 50, "power": 62 },
+        { "soc": 80, "power": 31 },
+        { "soc": 100, "power": 6 }
+      ],
+      "availability": "available",
+      "notes": "122 ch (90 kW). Charge AC 22 kW tri."
     }
   ],
   "warranty": {
@@ -158,38 +174,26 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    {
-      "category": "confort",
-      "label": "Sièges confort de haute qualité"
-    },
-    {
-      "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
-    },
-    {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
-    },
-    {
-      "category": "design",
-      "label": "Signature lumineuse LED distinctive"
-    }
+    { "category": "confort", "label": "Portes laterales coulissantes, acces facile" },
+    { "category": "technologie", "label": "OpenR Link avec Google integre (Techno)" },
+    { "category": "securite", "label": "Freinage automatique d'urgence" },
+    { "category": "design", "label": "Modularite interieure et volume de coffre genereux" }
   ],
   "verdict": {
     "strengths": [
-      "Bon compromis prix/autonomie",
-      "Confort de suspension"
+      "Volume de coffre imbattable (850 L)",
+      "Portes coulissantes pratiques au quotidien",
+      "Charge AC 22 kW sur Techno"
     ],
     "weaknesses": [
-      "Vitesse de charge rapide en retrait",
-      "Infodivertissement perfectible"
+      "Autonomie limitee pour un vehicule familial (285 km WLTP)",
+      "Charge DC plafonnee a 80 kW"
     ],
-    "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
-    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
+    "idealUserProfile": "Familles cherchant un ludospace electrique modulable pour les trajets quotidiens.",
+    "notIdealFor": "Gros rouleurs autoroutiers ou ceux ayant besoin de plus de 300 km d'autonomie."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-05-19",
   "sources": [
-    "nyland",
     "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"

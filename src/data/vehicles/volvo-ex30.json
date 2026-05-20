@@ -1,0 +1,258 @@
+{
+  "slug": "volvo-ex30",
+  "brand": "Volvo",
+  "model": "EX30",
+  "variant": "Single Motor Extended Range",
+  "bodyType": "SUV compact",
+  "segment": "B",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Chengdu",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 200,
+  "power_hp": 272,
+  "torque_Nm": 343,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 5.3,
+  "topSpeed_kmh": 180,
+  "usableCapacity_kWh": 64,
+  "grossCapacity_kWh": 69,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1790,
+  "wltp_max_km": 476,
+  "wltp_min_km": 337,
+  "realRange": {
+    "mixed_km": 370,
+    "highway_130_km": 260,
+    "urban_km": 450,
+    "winter_minus5_km": 290,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 16.5,
+  "consumption_highway_kWh_per_100km": 23,
+  "consumption_winter_kWh_per_100km": 21,
+  "dragCoefficient_Cx": 0.285,
+  "chargingDC": {
+    "peakPower_kW": 153,
+    "time_10_80_min": 26,
+    "kWh_added_30min": 45,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 6
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 110 },
+    { "soc": 10, "power": 153 },
+    { "soc": 30, "power": 140 },
+    { "soc": 50, "power": 100 },
+    { "soc": 80, "power": 45 },
+    { "soc": 100, "power": 8 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4233,
+  "width_mm": 1837,
+  "height_mm": 1550,
+  "wheelbase_mm": 2650,
+  "trunkCapacity_L": 318,
+  "trunkCapacityFolded_L": 904,
+  "frunkCapacity_L": 0,
+  "trims": [
+    {
+      "name": "Core Single Motor",
+      "price_EUR": 36590,
+      "batteryUsed": "51 kWh",
+      "equipmentHighlights": [
+        "Ecran 12,3 pouces Google",
+        "Harman Kardon"
+      ]
+    },
+    {
+      "name": "Plus Single Motor Extended Range",
+      "price_EUR": 41090,
+      "batteryUsed": "69 kWh",
+      "equipmentHighlights": [
+        "Toit panoramique",
+        "476 km WLTP",
+        "Siege conducteur electrique"
+      ]
+    },
+    {
+      "name": "Plus Twin Motor",
+      "price_EUR": 45590,
+      "batteryUsed": "69 kWh",
+      "equipmentHighlights": [
+        "AWD 428 ch",
+        "0-100 en 3,6 s",
+        "Toit panoramique"
+      ]
+    },
+    {
+      "name": "Ultra Single Motor Extended Range",
+      "price_EUR": 44590,
+      "batteryUsed": "69 kWh",
+      "equipmentHighlights": [
+        "Toit panoramique",
+        "Sieges chauffants",
+        "Pixel LED"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "volvo-ex30-core-sm",
+      "label": "EX30 Core · SM 51 kWh",
+      "battery": "standard",
+      "trim": "Core Single Motor",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 36590,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 337,
+      "wltp_consumption_kWh_100km": 16.7,
+      "realRange": { "mixed_km": 270, "highway_130_km": 185, "urban_km": 340, "winter_minus5_km": 210, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 134,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        { "soc": 0, "power": 95 },
+        { "soc": 10, "power": 134 },
+        { "soc": 50, "power": 90 },
+        { "soc": 80, "power": 40 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "204 ch (150 kW), RWD, batterie LFP 51 kWh"
+    },
+    {
+      "id": "volvo-ex30-plus-sm-er",
+      "label": "EX30 Plus · SM ER 69 kWh",
+      "battery": "long-range",
+      "trim": "Plus Single Motor Extended Range",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 41090,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 476,
+      "wltp_consumption_kWh_100km": 15.7,
+      "realRange": { "mixed_km": 370, "highway_130_km": 260, "urban_km": 450, "winter_minus5_km": 290, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 153,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 45,
+      "chargingCurve": [
+        { "soc": 0, "power": 110 },
+        { "soc": 10, "power": 153 },
+        { "soc": 30, "power": 140 },
+        { "soc": 50, "power": 100 },
+        { "soc": 80, "power": 45 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "272 ch (200 kW), RWD"
+    },
+    {
+      "id": "volvo-ex30-plus-tm",
+      "label": "EX30 Plus · Twin Motor 69 kWh",
+      "battery": "long-range",
+      "trim": "Plus Twin Motor",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 45590,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 400,
+      "wltp_consumption_kWh_100km": 18.8,
+      "realRange": { "mixed_km": 320, "highway_130_km": 230, "urban_km": 400, "winter_minus5_km": 260, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 153,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 45,
+      "chargingCurve": [
+        { "soc": 0, "power": 110 },
+        { "soc": 10, "power": 153 },
+        { "soc": 30, "power": 140 },
+        { "soc": 50, "power": 100 },
+        { "soc": 80, "power": 45 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "428 ch (315 kW), AWD"
+    },
+    {
+      "id": "volvo-ex30-ultra-sm-er",
+      "label": "EX30 Ultra · SM ER 69 kWh",
+      "battery": "long-range",
+      "trim": "Ultra Single Motor Extended Range",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 44590,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 460,
+      "wltp_consumption_kWh_100km": 16.1,
+      "realRange": { "mixed_km": 355, "highway_130_km": 250, "urban_km": 435, "winter_minus5_km": 280, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 153,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 45,
+      "chargingCurve": [
+        { "soc": 0, "power": 110 },
+        { "soc": 10, "power": 153 },
+        { "soc": 30, "power": 140 },
+        { "soc": 50, "power": 100 },
+        { "soc": 80, "power": 45 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "272 ch (200 kW), RWD, full options"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "Design compact et moderne, gabarit reduit" },
+    { "category": "technologie", "label": "Ecran 12,3 pouces Google et Harman Kardon" },
+    { "category": "securite", "label": "Freinage automatique et aide au stationnement" },
+    { "category": "confort", "label": "Interieur en materiaux recycles premium" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Rapport prix/prestations excellent pour un premium",
+      "Performances dynamiques remarquables (5,3 s en SM ER)"
+    ],
+    "weaknesses": [
+      "Assemblage en Chine, pas d'aides en France",
+      "Coffre modeste (318 L) et pas de frunk"
+    ],
+    "idealUserProfile": "Conducteurs urbains cherchant un SUV compact premium performant et bien equipe.",
+    "notIdealFor": "Familles nombreuses ou acheteurs comptant sur les aides francaises."
+  },
+  "lastUpdated": "2026-05-19",
+  "sources": ["la-chaine-ev"],
+  "imageCredit": "Constructeur"
+}

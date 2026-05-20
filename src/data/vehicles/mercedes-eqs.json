@@ -1,0 +1,226 @@
+{
+  "slug": "mercedes-eqs",
+  "brand": "Mercedes",
+  "model": "EQS",
+  "variant": "108.4 kWh",
+  "bodyType": "Berline",
+  "segment": "F",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Sindelfingen",
+  "releaseYear": 2022,
+  "marketAvailability": "Disponible",
+  "power_kW": 265,
+  "power_hp": 360,
+  "torque_Nm": 568,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 6.2,
+  "topSpeed_kmh": 210,
+  "usableCapacity_kWh": 108.4,
+  "grossCapacity_kWh": 118,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2580,
+  "wltp_max_km": 770,
+  "wltp_min_km": 601,
+  "realRange": {
+    "mixed_km": 560,
+    "highway_130_km": 405,
+    "urban_km": 690,
+    "winter_minus5_km": 445,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 18.5,
+  "consumption_highway_kWh_per_100km": 25,
+  "consumption_winter_kWh_per_100km": 23,
+  "dragCoefficient_Cx": 0.2,
+  "chargingDC": {
+    "peakPower_kW": 200,
+    "time_10_80_min": 31,
+    "kWh_added_30min": 65,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 22,
+    "phases": 3,
+    "time_0_100_h": 5
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 140 },
+    { "soc": 10, "power": 200 },
+    { "soc": 30, "power": 180 },
+    { "soc": 50, "power": 130 },
+    { "soc": 80, "power": 50 },
+    { "soc": 100, "power": 10 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 5216,
+  "width_mm": 1926,
+  "height_mm": 1512,
+  "wheelbase_mm": 3210,
+  "trunkCapacity_L": 610,
+  "trunkCapacityFolded_L": 1050,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "EQS 450+",
+      "price_EUR": 109000,
+      "batteryUsed": "108.4 kWh",
+      "equipmentHighlights": [
+        "770 km WLTP",
+        "Cx record 0,20",
+        "MBUX Hyperscreen"
+      ]
+    },
+    {
+      "name": "EQS 580 4MATIC",
+      "price_EUR": 137000,
+      "batteryUsed": "108.4 kWh",
+      "equipmentHighlights": [
+        "AWD 523 ch",
+        "673 km WLTP",
+        "Essieu arriere directeur"
+      ]
+    },
+    {
+      "name": "AMG EQS 53 4MATIC+",
+      "price_EUR": 175000,
+      "batteryUsed": "108.4 kWh",
+      "equipmentHighlights": [
+        "AWD 658 ch",
+        "0-100 en 3,4 s",
+        "Chassis AMG ACTIVE RIDE CONTROL"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
+  "configurations": [
+    {
+      "id": "mercedes-eqs-450",
+      "label": "EQS 450+",
+      "battery": "long-range",
+      "trim": "EQS 450+",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 109000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 770,
+      "wltp_consumption_kWh_100km": 16.2,
+      "realRange": { "mixed_km": 560, "highway_130_km": 405, "urban_km": 690, "winter_minus5_km": 445, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 200,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        { "soc": 0, "power": 140 },
+        { "soc": 10, "power": 200 },
+        { "soc": 30, "power": 180 },
+        { "soc": 50, "power": 130 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "available",
+      "notes": "360 ch (265 kW), RWD, AC 22 kW"
+    },
+    {
+      "id": "mercedes-eqs-580",
+      "label": "EQS 580 4MATIC",
+      "battery": "long-range",
+      "trim": "EQS 580 4MATIC",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 137000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 673,
+      "wltp_consumption_kWh_100km": 18.5,
+      "realRange": { "mixed_km": 495, "highway_130_km": 355, "urban_km": 610, "winter_minus5_km": 390, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 200,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        { "soc": 0, "power": 140 },
+        { "soc": 10, "power": 200 },
+        { "soc": 30, "power": 180 },
+        { "soc": 50, "power": 130 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "available",
+      "notes": "523 ch (385 kW), AWD 4MATIC, essieu AR directeur"
+    },
+    {
+      "id": "mercedes-eqs-amg-53",
+      "label": "AMG EQS 53 4MATIC+",
+      "battery": "long-range",
+      "trim": "AMG EQS 53 4MATIC+",
+      "wheelSize_inches": 22,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 175000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 601,
+      "wltp_consumption_kWh_100km": 21,
+      "realRange": { "mixed_km": 440, "highway_130_km": 315, "urban_km": 540, "winter_minus5_km": 345, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 200,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        { "soc": 0, "power": 140 },
+        { "soc": 10, "power": 200 },
+        { "soc": 30, "power": 180 },
+        { "soc": 50, "power": 130 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "available",
+      "notes": "658 ch (484 kW), AWD 4MATIC+, AMG"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 3,
+    "vehicle_km": 150000,
+    "battery_years": 10,
+    "battery_km": 250000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "Berline de luxe au Cx record mondial de 0,20" },
+    { "category": "technologie", "label": "MBUX Hyperscreen 141 cm et AC 22 kW" },
+    { "category": "securite", "label": "Conduite autonome niveau 3 (Drive Pilot)" },
+    { "category": "confort", "label": "Empattement 3,21 m, silence absolu et essieu AR directeur" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Autonomie record (770 km WLTP) et Cx le plus bas au monde (0,20)",
+      "Luxe absolu et conduite autonome niveau 3 (Drive Pilot)"
+    ],
+    "weaknesses": [
+      "Prix tres eleve (a partir de 109 000 euros)",
+      "Architecture 400 V, charge DC limitee a 200 kW"
+    ],
+    "idealUserProfile": "Acheteurs de berlines de luxe (ex-Classe S) en transition electrique.",
+    "notIdealFor": "Budget inferieur a 100 000 euros."
+  },
+  "lastUpdated": "2026-05-20",
+  "sources": ["constructeur", "automobile-propre"],
+  "imageCredit": "Constructeur"
+}

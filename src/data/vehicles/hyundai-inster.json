@@ -91,14 +91,9 @@
       ]
     }
   ],
-  "leasingSocialEligible": false,
-  "leasingSocial_EUR_per_month": null,
-  "availableAids": [
-    {
-      "label": "Bonus Écologique",
-      "amount_EUR": 4000
-    }
-  ],
+  "leasingSocialEligible": true,
+  "leasingSocial_EUR_per_month": 99,
+  "availableAids": [],
   "configurations": [
     {
       "id": "hyundai-inster-intuitive",
@@ -109,8 +104,8 @@
       "tyreType": "summer",
       "options": [],
       "price_EUR": 25000,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
+      "monthlyLease_EUR": 99,
+      "leasingSocialEligible": true,
       "wltp_km": 355,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {

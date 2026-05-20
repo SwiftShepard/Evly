@@ -1,0 +1,221 @@
+{
+  "slug": "xpeng-g6",
+  "brand": "Xpeng",
+  "model": "G6",
+  "variant": "80.8 kWh",
+  "bodyType": "SUV Coupe",
+  "segment": "D",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Zhaoqing",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 218,
+  "power_hp": 295,
+  "torque_Nm": 440,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 5.9,
+  "topSpeed_kmh": 200,
+  "usableCapacity_kWh": 76,
+  "grossCapacity_kWh": 80.8,
+  "chemistry": "LFP",
+  "architecture_V": 800,
+  "mass_kg": 2025,
+  "wltp_max_km": 525,
+  "wltp_min_km": 435,
+  "realRange": {
+    "mixed_km": 400,
+    "highway_130_km": 310,
+    "urban_km": 500,
+    "winter_minus5_km": 330,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 16.5,
+  "consumption_highway_kWh_per_100km": 22,
+  "consumption_winter_kWh_per_100km": 20,
+  "dragCoefficient_Cx": 0.25,
+  "chargingDC": {
+    "peakPower_kW": 400,
+    "time_10_80_min": 12,
+    "kWh_added_30min": 70,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 8
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 250 },
+    { "soc": 10, "power": 400 },
+    { "soc": 30, "power": 380 },
+    { "soc": 50, "power": 280 },
+    { "soc": 80, "power": 80 },
+    { "soc": 100, "power": 12 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4753,
+  "width_mm": 1920,
+  "height_mm": 1650,
+  "wheelbase_mm": 2890,
+  "trunkCapacity_L": 571,
+  "trunkCapacityFolded_L": 1374,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Standard 68.5 kWh",
+      "price_EUR": 42990,
+      "batteryUsed": "68.5 kWh",
+      "equipmentHighlights": [
+        "435 km WLTP",
+        "Architecture 800 V",
+        "Charge 5C ultra-rapide"
+      ]
+    },
+    {
+      "name": "Long Range 80.8 kWh",
+      "price_EUR": 46990,
+      "batteryUsed": "80.8 kWh",
+      "equipmentHighlights": [
+        "525 km WLTP",
+        "Ecran 14,96 pouces",
+        "Toit panoramique"
+      ]
+    },
+    {
+      "name": "Performance 80.8 kWh",
+      "price_EUR": 50990,
+      "batteryUsed": "80.8 kWh",
+      "equipmentHighlights": [
+        "AWD 485 ch",
+        "0-100 en 3,9 s",
+        "Suspension pneumatique"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "xpeng-g6-standard",
+      "label": "G6 Standard · 68.5 kWh",
+      "battery": "standard",
+      "trim": "Standard 68.5 kWh",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 42990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 435,
+      "wltp_consumption_kWh_100km": 16.5,
+      "realRange": { "mixed_km": 335, "highway_130_km": 255, "urban_km": 420, "winter_minus5_km": 275, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 382,
+      "chargingDC_10_80_min": 12,
+      "chargingDC_kWh_30min": 60,
+      "chargingCurve": [
+        { "soc": 0, "power": 230 },
+        { "soc": 10, "power": 382 },
+        { "soc": 30, "power": 350 },
+        { "soc": 50, "power": 250 },
+        { "soc": 80, "power": 70 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "available",
+      "notes": "255 ch (188 kW), RWD, LFP 68.5 kWh"
+    },
+    {
+      "id": "xpeng-g6-long-range",
+      "label": "G6 Long Range · 80.8 kWh",
+      "battery": "long-range",
+      "trim": "Long Range 80.8 kWh",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 46990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 525,
+      "wltp_consumption_kWh_100km": 16,
+      "realRange": { "mixed_km": 400, "highway_130_km": 310, "urban_km": 500, "winter_minus5_km": 330, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 400,
+      "chargingDC_10_80_min": 12,
+      "chargingDC_kWh_30min": 70,
+      "chargingCurve": [
+        { "soc": 0, "power": 250 },
+        { "soc": 10, "power": 400 },
+        { "soc": 30, "power": 380 },
+        { "soc": 50, "power": 280 },
+        { "soc": 80, "power": 80 },
+        { "soc": 100, "power": 12 }
+      ],
+      "availability": "available",
+      "notes": "295 ch (218 kW), RWD"
+    },
+    {
+      "id": "xpeng-g6-performance",
+      "label": "G6 Performance · 80.8 kWh",
+      "battery": "long-range",
+      "trim": "Performance 80.8 kWh",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 50990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 510,
+      "wltp_consumption_kWh_100km": 16.5,
+      "realRange": { "mixed_km": 385, "highway_130_km": 295, "urban_km": 480, "winter_minus5_km": 315, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 400,
+      "chargingDC_10_80_min": 12,
+      "chargingDC_kWh_30min": 70,
+      "chargingCurve": [
+        { "soc": 0, "power": 250 },
+        { "soc": 10, "power": 400 },
+        { "soc": 30, "power": 380 },
+        { "soc": 50, "power": 280 },
+        { "soc": 80, "power": 80 },
+        { "soc": 100, "power": 12 }
+      ],
+      "availability": "available",
+      "notes": "485 ch (357 kW), AWD, suspension pneumatique"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "SUV coupe sportif au Cx exceptionnel de 0,25" },
+    { "category": "technologie", "label": "Architecture 800 V et charge 5C (10-80 % en 12 min)" },
+    { "category": "securite", "label": "XNGP conduite semi-autonome avancee" },
+    { "category": "confort", "label": "Ecran 14,96 pouces et toit panoramique" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Charge 5C ultra-rapide (10-80 % en 12 min), reference du marche",
+      "Cx de 0,25 et autonomie genereuse pour le segment"
+    ],
+    "weaknesses": [
+      "Assemblage en Chine, aucune aide francaise",
+      "Reseau apres-vente encore limite en France"
+    ],
+    "idealUserProfile": "Conducteurs technophiles cherchant le SUV coupe le plus rapide a charger du marche.",
+    "notIdealFor": "Acheteurs comptant sur les aides ou privilegiant un reseau SAV etendu."
+  },
+  "lastUpdated": "2026-05-19",
+  "sources": ["constructeur", "automobile-propre"],
+  "imageCredit": "Constructeur"
+}

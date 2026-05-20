@@ -1,21 +1,534 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import ComingSoon from "@/components/ui/ComingSoon.astro";
+import TcoCalculator from "@/components/tco/TcoCalculator";
+import { getAllVehicles } from "@/lib/vehicles";
+
+const vehicles = getAllVehicles();
+
+const summaries = vehicles
+  .filter((v) => v.marketAvailability === "Disponible")
+  .map((v) => {
+    const cheapest = v.trims.reduce((a, b) =>
+      a.price_EUR < b.price_EUR ? a : b
+    );
+    const aids = v.availableAids.reduce((sum, a) => sum + a.amount_EUR, 0);
+    return {
+      slug: v.slug,
+      brand: v.brand,
+      model: v.model,
+      variant: v.variant,
+      segment: v.segment,
+      price_EUR: cheapest.price_EUR,
+      aids_EUR: aids,
+      consumption_kWh_100km: v.consumption_mixed_kWh_per_100km,
+      realRange_mixed_km: v.realRange.mixed_km,
+    };
+  })
+  .sort((a, b) => a.brand.localeCompare(b.brand) || a.model.localeCompare(b.model));
+
+const description =
+  "Simulateur de cout total de possession VE vs thermique. Prix, aides, electricite, entretien, assurance, decote et TVS sur 1 a 10 ans.";
 ---
 
-<BaseLayout
-  title="Simulateur TCO, Evly"
-  description="Simulateur de coût total de possession personnalisé : prix, aides, électricité, entretien, assurance et revente. En cours de développement."
->
-  <ComingSoon
-    number="04"
-    eyebrow="Simulateur TCO"
-    title="Le vrai coût d'une électrique sur 5 ans."
-    description="Sliders pour votre kilométrage annuel, votre tarif d'électricité domicile, votre fréquence de recharge rapide. Recalcul instantané du coût total : achat, aides, énergie, entretien, assurance, perte de valeur."
-    features={[
-      "Recalcul live à chaque mouvement de slider, aucun bouton submit, aucun rechargement",
-      "Comparaison directe avec un équivalent thermique du même segment",
-      "Décomposition annuelle visuelle : ce que coûte vraiment chaque kilomètre",
-    ]}
-  />
+<BaseLayout title="Simulateur TCO, Evly" description={description}>
+  <div class="container-edit py-6 md:py-10">
+    <div class="tco-page-header">
+      <div class="flex items-center gap-3 mb-6 fade-rise">
+        <span class="font-mono text-xs text-[var(--color-text-faint)]">04</span>
+        <span class="label-eyebrow">Simulateur TCO</span>
+      </div>
+
+      <h1 class="display-1 max-w-4xl fade-rise fade-rise-delay-1">
+        Le vrai cout d'une electrique
+        <span class="text-[var(--color-text-muted)]">sur 1 a 10 ans.</span>
+      </h1>
+
+      <p class="mt-6 md:mt-8 text-base md:text-lg text-[var(--color-text-muted)] max-w-2xl leading-relaxed fade-rise fade-rise-delay-2">
+        Selectionnez un vehicule, ajustez vos hypotheses. Recalcul instantane du cout total :
+        achat, aides, energie, entretien, assurance, decote et TVS.
+      </p>
+    </div>
+
+    <TcoCalculator client:load vehicles={summaries} />
+  </div>
 </BaseLayout>
+
+<style>
+  .tco-page-header {
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── Layout ──────────────────────────────────────────── */
+  :global(.tco-calc) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 52rem;
+  }
+
+  /* ── Sections ────────────────────────────────────────── */
+  :global(.tco-section) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-tile-sm);
+    background: var(--color-bg);
+  }
+
+  :global(.tco-section-header) {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.25rem;
+  }
+
+  :global(.tco-section-number) {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--color-accent);
+    text-transform: uppercase;
+  }
+
+  :global(.tco-section-title) {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text);
+  }
+
+  /* ── Vehicle select ──────────────────────────────────── */
+  :global(.tco-select) {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-tile-sm);
+    background: var(--color-bg-subtle);
+    color: var(--color-text);
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  :global(.tco-select:focus) {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  :global(.tco-ev-summary) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+  @media (min-width: 640px) {
+    :global(.tco-ev-summary) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  :global(.tco-ev-stat) {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: var(--color-bg-subtle);
+  }
+  :global(.tco-stat-label) {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-faint);
+  }
+  :global(.tco-stat-value) {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+  :global(.tco-stat-value.accent) {
+    color: var(--color-accent);
+  }
+
+  /* ── Slider fields ───────────────────────────────────── */
+  :global(.tco-slider-field) {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  :global(.tco-slider-label) {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 13px;
+    color: var(--color-text-muted);
+  }
+  :global(.tco-slider-val) {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+  :global(.tco-slider-val.accent) {
+    color: var(--color-accent);
+  }
+
+  :global(.tco-slider-field input[type="range"]) {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+  }
+  :global(.tco-slider-field input[type="range"]::-webkit-slider-thumb) {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    border: 2px solid var(--color-bg);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+  }
+  :global(.tco-slider-field input[type="range"]::-moz-range-thumb) {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    border: 2px solid var(--color-bg);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+  }
+
+  /* ── Number fields ───────────────────────────────────── */
+  :global(.tco-number-field) {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  :global(.tco-number-label) {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-faint);
+  }
+  :global(.tco-number-wrap) {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-tile-sm);
+    background: var(--color-bg);
+    transition: border-color 0.15s;
+  }
+  :global(.tco-number-wrap:focus-within) {
+    border-color: var(--color-accent);
+  }
+  :global(.tco-number-wrap input) {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    background: transparent;
+    color: var(--color-text);
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 14px;
+    outline: none;
+  }
+  :global(.tco-number-unit) {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 11px;
+    color: var(--color-text-faint);
+    white-space: nowrap;
+  }
+
+  /* ── Layout helpers ──────────────────────────────────── */
+  :global(.tco-row-2) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  :global(.tco-subsection) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    background: var(--color-bg-subtle);
+  }
+  :global(.tco-sub-label) {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  /* ── Fuel toggle ─────────────────────────────────────── */
+  :global(.tco-fuel-toggle) {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-tile-sm);
+    overflow: hidden;
+  }
+  :global(.tco-fuel-toggle button) {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    background: var(--color-bg);
+    color: var(--color-text-muted);
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  :global(.tco-fuel-toggle button:first-child) {
+    border-right: 1px solid var(--color-border);
+  }
+  :global(.tco-fuel-toggle button.active) {
+    background: var(--color-bg-subtle);
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  /* ── Advanced toggle ─────────────────────────────────── */
+  :global(.tco-advanced-toggle) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    padding: 10px;
+    border: 1px dashed var(--color-border-strong);
+    border-radius: var(--radius-tile-sm);
+    background: transparent;
+    color: var(--color-text-muted);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  :global(.tco-advanced-toggle:hover) {
+    background: var(--color-bg-subtle);
+    color: var(--color-text);
+  }
+
+  :global(.tco-hint) {
+    font-size: 12px;
+    color: var(--color-text-faint);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* ══════════════════════════════════════════════════════ */
+  /* Results                                               */
+  /* ══════════════════════════════════════════════════════ */
+
+  :global(.tco-results) {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    border: 1px solid var(--color-accent-dim);
+    border-radius: var(--radius-tile);
+    background: color-mix(in srgb, var(--color-accent) 3%, var(--color-bg));
+  }
+
+  :global(.tco-results-header) {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  /* ── Savings hero ────────────────────────────────────── */
+  :global(.tco-savings-hero) {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 1.25rem;
+    border-radius: var(--radius-tile-sm);
+    background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-accent) 30%, var(--color-border));
+  }
+  :global(.tco-savings-hero.negative) {
+    background: color-mix(in srgb, var(--color-warning) 8%, transparent);
+    border-color: color-mix(in srgb, var(--color-warning) 30%, var(--color-border));
+  }
+  :global(.tco-savings-label) {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-faint);
+  }
+  :global(.tco-savings-amount) {
+    font-family: var(--font-display, system-ui);
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-accent);
+  }
+  :global(.tco-savings-hero.negative .tco-savings-amount) {
+    color: var(--color-warning);
+  }
+  :global(.tco-savings-pct) {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 12px;
+    color: var(--color-text-muted);
+  }
+  :global(.tco-breakeven) {
+    color: var(--color-text-faint);
+  }
+
+  /* ── Total cards ─────────────────────────────────────── */
+  :global(.tco-totals-row) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  :global(.tco-total-card) {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 1rem;
+    border-radius: var(--radius-tile-sm);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+  }
+  :global(.tco-total-card.ev) {
+    border-left: 3px solid var(--color-accent);
+  }
+  :global(.tco-total-label) {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-faint);
+  }
+  :global(.tco-total-amount) {
+    font-family: var(--font-display, system-ui);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: var(--color-text);
+  }
+  :global(.tco-total-perkm) {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 12px;
+    color: var(--color-text-muted);
+  }
+
+  /* ── Breakdown bars ──────────────────────────────────── */
+  :global(.tco-breakdown) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  :global(.tco-breakdown-header) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  :global(.tco-legend) {
+    display: flex;
+    gap: 1rem;
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  :global(.tco-legend-ev) {
+    color: var(--color-accent);
+  }
+  :global(.tco-legend-ev::before) {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: var(--color-accent);
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+  :global(.tco-legend-ice) {
+    color: var(--color-text-muted);
+  }
+  :global(.tco-legend-ice::before) {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: var(--color-text-faint);
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+
+  :global(.tco-bar-row) {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  :global(.tco-bar-label) {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 11px;
+    color: var(--color-text-muted);
+    text-align: right;
+  }
+  :global(.tco-bar-bars) {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  :global(.tco-bar-track) {
+    position: relative;
+    height: 20px;
+    background: var(--color-bg);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  :global(.tco-bar-fill) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+  }
+  :global(.tco-bar-fill.ev) {
+    opacity: 0.8;
+  }
+  :global(.tco-bar-fill.ice) {
+    background: var(--color-text-faint);
+    opacity: 0.35;
+  }
+  :global(.tco-bar-amount) {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 10px;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+  }
+
+  /* ── Disclaimer ──────────────────────────────────────── */
+  :global(.tco-disclaimer) {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 11px;
+    color: var(--color-text-faint);
+    line-height: 1.6;
+    margin: 0;
+  }
+</style>

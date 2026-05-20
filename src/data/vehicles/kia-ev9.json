@@ -30,9 +30,9 @@
     "winter_minus5_km": 380,
     "confidence": "tested"
   },
-  "consumption_mixed_kWh_per_100km": 15.0,
-  "consumption_highway_kWh_per_100km": 21.0,
-  "consumption_winter_kWh_per_100km": 19.0,
+  "consumption_mixed_kWh_per_100km": 15,
+  "consumption_highway_kWh_per_100km": 21,
+  "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.28,
   "chargingDC": {
     "peakPower_kW": 210,
@@ -93,12 +93,7 @@
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [
-    {
-      "label": "Bonus Écologique",
-      "amount_EUR": 4000
-    }
-  ],
+  "availableAids": [],
   "configurations": [
     {
       "id": "kia-ev9-earth",
@@ -112,7 +107,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 563,
-      "wltp_consumption_kWh_100km": 15.0,
+      "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 480,
         "highway_130_km": 350,

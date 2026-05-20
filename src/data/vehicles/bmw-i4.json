@@ -1,0 +1,226 @@
+{
+  "slug": "bmw-i4",
+  "brand": "BMW",
+  "model": "i4",
+  "variant": "83.9 kWh",
+  "bodyType": "Berline",
+  "segment": "D",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Munich",
+  "releaseYear": 2022,
+  "marketAvailability": "Disponible",
+  "power_kW": 250,
+  "power_hp": 340,
+  "torque_Nm": 430,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 5.6,
+  "topSpeed_kmh": 190,
+  "usableCapacity_kWh": 80.7,
+  "grossCapacity_kWh": 83.9,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2060,
+  "wltp_max_km": 590,
+  "wltp_min_km": 414,
+  "realRange": {
+    "mixed_km": 425,
+    "highway_130_km": 305,
+    "urban_km": 525,
+    "winter_minus5_km": 335,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 18,
+  "consumption_highway_kWh_per_100km": 24,
+  "consumption_winter_kWh_per_100km": 22,
+  "dragCoefficient_Cx": 0.24,
+  "chargingDC": {
+    "peakPower_kW": 205,
+    "time_10_80_min": 26,
+    "kWh_added_30min": 55,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 8
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 140 },
+    { "soc": 10, "power": 205 },
+    { "soc": 30, "power": 180 },
+    { "soc": 50, "power": 130 },
+    { "soc": 80, "power": 50 },
+    { "soc": 100, "power": 9 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4783,
+  "width_mm": 1852,
+  "height_mm": 1448,
+  "wheelbase_mm": 2856,
+  "trunkCapacity_L": 470,
+  "trunkCapacityFolded_L": 1290,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "i4 eDrive35",
+      "price_EUR": 52550,
+      "batteryUsed": "66 kWh",
+      "equipmentHighlights": [
+        "414 km WLTP",
+        "286 ch RWD",
+        "BMW iDrive 9"
+      ]
+    },
+    {
+      "name": "i4 eDrive40",
+      "price_EUR": 58850,
+      "batteryUsed": "83.9 kWh",
+      "equipmentHighlights": [
+        "590 km WLTP",
+        "340 ch RWD",
+        "Charge DC 205 kW"
+      ]
+    },
+    {
+      "name": "i4 M50 xDrive",
+      "price_EUR": 74550,
+      "batteryUsed": "83.9 kWh",
+      "equipmentHighlights": [
+        "AWD 544 ch",
+        "0-100 en 3,9 s",
+        "Chassis M Sport adaptatif"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
+  "configurations": [
+    {
+      "id": "bmw-i4-edrive35",
+      "label": "i4 eDrive35 · 66 kWh",
+      "battery": "standard",
+      "trim": "i4 eDrive35",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 52550,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 414,
+      "wltp_consumption_kWh_100km": 17,
+      "realRange": { "mixed_km": 310, "highway_130_km": 225, "urban_km": 385, "winter_minus5_km": 250, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 180,
+      "chargingDC_10_80_min": 24,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        { "soc": 0, "power": 120 },
+        { "soc": 10, "power": 180 },
+        { "soc": 30, "power": 160 },
+        { "soc": 50, "power": 110 },
+        { "soc": 80, "power": 45 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "286 ch (210 kW), RWD"
+    },
+    {
+      "id": "bmw-i4-edrive40",
+      "label": "i4 eDrive40 · 83.9 kWh",
+      "battery": "long-range",
+      "trim": "i4 eDrive40",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 58850,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 590,
+      "wltp_consumption_kWh_100km": 16,
+      "realRange": { "mixed_km": 425, "highway_130_km": 305, "urban_km": 525, "winter_minus5_km": 335, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 205,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 140 },
+        { "soc": 10, "power": 205 },
+        { "soc": 30, "power": 180 },
+        { "soc": 50, "power": 130 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 9 }
+      ],
+      "availability": "available",
+      "notes": "340 ch (250 kW), RWD"
+    },
+    {
+      "id": "bmw-i4-m50",
+      "label": "i4 M50 xDrive · 83.9 kWh",
+      "battery": "long-range",
+      "trim": "i4 M50 xDrive",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 74550,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 520,
+      "wltp_consumption_kWh_100km": 18.5,
+      "realRange": { "mixed_km": 380, "highway_130_km": 275, "urban_km": 470, "winter_minus5_km": 300, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 205,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 140 },
+        { "soc": 10, "power": 205 },
+        { "soc": 30, "power": 180 },
+        { "soc": 50, "power": 130 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 9 }
+      ],
+      "availability": "available",
+      "notes": "544 ch (400 kW), AWD xDrive, M Sport"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 2,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "Gran Coupe electrique au design sportif BMW" },
+    { "category": "technologie", "label": "BMW iDrive 9 et ecran courbe 14,9 pouces" },
+    { "category": "securite", "label": "Freinage automatique et parking automatique" },
+    { "category": "confort", "label": "Grande autonomie (590 km WLTP) et coffre genereux (470 L)" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Dynamique de conduite exceptionnelle et version M50 tres performante",
+      "Assemble a Munich, eligible prime CEE"
+    ],
+    "weaknesses": [
+      "Architecture 400 V, pas de 800 V",
+      "AC limite a 11 kW"
+    ],
+    "idealUserProfile": "Conducteurs cherchant une berline electrique sportive et dynamique.",
+    "notIdealFor": "Acheteurs cherchant la charge 800 V ultra-rapide."
+  },
+  "lastUpdated": "2026-05-20",
+  "sources": ["constructeur", "automobile-propre"],
+  "imageCredit": "Constructeur"
+}

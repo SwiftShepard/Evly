@@ -33,7 +33,7 @@
   },
   "consumption_mixed_kWh_per_100km": 16.5,
   "consumption_highway_kWh_per_100km": 24.5,
-  "consumption_winter_kWh_per_100km": 22.0,
+  "consumption_winter_kWh_per_100km": 22,
   "dragCoefficient_Cx": 0.288,
   "chargingDC": {
     "peakPower_kW": 240,
@@ -131,12 +131,7 @@
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [
-    {
-      "label": "Bonus Écologique",
-      "amount_EUR": 4000
-    }
-  ],
+  "availableAids": [],
   "configurations": [
     {
       "id": "hyundai-ioniq-5-intuitive",

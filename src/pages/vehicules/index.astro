@@ -73,6 +73,7 @@ const budgetFilters = [
   { label: "< 50 k€", value: "50000" },
 ];
 const specificFilters = [
+  { label: "Favoris", value: "favorites" },
   { label: "Leasing social", value: "leasing" },
   { label: "Prime CEE", value: "bonus" },
   { label: "Recharge rapide", value: "fast-charge" },
@@ -196,10 +197,10 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|b
                 <div
                   id="price-mode-toggle"
                   class="price-toggle-group"
-                  title="Aides estimées sous conditions de ressources. Prime CEE VE et leasing social non cumulables, il faut choisir."
+                  title="* Montants maximaux sous conditions de revenus, d'eligibilite et de mise au rebut. Prime CEE maj. mai 2026."
                 >
                   <button class="price-toggle-btn" data-mode="gross" data-active="true">Brut</button>
-                  <button class="price-toggle-btn" data-mode="aided">Après aides</button>
+                  <button class="price-toggle-btn" data-mode="aided">Après aides max.*</button>
                 </div>
               </div>
             </Tile>
@@ -217,6 +218,7 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|b
 
           return (
             <div
+              data-slug={v.slug}
               data-category={category}
               data-brand={v.brand}
               data-usage={usageTags}
@@ -272,7 +274,7 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|b
                   <div class="flex flex-col gap-1">
                     <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">
                       <span class="price-mode-gross">Dès</span>
-                      <span class="price-mode-aided">Après aides</span>
+                      <span class="price-mode-aided">Après aides max.*</span>
                     </span>
                     <div class="price-mode-gross">
                       <span data-numeric class="display-stat text-2xl md:text-3xl">{formatPrice(cheapest.price_EUR)}</span>
@@ -323,11 +325,21 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|b
       resetBtns.forEach(b => b.style.display = any ? '' : 'none');
     }
 
+    function getFavorites() {
+      try {
+        const raw = localStorage.getItem('evly-favorites');
+        return raw ? JSON.parse(raw) : [];
+      } catch { return []; }
+    }
+
+    window.addEventListener('favorites-changed', () => updateFilters());
+
     function updateFilters() {
       const selBrands   = getSelected('brand');
       const selCats     = getSelected('cat');
       const selBudgets  = getSelected('budget');
       const selSpecific = getSelected('specific');
+      const favSlugs    = selSpecific.includes('favorites') ? new Set(getFavorites()) : null;
 
       cards.forEach(card => {
         const brand   = card.dataset.brand;
@@ -337,6 +349,7 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|b
         const origin  = card.dataset.origin;
         const bonus   = card.dataset.bonus === '1';
         const usages  = (card.dataset.usage || '').split(',').filter(Boolean);
+        const slug    = card.dataset.slug;
 
         let ok = true;
         if (selBrands.length  && !selBrands.includes(brand)) ok = false;
@@ -347,6 +360,7 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|b
         }
         if (selSpecific.length) {
           for (const s of selSpecific) {
+            if (s === 'favorites'   && (!favSlugs || !favSlugs.has(slug)))  { ok = false; break; }
             if (s === 'fast-charge' && dc < 100)                     { ok = false; break; }
             if (s === 'eu'          && origin !== 'eu')               { ok = false; break; }
             if (s === 'bonus'       && !bonus)                        { ok = false; break; }

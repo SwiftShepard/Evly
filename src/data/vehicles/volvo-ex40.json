@@ -1,0 +1,226 @@
+{
+  "slug": "volvo-ex40",
+  "brand": "Volvo",
+  "model": "EX40",
+  "variant": "Single Motor Extended Range",
+  "bodyType": "SUV compact",
+  "segment": "C",
+  "productionCountry": "Belgique",
+  "assemblyPlant": "Gand",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 185,
+  "power_hp": 252,
+  "torque_Nm": 420,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 6.4,
+  "topSpeed_kmh": 180,
+  "usableCapacity_kWh": 79,
+  "grossCapacity_kWh": 82,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2060,
+  "wltp_max_km": 573,
+  "wltp_min_km": 425,
+  "realRange": {
+    "mixed_km": 430,
+    "highway_130_km": 310,
+    "urban_km": 520,
+    "winter_minus5_km": 335,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 18,
+  "consumption_highway_kWh_per_100km": 24,
+  "consumption_winter_kWh_per_100km": 22.5,
+  "dragCoefficient_Cx": 0.312,
+  "chargingDC": {
+    "peakPower_kW": 200,
+    "time_10_80_min": 28,
+    "kWh_added_30min": 55,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 8
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 140 },
+    { "soc": 10, "power": 200 },
+    { "soc": 30, "power": 180 },
+    { "soc": 50, "power": 120 },
+    { "soc": 80, "power": 50 },
+    { "soc": 100, "power": 9 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4440,
+  "width_mm": 1873,
+  "height_mm": 1647,
+  "wheelbase_mm": 2702,
+  "trunkCapacity_L": 452,
+  "trunkCapacityFolded_L": 1328,
+  "frunkCapacity_L": 0,
+  "trims": [
+    {
+      "name": "Core Single Motor ER",
+      "price_EUR": 48100,
+      "batteryUsed": "82 kWh",
+      "equipmentHighlights": [
+        "Ecran 9 pouces Google",
+        "573 km WLTP",
+        "Charge DC 200 kW"
+      ]
+    },
+    {
+      "name": "Plus Twin Motor",
+      "price_EUR": 55400,
+      "batteryUsed": "82 kWh",
+      "equipmentHighlights": [
+        "AWD 408 ch",
+        "Toit panoramique",
+        "Harman Kardon"
+      ]
+    },
+    {
+      "name": "Ultra Single Motor ER",
+      "price_EUR": 55400,
+      "batteryUsed": "82 kWh",
+      "equipmentHighlights": [
+        "Pixel LED",
+        "Sieges cuir ventiles",
+        "Aide au stationnement auto"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
+  "configurations": [
+    {
+      "id": "volvo-ex40-core-sm-er",
+      "label": "EX40 Core · SM ER",
+      "battery": "standard",
+      "trim": "Core Single Motor ER",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 48100,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 573,
+      "wltp_consumption_kWh_100km": 16.3,
+      "realRange": { "mixed_km": 430, "highway_130_km": 310, "urban_km": 520, "winter_minus5_km": 335, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 200,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 140 },
+        { "soc": 10, "power": 200 },
+        { "soc": 30, "power": 180 },
+        { "soc": 50, "power": 120 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 9 }
+      ],
+      "availability": "available",
+      "notes": "252 ch (185 kW), RWD"
+    },
+    {
+      "id": "volvo-ex40-plus-tm",
+      "label": "EX40 Plus · Twin Motor",
+      "battery": "standard",
+      "trim": "Plus Twin Motor",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 55400,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 425,
+      "wltp_consumption_kWh_100km": 21.8,
+      "realRange": { "mixed_km": 335, "highway_130_km": 245, "urban_km": 410, "winter_minus5_km": 270, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 200,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 140 },
+        { "soc": 10, "power": 200 },
+        { "soc": 30, "power": 180 },
+        { "soc": 50, "power": 120 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 9 }
+      ],
+      "availability": "available",
+      "notes": "408 ch (300 kW), AWD"
+    },
+    {
+      "id": "volvo-ex40-ultra-sm-er",
+      "label": "EX40 Ultra · SM ER",
+      "battery": "standard",
+      "trim": "Ultra Single Motor ER",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 55400,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 550,
+      "wltp_consumption_kWh_100km": 16.8,
+      "realRange": { "mixed_km": 415, "highway_130_km": 300, "urban_km": 505, "winter_minus5_km": 325, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 200,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 140 },
+        { "soc": 10, "power": 200 },
+        { "soc": 30, "power": 180 },
+        { "soc": 50, "power": 120 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 9 }
+      ],
+      "availability": "available",
+      "notes": "252 ch (185 kW), RWD, full options"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "Design SUV scandinave reconnaissable" },
+    { "category": "technologie", "label": "Google integre et Harman Kardon (option)" },
+    { "category": "securite", "label": "Pilot Assist et freinage automatique avance" },
+    { "category": "confort", "label": "Interieur premium materiaux naturels" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Assemble en Belgique, eligible CEE (8 100 euros)",
+      "Bonne autonomie (573 km WLTP) et charge rapide 200 kW"
+    ],
+    "weaknesses": [
+      "Prix eleve pour un SUV compact",
+      "Pas de frunk malgre la plateforme dediee"
+    ],
+    "idealUserProfile": "Conducteurs premium cherchant un SUV electrique assemble en Europe avec aides francaises.",
+    "notIdealFor": "Budgets moderes ou acheteurs cherchant le meilleur rapport taille/prix."
+  },
+  "lastUpdated": "2026-05-19",
+  "sources": ["la-chaine-ev"],
+  "imageCredit": "Constructeur"
+}

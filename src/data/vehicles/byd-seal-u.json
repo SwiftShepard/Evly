@@ -93,12 +93,7 @@
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [
-    {
-      "label": "Bonus Écologique",
-      "amount_EUR": 4000
-    }
-  ],
+  "availableAids": [],
   "configurations": [
     {
       "id": "byd-seal-u-comfort",

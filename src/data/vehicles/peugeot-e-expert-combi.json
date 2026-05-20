@@ -30,9 +30,9 @@
     "winter_minus5_km": 215,
     "confidence": "estimated"
   },
-  "consumption_mixed_kWh_per_100km": 22.0,
-  "consumption_highway_kWh_per_100km": 28.0,
-  "consumption_winter_kWh_per_100km": 27.0,
+  "consumption_mixed_kWh_per_100km": 22,
+  "consumption_highway_kWh_per_100km": 28,
+  "consumption_winter_kWh_per_100km": 27,
   "dragCoefficient_Cx": 0.35,
   "chargingDC": {
     "peakPower_kW": 100,
@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0,   "power": 92 },
-    { "soc": 10,  "power": 100 },
-    { "soc": 20,  "power": 100 },
-    { "soc": 50,  "power": 71 },
-    { "soc": 80,  "power": 32 },
-    { "soc": 100, "power": 6 }
+    {
+      "soc": 0,
+      "power": 92
+    },
+    {
+      "soc": 10,
+      "power": 100
+    },
+    {
+      "soc": 20,
+      "power": 100
+    },
+    {
+      "soc": 50,
+      "power": 71
+    },
+    {
+      "soc": 80,
+      "power": 32
+    },
+    {
+      "soc": 100,
+      "power": 6
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -67,14 +85,47 @@
   "trunkCapacityFolded_L": 4900,
   "frunkCapacity_L": null,
   "trims": [
-    { "name": "M Combi 49 kWh",  "price_EUR": 48100, "batteryUsed": "49 kWh", "equipmentHighlights": ["9 places · finition utilitaire Combi"] },
-    { "name": "M Combi 75 kWh",  "price_EUR": 54100, "batteryUsed": "75 kWh", "equipmentHighlights": ["9 places · grande autonomie 75 kWh"] },
-    { "name": "XL Combi 49 kWh", "price_EUR": 49100, "batteryUsed": "49 kWh", "equipmentHighlights": ["9 places · empattement long"] },
-    { "name": "XL Combi 75 kWh", "price_EUR": 55100, "batteryUsed": "75 kWh", "equipmentHighlights": ["9 places · empattement long · 75 kWh"] }
+    {
+      "name": "M Combi 49 kWh",
+      "price_EUR": 48100,
+      "batteryUsed": "49 kWh",
+      "equipmentHighlights": [
+        "9 places · finition utilitaire Combi"
+      ]
+    },
+    {
+      "name": "M Combi 75 kWh",
+      "price_EUR": 54100,
+      "batteryUsed": "75 kWh",
+      "equipmentHighlights": [
+        "9 places · grande autonomie 75 kWh"
+      ]
+    },
+    {
+      "name": "XL Combi 49 kWh",
+      "price_EUR": 49100,
+      "batteryUsed": "49 kWh",
+      "equipmentHighlights": [
+        "9 places · empattement long"
+      ]
+    },
+    {
+      "name": "XL Combi 75 kWh",
+      "price_EUR": 55100,
+      "batteryUsed": "75 kWh",
+      "equipmentHighlights": [
+        "9 places · empattement long · 75 kWh"
+      ]
+    }
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [],
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
   "configurations": [
     {
       "id": "peugeot-e-expert-combi-m-49",
@@ -101,12 +152,30 @@
       "chargingDC_10_80_min": 32,
       "chargingDC_kWh_30min": 30,
       "chargingCurve": [
-        { "soc": 0,   "power": 92 },
-        { "soc": 10,  "power": 100 },
-        { "soc": 20,  "power": 100 },
-        { "soc": 50,  "power": 71 },
-        { "soc": 80,  "power": 32 },
-        { "soc": 100, "power": 6 }
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "Version utilitaire Combi du E-Expert, plus dépouillée que le E-Traveller."
@@ -123,7 +192,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 350,
-      "wltp_consumption_kWh_100km": 22.0,
+      "wltp_consumption_kWh_100km": 22,
       "realRange": {
         "mixed_km": 270,
         "highway_130_km": 175,
@@ -136,12 +205,30 @@
       "chargingDC_10_80_min": 45,
       "chargingDC_kWh_30min": 40,
       "chargingCurve": [
-        { "soc": 0,   "power": 92 },
-        { "soc": 10,  "power": 100 },
-        { "soc": 20,  "power": 100 },
-        { "soc": 50,  "power": 71 },
-        { "soc": 80,  "power": 32 },
-        { "soc": 100, "power": 6 }
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": null
@@ -158,7 +245,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 230,
-      "wltp_consumption_kWh_100km": 22.0,
+      "wltp_consumption_kWh_100km": 22,
       "realRange": {
         "mixed_km": 170,
         "highway_130_km": 105,
@@ -171,12 +258,30 @@
       "chargingDC_10_80_min": 32,
       "chargingDC_kWh_30min": 30,
       "chargingCurve": [
-        { "soc": 0,   "power": 92 },
-        { "soc": 10,  "power": 100 },
-        { "soc": 20,  "power": 100 },
-        { "soc": 50,  "power": 71 },
-        { "soc": 80,  "power": 32 },
-        { "soc": 100, "power": 6 }
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "Empattement long, idéal grand volume."
@@ -206,12 +311,30 @@
       "chargingDC_10_80_min": 45,
       "chargingDC_kWh_30min": 40,
       "chargingCurve": [
-        { "soc": 0,   "power": 92 },
-        { "soc": 10,  "power": 100 },
-        { "soc": 20,  "power": 100 },
-        { "soc": 50,  "power": 71 },
-        { "soc": 80,  "power": 32 },
-        { "soc": 100, "power": 6 }
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": null
@@ -225,10 +348,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "confort", "label": "9 places assises, version utilitaire Combi" },
-    { "category": "technologie", "label": "Charge AC triphasée 11 kW de série" },
-    { "category": "securite", "label": "Freinage automatique d'urgence avec détection piétons" },
-    { "category": "design", "label": "Empattement long XL disponible pour grandes équipes" }
+    {
+      "category": "confort",
+      "label": "9 places assises, version utilitaire Combi"
+    },
+    {
+      "category": "technologie",
+      "label": "Charge AC triphasée 11 kW de série"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence avec détection piétons"
+    },
+    {
+      "category": "design",
+      "label": "Empattement long XL disponible pour grandes équipes"
+    }
   ],
   "verdict": {
     "strengths": [

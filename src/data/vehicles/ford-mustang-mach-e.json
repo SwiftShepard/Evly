@@ -1,0 +1,221 @@
+{
+  "slug": "ford-mustang-mach-e",
+  "brand": "Ford",
+  "model": "Mustang Mach-E",
+  "variant": "98.7 kWh",
+  "bodyType": "SUV",
+  "segment": "D",
+  "productionCountry": "Mexique",
+  "assemblyPlant": "Cuautitlan",
+  "releaseYear": 2021,
+  "marketAvailability": "Disponible",
+  "power_kW": 216,
+  "power_hp": 294,
+  "torque_Nm": 430,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 6.0,
+  "topSpeed_kmh": 180,
+  "usableCapacity_kWh": 91,
+  "grossCapacity_kWh": 98.7,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2100,
+  "wltp_max_km": 600,
+  "wltp_min_km": 440,
+  "realRange": {
+    "mixed_km": 430,
+    "highway_130_km": 310,
+    "urban_km": 530,
+    "winter_minus5_km": 340,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 19,
+  "consumption_highway_kWh_per_100km": 25,
+  "consumption_winter_kWh_per_100km": 23,
+  "dragCoefficient_Cx": 0.27,
+  "chargingDC": {
+    "peakPower_kW": 150,
+    "time_10_80_min": 38,
+    "kWh_added_30min": 55,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 9
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 100 },
+    { "soc": 10, "power": 150 },
+    { "soc": 30, "power": 130 },
+    { "soc": 50, "power": 90 },
+    { "soc": 80, "power": 40 },
+    { "soc": 100, "power": 8 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4739,
+  "width_mm": 1881,
+  "height_mm": 1624,
+  "wheelbase_mm": 2984,
+  "trunkCapacity_L": 402,
+  "trunkCapacityFolded_L": 1420,
+  "frunkCapacity_L": 81,
+  "trims": [
+    {
+      "name": "Standard Range 75.7 kWh",
+      "price_EUR": 47490,
+      "batteryUsed": "75.7 kWh",
+      "equipmentHighlights": [
+        "440 km WLTP",
+        "Ecran 15,5 pouces",
+        "Ford BlueCruise"
+      ]
+    },
+    {
+      "name": "Extended Range 98.7 kWh",
+      "price_EUR": 53990,
+      "batteryUsed": "98.7 kWh",
+      "equipmentHighlights": [
+        "600 km WLTP",
+        "Charge DC 150 kW",
+        "Frunk 81 L"
+      ]
+    },
+    {
+      "name": "GT 98.7 kWh",
+      "price_EUR": 73990,
+      "batteryUsed": "98.7 kWh",
+      "equipmentHighlights": [
+        "AWD 487 ch",
+        "0-100 en 3,7 s",
+        "Chassis sport MagneRide"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "ford-mustang-mach-e-sr",
+      "label": "Mustang Mach-E · 75.7 kWh",
+      "battery": "standard",
+      "trim": "Standard Range 75.7 kWh",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 47490,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 440,
+      "wltp_consumption_kWh_100km": 18.5,
+      "realRange": { "mixed_km": 330, "highway_130_km": 240, "urban_km": 410, "winter_minus5_km": 265, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 115,
+      "chargingDC_10_80_min": 38,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        { "soc": 0, "power": 80 },
+        { "soc": 10, "power": 115 },
+        { "soc": 30, "power": 100 },
+        { "soc": 50, "power": 75 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "269 ch (198 kW), RWD"
+    },
+    {
+      "id": "ford-mustang-mach-e-er",
+      "label": "Mustang Mach-E · 98.7 kWh",
+      "battery": "long-range",
+      "trim": "Extended Range 98.7 kWh",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 53990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 600,
+      "wltp_consumption_kWh_100km": 17.8,
+      "realRange": { "mixed_km": 430, "highway_130_km": 310, "urban_km": 530, "winter_minus5_km": 340, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 38,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 150 },
+        { "soc": 30, "power": 130 },
+        { "soc": 50, "power": 90 },
+        { "soc": 80, "power": 40 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "294 ch (216 kW), RWD"
+    },
+    {
+      "id": "ford-mustang-mach-e-gt",
+      "label": "Mustang Mach-E GT · 98.7 kWh",
+      "battery": "long-range",
+      "trim": "GT 98.7 kWh",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 73990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 490,
+      "wltp_consumption_kWh_100km": 22,
+      "realRange": { "mixed_km": 360, "highway_130_km": 260, "urban_km": 445, "winter_minus5_km": 285, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 38,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 150 },
+        { "soc": 30, "power": 130 },
+        { "soc": 50, "power": 90 },
+        { "soc": 80, "power": 40 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "487 ch (358 kW), AWD, MagneRide"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "SUV sportif au design Mustang iconique" },
+    { "category": "technologie", "label": "Ecran 15,5 pouces et Ford BlueCruise" },
+    { "category": "securite", "label": "Freinage automatique et conduite semi-autonome" },
+    { "category": "confort", "label": "Frunk 81 L, coffre 402 L et Plug & Charge" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Design Mustang iconique et version GT tres performante (487 ch)",
+      "Grande batterie 98.7 kWh et bonne autonomie (600 km WLTP)"
+    ],
+    "weaknesses": [
+      "Assemblage Mexique, aucune aide CEE",
+      "Charge DC limitee a 150 kW, en retrait face a la concurrence"
+    ],
+    "idealUserProfile": "Conducteurs cherchant un SUV electrique sportif et charismatique.",
+    "notIdealFor": "Acheteurs comptant sur les aides CEE ou cherchant la charge ultra-rapide."
+  },
+  "lastUpdated": "2026-05-20",
+  "sources": ["constructeur", "automobile-propre"],
+  "imageCredit": "Constructeur"
+}

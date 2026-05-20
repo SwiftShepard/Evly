@@ -104,12 +104,12 @@
       ]
     }
   ],
-  "leasingSocialEligible": false,
-  "leasingSocial_EUR_per_month": null,
+  "leasingSocialEligible": true,
+  "leasingSocial_EUR_per_month": 139,
   "availableAids": [
     {
       "label": "Prime CEE VE",
-      "amount_EUR": 4000
+      "amount_EUR": 8100
     }
   ],
   "configurations": [
@@ -122,8 +122,8 @@
       "tyreType": "summer",
       "options": [],
       "price_EUR": 29000,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
+      "monthlyLease_EUR": 139,
+      "leasingSocialEligible": true,
       "wltp_km": 305,
       "wltp_consumption_kWh_100km": 15.8,
       "realRange": {
@@ -175,8 +175,8 @@
       "tyreType": "summer",
       "options": [],
       "price_EUR": 31900,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
+      "monthlyLease_EUR": 139,
+      "leasingSocialEligible": true,
       "wltp_km": 305,
       "wltp_consumption_kWh_100km": 15.8,
       "realRange": {

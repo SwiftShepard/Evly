@@ -82,12 +82,33 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Business",
+      "name": "Feel 50 kWh M",
+      "price_EUR": 48000,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "230 km WLTP",
+        "Jusqu'a 9 places",
+        "Portes coulissantes"
+      ]
+    },
+    {
+      "name": "Business 75 kWh M",
+      "price_EUR": 52000,
+      "batteryUsed": "75 kWh",
+      "equipmentHighlights": [
+        "330 km WLTP",
+        "Ecran 10 pouces",
+        "Climatisation auto"
+      ]
+    },
+    {
+      "name": "Business 75 kWh XL",
       "price_EUR": 55000,
       "batteryUsed": "75 kWh",
       "equipmentHighlights": [
-        "Jusqu'à 9 places",
-        "Espace modulaire"
+        "350 km WLTP",
+        "Carrosserie XL (5,30 m)",
+        "9 places"
       ]
     }
   ],
@@ -95,59 +116,94 @@
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
-      "amount_EUR": 4000
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
     }
   ],
   "configurations": [
     {
-      "id": "citroen-e-spacetourer-business",
-      "label": "ë-SpaceTourer Business",
+      "id": "citroen-e-spacetourer-feel-50",
+      "label": "ë-SpaceTourer Feel · 50 kWh M",
       "battery": "standard",
-      "trim": "Business",
-      "wheelSize_inches": 18,
+      "trim": "Feel 50 kWh M",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 48000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 230,
+      "wltp_consumption_kWh_100km": 22,
+      "realRange": { "mixed_km": 180, "highway_130_km": 120, "urban_km": 225, "winter_minus5_km": 145, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        { "soc": 0, "power": 77 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 77 },
+        { "soc": 80, "power": 38 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "136 ch (100 kW), FWD, taille M"
+    },
+    {
+      "id": "citroen-e-spacetourer-business-75-m",
+      "label": "ë-SpaceTourer Business · 75 kWh M",
+      "battery": "long-range",
+      "trim": "Business 75 kWh M",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 52000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 330,
+      "wltp_consumption_kWh_100km": 21,
+      "realRange": { "mixed_km": 260, "highway_130_km": 170, "urban_km": 320, "winter_minus5_km": 205, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 45,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        { "soc": 0, "power": 77 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 77 },
+        { "soc": 80, "power": 38 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "136 ch (100 kW), FWD, taille M"
+    },
+    {
+      "id": "citroen-e-spacetourer-business-75-xl",
+      "label": "ë-SpaceTourer Business · 75 kWh XL",
+      "battery": "long-range",
+      "trim": "Business 75 kWh XL",
+      "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
       "price_EUR": 55000,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 350,
-      "wltp_consumption_kWh_100km": 15,
-      "realRange": {
-        "mixed_km": 280,
-        "highway_130_km": 180,
-        "urban_km": 340,
-        "winter_minus5_km": 220,
-        "confidence": "estimated"
-      },
+      "wltp_consumption_kWh_100km": 21,
+      "realRange": { "mixed_km": 280, "highway_130_km": 180, "urban_km": 340, "winter_minus5_km": 220, "confidence": "estimated" },
       "rangeTests": [],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 45,
       "chargingDC_kWh_30min": 40,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 77
-        },
-        {
-          "soc": 10,
-          "power": 100
-        },
-        {
-          "soc": 50,
-          "power": 77
-        },
-        {
-          "soc": 80,
-          "power": 38
-        },
-        {
-          "soc": 100,
-          "power": 8
-        }
+        { "soc": 0, "power": 77 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 77 },
+        { "soc": 80, "power": 38 },
+        { "soc": 100, "power": 8 }
       ],
       "availability": "available",
-      "notes": null
+      "notes": "136 ch (100 kW), FWD, taille XL 9 places"
     }
   ],
   "warranty": {

@@ -82,30 +82,74 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Luxury RWD",
-      "price_EUR": 44490,
-      "batteryUsed": "70 kWh NMC",
+      "name": "Comfort",
+      "price_EUR": 39990,
+      "batteryUsed": "70 kWh",
       "equipmentHighlights": [
-        "Finition Premium",
-        "Écran central géant"
+        "402 km WLTP",
+        "Ecran 19,4 pouces",
+        "Sieges chauffants"
+      ]
+    },
+    {
+      "name": "Luxury",
+      "price_EUR": 44490,
+      "batteryUsed": "70 kWh",
+      "equipmentHighlights": [
+        "402 km WLTP",
+        "Camera 360",
+        "Toit panoramique"
+      ]
+    },
+    {
+      "name": "Performance AWD",
+      "price_EUR": 47990,
+      "batteryUsed": "70 kWh",
+      "equipmentHighlights": [
+        "AWD 288 ch",
+        "370 km WLTP",
+        "0-100 en 4,9 s"
       ]
     }
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [
-    {
-      "label": "Bonus Écologique",
-      "amount_EUR": 4000
-    }
-  ],
+  "availableAids": [],
   "configurations": [
     {
-      "id": "mg-marvel-r-luxury-rwd",
-      "label": "Marvel R Luxury RWD",
+      "id": "mg-marvel-r-comfort",
+      "label": "Marvel R Comfort",
       "battery": "standard",
-      "trim": "Luxury RWD",
+      "trim": "Comfort",
       "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 39990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 402,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": { "mixed_km": 320, "highway_130_km": 220, "urban_km": 380, "winter_minus5_km": 220, "confidence": "tested" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 92,
+      "chargingDC_10_80_min": 43,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        { "soc": 0, "power": 71 },
+        { "soc": 10, "power": 92 },
+        { "soc": 50, "power": 71 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "204 ch (132 kW), FWD"
+    },
+    {
+      "id": "mg-marvel-r-luxury",
+      "label": "Marvel R Luxury",
+      "battery": "standard",
+      "trim": "Luxury",
+      "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
       "price_EUR": 44490,
@@ -113,41 +157,48 @@
       "leasingSocialEligible": false,
       "wltp_km": 402,
       "wltp_consumption_kWh_100km": 15,
-      "realRange": {
-        "mixed_km": 320,
-        "highway_130_km": 220,
-        "urban_km": 380,
-        "winter_minus5_km": 220,
-        "confidence": "tested"
-      },
+      "realRange": { "mixed_km": 320, "highway_130_km": 220, "urban_km": 380, "winter_minus5_km": 220, "confidence": "tested" },
       "rangeTests": [],
       "chargingDC_peak_kW": 92,
       "chargingDC_10_80_min": 43,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 71
-        },
-        {
-          "soc": 10,
-          "power": 92
-        },
-        {
-          "soc": 50,
-          "power": 71
-        },
-        {
-          "soc": 80,
-          "power": 35
-        },
-        {
-          "soc": 100,
-          "power": 7
-        }
+        { "soc": 0, "power": 71 },
+        { "soc": 10, "power": 92 },
+        { "soc": 50, "power": 71 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
       ],
       "availability": "available",
-      "notes": null
+      "notes": "204 ch (132 kW), FWD, full options"
+    },
+    {
+      "id": "mg-marvel-r-performance",
+      "label": "Marvel R Performance AWD",
+      "battery": "standard",
+      "trim": "Performance AWD",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 47990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 370,
+      "wltp_consumption_kWh_100km": 17,
+      "realRange": { "mixed_km": 290, "highway_130_km": 200, "urban_km": 350, "winter_minus5_km": 200, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 92,
+      "chargingDC_10_80_min": 43,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        { "soc": 0, "power": 71 },
+        { "soc": 10, "power": 92 },
+        { "soc": 50, "power": 71 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "288 ch (212 kW), AWD tri-moteur"
     }
   ],
   "warranty": {

@@ -1,0 +1,221 @@
+{
+  "slug": "volvo-ex90",
+  "brand": "Volvo",
+  "model": "EX90",
+  "variant": "Twin Motor AWD",
+  "bodyType": "Grand SUV",
+  "segment": "E",
+  "productionCountry": "USA",
+  "assemblyPlant": "Ridgeville",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 300,
+  "power_hp": 408,
+  "torque_Nm": 770,
+  "drivetrain": "AWD",
+  "motors": 2,
+  "acceleration_0_100_s": 5.9,
+  "topSpeed_kmh": 180,
+  "usableCapacity_kWh": 107,
+  "grossCapacity_kWh": 111,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2818,
+  "wltp_max_km": 616,
+  "wltp_min_km": 565,
+  "realRange": {
+    "mixed_km": 460,
+    "highway_130_km": 330,
+    "urban_km": 560,
+    "winter_minus5_km": 350,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 23,
+  "consumption_highway_kWh_per_100km": 30,
+  "consumption_winter_kWh_per_100km": 28,
+  "dragCoefficient_Cx": 0.29,
+  "chargingDC": {
+    "peakPower_kW": 250,
+    "time_10_80_min": 30,
+    "kWh_added_30min": 70,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 11
+  },
+  "plugAndCharge": true,
+  "v2l": true,
+  "v2g": true,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 180 },
+    { "soc": 10, "power": 250 },
+    { "soc": 30, "power": 220 },
+    { "soc": 50, "power": 155 },
+    { "soc": 80, "power": 65 },
+    { "soc": 100, "power": 12 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 5037,
+  "width_mm": 1964,
+  "height_mm": 1744,
+  "wheelbase_mm": 2985,
+  "trunkCapacity_L": 310,
+  "trunkCapacityFolded_L": 1915,
+  "frunkCapacity_L": 37,
+  "trims": [
+    {
+      "name": "Core Twin Motor",
+      "price_EUR": 83400,
+      "batteryUsed": "111 kWh",
+      "equipmentHighlights": [
+        "7 places",
+        "Ecran 14,5 pouces Google",
+        "LiDAR Luminar"
+      ]
+    },
+    {
+      "name": "Plus Twin Motor",
+      "price_EUR": 88400,
+      "batteryUsed": "111 kWh",
+      "equipmentHighlights": [
+        "Bowers & Wilkins 25 HP",
+        "Toit panoramique",
+        "Sieges ventiles massants"
+      ]
+    },
+    {
+      "name": "Ultra Twin Motor",
+      "price_EUR": 95000,
+      "batteryUsed": "111 kWh",
+      "equipmentHighlights": [
+        "Cuir Nappa",
+        "Affichage tete haute",
+        "Aide conduite avancee"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "volvo-ex90-core-tm",
+      "label": "EX90 Core · Twin Motor",
+      "battery": "standard",
+      "trim": "Core Twin Motor",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 83400,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 616,
+      "wltp_consumption_kWh_100km": 20.3,
+      "realRange": { "mixed_km": 460, "highway_130_km": 330, "urban_km": 560, "winter_minus5_km": 350, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 250,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 70,
+      "chargingCurve": [
+        { "soc": 0, "power": 180 },
+        { "soc": 10, "power": 250 },
+        { "soc": 30, "power": 220 },
+        { "soc": 50, "power": 155 },
+        { "soc": 80, "power": 65 },
+        { "soc": 100, "power": 12 }
+      ],
+      "availability": "available",
+      "notes": "408 ch (300 kW), AWD, 7 places"
+    },
+    {
+      "id": "volvo-ex90-plus-tm",
+      "label": "EX90 Plus · Twin Motor",
+      "battery": "standard",
+      "trim": "Plus Twin Motor",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 88400,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 600,
+      "wltp_consumption_kWh_100km": 20.8,
+      "realRange": { "mixed_km": 450, "highway_130_km": 320, "urban_km": 545, "winter_minus5_km": 340, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 250,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 70,
+      "chargingCurve": [
+        { "soc": 0, "power": 180 },
+        { "soc": 10, "power": 250 },
+        { "soc": 30, "power": 220 },
+        { "soc": 50, "power": 155 },
+        { "soc": 80, "power": 65 },
+        { "soc": 100, "power": 12 }
+      ],
+      "availability": "available",
+      "notes": "408 ch (300 kW), AWD, Bowers & Wilkins"
+    },
+    {
+      "id": "volvo-ex90-ultra-tm",
+      "label": "EX90 Ultra · Twin Motor",
+      "battery": "standard",
+      "trim": "Ultra Twin Motor",
+      "wheelSize_inches": 22,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 95000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 565,
+      "wltp_consumption_kWh_100km": 22,
+      "realRange": { "mixed_km": 430, "highway_130_km": 310, "urban_km": 525, "winter_minus5_km": 330, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 250,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 70,
+      "chargingCurve": [
+        { "soc": 0, "power": 180 },
+        { "soc": 10, "power": 250 },
+        { "soc": 30, "power": 220 },
+        { "soc": 50, "power": 155 },
+        { "soc": 80, "power": 65 },
+        { "soc": 100, "power": 12 }
+      ],
+      "availability": "available",
+      "notes": "408 ch (300 kW), AWD, full options"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "Grand SUV 7 places au design scandinave" },
+    { "category": "technologie", "label": "LiDAR Luminar de serie et ecran 14,5 pouces" },
+    { "category": "securite", "label": "Detection pietons, cyclistes et grands animaux" },
+    { "category": "confort", "label": "Bowers & Wilkins 25 HP et suspension pneumatique" }
+  ],
+  "verdict": {
+    "strengths": [
+      "LiDAR de serie, V2L et V2G integres",
+      "Grande batterie 111 kWh et charge 250 kW"
+    ],
+    "weaknesses": [
+      "Prix tres eleve (83 400 euros minimum)",
+      "Assemblage USA, aucune aide en France"
+    ],
+    "idealUserProfile": "Familles aisees cherchant un grand SUV electrique 7 places ultra-securise et technologique.",
+    "notIdealFor": "Budgets limites ou conducteurs cherchant un vehicule compact maniable en ville."
+  },
+  "lastUpdated": "2026-05-19",
+  "sources": ["la-chaine-ev"],
+  "imageCredit": "Constructeur"
+}

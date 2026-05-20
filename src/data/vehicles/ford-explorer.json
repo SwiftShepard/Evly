@@ -1,0 +1,265 @@
+{
+  "slug": "ford-explorer",
+  "brand": "Ford",
+  "model": "Explorer",
+  "variant": "77 kWh",
+  "bodyType": "SUV",
+  "segment": "D",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Cologne",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 210,
+  "power_hp": 286,
+  "torque_Nm": 545,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 6.4,
+  "topSpeed_kmh": 180,
+  "usableCapacity_kWh": 77,
+  "grossCapacity_kWh": 82,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2130,
+  "wltp_max_km": 602,
+  "wltp_min_km": 380,
+  "realRange": {
+    "mixed_km": 430,
+    "highway_130_km": 310,
+    "urban_km": 530,
+    "winter_minus5_km": 340,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 17,
+  "consumption_highway_kWh_per_100km": 23,
+  "consumption_winter_kWh_per_100km": 21,
+  "dragCoefficient_Cx": 0.28,
+  "chargingDC": {
+    "peakPower_kW": 185,
+    "time_10_80_min": 26,
+    "kWh_added_30min": 55,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 8
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 120 },
+    { "soc": 10, "power": 185 },
+    { "soc": 30, "power": 160 },
+    { "soc": 50, "power": 110 },
+    { "soc": 80, "power": 45 },
+    { "soc": 100, "power": 8 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4468,
+  "width_mm": 1872,
+  "height_mm": 1637,
+  "wheelbase_mm": 2767,
+  "trunkCapacity_L": 450,
+  "trunkCapacityFolded_L": 1422,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Explorer 52 kWh",
+      "price_EUR": 36900,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "380 km WLTP",
+        "Ecran 14,6 pouces",
+        "Ford BlueCruise"
+      ]
+    },
+    {
+      "name": "Explorer 77 kWh",
+      "price_EUR": 42900,
+      "batteryUsed": "77 kWh",
+      "equipmentHighlights": [
+        "602 km WLTP",
+        "Charge DC 185 kW",
+        "Camera 360"
+      ]
+    },
+    {
+      "name": "Explorer Premium 77 kWh",
+      "price_EUR": 46900,
+      "batteryUsed": "77 kWh",
+      "equipmentHighlights": [
+        "602 km WLTP",
+        "Toit panoramique",
+        "Audio B&O 10 HP"
+      ]
+    },
+    {
+      "name": "Explorer AWD 77 kWh",
+      "price_EUR": 49900,
+      "batteryUsed": "77 kWh",
+      "equipmentHighlights": [
+        "AWD 340 ch",
+        "566 km WLTP",
+        "Suspension adaptative"
+      ]
+    }
+  ],
+  "leasingSocialEligible": true,
+  "leasingSocial_EUR_per_month": 159,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
+  "configurations": [
+    {
+      "id": "ford-explorer-52",
+      "label": "Explorer · 52 kWh",
+      "battery": "standard",
+      "trim": "Explorer 52 kWh",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 36900,
+      "monthlyLease_EUR": 159,
+      "leasingSocialEligible": true,
+      "wltp_km": 380,
+      "wltp_consumption_kWh_100km": 16,
+      "realRange": { "mixed_km": 290, "highway_130_km": 210, "urban_km": 355, "winter_minus5_km": 230, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 135,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        { "soc": 0, "power": 90 },
+        { "soc": 10, "power": 135 },
+        { "soc": 30, "power": 120 },
+        { "soc": 50, "power": 85 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "170 ch (125 kW), RWD"
+    },
+    {
+      "id": "ford-explorer-77",
+      "label": "Explorer · 77 kWh",
+      "battery": "long-range",
+      "trim": "Explorer 77 kWh",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 42900,
+      "monthlyLease_EUR": 159,
+      "leasingSocialEligible": true,
+      "wltp_km": 602,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": { "mixed_km": 430, "highway_130_km": 310, "urban_km": 530, "winter_minus5_km": 340, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 185,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 120 },
+        { "soc": 10, "power": 185 },
+        { "soc": 30, "power": 160 },
+        { "soc": 50, "power": 110 },
+        { "soc": 80, "power": 45 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "286 ch (210 kW), RWD"
+    },
+    {
+      "id": "ford-explorer-premium-77",
+      "label": "Explorer Premium · 77 kWh",
+      "battery": "long-range",
+      "trim": "Explorer Premium 77 kWh",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 46900,
+      "monthlyLease_EUR": 159,
+      "leasingSocialEligible": true,
+      "wltp_km": 580,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": { "mixed_km": 420, "highway_130_km": 300, "urban_km": 515, "winter_minus5_km": 330, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 185,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 120 },
+        { "soc": 10, "power": 185 },
+        { "soc": 30, "power": 160 },
+        { "soc": 50, "power": 110 },
+        { "soc": 80, "power": 45 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "286 ch (210 kW), RWD, full options"
+    },
+    {
+      "id": "ford-explorer-awd-77",
+      "label": "Explorer AWD · 77 kWh",
+      "battery": "long-range",
+      "trim": "Explorer AWD 77 kWh",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 49900,
+      "monthlyLease_EUR": 159,
+      "leasingSocialEligible": true,
+      "wltp_km": 566,
+      "wltp_consumption_kWh_100km": 16.5,
+      "realRange": { "mixed_km": 400, "highway_130_km": 290, "urban_km": 495, "winter_minus5_km": 320, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 185,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 120 },
+        { "soc": 10, "power": 185 },
+        { "soc": 30, "power": 160 },
+        { "soc": 50, "power": 110 },
+        { "soc": 80, "power": 45 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "340 ch (250 kW), AWD bi-moteur"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "SUV familial au design moderne, plateforme MEB" },
+    { "category": "technologie", "label": "Ecran 14,6 pouces et Ford BlueCruise" },
+    { "category": "securite", "label": "Freinage automatique et conduite semi-autonome" },
+    { "category": "confort", "label": "Coffre genereux (450-1422 L) et Plug & Charge" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Assemble en Allemagne, eligible prime CEE (8 100 euros)",
+      "Bonne autonomie (602 km WLTP) et coffre tres genereux"
+    ],
+    "weaknesses": [
+      "Charge DC 185 kW correcte mais pas ultra-rapide",
+      "Version AWD au-dessus du seuil CEE"
+    ],
+    "idealUserProfile": "Familles cherchant un SUV electrique spacieux, eligible aux aides.",
+    "notIdealFor": "Acheteurs cherchant la charge ultra-rapide ou une marque premium."
+  },
+  "lastUpdated": "2026-05-20",
+  "sources": ["constructeur", "automobile-propre"],
+  "imageCredit": "Constructeur"
+}

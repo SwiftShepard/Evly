@@ -1,0 +1,226 @@
+{
+  "slug": "bmw-i5",
+  "brand": "BMW",
+  "model": "i5",
+  "variant": "81.2 kWh",
+  "bodyType": "Berline",
+  "segment": "E",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Dingolfing",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 250,
+  "power_hp": 340,
+  "torque_Nm": 400,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 6.0,
+  "topSpeed_kmh": 193,
+  "usableCapacity_kWh": 81.2,
+  "grossCapacity_kWh": 83.9,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2190,
+  "wltp_max_km": 582,
+  "wltp_min_km": 455,
+  "realRange": {
+    "mixed_km": 420,
+    "highway_130_km": 300,
+    "urban_km": 515,
+    "winter_minus5_km": 330,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 18.5,
+  "consumption_highway_kWh_per_100km": 24,
+  "consumption_winter_kWh_per_100km": 22,
+  "dragCoefficient_Cx": 0.23,
+  "chargingDC": {
+    "peakPower_kW": 205,
+    "time_10_80_min": 27,
+    "kWh_added_30min": 55,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 8
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 140 },
+    { "soc": 10, "power": 205 },
+    { "soc": 30, "power": 180 },
+    { "soc": 50, "power": 130 },
+    { "soc": 80, "power": 50 },
+    { "soc": 100, "power": 9 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 5060,
+  "width_mm": 1900,
+  "height_mm": 1515,
+  "wheelbase_mm": 2995,
+  "trunkCapacity_L": 490,
+  "trunkCapacityFolded_L": 1290,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "i5 eDrive40",
+      "price_EUR": 70150,
+      "batteryUsed": "81.2 kWh",
+      "equipmentHighlights": [
+        "582 km WLTP",
+        "340 ch RWD",
+        "BMW iDrive 9"
+      ]
+    },
+    {
+      "name": "i5 xDrive40",
+      "price_EUR": 74750,
+      "batteryUsed": "81.2 kWh",
+      "equipmentHighlights": [
+        "AWD 340 ch",
+        "536 km WLTP",
+        "xDrive transmission integrale"
+      ]
+    },
+    {
+      "name": "i5 M60 xDrive",
+      "price_EUR": 105650,
+      "batteryUsed": "81.2 kWh",
+      "equipmentHighlights": [
+        "AWD 601 ch",
+        "0-100 en 3,8 s",
+        "Chassis M adaptatif"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
+  "configurations": [
+    {
+      "id": "bmw-i5-edrive40",
+      "label": "i5 eDrive40 · 81.2 kWh",
+      "battery": "standard",
+      "trim": "i5 eDrive40",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 70150,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 582,
+      "wltp_consumption_kWh_100km": 16.2,
+      "realRange": { "mixed_km": 420, "highway_130_km": 300, "urban_km": 515, "winter_minus5_km": 330, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 205,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 140 },
+        { "soc": 10, "power": 205 },
+        { "soc": 30, "power": 180 },
+        { "soc": 50, "power": 130 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 9 }
+      ],
+      "availability": "available",
+      "notes": "340 ch (250 kW), RWD"
+    },
+    {
+      "id": "bmw-i5-xdrive40",
+      "label": "i5 xDrive40 · 81.2 kWh",
+      "battery": "standard",
+      "trim": "i5 xDrive40",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 74750,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 536,
+      "wltp_consumption_kWh_100km": 17.5,
+      "realRange": { "mixed_km": 395, "highway_130_km": 285, "urban_km": 485, "winter_minus5_km": 315, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 205,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 140 },
+        { "soc": 10, "power": 205 },
+        { "soc": 30, "power": 180 },
+        { "soc": 50, "power": 130 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 9 }
+      ],
+      "availability": "available",
+      "notes": "340 ch (250 kW), AWD xDrive"
+    },
+    {
+      "id": "bmw-i5-m60",
+      "label": "i5 M60 xDrive · 81.2 kWh",
+      "battery": "standard",
+      "trim": "i5 M60 xDrive",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 105650,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 455,
+      "wltp_consumption_kWh_100km": 20.5,
+      "realRange": { "mixed_km": 340, "highway_130_km": 245, "urban_km": 420, "winter_minus5_km": 270, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 205,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 140 },
+        { "soc": 10, "power": 205 },
+        { "soc": 30, "power": 180 },
+        { "soc": 50, "power": 130 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 9 }
+      ],
+      "availability": "available",
+      "notes": "601 ch (442 kW), AWD xDrive, M Sport"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 2,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "Berline executive au Cx bas de 0,23" },
+    { "category": "technologie", "label": "BMW iDrive 9, Theatre Screen AR et BMW Digital Key" },
+    { "category": "securite", "label": "Conduite semi-autonome et parking automatique" },
+    { "category": "confort", "label": "Empattement long (2,99 m) et insonorisation premium" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Dynamique de conduite reference et confort premium Serie 5",
+      "Assemble en Allemagne (Dingolfing), eligible prime CEE"
+    ],
+    "weaknesses": [
+      "Prix eleve (a partir de 70 150 euros)",
+      "Architecture 400 V, pas de 800 V"
+    ],
+    "idealUserProfile": "Cadres et professionnels cherchant une berline electrique premium et dynamique.",
+    "notIdealFor": "Budget limite ou besoin de charge 800 V ultra-rapide."
+  },
+  "lastUpdated": "2026-05-20",
+  "sources": ["constructeur", "automobile-propre"],
+  "imageCredit": "Constructeur"
+}

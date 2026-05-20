@@ -1,0 +1,221 @@
+{
+  "slug": "nissan-leaf",
+  "brand": "Nissan",
+  "model": "Leaf",
+  "variant": "75 kWh",
+  "bodyType": "Compacte",
+  "segment": "C",
+  "productionCountry": "Royaume-Uni",
+  "assemblyPlant": "Sunderland",
+  "releaseYear": 2026,
+  "marketAvailability": "Disponible",
+  "power_kW": 160,
+  "power_hp": 218,
+  "torque_Nm": 355,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 7.6,
+  "topSpeed_kmh": 160,
+  "usableCapacity_kWh": 75,
+  "grossCapacity_kWh": 79,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1981,
+  "wltp_max_km": 622,
+  "wltp_min_km": 436,
+  "realRange": {
+    "mixed_km": 460,
+    "highway_130_km": 335,
+    "urban_km": 565,
+    "winter_minus5_km": 365,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 16,
+  "consumption_highway_kWh_per_100km": 22,
+  "consumption_winter_kWh_per_100km": 20,
+  "dragCoefficient_Cx": 0.28,
+  "chargingDC": {
+    "peakPower_kW": 150,
+    "time_10_80_min": 28,
+    "kWh_added_30min": 55,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 8
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 100 },
+    { "soc": 10, "power": 150 },
+    { "soc": 30, "power": 130 },
+    { "soc": 50, "power": 90 },
+    { "soc": 80, "power": 40 },
+    { "soc": 100, "power": 8 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4350,
+  "width_mm": 1810,
+  "height_mm": 1550,
+  "wheelbase_mm": 2660,
+  "trunkCapacity_L": 437,
+  "trunkCapacityFolded_L": 1052,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Engage 52 kWh",
+      "price_EUR": 35300,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "436 km WLTP",
+        "ProPILOT Assist",
+        "Ecran 12,3 pouces"
+      ]
+    },
+    {
+      "name": "Advance 75 kWh",
+      "price_EUR": 40300,
+      "batteryUsed": "75 kWh",
+      "equipmentHighlights": [
+        "622 km WLTP",
+        "Charge DC 150 kW",
+        "Camera 360"
+      ]
+    },
+    {
+      "name": "N-Design 75 kWh",
+      "price_EUR": 47000,
+      "batteryUsed": "75 kWh",
+      "equipmentHighlights": [
+        "622 km WLTP",
+        "Toit panoramique",
+        "Audio BOSE"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "nissan-leaf-engage-52",
+      "label": "Leaf Engage · 52 kWh",
+      "battery": "standard",
+      "trim": "Engage 52 kWh",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 35300,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 436,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": { "mixed_km": 330, "highway_130_km": 240, "urban_km": 405, "winter_minus5_km": 265, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 22,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 150 },
+        { "soc": 30, "power": 130 },
+        { "soc": 50, "power": 85 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "218 ch (160 kW), FWD"
+    },
+    {
+      "id": "nissan-leaf-advance-75",
+      "label": "Leaf Advance · 75 kWh",
+      "battery": "long-range",
+      "trim": "Advance 75 kWh",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 40300,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 622,
+      "wltp_consumption_kWh_100km": 14.2,
+      "realRange": { "mixed_km": 460, "highway_130_km": 335, "urban_km": 565, "winter_minus5_km": 365, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 150 },
+        { "soc": 30, "power": 130 },
+        { "soc": 50, "power": 90 },
+        { "soc": 80, "power": 40 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "218 ch (160 kW), FWD"
+    },
+    {
+      "id": "nissan-leaf-ndesign-75",
+      "label": "Leaf N-Design · 75 kWh",
+      "battery": "long-range",
+      "trim": "N-Design 75 kWh",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 47000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 610,
+      "wltp_consumption_kWh_100km": 14.6,
+      "realRange": { "mixed_km": 450, "highway_130_km": 325, "urban_km": 550, "winter_minus5_km": 355, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 150 },
+        { "soc": 30, "power": 130 },
+        { "soc": 50, "power": 90 },
+        { "soc": 80, "power": 40 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "218 ch (160 kW), FWD, full options"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "Compacte electrique nouvelle generation au design moderne" },
+    { "category": "technologie", "label": "Ecran 12,3 pouces et ProPILOT Assist" },
+    { "category": "securite", "label": "Freinage automatique et alerte angle mort" },
+    { "category": "confort", "label": "Coffre genereux (437 L) et habitacle spacieux" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Autonomie record pour le segment (622 km WLTP en 75 kWh)",
+      "Prix d'entree raisonnable (35 300 euros en 52 kWh)"
+    ],
+    "weaknesses": [
+      "Assemblage Royaume-Uni, aucune aide CEE",
+      "Charge DC 150 kW correcte mais pas de 800 V"
+    ],
+    "idealUserProfile": "Conducteurs cherchant une compacte electrique fiable avec grande autonomie.",
+    "notIdealFor": "Acheteurs comptant sur les aides CEE ou cherchant un SUV."
+  },
+  "lastUpdated": "2026-05-20",
+  "sources": ["constructeur", "automobile-propre"],
+  "imageCredit": "Constructeur"
+}

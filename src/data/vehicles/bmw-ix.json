@@ -1,0 +1,226 @@
+{
+  "slug": "bmw-ix",
+  "brand": "BMW",
+  "model": "iX",
+  "variant": "105.2 kWh",
+  "bodyType": "SUV",
+  "segment": "E",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Dingolfing",
+  "releaseYear": 2022,
+  "marketAvailability": "Disponible",
+  "power_kW": 326,
+  "power_hp": 443,
+  "torque_Nm": 700,
+  "drivetrain": "AWD",
+  "motors": 2,
+  "acceleration_0_100_s": 4.6,
+  "topSpeed_kmh": 200,
+  "usableCapacity_kWh": 105.2,
+  "grossCapacity_kWh": 111.5,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2510,
+  "wltp_max_km": 630,
+  "wltp_min_km": 419,
+  "realRange": {
+    "mixed_km": 455,
+    "highway_130_km": 325,
+    "urban_km": 560,
+    "winter_minus5_km": 360,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 21,
+  "consumption_highway_kWh_per_100km": 27,
+  "consumption_winter_kWh_per_100km": 25,
+  "dragCoefficient_Cx": 0.25,
+  "chargingDC": {
+    "peakPower_kW": 200,
+    "time_10_80_min": 31,
+    "kWh_added_30min": 65,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 10
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 140 },
+    { "soc": 10, "power": 200 },
+    { "soc": 30, "power": 175 },
+    { "soc": 50, "power": 125 },
+    { "soc": 80, "power": 50 },
+    { "soc": 100, "power": 10 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4953,
+  "width_mm": 1967,
+  "height_mm": 1696,
+  "wheelbase_mm": 3000,
+  "trunkCapacity_L": 500,
+  "trunkCapacityFolded_L": 1750,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "iX xDrive40",
+      "price_EUR": 79950,
+      "batteryUsed": "76.6 kWh",
+      "equipmentHighlights": [
+        "419 km WLTP",
+        "AWD 326 ch",
+        "BMW iDrive 9"
+      ]
+    },
+    {
+      "name": "iX xDrive50",
+      "price_EUR": 99950,
+      "batteryUsed": "105.2 kWh",
+      "equipmentHighlights": [
+        "630 km WLTP",
+        "AWD 523 ch",
+        "Charge DC 200 kW"
+      ]
+    },
+    {
+      "name": "iX M60",
+      "price_EUR": 134550,
+      "batteryUsed": "105.2 kWh",
+      "equipmentHighlights": [
+        "AWD 619 ch",
+        "0-100 en 3,8 s",
+        "Chassis M adaptatif"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
+  "configurations": [
+    {
+      "id": "bmw-ix-xdrive40",
+      "label": "iX xDrive40 · 76.6 kWh",
+      "battery": "standard",
+      "trim": "iX xDrive40",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 79950,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 419,
+      "wltp_consumption_kWh_100km": 20,
+      "realRange": { "mixed_km": 315, "highway_130_km": 230, "urban_km": 390, "winter_minus5_km": 250, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 48,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 150 },
+        { "soc": 30, "power": 130 },
+        { "soc": 50, "power": 95 },
+        { "soc": 80, "power": 40 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "326 ch (240 kW), AWD xDrive"
+    },
+    {
+      "id": "bmw-ix-xdrive50",
+      "label": "iX xDrive50 · 105.2 kWh",
+      "battery": "long-range",
+      "trim": "iX xDrive50",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 99950,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 630,
+      "wltp_consumption_kWh_100km": 19.5,
+      "realRange": { "mixed_km": 455, "highway_130_km": 325, "urban_km": 560, "winter_minus5_km": 360, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 200,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        { "soc": 0, "power": 140 },
+        { "soc": 10, "power": 200 },
+        { "soc": 30, "power": 175 },
+        { "soc": 50, "power": 125 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "available",
+      "notes": "523 ch (385 kW), AWD xDrive"
+    },
+    {
+      "id": "bmw-ix-m60",
+      "label": "iX M60 · 105.2 kWh",
+      "battery": "long-range",
+      "trim": "iX M60",
+      "wheelSize_inches": 22,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 134550,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 560,
+      "wltp_consumption_kWh_100km": 22,
+      "realRange": { "mixed_km": 410, "highway_130_km": 295, "urban_km": 505, "winter_minus5_km": 325, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 200,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        { "soc": 0, "power": 140 },
+        { "soc": 10, "power": 200 },
+        { "soc": 30, "power": 175 },
+        { "soc": 50, "power": 125 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "available",
+      "notes": "619 ch (455 kW), AWD xDrive, M Sport"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 2,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "Grand SUV au design futuriste et materiaux durables" },
+    { "category": "technologie", "label": "BMW iDrive 9, ecran courbe et BMW Digital Key Plus" },
+    { "category": "securite", "label": "Conduite semi-autonome et parking automatique a distance" },
+    { "category": "confort", "label": "Coffre immense (500-1750 L) et insonorisation de reference" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Grand SUV premium avec grande autonomie (630 km WLTP)",
+      "Assemble en Allemagne (Dingolfing), eligible prime CEE"
+    ],
+    "weaknesses": [
+      "Prix tres eleve (a partir de 79 950 euros)",
+      "Consommation elevee et poids important (2 510 kg)"
+    ],
+    "idealUserProfile": "Familles aisees cherchant un grand SUV electrique premium.",
+    "notIdealFor": "Budget limite ou sensibilite a la consommation."
+  },
+  "lastUpdated": "2026-05-20",
+  "sources": ["constructeur", "automobile-propre"],
+  "imageCredit": "Constructeur"
+}

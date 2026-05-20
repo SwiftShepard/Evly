@@ -1,0 +1,260 @@
+{
+  "slug": "nissan-ariya",
+  "brand": "Nissan",
+  "model": "Ariya",
+  "variant": "87 kWh",
+  "bodyType": "SUV",
+  "segment": "D",
+  "productionCountry": "Japon",
+  "assemblyPlant": "Tochigi",
+  "releaseYear": 2023,
+  "marketAvailability": "Disponible",
+  "power_kW": 178,
+  "power_hp": 242,
+  "torque_Nm": 300,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 7.5,
+  "topSpeed_kmh": 160,
+  "usableCapacity_kWh": 83,
+  "grossCapacity_kWh": 87,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2119,
+  "wltp_max_km": 536,
+  "wltp_min_km": 404,
+  "realRange": {
+    "mixed_km": 400,
+    "highway_130_km": 290,
+    "urban_km": 490,
+    "winter_minus5_km": 315,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 18.5,
+  "consumption_highway_kWh_per_100km": 25,
+  "consumption_winter_kWh_per_100km": 23,
+  "dragCoefficient_Cx": 0.297,
+  "chargingDC": {
+    "peakPower_kW": 130,
+    "time_10_80_min": 35,
+    "kWh_added_30min": 55,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 22,
+    "phases": 3,
+    "time_0_100_h": 4
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 90 },
+    { "soc": 10, "power": 130 },
+    { "soc": 30, "power": 115 },
+    { "soc": 50, "power": 80 },
+    { "soc": 80, "power": 35 },
+    { "soc": 100, "power": 8 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4595,
+  "width_mm": 1850,
+  "height_mm": 1660,
+  "wheelbase_mm": 2775,
+  "trunkCapacity_L": 468,
+  "trunkCapacityFolded_L": 1000,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Engage 63 kWh",
+      "price_EUR": 33300,
+      "batteryUsed": "63 kWh",
+      "equipmentHighlights": [
+        "404 km WLTP",
+        "Ecran 12,3 pouces",
+        "ProPILOT Assist"
+      ]
+    },
+    {
+      "name": "Advance 63 kWh",
+      "price_EUR": 35800,
+      "batteryUsed": "63 kWh",
+      "equipmentHighlights": [
+        "Jantes 20 pouces",
+        "Sellerie premium",
+        "Camera 360"
+      ]
+    },
+    {
+      "name": "Evolve 87 kWh",
+      "price_EUR": 46800,
+      "batteryUsed": "87 kWh",
+      "equipmentHighlights": [
+        "536 km WLTP",
+        "AC 22 kW",
+        "Cuir matelasse"
+      ]
+    },
+    {
+      "name": "NISMO 87 kWh",
+      "price_EUR": 53300,
+      "batteryUsed": "87 kWh",
+      "equipmentHighlights": [
+        "AWD e-4ORCE 435 ch",
+        "0-100 en 5,0 s",
+        "Design NISMO exclusif"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "nissan-ariya-engage-63",
+      "label": "Ariya Engage · 63 kWh",
+      "battery": "standard",
+      "trim": "Engage 63 kWh",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 33300,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 404,
+      "wltp_consumption_kWh_100km": 17.5,
+      "realRange": { "mixed_km": 310, "highway_130_km": 225, "urban_km": 385, "winter_minus5_km": 245, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        { "soc": 0, "power": 90 },
+        { "soc": 10, "power": 130 },
+        { "soc": 30, "power": 115 },
+        { "soc": 50, "power": 80 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "218 ch (160 kW), FWD, AC 7,4 kW"
+    },
+    {
+      "id": "nissan-ariya-advance-63",
+      "label": "Ariya Advance · 63 kWh",
+      "battery": "standard",
+      "trim": "Advance 63 kWh",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 35800,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 395,
+      "wltp_consumption_kWh_100km": 18,
+      "realRange": { "mixed_km": 305, "highway_130_km": 220, "urban_km": 375, "winter_minus5_km": 240, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        { "soc": 0, "power": 90 },
+        { "soc": 10, "power": 130 },
+        { "soc": 30, "power": 115 },
+        { "soc": 50, "power": 80 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "218 ch (160 kW), FWD, jantes 20 pouces"
+    },
+    {
+      "id": "nissan-ariya-evolve-87",
+      "label": "Ariya Evolve · 87 kWh",
+      "battery": "long-range",
+      "trim": "Evolve 87 kWh",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 46800,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 536,
+      "wltp_consumption_kWh_100km": 17.8,
+      "realRange": { "mixed_km": 400, "highway_130_km": 290, "urban_km": 490, "winter_minus5_km": 315, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 90 },
+        { "soc": 10, "power": 130 },
+        { "soc": 30, "power": 115 },
+        { "soc": 50, "power": 80 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "242 ch (178 kW), FWD, AC 22 kW de serie"
+    },
+    {
+      "id": "nissan-ariya-nismo-87",
+      "label": "Ariya NISMO · 87 kWh",
+      "battery": "long-range",
+      "trim": "NISMO 87 kWh",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 53300,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 500,
+      "wltp_consumption_kWh_100km": 19.5,
+      "realRange": { "mixed_km": 375, "highway_130_km": 270, "urban_km": 460, "winter_minus5_km": 295, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 90 },
+        { "soc": 10, "power": 130 },
+        { "soc": 30, "power": 115 },
+        { "soc": 50, "power": 80 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "435 ch (320 kW), AWD e-4ORCE"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "SUV familial au design japonais epure et futuriste" },
+    { "category": "technologie", "label": "ProPILOT Assist et ecran 12,3 pouces" },
+    { "category": "securite", "label": "e-4ORCE transmission integrale intelligente (NISMO)" },
+    { "category": "confort", "label": "AC 22 kW (Evolve+), interieur lounge spacieux" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Prix d'entree competitif (33 300 euros en Engage)",
+      "Bonne autonomie 87 kWh (536 km WLTP) et version NISMO sportive"
+    ],
+    "weaknesses": [
+      "Charge DC limitee a 130 kW, en retrait face a la concurrence",
+      "Assemblage Japon, aucune aide CEE"
+    ],
+    "idealUserProfile": "Familles cherchant un SUV electrique spacieux et bien equipe a prix contenu.",
+    "notIdealFor": "Gros rouleurs necessitant une charge ultra-rapide."
+  },
+  "lastUpdated": "2026-05-19",
+  "sources": ["constructeur", "automobile-propre"],
+  "imageCredit": "Constructeur"
+}

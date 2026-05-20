@@ -82,29 +82,139 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Luxury Extended",
-      "price_EUR": 37990,
-      "batteryUsed": "70 kWh NMC",
+      "name": "Comfort 51 kWh",
+      "price_EUR": 29990,
+      "batteryUsed": "51 kWh",
       "equipmentHighlights": [
-        "Toit ouvrant",
-        "Caméra 360°"
+        "320 km WLTP",
+        "Ecran 10,1 pouces",
+        "Radar de recul"
+      ]
+    },
+    {
+      "name": "Luxury 51 kWh",
+      "price_EUR": 31990,
+      "batteryUsed": "51 kWh",
+      "equipmentHighlights": [
+        "320 km WLTP",
+        "Camera 360",
+        "Toit ouvrant"
+      ]
+    },
+    {
+      "name": "Comfort 70 kWh",
+      "price_EUR": 33990,
+      "batteryUsed": "70 kWh",
+      "equipmentHighlights": [
+        "440 km WLTP",
+        "Ecran 10,1 pouces",
+        "Radar de recul"
+      ]
+    },
+    {
+      "name": "Luxury 70 kWh",
+      "price_EUR": 37990,
+      "batteryUsed": "70 kWh",
+      "equipmentHighlights": [
+        "440 km WLTP",
+        "Camera 360",
+        "Toit ouvrant"
       ]
     }
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [
-    {
-      "label": "Bonus Écologique",
-      "amount_EUR": 4000
-    }
-  ],
+  "availableAids": [],
   "configurations": [
     {
-      "id": "mg-zs-ev-luxury-extended",
-      "label": "ZS EV Luxury Extended",
+      "id": "mg-zs-ev-comfort-51",
+      "label": "ZS EV Comfort · 51 kWh",
       "battery": "standard",
-      "trim": "Luxury Extended",
+      "trim": "Comfort 51 kWh",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 29990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 320,
+      "wltp_consumption_kWh_100km": 16,
+      "realRange": { "mixed_km": 245, "highway_130_km": 175, "urban_km": 300, "winter_minus5_km": 195, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 76,
+      "chargingDC_10_80_min": 34,
+      "chargingDC_kWh_30min": 28,
+      "chargingCurve": [
+        { "soc": 0, "power": 55 },
+        { "soc": 10, "power": 76 },
+        { "soc": 50, "power": 58 },
+        { "soc": 80, "power": 28 },
+        { "soc": 100, "power": 6 }
+      ],
+      "availability": "available",
+      "notes": "156 ch (115 kW), FWD"
+    },
+    {
+      "id": "mg-zs-ev-luxury-51",
+      "label": "ZS EV Luxury · 51 kWh",
+      "battery": "standard",
+      "trim": "Luxury 51 kWh",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 31990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 320,
+      "wltp_consumption_kWh_100km": 16,
+      "realRange": { "mixed_km": 245, "highway_130_km": 175, "urban_km": 300, "winter_minus5_km": 195, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 76,
+      "chargingDC_10_80_min": 34,
+      "chargingDC_kWh_30min": 28,
+      "chargingCurve": [
+        { "soc": 0, "power": 55 },
+        { "soc": 10, "power": 76 },
+        { "soc": 50, "power": 58 },
+        { "soc": 80, "power": 28 },
+        { "soc": 100, "power": 6 }
+      ],
+      "availability": "available",
+      "notes": "156 ch (115 kW), FWD, full options"
+    },
+    {
+      "id": "mg-zs-ev-comfort-70",
+      "label": "ZS EV Comfort · 70 kWh",
+      "battery": "long-range",
+      "trim": "Comfort 70 kWh",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 33990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 440,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": { "mixed_km": 340, "highway_130_km": 240, "urban_km": 400, "winter_minus5_km": 230, "confidence": "tested" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 92,
+      "chargingDC_10_80_min": 40,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        { "soc": 0, "power": 71 },
+        { "soc": 10, "power": 92 },
+        { "soc": 50, "power": 71 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "156 ch (115 kW), FWD"
+    },
+    {
+      "id": "mg-zs-ev-luxury-70",
+      "label": "ZS EV Luxury · 70 kWh",
+      "battery": "long-range",
+      "trim": "Luxury 70 kWh",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
@@ -113,41 +223,20 @@
       "leasingSocialEligible": false,
       "wltp_km": 440,
       "wltp_consumption_kWh_100km": 15,
-      "realRange": {
-        "mixed_km": 340,
-        "highway_130_km": 240,
-        "urban_km": 400,
-        "winter_minus5_km": 230,
-        "confidence": "tested"
-      },
+      "realRange": { "mixed_km": 340, "highway_130_km": 240, "urban_km": 400, "winter_minus5_km": 230, "confidence": "tested" },
       "rangeTests": [],
       "chargingDC_peak_kW": 92,
       "chargingDC_10_80_min": 40,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 71
-        },
-        {
-          "soc": 10,
-          "power": 92
-        },
-        {
-          "soc": 50,
-          "power": 71
-        },
-        {
-          "soc": 80,
-          "power": 35
-        },
-        {
-          "soc": 100,
-          "power": 7
-        }
+        { "soc": 0, "power": 71 },
+        { "soc": 10, "power": 92 },
+        { "soc": 50, "power": 71 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
       ],
       "availability": "available",
-      "notes": null
+      "notes": "156 ch (115 kW), FWD, full options"
     }
   ],
   "warranty": {

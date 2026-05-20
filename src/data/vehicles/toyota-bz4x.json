@@ -1,0 +1,260 @@
+{
+  "slug": "toyota-bz4x",
+  "brand": "Toyota",
+  "model": "bZ4X",
+  "variant": "73.1 kWh",
+  "bodyType": "SUV",
+  "segment": "D",
+  "productionCountry": "Japon",
+  "assemblyPlant": "Gunma",
+  "releaseYear": 2023,
+  "marketAvailability": "Disponible",
+  "power_kW": 165,
+  "power_hp": 224,
+  "torque_Nm": 337,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 7.5,
+  "topSpeed_kmh": 160,
+  "usableCapacity_kWh": 69,
+  "grossCapacity_kWh": 73.1,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1895,
+  "wltp_max_km": 569,
+  "wltp_min_km": 444,
+  "realRange": {
+    "mixed_km": 420,
+    "highway_130_km": 305,
+    "urban_km": 515,
+    "winter_minus5_km": 335,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 17,
+  "consumption_highway_kWh_per_100km": 23,
+  "consumption_winter_kWh_per_100km": 21,
+  "dragCoefficient_Cx": 0.291,
+  "chargingDC": {
+    "peakPower_kW": 150,
+    "time_10_80_min": 28,
+    "kWh_added_30min": 50,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 7
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 100 },
+    { "soc": 10, "power": 150 },
+    { "soc": 30, "power": 130 },
+    { "soc": 50, "power": 90 },
+    { "soc": 80, "power": 40 },
+    { "soc": 100, "power": 8 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4690,
+  "width_mm": 1860,
+  "height_mm": 1650,
+  "wheelbase_mm": 2850,
+  "trunkCapacity_L": 452,
+  "trunkCapacityFolded_L": 1112,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Design 57.7 kWh",
+      "price_EUR": 41900,
+      "batteryUsed": "57.7 kWh",
+      "equipmentHighlights": [
+        "444 km WLTP",
+        "Ecran 14 pouces",
+        "Sieges chauffants"
+      ]
+    },
+    {
+      "name": "Design 73.1 kWh",
+      "price_EUR": 44900,
+      "batteryUsed": "73.1 kWh",
+      "equipmentHighlights": [
+        "569 km WLTP",
+        "Hayon motorise",
+        "Charge smartphone induction"
+      ]
+    },
+    {
+      "name": "Origin 73.1 kWh",
+      "price_EUR": 48900,
+      "batteryUsed": "73.1 kWh",
+      "equipmentHighlights": [
+        "569 km WLTP",
+        "Toit panoramique",
+        "Audio JBL 9 HP"
+      ]
+    },
+    {
+      "name": "Performance AWD",
+      "price_EUR": 47400,
+      "batteryUsed": "73.1 kWh",
+      "equipmentHighlights": [
+        "AWD 343 ch",
+        "516 km WLTP",
+        "X-MODE tout-terrain"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "toyota-bz4x-design-57",
+      "label": "bZ4X Design · 57.7 kWh",
+      "battery": "standard",
+      "trim": "Design 57.7 kWh",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 41900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 444,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": { "mixed_km": 340, "highway_130_km": 245, "urban_km": 415, "winter_minus5_km": 270, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 24,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 150 },
+        { "soc": 30, "power": 130 },
+        { "soc": 50, "power": 85 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "167 ch (123 kW), FWD"
+    },
+    {
+      "id": "toyota-bz4x-design-73",
+      "label": "bZ4X Design · 73.1 kWh",
+      "battery": "long-range",
+      "trim": "Design 73.1 kWh",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 44900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 569,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": { "mixed_km": 420, "highway_130_km": 305, "urban_km": 515, "winter_minus5_km": 335, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 150 },
+        { "soc": 30, "power": 130 },
+        { "soc": 50, "power": 90 },
+        { "soc": 80, "power": 40 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "224 ch (165 kW), FWD"
+    },
+    {
+      "id": "toyota-bz4x-origin-73",
+      "label": "bZ4X Origin · 73.1 kWh",
+      "battery": "long-range",
+      "trim": "Origin 73.1 kWh",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 48900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 550,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": { "mixed_km": 410, "highway_130_km": 295, "urban_km": 500, "winter_minus5_km": 325, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 150 },
+        { "soc": 30, "power": 130 },
+        { "soc": 50, "power": 90 },
+        { "soc": 80, "power": 40 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "224 ch (165 kW), FWD, full options"
+    },
+    {
+      "id": "toyota-bz4x-performance-awd",
+      "label": "bZ4X Performance AWD",
+      "battery": "long-range",
+      "trim": "Performance AWD",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 47400,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 516,
+      "wltp_consumption_kWh_100km": 16,
+      "realRange": { "mixed_km": 385, "highway_130_km": 280, "urban_km": 475, "winter_minus5_km": 310, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 150 },
+        { "soc": 30, "power": 130 },
+        { "soc": 50, "power": 90 },
+        { "soc": 80, "power": 40 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "343 ch (252 kW), AWD, X-MODE"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 10,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "SUV familial au design robuste et tout-terrain" },
+    { "category": "technologie", "label": "Ecran 14 pouces et Toyota Safety Sense 3.0" },
+    { "category": "securite", "label": "X-MODE tout-terrain et freinage automatique" },
+    { "category": "confort", "label": "Garantie 10 ans vehicule et fiabilite Toyota" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Garantie 10 ans vehicule, fiabilite legendaire Toyota",
+      "Bonne autonomie (569 km WLTP) et version AWD tout-terrain"
+    ],
+    "weaknesses": [
+      "Assemblage Japon, aucune aide CEE",
+      "Charge DC limitee a 150 kW"
+    ],
+    "idealUserProfile": "Familles privilegiant la fiabilite et la garantie, usage mixte route/chemin.",
+    "notIdealFor": "Acheteurs cherchant la charge ultra-rapide ou les aides a l'achat."
+  },
+  "lastUpdated": "2026-05-20",
+  "sources": ["constructeur", "automobile-propre"],
+  "imageCredit": "Constructeur"
+}

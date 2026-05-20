@@ -1,0 +1,221 @@
+{
+  "slug": "smart-3",
+  "brand": "Smart",
+  "model": "#3",
+  "variant": "Pro+ 66 kWh",
+  "bodyType": "SUV Coupe",
+  "segment": "C",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Xi'an",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 200,
+  "power_hp": 272,
+  "torque_Nm": 343,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 5.8,
+  "topSpeed_kmh": 180,
+  "usableCapacity_kWh": 62,
+  "grossCapacity_kWh": 66,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1910,
+  "wltp_max_km": 455,
+  "wltp_min_km": 325,
+  "realRange": {
+    "mixed_km": 350,
+    "highway_130_km": 250,
+    "urban_km": 430,
+    "winter_minus5_km": 275,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 17,
+  "consumption_highway_kWh_per_100km": 23.5,
+  "consumption_winter_kWh_per_100km": 21.5,
+  "dragCoefficient_Cx": 0.27,
+  "chargingDC": {
+    "peakPower_kW": 150,
+    "time_10_80_min": 30,
+    "kWh_added_30min": 42,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 22,
+    "phases": 3,
+    "time_0_100_h": 3
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 110 },
+    { "soc": 10, "power": 150 },
+    { "soc": 30, "power": 130 },
+    { "soc": 50, "power": 90 },
+    { "soc": 80, "power": 40 },
+    { "soc": 100, "power": 8 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4400,
+  "width_mm": 1844,
+  "height_mm": 1556,
+  "wheelbase_mm": 2785,
+  "trunkCapacity_L": 370,
+  "trunkCapacityFolded_L": 1160,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Pro+ 66 kWh",
+      "price_EUR": 37490,
+      "batteryUsed": "66 kWh",
+      "equipmentHighlights": [
+        "Ecran 12,8 pouces",
+        "455 km WLTP",
+        "Charge AC 22 kW"
+      ]
+    },
+    {
+      "name": "Premium 66 kWh",
+      "price_EUR": 41490,
+      "batteryUsed": "66 kWh",
+      "equipmentHighlights": [
+        "Beats Audio",
+        "Sieges chauffants ventiles",
+        "Toit panoramique"
+      ]
+    },
+    {
+      "name": "Brabus 66 kWh",
+      "price_EUR": 46490,
+      "batteryUsed": "66 kWh",
+      "equipmentHighlights": [
+        "AWD 428 ch",
+        "0-100 en 3,7 s",
+        "Pack Brabus"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "smart-3-pro-plus-66",
+      "label": "Smart #3 Pro+ · 66 kWh",
+      "battery": "standard",
+      "trim": "Pro+ 66 kWh",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 37490,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 455,
+      "wltp_consumption_kWh_100km": 16.3,
+      "realRange": { "mixed_km": 350, "highway_130_km": 250, "urban_km": 430, "winter_minus5_km": 275, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        { "soc": 0, "power": 110 },
+        { "soc": 10, "power": 150 },
+        { "soc": 30, "power": 130 },
+        { "soc": 50, "power": 90 },
+        { "soc": 80, "power": 40 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "272 ch (200 kW), RWD"
+    },
+    {
+      "id": "smart-3-premium-66",
+      "label": "Smart #3 Premium · 66 kWh",
+      "battery": "standard",
+      "trim": "Premium 66 kWh",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 41490,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 455,
+      "wltp_consumption_kWh_100km": 16.3,
+      "realRange": { "mixed_km": 350, "highway_130_km": 250, "urban_km": 430, "winter_minus5_km": 275, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        { "soc": 0, "power": 110 },
+        { "soc": 10, "power": 150 },
+        { "soc": 30, "power": 130 },
+        { "soc": 50, "power": 90 },
+        { "soc": 80, "power": 40 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "272 ch (200 kW), RWD, full options"
+    },
+    {
+      "id": "smart-3-brabus-66",
+      "label": "Smart #3 Brabus · 66 kWh",
+      "battery": "standard",
+      "trim": "Brabus 66 kWh",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 46490,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 415,
+      "wltp_consumption_kWh_100km": 18,
+      "realRange": { "mixed_km": 320, "highway_130_km": 230, "urban_km": 400, "winter_minus5_km": 255, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        { "soc": 0, "power": 110 },
+        { "soc": 10, "power": 150 },
+        { "soc": 30, "power": 130 },
+        { "soc": 50, "power": 90 },
+        { "soc": 80, "power": 40 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "428 ch (315 kW), AWD"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 3,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "Silhouette SUV coupe sportive et aerodynamique" },
+    { "category": "technologie", "label": "Ecran 12,8 pouces et charge AC 22 kW de serie" },
+    { "category": "securite", "label": "Freinage automatique et aide au maintien de voie" },
+    { "category": "confort", "label": "Coffre plus genereux que le #1 (370 L)" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Meilleur Cx que le #1 (0,27), autonomie superieure",
+      "Chargeur AC 22 kW de serie, V2L disponible"
+    ],
+    "weaknesses": [
+      "Assemblage en Chine, aucune aide francaise",
+      "Visibilite arriere limitee par la ligne coupe"
+    ],
+    "idealUserProfile": "Conducteurs cherchant un SUV coupe electrique sportif avec bon equipement de serie.",
+    "notIdealFor": "Familles cherchant un maximum d'espace ou acheteurs sensibles aux aides."
+  },
+  "lastUpdated": "2026-05-19",
+  "sources": ["la-chaine-ev"],
+  "imageCredit": "Constructeur"
+}

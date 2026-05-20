@@ -1,0 +1,226 @@
+{
+  "slug": "audi-q6-e-tron",
+  "brand": "Audi",
+  "model": "Q6 e-tron",
+  "variant": "83.7 kWh",
+  "bodyType": "SUV",
+  "segment": "D",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Ingolstadt",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 285,
+  "power_hp": 387,
+  "torque_Nm": 545,
+  "drivetrain": "AWD",
+  "motors": 2,
+  "acceleration_0_100_s": 5.9,
+  "topSpeed_kmh": 210,
+  "usableCapacity_kWh": 83.7,
+  "grossCapacity_kWh": 100,
+  "chemistry": "NMC",
+  "architecture_V": 800,
+  "mass_kg": 2325,
+  "wltp_max_km": 625,
+  "wltp_min_km": 533,
+  "realRange": {
+    "mixed_km": 450,
+    "highway_130_km": 325,
+    "urban_km": 555,
+    "winter_minus5_km": 355,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 18,
+  "consumption_highway_kWh_per_100km": 24,
+  "consumption_winter_kWh_per_100km": 22,
+  "dragCoefficient_Cx": 0.28,
+  "chargingDC": {
+    "peakPower_kW": 270,
+    "time_10_80_min": 21,
+    "kWh_added_30min": 65,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 8
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 180 },
+    { "soc": 10, "power": 270 },
+    { "soc": 30, "power": 240 },
+    { "soc": 50, "power": 175 },
+    { "soc": 80, "power": 60 },
+    { "soc": 100, "power": 10 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4771,
+  "width_mm": 1939,
+  "height_mm": 1665,
+  "wheelbase_mm": 2899,
+  "trunkCapacity_L": 526,
+  "trunkCapacityFolded_L": 1529,
+  "frunkCapacity_L": 64,
+  "trims": [
+    {
+      "name": "Q6 e-tron performance",
+      "price_EUR": 65200,
+      "batteryUsed": "83.7 kWh",
+      "equipmentHighlights": [
+        "625 km WLTP",
+        "306 ch RWD",
+        "Architecture 800 V"
+      ]
+    },
+    {
+      "name": "Q6 e-tron quattro",
+      "price_EUR": 72200,
+      "batteryUsed": "83.7 kWh",
+      "equipmentHighlights": [
+        "AWD 387 ch",
+        "580 km WLTP",
+        "Charge DC 270 kW"
+      ]
+    },
+    {
+      "name": "SQ6 e-tron",
+      "price_EUR": 93800,
+      "batteryUsed": "83.7 kWh",
+      "equipmentHighlights": [
+        "AWD 517 ch",
+        "0-100 en 4,3 s",
+        "Chassis sport RS"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
+  "configurations": [
+    {
+      "id": "audi-q6-performance",
+      "label": "Q6 e-tron performance · 83.7 kWh",
+      "battery": "long-range",
+      "trim": "Q6 e-tron performance",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 65200,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 625,
+      "wltp_consumption_kWh_100km": 15.6,
+      "realRange": { "mixed_km": 450, "highway_130_km": 325, "urban_km": 555, "winter_minus5_km": 355, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 260,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 62,
+      "chargingCurve": [
+        { "soc": 0, "power": 170 },
+        { "soc": 10, "power": 260 },
+        { "soc": 30, "power": 230 },
+        { "soc": 50, "power": 170 },
+        { "soc": 80, "power": 55 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "available",
+      "notes": "306 ch (225 kW), RWD"
+    },
+    {
+      "id": "audi-q6-quattro",
+      "label": "Q6 e-tron quattro · 83.7 kWh",
+      "battery": "long-range",
+      "trim": "Q6 e-tron quattro",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 72200,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 580,
+      "wltp_consumption_kWh_100km": 17,
+      "realRange": { "mixed_km": 425, "highway_130_km": 305, "urban_km": 525, "winter_minus5_km": 335, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 270,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        { "soc": 0, "power": 180 },
+        { "soc": 10, "power": 270 },
+        { "soc": 30, "power": 240 },
+        { "soc": 50, "power": 175 },
+        { "soc": 80, "power": 60 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "available",
+      "notes": "387 ch (285 kW), AWD quattro"
+    },
+    {
+      "id": "audi-sq6-e-tron",
+      "label": "SQ6 e-tron · 83.7 kWh",
+      "battery": "long-range",
+      "trim": "SQ6 e-tron",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 93800,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 533,
+      "wltp_consumption_kWh_100km": 18.5,
+      "realRange": { "mixed_km": 390, "highway_130_km": 280, "urban_km": 480, "winter_minus5_km": 310, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 270,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        { "soc": 0, "power": 180 },
+        { "soc": 10, "power": 270 },
+        { "soc": 30, "power": 240 },
+        { "soc": 50, "power": 175 },
+        { "soc": 80, "power": 60 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "available",
+      "notes": "517 ch (380 kW), AWD quattro, S line"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 2,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "SUV premium sur plateforme PPE, frunk 64 L" },
+    { "category": "technologie", "label": "Architecture 800 V et charge DC 270 kW" },
+    { "category": "securite", "label": "Freinage automatique et assistance active" },
+    { "category": "confort", "label": "Coffre genereux (526 L), Plug & Charge et preconditionnement" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Architecture 800 V et charge ultra-rapide 270 kW",
+      "Assemble en Allemagne, eligible prime CEE"
+    ],
+    "weaknesses": [
+      "Prix eleve (a partir de 65 200 euros)",
+      "AC limite a 11 kW malgre le 800 V"
+    ],
+    "idealUserProfile": "Conducteurs premium cherchant un SUV avec charge ultra-rapide 800 V.",
+    "notIdealFor": "Budget limite ou besoin de 7 places."
+  },
+  "lastUpdated": "2026-05-20",
+  "sources": ["constructeur", "automobile-propre"],
+  "imageCredit": "Constructeur"
+}

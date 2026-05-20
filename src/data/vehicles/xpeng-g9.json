@@ -1,0 +1,221 @@
+{
+  "slug": "xpeng-g9",
+  "brand": "Xpeng",
+  "model": "G9",
+  "variant": "93.1 kWh",
+  "bodyType": "Grand SUV",
+  "segment": "E",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Zhaoqing",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 230,
+  "power_hp": 313,
+  "torque_Nm": 500,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 6.4,
+  "topSpeed_kmh": 200,
+  "usableCapacity_kWh": 88,
+  "grossCapacity_kWh": 93.1,
+  "chemistry": "LFP",
+  "architecture_V": 800,
+  "mass_kg": 2250,
+  "wltp_max_km": 585,
+  "wltp_min_km": 480,
+  "realRange": {
+    "mixed_km": 440,
+    "highway_130_km": 320,
+    "urban_km": 540,
+    "winter_minus5_km": 350,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 20,
+  "consumption_highway_kWh_per_100km": 27,
+  "consumption_winter_kWh_per_100km": 24,
+  "dragCoefficient_Cx": 0.272,
+  "chargingDC": {
+    "peakPower_kW": 445,
+    "time_10_80_min": 12,
+    "kWh_added_30min": 80,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 9
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 280 },
+    { "soc": 10, "power": 445 },
+    { "soc": 30, "power": 400 },
+    { "soc": 50, "power": 300 },
+    { "soc": 80, "power": 90 },
+    { "soc": 100, "power": 15 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4891,
+  "width_mm": 1937,
+  "height_mm": 1670,
+  "wheelbase_mm": 2998,
+  "trunkCapacity_L": 660,
+  "trunkCapacityFolded_L": 1576,
+  "frunkCapacity_L": 71,
+  "trims": [
+    {
+      "name": "Standard 79 kWh",
+      "price_EUR": 59990,
+      "batteryUsed": "79 kWh",
+      "equipmentHighlights": [
+        "480 km WLTP",
+        "Architecture 800 V",
+        "Suspension pneumatique"
+      ]
+    },
+    {
+      "name": "Long Range 93.1 kWh",
+      "price_EUR": 63990,
+      "batteryUsed": "93.1 kWh",
+      "equipmentHighlights": [
+        "585 km WLTP",
+        "Ecran 15,6 pouces",
+        "Charge 5C"
+      ]
+    },
+    {
+      "name": "Performance 93.1 kWh",
+      "price_EUR": 73990,
+      "batteryUsed": "93.1 kWh",
+      "equipmentHighlights": [
+        "AWD 575 ch",
+        "0-100 en 3,9 s",
+        "Charge jusqu'a 525 kW"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "xpeng-g9-standard",
+      "label": "G9 Standard · 79 kWh",
+      "battery": "standard",
+      "trim": "Standard 79 kWh",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 59990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 480,
+      "wltp_consumption_kWh_100km": 19.2,
+      "realRange": { "mixed_km": 370, "highway_130_km": 270, "urban_km": 455, "winter_minus5_km": 295, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 395,
+      "chargingDC_10_80_min": 14,
+      "chargingDC_kWh_30min": 68,
+      "chargingCurve": [
+        { "soc": 0, "power": 250 },
+        { "soc": 10, "power": 395 },
+        { "soc": 30, "power": 360 },
+        { "soc": 50, "power": 260 },
+        { "soc": 80, "power": 80 },
+        { "soc": 100, "power": 12 }
+      ],
+      "availability": "available",
+      "notes": "313 ch (230 kW), RWD, LFP 79 kWh"
+    },
+    {
+      "id": "xpeng-g9-long-range",
+      "label": "G9 Long Range · 93.1 kWh",
+      "battery": "long-range",
+      "trim": "Long Range 93.1 kWh",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 63990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 585,
+      "wltp_consumption_kWh_100km": 18.5,
+      "realRange": { "mixed_km": 440, "highway_130_km": 320, "urban_km": 540, "winter_minus5_km": 350, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 445,
+      "chargingDC_10_80_min": 12,
+      "chargingDC_kWh_30min": 80,
+      "chargingCurve": [
+        { "soc": 0, "power": 280 },
+        { "soc": 10, "power": 445 },
+        { "soc": 30, "power": 400 },
+        { "soc": 50, "power": 300 },
+        { "soc": 80, "power": 90 },
+        { "soc": 100, "power": 15 }
+      ],
+      "availability": "available",
+      "notes": "313 ch (230 kW), RWD"
+    },
+    {
+      "id": "xpeng-g9-performance",
+      "label": "G9 Performance · 93.1 kWh",
+      "battery": "long-range",
+      "trim": "Performance 93.1 kWh",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 73990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 550,
+      "wltp_consumption_kWh_100km": 19.5,
+      "realRange": { "mixed_km": 415, "highway_130_km": 300, "urban_km": 510, "winter_minus5_km": 330, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 445,
+      "chargingDC_10_80_min": 12,
+      "chargingDC_kWh_30min": 80,
+      "chargingCurve": [
+        { "soc": 0, "power": 280 },
+        { "soc": 10, "power": 445 },
+        { "soc": 30, "power": 400 },
+        { "soc": 50, "power": 300 },
+        { "soc": 80, "power": 90 },
+        { "soc": 100, "power": 15 }
+      ],
+      "availability": "available",
+      "notes": "575 ch (423 kW), AWD, charge 525 kW"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "Grand SUV premium aux proportions genereuses" },
+    { "category": "technologie", "label": "Architecture 800 V, charge 5C jusqu'a 525 kW" },
+    { "category": "securite", "label": "XNGP conduite autonome et LiDAR" },
+    { "category": "confort", "label": "Coffre 660 L, frunk 71 L, suspension pneumatique" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Charge 5C record (10-80 % en 12 min, jusqu'a 525 kW)",
+      "Grand espace interieur, coffre 660 L + frunk 71 L"
+    ],
+    "weaknesses": [
+      "Prix eleve (a partir de 59 990 euros)",
+      "Assemblage en Chine, aucune aide francaise"
+    ],
+    "idealUserProfile": "Familles cherchant un grand SUV electrique premium avec la charge la plus rapide du marche.",
+    "notIdealFor": "Budgets limites ou acheteurs fideles aux marques europeennes."
+  },
+  "lastUpdated": "2026-05-19",
+  "sources": ["constructeur", "automobile-propre"],
+  "imageCredit": "Constructeur"
+}

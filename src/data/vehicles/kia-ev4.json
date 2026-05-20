@@ -276,13 +276,8 @@
   "leasingSocial_EUR_per_month": 189,
   "availableAids": [
     {
-      "label": "Prime CEE longue durée",
-      "amount_EUR": 4200,
-      "conditions": "Sous condition de revenus, fournisseur d'énergie partenaire"
-    },
-    {
-      "label": "Bonification batterie produite en UE",
-      "amount_EUR": 1000
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
     }
   ],
   "configurations": [

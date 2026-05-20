@@ -122,12 +122,12 @@
       ]
     }
   ],
-  "leasingSocialEligible": false,
-  "leasingSocial_EUR_per_month": null,
+  "leasingSocialEligible": true,
+  "leasingSocial_EUR_per_month": 149,
   "availableAids": [
     {
       "label": "Prime CEE VE",
-      "amount_EUR": 4000
+      "amount_EUR": 8100
     }
   ],
   "configurations": [
@@ -140,8 +140,8 @@
       "tyreType": "summer",
       "options": [],
       "price_EUR": 32000,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
+      "monthlyLease_EUR": 149,
+      "leasingSocialEligible": true,
       "wltp_km": 375,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
@@ -193,8 +193,8 @@
       "tyreType": "summer",
       "options": [],
       "price_EUR": 36500,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
+      "monthlyLease_EUR": 149,
+      "leasingSocialEligible": true,
       "wltp_km": 375,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
@@ -246,8 +246,8 @@
       "tyreType": "summer",
       "options": [],
       "price_EUR": 41500,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
+      "monthlyLease_EUR": 189,
+      "leasingSocialEligible": true,
       "wltp_km": 580,
       "wltp_consumption_kWh_100km": 14.9,
       "realRange": {
@@ -299,8 +299,8 @@
       "tyreType": "summer",
       "options": [],
       "price_EUR": 44900,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
+      "monthlyLease_EUR": 189,
+      "leasingSocialEligible": true,
       "wltp_km": 580,
       "wltp_consumption_kWh_100km": 14.9,
       "realRange": {

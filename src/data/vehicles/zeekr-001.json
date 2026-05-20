@@ -1,0 +1,221 @@
+{
+  "slug": "zeekr-001",
+  "brand": "Zeekr",
+  "model": "001",
+  "variant": "100 kWh",
+  "bodyType": "Shooting Brake",
+  "segment": "E",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Ningbo",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 200,
+  "power_hp": 272,
+  "torque_Nm": 440,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 6.9,
+  "topSpeed_kmh": 200,
+  "usableCapacity_kWh": 95,
+  "grossCapacity_kWh": 100,
+  "chemistry": "NMC",
+  "architecture_V": 800,
+  "mass_kg": 2310,
+  "wltp_max_km": 620,
+  "wltp_min_km": 580,
+  "realRange": {
+    "mixed_km": 470,
+    "highway_130_km": 340,
+    "urban_km": 580,
+    "winter_minus5_km": 370,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 20,
+  "consumption_highway_kWh_per_100km": 27,
+  "consumption_winter_kWh_per_100km": 25,
+  "dragCoefficient_Cx": 0.26,
+  "chargingDC": {
+    "peakPower_kW": 200,
+    "time_10_80_min": 30,
+    "kWh_added_30min": 65,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 22,
+    "phases": 3,
+    "time_0_100_h": 5
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 140 },
+    { "soc": 10, "power": 200 },
+    { "soc": 30, "power": 180 },
+    { "soc": 50, "power": 130 },
+    { "soc": 80, "power": 55 },
+    { "soc": 100, "power": 10 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4970,
+  "width_mm": 1999,
+  "height_mm": 1560,
+  "wheelbase_mm": 3005,
+  "trunkCapacity_L": 547,
+  "trunkCapacityFolded_L": 1540,
+  "frunkCapacity_L": 32,
+  "trims": [
+    {
+      "name": "Long Range RWD",
+      "price_EUR": 59990,
+      "batteryUsed": "100 kWh",
+      "equipmentHighlights": [
+        "620 km WLTP",
+        "AC 22 kW",
+        "Architecture 800 V"
+      ]
+    },
+    {
+      "name": "Long Range AWD",
+      "price_EUR": 65990,
+      "batteryUsed": "100 kWh",
+      "equipmentHighlights": [
+        "AWD 544 ch",
+        "590 km WLTP",
+        "Suspension pneumatique"
+      ]
+    },
+    {
+      "name": "Performance AWD",
+      "price_EUR": 71990,
+      "batteryUsed": "100 kWh",
+      "equipmentHighlights": [
+        "AWD 544 ch",
+        "0-100 en 3,8 s",
+        "Freins carbone-ceramique"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "zeekr-001-lr-rwd",
+      "label": "001 Long Range RWD",
+      "battery": "standard",
+      "trim": "Long Range RWD",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 59990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 620,
+      "wltp_consumption_kWh_100km": 17.5,
+      "realRange": { "mixed_km": 470, "highway_130_km": 340, "urban_km": 580, "winter_minus5_km": 370, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 200,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        { "soc": 0, "power": 140 },
+        { "soc": 10, "power": 200 },
+        { "soc": 30, "power": 180 },
+        { "soc": 50, "power": 130 },
+        { "soc": 80, "power": 55 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "available",
+      "notes": "272 ch (200 kW), RWD"
+    },
+    {
+      "id": "zeekr-001-lr-awd",
+      "label": "001 Long Range AWD",
+      "battery": "standard",
+      "trim": "Long Range AWD",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 65990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 590,
+      "wltp_consumption_kWh_100km": 18.2,
+      "realRange": { "mixed_km": 445, "highway_130_km": 325, "urban_km": 555, "winter_minus5_km": 355, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 200,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        { "soc": 0, "power": 140 },
+        { "soc": 10, "power": 200 },
+        { "soc": 30, "power": 180 },
+        { "soc": 50, "power": 130 },
+        { "soc": 80, "power": 55 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "available",
+      "notes": "544 ch (400 kW), AWD"
+    },
+    {
+      "id": "zeekr-001-perf-awd",
+      "label": "001 Performance AWD",
+      "battery": "standard",
+      "trim": "Performance AWD",
+      "wheelSize_inches": 22,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 71990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 580,
+      "wltp_consumption_kWh_100km": 18.6,
+      "realRange": { "mixed_km": 435, "highway_130_km": 315, "urban_km": 540, "winter_minus5_km": 345, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 200,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        { "soc": 0, "power": 140 },
+        { "soc": 10, "power": 200 },
+        { "soc": 30, "power": 180 },
+        { "soc": 50, "power": 130 },
+        { "soc": 80, "power": 55 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "available",
+      "notes": "544 ch (400 kW), AWD, freins carbone-ceramique"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "Shooting brake unique au design GT distinctif" },
+    { "category": "technologie", "label": "Architecture 800 V et AC 22 kW de serie" },
+    { "category": "securite", "label": "Freinage automatique et aide a la conduite avancee" },
+    { "category": "confort", "label": "Coffre 547 L, suspension pneumatique, V2L" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Format shooting brake unique sur le marche EV",
+      "Grande autonomie (620 km WLTP) et AC 22 kW de serie"
+    ],
+    "weaknesses": [
+      "Assemblage en Chine, aucune aide francaise",
+      "Charge DC limitee a 200 kW malgre l'architecture 800 V"
+    ],
+    "idealUserProfile": "Conducteurs cherchant un GT electrique original avec grande autonomie et habitabilite.",
+    "notIdealFor": "Acheteurs cherchant un SUV classique ou une charge ultra-rapide."
+  },
+  "lastUpdated": "2026-05-19",
+  "sources": ["constructeur", "automobile-propre"],
+  "imageCredit": "Constructeur"
+}

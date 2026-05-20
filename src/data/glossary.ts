@@ -160,16 +160,23 @@ export const GLOSSARY: GlossaryEntry[] = [
       "Equivalent electrique du L/100 km. Indique combien d'energie le vehicule consomme sur 100 km. Valeurs typiques : 14-18 kWh/100 en ville, 20-28 kWh/100 sur autoroute. Depend fortement de la vitesse et de la temperature.",
   },
   {
+    term: "Prime CEE VE",
+    abbr: "CEE",
+    category: "general",
+    definition:
+      "Certificat d'Economie d'Energie applique aux vehicules electriques. Prime versee par les fournisseurs d'energie. Montant maximal porte a 8 100 euros depuis mai 2026. Reserve aux vehicules assembles en Europe. Conditions de revenus et de mise au rebut d'un ancien vehicule.",
+  },
+  {
     term: "Prime a la conversion",
     category: "general",
     definition:
-      "Aide gouvernementale francaise pour le remplacement d'un ancien vehicule thermique par un VE. Montant variable selon le revenu fiscal et l'age du vehicule mis au rebut. Cumulable avec le bonus ecologique.",
+      "Aide gouvernementale francaise pour le remplacement d'un ancien vehicule thermique par un VE. Montant variable selon le revenu fiscal et l'age du vehicule mis au rebut.",
   },
   {
     term: "Bonus ecologique",
     category: "general",
     definition:
-      "Aide a l'achat d'un vehicule electrique neuf en France. Soumis a un plafond de prix et a un score environnemental. Les vehicules assembles hors Europe peuvent etre exclus. Montant maximal : 4 000 euros (2025).",
+      "Aide a l'achat d'un vehicule electrique neuf en France. Soumis a un plafond de prix et a un score environnemental. Les vehicules assembles hors Europe peuvent etre exclus. Montant et conditions variables selon les annees.",
   },
   {
     term: "Leasing social",

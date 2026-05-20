@@ -1,0 +1,219 @@
+{
+  "slug": "polestar-2",
+  "brand": "Polestar",
+  "model": "2",
+  "variant": "Long Range Single Motor",
+  "bodyType": "Fastback",
+  "segment": "D",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Taizhou",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 200,
+  "power_hp": 272,
+  "torque_Nm": 343,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 6.2,
+  "topSpeed_kmh": 205,
+  "usableCapacity_kWh": 79,
+  "grossCapacity_kWh": 82,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2010,
+  "wltp_max_km": 654,
+  "wltp_min_km": 546,
+  "realRange": {
+    "mixed_km": 490,
+    "highway_130_km": 360,
+    "urban_km": 590,
+    "winter_minus5_km": 380,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 16,
+  "consumption_highway_kWh_per_100km": 22,
+  "consumption_winter_kWh_per_100km": 20.5,
+  "dragCoefficient_Cx": 0.278,
+  "chargingDC": {
+    "peakPower_kW": 205,
+    "time_10_80_min": 28,
+    "kWh_added_30min": 55,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 8
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 150 },
+    { "soc": 10, "power": 205 },
+    { "soc": 30, "power": 190 },
+    { "soc": 50, "power": 140 },
+    { "soc": 80, "power": 60 },
+    { "soc": 100, "power": 10 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4606,
+  "width_mm": 1859,
+  "height_mm": 1482,
+  "wheelbase_mm": 2735,
+  "trunkCapacity_L": 405,
+  "trunkCapacityFolded_L": 1095,
+  "frunkCapacity_L": 31,
+  "trims": [
+    {
+      "name": "Standard Range Single Motor",
+      "price_EUR": 46990,
+      "batteryUsed": "69 kWh",
+      "equipmentHighlights": [
+        "Ecran 11 pouces Google",
+        "Toit panoramique vitré"
+      ]
+    },
+    {
+      "name": "Long Range Single Motor",
+      "price_EUR": 51990,
+      "batteryUsed": "79 kWh",
+      "equipmentHighlights": [
+        "Ecran 11 pouces Google",
+        "654 km WLTP",
+        "Charge DC 205 kW"
+      ]
+    },
+    {
+      "name": "Long Range Dual Motor",
+      "price_EUR": 55990,
+      "batteryUsed": "79 kWh",
+      "equipmentHighlights": [
+        "AWD 421 ch",
+        "0-100 en 4,2 s",
+        "Charge DC 205 kW"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "polestar-2-sr-sm",
+      "label": "Polestar 2 · Standard Range SM",
+      "battery": "standard",
+      "trim": "Standard Range Single Motor",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 46990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 546,
+      "wltp_consumption_kWh_100km": 15.1,
+      "realRange": { "mixed_km": 400, "highway_130_km": 290, "urban_km": 490, "winter_minus5_km": 310, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 135,
+      "chargingDC_10_80_min": 33,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 135 },
+        { "soc": 50, "power": 100 },
+        { "soc": 80, "power": 45 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "170 ch (125 kW), RWD, batterie LFP 69 kWh"
+    },
+    {
+      "id": "polestar-2-lr-sm",
+      "label": "Polestar 2 · Long Range SM",
+      "battery": "long-range",
+      "trim": "Long Range Single Motor",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 51990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 654,
+      "wltp_consumption_kWh_100km": 14.4,
+      "realRange": { "mixed_km": 490, "highway_130_km": 360, "urban_km": 590, "winter_minus5_km": 380, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 205,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 150 },
+        { "soc": 10, "power": 205 },
+        { "soc": 30, "power": 190 },
+        { "soc": 50, "power": 140 },
+        { "soc": 80, "power": 60 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "available",
+      "notes": "272 ch (200 kW), RWD"
+    },
+    {
+      "id": "polestar-2-lr-dm",
+      "label": "Polestar 2 · Long Range DM",
+      "battery": "long-range",
+      "trim": "Long Range Dual Motor",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 55990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 592,
+      "wltp_consumption_kWh_100km": 16,
+      "realRange": { "mixed_km": 445, "highway_130_km": 330, "urban_km": 540, "winter_minus5_km": 360, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 205,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 150 },
+        { "soc": 10, "power": 205 },
+        { "soc": 30, "power": 190 },
+        { "soc": 50, "power": 140 },
+        { "soc": 80, "power": 60 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "available",
+      "notes": "421 ch (310 kW), AWD"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "Design scandinave minimaliste fastback" },
+    { "category": "technologie", "label": "Google integre (Maps, Assistant, Play)" },
+    { "category": "securite", "label": "Freinage automatique et Pilot Assist" },
+    { "category": "confort", "label": "Interieur vegan avec materiaux recycles" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Charge rapide 205 kW sur Long Range",
+      "Autonomie WLTP genereuse (654 km SM LR)"
+    ],
+    "weaknesses": [
+      "Assemblage en Chine, pas d'aides en France",
+      "Coffre modeste pour une berline (405 L)"
+    ],
+    "idealUserProfile": "Conducteurs cherchant une berline electrique premium avec autonomie genereuse et design scandinave.",
+    "notIdealFor": "Familles cherchant un grand coffre ou acheteurs visant les aides a l'achat francaises."
+  },
+  "lastUpdated": "2026-05-19",
+  "sources": ["la-chaine-ev"],
+  "imageCredit": "Constructeur"
+}

@@ -6,21 +6,21 @@
   "bodyType": "Ludospace 7 places",
   "segment": "D",
   "productionCountry": "France",
-  "assemblyPlant": "Ulsan",
+  "assemblyPlant": "Maubeuge",
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
   "power_kW": 90,
-  "power_hp": 204,
-  "torque_Nm": 300,
+  "power_hp": 122,
+  "torque_Nm": 245,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
-  "topSpeed_kmh": 160,
+  "acceleration_0_100_s": 13.5,
+  "topSpeed_kmh": 132,
   "usableCapacity_kWh": 45,
   "grossCapacity_kWh": 48,
   "chemistry": "NMC",
   "architecture_V": 400,
-  "mass_kg": 1700,
+  "mass_kg": 2050,
   "wltp_max_km": 265,
   "wltp_min_km": 250,
   "realRange": {
@@ -30,9 +30,9 @@
     "winter_minus5_km": 160,
     "confidence": "estimated"
   },
-  "consumption_mixed_kWh_per_100km": 15,
-  "consumption_highway_kWh_per_100km": 21,
-  "consumption_winter_kWh_per_100km": 19,
+  "consumption_mixed_kWh_per_100km": 19.5,
+  "consumption_highway_kWh_per_100km": 27,
+  "consumption_winter_kWh_per_100km": 23,
   "dragCoefficient_Cx": 0.36,
   "chargingDC": {
     "peakPower_kW": 80,
@@ -41,44 +41,29 @@
     "confidence": "estimated"
   },
   "chargingAC": {
-    "onboardCharger_kW": 11,
+    "onboardCharger_kW": 22,
     "phases": 3,
-    "time_0_100_h": 6.5
+    "time_0_100_h": 3
   },
   "plugAndCharge": false,
   "v2l": false,
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    {
-      "soc": 0,
-      "power": 62
-    },
-    {
-      "soc": 10,
-      "power": 80
-    },
-    {
-      "soc": 50,
-      "power": 62
-    },
-    {
-      "soc": 80,
-      "power": 31
-    },
-    {
-      "soc": 100,
-      "power": 6
-    }
+    { "soc": 0, "power": 62 },
+    { "soc": 10, "power": 80 },
+    { "soc": 50, "power": 62 },
+    { "soc": 80, "power": 31 },
+    { "soc": 100, "power": 6 }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
   "length_mm": 4910,
   "width_mm": 1919,
   "height_mm": 1838,
-  "wheelbase_mm": 2700,
+  "wheelbase_mm": 3100,
   "trunkCapacity_L": 500,
-  "trunkCapacityFolded_L": 1200,
+  "trunkCapacityFolded_L": 2800,
   "frunkCapacity_L": null,
   "trims": [
     {
@@ -86,8 +71,10 @@
       "price_EUR": 40500,
       "batteryUsed": "45 kWh",
       "equipmentHighlights": [
-        "7 places",
-        "Sièges amovibles"
+        "7 places modulables",
+        "OpenR Link Google",
+        "Charge AC 22 kW",
+        "Portes coulissantes"
       ]
     }
   ],
@@ -95,8 +82,8 @@
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
-      "amount_EUR": 4000
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
     }
   ],
   "configurations": [
@@ -105,14 +92,14 @@
       "label": "Grand Kangoo E-Tech Techno",
       "battery": "standard",
       "trim": "Techno",
-      "wheelSize_inches": 18,
+      "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
       "price_EUR": 40500,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 265,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_consumption_kWh_100km": 19.5,
       "realRange": {
         "mixed_km": 200,
         "highway_130_km": 130,
@@ -125,29 +112,14 @@
       "chargingDC_10_80_min": 37,
       "chargingDC_kWh_30min": 27,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 62
-        },
-        {
-          "soc": 10,
-          "power": 80
-        },
-        {
-          "soc": 50,
-          "power": 62
-        },
-        {
-          "soc": 80,
-          "power": 31
-        },
-        {
-          "soc": 100,
-          "power": 6
-        }
+        { "soc": 0, "power": 62 },
+        { "soc": 10, "power": 80 },
+        { "soc": 50, "power": 62 },
+        { "soc": 80, "power": 31 },
+        { "soc": 100, "power": 6 }
       ],
       "availability": "available",
-      "notes": null
+      "notes": "122 ch (90 kW). Charge AC 22 kW tri. 7 places."
     }
   ],
   "warranty": {
@@ -158,38 +130,27 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    {
-      "category": "confort",
-      "label": "Sièges confort de haute qualité"
-    },
-    {
-      "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
-    },
-    {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
-    },
-    {
-      "category": "design",
-      "label": "Signature lumineuse LED distinctive"
-    }
+    { "category": "confort", "label": "7 places modulables avec sieges amovibles" },
+    { "category": "technologie", "label": "OpenR Link avec Google integre" },
+    { "category": "securite", "label": "Freinage automatique d'urgence" },
+    { "category": "design", "label": "Portes laterales coulissantes, empattement long" }
   ],
   "verdict": {
     "strengths": [
-      "Bon compromis prix/autonomie",
-      "Confort de suspension"
+      "Seul ludospace electrique 7 places du marche",
+      "Modularite exceptionnelle (sieges amovibles)",
+      "Charge AC 22 kW de serie"
     ],
     "weaknesses": [
-      "Vitesse de charge rapide en retrait",
-      "Infodivertissement perfectible"
+      "Autonomie limitee pour un vehicule familial (265 km WLTP)",
+      "Charge DC plafonnee a 80 kW",
+      "Masse elevee impactant la consommation"
     ],
-    "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
-    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
+    "idealUserProfile": "Grandes familles cherchant un vehicule 7 places electrique pour les trajets quotidiens.",
+    "notIdealFor": "Gros rouleurs autoroutiers ou departs en vacances longue distance frequents."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-05-19",
   "sources": [
-    "nyland",
     "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"

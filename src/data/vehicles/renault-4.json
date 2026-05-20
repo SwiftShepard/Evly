@@ -2,36 +2,36 @@
   "slug": "renault-4",
   "brand": "Renault",
   "model": "4 E-Tech",
-  "variant": "52 kWh",
+  "variant": "40 & 52 kWh",
   "bodyType": "SUV compact",
   "segment": "B",
   "productionCountry": "France",
-  "assemblyPlant": "Ulsan",
-  "releaseYear": 2024,
+  "assemblyPlant": "Maubeuge",
+  "releaseYear": 2025,
   "marketAvailability": "Disponible",
   "power_kW": 110,
-  "power_hp": 204,
-  "torque_Nm": 300,
+  "power_hp": 150,
+  "torque_Nm": 245,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
-  "topSpeed_kmh": 160,
+  "acceleration_0_100_s": 8.5,
+  "topSpeed_kmh": 150,
   "usableCapacity_kWh": 52,
-  "grossCapacity_kWh": 64,
+  "grossCapacity_kWh": 55,
   "chemistry": "NMC",
   "architecture_V": 400,
-  "mass_kg": 1700,
-  "wltp_max_km": 400,
-  "wltp_min_km": 380,
+  "mass_kg": 1580,
+  "wltp_max_km": 409,
+  "wltp_min_km": 308,
   "realRange": {
-    "mixed_km": 350,
-    "highway_130_km": 230,
-    "urban_km": 440,
-    "winter_minus5_km": 270,
+    "mixed_km": 345,
+    "highway_130_km": 225,
+    "urban_km": 430,
+    "winter_minus5_km": 265,
     "confidence": "estimated"
   },
-  "consumption_mixed_kWh_per_100km": 15,
-  "consumption_highway_kWh_per_100km": 21,
+  "consumption_mixed_kWh_per_100km": 15.5,
+  "consumption_highway_kWh_per_100km": 22,
   "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.32,
   "chargingDC": {
@@ -46,77 +46,126 @@
     "time_0_100_h": 6.5
   },
   "plugAndCharge": false,
-  "v2l": false,
-  "v2g": false,
+  "v2l": true,
+  "v2g": true,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    {
-      "soc": 0,
-      "power": 77
-    },
-    {
-      "soc": 10,
-      "power": 100
-    },
-    {
-      "soc": 50,
-      "power": 77
-    },
-    {
-      "soc": 80,
-      "power": 38
-    },
-    {
-      "soc": 100,
-      "power": 8
-    }
+    { "soc": 0, "power": 77 },
+    { "soc": 10, "power": 100 },
+    { "soc": 50, "power": 77 },
+    { "soc": 80, "power": 38 },
+    { "soc": 100, "power": 8 }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
   "length_mm": 4140,
   "width_mm": 1800,
   "height_mm": 1570,
-  "wheelbase_mm": 2700,
+  "wheelbase_mm": 2620,
   "trunkCapacity_L": 420,
   "trunkCapacityFolded_L": 1200,
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Equilibre",
-      "price_EUR": 35000,
+      "name": "Evolution 40 kWh",
+      "price_EUR": 29990,
+      "batteryUsed": "40 kWh",
+      "equipmentHighlights": [
+        "Ecran 10 pouces",
+        "Barres de toit"
+      ]
+    },
+    {
+      "name": "Evolution 52 kWh",
+      "price_EUR": 33490,
       "batteryUsed": "52 kWh",
       "equipmentHighlights": [
+        "Ecran 10 pouces",
         "Barres de toit"
+      ]
+    },
+    {
+      "name": "Techno 52 kWh",
+      "price_EUR": 35490,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "OpenR Link Google",
+        "Jantes alliage 18 pouces",
+        "Charge induction"
+      ]
+    },
+    {
+      "name": "Iconic 52 kWh",
+      "price_EUR": 37490,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "Sieges chauffants",
+        "Toit vitré panoramique",
+        "Conduite semi-autonome"
       ]
     }
   ],
-  "leasingSocialEligible": false,
-  "leasingSocial_EUR_per_month": null,
+  "leasingSocialEligible": true,
+  "leasingSocial_EUR_per_month": 170,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
-      "amount_EUR": 4000
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
     }
   ],
   "configurations": [
     {
-      "id": "renault-4-equilibre",
-      "label": "4 E-Tech Equilibre",
+      "id": "renault-4-evolution-40",
+      "label": "4 E-Tech Evolution · 40 kWh",
       "battery": "standard",
-      "trim": "Equilibre",
+      "trim": "Evolution 40 kWh",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 35000,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 400,
+      "price_EUR": 29990,
+      "monthlyLease_EUR": 170,
+      "leasingSocialEligible": true,
+      "wltp_km": 308,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 350,
-        "highway_130_km": 230,
-        "urban_km": 440,
-        "winter_minus5_km": 270,
+        "mixed_km": 260,
+        "highway_130_km": 170,
+        "urban_km": 360,
+        "winter_minus5_km": 195,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 27,
+      "chargingCurve": [
+        { "soc": 0, "power": 70 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 70 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "Moteur 120 ch (90 kW)"
+    },
+    {
+      "id": "renault-4-evolution-52",
+      "label": "4 E-Tech Evolution · 52 kWh",
+      "battery": "long-range",
+      "trim": "Evolution 52 kWh",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 33490,
+      "monthlyLease_EUR": 195,
+      "leasingSocialEligible": true,
+      "wltp_km": 409,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": {
+        "mixed_km": 345,
+        "highway_130_km": 225,
+        "urban_km": 430,
+        "winter_minus5_km": 265,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -124,29 +173,82 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 77
-        },
-        {
-          "soc": 10,
-          "power": 100
-        },
-        {
-          "soc": 50,
-          "power": 77
-        },
-        {
-          "soc": 80,
-          "power": 38
-        },
-        {
-          "soc": 100,
-          "power": 8
-        }
+        { "soc": 0, "power": 77 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 77 },
+        { "soc": 80, "power": 38 },
+        { "soc": 100, "power": 8 }
       ],
       "availability": "available",
-      "notes": null
+      "notes": "Moteur 150 ch (110 kW)"
+    },
+    {
+      "id": "renault-4-techno-52",
+      "label": "4 E-Tech Techno · 52 kWh",
+      "battery": "long-range",
+      "trim": "Techno 52 kWh",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 35490,
+      "monthlyLease_EUR": 195,
+      "leasingSocialEligible": true,
+      "wltp_km": 409,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": {
+        "mixed_km": 345,
+        "highway_130_km": 225,
+        "urban_km": 430,
+        "winter_minus5_km": 265,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        { "soc": 0, "power": 77 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 77 },
+        { "soc": 80, "power": 38 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "Moteur 150 ch (110 kW)"
+    },
+    {
+      "id": "renault-4-iconic-52",
+      "label": "4 E-Tech Iconic · 52 kWh",
+      "battery": "long-range",
+      "trim": "Iconic 52 kWh",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 37490,
+      "monthlyLease_EUR": 195,
+      "leasingSocialEligible": true,
+      "wltp_km": 409,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": {
+        "mixed_km": 345,
+        "highway_130_km": 225,
+        "urban_km": 430,
+        "winter_minus5_km": 265,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        { "soc": 0, "power": 77 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 77 },
+        { "soc": 80, "power": 38 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "Moteur 150 ch (110 kW)"
     }
   ],
   "warranty": {
@@ -157,36 +259,25 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    {
-      "category": "confort",
-      "label": "Sièges confort de haute qualité"
-    },
-    {
-      "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
-    },
-    {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
-    },
-    {
-      "category": "design",
-      "label": "Signature lumineuse LED distinctive"
-    }
+    { "category": "confort", "label": "Suspension confort surélevée" },
+    { "category": "technologie", "label": "OpenR Link avec Google intégré" },
+    { "category": "securite", "label": "Freinage automatique d'urgence" },
+    { "category": "design", "label": "Design néo-rétro crossover" }
   ],
   "verdict": {
     "strengths": [
-      "Bon compromis prix/autonomie",
-      "Confort de suspension"
+      "Polyvalence SUV compact surélevé",
+      "V2L et V2G de serie sur 52 kWh",
+      "Gamme accessible des 29 990 euros"
     ],
     "weaknesses": [
-      "Vitesse de charge rapide en retrait",
-      "Infodivertissement perfectible"
+      "Autonomie limitee sur la 40 kWh",
+      "Pas de version AWD"
     ],
-    "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
-    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
+    "idealUserProfile": "Périurbains cherchant un crossover électrique compact avec garde au sol surélevée.",
+    "notIdealFor": "Gros rouleurs autoroutiers ou ceux qui cherchent un vrai SUV familial."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-05-19",
   "sources": [
     "nyland",
     "la-chaine-ev"

@@ -27,8 +27,10 @@ let patchedSvg: string | null = null;
 for (const [path, content] of Object.entries(logoModules)) {
   const stem = path.split("/").at(-1)!.slice(0, -4); // filename without .svg
   if (normalize(stem) === target) {
+    // Strip XML declarations and comments before the <svg> tag
+    let raw = content.replace(/<\?xml[^?]*\?>\s*/gi, "").replace(/<!--[\s\S]*?-->\s*/g, "");
     // Strip any fixed width/height on the <svg> root, inject our class
-    patchedSvg = content.replace(/<svg([^>]*)>/i, (_m, attrs: string) => {
+    patchedSvg = raw.replace(/<svg([^>]*)>/i, (_m, attrs: string) => {
       const cleaned = attrs
         .replace(/\s+width="[^"]*"/gi, "")
         .replace(/\s+height="[^"]*"/gi, "")
@@ -132,6 +134,42 @@ const b = normalize(brand);
     <circle cx="12" cy="12" r="10" />
     <path d="M9 8l5 4-5 4" />
     <path d="M13 12h3" />
+  </svg>
+) : b === "ford" ? (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <ellipse cx="12" cy="12" rx="11" ry="7" />
+    <text x="12" y="15" text-anchor="middle" font-size="8" font-family="serif" font-style="italic" font-weight="bold" stroke="none" fill="currentColor">Ford</text>
+  </svg>
+) : b === "mercedes" ? (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <path d="M12 2v10l-8.66 5M12 12l8.66 5" />
+  </svg>
+) : b === "audi" ? (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <circle cx="4.5" cy="12" r="3.5" /><circle cx="9.5" cy="12" r="3.5" /><circle cx="14.5" cy="12" r="3.5" /><circle cx="19.5" cy="12" r="3.5" />
+  </svg>
+) : b === "bmw" ? (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <circle cx="12" cy="12" r="10" />
+    <line x1="12" y1="2" x2="12" y2="22" /><line x1="2" y1="12" x2="22" y2="12" />
+  </svg>
+) : b === "lancia" ? (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2l6 3v5c0 5-3 9-6 11-3-2-6-6-6-11V5l6-3z" />
+    <path d="M12 6v10" /><path d="M9 9h6" />
+  </svg>
+) : b === "alfa romeo" ? (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <line x1="12" y1="2" x2="12" y2="22" />
+    <path d="M6 8l6 4-6 4" /><path d="M18 8l-2 4h-2" />
+  </svg>
+) : b === "toyota" ? (
+  <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <ellipse cx="12" cy="12" rx="10" ry="7" />
+    <ellipse cx="12" cy="12" rx="4" ry="7" />
+    <line x1="2" y1="12" x2="22" y2="12" />
   </svg>
 ) : (
   <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

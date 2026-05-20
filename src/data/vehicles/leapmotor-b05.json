@@ -68,12 +68,33 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Pro",
+      "name": "Pro Life",
       "price_EUR": 25400,
-      "batteryUsed": "56.2 kWh",
+      "batteryUsed": "56,2 kWh",
       "equipmentHighlights": [
-        "140 kW DC, 20 min 10-80 % estimé",
+        "401 km WLTP",
+        "Charge DC 140 kW, 10-80 % en 20 min",
         "19 pouces, suspension McPherson/Multilink"
+      ]
+    },
+    {
+      "name": "Pro Design",
+      "price_EUR": 27400,
+      "batteryUsed": "56,2 kWh",
+      "equipmentHighlights": [
+        "401 km WLTP",
+        "Charge DC 140 kW, 10-80 % en 20 min",
+        "Sellerie cuir/tissu, ecran 14,6 pouces"
+      ]
+    },
+    {
+      "name": "ProMax Design",
+      "price_EUR": 28400,
+      "batteryUsed": "67,1 kWh",
+      "equipmentHighlights": [
+        "482 km WLTP",
+        "Charge DC 168 kW, 10-80 % en 22 min",
+        "Sellerie cuir/tissu, ecran 14,6 pouces"
       ]
     }
   ],
@@ -82,10 +103,10 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "leapmotor-b05-pro",
-      "label": "B05 Pro, 56.2 kWh",
+      "id": "leapmotor-b05-pro-life",
+      "label": "B05 Pro Life · 56,2 kWh",
       "battery": "standard",
-      "trim": "Pro",
+      "trim": "Pro Life",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
@@ -114,17 +135,52 @@
         { "soc": 100, "power": 8   }
       ],
       "availability": "available",
-      "notes": "Temps 30-80 % constructeur : 16 min."
+      "notes": "218 ch (160 kW), RWD"
     },
     {
-      "id": "leapmotor-b05-promax",
-      "label": "B05 ProMax, 67.1 kWh",
-      "battery": "long-range",
-      "trim": "ProMax",
+      "id": "leapmotor-b05-pro-design",
+      "label": "B05 Pro Design · 56,2 kWh",
+      "battery": "standard",
+      "trim": "Pro Design",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": null,
+      "price_EUR": 27400,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 401,
+      "wltp_consumption_kWh_100km": 15.8,
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 205,
+        "urban_km": 390,
+        "winter_minus5_km": 240,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 140,
+      "chargingDC_10_80_min": 20,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        { "soc": 0,   "power": 130 },
+        { "soc": 10,  "power": 140 },
+        { "soc": 20,  "power": 140 },
+        { "soc": 50,  "power": 100 },
+        { "soc": 80,  "power": 45  },
+        { "soc": 100, "power": 8   }
+      ],
+      "availability": "available",
+      "notes": "218 ch (160 kW), RWD, finition haut de gamme"
+    },
+    {
+      "id": "leapmotor-b05-promax-design",
+      "label": "B05 ProMax Design · 67,1 kWh",
+      "battery": "long-range",
+      "trim": "ProMax Design",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 28400,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 482,
@@ -148,8 +204,8 @@
         { "soc": 80,  "power": 55  },
         { "soc": 100, "power": 10  }
       ],
-      "availability": "upcoming",
-      "notes": "Prix non communiqué. Temps 30-80 % constructeur : 17 min."
+      "availability": "available",
+      "notes": "218 ch (160 kW), RWD, grande batterie"
     }
   ],
   "warranty": {
@@ -177,8 +233,7 @@
     "idealUserProfile": "Future candidate idéale au leasing social européen. Dès 2027, la production espagnole ouvrira l'accès au leasing social. Idéale pour les familles cherchant un rapport prix/prestations hors normes et prêtes à anticiper la transition vers les aides maximales.",
     "notIdealFor": "Acheteurs conditionnant leur achat au leasing social : la production chinoise actuelle exclut ce dispositif. Conducteurs à très fort kilométrage autoroutier nécessitant plus de 400 km d'autonomie réelle."
   },
-  "lastUpdated": "2026-05-18",
+  "lastUpdated": "2026-05-20",
   "sources": ["nyland", "lachaineev"],
-  "imageCredit": "Constructeur",
-  "availability": "upcoming"
+  "imageCredit": "Constructeur"
 }

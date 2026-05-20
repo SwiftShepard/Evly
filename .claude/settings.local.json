@@ -36,7 +36,12 @@
       "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\({'configs_count': len\\(d['configurations']\\), 'trims': [t['name'] for t in d['trims']], 'configs': [{'id':c['id'],'label':c['label'],'price':c['price_EUR'],'wltp':c['wltp_km']} for c in d['configurations']]}, ensure_ascii=False, indent=2\\)\\)\")",
       "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\([a['label'] for a in d.get\\('availableAids',[]\\)]\\)\")",
       "Bash(git checkout *)",
-      "Bash(node -e \"const l = require\\('./node_modules/lucide-react/dist/cjs/lucide-react.js'\\); console.log\\('Table2' in l, 'Table' in l, 'TableProperties' in l\\)\")"
+      "Bash(node -e \"const l = require\\('./node_modules/lucide-react/dist/cjs/lucide-react.js'\\); console.log\\('Table2' in l, 'Table' in l, 'TableProperties' in l\\)\")",
+      "Bash(node -e \"const fs=require\\('fs'\\);const path=require\\('path'\\);const dir='src/data/vehicles';fs.readdirSync\\(dir\\).filter\\(f=>f.endsWith\\('.json'\\)\\).forEach\\(f=>{const d=JSON.parse\\(fs.readFileSync\\(path.join\\(dir,f\\),'utf8'\\)\\);const aids=d.availableAids||[];const cheapest=d.trims.reduce\\(\\(a,b\\)=>a.price_EUR<b.price_EUR?a:b\\);console.log\\(f.padEnd\\(35\\),\\(''+cheapest.price_EUR\\).padStart\\(7\\),\\(aids.length?aids.map\\(a=>a.label+' '+a.amount_EUR\\).join\\(', '\\):'\\(aucune aide\\)'\\)\\)}\\)\")",
+      "Bash(grep -oE '<svg[^>]{0,200}>' dist/vehicules/smart-1/index.html)",
+      "Bash(grep -oE '<svg[^>]{0,300}>' dist/vehicules/index.html)",
+      "Bash(Select-Object -Last 15)",
+      "PowerShell(npx astro build 2>&1)"
     ]
   }
 }
