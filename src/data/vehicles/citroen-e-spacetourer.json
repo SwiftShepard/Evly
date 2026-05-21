@@ -114,12 +114,7 @@
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [
-    {
-      "label": "Prime CEE VE",
-      "amount_EUR": 8100
-    }
-  ],
+  "availableAids": [],
   "configurations": [
     {
       "id": "citroen-e-spacetourer-feel-50",
@@ -134,17 +129,38 @@
       "leasingSocialEligible": false,
       "wltp_km": 230,
       "wltp_consumption_kWh_100km": 22,
-      "realRange": { "mixed_km": 180, "highway_130_km": 120, "urban_km": 225, "winter_minus5_km": 145, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 180,
+        "highway_130_km": 120,
+        "urban_km": 225,
+        "winter_minus5_km": 145,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 30,
       "chargingCurve": [
-        { "soc": 0, "power": 77 },
-        { "soc": 10, "power": 100 },
-        { "soc": 50, "power": 77 },
-        { "soc": 80, "power": 38 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 77
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 77
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "136 ch (100 kW), FWD, taille M"
@@ -162,17 +178,38 @@
       "leasingSocialEligible": false,
       "wltp_km": 330,
       "wltp_consumption_kWh_100km": 21,
-      "realRange": { "mixed_km": 260, "highway_130_km": 170, "urban_km": 320, "winter_minus5_km": 205, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 260,
+        "highway_130_km": 170,
+        "urban_km": 320,
+        "winter_minus5_km": 205,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 45,
       "chargingDC_kWh_30min": 40,
       "chargingCurve": [
-        { "soc": 0, "power": 77 },
-        { "soc": 10, "power": 100 },
-        { "soc": 50, "power": 77 },
-        { "soc": 80, "power": 38 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 77
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 77
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "136 ch (100 kW), FWD, taille M"
@@ -190,17 +227,38 @@
       "leasingSocialEligible": false,
       "wltp_km": 350,
       "wltp_consumption_kWh_100km": 21,
-      "realRange": { "mixed_km": 280, "highway_130_km": 180, "urban_km": 340, "winter_minus5_km": 220, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 280,
+        "highway_130_km": 180,
+        "urban_km": 340,
+        "winter_minus5_km": 220,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 45,
       "chargingDC_kWh_30min": 40,
       "chargingCurve": [
-        { "soc": 0, "power": 77 },
-        { "soc": 10, "power": 100 },
-        { "soc": 50, "power": 77 },
-        { "soc": 80, "power": 38 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 77
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 77
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "136 ch (100 kW), FWD, taille XL 9 places"

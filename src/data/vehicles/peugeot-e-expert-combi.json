@@ -120,12 +120,7 @@
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [
-    {
-      "label": "Prime CEE VE",
-      "amount_EUR": 8100
-    }
-  ],
+  "availableAids": [],
   "configurations": [
     {
       "id": "peugeot-e-expert-combi-m-49",

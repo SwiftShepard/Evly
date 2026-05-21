@@ -14,7 +14,7 @@
   "torque_Nm": 350,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 15.0,
+  "acceleration_0_100_s": 15,
   "topSpeed_kmh": 130,
   "usableCapacity_kWh": 110,
   "grossCapacity_kWh": 115,
@@ -50,13 +50,34 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 110 },
-    { "soc": 10, "power": 150 },
-    { "soc": 30, "power": 140 },
-    { "soc": 50, "power": 100 },
-    { "soc": 70, "power": 60 },
-    { "soc": 80, "power": 38 },
-    { "soc": 100, "power": 8 }
+    {
+      "soc": 0,
+      "power": 110
+    },
+    {
+      "soc": 10,
+      "power": 150
+    },
+    {
+      "soc": 30,
+      "power": 140
+    },
+    {
+      "soc": 50,
+      "power": 100
+    },
+    {
+      "soc": 70,
+      "power": 60
+    },
+    {
+      "soc": 80,
+      "power": 38
+    },
+    {
+      "soc": 100,
+      "power": 8
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -91,12 +112,7 @@
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [
-    {
-      "label": "Prime CEE VE",
-      "amount_EUR": 8100
-    }
-  ],
+  "availableAids": [],
   "configurations": [
     {
       "id": "opel-movano-e-l2h2",
@@ -123,11 +139,26 @@
       "chargingDC_10_80_min": 42,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
-        { "soc": 0, "power": 110 },
-        { "soc": 10, "power": 150 },
-        { "soc": 50, "power": 100 },
-        { "soc": 80, "power": 38 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 110
+        },
+        {
+          "soc": 10,
+          "power": 150
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "Grand fourgon L2H2, plateforme partagee Boxer/Jumper/Ducato."
@@ -157,11 +188,26 @@
       "chargingDC_10_80_min": 42,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
-        { "soc": 0, "power": 110 },
-        { "soc": 10, "power": 150 },
-        { "soc": 50, "power": 100 },
-        { "soc": 80, "power": 38 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 110
+        },
+        {
+          "soc": 10,
+          "power": 150
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "Grand fourgon L3H2, 13 m3 de volume utile."
@@ -175,10 +221,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "confort", "label": "Cabine ergonomique avec rangements professionnels" },
-    { "category": "technologie", "label": "Charge rapide 150 kW, completement en 42 min (10-80%)" },
-    { "category": "securite", "label": "Freinage automatique d'urgence et alerte angle mort" },
-    { "category": "design", "label": "Volumes utiles de 11,5 a 17 m3 selon configuration" }
+    {
+      "category": "confort",
+      "label": "Cabine ergonomique avec rangements professionnels"
+    },
+    {
+      "category": "technologie",
+      "label": "Charge rapide 150 kW, completement en 42 min (10-80%)"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence et alerte angle mort"
+    },
+    {
+      "category": "design",
+      "label": "Volumes utiles de 11,5 a 17 m3 selon configuration"
+    }
   ],
   "verdict": {
     "strengths": [

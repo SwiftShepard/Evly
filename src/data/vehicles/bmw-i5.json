@@ -14,7 +14,7 @@
   "torque_Nm": 400,
   "drivetrain": "RWD",
   "motors": 1,
-  "acceleration_0_100_s": 6.0,
+  "acceleration_0_100_s": 6,
   "topSpeed_kmh": 193,
   "usableCapacity_kWh": 81.2,
   "grossCapacity_kWh": 83.9,
@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 140 },
-    { "soc": 10, "power": 205 },
-    { "soc": 30, "power": 180 },
-    { "soc": 50, "power": 130 },
-    { "soc": 80, "power": 50 },
-    { "soc": 100, "power": 9 }
+    {
+      "soc": 0,
+      "power": 140
+    },
+    {
+      "soc": 10,
+      "power": 205
+    },
+    {
+      "soc": 30,
+      "power": 180
+    },
+    {
+      "soc": 50,
+      "power": 130
+    },
+    {
+      "soc": 80,
+      "power": 50
+    },
+    {
+      "soc": 100,
+      "power": 9
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -100,12 +118,7 @@
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [
-    {
-      "label": "Prime CEE VE",
-      "amount_EUR": 8100
-    }
-  ],
+  "availableAids": [],
   "configurations": [
     {
       "id": "bmw-i5-edrive40",
@@ -120,18 +133,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 582,
       "wltp_consumption_kWh_100km": 16.2,
-      "realRange": { "mixed_km": 420, "highway_130_km": 300, "urban_km": 515, "winter_minus5_km": 330, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 420,
+        "highway_130_km": 300,
+        "urban_km": 515,
+        "winter_minus5_km": 330,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 205,
       "chargingDC_10_80_min": 27,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
-        { "soc": 0, "power": 140 },
-        { "soc": 10, "power": 205 },
-        { "soc": 30, "power": 180 },
-        { "soc": 50, "power": 130 },
-        { "soc": 80, "power": 50 },
-        { "soc": 100, "power": 9 }
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 205
+        },
+        {
+          "soc": 30,
+          "power": 180
+        },
+        {
+          "soc": 50,
+          "power": 130
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 9
+        }
       ],
       "availability": "available",
       "notes": "340 ch (250 kW), RWD"
@@ -149,18 +186,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 536,
       "wltp_consumption_kWh_100km": 17.5,
-      "realRange": { "mixed_km": 395, "highway_130_km": 285, "urban_km": 485, "winter_minus5_km": 315, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 395,
+        "highway_130_km": 285,
+        "urban_km": 485,
+        "winter_minus5_km": 315,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 205,
       "chargingDC_10_80_min": 27,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
-        { "soc": 0, "power": 140 },
-        { "soc": 10, "power": 205 },
-        { "soc": 30, "power": 180 },
-        { "soc": 50, "power": 130 },
-        { "soc": 80, "power": 50 },
-        { "soc": 100, "power": 9 }
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 205
+        },
+        {
+          "soc": 30,
+          "power": 180
+        },
+        {
+          "soc": 50,
+          "power": 130
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 9
+        }
       ],
       "availability": "available",
       "notes": "340 ch (250 kW), AWD xDrive"
@@ -178,18 +239,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 455,
       "wltp_consumption_kWh_100km": 20.5,
-      "realRange": { "mixed_km": 340, "highway_130_km": 245, "urban_km": 420, "winter_minus5_km": 270, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 340,
+        "highway_130_km": 245,
+        "urban_km": 420,
+        "winter_minus5_km": 270,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 205,
       "chargingDC_10_80_min": 27,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
-        { "soc": 0, "power": 140 },
-        { "soc": 10, "power": 205 },
-        { "soc": 30, "power": 180 },
-        { "soc": 50, "power": 130 },
-        { "soc": 80, "power": 50 },
-        { "soc": 100, "power": 9 }
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 205
+        },
+        {
+          "soc": 30,
+          "power": 180
+        },
+        {
+          "soc": 50,
+          "power": 130
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 9
+        }
       ],
       "availability": "available",
       "notes": "601 ch (442 kW), AWD xDrive, M Sport"
@@ -203,10 +288,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "design", "label": "Berline executive au Cx bas de 0,23" },
-    { "category": "technologie", "label": "BMW iDrive 9, Theatre Screen AR et BMW Digital Key" },
-    { "category": "securite", "label": "Conduite semi-autonome et parking automatique" },
-    { "category": "confort", "label": "Empattement long (2,99 m) et insonorisation premium" }
+    {
+      "category": "design",
+      "label": "Berline executive au Cx bas de 0,23"
+    },
+    {
+      "category": "technologie",
+      "label": "BMW iDrive 9, Theatre Screen AR et BMW Digital Key"
+    },
+    {
+      "category": "securite",
+      "label": "Conduite semi-autonome et parking automatique"
+    },
+    {
+      "category": "confort",
+      "label": "Empattement long (2,99 m) et insonorisation premium"
+    }
   ],
   "verdict": {
     "strengths": [
@@ -221,6 +318,9 @@
     "notIdealFor": "Budget limite ou besoin de charge 800 V ultra-rapide."
   },
   "lastUpdated": "2026-05-20",
-  "sources": ["constructeur", "automobile-propre"],
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
   "imageCredit": "Constructeur"
 }

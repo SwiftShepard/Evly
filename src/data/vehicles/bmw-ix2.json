@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 85 },
-    { "soc": 10, "power": 130 },
-    { "soc": 30, "power": 115 },
-    { "soc": 50, "power": 80 },
-    { "soc": 80, "power": 35 },
-    { "soc": 100, "power": 7 }
+    {
+      "soc": 0,
+      "power": 85
+    },
+    {
+      "soc": 10,
+      "power": 130
+    },
+    {
+      "soc": 30,
+      "power": 115
+    },
+    {
+      "soc": 50,
+      "power": 80
+    },
+    {
+      "soc": 80,
+      "power": 35
+    },
+    {
+      "soc": 100,
+      "power": 7
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -90,12 +108,7 @@
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [
-    {
-      "label": "Prime CEE VE",
-      "amount_EUR": 8100
-    }
-  ],
+  "availableAids": [],
   "configurations": [
     {
       "id": "bmw-ix2-edrive20",
@@ -110,18 +123,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 449,
       "wltp_consumption_kWh_100km": 16.5,
-      "realRange": { "mixed_km": 330, "highway_130_km": 240, "urban_km": 405, "winter_minus5_km": 265, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 330,
+        "highway_130_km": 240,
+        "urban_km": 405,
+        "winter_minus5_km": 265,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 130,
       "chargingDC_10_80_min": 29,
       "chargingDC_kWh_30min": 40,
       "chargingCurve": [
-        { "soc": 0, "power": 85 },
-        { "soc": 10, "power": 130 },
-        { "soc": 30, "power": 115 },
-        { "soc": 50, "power": 80 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 7 }
+        {
+          "soc": 0,
+          "power": 85
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 30,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "204 ch (150 kW), FWD"
@@ -139,18 +176,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 417,
       "wltp_consumption_kWh_100km": 17.5,
-      "realRange": { "mixed_km": 310, "highway_130_km": 225, "urban_km": 385, "winter_minus5_km": 250, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 225,
+        "urban_km": 385,
+        "winter_minus5_km": 250,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 130,
       "chargingDC_10_80_min": 29,
       "chargingDC_kWh_30min": 40,
       "chargingCurve": [
-        { "soc": 0, "power": 85 },
-        { "soc": 10, "power": 130 },
-        { "soc": 30, "power": 115 },
-        { "soc": 50, "power": 80 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 7 }
+        {
+          "soc": 0,
+          "power": 85
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 30,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "313 ch (230 kW), AWD xDrive"
@@ -164,10 +225,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "design", "label": "SUV Coupe compact au design sportif BMW" },
-    { "category": "technologie", "label": "BMW iDrive 9 et ecran courbe 10,7 pouces" },
-    { "category": "securite", "label": "Freinage automatique et parking automatique" },
-    { "category": "confort", "label": "Coffre genereux (525 L) et ligne de toit coupe" }
+    {
+      "category": "design",
+      "label": "SUV Coupe compact au design sportif BMW"
+    },
+    {
+      "category": "technologie",
+      "label": "BMW iDrive 9 et ecran courbe 10,7 pouces"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique et parking automatique"
+    },
+    {
+      "category": "confort",
+      "label": "Coffre genereux (525 L) et ligne de toit coupe"
+    }
   ],
   "verdict": {
     "strengths": [
@@ -182,6 +255,9 @@
     "notIdealFor": "Gros rouleurs ou familles nombreuses."
   },
   "lastUpdated": "2026-05-20",
-  "sources": ["constructeur", "automobile-propre"],
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
   "imageCredit": "Constructeur"
 }

@@ -50,13 +50,34 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 100 },
-    { "soc": 10, "power": 130 },
-    { "soc": 30, "power": 125 },
-    { "soc": 50, "power": 90 },
-    { "soc": 70, "power": 55 },
-    { "soc": 80, "power": 35 },
-    { "soc": 100, "power": 8 }
+    {
+      "soc": 0,
+      "power": 100
+    },
+    {
+      "soc": 10,
+      "power": 130
+    },
+    {
+      "soc": 30,
+      "power": 125
+    },
+    {
+      "soc": 50,
+      "power": 90
+    },
+    {
+      "soc": 70,
+      "power": 55
+    },
+    {
+      "soc": 80,
+      "power": 35
+    },
+    {
+      "soc": 100,
+      "power": 8
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -91,12 +112,7 @@
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [
-    {
-      "label": "Prime CEE VE",
-      "amount_EUR": 8100
-    }
-  ],
+  "availableAids": [],
   "configurations": [
     {
       "id": "renault-master-e-tech-l2h2",
@@ -123,12 +139,30 @@
       "chargingDC_10_80_min": 38,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 130 },
-        { "soc": 30, "power": 125 },
-        { "soc": 50, "power": 90 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 30,
+          "power": 125
+        },
+        {
+          "soc": 50,
+          "power": 90
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "Fourgon L2H2, volume utile 10,8 m3."
@@ -158,12 +192,30 @@
       "chargingDC_10_80_min": 38,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 130 },
-        { "soc": 30, "power": 125 },
-        { "soc": 50, "power": 90 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 30,
+          "power": 125
+        },
+        {
+          "soc": 50,
+          "power": 90
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "Fourgon L3H2, volume utile 13 m3."
@@ -177,10 +229,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "confort", "label": "Poste de conduite sureleve, visibilite panoramique" },
-    { "category": "technologie", "label": "OpenR Link avec Google integre et navigation connectee" },
-    { "category": "securite", "label": "Freinage automatique d'urgence et alerte angle mort" },
-    { "category": "design", "label": "Volumes utiles de 10,8 a 22 m3 selon configuration" }
+    {
+      "category": "confort",
+      "label": "Poste de conduite sureleve, visibilite panoramique"
+    },
+    {
+      "category": "technologie",
+      "label": "OpenR Link avec Google integre et navigation connectee"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence et alerte angle mort"
+    },
+    {
+      "category": "design",
+      "label": "Volumes utiles de 10,8 a 22 m3 selon configuration"
+    }
   ],
   "verdict": {
     "strengths": [
