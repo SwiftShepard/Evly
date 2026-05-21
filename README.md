@@ -4,7 +4,7 @@
 > Données d'autonomie réelle agrégées depuis Bjørn Nyland, EVKX, ArenaEV et la presse VE.
 > Direction visuelle : Linear × Polestar × brutalist data-viz.
 
-Projet de démonstration technique conçu pour mettre en valeur des compétences de **chef de projet digital** et de **développement front**. Site 100 % statique, déployable gratuitement sur Cloudflare Pages.
+Projet de démonstration technique conçu pour mettre en valeur des compétences de **chef de projet digital** et de **développement front**. Site 100 % statique, déployé sur GitHub Pages.
 
 ---
 
@@ -23,16 +23,53 @@ Les comparateurs VE existants sont soit franchement publicitaires (sites constru
 
 | Brique | Choix | Justification |
 |---|---|---|
-| Framework | **Astro 5** (`output: 'static'`) | SSG zéro JS par défaut, parfait pour des pages éditoriales. Îlots React quand l'interactivité est utile. |
-| UI dynamique | **React 19** en îlots `client:visible` | Hydratation à la demande, hors viewport = zéro JS chargé. |
-| Styling | **Tailwind CSS 4** via `@tailwindcss/vite`, tokens dans `@theme` (CSS pur) | Pas de `tailwind.config.js`, tout est en CSS — plus simple à auditer, meilleure DX. |
+| Framework | **Astro 5** (`output: 'static'`) | SSG zéro JS par défaut, parfait pour des pages éditoriales. Ilots React quand l'interactivité est utile. |
+| UI dynamique | **React 19** en ilots `client:visible` / `client:load` | Hydratation à la demande, hors viewport = zéro JS chargé. |
+| Styling | **Tailwind CSS 4** via `@tailwindcss/vite`, tokens dans `@theme` (CSS pur) | Pas de `tailwind.config.js`, tout est en CSS. |
 | Validation données | **Zod** au build time | Tout JSON véhicule malformé fait casser le build. Fail-fast garanti. |
-| Charts | **Chart.js 4** (via `react-chartjs-2`) | Léger, éprouvé, chargé uniquement côté îlots. |
-| Icônes | **Lucide React** | Cohérence avec écosystème moderne, tree-shakable. |
+| Charts | **Chart.js 4** (via `react-chartjs-2`) | Léger, éprouvé, chargé uniquement coté ilots. |
+| Icones | **Lucide React** + SVG inline par marque | Cohérence avec écosystème moderne, tree-shakable. |
 | Polices | `@fontsource-variable/inter` + `@fontsource-variable/jetbrains-mono`, auto-hébergées | Aucune dépendance Google Fonts en runtime. |
 | TypeScript | Mode strict + `noUncheckedIndexedAccess` | Zéro `any`, accès tableau toujours typés `T \| undefined`. |
 | SEO | `@astrojs/sitemap`, JSON-LD `Vehicle` sur chaque fiche, OG tags complets | Standard. |
-| Hébergement | **Cloudflare Pages** | Bande passante illimitée, builds illimités, gratuit à vie. `wrangler.toml` fourni. |
+| Hébergement | **GitHub Pages** | Déploiement statique gratuit. `base: '/Evly'`, `trailingSlash: 'always'`. |
+
+---
+
+## Fonctionnalités
+
+### Catalogue (120+ véhicules)
+- 30 marques couvrant 120+ véhicules électriques du marché français
+- Fiches détaillées : specs, autonomie réelle, courbe de charge, conso par vitesse, verdict, sources
+- Sidebar sticky avec prix, CTAs config et bouton favori
+- Filtres catalogue : segment, budget (7 paliers), marques groupées par origine (FR/DE/IT/KR/JP/US/SE/CN/Autres)
+- Sections repliables (details/summary) avec chevron CSS
+- Favoris LocalStorage avec filtre dédié
+
+### Comparateur
+- Jusqu'a 4 véhicules côte à côte, vue tableau horizontal
+- Scroll horizontal mobile, sticky header de colonnes
+
+### Simulateur TCO
+- Calcul cout total de possession VE vs thermique sur 1 a 10 ans
+- Selecteur véhicule + finition/batterie pour un cout représentatif
+- Sliders km/an, durée, mix électricité domicile/rapide, essence/diesel
+- Parametres avancés : entretien, assurance, valeur résiduelle, TVS
+- Panel pédagogique dépréciation VE (batterie, sécurité, 2035, ZFE)
+- Nombres animés (ease-out cubic 400ms)
+- Barres cout/km VE vs thermique, cout mensuel, décomposition par poste
+- Layout pleine largeur 2 colonnes (60/40), résultats sticky, responsive 1/2/2+sticky
+
+### Leasing social
+- Dossier complet : mécanisme CEE, conditions ménage, score ADEME
+- Liste véhicules éligibles officiels, compatibles ADEME, sous réserve constructeur
+- Prime CEE achat direct (max 8 100 EUR)
+
+### Pages éditoriales
+- Recommandation par scoring pondéré
+- Page Pro (flottes, TCO entreprise)
+- Glossaire VE interactif
+- Méthodologie : approche, protocoles, sources, limites
 
 ---
 
@@ -40,41 +77,43 @@ Les comparateurs VE existants sont soit franchement publicitaires (sites constru
 
 ```
 evly/
-├── astro.config.mjs              # site: https://evly.eu, output: 'static'
-├── wrangler.toml                 # config Cloudflare Pages
+├── astro.config.mjs              # base: '/Evly', output: 'static'
 ├── tsconfig.json                 # strict + alias @/...
 ├── public/
-│   ├── favicon.svg               # "e" vert sur fond #0A0A0B
+│   ├── favicon.svg
 │   └── robots.txt
 └── src/
     ├── pages/
     │   ├── index.astro           # accueil éditorial
     │   ├── vehicules/
-    │   │   ├── index.astro       # liste catalogue
+    │   │   ├── index.astro       # catalogue avec filtres sidebar
     │   │   └── [slug].astro      # fiche véhicule (route dynamique)
-    │   ├── comparer.astro        # placeholder V2
-    │   ├── simulateur.astro      # placeholder V3
-    │   ├── recommandation.astro  # placeholder V4
-    │   └── methodologie.astro    # approche, protocoles, sources, limites
+    │   ├── comparer.astro        # comparateur horizontal 4 véhicules
+    │   ├── simulateur.astro      # simulateur TCO pleine largeur
+    │   ├── leasing-social/       # dossier leasing social complet
+    │   ├── pro.astro             # page pro / flottes
+    │   ├── recommandation.astro  # questionnaire scoring
+    │   ├── glossaire.astro       # glossaire VE
+    │   ├── methodologie.astro    # approche et sources
+    │   └── admin.astro           # tableau de bord dev (localhost only)
     ├── layouts/
     │   └── BaseLayout.astro      # HTML shell + meta SEO + JSON-LD + nav/footer
     ├── components/
-    │   ├── nav/                  # Navigation, Footer (wordmark Evly)
-    │   ├── ui/                   # Wordmark, Button, Card, Stat, Tag, Divider,
-    │   │                         #   ComingSoon, SectionHeader, SourceTooltip,
-    │   │                         #   MethodologyBadge
-    │   └── vehicle/              # composants spécifiques aux fiches
-    │       ├── VehicleHero.astro
-    │       ├── SpecGrid.astro
-    │       ├── PriceBreakdown.astro
-    │       ├── VerdictBlock.astro
-    │       ├── ChargingCurve.tsx     # îlot React, Chart.js
-    │       ├── SeasonalRange.tsx     # îlot React, Chart.js
-    │       └── SpeedConsumption.tsx  # îlot React, scatter conso/vitesse multi-sources
+    │   ├── nav/                  # Navigation, Footer
+    │   ├── ui/                   # BrandLogo, Button, Card, Stat, Tag, FavoriteButton...
+    │   ├── vehicle/              # VehicleHero, SpecGrid, PriceBreakdown, VerdictBlock,
+    │   │                         #   ChargingCurve.tsx, SeasonalRange.tsx, SpeedConsumption.tsx
+    │   ├── tco/                  # TcoCalculator.tsx (simulateur TCO, ilot React)
+    │   ├── compare/              # CompareTable.tsx (comparateur, ilot React)
+    │   └── admin/                # AdminPanel, ConfigTracker, Roadmap (dev only)
     ├── data/
     │   ├── vehicles/             # un .json par véhicule, validé Zod au build
     │   ├── schemas.ts            # schéma Zod exhaustif (60+ champs + rangeTests)
-    │   └── sources.ts            # registre structuré : nyland, evkx, arenaev…
+    │   ├── sources.ts            # registre structuré : nyland, evkx, arenaev...
+    │   └── roadmap.ts            # roadmap avec auto-detect au build
+    ├── assets/
+    │   ├── vehicles/             # images véhicules (WebP)
+    │   └── logos/                # 31 logos marques SVG (inline, currentColor)
     ├── lib/
     │   ├── format.ts             # formatters FR (prix, km, kWh, durées)
     │   └── vehicles.ts           # loader avec validation Zod
@@ -85,10 +124,15 @@ evly/
 ### Ajouter un véhicule
 
 1. Créer `src/data/vehicles/<slug>.json` qui valide `VehicleSchema`.
-2. Vérifier que les sources citées existent dans `src/data/sources.ts`. Sinon, les ajouter.
-3. `npm run build` — la fiche est générée automatiquement à `/vehicules/<slug>`.
+2. Placer l'image dans `src/assets/vehicles/<slug>.webp` (optionnel).
+3. Placer le logo marque dans `src/assets/logos/<Marque>.svg` si absent (optionnel, fallback SVG inline).
+4. `npm run build` -- la fiche est générée automatiquement à `/vehicules/<slug>`.
 
 Si le JSON ne valide pas, le build casse avec un message Zod clair pointant le champ fautif.
+
+### Logos marques
+
+31 logos SVG dans `src/assets/logos/`. Le composant `BrandLogo.astro` normalise le nom (minuscules, sans diacritiques) et matche le fichier. Nommer le fichier exactement comme la marque : `Alfa Romeo.svg`, `Citroën.svg`, etc. Fallback SVG inline pour les marques sans fichier.
 
 ---
 
@@ -111,21 +155,19 @@ Règles non négociables :
 |---|---|
 | Fond | `#0A0A0B` (presque noir, nuance chaude) |
 | Surface élevée | `#131316` |
-| Accent | `#B8FF3D` (vert électrique — chiffres clés, CTA, point du wordmark) |
+| Accent | `#B8FF3D` (vert électrique) |
 | Texte principal | `#F5F5F0` (légèrement chaud, jamais blanc pur) |
 | Lignes | 0,5 - 1 px en `#2A2A30` |
 | Wordmark | "evly" Inter Display 600, tracking -0.03em, point central vert accent |
-| Titres H1 | Inter Display 600, tracking -0.022em, jusqu'à 80 px |
-| Chiffres signature | Inter Display 600, tabular-nums, 96 px+ pour hero |
+| Titres H1 | Inter Display 600, tracking -0.022em |
 | Specs techniques | JetBrains Mono 400-500 |
 | **Interdits** | gradients, ombres portées, glows, emojis, capitales criardes, fonds bleus, fonts génériques |
 
 ---
 
-## Performance & accessibilité
+## Performance et accessibilité
 
-- **Lighthouse** : 100/100/100/100 visé sur la fiche véhicule.
-- **JS** : zéro sur les pages purement éditoriales. Charts en îlots `client:visible`.
+- **JS** : zéro sur les pages purement éditoriales. Charts et calculateurs en ilots React.
 - **Fonts** : auto-hébergées, `font-display: swap`.
 - **A11y** : skip link, charts `role="img"` + `aria-label`, focus visible 2 px accent, contrastes AAA, `prefers-reduced-motion` respecté.
 - **SEO** : sitemap auto, OG complets, JSON-LD `Vehicle` sur chaque fiche.
@@ -144,30 +186,13 @@ Règles non négociables :
 
 ---
 
-## Déploiement Cloudflare Pages
+## Déploiement GitHub Pages
 
-1. Pousser le dépôt sur GitHub / GitLab.
-2. Sur le dashboard Cloudflare → Pages → *Create project* → connecter le dépôt.
-3. Build command : `npm run build`. Output directory : `dist`.
-4. Pointer le domaine `evly.eu` vers le projet Pages. Aucun runtime requis.
-
-Coût total : 0 €/mois, bande passante illimitée, builds illimités.
-
----
-
-## État du projet
-
-| Phase | Statut |
-|---|---|
-| **V1 — bootstrap** : design system, schéma, fiche véhicule, 2 variantes EV4 | Livrée |
-| **V2 — sources** : branding Evly, registre de sources structuré, tests terrain Nyland | **Livrée** |
-| V3 : comparateur multi (jusqu'à 4 véhicules, îlot React) | À venir |
-| V4 : simulateur TCO (sliders interactifs) | À venir |
-| V5 : questionnaire de recommandation (scoring pondéré) | À venir |
-| V6 : extension catalogue à 10 modèles | À venir |
+Build et déploiement automatiques via GitHub Actions sur push `main`.
+Build command : `npm run build`. Output : `dist/`.
 
 ---
 
 ## Crédits
 
-Projet personnel à but de démonstration. Tous les chiffres mesurés sont attribués à leur source (Bjørn Nyland, EVKX, ArenaEV, InsideEVs, Automobile Propre, Caradisiac, L'Argus, Touring). Aucun lien commercial n'existe avec les marques ou les sources citées. Pour les essais complets, consulter les sources originales — Evly ne reproduit jamais leur contenu éditorial.
+Projet personnel à but de démonstration. Tous les chiffres mesurés sont attribués à leur source (Bjorn Nyland, EVKX, ArenaEV, InsideEVs, Automobile Propre, Caradisiac, L'Argus, Touring). Aucun lien commercial n'existe avec les marques ou les sources citées. Pour les essais complets, consulter les sources originales.
