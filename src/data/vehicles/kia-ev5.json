@@ -22,7 +22,7 @@
   "architecture_V": 400,
   "mass_kg": 1700,
   "wltp_max_km": 530,
-  "wltp_min_km": 480,
+  "wltp_min_km": 400,
   "realRange": {
     "mixed_km": 450,
     "highway_130_km": 320,
@@ -82,11 +82,48 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Earth",
-      "price_EUR": 48000,
-      "batteryUsed": "88 kWh",
+      "name": "Standard Range Air",
+      "price_EUR": 36990,
+      "batteryUsed": "Standard 58 kWh",
       "equipmentHighlights": [
-        "Agencement intérieur"
+        "Ecran 12.3\"",
+        "Jantes 18\""
+      ]
+    },
+    {
+      "name": "Standard Range Earth",
+      "price_EUR": 40990,
+      "batteryUsed": "Standard 58 kWh",
+      "equipmentHighlights": [
+        "Sellerie cuir",
+        "Siege conducteur electrique"
+      ]
+    },
+    {
+      "name": "Long Range Air",
+      "price_EUR": 42990,
+      "batteryUsed": "Long Range 88 kWh",
+      "equipmentHighlights": [
+        "Batterie 88 kWh",
+        "Jantes 18\""
+      ]
+    },
+    {
+      "name": "Long Range Earth",
+      "price_EUR": 46990,
+      "batteryUsed": "Long Range 88 kWh",
+      "equipmentHighlights": [
+        "Sellerie cuir",
+        "Toit ouvrant"
+      ]
+    },
+    {
+      "name": "Long Range GT-Line",
+      "price_EUR": 51990,
+      "batteryUsed": "Long Range 88 kWh",
+      "equipmentHighlights": [
+        "Jantes 20\"",
+        "Design sportif"
       ]
     }
   ],
@@ -95,14 +132,70 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "kia-ev5-earth",
-      "label": "EV5 Earth",
+      "id": "kia-ev5-std-air",
+      "label": "EV5 Standard Range Air",
       "battery": "standard",
-      "trim": "Earth",
+      "trim": "Standard Range Air",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 48000,
+      "price_EUR": 36990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 400,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 220,
+        "urban_km": 380,
+        "winter_minus5_km": 240,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 140,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 38,
+      "chargingCurve": null,
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "kia-ev5-std-earth",
+      "label": "EV5 Standard Range Earth",
+      "battery": "standard",
+      "trim": "Standard Range Earth",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 40990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 400,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 220,
+        "urban_km": 380,
+        "winter_minus5_km": 240,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 140,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 38,
+      "chargingCurve": null,
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "kia-ev5-lr-air",
+      "label": "EV5 Long Range Air",
+      "battery": "long-range",
+      "trim": "Long Range Air",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 42990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 530,
@@ -119,29 +212,82 @@
       "chargingDC_10_80_min": 35,
       "chargingDC_kWh_30min": 50,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 100
-        },
-        {
-          "soc": 10,
-          "power": 130
-        },
-        {
-          "soc": 50,
-          "power": 100
-        },
-        {
-          "soc": 80,
-          "power": 50
-        },
-        {
-          "soc": 100,
-          "power": 10
-        }
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 130 },
+        { "soc": 50, "power": 100 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 10 }
       ],
       "availability": "available",
       "notes": null
+    },
+    {
+      "id": "kia-ev5-lr-earth",
+      "label": "EV5 Long Range Earth",
+      "battery": "long-range",
+      "trim": "Long Range Earth",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 46990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 530,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": {
+        "mixed_km": 450,
+        "highway_130_km": 320,
+        "urban_km": 530,
+        "winter_minus5_km": 350,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 140,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 130 },
+        { "soc": 50, "power": 100 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "kia-ev5-lr-gt-line",
+      "label": "EV5 Long Range GT-Line",
+      "battery": "long-range",
+      "trim": "Long Range GT-Line",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 51990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 510,
+      "wltp_consumption_kWh_100km": 16,
+      "realRange": {
+        "mixed_km": 430,
+        "highway_130_km": 300,
+        "urban_km": 510,
+        "winter_minus5_km": 330,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 140,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 130 },
+        { "soc": 50, "power": 100 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "available",
+      "notes": "Jantes 20\" reduisent l'autonomie"
     }
   ],
   "warranty": {

@@ -61,16 +61,28 @@ function isDaily(v: Vehicle) {
 }
 
 const categories = ["Mini-SUV", "SUV", "Compacte", "Berline", "Citadine", "Monospace", "Utilitaire", "Quadricycle"];
-// Liste des marques dérivée dynamiquement des fiches en base, triée par ordre alphabétique.
-// Évite l'oubli manuel quand on ajoute une nouvelle marque.
 const brands = [...new Set(vehicles.map((v) => v.brand))].sort((a, b) =>
   a.localeCompare(b, "fr", { sensitivity: "base" }),
 );
+
+const BRAND_ORIGINS: { label: string; set: Set<string> }[] = [
+  { label: "Français", set: new Set(["Citroën", "Mobilize", "Peugeot", "Renault"]) },
+  { label: "Allemand", set: new Set(["Audi", "BMW", "Mercedes", "Opel", "Smart", "Volkswagen"]) },
+  { label: "Coréen", set: new Set(["Hyundai", "Kia"]) },
+  { label: "Chinois", set: new Set(["BYD", "Leapmotor", "MG", "Nio", "Xiaomi", "Xpeng", "Zeekr"]) },
+];
+const assignedBrands = new Set(BRAND_ORIGINS.flatMap((g) => [...g.set]));
+const brandGroups = [
+  ...BRAND_ORIGINS.map((g) => ({ label: g.label, items: brands.filter((b) => g.set.has(b)) })),
+  { label: "Autres", items: brands.filter((b) => !assignedBrands.has(b)) },
+].filter((g) => g.items.length > 0);
 
 const budgetFilters = [
   { label: "< 25 k€", value: "25000" },
   { label: "< 35 k€", value: "35000" },
   { label: "< 50 k€", value: "50000" },
+  { label: "< 70 k€", value: "70000" },
+  { label: "< 100 k€", value: "100000" },
 ];
 const specificFilters = [
   { label: "Favoris", value: "favorites" },
@@ -96,46 +108,59 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|b
         
         {/* Barre latérale (Filtres) débordant sur la gauche (Desktop) */}
         <aside class="hidden xl:block absolute top-0 right-full mr-8 w-[220px] h-full z-10">
-          <div class="sticky top-24 flex flex-col gap-7 fade-rise">
+          <div class="sticky top-24 flex flex-col gap-0 fade-rise">
 
-            <div>
-              <p class="filter-section-label">Marques</p>
-              <div class="flex flex-wrap gap-1.5">
-                {brands.map((b) => (
-                  <button class="filter-chip" data-filter="brand" data-value={b} aria-pressed="false">
-                    <BrandLogo brand={b} class="h-3 w-auto max-w-[32px] flex-shrink-0" />
-                    <span>{b}</span>
-                  </button>
+            <details class="filter-section">
+              <summary class="filter-section-toggle">Marques <span class="filter-chevron" /></summary>
+              <div class="filter-section-body">
+                {brandGroups.map((group) => (
+                  <div>
+                    <p class="filter-subgroup-label">{group.label}</p>
+                    <div class="flex flex-wrap gap-1.5">
+                      {group.items.map((b) => (
+                        <button class="filter-chip" data-filter="brand" data-value={b} aria-pressed="false">
+                          <BrandLogo brand={b} class="h-3 w-auto max-w-[32px] flex-shrink-0" />
+                          <span>{b}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
-            </div>
+            </details>
 
-            <div>
-              <p class="filter-section-label">Carrosserie</p>
-              <div class="flex flex-wrap gap-1.5">
-                {categories.map((c) => (
-                  <button class="filter-chip" data-filter="cat" data-value={c} aria-pressed="false">{c}</button>
-                ))}
+            <details class="filter-section" open>
+              <summary class="filter-section-toggle">Carrosserie <span class="filter-chevron" /></summary>
+              <div class="filter-section-body">
+                <div class="flex flex-wrap gap-1.5">
+                  {categories.map((c) => (
+                    <button class="filter-chip" data-filter="cat" data-value={c} aria-pressed="false">{c}</button>
+                  ))}
+                </div>
               </div>
-            </div>
+            </details>
 
-            <div>
-              <p class="filter-section-label">Budget max</p>
-              <div class="flex flex-wrap gap-1.5">
-                {budgetFilters.map(({ label, value }) => (
-                  <button class="filter-chip" data-filter="budget" data-value={value} aria-pressed="false">{label}</button>
-                ))}
+            <details class="filter-section" open>
+              <summary class="filter-section-toggle">Budget max <span class="filter-chevron" /></summary>
+              <div class="filter-section-body">
+                <div class="flex flex-wrap gap-1.5">
+                  {budgetFilters.map(({ label, value }) => (
+                    <button class="filter-chip" data-filter="budget" data-value={value} aria-pressed="false">{label}</button>
+                  ))}
+                </div>
               </div>
-            </div>
+            </details>
 
-            <div>
-              <p class="filter-section-label">Spécifique</p>
-              <div class="flex flex-wrap gap-1.5">
-                {specificFilters.map(({ label, value }) => (
-                  <button class="filter-chip" data-filter="specific" data-value={value} aria-pressed="false">{label}</button>
-                ))}
+            <details class="filter-section" open>
+              <summary class="filter-section-toggle">Spécifique <span class="filter-chevron" /></summary>
+              <div class="filter-section-body">
+                <div class="flex flex-wrap gap-1.5">
+                  {specificFilters.map(({ label, value }) => (
+                    <button class="filter-chip" data-filter="specific" data-value={value} aria-pressed="false">{label}</button>
+                  ))}
+                </div>
               </div>
-            </div>
+            </details>
 
             <button id="reset-filters" class="reset-btn" style="display:none">Tout effacer</button>
 
@@ -145,11 +170,16 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|b
         {/* Filtres Mobile / Tablette, rangées défilantes */}
         <div class="xl:hidden w-full mb-6 flex flex-col gap-2 fade-rise">
           <div class="filter-scroll-row">
-            {brands.map((b) => (
-              <button class="filter-chip" data-filter="brand" data-value={b} aria-pressed="false">
-                <BrandLogo brand={b} class="h-3 w-auto max-w-[28px] flex-shrink-0" />
-                <span>{b}</span>
-              </button>
+            {brandGroups.map((group, i) => (
+              <>
+                {i > 0 && <span class="filter-row-sep" />}
+                {group.items.map((b) => (
+                  <button class="filter-chip" data-filter="brand" data-value={b} aria-pressed="false">
+                    <BrandLogo brand={b} class="h-3 w-auto max-w-[28px] flex-shrink-0" />
+                    <span>{b}</span>
+                  </button>
+                ))}
+              </>
             ))}
           </div>
           <div class="filter-scroll-row">
@@ -463,14 +493,56 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|b
       border-color: var(--color-accent-dim);
     }
 
-    /* ── Filter section label ───────────────────────────── */
-    .filter-section-label {
+    /* ── Collapsible filter sections ──────────────────── */
+    .filter-section {
+      border-bottom: 1px solid var(--color-border);
+      padding: 10px 0;
+    }
+    .filter-section:first-of-type { padding-top: 0; }
+    .filter-section:last-of-type { border-bottom: none; }
+    .filter-section-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       font-family: var(--font-mono, ui-monospace, monospace);
       font-size: 0.6rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--color-text-faint);
-      margin-bottom: 8px;
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+      padding: 2px 0;
+      transition: color 0.12s;
+    }
+    .filter-section-toggle:hover { color: var(--color-text-muted); }
+    .filter-section-toggle::-webkit-details-marker { display: none; }
+    .filter-section-toggle::marker { display: none; content: ""; }
+    .filter-chevron {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-left: 3.5px solid transparent;
+      border-right: 3.5px solid transparent;
+      border-top: 3.5px solid currentColor;
+      transition: transform 0.15s;
+      flex-shrink: 0;
+    }
+    .filter-section:not([open]) .filter-chevron { transform: rotate(-90deg); }
+    .filter-section-body {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 8px;
+    }
+    .filter-subgroup-label {
+      font-family: var(--font-mono, ui-monospace, monospace);
+      font-size: 0.5rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-faint);
+      opacity: 0.65;
+      margin-bottom: 4px;
     }
 
     /* ── Mobile scroll rows ─────────────────────────────── */

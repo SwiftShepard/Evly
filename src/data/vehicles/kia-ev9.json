@@ -82,12 +82,32 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Earth",
-      "price_EUR": 73000,
+      "name": "Air",
+      "price_EUR": 73990,
       "batteryUsed": "99.8 kWh",
       "equipmentHighlights": [
         "7 places",
-        "Sièges ventilés"
+        "Ecran double 12.3\""
+      ]
+    },
+    {
+      "name": "Earth",
+      "price_EUR": 79990,
+      "batteryUsed": "99.8 kWh",
+      "equipmentHighlights": [
+        "7 places",
+        "Sieges ventiles",
+        "Toit ouvrant"
+      ]
+    },
+    {
+      "name": "GT-Line",
+      "price_EUR": 85990,
+      "batteryUsed": "99.8 kWh",
+      "equipmentHighlights": [
+        "7 places",
+        "Jantes 21\"",
+        "Design sportif"
       ]
     }
   ],
@@ -96,18 +116,18 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "kia-ev9-earth",
-      "label": "EV9 Earth",
+      "id": "kia-ev9-air",
+      "label": "EV9 Air",
       "battery": "standard",
-      "trim": "Earth",
-      "wheelSize_inches": 18,
+      "trim": "Air",
+      "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 73000,
+      "price_EUR": 73990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 563,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_consumption_kWh_100km": 19.5,
       "realRange": {
         "mixed_km": 480,
         "highway_130_km": 350,
@@ -120,29 +140,82 @@
       "chargingDC_10_80_min": 24,
       "chargingDC_kWh_30min": 70,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 100
-        },
-        {
-          "soc": 10,
-          "power": 130
-        },
-        {
-          "soc": 50,
-          "power": 100
-        },
-        {
-          "soc": 80,
-          "power": 50
-        },
-        {
-          "soc": 100,
-          "power": 10
-        }
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 130 },
+        { "soc": 50, "power": 100 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 10 }
       ],
       "availability": "available",
       "notes": null
+    },
+    {
+      "id": "kia-ev9-earth",
+      "label": "EV9 Earth",
+      "battery": "standard",
+      "trim": "Earth",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 79990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 563,
+      "wltp_consumption_kWh_100km": 19.5,
+      "realRange": {
+        "mixed_km": 480,
+        "highway_130_km": 350,
+        "urban_km": 550,
+        "winter_minus5_km": 380,
+        "confidence": "tested"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 210,
+      "chargingDC_10_80_min": 24,
+      "chargingDC_kWh_30min": 70,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 130 },
+        { "soc": 50, "power": 100 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "kia-ev9-gt-line",
+      "label": "EV9 GT-Line",
+      "battery": "standard",
+      "trim": "GT-Line",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 85990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 505,
+      "wltp_consumption_kWh_100km": 21,
+      "realRange": {
+        "mixed_km": 440,
+        "highway_130_km": 320,
+        "urban_km": 510,
+        "winter_minus5_km": 350,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 210,
+      "chargingDC_10_80_min": 24,
+      "chargingDC_kWh_30min": 70,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 130 },
+        { "soc": 50, "power": 100 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "available",
+      "notes": "Jantes 21\" reduisent l'autonomie WLTP"
     }
   ],
   "warranty": {
