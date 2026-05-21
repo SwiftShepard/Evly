@@ -1,0 +1,206 @@
+{
+  "slug": "ford-e-transit",
+  "brand": "Ford",
+  "model": "E-Transit",
+  "variant": "89 kWh",
+  "bodyType": "Fourgon",
+  "segment": "F",
+  "productionCountry": "Turquie",
+  "assemblyPlant": "Kocaeli",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 135,
+  "power_hp": 184,
+  "torque_Nm": 430,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 14.5,
+  "topSpeed_kmh": 120,
+  "usableCapacity_kWh": 89,
+  "grossCapacity_kWh": 98,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2700,
+  "wltp_max_km": 370,
+  "wltp_min_km": 280,
+  "realRange": {
+    "mixed_km": 270,
+    "highway_130_km": 175,
+    "urban_km": 340,
+    "winter_minus5_km": 215,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 27,
+  "consumption_highway_kWh_per_100km": 35,
+  "consumption_winter_kWh_per_100km": 33,
+  "dragCoefficient_Cx": 0.38,
+  "chargingDC": {
+    "peakPower_kW": 115,
+    "time_10_80_min": 38,
+    "kWh_added_30min": 47,
+    "confidence": "manufacturer"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 9.5
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 90 },
+    { "soc": 10, "power": 115 },
+    { "soc": 30, "power": 110 },
+    { "soc": 50, "power": 80 },
+    { "soc": 70, "power": 50 },
+    { "soc": 80, "power": 30 },
+    { "soc": 100, "power": 7 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 5981,
+  "width_mm": 2059,
+  "height_mm": 2548,
+  "wheelbase_mm": 3750,
+  "trunkCapacity_L": 11300,
+  "trunkCapacityFolded_L": 15100,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Trend L2H2 89 kWh",
+      "price_EUR": 57900,
+      "batteryUsed": "89 kWh",
+      "equipmentHighlights": [
+        "Volume utile 11,3 m3",
+        "Prise Pro Power Onboard 2,3 kW",
+        "SYNC 4 multimedia"
+      ]
+    },
+    {
+      "name": "Trend L3H2 89 kWh",
+      "price_EUR": 61500,
+      "batteryUsed": "89 kWh",
+      "equipmentHighlights": [
+        "Volume utile 13 m3",
+        "Empattement long",
+        "Camera de recul"
+      ]
+    },
+    {
+      "name": "Limited L3H3 89 kWh",
+      "price_EUR": 66200,
+      "batteryUsed": "89 kWh",
+      "equipmentHighlights": [
+        "Volume utile 15,1 m3",
+        "Grand volume",
+        "Prise 230V de serie"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "ford-e-transit-l2h2",
+      "label": "E-Transit Trend L2H2",
+      "battery": "standard",
+      "trim": "Trend L2H2 89 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 57900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 370,
+      "wltp_consumption_kWh_100km": 26,
+      "realRange": {
+        "mixed_km": 270,
+        "highway_130_km": 175,
+        "urban_km": 340,
+        "winter_minus5_km": 215,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 115,
+      "chargingDC_10_80_min": 38,
+      "chargingDC_kWh_30min": 47,
+      "chargingCurve": [
+        { "soc": 0, "power": 90 },
+        { "soc": 10, "power": 115 },
+        { "soc": 50, "power": 80 },
+        { "soc": 80, "power": 30 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "Propulsion arriere, Pro Power Onboard 2,3 kW pour outils electriques."
+    },
+    {
+      "id": "ford-e-transit-l3h3",
+      "label": "E-Transit Limited L3H3",
+      "battery": "standard",
+      "trim": "Limited L3H3 89 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 66200,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 280,
+      "wltp_consumption_kWh_100km": 30,
+      "realRange": {
+        "mixed_km": 220,
+        "highway_130_km": 145,
+        "urban_km": 280,
+        "winter_minus5_km": 175,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 115,
+      "chargingDC_10_80_min": 38,
+      "chargingDC_kWh_30min": 47,
+      "chargingCurve": [
+        { "soc": 0, "power": 90 },
+        { "soc": 10, "power": 115 },
+        { "soc": 50, "power": 80 },
+        { "soc": 80, "power": 30 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "Grand volume L3H3, 15,1 m3."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "confort", "label": "SYNC 4 avec ecran 12 pouces et Apple CarPlay/Android Auto" },
+    { "category": "technologie", "label": "Pro Power Onboard : prise 230V 2,3 kW pour outils electriques" },
+    { "category": "securite", "label": "Pre-Collision Assist et regulateur adaptatif de serie" },
+    { "category": "design", "label": "Propulsion arriere, rayon de braquage reduit en ville" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Pro Power Onboard unique sur le segment : prise 230V pour alimenter des outils sur chantier",
+      "Propulsion arriere avec rayon de braquage optimise pour la ville"
+    ],
+    "weaknesses": [
+      "Vitesse max bridee a 120 km/h, penalisante sur autoroute",
+      "Autonomie inferieure aux nouveaux Stellantis 110 kWh (370 vs 420 km WLTP)"
+    ],
+    "idealUserProfile": "Artisans et chantiers avec besoin de prise 230V embarquee. Livraison urbaine avec manoeuvres frequentes.",
+    "notIdealFor": "Longs trajets autoroutiers : vitesse max 120 km/h et autonomie modeste. Preferer le Master E-Tech."
+  },
+  "lastUpdated": "2026-05-21",
+  "sources": [
+    "automobile-propre",
+    "largus"
+  ],
+  "imageCredit": "Constructeur"
+}

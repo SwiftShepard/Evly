@@ -1,0 +1,206 @@
+{
+  "slug": "maxus-edeliver-7",
+  "brand": "Maxus",
+  "model": "eDeliver 7",
+  "variant": "77 / 88 kWh",
+  "bodyType": "Fourgon",
+  "segment": "E",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Nanjing",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 150,
+  "power_hp": 204,
+  "torque_Nm": 350,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 12.0,
+  "topSpeed_kmh": 140,
+  "usableCapacity_kWh": 88,
+  "grossCapacity_kWh": 92,
+  "chemistry": "LFP",
+  "architecture_V": 400,
+  "mass_kg": 2400,
+  "wltp_max_km": 370,
+  "wltp_min_km": 295,
+  "realRange": {
+    "mixed_km": 275,
+    "highway_130_km": 180,
+    "urban_km": 345,
+    "winter_minus5_km": 220,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 24,
+  "consumption_highway_kWh_per_100km": 32,
+  "consumption_winter_kWh_per_100km": 30,
+  "dragCoefficient_Cx": 0.35,
+  "chargingDC": {
+    "peakPower_kW": 115,
+    "time_10_80_min": 40,
+    "kWh_added_30min": 45,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 9
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 85 },
+    { "soc": 10, "power": 115 },
+    { "soc": 30, "power": 105 },
+    { "soc": 50, "power": 75 },
+    { "soc": 70, "power": 45 },
+    { "soc": 80, "power": 28 },
+    { "soc": 100, "power": 7 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 5320,
+  "width_mm": 1980,
+  "height_mm": 1980,
+  "wheelbase_mm": 3366,
+  "trunkCapacity_L": 6300,
+  "trunkCapacityFolded_L": 6300,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "L1H1 77 kWh",
+      "price_EUR": 39990,
+      "batteryUsed": "77 kWh",
+      "equipmentHighlights": [
+        "Volume utile 5,8 m3",
+        "Charge utile 1100 kg",
+        "Ecran multimedia 12 pouces"
+      ]
+    },
+    {
+      "name": "L1H1 88 kWh",
+      "price_EUR": 43990,
+      "batteryUsed": "88 kWh",
+      "equipmentHighlights": [
+        "Grande autonomie 370 km WLTP",
+        "V2L prise 230V",
+        "Camera 360 degres"
+      ]
+    },
+    {
+      "name": "L2H1 88 kWh",
+      "price_EUR": 45990,
+      "batteryUsed": "88 kWh",
+      "equipmentHighlights": [
+        "Volume utile 6,3 m3",
+        "Empattement long",
+        "Grande autonomie"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "maxus-edeliver-7-l1-77",
+      "label": "eDeliver 7 L1 77 kWh",
+      "battery": "standard",
+      "trim": "L1H1 77 kWh",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 39990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 295,
+      "wltp_consumption_kWh_100km": 23,
+      "realRange": {
+        "mixed_km": 225,
+        "highway_130_km": 145,
+        "urban_km": 280,
+        "winter_minus5_km": 180,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 115,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        { "soc": 0, "power": 85 },
+        { "soc": 10, "power": 115 },
+        { "soc": 50, "power": 75 },
+        { "soc": 80, "power": 28 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "Fourgon L1, batterie LFP 77 kWh."
+    },
+    {
+      "id": "maxus-edeliver-7-l1-88",
+      "label": "eDeliver 7 L1 88 kWh",
+      "battery": "long-range",
+      "trim": "L1H1 88 kWh",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 43990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 370,
+      "wltp_consumption_kWh_100km": 24,
+      "realRange": {
+        "mixed_km": 275,
+        "highway_130_km": 180,
+        "urban_km": 345,
+        "winter_minus5_km": 220,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 115,
+      "chargingDC_10_80_min": 40,
+      "chargingDC_kWh_30min": 45,
+      "chargingCurve": [
+        { "soc": 0, "power": 85 },
+        { "soc": 10, "power": 115 },
+        { "soc": 50, "power": 75 },
+        { "soc": 80, "power": 28 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "Fourgon L1, grande autonomie 88 kWh, V2L de serie."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 120000,
+    "battery_years": 8,
+    "battery_km": 200000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "confort", "label": "Cabine spacieuse avec ecran 12 pouces et camera 360" },
+    { "category": "technologie", "label": "V2L prise 230V pour alimenter outils et equipements" },
+    { "category": "securite", "label": "Freinage automatique d'urgence et detection pietons" },
+    { "category": "design", "label": "Charge utile 1100 kg, competitive face aux europeens" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Rapport prix/prestations imbattable : 40 000 EUR pour un fourgon moyen electrique",
+      "V2L de serie en 88 kWh, pratique pour les chantiers"
+    ],
+    "weaknesses": [
+      "Reseau SAV Maxus encore limite en France (< 100 points)",
+      "Valeur residuelle incertaine pour une marque encore peu connue"
+    ],
+    "idealUserProfile": "PME et artisans cherchant un fourgon electrique au meilleur prix, avec tournees urbaines et periurbaines.",
+    "notIdealFor": "Flottes entreprise exigeant un reseau SAV dense ou une valeur residuelle elevee pour le leasing."
+  },
+  "lastUpdated": "2026-05-21",
+  "sources": [
+    "automobile-propre",
+    "largus"
+  ],
+  "imageCredit": "Constructeur"
+}

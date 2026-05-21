@@ -32,7 +32,7 @@ Les comparateurs VE existants sont soit franchement publicitaires (sites constru
 | Polices | `@fontsource-variable/inter` + `@fontsource-variable/jetbrains-mono`, auto-hébergées | Aucune dépendance Google Fonts en runtime. |
 | TypeScript | Mode strict + `noUncheckedIndexedAccess` | Zéro `any`, accès tableau toujours typés `T \| undefined`. |
 | SEO | `@astrojs/sitemap`, JSON-LD `Vehicle` sur chaque fiche, OG tags complets | Standard. |
-| Hébergement | **GitHub Pages** | Déploiement statique gratuit. `base: '/Evly'`, `trailingSlash: 'always'`. |
+| Hébergement | **GitHub Pages** + domaine custom | `site: 'https://ev-ly.com'`, `trailingSlash: 'always'`. |
 
 ---
 
@@ -77,7 +77,7 @@ Les comparateurs VE existants sont soit franchement publicitaires (sites constru
 
 ```
 evly/
-├── astro.config.mjs              # base: '/Evly', output: 'static'
+├── astro.config.mjs              # site: ev-ly.com, output: 'static'
 ├── tsconfig.json                 # strict + alias @/...
 ├── public/
 │   ├── favicon.svg
@@ -186,10 +186,12 @@ Règles non négociables :
 
 ---
 
-## Déploiement GitHub Pages
+## Déploiement
 
+Domaine : **ev-ly.com** (CNAME dans `public/CNAME`).
 Build et déploiement automatiques via GitHub Actions sur push `main`.
 Build command : `npm run build`. Output : `dist/`.
+DNS : A record vers GitHub Pages IPs + CNAME `www` vers `swiftshepard.github.io`.
 
 ---
 

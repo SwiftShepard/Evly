@@ -1,0 +1,205 @@
+{
+  "slug": "mercedes-evito",
+  "brand": "Mercedes",
+  "model": "eVito",
+  "variant": "60 kWh",
+  "bodyType": "Fourgon",
+  "segment": "E",
+  "productionCountry": "Espagne",
+  "assemblyPlant": "Vitoria-Gasteiz",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 85,
+  "power_hp": 116,
+  "torque_Nm": 360,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 15.0,
+  "topSpeed_kmh": 120,
+  "usableCapacity_kWh": 60,
+  "grossCapacity_kWh": 66,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2380,
+  "wltp_max_km": 314,
+  "wltp_min_km": 260,
+  "realRange": {
+    "mixed_km": 230,
+    "highway_130_km": 150,
+    "urban_km": 290,
+    "winter_minus5_km": 185,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 22,
+  "consumption_highway_kWh_per_100km": 29,
+  "consumption_winter_kWh_per_100km": 27,
+  "dragCoefficient_Cx": 0.35,
+  "chargingDC": {
+    "peakPower_kW": 110,
+    "time_10_80_min": 35,
+    "kWh_added_30min": 35,
+    "confidence": "manufacturer"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 6.5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 85 },
+    { "soc": 10, "power": 110 },
+    { "soc": 30, "power": 100 },
+    { "soc": 50, "power": 70 },
+    { "soc": 80, "power": 30 },
+    { "soc": 100, "power": 7 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 5140,
+  "width_mm": 1928,
+  "height_mm": 1910,
+  "wheelbase_mm": 3200,
+  "trunkCapacity_L": 6000,
+  "trunkCapacityFolded_L": 6600,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Base L2 60 kWh",
+      "price_EUR": 49900,
+      "batteryUsed": "60 kWh",
+      "equipmentHighlights": [
+        "Volume utile 6 m3",
+        "Charge DC 110 kW",
+        "MBUX 7 pouces"
+      ]
+    },
+    {
+      "name": "Pro L2 60 kWh",
+      "price_EUR": 53500,
+      "batteryUsed": "60 kWh",
+      "equipmentHighlights": [
+        "MBUX 10 pouces",
+        "Camera de recul",
+        "Climatisation automatique"
+      ]
+    },
+    {
+      "name": "Pro L3 60 kWh",
+      "price_EUR": 55200,
+      "batteryUsed": "60 kWh",
+      "equipmentHighlights": [
+        "Volume utile 6,6 m3",
+        "Empattement long",
+        "MBUX 10 pouces"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "mercedes-evito-l2",
+      "label": "eVito L2 60 kWh",
+      "battery": "standard",
+      "trim": "Base L2 60 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 49900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 314,
+      "wltp_consumption_kWh_100km": 21,
+      "realRange": {
+        "mixed_km": 230,
+        "highway_130_km": 150,
+        "urban_km": 290,
+        "winter_minus5_km": 185,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 110,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        { "soc": 0, "power": 85 },
+        { "soc": 10, "power": 110 },
+        { "soc": 50, "power": 70 },
+        { "soc": 80, "power": 30 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "Fourgon L2, traction avant."
+    },
+    {
+      "id": "mercedes-evito-l3",
+      "label": "eVito L3 60 kWh",
+      "battery": "standard",
+      "trim": "Pro L3 60 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 55200,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 260,
+      "wltp_consumption_kWh_100km": 24,
+      "realRange": {
+        "mixed_km": 200,
+        "highway_130_km": 130,
+        "urban_km": 255,
+        "winter_minus5_km": 160,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 110,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        { "soc": 0, "power": 85 },
+        { "soc": 10, "power": 110 },
+        { "soc": 50, "power": 70 },
+        { "soc": 80, "power": 30 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "Fourgon L3, empattement long."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 3,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "confort", "label": "Cabine Mercedes avec MBUX et commande vocale" },
+    { "category": "technologie", "label": "Charge DC 110 kW pour complements rapides en tournee" },
+    { "category": "securite", "label": "Active Brake Assist et Attention Assist de serie" },
+    { "category": "design", "label": "Volume utile jusqu'a 6,6 m3 en version L3" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Finition et confort conducteur premium, MBUX de serie",
+      "Charge DC 110 kW, rapide pour la capacite batterie"
+    ],
+    "weaknesses": [
+      "Batterie 60 kWh unique, autonomie limitee pour un fourgon moyen",
+      "Vitesse max bridee a 120 km/h, penalisante sur autoroute"
+    ],
+    "idealUserProfile": "Livraison urbaine premium, flottes d'entreprise avec image de marque, artisans avec trajets courts.",
+    "notIdealFor": "Longs trajets ou besoin de grande autonomie : l'Expert/Jumpy 75 kWh offre plus d'autonomie a prix inferieur."
+  },
+  "lastUpdated": "2026-05-21",
+  "sources": [
+    "automobile-propre",
+    "largus"
+  ],
+  "imageCredit": "Constructeur"
+}

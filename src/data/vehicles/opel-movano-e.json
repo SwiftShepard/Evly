@@ -1,0 +1,201 @@
+{
+  "slug": "opel-movano-e",
+  "brand": "Opel",
+  "model": "Movano-e",
+  "variant": "110 kWh",
+  "bodyType": "Fourgon",
+  "segment": "F",
+  "productionCountry": "Italie",
+  "assemblyPlant": "Atessa",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 150,
+  "power_hp": 204,
+  "torque_Nm": 350,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 15.0,
+  "topSpeed_kmh": 130,
+  "usableCapacity_kWh": 110,
+  "grossCapacity_kWh": 115,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2700,
+  "wltp_max_km": 420,
+  "wltp_min_km": 340,
+  "realRange": {
+    "mixed_km": 310,
+    "highway_130_km": 200,
+    "urban_km": 385,
+    "winter_minus5_km": 245,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 28,
+  "consumption_highway_kWh_per_100km": 36,
+  "consumption_winter_kWh_per_100km": 34,
+  "dragCoefficient_Cx": 0.38,
+  "chargingDC": {
+    "peakPower_kW": 150,
+    "time_10_80_min": 42,
+    "kWh_added_30min": 55,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 22,
+    "phases": 3,
+    "time_0_100_h": 6
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 110 },
+    { "soc": 10, "power": 150 },
+    { "soc": 30, "power": 140 },
+    { "soc": 50, "power": 100 },
+    { "soc": 70, "power": 60 },
+    { "soc": 80, "power": 38 },
+    { "soc": 100, "power": 8 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 5998,
+  "width_mm": 2050,
+  "height_mm": 2524,
+  "wheelbase_mm": 3450,
+  "trunkCapacity_L": 11500,
+  "trunkCapacityFolded_L": 13000,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Edition L2H2 110 kWh",
+      "price_EUR": 56200,
+      "batteryUsed": "110 kWh",
+      "equipmentHighlights": [
+        "Volume utile 11,5 m3",
+        "Charge DC 150 kW",
+        "Ecran multimedia 8 pouces"
+      ]
+    },
+    {
+      "name": "Edition L3H2 110 kWh",
+      "price_EUR": 60500,
+      "batteryUsed": "110 kWh",
+      "equipmentHighlights": [
+        "Volume utile 13 m3",
+        "Empattement long",
+        "Camera de recul"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
+  "configurations": [
+    {
+      "id": "opel-movano-e-l2h2",
+      "label": "Movano-e L2H2 110 kWh",
+      "battery": "standard",
+      "trim": "Edition L2H2 110 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 56200,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 420,
+      "wltp_consumption_kWh_100km": 27,
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 200,
+        "urban_km": 385,
+        "winter_minus5_km": 245,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 42,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 110 },
+        { "soc": 10, "power": 150 },
+        { "soc": 50, "power": 100 },
+        { "soc": 80, "power": 38 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "Grand fourgon L2H2, plateforme partagee Boxer/Jumper/Ducato."
+    },
+    {
+      "id": "opel-movano-e-l3h2",
+      "label": "Movano-e L3H2 110 kWh",
+      "battery": "standard",
+      "trim": "Edition L3H2 110 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 60500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 370,
+      "wltp_consumption_kWh_100km": 30,
+      "realRange": {
+        "mixed_km": 280,
+        "highway_130_km": 180,
+        "urban_km": 350,
+        "winter_minus5_km": 220,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 42,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 110 },
+        { "soc": 10, "power": 150 },
+        { "soc": 50, "power": 100 },
+        { "soc": 80, "power": 38 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "Grand fourgon L3H2, 13 m3 de volume utile."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "confort", "label": "Cabine ergonomique avec rangements professionnels" },
+    { "category": "technologie", "label": "Charge rapide 150 kW, completement en 42 min (10-80%)" },
+    { "category": "securite", "label": "Freinage automatique d'urgence et alerte angle mort" },
+    { "category": "design", "label": "Volumes utiles de 11,5 a 17 m3 selon configuration" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Plateforme partagee Stellantis, reseau SAV Opel dense en Europe",
+      "Autonomie 420 km WLTP, nouvelle generation 110 kWh"
+    ],
+    "weaknesses": [
+      "Prix proche des concurrents Boxer/Jumper, peu d'avantage distinctif",
+      "Consommation elevee sur autoroute charge"
+    ],
+    "idealUserProfile": "Flottes d'entreprise fideles a Opel, artisans avec besoin de grand volume et acces ZFE.",
+    "notIdealFor": "Professionnels sans infrastructure de recharge au depot ou avec longs trajets autoroutiers quotidiens."
+  },
+  "lastUpdated": "2026-05-21",
+  "sources": [
+    "automobile-propre",
+    "largus"
+  ],
+  "imageCredit": "Constructeur"
+}

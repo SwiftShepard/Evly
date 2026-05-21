@@ -1,0 +1,194 @@
+{
+  "slug": "maxus-edeliver-3",
+  "brand": "Maxus",
+  "model": "eDeliver 3",
+  "variant": "50 kWh",
+  "bodyType": "Fourgonnette",
+  "segment": "C",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Nanjing",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 90,
+  "power_hp": 122,
+  "torque_Nm": 255,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 12.5,
+  "topSpeed_kmh": 120,
+  "usableCapacity_kWh": 50,
+  "grossCapacity_kWh": 52.5,
+  "chemistry": "LFP",
+  "architecture_V": 400,
+  "mass_kg": 1830,
+  "wltp_max_km": 310,
+  "wltp_min_km": 275,
+  "realRange": {
+    "mixed_km": 225,
+    "highway_130_km": 145,
+    "urban_km": 285,
+    "winter_minus5_km": 175,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 19,
+  "consumption_highway_kWh_per_100km": 26,
+  "consumption_winter_kWh_per_100km": 24,
+  "dragCoefficient_Cx": 0.35,
+  "chargingDC": {
+    "peakPower_kW": 80,
+    "time_10_80_min": 38,
+    "kWh_added_30min": 27,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 6
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 60 },
+    { "soc": 10, "power": 80 },
+    { "soc": 50, "power": 65 },
+    { "soc": 80, "power": 30 },
+    { "soc": 100, "power": 6 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4500,
+  "width_mm": 1780,
+  "height_mm": 1895,
+  "wheelbase_mm": 2890,
+  "trunkCapacity_L": 3700,
+  "trunkCapacityFolded_L": 4800,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "50 kWh L1",
+      "price_EUR": 29990,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "Volume utile 3,7 m3",
+        "Charge utile 830 kg",
+        "Ecran multimedia 10 pouces"
+      ]
+    },
+    {
+      "name": "50 kWh L2",
+      "price_EUR": 31990,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "Volume utile 4,8 m3",
+        "Empattement long",
+        "Camera de recul"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "maxus-edeliver-3-l1",
+      "label": "eDeliver 3 L1 50 kWh",
+      "battery": "standard",
+      "trim": "50 kWh L1",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 29990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 310,
+      "wltp_consumption_kWh_100km": 18,
+      "realRange": {
+        "mixed_km": 225,
+        "highway_130_km": 145,
+        "urban_km": 285,
+        "winter_minus5_km": 175,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 80,
+      "chargingDC_10_80_min": 38,
+      "chargingDC_kWh_30min": 27,
+      "chargingCurve": [
+        { "soc": 0, "power": 60 },
+        { "soc": 10, "power": 80 },
+        { "soc": 50, "power": 65 },
+        { "soc": 80, "power": 30 },
+        { "soc": 100, "power": 6 }
+      ],
+      "availability": "available",
+      "notes": "Fourgonnette L1, batterie LFP 50 kWh."
+    },
+    {
+      "id": "maxus-edeliver-3-l2",
+      "label": "eDeliver 3 L2 50 kWh",
+      "battery": "standard",
+      "trim": "50 kWh L2",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 31990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 275,
+      "wltp_consumption_kWh_100km": 20,
+      "realRange": {
+        "mixed_km": 205,
+        "highway_130_km": 130,
+        "urban_km": 260,
+        "winter_minus5_km": 160,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 80,
+      "chargingDC_10_80_min": 38,
+      "chargingDC_kWh_30min": 27,
+      "chargingCurve": [
+        { "soc": 0, "power": 60 },
+        { "soc": 10, "power": 80 },
+        { "soc": 50, "power": 65 },
+        { "soc": 80, "power": 30 },
+        { "soc": 100, "power": 6 }
+      ],
+      "availability": "available",
+      "notes": "Fourgonnette L2, volume utile 4,8 m3."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 200000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "confort", "label": "Poste de conduite ergonomique avec ecran 10 pouces" },
+    { "category": "technologie", "label": "Batterie LFP plus durable, optimisee pour la charge quotidienne" },
+    { "category": "securite", "label": "Freinage automatique d'urgence et alerte angle mort" },
+    { "category": "design", "label": "Charge utile 830 kg competitive dans le segment" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Prix d'entree tres agressif (< 30 000 EUR), le plus competitif du segment",
+      "Batterie LFP durable, garantie batterie 8 ans / 200 000 km"
+    ],
+    "weaknesses": [
+      "Reseau SAV Maxus encore limite en France",
+      "Charge DC limitee a 80 kW"
+    ],
+    "idealUserProfile": "TPE et artisans avec budget serre, tournees urbaines courtes. Ideal pour un premier fourgon electrique.",
+    "notIdealFor": "Professionnels dependant d'un reseau SAV dense ou roulant au-dela de 200 km par jour."
+  },
+  "lastUpdated": "2026-05-21",
+  "sources": [
+    "automobile-propre",
+    "largus"
+  ],
+  "imageCredit": "Constructeur"
+}

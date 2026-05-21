@@ -1,0 +1,209 @@
+{
+  "slug": "peugeot-e-partner",
+  "brand": "Peugeot",
+  "model": "e-Partner",
+  "variant": "50 kWh",
+  "bodyType": "Fourgonnette",
+  "segment": "C",
+  "productionCountry": "Espagne",
+  "assemblyPlant": "Vigo",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 100,
+  "power_hp": 136,
+  "torque_Nm": 260,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 11.7,
+  "topSpeed_kmh": 135,
+  "usableCapacity_kWh": 50,
+  "grossCapacity_kWh": 54,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1780,
+  "wltp_max_km": 330,
+  "wltp_min_km": 275,
+  "realRange": {
+    "mixed_km": 240,
+    "highway_130_km": 155,
+    "urban_km": 305,
+    "winter_minus5_km": 190,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 18,
+  "consumption_highway_kWh_per_100km": 24,
+  "consumption_winter_kWh_per_100km": 22,
+  "dragCoefficient_Cx": 0.34,
+  "chargingDC": {
+    "peakPower_kW": 100,
+    "time_10_80_min": 30,
+    "kWh_added_30min": 30,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 6
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 77 },
+    { "soc": 10, "power": 100 },
+    { "soc": 50, "power": 75 },
+    { "soc": 80, "power": 35 },
+    { "soc": 100, "power": 7 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4403,
+  "width_mm": 1848,
+  "height_mm": 1800,
+  "wheelbase_mm": 2785,
+  "trunkCapacity_L": 3300,
+  "trunkCapacityFolded_L": 3900,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Pro L1 50 kWh",
+      "price_EUR": 33800,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "Volume utile 3,3 m3",
+        "Charge utile 800 kg",
+        "Ecran tactile 8 pouces"
+      ]
+    },
+    {
+      "name": "Premium L1 50 kWh",
+      "price_EUR": 36800,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "Ecran 10 pouces",
+        "Camera de recul",
+        "Sieges chauffants"
+      ]
+    },
+    {
+      "name": "Pro L2 50 kWh",
+      "price_EUR": 35400,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "Volume utile 3,9 m3",
+        "Empattement long",
+        "Charge utile 800 kg"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
+  "configurations": [
+    {
+      "id": "peugeot-e-partner-pro-l1",
+      "label": "e-Partner Pro L1",
+      "battery": "standard",
+      "trim": "Pro L1 50 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 33800,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 330,
+      "wltp_consumption_kWh_100km": 17.5,
+      "realRange": {
+        "mixed_km": 240,
+        "highway_130_km": 155,
+        "urban_km": 305,
+        "winter_minus5_km": 190,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        { "soc": 0, "power": 77 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 75 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "Fourgonnette L1, volume utile 3,3 m3."
+    },
+    {
+      "id": "peugeot-e-partner-pro-l2",
+      "label": "e-Partner Pro L2",
+      "battery": "standard",
+      "trim": "Pro L2 50 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 35400,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 275,
+      "wltp_consumption_kWh_100km": 19,
+      "realRange": {
+        "mixed_km": 215,
+        "highway_130_km": 135,
+        "urban_km": 270,
+        "winter_minus5_km": 170,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        { "soc": 0, "power": 77 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 75 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "Fourgonnette L2, volume utile 3,9 m3."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "confort", "label": "Poste de conduite i-Cockpit avec volant compact" },
+    { "category": "technologie", "label": "Charge DC 100 kW pour complements rapides en tournee" },
+    { "category": "securite", "label": "Freinage automatique d'urgence et aide au maintien de voie" },
+    { "category": "design", "label": "Cloison de charge pleine hauteur et charge utile 800 kg" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Gabarit compact ideal pour livraisons en centre-ville et ZFE",
+      "Charge utile de 800 kg, equivalent thermique"
+    ],
+    "weaknesses": [
+      "Autonomie reelle limitee sur autoroute (155 km a 130 km/h)",
+      "Charge AC 11 kW seulement, pas de 22 kW en option"
+    ],
+    "idealUserProfile": "Artisans et livreurs urbains avec tournees courtes quotidiennes et recharge nocturne au depot.",
+    "notIdealFor": "Professionnels avec missions depassant 200 km par jour ou necessite de recharge rapide frequente."
+  },
+  "lastUpdated": "2026-05-21",
+  "sources": [
+    "automobile-propre",
+    "largus"
+  ],
+  "imageCredit": "Constructeur"
+}

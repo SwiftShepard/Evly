@@ -1,0 +1,209 @@
+{
+  "slug": "opel-vivaro-e-life",
+  "brand": "Opel",
+  "model": "Vivaro-e Life",
+  "variant": "50 / 75 kWh",
+  "bodyType": "Combi",
+  "segment": "E",
+  "productionCountry": "France",
+  "assemblyPlant": "Hordain",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 100,
+  "power_hp": 136,
+  "torque_Nm": 260,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 13.3,
+  "topSpeed_kmh": 130,
+  "usableCapacity_kWh": 75,
+  "grossCapacity_kWh": 78,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2200,
+  "wltp_max_km": 350,
+  "wltp_min_km": 230,
+  "realRange": {
+    "mixed_km": 265,
+    "highway_130_km": 170,
+    "urban_km": 330,
+    "winter_minus5_km": 210,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 22,
+  "consumption_highway_kWh_per_100km": 28,
+  "consumption_winter_kWh_per_100km": 27,
+  "dragCoefficient_Cx": 0.35,
+  "chargingDC": {
+    "peakPower_kW": 100,
+    "time_10_80_min": 45,
+    "kWh_added_30min": 40,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 7.5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 92 },
+    { "soc": 10, "power": 100 },
+    { "soc": 50, "power": 71 },
+    { "soc": 80, "power": 32 },
+    { "soc": 100, "power": 6 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4959,
+  "width_mm": 1920,
+  "height_mm": 1890,
+  "wheelbase_mm": 2925,
+  "trunkCapacity_L": 1500,
+  "trunkCapacityFolded_L": 4900,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Edition M 50 kWh",
+      "price_EUR": 47200,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "9 places",
+        "Ecran multimedia 8 pouces",
+        "Charge AC 11 kW"
+      ]
+    },
+    {
+      "name": "Elegance M 75 kWh",
+      "price_EUR": 53500,
+      "batteryUsed": "75 kWh",
+      "equipmentHighlights": [
+        "9 places · grande autonomie",
+        "Camera de recul",
+        "Sieges chauffants"
+      ]
+    },
+    {
+      "name": "Elegance L 75 kWh",
+      "price_EUR": 55200,
+      "batteryUsed": "75 kWh",
+      "equipmentHighlights": [
+        "9 places · empattement long",
+        "Volume de coffre majore",
+        "Ecran 10 pouces"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
+  "configurations": [
+    {
+      "id": "opel-vivaro-e-life-m-50",
+      "label": "Vivaro-e Life M 50 kWh",
+      "battery": "standard",
+      "trim": "Edition M 50 kWh",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 47200,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 230,
+      "wltp_consumption_kWh_100km": 21.5,
+      "realRange": {
+        "mixed_km": 175,
+        "highway_130_km": 110,
+        "urban_km": 220,
+        "winter_minus5_km": 140,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        { "soc": 0, "power": 92 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 71 },
+        { "soc": 80, "power": 32 },
+        { "soc": 100, "power": 6 }
+      ],
+      "availability": "available",
+      "notes": "Combi M 9 places, batterie 50 kWh."
+    },
+    {
+      "id": "opel-vivaro-e-life-m-75",
+      "label": "Vivaro-e Life M 75 kWh",
+      "battery": "long-range",
+      "trim": "Elegance M 75 kWh",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 53500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 350,
+      "wltp_consumption_kWh_100km": 22,
+      "realRange": {
+        "mixed_km": 265,
+        "highway_130_km": 170,
+        "urban_km": 330,
+        "winter_minus5_km": 210,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 45,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        { "soc": 0, "power": 92 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 71 },
+        { "soc": 80, "power": 32 },
+        { "soc": 100, "power": 6 }
+      ],
+      "availability": "available",
+      "notes": "Combi M 9 places, grande autonomie 75 kWh."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "confort", "label": "9 places avec portes laterales coulissantes" },
+    { "category": "technologie", "label": "Pure Panel multimedia avec navigation integree" },
+    { "category": "securite", "label": "Freinage automatique d'urgence et detection pietons" },
+    { "category": "design", "label": "Empattement M ou L, modularite interieure" }
+  ],
+  "verdict": {
+    "strengths": [
+      "9 places dans un gabarit maitrise, navette electrique ideale",
+      "Plateforme PSA eprouvee, production francaise (Hordain)"
+    ],
+    "weaknesses": [
+      "Autonomie reelle modeste sur autoroute (170 km en 75 kWh)",
+      "Finition utilitaire, concurrence premium du VW ID. Buzz"
+    ],
+    "idealUserProfile": "Navettes professionnelles, taxis grands formats et familles nombreuses cherchant un vehicule electrique spacieux.",
+    "notIdealFor": "Familles cherchant un monospace premium. Le VW ID. Buzz offre une meilleure finition et une experience plus moderne."
+  },
+  "lastUpdated": "2026-05-21",
+  "sources": [
+    "automobile-propre",
+    "largus"
+  ],
+  "imageCredit": "Constructeur"
+}

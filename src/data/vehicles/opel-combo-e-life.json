@@ -1,0 +1,209 @@
+{
+  "slug": "opel-combo-e-life",
+  "brand": "Opel",
+  "model": "Combo-e Life",
+  "variant": "50 kWh",
+  "bodyType": "Ludospace",
+  "segment": "C",
+  "productionCountry": "Espagne",
+  "assemblyPlant": "Vigo",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 100,
+  "power_hp": 136,
+  "torque_Nm": 260,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 11.7,
+  "topSpeed_kmh": 135,
+  "usableCapacity_kWh": 50,
+  "grossCapacity_kWh": 54,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1780,
+  "wltp_max_km": 330,
+  "wltp_min_km": 280,
+  "realRange": {
+    "mixed_km": 240,
+    "highway_130_km": 155,
+    "urban_km": 305,
+    "winter_minus5_km": 190,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 18,
+  "consumption_highway_kWh_per_100km": 24,
+  "consumption_winter_kWh_per_100km": 22,
+  "dragCoefficient_Cx": 0.34,
+  "chargingDC": {
+    "peakPower_kW": 100,
+    "time_10_80_min": 30,
+    "kWh_added_30min": 30,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 6
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 77 },
+    { "soc": 10, "power": 100 },
+    { "soc": 50, "power": 75 },
+    { "soc": 80, "power": 35 },
+    { "soc": 100, "power": 7 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4403,
+  "width_mm": 1848,
+  "height_mm": 1841,
+  "wheelbase_mm": 2785,
+  "trunkCapacity_L": 850,
+  "trunkCapacityFolded_L": 2126,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Edition 50 kWh",
+      "price_EUR": 35900,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "Portes coulissantes",
+        "Ecran 8 pouces",
+        "Charge AC 11 kW"
+      ]
+    },
+    {
+      "name": "Elegance 50 kWh",
+      "price_EUR": 38900,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "Camera de recul",
+        "Ecran 10 pouces",
+        "Sieges chauffants"
+      ]
+    },
+    {
+      "name": "Elegance XL 50 kWh",
+      "price_EUR": 40500,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "Empattement long 7 places",
+        "Banquette 3e rangee",
+        "Camera 180 degres"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
+  "configurations": [
+    {
+      "id": "opel-combo-e-life-edition",
+      "label": "Combo-e Life Edition",
+      "battery": "standard",
+      "trim": "Edition 50 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 35900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 330,
+      "wltp_consumption_kWh_100km": 17.5,
+      "realRange": {
+        "mixed_km": 240,
+        "highway_130_km": 155,
+        "urban_km": 305,
+        "winter_minus5_km": 190,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        { "soc": 0, "power": 77 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 75 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "Ludospace 5 places, plateforme partagee Berlingo/Rifter."
+    },
+    {
+      "id": "opel-combo-e-life-elegance-xl",
+      "label": "Combo-e Life Elegance XL",
+      "battery": "standard",
+      "trim": "Elegance XL 50 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 40500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 280,
+      "wltp_consumption_kWh_100km": 19,
+      "realRange": {
+        "mixed_km": 215,
+        "highway_130_km": 135,
+        "urban_km": 270,
+        "winter_minus5_km": 170,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        { "soc": 0, "power": 77 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 75 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "Ludospace XL 7 places, empattement long."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "confort", "label": "Portes laterales coulissantes, acces facile" },
+    { "category": "technologie", "label": "Ecran multimedia Pure Panel avec navigation integree" },
+    { "category": "securite", "label": "Freinage automatique d'urgence et alerte angle mort" },
+    { "category": "design", "label": "Version XL 7 places disponible pour grandes familles" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Plateforme eprouvee PSA, fiabilite et reseau de SAV dense",
+      "Volume de coffre genereux (850 L) et version XL 7 places"
+    ],
+    "weaknesses": [
+      "Charge DC limitee a 100 kW",
+      "Autonomie modeste pour un usage autoroutier (155 km a 130)"
+    ],
+    "idealUserProfile": "Familles cherchant un ludospace electrique pratique au quotidien avec portes coulissantes.",
+    "notIdealFor": "Gros rouleurs autoroutiers ou ceux cherchant un vehicule premium. Le Combo-e Life reste un utilitaire amenage."
+  },
+  "lastUpdated": "2026-05-21",
+  "sources": [
+    "automobile-propre",
+    "largus"
+  ],
+  "imageCredit": "Constructeur"
+}

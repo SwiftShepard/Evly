@@ -1,0 +1,201 @@
+{
+  "slug": "toyota-proace-max-electric",
+  "brand": "Toyota",
+  "model": "Proace Max Electric",
+  "variant": "110 kWh",
+  "bodyType": "Fourgon",
+  "segment": "F",
+  "productionCountry": "Italie",
+  "assemblyPlant": "Atessa",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 150,
+  "power_hp": 204,
+  "torque_Nm": 350,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 15.0,
+  "topSpeed_kmh": 130,
+  "usableCapacity_kWh": 110,
+  "grossCapacity_kWh": 115,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2700,
+  "wltp_max_km": 420,
+  "wltp_min_km": 340,
+  "realRange": {
+    "mixed_km": 310,
+    "highway_130_km": 200,
+    "urban_km": 385,
+    "winter_minus5_km": 245,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 28,
+  "consumption_highway_kWh_per_100km": 36,
+  "consumption_winter_kWh_per_100km": 34,
+  "dragCoefficient_Cx": 0.38,
+  "chargingDC": {
+    "peakPower_kW": 150,
+    "time_10_80_min": 42,
+    "kWh_added_30min": 55,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 22,
+    "phases": 3,
+    "time_0_100_h": 6
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 110 },
+    { "soc": 10, "power": 150 },
+    { "soc": 30, "power": 140 },
+    { "soc": 50, "power": 100 },
+    { "soc": 70, "power": 60 },
+    { "soc": 80, "power": 38 },
+    { "soc": 100, "power": 8 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 5998,
+  "width_mm": 2050,
+  "height_mm": 2524,
+  "wheelbase_mm": 3450,
+  "trunkCapacity_L": 11500,
+  "trunkCapacityFolded_L": 13000,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "L2H2 110 kWh",
+      "price_EUR": 58500,
+      "batteryUsed": "110 kWh",
+      "equipmentHighlights": [
+        "Volume utile 11,5 m3",
+        "Charge DC 150 kW",
+        "Toyota Safety Sense"
+      ]
+    },
+    {
+      "name": "L3H2 110 kWh",
+      "price_EUR": 62800,
+      "batteryUsed": "110 kWh",
+      "equipmentHighlights": [
+        "Volume utile 13 m3",
+        "Empattement long",
+        "Camera de recul"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
+  "configurations": [
+    {
+      "id": "toyota-proace-max-electric-l2h2",
+      "label": "Proace Max Electric L2H2",
+      "battery": "standard",
+      "trim": "L2H2 110 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 58500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 420,
+      "wltp_consumption_kWh_100km": 27,
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 200,
+        "urban_km": 385,
+        "winter_minus5_km": 245,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 42,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 110 },
+        { "soc": 10, "power": 150 },
+        { "soc": 50, "power": 100 },
+        { "soc": 80, "power": 38 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "Grand fourgon L2H2, plateforme partagee Ducato/Boxer/Jumper."
+    },
+    {
+      "id": "toyota-proace-max-electric-l3h2",
+      "label": "Proace Max Electric L3H2",
+      "battery": "standard",
+      "trim": "L3H2 110 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 62800,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 370,
+      "wltp_consumption_kWh_100km": 30,
+      "realRange": {
+        "mixed_km": 280,
+        "highway_130_km": 180,
+        "urban_km": 350,
+        "winter_minus5_km": 220,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 42,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 110 },
+        { "soc": 10, "power": 150 },
+        { "soc": 50, "power": 100 },
+        { "soc": 80, "power": 38 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "Grand fourgon L3H2, volume utile 13 m3."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "confort", "label": "Cabine spacieuse avec rangements professionnels" },
+    { "category": "technologie", "label": "Toyota Safety Sense complet de serie" },
+    { "category": "securite", "label": "Freinage automatique d'urgence et regulateur adaptatif" },
+    { "category": "design", "label": "Volumes utiles de 11,5 a 17 m3 selon configuration" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Garantie Toyota et reseau SAV dense, reference en fiabilite",
+      "Autonomie 420 km WLTP, nouvelle generation 110 kWh"
+    ],
+    "weaknesses": [
+      "Prix superieur aux cousins Stellantis (Boxer, Jumper, Ducato)",
+      "Consommation elevee sur autoroute charge"
+    ],
+    "idealUserProfile": "Flottes Toyota cherchant un grand fourgon electrique avec le support apres-vente Toyota Professional.",
+    "notIdealFor": "Budget serre : les equivalents Stellantis (Boxer, Jumper, Ducato) offrent les memes specs a prix inferieur."
+  },
+  "lastUpdated": "2026-05-21",
+  "sources": [
+    "automobile-propre",
+    "largus"
+  ],
+  "imageCredit": "Constructeur"
+}

@@ -1,0 +1,204 @@
+{
+  "slug": "renault-master-e-tech",
+  "brand": "Renault",
+  "model": "Master E-Tech",
+  "variant": "87 kWh",
+  "bodyType": "Fourgon",
+  "segment": "F",
+  "productionCountry": "France",
+  "assemblyPlant": "Batilly",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 105,
+  "power_hp": 143,
+  "torque_Nm": 300,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 14.5,
+  "topSpeed_kmh": 130,
+  "usableCapacity_kWh": 87,
+  "grossCapacity_kWh": 90,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2550,
+  "wltp_max_km": 460,
+  "wltp_min_km": 380,
+  "realRange": {
+    "mixed_km": 340,
+    "highway_130_km": 220,
+    "urban_km": 420,
+    "winter_minus5_km": 270,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 25.5,
+  "consumption_highway_kWh_per_100km": 33,
+  "consumption_winter_kWh_per_100km": 31,
+  "dragCoefficient_Cx": 0.37,
+  "chargingDC": {
+    "peakPower_kW": 130,
+    "time_10_80_min": 38,
+    "kWh_added_30min": 55,
+    "confidence": "manufacturer"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 22,
+    "phases": 3,
+    "time_0_100_h": 5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 100 },
+    { "soc": 10, "power": 130 },
+    { "soc": 30, "power": 125 },
+    { "soc": 50, "power": 90 },
+    { "soc": 70, "power": 55 },
+    { "soc": 80, "power": 35 },
+    { "soc": 100, "power": 8 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 5948,
+  "width_mm": 2070,
+  "height_mm": 2488,
+  "wheelbase_mm": 3682,
+  "trunkCapacity_L": 10800,
+  "trunkCapacityFolded_L": 10800,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Grand Confort L2H2 87 kWh",
+      "price_EUR": 52900,
+      "batteryUsed": "87 kWh",
+      "equipmentHighlights": [
+        "Volume utile 10,8 m3",
+        "Charge DC 130 kW",
+        "OpenR Link multimedia"
+      ]
+    },
+    {
+      "name": "Extra L3H2 87 kWh",
+      "price_EUR": 58500,
+      "batteryUsed": "87 kWh",
+      "equipmentHighlights": [
+        "Volume utile 13 m3",
+        "Camera de recul",
+        "Charge AC 22 kW"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
+  "configurations": [
+    {
+      "id": "renault-master-e-tech-l2h2",
+      "label": "Master E-Tech L2H2",
+      "battery": "standard",
+      "trim": "Grand Confort L2H2 87 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 52900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 460,
+      "wltp_consumption_kWh_100km": 25,
+      "realRange": {
+        "mixed_km": 340,
+        "highway_130_km": 220,
+        "urban_km": 420,
+        "winter_minus5_km": 270,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 38,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 130 },
+        { "soc": 30, "power": 125 },
+        { "soc": 50, "power": 90 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "Fourgon L2H2, volume utile 10,8 m3."
+    },
+    {
+      "id": "renault-master-e-tech-l3h2",
+      "label": "Master E-Tech L3H2",
+      "battery": "standard",
+      "trim": "Extra L3H2 87 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 58500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 410,
+      "wltp_consumption_kWh_100km": 27,
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 200,
+        "urban_km": 390,
+        "winter_minus5_km": 245,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 38,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 130 },
+        { "soc": 30, "power": 125 },
+        { "soc": 50, "power": 90 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "Fourgon L3H2, volume utile 13 m3."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "confort", "label": "Poste de conduite sureleve, visibilite panoramique" },
+    { "category": "technologie", "label": "OpenR Link avec Google integre et navigation connectee" },
+    { "category": "securite", "label": "Freinage automatique d'urgence et alerte angle mort" },
+    { "category": "design", "label": "Volumes utiles de 10,8 a 22 m3 selon configuration" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Autonomie record pour un grand fourgon (460 km WLTP)",
+      "Charge rapide 130 kW, la plus rapide du segment",
+      "Production francaise (Batilly) avec eligibilite Prime CEE VE"
+    ],
+    "weaknesses": [
+      "Prix d'achat eleve malgre les aides",
+      "Consommation autoroute importante due au gabarit"
+    ],
+    "idealUserProfile": "Artisans, livreurs urbains et periurbains, flottes d'entreprise recherchant un grand volume avec la meilleure autonomie electrique du marche.",
+    "notIdealFor": "Tres longs trajets autoroutiers charges : l'autonomie reelle tombe sous 250 km a 130 km/h a pleine charge."
+  },
+  "lastUpdated": "2026-05-21",
+  "sources": [
+    "renault-fr",
+    "automobile-propre"
+  ],
+  "imageCredit": "Constructeur"
+}

@@ -1,0 +1,199 @@
+{
+  "slug": "fiat-e-scudo",
+  "brand": "Fiat",
+  "model": "E-Scudo",
+  "variant": "50 / 75 kWh",
+  "bodyType": "Fourgon",
+  "segment": "E",
+  "productionCountry": "France",
+  "assemblyPlant": "Hordain",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 100,
+  "power_hp": 136,
+  "torque_Nm": 260,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 13.3,
+  "topSpeed_kmh": 130,
+  "usableCapacity_kWh": 75,
+  "grossCapacity_kWh": 78,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2200,
+  "wltp_max_km": 350,
+  "wltp_min_km": 230,
+  "realRange": {
+    "mixed_km": 265,
+    "highway_130_km": 170,
+    "urban_km": 330,
+    "winter_minus5_km": 210,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 22,
+  "consumption_highway_kWh_per_100km": 28,
+  "consumption_winter_kWh_per_100km": 27,
+  "dragCoefficient_Cx": 0.35,
+  "chargingDC": {
+    "peakPower_kW": 100,
+    "time_10_80_min": 45,
+    "kWh_added_30min": 40,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 7.5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 92 },
+    { "soc": 10, "power": 100 },
+    { "soc": 50, "power": 71 },
+    { "soc": 80, "power": 32 },
+    { "soc": 100, "power": 6 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4959,
+  "width_mm": 1920,
+  "height_mm": 1890,
+  "wheelbase_mm": 2925,
+  "trunkCapacity_L": 5300,
+  "trunkCapacityFolded_L": 6100,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Standard M 50 kWh",
+      "price_EUR": 43500,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "Volume utile 5,3 m3",
+        "Charge utile 1000 kg",
+        "Ecran Uconnect 8 pouces"
+      ]
+    },
+    {
+      "name": "Standard M 75 kWh",
+      "price_EUR": 49500,
+      "batteryUsed": "75 kWh",
+      "equipmentHighlights": [
+        "Grande autonomie 350 km WLTP",
+        "Volume utile 5,3 m3",
+        "Charge DC 100 kW"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
+  "configurations": [
+    {
+      "id": "fiat-e-scudo-m-50",
+      "label": "E-Scudo M 50 kWh",
+      "battery": "standard",
+      "trim": "Standard M 50 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 43500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 230,
+      "wltp_consumption_kWh_100km": 21.5,
+      "realRange": {
+        "mixed_km": 175,
+        "highway_130_km": 110,
+        "urban_km": 220,
+        "winter_minus5_km": 140,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        { "soc": 0, "power": 92 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 71 },
+        { "soc": 80, "power": 32 },
+        { "soc": 100, "power": 6 }
+      ],
+      "availability": "available",
+      "notes": "Fourgon M 50 kWh, plateforme partagee Expert/Jumpy."
+    },
+    {
+      "id": "fiat-e-scudo-m-75",
+      "label": "E-Scudo M 75 kWh",
+      "battery": "long-range",
+      "trim": "Standard M 75 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 49500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 350,
+      "wltp_consumption_kWh_100km": 22,
+      "realRange": {
+        "mixed_km": 265,
+        "highway_130_km": 170,
+        "urban_km": 330,
+        "winter_minus5_km": 210,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 45,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        { "soc": 0, "power": 92 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 71 },
+        { "soc": 80, "power": 32 },
+        { "soc": 100, "power": 6 }
+      ],
+      "availability": "available",
+      "notes": "Fourgon M 75 kWh, grande autonomie."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 4,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "confort", "label": "Cabine confortable avec siege conducteur reglable" },
+    { "category": "technologie", "label": "Ecran Uconnect 8 pouces avec connectivite smartphone" },
+    { "category": "securite", "label": "Freinage automatique d'urgence et aide au maintien de voie" },
+    { "category": "design", "label": "Porte laterale coulissante et charge utile 1000 kg" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Production francaise (Hordain), eligible Prime CEE VE",
+      "Plateforme eprouvee PSA, fiabilite et pieces partagees"
+    ],
+    "weaknesses": [
+      "Garantie vehicule 4 ans seulement (vs 5 chez PSA)",
+      "Charge DC limitee a 100 kW"
+    ],
+    "idealUserProfile": "Artisans et livreurs urbains cherchant un fourgon moyen electrique avec reseau SAV Fiat Pro.",
+    "notIdealFor": "Professionnels comparant avec l'Expert ou le Jumpy : meme plateforme, garantie vehicule inferieure."
+  },
+  "lastUpdated": "2026-05-21",
+  "sources": [
+    "automobile-propre",
+    "largus"
+  ],
+  "imageCredit": "Constructeur"
+}

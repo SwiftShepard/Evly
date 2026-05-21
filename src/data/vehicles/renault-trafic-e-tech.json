@@ -1,0 +1,200 @@
+{
+  "slug": "renault-trafic-e-tech",
+  "brand": "Renault",
+  "model": "Trafic E-Tech",
+  "variant": "52 kWh",
+  "bodyType": "Fourgon",
+  "segment": "E",
+  "productionCountry": "France",
+  "assemblyPlant": "Sandouville",
+  "releaseYear": 2025,
+  "marketAvailability": "Disponible",
+  "power_kW": 90,
+  "power_hp": 122,
+  "torque_Nm": 245,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 14.0,
+  "topSpeed_kmh": 130,
+  "usableCapacity_kWh": 52,
+  "grossCapacity_kWh": 55,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2250,
+  "wltp_max_km": 297,
+  "wltp_min_km": 240,
+  "realRange": {
+    "mixed_km": 220,
+    "highway_130_km": 145,
+    "urban_km": 275,
+    "winter_minus5_km": 175,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 23,
+  "consumption_highway_kWh_per_100km": 30,
+  "consumption_winter_kWh_per_100km": 28,
+  "dragCoefficient_Cx": 0.36,
+  "chargingDC": {
+    "peakPower_kW": 100,
+    "time_10_80_min": 35,
+    "kWh_added_30min": 32,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 22,
+    "phases": 3,
+    "time_0_100_h": 3.5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 75 },
+    { "soc": 10, "power": 100 },
+    { "soc": 30, "power": 95 },
+    { "soc": 50, "power": 70 },
+    { "soc": 80, "power": 30 },
+    { "soc": 100, "power": 6 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 5080,
+  "width_mm": 1956,
+  "height_mm": 1971,
+  "wheelbase_mm": 3098,
+  "trunkCapacity_L": 5800,
+  "trunkCapacityFolded_L": 5800,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Grand Confort L1H1 52 kWh",
+      "price_EUR": 46500,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "Volume utile 5,8 m3",
+        "Charge AC 22 kW",
+        "Ecran multimedia 8 pouces"
+      ]
+    },
+    {
+      "name": "Grand Confort L2H1 52 kWh",
+      "price_EUR": 48200,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "Volume utile 8,6 m3",
+        "Empattement long",
+        "Camera de recul"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 8100
+    }
+  ],
+  "configurations": [
+    {
+      "id": "renault-trafic-e-tech-l1h1",
+      "label": "Trafic E-Tech L1H1",
+      "battery": "standard",
+      "trim": "Grand Confort L1H1 52 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 46500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 297,
+      "wltp_consumption_kWh_100km": 22,
+      "realRange": {
+        "mixed_km": 220,
+        "highway_130_km": 145,
+        "urban_km": 275,
+        "winter_minus5_km": 175,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 32,
+      "chargingCurve": [
+        { "soc": 0, "power": 75 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 70 },
+        { "soc": 80, "power": 30 },
+        { "soc": 100, "power": 6 }
+      ],
+      "availability": "available",
+      "notes": "Fourgon L1H1, volume utile 5,8 m3."
+    },
+    {
+      "id": "renault-trafic-e-tech-l2h1",
+      "label": "Trafic E-Tech L2H1",
+      "battery": "standard",
+      "trim": "Grand Confort L2H1 52 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 48200,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 240,
+      "wltp_consumption_kWh_100km": 24,
+      "realRange": {
+        "mixed_km": 195,
+        "highway_130_km": 125,
+        "urban_km": 245,
+        "winter_minus5_km": 155,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 32,
+      "chargingCurve": [
+        { "soc": 0, "power": 75 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 70 },
+        { "soc": 80, "power": 30 },
+        { "soc": 100, "power": 6 }
+      ],
+      "availability": "available",
+      "notes": "Fourgon L2H1, volume utile 8,6 m3."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "confort", "label": "Cabine approfondie avec rangements multiples" },
+    { "category": "technologie", "label": "Charge AC 22 kW triphasee de serie" },
+    { "category": "securite", "label": "Aide au stationnement arriere et camera de recul" },
+    { "category": "design", "label": "Porte laterale coulissante et volume modulable" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Charge AC 22 kW de serie, ideale pour recharge nocturne en entreprise",
+      "Volume utile genereux (5,8 a 8,6 m3) dans un gabarit maitrise"
+    ],
+    "weaknesses": [
+      "Autonomie modeste (297 km WLTP) pour un usage autoroutier",
+      "Charge DC limitee a 100 kW"
+    ],
+    "idealUserProfile": "Artisans et PME avec tournees urbaines et periurbaines quotidiennes, base de recharge nocturne AC au depot.",
+    "notIdealFor": "Longs trajets interurbains quotidiens ou missions depassant 200 km sans retour au depot."
+  },
+  "lastUpdated": "2026-05-21",
+  "sources": [
+    "renault-fr",
+    "automobile-propre"
+  ],
+  "imageCredit": "Constructeur"
+}
