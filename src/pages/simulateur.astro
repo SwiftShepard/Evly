@@ -6,7 +6,7 @@ import { getAllVehicles } from "@/lib/vehicles";
 const vehicles = getAllVehicles();
 
 const summaries = vehicles
-  .filter((v) => v.marketAvailability === "Disponible")
+  .filter((v) => v.trims.length > 0)
   .map((v) => {
     const cheapest = v.trims.reduce((a, b) =>
       a.price_EUR < b.price_EUR ? a : b
@@ -22,6 +22,15 @@ const summaries = vehicles
       aids_EUR: aids,
       consumption_kWh_100km: v.consumption_mixed_kWh_per_100km,
       realRange_mixed_km: v.realRange.mixed_km,
+      configs: v.configurations.map((c) => ({
+        id: c.id,
+        label: c.label,
+        trim: c.trim,
+        battery: c.battery,
+        price_EUR: c.price_EUR,
+        consumption_kWh_100km: c.wltp_consumption_kWh_100km,
+        realRange_mixed_km: c.realRange?.mixed_km ?? v.realRange.mixed_km,
+      })),
     };
   })
   .sort((a, b) => a.brand.localeCompare(b.brand) || a.model.localeCompare(b.model));
@@ -31,7 +40,7 @@ const description =
 ---
 
 <BaseLayout title="Simulateur TCO, Evly" description={description}>
-  <div class="container-edit py-6 md:py-10">
+  <div class="tco-page-wrap">
     <div class="tco-page-header">
       <div class="flex items-center gap-3 mb-6 fade-rise">
         <span class="font-mono text-xs text-[var(--color-text-faint)]">04</span>
@@ -54,16 +63,75 @@ const description =
 </BaseLayout>
 
 <style>
+  /* ── Full-width page wrapper ─────────────────────────── */
+  .tco-page-wrap {
+    width: 100%;
+    max-width: 1920px;
+    margin-inline: auto;
+    padding: 1.5rem 1rem;
+  }
+  @media (min-width: 768px) {
+    .tco-page-wrap { padding: 2rem 2rem; }
+  }
+  @media (min-width: 1280px) {
+    .tco-page-wrap { padding: 2.5rem 3rem; }
+  }
+
   .tco-page-header {
     margin-bottom: 2.5rem;
   }
 
-  /* ── Layout ──────────────────────────────────────────── */
+  /* ── Layout : stacked → side-by-side ─────────────────── */
   :global(.tco-calc) {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-    max-width: 52rem;
+    gap: 1.25rem;
+  }
+  @media (min-width: 1024px) {
+    :global(.tco-calc) {
+      grid-template-columns: 3fr 2fr;
+      align-items: start;
+    }
+    :global(.tco-inputs-area),
+    :global(.tco-advanced-toggle),
+    :global(.tco-advanced-grid) {
+      grid-column: 1;
+    }
+    :global(.tco-results-col) {
+      grid-column: 2;
+      grid-row: 1 / 20;
+    }
+  }
+
+  /* Inputs area : stacked on mobile, 2-col sub-grid on md+ */
+  :global(.tco-inputs-area) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    :global(.tco-inputs-area) {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+  }
+
+  :global(.tco-col) {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  :global(.tco-results-col) {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  @media (min-width: 1024px) {
+    :global(.tco-results-col) {
+      position: sticky;
+      top: 1.5rem;
+    }
   }
 
   /* ── Sections ────────────────────────────────────────── */
@@ -115,6 +183,60 @@ const description =
   :global(.tco-select:focus) {
     outline: none;
     border-color: var(--color-accent);
+  }
+
+  /* ── Config selector ────────────────────────────────── */
+  :global(.tco-config-selector) {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  :global(.tco-config-label) {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-faint);
+  }
+  :global(.tco-config-options) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  :global(.tco-config-btn) {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-tile-sm);
+    background: var(--color-bg);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: left;
+  }
+  :global(.tco-config-btn:hover) {
+    border-color: var(--color-text-faint);
+    background: var(--color-bg-subtle);
+  }
+  :global(.tco-config-btn.active) {
+    border-color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 6%, var(--color-bg));
+    color: var(--color-text);
+  }
+  :global(.tco-config-btn-name) {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  :global(.tco-config-btn-price) {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 11px;
+    color: var(--color-text-faint);
+  }
+  :global(.tco-config-btn.active .tco-config-btn-price) {
+    color: var(--color-accent);
   }
 
   :global(.tco-ev-summary) {
@@ -322,6 +444,18 @@ const description =
     color: var(--color-text);
   }
 
+  /* ── Advanced sub-grid ────────────────────────────────── */
+  :global(.tco-advanced-grid) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    :global(.tco-advanced-grid) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
   :global(.tco-hint) {
     font-size: 12px;
     color: var(--color-text-faint);
@@ -353,15 +487,29 @@ const description =
   :global(.tco-savings-hero) {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    padding: 1.25rem;
+    gap: 6px;
+    padding: 1.5rem;
     border-radius: var(--radius-tile-sm);
-    background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+    background: linear-gradient(135deg,
+      color-mix(in srgb, var(--color-accent) 12%, transparent),
+      color-mix(in srgb, var(--color-accent) 4%, transparent));
     border: 1px solid color-mix(in srgb, var(--color-accent) 30%, var(--color-border));
+    box-shadow: 0 2px 12px color-mix(in srgb, var(--color-accent) 8%, transparent);
   }
   :global(.tco-savings-hero.negative) {
-    background: color-mix(in srgb, var(--color-warning) 8%, transparent);
+    background: linear-gradient(135deg,
+      color-mix(in srgb, var(--color-warning) 12%, transparent),
+      color-mix(in srgb, var(--color-warning) 4%, transparent));
     border-color: color-mix(in srgb, var(--color-warning) 30%, var(--color-border));
+    box-shadow: 0 2px 12px color-mix(in srgb, var(--color-warning) 8%, transparent);
+  }
+  :global(.tco-savings-icon) {
+    color: var(--color-accent);
+    line-height: 0;
+    margin-bottom: 2px;
+  }
+  :global(.tco-savings-hero.negative .tco-savings-icon) {
+    color: var(--color-warning);
   }
   :global(.tco-savings-label) {
     font-family: var(--font-mono, ui-monospace, monospace);
@@ -372,21 +520,91 @@ const description =
   }
   :global(.tco-savings-amount) {
     font-family: var(--font-display, system-ui);
-    font-size: 2rem;
+    font-size: 2.25rem;
     font-weight: 700;
     letter-spacing: -0.02em;
     color: var(--color-accent);
+    line-height: 1.1;
   }
   :global(.tco-savings-hero.negative .tco-savings-amount) {
     color: var(--color-warning);
   }
+  :global(.tco-savings-meta) {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 2px;
+  }
   :global(.tco-savings-pct) {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+  :global(.tco-savings-sep) {
+    color: var(--color-text-faint);
+    font-size: 10px;
+  }
+  :global(.tco-savings-monthly) {
     font-family: var(--font-mono, ui-monospace, monospace);
     font-size: 12px;
     color: var(--color-text-muted);
   }
   :global(.tco-breakeven) {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 12px;
     color: var(--color-text-faint);
+  }
+
+  /* ── Cost per km comparison ──────────────────────────── */
+  :global(.tco-perkm-compare) {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-tile-sm);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+  }
+  :global(.tco-perkm-item) {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr auto;
+    gap: 10px;
+    align-items: center;
+  }
+  :global(.tco-perkm-label) {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+  :global(.tco-perkm-bar-wrap) {
+    height: 8px;
+    background: var(--color-bg-subtle);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  :global(.tco-perkm-bar) {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  :global(.tco-perkm-item.ev .tco-perkm-bar) {
+    background: var(--color-accent);
+  }
+  :global(.tco-perkm-item.ice .tco-perkm-bar) {
+    background: var(--color-text-faint);
+  }
+  :global(.tco-perkm-val) {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text);
+    white-space: nowrap;
+    min-width: 5.5rem;
+    text-align: right;
   }
 
   /* ── Total cards ─────────────────────────────────────── */
@@ -403,9 +621,16 @@ const description =
     border-radius: var(--radius-tile-sm);
     background: var(--color-bg);
     border: 1px solid var(--color-border);
+    transition: box-shadow 0.2s;
+  }
+  :global(.tco-total-card:hover) {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   }
   :global(.tco-total-card.ev) {
     border-left: 3px solid var(--color-accent);
+  }
+  :global(.tco-total-card.ice) {
+    border-left: 3px solid var(--color-text-faint);
   }
   :global(.tco-total-label) {
     font-family: var(--font-mono, ui-monospace, monospace);
@@ -421,9 +646,9 @@ const description =
     letter-spacing: -0.015em;
     color: var(--color-text);
   }
-  :global(.tco-total-perkm) {
+  :global(.tco-total-monthly) {
     font-family: var(--font-mono, ui-monospace, monospace);
-    font-size: 12px;
+    font-size: 11px;
     color: var(--color-text-muted);
   }
 
@@ -503,9 +728,10 @@ const description =
     left: 0;
     height: 100%;
     border-radius: 4px;
-    transition: width 0.3s ease;
+    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   }
   :global(.tco-bar-fill.ev) {
+    background: var(--color-accent);
     opacity: 0.8;
   }
   :global(.tco-bar-fill.ice) {
@@ -530,5 +756,89 @@ const description =
     color: var(--color-text-faint);
     line-height: 1.6;
     margin: 0;
+  }
+
+  /* ── Depreciation insight panel ─────────────────────── */
+  :global(.tco-depreciation-insight) {
+    margin-top: 4px;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  :global(.tco-depreciation-header) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: var(--color-bg-subtle);
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+  }
+  :global(.tco-depreciation-title) {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  :global(.tco-depreciation-body) {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  :global(.tco-depreciation-body p) {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+  :global(.tco-depreciation-body strong) {
+    color: var(--color-text);
+  }
+  :global(.tco-depreciation-values) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  :global(.tco-depreciation-val) {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: var(--color-bg-subtle);
+  }
+  :global(.tco-depreciation-val.ev) {
+    border-left: 3px solid var(--color-accent);
+  }
+  :global(.tco-depreciation-val.ice) {
+    border-left: 3px solid var(--color-text-faint);
+  }
+  :global(.tco-depreciation-val-label) {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-faint);
+  }
+  :global(.tco-depreciation-val-pct) {
+    font-family: var(--font-display, system-ui);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1;
+  }
+  :global(.tco-depreciation-val.ev .tco-depreciation-val-pct) {
+    color: var(--color-accent);
+  }
+  :global(.tco-depreciation-val-hint) {
+    font-size: 11px;
+    color: var(--color-text-faint);
+  }
+  :global(.tco-depreciation-footer) {
+    font-size: 12px !important;
+    font-style: italic;
+    color: var(--color-text-faint) !important;
   }
 </style>

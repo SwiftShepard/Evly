@@ -1,8 +1,18 @@
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 
 /* ---------------------------------------------------------------- */
 /* Types                                                             */
 /* ---------------------------------------------------------------- */
+
+interface ConfigSummary {
+  id: string;
+  label: string;
+  trim: string;
+  battery: string;
+  price_EUR: number;
+  consumption_kWh_100km: number;
+  realRange_mixed_km: number;
+}
 
 interface VehicleSummary {
   slug: string;
@@ -14,6 +24,7 @@ interface VehicleSummary {
   aids_EUR: number;
   consumption_kWh_100km: number;
   realRange_mixed_km: number;
+  configs: ConfigSummary[];
 }
 
 interface Props {
@@ -50,6 +61,48 @@ const fmt = (n: number) =>
 
 const fmtPct = (n: number) =>
   new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 1 }).format(n);
+
+/* ---------------------------------------------------------------- */
+/* Animated number hook                                              */
+/* ---------------------------------------------------------------- */
+
+function useAnimatedNumber(target: number, duration = 400): number {
+  const [display, setDisplay] = useState(target);
+  const rafRef = useRef<number>(0);
+  const startRef = useRef(target);
+  const startTimeRef = useRef(0);
+
+  useEffect(() => {
+    startRef.current = display;
+    startTimeRef.current = performance.now();
+
+    const animate = (now: number) => {
+      const elapsed = now - startTimeRef.current;
+      const progress = Math.min(elapsed / duration, 1);
+      // ease-out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = startRef.current + (target - startRef.current) * eased;
+      setDisplay(current);
+      if (progress < 1) rafRef.current = requestAnimationFrame(animate);
+    };
+
+    rafRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [target, duration]);
+
+  return display;
+}
+
+function AnimatedAmount({ value, suffix = "EUR", className }: { value: number; suffix?: string; className?: string }) {
+  const animated = useAnimatedNumber(value);
+  return <span className={className}>{fmt(animated)} {suffix}</span>;
+}
+
+/* ---------------------------------------------------------------- */
+/* Breakdown bar colors                                              */
+/* ---------------------------------------------------------------- */
+
+/* Bar colours are now handled purely in CSS (accent for EV, faint for ICE) */
 
 /* ---------------------------------------------------------------- */
 /* Slider field                                                      */
@@ -146,13 +199,11 @@ function BarRow({
   ev,
   ice,
   maxVal,
-  color,
 }: {
   label: string;
   ev: number;
   ice: number;
   maxVal: number;
-  color: string;
 }) {
   const evW = maxVal > 0 ? Math.max((ev / maxVal) * 100, 0.5) : 0;
   const iceW = maxVal > 0 ? Math.max((ice / maxVal) * 100, 0.5) : 0;
@@ -161,16 +212,75 @@ function BarRow({
       <div className="tco-bar-label">{label}</div>
       <div className="tco-bar-bars">
         <div className="tco-bar-track">
-          <div
-            className="tco-bar-fill ev"
-            style={{ width: `${evW}%`, background: color }}
-          />
+          <div className="tco-bar-fill ev" style={{ width: `${evW}%` }} />
           <span className="tco-bar-amount">{fmt(ev)} EUR</span>
         </div>
         <div className="tco-bar-track">
           <div className="tco-bar-fill ice" style={{ width: `${iceW}%` }} />
           <span className="tco-bar-amount">{fmt(ice)} EUR</span>
         </div>
+      </div>
+    </div>
+  );
+}
+
+/* ---------------------------------------------------------------- */
+/* Depreciation insight panel                                        */
+/* ---------------------------------------------------------------- */
+
+function DepreciationInsight({
+  years,
+  evResidual,
+  iceResidual,
+}: {
+  years: number;
+  evResidual: number;
+  iceResidual: number;
+}) {
+  return (
+    <div className="tco-depreciation-insight">
+      <div className="tco-depreciation-header">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <circle cx="8" cy="8" r="7" />
+          <path d="M8 5v3" /><circle cx="8" cy="11" r="0.5" fill="currentColor" />
+        </svg>
+        <span className="tco-depreciation-title">Pourquoi le VE se deprecie moins</span>
+      </div>
+
+      <div className="tco-depreciation-body">
+        <p>
+          Les prejuges sur le vehicule electrique (durabilite de la batterie,
+          risque d'incendie, cout reel) se deconstruisent progressivement a mesure
+          que les retours d'experience s'accumulent. Les batteries modernes
+          conservent 80 a 90 % de leur capacite apres 200 000 km, les risques
+          d'incendie sont statistiquement inferieurs aux thermiques, et le cout
+          d'entretien est 2 a 3 fois moindre.
+        </p>
+        <p>
+          <strong>L'interdiction de vente de vehicules thermiques neufs en UE
+          a partir de 2035</strong> accelerera mecaniquement la depreciation
+          des thermiques : un marche de revente qui se retrecit, des couts de
+          carburant croissants, et des ZFE (zones a faibles emissions) qui
+          restreignent leur usage dans les centres urbains. A l'inverse,
+          un VE achete aujourd'hui conservera sa pertinence sur le long terme.
+        </p>
+        <div className="tco-depreciation-values">
+          <div className="tco-depreciation-val ev">
+            <span className="tco-depreciation-val-label">VE apres {years} ans</span>
+            <span className="tco-depreciation-val-pct">{evResidual} %</span>
+            <span className="tco-depreciation-val-hint">du prix neuf conserve</span>
+          </div>
+          <div className="tco-depreciation-val ice">
+            <span className="tco-depreciation-val-label">Thermique apres {years} ans</span>
+            <span className="tco-depreciation-val-pct">{iceResidual} %</span>
+            <span className="tco-depreciation-val-hint">du prix neuf conserve</span>
+          </div>
+        </div>
+        <p className="tco-depreciation-footer">
+          La tendance s'inversera : avec des batteries plus durables, un entretien
+          negligeable, une securite accrue et une demande croissante, la valeur
+          residuelle des VE depassera celle des thermiques bien avant 2035.
+        </p>
       </div>
     </div>
   );
@@ -185,6 +295,17 @@ export default function TcoCalculator({ vehicles }: Props) {
   const [selectedSlug, setSelectedSlug] = useState(vehicles[0]?.slug ?? "");
   const selectedEv = vehicles.find((v) => v.slug === selectedSlug);
 
+  // Selected configuration
+  const [selectedConfigId, setSelectedConfigId] = useState<string | null>(
+    selectedEv?.configs[0]?.id ?? null
+  );
+  const selectedConfig = selectedEv?.configs.find((c) => c.id === selectedConfigId) ?? null;
+
+  // Active price / conso / range (from config if selected, otherwise vehicle base)
+  const activePrice = selectedConfig?.price_EUR ?? selectedEv?.price_EUR ?? 0;
+  const activeConso = selectedConfig?.consumption_kWh_100km ?? selectedEv?.consumption_kWh_100km ?? 16;
+  const activeRange = selectedConfig?.realRange_mixed_km ?? selectedEv?.realRange_mixed_km ?? 300;
+
   // Usage params
   const [kmPerYear, setKmPerYear] = useState(DEFAULTS.km_per_year);
   const [years, setYears] = useState(DEFAULTS.years);
@@ -193,9 +314,8 @@ export default function TcoCalculator({ vehicles }: Props) {
   const [elecHome, setElecHome] = useState(DEFAULTS.elec_home_eur_kwh);
   const [elecFast, setElecFast] = useState(DEFAULTS.elec_fast_eur_kwh);
   const [fastPct, setFastPct] = useState(DEFAULTS.fast_charge_pct);
-  const [evConso, setEvConso] = useState(
-    selectedEv?.consumption_kWh_100km ?? 16
-  );
+  const [evConsoOverride, setEvConsoOverride] = useState<number | null>(null);
+  const evConso = evConsoOverride ?? activeConso;
 
   // ICE ref
   const [fuelType, setFuelType] = useState<"diesel" | "essence">("essence");
@@ -228,9 +348,22 @@ export default function TcoCalculator({ vehicles }: Props) {
     (slug: string) => {
       setSelectedSlug(slug);
       const v = vehicles.find((ve) => ve.slug === slug);
-      if (v) setEvConso(v.consumption_kWh_100km);
+      if (v) {
+        const firstConfig = v.configs[0] ?? null;
+        setSelectedConfigId(firstConfig?.id ?? null);
+        setEvConsoOverride(null);
+      }
     },
     [vehicles]
+  );
+
+  // Update when config changes
+  const handleConfigChange = useCallback(
+    (configId: string) => {
+      setSelectedConfigId(configId);
+      setEvConsoOverride(null);
+    },
+    []
   );
 
   const handleFuelType = useCallback(
@@ -250,8 +383,8 @@ export default function TcoCalculator({ vehicles }: Props) {
     const totalKm = kmPerYear * years;
 
     // EV purchase
-    const evPurchaseNet = Math.max(0, ev.price_EUR - ev.aids_EUR);
-    const evResidualVal = ev.price_EUR * (evResidual / 100);
+    const evPurchaseNet = Math.max(0, activePrice - ev.aids_EUR);
+    const evResidualVal = activePrice * (evResidual / 100);
     const evDepreciation = evPurchaseNet - evResidualVal;
 
     // EV energy
@@ -357,6 +490,7 @@ export default function TcoCalculator({ vehicles }: Props) {
     };
   }, [
     selectedEv,
+    activePrice,
     kmPerYear,
     years,
     elecHome,
@@ -379,179 +513,349 @@ export default function TcoCalculator({ vehicles }: Props) {
     return <p>Aucun vehicule disponible.</p>;
   }
 
+  const hasConfigs = selectedEv.configs.length > 1;
+
   return (
     <div className="tco-calc">
-      {/* ── Vehicle selector ────────────────────────────── */}
-      <div className="tco-section">
-        <div className="tco-section-header">
-          <span className="tco-section-number">01</span>
-          <span className="tco-section-title">Vehicule electrique</span>
+      {/* ══════════════════════════════════════════════════ */}
+      {/* LEFT AREA : inputs (2-col sub-grid on desktop)    */}
+      {/* ══════════════════════════════════════════════════ */}
+      <div className="tco-inputs-area">
+      <div className="tco-col tco-col-vehicle">
+        {/* ── Vehicle selector ────────────────────────────── */}
+        <div className="tco-section">
+          <div className="tco-section-header">
+            <span className="tco-section-number">01</span>
+            <span className="tco-section-title">Vehicule electrique</span>
+          </div>
+
+          <select
+            className="tco-select"
+            value={selectedSlug}
+            onChange={(e) => handleVehicleChange(e.target.value)}
+          >
+            {vehicles.map((v) => (
+              <option key={v.slug} value={v.slug}>
+                {v.brand} {v.model} {v.variant} -- des {fmt(v.price_EUR)} EUR
+              </option>
+            ))}
+          </select>
+
+          {/* Configuration selector */}
+          {hasConfigs && (
+            <div className="tco-config-selector">
+              <span className="tco-config-label">Finition / batterie</span>
+              <div className="tco-config-options">
+                {selectedEv.configs.map((c) => (
+                  <button
+                    key={c.id}
+                    className={`tco-config-btn ${c.id === selectedConfigId ? "active" : ""}`}
+                    onClick={() => handleConfigChange(c.id)}
+                  >
+                    <span className="tco-config-btn-name">{c.label}</span>
+                    <span className="tco-config-btn-price">{fmt(c.price_EUR)} EUR</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div className="tco-ev-summary">
+            <div className="tco-ev-stat">
+              <span className="tco-stat-label">Prix catalogue</span>
+              <span className="tco-stat-value">{fmt(activePrice)} EUR</span>
+            </div>
+            <div className="tco-ev-stat">
+              <span className="tco-stat-label">Aides deduites</span>
+              <span className="tco-stat-value accent">
+                -{fmt(selectedEv.aids_EUR)} EUR
+              </span>
+            </div>
+            <div className="tco-ev-stat">
+              <span className="tco-stat-label">Autonomie mixte</span>
+              <span className="tco-stat-value">
+                {fmt(activeRange)} km
+              </span>
+            </div>
+            <div className="tco-ev-stat">
+              <span className="tco-stat-label">Conso mixte</span>
+              <span className="tco-stat-value">
+                {fmtPct(evConso)} kWh/100 km
+              </span>
+            </div>
+          </div>
         </div>
 
-        <select
-          className="tco-select"
-          value={selectedSlug}
-          onChange={(e) => handleVehicleChange(e.target.value)}
-        >
-          {vehicles.map((v) => (
-            <option key={v.slug} value={v.slug}>
-              {v.brand} {v.model} {v.variant} — {fmt(v.price_EUR)} EUR
-            </option>
-          ))}
-        </select>
-
-        <div className="tco-ev-summary">
-          <div className="tco-ev-stat">
-            <span className="tco-stat-label">Prix catalogue</span>
-            <span className="tco-stat-value">{fmt(selectedEv.price_EUR)} EUR</span>
+        {/* ── Usage params ────────────────────────────────── */}
+        <div className="tco-section">
+          <div className="tco-section-header">
+            <span className="tco-section-number">02</span>
+            <span className="tco-section-title">Votre usage</span>
           </div>
-          <div className="tco-ev-stat">
-            <span className="tco-stat-label">Aides deduites</span>
-            <span className="tco-stat-value accent">
-              -{fmt(selectedEv.aids_EUR)} EUR
-            </span>
-          </div>
-          <div className="tco-ev-stat">
-            <span className="tco-stat-label">Autonomie mixte</span>
-            <span className="tco-stat-value">
-              {fmt(selectedEv.realRange_mixed_km)} km
-            </span>
-          </div>
-          <div className="tco-ev-stat">
-            <span className="tco-stat-label">Conso mixte</span>
-            <span className="tco-stat-value">
-              {fmtPct(selectedEv.consumption_kWh_100km)} kWh/100 km
-            </span>
-          </div>
-        </div>
-      </div>
 
-      {/* ── Usage params ────────────────────────────────── */}
-      <div className="tco-section">
-        <div className="tco-section-header">
-          <span className="tco-section-number">02</span>
-          <span className="tco-section-title">Votre usage</span>
-        </div>
-
-        <SliderField
-          label="Kilometres par an"
-          unit="km/an"
-          value={kmPerYear}
-          min={3000}
-          max={60000}
-          step={1000}
-          onChange={setKmPerYear}
-          accent
-        />
-        <SliderField
-          label="Duree de detention"
-          unit="ans"
-          value={years}
-          min={1}
-          max={10}
-          step={1}
-          onChange={setYears}
-        />
-      </div>
-
-      {/* ── Energy ──────────────────────────────────────── */}
-      <div className="tco-section">
-        <div className="tco-section-header">
-          <span className="tco-section-number">03</span>
-          <span className="tco-section-title">Energie</span>
-        </div>
-
-        <div className="tco-subsection">
-          <span className="tco-sub-label">Electricite (VE)</span>
-          <div className="tco-row-2">
-            <NumberField
-              label="Tarif domicile"
-              unit="EUR/kWh"
-              value={elecHome}
-              min={0.05}
-              max={0.60}
-              step={0.01}
-              onChange={setElecHome}
-            />
-            <NumberField
-              label="Tarif rapide"
-              unit="EUR/kWh"
-              value={elecFast}
-              min={0.10}
-              max={1.0}
-              step={0.01}
-              onChange={setElecFast}
-            />
-          </div>
           <SliderField
-            label="Part recharge rapide"
-            unit="%"
-            value={fastPct}
-            min={0}
-            max={100}
-            step={5}
-            onChange={setFastPct}
+            label="Kilometres par an"
+            unit="km/an"
+            value={kmPerYear}
+            min={3000}
+            max={60000}
+            step={1000}
+            onChange={setKmPerYear}
+            accent
           />
-          <NumberField
-            label="Consommation VE"
-            unit="kWh/100 km"
-            value={evConso}
-            min={8}
-            max={35}
-            step={0.5}
-            onChange={setEvConso}
-          />
-        </div>
-
-        <div className="tco-subsection">
-          <span className="tco-sub-label">Carburant (thermique)</span>
-          <div className="tco-fuel-toggle">
-            <button
-              className={fuelType === "essence" ? "active" : ""}
-              onClick={() => handleFuelType("essence")}
-            >
-              Essence
-            </button>
-            <button
-              className={fuelType === "diesel" ? "active" : ""}
-              onClick={() => handleFuelType("diesel")}
-            >
-              Diesel
-            </button>
-          </div>
-          <div className="tco-row-2">
-            <NumberField
-              label={`Prix ${fuelType}`}
-              unit="EUR/L"
-              value={fuelPrice}
-              min={0.5}
-              max={3.0}
-              step={0.01}
-              onChange={setFuelPrice}
-            />
-            <NumberField
-              label="Consommation"
-              unit="L/100 km"
-              value={iceConso}
-              min={3}
-              max={15}
-              step={0.1}
-              onChange={setIceConso}
-            />
-          </div>
-          <NumberField
-            label="Prix thermique neuf"
-            unit="EUR"
-            value={icePrice}
-            min={10000}
-            max={80000}
-            step={500}
-            onChange={setIcePrice}
+          <SliderField
+            label="Duree de detention"
+            unit="ans"
+            value={years}
+            min={1}
+            max={10}
+            step={1}
+            onChange={setYears}
           />
         </div>
       </div>
 
-      {/* ── Advanced toggle ─────────────────────────────── */}
+      {/* ══════════════════════════════════════════════════ */}
+      {/* COL 2 : Energie + Avance                          */}
+      {/* ══════════════════════════════════════════════════ */}
+      <div className="tco-col tco-col-params">
+        {/* ── Energy ──────────────────────────────────────── */}
+        <div className="tco-section">
+          <div className="tco-section-header">
+            <span className="tco-section-number">03</span>
+            <span className="tco-section-title">Energie</span>
+          </div>
+
+          <div className="tco-subsection">
+            <span className="tco-sub-label">Electricite (VE)</span>
+            <div className="tco-row-2">
+              <NumberField
+                label="Tarif domicile"
+                unit="EUR/kWh"
+                value={elecHome}
+                min={0.05}
+                max={0.60}
+                step={0.01}
+                onChange={setElecHome}
+              />
+              <NumberField
+                label="Tarif rapide"
+                unit="EUR/kWh"
+                value={elecFast}
+                min={0.10}
+                max={1.0}
+                step={0.01}
+                onChange={setElecFast}
+              />
+            </div>
+            <SliderField
+              label="Part recharge rapide"
+              unit="%"
+              value={fastPct}
+              min={0}
+              max={100}
+              step={5}
+              onChange={setFastPct}
+            />
+            <NumberField
+              label="Consommation VE"
+              unit="kWh/100 km"
+              value={evConso}
+              min={8}
+              max={35}
+              step={0.5}
+              onChange={(v) => setEvConsoOverride(v)}
+            />
+          </div>
+
+          <div className="tco-subsection">
+            <span className="tco-sub-label">Carburant (thermique)</span>
+            <div className="tco-fuel-toggle">
+              <button
+                className={fuelType === "essence" ? "active" : ""}
+                onClick={() => handleFuelType("essence")}
+              >
+                Essence
+              </button>
+              <button
+                className={fuelType === "diesel" ? "active" : ""}
+                onClick={() => handleFuelType("diesel")}
+              >
+                Diesel
+              </button>
+            </div>
+            <div className="tco-row-2">
+              <NumberField
+                label={`Prix ${fuelType}`}
+                unit="EUR/L"
+                value={fuelPrice}
+                min={0.5}
+                max={3.0}
+                step={0.01}
+                onChange={setFuelPrice}
+              />
+              <NumberField
+                label="Consommation"
+                unit="L/100 km"
+                value={iceConso}
+                min={3}
+                max={15}
+                step={0.1}
+                onChange={setIceConso}
+              />
+            </div>
+            <NumberField
+              label="Prix thermique neuf"
+              unit="EUR"
+              value={icePrice}
+              min={10000}
+              max={80000}
+              step={500}
+              onChange={setIcePrice}
+            />
+          </div>
+        </div>
+
+      </div>
+      </div>{/* /tco-inputs-area */}
+
+      {/* ══════════════════════════════════════════════════ */}
+      {/* RIGHT : RESULTS (sticky on desktop)              */}
+      {/* ══════════════════════════════════════════════════ */}
+      <div className="tco-results-col">
+      <div className="tco-results">
+        <div className="tco-results-header">
+          <span className="tco-section-number">R</span>
+          <span className="tco-section-title">
+            Resultat sur {years} ans / {fmt(result.totalKm)} km
+          </span>
+        </div>
+
+        {/* Headline savings */}
+        <div
+          className={`tco-savings-hero ${result.savings < 0 ? "negative" : ""}`}
+        >
+          <div className="tco-savings-icon">
+            {result.savings >= 0 ? (
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                <polyline points="17 6 23 6 23 12" />
+              </svg>
+            ) : (
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="23 18 13.5 8.5 8.5 13.5 1 6" />
+                <polyline points="17 18 23 18 23 12" />
+              </svg>
+            )}
+          </div>
+          <span className="tco-savings-label">
+            {result.savings >= 0
+              ? "Economie avec le VE"
+              : "Surcout du VE"}
+          </span>
+          <AnimatedAmount
+            value={Math.abs(result.savings)}
+            className="tco-savings-amount"
+          />
+          <div className="tco-savings-meta">
+            <span className="tco-savings-pct">
+              {result.savings >= 0 ? "-" : "+"}{fmtPct(Math.abs(result.savingsPct))} %
+            </span>
+            <span className="tco-savings-sep">·</span>
+            <span className="tco-savings-monthly">
+              {fmt(Math.abs(result.savings) / (years * 12))} EUR/mois
+            </span>
+            {result.breakeven !== null && result.breakeven > 0 && (
+              <>
+                <span className="tco-savings-sep">·</span>
+                <span className="tco-breakeven">
+                  rentable en {fmtPct(result.breakeven)} an{result.breakeven >= 2 ? "s" : ""}
+                </span>
+              </>
+            )}
+            {result.breakeven === 0 && (
+              <>
+                <span className="tco-savings-sep">·</span>
+                <span className="tco-breakeven">immediat</span>
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* Cost per km visual comparison */}
+        <div className="tco-perkm-compare">
+          <div className="tco-perkm-item ev">
+            <span className="tco-perkm-label">VE</span>
+            <div className="tco-perkm-bar-wrap">
+              <div
+                className="tco-perkm-bar"
+                style={{
+                  width: `${Math.min((result.evPerKm / Math.max(result.evPerKm, result.icePerKm)) * 100, 100)}%`,
+                }}
+              />
+            </div>
+            <span className="tco-perkm-val">{(result.evPerKm * 100).toFixed(1)} ct/km</span>
+          </div>
+          <div className="tco-perkm-item ice">
+            <span className="tco-perkm-label">Therm.</span>
+            <div className="tco-perkm-bar-wrap">
+              <div
+                className="tco-perkm-bar"
+                style={{
+                  width: `${Math.min((result.icePerKm / Math.max(result.evPerKm, result.icePerKm)) * 100, 100)}%`,
+                }}
+              />
+            </div>
+            <span className="tco-perkm-val">{(result.icePerKm * 100).toFixed(1)} ct/km</span>
+          </div>
+        </div>
+
+        {/* Side-by-side totals */}
+        <div className="tco-totals-row">
+          <div className="tco-total-card ev">
+            <span className="tco-total-label">Cout total VE</span>
+            <AnimatedAmount value={result.evTotal} className="tco-total-amount" />
+            <span className="tco-total-monthly">
+              {fmt(result.evTotal / (years * 12))} EUR/mois
+            </span>
+          </div>
+          <div className="tco-total-card ice">
+            <span className="tco-total-label">Cout total thermique</span>
+            <AnimatedAmount value={result.iceTotal} className="tco-total-amount" />
+            <span className="tco-total-monthly">
+              {fmt(result.iceTotal / (years * 12))} EUR/mois
+            </span>
+          </div>
+        </div>
+
+        {/* Bar chart breakdown */}
+        <div className="tco-breakdown">
+          <div className="tco-breakdown-header">
+            <span className="tco-section-title">Decomposition</span>
+            <div className="tco-legend">
+              <span className="tco-legend-ev">VE</span>
+              <span className="tco-legend-ice">Thermique</span>
+            </div>
+          </div>
+
+          <BarRow label="Decote" ev={result.evBreakdown.depreciation} ice={result.iceBreakdown.depreciation} maxVal={result.maxBar} />
+          <BarRow label="Energie" ev={result.evBreakdown.energy} ice={result.iceBreakdown.energy} maxVal={result.maxBar} />
+          <BarRow label="Entretien" ev={result.evBreakdown.maintenance} ice={result.iceBreakdown.maintenance} maxVal={result.maxBar} />
+          <BarRow label="Assurance" ev={result.evBreakdown.insurance} ice={result.iceBreakdown.insurance} maxVal={result.maxBar} />
+          {result.iceBreakdown.tvs > 0 && (
+            <BarRow label="TVS" ev={0} ice={result.iceBreakdown.tvs} maxVal={result.maxBar} />
+          )}
+        </div>
+
+        <p className="tco-disclaimer">
+          Calcul indicatif. Moyennes marche France 2025.
+          Electricite a {fmtPct(result.avgElecPrice * 100)} ct/kWh
+          ({100 - fastPct} % domicile / {fastPct} % rapide).
+        </p>
+      </div>
+      </div>
+
+      {/* ── Advanced toggle (spans full width) ───────────── */}
       <button
         className="tco-advanced-toggle"
         onClick={() => setShowAdvanced(!showAdvanced)}
@@ -574,7 +878,7 @@ export default function TcoCalculator({ vehicles }: Props) {
       </button>
 
       {showAdvanced && (
-        <>
+        <div className="tco-advanced-grid">
           {/* ── Maintenance ─────────────────────────────── */}
           <div className="tco-section">
             <div className="tco-section-header">
@@ -635,7 +939,7 @@ export default function TcoCalculator({ vehicles }: Props) {
           <div className="tco-section">
             <div className="tco-section-header">
               <span className="tco-section-number">06</span>
-              <span className="tco-section-title">Valeur residuelle</span>
+              <span className="tco-section-title">Valeur residuelle (decote)</span>
             </div>
             <SliderField
               label={`VE apres ${years} ans`}
@@ -654,6 +958,11 @@ export default function TcoCalculator({ vehicles }: Props) {
               max={80}
               step={5}
               onChange={setIceResidual}
+            />
+            <DepreciationInsight
+              years={years}
+              evResidual={evResidual}
+              iceResidual={iceResidual}
             />
           </div>
 
@@ -676,120 +985,8 @@ export default function TcoCalculator({ vehicles }: Props) {
               VE exonere a 100 %. Mettez 0 si vehicule particulier.
             </p>
           </div>
-        </>
+        </div>
       )}
-
-      {/* ══════════════════════════════════════════════════ */}
-      {/* RESULTS                                           */}
-      {/* ══════════════════════════════════════════════════ */}
-      <div className="tco-results">
-        <div className="tco-results-header">
-          <span className="tco-section-number">R</span>
-          <span className="tco-section-title">
-            Resultat sur {years} ans / {fmt(result.totalKm)} km
-          </span>
-        </div>
-
-        {/* Headline savings */}
-        <div
-          className={`tco-savings-hero ${result.savings < 0 ? "negative" : ""}`}
-        >
-          <span className="tco-savings-label">
-            {result.savings >= 0
-              ? "Economie avec le VE"
-              : "Surcout du VE"}
-          </span>
-          <span className="tco-savings-amount">
-            {fmt(Math.abs(result.savings))} EUR
-          </span>
-          <span className="tco-savings-pct">
-            {result.savings >= 0 ? "-" : "+"}{fmtPct(Math.abs(result.savingsPct))} %
-            {result.breakeven !== null && result.breakeven > 0 && (
-              <span className="tco-breakeven">
-                {" "}· rentable en {fmtPct(result.breakeven)} an{result.breakeven >= 2 ? "s" : ""}
-              </span>
-            )}
-            {result.breakeven === 0 && (
-              <span className="tco-breakeven"> · immediat</span>
-            )}
-          </span>
-        </div>
-
-        {/* Side-by-side totals */}
-        <div className="tco-totals-row">
-          <div className="tco-total-card ev">
-            <span className="tco-total-label">Cout total VE</span>
-            <span className="tco-total-amount">{fmt(result.evTotal)} EUR</span>
-            <span className="tco-total-perkm">
-              {(result.evPerKm * 100).toFixed(1)} ct/km
-            </span>
-          </div>
-          <div className="tco-total-card ice">
-            <span className="tco-total-label">Cout total thermique</span>
-            <span className="tco-total-amount">{fmt(result.iceTotal)} EUR</span>
-            <span className="tco-total-perkm">
-              {(result.icePerKm * 100).toFixed(1)} ct/km
-            </span>
-          </div>
-        </div>
-
-        {/* Bar chart breakdown */}
-        <div className="tco-breakdown">
-          <div className="tco-breakdown-header">
-            <span className="tco-section-title">Decomposition</span>
-            <div className="tco-legend">
-              <span className="tco-legend-ev">VE</span>
-              <span className="tco-legend-ice">Thermique</span>
-            </div>
-          </div>
-
-          <BarRow
-            label="Decote"
-            ev={result.evBreakdown.depreciation}
-            ice={result.iceBreakdown.depreciation}
-            maxVal={result.maxBar}
-            color="var(--color-accent)"
-          />
-          <BarRow
-            label="Energie"
-            ev={result.evBreakdown.energy}
-            ice={result.iceBreakdown.energy}
-            maxVal={result.maxBar}
-            color="var(--color-accent)"
-          />
-          <BarRow
-            label="Entretien"
-            ev={result.evBreakdown.maintenance}
-            ice={result.iceBreakdown.maintenance}
-            maxVal={result.maxBar}
-            color="var(--color-accent)"
-          />
-          <BarRow
-            label="Assurance"
-            ev={result.evBreakdown.insurance}
-            ice={result.iceBreakdown.insurance}
-            maxVal={result.maxBar}
-            color="var(--color-accent)"
-          />
-          {result.iceBreakdown.tvs > 0 && (
-            <BarRow
-              label="TVS"
-              ev={0}
-              ice={result.iceBreakdown.tvs}
-              maxVal={result.maxBar}
-              color="var(--color-accent)"
-            />
-          )}
-        </div>
-
-        <p className="tco-disclaimer">
-          Calcul indicatif. Les valeurs par defaut (entretien, assurance, decote)
-          sont des moyennes marche France 2025 pour le segment concerne.
-          Ajustez-les a votre situation. L'electricite est calculee a{" "}
-          {fmtPct(result.avgElecPrice * 100)} ct/kWh (mix{" "}
-          {100 - fastPct} % domicile / {fastPct} % rapide).
-        </p>
-      </div>
     </div>
   );
 }

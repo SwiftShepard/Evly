@@ -41,7 +41,8 @@
       "Bash(grep -oE '<svg[^>]{0,200}>' dist/vehicules/smart-1/index.html)",
       "Bash(grep -oE '<svg[^>]{0,300}>' dist/vehicules/index.html)",
       "Bash(Select-Object -Last 15)",
-      "PowerShell(npx astro build 2>&1)"
+      "PowerShell(npx astro build 2>&1)",
+      "Bash(node -e \"const fs=require\\('fs'\\);const d='src/data/vehicles';const files=fs.readdirSync\\(d\\).filter\\(f=>f.endsWith\\('.json'\\)\\);const brands=new Set\\(\\);files.forEach\\(f=>{const j=JSON.parse\\(fs.readFileSync\\(d+'/'+f,'utf8'\\)\\);brands.add\\(j.brand\\)}\\);console.log\\([...brands].sort\\(\\).join\\('\\\\n'\\)\\)\")"
     ]
   }
 }
