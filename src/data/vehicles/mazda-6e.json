@@ -68,9 +68,9 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Takumi",
+      "name": "Takumi 69 kWh",
       "price_EUR": 42000,
-      "batteryUsed": "68.8 kWh LFP",
+      "batteryUsed": "69 kWh LFP",
       "equipmentHighlights": [
         "Écran central tactile de 14,6 pouces",
         "Affichage tête haute ADD étendu",
@@ -79,10 +79,33 @@
       ]
     },
     {
-      "name": "Takumi Plus",
-      "price_EUR": 47000,
-      "batteryUsed": "78 kWh NMC",
+      "name": "Takumi Plus 69 kWh",
+      "price_EUR": 44500,
+      "batteryUsed": "69 kWh LFP",
       "equipmentHighlights": [
+        "Système audio Sony à 14 haut-parleurs",
+        "Toit vitré panoramique fixe",
+        "Jantes alliage 19 pouces aérodynamiques",
+        "Écran central tactile de 14,6 pouces, Caméra 360° et ADD"
+      ]
+    },
+    {
+      "name": "Takumi 81 kWh",
+      "price_EUR": 44500,
+      "batteryUsed": "81 kWh NMC",
+      "equipmentHighlights": [
+        "Grande batterie 81 kWh",
+        "Écran central tactile de 14,6 pouces",
+        "Affichage tête haute ADD étendu",
+        "Sellerie Maztex noire avec sièges chauffants et ventilés"
+      ]
+    },
+    {
+      "name": "Takumi Plus 81 kWh",
+      "price_EUR": 47000,
+      "batteryUsed": "81 kWh NMC",
+      "equipmentHighlights": [
+        "Grande batterie 81 kWh",
         "Système audio Sony à 14 haut-parleurs",
         "Toit vitré panoramique fixe",
         "Rétroviseurs extérieurs digitaux avec écrans OLED",
@@ -95,10 +118,11 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "mazda-6e-takumi",
-      "label": "6e Takumi · 68.8 kWh",
+      "id": "mazda-6e-takumi-69",
+      "label": "6e Takumi · 69 kWh",
       "battery": "standard",
-      "trim": "Takumi",
+      "usableCapacity_kWh": 68.8,
+      "trim": "Takumi 69 kWh",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
@@ -127,13 +151,86 @@
         { "soc": 100, "power": 8 }
       ],
       "availability": "upcoming",
-      "notes": "Propulsion RWD de 258 ch. Version standard avec batterie LFP de 68,8 kWh."
+      "notes": "Propulsion RWD de 258 ch. Version Takumi avec batterie LFP de 69 kWh."
     },
     {
-      "id": "mazda-6e-takumi-plus",
-      "label": "6e Takumi Plus · 78 kWh",
+      "id": "mazda-6e-takumi-plus-69",
+      "label": "6e Takumi Plus · 69 kWh",
+      "battery": "standard",
+      "usableCapacity_kWh": 68.8,
+      "trim": "Takumi Plus 69 kWh",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 44500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 480,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": {
+        "mixed_km": 400,
+        "highway_130_km": 290,
+        "urban_km": 480,
+        "winter_minus5_km": 300,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 135,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 48,
+      "chargingCurve": [
+        { "soc": 0, "power": 90 },
+        { "soc": 10, "power": 135 },
+        { "soc": 30, "power": 120 },
+        { "soc": 50, "power": 95 },
+        { "soc": 80, "power": 40 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "upcoming",
+      "notes": "Propulsion RWD de 258 ch. Version haut de gamme Takumi Plus avec batterie LFP de 69 kWh."
+    },
+    {
+      "id": "mazda-6e-takumi-81",
+      "label": "6e Takumi · 81 kWh",
       "battery": "long-range",
-      "trim": "Takumi Plus",
+      "usableCapacity_kWh": 80.0,
+      "trim": "Takumi 81 kWh",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 44500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 560,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": {
+        "mixed_km": 470,
+        "highway_130_km": 340,
+        "urban_km": 560,
+        "winter_minus5_km": 360,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 115,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 45,
+      "chargingCurve": [
+        { "soc": 0, "power": 80 },
+        { "soc": 10, "power": 115 },
+        { "soc": 30, "power": 105 },
+        { "soc": 50, "power": 85 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "upcoming",
+      "notes": "Propulsion RWD de 258 ch. Version Takumi avec batterie NMC de 81 kWh (charge plus lente mais autonomie accrue)."
+    },
+    {
+      "id": "mazda-6e-takumi-plus-81",
+      "label": "6e Takumi Plus · 81 kWh",
+      "battery": "long-range",
+      "usableCapacity_kWh": 80.0,
+      "trim": "Takumi Plus 81 kWh",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
@@ -150,19 +247,19 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 150,
-      "chargingDC_10_80_min": 25,
-      "chargingDC_kWh_30min": 55,
+      "chargingDC_peak_kW": 115,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 45,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 150 },
-        { "soc": 30, "power": 130 },
-        { "soc": 50, "power": 100 },
-        { "soc": 80, "power": 45 },
-        { "soc": 100, "power": 10 }
+        { "soc": 0, "power": 80 },
+        { "soc": 10, "power": 115 },
+        { "soc": 30, "power": 105 },
+        { "soc": 50, "power": 85 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
       ],
       "availability": "upcoming",
-      "notes": "Propulsion RWD de 258 ch. Version haut de gamme avec batterie NMC de 78 kWh offrant 560 km WLTP."
+      "notes": "Propulsion RWD de 258 ch. Version haut de gamme Takumi Plus avec batterie NMC de 81 kWh (charge plus lente mais équipements exclusifs)."
     }
   ],
   "warranty": {

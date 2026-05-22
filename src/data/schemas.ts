@@ -133,6 +133,7 @@ const VehicleConfigurationSchema = z.object({
   options: z.array(z.string()).default([]),
 
   // Données qui dépendent de la configuration
+  usableCapacity_kWh: z.number().positive().optional(),
   price_EUR: z.number().int().positive().nullable(), // null = prix non encore communiqué
   monthlyLease_EUR: z.number().int().nonnegative().nullable(),
   leasingSocialEligible: z.boolean(),

@@ -185,7 +185,24 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
       {configurations.map((config, index) => {
         // Compute config-specific values
         const nyland90 = config.rangeTests.find((t: any) => t.protocol === "nyland" && t.speed_kmh === 90);
-        const batteryCapacity = config.battery === "long-range" ? vehicle.usableCapacity_kWh : (vehicle.usableCapacity_kWh > 70 ? 58.3 : vehicle.usableCapacity_kWh); // approximation if no specific capacity
+        
+        let batteryCapacity = config.usableCapacity_kWh;
+        if (batteryCapacity == null) {
+          const labelMatch = config.label?.match(/(\d+(?:\.\d+)?)\s*kWh/);
+          if (labelMatch) {
+            batteryCapacity = parseFloat(labelMatch[1]);
+          } else {
+            const trimMatch = config.trim?.match(/(\d+(?:\.\d+)?)\s*kWh/);
+            if (trimMatch) {
+              batteryCapacity = parseFloat(trimMatch[1]);
+            } else {
+              batteryCapacity = config.battery === "long-range" 
+                ? vehicle.usableCapacity_kWh 
+                : (vehicle.usableCapacity_kWh > 70 ? 58.3 : vehicle.usableCapacity_kWh);
+            }
+          }
+        }
+        
         const nylandRangeEstimate = nyland90 ? Math.round((batteryCapacity / nyland90.consumption_kWh_100km) * 100) : null;
         const priceAfterAids = config.price_EUR != null ? Math.max(0, config.price_EUR - totalAids) : null;
         const realRangeMixed = config.realRange?.mixed_km ?? vehicle.realRange.mixed_km;
