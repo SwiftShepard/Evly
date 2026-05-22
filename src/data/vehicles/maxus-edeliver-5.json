@@ -1,0 +1,194 @@
+{
+  "slug": "maxus-edeliver-5",
+  "brand": "Maxus",
+  "model": "eDeliver 5",
+  "variant": "64 kWh",
+  "bodyType": "Fourgonnette",
+  "segment": "C",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Nanjing",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 120,
+  "power_hp": 163,
+  "torque_Nm": 240,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 10.2,
+  "topSpeed_kmh": 120,
+  "usableCapacity_kWh": 64,
+  "grossCapacity_kWh": 65,
+  "chemistry": "LFP",
+  "architecture_V": 400,
+  "mass_kg": 2050,
+  "wltp_max_km": 335,
+  "wltp_min_km": 310,
+  "realRange": {
+    "mixed_km": 260,
+    "highway_130_km": 175,
+    "urban_km": 320,
+    "winter_minus5_km": 200,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 19.1,
+  "consumption_highway_kWh_per_100km": 26.5,
+  "consumption_winter_kWh_per_100km": 24.5,
+  "dragCoefficient_Cx": 0.33,
+  "chargingDC": {
+    "peakPower_kW": 80,
+    "time_10_80_min": 36,
+    "kWh_added_30min": 35,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 7
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 65 },
+    { "soc": 10, "power": 80 },
+    { "soc": 50, "power": 70 },
+    { "soc": 80, "power": 35 },
+    { "soc": 100, "power": 6 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4800,
+  "width_mm": 1874,
+  "height_mm": 1960,
+  "wheelbase_mm": 3100,
+  "trunkCapacity_L": 6600,
+  "trunkCapacityFolded_L": 7700,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "64 kWh L1H1",
+      "price_EUR": 38990,
+      "batteryUsed": "64 kWh",
+      "equipmentHighlights": [
+        "Volume utile 6,6 m3",
+        "Charge utile 1200 kg",
+        "Ecran tactile central 12,3 pouces"
+      ]
+    },
+    {
+      "name": "64 kWh L2H2",
+      "price_EUR": 41990,
+      "batteryUsed": "64 kWh",
+      "equipmentHighlights": [
+        "Volume utile 7,7 m3",
+        "Hauteur surelevee 2,18 m",
+        "Aide au stationnement 360"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "maxus-edeliver-5-l1h1",
+      "label": "eDeliver 5 L1H1 64 kWh",
+      "battery": "standard",
+      "trim": "64 kWh L1H1",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 38990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 335,
+      "wltp_consumption_kWh_100km": 19.1,
+      "realRange": {
+        "mixed_km": 260,
+        "highway_130_km": 175,
+        "urban_km": 320,
+        "winter_minus5_km": 200,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 80,
+      "chargingDC_10_80_min": 36,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        { "soc": 0, "power": 65 },
+        { "soc": 10, "power": 80 },
+        { "soc": 50, "power": 70 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 6 }
+      ],
+      "availability": "available",
+      "notes": "Fourgonnette L1H1, volume utile 6,6 m3."
+    },
+    {
+      "id": "maxus-edeliver-5-l2h2",
+      "label": "eDeliver 5 L2H2 64 kWh",
+      "battery": "standard",
+      "trim": "64 kWh L2H2",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 41990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 310,
+      "wltp_consumption_kWh_100km": 20.6,
+      "realRange": {
+        "mixed_km": 240,
+        "highway_130_km": 160,
+        "urban_km": 300,
+        "winter_minus5_km": 185,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 80,
+      "chargingDC_10_80_min": 36,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        { "soc": 0, "power": 65 },
+        { "soc": 10, "power": 80 },
+        { "soc": 50, "power": 70 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 6 }
+      ],
+      "availability": "available",
+      "notes": "Fourgonnette L2H2, volume utile 7,7 m3."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "confort", "label": "Poste de conduite moderne avec grand ecran tactile de 12,3 pouces" },
+    { "category": "technologie", "label": "Batterie LFP securisee avec gestion thermique active" },
+    { "category": "securite", "label": "Pack complet d'aides a la conduite (ADAS) de serie" },
+    { "category": "design", "label": "Volume de chargement optimise avec design a parois droites" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Volume utile exceptionnel (jusqu'a 7,7 m3)",
+      "Rapport prix/equipement commercial tres agressif"
+    ],
+    "weaknesses": [
+      "Reseau commercial Maxus encore en developpement",
+      "Vitesse de charge rapide limitee a 80 kW"
+    ],
+    "idealUserProfile": "Artisans et services de livraison urbains a la recherche d'un excellent rapport volume/prix.",
+    "notIdealFor": "Longs trajets autoroutiers repetes en raison de l'autonomie et de la recharge limitee."
+  },
+  "lastUpdated": "2026-05-22",
+  "sources": [
+    "automobile-propre",
+    "largus"
+  ],
+  "imageCredit": "Constructeur"
+}

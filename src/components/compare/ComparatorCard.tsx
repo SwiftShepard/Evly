@@ -3,12 +3,15 @@ import type { Vehicle, VehicleConfiguration } from "@/data/schemas";
 import ConfigSelector from "./ConfigSelector";
 import ChargingSparkline from "./ChargingSparkline";
 import AnimatedNumber from "@/components/ui/AnimatedNumber";
+import SohSlider from "@/components/vehicle/SohSlider";
 import { url } from "@/lib/url";
 import { X } from "lucide-react";
 
 interface Props {
   vehicle: Vehicle;
   config: VehicleConfiguration;
+  soh: number;
+  onSohChange: (soh: number) => void;
   onConfigChange: (configId: string) => void;
   onRemove: () => void;
   isMobile: boolean;
@@ -17,6 +20,8 @@ interface Props {
 export default function ComparatorCard({
   vehicle,
   config,
+  soh,
+  onSohChange,
   onConfigChange,
   onRemove,
   isMobile,
@@ -51,6 +56,24 @@ export default function ComparatorCard({
       (capacity / bestRangeTest.consumption_kWh_100km) * 100
     );
   }, [bestRangeTest, config.battery, vehicle.usableCapacity_kWh]);
+
+  // Scaled ranges based on battery SoH
+  const scaledMixedRange = useMemo(() => {
+    const base = bestRangeTest
+      ? (nylandRangeEstimate ?? bestRangeTest.range_km ?? config.realRange?.mixed_km)
+      : config.realRange?.mixed_km;
+    return base ? Math.round(base * soh / 100) : null;
+  }, [bestRangeTest, nylandRangeEstimate, config.realRange, soh]);
+
+  const scaledWltp = useMemo(() => {
+    return config.wltp_km ? Math.round(config.wltp_km * soh / 100) : null;
+  }, [config.wltp_km, soh]);
+
+  const scaledHighway = useMemo(() => {
+    return config.realRange?.highway_130_km
+      ? Math.round(config.realRange.highway_130_km * soh / 100)
+      : null;
+  }, [config.realRange?.highway_130_km, soh]);
 
   const fmtPrice = (n: number) =>
     new Intl.NumberFormat("fr-FR", {
@@ -134,6 +157,11 @@ export default function ComparatorCard({
         </div>
       )}
 
+      {/* SoH Slider */}
+      <div className="px-4 pb-2">
+        <SohSlider initialSoh={soh} onChange={onSohChange} compact />
+      </div>
+
       {/* Separator */}
       <div className="mx-4" style={{ borderTop: "0.5px solid var(--color-border)" }} />
 
@@ -149,11 +177,7 @@ export default function ComparatorCard({
             }}
           >
             <AnimatedNumber
-              value={
-                bestRangeTest
-                  ? (nylandRangeEstimate ?? bestRangeTest.range_km ?? config.realRange?.mixed_km)
-                  : config.realRange?.mixed_km
-              }
+              value={scaledMixedRange}
             />
           </span>
           <span
@@ -187,7 +211,7 @@ export default function ComparatorCard({
         <DataBlock label="WLTP officiel" compact>
           <div className="flex items-baseline gap-2">
             <span className="text-xl font-semibold tabular-nums" style={{ color: "var(--color-text)", letterSpacing: "-0.02em" }}>
-              <AnimatedNumber value={config.wltp_km} />
+              <AnimatedNumber value={scaledWltp} />
             </span>
             <span className="font-mono text-[10px]" style={{ color: "var(--color-text-faint)" }}>km</span>
           </div>
@@ -199,7 +223,7 @@ export default function ComparatorCard({
         <DataBlock label="Autoroute 130 km/h" compact>
           <div className="flex items-baseline gap-2">
             <span className="text-xl font-semibold tabular-nums" style={{ color: "var(--color-text)", letterSpacing: "-0.02em" }}>
-              <AnimatedNumber value={config.realRange.highway_130_km} />
+              <AnimatedNumber value={scaledHighway} />
             </span>
             <span className="font-mono text-[10px]" style={{ color: "var(--color-text-faint)" }}>km</span>
           </div>
@@ -310,7 +334,7 @@ export default function ComparatorCard({
         style={{ borderTop: "0.5px solid var(--color-border)" }}
       >
         <a
-          href={url(`/vehicules/${vehicle.slug}?config=${config.id}`)}
+          href={url(`/vehicules/${vehicle.slug}?config=${config.id}${soh !== 100 ? `&soh=${soh}` : ""}`)}
           className="flex items-center justify-between gap-2 text-xs font-medium transition-colors"
           style={{ color: "var(--color-text-muted)" }}
           onMouseEnter={(e) => {

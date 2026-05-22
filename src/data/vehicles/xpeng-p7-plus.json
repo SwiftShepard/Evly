@@ -1,0 +1,262 @@
+{
+  "slug": "xpeng-p7-plus",
+  "brand": "Xpeng",
+  "model": "P7+",
+  "variant": "61 / 75 kWh",
+  "bodyType": "Berline Fastback",
+  "segment": "E",
+  "productionCountry": "Autriche",
+  "assemblyPlant": "Graz (Magna Steyr)",
+  "releaseYear": 2026,
+  "marketAvailability": "Disponible",
+  "power_kW": 180,
+  "power_hp": 245,
+  "torque_Nm": 450,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 6.9,
+  "topSpeed_kmh": 200,
+  "usableCapacity_kWh": 61,
+  "grossCapacity_kWh": 61.5,
+  "chemistry": "LFP",
+  "architecture_V": 800,
+  "mass_kg": 1960,
+  "wltp_max_km": 530,
+  "wltp_min_km": 455,
+  "realRange": {
+    "mixed_km": 350,
+    "highway_130_km": 245,
+    "urban_km": 420,
+    "winter_minus5_km": 275,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 13.6,
+  "consumption_highway_kWh_per_100km": 18.5,
+  "consumption_winter_kWh_per_100km": 17.5,
+  "dragCoefficient_Cx": 0.206,
+  "chargingDC": {
+    "peakPower_kW": 350,
+    "time_10_80_min": 12,
+    "kWh_added_30min": 55,
+    "confidence": "manufacturer"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 6
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 250 },
+    { "soc": 10, "power": 350 },
+    { "soc": 30, "power": 340 },
+    { "soc": 50, "power": 260 },
+    { "soc": 80, "power": 75 },
+    { "soc": 100, "power": 12 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 5071,
+  "width_mm": 1937,
+  "height_mm": 1512,
+  "wheelbase_mm": 3000,
+  "trunkCapacity_L": 573,
+  "trunkCapacityFolded_L": 1931,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Standard Range",
+      "price_EUR": 46990,
+      "batteryUsed": "60.7 kWh",
+      "equipmentHighlights": [
+        "455 km WLTP",
+        "Architecture 800 V",
+        "Charge 5C ultra-rapide (10-80% en 12 min)",
+        "Système de conduite autonome XNGP sans LiDAR"
+      ]
+    },
+    {
+      "name": "Long Range",
+      "price_EUR": 49600,
+      "batteryUsed": "76.3 kWh",
+      "equipmentHighlights": [
+        "530 km WLTP",
+        "Toit panoramique en verre",
+        "Espace aux jambes de classe executive"
+      ]
+    },
+    {
+      "name": "Performance",
+      "price_EUR": 53600,
+      "batteryUsed": "76.3 kWh",
+      "equipmentHighlights": [
+        "500 km WLTP",
+        "Transmission intégrale AWD (370 kW / 503 ch)",
+        "Accélération 0-100 km/h en 4.3 s"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 4000,
+      "conditions": "Éligible uniquement sur version Standard Range (prix < 47 000 € et production en Autriche)"
+    }
+  ],
+  "configurations": [
+    {
+      "id": "xpeng-p7-plus-standard",
+      "label": "Standard Range · 60.7 kWh",
+      "battery": "standard",
+      "trim": "Standard Range",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 46990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 455,
+      "wltp_consumption_kWh_100km": 13.6,
+      "realRange": {
+        "mixed_km": 350,
+        "highway_130_km": 245,
+        "urban_km": 420,
+        "winter_minus5_km": 275,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 350,
+      "chargingDC_10_80_min": 12,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 250 },
+        { "soc": 10, "power": 350 },
+        { "soc": 30, "power": 340 },
+        { "soc": 50, "power": 260 },
+        { "soc": 80, "power": 75 },
+        { "soc": 100, "power": 12 }
+      ],
+      "availability": "available",
+      "notes": "245 ch (180 kW), RWD, LFP 60.7 kWh"
+    },
+    {
+      "id": "xpeng-p7-plus-long-range",
+      "label": "Long Range · 76.3 kWh",
+      "battery": "long-range",
+      "trim": "Long Range",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 49600,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 530,
+      "wltp_consumption_kWh_100km": 14.2,
+      "realRange": {
+        "mixed_km": 425,
+        "highway_130_km": 300,
+        "urban_km": 510,
+        "winter_minus5_km": 330,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 400,
+      "chargingDC_10_80_min": 12,
+      "chargingDC_kWh_30min": 68,
+      "chargingCurve": [
+        { "soc": 0, "power": 250 },
+        { "soc": 10, "power": 400 },
+        { "soc": 30, "power": 380 },
+        { "soc": 50, "power": 280 },
+        { "soc": 80, "power": 80 },
+        { "soc": 100, "power": 12 }
+      ],
+      "availability": "available",
+      "notes": "313 ch (230 kW), RWD, LFP 76.3 kWh"
+    },
+    {
+      "id": "xpeng-p7-plus-performance",
+      "label": "Performance · 76.3 kWh",
+      "battery": "long-range",
+      "trim": "Performance",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 53600,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 500,
+      "wltp_consumption_kWh_100km": 15.0,
+      "realRange": {
+        "mixed_km": 400,
+        "highway_130_km": 280,
+        "urban_km": 480,
+        "winter_minus5_km": 310,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 400,
+      "chargingDC_10_80_min": 12,
+      "chargingDC_kWh_30min": 68,
+      "chargingCurve": [
+        { "soc": 0, "power": 250 },
+        { "soc": 10, "power": 400 },
+        { "soc": 30, "power": 380 },
+        { "soc": 50, "power": 280 },
+        { "soc": 80, "power": 80 },
+        { "soc": 100, "power": 12 }
+      ],
+      "availability": "available",
+      "notes": "503 ch (370 kW), AWD, LFP 76.3 kWh, double motorisation"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 120000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Ligne de coupé fastback au Cx aérodynamique record de 0.206"
+    },
+    {
+      "category": "technologie",
+      "label": "Architecture 800 V de 3ème génération avec charge ultra-rapide 5C"
+    },
+    {
+      "category": "securite",
+      "label": "Conduite autonome avancée XNGP basée uniquement sur la vision (Hawk Eye)"
+    },
+    {
+      "category": "confort",
+      "label": "Habitabilité exceptionnelle de 3 mètres d'empattement avec sièges chauffants, ventilés et massants"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Vitesse de recharge ultra-rapide de référence (10 à 80 % en 12 minutes)",
+      "Production en Autriche (Magna Steyr) évitant les surtaxes chinoises et ouvrant l'accès aux aides",
+      "Habitabilité de classe affaire et grand coffre de 573 L à ouverture hayon"
+    ],
+    "weaknesses": [
+      "Gabarit imposant (5,07 m) peu adapté aux parkings et centres-villes européens",
+      "Réseau de distribution et de service après-vente encore jeune en France"
+    ],
+    "idealUserProfile": "Grands rouleurs autoroutiers et technophiles recherchant une berline spacieuse, rapide à charger et dotée d'aides à la conduite avancées.",
+    "notIdealFor": "Conducteurs urbains à la recherche d'une citadine agile ou de véhicules faciles à garer."
+  },
+  "lastUpdated": "2026-05-22",
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
+  "imageCredit": "Constructeur"
+}

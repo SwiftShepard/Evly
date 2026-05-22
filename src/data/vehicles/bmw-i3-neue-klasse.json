@@ -1,0 +1,201 @@
+{
+  "slug": "bmw-i3-neue-klasse",
+  "brand": "BMW",
+  "model": "i3 Neue Klasse",
+  "variant": "108.7 kWh",
+  "bodyType": "Berline",
+  "segment": "D",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Munich",
+  "releaseYear": 2026,
+  "marketAvailability": "Bientôt disponible",
+  "power_kW": 340,
+  "power_hp": 463,
+  "torque_Nm": 645,
+  "drivetrain": "AWD",
+  "motors": 2,
+  "acceleration_0_100_s": 4.5,
+  "topSpeed_kmh": 210,
+  "usableCapacity_kWh": 108.7,
+  "grossCapacity_kWh": 113.4,
+  "chemistry": "NMC",
+  "architecture_V": 800,
+  "mass_kg": 2100,
+  "wltp_max_km": 850,
+  "wltp_min_km": 750,
+  "realRange": {
+    "mixed_km": 660,
+    "highway_130_km": 460,
+    "urban_km": 820,
+    "winter_minus5_km": 510,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 16.5,
+  "consumption_highway_kWh_per_100km": 23.6,
+  "consumption_winter_kWh_per_100km": 21.3,
+  "dragCoefficient_Cx": 0.22,
+  "chargingDC": {
+    "peakPower_kW": 400,
+    "time_10_80_min": 21,
+    "kWh_added_30min": 85,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 22,
+    "phases": 3,
+    "time_0_100_h": 6.0
+  },
+  "plugAndCharge": true,
+  "v2l": true,
+  "v2g": true,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 250
+    },
+    {
+      "soc": 10,
+      "power": 400
+    },
+    {
+      "soc": 30,
+      "power": 330
+    },
+    {
+      "soc": 50,
+      "power": 250
+    },
+    {
+      "soc": 80,
+      "power": 100
+    },
+    {
+      "soc": 100,
+      "power": 15
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4720,
+  "width_mm": 1880,
+  "height_mm": 1440,
+  "wheelbase_mm": 2880,
+  "trunkCapacity_L": 480,
+  "trunkCapacityFolded_L": 1350,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "i3 xDrive50 Neue Klasse",
+      "price_EUR": 69000,
+      "batteryUsed": "108.7 kWh",
+      "equipmentHighlights": [
+        "850 km WLTP",
+        "Puissance 463 ch",
+        "BMW Panoramic Vision"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "bmw-i3-neue-klasse-50",
+      "label": "i3 xDrive50 · 108.7 kWh",
+      "battery": "long-range",
+      "trim": "i3 xDrive50 Neue Klasse",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 69000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 850,
+      "wltp_consumption_kWh_100km": 12.8,
+      "realRange": {
+        "mixed_km": 660,
+        "highway_130_km": 460,
+        "urban_km": 820,
+        "winter_minus5_km": 510,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 400,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 85,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 250
+        },
+        {
+          "soc": 10,
+          "power": 400
+        },
+        {
+          "soc": 30,
+          "power": 330
+        },
+        {
+          "soc": 50,
+          "power": 250
+        },
+        {
+          "soc": 80,
+          "power": 100
+        },
+        {
+          "soc": 100,
+          "power": 15
+        }
+      ],
+      "availability": "upcoming",
+      "notes": "463 ch (340 kW), AWD xDrive, berline Neue Klasse"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 2,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Silhouette berline dynamique Neue Klasse avec profil epure et calandre expressive"
+    },
+    {
+      "category": "technologie",
+      "label": "BMW Panoramic Vision projetant les informations cles au bas du pare-brise"
+    },
+    {
+      "category": "securite",
+      "label": "Quatre supercalculateurs coordonnant la conduite intelligente et le freinage dynamique"
+    },
+    {
+      "category": "confort",
+      "label": "Recharge bidirectionnelle integree et habitacle eco-concu haut de gamme"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Autonomie hors norme atteignant 850 km WLTP grace au profil aerodynamique",
+      "Charge ultra-rapide 800 V (pic a 400 kW, 10-80% en 21 min)",
+      "Ergonomie epuree et affichage pare-brise panoramique innovant"
+    ],
+    "weaknesses": [
+      "Tarif de depart aux alentours de 69 000 euros",
+      "Disponibilite reelle a partir de fin 2026"
+    ],
+    "idealUserProfile": "Conducteurs premium effectuant de longs trajets autoroutiers et a la recherche d'une berline ultra-technologique.",
+    "notIdealFor": "Petits budgets ou acheteurs ayant un besoin immediat de livraison."
+  },
+  "lastUpdated": "2026-05-21",
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
+  "imageCredit": "Constructeur"
+}

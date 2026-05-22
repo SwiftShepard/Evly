@@ -9,6 +9,7 @@ import { Plus, Share2, Check, LayoutGrid, Rows3, Table2 } from "lucide-react";
 interface CardState {
   slug: string;
   configId: string;
+  soh?: number;
 }
 
 interface Props {
@@ -44,7 +45,7 @@ export default function ComparatorView({ vehicles }: Props) {
 
     const parsed: CardState[] = [];
     for (const pair of v.split(",")) {
-      const [slug, configId] = pair.split(":");
+      const [slug, configId, sohStr] = pair.split(":");
       if (!slug) continue;
       const vehicle = vehicleMap.get(slug);
       if (!vehicle) continue;
@@ -54,8 +55,10 @@ export default function ComparatorView({ vehicles }: Props) {
           ? configId
           : vehicle.configurations[0]?.id;
 
+      const soh = sohStr ? parseInt(sohStr, 10) : 100;
+
       if (resolvedConfigId) {
-        parsed.push({ slug, configId: resolvedConfigId });
+        parsed.push({ slug, configId: resolvedConfigId, soh });
       }
     }
 
@@ -76,7 +79,7 @@ export default function ComparatorView({ vehicles }: Props) {
           url.searchParams.delete("v");
         } else {
           const param = newCards
-            .map((c) => `${c.slug}:${c.configId}`)
+            .map((c) => `${c.slug}:${c.configId}:${c.soh ?? 100}`)
             .join(",");
           url.searchParams.set("v", param);
         }
@@ -106,7 +109,7 @@ export default function ComparatorView({ vehicles }: Props) {
       updateCards((prev) => {
         if (prev.length >= MAX_CARDS) return prev;
         if (prev.some((c) => c.slug === slug)) return prev;
-        return [...prev, { slug, configId: vehicle.configurations[0]!.id }];
+        return [...prev, { slug, configId: vehicle.configurations[0]!.id, soh: 100 }];
       });
       setShowModal(false);
     },
@@ -131,6 +134,16 @@ export default function ComparatorView({ vehicles }: Props) {
     [updateCards]
   );
 
+  // Change SoH
+  const changeSoh = useCallback(
+    (index: number, soh: number) => {
+      updateCards((prev) =>
+        prev.map((c, i) => (i === index ? { ...c, soh } : c))
+      );
+    },
+    [updateCards]
+  );
+
   // Build configured cards for insights
   const configuredCards = useMemo<ConfiguredCard[]>(() => {
     return cards
@@ -139,7 +152,7 @@ export default function ComparatorView({ vehicles }: Props) {
         if (!vehicle) return null;
         const config = vehicle.configurations.find((cfg) => cfg.id === c.configId);
         if (!config) return null;
-        return { vehicle, config };
+        return { vehicle, config, soh: c.soh ?? 100 };
       })
       .filter((c): c is ConfiguredCard => c !== null);
   }, [cards, vehicleMap]);
@@ -335,6 +348,8 @@ export default function ComparatorView({ vehicles }: Props) {
               key={`${cc.vehicle.slug}-${index}`}
               vehicle={cc.vehicle}
               config={cc.config}
+              soh={cc.soh ?? 100}
+              onSohChange={(soh) => changeSoh(index, soh)}
               onConfigChange={(configId) => changeConfig(index, configId)}
               onRemove={() => removeVehicle(index)}
               isMobile={isMobile}

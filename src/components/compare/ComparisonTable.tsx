@@ -41,26 +41,50 @@ const SECTIONS: SectionDef[] = [
     rows: [
       {
         label: "Mixte réelle",
-        getValue: (c) => { const v = c.config.realRange?.mixed_km; return v ? `${fmtN(v)} km` : null; },
-        numeric: (c) => c.config.realRange?.mixed_km ?? null,
+        getValue: (c) => {
+          const v = c.config.realRange?.mixed_km;
+          return v ? `${fmtN(Math.round(v * (c.soh ?? 100) / 100))} km` : null;
+        },
+        numeric: (c) => {
+          const v = c.config.realRange?.mixed_km;
+          return v ? Math.round(v * (c.soh ?? 100) / 100) : null;
+        },
         bestIsMax: true,
       },
       {
         label: "WLTP",
-        getValue: (c) => c.config.wltp_km ? `${fmtN(c.config.wltp_km)} km` : null,
-        numeric: (c) => c.config.wltp_km ?? null,
+        getValue: (c) => {
+          const v = c.config.wltp_km;
+          return v ? `${fmtN(Math.round(v * (c.soh ?? 100) / 100))} km` : null;
+        },
+        numeric: (c) => {
+          const v = c.config.wltp_km;
+          return v ? Math.round(v * (c.soh ?? 100) / 100) : null;
+        },
         bestIsMax: true,
       },
       {
         label: "Autoroute 130",
-        getValue: (c) => { const v = c.config.realRange?.highway_130_km; return v ? `${fmtN(v)} km` : null; },
-        numeric: (c) => c.config.realRange?.highway_130_km ?? null,
+        getValue: (c) => {
+          const v = c.config.realRange?.highway_130_km;
+          return v ? `${fmtN(Math.round(v * (c.soh ?? 100) / 100))} km` : null;
+        },
+        numeric: (c) => {
+          const v = c.config.realRange?.highway_130_km;
+          return v ? Math.round(v * (c.soh ?? 100) / 100) : null;
+        },
         bestIsMax: true,
       },
       {
         label: "Hiver -5°C",
-        getValue: (c) => { const v = c.config.realRange?.winter_minus5_km; return v ? `${fmtN(v)} km` : null; },
-        numeric: (c) => c.config.realRange?.winter_minus5_km ?? null,
+        getValue: (c) => {
+          const v = c.config.realRange?.winter_minus5_km;
+          return v ? `${fmtN(Math.round(v * (c.soh ?? 100) / 100))} km` : null;
+        },
+        numeric: (c) => {
+          const v = c.config.realRange?.winter_minus5_km;
+          return v ? Math.round(v * (c.soh ?? 100) / 100) : null;
+        },
         bestIsMax: true,
       },
     ],
@@ -175,8 +199,14 @@ const SECTIONS: SectionDef[] = [
     rows: [
       {
         label: "Capacité",
-        getValue: (c) => `${fmtN(c.vehicle.usableCapacity_kWh, 1)} kWh`,
-        numeric: (c) => c.vehicle.usableCapacity_kWh,
+        getValue: (c) => {
+          const v = c.vehicle.usableCapacity_kWh;
+          return v ? `${fmtN(v * (c.soh ?? 100) / 100, 1)} kWh` : null;
+        },
+        numeric: (c) => {
+          const v = c.vehicle.usableCapacity_kWh;
+          return v ? v * (c.soh ?? 100) / 100 : null;
+        },
         bestIsMax: true,
       },
       {
@@ -376,7 +406,7 @@ export default function ComparisonTable({ cards, onRemove, onConfigChange, onAdd
 
                   {/* Link to fiche */}
                   <a
-                    href={url(`/vehicules/${card.vehicle.slug}?config=${card.config.id}`)}
+                    href={url(`/vehicules/${card.vehicle.slug}?config=${card.config.id}${card.soh && card.soh !== 100 ? `&soh=${card.soh}` : ""}`)}
                     className="font-mono text-[9px] transition-colors"
                     style={{ color: "var(--color-text-faint)" }}
                     onMouseEnter={(e) => { e.currentTarget.style.color = "var(--color-accent)"; }}

@@ -1,0 +1,337 @@
+{
+  "slug": "audi-a6-e-tron",
+  "brand": "Audi",
+  "model": "A6 e-tron",
+  "variant": "94.9 kWh",
+  "bodyType": "Berline",
+  "segment": "E",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Ingolstadt",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 270,
+  "power_hp": 367,
+  "torque_Nm": 565,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 5.4,
+  "topSpeed_kmh": 210,
+  "usableCapacity_kWh": 94.9,
+  "grossCapacity_kWh": 100,
+  "chemistry": "NMC",
+  "architecture_V": 800,
+  "mass_kg": 2175,
+  "wltp_max_km": 756,
+  "wltp_min_km": 627,
+  "realRange": {
+    "mixed_km": 580,
+    "highway_130_km": 410,
+    "urban_km": 710,
+    "winter_minus5_km": 440,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 16.3,
+  "consumption_highway_kWh_per_100km": 23.1,
+  "consumption_winter_kWh_per_100km": 21.5,
+  "dragCoefficient_Cx": 0.21,
+  "chargingDC": {
+    "peakPower_kW": 270,
+    "time_10_80_min": 21,
+    "kWh_added_30min": 75,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 10
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 180
+    },
+    {
+      "soc": 10,
+      "power": 270
+    },
+    {
+      "soc": 30,
+      "power": 240
+    },
+    {
+      "soc": 50,
+      "power": 175
+    },
+    {
+      "soc": 80,
+      "power": 60
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4928,
+  "width_mm": 1923,
+  "height_mm": 1487,
+  "wheelbase_mm": 2946,
+  "trunkCapacity_L": 502,
+  "trunkCapacityFolded_L": 1330,
+  "frunkCapacity_L": 27,
+  "trims": [
+    {
+      "name": "A6 Sportback e-tron",
+      "price_EUR": 66500,
+      "batteryUsed": "75.8 kWh",
+      "equipmentHighlights": [
+        "Autonomie WLTP 627 km",
+        "Puissance 286 ch (RWD)",
+        "Architecture 800 V"
+      ]
+    },
+    {
+      "name": "A6 Sportback e-tron performance",
+      "price_EUR": 77170,
+      "batteryUsed": "94.9 kWh",
+      "equipmentHighlights": [
+        "Autonomie WLTP 756 km",
+        "Puissance 367 ch (RWD)",
+        "Recharge 10-80% en 21 min"
+      ]
+    },
+    {
+      "name": "A6 Sportback e-tron quattro",
+      "price_EUR": 84060,
+      "batteryUsed": "94.9 kWh",
+      "equipmentHighlights": [
+        "Transmission AWD 428 ch",
+        "Autonomie WLTP 716 km",
+        "0 a 100 km/h en 4.5 s"
+      ]
+    },
+    {
+      "name": "S6 Sportback e-tron",
+      "price_EUR": 105020,
+      "batteryUsed": "94.9 kWh",
+      "equipmentHighlights": [
+        "Puissance max 503 ch (AWD)",
+        "0-100 km/h en 3.9 s",
+        "Suspension pneumatique adaptative"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "audi-a6-etron-base",
+      "label": "A6 e-tron · 75.8 kWh",
+      "battery": "standard",
+      "trim": "A6 Sportback e-tron",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 66500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 627,
+      "wltp_consumption_kWh_100km": 13.6,
+      "realRange": {
+        "mixed_km": 480,
+        "highway_130_km": 340,
+        "urban_km": 580,
+        "winter_minus5_km": 360,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 225,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 58,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 150
+        },
+        {
+          "soc": 10,
+          "power": 225
+        },
+        {
+          "soc": 30,
+          "power": 200
+        },
+        {
+          "soc": 50,
+          "power": 150
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "286 ch (210 kW), RWD, batterie 83 kWh brute"
+    },
+    {
+      "id": "audi-a6-etron-perf",
+      "label": "A6 e-tron performance · 94.9 kWh",
+      "battery": "long-range",
+      "trim": "A6 Sportback e-tron performance",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 77170,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 756,
+      "wltp_consumption_kWh_100km": 14.2,
+      "realRange": {
+        "mixed_km": 580,
+        "highway_130_km": 410,
+        "urban_km": 710,
+        "winter_minus5_km": 440,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 270,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 75,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 180
+        },
+        {
+          "soc": 10,
+          "power": 270
+        },
+        {
+          "soc": 30,
+          "power": 240
+        },
+        {
+          "soc": 50,
+          "power": 175
+        },
+        {
+          "soc": 80,
+          "power": 60
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "367 ch (270 kW), RWD, autonomie maximale"
+    },
+    {
+      "id": "audi-a6-etron-quattro",
+      "label": "A6 e-tron quattro · 94.9 kWh",
+      "battery": "long-range",
+      "trim": "A6 Sportback e-tron quattro",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 84060,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 716,
+      "wltp_consumption_kWh_100km": 15.0,
+      "realRange": {
+        "mixed_km": 550,
+        "highway_130_km": 390,
+        "urban_km": 670,
+        "winter_minus5_km": 420,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 270,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 75,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 180
+        },
+        {
+          "soc": 10,
+          "power": 270
+        },
+        {
+          "soc": 30,
+          "power": 240
+        },
+        {
+          "soc": 50,
+          "power": 175
+        },
+        {
+          "soc": 80,
+          "power": 60
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "428 ch (315 kW), AWD, quattro"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 2,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Berline Sportback profilée (Cx 0.21) avec frunk de 27 L"
+    },
+    {
+      "category": "technologie",
+      "label": "Plateforme PPE en 800 V avec recharge ultra-rapide de 270 kW"
+    },
+    {
+      "category": "securite",
+      "label": "Projecteurs Matrix LED digitaux et nombreuses aides actives"
+    },
+    {
+      "category": "confort",
+      "label": "Suspension pneumatique adaptative et insonorisation de premier ordre"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Autonomie WLTP exceptionnelle jusqu'à 756 km en version performance",
+      "Recharge ultra-rapide grâce à l'architecture 800 V",
+      "Aérodynamisme soigné avec un Cx de seulement 0.21"
+    ],
+    "weaknesses": [
+      "Tarifs élitistes débutant à plus de 66 500 euros",
+      "Chargeur AC limité de série à 11 kW"
+    ],
+    "idealUserProfile": "Gros rouleurs et professionnels cherchant une routière électrique à l'autonomie et à la vitesse de charge maximales.",
+    "notIdealFor": "Budgets restreints cherchant un petit véhicule ou familles nécessitant 7 places assises."
+  },
+  "lastUpdated": "2026-05-21",
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
+  "imageCredit": "Constructeur"
+}

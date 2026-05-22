@@ -369,7 +369,7 @@ inster.update({
 # 11. Hyundai Ioniq 3 (Theoretical)
 ioniq3 = base_vehicle("hyundai-ioniq-3", "Hyundai", "Ioniq 3")
 ioniq3.update({
-    "variant": "58 kWh", "bodyType": "SUV compact", "segment": "C",
+    "variant": "58 kWh", "bodyType": "Compacte", "segment": "C",
     "power_kW": 150, "usableCapacity_kWh": 58,
     "wltp_max_km": 450, "wltp_min_km": 400,
     "realRange": {"mixed_km": 380, "highway_130_km": 250, "urban_km": 450, "winter_minus5_km": 300, "confidence": "estimated"},
@@ -505,7 +505,68 @@ pv5.update({
     "realRange": {"mixed_km": 350, "highway_130_km": 250, "urban_km": 420, "winter_minus5_km": 280, "confidence": "estimated"},
     "chargingDC": {"peakPower_kW": 128, "time_10_80_min": 31, "kWh_added_30min": 50, "confidence": "estimated"},
     "length_mm": 4700, "width_mm": 1900, "height_mm": 1900, "trunkCapacity_L": 700,
-    "trims": [{"name": "Active", "price_EUR": 45000, "batteryUsed": "81.4 kWh", "equipmentHighlights": ["Modularité extrême", "Portes coulissantes"]}]
+})
+
+# 19b. Kia PV5 Cargo
+pv5_cargo = base_vehicle("kia-pv5-cargo", "Kia", "PV5 Cargo")
+pv5_cargo.update({
+    "variant": "81 kWh", "bodyType": "Fourgon", "segment": "D",
+    "power_kW": 150, "usableCapacity_kWh": 81.4, "grossCapacity_kWh": 84,
+    "wltp_max_km": 430, "wltp_min_km": 380,
+    "realRange": {"mixed_km": 320, "highway_130_km": 220, "urban_km": 390, "winter_minus5_km": 250, "confidence": "estimated"},
+    "chargingDC": {"peakPower_kW": 128, "time_10_80_min": 31, "kWh_added_30min": 50, "confidence": "estimated"},
+    "length_mm": 4700, "width_mm": 1900, "height_mm": 1900, "trunkCapacity_L": 4000, "trunkCapacityFolded_L": 4000,
+    "trims": [{"name": "Active Cargo", "price_EUR": 40000, "batteryUsed": "81.4 kWh", "equipmentHighlights": ["Volume utile 4m3", "Cloison de séparation tôlée", "Portes arrière battantes 180°"]}],
+    "v2l": True,
+    "configurations": [
+        {
+            "id": "kia-pv5-cargo-active",
+            "label": "PV5 Cargo Active",
+            "battery": "standard",
+            "trim": "Active Cargo",
+            "wheelSize_inches": 17,
+            "tyreType": "summer",
+            "options": [],
+            "price_EUR": 40000,
+            "monthlyLease_EUR": None,
+            "leasingSocialEligible": False,
+            "wltp_km": 430,
+            "wltp_consumption_kWh_100km": 16.5,
+            "realRange": {
+                "mixed_km": 320,
+                "highway_130_km": 220,
+                "urban_km": 390,
+                "winter_minus5_km": 250,
+                "confidence": "estimated"
+            },
+            "rangeTests": [],
+            "chargingDC_peak_kW": 128,
+            "chargingDC_10_80_min": 31,
+            "chargingDC_kWh_30min": 50,
+            "chargingCurve": [
+                {"soc": 0, "power": 100},
+                {"soc": 10, "power": 128},
+                {"soc": 50, "power": 100},
+                {"soc": 80, "power": 50},
+                {"soc": 100, "power": 10}
+            ],
+            "availability": "available",
+            "notes": None
+        }
+    ],
+    "keyFeatures": [
+        {"category": "confort", "label": "Cabine bureau connectée et ergonomique"},
+        {"category": "technologie", "label": "Technologie V2L pour alimenter des outils pros"},
+        {"category": "securite", "label": "Aides à la conduite avancées de dernière génération"},
+        {"category": "design", "label": "Format rectangulaire optimisé pour le volume utile"}
+    ],
+    "verdict": {
+        "strengths": ["Volume utile généreux (4m3)", "Hauteur de chargement optimisée", "Connectivité V2L pour outils pros"],
+        "weaknesses": ["Vitesse de charge sur autoroute", "Réseau de recharge pro à structurer"],
+        "idealUserProfile": "Artisans, livreurs urbains et flottes d'entreprises cherchant un utilitaire moderne et connecté.",
+        "notIdealFor": "Longues distances quotidiennes nécessitant de multiples charges rapides."
+    },
+    "sources": ["constructeur", "automobile-propre"]
 })
 
 # 20. Renault Twingo E-Tech
@@ -838,7 +899,7 @@ b10.update({
 b05 = base_vehicle("leapmotor-b05", "Leapmotor", "B05")
 b05.update({
     "productionCountry": "Pologne",
-    "variant": "50 kWh", "bodyType": "SUV urbain", "segment": "B",
+    "variant": "50 kWh", "bodyType": "Compacte", "segment": "B",
     "power_kW": 100, "usableCapacity_kWh": 50, "grossCapacity_kWh": 50,
     "wltp_max_km": 400, "wltp_min_km": 380,
     "realRange": {"mixed_km": 310, "highway_130_km": 200, "urban_km": 380, "winter_minus5_km": 240, "confidence": "estimated"},
@@ -1147,7 +1208,127 @@ id2.update({
     ]
 })
 
-vehicles = [add_default_config(v) for v in [r5, rm, ev3, id3, id4, ioniq5, kona, r4, ev2, inster, ioniq3, ioniq6, ioniq9, staria, ev4_fastback, ev5, ev6, ev9, pv5, twingo, scenic, kangoo, grand_kangoo, duo, ami, c3, c4, c5, berlingo, spacetourer, e208, e2008, e308, e3008, e408, e5008, erifter, etraveller, t03, c10, b10, b05, model3, modely, dolphin, atto3, seal, sealu, mg4, zsev, mg5, marvel, cyberster, id5, id7, idbuzz, id2]]
+# 58. Cupra Raval
+raval = base_vehicle("cupra-raval", "Cupra", "Raval")
+raval.update({
+    "productionCountry": "Espagne",
+    "assemblyPlant": "Martorell",
+    "variant": "37 / 52 kWh", "bodyType": "Citadine", "segment": "B",
+    "releaseYear": 2025, "marketAvailability": "À venir",
+    "power_kW": 166, "power_hp": 226, "torque_Nm": 310,
+    "usableCapacity_kWh": 52, "grossCapacity_kWh": 56,
+    "mass_kg": 1550,
+    "wltp_max_km": 440, "wltp_min_km": 340,
+    "realRange": {"mixed_km": 320, "highway_130_km": 220, "urban_km": 390, "winter_minus5_km": 250, "confidence": "estimated"},
+    "dragCoefficient_Cx": 0.27,
+    "chargingDC": {"peakPower_kW": 105, "time_10_80_min": 25, "kWh_added_30min": 40, "confidence": "estimated"},
+    "chargingCurve": [
+        {"soc": 0, "power": 80},
+        {"soc": 10, "power": 105},
+        {"soc": 50, "power": 75},
+        {"soc": 80, "power": 40},
+        {"soc": 100, "power": 8}
+    ],
+    "length_mm": 4030, "width_mm": 1780, "height_mm": 1460, "trunkCapacity_L": 441,
+    "trims": [
+        {"name": "Raval", "price_EUR": 25995, "batteryUsed": "37 kWh", "equipmentHighlights": ["Jantes alliage 17\"", "Écran central tactile 10\""]},
+        {"name": "Avnier", "price_EUR": 40460, "batteryUsed": "52 kWh", "equipmentHighlights": ["Grande batterie 52 kWh", "Projecteurs LED", "Écran central tactile 12.9\""]},
+        {"name": "VZ", "price_EUR": 42000, "batteryUsed": "52 kWh", "equipmentHighlights": ["Moteur 226 ch (166 kW)", "Sièges baquets sport", "Suspension sport pilotée"]}
+    ],
+    "configurations": [
+        {
+            "id": "cupra-raval-raval",
+            "label": "Raval · 37 kWh",
+            "battery": "standard",
+            "trim": "Raval",
+            "wheelSize_inches": 17,
+            "tyreType": "summer",
+            "options": [],
+            "price_EUR": 25995,
+            "monthlyLease_EUR": None,
+            "leasingSocialEligible": False,
+            "wltp_km": 340,
+            "wltp_consumption_kWh_100km": 14.5,
+            "realRange": {"mixed_km": 240, "highway_130_km": 160, "urban_km": 290, "winter_minus5_km": 180, "confidence": "estimated"},
+            "rangeTests": [],
+            "chargingDC_peak_kW": 50,
+            "chargingDC_10_80_min": 30,
+            "chargingDC_kWh_30min": 25,
+            "chargingCurve": [
+                {"soc": 0, "power": 40},
+                {"soc": 10, "power": 50},
+                {"soc": 50, "power": 45},
+                {"soc": 80, "power": 25},
+                {"soc": 100, "power": 5}
+            ],
+            "availability": "upcoming",
+            "notes": None
+        },
+        {
+            "id": "cupra-raval-avnier",
+            "label": "Avnier · 52 kWh",
+            "battery": "long-range",
+            "trim": "Avnier",
+            "wheelSize_inches": 18,
+            "tyreType": "summer",
+            "options": [],
+            "price_EUR": 40460,
+            "monthlyLease_EUR": None,
+            "leasingSocialEligible": False,
+            "wltp_km": 440,
+            "wltp_consumption_kWh_100km": 15.0,
+            "realRange": {"mixed_km": 320, "highway_130_km": 220, "urban_km": 390, "winter_minus5_km": 250, "confidence": "estimated"},
+            "rangeTests": [],
+            "chargingDC_peak_kW": 105,
+            "chargingDC_10_80_min": 25,
+            "chargingDC_kWh_30min": 40,
+            "chargingCurve": [
+                {"soc": 0, "power": 80}, {"soc": 10, "power": 105}, {"soc": 50, "power": 75}, {"soc": 80, "power": 40}, {"soc": 100, "power": 8}
+            ],
+            "availability": "upcoming",
+            "notes": None
+        },
+        {
+            "id": "cupra-raval-vz",
+            "label": "VZ · 52 kWh",
+            "battery": "long-range",
+            "trim": "VZ",
+            "wheelSize_inches": 18,
+            "tyreType": "summer",
+            "options": [],
+            "price_EUR": 42000,
+            "monthlyLease_EUR": None,
+            "leasingSocialEligible": False,
+            "wltp_km": 420,
+            "wltp_consumption_kWh_100km": 15.5,
+            "realRange": {"mixed_km": 310, "highway_130_km": 210, "urban_km": 380, "winter_minus5_km": 240, "confidence": "estimated"},
+            "rangeTests": [],
+            "chargingDC_peak_kW": 105,
+            "chargingDC_10_80_min": 25,
+            "chargingDC_kWh_30min": 40,
+            "chargingCurve": [
+                {"soc": 0, "power": 80}, {"soc": 10, "power": 105}, {"soc": 50, "power": 75}, {"soc": 80, "power": 40}, {"soc": 100, "power": 8}
+            ],
+            "availability": "upcoming",
+            "notes": None
+        }
+    ],
+    "keyFeatures": [
+        {"category": "design", "label": "Design sportif et affûté typique de Cupra"},
+        {"category": "technologie", "label": "Plateforme MEB Entry avec écran tactile de 12.9 pouces"},
+        {"category": "confort", "label": "Sièges baquets sport en matériaux recyclés"},
+        {"category": "securite", "label": "Projecteurs Matrix LED et aides à la conduite avancées"}
+    ],
+    "verdict": {
+        "strengths": ["Style extérieur et intérieur très dynamique", "Bonne capacité de coffre pour le gabarit (441 L)", "Autonomie confortable avec la batterie de 52 kWh"],
+        "weaknesses": ["Tarifs supérieurs à la Volkswagen ID.2", "Confort de suspension ferme à basse vitesse"],
+        "idealUserProfile": "Jeunes citadins dynamiques cherchant une citadine électrique performante et stylée.",
+        "notIdealFor": "Familles nombreuses ou conducteurs privilégiant le confort feutré de suspension."
+    },
+    "sources": ["automobile-propre", "largus", "constructeur"]
+})
+
+vehicles = [add_default_config(v) for v in [r5, rm, ev3, id3, id4, ioniq5, kona, r4, ev2, inster, ioniq3, ioniq6, ioniq9, staria, ev4_fastback, ev5, ev6, ev9, pv5, pv5_cargo, twingo, scenic, kangoo, grand_kangoo, duo, ami, c3, c4, c5, berlingo, spacetourer, e208, e2008, e308, e3008, e408, e5008, erifter, etraveller, t03, c10, b10, b05, model3, modely, dolphin, atto3, seal, sealu, mg4, zsev, mg5, marvel, cyberster, id5, id7, idbuzz, id2, raval]]
 
 for v in vehicles:
     create_vehicle(v)

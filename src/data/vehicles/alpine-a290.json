@@ -1,0 +1,240 @@
+{
+  "slug": "alpine-a290",
+  "brand": "Alpine",
+  "model": "A290",
+  "variant": "52 kWh",
+  "bodyType": "Hatchback 5 portes",
+  "segment": "B",
+  "productionCountry": "France",
+  "assemblyPlant": "Douai",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 162,
+  "power_hp": 220,
+  "torque_Nm": 300,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 6.4,
+  "topSpeed_kmh": 160,
+  "usableCapacity_kWh": 52,
+  "grossCapacity_kWh": 55,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1479,
+  "wltp_max_km": 380,
+  "wltp_min_km": 364,
+  "realRange": {
+    "mixed_km": 320,
+    "highway_130_km": 205,
+    "urban_km": 400,
+    "winter_minus5_km": 240,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 15.8,
+  "consumption_highway_kWh_per_100km": 22.0,
+  "consumption_winter_kWh_per_100km": 19.5,
+  "dragCoefficient_Cx": 0.33,
+  "chargingDC": {
+    "peakPower_kW": 100,
+    "time_10_80_min": 30,
+    "kWh_added_30min": 35,
+    "confidence": "manufacturer"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 6.2
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": true,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 50 },
+    { "soc": 10, "power": 100 },
+    { "soc": 30, "power": 90 },
+    { "soc": 50, "power": 75 },
+    { "soc": 80, "power": 35 },
+    { "soc": 100, "power": 6 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 3990,
+  "width_mm": 1820,
+  "height_mm": 1520,
+  "wheelbase_mm": 2530,
+  "trunkCapacity_L": 326,
+  "trunkCapacityFolded_L": 1106,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "GT",
+      "price_EUR": 34470,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "Moteur 180 ch (130 kW) / 285 Nm",
+        "Jantes alliage 19 pouces Iconic",
+        "Pompe à chaleur et chargeur bidirectionnel V2L/V2G",
+        "Projecteurs LED full-design"
+      ]
+    },
+    {
+      "name": "GT Premium",
+      "price_EUR": 37900,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "Toit noir biton de série",
+        "Sellerie en cuir Nappa premium",
+        "Système audio Devialet premium à 9 haut-parleurs",
+        "Volant sport et sièges chauffants"
+      ]
+    },
+    {
+      "name": "GT Performance",
+      "price_EUR": 38900,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "Moteur 220 ch (162 kW) / 300 Nm",
+        "Pneus Michelin Pilot Sport EV spécifiques",
+        "Étriers de freins Brembo à l'avant (4 pistons)",
+        "Système Alpine Telemetrics embarqué"
+      ]
+    },
+    {
+      "name": "GTS",
+      "price_EUR": 41900,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "Combinaison d'équipements GT Premium et GT Performance",
+        "Moteur 220 ch (162 kW) / 300 Nm",
+        "Jantes 19 pouces Snowflake noires",
+        "Teinte de lancement Bleu Alpine exclusive"
+      ]
+    }
+  ],
+  "leasingSocialEligible": true,
+  "leasingSocial_EUR_per_month": 150,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE / Bonus Écologique",
+      "amount_EUR": 4000,
+      "conditions": "Éligible sur toute la gamme grâce à la production en France (Douai) et un prix inférieur à 47 000 €"
+    }
+  ],
+  "configurations": [
+    {
+      "id": "alpine-a290-gt",
+      "label": "A290 GT · 52 kWh",
+      "battery": "standard",
+      "trim": "GT",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 34470,
+      "monthlyLease_EUR": 150,
+      "leasingSocialEligible": true,
+      "wltp_km": 380,
+      "wltp_consumption_kWh_100km": 15.8,
+      "realRange": {
+        "mixed_km": 320,
+        "highway_130_km": 205,
+        "urban_km": 400,
+        "winter_minus5_km": 240,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        { "soc": 0, "power": 50 },
+        { "soc": 10, "power": 100 },
+        { "soc": 30, "power": 90 },
+        { "soc": 50, "power": 75 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 6 }
+      ],
+      "availability": "available",
+      "notes": "Moteur 180 ch (130 kW), FWD, 380 km WLTP"
+    },
+    {
+      "id": "alpine-a290-gts",
+      "label": "A290 GTS · 52 kWh",
+      "battery": "standard",
+      "trim": "GTS",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 41900,
+      "monthlyLease_EUR": 210,
+      "leasingSocialEligible": true,
+      "wltp_km": 364,
+      "wltp_consumption_kWh_100km": 16.5,
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 200,
+        "urban_km": 385,
+        "winter_minus5_km": 230,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        { "soc": 0, "power": 50 },
+        { "soc": 10, "power": 100 },
+        { "soc": 30, "power": 90 },
+        { "soc": 50, "power": 75 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 6 }
+      ],
+      "availability": "available",
+      "notes": "Moteur 220 ch (162 kW), FWD, 364 km WLTP"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 2,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Design agressif inspiré des rallyes avec phares en X et ailes élargies"
+    },
+    {
+      "category": "technologie",
+      "label": "Bouton Overtake (OV) sur le volant pour un boost de puissance temporaire"
+    },
+    {
+      "category": "confort",
+      "label": "Sièges sport enveloppants et volant sport avec commandes physiques"
+    },
+    {
+      "category": "securite",
+      "label": "Trains roulants sport avec butées hydrauliques de suspension"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Comportement routier dynamique et agile digne d'une vraie GTI moderne",
+      "Présentation intérieure haut de gamme avec une ergonomie très soignée",
+      "Production locale à Douai et éligibilité totale au bonus écologique"
+    ],
+    "weaknesses": [
+      "Volume de coffre identique à la R5 et habitabilité arrière moyenne",
+      "Vitesse de charge rapide limitée à 100 kW sur longs trajets"
+    ],
+    "idealUserProfile": "Conducteurs enthousiastes et urbains recherchant le plaisir de conduite d'une sportive dans un format compact et polyvalent.",
+    "notIdealFor": "Familles nombreuses avec bagages ou voyageurs au long cours ayant besoin de recharges extrêmement rapides."
+  },
+  "lastUpdated": "2026-05-22",
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
+  "imageCredit": "Constructeur"
+}

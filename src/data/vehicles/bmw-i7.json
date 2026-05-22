@@ -1,0 +1,326 @@
+{
+  "slug": "bmw-i7",
+  "brand": "BMW",
+  "model": "i7",
+  "variant": "101.7 kWh",
+  "bodyType": "Berline",
+  "segment": "F",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Dingolfing",
+  "releaseYear": 2022,
+  "marketAvailability": "Disponible",
+  "power_kW": 400,
+  "power_hp": 544,
+  "torque_Nm": 745,
+  "drivetrain": "AWD",
+  "motors": 2,
+  "acceleration_0_100_s": 4.7,
+  "topSpeed_kmh": 250,
+  "usableCapacity_kWh": 101.7,
+  "grossCapacity_kWh": 105.7,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2640,
+  "wltp_max_km": 625,
+  "wltp_min_km": 591,
+  "realRange": {
+    "mixed_km": 480,
+    "highway_130_km": 340,
+    "urban_km": 580,
+    "winter_minus5_km": 380,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 19.5,
+  "consumption_highway_kWh_per_100km": 27.5,
+  "consumption_winter_kWh_per_100km": 25.0,
+  "dragCoefficient_Cx": 0.24,
+  "chargingDC": {
+    "peakPower_kW": 195,
+    "time_10_80_min": 34,
+    "kWh_added_30min": 65,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 22,
+    "phases": 3,
+    "time_0_100_h": 5.5
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 140
+    },
+    {
+      "soc": 10,
+      "power": 195
+    },
+    {
+      "soc": 30,
+      "power": 170
+    },
+    {
+      "soc": 50,
+      "power": 125
+    },
+    {
+      "soc": 80,
+      "power": 50
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 5391,
+  "width_mm": 1950,
+  "height_mm": 1544,
+  "wheelbase_mm": 3215,
+  "trunkCapacity_L": 500,
+  "trunkCapacityFolded_L": 500,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "i7 eDrive50 M Sport",
+      "price_EUR": 128500,
+      "batteryUsed": "101.7 kWh",
+      "equipmentHighlights": [
+        "611 km WLTP",
+        "455 ch RWD",
+        "Projecteurs en cristal Swarovski"
+      ]
+    },
+    {
+      "name": "i7 xDrive60 M Sport",
+      "price_EUR": 151800,
+      "batteryUsed": "101.7 kWh",
+      "equipmentHighlights": [
+        "625 km WLTP",
+        "544 ch AWD",
+        "Suspension pneumatique Executive Drive Pro"
+      ]
+    },
+    {
+      "name": "i7 M70 xDrive",
+      "price_EUR": 191700,
+      "batteryUsed": "101.7 kWh",
+      "equipmentHighlights": [
+        "560 km WLTP",
+        "659 ch AWD M performance",
+        "BMW Theatre Screen 31,3 pouces"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "bmw-i7-edrive50",
+      "label": "i7 eDrive50 · 101.7 kWh",
+      "battery": "standard",
+      "trim": "i7 eDrive50 M Sport",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 128500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 611,
+      "wltp_consumption_kWh_100km": 19.1,
+      "realRange": {
+        "mixed_km": 470,
+        "highway_130_km": 330,
+        "urban_km": 570,
+        "winter_minus5_km": 370,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 195,
+      "chargingDC_10_80_min": 34,
+      "chargingDC_kWh_30min": 63,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 195
+        },
+        {
+          "soc": 30,
+          "power": 170
+        },
+        {
+          "soc": 50,
+          "power": 125
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "455 ch (335 kW), RWD"
+    },
+    {
+      "id": "bmw-i7-xdrive60",
+      "label": "i7 xDrive60 · 101.7 kWh",
+      "battery": "long-range",
+      "trim": "i7 xDrive60 M Sport",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 151800,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 625,
+      "wltp_consumption_kWh_100km": 19.6,
+      "realRange": {
+        "mixed_km": 480,
+        "highway_130_km": 340,
+        "urban_km": 580,
+        "winter_minus5_km": 380,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 195,
+      "chargingDC_10_80_min": 34,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 195
+        },
+        {
+          "soc": 30,
+          "power": 170
+        },
+        {
+          "soc": 50,
+          "power": 125
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "544 ch (400 kW), AWD xDrive"
+    },
+    {
+      "id": "bmw-i7-m70",
+      "label": "i7 M70 xDrive · 101.7 kWh",
+      "battery": "long-range",
+      "trim": "i7 M70 xDrive",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 191700,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 560,
+      "wltp_consumption_kWh_100km": 20.8,
+      "realRange": {
+        "mixed_km": 435,
+        "highway_130_km": 310,
+        "urban_km": 530,
+        "winter_minus5_km": 345,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 195,
+      "chargingDC_10_80_min": 34,
+      "chargingDC_kWh_30min": 61,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 195
+        },
+        {
+          "soc": 30,
+          "power": 170
+        },
+        {
+          "soc": 50,
+          "power": 125
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "659 ch (485 kW), AWD xDrive, M Performance"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 2,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Ligne statutaire grandiose avec calandre illuminee Iconic Glow"
+    },
+    {
+      "category": "technologie",
+      "label": "Ecran de cinema arriere Theatre Screen de 31,3 pouces en 8K"
+    },
+    {
+      "category": "securite",
+      "label": "Projecteurs adaptatifs LED et aides a la conduite de niveau 2+"
+    },
+    {
+      "category": "confort",
+      "label": "Suspension pneumatique adaptative et sieges arriere Executive Lounge"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Confort princier exceptionnel et insonorisation acoustique absolue",
+      "Technologie arriere unique (Theatre Screen 8K) et performances du modele M70"
+    ],
+    "weaknesses": [
+      "Dimensions de plus de 5,39 m inadaptees aux parkings urbains",
+      "Prix prohibitif et poids eleve depassant les 2,6 tonnes"
+    ],
+    "idealUserProfile": "Chauffeurs prives, dirigeants d'entreprise et passionnes de grand luxe technologique.",
+    "notIdealFor": "Usage urbain quotidien ou conducteurs cherchant de la discretion."
+  },
+  "lastUpdated": "2026-05-21",
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
+  "imageCredit": "Constructeur"
+}

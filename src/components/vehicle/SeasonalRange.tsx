@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
 import {
   BarElement,
@@ -37,9 +38,26 @@ export default function SeasonalRange({
   winter,
   vehicleName,
 }: Props) {
+  const [soh, setSoh] = useState(100);
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (detail && typeof detail.soh === "number") {
+        setSoh(detail.soh);
+      }
+    };
+    window.addEventListener("soh-changed", handler);
+    return () => window.removeEventListener("soh-changed", handler);
+  }, []);
+
   const c = useThemeColors(VARS);
   const labels = ["Urbain", "Mixte", "Hiver -5 °C", "Autoroute 130"];
-  const data = [urban, mixed, winter, highway];
+  const scaledUrban = Math.round(urban * soh / 100);
+  const scaledMixed = Math.round(mixed * soh / 100);
+  const scaledWinter = Math.round(winter * soh / 100);
+  const scaledHighway = Math.round(highway * soh / 100);
+  const data = [scaledUrban, scaledMixed, scaledWinter, scaledHighway];
   const colors = [
     c["--color-accent"] || "#b8ff3d",
     c["--color-text-muted"] || "#9b9b95",
@@ -111,7 +129,7 @@ export default function SeasonalRange({
     <div
       className="relative h-56 sm:h-64 md:h-72 w-full"
       role="img"
-      aria-label={`Autonomie réelle du ${vehicleName} par usage : urbain ${urban} km, mixte ${mixed} km, hiver -5°C ${winter} km, autoroute 130 km/h ${highway} km.`}
+      aria-label={`Autonomie réelle du ${vehicleName} par usage : urbain ${scaledUrban} km, mixte ${scaledMixed} km, hiver -5°C ${scaledWinter} km, autoroute 130 km/h ${scaledHighway} km.`}
     >
       <Bar data={chartData} options={options} />
     </div>

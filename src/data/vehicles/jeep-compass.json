@@ -1,0 +1,331 @@
+{
+  "slug": "jeep-compass",
+  "brand": "Jeep",
+  "model": "Compass",
+  "variant": "73 / 97 kWh",
+  "bodyType": "SUV compact",
+  "segment": "C",
+  "productionCountry": "Italie",
+  "assemblyPlant": "Melfi",
+  "releaseYear": 2025,
+  "marketAvailability": "Disponible",
+  "power_kW": 157,
+  "power_hp": 213,
+  "torque_Nm": 345,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 7.9,
+  "topSpeed_kmh": 170,
+  "usableCapacity_kWh": 97,
+  "grossCapacity_kWh": 98,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2110,
+  "wltp_max_km": 650,
+  "wltp_min_km": 500,
+  "realRange": {
+    "mixed_km": 515,
+    "highway_130_km": 360,
+    "urban_km": 610,
+    "winter_minus5_km": 400,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 16.5,
+  "consumption_highway_kWh_per_100km": 21.5,
+  "consumption_winter_kWh_per_100km": 20.5,
+  "dragCoefficient_Cx": 0.32,
+  "chargingDC": {
+    "peakPower_kW": 160,
+    "time_10_80_min": 35,
+    "kWh_added_30min": 60,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 6.5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 147
+    },
+    {
+      "soc": 10,
+      "power": 160
+    },
+    {
+      "soc": 20,
+      "power": 160
+    },
+    {
+      "soc": 50,
+      "power": 114
+    },
+    {
+      "soc": 80,
+      "power": 51
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4550,
+  "width_mm": 1890,
+  "height_mm": 1640,
+  "wheelbase_mm": 2690,
+  "trunkCapacity_L": 550,
+  "trunkCapacityFolded_L": 1500,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Altitude 73 kWh",
+      "price_EUR": 41900,
+      "batteryUsed": "73 kWh",
+      "equipmentHighlights": [
+        "FWD 213 ch",
+        "Écran tactile 10.25\""
+      ]
+    },
+    {
+      "name": "Summit 73 kWh",
+      "price_EUR": 45900,
+      "batteryUsed": "73 kWh",
+      "equipmentHighlights": [
+        "FWD 213 ch",
+        "Projecteurs LED matriciels",
+        "Navigation connectée"
+      ]
+    },
+    {
+      "name": "Summit 97 kWh",
+      "price_EUR": 49900,
+      "batteryUsed": "97 kWh",
+      "equipmentHighlights": [
+        "FWD 213 ch",
+        "Projecteurs LED matriciels",
+        "Navigation connectée"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE VE",
+      "amount_EUR": 4000
+    }
+  ],
+  "configurations": [
+    {
+      "id": "jeep-compass-altitude-73",
+      "label": "Altitude · 73 kWh",
+      "battery": "standard",
+      "trim": "Altitude",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 41900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 500,
+      "wltp_consumption_kWh_100km": 16.2,
+      "realRange": {
+        "mixed_km": 390,
+        "highway_130_km": 270,
+        "urban_km": 460,
+        "winter_minus5_km": 300,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 147
+        },
+        {
+          "soc": 10,
+          "power": 160
+        },
+        {
+          "soc": 20,
+          "power": 160
+        },
+        {
+          "soc": 50,
+          "power": 114
+        },
+        {
+          "soc": 80,
+          "power": 51
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "jeep-compass-summit-73",
+      "label": "Summit · 73 kWh",
+      "battery": "standard",
+      "trim": "Summit",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 45900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 500,
+      "wltp_consumption_kWh_100km": 16.2,
+      "realRange": {
+        "mixed_km": 390,
+        "highway_130_km": 270,
+        "urban_km": 460,
+        "winter_minus5_km": 300,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 147
+        },
+        {
+          "soc": 10,
+          "power": 160
+        },
+        {
+          "soc": 20,
+          "power": 160
+        },
+        {
+          "soc": 50,
+          "power": 114
+        },
+        {
+          "soc": 80,
+          "power": 51
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "jeep-compass-summit-97",
+      "label": "Summit · 97 kWh",
+      "battery": "long-range",
+      "trim": "Summit",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 49900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 650,
+      "wltp_consumption_kWh_100km": 16.5,
+      "realRange": {
+        "mixed_km": 515,
+        "highway_130_km": 360,
+        "urban_km": 610,
+        "winter_minus5_km": 400,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 60,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 147
+        },
+        {
+          "soc": 10,
+          "power": 160
+        },
+        {
+          "soc": 20,
+          "power": 160
+        },
+        {
+          "soc": 50,
+          "power": 114
+        },
+        {
+          "soc": 80,
+          "power": 51
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "confort",
+      "label": "Garde au sol surélevée (200 mm) et position de conduite haute"
+    },
+    {
+      "category": "technologie",
+      "label": "Système multimédia Uconnect avec écran tactile 10,25\""
+    },
+    {
+      "category": "securite",
+      "label": "Aides à la conduite de niveau 2 (Highway Assist)"
+    },
+    {
+      "category": "design",
+      "label": "Calandre authentique Jeep à 7 fentes modernisée"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Production européenne (Melfi, Italie) : éligible Prime CEE VE",
+      "Excellent compromis autonomie (plateforme STLA Medium)",
+      "Habitabilité et volume de coffre généreux (550 L)"
+    ],
+    "weaknesses": [
+      "Style plus conventionnel que l'Avenger",
+      "Poids élevé impactant l'agilité"
+    ],
+    "idealUserProfile": "Famille cherchant un SUV électrique polyvalent comme véhicule principal, éligible aux aides d'État.",
+    "notIdealFor": "Acheteurs cherchant une citadine facile à garer en ville ou des performances ultra-sportives."
+  },
+  "lastUpdated": "2026-05-18",
+  "sources": [
+    "nyland",
+    "lachaineev"
+  ],
+  "imageCredit": "Constructeur"
+}

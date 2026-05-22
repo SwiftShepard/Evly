@@ -1,0 +1,316 @@
+{
+  "slug": "cupra-raval",
+  "brand": "Cupra",
+  "model": "Raval",
+  "variant": "37 / 52 kWh",
+  "bodyType": "Citadine",
+  "segment": "B",
+  "productionCountry": "Espagne",
+  "assemblyPlant": "Martorell",
+  "releaseYear": 2025,
+  "marketAvailability": "À venir",
+  "power_kW": 166,
+  "power_hp": 226,
+  "torque_Nm": 310,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 7.5,
+  "topSpeed_kmh": 160,
+  "usableCapacity_kWh": 52,
+  "grossCapacity_kWh": 56,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1550,
+  "wltp_max_km": 440,
+  "wltp_min_km": 340,
+  "realRange": {
+    "mixed_km": 320,
+    "highway_130_km": 220,
+    "urban_km": 390,
+    "winter_minus5_km": 250,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 15.0,
+  "consumption_highway_kWh_per_100km": 21.0,
+  "consumption_winter_kWh_per_100km": 19.0,
+  "dragCoefficient_Cx": 0.27,
+  "chargingDC": {
+    "peakPower_kW": 105,
+    "time_10_80_min": 25,
+    "kWh_added_30min": 40,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 6.5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 80
+    },
+    {
+      "soc": 10,
+      "power": 105
+    },
+    {
+      "soc": 50,
+      "power": 75
+    },
+    {
+      "soc": 80,
+      "power": 40
+    },
+    {
+      "soc": 100,
+      "power": 8
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4030,
+  "width_mm": 1780,
+  "height_mm": 1460,
+  "wheelbase_mm": 2700,
+  "trunkCapacity_L": 441,
+  "trunkCapacityFolded_L": 1200,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Raval",
+      "price_EUR": 25995,
+      "batteryUsed": "37 kWh",
+      "equipmentHighlights": [
+        "Jantes alliage 17\"",
+        "Écran central tactile 10\""
+      ]
+    },
+    {
+      "name": "Avnier",
+      "price_EUR": 40460,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "Grande batterie 52 kWh",
+        "Projecteurs LED",
+        "Écran central tactile 12.9\""
+      ]
+    },
+    {
+      "name": "VZ",
+      "price_EUR": 42000,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "Moteur 226 ch (166 kW)",
+        "Sièges baquets sport",
+        "Suspension sport pilotée"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Bonus Écologique",
+      "amount_EUR": 4000
+    }
+  ],
+  "configurations": [
+    {
+      "id": "cupra-raval-raval",
+      "label": "Raval · 37 kWh",
+      "battery": "standard",
+      "trim": "Raval",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 25995,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 340,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": {
+        "mixed_km": 240,
+        "highway_130_km": 160,
+        "urban_km": 290,
+        "winter_minus5_km": 180,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 50,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 25,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 40
+        },
+        {
+          "soc": 10,
+          "power": 50
+        },
+        {
+          "soc": 50,
+          "power": 45
+        },
+        {
+          "soc": 80,
+          "power": 25
+        },
+        {
+          "soc": 100,
+          "power": 5
+        }
+      ],
+      "availability": "upcoming",
+      "notes": null
+    },
+    {
+      "id": "cupra-raval-avnier",
+      "label": "Avnier · 52 kWh",
+      "battery": "long-range",
+      "trim": "Avnier",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 40460,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 440,
+      "wltp_consumption_kWh_100km": 15.0,
+      "realRange": {
+        "mixed_km": 320,
+        "highway_130_km": 220,
+        "urban_km": 390,
+        "winter_minus5_km": 250,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 105,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 80
+        },
+        {
+          "soc": 10,
+          "power": 105
+        },
+        {
+          "soc": 50,
+          "power": 75
+        },
+        {
+          "soc": 80,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "upcoming",
+      "notes": null
+    },
+    {
+      "id": "cupra-raval-vz",
+      "label": "VZ · 52 kWh",
+      "battery": "long-range",
+      "trim": "VZ",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 42000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 420,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 210,
+        "urban_km": 380,
+        "winter_minus5_km": 240,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 105,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 80
+        },
+        {
+          "soc": 10,
+          "power": 105
+        },
+        {
+          "soc": 50,
+          "power": 75
+        },
+        {
+          "soc": 80,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "upcoming",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Design sportif et affûté typique de Cupra"
+    },
+    {
+      "category": "technologie",
+      "label": "Plateforme MEB Entry avec écran tactile de 12.9 pouces"
+    },
+    {
+      "category": "confort",
+      "label": "Sièges baquets sport en matériaux recyclés"
+    },
+    {
+      "category": "securite",
+      "label": "Projecteurs Matrix LED et aides à la conduite avancées"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Style extérieur et intérieur très dynamique",
+      "Bonne capacité de coffre pour le gabarit (441 L)",
+      "Autonomie confortable avec la batterie de 52 kWh"
+    ],
+    "weaknesses": [
+      "Tarifs supérieurs à la Volkswagen ID.2",
+      "Confort de suspension ferme à basse vitesse"
+    ],
+    "idealUserProfile": "Jeunes citadins dynamiques cherchant une citadine électrique performante et stylée.",
+    "notIdealFor": "Familles nombreuses ou conducteurs privilégiant le confort feutré de suspension."
+  },
+  "lastUpdated": "2026-05-16",
+  "sources": [
+    "automobile-propre",
+    "largus",
+    "constructeur"
+  ],
+  "imageCredit": "Constructeur"
+}

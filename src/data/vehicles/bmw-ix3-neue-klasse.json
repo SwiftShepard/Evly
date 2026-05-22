@@ -1,0 +1,201 @@
+{
+  "slug": "bmw-ix3-neue-klasse",
+  "brand": "BMW",
+  "model": "iX3 Neue Klasse",
+  "variant": "108.7 kWh",
+  "bodyType": "SUV",
+  "segment": "D",
+  "productionCountry": "Hongrie",
+  "assemblyPlant": "Debrecen",
+  "releaseYear": 2026,
+  "marketAvailability": "Bientôt disponible",
+  "power_kW": 340,
+  "power_hp": 463,
+  "torque_Nm": 645,
+  "drivetrain": "AWD",
+  "motors": 2,
+  "acceleration_0_100_s": 4.7,
+  "topSpeed_kmh": 210,
+  "usableCapacity_kWh": 108.7,
+  "grossCapacity_kWh": 113.4,
+  "chemistry": "NMC",
+  "architecture_V": 800,
+  "mass_kg": 2300,
+  "wltp_max_km": 805,
+  "wltp_min_km": 680,
+  "realRange": {
+    "mixed_km": 615,
+    "highway_130_km": 435,
+    "urban_km": 755,
+    "winter_minus5_km": 475,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 17.6,
+  "consumption_highway_kWh_per_100km": 25.0,
+  "consumption_winter_kWh_per_100km": 23.0,
+  "dragCoefficient_Cx": 0.25,
+  "chargingDC": {
+    "peakPower_kW": 400,
+    "time_10_80_min": 21,
+    "kWh_added_30min": 85,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 22,
+    "phases": 3,
+    "time_0_100_h": 6.0
+  },
+  "plugAndCharge": true,
+  "v2l": true,
+  "v2g": true,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 250
+    },
+    {
+      "soc": 10,
+      "power": 400
+    },
+    {
+      "soc": 30,
+      "power": 330
+    },
+    {
+      "soc": 50,
+      "power": 250
+    },
+    {
+      "soc": 80,
+      "power": 100
+    },
+    {
+      "soc": 100,
+      "power": 15
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4700,
+  "width_mm": 1900,
+  "height_mm": 1660,
+  "wheelbase_mm": 2900,
+  "trunkCapacity_L": 550,
+  "trunkCapacityFolded_L": 1600,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "iX3 xDrive50 Neue Klasse",
+      "price_EUR": 78000,
+      "batteryUsed": "108.7 kWh",
+      "equipmentHighlights": [
+        "805 km WLTP",
+        "Puissance 463 ch",
+        "BMW Panoramic Vision"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "bmw-ix3-neue-klasse-50",
+      "label": "iX3 xDrive50 · 108.7 kWh",
+      "battery": "long-range",
+      "trim": "iX3 xDrive50 Neue Klasse",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 78000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 805,
+      "wltp_consumption_kWh_100km": 14.1,
+      "realRange": {
+        "mixed_km": 615,
+        "highway_130_km": 435,
+        "urban_km": 755,
+        "winter_minus5_km": 475,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 400,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 85,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 250
+        },
+        {
+          "soc": 10,
+          "power": 400
+        },
+        {
+          "soc": 30,
+          "power": 330
+        },
+        {
+          "soc": 50,
+          "power": 250
+        },
+        {
+          "soc": 80,
+          "power": 100
+        },
+        {
+          "soc": 100,
+          "power": 15
+        }
+      ],
+      "availability": "upcoming",
+      "notes": "463 ch (340 kW), AWD xDrive, premiere Neue Klasse"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 2,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Design Neue Klasse epure et calandre verticale retro-eclairee tridimensionnelle"
+    },
+    {
+      "category": "technologie",
+      "label": "BMW Panoramic Vision projetant les informations sur toute la largeur du pare-brise"
+    },
+    {
+      "category": "securite",
+      "label": "Quatre supercalculateurs de bord orchestrant la dynamique de conduite et les aides actives"
+    },
+    {
+      "category": "confort",
+      "label": "Charge bidirectionnelle (V2L et V2H) de serie et habitacle d'un volume inedit"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Vitesse de recharge ultra-rapide (pic a 400 kW, 10-80% en 21 min) en 800 V",
+      "Autonomie impressionnante atteignant 805 km WLTP grace aux nouvelles cellules cylindriques",
+      "Interface utilisateur revolutionnaire avec affichage panoramique de pare-brise"
+    ],
+    "weaknesses": [
+      "Tarifs premium et aides ecologiques nulles en France pour cette gamme",
+      "Rareté de bornes de recharge capables de delivrer 400 kW réels"
+    ],
+    "idealUserProfile": "Conducteurs technophiles et exigeants cherchant le renouveau electrique de BMW avec autonomie de pointe.",
+    "notIdealFor": "Usage exclusivement urbain ou acheteurs au budget standard."
+  },
+  "lastUpdated": "2026-05-21",
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
+  "imageCredit": "Constructeur"
+}

@@ -1,0 +1,215 @@
+{
+  "slug": "alpine-a390",
+  "brand": "Alpine",
+  "model": "A390",
+  "variant": "89 kWh",
+  "bodyType": "SUV Crossover Fastback",
+  "segment": "C",
+  "productionCountry": "France",
+  "assemblyPlant": "Dieppe",
+  "releaseYear": 2025,
+  "marketAvailability": "Disponible",
+  "power_kW": 345,
+  "power_hp": 470,
+  "torque_Nm": 824,
+  "drivetrain": "AWD",
+  "motors": 3,
+  "acceleration_0_100_s": 3.9,
+  "topSpeed_kmh": 200,
+  "usableCapacity_kWh": 89,
+  "grossCapacity_kWh": 93,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2121,
+  "wltp_max_km": 555,
+  "wltp_min_km": 515,
+  "realRange": {
+    "mixed_km": 480,
+    "highway_130_km": 340,
+    "urban_km": 560,
+    "winter_minus5_km": 365,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 17.5,
+  "consumption_highway_kWh_per_100km": 24.5,
+  "consumption_winter_kWh_per_100km": 22.5,
+  "dragCoefficient_Cx": 0.25,
+  "chargingDC": {
+    "peakPower_kW": 190,
+    "time_10_80_min": 25,
+    "kWh_added_30min": 65,
+    "confidence": "manufacturer"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 22,
+    "phases": 3,
+    "time_0_100_h": 4.5
+  },
+  "plugAndCharge": true,
+  "v2l": true,
+  "v2g": true,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 100 },
+    { "soc": 10, "power": 190 },
+    { "soc": 30, "power": 160 },
+    { "soc": 50, "power": 120 },
+    { "soc": 80, "power": 60 },
+    { "soc": 100, "power": 10 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4615,
+  "width_mm": 1885,
+  "height_mm": 1532,
+  "wheelbase_mm": 2708,
+  "trunkCapacity_L": 532,
+  "trunkCapacityFolded_L": 1643,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "GT",
+      "price_EUR": 67500,
+      "batteryUsed": "89 kWh",
+      "equipmentHighlights": [
+        "Moteur double 400 ch (295 kW) AWD",
+        "Autonomie 555 km WLTP",
+        "Charge DC 150 kW (15-80% en 29 min)",
+        "Jantes alliage 20 pouces",
+        "Intérieur cockpit dynamique avec affichage tête haute"
+      ]
+    },
+    {
+      "name": "GTS",
+      "price_EUR": 78000,
+      "batteryUsed": "89 kWh",
+      "equipmentHighlights": [
+        "Moteur triple 470 ch (345 kW) AWD",
+        "Autonomie 515 km WLTP",
+        "Charge DC 190 kW (15-80% en 25 min)",
+        "Vectorisation active du couple (Active Torque Vectoring)",
+        "Jantes alliage 21 pouces",
+        "Sièges sport baquets en Alcantara"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "alpine-a390-gt",
+      "label": "A390 GT · 89 kWh",
+      "battery": "standard",
+      "trim": "GT",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 67500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 555,
+      "wltp_consumption_kWh_100km": 17.5,
+      "realRange": {
+        "mixed_km": 480,
+        "highway_130_km": 340,
+        "urban_km": 560,
+        "winter_minus5_km": 365,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 60,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 150 },
+        { "soc": 30, "power": 140 },
+        { "soc": 50, "power": 110 },
+        { "soc": 80, "power": 55 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "Moteur double 400 ch (295 kW), AWD, 555 km WLTP"
+    },
+    {
+      "id": "alpine-a390-gts",
+      "label": "A390 GTS · 89 kWh",
+      "battery": "standard",
+      "trim": "GTS",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 78000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 515,
+      "wltp_consumption_kWh_100km": 18.2,
+      "realRange": {
+        "mixed_km": 450,
+        "highway_130_km": 320,
+        "urban_km": 525,
+        "winter_minus5_km": 340,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 190,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 190 },
+        { "soc": 30, "power": 160 },
+        { "soc": 50, "power": 120 },
+        { "soc": 80, "power": 60 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "available",
+      "notes": "Moteur triple 470 ch (345 kW), AWD avec torque vectoring, 515 km WLTP"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 2,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Silhouette Fastback ultra aérodynamique combinant élégance de berline et posture de crossover"
+    },
+    {
+      "category": "technologie",
+      "label": "Technologie à 3 moteurs électriques (1 avant, 2 arrière) avec contrôle dynamique intelligent de couple"
+    },
+    {
+      "category": "confort",
+      "label": "Siège conducteur réglable électriquement s'adaptant automatiquement à la position sport ou confort"
+    },
+    {
+      "category": "securite",
+      "label": "Suspension active et amortissement dynamique typés Alpine pour une agilité hors normes"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Performances époustouflantes (0-100 km/h en 3,9 s) et vectorisation de couple ultra-précise",
+      "Excellente gestion de recharge avec courbe stable et pic de puissance à 190 kW",
+      "Production à l'usine historique de Dieppe valorisant le savoir-faire industriel français"
+    ],
+    "weaknesses": [
+      "Tarifs haut de gamme débutant à 67 500 € excluant tout bonus écologique",
+      "Poids important (2,1 tonnes) impactant la maniabilité en dehors du mode sport"
+    ],
+    "idealUserProfile": "Conducteurs à la recherche d'une berline haute-performance polyvalente et technologique, alliant confort familial et sensations dynamiques.",
+    "notIdealFor": "Acheteurs à budget serré recherchant une motorisation à autonomie record sans surcoût de sportivité."
+  },
+  "lastUpdated": "2026-05-22",
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
+  "imageCredit": "Constructeur"
+}

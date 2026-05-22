@@ -68,22 +68,32 @@
   "trims": [
     {
       "name": "Dynamic M",
-      "price_EUR": 37900,
+      "price_EUR": 40295,
       "batteryUsed": "50 kWh",
       "equipmentHighlights": [
         "330 km WLTP",
         "Portes coulissantes",
-        "Ecran 8 pouces"
+        "Ecran tactile 10 pouces"
       ]
     },
     {
-      "name": "Dynamic L",
-      "price_EUR": 39900,
+      "name": "Executive M",
+      "price_EUR": 43795,
       "batteryUsed": "50 kWh",
       "equipmentHighlights": [
-        "310 km WLTP",
-        "Carrosserie longue (4,75 m)",
-        "7 places"
+        "330 km WLTP",
+        "Camera de recul",
+        "Jantes alliage 16 pouces"
+      ]
+    },
+    {
+      "name": "Lounge M",
+      "price_EUR": 47295,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "330 km WLTP",
+        "Toit panoramique",
+        "Sieges chauffants"
       ]
     }
   ],
@@ -104,7 +114,7 @@
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 37900,
+      "price_EUR": 40295,
       "monthlyLease_EUR": 179,
       "leasingSocialEligible": true,
       "wltp_km": 330,
@@ -125,19 +135,19 @@
       "notes": "136 ch (100 kW), FWD, taille M"
     },
     {
-      "id": "toyota-proace-city-dynamic-l",
-      "label": "Proace City Electric Verso Dynamic L",
+      "id": "toyota-proace-city-executive-m",
+      "label": "Proace City Electric Verso Executive M",
       "battery": "standard",
-      "trim": "Dynamic L",
+      "trim": "Executive M",
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 39900,
+      "price_EUR": 43795,
       "monthlyLease_EUR": 179,
       "leasingSocialEligible": true,
-      "wltp_km": 310,
-      "wltp_consumption_kWh_100km": 17.5,
-      "realRange": { "mixed_km": 235, "highway_130_km": 150, "urban_km": 300, "winter_minus5_km": 185, "confidence": "estimated" },
+      "wltp_km": 330,
+      "wltp_consumption_kWh_100km": 17,
+      "realRange": { "mixed_km": 250, "highway_130_km": 160, "urban_km": 320, "winter_minus5_km": 195, "confidence": "estimated" },
       "rangeTests": [],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
@@ -150,7 +160,35 @@
         { "soc": 100, "power": 8 }
       ],
       "availability": "available",
-      "notes": "136 ch (100 kW), FWD, taille L 7 places"
+      "notes": "136 ch (100 kW), FWD, taille M"
+    },
+    {
+      "id": "toyota-proace-city-lounge-m",
+      "label": "Proace City Electric Verso Lounge M",
+      "battery": "standard",
+      "trim": "Lounge M",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 47295,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 330,
+      "wltp_consumption_kWh_100km": 17,
+      "realRange": { "mixed_km": 250, "highway_130_km": 160, "urban_km": 320, "winter_minus5_km": 195, "confidence": "estimated" },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        { "soc": 0,   "power": 77 },
+        { "soc": 10,  "power": 100 },
+        { "soc": 50,  "power": 77 },
+        { "soc": 80,  "power": 38 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "136 ch (100 kW), FWD, taille M"
     }
   ],
   "warranty": {

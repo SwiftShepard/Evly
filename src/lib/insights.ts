@@ -8,6 +8,7 @@ import type { Vehicle, VehicleConfiguration } from "@/data/schemas";
 export interface ConfiguredCard {
   vehicle: Vehicle;
   config: VehicleConfiguration;
+  soh?: number;
 }
 
 export function generateInsights(cards: ConfiguredCard[]): string[] {
@@ -15,19 +16,33 @@ export function generateInsights(cards: ConfiguredCard[]): string[] {
 
   const insights: string[] = [];
 
-  // Helper : nom court du véhicule
-  const name = (c: ConfiguredCard) =>
-    `${c.vehicle.brand} ${c.vehicle.model} (${c.config.trim})`;
+  // Helper : nom court du véhicule avec SoH si < 100
+  const name = (c: ConfiguredCard) => {
+    const sohVal = c.soh ?? 100;
+    const sohSuffix = sohVal < 100 ? ` (SoH ${sohVal}%)` : "";
+    return `${c.vehicle.brand} ${c.vehicle.model} (${c.config.trim})${sohSuffix}`;
+  };
+
+  // Helper values scaled by SoH
+  const getMixedRange = (c: ConfiguredCard) => {
+    const base = c.config.realRange?.mixed_km ?? 0;
+    return Math.round(base * (c.soh ?? 100) / 100);
+  };
+
+  const getHighwayRange = (c: ConfiguredCard) => {
+    const base = c.config.realRange?.highway_130_km ?? 0;
+    return Math.round(base * (c.soh ?? 100) / 100);
+  };
 
   // --- Autonomie réelle mixte ---
   const withRange = cards.filter((c) => c.config.realRange?.mixed_km);
   if (withRange.length >= 2) {
     const sorted = [...withRange].sort(
-      (a, b) => (b.config.realRange!.mixed_km) - (a.config.realRange!.mixed_km)
+      (a, b) => getMixedRange(b) - getMixedRange(a)
     );
     const best = sorted[0]!;
     const worst = sorted[sorted.length - 1]!;
-    const diff = best.config.realRange!.mixed_km - worst.config.realRange!.mixed_km;
+    const diff = getMixedRange(best) - getMixedRange(worst);
     if (diff > 20) {
       insights.push(
         `En usage mixte, la ${name(best)} offre ${diff} km de plus que la ${name(worst)}.`
@@ -39,11 +54,11 @@ export function generateInsights(cards: ConfiguredCard[]): string[] {
   const withHighway = cards.filter((c) => c.config.realRange?.highway_130_km);
   if (withHighway.length >= 2) {
     const sorted = [...withHighway].sort(
-      (a, b) => (b.config.realRange!.highway_130_km) - (a.config.realRange!.highway_130_km)
+      (a, b) => getHighwayRange(b) - getHighwayRange(a)
     );
     const best = sorted[0]!;
     const worst = sorted[sorted.length - 1]!;
-    const diff = best.config.realRange!.highway_130_km - worst.config.realRange!.highway_130_km;
+    const diff = getHighwayRange(best) - getHighwayRange(worst);
     if (diff > 30) {
       insights.push(
         `Sur autoroute à 130 km/h, la ${name(best)} tient ${diff} km de plus que la ${name(worst)}.`

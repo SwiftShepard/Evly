@@ -104,8 +104,8 @@
       ]
     }
   ],
-  "leasingSocialEligible": true,
-  "leasingSocial_EUR_per_month": 95,
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
   "availableAids": [],
   "configurations": [
     {
@@ -117,8 +117,8 @@
       "tyreType": "summer",
       "options": [],
       "price_EUR": 24900,
-      "monthlyLease_EUR": 95,
-      "leasingSocialEligible": true,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
       "wltp_km": 320,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
@@ -170,8 +170,8 @@
       "tyreType": "summer",
       "options": [],
       "price_EUR": 28900,
-      "monthlyLease_EUR": 95,
-      "leasingSocialEligible": true,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
       "wltp_km": 320,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {

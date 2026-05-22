@@ -1,0 +1,198 @@
+{
+  "slug": "kia-pv5-cargo",
+  "brand": "Kia",
+  "model": "PV5 Cargo",
+  "variant": "81 kWh",
+  "bodyType": "Fourgon",
+  "segment": "D",
+  "productionCountry": "Corée",
+  "assemblyPlant": "Ulsan",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 150,
+  "power_hp": 204,
+  "torque_Nm": 300,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 7.5,
+  "topSpeed_kmh": 160,
+  "usableCapacity_kWh": 81.4,
+  "grossCapacity_kWh": 84,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1700,
+  "wltp_max_km": 430,
+  "wltp_min_km": 380,
+  "realRange": {
+    "mixed_km": 320,
+    "highway_130_km": 220,
+    "urban_km": 390,
+    "winter_minus5_km": 250,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 15.0,
+  "consumption_highway_kWh_per_100km": 21.0,
+  "consumption_winter_kWh_per_100km": 19.0,
+  "dragCoefficient_Cx": 0.28,
+  "chargingDC": {
+    "peakPower_kW": 128,
+    "time_10_80_min": 31,
+    "kWh_added_30min": 50,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 6.5
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 100
+    },
+    {
+      "soc": 10,
+      "power": 130
+    },
+    {
+      "soc": 50,
+      "power": 100
+    },
+    {
+      "soc": 80,
+      "power": 50
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4700,
+  "width_mm": 1900,
+  "height_mm": 1900,
+  "wheelbase_mm": 2700,
+  "trunkCapacity_L": 4000,
+  "trunkCapacityFolded_L": 4000,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Active Cargo",
+      "price_EUR": 40000,
+      "batteryUsed": "81.4 kWh",
+      "equipmentHighlights": [
+        "Volume utile 4m3",
+        "Cloison de séparation tôlée",
+        "Portes arrière battantes 180°"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Bonus Écologique",
+      "amount_EUR": 4000
+    }
+  ],
+  "configurations": [
+    {
+      "id": "kia-pv5-cargo-active",
+      "label": "PV5 Cargo Active",
+      "battery": "standard",
+      "trim": "Active Cargo",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 40000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 430,
+      "wltp_consumption_kWh_100km": 16.5,
+      "realRange": {
+        "mixed_km": 320,
+        "highway_130_km": 220,
+        "urban_km": 390,
+        "winter_minus5_km": 250,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 128,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 128
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "confort",
+      "label": "Cabine bureau connectée et ergonomique"
+    },
+    {
+      "category": "technologie",
+      "label": "Technologie V2L pour alimenter des outils pros"
+    },
+    {
+      "category": "securite",
+      "label": "Aides à la conduite avancées de dernière génération"
+    },
+    {
+      "category": "design",
+      "label": "Format rectangulaire optimisé pour le volume utile"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Volume utile généreux (4m3)",
+      "Hauteur de chargement optimisée",
+      "Connectivité V2L pour outils pros"
+    ],
+    "weaknesses": [
+      "Vitesse de charge sur autoroute",
+      "Réseau de recharge pro à structurer"
+    ],
+    "idealUserProfile": "Artisans, livreurs urbains et flottes d'entreprises cherchant un utilitaire moderne et connecté.",
+    "notIdealFor": "Longues distances quotidiennes nécessitant de multiples charges rapides."
+  },
+  "lastUpdated": "2026-05-16",
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
+  "imageCredit": "Constructeur"
+}

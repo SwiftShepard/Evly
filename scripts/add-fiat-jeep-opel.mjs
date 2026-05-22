@@ -300,46 +300,50 @@ write("jeep-avenger", generate({
 }));
 
 /* ============================================================
-   JEEP WAGONEER S — gros SUV premium AWD, USA
+   JEEP COMPASS — SUV compact, production Melfi (Italie)
    ============================================================ */
-write("jeep-wagoneer-s", generate({
-  slug: "jeep-wagoneer-s",
-  brand: "Jeep", model: "Wagoneer S", variant: "100 kWh · AWD",
-  bodyType: "SUV familial premium", segment: "E",
-  country: "USA", plant: "Toluca",
-  releaseYear: 2024,
-  powerKW: 447, powerHp: 600, torque: 834, drivetrain: "AWD",
-  accel: 3.4, vmax: 200, mass: 2654, cx: 0.29,
-  length: 4895, width: 1996, height: 1664, wheelbase: 2950,
-  trunk: 425, trunkFolded: 1610,
-  acHours: 11,
+write("jeep-compass", generate({
+  slug: "jeep-compass",
+  brand: "Jeep", model: "Compass", variant: "73 / 97 kWh",
+  bodyType: "SUV compact", segment: "C",
+  country: "Italie", plant: "Melfi",
+  releaseYear: 2025,
+  powerKW: 157, powerHp: 213, torque: 345, drivetrain: "FWD",
+  accel: 7.9, vmax: 170, mass: 2110, cx: 0.32,
+  length: 4550, width: 1890, height: 1640, wheelbase: 2690,
+  trunk: 550, trunkFolded: 1500,
+  acHours: 6.5,
   batteries: [
-    { kind: "standard", usable: 100, gross: 108, wltp: 600,
-      dcPeak: 200, dc10_80: 23, dc30: 100, conso: 19.5,
-      real: { mixed: 440, hw130: 290, urban: 530, win: 350 } },
+    { kind: "standard", usable: 73, gross: 77, wltp: 500,
+      dcPeak: 160, dc10_80: 30, dc30: 50, conso: 16.2,
+      real: { mixed: 390, hw130: 270, urban: 460, win: 300 } },
+    { kind: "long-range", usable: 97, gross: 98, wltp: 650,
+      dcPeak: 160, dc10_80: 35, dc30: 60, conso: 16.5,
+      real: { mixed: 515, hw130: 360, urban: 610, win: 400 } },
   ],
   trims: [
-    { name: "Limited", wheels: 20, drivetrain: "AWD",
-      highlights: ["AWD 600 ch · 0-100 en 3,4 s", "McIntosh audio"],
-      prices: { standard: 75000 } },
-    { name: "Launch Edition", wheels: 21, drivetrain: "AWD",
-      highlights: ["Édition lancement numérotée"],
-      prices: { standard: 85000 } },
+    { name: "Altitude", wheels: 18, drivetrain: "FWD",
+      highlights: ["FWD 213 ch", "Écran tactile 10.25\""],
+      prices: { standard: 41900 } },
+    { name: "Summit", wheels: 19, drivetrain: "FWD",
+      highlights: ["FWD 213 ch", "Projecteurs LED matriciels", "Navigation connectée"],
+      prices: { standard: 45900, "long-range": 49900 } },
   ],
   leasingSocial: false,
   keyFeatures: [
-    { category: "confort", label: "Suspension pilotée McKinley active" },
-    { category: "technologie", label: "Triple écran cabine (12 + 12,3 + 10,25 pouces)" },
-    { category: "securite", label: "Aides à la conduite niveau 2 augmenté" },
-    { category: "design", label: "Premier SUV électrique premium de Jeep" },
+    { category: "confort", label: "Garde au sol surélevée (200 mm) et position de conduite haute" },
+    { category: "technologie", label: "Système multimédia Uconnect avec écran tactile 10,25\"" },
+    { category: "securite", label: "Aides à la conduite de niveau 2 (Highway Assist)" },
+    { category: "design", label: "Calandre authentique Jeep à 7 fentes modernisée" },
   ],
   verdict: {
-    strengths: ["Performances exceptionnelles (600 ch, 0-100 en 3,4 s)", "Équipement premium digne d'un haut de gamme allemand"],
-    weaknesses: ["Production USA : hors plafond Prime CEE VE et leasing social", "Consommation autoroute élevée (~21 kWh/100)"],
-    idealUserProfile: "Acheteur premium recherchant un SUV électrique imposant, performant et bien équipé. Trajets mixtes principalement.",
-    notIdealFor: "Acheteur sensible aux aides ou au TCO, Wagoneer S vise une clientèle premium qui n'optimise pas la fiscalité.",
+    strengths: ["Production européenne (Melfi, Italie) : éligible Prime CEE VE", "Excellent compromis autonomie (plateforme STLA Medium)", "Habitabilité et volume de coffre généreux (550 L)"],
+    weaknesses: ["Style plus conventionnel que l'Avenger", "Poids élevé impactant l'agilité"],
+    idealUserProfile: "Famille cherchant un SUV électrique polyvalent comme véhicule principal, éligible aux aides d'État.",
+    notIdealFor: "Acheteurs cherchant une citadine facile à garer en ville ou des performances ultra-sportives.",
   },
 }));
+
 
 /* ============================================================
    OPEL CORSA ELECTRIC — citadine, Saragosse (Espagne)
@@ -432,8 +436,8 @@ write("opel-mokka-electric", generate({
    OPEL ASTRA ELECTRIC — compacte, Rüsselsheim (Allemagne)
    Plateforme STLA Medium, base e-308
    ============================================================ */
-write("opel-astra-electric", generate({
-  slug: "opel-astra-electric",
+write("opel-astra", generate({
+  slug: "opel-astra",
   brand: "Opel", model: "Astra Electric", variant: "Berline & Sports Tourer · 54 kWh",
   bodyType: "Berline compacte", segment: "C",
   country: "Allemagne", plant: "Rüsselsheim",

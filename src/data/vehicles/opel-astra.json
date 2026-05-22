@@ -1,5 +1,5 @@
 {
-  "slug": "opel-astra-electric",
+  "slug": "opel-astra",
   "brand": "Opel",
   "model": "Astra Electric",
   "variant": "Berline & Sports Tourer · 54 kWh",
@@ -125,12 +125,12 @@
   "availableAids": [
     {
       "label": "Prime CEE VE",
-      "amount_EUR": 8100
+      "amount_EUR": 4000
     }
   ],
   "configurations": [
     {
-      "id": "opel-astra-electric-berline-gs-54",
+      "id": "opel-astra-berline-gs-54",
       "label": "Berline GS · 54 kWh",
       "battery": "standard",
       "trim": "Berline GS",
@@ -183,7 +183,7 @@
       "notes": null
     },
     {
-      "id": "opel-astra-electric-berline-ultimate-54",
+      "id": "opel-astra-berline-ultimate-54",
       "label": "Berline Ultimate · 54 kWh",
       "battery": "standard",
       "trim": "Berline Ultimate",
@@ -236,7 +236,7 @@
       "notes": null
     },
     {
-      "id": "opel-astra-electric-sports-tourer-gs-54",
+      "id": "opel-astra-sports-tourer-gs-54",
       "label": "Sports Tourer GS · 54 kWh",
       "battery": "standard",
       "trim": "Sports Tourer GS",
@@ -289,7 +289,7 @@
       "notes": null
     },
     {
-      "id": "opel-astra-electric-sports-tourer-ultimate-54",
+      "id": "opel-astra-sports-tourer-ultimate-54",
       "label": "Sports Tourer Ultimate · 54 kWh",
       "battery": "standard",
       "trim": "Sports Tourer Ultimate",

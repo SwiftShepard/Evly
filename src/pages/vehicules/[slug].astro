@@ -12,6 +12,7 @@ import ChargingCurve from "@/components/vehicle/ChargingCurve.tsx";
 import SeasonalRange from "@/components/vehicle/SeasonalRange.tsx";
 import SpeedConsumption from "@/components/vehicle/SpeedConsumption.tsx";
 import VehicleConfigSelector from "@/components/vehicle/VehicleConfigSelector.tsx";
+import SohSlider from "@/components/vehicle/SohSlider.tsx";
 import { getAllVehicles, getVehicleBySlug } from "@/lib/vehicles";
 import { getSource, getSources, type TrustLevel } from "@/data/sources";
 import { formatDate, formatHours, formatPrice } from "@/lib/format";
@@ -32,6 +33,9 @@ if (!vehicle) {
   return Astro.redirect("/404");
 }
 
+// NOTE: Vite's import.meta.glob is resolved statically. If you add a new vehicle image in dev mode,
+// you must restart the dev server or save this file to force Vite to scan the vehicles folder again.
+// Force rescan comment update 3
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/vehicles/*');
 const imagePath = Object.keys(images).find((path) => path.startsWith(`/src/assets/vehicles/${slug}.`));
 let VehicleImage;
@@ -173,6 +177,10 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
         </div>
       )}
 
+      <div class="mb-6 md:mb-8 fade-rise xl:hidden bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-4">
+        <SohSlider client:load />
+      </div>
+
       <BentoGrid>
       {configurations.map((config, index) => {
         // Compute config-specific values
@@ -228,18 +236,18 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                       {nyland90 && <SourceTooltip sourceId="nyland" date={nyland90.testDate ?? undefined} />}
                     </div>
                     <div class="flex items-baseline gap-3 md:gap-4">
-                      <span data-numeric class="display-stat text-[var(--color-accent)] text-[clamp(4rem,16vw,10rem)] leading-[0.85]">
+                      <span data-numeric class="display-stat text-[var(--color-accent)] text-[clamp(4rem,16vw,10rem)] leading-[0.85] soh-update-range" data-base-range={nylandRangeEstimate ?? realRangeMixed}>
                         {nylandRangeEstimate ?? realRangeMixed}
                       </span>
                       <span class="font-mono text-xl md:text-2xl text-[var(--color-text-faint)]">km</span>
                     </div>
                     {nyland90 ? (
                       <p class="font-mono text-[11px] md:text-xs text-[var(--color-text-faint)] leading-relaxed">
-                        Conso mesurée à {nyland90.consumption_kWh_100km.toString().replace(".", ",")} kWh/100&nbsp;km, batterie utile {batteryCapacity.toString().replace(".", ",")} kWh, WLTP annoncée {config.wltp_km} km.
+                        Conso mesurée à {nyland90.consumption_kWh_100km.toString().replace(".", ",")} kWh/100&nbsp;km, batterie utile <span class="soh-update-text-capacity font-semibold" data-base-capacity={batteryCapacity}>{batteryCapacity.toString().replace(".", ",")}</span> kWh, WLTP annoncée <span class="soh-update-text-wltp font-semibold" data-base-wltp={config.wltp_km}>{config.wltp_km}</span> km.
                       </p>
                     ) : (
                       <p class="font-mono text-[11px] md:text-xs text-[var(--color-text-faint)] leading-relaxed">
-                        conso mixte {(config.wltp_consumption_kWh_100km ?? vehicle.consumption_mixed_kWh_per_100km).toString().replace(".", ",")} kWh/100&nbsp;km, WLTP annoncée {config.wltp_km ?? vehicle.wltp_max_km} km
+                        conso mixte {(config.wltp_consumption_kWh_100km ?? vehicle.consumption_mixed_kWh_per_100km).toString().replace(".", ",")} kWh/100&nbsp;km, WLTP annoncée <span class="soh-update-text-wltp font-semibold" data-base-wltp={config.wltp_km ?? vehicle.wltp_max_km}>{config.wltp_km ?? vehicle.wltp_max_km}</span> km
                       </p>
                     )}
                   </div>
@@ -297,7 +305,9 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
 
             <!-- 1x1 : capacité batterie -->
             <Tile size="1x1" label="Batterie utile" class="reveal">
-              <TileStat value={batteryCapacity.toString().replace(".", ",")} unit="kWh" size="xl" hint={`${vehicle.chemistry} · ${vehicle.architecture_V} V`} />
+              <div class="soh-update-capacity" data-base-capacity={batteryCapacity}>
+                <TileStat value={batteryCapacity.toString().replace(".", ",")} unit="kWh" size="xl" hint={`${vehicle.chemistry} · ${vehicle.architecture_V} V`} />
+              </div>
             </Tile>
 
             <!-- 1x1 : pic DC -->
@@ -644,11 +654,16 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
         );
       })}
 
+      <div class="sidebar-block">
+        <SohSlider client:load />
+      </div>
+
       <div class="sidebar-block sidebar-actions">
         <FavoriteButton client:load slug={vehicle.slug} size={16} className="sidebar-fav-btn" />
         <a
           href={url(`/comparer/?v=${vehicle.slug}:${configurations[0]?.id}`)}
           class="sidebar-cta"
+          id="compare-link"
         >
           Comparer ce modele
         </a>
@@ -677,7 +692,17 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
     </aside>
   </div>
 
-  <script is:inline>
+  <script define:vars={{ vehicleSlug: vehicle.slug, initialConfigId: configurations[0]?.id || "default", compareBaseUrl: url("/comparer/") }}>
+    let currentConfigId = initialConfigId;
+    let currentSoh = 100;
+
+    function updateCompareLink() {
+      const link = document.getElementById("compare-link");
+      if (link) {
+        link.href = `${compareBaseUrl}?v=${vehicleSlug}:${currentConfigId}:${currentSoh}`;
+      }
+    }
+
     function toggleConfigs(id) {
       document.querySelectorAll(".config-wrapper").forEach((el) => {
         el.style.display = el.getAttribute("data-config-id") === id ? "contents" : "none";
@@ -690,15 +715,81 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
     // Init URL sync
     const urlParams = new URLSearchParams(window.location.search);
     const configParam = urlParams.get("config");
-    if (configParam) toggleConfigs(configParam);
+    if (configParam) {
+      currentConfigId = configParam;
+      toggleConfigs(configParam);
+    }
+    const sohParam = urlParams.get("soh");
+    if (sohParam) {
+      const parsedSoh = parseInt(sohParam, 10);
+      if (!isNaN(parsedSoh) && parsedSoh >= 70 && parsedSoh <= 100) {
+        currentSoh = parsedSoh;
+      }
+    }
+    updateCompareLink();
 
     // Handle interactive toggle
     window.addEventListener("config-changed", (e) => {
       const id = e.detail.configId;
+      currentConfigId = id;
       toggleConfigs(id);
       const url = new URL(window.location.href);
       url.searchParams.set("config", id);
       window.history.replaceState(null, "", url.toString());
+      updateCompareLink();
+    });
+
+    // Handle SoH slider change
+    window.addEventListener("soh-changed", (e) => {
+      const soh = e.detail.soh;
+      currentSoh = soh;
+      updateCompareLink();
+
+      // Sync SoH to URL search parameters
+      const urlVal = new URL(window.location.href);
+      if (soh === 100) {
+        urlVal.searchParams.delete("soh");
+      } else {
+        urlVal.searchParams.set("soh", soh.toString());
+      }
+      window.history.replaceState(null, "", urlVal.toString());
+
+      // 1. Update range numbers
+      document.querySelectorAll(".soh-update-range").forEach((el) => {
+        const base = parseFloat(el.getAttribute("data-base-range"));
+        if (!isNaN(base)) {
+          el.textContent = Math.round(base * soh / 100);
+        }
+      });
+
+      // 2. Update battery capacity numbers
+      document.querySelectorAll(".soh-update-capacity").forEach((el) => {
+        const base = parseFloat(el.getAttribute("data-base-capacity"));
+        if (!isNaN(base)) {
+          const statEl = el.querySelector(".display-stat");
+          if (statEl) {
+            const newVal = (base * soh / 100).toFixed(1).replace(".", ",");
+            statEl.textContent = newVal.endsWith(",0") ? newVal.slice(0, -2) : newVal;
+          }
+        }
+      });
+
+      // 3. Update inline capacity texts
+      document.querySelectorAll(".soh-update-text-capacity").forEach((el) => {
+        const base = parseFloat(el.getAttribute("data-base-capacity"));
+        if (!isNaN(base)) {
+          const newVal = (base * soh / 100).toFixed(1).replace(".", ",");
+          el.textContent = newVal.endsWith(",0") ? newVal.slice(0, -2) : newVal;
+        }
+      });
+
+      // 4. Update inline WLTP texts
+      document.querySelectorAll(".soh-update-text-wltp").forEach((el) => {
+        const base = parseFloat(el.getAttribute("data-base-wltp"));
+        if (!isNaN(base)) {
+          el.textContent = Math.round(base * soh / 100);
+        }
+      });
     });
   </script>
 
