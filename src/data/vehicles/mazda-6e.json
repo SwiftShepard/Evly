@@ -35,9 +35,9 @@
   "consumption_winter_kWh_per_100km": 21,
   "dragCoefficient_Cx": 0.22,
   "chargingDC": {
-    "peakPower_kW": 135,
+    "peakPower_kW": 165,
     "time_10_80_min": 25,
-    "kWh_added_30min": 48,
+    "kWh_added_30min": 52,
     "confidence": "estimated"
   },
   "chargingAC": {
@@ -50,11 +50,11 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 90 },
-    { "soc": 10, "power": 135 },
-    { "soc": 30, "power": 120 },
-    { "soc": 50, "power": 95 },
-    { "soc": 80, "power": 40 },
+    { "soc": 0, "power": 100 },
+    { "soc": 10, "power": 165 },
+    { "soc": 30, "power": 140 },
+    { "soc": 50, "power": 110 },
+    { "soc": 80, "power": 45 },
     { "soc": 100, "power": 8 }
   ],
   "rangeTests": [],
@@ -80,7 +80,7 @@
     },
     {
       "name": "Takumi Plus 69 kWh",
-      "price_EUR": 44500,
+      "price_EUR": 44900,
       "batteryUsed": "69 kWh LFP",
       "equipmentHighlights": [
         "Système audio Sony à 14 haut-parleurs",
@@ -102,7 +102,7 @@
     },
     {
       "name": "Takumi Plus 81 kWh",
-      "price_EUR": 47000,
+      "price_EUR": 46500,
       "batteryUsed": "81 kWh NMC",
       "equipmentHighlights": [
         "Grande batterie 81 kWh",
@@ -139,15 +139,15 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 135,
+      "chargingDC_peak_kW": 165,
       "chargingDC_10_80_min": 25,
-      "chargingDC_kWh_30min": 48,
+      "chargingDC_kWh_30min": 52,
       "chargingCurve": [
-        { "soc": 0, "power": 90 },
-        { "soc": 10, "power": 135 },
-        { "soc": 30, "power": 120 },
-        { "soc": 50, "power": 95 },
-        { "soc": 80, "power": 40 },
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 165 },
+        { "soc": 30, "power": 140 },
+        { "soc": 50, "power": 110 },
+        { "soc": 80, "power": 45 },
         { "soc": 100, "power": 8 }
       ],
       "availability": "upcoming",
@@ -162,7 +162,7 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 44500,
+      "price_EUR": 44900,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 480,
@@ -175,15 +175,15 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 135,
+      "chargingDC_peak_kW": 165,
       "chargingDC_10_80_min": 25,
-      "chargingDC_kWh_30min": 48,
+      "chargingDC_kWh_30min": 52,
       "chargingCurve": [
-        { "soc": 0, "power": 90 },
-        { "soc": 10, "power": 135 },
-        { "soc": 30, "power": 120 },
-        { "soc": 50, "power": 95 },
-        { "soc": 80, "power": 40 },
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 165 },
+        { "soc": 30, "power": 140 },
+        { "soc": 50, "power": 110 },
+        { "soc": 80, "power": 45 },
         { "soc": 100, "power": 8 }
       ],
       "availability": "upcoming",
@@ -211,14 +211,14 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 115,
-      "chargingDC_10_80_min": 35,
-      "chargingDC_kWh_30min": 45,
+      "chargingDC_peak_kW": 90,
+      "chargingDC_10_80_min": 45,
+      "chargingDC_kWh_30min": 38,
       "chargingCurve": [
-        { "soc": 0, "power": 80 },
-        { "soc": 10, "power": 115 },
-        { "soc": 30, "power": 105 },
-        { "soc": 50, "power": 85 },
+        { "soc": 0, "power": 75 },
+        { "soc": 10, "power": 90 },
+        { "soc": 30, "power": 85 },
+        { "soc": 50, "power": 75 },
         { "soc": 80, "power": 35 },
         { "soc": 100, "power": 7 }
       ],
@@ -234,7 +234,7 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 47000,
+      "price_EUR": 46500,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 560,
@@ -247,14 +247,14 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 115,
-      "chargingDC_10_80_min": 35,
-      "chargingDC_kWh_30min": 45,
+      "chargingDC_peak_kW": 90,
+      "chargingDC_10_80_min": 45,
+      "chargingDC_kWh_30min": 38,
       "chargingCurve": [
-        { "soc": 0, "power": 80 },
-        { "soc": 10, "power": 115 },
-        { "soc": 30, "power": 105 },
-        { "soc": 50, "power": 85 },
+        { "soc": 0, "power": 75 },
+        { "soc": 10, "power": 90 },
+        { "soc": 30, "power": 85 },
+        { "soc": 50, "power": 75 },
         { "soc": 80, "power": 35 },
         { "soc": 100, "power": 7 }
       ],

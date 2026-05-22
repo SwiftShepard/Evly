@@ -42,6 +42,14 @@ for (const [path, content] of Object.entries(logoModules)) {
       .replace(/\bfill="(?:#(?:000(?:000)?)|black)"/gi, 'fill="currentColor"')
       .replace(/fill\s*:\s*(?:#(?:000|000000)|rgb\(\s*0\s*,\s*0\s*,\s*0\s*\)|black)\s*;?/gi, "fill:currentColor;")
       .replace(/\bcolor\s*:\s*(?:#fff(?:fff)?|rgb\(\s*255\s*,\s*255\s*,\s*255\s*\)|white)\s*;?/gi, "");
+
+    // Prevent ID collision between different SVGs inlined on the same page
+    const uniqueSuffix = `-${target}`;
+    patchedSvg = patchedSvg
+      .replace(/\bid=(["'])(.*?)\1/g, (_m, quote, id) => `id=${quote}${id}${uniqueSuffix}${quote}`)
+      .replace(/url\(\s*(["']?)#([^'")]+)\1\s*\)/g, (_m, quote, id) => `url(${quote}#${id}${uniqueSuffix}${quote})`)
+      .replace(/\b(xlink:)?href=(["'])#([^"']+)\2/g, (_m, prefix = '', quote, id) => `${prefix}href=${quote}#${id}${uniqueSuffix}${quote}`);
+
     break;
   }
 }

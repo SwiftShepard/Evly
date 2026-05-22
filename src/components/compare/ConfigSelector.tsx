@@ -108,8 +108,8 @@ export default function ConfigSelector({
       .trim() || trim;
 
   // Battery labels = juste la capacité utile : "58 kWh", "77 kWh".
-  //  - "long-range" → vehicle.usableCapacity_kWh (ref LR au top du JSON)
-  //  - "standard"   → plus petite capacité unique trouvée dans trims.batteryUsed
+  //  - Try to read from configurations belonging to that battery.
+  //  - Fall back to the previous logic.
   const batteryLabels = useMemo(() => {
     const result: Record<string, string> = {};
     const lrKwh = Math.round(vehicle.usableCapacity_kWh);
@@ -127,7 +127,29 @@ export default function ConfigSelector({
     ].sort((a, b) => a - b);
 
     for (const battery of batteries) {
-      if (battery === "long-range") {
+      // Find if any configuration for this battery has a parsed/declared capacity
+      const configsForBattery = configs.filter((c) => c.battery === battery);
+      let cap: number | null = null;
+      for (const c of configsForBattery) {
+        const labelMatch = c.label?.match(/(\d+(?:[.,]\d+)?)\s*kWh/i);
+        if (labelMatch) {
+          cap = Math.round(parseFloat(labelMatch[1].replace(",", ".")));
+          break;
+        }
+        const trimMatch = c.trim?.match(/(\d+(?:[.,]\d+)?)\s*kWh/i);
+        if (trimMatch) {
+          cap = Math.round(parseFloat(trimMatch[1].replace(",", ".")));
+          break;
+        }
+        if (c.usableCapacity_kWh != null) {
+          cap = Math.round(c.usableCapacity_kWh);
+          break;
+        }
+      }
+
+      if (cap !== null) {
+        result[battery] = `${cap} kWh`;
+      } else if (battery === "long-range") {
         result[battery] = `${lrKwh} kWh`;
       } else {
         const stdKwh = uniqueKwh.find((k) => k < lrKwh) ?? uniqueKwh[0];
@@ -135,7 +157,7 @@ export default function ConfigSelector({
       }
     }
     return result;
-  }, [batteries, vehicle.usableCapacity_kWh, vehicle.trims]);
+  }, [batteries, configs, vehicle.usableCapacity_kWh, vehicle.trims]);
 
   return (
     <div className="flex flex-col gap-2">
