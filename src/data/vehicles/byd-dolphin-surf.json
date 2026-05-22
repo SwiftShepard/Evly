@@ -1,0 +1,243 @@
+{
+  "slug": "byd-dolphin-surf",
+  "brand": "BYD",
+  "model": "Dolphin Surf",
+  "variant": "43.2 kWh",
+  "bodyType": "Citadine compacte",
+  "segment": "B",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Changsha",
+  "releaseYear": 2025,
+  "marketAvailability": "Disponible",
+  "power_kW": 115,
+  "power_hp": 156,
+  "torque_Nm": 175,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 9.1,
+  "topSpeed_kmh": 150,
+  "usableCapacity_kWh": 43.2,
+  "grossCapacity_kWh": 43.2,
+  "chemistry": "LFP",
+  "architecture_V": 400,
+  "mass_kg": 1450,
+  "wltp_max_km": 330,
+  "wltp_min_km": 230,
+  "realRange": {
+    "mixed_km": 250,
+    "highway_130_km": 180,
+    "urban_km": 380,
+    "winter_minus5_km": 190,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 14.0,
+  "consumption_highway_kWh_per_100km": 19.0,
+  "consumption_winter_kWh_per_100km": 17.0,
+  "dragCoefficient_Cx": 0.29,
+  "chargingDC": {
+    "peakPower_kW": 85,
+    "time_10_80_min": 30,
+    "kWh_added_30min": 30,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 4.5
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 45 },
+    { "soc": 10, "power": 85 },
+    { "soc": 30, "power": 75 },
+    { "soc": 50, "power": 60 },
+    { "soc": 80, "power": 35 },
+    { "soc": 100, "power": 7 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 3990,
+  "width_mm": 1720,
+  "height_mm": 1590,
+  "wheelbase_mm": 2500,
+  "trunkCapacity_L": 308,
+  "trunkCapacityFolded_L": 1037,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Active",
+      "price_EUR": 19990,
+      "batteryUsed": "30 kWh LFP",
+      "equipmentHighlights": [
+        "Jusqu'à 356 km d'autonomie (WLTP urbain)",
+        "Écran d'infodivertissement rotatif de 10.1\"",
+        "Compatibilité CarPlay et Android Auto sans fil",
+        "Sellerie TEP & Rétroviseurs chauffants"
+      ]
+    },
+    {
+      "name": "Boost",
+      "price_EUR": 23990,
+      "batteryUsed": "43.2 kWh LFP",
+      "equipmentHighlights": [
+        "Jusqu'à 507 km d'autonomie (WLTP urbain)",
+        "Jantes alliage 16\" & Essuie-glaces auto",
+        "Recharge rapide DC 30-80% en 22 minutes",
+        "Sièges avant réglables électriquement"
+      ]
+    },
+    {
+      "name": "Comfort",
+      "price_EUR": 25990,
+      "batteryUsed": "43.2 kWh LFP",
+      "equipmentHighlights": [
+        "Moteur puissant de 156 ch (115 kW)",
+        "Caméras à vision panoramique 360°",
+        "Sièges conducteur et passager chauffants",
+        "Projecteurs LED & Chargeur induction"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "byd-dolphin-surf-active",
+      "label": "Dolphin Surf Active · 30 kWh",
+      "battery": "standard",
+      "trim": "Active",
+      "wheelSize_inches": 15,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 19990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 230,
+      "wltp_consumption_kWh_100km": 13.6,
+      "realRange": {
+        "mixed_km": 180,
+        "highway_130_km": 130,
+        "urban_km": 230,
+        "winter_minus5_km": 140,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 65,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 21,
+      "chargingCurve": [
+        { "soc": 0, "power": 35 },
+        { "soc": 10, "power": 65 },
+        { "soc": 30, "power": 55 },
+        { "soc": 50, "power": 45 },
+        { "soc": 80, "power": 25 },
+        { "soc": 100, "power": 5 }
+      ],
+      "availability": "available",
+      "notes": "Moteur 88 ch (65 kW), batterie Blade LFP 30 kWh. Idéal pour un usage urbain quotidien."
+    },
+    {
+      "id": "byd-dolphin-surf-boost",
+      "label": "Dolphin Surf Boost · 43.2 kWh",
+      "battery": "long-range",
+      "trim": "Boost",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 23990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 330,
+      "wltp_consumption_kWh_100km": 13.9,
+      "realRange": {
+        "mixed_km": 250,
+        "highway_130_km": 180,
+        "urban_km": 320,
+        "winter_minus5_km": 190,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 85,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        { "soc": 0, "power": 45 },
+        { "soc": 10, "power": 85 },
+        { "soc": 30, "power": 75 },
+        { "soc": 50, "power": 60 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "Moteur 88 ch (65 kW), batterie Blade LFP 43.2 kWh. Autonomie accrue et recharge rapide 30-80% en 22 min."
+    },
+    {
+      "id": "byd-dolphin-surf-comfort",
+      "label": "Dolphin Surf Comfort · 43.2 kWh",
+      "battery": "long-range",
+      "trim": "Comfort",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 25990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 300,
+      "wltp_consumption_kWh_100km": 14.4,
+      "realRange": {
+        "mixed_km": 230,
+        "highway_130_km": 165,
+        "urban_km": 290,
+        "winter_minus5_km": 175,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 85,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        { "soc": 0, "power": 45 },
+        { "soc": 10, "power": 85 },
+        { "soc": 30, "power": 75 },
+        { "soc": 50, "power": 60 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "Moteur puissant de 156 ch (115 kW), batterie Blade LFP 43.2 kWh. Finition premium haut de gamme."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 6,
+    "vehicle_km": 150000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "confort", "label": "Sellerie TEP et sièges avant chauffants (Comfort)" },
+    { "category": "technologie", "label": "Écran rotatif 10,1\" avec CarPlay/Android Auto sans fil" },
+    { "category": "securite", "label": "Caméras 360° et aides à la conduite complètes" },
+    { "category": "design", "label": "Style dynamique et compact idéal pour la ville" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Tarif de départ très compétitif à 19 990 €",
+      "Équipement technologique très complet dès l'entrée de gamme",
+      "Espace intérieur optimisé malgré un gabarit sous les 4 mètres"
+    ],
+    "weaknesses": [
+      "Non éligible au bonus écologique en France (produit en Chine)",
+      "Performances autoroutières limitées sur les versions Active/Boost (88 ch)"
+    ],
+    "idealUserProfile": "Citadins et banlieusards cherchant une petite voiture électrique moderne, suréquipée et abordable.",
+    "notIdealFor": "Gros rouleurs effectuant de fréquents et longs trajets autoroutiers en charge maximale."
+  },
+  "lastUpdated": "2026-05-22",
+  "sources": ["constructeur", "automobile-propre"],
+  "imageCredit": "Constructeur"
+}

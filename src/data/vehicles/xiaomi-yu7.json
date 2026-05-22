@@ -1,0 +1,198 @@
+{
+  "slug": "xiaomi-yu7",
+  "brand": "Xiaomi",
+  "model": "YU7",
+  "variant": "73 kWh",
+  "bodyType": "SUV",
+  "segment": "D",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Pékin",
+  "releaseYear": 2025,
+  "marketAvailability": "À venir en Europe",
+  "power_kW": 235,
+  "power_hp": 320,
+  "torque_Nm": 400,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 5.9,
+  "topSpeed_kmh": 220,
+  "usableCapacity_kWh": 70,
+  "grossCapacity_kWh": 73,
+  "chemistry": "LFP",
+  "architecture_V": 800,
+  "mass_kg": 2140,
+  "wltp_max_km": 480,
+  "wltp_min_km": 400,
+  "realRange": {
+    "mixed_km": 390,
+    "highway_130_km": 290,
+    "urban_km": 470,
+    "winter_minus5_km": 300,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 17.5,
+  "consumption_highway_kWh_per_100km": 24,
+  "consumption_winter_kWh_per_100km": 22,
+  "dragCoefficient_Cx": 0.23,
+  "chargingDC": {
+    "peakPower_kW": 300,
+    "time_10_80_min": 15,
+    "kWh_added_30min": 60,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 7
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 200 },
+    { "soc": 10, "power": 300 },
+    { "soc": 30, "power": 270 },
+    { "soc": 50, "power": 210 },
+    { "soc": 80, "power": 70 },
+    { "soc": 100, "power": 10 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4999,
+  "width_mm": 1996,
+  "height_mm": 1600,
+  "wheelbase_mm": 3000,
+  "trunkCapacity_L": 678,
+  "trunkCapacityFolded_L": 1758,
+  "frunkCapacity_L": 141,
+  "trims": [
+    {
+      "name": "Standard 73 kWh",
+      "price_EUR": 44000,
+      "batteryUsed": "73 kWh LFP",
+      "equipmentHighlights": [
+        "Plateforme 800V (architecture 752V)",
+        "Volume de coffre géant (678 L)",
+        "Frunk électrique 141 L",
+        "Écosystème HyperOS intégré"
+      ]
+    },
+    {
+      "name": "GT 101.7 kWh",
+      "price_EUR": 65000,
+      "batteryUsed": "101.7 kWh NMC",
+      "equipmentHighlights": [
+        "AWD 1004 ch (738 kW)",
+        "0-100 km/h en 2,92 s, Vmax 300 km/h",
+        "Batterie CATL Qilin 5.2C",
+        "Suspension pneumatique active (75 mm)",
+        "Freins carbone-céramique"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "xiaomi-yu7-standard",
+      "label": "YU7 Standard · 73 kWh",
+      "battery": "standard",
+      "trim": "Standard 73 kWh",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 44000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 480,
+      "wltp_consumption_kWh_100km": 15.2,
+      "realRange": {
+        "mixed_km": 390,
+        "highway_130_km": 290,
+        "urban_km": 470,
+        "winter_minus5_km": 300,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 300,
+      "chargingDC_10_80_min": 15,
+      "chargingDC_kWh_30min": 60,
+      "chargingCurve": [
+        { "soc": 0, "power": 200 },
+        { "soc": 10, "power": 300 },
+        { "soc": 30, "power": 270 },
+        { "soc": 50, "power": 210 },
+        { "soc": 80, "power": 70 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "upcoming",
+      "notes": "320 ch (235 kW), RWD. Prix européen estimé. Lancement Europe prévu ~2027."
+    },
+    {
+      "id": "xiaomi-yu7-gt",
+      "label": "YU7 GT · 101.7 kWh",
+      "battery": "long-range",
+      "trim": "GT 101.7 kWh",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 65000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 530,
+      "wltp_consumption_kWh_100km": 19.2,
+      "realRange": {
+        "mixed_km": 430,
+        "highway_130_km": 310,
+        "urban_km": 500,
+        "winter_minus5_km": 330,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 480,
+      "chargingDC_10_80_min": 11,
+      "chargingDC_kWh_30min": 90,
+      "chargingCurve": [
+        { "soc": 0, "power": 280 },
+        { "soc": 10, "power": 480 },
+        { "soc": 30, "power": 430 },
+        { "soc": 50, "power": 320 },
+        { "soc": 80, "power": 110 },
+        { "soc": 100, "power": 15 }
+      ],
+      "availability": "upcoming",
+      "notes": "1004 ch (738 kW), AWD, batterie CATL Qilin 5.2C. Suspension pneumatique active."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "design", "label": "SUV ultra-profilé au Cx de 0,23" },
+    { "category": "technologie", "label": "Architecture 800V, écosystème Xiaomi HyperOS" },
+    { "category": "securite", "label": "LiDAR, puces NVIDIA Thor et conduite autonome avancée" },
+    { "category": "confort", "label": "Volume de coffre record et frunk électrique de 141 L" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Performances hallucinantes sur la version GT (1004 ch)",
+      "Espace de chargement exceptionnel (coffre de 678L + frunk de 141L)",
+      "Architecture de charge ultra-rapide 800V (plateforme 752V/897V)"
+    ],
+    "weaknesses": [
+      "Gabarit imposant de 5 mètres peu adapté aux parkings européens",
+      "Pas encore commercialisé en Europe, réseau SAV inexistant pour le moment"
+    ],
+    "idealUserProfile": "Familles passionnées de technologie et de performances cherchant un grand SUV électrique ultra-moderne.",
+    "notIdealFor": "Conducteurs urbains cherchant un véhicule compact et facile à garer avec un réseau SAV local établi."
+  },
+  "lastUpdated": "2026-05-22",
+  "sources": ["constructeur", "wikipedia"],
+  "imageCredit": "Constructeur"
+}

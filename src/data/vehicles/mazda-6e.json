@@ -1,0 +1,213 @@
+{
+  "slug": "mazda-6e",
+  "brand": "Mazda",
+  "model": "6e",
+  "variant": "190 kW RWD",
+  "bodyType": "Berline",
+  "segment": "D",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Nanjing (Changan Mazda)",
+  "releaseYear": 2025,
+  "marketAvailability": "À venir en Europe",
+  "power_kW": 190,
+  "power_hp": 258,
+  "torque_Nm": 320,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 7.7,
+  "topSpeed_kmh": 170,
+  "usableCapacity_kWh": 68.8,
+  "grossCapacity_kWh": 72,
+  "chemistry": "LFP",
+  "architecture_V": 400,
+  "mass_kg": 2090,
+  "wltp_max_km": 480,
+  "wltp_min_km": 450,
+  "realRange": {
+    "mixed_km": 400,
+    "highway_130_km": 290,
+    "urban_km": 480,
+    "winter_minus5_km": 300,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 16.5,
+  "consumption_highway_kWh_per_100km": 22.5,
+  "consumption_winter_kWh_per_100km": 21,
+  "dragCoefficient_Cx": 0.22,
+  "chargingDC": {
+    "peakPower_kW": 135,
+    "time_10_80_min": 25,
+    "kWh_added_30min": 48,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 7
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 90 },
+    { "soc": 10, "power": 135 },
+    { "soc": 30, "power": 120 },
+    { "soc": 50, "power": 95 },
+    { "soc": 80, "power": 40 },
+    { "soc": 100, "power": 8 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4921,
+  "width_mm": 1890,
+  "height_mm": 1485,
+  "wheelbase_mm": 2895,
+  "trunkCapacity_L": 466,
+  "trunkCapacityFolded_L": 1310,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Takumi",
+      "price_EUR": 42000,
+      "batteryUsed": "68.8 kWh LFP",
+      "equipmentHighlights": [
+        "Écran central tactile de 14,6 pouces",
+        "Affichage tête haute ADD étendu",
+        "Caméra 360° et aides à la conduite actives",
+        "Sellerie Maztex noire avec sièges chauffants et ventilés"
+      ]
+    },
+    {
+      "name": "Takumi Plus",
+      "price_EUR": 47000,
+      "batteryUsed": "78 kWh NMC",
+      "equipmentHighlights": [
+        "Système audio Sony à 14 haut-parleurs",
+        "Toit vitré panoramique fixe",
+        "Rétroviseurs extérieurs digitaux avec écrans OLED",
+        "Jantes alliage 20 pouces aérodynamiques"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "mazda-6e-takumi",
+      "label": "6e Takumi · 68.8 kWh",
+      "battery": "standard",
+      "trim": "Takumi",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 42000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 480,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": {
+        "mixed_km": 400,
+        "highway_130_km": 290,
+        "urban_km": 480,
+        "winter_minus5_km": 300,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 135,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 48,
+      "chargingCurve": [
+        { "soc": 0, "power": 90 },
+        { "soc": 10, "power": 135 },
+        { "soc": 30, "power": 120 },
+        { "soc": 50, "power": 95 },
+        { "soc": 80, "power": 40 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "upcoming",
+      "notes": "Propulsion RWD de 258 ch. Version standard avec batterie LFP de 68,8 kWh."
+    },
+    {
+      "id": "mazda-6e-takumi-plus",
+      "label": "6e Takumi Plus · 78 kWh",
+      "battery": "long-range",
+      "trim": "Takumi Plus",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 47000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 560,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": {
+        "mixed_km": 470,
+        "highway_130_km": 340,
+        "urban_km": 560,
+        "winter_minus5_km": 360,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 150 },
+        { "soc": 30, "power": 130 },
+        { "soc": 50, "power": 100 },
+        { "soc": 80, "power": 45 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "upcoming",
+      "notes": "Propulsion RWD de 258 ch. Version haut de gamme avec batterie NMC de 78 kWh offrant 560 km WLTP."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 6,
+    "vehicle_km": 150000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Silhouette Kodo design profilée avec hayon motorisé"
+    },
+    {
+      "category": "technologie",
+      "label": "Système d'infodivertissement moderne avec écran de 14,6 pouces"
+    },
+    {
+      "category": "confort",
+      "label": "Habitabilité de berline routière grâce à un empattement de 2,89 m"
+    },
+    {
+      "category": "securite",
+      "label": "Aides à la conduite de niveau 2 et affichage tête haute couleur de série"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Dynamique de conduite et répartition des masses 50:50 fidèle à la philosophie Jinba Ittai",
+      "Rapport prix/prestations très compétitif pour une berline électrique de près de 5 mètres",
+      "Intérieur soigné, chaleureux et bien équipé sur le plan technologique"
+    ],
+    "weaknesses": [
+      "Gabarit encombrant (4,92 m) peu adapté aux parkings souterrains et centres-villes étroits",
+      "Volume de coffre arrière moyen (466 L) au regard de la longueur totale du véhicule",
+      "Vitesse de charge DC limitée par rapport aux concurrents coréens en 800V"
+    ],
+    "idealUserProfile": "Conducteurs recherchant une berline électrique confortable, stylée et dynamique pour de longs trajets, à un tarif raisonnable.",
+    "notIdealFor": "Conducteurs urbains cherchant un véhicule facile à garer, ou acheteurs exigeant des recharges ultra-rapides en moins de 15 minutes."
+  },
+  "lastUpdated": "2026-05-22",
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
+  "imageCredit": "Constructeur"
+}

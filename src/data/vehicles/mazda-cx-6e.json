@@ -1,0 +1,226 @@
+{
+  "slug": "mazda-cx-6e",
+  "brand": "Mazda",
+  "model": "CX-6e",
+  "variant": "78 kWh RWD",
+  "bodyType": "SUV",
+  "segment": "D",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Nanjing (Changan Mazda)",
+  "releaseYear": 2025,
+  "marketAvailability": "À venir en Europe",
+  "power_kW": 190,
+  "power_hp": 258,
+  "torque_Nm": 290,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 7.9,
+  "topSpeed_kmh": 185,
+  "usableCapacity_kWh": 78,
+  "grossCapacity_kWh": 82,
+  "chemistry": "LFP",
+  "architecture_V": 400,
+  "mass_kg": 2220,
+  "wltp_max_km": 484,
+  "wltp_min_km": 484,
+  "realRange": {
+    "mixed_km": 410,
+    "highway_130_km": 300,
+    "urban_km": 490,
+    "winter_minus5_km": 310,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 19,
+  "consumption_highway_kWh_per_100km": 26,
+  "consumption_winter_kWh_per_100km": 25,
+  "dragCoefficient_Cx": 0.26,
+  "chargingDC": {
+    "peakPower_kW": 195,
+    "time_10_80_min": 28,
+    "kWh_added_30min": 58,
+    "confidence": "manufacturer"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 8
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 120 },
+    { "soc": 10, "power": 195 },
+    { "soc": 30, "power": 170 },
+    { "soc": 50, "power": 110 },
+    { "soc": 80, "power": 45 },
+    { "soc": 100, "power": 10 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4850,
+  "width_mm": 1935,
+  "height_mm": 1620,
+  "wheelbase_mm": 2902,
+  "trunkCapacity_L": 500,
+  "trunkCapacityFolded_L": 1500,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Takumi",
+      "price_EUR": 46800,
+      "batteryUsed": "78 kWh LFP",
+      "equipmentHighlights": [
+        "Jantes alliage 19\" 'Black Diamond Cut Aerodynamic' (235/55R19)",
+        "Sellerie Maztex noire avec sièges avant chauffants, ventilés et réglables électriquement (mémoire)",
+        "Écran central avec système d'infodivertissement 26,45\"",
+        "Système audio avec radio FM/DAB et 23 haut-parleurs",
+        "Affichage tête haute couleur étendu (ADD)",
+        "Toit panoramique (verre teinté avec isolation thermique)",
+        "Pompe à chaleur, Hayon électrique et Caméra 360°",
+        "Régulateur de vitesse adaptatif Mazda (MRCC) avec Stop & Go",
+        "Clé digitale via Bluetooth avec options de partage",
+        "Éclairage d'ambiance (tableau de bord et garnitures de portes)",
+        "Rétroviseurs extérieurs couleur carrosserie, chauffants, réglables/rabattables (mémoire)"
+      ]
+    },
+    {
+      "name": "Takumi Plus",
+      "price_EUR": 49800,
+      "batteryUsed": "78 kWh LFP",
+      "equipmentHighlights": [
+        "Jantes alliage 21\" 'Black Diamond Cut Aerodynamic' (255/40 R21)",
+        "Sellerie Maztex bi-ton Améthyste et blanche avec sièges avant chauffants, ventilés et réglables (mémoire)",
+        "Rétroviseurs extérieurs digitaux rabattables automatiquement avec écrans intérieurs OLED dans les portières",
+        "Éclairage d'ambiance (tableau de bord avec barre translucide et garnitures de portes)",
+        "Système de surveillance des angles morts (BSM) avec alerte (BSP)",
+        "Écran central avec système d'infodivertissement 26,45\"",
+        "Système audio avec radio FM/DAB et 23 haut-parleurs",
+        "Toit panoramique (verre teinté avec isolation thermique)",
+        "Pompe à chaleur, Hayon électrique et Caméra 360°",
+        "Affichage tête haute couleur étendu (ADD), Clé digitale et MRCC Stop & Go"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "mazda-cx-6e-takumi",
+      "label": "CX-6e Takumi · 78 kWh",
+      "battery": "standard",
+      "trim": "Takumi",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 46800,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 484,
+      "wltp_consumption_kWh_100km": 19,
+      "realRange": {
+        "mixed_km": 410,
+        "highway_130_km": 300,
+        "urban_km": 490,
+        "winter_minus5_km": 310,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 195,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 58,
+      "chargingCurve": [
+        { "soc": 0, "power": 120 },
+        { "soc": 10, "power": 195 },
+        { "soc": 30, "power": 170 },
+        { "soc": 50, "power": 110 },
+        { "soc": 80, "power": 45 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "upcoming",
+      "notes": "Propulsion RWD de 258 ch. Finition Takumi bien équipée avec jantes 19 pouces et écran géant de 26,45 pouces."
+    },
+    {
+      "id": "mazda-cx-6e-takumi-plus",
+      "label": "CX-6e Takumi Plus · 78 kWh",
+      "battery": "standard",
+      "trim": "Takumi Plus",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 49800,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 484,
+      "wltp_consumption_kWh_100km": 19,
+      "realRange": {
+        "mixed_km": 400,
+        "highway_130_km": 290,
+        "urban_km": 480,
+        "winter_minus5_km": 300,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 195,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 58,
+      "chargingCurve": [
+        { "soc": 0, "power": 120 },
+        { "soc": 10, "power": 195 },
+        { "soc": 30, "power": 170 },
+        { "soc": 50, "power": 110 },
+        { "soc": 80, "power": 45 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "upcoming",
+      "notes": "Propulsion RWD de 258 ch. Finition Takumi Plus avec jantes 21 pouces, sellerie bi-ton Améthyste et blanc, et rétroviseurs caméras OLED."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 6,
+    "vehicle_km": 150000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Design SUV coupé dynamique inspiré du concept Arata"
+    },
+    {
+      "category": "technologie",
+      "label": "Écran central géant de 26,45 pouces avec système multimédia moderne"
+    },
+    {
+      "category": "confort",
+      "label": "Toit panoramique filtrant, pompe à chaleur et système audio 23 haut-parleurs"
+    },
+    {
+      "category": "securite",
+      "label": "Rétroviseurs caméras avec écrans OLED intérieurs et aides actives"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Écran géant de 26,45 pouces spectaculaire et système audio 23 haut-parleurs de série",
+      "Rétroviseurs caméras OLED ultra-modernes sur la version Takumi Plus",
+      "Habitabilité arrière et confort acoustique de premier ordre avec toit panoramique de série"
+    ],
+    "weaknesses": [
+      "Poids et aérodynamique de SUV limitant l'autonomie WLTP à 484 km",
+      "Pas de bonus écologique en France en raison de la production en Chine",
+      "Puissance de charge DC correcte mais pas au niveau des plateformes 800V"
+    ],
+    "idealUserProfile": "Familles recherchant un SUV électrique moderne, très technologique, avec un confort de roulement premium et un équipement ultra-complet.",
+    "notIdealFor": "Conducteurs recherchant une autonomie supérieure à 500 km ou une compatibilité avec le bonus écologique français."
+  },
+  "lastUpdated": "2026-05-22",
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
+  "imageCredit": "Constructeur"
+}

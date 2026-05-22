@@ -1,0 +1,217 @@
+{
+  "slug": "cadillac-lyriq",
+  "brand": "Cadillac",
+  "model": "Lyriq",
+  "variant": "102 kWh AWD",
+  "bodyType": "SUV",
+  "segment": "E",
+  "productionCountry": "États-Unis",
+  "assemblyPlant": "Spring Hill",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 388,
+  "power_hp": 528,
+  "torque_Nm": 610,
+  "drivetrain": "AWD",
+  "motors": 2,
+  "acceleration_0_100_s": 5.3,
+  "topSpeed_kmh": 210,
+  "usableCapacity_kWh": 102,
+  "grossCapacity_kWh": 120,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2774,
+  "wltp_max_km": 530,
+  "wltp_min_km": 530,
+  "realRange": {
+    "mixed_km": 440,
+    "highway_130_km": 320,
+    "urban_km": 510,
+    "winter_minus5_km": 340,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 22.5,
+  "consumption_highway_kWh_per_100km": 28.5,
+  "consumption_winter_kWh_per_100km": 27,
+  "dragCoefficient_Cx": 0.33,
+  "chargingDC": {
+    "peakPower_kW": 190,
+    "time_10_80_min": 40,
+    "kWh_added_30min": 65,
+    "confidence": "manufacturer"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 19.2,
+    "phases": 3,
+    "time_0_100_h": 6
+  },
+  "plugAndCharge": true,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 120 },
+    { "soc": 10, "power": 190 },
+    { "soc": 30, "power": 170 },
+    { "soc": 50, "power": 120 },
+    { "soc": 80, "power": 50 },
+    { "soc": 100, "power": 10 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 5005,
+  "width_mm": 1977,
+  "height_mm": 1623,
+  "wheelbase_mm": 3094,
+  "trunkCapacity_L": 588,
+  "trunkCapacityFolded_L": 1687,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Luxury AWD",
+      "price_EUR": 81200,
+      "batteryUsed": "102 kWh",
+      "equipmentHighlights": [
+        "Système audio AKG Studio à 19 haut-parleurs",
+        "Écran LED incurvé de 33 pouces de diagonale",
+        "Aide à la conduite Super Cruise",
+        "Toit vitré panoramique fixe",
+        "Jantes en alliage de 20 pouces"
+      ]
+    },
+    {
+      "name": "Sport AWD",
+      "price_EUR": 83200,
+      "batteryUsed": "102 kWh",
+      "equipmentHighlights": [
+        "Calandre sport à éclairage LED dynamique",
+        "Finitions extérieures sombres spécifiques",
+        "Système audio AKG Studio à 19 haut-parleurs",
+        "Écran LED incurvé de 33 pouces de diagonale",
+        "Aide à la conduite Super Cruise"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "cadillac-lyriq-luxury-awd",
+      "label": "Lyriq Luxury AWD · 102 kWh",
+      "battery": "long-range",
+      "trim": "Luxury AWD",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 81200,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 530,
+      "wltp_consumption_kWh_100km": 22.5,
+      "realRange": {
+        "mixed_km": 440,
+        "highway_130_km": 320,
+        "urban_km": 510,
+        "winter_minus5_km": 340,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 190,
+      "chargingDC_10_80_min": 40,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        { "soc": 0, "power": 120 },
+        { "soc": 10, "power": 190 },
+        { "soc": 30, "power": 170 },
+        { "soc": 50, "power": 120 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "available",
+      "notes": "528 ch (388 kW), transmission intégrale AWD. Version orientée élégance avec détails chromés."
+    },
+    {
+      "id": "cadillac-lyriq-sport-awd",
+      "label": "Lyriq Sport AWD · 102 kWh",
+      "battery": "long-range",
+      "trim": "Sport AWD",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 83200,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 530,
+      "wltp_consumption_kWh_100km": 22.5,
+      "realRange": {
+        "mixed_km": 440,
+        "highway_130_km": 320,
+        "urban_km": 510,
+        "winter_minus5_km": 340,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 190,
+      "chargingDC_10_80_min": 40,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        { "soc": 0, "power": 120 },
+        { "soc": 10, "power": 190 },
+        { "soc": 30, "power": 170 },
+        { "soc": 50, "power": 120 },
+        { "soc": 80, "power": 50 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "available",
+      "notes": "528 ch (388 kW), transmission intégrale AWD. Version orientée dynamisme avec calandre sombre et détails noirs brillants."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 4,
+    "vehicle_km": 80000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Silhouette de SUV coupé athlétique avec signature lumineuse spectaculaire"
+    },
+    {
+      "category": "confort",
+      "label": "Insonorisation active haut de gamme et système audio AKG 19 haut-parleurs"
+    },
+    {
+      "category": "technologie",
+      "label": "Écran incurvé de 33 pouces de diagonale avec résolution 9K"
+    },
+    {
+      "category": "securite",
+      "label": "Aide à la conduite avancée Super Cruise et pack de sécurité active de série"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Confort acoustique et de roulement exceptionnel digne du segment prestige",
+      "Écran incurvé 33 pouces ultra-défini du plus bel effet",
+      "Habitabilité arrière et volume de coffre très généreux",
+      "Système audio AKG Studio extrêmement performant"
+    ],
+    "weaknesses": [
+      "Poids considérable de 2,7 tonnes pénalisant la dynamique de conduite",
+      "Réseau de distribution et de SAV Cadillac encore très embryonnaire en Europe",
+      "Pas de coffre avant (frunk) malgré le long capot"
+    ],
+    "idealUserProfile": "Conducteurs recherchant un grand SUV électrique de prestige ultra-confortable et technologiquement distinctif pour voyager dans un calme absolu.",
+    "notIdealFor": "Conducteurs urbains rebutés par un gabarit de 5 mètres de long ou recherchant un SUV agile et léger."
+  },
+  "lastUpdated": "2026-05-22",
+  "sources": [
+    "constructeur",
+    "automobile-propre",
+    "ev-database"
+  ],
+  "imageCredit": "Constructeur"
+}
