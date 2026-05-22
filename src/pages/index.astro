@@ -19,15 +19,14 @@ const totalConfigs = vehicles.reduce((sum, v) => sum + v.configurations.length, 
 // "À la une", 2 catégories de véhicules pour scroll rows
 const cheapestOf = (v: (typeof vehicles)[number]) => Math.min(...v.trims.map((t) => t.price_EUR));
 
-const leasingOfficial = vehicles
-  .filter((v) => getLeasingStatus(v) === "official")
-  .sort((a, b) => cheapestOf(a) - cheapestOf(b))
-  .slice(0, 8);
-
-const ademeCompat = vehicles
-  .filter((v) => getLeasingStatus(v) === "ademe-compatible")
-  .sort((a, b) => cheapestOf(a) - cheapestOf(b))
-  .slice(0, 8);
+// Tri par date de dernière mise à jour / ajout (lastUpdated) décroissant, puis par marque/modèle
+const latestVehicles = [...vehicles]
+  .sort((a, b) => {
+    const dateComp = b.lastUpdated.localeCompare(a.lastUpdated);
+    if (dateComp !== 0) return dateComp;
+    return a.brand.localeCompare(b.brand) || a.model.localeCompare(b.model);
+  })
+  .slice(0, 10);
 
 const description =
   "Evly, l'électrique mesuré. Comparateur indépendant français : tests d'autonomie réelle (Bjørn Nyland, EVKX, presse FR), dossier leasing social, advocacy consommateur. Aucune publicité, aucun lien affilié.";
@@ -236,24 +235,25 @@ const description =
         </div>
       </Tile>
 
-      {/* ═════════ À LA UNE, LIGNE 1 : LEASING OFFICIEL ═════════ */}
+      {/* ═════════ À LA UNE : DERNIERS VÉHICULES AJOUTÉS ═════════ */}
       <Tile size="full" variant="default" class="!bg-transparent !border-0 !p-0 !mt-4">
         <div class="flex flex-wrap items-baseline justify-between gap-3 mb-2">
           <span class="font-mono text-xs text-[var(--color-text-faint)]">02 · À la une</span>
-          <a href={url("/leasing-social")} class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors">Tout voir →</a>
+          <a href={url("/vehicules")} class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors">Tout le showroom →</a>
         </div>
         <h2 class="font-display text-3xl md:text-4xl font-semibold tracking-[-0.015em] leading-[1.1] mb-2">
-          Leasing social officiel.
+          Derniers véhicules ajoutés.
           <span class="block text-[var(--color-accent)] text-lg md:text-xl mt-1.5 font-medium">
-            Les véhicules engagés contractuellement par leurs constructeurs.
+            Les nouveautés et mises à jour récentes du catalogue indépendant.
           </span>
         </h2>
       </Tile>
 
       <Tile size="full" variant="default" class="!bg-transparent !border-0 !p-0">
         <div class="featured-scroll-row">
-          {leasingOfficial.map((v) => {
+          {latestVehicles.map((v) => {
             const cheapest = cheapestOf(v);
+            const isNew = v.releaseYear >= 2026;
             return (
               <a href={url(`/vehicules/${v.slug}`)} class="featured-card" aria-label={`Fiche ${v.brand} ${v.model}`}>
                 <div class="flex items-center justify-between gap-2 mb-3">
@@ -261,56 +261,9 @@ const description =
                     <BrandLogo brand={v.brand} class="w-3.5 h-3.5" />
                     <span class="label-eyebrow text-[9px]">{v.brand}</span>
                   </div>
-                  <Tag tone="accent" mono>Officiel</Tag>
-                </div>
-                <div class="flex items-end justify-between gap-2 mb-4">
-                  <h3 class="font-display text-lg md:text-xl font-semibold tracking-[-0.015em] leading-[1.05]">
-                    {v.model}
-                    <span class="block text-[var(--color-text-muted)] text-xs md:text-sm mt-1 font-medium">{v.variant}</span>
-                  </h3>
-                  <VehicleImage slug={v.slug} alt={`${v.brand} ${v.model}`} class="w-20 h-12 flex-shrink-0" />
-                </div>
-                <div class="grid grid-cols-2 gap-3 mt-auto pt-3 border-t border-[var(--color-border)]">
-                  <div class="flex flex-col gap-0.5">
-                    <span class="font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Auto.</span>
-                    <div class="flex items-baseline gap-1">
-                      <span data-numeric class="display-stat text-xl text-[var(--color-accent)]">{v.realRange.mixed_km}</span>
-                      <span class="font-mono text-[10px] text-[var(--color-text-faint)]">km</span>
-                    </div>
-                  </div>
-                  <div class="flex flex-col gap-0.5">
-                    <span class="font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Dès</span>
-                    <span data-numeric class="display-stat text-xl">{formatPrice(cheapest)}</span>
-                  </div>
-                </div>
-              </a>
-            );
-          })}
-        </div>
-      </Tile>
-
-      {/* ═════════ À LA UNE, LIGNE 2 : DEVRAIENT Y ÊTRE ═════════ */}
-      <Tile size="full" variant="default" class="!bg-transparent !border-0 !p-0 !mt-4">
-        <h2 class="font-display text-3xl md:text-4xl font-semibold tracking-[-0.015em] leading-[1.1] mb-2">
-          Ils devraient y être.
-          <span class="block text-[var(--color-warning)] text-lg md:text-xl mt-1.5 font-medium">
-            Critères ADEME validés, constructeur absent du programme.
-          </span>
-        </h2>
-      </Tile>
-
-      <Tile size="full" variant="default" class="!bg-transparent !border-0 !p-0">
-        <div class="featured-scroll-row">
-          {ademeCompat.map((v) => {
-            const cheapest = cheapestOf(v);
-            return (
-              <a href={url(`/vehicules/${v.slug}`)} class="featured-card" aria-label={`Fiche ${v.brand} ${v.model}`}>
-                <div class="flex items-center justify-between gap-2 mb-3">
-                  <div class="flex items-center gap-1.5 text-[var(--color-text-muted)]">
-                    <BrandLogo brand={v.brand} class="w-3.5 h-3.5" />
-                    <span class="label-eyebrow text-[9px]">{v.brand}</span>
-                  </div>
-                  <Tag tone="warning" mono>ADEME</Tag>
+                  <Tag tone={isNew ? "accent" : "default"} mono>
+                    {isNew ? "Nouveauté" : "Mis à jour"}
+                  </Tag>
                 </div>
                 <div class="flex items-end justify-between gap-2 mb-4">
                   <h3 class="font-display text-lg md:text-xl font-semibold tracking-[-0.015em] leading-[1.05]">
