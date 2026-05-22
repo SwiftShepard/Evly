@@ -73,6 +73,7 @@ const BRAND_ORIGINS: { label: string; set: Set<string> }[] = [
   { label: "Japonais", set: new Set(["Mazda", "Nissan", "Toyota"]) },
   { label: "Américain", set: new Set(["Cadillac", "Ford", "Jeep", "Tesla"]) },
   { label: "Scandinave", set: new Set(["Polestar", "Volvo"]) },
+  { label: "Britannique", set: new Set(["Mini"]) },
   { label: "Chinois", set: new Set(["BYD", "Leapmotor", "Maxus", "MG", "Nio", "Xiaomi", "Xpeng", "Zeekr"]) },
 ];
 const assignedBrands = new Set(BRAND_ORIGINS.flatMap((g) => [...g.set]));

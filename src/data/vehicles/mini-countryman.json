@@ -1,0 +1,229 @@
+{
+  "slug": "mini-countryman",
+  "brand": "Mini",
+  "model": "Countryman",
+  "variant": "Countryman E & SE ALL4 (U25)",
+  "bodyType": "SUV",
+  "segment": "C",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Leipzig",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 230,
+  "power_hp": 313,
+  "torque_Nm": 494,
+  "drivetrain": "AWD",
+  "motors": 2,
+  "acceleration_0_100_s": 5.6,
+  "topSpeed_kmh": 180,
+  "usableCapacity_kWh": 65.2,
+  "grossCapacity_kWh": 66.5,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2075,
+  "wltp_max_km": 462,
+  "wltp_min_km": 432,
+  "realRange": {
+    "mixed_km": 360,
+    "highway_130_km": 255,
+    "urban_km": 475,
+    "winter_minus5_km": 280,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 16.8,
+  "consumption_highway_kWh_per_100km": 23.5,
+  "consumption_winter_kWh_per_100km": 21.8,
+  "dragCoefficient_Cx": 0.26,
+  "chargingDC": {
+    "peakPower_kW": 130,
+    "time_10_80_min": 29,
+    "kWh_added_30min": 45,
+    "confidence": "manufacturer"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 7.0
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 80 },
+    { "soc": 10, "power": 130 },
+    { "soc": 30, "power": 125 },
+    { "soc": 55, "power": 90 },
+    { "soc": 80, "power": 45 },
+    { "soc": 100, "power": 6 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4443,
+  "width_mm": 1843,
+  "height_mm": 1661,
+  "wheelbase_mm": 2692,
+  "trunkCapacity_L": 460,
+  "trunkCapacityFolded_L": 1450,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Essential E",
+      "price_EUR": 44000,
+      "batteryUsed": "65.2 kWh (E)",
+      "equipmentHighlights": [
+        "Ecran central circulaire tactile OLED 240mm",
+        "Climatisation automatique bi-zone",
+        "Régulateur de vitesse adaptatif",
+        "Jantes alliage 17 pouces"
+      ]
+    },
+    {
+      "name": "Classic E",
+      "price_EUR": 46800,
+      "batteryUsed": "65.2 kWh (E)",
+      "equipmentHighlights": [
+        "Volant sport à 3 branches chauffant",
+        "Sièges sport en similicuir/tissu",
+        "Toit noir ou blanc contrasté",
+        "Jantes alliage 18 pouces"
+      ]
+    },
+    {
+      "name": "Classic SE ALL4",
+      "price_EUR": 51300,
+      "batteryUsed": "65.2 kWh (SE ALL4)",
+      "equipmentHighlights": [
+        "Transmission intégrale intelligente ALL4",
+        "Projecteurs LED adaptatifs",
+        "Console centrale modulable",
+        "Jantes alliage 18 pouces"
+      ]
+    },
+    {
+      "name": "Favoured SE ALL4",
+      "price_EUR": 54600,
+      "batteryUsed": "65.2 kWh (SE ALL4)",
+      "equipmentHighlights": [
+        "Affichage tête haute",
+        "Sièges sport John Cooper Works à mémoire",
+        "Système Hi-Fi Harman Kardon",
+        "Jantes alliage 19 pouces"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Bonus Écologique",
+      "amount_EUR": 4000,
+      "conditions": "Applicable sur les versions Essential et Classic E car prix catalogue inférieur à 47 000 € et production en Allemagne (score environnemental validé)."
+    }
+  ],
+  "configurations": [
+    {
+      "id": "mini-countryman-e-essential",
+      "label": "Countryman E · Essential · 17\"",
+      "battery": "standard",
+      "trim": "Essential E",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "usableCapacity_kWh": 65.2,
+      "price_EUR": 44000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 501,
+      "wltp_consumption_kWh_100km": 15.7,
+      "realRange": {
+        "mixed_km": 410,
+        "highway_130_km": 290,
+        "urban_km": 540,
+        "winter_minus5_km": 320,
+        "confidence": "estimated"
+      },
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 45,
+      "chargingCurve": [
+        { "soc": 0, "power": 80 },
+        { "soc": 10, "power": 130 },
+        { "soc": 30, "power": 125 },
+        { "soc": 55, "power": 90 },
+        { "soc": 80, "power": 45 },
+        { "soc": 100, "power": 6 }
+      ],
+      "availability": "available",
+      "notes": "Version 204 ch mise à jour en 2026 avec autonomie de 501 km"
+    },
+    {
+      "id": "mini-countryman-se-classic",
+      "label": "Countryman SE ALL4 · Classic · 18\"",
+      "battery": "long-range",
+      "trim": "Classic SE ALL4",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "usableCapacity_kWh": 65.2,
+      "price_EUR": 51300,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 432,
+      "wltp_consumption_kWh_100km": 16.8,
+      "realRange": {
+        "mixed_km": 360,
+        "highway_130_km": 255,
+        "urban_km": 475,
+        "winter_minus5_km": 280,
+        "confidence": "estimated"
+      },
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 45,
+      "chargingCurve": [
+        { "soc": 0, "power": 80 },
+        { "soc": 10, "power": 130 },
+        { "soc": 30, "power": 125 },
+        { "soc": 55, "power": 90 },
+        { "soc": 80, "power": 45 },
+        { "soc": 100, "power": 6 }
+      ],
+      "availability": "available",
+      "notes": "Version bimoteur 4 roues motrices de 313 ch"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 2,
+    "vehicle_km": 999999,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "confort", "label": "Habitabilité exceptionnelle pour 5 personnes et banquette modulable" },
+    { "category": "technologie", "label": "Grand écran central OLED rond de 24 cm avec navigation 3D" },
+    { "category": "design", "label": "Garde au sol surélevée et signature lumineuse LED distinctive" },
+    { "category": "securite", "label": "Driving Assistant Plus avec maintien de voie et régulation adaptative" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Habitabilité de premier plan et grand coffre de 460 L",
+      "Countryman E éligible au bonus écologique de 4 000 €",
+      "Performances impressionnantes de la version SE ALL4"
+    ],
+    "weaknesses": [
+      "Poids élevé de plus de 2 tonnes impactant l'agilité",
+      "Consommation sur autoroute élevée à 130 km/h",
+      "Tarifs élevés sur les configurations haut de gamme"
+    ],
+    "idealUserProfile": "Familles recherchant un SUV électrique branché avec du caractère et un intérieur technologique haut de gamme.",
+    "notIdealFor": "Conducteurs à la recherche d'une citadine agile et légère pour des manœuvres en ruelles étroites."
+  },
+  "lastUpdated": "2026-05-22",
+  "sources": [
+    "constructeur",
+    "presse"
+  ],
+  "imageCredit": "MINI Presse"
+}

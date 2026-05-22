@@ -1,0 +1,222 @@
+{
+  "slug": "mini-cooper",
+  "brand": "Mini",
+  "model": "Cooper",
+  "variant": "Cooper E & SE (J01)",
+  "bodyType": "Citadine 3 portes",
+  "segment": "B",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Zhangjiagang",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 160,
+  "power_hp": 218,
+  "torque_Nm": 330,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 6.7,
+  "topSpeed_kmh": 170,
+  "usableCapacity_kWh": 49.2,
+  "grossCapacity_kWh": 54.2,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1605,
+  "wltp_max_km": 402,
+  "wltp_min_km": 380,
+  "realRange": {
+    "mixed_km": 315,
+    "highway_130_km": 220,
+    "urban_km": 410,
+    "winter_minus5_km": 245,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 14.1,
+  "consumption_highway_kWh_per_100km": 19.8,
+  "consumption_winter_kWh_per_100km": 18.2,
+  "dragCoefficient_Cx": 0.28,
+  "chargingDC": {
+    "peakPower_kW": 95,
+    "time_10_80_min": 30,
+    "kWh_added_30min": 33,
+    "confidence": "manufacturer"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 5.25
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 45 },
+    { "soc": 10, "power": 95 },
+    { "soc": 40, "power": 85 },
+    { "soc": 60, "power": 65 },
+    { "soc": 80, "power": 35 },
+    { "soc": 100, "power": 5 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 3858,
+  "width_mm": 1756,
+  "height_mm": 1460,
+  "wheelbase_mm": 2526,
+  "trunkCapacity_L": 210,
+  "trunkCapacityFolded_L": 800,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Essential E",
+      "price_EUR": 34000,
+      "batteryUsed": "36.6 kWh (E)",
+      "equipmentHighlights": [
+        "Ecran OLED central circulaire 240mm",
+        "Climatisation automatique bi-zone",
+        "Caméra de recul et radars de recul",
+        "Jantes alliage 16 pouces"
+      ]
+    },
+    {
+      "name": "Classic E",
+      "price_EUR": 36500,
+      "batteryUsed": "36.6 kWh (E)",
+      "equipmentHighlights": [
+        "Volant sport à 3 branches",
+        "Sièges sport en simili-cuir/tissu",
+        "Éléments extérieurs noirs laqués",
+        "Jantes alliage 17 pouces"
+      ]
+    },
+    {
+      "name": "Classic SE",
+      "price_EUR": 40500,
+      "batteryUsed": "49.2 kWh (SE)",
+      "equipmentHighlights": [
+        "Projecteurs LED adaptatifs",
+        "Toit contrasté et coques de rétroviseurs",
+        "Sièges avant chauffants",
+        "Jantes alliage 17 pouces"
+      ]
+    },
+    {
+      "name": "Favoured SE",
+      "price_EUR": 43000,
+      "batteryUsed": "49.2 kWh (SE)",
+      "equipmentHighlights": [
+        "Sièges John Cooper Works sportifs",
+        "Ciel de pavillon anthracite",
+        "Affichage tête haute",
+        "Jantes alliage 18 pouces"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "mini-cooper-e-essential",
+      "label": "Cooper E · Essential · 16\"",
+      "battery": "standard",
+      "trim": "Essential E",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "usableCapacity_kWh": 36.6,
+      "price_EUR": 34000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 305,
+      "wltp_consumption_kWh_100km": 14.3,
+      "realRange": {
+        "mixed_km": 240,
+        "highway_130_km": 170,
+        "urban_km": 315,
+        "winter_minus5_km": 190,
+        "confidence": "estimated"
+      },
+      "chargingDC_peak_kW": 75,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 25,
+      "chargingCurve": [
+        { "soc": 0, "power": 35 },
+        { "soc": 10, "power": 75 },
+        { "soc": 50, "power": 65 },
+        { "soc": 80, "power": 30 },
+        { "soc": 100, "power": 4 }
+      ],
+      "availability": "available",
+      "notes": "Version d'entrée de gamme de 184 ch avec petite batterie"
+    },
+    {
+      "id": "mini-cooper-se-classic",
+      "label": "Cooper SE · Classic · 17\"",
+      "battery": "long-range",
+      "trim": "Classic SE",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "usableCapacity_kWh": 49.2,
+      "price_EUR": 40500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 402,
+      "wltp_consumption_kWh_100km": 14.1,
+      "realRange": {
+        "mixed_km": 315,
+        "highway_130_km": 220,
+        "urban_km": 410,
+        "winter_minus5_km": 245,
+        "confidence": "estimated"
+      },
+      "chargingDC_peak_kW": 95,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 33,
+      "chargingCurve": [
+        { "soc": 0, "power": 45 },
+        { "soc": 10, "power": 95 },
+        { "soc": 40, "power": 85 },
+        { "soc": 60, "power": 65 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 5 }
+      ],
+      "availability": "available",
+      "notes": "Moteur performant de 218 ch avec grande batterie"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 2,
+    "vehicle_km": 999999,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "technologie", "label": "Écran tactile circulaire OLED de 240 mm (MINI OS 9)" },
+    { "category": "design", "label": "Portes sans encadrement et signature lumineuse LED personnalisable" },
+    { "category": "confort", "label": "Modes de conduite MINI Experience avec ambiances sonores et lumineuses" },
+    { "category": "securite", "label": "Driving Assistant avec avertisseur de franchissement de ligne et freinage d'urgence" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Style inimitable et intérieur extrêmement soigné",
+      "Écran central OLED rond magnifique et réactif",
+      "Comportement dynamique typé kart très amusant"
+    ],
+    "weaknesses": [
+      "Aucun bonus écologique en France (production en Chine)",
+      "Habitabilité arrière et coffre très réduits (210 L)",
+      "Puissance de charge DC limitée à 75/95 kW"
+    ],
+    "idealUserProfile": "Citadins à la recherche d'un véhicule chic et dynamique pour les trajets quotidiens et périurbains.",
+    "notIdealFor": "Familles voyageant régulièrement sur autoroute avec beaucoup de bagages."
+  },
+  "lastUpdated": "2026-05-22",
+  "sources": [
+    "constructeur",
+    "presse"
+  ],
+  "imageCredit": "MINI Presse"
+}

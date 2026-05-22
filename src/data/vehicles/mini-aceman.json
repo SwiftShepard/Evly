@@ -1,0 +1,222 @@
+{
+  "slug": "mini-aceman",
+  "brand": "Mini",
+  "model": "Aceman",
+  "variant": "Aceman E & SE (J05)",
+  "bodyType": "Mini-SUV",
+  "segment": "B",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Zhangjiagang",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 160,
+  "power_hp": 218,
+  "torque_Nm": 330,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 7.1,
+  "topSpeed_kmh": 170,
+  "usableCapacity_kWh": 49.2,
+  "grossCapacity_kWh": 54.2,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1660,
+  "wltp_max_km": 406,
+  "wltp_min_km": 382,
+  "realRange": {
+    "mixed_km": 315,
+    "highway_130_km": 220,
+    "urban_km": 415,
+    "winter_minus5_km": 245,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 14.7,
+  "consumption_highway_kWh_per_100km": 20.4,
+  "consumption_winter_kWh_per_100km": 18.8,
+  "dragCoefficient_Cx": 0.29,
+  "chargingDC": {
+    "peakPower_kW": 95,
+    "time_10_80_min": 30,
+    "kWh_added_30min": 33,
+    "confidence": "manufacturer"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 5.25
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 45 },
+    { "soc": 10, "power": 95 },
+    { "soc": 40, "power": 85 },
+    { "soc": 60, "power": 65 },
+    { "soc": 80, "power": 35 },
+    { "soc": 100, "power": 5 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4079,
+  "width_mm": 1754,
+  "height_mm": 1514,
+  "wheelbase_mm": 2606,
+  "trunkCapacity_L": 300,
+  "trunkCapacityFolded_L": 1005,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Essential E",
+      "price_EUR": 36000,
+      "batteryUsed": "38.5 kWh (E)",
+      "equipmentHighlights": [
+        "Ecran central circulaire tactile OLED 240mm",
+        "Climatisation automatique bi-zone",
+        "Aide au stationnement actif",
+        "Jantes alliage 17 pouces"
+      ]
+    },
+    {
+      "name": "Classic E",
+      "price_EUR": 38500,
+      "batteryUsed": "38.5 kWh (E)",
+      "equipmentHighlights": [
+        "Volant sport à 3 branches",
+        "Sièges sport en similicuir/tissu",
+        "Toit noir contrasté",
+        "Jantes alliage 18 pouces"
+      ]
+    },
+    {
+      "name": "Classic SE",
+      "price_EUR": 42500,
+      "batteryUsed": "49.2 kWh (SE)",
+      "equipmentHighlights": [
+        "Projecteurs LED adaptatifs",
+        "Sièges avant chauffants",
+        "Console centrale modulable",
+        "Jantes alliage 18 pouces"
+      ]
+    },
+    {
+      "name": "Favoured SE",
+      "price_EUR": 45000,
+      "batteryUsed": "49.2 kWh (SE)",
+      "equipmentHighlights": [
+        "Affichage tête haute",
+        "Sièges sport John Cooper Works",
+        "Système Hi-Fi Harman Kardon",
+        "Jantes alliage 19 pouces"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "mini-aceman-e-essential",
+      "label": "Aceman E · Essential · 17\"",
+      "battery": "standard",
+      "trim": "Essential E",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "usableCapacity_kWh": 38.5,
+      "price_EUR": 36000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 310,
+      "wltp_consumption_kWh_100km": 14.9,
+      "realRange": {
+        "mixed_km": 245,
+        "highway_130_km": 175,
+        "urban_km": 320,
+        "winter_minus5_km": 195,
+        "confidence": "estimated"
+      },
+      "chargingDC_peak_kW": 75,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 26,
+      "chargingCurve": [
+        { "soc": 0, "power": 35 },
+        { "soc": 10, "power": 75 },
+        { "soc": 50, "power": 65 },
+        { "soc": 80, "power": 30 },
+        { "soc": 100, "power": 4 }
+      ],
+      "availability": "available",
+      "notes": "Version d'entrée de gamme de 184 ch"
+    },
+    {
+      "id": "mini-aceman-se-classic",
+      "label": "Aceman SE · Classic · 18\"",
+      "battery": "long-range",
+      "trim": "Classic SE",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "usableCapacity_kWh": 49.2,
+      "price_EUR": 42500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 406,
+      "wltp_consumption_kWh_100km": 14.7,
+      "realRange": {
+        "mixed_km": 315,
+        "highway_130_km": 220,
+        "urban_km": 415,
+        "winter_minus5_km": 245,
+        "confidence": "estimated"
+      },
+      "chargingDC_peak_kW": 95,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 33,
+      "chargingCurve": [
+        { "soc": 0, "power": 45 },
+        { "soc": 10, "power": 95 },
+        { "soc": 40, "power": 85 },
+        { "soc": 60, "power": 65 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 5 }
+      ],
+      "availability": "available",
+      "notes": "Version SE performante de 218 ch"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 2,
+    "vehicle_km": 999999,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    { "category": "technologie", "label": "Écran central OLED rond innovant et connectivité intelligente" },
+    { "category": "design", "label": "Silhouette typée crossover avec passages de roues élargis" },
+    { "category": "confort", "label": "Format compact idéal pour la ville avec assise surélevée" },
+    { "category": "securite", "label": "Caméras 360° et stationnement automatique avec assistant actif" }
+  ],
+  "verdict": {
+    "strengths": [
+      "Positionnement unique entre citadine et SUV",
+      "Présentation intérieure très originale et moderne",
+      "Comportement routier agile et précis"
+    ],
+    "weaknesses": [
+      "Pas de bonus écologique en France car produit en Chine",
+      "Capacité de coffre modeste pour un usage familial (300 L)",
+      "Puissance de charge rapide DC limitée à 95 kW"
+    ],
+    "idealUserProfile": "Couples urbains à la recherche d'un SUV au format de poche pour allier style et praticité.",
+    "notIdealFor": "Grands voyageurs cherchant un véhicule principal à recharge ultra-rapide."
+  },
+  "lastUpdated": "2026-05-22",
+  "sources": [
+    "constructeur",
+    "presse"
+  ],
+  "imageCredit": "MINI Presse"
+}
