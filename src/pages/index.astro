@@ -37,22 +37,19 @@ const description =
     <BentoGrid>
 
       {/* ═════════ HERO ═════════ */}
-      <Tile size="full" variant="elevated" class="md:!p-12 lg:!p-16">
-        <div class="flex items-center gap-3 md:gap-4 mb-8 md:mb-12 fade-rise">
-          <Wordmark size="lg" />
-          <span class="label-eyebrow hidden sm:inline">Édition 2026, France</span>
-        </div>
+      <Tile size="full" variant="elevated" class="hero-tile md:!p-12 lg:!p-16 overflow-hidden relative">
 
-        <h1 class="display-1 max-w-4xl fade-rise fade-rise-delay-1">
-          L'électrique se choisit sur les chiffres,
+
+        <h1 class="display-1 max-w-4xl fade-rise fade-rise-delay-1 relative z-10">
+          L'électrique se choisit sur <span class="text-gradient">les chiffres</span>,
           <span class="text-[var(--color-text-muted)]">pas sur les promesses.</span>
         </h1>
 
-        <p class="mt-6 md:mt-8 text-base md:text-lg text-[var(--color-text-muted)] max-w-2xl leading-relaxed fade-rise fade-rise-delay-2">
+        <p class="mt-6 md:mt-8 text-base md:text-lg text-[var(--color-text-muted)] max-w-2xl leading-relaxed fade-rise fade-rise-delay-2 relative z-10">
           Comparateur d'autonomie réelle indépendant. Zéro publicité, zéro affiliation.
         </p>
 
-        <div class="mt-8 md:mt-10 flex flex-wrap items-center gap-3.5 fade-rise fade-rise-delay-3">
+        <div class="mt-8 md:mt-10 flex flex-wrap items-center gap-3.5 fade-rise fade-rise-delay-3 relative z-10">
           <a href={url("/vehicules")} class="btn-interactive btn-glow inline-flex items-center gap-2 px-6 py-3.5 bg-[var(--color-accent)] text-[var(--color-accent-on)] text-sm font-semibold tracking-tight min-h-[48px] hover:bg-[var(--color-accent-dim)] transition-colors rounded-[var(--radius-tile-sm)]">
             Explorer le showroom <span class="font-mono">→</span>
           </a>
@@ -61,11 +58,29 @@ const description =
           </a>
         </div>
 
-        {/* Mini-stats inline sous le hero */}
-        <div class="mt-12 md:mt-16 pt-6 border-t border-[var(--color-border)] flex flex-wrap items-baseline gap-x-8 gap-y-3 font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--color-text-faint)] fade-rise fade-rise-delay-3">
-          <span><span data-numeric class="text-[var(--color-text)] text-sm">{totalVehicles}</span> véhicules couverts</span>
-          <span><span data-numeric class="text-[var(--color-accent)] text-sm">{totalTests}</span> tests agrégés</span>
-          <span><span data-numeric class="text-[var(--color-text)] text-sm">{totalConfigs}</span> configurations comparables</span>
+        {/* Tableau de bord des statistiques */}
+        <div class="mt-12 md:mt-16 pt-8 border-t border-[var(--color-border)] grid grid-cols-1 sm:grid-cols-3 gap-6 fade-rise fade-rise-delay-3 relative z-10">
+          <div class="flex flex-col gap-1 p-5 rounded-xl border border-[var(--color-border)] bg-[color-mix(in_srgb,var(--color-bg-subtle)_25%,transparent)] backdrop-blur-md">
+            <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Base de données</span>
+            <span class="font-display text-2xl font-bold text-[var(--color-text)] flex items-baseline gap-1">
+              <span data-numeric>{totalVehicles}</span>
+              <span class="text-xs font-normal text-[var(--color-text-muted)]">modèles</span>
+            </span>
+          </div>
+          <div class="flex flex-col gap-1 p-5 rounded-xl border border-[var(--color-border)] bg-[color-mix(in_srgb,var(--color-bg-subtle)_25%,transparent)] backdrop-blur-md">
+            <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Tests d'autonomie</span>
+            <span class="font-display text-2xl font-bold text-[var(--color-accent)] flex items-baseline gap-1">
+              <span data-numeric>{totalTests}</span>
+              <span class="text-xs font-normal text-[var(--color-text-muted)]">mesures réelles</span>
+            </span>
+          </div>
+          <div class="flex flex-col gap-1 p-5 rounded-xl border border-[var(--color-border)] bg-[color-mix(in_srgb,var(--color-bg-subtle)_25%,transparent)] backdrop-blur-md">
+            <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Comparateur</span>
+            <span class="font-display text-2xl font-bold text-[var(--color-text)] flex items-baseline gap-1">
+              <span data-numeric>{totalConfigs}</span>
+              <span class="text-xs font-normal text-[var(--color-text-muted)]">déclinaisons</span>
+            </span>
+          </div>
         </div>
       </Tile>
 
@@ -516,6 +531,36 @@ const description =
     
     @media (min-width: 768px) {
       .featured-card { width: 280px; }
+    }
+
+    /* Hero section styles */
+    .hero-tile {
+      position: relative;
+      background: radial-gradient(circle at 80% 20%, rgba(58, 92, 18, 0.05) 0%, rgba(237, 245, 212, 0.35) 40%, transparent 80%), linear-gradient(135deg, #ffffff 0%, #fafbf7 100%) !important;
+      border: 1px solid var(--color-border-strong) !important;
+      box-shadow: 
+        0 20px 40px -15px rgba(58, 92, 18, 0.05),
+        0 1px 3px rgba(0, 0, 0, 0.02) !important;
+    }
+    
+    .hero-tile::before {
+      content: "";
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(237, 245, 212, 0.3) 0%, rgba(58, 92, 18, 0.03) 50%, transparent 70%);
+      filter: blur(40px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dim) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
     }
   </style>
 </BaseLayout>
