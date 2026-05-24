@@ -109,10 +109,10 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|c
 >
   <div class="py-6 md:py-10">
     <div class="container-edit">
-      <div class="relative w-full flex flex-col">
+      <div class="relative w-full flex flex-col xl:flex-row gap-8">
         
-        {/* Barre latérale (Filtres) débordant sur la gauche (Desktop) */}
-        <aside class="hidden xl:block absolute top-0 right-full mr-8 w-[220px] h-full z-10">
+        {/* Barre latérale (Filtres) (Desktop) */}
+        <aside class="hidden xl:block w-[220px] shrink-0 z-10">
           <div class="sticky top-24 flex flex-col gap-0 fade-rise">
 
             <details class="filter-section">
@@ -206,7 +206,7 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|c
         </div>
 
         {/* Contenu principal aligné avec container-edit */}
-        <main class="w-full">
+        <main class="flex-1 min-w-0">
           <BentoGrid>
             <Tile size="full" variant="elevated">
               <div class="flex items-center gap-4 mb-6 fade-rise fade-rise-delay-1">
