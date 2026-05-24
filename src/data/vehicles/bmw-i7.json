@@ -32,7 +32,7 @@
   },
   "consumption_mixed_kWh_per_100km": 19.5,
   "consumption_highway_kWh_per_100km": 27.5,
-  "consumption_winter_kWh_per_100km": 25.0,
+  "consumption_winter_kWh_per_100km": 25,
   "dragCoefficient_Cx": 0.24,
   "chargingDC": {
     "peakPower_kW": 195,

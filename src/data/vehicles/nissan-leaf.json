@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 100 },
-    { "soc": 10, "power": 150 },
-    { "soc": 30, "power": 130 },
-    { "soc": 50, "power": 90 },
-    { "soc": 80, "power": 40 },
-    { "soc": 100, "power": 8 }
+    {
+      "soc": 0,
+      "power": 100
+    },
+    {
+      "soc": 10,
+      "power": 150
+    },
+    {
+      "soc": 30,
+      "power": 130
+    },
+    {
+      "soc": 50,
+      "power": 90
+    },
+    {
+      "soc": 80,
+      "power": 40
+    },
+    {
+      "soc": 100,
+      "power": 8
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -100,7 +118,18 @@
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [],
+  "availableAids": [
+    {
+      "label": "Prime CEE",
+      "amount_EUR": 3500,
+      "conditions": "Aide de base (jusqu'à 5 700 € selon revenus) pour les véhicules éligibles de moins de 47 000 €."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 1200,
+      "conditions": "Supplément de 1 200 € à 2 000 € pour véhicule assemblé en Europe avec batterie européenne."
+    }
+  ],
   "configurations": [
     {
       "id": "nissan-leaf-engage-52",
@@ -115,18 +144,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 436,
       "wltp_consumption_kWh_100km": 14.5,
-      "realRange": { "mixed_km": 330, "highway_130_km": 240, "urban_km": 405, "winter_minus5_km": 265, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 330,
+        "highway_130_km": 240,
+        "urban_km": 405,
+        "winter_minus5_km": 265,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 150,
       "chargingDC_10_80_min": 22,
       "chargingDC_kWh_30min": 40,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 150 },
-        { "soc": 30, "power": 130 },
-        { "soc": 50, "power": 85 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 7 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 150
+        },
+        {
+          "soc": 30,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 85
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "218 ch (160 kW), FWD"
@@ -144,18 +197,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 622,
       "wltp_consumption_kWh_100km": 14.2,
-      "realRange": { "mixed_km": 460, "highway_130_km": 335, "urban_km": 565, "winter_minus5_km": 365, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 460,
+        "highway_130_km": 335,
+        "urban_km": 565,
+        "winter_minus5_km": 365,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 150,
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 150 },
-        { "soc": 30, "power": 130 },
-        { "soc": 50, "power": 90 },
-        { "soc": 80, "power": 40 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 150
+        },
+        {
+          "soc": 30,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 90
+        },
+        {
+          "soc": 80,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "218 ch (160 kW), FWD"
@@ -173,18 +250,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 610,
       "wltp_consumption_kWh_100km": 14.6,
-      "realRange": { "mixed_km": 450, "highway_130_km": 325, "urban_km": 550, "winter_minus5_km": 355, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 450,
+        "highway_130_km": 325,
+        "urban_km": 550,
+        "winter_minus5_km": 355,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 150,
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 150 },
-        { "soc": 30, "power": 130 },
-        { "soc": 50, "power": 90 },
-        { "soc": 80, "power": 40 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 150
+        },
+        {
+          "soc": 30,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 90
+        },
+        {
+          "soc": 80,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "218 ch (160 kW), FWD, full options"
@@ -198,10 +299,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "design", "label": "Compacte electrique nouvelle generation au design moderne" },
-    { "category": "technologie", "label": "Ecran 12,3 pouces et ProPILOT Assist" },
-    { "category": "securite", "label": "Freinage automatique et alerte angle mort" },
-    { "category": "confort", "label": "Coffre genereux (437 L) et habitacle spacieux" }
+    {
+      "category": "design",
+      "label": "Compacte electrique nouvelle generation au design moderne"
+    },
+    {
+      "category": "technologie",
+      "label": "Ecran 12,3 pouces et ProPILOT Assist"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique et alerte angle mort"
+    },
+    {
+      "category": "confort",
+      "label": "Coffre genereux (437 L) et habitacle spacieux"
+    }
   ],
   "verdict": {
     "strengths": [
@@ -216,6 +329,9 @@
     "notIdealFor": "Acheteurs comptant sur les aides CEE ou cherchant un SUV."
   },
   "lastUpdated": "2026-05-20",
-  "sources": ["constructeur", "automobile-propre"],
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
   "imageCredit": "Constructeur"
 }

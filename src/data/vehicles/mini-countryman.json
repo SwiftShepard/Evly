@@ -43,19 +43,37 @@
   "chargingAC": {
     "onboardCharger_kW": 11,
     "phases": 3,
-    "time_0_100_h": 7.0
+    "time_0_100_h": 7
   },
   "plugAndCharge": true,
   "v2l": false,
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 80 },
-    { "soc": 10, "power": 130 },
-    { "soc": 30, "power": 125 },
-    { "soc": 55, "power": 90 },
-    { "soc": 80, "power": 45 },
-    { "soc": 100, "power": 6 }
+    {
+      "soc": 0,
+      "power": 80
+    },
+    {
+      "soc": 10,
+      "power": 130
+    },
+    {
+      "soc": 30,
+      "power": 125
+    },
+    {
+      "soc": 55,
+      "power": 90
+    },
+    {
+      "soc": 80,
+      "power": 45
+    },
+    {
+      "soc": 100,
+      "power": 6
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -116,9 +134,14 @@
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Bonus Écologique",
-      "amount_EUR": 4000,
-      "conditions": "Applicable sur les versions Essential et Classic E car prix catalogue inférieur à 47 000 € et production en Allemagne (score environnemental validé)."
+      "label": "Prime CEE",
+      "amount_EUR": 3500,
+      "conditions": "Aide de base (jusqu'à 5 700 € selon revenus) pour les véhicules éligibles de moins de 47 000 €."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 1200,
+      "conditions": "Supplément de 1 200 € à 2 000 € pour véhicule assemblé en Europe avec batterie européenne."
     }
   ],
   "configurations": [
@@ -147,12 +170,30 @@
       "chargingDC_10_80_min": 29,
       "chargingDC_kWh_30min": 45,
       "chargingCurve": [
-        { "soc": 0, "power": 80 },
-        { "soc": 10, "power": 130 },
-        { "soc": 30, "power": 125 },
-        { "soc": 55, "power": 90 },
-        { "soc": 80, "power": 45 },
-        { "soc": 100, "power": 6 }
+        {
+          "soc": 0,
+          "power": 80
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 30,
+          "power": 125
+        },
+        {
+          "soc": 55,
+          "power": 90
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "Version 204 ch mise à jour en 2026 avec autonomie de 501 km"
@@ -182,12 +223,30 @@
       "chargingDC_10_80_min": 29,
       "chargingDC_kWh_30min": 45,
       "chargingCurve": [
-        { "soc": 0, "power": 80 },
-        { "soc": 10, "power": 130 },
-        { "soc": 30, "power": 125 },
-        { "soc": 55, "power": 90 },
-        { "soc": 80, "power": 45 },
-        { "soc": 100, "power": 6 }
+        {
+          "soc": 0,
+          "power": 80
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 30,
+          "power": 125
+        },
+        {
+          "soc": 55,
+          "power": 90
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "Version bimoteur 4 roues motrices de 313 ch"
@@ -201,15 +260,27 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "confort", "label": "Habitabilité exceptionnelle pour 5 personnes et banquette modulable" },
-    { "category": "technologie", "label": "Grand écran central OLED rond de 24 cm avec navigation 3D" },
-    { "category": "design", "label": "Garde au sol surélevée et signature lumineuse LED distinctive" },
-    { "category": "securite", "label": "Driving Assistant Plus avec maintien de voie et régulation adaptative" }
+    {
+      "category": "confort",
+      "label": "Habitabilité exceptionnelle pour 5 personnes et banquette modulable"
+    },
+    {
+      "category": "technologie",
+      "label": "Grand écran central OLED rond de 24 cm avec navigation 3D"
+    },
+    {
+      "category": "design",
+      "label": "Garde au sol surélevée et signature lumineuse LED distinctive"
+    },
+    {
+      "category": "securite",
+      "label": "Driving Assistant Plus avec maintien de voie et régulation adaptative"
+    }
   ],
   "verdict": {
     "strengths": [
       "Habitabilité de premier plan et grand coffre de 460 L",
-      "Countryman E éligible au bonus écologique de 4 000 €",
+      "Countryman E éligible à la Prime CEE de la Prime CEE",
       "Performances impressionnantes de la version SE ALL4"
     ],
     "weaknesses": [

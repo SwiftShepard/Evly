@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 200 },
-    { "soc": 10, "power": 300 },
-    { "soc": 30, "power": 270 },
-    { "soc": 50, "power": 210 },
-    { "soc": 80, "power": 70 },
-    { "soc": 100, "power": 10 }
+    {
+      "soc": 0,
+      "power": 200
+    },
+    {
+      "soc": 10,
+      "power": 300
+    },
+    {
+      "soc": 30,
+      "power": 270
+    },
+    {
+      "soc": 50,
+      "power": 210
+    },
+    {
+      "soc": 80,
+      "power": 70
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -120,12 +138,30 @@
       "chargingDC_10_80_min": 15,
       "chargingDC_kWh_30min": 60,
       "chargingCurve": [
-        { "soc": 0, "power": 200 },
-        { "soc": 10, "power": 300 },
-        { "soc": 30, "power": 270 },
-        { "soc": 50, "power": 210 },
-        { "soc": 80, "power": 70 },
-        { "soc": 100, "power": 10 }
+        {
+          "soc": 0,
+          "power": 200
+        },
+        {
+          "soc": 10,
+          "power": 300
+        },
+        {
+          "soc": 30,
+          "power": 270
+        },
+        {
+          "soc": 50,
+          "power": 210
+        },
+        {
+          "soc": 80,
+          "power": 70
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
       ],
       "availability": "upcoming",
       "notes": "320 ch (235 kW), RWD. Prix européen estimé. Lancement Europe prévu ~2027."
@@ -155,12 +191,30 @@
       "chargingDC_10_80_min": 11,
       "chargingDC_kWh_30min": 90,
       "chargingCurve": [
-        { "soc": 0, "power": 280 },
-        { "soc": 10, "power": 480 },
-        { "soc": 30, "power": 430 },
-        { "soc": 50, "power": 320 },
-        { "soc": 80, "power": 110 },
-        { "soc": 100, "power": 15 }
+        {
+          "soc": 0,
+          "power": 280
+        },
+        {
+          "soc": 10,
+          "power": 480
+        },
+        {
+          "soc": 30,
+          "power": 430
+        },
+        {
+          "soc": 50,
+          "power": 320
+        },
+        {
+          "soc": 80,
+          "power": 110
+        },
+        {
+          "soc": 100,
+          "power": 15
+        }
       ],
       "availability": "upcoming",
       "notes": "1004 ch (738 kW), AWD, batterie CATL Qilin 5.2C. Suspension pneumatique active."
@@ -174,10 +228,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "design", "label": "SUV ultra-profilé au Cx de 0,23" },
-    { "category": "technologie", "label": "Architecture 800V, écosystème Xiaomi HyperOS" },
-    { "category": "securite", "label": "LiDAR, puces NVIDIA Thor et conduite autonome avancée" },
-    { "category": "confort", "label": "Volume de coffre record et frunk électrique de 141 L" }
+    {
+      "category": "design",
+      "label": "SUV ultra-profilé au Cx de 0,23"
+    },
+    {
+      "category": "technologie",
+      "label": "Architecture 800V, écosystème Xiaomi HyperOS"
+    },
+    {
+      "category": "securite",
+      "label": "LiDAR, puces NVIDIA Thor et conduite autonome avancée"
+    },
+    {
+      "category": "confort",
+      "label": "Volume de coffre record et frunk électrique de 141 L"
+    }
   ],
   "verdict": {
     "strengths": [
@@ -193,6 +259,9 @@
     "notIdealFor": "Conducteurs urbains cherchant un véhicule compact et facile à garer avec un réseau SAV local établi."
   },
   "lastUpdated": "2026-05-22",
-  "sources": ["constructeur", "wikipedia"],
+  "sources": [
+    "constructeur",
+    "wikipedia"
+  ],
   "imageCredit": "Constructeur"
 }

@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 90 },
-    { "soc": 10, "power": 130 },
-    { "soc": 30, "power": 115 },
-    { "soc": 50, "power": 80 },
-    { "soc": 80, "power": 35 },
-    { "soc": 100, "power": 8 }
+    {
+      "soc": 0,
+      "power": 90
+    },
+    {
+      "soc": 10,
+      "power": 130
+    },
+    {
+      "soc": 30,
+      "power": 115
+    },
+    {
+      "soc": 50,
+      "power": 80
+    },
+    {
+      "soc": 80,
+      "power": 35
+    },
+    {
+      "soc": 100,
+      "power": 8
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -125,18 +143,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 404,
       "wltp_consumption_kWh_100km": 17.5,
-      "realRange": { "mixed_km": 310, "highway_130_km": 225, "urban_km": 385, "winter_minus5_km": 245, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 225,
+        "urban_km": 385,
+        "winter_minus5_km": 245,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 130,
       "chargingDC_10_80_min": 25,
       "chargingDC_kWh_30min": 42,
       "chargingCurve": [
-        { "soc": 0, "power": 90 },
-        { "soc": 10, "power": 130 },
-        { "soc": 30, "power": 115 },
-        { "soc": 50, "power": 80 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 7 }
+        {
+          "soc": 0,
+          "power": 90
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 30,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "218 ch (160 kW), FWD, AC 7,4 kW"
@@ -154,18 +196,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 395,
       "wltp_consumption_kWh_100km": 18,
-      "realRange": { "mixed_km": 305, "highway_130_km": 220, "urban_km": 375, "winter_minus5_km": 240, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 305,
+        "highway_130_km": 220,
+        "urban_km": 375,
+        "winter_minus5_km": 240,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 130,
       "chargingDC_10_80_min": 25,
       "chargingDC_kWh_30min": 42,
       "chargingCurve": [
-        { "soc": 0, "power": 90 },
-        { "soc": 10, "power": 130 },
-        { "soc": 30, "power": 115 },
-        { "soc": 50, "power": 80 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 7 }
+        {
+          "soc": 0,
+          "power": 90
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 30,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "218 ch (160 kW), FWD, jantes 20 pouces"
@@ -183,18 +249,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 536,
       "wltp_consumption_kWh_100km": 17.8,
-      "realRange": { "mixed_km": 400, "highway_130_km": 290, "urban_km": 490, "winter_minus5_km": 315, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 400,
+        "highway_130_km": 290,
+        "urban_km": 490,
+        "winter_minus5_km": 315,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 130,
       "chargingDC_10_80_min": 35,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
-        { "soc": 0, "power": 90 },
-        { "soc": 10, "power": 130 },
-        { "soc": 30, "power": 115 },
-        { "soc": 50, "power": 80 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 90
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 30,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "242 ch (178 kW), FWD, AC 22 kW de serie"
@@ -212,18 +302,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 500,
       "wltp_consumption_kWh_100km": 19.5,
-      "realRange": { "mixed_km": 375, "highway_130_km": 270, "urban_km": 460, "winter_minus5_km": 295, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 375,
+        "highway_130_km": 270,
+        "urban_km": 460,
+        "winter_minus5_km": 295,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 130,
       "chargingDC_10_80_min": 35,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
-        { "soc": 0, "power": 90 },
-        { "soc": 10, "power": 130 },
-        { "soc": 30, "power": 115 },
-        { "soc": 50, "power": 80 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 90
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 30,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "435 ch (320 kW), AWD e-4ORCE"
@@ -237,10 +351,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "design", "label": "SUV familial au design japonais epure et futuriste" },
-    { "category": "technologie", "label": "ProPILOT Assist et ecran 12,3 pouces" },
-    { "category": "securite", "label": "e-4ORCE transmission integrale intelligente (NISMO)" },
-    { "category": "confort", "label": "AC 22 kW (Evolve+), interieur lounge spacieux" }
+    {
+      "category": "design",
+      "label": "SUV familial au design japonais epure et futuriste"
+    },
+    {
+      "category": "technologie",
+      "label": "ProPILOT Assist et ecran 12,3 pouces"
+    },
+    {
+      "category": "securite",
+      "label": "e-4ORCE transmission integrale intelligente (NISMO)"
+    },
+    {
+      "category": "confort",
+      "label": "AC 22 kW (Evolve+), interieur lounge spacieux"
+    }
   ],
   "verdict": {
     "strengths": [
@@ -255,6 +381,9 @@
     "notIdealFor": "Gros rouleurs necessitant une charge ultra-rapide."
   },
   "lastUpdated": "2026-05-19",
-  "sources": ["constructeur", "automobile-propre"],
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
   "imageCredit": "Constructeur"
 }

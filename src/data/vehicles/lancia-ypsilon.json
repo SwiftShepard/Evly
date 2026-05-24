@@ -14,7 +14,7 @@
   "torque_Nm": 260,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 8.0,
+  "acceleration_0_100_s": 8,
   "topSpeed_kmh": 150,
   "usableCapacity_kWh": 51,
   "grossCapacity_kWh": 54,
@@ -50,11 +50,26 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0,   "power": 77 },
-    { "soc": 10,  "power": 100 },
-    { "soc": 50,  "power": 77 },
-    { "soc": 80,  "power": 38 },
-    { "soc": 100, "power": 8 }
+    {
+      "soc": 0,
+      "power": 77
+    },
+    {
+      "soc": 10,
+      "power": 100
+    },
+    {
+      "soc": 50,
+      "power": 77
+    },
+    {
+      "soc": 80,
+      "power": 38
+    },
+    {
+      "soc": 100,
+      "power": 8
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -91,8 +106,14 @@
   "leasingSocial_EUR_per_month": 179,
   "availableAids": [
     {
-      "label": "Prime CEE VE",
-      "amount_EUR": 8100
+      "label": "Prime CEE",
+      "amount_EUR": 3500,
+      "conditions": "Aide de base (jusqu'à 5 700 € selon revenus) pour les véhicules éligibles de moins de 47 000 €."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 1200,
+      "conditions": "Supplément de 1 200 € à 2 000 € pour véhicule assemblé en Europe avec batterie européenne."
     }
   ],
   "configurations": [
@@ -109,17 +130,38 @@
       "leasingSocialEligible": true,
       "wltp_km": 403,
       "wltp_consumption_kWh_100km": 15.2,
-      "realRange": { "mixed_km": 310, "highway_130_km": 200, "urban_km": 390, "winter_minus5_km": 245, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 200,
+        "urban_km": 390,
+        "winter_minus5_km": 245,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        { "soc": 0,   "power": 77 },
-        { "soc": 10,  "power": 100 },
-        { "soc": 50,  "power": 77 },
-        { "soc": 80,  "power": 38 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 77
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 77
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "156 ch (115 kW), FWD"
@@ -137,17 +179,38 @@
       "leasingSocialEligible": true,
       "wltp_km": 390,
       "wltp_consumption_kWh_100km": 15.5,
-      "realRange": { "mixed_km": 300, "highway_130_km": 195, "urban_km": 380, "winter_minus5_km": 235, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 300,
+        "highway_130_km": 195,
+        "urban_km": 380,
+        "winter_minus5_km": 235,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        { "soc": 0,   "power": 77 },
-        { "soc": 10,  "power": 100 },
-        { "soc": 50,  "power": 77 },
-        { "soc": 80,  "power": 38 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 77
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 77
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "156 ch (115 kW), FWD, full options Poltrona Frau"
@@ -161,10 +224,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "confort", "label": "Sellerie Poltrona Frau (Cassina), interieur premium italien" },
-    { "category": "technologie", "label": "SALA : conduite semi-autonome niveau 2 de serie" },
-    { "category": "securite", "label": "Freinage automatique d'urgence, 6 airbags" },
-    { "category": "design", "label": "Design neo-retro italien, calandra Lancia iconique" }
+    {
+      "category": "confort",
+      "label": "Sellerie Poltrona Frau (Cassina), interieur premium italien"
+    },
+    {
+      "category": "technologie",
+      "label": "SALA : conduite semi-autonome niveau 2 de serie"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence, 6 airbags"
+    },
+    {
+      "category": "design",
+      "label": "Design neo-retro italien, calandra Lancia iconique"
+    }
   ],
   "verdict": {
     "strengths": [
@@ -179,6 +254,8 @@
     "notIdealFor": "Familles ayant besoin d'un grand coffre ou gros rouleurs autoroutiers."
   },
   "lastUpdated": "2026-05-20",
-  "sources": ["constructeur"],
+  "sources": [
+    "constructeur"
+  ],
   "imageCredit": "Constructeur"
 }

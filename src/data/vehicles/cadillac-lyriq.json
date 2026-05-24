@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 120 },
-    { "soc": 10, "power": 190 },
-    { "soc": 30, "power": 170 },
-    { "soc": 50, "power": 120 },
-    { "soc": 80, "power": 50 },
-    { "soc": 100, "power": 10 }
+    {
+      "soc": 0,
+      "power": 120
+    },
+    {
+      "soc": 10,
+      "power": 190
+    },
+    {
+      "soc": 30,
+      "power": 170
+    },
+    {
+      "soc": 50,
+      "power": 120
+    },
+    {
+      "soc": 80,
+      "power": 50
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -121,12 +139,30 @@
       "chargingDC_10_80_min": 40,
       "chargingDC_kWh_30min": 65,
       "chargingCurve": [
-        { "soc": 0, "power": 120 },
-        { "soc": 10, "power": 190 },
-        { "soc": 30, "power": 170 },
-        { "soc": 50, "power": 120 },
-        { "soc": 80, "power": 50 },
-        { "soc": 100, "power": 10 }
+        {
+          "soc": 0,
+          "power": 120
+        },
+        {
+          "soc": 10,
+          "power": 190
+        },
+        {
+          "soc": 30,
+          "power": 170
+        },
+        {
+          "soc": 50,
+          "power": 120
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
       ],
       "availability": "available",
       "notes": "528 ch (388 kW), transmission intégrale AWD. Version orientée élégance avec détails chromés."
@@ -156,12 +192,30 @@
       "chargingDC_10_80_min": 40,
       "chargingDC_kWh_30min": 65,
       "chargingCurve": [
-        { "soc": 0, "power": 120 },
-        { "soc": 10, "power": 190 },
-        { "soc": 30, "power": 170 },
-        { "soc": 50, "power": 120 },
-        { "soc": 80, "power": 50 },
-        { "soc": 100, "power": 10 }
+        {
+          "soc": 0,
+          "power": 120
+        },
+        {
+          "soc": 10,
+          "power": 190
+        },
+        {
+          "soc": 30,
+          "power": 170
+        },
+        {
+          "soc": 50,
+          "power": 120
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
       ],
       "availability": "available",
       "notes": "528 ch (388 kW), transmission intégrale AWD. Version orientée dynamisme avec calandre sombre et détails noirs brillants."

@@ -30,9 +30,9 @@
     "winter_minus5_km": 190,
     "confidence": "estimated"
   },
-  "consumption_mixed_kWh_per_100km": 14.0,
-  "consumption_highway_kWh_per_100km": 19.0,
-  "consumption_winter_kWh_per_100km": 17.0,
+  "consumption_mixed_kWh_per_100km": 14,
+  "consumption_highway_kWh_per_100km": 19,
+  "consumption_winter_kWh_per_100km": 17,
   "dragCoefficient_Cx": 0.29,
   "chargingDC": {
     "peakPower_kW": 85,
@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 45 },
-    { "soc": 10, "power": 85 },
-    { "soc": 30, "power": 75 },
-    { "soc": 50, "power": 60 },
-    { "soc": 80, "power": 35 },
-    { "soc": 100, "power": 7 }
+    {
+      "soc": 0,
+      "power": 45
+    },
+    {
+      "soc": 10,
+      "power": 85
+    },
+    {
+      "soc": 30,
+      "power": 75
+    },
+    {
+      "soc": 50,
+      "power": 60
+    },
+    {
+      "soc": 80,
+      "power": 35
+    },
+    {
+      "soc": 100,
+      "power": 7
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -130,12 +148,30 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 21,
       "chargingCurve": [
-        { "soc": 0, "power": 35 },
-        { "soc": 10, "power": 65 },
-        { "soc": 30, "power": 55 },
-        { "soc": 50, "power": 45 },
-        { "soc": 80, "power": 25 },
-        { "soc": 100, "power": 5 }
+        {
+          "soc": 0,
+          "power": 35
+        },
+        {
+          "soc": 10,
+          "power": 65
+        },
+        {
+          "soc": 30,
+          "power": 55
+        },
+        {
+          "soc": 50,
+          "power": 45
+        },
+        {
+          "soc": 80,
+          "power": 25
+        },
+        {
+          "soc": 100,
+          "power": 5
+        }
       ],
       "availability": "available",
       "notes": "Moteur 88 ch (65 kW), batterie Blade LFP 30 kWh. Idéal pour un usage urbain quotidien."
@@ -165,12 +201,30 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 30,
       "chargingCurve": [
-        { "soc": 0, "power": 45 },
-        { "soc": 10, "power": 85 },
-        { "soc": 30, "power": 75 },
-        { "soc": 50, "power": 60 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 7 }
+        {
+          "soc": 0,
+          "power": 45
+        },
+        {
+          "soc": 10,
+          "power": 85
+        },
+        {
+          "soc": 30,
+          "power": 75
+        },
+        {
+          "soc": 50,
+          "power": 60
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "Moteur 88 ch (65 kW), batterie Blade LFP 43.2 kWh. Autonomie accrue et recharge rapide 30-80% en 22 min."
@@ -200,12 +254,30 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 30,
       "chargingCurve": [
-        { "soc": 0, "power": 45 },
-        { "soc": 10, "power": 85 },
-        { "soc": 30, "power": 75 },
-        { "soc": 50, "power": 60 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 7 }
+        {
+          "soc": 0,
+          "power": 45
+        },
+        {
+          "soc": 10,
+          "power": 85
+        },
+        {
+          "soc": 30,
+          "power": 75
+        },
+        {
+          "soc": 50,
+          "power": 60
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "Moteur puissant de 156 ch (115 kW), batterie Blade LFP 43.2 kWh. Finition premium haut de gamme."
@@ -219,10 +291,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "confort", "label": "Sellerie TEP et sièges avant chauffants (Comfort)" },
-    { "category": "technologie", "label": "Écran rotatif 10,1\" avec CarPlay/Android Auto sans fil" },
-    { "category": "securite", "label": "Caméras 360° et aides à la conduite complètes" },
-    { "category": "design", "label": "Style dynamique et compact idéal pour la ville" }
+    {
+      "category": "confort",
+      "label": "Sellerie TEP et sièges avant chauffants (Comfort)"
+    },
+    {
+      "category": "technologie",
+      "label": "Écran rotatif 10,1\" avec CarPlay/Android Auto sans fil"
+    },
+    {
+      "category": "securite",
+      "label": "Caméras 360° et aides à la conduite complètes"
+    },
+    {
+      "category": "design",
+      "label": "Style dynamique et compact idéal pour la ville"
+    }
   ],
   "verdict": {
     "strengths": [
@@ -231,13 +315,16 @@
       "Espace intérieur optimisé malgré un gabarit sous les 4 mètres"
     ],
     "weaknesses": [
-      "Non éligible au bonus écologique en France (produit en Chine)",
+      "Non éligible à la Prime CEE en France (produit en Chine)",
       "Performances autoroutières limitées sur les versions Active/Boost (88 ch)"
     ],
     "idealUserProfile": "Citadins et banlieusards cherchant une petite voiture électrique moderne, suréquipée et abordable.",
     "notIdealFor": "Gros rouleurs effectuant de fréquents et longs trajets autoroutiers en charge maximale."
   },
   "lastUpdated": "2026-05-22",
-  "sources": ["constructeur", "automobile-propre"],
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
   "imageCredit": "Constructeur"
 }

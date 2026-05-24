@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0,   "power": 130 },
-    { "soc": 10,  "power": 140 },
-    { "soc": 20,  "power": 140 },
-    { "soc": 50,  "power": 100 },
-    { "soc": 80,  "power": 45  },
-    { "soc": 100, "power": 8   }
+    {
+      "soc": 0,
+      "power": 130
+    },
+    {
+      "soc": 10,
+      "power": 140
+    },
+    {
+      "soc": 20,
+      "power": 140
+    },
+    {
+      "soc": 50,
+      "power": 100
+    },
+    {
+      "soc": 80,
+      "power": 45
+    },
+    {
+      "soc": 100,
+      "power": 8
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -127,12 +145,30 @@
       "chargingDC_10_80_min": 20,
       "chargingDC_kWh_30min": 42,
       "chargingCurve": [
-        { "soc": 0,   "power": 130 },
-        { "soc": 10,  "power": 140 },
-        { "soc": 20,  "power": 140 },
-        { "soc": 50,  "power": 100 },
-        { "soc": 80,  "power": 45  },
-        { "soc": 100, "power": 8   }
+        {
+          "soc": 0,
+          "power": 130
+        },
+        {
+          "soc": 10,
+          "power": 140
+        },
+        {
+          "soc": 20,
+          "power": 140
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "218 ch (160 kW), RWD"
@@ -162,12 +198,30 @@
       "chargingDC_10_80_min": 20,
       "chargingDC_kWh_30min": 42,
       "chargingCurve": [
-        { "soc": 0,   "power": 130 },
-        { "soc": 10,  "power": 140 },
-        { "soc": 20,  "power": 140 },
-        { "soc": 50,  "power": 100 },
-        { "soc": 80,  "power": 45  },
-        { "soc": 100, "power": 8   }
+        {
+          "soc": 0,
+          "power": 130
+        },
+        {
+          "soc": 10,
+          "power": 140
+        },
+        {
+          "soc": 20,
+          "power": 140
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "218 ch (160 kW), RWD, finition haut de gamme"
@@ -197,12 +251,30 @@
       "chargingDC_10_80_min": 22,
       "chargingDC_kWh_30min": 50,
       "chargingCurve": [
-        { "soc": 0,   "power": 155 },
-        { "soc": 10,  "power": 168 },
-        { "soc": 20,  "power": 168 },
-        { "soc": 50,  "power": 120 },
-        { "soc": 80,  "power": 55  },
-        { "soc": 100, "power": 10  }
+        {
+          "soc": 0,
+          "power": 155
+        },
+        {
+          "soc": 10,
+          "power": 168
+        },
+        {
+          "soc": 20,
+          "power": 168
+        },
+        {
+          "soc": 50,
+          "power": 120
+        },
+        {
+          "soc": 80,
+          "power": 55
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
       ],
       "availability": "available",
       "notes": "218 ch (160 kW), RWD, grande batterie"
@@ -216,10 +288,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "confort", "label": "Suspension McPherson/Multilink, confort de référence dans la catégorie" },
-    { "category": "technologie", "label": "Charge DC 140 kW, parmi les plus rapides du segment B" },
-    { "category": "securite", "label": "Freinage automatique d'urgence" },
-    { "category": "design", "label": "Signature lumineuse LED distinctive, jantes 19 pouces" }
+    {
+      "category": "confort",
+      "label": "Suspension McPherson/Multilink, confort de référence dans la catégorie"
+    },
+    {
+      "category": "technologie",
+      "label": "Charge DC 140 kW, parmi les plus rapides du segment B"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence"
+    },
+    {
+      "category": "design",
+      "label": "Signature lumineuse LED distinctive, jantes 19 pouces"
+    }
   ],
   "verdict": {
     "strengths": [
@@ -234,6 +318,9 @@
     "notIdealFor": "Acheteurs conditionnant leur achat au leasing social : la production chinoise actuelle exclut ce dispositif. Conducteurs à très fort kilométrage autoroutier nécessitant plus de 400 km d'autonomie réelle."
   },
   "lastUpdated": "2026-05-20",
-  "sources": ["nyland", "lachaineev"],
+  "sources": [
+    "nyland",
+    "lachaineev"
+  ],
   "imageCredit": "Constructeur"
 }

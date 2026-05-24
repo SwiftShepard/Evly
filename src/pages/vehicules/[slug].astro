@@ -491,7 +491,7 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                 </div>
               </div>
               <p class="mt-4 font-mono text-[10px] text-[var(--color-text-faint)] leading-relaxed">
-                * Montants maximaux, sous conditions de revenus, d'eligibilite et de mise au rebut d'un ancien vehicule. Prime CEE mise a jour mai 2026.
+                * Montants indicatifs susceptibles d’évoluer selon les revenus du foyer, les signataires CEE et l’éligibilité du véhicule.
               </p>
             </Tile>
 
@@ -502,7 +502,7 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                   <div class="flex flex-col gap-1">
                     <span class="font-display text-lg font-semibold tracking-[-0.01em]">Loyer plafonné</span>
                     <p class="text-xs text-[var(--color-text-muted)] leading-relaxed max-w-sm">
-                      A partir de {config.monthlyLease_EUR} €/mois (bareme 2025), sous conditions de revenus. 1<sup>er</sup> loyer pris en charge.
+                      A partir de {config.monthlyLease_EUR} €/mois (barème 2026), sous conditions de revenus. 1<sup>er</sup> loyer pris en charge.
                     </p>
                   </div>
                   <div class="flex items-baseline gap-2 shrink-0">
@@ -664,7 +664,7 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                     <span data-numeric class="sidebar-net-price">{formatPrice(sidebarNet)}</span>
                   </div>
                 )}
-                <p class="sidebar-aids-note">* Sous conditions</p>
+                <p class="sidebar-aids-note">* Montants indicatifs susceptibles d’évoluer selon les revenus du foyer, les signataires CEE et l’éligibilité du véhicule.</p>
               </div>
             )}
           </div>

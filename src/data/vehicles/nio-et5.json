@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 100 },
-    { "soc": 10, "power": 140 },
-    { "soc": 30, "power": 125 },
-    { "soc": 50, "power": 90 },
-    { "soc": 80, "power": 40 },
-    { "soc": 100, "power": 8 }
+    {
+      "soc": 0,
+      "power": 100
+    },
+    {
+      "soc": 10,
+      "power": 140
+    },
+    {
+      "soc": 30,
+      "power": 125
+    },
+    {
+      "soc": 50,
+      "power": 90
+    },
+    {
+      "soc": 80,
+      "power": 40
+    },
+    {
+      "soc": 100,
+      "power": 8
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -105,18 +123,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 410,
       "wltp_consumption_kWh_100km": 19.2,
-      "realRange": { "mixed_km": 315, "highway_130_km": 230, "urban_km": 395, "winter_minus5_km": 250, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 315,
+        "highway_130_km": 230,
+        "urban_km": 395,
+        "winter_minus5_km": 250,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 140,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 48,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 140 },
-        { "soc": 30, "power": 125 },
-        { "soc": 50, "power": 90 },
-        { "soc": 80, "power": 40 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 140
+        },
+        {
+          "soc": 30,
+          "power": 125
+        },
+        {
+          "soc": 50,
+          "power": 90
+        },
+        {
+          "soc": 80,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "upcoming",
       "notes": "490 ch (360 kW), AWD. Prix avec abonnement batterie (BaaS). Achat batterie : +12 000 euros"
@@ -134,18 +176,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 500,
       "wltp_consumption_kWh_100km": 19.6,
-      "realRange": { "mixed_km": 370, "highway_130_km": 270, "urban_km": 460, "winter_minus5_km": 295, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 370,
+        "highway_130_km": 270,
+        "urban_km": 460,
+        "winter_minus5_km": 295,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 140,
       "chargingDC_10_80_min": 35,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 140 },
-        { "soc": 30, "power": 125 },
-        { "soc": 50, "power": 90 },
-        { "soc": 80, "power": 40 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 140
+        },
+        {
+          "soc": 30,
+          "power": 125
+        },
+        {
+          "soc": 50,
+          "power": 90
+        },
+        {
+          "soc": 80,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "upcoming",
       "notes": "490 ch (360 kW), AWD. Prix avec abonnement batterie (BaaS). Achat batterie : +21 000 euros"
@@ -159,10 +225,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "design", "label": "Berline sportive au Cx record de 0,24" },
-    { "category": "technologie", "label": "Battery Swap (echange batterie en 3 min)" },
-    { "category": "securite", "label": "LiDAR Innovusion et conduite autonome NIO Pilot" },
-    { "category": "confort", "label": "Audio immersif 7.1.4 et interieur premium" }
+    {
+      "category": "design",
+      "label": "Berline sportive au Cx record de 0,24"
+    },
+    {
+      "category": "technologie",
+      "label": "Battery Swap (echange batterie en 3 min)"
+    },
+    {
+      "category": "securite",
+      "label": "LiDAR Innovusion et conduite autonome NIO Pilot"
+    },
+    {
+      "category": "confort",
+      "label": "Audio immersif 7.1.4 et interieur premium"
+    }
   ],
   "verdict": {
     "strengths": [
@@ -177,6 +255,9 @@
     "notIdealFor": "Acheteurs en France cherchant un SAV de proximite ou un modele disponible immediatement."
   },
   "lastUpdated": "2026-05-19",
-  "sources": ["constructeur", "ev-database"],
+  "sources": [
+    "constructeur",
+    "ev-database"
+  ],
   "imageCredit": "Constructeur"
 }

@@ -14,7 +14,7 @@
   "torque_Nm": 380,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 15.0,
+  "acceleration_0_100_s": 15,
   "topSpeed_kmh": 120,
   "usableCapacity_kWh": 88,
   "grossCapacity_kWh": 92,
@@ -50,13 +50,34 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 60 },
-    { "soc": 10, "power": 80 },
-    { "soc": 30, "power": 75 },
-    { "soc": 50, "power": 55 },
-    { "soc": 70, "power": 35 },
-    { "soc": 80, "power": 22 },
-    { "soc": 100, "power": 6 }
+    {
+      "soc": 0,
+      "power": 60
+    },
+    {
+      "soc": 10,
+      "power": 80
+    },
+    {
+      "soc": 30,
+      "power": 75
+    },
+    {
+      "soc": 50,
+      "power": 55
+    },
+    {
+      "soc": 70,
+      "power": 35
+    },
+    {
+      "soc": 80,
+      "power": 22
+    },
+    {
+      "soc": 100,
+      "power": 6
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -128,11 +149,26 @@
       "chargingDC_10_80_min": 48,
       "chargingDC_kWh_30min": 30,
       "chargingCurve": [
-        { "soc": 0, "power": 60 },
-        { "soc": 10, "power": 80 },
-        { "soc": 50, "power": 55 },
-        { "soc": 80, "power": 22 },
-        { "soc": 100, "power": 6 }
+        {
+          "soc": 0,
+          "power": 60
+        },
+        {
+          "soc": 10,
+          "power": 80
+        },
+        {
+          "soc": 50,
+          "power": 55
+        },
+        {
+          "soc": 80,
+          "power": 22
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "Grand fourgon L2, batterie LFP 72 kWh."
@@ -162,11 +198,26 @@
       "chargingDC_10_80_min": 55,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        { "soc": 0, "power": 60 },
-        { "soc": 10, "power": 80 },
-        { "soc": 50, "power": 55 },
-        { "soc": 80, "power": 22 },
-        { "soc": 100, "power": 6 }
+        {
+          "soc": 0,
+          "power": 60
+        },
+        {
+          "soc": 10,
+          "power": 80
+        },
+        {
+          "soc": 50,
+          "power": 55
+        },
+        {
+          "soc": 80,
+          "power": 22
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "Grand fourgon L2, grande autonomie 88 kWh."
@@ -196,11 +247,26 @@
       "chargingDC_10_80_min": 55,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        { "soc": 0, "power": 60 },
-        { "soc": 10, "power": 80 },
-        { "soc": 50, "power": 55 },
-        { "soc": 80, "power": 22 },
-        { "soc": 100, "power": 6 }
+        {
+          "soc": 0,
+          "power": 60
+        },
+        {
+          "soc": 10,
+          "power": 80
+        },
+        {
+          "soc": 50,
+          "power": 55
+        },
+        {
+          "soc": 80,
+          "power": 22
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "Grand fourgon L3, volume utile 12,8 m3."
@@ -214,10 +280,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "confort", "label": "Cabine spacieuse avec ecran multimedia 10 pouces" },
-    { "category": "technologie", "label": "Batterie LFP durable, optimisee pour cycles de charge quotidiens" },
-    { "category": "securite", "label": "Freinage automatique d'urgence et aide au stationnement" },
-    { "category": "design", "label": "Volume utile jusqu'a 12,8 m3, charge utile 1200 kg" }
+    {
+      "category": "confort",
+      "label": "Cabine spacieuse avec ecran multimedia 10 pouces"
+    },
+    {
+      "category": "technologie",
+      "label": "Batterie LFP durable, optimisee pour cycles de charge quotidiens"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence et aide au stationnement"
+    },
+    {
+      "category": "design",
+      "label": "Volume utile jusqu'a 12,8 m3, charge utile 1200 kg"
+    }
   ],
   "verdict": {
     "strengths": [

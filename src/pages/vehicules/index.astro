@@ -100,7 +100,7 @@ const specificFilters = [
 
 const europeanCountries = ["France", "Allemagne", "Slovaquie", "Rép. Tchèque", "Pologne", "Espagne", "Italie", "Belgique", "Suède", "Slovénie", "Hongrie", "Autriche", "Portugal"];
 function isEU(v: Vehicle) { return europeanCountries.includes(v.productionCountry); }
-function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|bonus/i.test(a.label)) ?? false; }
+function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|cee|majoration|aide/i.test(a.label)) ?? false; }
 ---
 
 <BaseLayout

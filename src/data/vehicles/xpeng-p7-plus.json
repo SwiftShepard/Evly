@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 250 },
-    { "soc": 10, "power": 350 },
-    { "soc": 30, "power": 340 },
-    { "soc": 50, "power": 260 },
-    { "soc": 80, "power": 75 },
-    { "soc": 100, "power": 12 }
+    {
+      "soc": 0,
+      "power": 250
+    },
+    {
+      "soc": 10,
+      "power": 350
+    },
+    {
+      "soc": 30,
+      "power": 340
+    },
+    {
+      "soc": 50,
+      "power": 260
+    },
+    {
+      "soc": 80,
+      "power": 75
+    },
+    {
+      "soc": 100,
+      "power": 12
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -103,9 +121,14 @@
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Prime CEE VE",
-      "amount_EUR": 4000,
-      "conditions": "Éligible uniquement sur version Standard Range (prix < 47 000 € et production en Autriche)"
+      "label": "Prime CEE",
+      "amount_EUR": 3500,
+      "conditions": "Aide de base (jusqu'à 5 700 € selon revenus) pour les véhicules éligibles de moins de 47 000 €."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 1200,
+      "conditions": "Supplément de 1 200 € à 2 000 € pour véhicule assemblé en Europe avec batterie européenne."
     }
   ],
   "configurations": [
@@ -134,12 +157,30 @@
       "chargingDC_10_80_min": 12,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
-        { "soc": 0, "power": 250 },
-        { "soc": 10, "power": 350 },
-        { "soc": 30, "power": 340 },
-        { "soc": 50, "power": 260 },
-        { "soc": 80, "power": 75 },
-        { "soc": 100, "power": 12 }
+        {
+          "soc": 0,
+          "power": 250
+        },
+        {
+          "soc": 10,
+          "power": 350
+        },
+        {
+          "soc": 30,
+          "power": 340
+        },
+        {
+          "soc": 50,
+          "power": 260
+        },
+        {
+          "soc": 80,
+          "power": 75
+        },
+        {
+          "soc": 100,
+          "power": 12
+        }
       ],
       "availability": "available",
       "notes": "245 ch (180 kW), RWD, LFP 60.7 kWh"
@@ -169,12 +210,30 @@
       "chargingDC_10_80_min": 12,
       "chargingDC_kWh_30min": 68,
       "chargingCurve": [
-        { "soc": 0, "power": 250 },
-        { "soc": 10, "power": 400 },
-        { "soc": 30, "power": 380 },
-        { "soc": 50, "power": 280 },
-        { "soc": 80, "power": 80 },
-        { "soc": 100, "power": 12 }
+        {
+          "soc": 0,
+          "power": 250
+        },
+        {
+          "soc": 10,
+          "power": 400
+        },
+        {
+          "soc": 30,
+          "power": 380
+        },
+        {
+          "soc": 50,
+          "power": 280
+        },
+        {
+          "soc": 80,
+          "power": 80
+        },
+        {
+          "soc": 100,
+          "power": 12
+        }
       ],
       "availability": "available",
       "notes": "313 ch (230 kW), RWD, LFP 76.3 kWh"
@@ -191,7 +250,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 500,
-      "wltp_consumption_kWh_100km": 15.0,
+      "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 400,
         "highway_130_km": 280,
@@ -204,12 +263,30 @@
       "chargingDC_10_80_min": 12,
       "chargingDC_kWh_30min": 68,
       "chargingCurve": [
-        { "soc": 0, "power": 250 },
-        { "soc": 10, "power": 400 },
-        { "soc": 30, "power": 380 },
-        { "soc": 50, "power": 280 },
-        { "soc": 80, "power": 80 },
-        { "soc": 100, "power": 12 }
+        {
+          "soc": 0,
+          "power": 250
+        },
+        {
+          "soc": 10,
+          "power": 400
+        },
+        {
+          "soc": 30,
+          "power": 380
+        },
+        {
+          "soc": 50,
+          "power": 280
+        },
+        {
+          "soc": 80,
+          "power": 80
+        },
+        {
+          "soc": 100,
+          "power": 12
+        }
       ],
       "availability": "available",
       "notes": "503 ch (370 kW), AWD, LFP 76.3 kWh, double motorisation"

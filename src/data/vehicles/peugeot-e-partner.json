@@ -50,11 +50,26 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 77 },
-    { "soc": 10, "power": 100 },
-    { "soc": 50, "power": 75 },
-    { "soc": 80, "power": 35 },
-    { "soc": 100, "power": 7 }
+    {
+      "soc": 0,
+      "power": 77
+    },
+    {
+      "soc": 10,
+      "power": 100
+    },
+    {
+      "soc": 50,
+      "power": 75
+    },
+    {
+      "soc": 80,
+      "power": 35
+    },
+    {
+      "soc": 100,
+      "power": 7
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -101,8 +116,14 @@
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Prime CEE VE",
-      "amount_EUR": 8100
+      "label": "Prime CEE",
+      "amount_EUR": 3500,
+      "conditions": "Aide de base (jusqu'à 5 700 € selon revenus) pour les véhicules éligibles de moins de 47 000 €."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 1200,
+      "conditions": "Supplément de 1 200 € à 2 000 € pour véhicule assemblé en Europe avec batterie européenne."
     }
   ],
   "configurations": [
@@ -131,11 +152,26 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 30,
       "chargingCurve": [
-        { "soc": 0, "power": 77 },
-        { "soc": 10, "power": 100 },
-        { "soc": 50, "power": 75 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 7 }
+        {
+          "soc": 0,
+          "power": 77
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 75
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "Fourgonnette L1, volume utile 3,3 m3."
@@ -165,11 +201,26 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 30,
       "chargingCurve": [
-        { "soc": 0, "power": 77 },
-        { "soc": 10, "power": 100 },
-        { "soc": 50, "power": 75 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 7 }
+        {
+          "soc": 0,
+          "power": 77
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 75
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "Fourgonnette L2, volume utile 3,9 m3."
@@ -183,10 +234,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "confort", "label": "Poste de conduite i-Cockpit avec volant compact" },
-    { "category": "technologie", "label": "Charge DC 100 kW pour complements rapides en tournee" },
-    { "category": "securite", "label": "Freinage automatique d'urgence et aide au maintien de voie" },
-    { "category": "design", "label": "Cloison de charge pleine hauteur et charge utile 800 kg" }
+    {
+      "category": "confort",
+      "label": "Poste de conduite i-Cockpit avec volant compact"
+    },
+    {
+      "category": "technologie",
+      "label": "Charge DC 100 kW pour complements rapides en tournee"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence et aide au maintien de voie"
+    },
+    {
+      "category": "design",
+      "label": "Cloison de charge pleine hauteur et charge utile 800 kg"
+    }
   ],
   "verdict": {
     "strengths": [

@@ -50,11 +50,26 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 60 },
-    { "soc": 10, "power": 80 },
-    { "soc": 50, "power": 65 },
-    { "soc": 80, "power": 30 },
-    { "soc": 100, "power": 6 }
+    {
+      "soc": 0,
+      "power": 60
+    },
+    {
+      "soc": 10,
+      "power": 80
+    },
+    {
+      "soc": 50,
+      "power": 65
+    },
+    {
+      "soc": 80,
+      "power": 30
+    },
+    {
+      "soc": 100,
+      "power": 6
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -116,11 +131,26 @@
       "chargingDC_10_80_min": 38,
       "chargingDC_kWh_30min": 27,
       "chargingCurve": [
-        { "soc": 0, "power": 60 },
-        { "soc": 10, "power": 80 },
-        { "soc": 50, "power": 65 },
-        { "soc": 80, "power": 30 },
-        { "soc": 100, "power": 6 }
+        {
+          "soc": 0,
+          "power": 60
+        },
+        {
+          "soc": 10,
+          "power": 80
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "Fourgonnette L1, batterie LFP 50 kWh."
@@ -150,11 +180,26 @@
       "chargingDC_10_80_min": 38,
       "chargingDC_kWh_30min": 27,
       "chargingCurve": [
-        { "soc": 0, "power": 60 },
-        { "soc": 10, "power": 80 },
-        { "soc": 50, "power": 65 },
-        { "soc": 80, "power": 30 },
-        { "soc": 100, "power": 6 }
+        {
+          "soc": 0,
+          "power": 60
+        },
+        {
+          "soc": 10,
+          "power": 80
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "Fourgonnette L2, volume utile 4,8 m3."
@@ -168,10 +213,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "confort", "label": "Poste de conduite ergonomique avec ecran 10 pouces" },
-    { "category": "technologie", "label": "Batterie LFP plus durable, optimisee pour la charge quotidienne" },
-    { "category": "securite", "label": "Freinage automatique d'urgence et alerte angle mort" },
-    { "category": "design", "label": "Charge utile 830 kg competitive dans le segment" }
+    {
+      "category": "confort",
+      "label": "Poste de conduite ergonomique avec ecran 10 pouces"
+    },
+    {
+      "category": "technologie",
+      "label": "Batterie LFP plus durable, optimisee pour la charge quotidienne"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence et alerte angle mort"
+    },
+    {
+      "category": "design",
+      "label": "Charge utile 830 kg competitive dans le segment"
+    }
   ],
   "verdict": {
     "strengths": [

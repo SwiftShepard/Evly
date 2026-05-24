@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 100 },
-    { "soc": 10, "power": 140 },
-    { "soc": 30, "power": 125 },
-    { "soc": 50, "power": 90 },
-    { "soc": 80, "power": 40 },
-    { "soc": 100, "power": 8 }
+    {
+      "soc": 0,
+      "power": 100
+    },
+    {
+      "soc": 10,
+      "power": 140
+    },
+    {
+      "soc": 30,
+      "power": 125
+    },
+    {
+      "soc": 50,
+      "power": 90
+    },
+    {
+      "soc": 80,
+      "power": 40
+    },
+    {
+      "soc": 100,
+      "power": 8
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -105,18 +123,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 415,
       "wltp_consumption_kWh_100km": 21,
-      "realRange": { "mixed_km": 315, "highway_130_km": 230, "urban_km": 395, "winter_minus5_km": 255, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 315,
+        "highway_130_km": 230,
+        "urban_km": 395,
+        "winter_minus5_km": 255,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 140,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 48,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 140 },
-        { "soc": 30, "power": 125 },
-        { "soc": 50, "power": 90 },
-        { "soc": 80, "power": 40 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 140
+        },
+        {
+          "soc": 30,
+          "power": 125
+        },
+        {
+          "soc": 50,
+          "power": 90
+        },
+        {
+          "soc": 80,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "upcoming",
       "notes": "653 ch (480 kW), AWD. Prix avec BaaS. Achat batterie : +12 000 euros"
@@ -134,18 +176,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 505,
       "wltp_consumption_kWh_100km": 21.5,
-      "realRange": { "mixed_km": 380, "highway_130_km": 280, "urban_km": 470, "winter_minus5_km": 305, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 380,
+        "highway_130_km": 280,
+        "urban_km": 470,
+        "winter_minus5_km": 305,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 140,
       "chargingDC_10_80_min": 35,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 140 },
-        { "soc": 30, "power": 125 },
-        { "soc": 50, "power": 90 },
-        { "soc": 80, "power": 40 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 140
+        },
+        {
+          "soc": 30,
+          "power": 125
+        },
+        {
+          "soc": 50,
+          "power": 90
+        },
+        {
+          "soc": 80,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "upcoming",
       "notes": "653 ch (480 kW), AWD. Prix avec BaaS. Achat batterie : +21 000 euros"
@@ -159,10 +225,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "design", "label": "Grande berline premium au Cx exceptionnel de 0,208" },
-    { "category": "technologie", "label": "Battery Swap et LiDAR Innovusion integre" },
-    { "category": "securite", "label": "NIO Pilot conduite autonome avancee" },
-    { "category": "confort", "label": "Audio Dolby Atmos 7.1.4 et sieges massants" }
+    {
+      "category": "design",
+      "label": "Grande berline premium au Cx exceptionnel de 0,208"
+    },
+    {
+      "category": "technologie",
+      "label": "Battery Swap et LiDAR Innovusion integre"
+    },
+    {
+      "category": "securite",
+      "label": "NIO Pilot conduite autonome avancee"
+    },
+    {
+      "category": "confort",
+      "label": "Audio Dolby Atmos 7.1.4 et sieges massants"
+    }
   ],
   "verdict": {
     "strengths": [
@@ -177,6 +255,9 @@
     "notIdealFor": "Acheteurs en France ou cherchant un vehicule avec SAV local etabli."
   },
   "lastUpdated": "2026-05-19",
-  "sources": ["constructeur", "ev-database"],
+  "sources": [
+    "constructeur",
+    "ev-database"
+  ],
   "imageCredit": "Constructeur"
 }

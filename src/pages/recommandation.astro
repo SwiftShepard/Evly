@@ -1,21 +1,24 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import ComingSoon from "@/components/ui/ComingSoon.astro";
+import StrategicMatcher from "@/components/matcher/StrategicMatcher.tsx";
+import { getAllVehicles } from "@/lib/vehicles";
+
+const vehicles = getAllVehicles();
 ---
 
 <BaseLayout
-  title="Recommandation, Evly"
-  description="Questionnaire guidé pour identifier les véhicules électriques les plus pertinents selon votre profil d'usage. En cours de développement."
+  title="Recommandation & Matcher Stratégique | Evly"
+  description="Identifiez le véhicule électrique idéal adapté à votre budget, vos trajets réels, vos modes de recharge et votre éligibilité aux aides d'État."
 >
-  <ComingSoon
-    number="05"
-    eyebrow="Recommandation"
-    title="Six questions, trois véhicules."
-    description="Un questionnaire court et précis : votre kilométrage, vos contraintes de recharge, votre budget mensuel, votre tolérance à l'autoroute. En sortie, trois véhicules classés par adéquation, avec une note expliquée, pas un score boîte noire."
-    features={[
-      "Six étapes maximum, une question par écran, navigation au clavier intégrale",
-      "Algorithme de scoring pondéré explicite, chaque critère consultable et modifiable",
-      "Résultat partageable par lien, sans tracking ni création de compte",
-    ]}
-  />
+  <div class="container-edit py-6 md:py-10">
+    <div class="flex items-center gap-4 mb-6 fade-rise">
+      <span class="font-mono text-xs text-[var(--color-text-faint)]">05</span>
+      <span class="label-eyebrow">Recommandation</span>
+    </div>
+    
+    <div class="fade-rise fade-rise-delay-1">
+      <StrategicMatcher client:load vehicles={vehicles} />
+    </div>
+  </div>
 </BaseLayout>
+

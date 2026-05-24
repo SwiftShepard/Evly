@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 85 },
-    { "soc": 10, "power": 130 },
-    { "soc": 30, "power": 115 },
-    { "soc": 50, "power": 80 },
-    { "soc": 80, "power": 35 },
-    { "soc": 100, "power": 7 }
+    {
+      "soc": 0,
+      "power": 85
+    },
+    {
+      "soc": 10,
+      "power": 130
+    },
+    {
+      "soc": 30,
+      "power": 115
+    },
+    {
+      "soc": 50,
+      "power": 80
+    },
+    {
+      "soc": 80,
+      "power": 35
+    },
+    {
+      "soc": 100,
+      "power": 7
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -92,8 +110,14 @@
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Prime CEE VE",
-      "amount_EUR": 8100
+      "label": "Prime CEE",
+      "amount_EUR": 3500,
+      "conditions": "Aide de base (jusqu'à 5 700 € selon revenus) pour les véhicules éligibles de moins de 47 000 €."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 1200,
+      "conditions": "Supplément de 1 200 € à 2 000 € pour véhicule assemblé en Europe avec batterie européenne."
     }
   ],
   "configurations": [
@@ -110,18 +134,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 475,
       "wltp_consumption_kWh_100km": 16,
-      "realRange": { "mixed_km": 345, "highway_130_km": 250, "urban_km": 425, "winter_minus5_km": 275, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 345,
+        "highway_130_km": 250,
+        "urban_km": 425,
+        "winter_minus5_km": 275,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 130,
       "chargingDC_10_80_min": 29,
       "chargingDC_kWh_30min": 40,
       "chargingCurve": [
-        { "soc": 0, "power": 85 },
-        { "soc": 10, "power": 130 },
-        { "soc": 30, "power": 115 },
-        { "soc": 50, "power": 80 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 7 }
+        {
+          "soc": 0,
+          "power": 85
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 30,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "204 ch (150 kW), FWD"
@@ -139,18 +187,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 440,
       "wltp_consumption_kWh_100km": 17,
-      "realRange": { "mixed_km": 325, "highway_130_km": 235, "urban_km": 400, "winter_minus5_km": 260, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 325,
+        "highway_130_km": 235,
+        "urban_km": 400,
+        "winter_minus5_km": 260,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 130,
       "chargingDC_10_80_min": 29,
       "chargingDC_kWh_30min": 40,
       "chargingCurve": [
-        { "soc": 0, "power": 85 },
-        { "soc": 10, "power": 130 },
-        { "soc": 30, "power": 115 },
-        { "soc": 50, "power": 80 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 7 }
+        {
+          "soc": 0,
+          "power": 85
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 30,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "313 ch (230 kW), AWD xDrive"
@@ -164,10 +236,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "design", "label": "SUV compact premium au design BMW dynamique" },
-    { "category": "technologie", "label": "BMW iDrive 9 et ecran courbe 10,7 pouces" },
-    { "category": "securite", "label": "Freinage automatique et parking automatique" },
-    { "category": "confort", "label": "Coffre genereux (490 L) et modularite" }
+    {
+      "category": "design",
+      "label": "SUV compact premium au design BMW dynamique"
+    },
+    {
+      "category": "technologie",
+      "label": "BMW iDrive 9 et ecran courbe 10,7 pouces"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique et parking automatique"
+    },
+    {
+      "category": "confort",
+      "label": "Coffre genereux (490 L) et modularite"
+    }
   ],
   "verdict": {
     "strengths": [
@@ -182,6 +266,9 @@
     "notIdealFor": "Gros rouleurs cherchant grande autonomie ou charge ultra-rapide."
   },
   "lastUpdated": "2026-05-20",
-  "sources": ["constructeur", "automobile-propre"],
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
   "imageCredit": "Constructeur"
 }

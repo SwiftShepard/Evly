@@ -212,11 +212,26 @@
       "chargingDC_10_80_min": 35,
       "chargingDC_kWh_30min": 50,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 130 },
-        { "soc": 50, "power": 100 },
-        { "soc": 80, "power": 50 },
-        { "soc": 100, "power": 10 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
       ],
       "availability": "available",
       "notes": null
@@ -246,11 +261,26 @@
       "chargingDC_10_80_min": 35,
       "chargingDC_kWh_30min": 50,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 130 },
-        { "soc": 50, "power": 100 },
-        { "soc": 80, "power": 50 },
-        { "soc": 100, "power": 10 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
       ],
       "availability": "available",
       "notes": null
@@ -280,11 +310,26 @@
       "chargingDC_10_80_min": 35,
       "chargingDC_kWh_30min": 50,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 130 },
-        { "soc": 50, "power": 100 },
-        { "soc": 80, "power": 50 },
-        { "soc": 100, "power": 10 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
       ],
       "availability": "available",
       "notes": "Jantes 20\" reduisent l'autonomie"

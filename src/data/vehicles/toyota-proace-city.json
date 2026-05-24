@@ -50,11 +50,26 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0,   "power": 77 },
-    { "soc": 10,  "power": 100 },
-    { "soc": 50,  "power": 77 },
-    { "soc": 80,  "power": 38 },
-    { "soc": 100, "power": 8 }
+    {
+      "soc": 0,
+      "power": 77
+    },
+    {
+      "soc": 10,
+      "power": 100
+    },
+    {
+      "soc": 50,
+      "power": 77
+    },
+    {
+      "soc": 80,
+      "power": 38
+    },
+    {
+      "soc": 100,
+      "power": 8
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -101,8 +116,14 @@
   "leasingSocial_EUR_per_month": 179,
   "availableAids": [
     {
-      "label": "Prime CEE VE",
-      "amount_EUR": 8100
+      "label": "Prime CEE",
+      "amount_EUR": 3500,
+      "conditions": "Aide de base (jusqu'à 5 700 € selon revenus) pour les véhicules éligibles de moins de 47 000 €."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 1200,
+      "conditions": "Supplément de 1 200 € à 2 000 € pour véhicule assemblé en Europe avec batterie européenne."
     }
   ],
   "configurations": [
@@ -119,17 +140,38 @@
       "leasingSocialEligible": true,
       "wltp_km": 330,
       "wltp_consumption_kWh_100km": 17,
-      "realRange": { "mixed_km": 250, "highway_130_km": 160, "urban_km": 320, "winter_minus5_km": 195, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 250,
+        "highway_130_km": 160,
+        "urban_km": 320,
+        "winter_minus5_km": 195,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 30,
       "chargingCurve": [
-        { "soc": 0,   "power": 77 },
-        { "soc": 10,  "power": 100 },
-        { "soc": 50,  "power": 77 },
-        { "soc": 80,  "power": 38 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 77
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 77
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "136 ch (100 kW), FWD, taille M"
@@ -147,17 +189,38 @@
       "leasingSocialEligible": true,
       "wltp_km": 330,
       "wltp_consumption_kWh_100km": 17,
-      "realRange": { "mixed_km": 250, "highway_130_km": 160, "urban_km": 320, "winter_minus5_km": 195, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 250,
+        "highway_130_km": 160,
+        "urban_km": 320,
+        "winter_minus5_km": 195,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 30,
       "chargingCurve": [
-        { "soc": 0,   "power": 77 },
-        { "soc": 10,  "power": 100 },
-        { "soc": 50,  "power": 77 },
-        { "soc": 80,  "power": 38 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 77
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 77
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "136 ch (100 kW), FWD, taille M"
@@ -175,17 +238,38 @@
       "leasingSocialEligible": false,
       "wltp_km": 330,
       "wltp_consumption_kWh_100km": 17,
-      "realRange": { "mixed_km": 250, "highway_130_km": 160, "urban_km": 320, "winter_minus5_km": 195, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 250,
+        "highway_130_km": 160,
+        "urban_km": 320,
+        "winter_minus5_km": 195,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 30,
       "chargingCurve": [
-        { "soc": 0,   "power": 77 },
-        { "soc": 10,  "power": 100 },
-        { "soc": 50,  "power": 77 },
-        { "soc": 80,  "power": 38 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 77
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 77
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "136 ch (100 kW), FWD, taille M"
@@ -199,10 +283,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "confort", "label": "Portes coulissantes, habitabilite de reference" },
-    { "category": "technologie", "label": "Toyota Safety Sense de serie" },
-    { "category": "securite", "label": "Freinage automatique d'urgence, alerte franchissement de ligne" },
-    { "category": "design", "label": "Ludospace compact, version L jusqu'a 7 places" }
+    {
+      "category": "confort",
+      "label": "Portes coulissantes, habitabilite de reference"
+    },
+    {
+      "category": "technologie",
+      "label": "Toyota Safety Sense de serie"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence, alerte franchissement de ligne"
+    },
+    {
+      "category": "design",
+      "label": "Ludospace compact, version L jusqu'a 7 places"
+    }
   ],
   "verdict": {
     "strengths": [
@@ -217,6 +313,8 @@
     "notIdealFor": "Gros rouleurs autoroutiers ou amateurs de conduite sportive."
   },
   "lastUpdated": "2026-05-20",
-  "sources": ["constructeur"],
+  "sources": [
+    "constructeur"
+  ],
   "imageCredit": "Constructeur"
 }

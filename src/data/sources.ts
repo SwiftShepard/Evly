@@ -138,7 +138,7 @@ export const SOURCES: Record<string, Source> = {
     type: "regulatory",
     url: "https://www.service-public.fr",
     description:
-      "Source réglementaire officielle pour les dispositifs d'aide à l'achat (bonus écologique, prime à la conversion, leasing social).",
+      "Source réglementaire officielle pour les dispositifs d'aide à l'achat (Prime CEE, prime à la conversion, leasing social).",
     protocolUrl: null,
     trustLevel: "high",
   },

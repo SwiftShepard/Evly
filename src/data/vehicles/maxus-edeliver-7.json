@@ -14,7 +14,7 @@
   "torque_Nm": 350,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 12.0,
+  "acceleration_0_100_s": 12,
   "topSpeed_kmh": 140,
   "usableCapacity_kWh": 88,
   "grossCapacity_kWh": 92,
@@ -50,13 +50,34 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 85 },
-    { "soc": 10, "power": 115 },
-    { "soc": 30, "power": 105 },
-    { "soc": 50, "power": 75 },
-    { "soc": 70, "power": 45 },
-    { "soc": 80, "power": 28 },
-    { "soc": 100, "power": 7 }
+    {
+      "soc": 0,
+      "power": 85
+    },
+    {
+      "soc": 10,
+      "power": 115
+    },
+    {
+      "soc": 30,
+      "power": 105
+    },
+    {
+      "soc": 50,
+      "power": 75
+    },
+    {
+      "soc": 70,
+      "power": 45
+    },
+    {
+      "soc": 80,
+      "power": 28
+    },
+    {
+      "soc": 100,
+      "power": 7
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -128,11 +149,26 @@
       "chargingDC_10_80_min": 35,
       "chargingDC_kWh_30min": 40,
       "chargingCurve": [
-        { "soc": 0, "power": 85 },
-        { "soc": 10, "power": 115 },
-        { "soc": 50, "power": 75 },
-        { "soc": 80, "power": 28 },
-        { "soc": 100, "power": 7 }
+        {
+          "soc": 0,
+          "power": 85
+        },
+        {
+          "soc": 10,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 75
+        },
+        {
+          "soc": 80,
+          "power": 28
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "Fourgon L1, batterie LFP 77 kWh."
@@ -162,11 +198,26 @@
       "chargingDC_10_80_min": 40,
       "chargingDC_kWh_30min": 45,
       "chargingCurve": [
-        { "soc": 0, "power": 85 },
-        { "soc": 10, "power": 115 },
-        { "soc": 50, "power": 75 },
-        { "soc": 80, "power": 28 },
-        { "soc": 100, "power": 7 }
+        {
+          "soc": 0,
+          "power": 85
+        },
+        {
+          "soc": 10,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 75
+        },
+        {
+          "soc": 80,
+          "power": 28
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "Fourgon L1, grande autonomie 88 kWh, V2L de serie."
@@ -180,10 +231,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "confort", "label": "Cabine spacieuse avec ecran 12 pouces et camera 360" },
-    { "category": "technologie", "label": "V2L prise 230V pour alimenter outils et equipements" },
-    { "category": "securite", "label": "Freinage automatique d'urgence et detection pietons" },
-    { "category": "design", "label": "Charge utile 1100 kg, competitive face aux europeens" }
+    {
+      "category": "confort",
+      "label": "Cabine spacieuse avec ecran 12 pouces et camera 360"
+    },
+    {
+      "category": "technologie",
+      "label": "V2L prise 230V pour alimenter outils et equipements"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence et detection pietons"
+    },
+    {
+      "category": "design",
+      "label": "Charge utile 1100 kg, competitive face aux europeens"
+    }
   ],
   "verdict": {
     "strengths": [

@@ -50,11 +50,26 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 62 },
-    { "soc": 10, "power": 80 },
-    { "soc": 50, "power": 62 },
-    { "soc": 80, "power": 31 },
-    { "soc": 100, "power": 6 }
+    {
+      "soc": 0,
+      "power": 62
+    },
+    {
+      "soc": 10,
+      "power": 80
+    },
+    {
+      "soc": 50,
+      "power": 62
+    },
+    {
+      "soc": 80,
+      "power": 31
+    },
+    {
+      "soc": 100,
+      "power": 6
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -82,8 +97,14 @@
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Prime CEE VE",
-      "amount_EUR": 8100
+      "label": "Prime CEE",
+      "amount_EUR": 3500,
+      "conditions": "Aide de base (jusqu'à 5 700 € selon revenus) pour les véhicules éligibles de moins de 47 000 €."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 1200,
+      "conditions": "Supplément de 1 200 € à 2 000 € pour véhicule assemblé en Europe avec batterie européenne."
     }
   ],
   "configurations": [
@@ -112,11 +133,26 @@
       "chargingDC_10_80_min": 37,
       "chargingDC_kWh_30min": 27,
       "chargingCurve": [
-        { "soc": 0, "power": 62 },
-        { "soc": 10, "power": 80 },
-        { "soc": 50, "power": 62 },
-        { "soc": 80, "power": 31 },
-        { "soc": 100, "power": 6 }
+        {
+          "soc": 0,
+          "power": 62
+        },
+        {
+          "soc": 10,
+          "power": 80
+        },
+        {
+          "soc": 50,
+          "power": 62
+        },
+        {
+          "soc": 80,
+          "power": 31
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "122 ch (90 kW). Charge AC 22 kW tri. 7 places."
@@ -130,10 +166,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "confort", "label": "7 places modulables avec sieges amovibles" },
-    { "category": "technologie", "label": "OpenR Link avec Google integre" },
-    { "category": "securite", "label": "Freinage automatique d'urgence" },
-    { "category": "design", "label": "Portes laterales coulissantes, empattement long" }
+    {
+      "category": "confort",
+      "label": "7 places modulables avec sieges amovibles"
+    },
+    {
+      "category": "technologie",
+      "label": "OpenR Link avec Google integre"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence"
+    },
+    {
+      "category": "design",
+      "label": "Portes laterales coulissantes, empattement long"
+    }
   ],
   "verdict": {
     "strengths": [

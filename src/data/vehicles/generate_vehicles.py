@@ -79,7 +79,7 @@ def base_vehicle(slug, brand, model):
         "trims": [],
         "leasingSocialEligible": False,
         "leasingSocial_EUR_per_month": None,
-        "availableAids": [{"label": "Bonus Écologique", "amount_EUR": 4000}],
+        "availableAids": [{"label": "Prime CEE", "amount_EUR": 3500}, {"label": "Majoration Batterie Européenne", "amount_EUR": 1200}],
         "configurations": [],
         "warranty": {
             "vehicle_years": 5,

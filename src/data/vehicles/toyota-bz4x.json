@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 100 },
-    { "soc": 10, "power": 150 },
-    { "soc": 30, "power": 130 },
-    { "soc": 50, "power": 90 },
-    { "soc": 80, "power": 40 },
-    { "soc": 100, "power": 8 }
+    {
+      "soc": 0,
+      "power": 100
+    },
+    {
+      "soc": 10,
+      "power": 150
+    },
+    {
+      "soc": 30,
+      "power": 130
+    },
+    {
+      "soc": 50,
+      "power": 90
+    },
+    {
+      "soc": 80,
+      "power": 40
+    },
+    {
+      "soc": 100,
+      "power": 8
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -125,18 +143,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 444,
       "wltp_consumption_kWh_100km": 15,
-      "realRange": { "mixed_km": 340, "highway_130_km": 245, "urban_km": 415, "winter_minus5_km": 270, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 340,
+        "highway_130_km": 245,
+        "urban_km": 415,
+        "winter_minus5_km": 270,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 150,
       "chargingDC_10_80_min": 24,
       "chargingDC_kWh_30min": 42,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 150 },
-        { "soc": 30, "power": 130 },
-        { "soc": 50, "power": 85 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 7 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 150
+        },
+        {
+          "soc": 30,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 85
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "167 ch (123 kW), FWD"
@@ -154,18 +196,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 569,
       "wltp_consumption_kWh_100km": 14.5,
-      "realRange": { "mixed_km": 420, "highway_130_km": 305, "urban_km": 515, "winter_minus5_km": 335, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 420,
+        "highway_130_km": 305,
+        "urban_km": 515,
+        "winter_minus5_km": 335,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 150,
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 50,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 150 },
-        { "soc": 30, "power": 130 },
-        { "soc": 50, "power": 90 },
-        { "soc": 80, "power": 40 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 150
+        },
+        {
+          "soc": 30,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 90
+        },
+        {
+          "soc": 80,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "224 ch (165 kW), FWD"
@@ -183,18 +249,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 550,
       "wltp_consumption_kWh_100km": 15,
-      "realRange": { "mixed_km": 410, "highway_130_km": 295, "urban_km": 500, "winter_minus5_km": 325, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 410,
+        "highway_130_km": 295,
+        "urban_km": 500,
+        "winter_minus5_km": 325,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 150,
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 50,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 150 },
-        { "soc": 30, "power": 130 },
-        { "soc": 50, "power": 90 },
-        { "soc": 80, "power": 40 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 150
+        },
+        {
+          "soc": 30,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 90
+        },
+        {
+          "soc": 80,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "224 ch (165 kW), FWD, full options"
@@ -212,18 +302,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 516,
       "wltp_consumption_kWh_100km": 16,
-      "realRange": { "mixed_km": 385, "highway_130_km": 280, "urban_km": 475, "winter_minus5_km": 310, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 385,
+        "highway_130_km": 280,
+        "urban_km": 475,
+        "winter_minus5_km": 310,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 150,
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 50,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 150 },
-        { "soc": 30, "power": 130 },
-        { "soc": 50, "power": 90 },
-        { "soc": 80, "power": 40 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 150
+        },
+        {
+          "soc": 30,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 90
+        },
+        {
+          "soc": 80,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "343 ch (252 kW), AWD, X-MODE"
@@ -237,10 +351,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "design", "label": "SUV familial au design robuste et tout-terrain" },
-    { "category": "technologie", "label": "Ecran 14 pouces et Toyota Safety Sense 3.0" },
-    { "category": "securite", "label": "X-MODE tout-terrain et freinage automatique" },
-    { "category": "confort", "label": "Garantie 10 ans vehicule et fiabilite Toyota" }
+    {
+      "category": "design",
+      "label": "SUV familial au design robuste et tout-terrain"
+    },
+    {
+      "category": "technologie",
+      "label": "Ecran 14 pouces et Toyota Safety Sense 3.0"
+    },
+    {
+      "category": "securite",
+      "label": "X-MODE tout-terrain et freinage automatique"
+    },
+    {
+      "category": "confort",
+      "label": "Garantie 10 ans vehicule et fiabilite Toyota"
+    }
   ],
   "verdict": {
     "strengths": [
@@ -255,6 +381,9 @@
     "notIdealFor": "Acheteurs cherchant la charge ultra-rapide ou les aides a l'achat."
   },
   "lastUpdated": "2026-05-20",
-  "sources": ["constructeur", "automobile-propre"],
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
   "imageCredit": "Constructeur"
 }

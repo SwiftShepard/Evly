@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 110 },
-    { "soc": 10, "power": 153 },
-    { "soc": 30, "power": 140 },
-    { "soc": 50, "power": 100 },
-    { "soc": 80, "power": 45 },
-    { "soc": 100, "power": 8 }
+    {
+      "soc": 0,
+      "power": 110
+    },
+    {
+      "soc": 10,
+      "power": 153
+    },
+    {
+      "soc": 30,
+      "power": 140
+    },
+    {
+      "soc": 50,
+      "power": 100
+    },
+    {
+      "soc": 80,
+      "power": 45
+    },
+    {
+      "soc": 100,
+      "power": 8
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -124,17 +142,38 @@
       "leasingSocialEligible": false,
       "wltp_km": 337,
       "wltp_consumption_kWh_100km": 16.7,
-      "realRange": { "mixed_km": 270, "highway_130_km": 185, "urban_km": 340, "winter_minus5_km": 210, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 270,
+        "highway_130_km": 185,
+        "urban_km": 340,
+        "winter_minus5_km": 210,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 134,
       "chargingDC_10_80_min": 25,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        { "soc": 0, "power": 95 },
-        { "soc": 10, "power": 134 },
-        { "soc": 50, "power": 90 },
-        { "soc": 80, "power": 40 },
-        { "soc": 100, "power": 7 }
+        {
+          "soc": 0,
+          "power": 95
+        },
+        {
+          "soc": 10,
+          "power": 134
+        },
+        {
+          "soc": 50,
+          "power": 90
+        },
+        {
+          "soc": 80,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "204 ch (150 kW), RWD, batterie LFP 51 kWh"
@@ -152,18 +191,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 476,
       "wltp_consumption_kWh_100km": 15.7,
-      "realRange": { "mixed_km": 370, "highway_130_km": 260, "urban_km": 450, "winter_minus5_km": 290, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 370,
+        "highway_130_km": 260,
+        "urban_km": 450,
+        "winter_minus5_km": 290,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 153,
       "chargingDC_10_80_min": 26,
       "chargingDC_kWh_30min": 45,
       "chargingCurve": [
-        { "soc": 0, "power": 110 },
-        { "soc": 10, "power": 153 },
-        { "soc": 30, "power": 140 },
-        { "soc": 50, "power": 100 },
-        { "soc": 80, "power": 45 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 110
+        },
+        {
+          "soc": 10,
+          "power": 153
+        },
+        {
+          "soc": 30,
+          "power": 140
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "272 ch (200 kW), RWD"
@@ -181,18 +244,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 400,
       "wltp_consumption_kWh_100km": 18.8,
-      "realRange": { "mixed_km": 320, "highway_130_km": 230, "urban_km": 400, "winter_minus5_km": 260, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 320,
+        "highway_130_km": 230,
+        "urban_km": 400,
+        "winter_minus5_km": 260,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 153,
       "chargingDC_10_80_min": 26,
       "chargingDC_kWh_30min": 45,
       "chargingCurve": [
-        { "soc": 0, "power": 110 },
-        { "soc": 10, "power": 153 },
-        { "soc": 30, "power": 140 },
-        { "soc": 50, "power": 100 },
-        { "soc": 80, "power": 45 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 110
+        },
+        {
+          "soc": 10,
+          "power": 153
+        },
+        {
+          "soc": 30,
+          "power": 140
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "428 ch (315 kW), AWD"
@@ -210,18 +297,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 460,
       "wltp_consumption_kWh_100km": 16.1,
-      "realRange": { "mixed_km": 355, "highway_130_km": 250, "urban_km": 435, "winter_minus5_km": 280, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 355,
+        "highway_130_km": 250,
+        "urban_km": 435,
+        "winter_minus5_km": 280,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 153,
       "chargingDC_10_80_min": 26,
       "chargingDC_kWh_30min": 45,
       "chargingCurve": [
-        { "soc": 0, "power": 110 },
-        { "soc": 10, "power": 153 },
-        { "soc": 30, "power": 140 },
-        { "soc": 50, "power": 100 },
-        { "soc": 80, "power": 45 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 110
+        },
+        {
+          "soc": 10,
+          "power": 153
+        },
+        {
+          "soc": 30,
+          "power": 140
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "272 ch (200 kW), RWD, full options"
@@ -235,10 +346,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "design", "label": "Design compact et moderne, gabarit reduit" },
-    { "category": "technologie", "label": "Ecran 12,3 pouces Google et Harman Kardon" },
-    { "category": "securite", "label": "Freinage automatique et aide au stationnement" },
-    { "category": "confort", "label": "Interieur en materiaux recycles premium" }
+    {
+      "category": "design",
+      "label": "Design compact et moderne, gabarit reduit"
+    },
+    {
+      "category": "technologie",
+      "label": "Ecran 12,3 pouces Google et Harman Kardon"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique et aide au stationnement"
+    },
+    {
+      "category": "confort",
+      "label": "Interieur en materiaux recycles premium"
+    }
   ],
   "verdict": {
     "strengths": [
@@ -253,6 +376,8 @@
     "notIdealFor": "Familles nombreuses ou acheteurs comptant sur les aides francaises."
   },
   "lastUpdated": "2026-05-19",
-  "sources": ["la-chaine-ev"],
+  "sources": [
+    "la-chaine-ev"
+  ],
   "imageCredit": "Constructeur"
 }

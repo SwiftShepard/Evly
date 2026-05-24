@@ -153,8 +153,14 @@
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Prime CEE VE",
-      "amount_EUR": 8100
+      "label": "Prime CEE",
+      "amount_EUR": 3500,
+      "conditions": "Aide de base (jusqu'à 5 700 € selon revenus) pour les véhicules éligibles de moins de 47 000 €."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 1200,
+      "conditions": "Supplément de 1 200 € à 2 000 € pour véhicule assemblé en Europe avec batterie européenne."
     }
   ],
   "configurations": [
@@ -171,10 +177,39 @@
       "leasingSocialEligible": false,
       "wltp_km": 420,
       "wltp_consumption_kWh_100km": 16.3,
-      "realRange": { "mixed_km": 350, "highway_130_km": 240, "urban_km": 430, "winter_minus5_km": 275, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 350,
+        "highway_130_km": 240,
+        "urban_km": 430,
+        "winter_minus5_km": 275,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
-      "chargingDC_peak_kW": 130, "chargingDC_10_80_min": 30, "chargingDC_kWh_30min": 42,
-      "chargingCurve": [ { "soc": 0, "power": 95 }, { "soc": 10, "power": 130 }, { "soc": 50, "power": 95 }, { "soc": 80, "power": 45 }, { "soc": 100, "power": 10 } ],
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 95
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 95
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
       "availability": "available",
       "notes": "170 ch (125 kW)"
     },
@@ -191,13 +226,66 @@
       "leasingSocialEligible": false,
       "wltp_km": 625,
       "wltp_consumption_kWh_100km": 15,
-      "realRange": { "mixed_km": 490, "highway_130_km": 355, "urban_km": 580, "winter_minus5_km": 380, "confidence": "bjorn_nyland" },
+      "realRange": {
+        "mixed_km": 490,
+        "highway_130_km": 355,
+        "urban_km": 580,
+        "winter_minus5_km": 380,
+        "confidence": "bjorn_nyland"
+      },
       "rangeTests": [
-        { "sourceId": "nyland", "testDate": "2023-09", "speed_kmh": 90, "range_km": 562, "consumption_kWh_100km": 15.5, "temperature_C": 18, "wheelSize_inches": 19, "tyreModel": null, "protocol": "nyland", "videoUrl": null, "notes": "Scenic E-Tech 87 kWh. Tres bon a 90." },
-        { "sourceId": "nyland", "testDate": "2023-09", "speed_kmh": 120, "range_km": 390, "consumption_kWh_100km": 22.3, "temperature_C": 18, "wheelSize_inches": 19, "tyreModel": null, "protocol": "nyland", "videoUrl": null, "notes": "Consommation plus elevee a haute vitesse." }
+        {
+          "sourceId": "nyland",
+          "testDate": "2023-09",
+          "speed_kmh": 90,
+          "range_km": 562,
+          "consumption_kWh_100km": 15.5,
+          "temperature_C": 18,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Scenic E-Tech 87 kWh. Tres bon a 90."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": "2023-09",
+          "speed_kmh": 120,
+          "range_km": 390,
+          "consumption_kWh_100km": 22.3,
+          "temperature_C": 18,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Consommation plus elevee a haute vitesse."
+        }
       ],
-      "chargingDC_peak_kW": 150, "chargingDC_10_80_min": 37, "chargingDC_kWh_30min": 55,
-      "chargingCurve": [ { "soc": 0, "power": 100 }, { "soc": 10, "power": 130 }, { "soc": 50, "power": 100 }, { "soc": 80, "power": 50 }, { "soc": 100, "power": 10 } ],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 37,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
       "availability": "available",
       "notes": "220 ch (160 kW)"
     },
@@ -214,13 +302,66 @@
       "leasingSocialEligible": false,
       "wltp_km": 610,
       "wltp_consumption_kWh_100km": 15.5,
-      "realRange": { "mixed_km": 480, "highway_130_km": 345, "urban_km": 570, "winter_minus5_km": 370, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 480,
+        "highway_130_km": 345,
+        "urban_km": 570,
+        "winter_minus5_km": 370,
+        "confidence": "estimated"
+      },
       "rangeTests": [
-        { "sourceId": "nyland", "testDate": "2023-09", "speed_kmh": 90, "range_km": 562, "consumption_kWh_100km": 15.5, "temperature_C": 18, "wheelSize_inches": 19, "tyreModel": null, "protocol": "nyland", "videoUrl": null, "notes": "Scenic E-Tech 87 kWh. Tres bon a 90." },
-        { "sourceId": "nyland", "testDate": "2023-09", "speed_kmh": 120, "range_km": 390, "consumption_kWh_100km": 22.3, "temperature_C": 18, "wheelSize_inches": 19, "tyreModel": null, "protocol": "nyland", "videoUrl": null, "notes": "Consommation plus elevee a haute vitesse." }
+        {
+          "sourceId": "nyland",
+          "testDate": "2023-09",
+          "speed_kmh": 90,
+          "range_km": 562,
+          "consumption_kWh_100km": 15.5,
+          "temperature_C": 18,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Scenic E-Tech 87 kWh. Tres bon a 90."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": "2023-09",
+          "speed_kmh": 120,
+          "range_km": 390,
+          "consumption_kWh_100km": 22.3,
+          "temperature_C": 18,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Consommation plus elevee a haute vitesse."
+        }
       ],
-      "chargingDC_peak_kW": 150, "chargingDC_10_80_min": 37, "chargingDC_kWh_30min": 55,
-      "chargingCurve": [ { "soc": 0, "power": 100 }, { "soc": 10, "power": 130 }, { "soc": 50, "power": 100 }, { "soc": 80, "power": 50 }, { "soc": 100, "power": 10 } ],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 37,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
       "availability": "available",
       "notes": "220 ch (160 kW), jantes 20 pouces"
     },
@@ -237,13 +378,66 @@
       "leasingSocialEligible": false,
       "wltp_km": 610,
       "wltp_consumption_kWh_100km": 15.5,
-      "realRange": { "mixed_km": 480, "highway_130_km": 345, "urban_km": 570, "winter_minus5_km": 370, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 480,
+        "highway_130_km": 345,
+        "urban_km": 570,
+        "winter_minus5_km": 370,
+        "confidence": "estimated"
+      },
       "rangeTests": [
-        { "sourceId": "nyland", "testDate": "2023-09", "speed_kmh": 90, "range_km": 562, "consumption_kWh_100km": 15.5, "temperature_C": 18, "wheelSize_inches": 19, "tyreModel": null, "protocol": "nyland", "videoUrl": null, "notes": "Scenic E-Tech 87 kWh. Tres bon a 90." },
-        { "sourceId": "nyland", "testDate": "2023-09", "speed_kmh": 120, "range_km": 390, "consumption_kWh_100km": 22.3, "temperature_C": 18, "wheelSize_inches": 19, "tyreModel": null, "protocol": "nyland", "videoUrl": null, "notes": "Consommation plus elevee a haute vitesse." }
+        {
+          "sourceId": "nyland",
+          "testDate": "2023-09",
+          "speed_kmh": 90,
+          "range_km": 562,
+          "consumption_kWh_100km": 15.5,
+          "temperature_C": 18,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Scenic E-Tech 87 kWh. Tres bon a 90."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": "2023-09",
+          "speed_kmh": 120,
+          "range_km": 390,
+          "consumption_kWh_100km": 22.3,
+          "temperature_C": 18,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Consommation plus elevee a haute vitesse."
+        }
       ],
-      "chargingDC_peak_kW": 150, "chargingDC_10_80_min": 37, "chargingDC_kWh_30min": 55,
-      "chargingCurve": [ { "soc": 0, "power": 100 }, { "soc": 10, "power": 130 }, { "soc": 50, "power": 100 }, { "soc": 80, "power": 50 }, { "soc": 100, "power": 10 } ],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 37,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
       "availability": "available",
       "notes": "220 ch (160 kW), full options"
     }

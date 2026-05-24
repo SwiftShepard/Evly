@@ -31,7 +31,7 @@
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 15.8,
-  "consumption_highway_kWh_per_100km": 22.0,
+  "consumption_highway_kWh_per_100km": 22,
   "consumption_winter_kWh_per_100km": 19.5,
   "dragCoefficient_Cx": 0.33,
   "chargingDC": {
@@ -50,12 +50,30 @@
   "v2g": true,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 50 },
-    { "soc": 10, "power": 100 },
-    { "soc": 30, "power": 90 },
-    { "soc": 50, "power": 75 },
-    { "soc": 80, "power": 35 },
-    { "soc": 100, "power": 6 }
+    {
+      "soc": 0,
+      "power": 50
+    },
+    {
+      "soc": 10,
+      "power": 100
+    },
+    {
+      "soc": 30,
+      "power": 90
+    },
+    {
+      "soc": 50,
+      "power": 75
+    },
+    {
+      "soc": 80,
+      "power": 35
+    },
+    {
+      "soc": 100,
+      "power": 6
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -69,7 +87,7 @@
   "trims": [
     {
       "name": "GT",
-      "price_EUR": 34470,
+      "price_EUR": 39300,
       "batteryUsed": "52 kWh",
       "equipmentHighlights": [
         "Moteur 180 ch (130 kW) / 285 Nm",
@@ -80,7 +98,7 @@
     },
     {
       "name": "GT Premium",
-      "price_EUR": 37900,
+      "price_EUR": 41900,
       "batteryUsed": "52 kWh",
       "equipmentHighlights": [
         "Toit noir biton de série",
@@ -91,7 +109,7 @@
     },
     {
       "name": "GT Performance",
-      "price_EUR": 38900,
+      "price_EUR": 41700,
       "batteryUsed": "52 kWh",
       "equipmentHighlights": [
         "Moteur 220 ch (162 kW) / 300 Nm",
@@ -102,7 +120,7 @@
     },
     {
       "name": "GTS",
-      "price_EUR": 41900,
+      "price_EUR": 44700,
       "batteryUsed": "52 kWh",
       "equipmentHighlights": [
         "Combinaison d'équipements GT Premium et GT Performance",
@@ -116,9 +134,14 @@
   "leasingSocial_EUR_per_month": 150,
   "availableAids": [
     {
-      "label": "Prime CEE VE / Bonus Écologique",
-      "amount_EUR": 4000,
-      "conditions": "Éligible sur toute la gamme grâce à la production en France (Douai) et un prix inférieur à 47 000 €"
+      "label": "Prime CEE",
+      "amount_EUR": 3500,
+      "conditions": "Aide de base (jusqu'à 5 700 € selon revenus) pour les véhicules éligibles de moins de 47 000 €."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 1200,
+      "conditions": "Supplément de 1 200 € à 2 000 € pour véhicule assemblé en Europe avec batterie européenne."
     }
   ],
   "configurations": [
@@ -130,7 +153,7 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 34470,
+      "price_EUR": 39300,
       "monthlyLease_EUR": 150,
       "leasingSocialEligible": true,
       "wltp_km": 380,
@@ -147,15 +170,139 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        { "soc": 0, "power": 50 },
-        { "soc": 10, "power": 100 },
-        { "soc": 30, "power": 90 },
-        { "soc": 50, "power": 75 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 6 }
+        {
+          "soc": 0,
+          "power": 50
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 30,
+          "power": 90
+        },
+        {
+          "soc": 50,
+          "power": 75
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "Moteur 180 ch (130 kW), FWD, 380 km WLTP"
+    },
+    {
+      "id": "alpine-a290-gt-premium",
+      "label": "A290 GT Premium · 52 kWh",
+      "battery": "standard",
+      "trim": "GT Premium",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 41900,
+      "monthlyLease_EUR": 180,
+      "leasingSocialEligible": true,
+      "wltp_km": 380,
+      "wltp_consumption_kWh_100km": 15.8,
+      "realRange": {
+        "mixed_km": 320,
+        "highway_130_km": 205,
+        "urban_km": 400,
+        "winter_minus5_km": 240,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 50
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 30,
+          "power": 90
+        },
+        {
+          "soc": 50,
+          "power": 75
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": "Moteur 180 ch (130 kW), FWD, 380 km WLTP"
+    },
+    {
+      "id": "alpine-a290-gt-performance",
+      "label": "A290 GT Performance · 52 kWh",
+      "battery": "standard",
+      "trim": "GT Performance",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 41700,
+      "monthlyLease_EUR": 185,
+      "leasingSocialEligible": true,
+      "wltp_km": 364,
+      "wltp_consumption_kWh_100km": 16.5,
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 200,
+        "urban_km": 385,
+        "winter_minus5_km": 230,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 50
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 30,
+          "power": 90
+        },
+        {
+          "soc": 50,
+          "power": 75
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": "Moteur 220 ch (162 kW), FWD, 364 km WLTP"
     },
     {
       "id": "alpine-a290-gts",
@@ -165,7 +312,7 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 41900,
+      "price_EUR": 44700,
       "monthlyLease_EUR": 210,
       "leasingSocialEligible": true,
       "wltp_km": 364,
@@ -182,12 +329,30 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        { "soc": 0, "power": 50 },
-        { "soc": 10, "power": 100 },
-        { "soc": 30, "power": 90 },
-        { "soc": 50, "power": 75 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 6 }
+        {
+          "soc": 0,
+          "power": 50
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 30,
+          "power": 90
+        },
+        {
+          "soc": 50,
+          "power": 75
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "Moteur 220 ch (162 kW), FWD, 364 km WLTP"
@@ -222,7 +387,7 @@
     "strengths": [
       "Comportement routier dynamique et agile digne d'une vraie GTI moderne",
       "Présentation intérieure haut de gamme avec une ergonomie très soignée",
-      "Production locale à Douai et éligibilité totale au bonus écologique"
+      "Production locale à Douai et éligibilité totale à la Prime CEE"
     ],
     "weaknesses": [
       "Volume de coffre identique à la R5 et habitabilité arrière moyenne",

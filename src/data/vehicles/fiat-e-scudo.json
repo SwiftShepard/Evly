@@ -50,11 +50,26 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 92 },
-    { "soc": 10, "power": 100 },
-    { "soc": 50, "power": 71 },
-    { "soc": 80, "power": 32 },
-    { "soc": 100, "power": 6 }
+    {
+      "soc": 0,
+      "power": 92
+    },
+    {
+      "soc": 10,
+      "power": 100
+    },
+    {
+      "soc": 50,
+      "power": 71
+    },
+    {
+      "soc": 80,
+      "power": 32
+    },
+    {
+      "soc": 100,
+      "power": 6
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -91,8 +106,14 @@
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Prime CEE VE",
-      "amount_EUR": 8100
+      "label": "Prime CEE",
+      "amount_EUR": 3500,
+      "conditions": "Aide de base (jusqu'à 5 700 € selon revenus) pour les véhicules éligibles de moins de 47 000 €."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 1200,
+      "conditions": "Supplément de 1 200 € à 2 000 € pour véhicule assemblé en Europe avec batterie européenne."
     }
   ],
   "configurations": [
@@ -121,11 +142,26 @@
       "chargingDC_10_80_min": 32,
       "chargingDC_kWh_30min": 30,
       "chargingCurve": [
-        { "soc": 0, "power": 92 },
-        { "soc": 10, "power": 100 },
-        { "soc": 50, "power": 71 },
-        { "soc": 80, "power": 32 },
-        { "soc": 100, "power": 6 }
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "Fourgon M 50 kWh, plateforme partagee Expert/Jumpy."
@@ -155,11 +191,26 @@
       "chargingDC_10_80_min": 45,
       "chargingDC_kWh_30min": 40,
       "chargingCurve": [
-        { "soc": 0, "power": 92 },
-        { "soc": 10, "power": 100 },
-        { "soc": 50, "power": 71 },
-        { "soc": 80, "power": 32 },
-        { "soc": 100, "power": 6 }
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "Fourgon M 75 kWh, grande autonomie."
@@ -173,10 +224,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "confort", "label": "Cabine confortable avec siege conducteur reglable" },
-    { "category": "technologie", "label": "Ecran Uconnect 8 pouces avec connectivite smartphone" },
-    { "category": "securite", "label": "Freinage automatique d'urgence et aide au maintien de voie" },
-    { "category": "design", "label": "Porte laterale coulissante et charge utile 1000 kg" }
+    {
+      "category": "confort",
+      "label": "Cabine confortable avec siege conducteur reglable"
+    },
+    {
+      "category": "technologie",
+      "label": "Ecran Uconnect 8 pouces avec connectivite smartphone"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence et aide au maintien de voie"
+    },
+    {
+      "category": "design",
+      "label": "Porte laterale coulissante et charge utile 1000 kg"
+    }
   ],
   "verdict": {
     "strengths": [

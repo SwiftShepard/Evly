@@ -50,12 +50,30 @@
   "v2g": true,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 180 },
-    { "soc": 10, "power": 250 },
-    { "soc": 30, "power": 220 },
-    { "soc": 50, "power": 155 },
-    { "soc": 80, "power": 65 },
-    { "soc": 100, "power": 12 }
+    {
+      "soc": 0,
+      "power": 180
+    },
+    {
+      "soc": 10,
+      "power": 250
+    },
+    {
+      "soc": 30,
+      "power": 220
+    },
+    {
+      "soc": 50,
+      "power": 155
+    },
+    {
+      "soc": 80,
+      "power": 65
+    },
+    {
+      "soc": 100,
+      "power": 12
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -115,18 +133,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 616,
       "wltp_consumption_kWh_100km": 20.3,
-      "realRange": { "mixed_km": 460, "highway_130_km": 330, "urban_km": 560, "winter_minus5_km": 350, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 460,
+        "highway_130_km": 330,
+        "urban_km": 560,
+        "winter_minus5_km": 350,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 250,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 70,
       "chargingCurve": [
-        { "soc": 0, "power": 180 },
-        { "soc": 10, "power": 250 },
-        { "soc": 30, "power": 220 },
-        { "soc": 50, "power": 155 },
-        { "soc": 80, "power": 65 },
-        { "soc": 100, "power": 12 }
+        {
+          "soc": 0,
+          "power": 180
+        },
+        {
+          "soc": 10,
+          "power": 250
+        },
+        {
+          "soc": 30,
+          "power": 220
+        },
+        {
+          "soc": 50,
+          "power": 155
+        },
+        {
+          "soc": 80,
+          "power": 65
+        },
+        {
+          "soc": 100,
+          "power": 12
+        }
       ],
       "availability": "available",
       "notes": "408 ch (300 kW), AWD, 7 places"
@@ -144,18 +186,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 600,
       "wltp_consumption_kWh_100km": 20.8,
-      "realRange": { "mixed_km": 450, "highway_130_km": 320, "urban_km": 545, "winter_minus5_km": 340, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 450,
+        "highway_130_km": 320,
+        "urban_km": 545,
+        "winter_minus5_km": 340,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 250,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 70,
       "chargingCurve": [
-        { "soc": 0, "power": 180 },
-        { "soc": 10, "power": 250 },
-        { "soc": 30, "power": 220 },
-        { "soc": 50, "power": 155 },
-        { "soc": 80, "power": 65 },
-        { "soc": 100, "power": 12 }
+        {
+          "soc": 0,
+          "power": 180
+        },
+        {
+          "soc": 10,
+          "power": 250
+        },
+        {
+          "soc": 30,
+          "power": 220
+        },
+        {
+          "soc": 50,
+          "power": 155
+        },
+        {
+          "soc": 80,
+          "power": 65
+        },
+        {
+          "soc": 100,
+          "power": 12
+        }
       ],
       "availability": "available",
       "notes": "408 ch (300 kW), AWD, Bowers & Wilkins"
@@ -173,18 +239,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 565,
       "wltp_consumption_kWh_100km": 22,
-      "realRange": { "mixed_km": 430, "highway_130_km": 310, "urban_km": 525, "winter_minus5_km": 330, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 430,
+        "highway_130_km": 310,
+        "urban_km": 525,
+        "winter_minus5_km": 330,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 250,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 70,
       "chargingCurve": [
-        { "soc": 0, "power": 180 },
-        { "soc": 10, "power": 250 },
-        { "soc": 30, "power": 220 },
-        { "soc": 50, "power": 155 },
-        { "soc": 80, "power": 65 },
-        { "soc": 100, "power": 12 }
+        {
+          "soc": 0,
+          "power": 180
+        },
+        {
+          "soc": 10,
+          "power": 250
+        },
+        {
+          "soc": 30,
+          "power": 220
+        },
+        {
+          "soc": 50,
+          "power": 155
+        },
+        {
+          "soc": 80,
+          "power": 65
+        },
+        {
+          "soc": 100,
+          "power": 12
+        }
       ],
       "availability": "available",
       "notes": "408 ch (300 kW), AWD, full options"
@@ -198,10 +288,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "design", "label": "Grand SUV 7 places au design scandinave" },
-    { "category": "technologie", "label": "LiDAR Luminar de serie et ecran 14,5 pouces" },
-    { "category": "securite", "label": "Detection pietons, cyclistes et grands animaux" },
-    { "category": "confort", "label": "Bowers & Wilkins 25 HP et suspension pneumatique" }
+    {
+      "category": "design",
+      "label": "Grand SUV 7 places au design scandinave"
+    },
+    {
+      "category": "technologie",
+      "label": "LiDAR Luminar de serie et ecran 14,5 pouces"
+    },
+    {
+      "category": "securite",
+      "label": "Detection pietons, cyclistes et grands animaux"
+    },
+    {
+      "category": "confort",
+      "label": "Bowers & Wilkins 25 HP et suspension pneumatique"
+    }
   ],
   "verdict": {
     "strengths": [
@@ -216,6 +318,8 @@
     "notIdealFor": "Budgets limites ou conducteurs cherchant un vehicule compact maniable en ville."
   },
   "lastUpdated": "2026-05-19",
-  "sources": ["la-chaine-ev"],
+  "sources": [
+    "la-chaine-ev"
+  ],
   "imageCredit": "Constructeur"
 }

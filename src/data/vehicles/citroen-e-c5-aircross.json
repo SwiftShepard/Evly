@@ -116,8 +116,14 @@
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Prime CEE VE",
-      "amount_EUR": 8100
+      "label": "Prime CEE",
+      "amount_EUR": 3500,
+      "conditions": "Aide de base (jusqu'à 5 700 € selon revenus) pour les véhicules éligibles de moins de 47 000 €."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 1200,
+      "conditions": "Supplément de 1 200 € à 2 000 € pour véhicule assemblé en Europe avec batterie européenne."
     }
   ],
   "configurations": [
@@ -134,17 +140,38 @@
       "leasingSocialEligible": false,
       "wltp_km": 520,
       "wltp_consumption_kWh_100km": 15,
-      "realRange": { "mixed_km": 400, "highway_130_km": 280, "urban_km": 480, "winter_minus5_km": 320, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 400,
+        "highway_130_km": 280,
+        "urban_km": 480,
+        "winter_minus5_km": 320,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 160,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 50,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 130 },
-        { "soc": 50, "power": 100 },
-        { "soc": 80, "power": 50 },
-        { "soc": 100, "power": 10 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
       ],
       "availability": "available",
       "notes": "218 ch (157 kW), FWD"
@@ -162,17 +189,38 @@
       "leasingSocialEligible": false,
       "wltp_km": 520,
       "wltp_consumption_kWh_100km": 15,
-      "realRange": { "mixed_km": 400, "highway_130_km": 280, "urban_km": 480, "winter_minus5_km": 320, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 400,
+        "highway_130_km": 280,
+        "urban_km": 480,
+        "winter_minus5_km": 320,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 160,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 50,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 130 },
-        { "soc": 50, "power": 100 },
-        { "soc": 80, "power": 50 },
-        { "soc": 100, "power": 10 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
       ],
       "availability": "available",
       "notes": "218 ch (157 kW), FWD"
@@ -190,17 +238,38 @@
       "leasingSocialEligible": false,
       "wltp_km": 500,
       "wltp_consumption_kWh_100km": 15.5,
-      "realRange": { "mixed_km": 385, "highway_130_km": 270, "urban_km": 470, "winter_minus5_km": 305, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 385,
+        "highway_130_km": 270,
+        "urban_km": 470,
+        "winter_minus5_km": 305,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 160,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 50,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 130 },
-        { "soc": 50, "power": 100 },
-        { "soc": 80, "power": 50 },
-        { "soc": 100, "power": 10 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
       ],
       "availability": "available",
       "notes": "218 ch (157 kW), FWD, full options"

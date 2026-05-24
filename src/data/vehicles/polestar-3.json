@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 180 },
-    { "soc": 10, "power": 250 },
-    { "soc": 30, "power": 220 },
-    { "soc": 50, "power": 160 },
-    { "soc": 80, "power": 70 },
-    { "soc": 100, "power": 12 }
+    {
+      "soc": 0,
+      "power": 180
+    },
+    {
+      "soc": 10,
+      "power": 250
+    },
+    {
+      "soc": 30,
+      "power": 220
+    },
+    {
+      "soc": 50,
+      "power": 160
+    },
+    {
+      "soc": 80,
+      "power": 70
+    },
+    {
+      "soc": 100,
+      "power": 12
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -105,18 +123,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 631,
       "wltp_consumption_kWh_100km": 20.1,
-      "realRange": { "mixed_km": 470, "highway_130_km": 340, "urban_km": 570, "winter_minus5_km": 360, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 470,
+        "highway_130_km": 340,
+        "urban_km": 570,
+        "winter_minus5_km": 360,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 250,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 70,
       "chargingCurve": [
-        { "soc": 0, "power": 180 },
-        { "soc": 10, "power": 250 },
-        { "soc": 30, "power": 220 },
-        { "soc": 50, "power": 160 },
-        { "soc": 80, "power": 70 },
-        { "soc": 100, "power": 12 }
+        {
+          "soc": 0,
+          "power": 180
+        },
+        {
+          "soc": 10,
+          "power": 250
+        },
+        {
+          "soc": 30,
+          "power": 220
+        },
+        {
+          "soc": 50,
+          "power": 160
+        },
+        {
+          "soc": 80,
+          "power": 70
+        },
+        {
+          "soc": 100,
+          "power": 12
+        }
       ],
       "availability": "available",
       "notes": "489 ch (360 kW), AWD"
@@ -134,18 +176,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 560,
       "wltp_consumption_kWh_100km": 22,
-      "realRange": { "mixed_km": 420, "highway_130_km": 310, "urban_km": 520, "winter_minus5_km": 330, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 420,
+        "highway_130_km": 310,
+        "urban_km": 520,
+        "winter_minus5_km": 330,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 250,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 70,
       "chargingCurve": [
-        { "soc": 0, "power": 180 },
-        { "soc": 10, "power": 250 },
-        { "soc": 30, "power": 220 },
-        { "soc": 50, "power": 160 },
-        { "soc": 80, "power": 70 },
-        { "soc": 100, "power": 12 }
+        {
+          "soc": 0,
+          "power": 180
+        },
+        {
+          "soc": 10,
+          "power": 250
+        },
+        {
+          "soc": 30,
+          "power": 220
+        },
+        {
+          "soc": 50,
+          "power": 160
+        },
+        {
+          "soc": 80,
+          "power": 70
+        },
+        {
+          "soc": 100,
+          "power": 12
+        }
       ],
       "availability": "available",
       "notes": "517 ch (380 kW), AWD, pack Performance"
@@ -159,10 +225,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "design", "label": "Design SUV aerodynamique scandinave" },
-    { "category": "technologie", "label": "Ecran 14,5 pouces Google et affichage tete haute" },
-    { "category": "securite", "label": "LiDAR Luminar et Pilot Assist" },
-    { "category": "confort", "label": "Suspension pneumatique double chambre" }
+    {
+      "category": "design",
+      "label": "Design SUV aerodynamique scandinave"
+    },
+    {
+      "category": "technologie",
+      "label": "Ecran 14,5 pouces Google et affichage tete haute"
+    },
+    {
+      "category": "securite",
+      "label": "LiDAR Luminar et Pilot Assist"
+    },
+    {
+      "category": "confort",
+      "label": "Suspension pneumatique double chambre"
+    }
   ],
   "verdict": {
     "strengths": [
@@ -177,6 +255,8 @@
     "notIdealFor": "Budgets moderes ou conducteurs cherchant a beneficier des aides francaises."
   },
   "lastUpdated": "2026-05-19",
-  "sources": ["la-chaine-ev"],
+  "sources": [
+    "la-chaine-ev"
+  ],
   "imageCredit": "Constructeur"
 }

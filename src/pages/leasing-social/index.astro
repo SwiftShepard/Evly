@@ -46,7 +46,7 @@ const counts = {
 
 <BaseLayout
   title="Leasing social, comprendre, comparer, exiger | Evly"
-  description="Le dispositif leasing social à 100 €/mois expliqué : conditions, score ADEME, bonus écologique. Liste des véhicules officiellement éligibles et de ceux qui devraient l'être."
+  description="Le dispositif leasing social à 100 €/mois expliqué : conditions, score ADEME, aides CEE. Liste des véhicules officiellement éligibles et de ceux qui devraient l'être."
 >
   <div class="py-6 md:py-10">
     <div class="container-edit">
@@ -159,7 +159,7 @@ const counts = {
                 Le score ADEME, vrai filtre du dispositif.
               </h2>
               <p class="text-sm md:text-base text-[var(--color-text-muted)] mb-4">
-                Pour entrer dans le programme (et toucher le bonus écologique), un véhicule doit obtenir un <strong class="text-[var(--color-text)]">score environnemental ≥ 60/100</strong>. Ce score, calculé par l'ADEME, pondère l'empreinte carbone de la production du véhicule sur quatre axes.
+                Pour entrer dans le programme (et bénéficier des aides CEE), un véhicule doit obtenir un <strong class="text-[var(--color-text)]">score environnemental ≥ 60/100</strong>. Ce score, calculé par l'ADEME, pondère l'empreinte carbone de la production du véhicule sur quatre axes.
               </p>
               <ul class="flex flex-col gap-2.5 text-sm">
                 <li class="flex gap-3 items-baseline">
@@ -204,6 +204,7 @@ const counts = {
         </Tile>
 
         {/* ───────── PRIME CEE VE ───────── */}
+        {/* ───────── PRIME CEE VE ───────── */}
         <Tile size="full" variant="default" label="04 · Prime CEE VE, achat direct">
           <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.1] mb-3">
             Prime CEE VE, l'alternative pour l'achat direct.
@@ -219,56 +220,56 @@ const counts = {
           <div class="p-6 md:p-8 rounded-[var(--radius-tile-sm)] border border-[var(--color-accent-dim)] bg-[color-mix(in_srgb,var(--color-accent)_6%,transparent)] mb-8">
             <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
               <div>
-                <span class="label-eyebrow" style="color:var(--color-accent)">Maximum atteignable</span>
-                <p class="font-display text-5xl md:text-6xl mt-2 text-[var(--color-accent)] font-semibold tracking-[-0.02em]">8 100 €</p>
+                <span class="label-eyebrow" style="color:var(--color-accent)">Cumul maximal indicatif</span>
+                <p class="font-display text-5xl md:text-6xl mt-2 text-[var(--color-accent)] font-semibold tracking-[-0.02em]">jusqu'à 8 100 €</p>
               </div>
-              <p class="font-mono text-xs md:text-sm text-[var(--color-text-muted)] md:text-right md:max-w-xs">
-                6 100 € base précaire <br/>+ 2 000 € surbonus batterie produite en UE
+              <p class="font-mono text-xs md:text-sm text-[var(--color-text-muted)] md:text-right md:max-w-xs leading-normal">
+                jusqu'à 5 700 € (base précaire) <br/>+ majoration batterie européenne (1 200 € à 2 000 €) selon éligibilité.
               </p>
             </div>
           </div>
 
-          {/* DÉCOMPOSITION : BASE × SURBONUS */}
+          {/* DÉCOMPOSITION : BASE × MAJORATION */}
           <div class="grid md:grid-cols-12 gap-6 md:gap-10">
             {/* Base par ménage */}
             <div class="md:col-span-7">
-              <span class="label-eyebrow">Base CEE selon revenus</span>
+              <span class="label-eyebrow">Aide CEE de base selon revenus</span>
               <div class="mt-4 divide-y divide-[var(--color-border)]">
                 <div class="flex items-baseline justify-between py-3">
                   <div class="flex flex-col">
                     <span class="text-sm text-[var(--color-text)]">Autres ménages</span>
-                    <span class="text-[11px] text-[var(--color-text-faint)] font-mono">RFR/part &gt; 16 300 €</span>
+                    <span class="text-[11px] text-[var(--color-text-faint)] font-mono font-semibold">Revenus standards</span>
                   </div>
-                  <span data-numeric class="font-display text-2xl font-medium">≈ 3 500 €</span>
+                  <span data-numeric class="font-display text-2xl font-medium">jusqu'à 3 500 €</span>
                 </div>
                 <div class="flex items-baseline justify-between py-3">
                   <div class="flex flex-col">
                     <span class="text-sm text-[var(--color-text)]">Ménages modestes</span>
-                    <span class="text-[11px] text-[var(--color-text-faint)] font-mono">RFR/part &le; 16 300 €</span>
+                    <span class="text-[11px] text-[var(--color-text-faint)] font-mono font-semibold">Revenus modestes</span>
                   </div>
-                  <span data-numeric class="font-display text-2xl font-medium">≈ 4 700 €</span>
+                  <span data-numeric class="font-display text-2xl font-medium">jusqu'à 4 700 €</span>
                 </div>
                 <div class="flex items-baseline justify-between py-3">
                   <div class="flex flex-col">
                     <span class="text-sm text-[var(--color-text)] font-medium">Ménages précaires</span>
-                    <span class="text-[11px] text-[var(--color-text-faint)] font-mono">RFR/part &le; 7 100 €</span>
+                    <span class="text-[11px] text-[var(--color-text-faint)] font-mono font-semibold">Revenus précaires</span>
                   </div>
-                  <span data-numeric class="font-display text-2xl font-semibold text-[var(--color-accent)]">≈ 6 100 €</span>
+                  <span data-numeric class="font-display text-2xl font-semibold text-[var(--color-accent)]">jusqu'à 5 700 €</span>
                 </div>
               </div>
             </div>
 
-            {/* Surbonus */}
+            {/* Majoration */}
             <div class="md:col-span-5 md:border-l md:border-[var(--color-border)] md:pl-8 flex flex-col">
-              <span class="label-eyebrow">Surbonus européen</span>
+              <span class="label-eyebrow">Majoration batterie européenne</span>
               <div class="mt-4 p-4 border-l-2 border-[var(--color-accent)] bg-[color-mix(in_srgb,var(--color-accent)_4%,transparent)]">
-                <p class="font-mono text-[11px] text-[var(--color-accent)]">+ 1 200 à 2 000 €</p>
+                <p class="font-mono text-[11px] text-[var(--color-accent)]">+ 1 200 € à 2 000 €</p>
                 <p class="font-display text-lg md:text-xl mt-1.5 text-[var(--color-text)] leading-tight">
-                  Si <strong class="text-[var(--color-accent)]">batterie produite en UE</strong>
+                  Si <strong class="text-[var(--color-accent)]">véhicule & batterie produits en UE</strong>
                 </p>
               </div>
               <p class="mt-4 text-xs text-[var(--color-text-muted)] leading-relaxed">
-                L'assemblage du véhicule en Europe améliore l'écoscore ADEME (donc l'éligibilité tout court), mais le surbonus est strictement réservé aux batteries européennes, pour soutenir les gigafactories du continent.
+                L'assemblage du véhicule en Europe et l'utilisation d'une batterie européenne ouvrent droit à ce supplément pour soutenir l'indépendance industrielle européenne.
               </p>
             </div>
           </div>
@@ -280,7 +281,7 @@ const counts = {
               <span class="text-[var(--color-text-faint)] group-open:rotate-180 transition-transform">↓</span>
             </summary>
             <div class="px-4 pb-4 text-sm text-[var(--color-text-muted)] leading-relaxed">
-              Les fournisseurs d'énergie (EDF, TotalEnergies, ENGIE…) sont obligés par l'État de financer des actions d'économie d'énergie sous peine de pénalités. Cette obligation finance notamment les rénovations thermiques, pompes à chaleur, et désormais l'aide à l'achat de véhicules électriques. Le montant n'est pas fixé par l'État : il dépend du cours du marché CEE et des négociations entre constructeurs et obligés.
+              Les fournisseurs d'énergie (EDF, TotalEnergies, ENGIE…) sont obligés par l'État de financer des actions de transition sous peine de pénalités. Ce Coup de Pouce finance l'aide à l'achat de véhicules électriques. Le montant dépend des barèmes CEE et de l'éligibilité réelle du foyer.
             </div>
           </details>
 
@@ -289,8 +290,8 @@ const counts = {
             <strong class="text-[var(--color-text)]">Non cumulable</strong> avec le leasing social. Un même véhicule passe par un seul des deux dispositifs. À l'achat : remise sur facture. En leasing social : 1<sup>er</sup> loyer absorbé + mensualités réduites.
           </p>
 
-          <p class="mt-6 text-[11px] text-[var(--color-text-faint)] font-mono">
-            Source : communiqué gouvernement du 26 novembre 2025. Liste officielle des véhicules à batterie UE éligibles au surbonus disponible sur le site de l'ADEME.
+          <p class="mt-6 text-[11px] text-[var(--color-text-faint)] font-mono leading-normal">
+            *Montants indicatifs susceptibles d'évoluer selon les revenus du foyer, les signataires CEE et l'éligibilité du véhicule. Source : barèmes CEE 2026.
           </p>
         </Tile>
 

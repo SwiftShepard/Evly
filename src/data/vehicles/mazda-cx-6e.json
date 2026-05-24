@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 120 },
-    { "soc": 10, "power": 195 },
-    { "soc": 30, "power": 170 },
-    { "soc": 50, "power": 110 },
-    { "soc": 80, "power": 45 },
-    { "soc": 100, "power": 10 }
+    {
+      "soc": 0,
+      "power": 120
+    },
+    {
+      "soc": 10,
+      "power": 195
+    },
+    {
+      "soc": 30,
+      "power": 170
+    },
+    {
+      "soc": 50,
+      "power": 110
+    },
+    {
+      "soc": 80,
+      "power": 45
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -132,12 +150,30 @@
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 58,
       "chargingCurve": [
-        { "soc": 0, "power": 120 },
-        { "soc": 10, "power": 195 },
-        { "soc": 30, "power": 170 },
-        { "soc": 50, "power": 110 },
-        { "soc": 80, "power": 45 },
-        { "soc": 100, "power": 10 }
+        {
+          "soc": 0,
+          "power": 120
+        },
+        {
+          "soc": 10,
+          "power": 195
+        },
+        {
+          "soc": 30,
+          "power": 170
+        },
+        {
+          "soc": 50,
+          "power": 110
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
       ],
       "availability": "upcoming",
       "notes": "Propulsion RWD de 258 ch. Finition Takumi bien équipée avec jantes 19 pouces et écran géant de 26,45 pouces."
@@ -167,12 +203,30 @@
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 58,
       "chargingCurve": [
-        { "soc": 0, "power": 120 },
-        { "soc": 10, "power": 195 },
-        { "soc": 30, "power": 170 },
-        { "soc": 50, "power": 110 },
-        { "soc": 80, "power": 45 },
-        { "soc": 100, "power": 10 }
+        {
+          "soc": 0,
+          "power": 120
+        },
+        {
+          "soc": 10,
+          "power": 195
+        },
+        {
+          "soc": 30,
+          "power": 170
+        },
+        {
+          "soc": 50,
+          "power": 110
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
       ],
       "availability": "upcoming",
       "notes": "Propulsion RWD de 258 ch. Finition Takumi Plus avec jantes 21 pouces, sellerie bi-ton Améthyste et blanc, et rétroviseurs caméras OLED."
@@ -211,11 +265,11 @@
     ],
     "weaknesses": [
       "Poids et aérodynamique de SUV limitant l'autonomie WLTP à 484 km",
-      "Pas de bonus écologique en France en raison de la production en Chine",
+      "Pas de Prime CEE en France en raison de la production en Chine",
       "Puissance de charge DC correcte mais pas au niveau des plateformes 800V"
     ],
     "idealUserProfile": "Familles recherchant un SUV électrique moderne, très technologique, avec un confort de roulement premium et un équipement ultra-complet.",
-    "notIdealFor": "Conducteurs recherchant une autonomie supérieure à 500 km ou une compatibilité avec le bonus écologique français."
+    "notIdealFor": "Conducteurs recherchant une autonomie supérieure à 500 km ou une compatibilité avec le Prime CEE français."
   },
   "lastUpdated": "2026-05-22",
   "sources": [

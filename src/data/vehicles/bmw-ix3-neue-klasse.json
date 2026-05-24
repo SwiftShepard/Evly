@@ -31,8 +31,8 @@
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 17.6,
-  "consumption_highway_kWh_per_100km": 25.0,
-  "consumption_winter_kWh_per_100km": 23.0,
+  "consumption_highway_kWh_per_100km": 25,
+  "consumption_winter_kWh_per_100km": 23,
   "dragCoefficient_Cx": 0.25,
   "chargingDC": {
     "peakPower_kW": 400,
@@ -43,7 +43,7 @@
   "chargingAC": {
     "onboardCharger_kW": 22,
     "phases": 3,
-    "time_0_100_h": 6.0
+    "time_0_100_h": 6
   },
   "plugAndCharge": true,
   "v2l": true,
@@ -186,7 +186,7 @@
       "Interface utilisateur revolutionnaire avec affichage panoramique de pare-brise"
     ],
     "weaknesses": [
-      "Tarifs premium et aides ecologiques nulles en France pour cette gamme",
+      "Tarifs premium et aides CEE nulles en France pour cette gamme",
       "Rareté de bornes de recharge capables de delivrer 400 kW réels"
     ],
     "idealUserProfile": "Conducteurs technophiles et exigeants cherchant le renouveau electrique de BMW avec autonomie de pointe.",

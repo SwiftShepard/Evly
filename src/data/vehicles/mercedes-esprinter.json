@@ -14,7 +14,7 @@
   "torque_Nm": 400,
   "drivetrain": "RWD",
   "motors": 1,
-  "acceleration_0_100_s": 14.0,
+  "acceleration_0_100_s": 14,
   "topSpeed_kmh": 140,
   "usableCapacity_kWh": 113,
   "grossCapacity_kWh": 120,
@@ -50,13 +50,34 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 90 },
-    { "soc": 10, "power": 115 },
-    { "soc": 30, "power": 110 },
-    { "soc": 50, "power": 80 },
-    { "soc": 70, "power": 50 },
-    { "soc": 80, "power": 32 },
-    { "soc": 100, "power": 8 }
+    {
+      "soc": 0,
+      "power": 90
+    },
+    {
+      "soc": 10,
+      "power": 115
+    },
+    {
+      "soc": 30,
+      "power": 110
+    },
+    {
+      "soc": 50,
+      "power": 80
+    },
+    {
+      "soc": 70,
+      "power": 50
+    },
+    {
+      "soc": 80,
+      "power": 32
+    },
+    {
+      "soc": 100,
+      "power": 8
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -118,11 +139,26 @@
       "chargingDC_10_80_min": 42,
       "chargingDC_kWh_30min": 50,
       "chargingCurve": [
-        { "soc": 0, "power": 90 },
-        { "soc": 10, "power": 115 },
-        { "soc": 50, "power": 80 },
-        { "soc": 80, "power": 32 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 90
+        },
+        {
+          "soc": 10,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "Propulsion arriere, rayon de braquage reduit pour manoeuvres urbaines."
@@ -152,11 +188,26 @@
       "chargingDC_10_80_min": 42,
       "chargingDC_kWh_30min": 50,
       "chargingCurve": [
-        { "soc": 0, "power": 90 },
-        { "soc": 10, "power": 115 },
-        { "soc": 50, "power": 80 },
-        { "soc": 80, "power": 32 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 90
+        },
+        {
+          "soc": 10,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "Fourgon L3H2, volume utile 14 m3."
@@ -170,10 +221,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "confort", "label": "Cabine premium Mercedes avec MBUX et commande vocale" },
-    { "category": "technologie", "label": "Propulsion arriere avec rayon de braquage optimise" },
-    { "category": "securite", "label": "Active Brake Assist et Crosswind Assist de serie" },
-    { "category": "design", "label": "Qualite de fabrication et finition Mercedes-Benz" }
+    {
+      "category": "confort",
+      "label": "Cabine premium Mercedes avec MBUX et commande vocale"
+    },
+    {
+      "category": "technologie",
+      "label": "Propulsion arriere avec rayon de braquage optimise"
+    },
+    {
+      "category": "securite",
+      "label": "Active Brake Assist et Crosswind Assist de serie"
+    },
+    {
+      "category": "design",
+      "label": "Qualite de fabrication et finition Mercedes-Benz"
+    }
   ],
   "verdict": {
     "strengths": [

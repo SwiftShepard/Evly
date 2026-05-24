@@ -50,12 +50,30 @@
   "v2g": true,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 100 },
-    { "soc": 10, "power": 190 },
-    { "soc": 30, "power": 160 },
-    { "soc": 50, "power": 120 },
-    { "soc": 80, "power": 60 },
-    { "soc": 100, "power": 10 }
+    {
+      "soc": 0,
+      "power": 100
+    },
+    {
+      "soc": 10,
+      "power": 190
+    },
+    {
+      "soc": 30,
+      "power": 160
+    },
+    {
+      "soc": 50,
+      "power": 120
+    },
+    {
+      "soc": 80,
+      "power": 60
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -122,12 +140,30 @@
       "chargingDC_10_80_min": 29,
       "chargingDC_kWh_30min": 60,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 150 },
-        { "soc": 30, "power": 140 },
-        { "soc": 50, "power": 110 },
-        { "soc": 80, "power": 55 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 150
+        },
+        {
+          "soc": 30,
+          "power": 140
+        },
+        {
+          "soc": 50,
+          "power": 110
+        },
+        {
+          "soc": 80,
+          "power": 55
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "Moteur double 400 ch (295 kW), AWD, 555 km WLTP"
@@ -157,12 +193,30 @@
       "chargingDC_10_80_min": 25,
       "chargingDC_kWh_30min": 65,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 190 },
-        { "soc": 30, "power": 160 },
-        { "soc": 50, "power": 120 },
-        { "soc": 80, "power": 60 },
-        { "soc": 100, "power": 10 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 190
+        },
+        {
+          "soc": 30,
+          "power": 160
+        },
+        {
+          "soc": 50,
+          "power": 120
+        },
+        {
+          "soc": 80,
+          "power": 60
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
       ],
       "availability": "available",
       "notes": "Moteur triple 470 ch (345 kW), AWD avec torque vectoring, 515 km WLTP"
@@ -200,7 +254,7 @@
       "Production à l'usine historique de Dieppe valorisant le savoir-faire industriel français"
     ],
     "weaknesses": [
-      "Tarifs haut de gamme débutant à 67 500 € excluant tout bonus écologique",
+      "Tarifs haut de gamme débutant à 67 500 € excluant tout Prime CEE",
       "Poids important (2,1 tonnes) impactant la maniabilité en dehors du mode sport"
     ],
     "idealUserProfile": "Conducteurs à la recherche d'une berline haute-performance polyvalente et technologique, alliant confort familial et sensations dynamiques.",

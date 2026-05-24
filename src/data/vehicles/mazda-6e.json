@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 100 },
-    { "soc": 10, "power": 165 },
-    { "soc": 30, "power": 140 },
-    { "soc": 50, "power": 110 },
-    { "soc": 80, "power": 45 },
-    { "soc": 100, "power": 8 }
+    {
+      "soc": 0,
+      "power": 100
+    },
+    {
+      "soc": 10,
+      "power": 165
+    },
+    {
+      "soc": 30,
+      "power": 140
+    },
+    {
+      "soc": 50,
+      "power": 110
+    },
+    {
+      "soc": 80,
+      "power": 45
+    },
+    {
+      "soc": 100,
+      "power": 8
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -143,12 +161,30 @@
       "chargingDC_10_80_min": 25,
       "chargingDC_kWh_30min": 52,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 165 },
-        { "soc": 30, "power": 140 },
-        { "soc": 50, "power": 110 },
-        { "soc": 80, "power": 45 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 165
+        },
+        {
+          "soc": 30,
+          "power": 140
+        },
+        {
+          "soc": 50,
+          "power": 110
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "upcoming",
       "notes": "Propulsion RWD de 258 ch. Version Takumi avec batterie LFP de 69 kWh."
@@ -179,12 +215,30 @@
       "chargingDC_10_80_min": 25,
       "chargingDC_kWh_30min": 52,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 165 },
-        { "soc": 30, "power": 140 },
-        { "soc": 50, "power": 110 },
-        { "soc": 80, "power": 45 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 165
+        },
+        {
+          "soc": 30,
+          "power": 140
+        },
+        {
+          "soc": 50,
+          "power": 110
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "upcoming",
       "notes": "Propulsion RWD de 258 ch. Version haut de gamme Takumi Plus avec batterie LFP de 69 kWh."
@@ -193,7 +247,7 @@
       "id": "mazda-6e-takumi-81",
       "label": "6e Takumi · 81 kWh",
       "battery": "long-range",
-      "usableCapacity_kWh": 80.0,
+      "usableCapacity_kWh": 80,
       "trim": "Takumi 81 kWh",
       "wheelSize_inches": 19,
       "tyreType": "summer",
@@ -215,12 +269,30 @@
       "chargingDC_10_80_min": 45,
       "chargingDC_kWh_30min": 38,
       "chargingCurve": [
-        { "soc": 0, "power": 75 },
-        { "soc": 10, "power": 90 },
-        { "soc": 30, "power": 85 },
-        { "soc": 50, "power": 75 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 7 }
+        {
+          "soc": 0,
+          "power": 75
+        },
+        {
+          "soc": 10,
+          "power": 90
+        },
+        {
+          "soc": 30,
+          "power": 85
+        },
+        {
+          "soc": 50,
+          "power": 75
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "upcoming",
       "notes": "Propulsion RWD de 258 ch. Version Takumi avec batterie NMC de 81 kWh (charge plus lente mais autonomie accrue)."
@@ -229,7 +301,7 @@
       "id": "mazda-6e-takumi-plus-81",
       "label": "6e Takumi Plus · 81 kWh",
       "battery": "long-range",
-      "usableCapacity_kWh": 80.0,
+      "usableCapacity_kWh": 80,
       "trim": "Takumi Plus 81 kWh",
       "wheelSize_inches": 20,
       "tyreType": "summer",
@@ -251,12 +323,30 @@
       "chargingDC_10_80_min": 45,
       "chargingDC_kWh_30min": 38,
       "chargingCurve": [
-        { "soc": 0, "power": 75 },
-        { "soc": 10, "power": 90 },
-        { "soc": 30, "power": 85 },
-        { "soc": 50, "power": 75 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 7 }
+        {
+          "soc": 0,
+          "power": 75
+        },
+        {
+          "soc": 10,
+          "power": 90
+        },
+        {
+          "soc": 30,
+          "power": 85
+        },
+        {
+          "soc": 50,
+          "power": 75
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "upcoming",
       "notes": "Propulsion RWD de 258 ch. Version haut de gamme Takumi Plus avec batterie NMC de 81 kWh (charge plus lente mais équipements exclusifs)."

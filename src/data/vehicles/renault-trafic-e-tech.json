@@ -14,7 +14,7 @@
   "torque_Nm": 245,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 14.0,
+  "acceleration_0_100_s": 14,
   "topSpeed_kmh": 130,
   "usableCapacity_kWh": 52,
   "grossCapacity_kWh": 55,
@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 75 },
-    { "soc": 10, "power": 100 },
-    { "soc": 30, "power": 95 },
-    { "soc": 50, "power": 70 },
-    { "soc": 80, "power": 30 },
-    { "soc": 100, "power": 6 }
+    {
+      "soc": 0,
+      "power": 75
+    },
+    {
+      "soc": 10,
+      "power": 100
+    },
+    {
+      "soc": 30,
+      "power": 95
+    },
+    {
+      "soc": 50,
+      "power": 70
+    },
+    {
+      "soc": 80,
+      "power": 30
+    },
+    {
+      "soc": 100,
+      "power": 6
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -92,8 +110,14 @@
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Prime CEE VE",
-      "amount_EUR": 8100
+      "label": "Prime CEE",
+      "amount_EUR": 3500,
+      "conditions": "Aide de base (jusqu'à 5 700 € selon revenus) pour les véhicules éligibles de moins de 47 000 €."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 1200,
+      "conditions": "Supplément de 1 200 € à 2 000 € pour véhicule assemblé en Europe avec batterie européenne."
     }
   ],
   "configurations": [
@@ -122,11 +146,26 @@
       "chargingDC_10_80_min": 35,
       "chargingDC_kWh_30min": 32,
       "chargingCurve": [
-        { "soc": 0, "power": 75 },
-        { "soc": 10, "power": 100 },
-        { "soc": 50, "power": 70 },
-        { "soc": 80, "power": 30 },
-        { "soc": 100, "power": 6 }
+        {
+          "soc": 0,
+          "power": 75
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 70
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "Fourgon L1H1, volume utile 5,8 m3."
@@ -156,11 +195,26 @@
       "chargingDC_10_80_min": 35,
       "chargingDC_kWh_30min": 32,
       "chargingCurve": [
-        { "soc": 0, "power": 75 },
-        { "soc": 10, "power": 100 },
-        { "soc": 50, "power": 70 },
-        { "soc": 80, "power": 30 },
-        { "soc": 100, "power": 6 }
+        {
+          "soc": 0,
+          "power": 75
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 70
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "Fourgon L2H1, volume utile 8,6 m3."
@@ -174,10 +228,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "confort", "label": "Cabine approfondie avec rangements multiples" },
-    { "category": "technologie", "label": "Charge AC 22 kW triphasee de serie" },
-    { "category": "securite", "label": "Aide au stationnement arriere et camera de recul" },
-    { "category": "design", "label": "Porte laterale coulissante et volume modulable" }
+    {
+      "category": "confort",
+      "label": "Cabine approfondie avec rangements multiples"
+    },
+    {
+      "category": "technologie",
+      "label": "Charge AC 22 kW triphasee de serie"
+    },
+    {
+      "category": "securite",
+      "label": "Aide au stationnement arriere et camera de recul"
+    },
+    {
+      "category": "design",
+      "label": "Porte laterale coulissante et volume modulable"
+    }
   ],
   "verdict": {
     "strengths": [

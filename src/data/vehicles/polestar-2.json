@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 150 },
-    { "soc": 10, "power": 205 },
-    { "soc": 30, "power": 190 },
-    { "soc": 50, "power": 140 },
-    { "soc": 80, "power": 60 },
-    { "soc": 100, "power": 10 }
+    {
+      "soc": 0,
+      "power": 150
+    },
+    {
+      "soc": 10,
+      "power": 205
+    },
+    {
+      "soc": 30,
+      "power": 190
+    },
+    {
+      "soc": 50,
+      "power": 140
+    },
+    {
+      "soc": 80,
+      "power": 60
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -114,17 +132,38 @@
       "leasingSocialEligible": false,
       "wltp_km": 546,
       "wltp_consumption_kWh_100km": 15.1,
-      "realRange": { "mixed_km": 400, "highway_130_km": 290, "urban_km": 490, "winter_minus5_km": 310, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 400,
+        "highway_130_km": 290,
+        "urban_km": 490,
+        "winter_minus5_km": 310,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 135,
       "chargingDC_10_80_min": 33,
       "chargingDC_kWh_30min": 42,
       "chargingCurve": [
-        { "soc": 0, "power": 100 },
-        { "soc": 10, "power": 135 },
-        { "soc": 50, "power": 100 },
-        { "soc": 80, "power": 45 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 135
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "170 ch (125 kW), RWD, batterie LFP 69 kWh"
@@ -142,18 +181,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 654,
       "wltp_consumption_kWh_100km": 14.4,
-      "realRange": { "mixed_km": 490, "highway_130_km": 360, "urban_km": 590, "winter_minus5_km": 380, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 490,
+        "highway_130_km": 360,
+        "urban_km": 590,
+        "winter_minus5_km": 380,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 205,
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
-        { "soc": 0, "power": 150 },
-        { "soc": 10, "power": 205 },
-        { "soc": 30, "power": 190 },
-        { "soc": 50, "power": 140 },
-        { "soc": 80, "power": 60 },
-        { "soc": 100, "power": 10 }
+        {
+          "soc": 0,
+          "power": 150
+        },
+        {
+          "soc": 10,
+          "power": 205
+        },
+        {
+          "soc": 30,
+          "power": 190
+        },
+        {
+          "soc": 50,
+          "power": 140
+        },
+        {
+          "soc": 80,
+          "power": 60
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
       ],
       "availability": "available",
       "notes": "272 ch (200 kW), RWD"
@@ -171,18 +234,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 592,
       "wltp_consumption_kWh_100km": 16,
-      "realRange": { "mixed_km": 445, "highway_130_km": 330, "urban_km": 540, "winter_minus5_km": 360, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 445,
+        "highway_130_km": 330,
+        "urban_km": 540,
+        "winter_minus5_km": 360,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 205,
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
-        { "soc": 0, "power": 150 },
-        { "soc": 10, "power": 205 },
-        { "soc": 30, "power": 190 },
-        { "soc": 50, "power": 140 },
-        { "soc": 80, "power": 60 },
-        { "soc": 100, "power": 10 }
+        {
+          "soc": 0,
+          "power": 150
+        },
+        {
+          "soc": 10,
+          "power": 205
+        },
+        {
+          "soc": 30,
+          "power": 190
+        },
+        {
+          "soc": 50,
+          "power": 140
+        },
+        {
+          "soc": 80,
+          "power": 60
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
       ],
       "availability": "available",
       "notes": "421 ch (310 kW), AWD"
@@ -196,10 +283,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "design", "label": "Design scandinave minimaliste fastback" },
-    { "category": "technologie", "label": "Google integre (Maps, Assistant, Play)" },
-    { "category": "securite", "label": "Freinage automatique et Pilot Assist" },
-    { "category": "confort", "label": "Interieur vegan avec materiaux recycles" }
+    {
+      "category": "design",
+      "label": "Design scandinave minimaliste fastback"
+    },
+    {
+      "category": "technologie",
+      "label": "Google integre (Maps, Assistant, Play)"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique et Pilot Assist"
+    },
+    {
+      "category": "confort",
+      "label": "Interieur vegan avec materiaux recycles"
+    }
   ],
   "verdict": {
     "strengths": [
@@ -214,6 +313,8 @@
     "notIdealFor": "Familles cherchant un grand coffre ou acheteurs visant les aides a l'achat francaises."
   },
   "lastUpdated": "2026-05-19",
-  "sources": ["la-chaine-ev"],
+  "sources": [
+    "la-chaine-ev"
+  ],
   "imageCredit": "Constructeur"
 }

@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 45 },
-    { "soc": 10, "power": 95 },
-    { "soc": 40, "power": 85 },
-    { "soc": 60, "power": 65 },
-    { "soc": 80, "power": 35 },
-    { "soc": 100, "power": 5 }
+    {
+      "soc": 0,
+      "power": 45
+    },
+    {
+      "soc": 10,
+      "power": 95
+    },
+    {
+      "soc": 40,
+      "power": 85
+    },
+    {
+      "soc": 60,
+      "power": 65
+    },
+    {
+      "soc": 80,
+      "power": 35
+    },
+    {
+      "soc": 100,
+      "power": 5
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -141,11 +159,26 @@
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 25,
       "chargingCurve": [
-        { "soc": 0, "power": 35 },
-        { "soc": 10, "power": 75 },
-        { "soc": 50, "power": 65 },
-        { "soc": 80, "power": 30 },
-        { "soc": 100, "power": 4 }
+        {
+          "soc": 0,
+          "power": 35
+        },
+        {
+          "soc": 10,
+          "power": 75
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 4
+        }
       ],
       "availability": "available",
       "notes": "Version d'entrée de gamme de 184 ch avec petite batterie"
@@ -175,12 +208,30 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 33,
       "chargingCurve": [
-        { "soc": 0, "power": 45 },
-        { "soc": 10, "power": 95 },
-        { "soc": 40, "power": 85 },
-        { "soc": 60, "power": 65 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 5 }
+        {
+          "soc": 0,
+          "power": 45
+        },
+        {
+          "soc": 10,
+          "power": 95
+        },
+        {
+          "soc": 40,
+          "power": 85
+        },
+        {
+          "soc": 60,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 5
+        }
       ],
       "availability": "available",
       "notes": "Moteur performant de 218 ch avec grande batterie"
@@ -194,10 +245,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "technologie", "label": "Écran tactile circulaire OLED de 240 mm (MINI OS 9)" },
-    { "category": "design", "label": "Portes sans encadrement et signature lumineuse LED personnalisable" },
-    { "category": "confort", "label": "Modes de conduite MINI Experience avec ambiances sonores et lumineuses" },
-    { "category": "securite", "label": "Driving Assistant avec avertisseur de franchissement de ligne et freinage d'urgence" }
+    {
+      "category": "technologie",
+      "label": "Écran tactile circulaire OLED de 240 mm (MINI OS 9)"
+    },
+    {
+      "category": "design",
+      "label": "Portes sans encadrement et signature lumineuse LED personnalisable"
+    },
+    {
+      "category": "confort",
+      "label": "Modes de conduite MINI Experience avec ambiances sonores et lumineuses"
+    },
+    {
+      "category": "securite",
+      "label": "Driving Assistant avec avertisseur de franchissement de ligne et freinage d'urgence"
+    }
   ],
   "verdict": {
     "strengths": [
@@ -206,7 +269,7 @@
       "Comportement dynamique typé kart très amusant"
     ],
     "weaknesses": [
-      "Aucun bonus écologique en France (production en Chine)",
+      "Aucun Prime CEE en France (production en Chine)",
       "Habitabilité arrière et coffre très réduits (210 L)",
       "Puissance de charge DC limitée à 75/95 kW"
     ],

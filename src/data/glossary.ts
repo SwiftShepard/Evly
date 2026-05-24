@@ -164,7 +164,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     abbr: "CEE",
     category: "general",
     definition:
-      "Certificat d'Economie d'Energie applique aux vehicules electriques. Prime versee par les fournisseurs d'energie. Montant maximal porte a 8 100 euros depuis mai 2026. Reserve aux vehicules assembles en Europe. Conditions de revenus et de mise au rebut d'un ancien vehicule.",
+      "Certificat d'Economie d'Energie applique aux vehicules electriques. Dispositif d'aide financiere (ayant remplace l'ancien dispositif national au 1er juillet 2025) versee sous forme de coup de pouce pour l'acquisition d'un VE neuf. Les montants indicatifs 2026 sont de 3 500 euros pour les ménages standards, 4 700 euros pour les ménages modestes et 5 700 euros pour les ménages precaires. Une majoration de 1 200 a 2 000 euros s'ajoute si l'assemblage du VE et sa batterie sont faits en Europe.",
   },
   {
     term: "Prime a la conversion",
@@ -173,10 +173,10 @@ export const GLOSSARY: GlossaryEntry[] = [
       "Aide gouvernementale francaise pour le remplacement d'un ancien vehicule thermique par un VE. Montant variable selon le revenu fiscal et l'age du vehicule mis au rebut.",
   },
   {
-    term: "Bonus ecologique",
+    term: "Coup de pouce Vehicules Particuliers Electriques",
     category: "general",
     definition:
-      "Aide a l'achat d'un vehicule electrique neuf en France. Soumis a un plafond de prix et a un score environnemental. Les vehicules assembles hors Europe peuvent etre exclus. Montant et conditions variables selon les annees.",
+      "Denomination officielle du dispositif d'aide financiere CEE pour l'achat de voitures electriques neuves en France en 2026. Ce dispositif remplace l'ancien systeme d'aide. Les montants varient selon les revenus et l'origine geographique de la batterie et de l'assemblage.",
   },
   {
     term: "Leasing social",
@@ -188,7 +188,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "Score environnemental",
     category: "general",
     definition:
-      "Note attribuee par l'ADEME a chaque modele VE, tenant compte de l'empreinte carbone de la fabrication (batterie, assemblage, transport). Conditionne l'eligibilite au bonus ecologique et au leasing social.",
+      "Note attribuee par l'ADEME a chaque modele VE, tenant compte de l'empreinte carbone de la fabrication (batterie, assemblage, transport). Conditionne l'eligibilite aux aides CEE et au leasing social.",
   },
 ];
 

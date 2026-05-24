@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 220 },
-    { "soc": 10, "power": 360 },
-    { "soc": 30, "power": 320 },
-    { "soc": 50, "power": 240 },
-    { "soc": 80, "power": 75 },
-    { "soc": 100, "power": 12 }
+    {
+      "soc": 0,
+      "power": 220
+    },
+    {
+      "soc": 10,
+      "power": 360
+    },
+    {
+      "soc": 30,
+      "power": 320
+    },
+    {
+      "soc": 50,
+      "power": 240
+    },
+    {
+      "soc": 80,
+      "power": 75
+    },
+    {
+      "soc": 100,
+      "power": 12
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -105,18 +123,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 700,
       "wltp_consumption_kWh_100km": 12.6,
-      "realRange": { "mixed_km": 480, "highway_130_km": 350, "urban_km": 580, "winter_minus5_km": 380, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 480,
+        "highway_130_km": 350,
+        "urban_km": 580,
+        "winter_minus5_km": 380,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 360,
       "chargingDC_10_80_min": 15,
       "chargingDC_kWh_30min": 60,
       "chargingCurve": [
-        { "soc": 0, "power": 220 },
-        { "soc": 10, "power": 360 },
-        { "soc": 30, "power": 320 },
-        { "soc": 50, "power": 240 },
-        { "soc": 80, "power": 75 },
-        { "soc": 100, "power": 12 }
+        {
+          "soc": 0,
+          "power": 220
+        },
+        {
+          "soc": 10,
+          "power": 360
+        },
+        {
+          "soc": 30,
+          "power": 320
+        },
+        {
+          "soc": 50,
+          "power": 240
+        },
+        {
+          "soc": 80,
+          "power": 75
+        },
+        {
+          "soc": 100,
+          "power": 12
+        }
       ],
       "availability": "upcoming",
       "notes": "299 ch (220 kW), RWD. Prix europeen estime. Lancement Europe prevu 2027."
@@ -134,18 +176,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 590,
       "wltp_consumption_kWh_100km": 18,
-      "realRange": { "mixed_km": 440, "highway_130_km": 320, "urban_km": 540, "winter_minus5_km": 350, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 440,
+        "highway_130_km": 320,
+        "urban_km": 540,
+        "winter_minus5_km": 350,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 360,
       "chargingDC_10_80_min": 18,
       "chargingDC_kWh_30min": 80,
       "chargingCurve": [
-        { "soc": 0, "power": 220 },
-        { "soc": 10, "power": 360 },
-        { "soc": 30, "power": 320 },
-        { "soc": 50, "power": 240 },
-        { "soc": 80, "power": 75 },
-        { "soc": 100, "power": 12 }
+        {
+          "soc": 0,
+          "power": 220
+        },
+        {
+          "soc": 10,
+          "power": 360
+        },
+        {
+          "soc": 30,
+          "power": 320
+        },
+        {
+          "soc": 50,
+          "power": 240
+        },
+        {
+          "soc": 80,
+          "power": 75
+        },
+        {
+          "soc": 100,
+          "power": 12
+        }
       ],
       "availability": "upcoming",
       "notes": "673 ch (495 kW), AWD, CATL Qilin. Prix europeen estime."
@@ -159,10 +225,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "design", "label": "Berline sportive au Cx record de 0,195" },
-    { "category": "technologie", "label": "Architecture 800 V, ecosysteme Xiaomi integre" },
-    { "category": "securite", "label": "LiDAR et conduite autonome avancee" },
-    { "category": "confort", "label": "Frunk 105 L, ecran HUD et integration domotique" }
+    {
+      "category": "design",
+      "label": "Berline sportive au Cx record de 0,195"
+    },
+    {
+      "category": "technologie",
+      "label": "Architecture 800 V, ecosysteme Xiaomi integre"
+    },
+    {
+      "category": "securite",
+      "label": "LiDAR et conduite autonome avancee"
+    },
+    {
+      "category": "confort",
+      "label": "Frunk 105 L, ecran HUD et integration domotique"
+    }
   ],
   "verdict": {
     "strengths": [
@@ -177,6 +255,9 @@
     "notIdealFor": "Acheteurs cherchant un vehicule disponible immediatement avec SAV local."
   },
   "lastUpdated": "2026-05-19",
-  "sources": ["constructeur", "automobile-propre"],
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
   "imageCredit": "Constructeur"
 }

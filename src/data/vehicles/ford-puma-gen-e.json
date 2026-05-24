@@ -14,7 +14,7 @@
   "torque_Nm": 290,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 8.0,
+  "acceleration_0_100_s": 8,
   "topSpeed_kmh": 160,
   "usableCapacity_kWh": 43,
   "grossCapacity_kWh": 45.4,
@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 70 },
-    { "soc": 10, "power": 100 },
-    { "soc": 30, "power": 90 },
-    { "soc": 50, "power": 65 },
-    { "soc": 80, "power": 30 },
-    { "soc": 100, "power": 6 }
+    {
+      "soc": 0,
+      "power": 70
+    },
+    {
+      "soc": 10,
+      "power": 100
+    },
+    {
+      "soc": 30,
+      "power": 90
+    },
+    {
+      "soc": 50,
+      "power": 65
+    },
+    {
+      "soc": 80,
+      "power": 30
+    },
+    {
+      "soc": 100,
+      "power": 6
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -102,8 +120,14 @@
   "leasingSocial_EUR_per_month": 139,
   "availableAids": [
     {
-      "label": "Prime CEE VE",
-      "amount_EUR": 8100
+      "label": "Prime CEE",
+      "amount_EUR": 3500,
+      "conditions": "Aide de base (jusqu'à 5 700 € selon revenus) pour les véhicules éligibles de moins de 47 000 €."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 1200,
+      "conditions": "Supplément de 1 200 € à 2 000 € pour véhicule assemblé en Europe avec batterie européenne."
     }
   ],
   "configurations": [
@@ -120,18 +144,42 @@
       "leasingSocialEligible": true,
       "wltp_km": 376,
       "wltp_consumption_kWh_100km": 14.5,
-      "realRange": { "mixed_km": 285, "highway_130_km": 205, "urban_km": 350, "winter_minus5_km": 225, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 285,
+        "highway_130_km": 205,
+        "urban_km": 350,
+        "winter_minus5_km": 225,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 23,
       "chargingDC_kWh_30min": 30,
       "chargingCurve": [
-        { "soc": 0, "power": 70 },
-        { "soc": 10, "power": 100 },
-        { "soc": 30, "power": 90 },
-        { "soc": 50, "power": 65 },
-        { "soc": 80, "power": 30 },
-        { "soc": 100, "power": 6 }
+        {
+          "soc": 0,
+          "power": 70
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 30,
+          "power": 90
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "168 ch (124 kW), FWD"
@@ -149,18 +197,42 @@
       "leasingSocialEligible": true,
       "wltp_km": 365,
       "wltp_consumption_kWh_100km": 15,
-      "realRange": { "mixed_km": 275, "highway_130_km": 200, "urban_km": 340, "winter_minus5_km": 220, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 275,
+        "highway_130_km": 200,
+        "urban_km": 340,
+        "winter_minus5_km": 220,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 23,
       "chargingDC_kWh_30min": 30,
       "chargingCurve": [
-        { "soc": 0, "power": 70 },
-        { "soc": 10, "power": 100 },
-        { "soc": 30, "power": 90 },
-        { "soc": 50, "power": 65 },
-        { "soc": 80, "power": 30 },
-        { "soc": 100, "power": 6 }
+        {
+          "soc": 0,
+          "power": 70
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 30,
+          "power": 90
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "168 ch (124 kW), FWD, look sportif"
@@ -178,18 +250,42 @@
       "leasingSocialEligible": true,
       "wltp_km": 365,
       "wltp_consumption_kWh_100km": 15,
-      "realRange": { "mixed_km": 275, "highway_130_km": 200, "urban_km": 340, "winter_minus5_km": 220, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 275,
+        "highway_130_km": 200,
+        "urban_km": 340,
+        "winter_minus5_km": 220,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 23,
       "chargingDC_kWh_30min": 30,
       "chargingCurve": [
-        { "soc": 0, "power": 70 },
-        { "soc": 10, "power": 100 },
-        { "soc": 30, "power": 90 },
-        { "soc": 50, "power": 65 },
-        { "soc": 80, "power": 30 },
-        { "soc": 100, "power": 6 }
+        {
+          "soc": 0,
+          "power": 70
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 30,
+          "power": 90
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "168 ch (124 kW), FWD, full options"
@@ -203,14 +299,26 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "design", "label": "SUV compact au design dynamique et MegaBox pratique" },
-    { "category": "technologie", "label": "Ecran 12 pouces et V2L de serie" },
-    { "category": "securite", "label": "Freinage automatique et maintien de voie" },
-    { "category": "confort", "label": "Coffre genereux 523 L avec MegaBox 80 L integre" }
+    {
+      "category": "design",
+      "label": "SUV compact au design dynamique et MegaBox pratique"
+    },
+    {
+      "category": "technologie",
+      "label": "Ecran 12 pouces et V2L de serie"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique et maintien de voie"
+    },
+    {
+      "category": "confort",
+      "label": "Coffre genereux 523 L avec MegaBox 80 L integre"
+    }
   ],
   "verdict": {
     "strengths": [
-      "Assemble en Roumanie (UE), eligible prime CEE (8 100 euros)",
+      "Assemble en Roumanie (UE), eligible prime CEE (pouvant atteindre 8 100 € sous conditions de revenus)",
       "Coffre record du segment B (523 L) avec MegaBox et V2L"
     ],
     "weaknesses": [
@@ -221,6 +329,9 @@
     "notIdealFor": "Gros rouleurs necessitant plus de 400 km d'autonomie."
   },
   "lastUpdated": "2026-05-20",
-  "sources": ["constructeur", "automobile-propre"],
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
   "imageCredit": "Constructeur"
 }

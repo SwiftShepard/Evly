@@ -50,11 +50,26 @@
   "v2g": true,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 77 },
-    { "soc": 10, "power": 100 },
-    { "soc": 50, "power": 77 },
-    { "soc": 80, "power": 38 },
-    { "soc": 100, "power": 8 }
+    {
+      "soc": 0,
+      "power": 77
+    },
+    {
+      "soc": 10,
+      "power": 100
+    },
+    {
+      "soc": 50,
+      "power": 77
+    },
+    {
+      "soc": 80,
+      "power": 38
+    },
+    {
+      "soc": 100,
+      "power": 8
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -109,8 +124,14 @@
   "leasingSocial_EUR_per_month": 170,
   "availableAids": [
     {
-      "label": "Prime CEE VE",
-      "amount_EUR": 8100
+      "label": "Prime CEE",
+      "amount_EUR": 3500,
+      "conditions": "Aide de base (jusqu'à 5 700 € selon revenus) pour les véhicules éligibles de moins de 47 000 €."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 1200,
+      "conditions": "Supplément de 1 200 € à 2 000 € pour véhicule assemblé en Europe avec batterie européenne."
     }
   ],
   "configurations": [
@@ -139,11 +160,26 @@
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 27,
       "chargingCurve": [
-        { "soc": 0, "power": 70 },
-        { "soc": 10, "power": 100 },
-        { "soc": 50, "power": 70 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 7 }
+        {
+          "soc": 0,
+          "power": 70
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 70
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "Moteur 120 ch (90 kW)"
@@ -173,11 +209,26 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        { "soc": 0, "power": 77 },
-        { "soc": 10, "power": 100 },
-        { "soc": 50, "power": 77 },
-        { "soc": 80, "power": 38 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 77
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 77
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "Moteur 150 ch (110 kW)"
@@ -207,11 +258,26 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        { "soc": 0, "power": 77 },
-        { "soc": 10, "power": 100 },
-        { "soc": 50, "power": 77 },
-        { "soc": 80, "power": 38 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 77
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 77
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "Moteur 150 ch (110 kW)"
@@ -241,11 +307,26 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        { "soc": 0, "power": 77 },
-        { "soc": 10, "power": 100 },
-        { "soc": 50, "power": 77 },
-        { "soc": 80, "power": 38 },
-        { "soc": 100, "power": 8 }
+        {
+          "soc": 0,
+          "power": 77
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 77
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
       ],
       "availability": "available",
       "notes": "Moteur 150 ch (110 kW)"
@@ -259,10 +340,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "confort", "label": "Suspension confort surélevée" },
-    { "category": "technologie", "label": "OpenR Link avec Google intégré" },
-    { "category": "securite", "label": "Freinage automatique d'urgence" },
-    { "category": "design", "label": "Design néo-rétro crossover" }
+    {
+      "category": "confort",
+      "label": "Suspension confort surélevée"
+    },
+    {
+      "category": "technologie",
+      "label": "OpenR Link avec Google intégré"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence"
+    },
+    {
+      "category": "design",
+      "label": "Design néo-rétro crossover"
+    }
   ],
   "verdict": {
     "strengths": [

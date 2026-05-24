@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 140 },
-    { "soc": 10, "power": 200 },
-    { "soc": 30, "power": 180 },
-    { "soc": 50, "power": 130 },
-    { "soc": 80, "power": 55 },
-    { "soc": 100, "power": 10 }
+    {
+      "soc": 0,
+      "power": 140
+    },
+    {
+      "soc": 10,
+      "power": 200
+    },
+    {
+      "soc": 30,
+      "power": 180
+    },
+    {
+      "soc": 50,
+      "power": 130
+    },
+    {
+      "soc": 80,
+      "power": 55
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -115,18 +133,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 620,
       "wltp_consumption_kWh_100km": 17.5,
-      "realRange": { "mixed_km": 470, "highway_130_km": 340, "urban_km": 580, "winter_minus5_km": 370, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 470,
+        "highway_130_km": 340,
+        "urban_km": 580,
+        "winter_minus5_km": 370,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 200,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 65,
       "chargingCurve": [
-        { "soc": 0, "power": 140 },
-        { "soc": 10, "power": 200 },
-        { "soc": 30, "power": 180 },
-        { "soc": 50, "power": 130 },
-        { "soc": 80, "power": 55 },
-        { "soc": 100, "power": 10 }
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 200
+        },
+        {
+          "soc": 30,
+          "power": 180
+        },
+        {
+          "soc": 50,
+          "power": 130
+        },
+        {
+          "soc": 80,
+          "power": 55
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
       ],
       "availability": "available",
       "notes": "272 ch (200 kW), RWD"
@@ -144,18 +186,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 590,
       "wltp_consumption_kWh_100km": 18.2,
-      "realRange": { "mixed_km": 445, "highway_130_km": 325, "urban_km": 555, "winter_minus5_km": 355, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 445,
+        "highway_130_km": 325,
+        "urban_km": 555,
+        "winter_minus5_km": 355,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 200,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 65,
       "chargingCurve": [
-        { "soc": 0, "power": 140 },
-        { "soc": 10, "power": 200 },
-        { "soc": 30, "power": 180 },
-        { "soc": 50, "power": 130 },
-        { "soc": 80, "power": 55 },
-        { "soc": 100, "power": 10 }
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 200
+        },
+        {
+          "soc": 30,
+          "power": 180
+        },
+        {
+          "soc": 50,
+          "power": 130
+        },
+        {
+          "soc": 80,
+          "power": 55
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
       ],
       "availability": "available",
       "notes": "544 ch (400 kW), AWD"
@@ -173,18 +239,42 @@
       "leasingSocialEligible": false,
       "wltp_km": 580,
       "wltp_consumption_kWh_100km": 18.6,
-      "realRange": { "mixed_km": 435, "highway_130_km": 315, "urban_km": 540, "winter_minus5_km": 345, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 435,
+        "highway_130_km": 315,
+        "urban_km": 540,
+        "winter_minus5_km": 345,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 200,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 65,
       "chargingCurve": [
-        { "soc": 0, "power": 140 },
-        { "soc": 10, "power": 200 },
-        { "soc": 30, "power": 180 },
-        { "soc": 50, "power": 130 },
-        { "soc": 80, "power": 55 },
-        { "soc": 100, "power": 10 }
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 200
+        },
+        {
+          "soc": 30,
+          "power": 180
+        },
+        {
+          "soc": 50,
+          "power": 130
+        },
+        {
+          "soc": 80,
+          "power": 55
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
       ],
       "availability": "available",
       "notes": "544 ch (400 kW), AWD, freins carbone-ceramique"
@@ -198,10 +288,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "design", "label": "Shooting brake unique au design GT distinctif" },
-    { "category": "technologie", "label": "Architecture 800 V et AC 22 kW de serie" },
-    { "category": "securite", "label": "Freinage automatique et aide a la conduite avancee" },
-    { "category": "confort", "label": "Coffre 547 L, suspension pneumatique, V2L" }
+    {
+      "category": "design",
+      "label": "Shooting brake unique au design GT distinctif"
+    },
+    {
+      "category": "technologie",
+      "label": "Architecture 800 V et AC 22 kW de serie"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique et aide a la conduite avancee"
+    },
+    {
+      "category": "confort",
+      "label": "Coffre 547 L, suspension pneumatique, V2L"
+    }
   ],
   "verdict": {
     "strengths": [
@@ -216,6 +318,9 @@
     "notIdealFor": "Acheteurs cherchant un SUV classique ou une charge ultra-rapide."
   },
   "lastUpdated": "2026-05-19",
-  "sources": ["constructeur", "automobile-propre"],
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
   "imageCredit": "Constructeur"
 }

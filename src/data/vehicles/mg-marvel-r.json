@@ -129,17 +129,38 @@
       "leasingSocialEligible": false,
       "wltp_km": 402,
       "wltp_consumption_kWh_100km": 15,
-      "realRange": { "mixed_km": 320, "highway_130_km": 220, "urban_km": 380, "winter_minus5_km": 220, "confidence": "tested" },
+      "realRange": {
+        "mixed_km": 320,
+        "highway_130_km": 220,
+        "urban_km": 380,
+        "winter_minus5_km": 220,
+        "confidence": "tested"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 92,
       "chargingDC_10_80_min": 43,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        { "soc": 0, "power": 71 },
-        { "soc": 10, "power": 92 },
-        { "soc": 50, "power": 71 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 7 }
+        {
+          "soc": 0,
+          "power": 71
+        },
+        {
+          "soc": 10,
+          "power": 92
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "204 ch (132 kW), FWD"
@@ -157,17 +178,38 @@
       "leasingSocialEligible": false,
       "wltp_km": 402,
       "wltp_consumption_kWh_100km": 15,
-      "realRange": { "mixed_km": 320, "highway_130_km": 220, "urban_km": 380, "winter_minus5_km": 220, "confidence": "tested" },
+      "realRange": {
+        "mixed_km": 320,
+        "highway_130_km": 220,
+        "urban_km": 380,
+        "winter_minus5_km": 220,
+        "confidence": "tested"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 92,
       "chargingDC_10_80_min": 43,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        { "soc": 0, "power": 71 },
-        { "soc": 10, "power": 92 },
-        { "soc": 50, "power": 71 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 7 }
+        {
+          "soc": 0,
+          "power": 71
+        },
+        {
+          "soc": 10,
+          "power": 92
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "204 ch (132 kW), FWD, full options"
@@ -185,17 +227,38 @@
       "leasingSocialEligible": false,
       "wltp_km": 370,
       "wltp_consumption_kWh_100km": 17,
-      "realRange": { "mixed_km": 290, "highway_130_km": 200, "urban_km": 350, "winter_minus5_km": 200, "confidence": "estimated" },
+      "realRange": {
+        "mixed_km": 290,
+        "highway_130_km": 200,
+        "urban_km": 350,
+        "winter_minus5_km": 200,
+        "confidence": "estimated"
+      },
       "rangeTests": [],
       "chargingDC_peak_kW": 92,
       "chargingDC_10_80_min": 43,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        { "soc": 0, "power": 71 },
-        { "soc": 10, "power": 92 },
-        { "soc": 50, "power": 71 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 7 }
+        {
+          "soc": 0,
+          "power": 71
+        },
+        {
+          "soc": 10,
+          "power": 92
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "288 ch (212 kW), AWD tri-moteur"

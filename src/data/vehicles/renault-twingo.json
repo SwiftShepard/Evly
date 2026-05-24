@@ -50,11 +50,26 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 35 },
-    { "soc": 10, "power": 50 },
-    { "soc": 50, "power": 40 },
-    { "soc": 80, "power": 20 },
-    { "soc": 100, "power": 5 }
+    {
+      "soc": 0,
+      "power": 35
+    },
+    {
+      "soc": 10,
+      "power": 50
+    },
+    {
+      "soc": 50,
+      "power": 40
+    },
+    {
+      "soc": 80,
+      "power": 20
+    },
+    {
+      "soc": 100,
+      "power": 5
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -92,8 +107,14 @@
   "leasingSocial_EUR_per_month": 99,
   "availableAids": [
     {
-      "label": "Prime CEE VE",
-      "amount_EUR": 8100
+      "label": "Prime CEE",
+      "amount_EUR": 3500,
+      "conditions": "Aide de base (jusqu'à 5 700 € selon revenus) pour les véhicules éligibles de moins de 47 000 €."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 1200,
+      "conditions": "Supplément de 1 200 € à 2 000 € pour véhicule assemblé en Europe avec batterie européenne."
     }
   ],
   "configurations": [
@@ -162,10 +183,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "design", "label": "Design neo-retro compact et moderne" },
-    { "category": "confort", "label": "Rayon de braquage reduit, ideal en ville" },
-    { "category": "technologie", "label": "OpenR Link avec Google integre (Techno)" },
-    { "category": "securite", "label": "Freinage automatique d'urgence" }
+    {
+      "category": "design",
+      "label": "Design neo-retro compact et moderne"
+    },
+    {
+      "category": "confort",
+      "label": "Rayon de braquage reduit, ideal en ville"
+    },
+    {
+      "category": "technologie",
+      "label": "OpenR Link avec Google integre (Techno)"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence"
+    }
   ],
   "verdict": {
     "strengths": [

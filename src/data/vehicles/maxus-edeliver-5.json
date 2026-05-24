@@ -50,11 +50,26 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 65 },
-    { "soc": 10, "power": 80 },
-    { "soc": 50, "power": 70 },
-    { "soc": 80, "power": 35 },
-    { "soc": 100, "power": 6 }
+    {
+      "soc": 0,
+      "power": 65
+    },
+    {
+      "soc": 10,
+      "power": 80
+    },
+    {
+      "soc": 50,
+      "power": 70
+    },
+    {
+      "soc": 80,
+      "power": 35
+    },
+    {
+      "soc": 100,
+      "power": 6
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -116,11 +131,26 @@
       "chargingDC_10_80_min": 36,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        { "soc": 0, "power": 65 },
-        { "soc": 10, "power": 80 },
-        { "soc": 50, "power": 70 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 6 }
+        {
+          "soc": 0,
+          "power": 65
+        },
+        {
+          "soc": 10,
+          "power": 80
+        },
+        {
+          "soc": 50,
+          "power": 70
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "Fourgonnette L1H1, volume utile 6,6 m3."
@@ -150,11 +180,26 @@
       "chargingDC_10_80_min": 36,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        { "soc": 0, "power": 65 },
-        { "soc": 10, "power": 80 },
-        { "soc": 50, "power": 70 },
-        { "soc": 80, "power": 35 },
-        { "soc": 100, "power": 6 }
+        {
+          "soc": 0,
+          "power": 65
+        },
+        {
+          "soc": 10,
+          "power": 80
+        },
+        {
+          "soc": 50,
+          "power": 70
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
       ],
       "availability": "available",
       "notes": "Fourgonnette L2H2, volume utile 7,7 m3."
@@ -168,10 +213,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "confort", "label": "Poste de conduite moderne avec grand ecran tactile de 12,3 pouces" },
-    { "category": "technologie", "label": "Batterie LFP securisee avec gestion thermique active" },
-    { "category": "securite", "label": "Pack complet d'aides a la conduite (ADAS) de serie" },
-    { "category": "design", "label": "Volume de chargement optimise avec design a parois droites" }
+    {
+      "category": "confort",
+      "label": "Poste de conduite moderne avec grand ecran tactile de 12,3 pouces"
+    },
+    {
+      "category": "technologie",
+      "label": "Batterie LFP securisee avec gestion thermique active"
+    },
+    {
+      "category": "securite",
+      "label": "Pack complet d'aides a la conduite (ADAS) de serie"
+    },
+    {
+      "category": "design",
+      "label": "Volume de chargement optimise avec design a parois droites"
+    }
   ],
   "verdict": {
     "strengths": [

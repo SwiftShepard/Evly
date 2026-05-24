@@ -14,7 +14,7 @@
   "torque_Nm": 360,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 15.0,
+  "acceleration_0_100_s": 15,
   "topSpeed_kmh": 120,
   "usableCapacity_kWh": 60,
   "grossCapacity_kWh": 66,
@@ -50,12 +50,30 @@
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
-    { "soc": 0, "power": 85 },
-    { "soc": 10, "power": 110 },
-    { "soc": 30, "power": 100 },
-    { "soc": 50, "power": 70 },
-    { "soc": 80, "power": 30 },
-    { "soc": 100, "power": 7 }
+    {
+      "soc": 0,
+      "power": 85
+    },
+    {
+      "soc": 10,
+      "power": 110
+    },
+    {
+      "soc": 30,
+      "power": 100
+    },
+    {
+      "soc": 50,
+      "power": 70
+    },
+    {
+      "soc": 80,
+      "power": 30
+    },
+    {
+      "soc": 100,
+      "power": 7
+    }
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
@@ -127,11 +145,26 @@
       "chargingDC_10_80_min": 35,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        { "soc": 0, "power": 85 },
-        { "soc": 10, "power": 110 },
-        { "soc": 50, "power": 70 },
-        { "soc": 80, "power": 30 },
-        { "soc": 100, "power": 7 }
+        {
+          "soc": 0,
+          "power": 85
+        },
+        {
+          "soc": 10,
+          "power": 110
+        },
+        {
+          "soc": 50,
+          "power": 70
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "Fourgon L2, traction avant."
@@ -161,11 +194,26 @@
       "chargingDC_10_80_min": 35,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
-        { "soc": 0, "power": 85 },
-        { "soc": 10, "power": 110 },
-        { "soc": 50, "power": 70 },
-        { "soc": 80, "power": 30 },
-        { "soc": 100, "power": 7 }
+        {
+          "soc": 0,
+          "power": 85
+        },
+        {
+          "soc": 10,
+          "power": 110
+        },
+        {
+          "soc": 50,
+          "power": 70
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
       ],
       "availability": "available",
       "notes": "Fourgon L3, empattement long."
@@ -179,10 +227,22 @@
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
-    { "category": "confort", "label": "Cabine Mercedes avec MBUX et commande vocale" },
-    { "category": "technologie", "label": "Charge DC 110 kW pour complements rapides en tournee" },
-    { "category": "securite", "label": "Active Brake Assist et Attention Assist de serie" },
-    { "category": "design", "label": "Volume utile jusqu'a 6,6 m3 en version L3" }
+    {
+      "category": "confort",
+      "label": "Cabine Mercedes avec MBUX et commande vocale"
+    },
+    {
+      "category": "technologie",
+      "label": "Charge DC 110 kW pour complements rapides en tournee"
+    },
+    {
+      "category": "securite",
+      "label": "Active Brake Assist et Attention Assist de serie"
+    },
+    {
+      "category": "design",
+      "label": "Volume utile jusqu'a 6,6 m3 en version L3"
+    }
   ],
   "verdict": {
     "strengths": [
