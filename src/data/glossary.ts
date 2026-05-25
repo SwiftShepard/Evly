@@ -160,11 +160,11 @@ export const GLOSSARY: GlossaryEntry[] = [
       "Equivalent electrique du L/100 km. Indique combien d'energie le vehicule consomme sur 100 km. Valeurs typiques : 14-18 kWh/100 en ville, 20-28 kWh/100 sur autoroute. Depend fortement de la vitesse et de la temperature.",
   },
   {
-    term: "Prime CEE VE",
+    term: "Coup de pouce CEE",
     abbr: "CEE",
     category: "general",
     definition:
-      "Certificat d'Economie d'Energie applique aux vehicules electriques. Dispositif d'aide financiere (ayant remplace l'ancien dispositif national au 1er juillet 2025) versee sous forme de coup de pouce pour l'acquisition d'un VE neuf. Les montants indicatifs 2026 sont modules de 6 500 € a 9 500 € selon l'origine de l'assemblage du VE, de son moteur et de sa batterie en Europe.",
+      "Prime 'coup de pouce vehicules particuliers electriques', financee par les certificats d'economies d'energie. Remplace le bonus ecologique depuis le 1er juillet 2025. Trois niveaux selon le revenu fiscal de reference par part : 5 700 € (menage precaire), 4 700 € (modeste), 3 500 € (autre). Cumulable avec le surbonus batterie europeenne (1 200 a 2 000 €). Plafond maximal : 7 700 €. Conditions : VE neuf M1, prix < 47 000 €, masse < 2 400 kg, score ADEME >= 60/80. Demande avant signature du bon de commande.",
   },
   {
     term: "Prime a la conversion",
@@ -173,10 +173,10 @@ export const GLOSSARY: GlossaryEntry[] = [
       "Aide gouvernementale francaise pour le remplacement d'un ancien vehicule thermique par un VE. Montant variable selon le revenu fiscal et l'age du vehicule mis au rebut.",
   },
   {
-    term: "Coup de pouce Vehicules Particuliers Electriques",
+    term: "Surbonus batterie europeenne",
     category: "general",
     definition:
-      "Denomination officielle du dispositif d'aide financiere CEE pour l'achat de voitures electriques neuves en France en 2026. Ce dispositif remplace l'ancien systeme d'aide. Les montants varient de 6 500 à 9 500 euros selon l'origine géographique de l'assemblage, du moteur et de la batterie.",
+      "Prime complementaire de 1 200 a 2 000 € cumulable avec le coup de pouce CEE, accordee si le vehicule est assemble en Europe et que sa batterie (cellules incluses) est fabriquee en zone economique europeenne. Le montant varie selon le constructeur. La liste des modeles eligibles est publiee par l'ADEME.",
   },
   {
     term: "Leasing social",

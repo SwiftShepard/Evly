@@ -90,7 +90,7 @@ const budgetFilters = [
 const specificFilters = [
   { label: "Favoris", value: "favorites" },
   { label: "Leasing social", value: "leasing" },
-  { label: "Prime CEE", value: "cee" },
+  { label: "Coup de pouce CEE", value: "cee" },
   { label: "Recharge rapide", value: "fast-charge" },
   { label: "Made in Europe", value: "eu" },
   { label: "Familiale", value: "familiale" },
@@ -98,7 +98,7 @@ const specificFilters = [
 
 const europeanCountries = ["France", "Allemagne", "Slovaquie", "Rép. Tchèque", "Pologne", "Espagne", "Italie", "Belgique", "Suède", "Slovénie", "Hongrie", "Autriche", "Portugal"];
 function isEU(v: Vehicle) { return europeanCountries.includes(v.productionCountry); }
-function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|cee|majoration|aide/i.test(a.label)) ?? false; }
+function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pouce|prime\s*cee|cee|surbonus|aide/i.test(a.label)) ?? false; }
 ---
 
 <BaseLayout
@@ -246,7 +246,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|cee
                 <div
                   id="price-mode-toggle"
                   class="price-toggle-group"
-                  title="* Montants maximaux sous conditions de revenus, d'eligibilite et de mise au rebut. Prime CEE maj. mai 2026."
+                  title="* Montants maximaux (menage precaire + surbonus batterie UE). Coup de pouce CEE 2026, sous conditions de revenus et d'eligibilite ADEME."
                 >
                   <button class="price-toggle-btn" data-mode="gross" data-active="true">Brut</button>
                   <button class="price-toggle-btn" data-mode="aided">Après aides max.*</button>
