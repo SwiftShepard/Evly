@@ -34,14 +34,7 @@ export default function LeasingEligibilitySimulator() {
   const [showRfrHelp, setShowRfrHelp] = useState<boolean>(false);
 
   return (
-    <div className="w-full rounded-3xl p-6 md:p-8 border border-[var(--color-border)] bg-[var(--color-surface)] shadow-xl transition-all duration-300">
-      {/* HEADER */}
-      <div className="flex items-center gap-3 mb-6">
-        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-text-faint)]">Outil de simulation</span>
-        <span className="h-px flex-1 bg-[var(--color-border)]"></span>
-        <span className="px-2.5 py-0.5 rounded-full text-[9px] font-mono border border-[var(--color-accent-dim)] text-[var(--color-accent)] bg-[color-mix(in_srgb,var(--color-accent)_5%,transparent)] uppercase">Session 2026</span>
-      </div>
-
+    <div className="w-full no-glossary">
       <h2 className="font-display text-3xl font-semibold tracking-tight text-[var(--color-text)] mb-2">
         Suis-je éligible au Leasing Social ?
       </h2>

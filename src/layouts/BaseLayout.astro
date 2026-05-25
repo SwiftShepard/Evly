@@ -304,7 +304,11 @@ const fullTitle = title.includes("Evly") || title.includes("evly")
               acceptNode(node) {
                 let parent = node.parentNode;
                 while (parent) {
-                  if (IGNORED_TAGS.has(parent.tagName) || parent.classList?.contains('glossary-highlight')) {
+                  if (
+                    IGNORED_TAGS.has(parent.tagName) || 
+                    parent.classList?.contains('glossary-highlight') ||
+                    parent.classList?.contains('no-glossary')
+                  ) {
                     return NodeFilter.FILTER_REJECT;
                   }
                   parent = parent.parentNode;

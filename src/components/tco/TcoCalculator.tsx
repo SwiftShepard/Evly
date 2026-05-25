@@ -516,7 +516,7 @@ export default function TcoCalculator({ vehicles }: Props) {
   const hasConfigs = selectedEv.configs.length > 1;
 
   return (
-    <div className="tco-calc">
+    <div className="tco-calc no-glossary">
       {/* ══════════════════════════════════════════════════ */}
       {/* LEFT AREA : inputs (2-col sub-grid on desktop)    */}
       {/* ══════════════════════════════════════════════════ */}
