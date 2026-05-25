@@ -9,7 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "astro check"
+    "check": "astro check",
+    "lint:typo": "node scripts/check-emdash.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

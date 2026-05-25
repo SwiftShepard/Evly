@@ -134,7 +134,7 @@
   "configurations": [
     {
       "id": "xpeng-p7-plus-standard",
-      "label": "Standard Range · 60.7 kWh",
+      "label": "· 60.7 kWh",
       "battery": "standard",
       "trim": "Standard Range",
       "wheelSize_inches": 19,
@@ -187,7 +187,7 @@
     },
     {
       "id": "xpeng-p7-plus-long-range",
-      "label": "Long Range · 76.3 kWh",
+      "label": "· 76.3 kWh",
       "battery": "long-range",
       "trim": "Long Range",
       "wheelSize_inches": 20,
@@ -330,7 +330,7 @@
     "idealUserProfile": "Grands rouleurs autoroutiers et technophiles recherchant une berline spacieuse, rapide à charger et dotée d'aides à la conduite avancées.",
     "notIdealFor": "Conducteurs urbains à la recherche d'une citadine agile ou de véhicules faciles à garer."
   },
-  "lastUpdated": "2026-05-22",
+  "lastUpdated": "2026-05-18",
   "sources": [
     "constructeur",
     "automobile-propre"

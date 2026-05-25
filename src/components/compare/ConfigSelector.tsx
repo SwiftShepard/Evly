@@ -219,7 +219,7 @@ export default function ConfigSelector({
             />
           )}
 
-          {/* Trim — only show trims available for the active battery */}
+          {/* Trim - only show trims available for the active battery */}
           {trimsForBattery.length > 1 && (
             <SegmentedControl
               label="Finition"

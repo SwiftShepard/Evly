@@ -86,7 +86,7 @@
   "frunkCapacity_L": 81,
   "trims": [
     {
-      "name": "Standard Range 75.7 kWh",
+      "name": "75.7 kWh",
       "price_EUR": 47490,
       "batteryUsed": "75.7 kWh",
       "equipmentHighlights": [
@@ -124,7 +124,7 @@
       "id": "ford-mustang-mach-e-sr",
       "label": "Mustang Mach-E · 75.7 kWh",
       "battery": "standard",
-      "trim": "Standard Range 75.7 kWh",
+      "trim": "75.7 kWh",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
@@ -317,7 +317,7 @@
     "idealUserProfile": "Conducteurs cherchant un SUV electrique sportif et charismatique.",
     "notIdealFor": "Acheteurs comptant sur les aides CEE ou cherchant la charge ultra-rapide."
   },
-  "lastUpdated": "2026-05-20",
+  "lastUpdated": "2026-05-18",
   "sources": [
     "constructeur",
     "automobile-propre"

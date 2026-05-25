@@ -86,7 +86,7 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Standard 68.5 kWh",
+      "name": "68.5 kWh",
       "price_EUR": 42990,
       "batteryUsed": "68.5 kWh",
       "equipmentHighlights": [
@@ -96,7 +96,7 @@
       ]
     },
     {
-      "name": "Long Range 80.8 kWh",
+      "name": "80.8 kWh",
       "price_EUR": 46990,
       "batteryUsed": "80.8 kWh",
       "equipmentHighlights": [
@@ -124,7 +124,7 @@
       "id": "xpeng-g6-standard",
       "label": "G6 Standard · 68.5 kWh",
       "battery": "standard",
-      "trim": "Standard 68.5 kWh",
+      "trim": "68.5 kWh",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
@@ -175,9 +175,9 @@
     },
     {
       "id": "xpeng-g6-long-range",
-      "label": "G6 Long Range · 80.8 kWh",
+      "label": "G6 · 80.8 kWh",
       "battery": "long-range",
-      "trim": "Long Range 80.8 kWh",
+      "trim": "80.8 kWh",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
@@ -317,7 +317,7 @@
     "idealUserProfile": "Conducteurs technophiles cherchant le SUV coupe le plus rapide a charger du marche.",
     "notIdealFor": "Acheteurs comptant sur les aides ou privilegiant un reseau SAV etendu."
   },
-  "lastUpdated": "2026-05-19",
+  "lastUpdated": "2026-05-18",
   "sources": [
     "constructeur",
     "automobile-propre"

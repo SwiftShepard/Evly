@@ -1,0 +1,326 @@
+{
+  "slug": "porsche-taycan",
+  "brand": "Porsche",
+  "model": "Taycan",
+  "variant": "82,3 / 97 kWh",
+  "bodyType": "Berline",
+  "segment": "E",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Stuttgart-Zuffenhausen",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 300,
+  "power_hp": 408,
+  "torque_Nm": 410,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 4.8,
+  "topSpeed_kmh": 230,
+  "usableCapacity_kWh": 82.3,
+  "grossCapacity_kWh": 89,
+  "chemistry": "NMC",
+  "architecture_V": 800,
+  "mass_kg": 2090,
+  "wltp_max_km": 678,
+  "wltp_min_km": 503,
+  "realRange": {
+    "mixed_km": 420,
+    "highway_130_km": 310,
+    "urban_km": 510,
+    "winter_minus5_km": 330,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 16.7,
+  "consumption_highway_kWh_per_100km": 22.5,
+  "consumption_winter_kWh_per_100km": 20.5,
+  "dragCoefficient_Cx": 0.22,
+  "chargingDC": {
+    "peakPower_kW": 320,
+    "time_10_80_min": 18,
+    "kWh_added_30min": 75,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 9
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 150
+    },
+    {
+      "soc": 10,
+      "power": 320
+    },
+    {
+      "soc": 30,
+      "power": 320
+    },
+    {
+      "soc": 50,
+      "power": 240
+    },
+    {
+      "soc": 80,
+      "power": 100
+    },
+    {
+      "soc": 100,
+      "power": 15
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4963,
+  "width_mm": 1966,
+  "height_mm": 1379,
+  "wheelbase_mm": 2900,
+  "trunkCapacity_L": 407,
+  "trunkCapacityFolded_L": 800,
+  "frunkCapacity_L": 84,
+  "trims": [
+    {
+      "name": "Taycan Base",
+      "price_EUR": 111600,
+      "batteryUsed": "82,3 kWh",
+      "equipmentHighlights": [
+        "408 ch RWD",
+        "590 km WLTP",
+        "Architecture 800 V, charge 270 kW"
+      ]
+    },
+    {
+      "name": "Taycan 4S",
+      "price_EUR": 125200,
+      "batteryUsed": "97 kWh",
+      "equipmentHighlights": [
+        "544 ch AWD",
+        "642 km WLTP",
+        "Suspension pneumatique adaptative, charge 320 kW"
+      ]
+    },
+    {
+      "name": "Taycan Turbo",
+      "price_EUR": 181600,
+      "batteryUsed": "97 kWh",
+      "equipmentHighlights": [
+        "884 ch AWD, 0-100 en 2,7 s",
+        "630 km WLTP",
+        "Freins PSCB, roues arriere directrices"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "porsche-taycan-base",
+      "label": "Taycan · 82,3 kWh",
+      "battery": "standard",
+      "trim": "Taycan Base",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 111600,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 590,
+      "wltp_consumption_kWh_100km": 16.7,
+      "realRange": {
+        "mixed_km": 420,
+        "highway_130_km": 310,
+        "urban_km": 510,
+        "winter_minus5_km": 330,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 270,
+      "chargingDC_10_80_min": 18,
+      "chargingDC_kWh_30min": 68,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 130
+        },
+        {
+          "soc": 10,
+          "power": 270
+        },
+        {
+          "soc": 30,
+          "power": 270
+        },
+        {
+          "soc": 50,
+          "power": 200
+        },
+        {
+          "soc": 80,
+          "power": 90
+        },
+        {
+          "soc": 100,
+          "power": 12
+        }
+      ],
+      "availability": "available",
+      "notes": "408 ch (300 kW), RWD, autonomie de reference"
+    },
+    {
+      "id": "porsche-taycan-4s",
+      "label": "Taycan 4S · 97 kWh",
+      "battery": "long-range",
+      "trim": "Taycan 4S",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 125200,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 642,
+      "wltp_consumption_kWh_100km": 17.7,
+      "realRange": {
+        "mixed_km": 470,
+        "highway_130_km": 340,
+        "urban_km": 570,
+        "winter_minus5_km": 370,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 320,
+      "chargingDC_10_80_min": 18,
+      "chargingDC_kWh_30min": 75,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 150
+        },
+        {
+          "soc": 10,
+          "power": 320
+        },
+        {
+          "soc": 30,
+          "power": 320
+        },
+        {
+          "soc": 50,
+          "power": 240
+        },
+        {
+          "soc": 80,
+          "power": 100
+        },
+        {
+          "soc": 100,
+          "power": 15
+        }
+      ],
+      "availability": "available",
+      "notes": "544 ch (400 kW), AWD, suspension pneumatique adaptative"
+    },
+    {
+      "id": "porsche-taycan-turbo",
+      "label": "Taycan Turbo · 97 kWh",
+      "battery": "long-range",
+      "trim": "Taycan Turbo",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 181600,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 630,
+      "wltp_consumption_kWh_100km": 18.0,
+      "realRange": {
+        "mixed_km": 460,
+        "highway_130_km": 330,
+        "urban_km": 550,
+        "winter_minus5_km": 360,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 320,
+      "chargingDC_10_80_min": 18,
+      "chargingDC_kWh_30min": 75,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 150
+        },
+        {
+          "soc": 10,
+          "power": 320
+        },
+        {
+          "soc": 30,
+          "power": 320
+        },
+        {
+          "soc": 50,
+          "power": 240
+        },
+        {
+          "soc": 80,
+          "power": 100
+        },
+        {
+          "soc": 100,
+          "power": 15
+        }
+      ],
+      "availability": "available",
+      "notes": "884 ch (650 kW), AWD, 0-100 km/h en 2,7s, performances extremes"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 2,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Silhouette ultra-basse iconique de la marque"
+    },
+    {
+      "category": "technologie",
+      "label": "Architecture 800 V avec recharge ultra-rapide 320 kW"
+    },
+    {
+      "category": "confort",
+      "label": "Suspension active Porsche Active Ride d'une efficacite totale"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage Porsche Ceramic Composite Brake (PCCB)"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Vitesse de recharge unique (10-80 % en 18 minutes chrono)",
+      "Comportement routier et dynamique digne d'une vraie Porsche 911"
+    ],
+    "weaknesses": [
+      "Tarif elitiste et politique d'options Porsche onereuse",
+      "Habitabilite arriere et coffre reduits par rapport a d'autres grandes berlines"
+    ],
+    "idealUserProfile": "Passionnes de conduite sportive cherchant la berline electrique la plus dynamique et rapide a recharger du marche.",
+    "notIdealFor": "Familles nombreuses necessitant un grand volume de coffre ou budget inferieur a 110 000 euros."
+  },
+  "lastUpdated": "2026-05-25",
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
+  "imageCredit": "Constructeur"
+}

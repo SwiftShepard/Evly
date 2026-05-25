@@ -86,7 +86,7 @@
   "frunkCapacity_L": 32,
   "trims": [
     {
-      "name": "Long Range RWD",
+      "name": "RWD",
       "price_EUR": 59990,
       "batteryUsed": "100 kWh",
       "equipmentHighlights": [
@@ -96,7 +96,7 @@
       ]
     },
     {
-      "name": "Long Range AWD",
+      "name": "AWD",
       "price_EUR": 65990,
       "batteryUsed": "100 kWh",
       "equipmentHighlights": [
@@ -122,9 +122,9 @@
   "configurations": [
     {
       "id": "zeekr-001-lr-rwd",
-      "label": "001 Long Range RWD",
+      "label": "001 RWD",
       "battery": "standard",
-      "trim": "Long Range RWD",
+      "trim": "RWD",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
@@ -175,9 +175,9 @@
     },
     {
       "id": "zeekr-001-lr-awd",
-      "label": "001 Long Range AWD",
+      "label": "001 AWD",
       "battery": "standard",
-      "trim": "Long Range AWD",
+      "trim": "AWD",
       "wheelSize_inches": 21,
       "tyreType": "summer",
       "options": [],
@@ -317,7 +317,7 @@
     "idealUserProfile": "Conducteurs cherchant un GT electrique original avec grande autonomie et habitabilite.",
     "notIdealFor": "Acheteurs cherchant un SUV classique ou une charge ultra-rapide."
   },
-  "lastUpdated": "2026-05-19",
+  "lastUpdated": "2026-05-18",
   "sources": [
     "constructeur",
     "automobile-propre"

@@ -30,6 +30,8 @@ jobs:
 
       - run: npm ci
 
+      - run: npm run lint:typo
+
       - run: npm run build
 
       - uses: actions/upload-pages-artifact@v3

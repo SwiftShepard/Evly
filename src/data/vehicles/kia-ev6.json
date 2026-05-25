@@ -122,25 +122,25 @@
     {
       "name": "Standard Air",
       "price_EUR": 47000,
-      "batteryUsed": "Standard 63 kWh",
+      "batteryUsed": "63 kWh",
       "wltp_km": 428,
       "equipmentHighlights": [
         "Charge 800V"
       ]
     },
     {
-      "name": "Long Range Air",
+      "name": "Air",
       "price_EUR": 51000,
-      "batteryUsed": "Long Range 84 kWh",
+      "batteryUsed": "84 kWh",
       "wltp_km": 582,
       "equipmentHighlights": [
         "Batterie 84 kWh"
       ]
     },
     {
-      "name": "Long Range Earth",
+      "name": "Earth",
       "price_EUR": 53000,
-      "batteryUsed": "Long Range 84 kWh",
+      "batteryUsed": "84 kWh",
       "wltp_km": 582,
       "equipmentHighlights": [
         "Confort ++",
@@ -148,9 +148,9 @@
       ]
     },
     {
-      "name": "Long Range GT-Line",
+      "name": "GT-Line",
       "price_EUR": 58000,
-      "batteryUsed": "Long Range 84 kWh",
+      "batteryUsed": "84 kWh",
       "wltp_km": 546,
       "equipmentHighlights": [
         "Design sportif",
@@ -241,9 +241,9 @@
     },
     {
       "id": "kia-ev6-long-range-air",
-      "label": "EV6 Long Range Air",
+      "label": "EV6 Air",
       "battery": "long-range",
-      "trim": "Long Range Air",
+      "trim": "Air",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
@@ -318,9 +318,9 @@
     },
     {
       "id": "kia-ev6-long-range-earth",
-      "label": "EV6 Long Range Earth",
+      "label": "EV6 Earth",
       "battery": "long-range",
-      "trim": "Long Range Earth",
+      "trim": "Earth",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
@@ -395,9 +395,9 @@
     },
     {
       "id": "kia-ev6-long-range-gt-line",
-      "label": "EV6 Long Range GT-Line",
+      "label": "EV6 GT-Line",
       "battery": "long-range",
-      "trim": "Long Range GT-Line",
+      "trim": "GT-Line",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
@@ -508,7 +508,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-05-18",
   "sources": [
     "nyland",
     "la-chaine-ev"

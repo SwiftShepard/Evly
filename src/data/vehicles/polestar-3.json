@@ -86,7 +86,7 @@
   "frunkCapacity_L": 32,
   "trims": [
     {
-      "name": "Long Range Dual Motor",
+      "name": "Dual Motor",
       "price_EUR": 82490,
       "batteryUsed": "111 kWh",
       "equipmentHighlights": [
@@ -96,7 +96,7 @@
       ]
     },
     {
-      "name": "Long Range Dual Motor Performance",
+      "name": "Dual Motor Performance",
       "price_EUR": 89990,
       "batteryUsed": "111 kWh",
       "equipmentHighlights": [
@@ -114,7 +114,7 @@
       "id": "polestar-3-lr-dm",
       "label": "Polestar 3 · LR Dual Motor",
       "battery": "standard",
-      "trim": "Long Range Dual Motor",
+      "trim": "Dual Motor",
       "wheelSize_inches": 21,
       "tyreType": "summer",
       "options": [],
@@ -167,7 +167,7 @@
       "id": "polestar-3-lr-dm-perf",
       "label": "Polestar 3 · LR DM Performance",
       "battery": "standard",
-      "trim": "Long Range Dual Motor Performance",
+      "trim": "Dual Motor Performance",
       "wheelSize_inches": 22,
       "tyreType": "summer",
       "options": [],
@@ -254,7 +254,7 @@
     "idealUserProfile": "Acheteurs premium cherchant un grand SUV electrique performant avec technologie avancee.",
     "notIdealFor": "Budgets moderes ou conducteurs cherchant a beneficier des aides francaises."
   },
-  "lastUpdated": "2026-05-19",
+  "lastUpdated": "2026-05-18",
   "sources": [
     "la-chaine-ev"
   ],

@@ -18,3 +18,11 @@ walk("src");
 console.log("Fichiers texte avec em (U+2014) ou en (U+2013):");
 console.log(JSON.stringify(remaining, null, 2));
 console.log("Total:", remaining.length, "fichiers");
+
+if (remaining.length > 0) {
+  console.error("Erreur : Des caractères em-dash (—) ou en-dash (–) ont été détectés dans les fichiers ci-dessus.");
+  process.exit(1);
+} else {
+  console.log("Succès : Aucun em-dash ou en-dash détecté dans src/.");
+  process.exit(0);
+}

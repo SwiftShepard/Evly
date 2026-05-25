@@ -86,7 +86,7 @@
   "frunkCapacity_L": 105,
   "trims": [
     {
-      "name": "Standard 73.6 kWh",
+      "name": "73.6 kWh",
       "price_EUR": 41000,
       "batteryUsed": "73.6 kWh",
       "equipmentHighlights": [
@@ -114,7 +114,7 @@
       "id": "xiaomi-su7-standard",
       "label": "SU7 Standard · 73.6 kWh",
       "battery": "standard",
-      "trim": "Standard 73.6 kWh",
+      "trim": "73.6 kWh",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
@@ -254,7 +254,7 @@
     "idealUserProfile": "Early adopters interesses par la tech Xiaomi et cherchant une berline electrique ultra-efficiente.",
     "notIdealFor": "Acheteurs cherchant un vehicule disponible immediatement avec SAV local."
   },
-  "lastUpdated": "2026-05-19",
+  "lastUpdated": "2026-05-18",
   "sources": [
     "constructeur",
     "automobile-propre"

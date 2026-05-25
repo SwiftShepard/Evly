@@ -86,7 +86,7 @@
   "frunkCapacity_L": 71,
   "trims": [
     {
-      "name": "Standard 79 kWh",
+      "name": "79 kWh",
       "price_EUR": 59990,
       "batteryUsed": "79 kWh",
       "equipmentHighlights": [
@@ -96,7 +96,7 @@
       ]
     },
     {
-      "name": "Long Range 93.1 kWh",
+      "name": "93.1 kWh",
       "price_EUR": 63990,
       "batteryUsed": "93.1 kWh",
       "equipmentHighlights": [
@@ -124,7 +124,7 @@
       "id": "xpeng-g9-standard",
       "label": "G9 Standard · 79 kWh",
       "battery": "standard",
-      "trim": "Standard 79 kWh",
+      "trim": "79 kWh",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
@@ -175,9 +175,9 @@
     },
     {
       "id": "xpeng-g9-long-range",
-      "label": "G9 Long Range · 93.1 kWh",
+      "label": "G9 · 93.1 kWh",
       "battery": "long-range",
-      "trim": "Long Range 93.1 kWh",
+      "trim": "93.1 kWh",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
@@ -317,7 +317,7 @@
     "idealUserProfile": "Familles cherchant un grand SUV electrique premium avec la charge la plus rapide du marche.",
     "notIdealFor": "Budgets limites ou acheteurs fideles aux marques europeennes."
   },
-  "lastUpdated": "2026-05-19",
+  "lastUpdated": "2026-05-18",
   "sources": [
     "constructeur",
     "automobile-propre"

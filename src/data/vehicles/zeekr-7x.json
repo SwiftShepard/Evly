@@ -96,7 +96,7 @@
       ]
     },
     {
-      "name": "Long Range 100 kWh",
+      "name": "100 kWh",
       "price_EUR": 57990,
       "batteryUsed": "100 kWh",
       "equipmentHighlights": [
@@ -175,9 +175,9 @@
     },
     {
       "id": "zeekr-7x-lr-100",
-      "label": "7X Long Range · 100 kWh",
+      "label": "7X · 100 kWh",
       "battery": "long-range",
-      "trim": "Long Range 100 kWh",
+      "trim": "100 kWh",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
@@ -317,7 +317,7 @@
     "idealUserProfile": "Familles cherchant un SUV electrique performant avec charge ultra-rapide et grand coffre.",
     "notIdealFor": "Acheteurs fideles aux marques etablies ou comptant sur les aides."
   },
-  "lastUpdated": "2026-05-19",
+  "lastUpdated": "2026-05-18",
   "sources": [
     "constructeur",
     "automobile-propre"

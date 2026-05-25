@@ -1,0 +1,326 @@
+{
+  "slug": "porsche-macan-electric",
+  "brand": "Porsche",
+  "model": "Macan Electric",
+  "variant": "95 kWh",
+  "bodyType": "SUV",
+  "segment": "D",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Leipzig",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 300,
+  "power_hp": 408,
+  "torque_Nm": 650,
+  "drivetrain": "AWD",
+  "motors": 2,
+  "acceleration_0_100_s": 5.2,
+  "topSpeed_kmh": 220,
+  "usableCapacity_kWh": 95,
+  "grossCapacity_kWh": 100,
+  "chemistry": "NMC",
+  "architecture_V": 800,
+  "mass_kg": 2405,
+  "wltp_max_km": 641,
+  "wltp_min_km": 516,
+  "realRange": {
+    "mixed_km": 440,
+    "highway_130_km": 320,
+    "urban_km": 540,
+    "winter_minus5_km": 350,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 18.8,
+  "consumption_highway_kWh_per_100km": 24.5,
+  "consumption_winter_kWh_per_100km": 22.0,
+  "dragCoefficient_Cx": 0.25,
+  "chargingDC": {
+    "peakPower_kW": 270,
+    "time_10_80_min": 21,
+    "kWh_added_30min": 75,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 10
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 140
+    },
+    {
+      "soc": 10,
+      "power": 270
+    },
+    {
+      "soc": 30,
+      "power": 270
+    },
+    {
+      "soc": 50,
+      "power": 210
+    },
+    {
+      "soc": 80,
+      "power": 95
+    },
+    {
+      "soc": 100,
+      "power": 12
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4784,
+  "width_mm": 1938,
+  "height_mm": 1622,
+  "wheelbase_mm": 2893,
+  "trunkCapacity_L": 540,
+  "trunkCapacityFolded_L": 1348,
+  "frunkCapacity_L": 84,
+  "trims": [
+    {
+      "name": "Macan Base",
+      "price_EUR": 82900,
+      "batteryUsed": "95 kWh",
+      "equipmentHighlights": [
+        "360 ch RWD (propulsion)",
+        "641 km WLTP",
+        "Architecture 800 V, charge 270 kW"
+      ]
+    },
+    {
+      "name": "Macan 4",
+      "price_EUR": 86439,
+      "batteryUsed": "95 kWh",
+      "equipmentHighlights": [
+        "408 ch AWD (quatre roues motrices)",
+        "613 km WLTP",
+        "Suspension pneumatique adaptative, charge 270 kW"
+      ]
+    },
+    {
+      "name": "Macan Turbo",
+      "price_EUR": 118910,
+      "batteryUsed": "95 kWh",
+      "equipmentHighlights": [
+        "639 ch AWD, 0-100 en 3,3 s",
+        "591 km WLTP",
+        "Chassis sport Porsche Active Suspension Management (PASM)"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "porsche-macan-base",
+      "label": "Macan · 95 kWh",
+      "battery": "standard",
+      "trim": "Macan Base",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 82900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 641,
+      "wltp_consumption_kWh_100km": 18.0,
+      "realRange": {
+        "mixed_km": 460,
+        "highway_130_km": 330,
+        "urban_km": 560,
+        "winter_minus5_km": 360,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 270,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 75,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 270
+        },
+        {
+          "soc": 30,
+          "power": 270
+        },
+        {
+          "soc": 50,
+          "power": 210
+        },
+        {
+          "soc": 80,
+          "power": 95
+        },
+        {
+          "soc": 100,
+          "power": 12
+        }
+      ],
+      "availability": "available",
+      "notes": "360 ch (265 kW), RWD (propulsion), grande autonomie"
+    },
+    {
+      "id": "porsche-macan-4",
+      "label": "Macan 4 · 95 kWh",
+      "battery": "standard",
+      "trim": "Macan 4",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 86439,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 613,
+      "wltp_consumption_kWh_100km": 18.8,
+      "realRange": {
+        "mixed_km": 440,
+        "highway_130_km": 320,
+        "urban_km": 540,
+        "winter_minus5_km": 350,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 270,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 75,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 270
+        },
+        {
+          "soc": 30,
+          "power": 270
+        },
+        {
+          "soc": 50,
+          "power": 210
+        },
+        {
+          "soc": 80,
+          "power": 95
+        },
+        {
+          "soc": 100,
+          "power": 12
+        }
+      ],
+      "availability": "available",
+      "notes": "408 ch (300 kW), AWD, suspension pneumatique de serie"
+    },
+    {
+      "id": "porsche-macan-turbo",
+      "label": "Macan Turbo · 95 kWh",
+      "battery": "long-range",
+      "trim": "Macan Turbo",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 118910,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 591,
+      "wltp_consumption_kWh_100km": 19.5,
+      "realRange": {
+        "mixed_km": 420,
+        "highway_130_km": 305,
+        "urban_km": 510,
+        "winter_minus5_km": 330,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 270,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 75,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 270
+        },
+        {
+          "soc": 30,
+          "power": 270
+        },
+        {
+          "soc": 50,
+          "power": 210
+        },
+        {
+          "soc": 80,
+          "power": 95
+        },
+        {
+          "soc": 100,
+          "power": 12
+        }
+      ],
+      "availability": "available",
+      "notes": "639 ch (470 kW), AWD, version ultra-sportive"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 2,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Allure de SUV Coupe dynamique avec ligne de toit fuyante"
+    },
+    {
+      "category": "technologie",
+      "label": "Platform Premium Electric (PPE) avec architecture 800 V"
+    },
+    {
+      "category": "confort",
+      "label": "Grand coffre de 540 L extensible et frunk de 84 L"
+    },
+    {
+      "category": "securite",
+      "label": "Projecteurs Matrix LED et transmission integrale adaptative"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Performances de premier ordre et comportement d'une agilite bluffante",
+      "Architecture 800 V offrant des temps de recharge records pour la categorie"
+    ],
+    "weaknesses": [
+      "Poids depassant les 2,4 tonnes nuisant a l'efficience pure",
+      "Facture finale tres salee une fois passe par la case des options"
+    ],
+    "idealUserProfile": "Conducteurs souhaitant un SUV familial sportif, prestigieux et capable de voyager au long cours sans contrainte de charge.",
+    "notIdealFor": "Acheteurs soucieux d'efficience maximale ou de discretion, ou disposant d'un budget raisonnable."
+  },
+  "lastUpdated": "2026-05-25",
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
+  "imageCredit": "Constructeur"
+}

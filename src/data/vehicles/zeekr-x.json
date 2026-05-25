@@ -96,7 +96,7 @@
       ]
     },
     {
-      "name": "Long Range 61 kWh",
+      "name": "61 kWh",
       "price_EUR": 42990,
       "batteryUsed": "61 kWh",
       "equipmentHighlights": [
@@ -175,9 +175,9 @@
     },
     {
       "id": "zeekr-x-lr-61",
-      "label": "Zeekr X Long Range · 61 kWh",
+      "label": "Zeekr X · 61 kWh",
       "battery": "long-range",
-      "trim": "Long Range 61 kWh",
+      "trim": "61 kWh",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
@@ -317,7 +317,7 @@
     "idealUserProfile": "Conducteurs urbains cherchant un SUV compact premium sportif et bien equipe.",
     "notIdealFor": "Gros rouleurs ou acheteurs comptant sur les aides a l'achat."
   },
-  "lastUpdated": "2026-05-19",
+  "lastUpdated": "2026-05-18",
   "sources": [
     "constructeur",
     "automobile-propre"

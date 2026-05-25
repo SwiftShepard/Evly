@@ -119,9 +119,9 @@
   "frunkCapacity_L": 25,
   "trims": [
     {
-      "name": "Standard Range Air",
+      "name": "Air",
       "price_EUR": 35990,
-      "batteryUsed": "Standard 58.3 kWh",
+      "batteryUsed": "58.3 kWh",
       "wltp_km": 436,
       "equipmentHighlights": [
         "Ecran panoramique",
@@ -129,9 +129,9 @@
       ]
     },
     {
-      "name": "Long Range Air",
+      "name": "Air",
       "price_EUR": 39990,
-      "batteryUsed": "Long Range 81.4 kWh",
+      "batteryUsed": "81.4 kWh",
       "wltp_km": 605,
       "equipmentHighlights": [
         "Batterie 81.4 kWh",
@@ -139,9 +139,9 @@
       ]
     },
     {
-      "name": "Long Range Earth",
+      "name": "Earth",
       "price_EUR": 40990,
-      "batteryUsed": "Long Range 81.4 kWh",
+      "batteryUsed": "81.4 kWh",
       "wltp_km": 605,
       "equipmentHighlights": [
         "Confort ++",
@@ -149,9 +149,9 @@
       ]
     },
     {
-      "name": "Long Range GT-Line",
+      "name": "GT-Line",
       "price_EUR": 45990,
-      "batteryUsed": "Long Range 81.4 kWh",
+      "batteryUsed": "81.4 kWh",
       "wltp_km": 580,
       "equipmentHighlights": [
         "Jantes 19\"",
@@ -165,9 +165,9 @@
   "configurations": [
     {
       "id": "kia-ev3-standard-range-air",
-      "label": "EV3 Standard Range Air",
+      "label": "EV3 Air",
       "battery": "standard",
-      "trim": "Standard Range Air",
+      "trim": "Air",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
@@ -241,9 +241,9 @@
     },
     {
       "id": "kia-ev3-long-range-air",
-      "label": "EV3 Long Range Air",
+      "label": "EV3 Air",
       "battery": "long-range",
-      "trim": "Long Range Air",
+      "trim": "Air",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
@@ -317,9 +317,9 @@
     },
     {
       "id": "kia-ev3-long-range-earth",
-      "label": "EV3 Long Range Earth",
+      "label": "EV3 Earth",
       "battery": "long-range",
-      "trim": "Long Range Earth",
+      "trim": "Earth",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
@@ -393,9 +393,9 @@
     },
     {
       "id": "kia-ev3-long-range-gt-line",
-      "label": "EV3 Long Range GT-Line",
+      "label": "EV3 GT-Line",
       "battery": "long-range",
-      "trim": "Long Range GT-Line",
+      "trim": "GT-Line",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
@@ -505,7 +505,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-05-18",
   "sources": [
     "nyland",
     "la-chaine-ev"

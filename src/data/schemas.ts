@@ -50,7 +50,10 @@ const ChargingCurvePointSchema = z.object({
 const TrimSchema = z.object({
   name: z.string().min(1),
   price_EUR: z.number().int().positive(),
-  batteryUsed: z.string().min(1),
+  batteryUsed: z.string().min(1).refine(
+    (val) => !/(?:standard|long\s*range)/i.test(val),
+    { message: "batteryUsed ne doit pas contenir 'Standard' ou 'Long Range', juste la capacité (ex: '60 kWh')" }
+  ),
   equipmentHighlights: z.array(z.string().min(1)).min(1),
 });
 

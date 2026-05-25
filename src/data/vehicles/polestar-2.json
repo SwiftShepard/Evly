@@ -86,7 +86,7 @@
   "frunkCapacity_L": 31,
   "trims": [
     {
-      "name": "Standard Range Single Motor",
+      "name": "Single Motor",
       "price_EUR": 46990,
       "batteryUsed": "69 kWh",
       "equipmentHighlights": [
@@ -95,7 +95,7 @@
       ]
     },
     {
-      "name": "Long Range Single Motor",
+      "name": "Single Motor",
       "price_EUR": 51990,
       "batteryUsed": "79 kWh",
       "equipmentHighlights": [
@@ -105,7 +105,7 @@
       ]
     },
     {
-      "name": "Long Range Dual Motor",
+      "name": "Dual Motor",
       "price_EUR": 55990,
       "batteryUsed": "79 kWh",
       "equipmentHighlights": [
@@ -121,9 +121,9 @@
   "configurations": [
     {
       "id": "polestar-2-sr-sm",
-      "label": "Polestar 2 · Standard Range SM",
+      "label": "Polestar 2 · SM",
       "battery": "standard",
-      "trim": "Standard Range Single Motor",
+      "trim": "Single Motor",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
@@ -170,9 +170,9 @@
     },
     {
       "id": "polestar-2-lr-sm",
-      "label": "Polestar 2 · Long Range SM",
+      "label": "Polestar 2 · SM",
       "battery": "long-range",
-      "trim": "Long Range Single Motor",
+      "trim": "Single Motor",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
@@ -223,9 +223,9 @@
     },
     {
       "id": "polestar-2-lr-dm",
-      "label": "Polestar 2 · Long Range DM",
+      "label": "Polestar 2 · DM",
       "battery": "long-range",
-      "trim": "Long Range Dual Motor",
+      "trim": "Dual Motor",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
@@ -312,7 +312,7 @@
     "idealUserProfile": "Conducteurs cherchant une berline electrique premium avec autonomie genereuse et design scandinave.",
     "notIdealFor": "Familles cherchant un grand coffre ou acheteurs visant les aides a l'achat francaises."
   },
-  "lastUpdated": "2026-05-19",
+  "lastUpdated": "2026-05-18",
   "sources": [
     "la-chaine-ev"
   ],

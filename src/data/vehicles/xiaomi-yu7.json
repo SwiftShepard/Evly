@@ -86,7 +86,7 @@
   "frunkCapacity_L": 141,
   "trims": [
     {
-      "name": "Standard 73 kWh",
+      "name": "73 kWh",
       "price_EUR": 44000,
       "batteryUsed": "73 kWh LFP",
       "equipmentHighlights": [
@@ -117,7 +117,7 @@
       "id": "xiaomi-yu7-standard",
       "label": "YU7 Standard · 73 kWh",
       "battery": "standard",
-      "trim": "Standard 73 kWh",
+      "trim": "73 kWh",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
@@ -258,7 +258,7 @@
     "idealUserProfile": "Familles passionnées de technologie et de performances cherchant un grand SUV électrique ultra-moderne.",
     "notIdealFor": "Conducteurs urbains cherchant un véhicule compact et facile à garer avec un réseau SAV local établi."
   },
-  "lastUpdated": "2026-05-22",
+  "lastUpdated": "2026-05-18",
   "sources": [
     "constructeur",
     "wikipedia"
