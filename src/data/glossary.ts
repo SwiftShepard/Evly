@@ -164,7 +164,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     abbr: "CEE",
     category: "general",
     definition:
-      "Certificat d'Economie d'Energie applique aux vehicules electriques. Dispositif d'aide financiere (ayant remplace l'ancien dispositif national au 1er juillet 2025) versee sous forme de coup de pouce pour l'acquisition d'un VE neuf. Les montants indicatifs 2026 sont de 3 500 euros pour les ménages standards, 4 700 euros pour les ménages modestes et 5 700 euros pour les ménages precaires. Une majoration de 1 200 a 2 000 euros s'ajoute si l'assemblage du VE et sa batterie sont faits en Europe.",
+      "Certificat d'Economie d'Energie applique aux vehicules electriques. Dispositif d'aide financiere (ayant remplace l'ancien dispositif national au 1er juillet 2025) versee sous forme de coup de pouce pour l'acquisition d'un VE neuf. Les montants indicatifs 2026 sont modules de 6 500 € a 9 500 € selon l'origine de l'assemblage du VE, de son moteur et de sa batterie en Europe.",
   },
   {
     term: "Prime a la conversion",
@@ -176,7 +176,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     term: "Coup de pouce Vehicules Particuliers Electriques",
     category: "general",
     definition:
-      "Denomination officielle du dispositif d'aide financiere CEE pour l'achat de voitures electriques neuves en France en 2026. Ce dispositif remplace l'ancien systeme d'aide. Les montants varient selon les revenus et l'origine geographique de la batterie et de l'assemblage.",
+      "Denomination officielle du dispositif d'aide financiere CEE pour l'achat de voitures electriques neuves en France en 2026. Ce dispositif remplace l'ancien systeme d'aide. Les montants varient de 6 500 à 9 500 euros selon l'origine géographique de l'assemblage, du moteur et de la batterie.",
   },
   {
     term: "Leasing social",

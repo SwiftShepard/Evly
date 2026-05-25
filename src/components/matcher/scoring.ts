@@ -158,14 +158,10 @@ export function scoreVehicle(vehicle: Vehicle, answers: MatcherAnswers): MatchRe
     // --- CRITÈRE 1 : BUDGET (Éliminatoire ou pénalité) ---
     const rawPrice = config.price_EUR ?? 0;
     
-    // Déduction des aides CEE 2026 (Prime CEE + majoration batterie européenne) si applicable (produit en Europe et prix <= 47 000 €)
+    // Déduction des aides CEE 2026 (Prime CEE + majoration composants européens) si applicable (produit en Europe et prix <= 47 000 €)
     const isEU = EUROPEAN_COUNTRIES.has(vehicle.productionCountry);
     const isEligibleCEE = isEU && rawPrice <= 47000;
-    // Base de la prime CEE estimée selon ressources (RFR <= 16 300 € qualifié via leasing social RFR)
-    const baseCee = answers.leasingSocialRfr ? 4700 : 3500;
-    // Majoration batterie européenne estimée à 1 200 € pour les modèles assemblés en Europe
-    const batteryMajoration = isEU ? 1200 : 0;
-    const totalCeeAid = isEligibleCEE ? (baseCee + batteryMajoration) : 0;
+    const totalCeeAid = isEligibleCEE ? (vehicle.availableAids || []).reduce((sum: number, a: { amount_EUR: number }) => sum + a.amount_EUR, 0) : 0;
     const configPrice = rawPrice - totalCeeAid;
     
     // Calcul du loyer estimé ou réel

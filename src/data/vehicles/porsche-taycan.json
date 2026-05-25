@@ -238,7 +238,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 630,
-      "wltp_consumption_kWh_100km": 18.0,
+      "wltp_consumption_kWh_100km": 18,
       "realRange": {
         "mixed_km": 460,
         "highway_130_km": 330,

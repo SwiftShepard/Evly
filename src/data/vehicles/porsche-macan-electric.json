@@ -32,7 +32,7 @@
   },
   "consumption_mixed_kWh_per_100km": 18.8,
   "consumption_highway_kWh_per_100km": 24.5,
-  "consumption_winter_kWh_per_100km": 22.0,
+  "consumption_winter_kWh_per_100km": 22,
   "dragCoefficient_Cx": 0.25,
   "chargingDC": {
     "peakPower_kW": 270,
@@ -132,7 +132,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 641,
-      "wltp_consumption_kWh_100km": 18.0,
+      "wltp_consumption_kWh_100km": 18,
       "realRange": {
         "mixed_km": 460,
         "highway_130_km": 330,
