@@ -46,7 +46,7 @@ export default function LeasingEligibilitySimulator() {
         Suis-je éligible au Leasing Social ?
       </h2>
       <p className="text-xs text-[var(--color-text-muted)] mb-8 leading-relaxed">
-        Testez votre éligibilité en temps réel selon les nouveaux barèmes 2026 de l'édition à 100 000 véhicules.
+        Simulez votre éligibilité en temps réel selon les barèmes officiels 2026.
       </p>
 
       {/* DYNAMIC STATUS BANNER */}
@@ -64,12 +64,12 @@ export default function LeasingEligibilitySimulator() {
         </div>
         <div>
           <h3 className="font-display text-lg font-semibold leading-tight">
-            {isFullyEligible ? "Vous semblez éligible au dispositif !" : "Vous n'êtes pas éligible pour le moment"}
+            {isFullyEligible ? "Vous semblez éligible !" : "Vous n'êtes pas éligible pour le moment"}
           </h3>
           <p className="text-xs text-[var(--color-text-muted)] mt-1.5 leading-relaxed">
             {isFullyEligible 
-              ? "Votre profil répond aux critères fiscaux (RFR par part de " + rfrPerPart.toLocaleString() + " € ≤ 16 300 €) et d'usage de la session 2026. Vous pouvez prétendre à un loyer mensuel sans apport à partir de 95 €/mois."
-              : "Pour bénéficier du programme, vous devez remplir toutes les conditions d'éligibilité. Consultez le détail ci-dessous pour identifier les points de blocage."
+              ? "Votre profil respecte les critères fiscaux (RFR de " + rfrPerPart.toLocaleString() + " €/part ≤ 16 300 €) et de trajet. Vous pouvez prétendre à une offre à partir de 95 €/mois."
+              : "Vous devez remplir toutes les conditions fiscales et de trajet. Ajustez les curseurs ci-dessous pour vérifier votre situation."
             }
           </p>
         </div>
@@ -193,7 +193,7 @@ export default function LeasingEligibilitySimulator() {
           <div>
             <div className="flex items-center justify-between mb-2">
               <label className="text-xs font-medium text-[var(--color-text)]">
-                Distance domicile - travail (aller simple)
+                Distance domicile-travail (aller simple)
               </label>
               <span className="font-mono text-sm font-semibold text-[var(--color-accent)]">
                 {commuteDistance} km
@@ -258,10 +258,10 @@ export default function LeasingEligibilitySimulator() {
             </div>
             <div className="flex-1">
               <span className="block font-medium text-xs text-[var(--color-text)]">
-                Nouveauté 2026 : Profession hautement dépendante
+                Volet professionnel 2026 (métiers mobiles)
               </span>
               <span className="block text-[10px] text-[var(--color-text-muted)] mt-1 leading-normal">
-                Je suis aide à domicile, infirmier libéral, artisan, livreur ou commercial et utilise quotidiennement mon véhicule pour le travail. (Supprime le critère de distance domicile-travail).
+                Aide à domicile, santé, artisan, livreur ou commercial utilisant son véhicule au quotidien. (Dispense du critère de distance domicile-travail).
               </span>
             </div>
           </button>

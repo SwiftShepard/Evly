@@ -74,7 +74,26 @@ export function isEU(country: string): boolean {
   return EU_COUNTRIES.includes(country);
 }
 
+const EXCLUDED_BRANDS = [
+  "Alpine",
+  "Tesla",
+  "BMW",
+  "Mercedes",
+  "Audi",
+  "Porsche",
+  "Lexus",
+  "Volvo",
+  "Mazda",
+  "Suzuki",
+  "Honda",
+  "MG",
+  "Nio",
+  "Xpeng",
+  "Lucid",
+];
+
 export function getLeasingStatus(v: Vehicle): LeasingStatus {
+  if (EXCLUDED_BRANDS.includes(v.brand)) return "not-eligible";
   const cheapest = Math.min(...v.trims.map((t) => t.price_EUR));
   if (v.leasingSocialEligible) return "official";
   if (cheapest > LEASING_PRICE_CAP_EUR) return "not-eligible";

@@ -104,9 +104,20 @@
       ]
     }
   ],
-  "leasingSocialEligible": false,
-  "leasingSocial_EUR_per_month": null,
-  "availableAids": [],
+  "leasingSocialEligible": true,
+  "leasingSocial_EUR_per_month": 95,
+  "availableAids": [
+    {
+      "label": "Prime CEE",
+      "amount_EUR": 3500,
+      "conditions": "Aide de base (jusqu'à 5 700 € selon revenus) pour les véhicules éligibles de moins de 47 000 €."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 1200,
+      "conditions": "Supplément de 1 200 € à 2 000 € pour véhicule assemblé en Europe avec batterie européenne."
+    }
+  ],
   "configurations": [
     {
       "id": "fiat-grande-panda-pop-44",
@@ -117,8 +128,8 @@
       "tyreType": "summer",
       "options": [],
       "price_EUR": 24900,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
+      "monthlyLease_EUR": 95,
+      "leasingSocialEligible": true,
       "wltp_km": 320,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
@@ -170,8 +181,8 @@
       "tyreType": "summer",
       "options": [],
       "price_EUR": 28900,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
+      "monthlyLease_EUR": 95,
+      "leasingSocialEligible": true,
       "wltp_km": 320,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
@@ -243,14 +254,15 @@
   "verdict": {
     "strengths": [
       "Prix d'attaque le plus bas du segment B électrique en 2026",
-      "Câble de recharge intégré"
+      "Câble de recharge intégré de série",
+      "Éligibilité officielle au Leasing Social à 95 €/mois"
     ],
     "weaknesses": [
-      "Production Serbie : score ADEME bas, pas de Prime CEE VE",
+      "Production hors-UE limitant la Prime CEE hors programme social",
       "Performances modestes (113 ch)"
     ],
     "idealUserProfile": "Acheteur recherchant le ticket d'entrée le plus bas en VE familial compact. Idéal pour usage urbain et petite famille.",
-    "notIdealFor": "Acheteurs visant Prime CEE VE ou leasing social, production hors UE pénalisante pour les aides."
+    "notIdealFor": "Conducteurs effectuant fréquemment de longs trajets autoroutiers ou recherchant des accélérations sportives."
   },
   "lastUpdated": "2026-05-18",
   "sources": [
