@@ -46,20 +46,75 @@ const description =
         </h1>
 
         <p class="mt-6 md:mt-8 text-base md:text-lg text-[var(--color-text-muted)] max-w-2xl leading-relaxed fade-rise fade-rise-delay-2 relative z-10">
-          Comparateur d'autonomie réelle indépendant. Zéro publicité, zéro affiliation.
+          Le guide indépendant pour choisir, comparer et calculer le coût réel de votre futur véhicule électrique. Zéro publicité, données mesurées.
         </p>
 
-        <div class="mt-8 md:mt-10 flex flex-wrap items-center gap-3.5 fade-rise fade-rise-delay-3 relative z-10">
-          <a href={url("/vehicules")} class="btn-interactive btn-glow inline-flex items-center gap-2 px-6 py-3.5 bg-[var(--color-accent)] text-[var(--color-accent-on)] text-sm font-semibold tracking-tight min-h-[48px] hover:bg-[var(--color-accent-dim)] transition-colors rounded-[var(--radius-tile-sm)]">
-            Explorer le showroom <span class="font-mono">→</span>
-          </a>
-          <a href={url("/simulateur")} class="btn-interactive inline-flex items-center gap-2 px-6 py-3.5 border border-[var(--color-border-strong)] text-[var(--color-text)] text-sm font-medium tracking-tight min-h-[48px] hover:bg-[var(--color-bg-subtle)] transition-colors rounded-[var(--radius-tile-sm)]">
-            Simulateur de coût TCO
-          </a>
+        {/* Barre de recherche intégrée (Option 2) */}
+        <form action={url("/vehicules")} method="GET" class="mt-8 max-w-xl relative fade-rise fade-rise-delay-3 z-10">
+          <div class="relative flex items-center bg-[var(--color-bg-subtle)] border border-[var(--color-border-strong)] rounded-xl focus-within:border-[var(--color-accent)] transition-all overflow-hidden p-1.5 shadow-lg">
+            <div class="pl-3 text-[var(--color-text-muted)] flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+            <input
+              type="text"
+              name="q"
+              placeholder="Rechercher une marque, un modèle (ex: Renault 5, Taycan)..."
+              class="w-full bg-transparent border-0 py-2.5 pl-3 pr-20 text-sm text-[var(--color-text)] placeholder-[var(--color-text-faint)] focus:outline-none focus:ring-0"
+            />
+            <button type="submit" class="bg-[var(--color-accent)] text-[var(--color-accent-on)] px-4 py-2 text-xs font-semibold rounded-lg hover:bg-[var(--color-accent-dim)] transition-colors cursor-pointer flex-shrink-0">
+              Rechercher
+            </button>
+          </div>
+        </form>
+
+        {/* Outils et suggestions de recherche (Double rangée) */}
+        <div class="mt-6 flex flex-col gap-5 fade-rise fade-rise-delay-3 relative z-10">
+          {/* Ligne de suggestions de recherche */}
+          <div class="flex flex-wrap items-center gap-x-2 gap-y-1.5 text-xs text-[var(--color-text-muted)]">
+            <span class="text-[var(--color-text-faint)] mr-1 select-none">Recherches fréquentes :</span>
+            <a href={url("/vehicules?q=Renault 5")} class="px-2.5 py-1 rounded-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all">Renault 5</a>
+            <a href={url("/vehicules?q=Taycan")} class="px-2.5 py-1 rounded-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all">Taycan</a>
+            <a href={url("/vehicules?q=e-208")} class="px-2.5 py-1 rounded-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all">e-208</a>
+          </div>
+
+          {/* Ligne d'outils rapides (mini-boutons CTA) */}
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-[var(--color-text-faint)] mr-1 select-none">Outils d'aide :</span>
+            
+            <a href={url("/recommandation")} class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold rounded-lg bg-[var(--color-surface-elevated)] border border-[var(--color-border-strong)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] hover:shadow-sm transition-all duration-200">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2" />
+              </svg>
+              Trouver mon VE
+            </a>
+
+            <a href={url("/comparer")} class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold rounded-lg bg-[var(--color-surface-elevated)] border border-[var(--color-border-strong)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] hover:shadow-sm transition-all duration-200">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2z" />
+              </svg>
+              Comparateur
+            </a>
+
+            <a href={url("/leasing-social")} class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold rounded-lg bg-[var(--color-surface-elevated)] border border-[var(--color-border-strong)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] hover:shadow-sm transition-all duration-200">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1" />
+              </svg>
+              Leasing Social
+            </a>
+
+            <a href={url("/simulateur")} class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold rounded-lg bg-[var(--color-surface-elevated)] border border-[var(--color-border-strong)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] hover:shadow-sm transition-all duration-200">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01" />
+              </svg>
+              Simulateur TCO
+            </a>
+          </div>
         </div>
 
         {/* Tableau de bord des statistiques */}
-        <div class="mt-12 md:mt-16 pt-8 border-t border-[var(--color-border)] grid grid-cols-1 sm:grid-cols-3 gap-6 fade-rise fade-rise-delay-3 relative z-10">
+        <div class="mt-8 md:mt-10 pt-6 border-t border-[var(--color-border)] grid grid-cols-1 sm:grid-cols-3 gap-6 fade-rise fade-rise-delay-3 relative z-10">
           <div class="flex flex-col gap-1 p-5 rounded-xl border border-[var(--color-border)] bg-[color-mix(in_srgb,var(--color-bg-subtle)_25%,transparent)] backdrop-blur-md">
             <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Base de données</span>
             <span class="font-display text-2xl font-bold text-[var(--color-text)] flex items-baseline gap-1">

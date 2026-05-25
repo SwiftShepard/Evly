@@ -115,6 +115,18 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|cee
         <aside class="hidden xl:block w-[220px] shrink-0 z-10">
           <div class="sticky top-24 flex flex-col gap-0 fade-rise">
 
+            <div class="filter-section !border-b-0 pb-4">
+              <span class="font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-text-faint)] block mb-2">Rechercher</span>
+              <div class="relative w-full">
+                <input
+                  type="text"
+                  id="catalog-search"
+                  placeholder="Marque, modèle..."
+                  class="w-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-md px-3 py-2 text-xs text-[var(--color-text)] placeholder-[var(--color-text-faint)] focus:border-[var(--color-accent)] focus:outline-none transition-colors"
+                />
+              </div>
+            </div>
+
             <details class="filter-section">
               <summary class="filter-section-toggle">Marques <span class="filter-chevron" /></summary>
               <div class="filter-section-body">
@@ -173,7 +185,15 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|cee
         </aside>
 
         {/* Filtres Mobile / Tablette, rangées défilantes */}
-        <div class="xl:hidden w-full mb-6 flex flex-col gap-2 fade-rise">
+        <div class="xl:hidden w-full mb-6 flex flex-col gap-3 fade-rise">
+          <div class="relative w-full">
+            <input
+              type="text"
+              id="catalog-search-mobile"
+              placeholder="Rechercher une marque, un modèle..."
+              class="w-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-md px-4 py-2.5 text-sm text-[var(--color-text)] placeholder-[var(--color-text-faint)] focus:border-[var(--color-accent)] focus:outline-none transition-colors"
+            />
+          </div>
           <div class="filter-scroll-row">
             {brandGroups.map((group, i) => (
               <>
@@ -252,6 +272,8 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|cee
               data-slug={v.slug}
               data-category={category}
               data-brand={v.brand}
+              data-model={v.model}
+              data-variant={v.variant}
               data-usage={usageTags}
               data-price={cheapest.price_EUR}
               data-price-aided={priceAided}
@@ -326,9 +348,21 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|cee
     const resetBtns = document.querySelectorAll('#reset-filters, #reset-filters-mobile');
     const originalOrder = Array.from(cards);
 
+    const searchDesktop = document.querySelector('#catalog-search');
+    const searchMobile  = document.querySelector('#catalog-search-mobile');
+
     // Price mode, 'gross' | 'aided'
     let priceMode = 'gross';
     let currentSort = 'default';
+    let currentSearch = '';
+
+    // Initialize search from URL query parameter
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      currentSearch = urlParams.get('q') || '';
+      if (searchDesktop) searchDesktop.value = currentSearch;
+      if (searchMobile) searchMobile.value = currentSearch;
+    } catch (e) {}
 
     function getCardPrice(card) {
       if (priceMode === 'aided') return +(card.dataset.priceAided ?? card.dataset.price);
@@ -346,7 +380,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|cee
     }
 
     function updateResetVisibility() {
-      const any = Object.values(active).some(s => s.size > 0);
+      const any = Object.values(active).some(s => s.size > 0) || currentSearch.trim() !== '';
       resetBtns.forEach(b => b.style.display = any ? '' : 'none');
     }
 
@@ -365,6 +399,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|cee
       const selBudgets  = getSelected('budget');
       const selSpecific = getSelected('specific');
       const favSlugs    = selSpecific.includes('favorites') ? new Set(getFavorites()) : null;
+      const query       = currentSearch.toLowerCase().trim();
 
       cards.forEach(card => {
         const brand   = card.dataset.brand;
@@ -375,6 +410,8 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|cee
         const cee     = card.dataset.cee === '1';
         const usages  = (card.dataset.usage || '').split(',').filter(Boolean);
         const slug    = card.dataset.slug;
+        const model   = (card.dataset.model || '').toLowerCase();
+        const variant = (card.dataset.variant || '').toLowerCase();
 
         let ok = true;
         if (selBrands.length  && !selBrands.includes(brand)) ok = false;
@@ -393,9 +430,25 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|cee
             if (s === 'familiale'   && !usages.includes('Familiale'))      { ok = false; break; }
           }
         }
+        if (query) {
+          if (!model.includes(query) && !brand.toLowerCase().includes(query) && !variant.includes(query)) {
+            ok = false;
+          }
+        }
         card.style.display = ok ? 'contents' : 'none';
       });
     }
+
+    function handleSearchInput(e) {
+      currentSearch = e.target.value;
+      if (searchDesktop && searchDesktop !== e.target) searchDesktop.value = currentSearch;
+      if (searchMobile && searchMobile !== e.target) searchMobile.value = currentSearch;
+      updateFilters();
+      updateResetVisibility();
+    }
+
+    if (searchDesktop) searchDesktop.addEventListener('input', handleSearchInput);
+    if (searchMobile) searchMobile.addEventListener('input', handleSearchInput);
 
     chips.forEach(chip => {
       chip.addEventListener('click', () => {
@@ -412,6 +465,9 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|cee
     resetBtns.forEach(btn => btn.addEventListener('click', () => {
       Object.values(active).forEach(s => s.clear());
       chips.forEach(c => c.setAttribute('aria-pressed', 'false'));
+      currentSearch = '';
+      if (searchDesktop) searchDesktop.value = '';
+      if (searchMobile) searchMobile.value = '';
       updateFilters();
       updateResetVisibility();
     }));
@@ -449,6 +505,12 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|cee
         applySort(currentSort);
       });
     });
+
+    // Run initial filter on load if URL contains query parameter
+    if (currentSearch) {
+      updateFilters();
+      updateResetVisibility();
+    }
   </script>
 
   <style>
