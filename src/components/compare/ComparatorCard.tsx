@@ -7,10 +7,36 @@ import SohSlider from "@/components/vehicle/SohSlider";
 import { url } from "@/lib/url";
 import { X } from "lucide-react";
 
+const imageModules = import.meta.glob<string>(
+  "/src/assets/vehicles/*.{jpeg,jpg,png,webp,avif,svg}",
+  { query: "?url", import: "default", eager: true }
+);
+
+function getLocalVehicleImageUrl(slug: string): string | null {
+  for (const [path, url] of Object.entries(imageModules)) {
+    const stem = path.split("/").at(-1)!.replace(/\.(jpeg|jpg|png|webp|avif|svg)$/i, "");
+    if (stem === slug) {
+      return url;
+    }
+  }
+  return null;
+}
+
 interface Props {
   vehicle: Vehicle;
   config: VehicleConfiguration;
   soh: number;
+  bestMetrics?: {
+    mixedRange?: boolean;
+    wltp?: boolean;
+    highway?: boolean;
+    chargingPeak?: boolean;
+    charging1080?: boolean;
+    charging30min?: boolean;
+    netPrice?: boolean;
+    acceleration?: boolean;
+    trunk?: boolean;
+  };
   onSohChange: (soh: number) => void;
   onConfigChange: (configId: string) => void;
   onRemove: () => void;
@@ -21,6 +47,7 @@ export default function ComparatorCard({
   vehicle,
   config,
   soh,
+  bestMetrics,
   onSohChange,
   onConfigChange,
   onRemove,
@@ -82,6 +109,15 @@ export default function ComparatorCard({
       maximumFractionDigits: 0,
     }).format(n);
 
+  const imageUrl = getLocalVehicleImageUrl(vehicle.slug);
+
+  const hasAnyBest = bestMetrics && (
+    bestMetrics.mixedRange ||
+    bestMetrics.charging30min ||
+    bestMetrics.netPrice ||
+    bestMetrics.trunk
+  );
+
   return (
     <div
       className="flex flex-col rounded-2xl overflow-hidden"
@@ -102,7 +138,7 @@ export default function ComparatorCard({
           backgroundColor: "var(--color-surface)",
         }}
       >
-        <div className="flex flex-col gap-1 min-w-0">
+        <div className="flex flex-col gap-1 min-w-0 flex-1">
           <span
             className="font-mono text-[10px] uppercase tracking-[0.14em]"
             style={{ color: "var(--color-text-faint)" }}
@@ -121,6 +157,43 @@ export default function ComparatorCard({
           >
             {config.label}
           </span>
+        </div>
+
+        {/* Vehicle Image */}
+        <div className="w-24 h-12 flex-shrink-0 flex items-end justify-center">
+          {imageUrl ? (
+            <img
+              src={imageUrl}
+              alt={`${vehicle.brand} ${vehicle.model}`}
+              className="max-w-full max-h-full object-contain"
+            />
+          ) : (
+            <svg
+              className="opacity-30 w-16 h-8"
+              viewBox="0 0 290 115"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M24 34 C30 78 50 82 68 82"
+                stroke="currentColor"
+                strokeWidth="6"
+                strokeLinecap="round"
+              />
+              <rect x="8" y="22" width="16" height="24" rx="3" fill="currentColor" />
+              <path d="M21 23 L17 32 H21 L12 45 L16 36 H12 Z" fill="white" stroke="none" />
+              <path
+                d="M 68 82 L 68 55 C 72 26 90 8 112 4 L 190 4 C 214 4 236 22 248 44 L 258 44 C 264 44 268 54 268 64 L 268 82 C 254 82 240 66 214 66 C 188 66 174 82 160 82 L 144 82 C 130 82 116 66 94 66 C 72 66 68 82 68 82 Z"
+                stroke="currentColor"
+                strokeWidth="6"
+                strokeLinejoin="round"
+                strokeLinecap="round"
+              />
+              <circle cx="94"  cy="97" r="17" stroke="currentColor" strokeWidth="6" />
+              <circle cx="214" cy="97" r="17" stroke="currentColor" strokeWidth="6" />
+            </svg>
+          )}
         </div>
         <button
           type="button"
@@ -162,11 +235,53 @@ export default function ComparatorCard({
         <SohSlider initialSoh={soh} onChange={onSohChange} compact />
       </div>
 
+      {/* Winner badges row */}
+      {hasAnyBest && (
+        <div className="flex flex-wrap gap-1 px-4 pb-3">
+          {bestMetrics?.mixedRange && (
+            <span
+              className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-semibold font-mono bg-[var(--color-surface-accent)] text-[var(--color-accent)] border border-[rgba(58,92,18,0.15)]"
+              title="Meilleure autonomie mixte de la sélection"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" className="mr-0.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              Autonomie
+            </span>
+          )}
+          {bestMetrics?.charging30min && (
+            <span
+              className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-semibold font-mono bg-[var(--color-surface-accent)] text-[var(--color-accent)] border border-[rgba(58,92,18,0.15)]"
+              title="Meilleure recharge de la sélection"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" className="mr-0.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              Recharge
+            </span>
+          )}
+          {bestMetrics?.netPrice && (
+            <span
+              className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-semibold font-mono bg-[var(--color-surface-accent)] text-[var(--color-accent)] border border-[rgba(58,92,18,0.15)]"
+              title="Prix après aides le plus bas de la sélection"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" className="mr-0.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              Meilleur Prix
+            </span>
+          )}
+          {bestMetrics?.trunk && (
+            <span
+              className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-semibold font-mono bg-[var(--color-surface-accent)] text-[var(--color-accent)] border border-[rgba(58,92,18,0.15)]"
+              title="Meilleur volume de coffre de la sélection"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2" className="mr-0.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              Coffre
+            </span>
+          )}
+        </div>
+      )}
+
       {/* Separator */}
       <div className="mx-4" style={{ borderTop: "0.5px solid var(--color-border)" }} />
 
       {/* Autonomie réelle */}
-      <DataBlock label="Autonomie réelle">
+      <DataBlock label="Autonomie réelle" best={bestMetrics?.mixedRange}>
         <div className="flex items-baseline gap-2">
           <span
             className="text-3xl font-semibold tabular-nums"
@@ -186,6 +301,14 @@ export default function ComparatorCard({
           >
             km
           </span>
+          {bestMetrics?.mixedRange && (
+            <span
+              className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[var(--color-surface-accent)] text-[var(--color-accent)] border border-[rgba(58,92,18,0.15)] ml-1"
+              title="Meilleure autonomie mixte de la sélection"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </span>
+          )}
         </div>
         {bestRangeTest ? (
           <span
@@ -208,24 +331,52 @@ export default function ComparatorCard({
 
       {/* WLTP */}
       {config.wltp_km && (
-        <DataBlock label="WLTP officiel" compact>
+        <DataBlock label="WLTP officiel" compact best={bestMetrics?.wltp}>
           <div className="flex items-baseline gap-2">
-            <span className="text-xl font-semibold tabular-nums" style={{ color: "var(--color-text)", letterSpacing: "-0.02em" }}>
+            <span
+              className="text-xl font-semibold tabular-nums"
+              style={{
+                color: bestMetrics?.wltp ? "var(--color-accent)" : "var(--color-text)",
+                letterSpacing: "-0.02em"
+              }}
+            >
               <AnimatedNumber value={scaledWltp} />
             </span>
             <span className="font-mono text-[10px]" style={{ color: "var(--color-text-faint)" }}>km</span>
+            {bestMetrics?.wltp && (
+              <span
+                className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[var(--color-surface-accent)] text-[var(--color-accent)] border border-[rgba(58,92,18,0.15)] ml-1"
+                title="Meilleure autonomie WLTP de la sélection"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              </span>
+            )}
           </div>
         </DataBlock>
       )}
 
       {/* Autoroute 130 */}
       {config.realRange?.highway_130_km && (
-        <DataBlock label="Autoroute 130 km/h" compact>
+        <DataBlock label="Autoroute 130 km/h" compact best={bestMetrics?.highway}>
           <div className="flex items-baseline gap-2">
-            <span className="text-xl font-semibold tabular-nums" style={{ color: "var(--color-text)", letterSpacing: "-0.02em" }}>
+            <span
+              className="text-xl font-semibold tabular-nums"
+              style={{
+                color: bestMetrics?.highway ? "var(--color-accent)" : "var(--color-text)",
+                letterSpacing: "-0.02em"
+              }}
+            >
               <AnimatedNumber value={scaledHighway} />
             </span>
             <span className="font-mono text-[10px]" style={{ color: "var(--color-text-faint)" }}>km</span>
+            {bestMetrics?.highway && (
+              <span
+                className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[var(--color-surface-accent)] text-[var(--color-accent)] border border-[rgba(58,92,18,0.15)] ml-1"
+                title="Meilleure autonomie autoroute de la sélection"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              </span>
+            )}
           </div>
         </DataBlock>
       )}
@@ -236,9 +387,9 @@ export default function ComparatorCard({
       {/* Recharge */}
       <DataBlock label="Recharge DC">
         <div className="grid grid-cols-3 gap-2">
-          <MiniStat label="Pic" value={<AnimatedNumber value={config.chargingDC_peak_kW} />} unit="kW" />
-          <MiniStat label="10→80 %" value={<AnimatedNumber value={config.chargingDC_10_80_min} />} unit="min" />
-          <MiniStat label="+30 min" value={<AnimatedNumber value={config.chargingDC_kWh_30min} />} unit="kWh" />
+          <MiniStat label="Pic" value={<AnimatedNumber value={config.chargingDC_peak_kW} />} unit="kW" best={bestMetrics?.chargingPeak} />
+          <MiniStat label="10→80 %" value={<AnimatedNumber value={config.chargingDC_10_80_min} />} unit="min" best={bestMetrics?.charging1080} />
+          <MiniStat label="+30 min" value={<AnimatedNumber value={config.chargingDC_kWh_30min} />} unit="kWh" best={bestMetrics?.charging30min} />
         </div>
         {config.chargingCurve && config.chargingCurve.length > 2 && (
           <div className="mt-3">
@@ -251,12 +402,26 @@ export default function ComparatorCard({
       <div className="mx-4" style={{ borderTop: "0.5px solid var(--color-border)" }} />
 
       {/* Prix */}
-      <DataBlock label="Prix">
+      <DataBlock label="Prix" best={bestMetrics?.netPrice}>
         <div className="flex flex-col gap-1.5">
           <div className="flex items-baseline gap-2">
-            <span className="text-2xl font-semibold tabular-nums" style={{ color: "var(--color-text)", letterSpacing: "-0.02em" }}>
+            <span
+              className="text-2xl font-semibold tabular-nums"
+              style={{
+                color: (bestMetrics?.netPrice && totalAids === 0) ? "var(--color-accent)" : "var(--color-text)",
+                letterSpacing: "-0.02em"
+              }}
+            >
               <AnimatedNumber value={config.price_EUR} format={fmtPrice} />
             </span>
+            {(bestMetrics?.netPrice && totalAids === 0) && (
+              <span
+                className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[var(--color-surface-accent)] text-[var(--color-accent)] border border-[rgba(58,92,18,0.15)] ml-1"
+                title="Prix le plus bas de la sélection"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              </span>
+            )}
           </div>
           {totalAids > 0 && (
             <>
@@ -264,12 +429,20 @@ export default function ComparatorCard({
                 Aides max.* : −<AnimatedNumber value={totalAids} format={fmtPrice} />
               </span>
               <div className="flex items-baseline gap-2">
-                <span className="text-lg font-semibold tabular-nums" style={{ color: "var(--color-accent)" }}>
+                <span className="text-lg font-semibold tabular-nums" style={{ color: bestMetrics?.netPrice ? "var(--color-accent)" : "var(--color-text)" }}>
                   <AnimatedNumber value={netPrice} format={fmtPrice} />
                 </span>
                 <span className="font-mono text-[10px]" style={{ color: "var(--color-text-faint)" }}>
                   apres aides max.*
                 </span>
+                {bestMetrics?.netPrice && (
+                  <span
+                    className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[var(--color-surface-accent)] text-[var(--color-accent)] border border-[rgba(58,92,18,0.15)] ml-1"
+                    title="Prix le plus bas de la sélection"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  </span>
+                )}
               </div>
             </>
           )}
@@ -314,7 +487,7 @@ export default function ComparatorCard({
         {/* Performance */}
         <DataBlock label="Performance" compact>
           <div className="grid grid-cols-2 gap-3">
-            <MiniStat label="0-100" value={vehicle.acceleration_0_100_s.toString().replace(".", ",")} unit="s" />
+            <MiniStat label="0-100" value={vehicle.acceleration_0_100_s.toString().replace(".", ",")} unit="s" best={bestMetrics?.acceleration} />
             <MiniStat label="V max" value={`${vehicle.topSpeed_kmh}`} unit="km/h" />
           </div>
         </DataBlock>
@@ -322,7 +495,7 @@ export default function ComparatorCard({
         {/* Pratique */}
         <DataBlock label="Pratique" compact>
           <div className="grid grid-cols-2 gap-3">
-            <MiniStat label="Coffre" value={`${vehicle.trunkCapacity_L}`} unit="L" />
+            <MiniStat label="Coffre" value={`${vehicle.trunkCapacity_L}`} unit="L" best={bestMetrics?.trunk} />
             <MiniStat label="Longueur" value={(vehicle.length_mm / 1000).toFixed(2).replace(".", ",")} unit="m" />
           </div>
         </DataBlock>
@@ -360,18 +533,29 @@ function DataBlock({
   label,
   children,
   compact = false,
+  best = false,
 }: {
   label: string;
   children: React.ReactNode;
   compact?: boolean;
+  best?: boolean;
 }) {
   return (
-    <div className={`px-4 ${compact ? "py-2.5" : "py-3.5"}`}>
+    <div
+      className="transition-all duration-300"
+      style={{
+        margin: best ? "6px 16px" : "0px",
+        padding: best ? "12px" : (compact ? "10px 16px" : "14px 16px"),
+        backgroundColor: best ? "color-mix(in srgb, var(--color-accent) 8%, var(--color-surface))" : "transparent",
+        border: best ? "1.5px solid var(--color-accent)" : "1.5px solid transparent",
+        borderRadius: best ? "12px" : "0px",
+      }}
+    >
       <span
         className="block font-mono text-[10px] uppercase tracking-[0.14em] mb-2"
-        style={{ color: "var(--color-text-faint)" }}
+        style={{ color: best ? "var(--color-accent)" : "var(--color-text-faint)" }}
       >
-        {label}
+        {label} {best && "★"}
       </span>
       {children}
     </div>
@@ -382,27 +566,44 @@ function MiniStat({
   label,
   value,
   unit,
+  best = false,
 }: {
   label: string;
   value: React.ReactNode;
   unit: string;
+  best?: boolean;
 }) {
   return (
-    <div className="flex flex-col gap-0.5">
+    <div
+      className="flex flex-col gap-0.5 transition-all duration-300"
+      style={{
+        padding: "6px 8px",
+        backgroundColor: best
+          ? "color-mix(in srgb, var(--color-accent) 8%, var(--color-surface))"
+          : "var(--color-bg-subtle)",
+        border: best
+          ? "1.5px solid var(--color-accent)"
+          : "1.5px solid var(--color-border)",
+        borderRadius: "8px",
+      }}
+    >
       <span
         className="font-mono text-[9px] uppercase tracking-[0.14em]"
-        style={{ color: "var(--color-text-faint)" }}
+        style={{ color: best ? "var(--color-accent)" : "var(--color-text-faint)" }}
       >
-        {label}
+        {label} {best && "★"}
       </span>
       <div className="flex items-baseline gap-1">
         <span
           className="text-base font-semibold tabular-nums"
-          style={{ color: "var(--color-text)", letterSpacing: "-0.01em" }}
+          style={{
+            color: best ? "var(--color-accent)" : "var(--color-text)",
+            letterSpacing: "-0.01em"
+          }}
         >
           {value}
         </span>
-        <span className="font-mono text-[10px]" style={{ color: "var(--color-text-faint)" }}>
+        <span className="font-mono text-[10px]" style={{ color: best ? "var(--color-accent)" : "var(--color-text-faint)" }}>
           {unit}
         </span>
       </div>

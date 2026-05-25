@@ -5,21 +5,39 @@ import { url } from "@/lib/url";
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 
-const links = [
-  { href: url("/vehicules"), label: "Véhicules" },
-  { href: url("/leasing-social"), label: "Leasing social" },
-  { href: url("/pro"), label: "Pro" },
-  { href: url("/comparer"), label: "Comparer" },
-  { href: url("/simulateur"), label: "Simulateur" },
-  { href: url("/recommandation"), label: "Recommandation" },
-  { href: url("/glossaire"), label: "Glossaire" },
-  { href: url("/methodologie"), label: "Méthodologie" },
+const navigationStructure = [
+  {
+    label: "Catalogue",
+    items: [
+      { href: url("/vehicules"), label: "Explorer le showroom" },
+      { href: url("/comparer"), label: "Comparer les modèles" },
+    ]
+  },
+  {
+    label: "Simulateurs",
+    items: [
+      { href: url("/simulateur"), label: "Calculateur TCO" },
+      { href: url("/pro"), label: "Simulateur Pro" },
+      { href: url("/leasing-social"), label: "Leasing Social" },
+    ]
+  },
+  {
+    label: "Ressources",
+    items: [
+      { href: url("/methodologie"), label: "Méthodologie" },
+      { href: url("/glossaire"), label: "Glossaire" },
+    ]
+  }
 ];
 
 function isActive(href: string): boolean {
   const plain = href.replace(base, "") || "/";
   if (plain === "/") return pathname === "/" || pathname === base;
   return pathname === href || pathname.startsWith(href + "/");
+}
+
+function isGroupActive(group: typeof navigationStructure[0]): boolean {
+  return group.items.some(item => isActive(item.href));
 }
 ---
 
@@ -36,26 +54,66 @@ function isActive(href: string): boolean {
       <span class="hidden sm:inline label-eyebrow ml-1">L'électrique mesuré</span>
     </a>
 
-    <nav aria-label="Navigation principale" class="hidden md:flex items-center gap-1">
+    <nav aria-label="Navigation principale" class="hidden md:flex items-center gap-2">
       {
-        links.map((link) => (
-          <a
-            href={link.href}
-            class:list={[
-              "nav-link px-3 py-2 text-sm tracking-tight transition-colors min-h-[40px] inline-flex items-center",
-              isActive(link.href)
-                ? "text-[var(--color-text)]"
-                : "text-[var(--color-text-muted)] hover:text-[var(--color-text)]",
-            ]}
-            aria-current={isActive(link.href) ? "page" : undefined}
-          >
-            {link.label}
-          </a>
+        navigationStructure.map((group) => (
+          <div class="nav-dropdown-group relative">
+            <button
+              class:list={[
+                "nav-link px-3 py-2 text-sm tracking-tight transition-colors min-h-[40px] inline-flex items-center gap-1 focus-visible:outline-none",
+                isGroupActive(group)
+                  ? "text-[var(--color-text)] font-medium"
+                  : "text-[var(--color-text-muted)] hover:text-[var(--color-text)]",
+              ]}
+              aria-expanded="false"
+            >
+              {group.label}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                class="chevron opacity-60 transition-transform duration-200"
+                aria-hidden="true"
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="nav-dropdown-menu absolute left-1/2 -translate-x-1/2 top-full mt-1 w-60 bg-[var(--color-bg-elevated)] border border-[var(--color-border)] p-1.5 rounded-[var(--radius-tile-sm)] opacity-0 pointer-events-none scale-95 origin-top transition-all duration-200 shadow-lg z-50 backdrop-blur-md">
+              {
+                group.items.map((item) => (
+                  <a
+                    href={item.href}
+                    class:list={[
+                      "nav-dropdown-item block px-3 py-2.5 text-sm tracking-tight transition-colors rounded-[var(--radius-tile-sm)]",
+                      isActive(item.href)
+                        ? "bg-[var(--color-surface-accent)] text-[var(--color-accent)] font-medium"
+                        : "text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-bg-subtle)]",
+                    ]}
+                    aria-current={isActive(item.href) ? "page" : undefined}
+                  >
+                    {item.label}
+                  </a>
+                ))
+              }
+            </div>
+          </div>
         ))
       }
     </nav>
 
-    <div class="flex items-center gap-2">
+    <div class="flex items-center gap-3">
+      {/* CTA Button "Trouver mon VE" on Desktop */}
+      <a
+        href={url("/recommandation")}
+        class="hidden md:inline-flex nav-cta-btn"
+      >
+        Trouver mon VE
+      </a>
+
       <details class="md:hidden relative">
         <summary
           class="list-none cursor-pointer p-2 text-[var(--color-text-muted)] hover:text-[var(--color-text)] focus-visible:outline-none min-h-[44px] min-w-[44px] flex items-center justify-center"
@@ -76,24 +134,41 @@ function isActive(href: string): boolean {
           </svg>
         </summary>
         <div
-          class="mobile-menu absolute right-0 top-full mt-2 w-60 bg-[var(--color-bg-elevated)] border border-[var(--color-border)] py-2 rounded-[var(--radius-tile-sm)]"
+          class="mobile-menu absolute right-0 top-full mt-2 w-64 bg-[var(--color-bg-elevated)] border border-[var(--color-border)] p-3 rounded-[var(--radius-tile-sm)] shadow-xl z-50"
         >
           {
-            links.map((link) => (
-              <a
-                href={link.href}
-                class:list={[
-                  "block px-4 py-3 text-sm tracking-tight transition-colors min-h-[44px]",
-                  isActive(link.href)
-                    ? "text-[var(--color-accent)]"
-                    : "text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-bg-subtle)]",
-                ]}
-                aria-current={isActive(link.href) ? "page" : undefined}
-              >
-                {link.label}
-              </a>
+            navigationStructure.map((group, groupIdx) => (
+              <div class:list={["mb-4", groupIdx === navigationStructure.length - 1 ? "mb-0" : ""]}>
+                <div class="px-3 mb-1 text-[10px] font-mono uppercase tracking-wider text-[var(--color-text-faint)]">
+                  {group.label}
+                </div>
+                {
+                  group.items.map((item) => (
+                    <a
+                      href={item.href}
+                      class:list={[
+                        "block px-3 py-2 text-sm tracking-tight transition-colors rounded-[var(--radius-tile-sm)]",
+                        isActive(item.href)
+                          ? "bg-[var(--color-surface-accent)] text-[var(--color-accent)] font-medium"
+                          : "text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-bg-subtle)]",
+                      ]}
+                      aria-current={isActive(item.href) ? "page" : undefined}
+                    >
+                      {item.label}
+                    </a>
+                  ))
+                }
+              </div>
             ))
           }
+          <div class="border-t border-[var(--color-border)] mt-3 pt-3">
+            <a
+              href={url("/recommandation")}
+              class="flex items-center justify-center w-full px-4 py-2.5 rounded-full bg-[var(--color-accent)] text-white text-sm font-medium hover:bg-[var(--color-accent-dim)] transition-colors text-center shadow-sm"
+            >
+              Trouver mon VE
+            </a>
+          </div>
         </div>
       </details>
     </div>

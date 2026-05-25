@@ -163,6 +163,61 @@ export default function ComparatorView({ vehicles }: Props) {
     [configuredCards]
   );
 
+  // Compute best metrics for each card (at least 2 cards required)
+  const bestMetricsPerCard = useMemo(() => {
+    if (configuredCards.length < 2) return [];
+
+    const getMixed = (c: ConfiguredCard) => {
+      const base = c.config.realRange?.mixed_km ?? 0;
+      return Math.round(base * (c.soh ?? 100) / 100);
+    };
+    const getWltp = (c: ConfiguredCard) => Math.round((c.config.wltp_km ?? 0) * (c.soh ?? 100) / 100);
+    const getHighway = (c: ConfiguredCard) => Math.round((c.config.realRange?.highway_130_km ?? 0) * (c.soh ?? 100) / 100);
+    const getPeak = (c: ConfiguredCard) => c.config.chargingDC_peak_kW ?? 0;
+    const get1080 = (c: ConfiguredCard) => c.config.chargingDC_10_80_min ?? Infinity;
+    const get30min = (c: ConfiguredCard) => c.config.chargingDC_kWh_30min ?? 0;
+    const getNetPrice = (c: ConfiguredCard) => {
+      const aids = c.vehicle.availableAids.reduce((s, a) => s + a.amount_EUR, 0);
+      return Math.max(0, c.config.price_EUR - aids);
+    };
+    const getAccel = (c: ConfiguredCard) => c.vehicle.acceleration_0_100_s ?? Infinity;
+    const getTrunk = (c: ConfiguredCard) => c.vehicle.trunkCapacity_L ?? 0;
+
+    const maxMixed = Math.max(...configuredCards.map(getMixed));
+    const maxWltp = Math.max(...configuredCards.map(getWltp));
+    const maxHighway = Math.max(...configuredCards.map(getHighway));
+    const maxPeak = Math.max(...configuredCards.map(getPeak));
+    const minTime = Math.min(...configuredCards.map(get1080));
+    const max30 = Math.max(...configuredCards.map(get30min));
+    const minPrice = Math.min(...configuredCards.map(getNetPrice));
+    const minAccel = Math.min(...configuredCards.map(getAccel));
+    const maxTrunk = Math.max(...configuredCards.map(getTrunk));
+
+    return configuredCards.map((c) => {
+      const mixed = getMixed(c);
+      const wltp = getWltp(c);
+      const highway = getHighway(c);
+      const peak = getPeak(c);
+      const time = get1080(c);
+      const add30 = get30min(c);
+      const price = getNetPrice(c);
+      const accel = getAccel(c);
+      const trunk = getTrunk(c);
+
+      return {
+        mixedRange: mixed > 0 && mixed === maxMixed,
+        wltp: wltp > 0 && wltp === maxWltp,
+        highway: highway > 0 && highway === maxHighway,
+        chargingPeak: peak > 0 && peak === maxPeak,
+        charging1080: time < Infinity && time === minTime,
+        charging30min: add30 > 0 && add30 === max30,
+        netPrice: price > 0 && price === minPrice,
+        acceleration: accel < Infinity && accel === minAccel,
+        trunk: trunk > 0 && trunk === maxTrunk,
+      };
+    });
+  }, [configuredCards]);
+
   // Share handler
   const handleShare = async () => {
     try {
@@ -349,6 +404,7 @@ export default function ComparatorView({ vehicles }: Props) {
               vehicle={cc.vehicle}
               config={cc.config}
               soh={cc.soh ?? 100}
+              bestMetrics={bestMetricsPerCard[index]}
               onSohChange={(soh) => changeSoh(index, soh)}
               onConfigChange={(configId) => changeConfig(index, configId)}
               onRemove={() => removeVehicle(index)}
@@ -413,7 +469,7 @@ export default function ComparatorView({ vehicles }: Props) {
       {/* Insights Banner */}
       {insights.length > 0 && (
         <div
-          className="rounded-2xl p-5 flex flex-col gap-3"
+          className="rounded-2xl p-5 flex flex-col gap-4"
           style={{
             backgroundColor: "var(--color-surface)",
             border: "0.5px solid var(--color-border)",
@@ -423,18 +479,60 @@ export default function ComparatorView({ vehicles }: Props) {
             className="font-mono text-[10px] uppercase tracking-[0.14em]"
             style={{ color: "var(--color-text-faint)" }}
           >
-            Analyse comparative
+            Points forts de la sélection
           </span>
-          <div className="flex flex-col gap-2">
-            {insights.map((insight, i) => (
-              <p
-                key={i}
-                className="text-sm leading-relaxed"
-                style={{ color: "var(--color-text-muted)" }}
-              >
-                {insight}
-              </p>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {insights.map((insight, i) => {
+              const iconMap = {
+                range: (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--color-accent)]"><rect x="2" y="7" width="16" height="10" rx="2" ry="2"></rect><line x1="22" y1="11" x2="22" y2="13"></line></svg>
+                ),
+                highway: (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--color-accent)]"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="12" y1="3" x2="12" y2="21"></line></svg>
+                ),
+                charging: (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--color-accent)]"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                ),
+                price: (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--color-accent)]"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                ),
+                leasing: (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--color-accent)]"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                ),
+                voltage: (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--color-accent)]"><rect x="2" y="2" width="20" height="8" rx="2"></rect><rect x="2" y="14" width="20" height="8" rx="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                ),
+              };
+
+              return (
+                <div
+                  key={i}
+                  className="flex items-center gap-3 p-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-subtle)]"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-[color-mix(in_srgb,var(--color-accent)_8%,transparent)] flex items-center justify-center flex-shrink-0">
+                    {iconMap[insight.type]}
+                  </div>
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--color-text-faint)] truncate">
+                      {insight.label}
+                    </span>
+                    <div className="flex items-baseline gap-1.5 flex-wrap">
+                      <span className="text-xs font-semibold text-[var(--color-text)] truncate">
+                        {insight.winnerName}
+                      </span>
+                      <span className="text-xs font-mono font-bold text-[var(--color-accent)] whitespace-nowrap">
+                        {insight.valueText}
+                      </span>
+                      {insight.comparisonText && (
+                        <span className="text-[9px] font-mono text-[var(--color-text-faint)] whitespace-nowrap">
+                          {insight.comparisonText}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       )}

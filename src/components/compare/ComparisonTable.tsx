@@ -519,7 +519,9 @@ export default function ComparisonTable({ cards, onRemove, onConfigChange, onAdd
                           style={{
                             ...cellBase,
                             borderRight: "0.5px solid var(--color-border)",
-                            backgroundColor: "inherit",
+                            backgroundColor: isBest
+                              ? "color-mix(in srgb, var(--color-accent) 8%, var(--color-surface))"
+                              : "inherit",
                           }}
                         >
                           {displayVal != null ? (
@@ -535,13 +537,10 @@ export default function ComparisonTable({ cards, onRemove, onConfigChange, onAdd
                               </span>
                               {isBest && (
                                 <span
-                                  className="font-mono text-[9px] px-1 py-0.5 rounded"
-                                  style={{
-                                    backgroundColor: "var(--color-surface-accent)",
-                                    color: "var(--color-accent)",
-                                  }}
+                                  className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[var(--color-surface-accent)] text-[var(--color-accent)] border border-[rgba(58,92,18,0.15)] ml-1"
+                                  title={row.bestIsMax ? "Meilleur de la sélection" : "Moins cher / avantageux"}
                                 >
-                                  {row.bestIsMax ? "meilleur" : "moins cher"}
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                                 </span>
                               )}
                             </div>

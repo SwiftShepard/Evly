@@ -7,6 +7,14 @@ const grouped = Object.entries(CATEGORIES).map(([key, label]) => ({
   label,
   entries: GLOSSARY.filter((e) => e.category === key),
 }));
+
+const slugify = (text: string) =>
+  text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)+/g, "");
 ---
 
 <BaseLayout
@@ -14,13 +22,9 @@ const grouped = Object.entries(CATEGORIES).map(([key, label]) => ({
   description="Tous les termes techniques du véhicule électrique expliqués simplement : batterie, recharge, autonomie, performance, aides."
 >
   <section class="container-edit pt-16 md:pt-24 pb-16 border-b border-[var(--color-border)]">
-    <div class="flex items-center gap-4 mb-8 fade-rise">
-      <span class="font-mono text-xs text-[var(--color-text-faint)]">00</span>
-      <span class="label-eyebrow">Glossaire</span>
-    </div>
     <h1 class="display-1 max-w-4xl fade-rise fade-rise-delay-1">
       Le vocabulaire VE,
-      <span class="text-[var(--color-text-muted)]">sans jargon inutile.</span>
+      <span class="text-[var(--color-accent)]">sans jargon inutile.</span>
     </h1>
     <p class="mt-10 text-lg md:text-xl text-[var(--color-text-muted)] max-w-2xl leading-relaxed fade-rise fade-rise-delay-2">
       kWh, SOC, V2G, LFP&hellip; Chaque terme utilisé sur Evly est défini ici
@@ -58,7 +62,7 @@ const grouped = Object.entries(CATEGORIES).map(([key, label]) => ({
 
       <dl class="grid grid-cols-1 gap-px bg-[var(--color-border)] rounded-xl overflow-hidden">
         {g.entries.map((entry) => (
-          <div class="glossary-entry bg-[var(--color-bg)] p-6 md:p-8 flex flex-col gap-2">
+          <div id={slugify(entry.term)} class="glossary-entry bg-[var(--color-bg)] p-6 md:p-8 flex flex-col gap-2 scroll-mt-24">
             <dt class="flex items-baseline gap-3 flex-wrap">
               <span class="font-display text-lg font-semibold tracking-[-0.01em] text-[var(--color-text)]">
                 {entry.term}

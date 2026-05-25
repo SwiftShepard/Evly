@@ -35,7 +35,7 @@ function getCategory(v: Vehicle) {
 
   if (body.includes("monospace") || body.includes("van") || v.variant.toLowerCase().includes("monospace")) return "Monospace";
   if (body.includes("quadricycle") || v.segment.includes("quadricycle")) return "Quadricycle";
-  if (segment.includes("a") || (segment.includes("b") && body.includes("suv")) || body.includes("urbain")) return "Mini-SUV";
+  if (segment.includes("a") || (segment.includes("b") && (body.includes("suv") || body.includes("crossover"))) || body.includes("urbain")) return "Mini-SUV";
   if (body.includes("suv") || body.includes("crossover")) return "SUV";
   if (segment.includes("b") || body.includes("citadine")) return "Citadine";
   if (segment.includes("c") || body.includes("compacte")) return "Compacte";
@@ -92,7 +92,7 @@ const budgetFilters = [
 const specificFilters = [
   { label: "Favoris", value: "favorites" },
   { label: "Leasing social", value: "leasing" },
-  { label: "Prime CEE", value: "bonus" },
+  { label: "Prime CEE", value: "cee" },
   { label: "Recharge rapide", value: "fast-charge" },
   { label: "Made in Europe", value: "eu" },
   { label: "Familiale", value: "familiale" },
@@ -100,7 +100,7 @@ const specificFilters = [
 
 const europeanCountries = ["France", "Allemagne", "Slovaquie", "Rép. Tchèque", "Pologne", "Espagne", "Italie", "Belgique", "Suède", "Slovénie", "Hongrie", "Autriche", "Portugal"];
 function isEU(v: Vehicle) { return europeanCountries.includes(v.productionCountry); }
-function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|cee|majoration|aide/i.test(a.label)) ?? false; }
+function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|cee|majoration|aide/i.test(a.label)) ?? false; }
 ---
 
 <BaseLayout
@@ -209,13 +209,9 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|c
         <main class="flex-1 min-w-0">
           <BentoGrid>
             <Tile size="full" variant="elevated">
-              <div class="flex items-center gap-4 mb-6 fade-rise fade-rise-delay-1">
-                <span class="font-mono text-xs text-[var(--color-text-faint)]">00</span>
-                <span class="label-eyebrow">Catalogue</span>
-              </div>
               <h1 class="display-1 max-w-3xl fade-rise fade-rise-delay-2">
                 Tous les véhicules
-                <span class="text-[var(--color-text-muted)]">· mis à jour {new Date().getFullYear()}.</span>
+                <span class="text-[var(--color-accent)]">· mis à jour {new Date().getFullYear()}.</span>
               </h1>
               <p class="mt-6 text-[var(--color-text-muted)] text-sm md:text-base max-w-2xl fade-rise fade-rise-delay-3">
                 Sélectionnez vos critères de filtrage pour affiner la liste.
@@ -263,35 +259,36 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|c
               data-dc={v.chargingDC.peakPower_kW}
               data-ratio={Math.round(v.realRange.mixed_km / cheapest.price_EUR * 10000)}
               data-origin={isEU(v) ? "eu" : "other"}
-              data-bonus={hasBonus(v) ? "1" : "0"}
+              data-cee={hasCEE(v) ? "1" : "0"}
               class="vehicle-card contents"
             >
               <Tile size="2x1" variant="default" href={url(`/vehicules/${v.slug}`)} ariaLabel={`Fiche ${v.brand} ${v.model} ${v.variant}`} class="reveal">
                 <div class="flex items-center justify-between gap-3 mb-4">
                   <div class="flex items-center gap-2 text-[var(--color-text-muted)]">
                     <BrandLogo brand={v.brand} class="w-4 h-4" />
-                    <span class="label-eyebrow">{v.brand} · {v.segment.split(", ")[0] ?? v.segment}</span>
+                    <span class="label-eyebrow text-[9px] !text-[var(--color-text-faint)]">{v.brand} · {v.segment.split(", ")[0] ?? v.segment}</span>
                   </div>
                   <div class="flex items-center gap-2 flex-wrap justify-end">
                     {isLeasing(v) && <Tag tone="accent" mono>Leasing social</Tag>}
-                    <Tag tone="outline" mono>{v.architecture_V} V</Tag>
                     <FavoriteButton client:load slug={v.slug} size={15} />
                   </div>
                 </div>
                 <div class="flex items-end gap-3 mb-6">
                   <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.05]">
                     {v.model}
-                    <span class="block text-[var(--color-text-muted)] text-lg md:text-xl mt-1 font-medium">{v.variant}</span>
+                    <span class="block text-[var(--color-text-muted)] text-xs md:text-sm mt-0.5 font-normal tracking-tight leading-tight">{v.variant}</span>
                   </h2>
-                  <div class="flex-1 flex justify-center items-end">
-                    <VehicleImage
-                      slug={v.slug}
-                      alt={`${v.brand} ${v.model}`}
-                      class="w-28 h-14"
-                    />
+                  <div class="flex-1 h-14 relative min-w-[120px]">
+                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-44 h-22 flex items-end justify-center">
+                      <VehicleImage
+                        slug={v.slug}
+                        alt={`${v.brand} ${v.model}`}
+                        class="w-full h-full"
+                      />
+                    </div>
                   </div>
                 </div>
-                <div class="grid grid-cols-3 gap-4 mt-auto pt-5 border-t border-[var(--color-border)]">
+                <div class="grid grid-cols-2 gap-4 mt-auto pt-5 border-t border-[var(--color-border)]">
                   <div class="flex flex-col gap-1">
                     <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Auto.</span>
                     <div class="flex items-baseline gap-1">
@@ -299,22 +296,15 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|c
                       <span class="font-mono text-[11px] text-[var(--color-text-faint)]">km</span>
                     </div>
                   </div>
-                  <div class="flex flex-col gap-1">
-                    <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">DC</span>
-                    <div class="flex items-baseline gap-1">
-                      <span data-numeric class="display-stat text-2xl md:text-3xl">{v.chargingDC.peakPower_kW}</span>
-                      <span class="font-mono text-[11px] text-[var(--color-text-faint)]">kW</span>
-                    </div>
-                  </div>
-                  <div class="flex flex-col gap-1">
+                  <div class="flex flex-col gap-1 text-right items-end">
                     <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">
                       <span class="price-mode-gross">Dès</span>
                       <span class="price-mode-aided">Après aides max.*</span>
                     </span>
-                    <div class="price-mode-gross">
+                    <div class="price-mode-gross flex items-baseline justify-end gap-1">
                       <span data-numeric class="display-stat text-2xl md:text-3xl">{formatPrice(cheapest.price_EUR)}</span>
                     </div>
-                    <div class="price-mode-aided">
+                    <div class="price-mode-aided flex flex-col items-end gap-0.5">
                       <span data-numeric class="display-stat text-2xl md:text-3xl" style="color:var(--color-accent)">{formatPrice(priceAided)}</span>
                       {totalAids > 0 && <span class="font-mono text-[10px] text-[var(--color-text-faint)]" style="text-decoration:line-through">{formatPrice(cheapest.price_EUR)}</span>}
                     </div>
@@ -382,7 +372,7 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|c
         const price   = getCardPrice(card);
         const dc      = +card.dataset.dc;
         const origin  = card.dataset.origin;
-        const bonus   = card.dataset.bonus === '1';
+        const cee     = card.dataset.cee === '1';
         const usages  = (card.dataset.usage || '').split(',').filter(Boolean);
         const slug    = card.dataset.slug;
 
@@ -398,7 +388,7 @@ function hasBonus(v: Vehicle) { return v.availableAids?.some(a => /prime\s*cee|c
             if (s === 'favorites'   && (!favSlugs || !favSlugs.has(slug)))  { ok = false; break; }
             if (s === 'fast-charge' && dc < 100)                     { ok = false; break; }
             if (s === 'eu'          && origin !== 'eu')               { ok = false; break; }
-            if (s === 'bonus'       && !bonus)                        { ok = false; break; }
+            if (s === 'cee'          && !cee)                         { ok = false; break; }
             if (s === 'leasing'     && !usages.includes('Leasing social')) { ok = false; break; }
             if (s === 'familiale'   && !usages.includes('Familiale'))      { ok = false; break; }
           }

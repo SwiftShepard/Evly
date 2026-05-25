@@ -1,5 +1,5 @@
 /**
- * Génère des insights comparatifs déterministes à partir des cartes configurées.
+ * Génère des insights comparatifs déterministes et structurés à partir des cartes configurées.
  * Pure logique conditionnelle, pas d'IA, pas d'appel API.
  */
 
@@ -11,19 +11,21 @@ export interface ConfiguredCard {
   soh?: number;
 }
 
-export function generateInsights(cards: ConfiguredCard[]): string[] {
+export interface ComparisonInsight {
+  type: "range" | "highway" | "charging" | "price" | "leasing" | "voltage";
+  label: string;
+  winnerName: string;
+  valueText: string;
+  comparisonText?: string;
+}
+
+export function generateInsights(cards: ConfiguredCard[]): ComparisonInsight[] {
   if (cards.length < 2) return [];
 
-  const insights: string[] = [];
+  const insights: ComparisonInsight[] = [];
 
-  // Helper : nom court du véhicule avec SoH si < 100
-  const name = (c: ConfiguredCard) => {
-    const sohVal = c.soh ?? 100;
-    const sohSuffix = sohVal < 100 ? ` (SoH ${sohVal}%)` : "";
-    return `${c.vehicle.brand} ${c.vehicle.model} (${c.config.trim})${sohSuffix}`;
-  };
+  const shortName = (c: ConfiguredCard) => `${c.vehicle.brand} ${c.vehicle.model}`;
 
-  // Helper values scaled by SoH
   const getMixedRange = (c: ConfiguredCard) => {
     const base = c.config.realRange?.mixed_km ?? 0;
     return Math.round(base * (c.soh ?? 100) / 100);
@@ -34,39 +36,43 @@ export function generateInsights(cards: ConfiguredCard[]): string[] {
     return Math.round(base * (c.soh ?? 100) / 100);
   };
 
-  // --- Autonomie réelle mixte ---
+  // --- Autonomie mixte ---
   const withRange = cards.filter((c) => c.config.realRange?.mixed_km);
   if (withRange.length >= 2) {
-    const sorted = [...withRange].sort(
-      (a, b) => getMixedRange(b) - getMixedRange(a)
-    );
+    const sorted = [...withRange].sort((a, b) => getMixedRange(b) - getMixedRange(a));
     const best = sorted[0]!;
     const worst = sorted[sorted.length - 1]!;
     const diff = getMixedRange(best) - getMixedRange(worst);
     if (diff > 20) {
-      insights.push(
-        `En usage mixte, la ${name(best)} offre ${diff} km de plus que la ${name(worst)}.`
-      );
+      insights.push({
+        type: "range",
+        label: "Autonomie mixte",
+        winnerName: shortName(best),
+        valueText: `+${diff} km`,
+        comparisonText: `vs ${shortName(worst)}`
+      });
     }
   }
 
   // --- Autonomie autoroute ---
   const withHighway = cards.filter((c) => c.config.realRange?.highway_130_km);
   if (withHighway.length >= 2) {
-    const sorted = [...withHighway].sort(
-      (a, b) => getHighwayRange(b) - getHighwayRange(a)
-    );
+    const sorted = [...withHighway].sort((a, b) => getHighwayRange(b) - getHighwayRange(a));
     const best = sorted[0]!;
     const worst = sorted[sorted.length - 1]!;
     const diff = getHighwayRange(best) - getHighwayRange(worst);
     if (diff > 30) {
-      insights.push(
-        `Sur autoroute à 130 km/h, la ${name(best)} tient ${diff} km de plus que la ${name(worst)}.`
-      );
+      insights.push({
+        type: "highway",
+        label: "Autonomie autoroute",
+        winnerName: shortName(best),
+        valueText: `+${diff} km`,
+        comparisonText: `vs ${shortName(worst)}`
+      });
     }
   }
 
-  // --- kWh ajoutés en 30 min ---
+  // --- Recharge DC 30 min ---
   const withCharging = cards.filter((c) => c.config.chargingDC_kWh_30min);
   if (withCharging.length >= 2) {
     const sorted = [...withCharging].sort(
@@ -76,9 +82,13 @@ export function generateInsights(cards: ConfiguredCard[]): string[] {
     const worst = sorted[sorted.length - 1]!;
     const diff = best.config.chargingDC_kWh_30min! - worst.config.chargingDC_kWh_30min!;
     if (diff > 5) {
-      insights.push(
-        `La ${name(best)} charge ${diff} kWh de plus en 30 min que la ${name(worst)}.`
-      );
+      insights.push({
+        type: "charging",
+        label: "Recharge (+30 min)",
+        winnerName: shortName(best),
+        valueText: `+${diff} kWh`,
+        comparisonText: `vs ${shortName(worst)}`
+      });
     }
   }
 
@@ -94,36 +104,44 @@ export function generateInsights(cards: ConfiguredCard[]): string[] {
     const priciest = sorted[sorted.length - 1]!;
     const diff = netPrice(priciest) - netPrice(cheapest);
     if (diff > 1000) {
-      insights.push(
-        `Après aides, la ${name(cheapest)} est ${new Intl.NumberFormat("fr-FR").format(diff)} € moins chère que la ${name(priciest)}.`
-      );
+      insights.push({
+        type: "price",
+        label: "Budget après aides",
+        winnerName: shortName(cheapest),
+        valueText: `-${new Intl.NumberFormat("fr-FR").format(diff)} €`,
+        comparisonText: `vs ${shortName(priciest)}`
+      });
     }
   }
 
   // --- Leasing social ---
   const leasingCards = cards.filter((c) => c.config.leasingSocialEligible);
   if (leasingCards.length > 0 && leasingCards.length < cards.length) {
-    const names = leasingCards.map(name).join(" et ");
-    const monthlyInfo = leasingCards
-      .filter((c) => c.config.monthlyLease_EUR)
-      .map((c) => `${c.config.monthlyLease_EUR} €/mois`)
-      .join(", ");
-    insights.push(
-      `Seul${leasingCards.length > 1 ? "es les" : "e la"} ${names} ${leasingCards.length > 1 ? "sont éligibles" : "est éligible"} au leasing social${monthlyInfo ? ` (${monthlyInfo})` : ""}.`
-    );
+    const names = leasingCards.map(shortName).join(" & ");
+    insights.push({
+      type: "leasing",
+      label: "Leasing Social",
+      winnerName: names,
+      valueText: "Éligible",
+      comparisonText: `sur ${leasingCards.length} modèle(s)`
+    });
   }
 
-  // --- Architecture 800 V vs 400 V ---
+  // --- Architecture 800 V ---
   const architectures = new Set(cards.map((c) => c.vehicle.architecture_V));
   if (architectures.size > 1) {
     const v800 = cards.filter((c) => c.vehicle.architecture_V === 800);
     if (v800.length > 0) {
-      const v800Names = v800.map(name).join(", ");
-      insights.push(
-        `${v800Names} bénéfici${v800.length > 1 ? "ent" : "e"} d'une architecture 800 V, permettant des pics de charge supérieurs.`
-      );
+      const v800Names = v800.map(shortName).join(" & ");
+      insights.push({
+        type: "voltage",
+        label: "Recharge ultra-rapide",
+        winnerName: v800Names,
+        valueText: "800 V",
+        comparisonText: "Pics de charge supérieurs"
+      });
     }
   }
 
-  return insights.slice(0, 4); // Max 4 insights
+  return insights.slice(0, 4);
 }

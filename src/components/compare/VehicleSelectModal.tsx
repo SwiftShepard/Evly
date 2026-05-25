@@ -43,7 +43,7 @@ export default function VehicleSelectModal({
     const segment = v.segment.toLowerCase();
     if (body.includes("monospace") || body.includes("van") || v.variant.toLowerCase().includes("monospace")) return "Monospace";
     if (body.includes("quadricycle") || v.segment.includes("quadricycle")) return "Quadricycle";
-    if (segment.includes("a") || (segment.includes("b") && body.includes("suv")) || body.includes("urbain")) return "Mini-SUV";
+    if (segment.includes("a") || (segment.includes("b") && (body.includes("suv") || body.includes("crossover"))) || body.includes("urbain")) return "Mini-SUV";
     if (body.includes("suv") || body.includes("crossover")) return "SUV";
     if (segment.includes("b") || body.includes("citadine")) return "Citadine";
     if (segment.includes("c") || body.includes("compacte")) return "Compacte";
