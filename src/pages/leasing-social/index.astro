@@ -5,6 +5,7 @@ import Tile from "@/components/ui/Tile.astro";
 import Tag from "@/components/ui/Tag.astro";
 import BrandLogo from "@/components/ui/BrandLogo.astro";
 import VehicleImage from "@/components/ui/VehicleImage.astro";
+import LeasingEligibilitySimulator from "@/components/leasing/LeasingEligibilitySimulator.tsx";
 import { getAllVehicles } from "@/lib/vehicles";
 import { formatPrice } from "@/lib/format";
 import { url } from "@/lib/url";
@@ -126,11 +127,11 @@ const counts = {
           <ul class="flex flex-col gap-3 text-sm">
             <li class="flex gap-3 items-start">
               <span class="font-mono text-[10px] mt-1 text-[var(--color-text-faint)]">A.</span>
-              <span><strong class="text-[var(--color-text)]">Revenu fiscal de référence (RFR) par part ≤ 15 400 €</strong>, accès au tarif principal à 100 €/mois.</span>
+              <span><strong class="text-[var(--color-text)]">Revenu fiscal de référence (RFR) par part ≤ 16 300 €</strong>, accès au tarif principal à 100 €/mois.</span>
             </li>
             <li class="flex gap-3 items-start">
               <span class="font-mono text-[10px] mt-1 text-[var(--color-text-faint)]">B.</span>
-              <span>Résidence ou lieu de travail à <strong class="text-[var(--color-text)]">plus de 15 km du travail</strong>, OU plus de 8 000 km/an pour motifs professionnels.</span>
+              <span>Résidence ou lieu de travail à <strong class="text-[var(--color-text)]">plus de 15 km du travail</strong> (aller simple), OU plus de 8 000 km/an pour motifs professionnels.</span>
             </li>
             <li class="flex gap-3 items-start">
               <span class="font-mono text-[10px] mt-1 text-[var(--color-text-faint)]">C.</span>
@@ -138,12 +139,17 @@ const counts = {
             </li>
             <li class="flex gap-3 items-start">
               <span class="font-mono text-[10px] mt-1 text-[var(--color-text-faint)]">D.</span>
-              <span>Un seul dossier par foyer fiscal.</span>
+              <span>Un seul dossier par foyer fiscal, n'ayant pas bénéficié du dispositif en 2024.</span>
             </li>
           </ul>
           <p class="mt-5 text-[12px] text-[var(--color-text-faint)] font-mono">
-            Les seuils peuvent évoluer chaque année, vérifier sur <a href="https://mon-leasing-electrique.gouv.fr" target="_blank" rel="noopener" class="underline">mon-leasing-electrique.gouv.fr</a>.
+            Les seuils ont été rehaussés pour l'édition 2026. Vérifiez sur <a href="https://mon-leasing-electrique.gouv.fr" target="_blank" rel="noopener" class="underline">mon-leasing-electrique.gouv.fr</a>.
           </p>
+        </Tile>
+
+        {/* ───────── SIMULATEUR INTERACTIF ───────── */}
+        <Tile size="full" variant="elevated" label="02bis · Simulateur d'éligibilité interactif">
+          <LeasingEligibilitySimulator client:load />
         </Tile>
 
         {/* ───────── SCORE ADEME ───────── */}

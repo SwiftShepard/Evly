@@ -604,7 +604,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
                         Condition de revenu (RFR)
                       </span>
                       <span className="block text-xs text-[var(--color-text-muted)] mt-1 leading-relaxed">
-                        Mon revenu fiscal de référence (RFR) par part fiscale est <strong className="text-[var(--color-text)]">inférieur ou égal à 15 400 €</strong>.
+                        Mon revenu fiscal de référence (RFR) par part fiscale est <strong className="text-[var(--color-text)]">inférieur ou égal à 16 300 €</strong>.
                       </span>
                     </div>
                   </button>

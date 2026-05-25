@@ -161,7 +161,7 @@ export function scoreVehicle(vehicle: Vehicle, answers: MatcherAnswers): MatchRe
     // Déduction des aides CEE 2026 (Prime CEE + majoration batterie européenne) si applicable (produit en Europe et prix <= 47 000 €)
     const isEU = EUROPEAN_COUNTRIES.has(vehicle.productionCountry);
     const isEligibleCEE = isEU && rawPrice <= 47000;
-    // Base de la prime CEE estimée selon ressources (RFR <= 15 400 € qualifié via leasing social RFR)
+    // Base de la prime CEE estimée selon ressources (RFR <= 16 300 € qualifié via leasing social RFR)
     const baseCee = answers.leasingSocialRfr ? 4700 : 3500;
     // Majoration batterie européenne estimée à 1 200 € pour les modèles assemblés en Europe
     const batteryMajoration = isEU ? 1200 : 0;
