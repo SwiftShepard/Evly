@@ -4,6 +4,7 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import fs from 'node:fs/promises';
+import fsSync from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -95,7 +96,54 @@ export default defineConfig({
     prefetchAll: true,
     defaultStrategy: 'viewport',
   },
-  integrations: [react(), sitemap()],
+  integrations: [
+    react(),
+    sitemap({
+      filter: (page) => !page.includes('/admin'),
+      serialize(item) {
+        const urlObj = new URL(item.url);
+        const pathname = urlObj.pathname;
+
+        if (pathname === '/') {
+          item.priority = 1.0;
+          item.changefreq = 'daily';
+          item.lastmod = new Date().toISOString().split('T')[0];
+        } else if (pathname === '/vehicules/') {
+          item.priority = 0.9;
+          item.changefreq = 'daily';
+          item.lastmod = new Date().toISOString().split('T')[0];
+        } else if (pathname.startsWith('/vehicules/')) {
+          item.priority = 0.8;
+          item.changefreq = 'weekly';
+
+          const slugMatch = pathname.match(/^\/vehicules\/([a-z0-9-]+)\/$/);
+          if (slugMatch && slugMatch[1]) {
+            const slug = slugMatch[1];
+            const jsonPath = path.join(vehiclesDir, `${slug}.json`);
+            if (fsSync.existsSync(jsonPath)) {
+              try {
+                const data = JSON.parse(fsSync.readFileSync(jsonPath, 'utf8'));
+                if (data.lastUpdated) {
+                  item.lastmod = data.lastUpdated;
+                }
+              } catch (e) {
+                // Fallback
+              }
+            }
+          }
+        } else if (['/comparer/', '/simulateur/', '/recommandation/', '/leasing-social/', '/methodologie/', '/glossaire/', '/pro/'].includes(pathname)) {
+          item.priority = 0.9;
+          item.changefreq = 'weekly';
+          item.lastmod = new Date().toISOString().split('T')[0];
+        } else {
+          item.priority = 0.6;
+          item.changefreq = 'monthly';
+          item.lastmod = new Date().toISOString().split('T')[0];
+        }
+        return item;
+      }
+    })
+  ],
   vite: {
     plugins: [tailwindcss(), adminApiPlugin],
   },

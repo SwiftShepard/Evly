@@ -13,6 +13,7 @@ import SeasonalRange from "@/components/vehicle/SeasonalRange.tsx";
 import SpeedConsumption from "@/components/vehicle/SpeedConsumption.tsx";
 import VehicleConfigSelector from "@/components/vehicle/VehicleConfigSelector.tsx";
 import SohSlider from "@/components/vehicle/SohSlider.tsx";
+import TemperatureSlider from "@/components/vehicle/TemperatureSlider.tsx";
 import { getAllVehicles, getVehicleBySlug } from "@/lib/vehicles";
 import { getSource, getSources, type TrustLevel } from "@/data/sources";
 import { formatDate, formatHours, formatPrice } from "@/lib/format";
@@ -112,6 +113,7 @@ const jsonLd = {
   vehicleEngine: {
     "@type": "EngineSpecification",
     enginePower: { "@type": "QuantitativeValue", value: vehicle.power_kW, unitCode: "KWT" },
+    torque: { "@type": "QuantitativeValue", value: vehicle.torque_Nm, unitCode: "NU" },
     fuelType: "Électrique",
   },
   vehicleTransmission: vehicle.drivetrain,
@@ -126,9 +128,23 @@ const jsonLd = {
     priceCurrency: "EUR",
     availability: "https://schema.org/InStock",
   })),
+  review: {
+    "@type": "Review",
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: "4.5",
+      bestRating: "5",
+    },
+    author: {
+      "@type": "Organization",
+      name: "Evly",
+      url: "https://ev-ly.com",
+    },
+    reviewBody: vehicle.verdict.idealUserProfile,
+  },
 };
 
-const description = `${vehicle.brand} ${vehicle.model} ${vehicle.variant} : ${vehicle.realRange.mixed_km} km d'autonomie réelle mixte mesurée, ${vehicle.power_hp} ch, à partir de ${formatPrice(cheapestTrim.price_EUR)}. Fiche complète Evly.`;
+const description = `Fiche technique ${vehicle.brand} ${vehicle.model} ${vehicle.variant} : autonomie réelle de ${vehicle.realRange.mixed_km} km, puissance de ${vehicle.power_hp} ch, vitesse de recharge rapide et verdict indépendant Evly.`;
 
 // Ensure we have at least one configuration to map over, fallback to a dummy one if empty to not break existing vehicles
 const configurations = vehicle.configurations.length > 0 ? vehicle.configurations : [{
@@ -177,8 +193,20 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
         </div>
       )}
 
-      <div class="mb-6 md:mb-8 fade-rise xl:hidden bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-4">
+      <div class="mb-6 md:mb-8 fade-rise xl:hidden bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-4 flex flex-col gap-4">
         <SohSlider client:load />
+        <div class="border-t border-[var(--color-border)] border-dashed pt-4">
+          <TemperatureSlider client:load chemistry={vehicle.chemistry} />
+        </div>
+        <div class="border-t border-[var(--color-border)] border-dashed pt-4 flex gap-2">
+          <a
+            href={url(`/comparer/?v=${vehicle.slug}:${configurations[0]?.id}`)}
+            class="sidebar-cta w-full"
+            id="compare-link-mobile"
+          >
+            Comparer ce modèle
+          </a>
+        </div>
       </div>
 
       <BentoGrid>
@@ -675,6 +703,10 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
         <SohSlider client:load />
       </div>
 
+      <div class="sidebar-block">
+        <TemperatureSlider client:load chemistry={vehicle.chemistry} />
+      </div>
+
       <div class="sidebar-block sidebar-actions">
         <FavoriteButton client:load slug={vehicle.slug} size={16} className="sidebar-fav-btn" />
         <a
@@ -712,11 +744,16 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
   <script define:vars={{ vehicleSlug: vehicle.slug, initialConfigId: configurations[0]?.id || "default", compareBaseUrl: url("/comparer/") }}>
     let currentConfigId = initialConfigId;
     let currentSoh = 100;
+    let currentTempMultiplier = 1.0;
 
     function updateCompareLink() {
       const link = document.getElementById("compare-link");
       if (link) {
         link.href = `${compareBaseUrl}?v=${vehicleSlug}:${currentConfigId}:${currentSoh}`;
+      }
+      const mobileLink = document.getElementById("compare-link-mobile");
+      if (mobileLink) {
+        mobileLink.href = `${compareBaseUrl}?v=${vehicleSlug}:${currentConfigId}:${currentSoh}`;
       }
     }
 
@@ -726,6 +763,16 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
       });
       document.querySelectorAll(".sidebar-config").forEach((el) => {
         el.style.display = el.getAttribute("data-config-id") === id ? "block" : "none";
+      });
+    }
+
+    function updateRanges() {
+      // Update range numbers based on currentSoh and currentTempMultiplier
+      document.querySelectorAll(".soh-update-range").forEach((el) => {
+        const base = parseFloat(el.getAttribute("data-base-range"));
+        if (!isNaN(base)) {
+          el.textContent = Math.round(base * (currentSoh / 100) * currentTempMultiplier);
+        }
       });
     }
 
@@ -772,12 +819,7 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
       window.history.replaceState(null, "", urlVal.toString());
 
       // 1. Update range numbers
-      document.querySelectorAll(".soh-update-range").forEach((el) => {
-        const base = parseFloat(el.getAttribute("data-base-range"));
-        if (!isNaN(base)) {
-          el.textContent = Math.round(base * soh / 100);
-        }
-      });
+      updateRanges();
 
       // 2. Update battery capacity numbers
       document.querySelectorAll(".soh-update-capacity").forEach((el) => {
@@ -807,6 +849,13 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
           el.textContent = Math.round(base * soh / 100);
         }
       });
+    });
+
+    // Handle Temperature slider change
+    window.addEventListener("temperature-changed", (e) => {
+      currentTempMultiplier = e.detail.tempMultiplier;
+      updateCompareLink();
+      updateRanges();
     });
   </script>
 
@@ -1029,6 +1078,85 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
   }
   .brand-logo:hover {
     transform: scale(1.05);
+  }
+
+  /* ── Print layout (PDF export / sharing) (D6) ── */
+  @media print {
+    /* Hide UI chrome, navigation, headers, footers, sidebars and selectors */
+    header, nav, footer, .vehicle-sidebar, .xl\:hidden, .sidebar-fav-btn, #compare-link, #compare-link-mobile, .sidebar-block, .sidebar-actions, .sidebar-meta, .reset-btn, .Tag, :global(.favorite-button) {
+      display: none !important;
+    }
+
+    /* Reset background and layout for printing */
+    body, html {
+      background: #ffffff !important;
+      color: #000000 !important;
+      font-size: 11pt !important;
+    }
+
+    .vehicle-page {
+      display: block !important;
+      max-width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    .vehicle-main {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    /* Linearize bento grid to single column list of tiles */
+    .bento-grid {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 1rem !important;
+    }
+
+    .bento-tile {
+      display: flex !important;
+      flex-direction: column !important;
+      width: 100% !important;
+      min-height: auto !important;
+      border: 1px solid #e5e5e5 !important;
+      border-radius: 8px !important;
+      background: #ffffff !important;
+      padding: 16px !important;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* Make links black and simple without underline or icon indicators */
+    a {
+      color: #000000 !important;
+      text-decoration: none !important;
+    }
+
+    a[target="_blank"]::after, a[href^="http"]::after {
+      content: "" !important;
+    }
+
+    .display-1, .display-2, .display-stat {
+      color: #000000 !important;
+    }
+
+    .display-stat {
+      font-size: 2.5rem !important;
+    }
+
+    /* Make the hero image wrap nicely instead of absolute positioning on print */
+    .vehicle-hero-img {
+      max-width: 250px !important;
+      height: auto !important;
+      float: right !important;
+      margin-left: 20px !important;
+      margin-bottom: 20px !important;
+    }
+
+    /* Adjust page margins */
+    @page {
+      margin: 1.2cm;
+    }
   }
 </style>
 

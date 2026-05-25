@@ -39,24 +39,36 @@ export default function SeasonalRange({
   vehicleName,
 }: Props) {
   const [soh, setSoh] = useState(100);
+  const [tempMultiplier, setTempMultiplier] = useState(1.0);
 
   useEffect(() => {
-    const handler = (e: Event) => {
+    const sohHandler = (e: Event) => {
       const detail = (e as CustomEvent).detail;
       if (detail && typeof detail.soh === "number") {
         setSoh(detail.soh);
       }
     };
-    window.addEventListener("soh-changed", handler);
-    return () => window.removeEventListener("soh-changed", handler);
+    const tempHandler = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (detail && typeof detail.tempMultiplier === "number") {
+        setTempMultiplier(detail.tempMultiplier);
+      }
+    };
+
+    window.addEventListener("soh-changed", sohHandler);
+    window.addEventListener("temperature-changed", tempHandler);
+    return () => {
+      window.removeEventListener("soh-changed", sohHandler);
+      window.removeEventListener("temperature-changed", tempHandler);
+    };
   }, []);
 
   const c = useThemeColors(VARS);
-  const labels = ["Urbain", "Mixte", "Hiver -5 °C", "Autoroute 130"];
-  const scaledUrban = Math.round(urban * soh / 100);
-  const scaledMixed = Math.round(mixed * soh / 100);
-  const scaledWinter = Math.round(winter * soh / 100);
-  const scaledHighway = Math.round(highway * soh / 100);
+  const labels = ["Urbain", "Mixte", "Hiver -5 °C (réf.)", "Autoroute 130"];
+  const scaledUrban = Math.round(urban * (soh / 100) * tempMultiplier);
+  const scaledMixed = Math.round(mixed * (soh / 100) * tempMultiplier);
+  const scaledWinter = Math.round(winter * (soh / 100));
+  const scaledHighway = Math.round(highway * (soh / 100) * tempMultiplier);
   const data = [scaledUrban, scaledMixed, scaledWinter, scaledHighway];
   const colors = [
     c["--color-accent"] || "#b8ff3d",
