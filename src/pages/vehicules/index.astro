@@ -45,9 +45,7 @@ function getCategory(v: Vehicle) {
 }
 
 function isLeasing(v: Vehicle) {
-  const cheapestPrice = Math.min(...v.trims.map(t => t.price_EUR));
-  const europeCountries = ["France", "Allemagne", "Slovaquie", "Rép. Tchèque", "Pologne", "Espagne", "Italie", "Belgique", "Suède", "Slovénie"];
-  return cheapestPrice < 47000 && europeCountries.includes(v.productionCountry);
+  return v.leasingSocialEligible;
 }
 
 function isFamiliale(v: Vehicle) {
