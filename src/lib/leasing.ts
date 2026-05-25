@@ -23,7 +23,7 @@ const EU_COUNTRIES = [
   "Portugal",
 ];
 
-/** Plafond de prix pour entrer dans le dispositif (édition 2024-2025). */
+/** Plafond de prix pour entrer dans le dispositif (édition 2026). */
 export const LEASING_PRICE_CAP_EUR = 47_000;
 
 export type LeasingStatus =
@@ -45,7 +45,7 @@ export const LEASING_LABELS: Record<LeasingStatus, LeasingStatusInfo> = {
     label: "Éligible officiel",
     tone: "accent",
     description:
-      "Engagé par son constructeur dans le programme leasing social, 100 €/mois pour les ménages éligibles.",
+      "Engagé par son constructeur dans le programme leasing social (loyers plafonnés à 200 €/mois, sans apport).",
   },
   "ademe-compatible": {
     status: "ademe-compatible",
