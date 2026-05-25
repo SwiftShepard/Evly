@@ -6,7 +6,7 @@
   "description": "Evly — l'électrique mesuré. Comparateur indépendant de véhicules électriques pour le marché français.",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/check-vehicle-snapshots.mjs && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",

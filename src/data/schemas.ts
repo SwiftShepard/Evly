@@ -271,6 +271,42 @@ export const VehicleSchema = z.object({
       }
     }
   }
+
+  // J5: Cohérence wltp_min/max vs configurations
+  if (v.wltp_min_km > v.wltp_max_km) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ["wltp_min_km"],
+      message: `wltp_min_km (${v.wltp_min_km} km) ne peut pas être supérieur à wltp_max_km (${v.wltp_max_km} km).`,
+    });
+  }
+
+  if (v.configurations && v.configurations.length > 0) {
+    const validWltps = v.configurations
+      .map((c) => c.wltp_km)
+      .filter((w): w is number => w !== null);
+
+    if (validWltps.length > 0) {
+      const minConfigWltp = Math.min(...validWltps);
+      const maxConfigWltp = Math.max(...validWltps);
+
+      if (v.wltp_min_km > minConfigWltp) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["wltp_min_km"],
+          message: `wltp_min_km (${v.wltp_min_km} km) doit être inférieur ou égal au minimum des configurations (${minConfigWltp} km).`,
+        });
+      }
+
+      if (v.wltp_max_km < maxConfigWltp) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["wltp_max_km"],
+          message: `wltp_max_km (${v.wltp_max_km} km) doit être supérieur ou égal au maximum des configurations (${maxConfigWltp} km).`,
+        });
+      }
+    }
+  }
 });
 
 export type Vehicle = z.infer<typeof VehicleSchema>;

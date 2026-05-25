@@ -1,0 +1,2226 @@
+[
+  {
+    "slug": "alfa-romeo-junior",
+    "brand": "Alfa Romeo",
+    "model": "Junior",
+    "power_kW": 115,
+    "usableCapacity_kWh": 54,
+    "wltp_min_km": 400,
+    "wltp_max_km": 410,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "alfa-romeo-junior-junior",
+      "alfa-romeo-junior-speciale",
+      "alfa-romeo-junior-veloce"
+    ]
+  },
+  {
+    "slug": "alpine-a290",
+    "brand": "Alpine",
+    "model": "A290",
+    "power_kW": 162,
+    "usableCapacity_kWh": 52,
+    "wltp_min_km": 364,
+    "wltp_max_km": 380,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "alpine-a290-gt",
+      "alpine-a290-gt-performance",
+      "alpine-a290-gt-premium",
+      "alpine-a290-gts"
+    ]
+  },
+  {
+    "slug": "alpine-a390",
+    "brand": "Alpine",
+    "model": "A390",
+    "power_kW": 345,
+    "usableCapacity_kWh": 89,
+    "wltp_min_km": 515,
+    "wltp_max_km": 555,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "alpine-a390-gt",
+      "alpine-a390-gts"
+    ]
+  },
+  {
+    "slug": "audi-a6-e-tron",
+    "brand": "Audi",
+    "model": "A6 e-tron",
+    "power_kW": 270,
+    "usableCapacity_kWh": 94.9,
+    "wltp_min_km": 627,
+    "wltp_max_km": 756,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "audi-a6-etron-base",
+      "audi-a6-etron-perf",
+      "audi-a6-etron-quattro"
+    ]
+  },
+  {
+    "slug": "audi-e-tron-gt",
+    "brand": "Audi",
+    "model": "e-tron GT",
+    "power_kW": 370,
+    "usableCapacity_kWh": 97,
+    "wltp_min_km": 495,
+    "wltp_max_km": 609,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "audi-etron-gt-quattro",
+      "audi-rs-etron-gt",
+      "audi-rs-etron-gt-perf"
+    ]
+  },
+  {
+    "slug": "audi-q4-e-tron",
+    "brand": "Audi",
+    "model": "Q4 e-tron",
+    "power_kW": 210,
+    "usableCapacity_kWh": 77,
+    "wltp_min_km": 361,
+    "wltp_max_km": 562,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "audi-q4-35",
+      "audi-q4-40",
+      "audi-q4-45-quattro",
+      "audi-q4-50-quattro"
+    ]
+  },
+  {
+    "slug": "audi-q6-e-tron",
+    "brand": "Audi",
+    "model": "Q6 e-tron",
+    "power_kW": 285,
+    "usableCapacity_kWh": 83.7,
+    "wltp_min_km": 533,
+    "wltp_max_km": 625,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "audi-q6-performance",
+      "audi-q6-quattro",
+      "audi-sq6-e-tron"
+    ]
+  },
+  {
+    "slug": "bmw-i3-neue-klasse",
+    "brand": "BMW",
+    "model": "i3 Neue Klasse",
+    "power_kW": 340,
+    "usableCapacity_kWh": 108.7,
+    "wltp_min_km": 750,
+    "wltp_max_km": 850,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "bmw-i3-neue-klasse-50"
+    ]
+  },
+  {
+    "slug": "bmw-i4",
+    "brand": "BMW",
+    "model": "i4",
+    "power_kW": 250,
+    "usableCapacity_kWh": 80.7,
+    "wltp_min_km": 414,
+    "wltp_max_km": 590,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "bmw-i4-edrive35",
+      "bmw-i4-edrive40",
+      "bmw-i4-m50"
+    ]
+  },
+  {
+    "slug": "bmw-i5",
+    "brand": "BMW",
+    "model": "i5",
+    "power_kW": 250,
+    "usableCapacity_kWh": 81.2,
+    "wltp_min_km": 455,
+    "wltp_max_km": 582,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "bmw-i5-edrive40",
+      "bmw-i5-m60",
+      "bmw-i5-xdrive40"
+    ]
+  },
+  {
+    "slug": "bmw-i7",
+    "brand": "BMW",
+    "model": "i7",
+    "power_kW": 400,
+    "usableCapacity_kWh": 101.7,
+    "wltp_min_km": 560,
+    "wltp_max_km": 625,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "bmw-i7-edrive50",
+      "bmw-i7-m70",
+      "bmw-i7-xdrive60"
+    ]
+  },
+  {
+    "slug": "bmw-ix",
+    "brand": "BMW",
+    "model": "iX",
+    "power_kW": 326,
+    "usableCapacity_kWh": 105.2,
+    "wltp_min_km": 419,
+    "wltp_max_km": 630,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "bmw-ix-m60",
+      "bmw-ix-xdrive40",
+      "bmw-ix-xdrive50"
+    ]
+  },
+  {
+    "slug": "bmw-ix1",
+    "brand": "BMW",
+    "model": "iX1",
+    "power_kW": 230,
+    "usableCapacity_kWh": 64.7,
+    "wltp_min_km": 417,
+    "wltp_max_km": 475,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "bmw-ix1-edrive20",
+      "bmw-ix1-xdrive30"
+    ]
+  },
+  {
+    "slug": "bmw-ix2",
+    "brand": "BMW",
+    "model": "iX2",
+    "power_kW": 230,
+    "usableCapacity_kWh": 64.7,
+    "wltp_min_km": 394,
+    "wltp_max_km": 449,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "bmw-ix2-edrive20",
+      "bmw-ix2-xdrive30"
+    ]
+  },
+  {
+    "slug": "bmw-ix3-neue-klasse",
+    "brand": "BMW",
+    "model": "iX3 Neue Klasse",
+    "power_kW": 340,
+    "usableCapacity_kWh": 108.7,
+    "wltp_min_km": 680,
+    "wltp_max_km": 805,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "bmw-ix3-neue-klasse-50"
+    ]
+  },
+  {
+    "slug": "byd-atto-3",
+    "brand": "BYD",
+    "model": "Atto 3",
+    "power_kW": 150,
+    "usableCapacity_kWh": 60.4,
+    "wltp_min_km": 420,
+    "wltp_max_km": 420,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "byd-atto-3-design"
+    ]
+  },
+  {
+    "slug": "byd-dolphin",
+    "brand": "BYD",
+    "model": "Dolphin",
+    "power_kW": 150,
+    "usableCapacity_kWh": 60.4,
+    "wltp_min_km": 427,
+    "wltp_max_km": 427,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "byd-dolphin-comfort"
+    ]
+  },
+  {
+    "slug": "byd-dolphin-surf",
+    "brand": "BYD",
+    "model": "Dolphin Surf",
+    "power_kW": 115,
+    "usableCapacity_kWh": 43.2,
+    "wltp_min_km": 230,
+    "wltp_max_km": 330,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "byd-dolphin-surf-active",
+      "byd-dolphin-surf-boost",
+      "byd-dolphin-surf-comfort"
+    ]
+  },
+  {
+    "slug": "byd-seal",
+    "brand": "BYD",
+    "model": "Seal",
+    "power_kW": 230,
+    "usableCapacity_kWh": 82.5,
+    "wltp_min_km": 520,
+    "wltp_max_km": 570,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "byd-seal-design-rwd",
+      "byd-seal-excellence-awd"
+    ]
+  },
+  {
+    "slug": "byd-seal-u",
+    "brand": "BYD",
+    "model": "Seal U",
+    "power_kW": 160,
+    "usableCapacity_kWh": 71.8,
+    "wltp_min_km": 420,
+    "wltp_max_km": 420,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "byd-seal-u-comfort"
+    ]
+  },
+  {
+    "slug": "cadillac-lyriq",
+    "brand": "Cadillac",
+    "model": "Lyriq",
+    "power_kW": 388,
+    "usableCapacity_kWh": 102,
+    "wltp_min_km": 530,
+    "wltp_max_km": 530,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "cadillac-lyriq-luxury-awd",
+      "cadillac-lyriq-sport-awd"
+    ]
+  },
+  {
+    "slug": "citroen-ami",
+    "brand": "Citroën",
+    "model": "Ami",
+    "power_kW": 6,
+    "usableCapacity_kWh": 5.5,
+    "wltp_min_km": 75,
+    "wltp_max_km": 75,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "citroen-ami-ami"
+    ]
+  },
+  {
+    "slug": "citroen-e-berlingo",
+    "brand": "Citroën",
+    "model": "ë-Berlingo",
+    "power_kW": 100,
+    "usableCapacity_kWh": 50,
+    "wltp_min_km": 320,
+    "wltp_max_km": 345,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "citroen-e-berlingo-plus-m",
+      "citroen-e-berlingo-plus-xl",
+      "citroen-e-berlingo-you-m"
+    ]
+  },
+  {
+    "slug": "citroen-e-c3",
+    "brand": "Citroën",
+    "model": "ë-C3 & Aircross",
+    "power_kW": 83,
+    "usableCapacity_kWh": 44,
+    "wltp_min_km": 300,
+    "wltp_max_km": 320,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "citroen-e-c3-e-c3-aircross",
+      "citroen-e-c3-e-c3-you"
+    ]
+  },
+  {
+    "slug": "citroen-e-c4",
+    "brand": "Citroën",
+    "model": "ë-C4 & ë-C4 X",
+    "power_kW": 115,
+    "usableCapacity_kWh": 50.8,
+    "wltp_min_km": 415,
+    "wltp_max_km": 420,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "citroen-e-c4-e-c4-plus",
+      "citroen-e-c4-e-c4-x-plus"
+    ]
+  },
+  {
+    "slug": "citroen-e-c5-aircross",
+    "brand": "Citroën",
+    "model": "ë-C5 Aircross",
+    "power_kW": 157,
+    "usableCapacity_kWh": 73,
+    "wltp_min_km": 500,
+    "wltp_max_km": 520,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "citroen-e-c5-aircross-max",
+      "citroen-e-c5-aircross-plus",
+      "citroen-e-c5-aircross-you"
+    ]
+  },
+  {
+    "slug": "citroen-e-jumper",
+    "brand": "Citroën",
+    "model": "e-Jumper",
+    "power_kW": 150,
+    "usableCapacity_kWh": 110,
+    "wltp_min_km": 340,
+    "wltp_max_km": 420,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "citroen-e-jumper-l2h2",
+      "citroen-e-jumper-l3h2"
+    ]
+  },
+  {
+    "slug": "citroen-e-jumpy",
+    "brand": "Citroën",
+    "model": "e-Jumpy",
+    "power_kW": 100,
+    "usableCapacity_kWh": 75,
+    "wltp_min_km": 230,
+    "wltp_max_km": 350,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "citroen-e-jumpy-m-50",
+      "citroen-e-jumpy-m-75",
+      "citroen-e-jumpy-xl-75"
+    ]
+  },
+  {
+    "slug": "citroen-e-spacetourer",
+    "brand": "Citroën",
+    "model": "ë-SpaceTourer",
+    "power_kW": 100,
+    "usableCapacity_kWh": 75,
+    "wltp_min_km": 230,
+    "wltp_max_km": 350,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "citroen-e-spacetourer-business-75-m",
+      "citroen-e-spacetourer-business-75-xl",
+      "citroen-e-spacetourer-feel-50"
+    ]
+  },
+  {
+    "slug": "cupra-born",
+    "brand": "Cupra",
+    "model": "Born",
+    "power_kW": 240,
+    "usableCapacity_kWh": 77,
+    "wltp_min_km": 425,
+    "wltp_max_km": 555,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "cupra-born-58-kwh-e-boost-170-kw--58",
+      "cupra-born-77-kwh-e-boost-170-kw--77",
+      "cupra-born-77-kwh-vz-240-kw--77"
+    ]
+  },
+  {
+    "slug": "cupra-raval",
+    "brand": "Cupra",
+    "model": "Raval",
+    "power_kW": 166,
+    "usableCapacity_kWh": 52,
+    "wltp_min_km": 340,
+    "wltp_max_km": 440,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "cupra-raval-avnier",
+      "cupra-raval-raval",
+      "cupra-raval-vz"
+    ]
+  },
+  {
+    "slug": "cupra-tavascan",
+    "brand": "Cupra",
+    "model": "Tavascan",
+    "power_kW": 250,
+    "usableCapacity_kWh": 77,
+    "wltp_min_km": 568,
+    "wltp_max_km": 568,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "cupra-tavascan-endurance-rwd-210-kw--77",
+      "cupra-tavascan-vz-awd-250-kw--77"
+    ]
+  },
+  {
+    "slug": "fiat-500e",
+    "brand": "Fiat",
+    "model": "500e",
+    "power_kW": 87,
+    "usableCapacity_kWh": 42,
+    "wltp_min_km": 320,
+    "wltp_max_km": 320,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "fiat-500e-la-prima-42",
+      "fiat-500e-pop-42",
+      "fiat-500e-red-42"
+    ]
+  },
+  {
+    "slug": "fiat-600e",
+    "brand": "Fiat",
+    "model": "600e",
+    "power_kW": 115,
+    "usableCapacity_kWh": 54,
+    "wltp_min_km": 409,
+    "wltp_max_km": 409,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "fiat-600e-la-prima-54",
+      "fiat-600e-red-54"
+    ]
+  },
+  {
+    "slug": "fiat-e-ducato",
+    "brand": "Fiat",
+    "model": "E-Ducato",
+    "power_kW": 150,
+    "usableCapacity_kWh": 110,
+    "wltp_min_km": 340,
+    "wltp_max_km": 420,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "fiat-e-ducato-l2h2",
+      "fiat-e-ducato-l4h3"
+    ]
+  },
+  {
+    "slug": "fiat-e-scudo",
+    "brand": "Fiat",
+    "model": "E-Scudo",
+    "power_kW": 100,
+    "usableCapacity_kWh": 75,
+    "wltp_min_km": 230,
+    "wltp_max_km": 350,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "fiat-e-scudo-m-50",
+      "fiat-e-scudo-m-75"
+    ]
+  },
+  {
+    "slug": "fiat-grande-panda",
+    "brand": "Fiat",
+    "model": "Grande Panda",
+    "power_kW": 83,
+    "usableCapacity_kWh": 44,
+    "wltp_min_km": 320,
+    "wltp_max_km": 320,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "fiat-grande-panda-la-prima-44",
+      "fiat-grande-panda-pop-44"
+    ]
+  },
+  {
+    "slug": "ford-capri",
+    "brand": "Ford",
+    "model": "Capri",
+    "power_kW": 210,
+    "usableCapacity_kWh": 77,
+    "wltp_min_km": 395,
+    "wltp_max_km": 627,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "ford-capri-52",
+      "ford-capri-77",
+      "ford-capri-awd-77",
+      "ford-capri-premium-77"
+    ]
+  },
+  {
+    "slug": "ford-e-transit",
+    "brand": "Ford",
+    "model": "E-Transit",
+    "power_kW": 135,
+    "usableCapacity_kWh": 89,
+    "wltp_min_km": 280,
+    "wltp_max_km": 370,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "ford-e-transit-l2h2",
+      "ford-e-transit-l3h3"
+    ]
+  },
+  {
+    "slug": "ford-explorer",
+    "brand": "Ford",
+    "model": "Explorer",
+    "power_kW": 210,
+    "usableCapacity_kWh": 77,
+    "wltp_min_km": 380,
+    "wltp_max_km": 602,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "ford-explorer-52",
+      "ford-explorer-77",
+      "ford-explorer-awd-77",
+      "ford-explorer-premium-77"
+    ]
+  },
+  {
+    "slug": "ford-mustang-mach-e",
+    "brand": "Ford",
+    "model": "Mustang Mach-E",
+    "power_kW": 216,
+    "usableCapacity_kWh": 91,
+    "wltp_min_km": 440,
+    "wltp_max_km": 600,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "ford-mustang-mach-e-er",
+      "ford-mustang-mach-e-gt",
+      "ford-mustang-mach-e-sr"
+    ]
+  },
+  {
+    "slug": "ford-puma-gen-e",
+    "brand": "Ford",
+    "model": "Puma Gen-E",
+    "power_kW": 124,
+    "usableCapacity_kWh": 43,
+    "wltp_min_km": 349,
+    "wltp_max_km": 376,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "ford-puma-gen-e-stline",
+      "ford-puma-gen-e-titanium",
+      "ford-puma-gen-e-vignale"
+    ]
+  },
+  {
+    "slug": "hyundai-inster",
+    "brand": "Hyundai",
+    "model": "Inster",
+    "power_kW": 84,
+    "usableCapacity_kWh": 49,
+    "wltp_min_km": 300,
+    "wltp_max_km": 355,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "hyundai-inster-intuitive"
+    ]
+  },
+  {
+    "slug": "hyundai-ioniq-3",
+    "brand": "Hyundai",
+    "model": "Ioniq 3",
+    "power_kW": 150,
+    "usableCapacity_kWh": 58,
+    "wltp_min_km": 400,
+    "wltp_max_km": 450,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "hyundai-ioniq-3-intuitive"
+    ]
+  },
+  {
+    "slug": "hyundai-ioniq-5",
+    "brand": "Hyundai",
+    "model": "Ioniq 5",
+    "power_kW": 168,
+    "usableCapacity_kWh": 84,
+    "wltp_min_km": 530,
+    "wltp_max_km": 570,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "hyundai-ioniq-5-intuitive"
+    ]
+  },
+  {
+    "slug": "hyundai-ioniq-6",
+    "brand": "Hyundai",
+    "model": "Ioniq 6",
+    "power_kW": 168,
+    "usableCapacity_kWh": 77.4,
+    "wltp_min_km": 545,
+    "wltp_max_km": 614,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "hyundai-ioniq-6-intuitive"
+    ]
+  },
+  {
+    "slug": "hyundai-ioniq-9",
+    "brand": "Hyundai",
+    "model": "Ioniq 9",
+    "power_kW": 160,
+    "usableCapacity_kWh": 110.3,
+    "wltp_min_km": 500,
+    "wltp_max_km": 620,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "hyundai-ioniq-9-executive"
+    ]
+  },
+  {
+    "slug": "hyundai-kona",
+    "brand": "Hyundai",
+    "model": "Kona Electric",
+    "power_kW": 160,
+    "usableCapacity_kWh": 65.4,
+    "wltp_min_km": 454,
+    "wltp_max_km": 514,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "hyundai-kona-intuitive"
+    ]
+  },
+  {
+    "slug": "hyundai-staria",
+    "brand": "Hyundai",
+    "model": "Staria",
+    "power_kW": 150,
+    "usableCapacity_kWh": 84,
+    "wltp_min_km": 350,
+    "wltp_max_km": 400,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "hyundai-staria-lounge"
+    ]
+  },
+  {
+    "slug": "jeep-avenger",
+    "brand": "Jeep",
+    "model": "Avenger Electric",
+    "power_kW": 115,
+    "usableCapacity_kWh": 54,
+    "wltp_min_km": 400,
+    "wltp_max_km": 400,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "jeep-avenger-altitude-54",
+      "jeep-avenger-longitude-54",
+      "jeep-avenger-summit-54"
+    ]
+  },
+  {
+    "slug": "jeep-compass",
+    "brand": "Jeep",
+    "model": "Compass",
+    "power_kW": 157,
+    "usableCapacity_kWh": 97,
+    "wltp_min_km": 500,
+    "wltp_max_km": 650,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "jeep-compass-altitude-73",
+      "jeep-compass-summit-73",
+      "jeep-compass-summit-97"
+    ]
+  },
+  {
+    "slug": "kia-ev2",
+    "brand": "Kia",
+    "model": "EV2",
+    "power_kW": 100,
+    "usableCapacity_kWh": 42,
+    "wltp_min_km": 300,
+    "wltp_max_km": 350,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "kia-ev2-active"
+    ]
+  },
+  {
+    "slug": "kia-ev3",
+    "brand": "Kia",
+    "model": "EV3",
+    "power_kW": 150,
+    "usableCapacity_kWh": 81.4,
+    "wltp_min_km": 560,
+    "wltp_max_km": 605,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "kia-ev3-long-range-air",
+      "kia-ev3-long-range-earth",
+      "kia-ev3-long-range-gt-line",
+      "kia-ev3-standard-range-air"
+    ]
+  },
+  {
+    "slug": "kia-ev4",
+    "brand": "Kia",
+    "model": "EV4",
+    "power_kW": 150,
+    "usableCapacity_kWh": 81.4,
+    "wltp_min_km": 410,
+    "wltp_max_km": 625,
+    "configurations_count": 5,
+    "configuration_ids": [
+      "lr-air-17",
+      "lr-earth-17",
+      "lr-gt-line-19",
+      "std-air-17",
+      "std-earth-17"
+    ]
+  },
+  {
+    "slug": "kia-ev4-fastback",
+    "brand": "Kia",
+    "model": "EV4 Fastback",
+    "power_kW": 150,
+    "usableCapacity_kWh": 81.4,
+    "wltp_min_km": 580,
+    "wltp_max_km": 650,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "kia-ev4-fastback-earth"
+    ]
+  },
+  {
+    "slug": "kia-ev5",
+    "brand": "Kia",
+    "model": "EV5",
+    "power_kW": 160,
+    "usableCapacity_kWh": 88,
+    "wltp_min_km": 400,
+    "wltp_max_km": 530,
+    "configurations_count": 5,
+    "configuration_ids": [
+      "kia-ev5-lr-air",
+      "kia-ev5-lr-earth",
+      "kia-ev5-lr-gt-line",
+      "kia-ev5-std-air",
+      "kia-ev5-std-earth"
+    ]
+  },
+  {
+    "slug": "kia-ev6",
+    "brand": "Kia",
+    "model": "EV6",
+    "power_kW": 168,
+    "usableCapacity_kWh": 84,
+    "wltp_min_km": 505,
+    "wltp_max_km": 582,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "kia-ev6-long-range-air",
+      "kia-ev6-long-range-earth",
+      "kia-ev6-long-range-gt-line",
+      "kia-ev6-standard-air"
+    ]
+  },
+  {
+    "slug": "kia-ev9",
+    "brand": "Kia",
+    "model": "EV9",
+    "power_kW": 150,
+    "usableCapacity_kWh": 99.8,
+    "wltp_min_km": 505,
+    "wltp_max_km": 563,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "kia-ev9-air",
+      "kia-ev9-earth",
+      "kia-ev9-gt-line"
+    ]
+  },
+  {
+    "slug": "kia-pv5-cargo",
+    "brand": "Kia",
+    "model": "PV5 Cargo",
+    "power_kW": 150,
+    "usableCapacity_kWh": 81.4,
+    "wltp_min_km": 380,
+    "wltp_max_km": 430,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "kia-pv5-cargo-active"
+    ]
+  },
+  {
+    "slug": "kia-pv5-passenger",
+    "brand": "Kia",
+    "model": "PV5 Passenger",
+    "power_kW": 150,
+    "usableCapacity_kWh": 81.4,
+    "wltp_min_km": 400,
+    "wltp_max_km": 450,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "kia-pv5-passenger-active"
+    ]
+  },
+  {
+    "slug": "lancia-ypsilon",
+    "brand": "Lancia",
+    "model": "Ypsilon",
+    "power_kW": 115,
+    "usableCapacity_kWh": 51,
+    "wltp_min_km": 390,
+    "wltp_max_km": 403,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "lancia-ypsilon-cassina",
+      "lancia-ypsilon-ypsilon"
+    ]
+  },
+  {
+    "slug": "leapmotor-b05",
+    "brand": "Leapmotor",
+    "model": "B05",
+    "power_kW": 160,
+    "usableCapacity_kWh": 67.1,
+    "wltp_min_km": 401,
+    "wltp_max_km": 482,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "leapmotor-b05-pro-design",
+      "leapmotor-b05-pro-life",
+      "leapmotor-b05-promax-design"
+    ]
+  },
+  {
+    "slug": "leapmotor-b10",
+    "brand": "Leapmotor",
+    "model": "B10",
+    "power_kW": 160,
+    "usableCapacity_kWh": 69.9,
+    "wltp_min_km": 400,
+    "wltp_max_km": 420,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "leapmotor-b10-design"
+    ]
+  },
+  {
+    "slug": "leapmotor-c10",
+    "brand": "Leapmotor",
+    "model": "C10",
+    "power_kW": 160,
+    "usableCapacity_kWh": 69.9,
+    "wltp_min_km": 420,
+    "wltp_max_km": 420,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "leapmotor-c10-style"
+    ]
+  },
+  {
+    "slug": "leapmotor-t03",
+    "brand": "Leapmotor",
+    "model": "T03",
+    "power_kW": 70,
+    "usableCapacity_kWh": 37.3,
+    "wltp_min_km": 265,
+    "wltp_max_km": 265,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "leapmotor-t03-t03"
+    ]
+  },
+  {
+    "slug": "maxus-edeliver-3",
+    "brand": "Maxus",
+    "model": "eDeliver 3",
+    "power_kW": 90,
+    "usableCapacity_kWh": 50,
+    "wltp_min_km": 275,
+    "wltp_max_km": 310,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "maxus-edeliver-3-l1",
+      "maxus-edeliver-3-l2"
+    ]
+  },
+  {
+    "slug": "maxus-edeliver-5",
+    "brand": "Maxus",
+    "model": "eDeliver 5",
+    "power_kW": 120,
+    "usableCapacity_kWh": 64,
+    "wltp_min_km": 310,
+    "wltp_max_km": 335,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "maxus-edeliver-5-l1h1",
+      "maxus-edeliver-5-l2h2"
+    ]
+  },
+  {
+    "slug": "maxus-edeliver-7",
+    "brand": "Maxus",
+    "model": "eDeliver 7",
+    "power_kW": 150,
+    "usableCapacity_kWh": 88,
+    "wltp_min_km": 295,
+    "wltp_max_km": 370,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "maxus-edeliver-7-l1-77",
+      "maxus-edeliver-7-l1-88"
+    ]
+  },
+  {
+    "slug": "maxus-edeliver-9",
+    "brand": "Maxus",
+    "model": "eDeliver 9",
+    "power_kW": 150,
+    "usableCapacity_kWh": 88,
+    "wltp_min_km": 240,
+    "wltp_max_km": 340,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "maxus-edeliver-9-l2-72",
+      "maxus-edeliver-9-l2-88",
+      "maxus-edeliver-9-l3-88"
+    ]
+  },
+  {
+    "slug": "mazda-6e",
+    "brand": "Mazda",
+    "model": "6e",
+    "power_kW": 190,
+    "usableCapacity_kWh": 68.8,
+    "wltp_min_km": 480,
+    "wltp_max_km": 560,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "mazda-6e-takumi-69",
+      "mazda-6e-takumi-81",
+      "mazda-6e-takumi-plus-69",
+      "mazda-6e-takumi-plus-81"
+    ]
+  },
+  {
+    "slug": "mazda-cx-6e",
+    "brand": "Mazda",
+    "model": "CX-6e",
+    "power_kW": 190,
+    "usableCapacity_kWh": 78,
+    "wltp_min_km": 484,
+    "wltp_max_km": 484,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "mazda-cx-6e-takumi",
+      "mazda-cx-6e-takumi-plus"
+    ]
+  },
+  {
+    "slug": "mercedes-eqa",
+    "brand": "Mercedes",
+    "model": "EQA",
+    "power_kW": 140,
+    "usableCapacity_kWh": 70.5,
+    "wltp_min_km": 426,
+    "wltp_max_km": 528,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "mercedes-eqa-250",
+      "mercedes-eqa-300",
+      "mercedes-eqa-350"
+    ]
+  },
+  {
+    "slug": "mercedes-eqb",
+    "brand": "Mercedes",
+    "model": "EQB",
+    "power_kW": 140,
+    "usableCapacity_kWh": 70.5,
+    "wltp_min_km": 388,
+    "wltp_max_km": 494,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "mercedes-eqb-250",
+      "mercedes-eqb-300",
+      "mercedes-eqb-350"
+    ]
+  },
+  {
+    "slug": "mercedes-eqe",
+    "brand": "Mercedes",
+    "model": "EQE",
+    "power_kW": 215,
+    "usableCapacity_kWh": 90.6,
+    "wltp_min_km": 505,
+    "wltp_max_km": 647,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "mercedes-eqe-300",
+      "mercedes-eqe-350",
+      "mercedes-eqe-43"
+    ]
+  },
+  {
+    "slug": "mercedes-eqs",
+    "brand": "Mercedes",
+    "model": "EQS",
+    "power_kW": 265,
+    "usableCapacity_kWh": 108.4,
+    "wltp_min_km": 601,
+    "wltp_max_km": 770,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "mercedes-eqs-450",
+      "mercedes-eqs-580",
+      "mercedes-eqs-amg-53"
+    ]
+  },
+  {
+    "slug": "mercedes-esprinter",
+    "brand": "Mercedes",
+    "model": "eSprinter",
+    "power_kW": 150,
+    "usableCapacity_kWh": 113,
+    "wltp_min_km": 350,
+    "wltp_max_km": 440,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "mercedes-esprinter-l2h2",
+      "mercedes-esprinter-l3h2"
+    ]
+  },
+  {
+    "slug": "mercedes-evito",
+    "brand": "Mercedes",
+    "model": "eVito",
+    "power_kW": 85,
+    "usableCapacity_kWh": 60,
+    "wltp_min_km": 260,
+    "wltp_max_km": 314,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "mercedes-evito-l2",
+      "mercedes-evito-l3"
+    ]
+  },
+  {
+    "slug": "mg-cyberster",
+    "brand": "MG",
+    "model": "Cyberster",
+    "power_kW": 250,
+    "usableCapacity_kWh": 74.4,
+    "wltp_min_km": 443,
+    "wltp_max_km": 507,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "mg-cyberster-gt-awd",
+      "mg-cyberster-trophy-rwd"
+    ]
+  },
+  {
+    "slug": "mg-marvel-r",
+    "brand": "MG",
+    "model": "Marvel R",
+    "power_kW": 132,
+    "usableCapacity_kWh": 70,
+    "wltp_min_km": 370,
+    "wltp_max_km": 402,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "mg-marvel-r-comfort",
+      "mg-marvel-r-luxury",
+      "mg-marvel-r-performance"
+    ]
+  },
+  {
+    "slug": "mg-mg4",
+    "brand": "MG",
+    "model": "MG4",
+    "power_kW": 150,
+    "usableCapacity_kWh": 61.7,
+    "wltp_min_km": 435,
+    "wltp_max_km": 450,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "mg-mg4-autonomie-étendue",
+      "mg-mg4-luxury",
+      "mg-mg4-standard",
+      "mg-mg4-xpower"
+    ]
+  },
+  {
+    "slug": "mg-mg5",
+    "brand": "MG",
+    "model": "MG5",
+    "power_kW": 115,
+    "usableCapacity_kWh": 57.4,
+    "wltp_min_km": 320,
+    "wltp_max_km": 400,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "mg-mg5-comfort-50",
+      "mg-mg5-luxury-50",
+      "mg-mg5-luxury-61"
+    ]
+  },
+  {
+    "slug": "mg-zs-ev",
+    "brand": "MG",
+    "model": "ZS EV",
+    "power_kW": 115,
+    "usableCapacity_kWh": 68.3,
+    "wltp_min_km": 320,
+    "wltp_max_km": 440,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "mg-zs-ev-comfort-51",
+      "mg-zs-ev-comfort-70",
+      "mg-zs-ev-luxury-51",
+      "mg-zs-ev-luxury-70"
+    ]
+  },
+  {
+    "slug": "mini-aceman",
+    "brand": "Mini",
+    "model": "Aceman",
+    "power_kW": 160,
+    "usableCapacity_kWh": 49.2,
+    "wltp_min_km": 310,
+    "wltp_max_km": 406,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "mini-aceman-e-essential",
+      "mini-aceman-se-classic"
+    ]
+  },
+  {
+    "slug": "mini-cooper",
+    "brand": "Mini",
+    "model": "Cooper",
+    "power_kW": 160,
+    "usableCapacity_kWh": 49.2,
+    "wltp_min_km": 305,
+    "wltp_max_km": 402,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "mini-cooper-e-essential",
+      "mini-cooper-se-classic"
+    ]
+  },
+  {
+    "slug": "mini-countryman",
+    "brand": "Mini",
+    "model": "Countryman",
+    "power_kW": 230,
+    "usableCapacity_kWh": 65.2,
+    "wltp_min_km": 432,
+    "wltp_max_km": 501,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "mini-countryman-e-essential",
+      "mini-countryman-se-classic"
+    ]
+  },
+  {
+    "slug": "mobilize-duo",
+    "brand": "Mobilize",
+    "model": "Duo",
+    "power_kW": 12,
+    "usableCapacity_kWh": 10.4,
+    "wltp_min_km": 161,
+    "wltp_max_km": 161,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "mobilize-duo-duo-80"
+    ]
+  },
+  {
+    "slug": "nio-et5",
+    "brand": "Nio",
+    "model": "ET5",
+    "power_kW": 360,
+    "usableCapacity_kWh": 71,
+    "wltp_min_km": 410,
+    "wltp_max_km": 500,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "nio-et5-100",
+      "nio-et5-75"
+    ]
+  },
+  {
+    "slug": "nio-et7",
+    "brand": "Nio",
+    "model": "ET7",
+    "power_kW": 480,
+    "usableCapacity_kWh": 95,
+    "wltp_min_km": 415,
+    "wltp_max_km": 505,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "nio-et7-100",
+      "nio-et7-75"
+    ]
+  },
+  {
+    "slug": "nissan-ariya",
+    "brand": "Nissan",
+    "model": "Ariya",
+    "power_kW": 178,
+    "usableCapacity_kWh": 83,
+    "wltp_min_km": 395,
+    "wltp_max_km": 536,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "nissan-ariya-advance-63",
+      "nissan-ariya-engage-63",
+      "nissan-ariya-evolve-87",
+      "nissan-ariya-nismo-87"
+    ]
+  },
+  {
+    "slug": "nissan-leaf",
+    "brand": "Nissan",
+    "model": "Leaf",
+    "power_kW": 160,
+    "usableCapacity_kWh": 75,
+    "wltp_min_km": 436,
+    "wltp_max_km": 622,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "nissan-leaf-advance-75",
+      "nissan-leaf-engage-52",
+      "nissan-leaf-ndesign-75"
+    ]
+  },
+  {
+    "slug": "opel-astra",
+    "brand": "Opel",
+    "model": "Astra Electric",
+    "power_kW": 115,
+    "usableCapacity_kWh": 54,
+    "wltp_min_km": 416,
+    "wltp_max_km": 416,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "opel-astra-berline-gs-54",
+      "opel-astra-berline-ultimate-54",
+      "opel-astra-sports-tourer-gs-54",
+      "opel-astra-sports-tourer-ultimate-54"
+    ]
+  },
+  {
+    "slug": "opel-combo-e-life",
+    "brand": "Opel",
+    "model": "Combo-e Life",
+    "power_kW": 100,
+    "usableCapacity_kWh": 50,
+    "wltp_min_km": 280,
+    "wltp_max_km": 330,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "opel-combo-e-life-edition",
+      "opel-combo-e-life-elegance-xl"
+    ]
+  },
+  {
+    "slug": "opel-corsa-electric",
+    "brand": "Opel",
+    "model": "Corsa Electric",
+    "power_kW": 115,
+    "usableCapacity_kWh": 54,
+    "wltp_min_km": 357,
+    "wltp_max_km": 405,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "opel-corsa-electric-edition-50",
+      "opel-corsa-electric-gs-50",
+      "opel-corsa-electric-gs-54",
+      "opel-corsa-electric-ultimate-54"
+    ]
+  },
+  {
+    "slug": "opel-frontera-electric",
+    "brand": "Opel",
+    "model": "Frontera Electric",
+    "power_kW": 83,
+    "usableCapacity_kWh": 44,
+    "wltp_min_km": 305,
+    "wltp_max_km": 305,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "opel-frontera-electric-edition-44",
+      "opel-frontera-electric-gs-44"
+    ]
+  },
+  {
+    "slug": "opel-mokka-electric",
+    "brand": "Opel",
+    "model": "Mokka Electric",
+    "power_kW": 115,
+    "usableCapacity_kWh": 54,
+    "wltp_min_km": 338,
+    "wltp_max_km": 406,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "opel-mokka-electric-edition-50",
+      "opel-mokka-electric-gs-50",
+      "opel-mokka-electric-gs-54",
+      "opel-mokka-electric-ultimate-54"
+    ]
+  },
+  {
+    "slug": "opel-movano-e",
+    "brand": "Opel",
+    "model": "Movano-e",
+    "power_kW": 150,
+    "usableCapacity_kWh": 110,
+    "wltp_min_km": 340,
+    "wltp_max_km": 420,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "opel-movano-e-l2h2",
+      "opel-movano-e-l3h2"
+    ]
+  },
+  {
+    "slug": "opel-vivaro-e-life",
+    "brand": "Opel",
+    "model": "Vivaro-e Life",
+    "power_kW": 100,
+    "usableCapacity_kWh": 75,
+    "wltp_min_km": 230,
+    "wltp_max_km": 350,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "opel-vivaro-e-life-m-50",
+      "opel-vivaro-e-life-m-75"
+    ]
+  },
+  {
+    "slug": "peugeot-e-2008",
+    "brand": "Peugeot",
+    "model": "E-2008",
+    "power_kW": 115,
+    "usableCapacity_kWh": 54,
+    "wltp_min_km": 406,
+    "wltp_max_km": 406,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "peugeot-e-2008-allure-54",
+      "peugeot-e-2008-gt-54",
+      "peugeot-e-2008-gt-exclusive-54",
+      "peugeot-e-2008-style-54"
+    ]
+  },
+  {
+    "slug": "peugeot-e-208",
+    "brand": "Peugeot",
+    "model": "E-208",
+    "power_kW": 115,
+    "usableCapacity_kWh": 54,
+    "wltp_min_km": 360,
+    "wltp_max_km": 410,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "peugeot-e-208-allure-50",
+      "peugeot-e-208-gt-54",
+      "peugeot-e-208-gt-exclusive-54",
+      "peugeot-e-208-style-50"
+    ]
+  },
+  {
+    "slug": "peugeot-e-3008",
+    "brand": "Peugeot",
+    "model": "E-3008",
+    "power_kW": 240,
+    "usableCapacity_kWh": 97,
+    "wltp_min_km": 527,
+    "wltp_max_km": 700,
+    "configurations_count": 8,
+    "configuration_ids": [
+      "peugeot-e-3008-allure-210-ch-73",
+      "peugeot-e-3008-allure-230-ch-ga-97",
+      "peugeot-e-3008-gt-210-ch-73",
+      "peugeot-e-3008-gt-230-ch-ga-97",
+      "peugeot-e-3008-gt-325-ch-awd-73",
+      "peugeot-e-3008-gt-exclusive-210-ch-73",
+      "peugeot-e-3008-gt-exclusive-230-ch-ga-97",
+      "peugeot-e-3008-gt-exclusive-325-ch-awd-73"
+    ]
+  },
+  {
+    "slug": "peugeot-e-308",
+    "brand": "Peugeot",
+    "model": "E-308 & E-308 SW",
+    "power_kW": 115,
+    "usableCapacity_kWh": 55,
+    "wltp_min_km": 450,
+    "wltp_max_km": 450,
+    "configurations_count": 8,
+    "configuration_ids": [
+      "peugeot-e-308-berline-allure-55",
+      "peugeot-e-308-berline-gt-55",
+      "peugeot-e-308-berline-gt-exclusive-55",
+      "peugeot-e-308-berline-style-55",
+      "peugeot-e-308-sw-allure-55",
+      "peugeot-e-308-sw-gt-55",
+      "peugeot-e-308-sw-gt-exclusive-55",
+      "peugeot-e-308-sw-style-55"
+    ]
+  },
+  {
+    "slug": "peugeot-e-408",
+    "brand": "Peugeot",
+    "model": "E-408",
+    "power_kW": 155,
+    "usableCapacity_kWh": 58,
+    "wltp_min_km": 453,
+    "wltp_max_km": 453,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "peugeot-e-408-allure-58",
+      "peugeot-e-408-gt-58",
+      "peugeot-e-408-gt-exclusive-58"
+    ]
+  },
+  {
+    "slug": "peugeot-e-5008",
+    "brand": "Peugeot",
+    "model": "E-5008",
+    "power_kW": 240,
+    "usableCapacity_kWh": 97,
+    "wltp_min_km": 502,
+    "wltp_max_km": 668,
+    "configurations_count": 8,
+    "configuration_ids": [
+      "peugeot-e-5008-allure-210-ch-73",
+      "peugeot-e-5008-allure-230-ch-ga-97",
+      "peugeot-e-5008-gt-210-ch-73",
+      "peugeot-e-5008-gt-230-ch-ga-97",
+      "peugeot-e-5008-gt-325-ch-awd-73",
+      "peugeot-e-5008-gt-exclusive-210-ch-73",
+      "peugeot-e-5008-gt-exclusive-230-ch-ga-97",
+      "peugeot-e-5008-gt-exclusive-325-ch-awd-73"
+    ]
+  },
+  {
+    "slug": "peugeot-e-boxer",
+    "brand": "Peugeot",
+    "model": "e-Boxer",
+    "power_kW": 150,
+    "usableCapacity_kWh": 110,
+    "wltp_min_km": 340,
+    "wltp_max_km": 420,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "peugeot-e-boxer-l2h2",
+      "peugeot-e-boxer-l3h2"
+    ]
+  },
+  {
+    "slug": "peugeot-e-expert-combi",
+    "brand": "Peugeot",
+    "model": "E-Expert Combi",
+    "power_kW": 100,
+    "usableCapacity_kWh": 75,
+    "wltp_min_km": 230,
+    "wltp_max_km": 350,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "peugeot-e-expert-combi-m-49",
+      "peugeot-e-expert-combi-m-75",
+      "peugeot-e-expert-combi-xl-49",
+      "peugeot-e-expert-combi-xl-75"
+    ]
+  },
+  {
+    "slug": "peugeot-e-partner",
+    "brand": "Peugeot",
+    "model": "e-Partner",
+    "power_kW": 100,
+    "usableCapacity_kWh": 50,
+    "wltp_min_km": 275,
+    "wltp_max_km": 330,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "peugeot-e-partner-pro-l1",
+      "peugeot-e-partner-pro-l2"
+    ]
+  },
+  {
+    "slug": "peugeot-e-rifter",
+    "brand": "Peugeot",
+    "model": "E-Rifter",
+    "power_kW": 100,
+    "usableCapacity_kWh": 54,
+    "wltp_min_km": 343,
+    "wltp_max_km": 343,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "peugeot-e-rifter-m-allure-54",
+      "peugeot-e-rifter-m-gt-54",
+      "peugeot-e-rifter-xl-allure-54",
+      "peugeot-e-rifter-xl-gt-54"
+    ]
+  },
+  {
+    "slug": "peugeot-e-traveller",
+    "brand": "Peugeot",
+    "model": "E-Traveller",
+    "power_kW": 100,
+    "usableCapacity_kWh": 75,
+    "wltp_min_km": 230,
+    "wltp_max_km": 350,
+    "configurations_count": 8,
+    "configuration_ids": [
+      "peugeot-e-traveller-m-business-49",
+      "peugeot-e-traveller-m-business-75",
+      "peugeot-e-traveller-m-business-pack-49",
+      "peugeot-e-traveller-m-business-pack-75",
+      "peugeot-e-traveller-xl-business-49",
+      "peugeot-e-traveller-xl-business-75",
+      "peugeot-e-traveller-xl-business-pack-49",
+      "peugeot-e-traveller-xl-business-pack-75"
+    ]
+  },
+  {
+    "slug": "polestar-2",
+    "brand": "Polestar",
+    "model": "2",
+    "power_kW": 200,
+    "usableCapacity_kWh": 79,
+    "wltp_min_km": 546,
+    "wltp_max_km": 654,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "polestar-2-lr-dm",
+      "polestar-2-lr-sm",
+      "polestar-2-sr-sm"
+    ]
+  },
+  {
+    "slug": "polestar-3",
+    "brand": "Polestar",
+    "model": "3",
+    "power_kW": 360,
+    "usableCapacity_kWh": 107,
+    "wltp_min_km": 560,
+    "wltp_max_km": 631,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "polestar-3-lr-dm",
+      "polestar-3-lr-dm-perf"
+    ]
+  },
+  {
+    "slug": "polestar-4",
+    "brand": "Polestar",
+    "model": "4",
+    "power_kW": 200,
+    "usableCapacity_kWh": 94,
+    "wltp_min_km": 545,
+    "wltp_max_km": 620,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "polestar-4-lr-dm",
+      "polestar-4-lr-sm"
+    ]
+  },
+  {
+    "slug": "porsche-macan-electric",
+    "brand": "Porsche",
+    "model": "Macan Electric",
+    "power_kW": 300,
+    "usableCapacity_kWh": 95,
+    "wltp_min_km": 516,
+    "wltp_max_km": 641,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "porsche-macan-4",
+      "porsche-macan-base",
+      "porsche-macan-turbo"
+    ]
+  },
+  {
+    "slug": "porsche-taycan",
+    "brand": "Porsche",
+    "model": "Taycan",
+    "power_kW": 300,
+    "usableCapacity_kWh": 82.3,
+    "wltp_min_km": 503,
+    "wltp_max_km": 678,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "porsche-taycan-4s",
+      "porsche-taycan-base",
+      "porsche-taycan-turbo"
+    ]
+  },
+  {
+    "slug": "renault-4",
+    "brand": "Renault",
+    "model": "4 E-Tech",
+    "power_kW": 110,
+    "usableCapacity_kWh": 52,
+    "wltp_min_km": 308,
+    "wltp_max_km": 409,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "renault-4-evolution-40",
+      "renault-4-evolution-52",
+      "renault-4-iconic-52",
+      "renault-4-techno-52"
+    ]
+  },
+  {
+    "slug": "renault-5",
+    "brand": "Renault",
+    "model": "5 E-Tech",
+    "power_kW": 110,
+    "usableCapacity_kWh": 52,
+    "wltp_min_km": 312,
+    "wltp_max_km": 410,
+    "configurations_count": 5,
+    "configuration_ids": [
+      "renault-5-evolution-40",
+      "renault-5-evolution-52",
+      "renault-5-five-40",
+      "renault-5-iconic-cinq-52",
+      "renault-5-techno-52"
+    ]
+  },
+  {
+    "slug": "renault-grand-kangoo",
+    "brand": "Renault",
+    "model": "Grand Kangoo E-Tech",
+    "power_kW": 90,
+    "usableCapacity_kWh": 45,
+    "wltp_min_km": 250,
+    "wltp_max_km": 265,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "renault-grand-kangoo-techno"
+    ]
+  },
+  {
+    "slug": "renault-kangoo",
+    "brand": "Renault",
+    "model": "Kangoo E-Tech",
+    "power_kW": 90,
+    "usableCapacity_kWh": 45,
+    "wltp_min_km": 265,
+    "wltp_max_km": 285,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "renault-kangoo-equilibre",
+      "renault-kangoo-techno"
+    ]
+  },
+  {
+    "slug": "renault-master-e-tech",
+    "brand": "Renault",
+    "model": "Master E-Tech",
+    "power_kW": 105,
+    "usableCapacity_kWh": 87,
+    "wltp_min_km": 380,
+    "wltp_max_km": 460,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "renault-master-e-tech-l2h2",
+      "renault-master-e-tech-l3h2"
+    ]
+  },
+  {
+    "slug": "renault-megane",
+    "brand": "Renault",
+    "model": "Megane E-Tech",
+    "power_kW": 160,
+    "usableCapacity_kWh": 60,
+    "wltp_min_km": 450,
+    "wltp_max_km": 470,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "renault-megane-esprit-alpine",
+      "renault-megane-iconic",
+      "renault-megane-techno"
+    ]
+  },
+  {
+    "slug": "renault-scenic",
+    "brand": "Renault",
+    "model": "Scenic E-Tech",
+    "power_kW": 160,
+    "usableCapacity_kWh": 87,
+    "wltp_min_km": 420,
+    "wltp_max_km": 625,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "renault-scenic-esprit-alpine-ev87",
+      "renault-scenic-iconic-ev87",
+      "renault-scenic-techno-ev60",
+      "renault-scenic-techno-ev87"
+    ]
+  },
+  {
+    "slug": "renault-trafic-e-tech",
+    "brand": "Renault",
+    "model": "Trafic E-Tech",
+    "power_kW": 90,
+    "usableCapacity_kWh": 52,
+    "wltp_min_km": 240,
+    "wltp_max_km": 297,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "renault-trafic-e-tech-l1h1",
+      "renault-trafic-e-tech-l2h1"
+    ]
+  },
+  {
+    "slug": "renault-twingo",
+    "brand": "Renault",
+    "model": "Twingo E-Tech",
+    "power_kW": 60,
+    "usableCapacity_kWh": 27.4,
+    "wltp_min_km": 240,
+    "wltp_max_km": 263,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "renault-twingo-evolution",
+      "renault-twingo-techno"
+    ]
+  },
+  {
+    "slug": "skoda-elroq",
+    "brand": "Skoda",
+    "model": "Elroq",
+    "power_kW": 210,
+    "usableCapacity_kWh": 77,
+    "wltp_min_km": 375,
+    "wltp_max_km": 580,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "skoda-elroq-50-52-kwh-125-kw-fwd--52",
+      "skoda-elroq-60-59-kwh-150-kw-fwd--52",
+      "skoda-elroq-85-77-kwh-210-kw-rwd--77",
+      "skoda-elroq-85-sportline-77-kwh-210-kw-rwd--77"
+    ]
+  },
+  {
+    "slug": "skoda-enyaq",
+    "brand": "Skoda",
+    "model": "Enyaq",
+    "power_kW": 250,
+    "usableCapacity_kWh": 77,
+    "wltp_min_km": 423,
+    "wltp_max_km": 580,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "skoda-enyaq-60-132-kw-rwd--63",
+      "skoda-enyaq-85-210-kw-rwd--77",
+      "skoda-enyaq-85x-210-kw-awd--77",
+      "skoda-enyaq-vrs-250-kw-awd--77"
+    ]
+  },
+  {
+    "slug": "smart-1",
+    "brand": "Smart",
+    "model": "#1",
+    "power_kW": 200,
+    "usableCapacity_kWh": 62,
+    "wltp_min_km": 310,
+    "wltp_max_km": 440,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "smart-1-brabus-66",
+      "smart-1-premium-66",
+      "smart-1-pro-49",
+      "smart-1-pro-plus-66"
+    ]
+  },
+  {
+    "slug": "smart-3",
+    "brand": "Smart",
+    "model": "#3",
+    "power_kW": 200,
+    "usableCapacity_kWh": 62,
+    "wltp_min_km": 325,
+    "wltp_max_km": 455,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "smart-3-brabus-66",
+      "smart-3-premium-66",
+      "smart-3-pro-plus-66"
+    ]
+  },
+  {
+    "slug": "smart-5",
+    "brand": "Smart",
+    "model": "#5",
+    "power_kW": 250,
+    "usableCapacity_kWh": 96,
+    "wltp_min_km": 650,
+    "wltp_max_km": 740,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "smart-5-brabus",
+      "smart-5-premium",
+      "smart-5-pro-plus"
+    ]
+  },
+  {
+    "slug": "tesla-model-3",
+    "brand": "Tesla",
+    "model": "Model 3",
+    "power_kW": 208,
+    "usableCapacity_kWh": 57.5,
+    "wltp_min_km": 513,
+    "wltp_max_km": 554,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "tesla-model-3-grande-autonomie-awd",
+      "tesla-model-3-grande-autonomie-prop",
+      "tesla-model-3-performance-awd",
+      "tesla-model-3-propulsion"
+    ]
+  },
+  {
+    "slug": "tesla-model-y",
+    "brand": "Tesla",
+    "model": "Model Y",
+    "power_kW": 220,
+    "usableCapacity_kWh": 57.5,
+    "wltp_min_km": 430,
+    "wltp_max_km": 455,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "tesla-model-y-grande-autonomie-awd",
+      "tesla-model-y-grande-autonomie-prop",
+      "tesla-model-y-performance",
+      "tesla-model-y-propulsion"
+    ]
+  },
+  {
+    "slug": "toyota-bz4x",
+    "brand": "Toyota",
+    "model": "bZ4X",
+    "power_kW": 165,
+    "usableCapacity_kWh": 69,
+    "wltp_min_km": 444,
+    "wltp_max_km": 569,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "toyota-bz4x-design-57",
+      "toyota-bz4x-design-73",
+      "toyota-bz4x-origin-73",
+      "toyota-bz4x-performance-awd"
+    ]
+  },
+  {
+    "slug": "toyota-proace-city",
+    "brand": "Toyota",
+    "model": "Proace City Electric Verso",
+    "power_kW": 100,
+    "usableCapacity_kWh": 50,
+    "wltp_min_km": 310,
+    "wltp_max_km": 330,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "toyota-proace-city-dynamic-m",
+      "toyota-proace-city-executive-m",
+      "toyota-proace-city-lounge-m"
+    ]
+  },
+  {
+    "slug": "toyota-proace-electric",
+    "brand": "Toyota",
+    "model": "Proace Electric",
+    "power_kW": 100,
+    "usableCapacity_kWh": 75,
+    "wltp_min_km": 230,
+    "wltp_max_km": 350,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "toyota-proace-electric-m-50",
+      "toyota-proace-electric-m-75"
+    ]
+  },
+  {
+    "slug": "toyota-proace-max-electric",
+    "brand": "Toyota",
+    "model": "Proace Max Electric",
+    "power_kW": 150,
+    "usableCapacity_kWh": 110,
+    "wltp_min_km": 340,
+    "wltp_max_km": 420,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "toyota-proace-max-electric-l2h2",
+      "toyota-proace-max-electric-l3h2"
+    ]
+  },
+  {
+    "slug": "volvo-ec40",
+    "brand": "Volvo",
+    "model": "EC40",
+    "power_kW": 185,
+    "usableCapacity_kWh": 79,
+    "wltp_min_km": 432,
+    "wltp_max_km": 582,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "volvo-ec40-core-sm-er",
+      "volvo-ec40-plus-tm",
+      "volvo-ec40-ultra-sm-er"
+    ]
+  },
+  {
+    "slug": "volvo-ex30",
+    "brand": "Volvo",
+    "model": "EX30",
+    "power_kW": 200,
+    "usableCapacity_kWh": 64,
+    "wltp_min_km": 337,
+    "wltp_max_km": 476,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "volvo-ex30-core-sm",
+      "volvo-ex30-plus-sm-er",
+      "volvo-ex30-plus-tm",
+      "volvo-ex30-ultra-sm-er"
+    ]
+  },
+  {
+    "slug": "volvo-ex40",
+    "brand": "Volvo",
+    "model": "EX40",
+    "power_kW": 185,
+    "usableCapacity_kWh": 79,
+    "wltp_min_km": 425,
+    "wltp_max_km": 573,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "volvo-ex40-core-sm-er",
+      "volvo-ex40-plus-tm",
+      "volvo-ex40-ultra-sm-er"
+    ]
+  },
+  {
+    "slug": "volvo-ex90",
+    "brand": "Volvo",
+    "model": "EX90",
+    "power_kW": 300,
+    "usableCapacity_kWh": 107,
+    "wltp_min_km": 565,
+    "wltp_max_km": 616,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "volvo-ex90-core-tm",
+      "volvo-ex90-plus-tm",
+      "volvo-ex90-ultra-tm"
+    ]
+  },
+  {
+    "slug": "vw-id-buzz",
+    "brand": "Volkswagen",
+    "model": "ID.Buzz",
+    "power_kW": 210,
+    "usableCapacity_kWh": 77,
+    "wltp_min_km": 420,
+    "wltp_max_km": 461,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "vw-id-buzz-5-places",
+      "vw-id-buzz-7-places-lwb",
+      "vw-id-buzz-gtx-awd"
+    ]
+  },
+  {
+    "slug": "vw-id2",
+    "brand": "Volkswagen",
+    "model": "ID.2",
+    "power_kW": 166,
+    "usableCapacity_kWh": 38,
+    "wltp_min_km": 400,
+    "wltp_max_km": 450,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "vw-id2-id.2",
+      "vw-id2-id.2-gtx"
+    ]
+  },
+  {
+    "slug": "vw-id3",
+    "brand": "Volkswagen",
+    "model": "ID.3",
+    "power_kW": 150,
+    "usableCapacity_kWh": 58,
+    "wltp_min_km": 420,
+    "wltp_max_km": 434,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "vw-id3-pro"
+    ]
+  },
+  {
+    "slug": "vw-id4",
+    "brand": "Volkswagen",
+    "model": "ID.4",
+    "power_kW": 210,
+    "usableCapacity_kWh": 77,
+    "wltp_min_km": 520,
+    "wltp_max_km": 550,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "vw-id4-pro"
+    ]
+  },
+  {
+    "slug": "vw-id5",
+    "brand": "Volkswagen",
+    "model": "ID.5",
+    "power_kW": 210,
+    "usableCapacity_kWh": 77,
+    "wltp_min_km": 480,
+    "wltp_max_km": 560,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "vw-id5-gtx",
+      "vw-id5-pro"
+    ]
+  },
+  {
+    "slug": "vw-id7",
+    "brand": "Volkswagen",
+    "model": "ID.7",
+    "power_kW": 210,
+    "usableCapacity_kWh": 77,
+    "wltp_min_km": 580,
+    "wltp_max_km": 621,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "vw-id7-pro",
+      "vw-id7-pro-s-86-kwh",
+      "vw-id7-tourer"
+    ]
+  },
+  {
+    "slug": "xiaomi-su7",
+    "brand": "Xiaomi",
+    "model": "SU7",
+    "power_kW": 220,
+    "usableCapacity_kWh": 70,
+    "wltp_min_km": 590,
+    "wltp_max_km": 700,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "xiaomi-su7-max",
+      "xiaomi-su7-standard"
+    ]
+  },
+  {
+    "slug": "xiaomi-yu7",
+    "brand": "Xiaomi",
+    "model": "YU7",
+    "power_kW": 235,
+    "usableCapacity_kWh": 70,
+    "wltp_min_km": 400,
+    "wltp_max_km": 530,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "xiaomi-yu7-gt",
+      "xiaomi-yu7-standard"
+    ]
+  },
+  {
+    "slug": "xpeng-g6",
+    "brand": "Xpeng",
+    "model": "G6",
+    "power_kW": 218,
+    "usableCapacity_kWh": 76,
+    "wltp_min_km": 435,
+    "wltp_max_km": 525,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "xpeng-g6-long-range",
+      "xpeng-g6-performance",
+      "xpeng-g6-standard"
+    ]
+  },
+  {
+    "slug": "xpeng-g9",
+    "brand": "Xpeng",
+    "model": "G9",
+    "power_kW": 230,
+    "usableCapacity_kWh": 88,
+    "wltp_min_km": 480,
+    "wltp_max_km": 585,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "xpeng-g9-long-range",
+      "xpeng-g9-performance",
+      "xpeng-g9-standard"
+    ]
+  },
+  {
+    "slug": "xpeng-p7-plus",
+    "brand": "Xpeng",
+    "model": "P7+",
+    "power_kW": 180,
+    "usableCapacity_kWh": 61,
+    "wltp_min_km": 455,
+    "wltp_max_km": 530,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "xpeng-p7-plus-long-range",
+      "xpeng-p7-plus-performance",
+      "xpeng-p7-plus-standard"
+    ]
+  },
+  {
+    "slug": "zeekr-001",
+    "brand": "Zeekr",
+    "model": "001",
+    "power_kW": 200,
+    "usableCapacity_kWh": 95,
+    "wltp_min_km": 580,
+    "wltp_max_km": 620,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "zeekr-001-lr-awd",
+      "zeekr-001-lr-rwd",
+      "zeekr-001-perf-awd"
+    ]
+  },
+  {
+    "slug": "zeekr-7x",
+    "brand": "Zeekr",
+    "model": "7X",
+    "power_kW": 310,
+    "usableCapacity_kWh": 95,
+    "wltp_min_km": 480,
+    "wltp_max_km": 615,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "zeekr-7x-core-75",
+      "zeekr-7x-lr-100",
+      "zeekr-7x-privilege-100"
+    ]
+  },
+  {
+    "slug": "zeekr-x",
+    "brand": "Zeekr",
+    "model": "X",
+    "power_kW": 200,
+    "usableCapacity_kWh": 65,
+    "wltp_min_km": 330,
+    "wltp_max_km": 415,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "zeekr-x-core-49",
+      "zeekr-x-lr-61",
+      "zeekr-x-privilege-69"
+    ]
+  }
+]

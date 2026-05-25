@@ -21,7 +21,7 @@
   "chemistry": "LFP",
   "architecture_V": 800,
   "mass_kg": 2140,
-  "wltp_max_km": 480,
+  "wltp_max_km": 530,
   "wltp_min_km": 400,
   "realRange": {
     "mixed_km": 390,

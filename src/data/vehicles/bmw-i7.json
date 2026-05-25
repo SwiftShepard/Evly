@@ -22,7 +22,7 @@
   "architecture_V": 400,
   "mass_kg": 2640,
   "wltp_max_km": 625,
-  "wltp_min_km": 591,
+  "wltp_min_km": 560,
   "realRange": {
     "mixed_km": 480,
     "highway_130_km": 340,
