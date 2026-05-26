@@ -91,7 +91,7 @@ export function scoreVehicle(vehicle: Vehicle, answers: MatcherAnswers): MatchRe
   const length = vehicle.length_mm;
 
   // Pré-filtre éliminatoire par segment (coeur et segments adjacents) pour éviter les résultats farfelus
-  const segment = vehicle.segment ?? "B";
+  const segment = (vehicle.segment ?? "B").split(",")[0].trim();
   let allowedSegments: Set<string>;
 
   if (answers.household === "large_family") {
