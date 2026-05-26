@@ -37,6 +37,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
     leasingSocialRfr: false,
     leasingSocialUsage: false,
     preferEurope: true,
+    softwareImportance: "any",
   });
 
   // Ajustement du budget max selon le type choisi
@@ -49,7 +50,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
 
   // Résultats calculés (maintenant à l'étape 10)
   const results = useMemo<MatchResult[]>(() => {
-    if (step < 10) return [];
+    if (step < 11) return [];
     return vehicles
       .map((v) => scoreVehicle(v, answers))
       .filter((r): r is MatchResult => r !== null)
@@ -74,7 +75,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
       // Ignorer si on est sur un champ de saisie actif (ex: input)
       if (document.activeElement?.tagName === "INPUT") return;
 
-      if (step > 0 && step <= 9) {
+      if (step > 0 && step <= 10) {
         if (e.key === "Backspace" || e.key === "ArrowLeft") {
           // Retour
           goToPrev();
@@ -108,10 +109,13 @@ export default function StrategicMatcher({ vehicles }: Props) {
           if (e.key === "3") setAnswers((prev) => ({ ...prev, bodyType: "sedan_break" }));
           if (e.key === "4") setAnswers((prev) => ({ ...prev, bodyType: "suv_crossover" }));
           if (e.key === "5") setAnswers((prev) => ({ ...prev, bodyType: "van_monospace" }));
-        } else if (step === 8) {
+        } else if (step === 7) {
+          if (e.key === "1") setAnswers((prev) => ({ ...prev, softwareImportance: "any" }));
+          if (e.key === "2") setAnswers((prev) => ({ ...prev, softwareImportance: "good_software" }));
+        } else if (step === 9) {
           if (e.key === "1") setAnswers((prev) => ({ ...prev, leasingSocialRfr: !prev.leasingSocialRfr }));
           if (e.key === "2") setAnswers((prev) => ({ ...prev, leasingSocialUsage: !prev.leasingSocialUsage }));
-        } else if (step === 9) {
+        } else if (step === 10) {
           if (e.key === "1" || e.key === " ") {
             setAnswers((prev) => ({ ...prev, preferEurope: !prev.preferEurope }));
           }
@@ -142,6 +146,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
       leasingSocialRfr: false,
       leasingSocialUsage: false,
       preferEurope: true,
+      softwareImportance: "any",
     });
     setShowAllResults(false);
     setExpandedOtherSlug(null);
@@ -188,7 +193,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
           </div>
 
           <h2 className="font-display text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1] text-[var(--color-text)]">
-            Sept questions,<br />
+            Dix questions,<br />
             <span className="text-[var(--color-text-muted)]">votre véhicule électrique idéal.</span>
           </h2>
           <p className="mt-6 text-sm md:text-base text-[var(--color-text-muted)] max-w-2xl leading-relaxed">
@@ -231,20 +236,20 @@ export default function StrategicMatcher({ vehicles }: Props) {
         </div>
       )}
 
-      {/* ────────────────── QUESTIONNAIRE (ÉTAPES 1 à 9) ────────────────── */}
-      {step > 0 && step <= 9 && (
+      {/* ────────────────── QUESTIONNAIRE (ÉTAPES 1 à 10) ────────────────── */}
+      {step > 0 && step <= 10 && (
         <div className="rounded-3xl p-6 md:p-8 border border-[var(--color-border)] bg-[var(--color-surface)] shadow-xl relative min-h-[460px] flex flex-col justify-between transition-all duration-300">
           
           {/* Top Progress bar */}
           <div>
             <div className="flex items-center justify-between mb-4">
-              <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-text-faint)]">Question {step} sur 9</span>
-              <span className="font-mono text-xs font-semibold text-[var(--color-accent)]">{Math.round((step / 9) * 100)}%</span>
+              <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-text-faint)]">Question {step} sur 10</span>
+              <span className="font-mono text-xs font-semibold text-[var(--color-accent)]">{Math.round((step / 10) * 100)}%</span>
             </div>
             <div className="w-full h-1 bg-[var(--color-border)] rounded-full overflow-hidden">
               <div 
                 className="h-full bg-[var(--color-accent)] transition-all duration-300"
-                style={{ width: `${(step / 9) * 100}%` }}
+                style={{ width: `${(step / 10) * 100}%` }}
               ></div>
             </div>
           </div>
@@ -328,8 +333,8 @@ export default function StrategicMatcher({ vehicles }: Props) {
                   {(
                     [
                       { key: "home", label: "À domicile / travail", desc: "Prise domestique ou borne murale (Wallbox). Le plus économique." },
-                      { key: "public_slow", label: "Bornes publiques lentes", desc: "Bornes en voirie de quartier, supermarchés, parkings." },
-                      { key: "public_fast", label: "Stations rapides / Autoroute", desc: "Superchargeurs (Ionity, Tesla, Fastned) à forte puissance." },
+                      { key: "public_slow", label: "Bornes publiques lentes", desc: "Voirie de quartier, parkings publics. Charge en quelques heures." },
+                      { key: "public_fast", label: "Bornes publiques rapides", desc: "Zones commerciales (type Allego, Atlante, Lidl). Hors autoroute." },
                     ] as const
                   ).map((opt) => {
                     const active = answers.charging === opt.key;
@@ -502,12 +507,49 @@ export default function StrategicMatcher({ vehicles }: Props) {
               </div>
             )}
 
-            {/* STEP 7 : BUDGET */}
+            {/* STEP 7 : LOGICIEL / ERGONOMIE */}
             {step === 7 && (
               <div className="flex flex-col gap-5">
                 <div>
                   <h3 className="font-display text-xl md:text-2xl font-semibold text-[var(--color-text)]">
-                    7. Quel est votre budget maximal ?
+                    7. Quelle importance accordez-vous au logiciel embarqué ?
+                  </h3>
+                  <p className="text-xs text-[var(--color-text-muted)] mt-1.5">
+                    Cela concerne la fluidité de l'écran central, la réactivité du système, l'ergonomie des menus et la fiabilité du planificateur d'itinéraire.
+                  </p>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-4">
+                  {(
+                    [
+                      { key: "any", label: "Indifférent / Système basique accepté", desc: "Vous utilisez principalement CarPlay ou Android Auto, ou l'ergonomie logicielle du constructeur n'est pas un critère déterminant pour vous." },
+                      { key: "good_software", label: "Logiciel fluide, réactif et moderne exigé", desc: "Vous recherchez un système intuitif avec un excellent planificateur d'itinéraire. Exclut ou pénalise fortement les systèmes lents ou instables." },
+                    ] as const
+                  ).map((opt) => {
+                    const active = answers.softwareImportance === opt.key;
+                    return (
+                      <button
+                        key={opt.key}
+                        onClick={() => setAnswers(prev => ({ ...prev, softwareImportance: opt.key }))}
+                        className={`text-left p-5 rounded-xl border transition-all ${
+                          active ? "border-[var(--color-accent)] bg-[color-mix(in_srgb,var(--color-accent)_4%,transparent)]" : "border-[var(--color-border)] hover:border-[var(--color-border-strong)] bg-[var(--color-bg-subtle)]"
+                        }`}
+                      >
+                        <span className="block font-medium text-sm text-[var(--color-text)]">{opt.label}</span>
+                        <span className="block text-xs text-[var(--color-text-muted)] mt-2 leading-relaxed">{opt.desc}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* STEP 8 : BUDGET */}
+            {step === 8 && (
+              <div className="flex flex-col gap-5">
+                <div>
+                  <h3 className="font-display text-xl md:text-2xl font-semibold text-[var(--color-text)]">
+                    8. Quel est votre budget maximal ?
                   </h3>
                   <p className="text-xs text-[var(--color-text-muted)] mt-1.5">
                     Les aides de l'État et remises seront déduites des résultats pour évaluer le coût réel d'accès.
@@ -577,12 +619,12 @@ export default function StrategicMatcher({ vehicles }: Props) {
               </div>
             )}
 
-            {/* STEP 8 : LEASING SOCIAL PRE-QUAL */}
-            {step === 8 && (
+            {/* STEP 9 : LEASING SOCIAL PRE-QUAL */}
+            {step === 9 && (
               <div className="flex flex-col gap-5">
                 <div>
                   <h3 className="font-display text-xl md:text-2xl font-semibold text-[var(--color-text)]">
-                    8. Éligibilité au Leasing Social
+                    9. Éligibilité au Leasing Social
                   </h3>
                   <p className="text-xs text-[var(--color-text-muted)] mt-1.5">
                     Le Leasing Social (mensualité <strong className="text-[var(--color-text)]">à partir de 95 € / mois</strong> sans apport) est soumis à deux conditions cumulatives d'éligibilité. Cochez si vous remplissez ces critères :
@@ -641,12 +683,12 @@ export default function StrategicMatcher({ vehicles }: Props) {
               </div>
             )}
 
-            {/* STEP 9 : PRÉFÉRENCES ORIGINE */}
-            {step === 9 && (
+            {/* STEP 10 : PRÉFÉRENCES ORIGINE */}
+            {step === 10 && (
               <div className="flex flex-col gap-5">
                 <div>
                   <h3 className="font-display text-xl md:text-2xl font-semibold text-[var(--color-text)]">
-                    9. Sensibilité écologique & Origine
+                    10. Sensibilité écologique & Origine
                   </h3>
                   <p className="text-xs text-[var(--color-text-muted)] mt-1.5">
                     Le nouveau dispositif français exclut de la Prime CEE les véhicules produits dans des pays à mix énergétique carboné (ex: Chine, Japon).
@@ -690,15 +732,15 @@ export default function StrategicMatcher({ vehicles }: Props) {
               onClick={goToNext}
               className="btn-interactive inline-flex items-center gap-1.5 px-5 py-2.5 bg-[var(--color-accent)] text-[var(--color-accent-on)] text-xs font-semibold rounded-lg shadow transition-colors"
             >
-              {step === 9 ? "Découvrir mes résultats" : "Suivant"}
+              {step === 10 ? "Découvrir mes résultats" : "Suivant"}
               <ArrowRight size={13} />
             </button>
           </div>
         </div>
       )}
 
-      {/* ────────────────── ÉTAPE 10 : RÉSULTATS ────────────────── */}
-      {step === 10 && (
+      {/* ────────────────── ÉTAPE 11 : RÉSULTATS ────────────────── */}
+      {step === 11 && (
         <div className="flex flex-col gap-8 animate-fade-in">
           
           {/* Header & Meta */}
@@ -878,7 +920,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
                                   <div className="text-[10px] text-[var(--color-text-muted)] leading-tight">
                                     Prix catalogue : <span className="line-through">{rawPrice.toLocaleString()} €</span>
                                     <span className="block text-[9px] text-[var(--color-accent)] font-medium mt-1 leading-normal">
-                                      Inclut la Prime CEE de {totalCeeAid.toLocaleString()} € (socle de 6 500 € + 3 000 € de majoration composants européens pour {res.vehicle.brand}).
+                                      Inclut la Prime CEE de {totalCeeAid.toLocaleString()} € (socle de 6 500 € + 2 000 € de majoration batterie européenne).
                                     </span>
                                   </div>
                                 ) : (
@@ -1082,7 +1124,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
                               {answers.budgetType === "buy" && (
                                 <p className="text-[9px] text-[var(--color-text-faint)] leading-normal mt-1 border-t border-[var(--color-border)] pt-1.5">
                                   {isEligibleCEE 
-                                    ? `*Montant indicatif d'aide CEE de ${totalCeeAid.toLocaleString()} € (socle de 6 500 € + 3 000 € de majoration composants européens) applicable selon l'origine de fabrication du véhicule et de ses composants (produit en ${res.vehicle.productionCountry}).`
+                                    ? `*Montant indicatif d'aide CEE de ${totalCeeAid.toLocaleString()} € (socle de 6 500 € + 2 000 € de majoration batterie européenne) applicable selon l'origine de fabrication du véhicule (produit en ${res.vehicle.productionCountry}).`
                                     : `*Non éligible à la Prime CEE car le véhicule est assemblé hors d'Europe (${res.vehicle.productionCountry}) ou dépasse le plafond de 47 000 €.`
                                   }
                                 </p>

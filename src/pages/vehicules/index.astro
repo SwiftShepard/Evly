@@ -125,6 +125,31 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
               </div>
             </div>
 
+            <details class="filter-section" open>
+              <summary class="filter-section-toggle">Autonomie <span class="filter-chevron" /></summary>
+              <div class="filter-section-body flex flex-col gap-4 mt-2">
+                <div class="range-toggle-group self-start">
+                  <button type="button" id="range-type-real" class="range-toggle-btn" data-active="true">Réelle</button>
+                  <button type="button" id="range-type-wltp" class="range-toggle-btn" data-active="false">WLTP</button>
+                </div>
+                <div class="flex flex-col gap-1.5 w-full">
+                  <div class="flex justify-between items-baseline">
+                    <span class="text-[10px] text-[var(--color-text-muted)]">Minimum</span>
+                    <span class="font-mono text-xs font-semibold text-[var(--color-accent)]"><span id="range-value-display">0</span> km</span>
+                  </div>
+                  <input
+                    type="range"
+                    id="range-slider"
+                    min="0"
+                    max="700"
+                    step="20"
+                    value="0"
+                    class="w-full cursor-pointer"
+                  />
+                </div>
+              </div>
+            </details>
+
             <details class="filter-section">
               <summary class="filter-section-toggle">Marques <span class="filter-chevron" /></summary>
               <div class="filter-section-body">
@@ -191,6 +216,27 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
               placeholder="Rechercher une marque, un modèle..."
               class="w-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-md px-4 py-2.5 text-sm text-[var(--color-text)] placeholder-[var(--color-text-faint)] focus:border-[var(--color-accent)] focus:outline-none transition-colors"
             />
+          </div>
+          <div class="flex flex-col md:flex-row gap-4 p-4 bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-xl">
+            <div class="flex items-center justify-between gap-4">
+              <span class="font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Autonomie</span>
+              <div class="range-toggle-group">
+                <button type="button" id="range-type-real-mobile" class="range-toggle-btn" data-active="true">Réelle</button>
+                <button type="button" id="range-type-wltp-mobile" class="range-toggle-btn" data-active="false">WLTP</button>
+              </div>
+            </div>
+            <div class="flex-1 flex items-center gap-3">
+              <input
+                type="range"
+                id="range-slider-mobile"
+                min="0"
+                max="700"
+                step="20"
+                value="0"
+                class="flex-1 cursor-pointer"
+              />
+              <span class="font-mono text-xs font-semibold text-[var(--color-accent)] min-w-[55px] text-right"><span id="range-value-display-mobile">0</span> km</span>
+            </div>
           </div>
           <div class="filter-scroll-row">
             {brandGroups.map((group, i) => (
@@ -276,6 +322,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
               data-price={cheapest.price_EUR}
               data-price-aided={priceAided}
               data-range={v.realRange.mixed_km}
+              data-wltp={v.wltp_max_km}
               data-dc={v.chargingDC.peakPower_kW}
               data-ratio={Math.round(v.realRange.mixed_km / cheapest.price_EUR * 10000)}
               data-origin={isEU(v) ? "eu" : "other"}
@@ -310,9 +357,15 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                 </div>
                 <div class="grid grid-cols-2 gap-4 mt-auto pt-5 border-t border-[var(--color-border)]">
                   <div class="flex flex-col gap-1">
-                    <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Auto.</span>
+                    <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">
+                      <span class="range-mode-real">Auto. réelle</span>
+                      <span class="range-mode-wltp">Auto. WLTP</span>
+                    </span>
                     <div class="flex items-baseline gap-1">
-                      <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-accent)]">{v.realRange.mixed_km}</span>
+                      <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-accent)]">
+                        <span class="range-mode-real">{v.realRange.mixed_km}</span>
+                        <span class="range-mode-wltp">{v.wltp_max_km}</span>
+                      </span>
                       <span class="font-mono text-[11px] text-[var(--color-text-faint)]">km</span>
                     </div>
                   </div>
@@ -354,6 +407,77 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
     let currentSort = 'default';
     let currentSearch = '';
 
+    // Range filter state
+    let rangeType = 'real';
+    let minRange = 0;
+
+    const sliderDesktop = document.querySelector('#range-slider');
+    const sliderMobile  = document.querySelector('#range-slider-mobile');
+    const displayDesktop = document.querySelector('#range-value-display');
+    const displayMobile  = document.querySelector('#range-value-display-mobile');
+    
+    const toggleRealDesktop = document.querySelector('#range-type-real');
+    const toggleWltpDesktop = document.querySelector('#range-type-wltp');
+    const toggleRealMobile  = document.querySelector('#range-type-real-mobile');
+    const toggleWltpMobile  = document.querySelector('#range-type-wltp-mobile');
+
+    function updateSliderBackground(slider) {
+      if (!slider) return;
+      const min = slider.min || 0;
+      const max = slider.max || 100;
+      const val = slider.value;
+      const percentage = ((val - min) / (max - min)) * 100;
+      slider.style.background = `linear-gradient(to right, var(--color-accent) 0%, var(--color-accent) ${percentage}%, var(--color-border) ${percentage}%, var(--color-border) 100%)`;
+    }
+
+    function updateRangeUI() {
+      if (sliderDesktop) sliderDesktop.value = minRange;
+      if (sliderMobile) sliderMobile.value = minRange;
+      if (displayDesktop) displayDesktop.textContent = minRange;
+      if (displayMobile) displayMobile.textContent = minRange;
+
+      updateSliderBackground(sliderDesktop);
+      updateSliderBackground(sliderMobile);
+
+      const isReal = rangeType === 'real';
+      
+      // Update body dataset to update card range displays
+      document.body.dataset.rangeMode = rangeType;
+
+      // Update toggles active attribute
+      if (toggleRealDesktop && toggleWltpDesktop) {
+        toggleRealDesktop.setAttribute('data-active', isReal ? 'true' : 'false');
+        toggleWltpDesktop.setAttribute('data-active', !isReal ? 'true' : 'false');
+      }
+
+      if (toggleRealMobile && toggleWltpMobile) {
+        toggleRealMobile.setAttribute('data-active', isReal ? 'true' : 'false');
+        toggleWltpMobile.setAttribute('data-active', !isReal ? 'true' : 'false');
+      }
+    }
+
+    function handleRangeTypeChange(type) {
+      rangeType = type;
+      updateRangeUI();
+      updateFilters();
+      updateResetVisibility();
+    }
+
+    if (toggleRealDesktop) toggleRealDesktop.addEventListener('click', () => handleRangeTypeChange('real'));
+    if (toggleWltpDesktop) toggleWltpDesktop.addEventListener('click', () => handleRangeTypeChange('wltp'));
+    if (toggleRealMobile) toggleRealMobile.addEventListener('click', () => handleRangeTypeChange('real'));
+    if (toggleWltpMobile) toggleWltpMobile.addEventListener('click', () => handleRangeTypeChange('wltp'));
+
+    function handleSliderInput(e) {
+      minRange = +e.target.value;
+      updateRangeUI();
+      updateFilters();
+      updateResetVisibility();
+    }
+
+    if (sliderDesktop) sliderDesktop.addEventListener('input', handleSliderInput);
+    if (sliderMobile) sliderMobile.addEventListener('input', handleSliderInput);
+
     // Initialize search from URL query parameter
     try {
       const urlParams = new URLSearchParams(window.location.search);
@@ -378,7 +502,10 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
     }
 
     function updateResetVisibility() {
-      const any = Object.values(active).some(s => s.size > 0) || currentSearch.trim() !== '';
+      const any = Object.values(active).some(s => s.size > 0) || 
+                  currentSearch.trim() !== '' || 
+                  minRange !== 0 || 
+                  rangeType !== 'real';
       resetBtns.forEach(b => b.style.display = any ? '' : 'none');
     }
 
@@ -411,6 +538,8 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
         const model   = (card.dataset.model || '').toLowerCase();
         const variant = (card.dataset.variant || '').toLowerCase();
 
+        const range = rangeType === 'wltp' ? +card.dataset.wltp : +card.dataset.range;
+
         let ok = true;
         if (selBrands.length  && !selBrands.includes(brand)) ok = false;
         if (selCats.length    && !selCats.includes(cat))     ok = false;
@@ -418,6 +547,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
           const maxBudget = Math.max(...selBudgets.map(Number));
           if (price > maxBudget) ok = false;
         }
+        if (range < minRange) ok = false;
         if (selSpecific.length) {
           for (const s of selSpecific) {
             if (s === 'favorites'   && (!favSlugs || !favSlugs.has(slug)))  { ok = false; break; }
@@ -466,6 +596,12 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
       currentSearch = '';
       if (searchDesktop) searchDesktop.value = '';
       if (searchMobile) searchMobile.value = '';
+      
+      // Reset range filters
+      rangeType = 'real';
+      minRange = 0;
+      updateRangeUI();
+      
       updateFilters();
       updateResetVisibility();
     }));
@@ -503,6 +639,10 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
         applySort(currentSort);
       });
     });
+
+    // Initialize defaults on load
+    document.body.dataset.priceMode = priceMode;
+    updateRangeUI();
 
     // Run initial filter on load if URL contains query parameter
     if (currentSearch) {
@@ -691,6 +831,99 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
     .sort-btn[data-active] {
       border-color: var(--color-text);
       color: var(--color-text);
+    }
+
+    /* ── Range display in cards ─────────────────────────── */
+    .range-mode-wltp { display: none; }
+    body[data-range-mode="wltp"] .range-mode-real { display: none; }
+    body[data-range-mode="wltp"] .range-mode-wltp { display: inline; }
+
+    /* ── Range toggle group ─────────────────────────────── */
+    .range-toggle-group {
+      display: flex;
+      background: var(--color-bg-subtle);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: 2px;
+    }
+    .range-toggle-btn {
+      padding: 2px 8px;
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 500;
+      border-radius: 4px;
+      border: none;
+      background: transparent;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: background-color 0.15s, color 0.15s, transform 0.1s;
+      white-space: nowrap;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .range-toggle-btn:hover {
+      color: var(--color-text);
+    }
+    .range-toggle-btn:active {
+      transform: scale(0.95);
+    }
+    .range-toggle-btn[data-active="true"] {
+      background: var(--color-accent);
+      color: var(--color-accent-on);
+    }
+    @media (max-width: 1279px) {
+      .range-toggle-btn {
+        padding: 4px 10px;
+      }
+    }
+
+    /* ── Custom Range Slider styling ─────────────────────── */
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 4px;
+      background: var(--color-border);
+      border-radius: 9999px;
+      outline: none;
+      transition: background 0.15s;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      border: 2.5px solid var(--color-bg);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15), 0 0 0 1px var(--color-border-strong);
+      cursor: pointer;
+      transition: transform 0.1s var(--ease-spring), background-color 0.15s;
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      border: 2.5px solid var(--color-bg);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15), 0 0 0 1px var(--color-border-strong);
+      cursor: pointer;
+      transition: transform 0.1s var(--ease-spring), background-color 0.15s;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+      background: var(--color-accent-dim);
+    }
+    input[type="range"]::-moz-range-thumb:hover {
+      transform: scale(1.15);
+      background: var(--color-accent-dim);
+    }
+    input[type="range"]:active::-webkit-slider-thumb {
+      transform: scale(0.95);
+      background: var(--color-accent-dim);
+    }
+    input[type="range"]:active::-moz-range-thumb {
+      transform: scale(0.95);
+      background: var(--color-accent-dim);
     }
   </style>
 </BaseLayout>

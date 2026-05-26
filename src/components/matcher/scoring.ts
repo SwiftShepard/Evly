@@ -13,6 +13,7 @@ export interface MatcherAnswers {
   leasingSocialRfr: boolean;
   leasingSocialUsage: boolean;
   preferEurope: boolean;
+  softwareImportance: "any" | "good_software";
 }
 
 export interface MatchResult {
@@ -31,6 +32,41 @@ const EUROPEAN_COUNTRIES = new Set([
 const STELLANTIS_BRANDS = new Set([
   "Peugeot", "Citroën", "Fiat", "Opel", "Jeep", "Alfa Romeo", "Lancia", "DS"
 ]);
+
+function getSoftwareRating(brand: string, model: string): number {
+  const b = brand.toLowerCase();
+  
+  // 5/5 : Tesla, Mercedes, BMW
+  if (b === "tesla" || b === "mercedes-benz" || b === "mercedes" || b === "bmw") {
+    return 5;
+  }
+  
+  // 4/5 : Renault, Nissan, Volvo, Polestar, Porsche, Smart, Kia, Hyundai, Xpeng, Nio, Xiaomi
+  if (
+    b === "renault" || b === "nissan" || b === "volvo" || b === "polestar" || 
+    b === "porsche" || b === "smart" || b === "kia" || b === "hyundai" || 
+    b === "xpeng" || b === "nio" || b === "xiaomi"
+  ) {
+    return 4;
+  }
+  
+  // 3.5/5 : Leapmotor
+  if (b === "leapmotor") {
+    return 3.5;
+  }
+  
+  // 2/5 : Stellantis (Peugeot, Citroën, Fiat, Opel, Jeep, Lancia, Alfa Romeo, DS), Toyota, Lexus, Dacia, Mobilize, Maxus
+  if (
+    b === "peugeot" || b === "citroën" || b === "fiat" || b === "opel" || b === "jeep" || 
+    b === "lancia" || b === "alfa romeo" || b === "ds" || b === "toyota" || b === "lexus" || 
+    b === "dacia" || b === "mobilize" || b === "maxus"
+  ) {
+    return 2;
+  }
+  
+  // 3/5 : Volkswagen, Cupra, Skoda, Audi, BYD, MG, Zeekr, Ford, Mazda
+  return 3;
+}
 
 function matchesBodyType(vehicleBody: string, preference: string): boolean {
   const body = vehicleBody.toLowerCase();
@@ -234,7 +270,7 @@ export function scoreVehicle(vehicle: Vehicle, answers: MatcherAnswers): MatchRe
       if (is800V || dcTime <= 20) {
         score += 15;
         reasons.push("Recharge ultra-rapide (architecture 800V ou < 20 min pour 10-80%)");
-      } else if (dcPeak >= 120 && dcTime <= 30) {
+      } else if (dcPeak >= 120 && dcTime <= 32) {
         score += 8;
         reasons.push(`Bonne vitesse de recharge DC (${dcPeak} kW, 10-80% en ${dcTime} min)`);
       } else if (dcTime > 35 || dcPeak < 80) {
@@ -280,6 +316,17 @@ export function scoreVehicle(vehicle: Vehicle, answers: MatcherAnswers): MatchRe
     const rangeLossPct = Math.round(((mixedRange - winterRange) / mixedRange) * 100);
     if (rangeLossPct > 35) {
       warnings.push(`Perte d'autonomie importante en hiver (-${rangeLossPct}% par grand froid)`);
+    }
+
+    // Interaction entre mode de recharge et autonomie
+    if (answers.charging === "public_slow" || answers.charging === "public_fast") {
+      if (mixedRange < 330) {
+        score -= 15;
+        warnings.push(`Batterie compacte exigeant des recharges publiques fréquentes (2 à 3 fois par semaine)`);
+      } else if (mixedRange >= 480) {
+        score += 10;
+        reasons.push(`Grande autonomie limitant la contrainte des recharges publiques (1 fois par semaine ou moins)`);
+      }
     }
 
     // --- CRITÈRE 3 : COMPOSITION FOYER & COFFRE (Max 25 points) ---
@@ -391,7 +438,7 @@ export function scoreVehicle(vehicle: Vehicle, answers: MatcherAnswers): MatchRe
       const dcTime = config.chargingDC_10_80_min ?? vehicle.chargingDC.time_10_80_min;
       const dcPeak = config.chargingDC_peak_kW ?? vehicle.chargingDC.peakPower_kW;
 
-      if (dcPeak > 0 && dcTime > 0 && dcTime <= 30) {
+      if (dcPeak > 0 && dcTime > 0 && dcTime <= 32) {
         score += 15;
         reasons.push(`Recharge rapide optimale de ${dcTime} min (10-80%)`);
       } else {
@@ -404,15 +451,27 @@ export function scoreVehicle(vehicle: Vehicle, answers: MatcherAnswers): MatchRe
       }
     }
 
-    // --- COMPORTEMENT RÉEL STELLANTIS (Recharge & Logiciel) ---
+    // --- CRITÈRE 8 : QUALITÉ LOGICIEL ---
+    const softwareRating = getSoftwareRating(vehicle.brand, vehicle.model);
+    if (answers.softwareImportance === "good_software") {
+      if (softwareRating >= 4) {
+        score += 15;
+        reasons.push(`Logiciel et planificateur très fluides et ergonomiques (${vehicle.brand})`);
+      } else if (softwareRating <= 2) {
+        score -= 25;
+        warnings.push(`Ergonomie numérique et planificateur d'itinéraire jugés médiocres/lents`);
+      }
+    } else {
+      if (softwareRating <= 2) {
+        warnings.push(`Interface logicielle et planificateur d'itinéraire en retrait`);
+      }
+    }
+
+    // --- COMPORTEMENT RÉEL STELLANTIS (Recharge) ---
     if (STELLANTIS_BRANDS.has(vehicle.brand)) {
       if (answers.chargingSpeed === "under_30") {
         score -= 10;
         warnings.push("Recharge rapide réelle sensible aux températures (Stellantis)");
-      }
-      if (answers.usage === "highway") {
-        score -= 5;
-        warnings.push("Logiciel et planificateur d'itinéraire perfectibles (Stellantis)");
       }
     }
 
