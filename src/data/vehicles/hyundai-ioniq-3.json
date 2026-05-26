@@ -21,8 +21,8 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1700,
-  "wltp_max_km": 450,
-  "wltp_min_km": 400,
+  "wltp_max_km": 496,
+  "wltp_min_km": 344,
   "realRange": {
     "mixed_km": 380,
     "highway_130_km": 250,
@@ -83,10 +83,29 @@
   "trims": [
     {
       "name": "Intuitive",
-      "price_EUR": 38000,
-      "batteryUsed": "58 kWh",
+      "price_EUR": 29500,
+      "batteryUsed": "42.2 kWh",
       "equipmentHighlights": [
-        "Ecran 12\""
+        "Ecran 12.9\"",
+        "Aide à la conduite"
+      ]
+    },
+    {
+      "name": "Creative",
+      "price_EUR": 33500,
+      "batteryUsed": "61 kWh",
+      "equipmentHighlights": [
+        "Projecteurs LED",
+        "Sellerie tissu recyclé"
+      ]
+    },
+    {
+      "name": "N Line",
+      "price_EUR": 36500,
+      "batteryUsed": "61 kWh",
+      "equipmentHighlights": [
+        "Style sportif N Line",
+        "Ecran tactile 14.6\""
       ]
     }
   ],
@@ -95,23 +114,121 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "hyundai-ioniq-3-intuitive",
-      "label": "Ioniq 3 Intuitive",
+      "id": "hyundai-ioniq-3-intuitive-42",
+      "label": "Ioniq 3 Intuitive 42 kWh",
       "battery": "standard",
       "trim": "Intuitive",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 38000,
+      "price_EUR": 29500,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 450,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_km": 344,
+      "wltp_consumption_kWh_100km": 14.8,
       "realRange": {
-        "mixed_km": 380,
-        "highway_130_km": 250,
-        "urban_km": 450,
-        "winter_minus5_km": 300,
+        "mixed_km": 280,
+        "highway_130_km": 190,
+        "urban_km": 340,
+        "winter_minus5_km": 220,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "hyundai-ioniq-3-creative-61",
+      "label": "Ioniq 3 Creative 61 kWh",
+      "battery": "long-range",
+      "trim": "Creative",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 33500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 496,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": {
+        "mixed_km": 400,
+        "highway_130_km": 280,
+        "urban_km": 490,
+        "winter_minus5_km": 310,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "hyundai-ioniq-3-n-line-61",
+      "label": "Ioniq 3 N Line 61 kWh",
+      "battery": "long-range",
+      "trim": "N Line",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 36500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 496,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": {
+        "mixed_km": 400,
+        "highway_130_km": 280,
+        "urban_km": 490,
+        "winter_minus5_km": 310,
         "confidence": "estimated"
       },
       "rangeTests": [],

@@ -21,8 +21,8 @@
   "chemistry": "NMC",
   "architecture_V": 800,
   "mass_kg": 2090,
-  "wltp_max_km": 678,
-  "wltp_min_km": 503,
+  "wltp_max_km": 642,
+  "wltp_min_km": 590,
   "realRange": {
     "mixed_km": 420,
     "highway_130_km": 310,

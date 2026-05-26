@@ -22,7 +22,7 @@
   "architecture_V": 400,
   "mass_kg": 1773,
   "wltp_max_km": 514,
-  "wltp_min_km": 454,
+  "wltp_min_km": 377,
   "realRange": {
     "mixed_km": 440,
     "highway_130_km": 315,
@@ -120,39 +120,196 @@
   "frunkCapacity_L": 27,
   "trims": [
     {
-      "name": "Intuitive",
-      "price_EUR": 40850,
-      "batteryUsed": "65.4 kWh",
+      "name": "Creative",
+      "price_EUR": 37850,
+      "batteryUsed": "48 kWh",
       "equipmentHighlights": [
-        "Navigation",
-        "Jantes 17\""
+        "Compteurs numériques 12.3\"",
+        "Volant et sièges avant chauffants",
+        "Eclairage d'ambiance à LED",
+        "Système de navigation Europe 12.3\""
+      ]
+    },
+    {
+      "name": "Creative",
+      "price_EUR": 41250,
+      "batteryUsed": "65 kWh",
+      "equipmentHighlights": [
+        "Compteurs numériques 12.3\"",
+        "Volant et sièges avant chauffants",
+        "Eclairage d'ambiance à LED",
+        "Système de navigation Europe 12.3\"",
+        "Autonomie étendue"
+      ]
+    },
+    {
+      "name": "Ultime Edition",
+      "price_EUR": 37850,
+      "batteryUsed": "48 kWh",
+      "equipmentHighlights": [
+        "Climatisation automatique bi-zone",
+        "Régulateur de vitesse adaptatif intelligent",
+        "Caméra de recul & Radars AV/AR",
+        "Volant et sièges avant chauffants"
+      ]
+    },
+    {
+      "name": "Ultime Edition",
+      "price_EUR": 41250,
+      "batteryUsed": "65 kWh",
+      "equipmentHighlights": [
+        "Climatisation automatique bi-zone",
+        "Régulateur de vitesse adaptatif intelligent",
+        "Caméra de recul & Radars AV/AR",
+        "Volant et sièges avant chauffants",
+        "Autonomie étendue"
+      ]
+    },
+    {
+      "name": "N Line Creative",
+      "price_EUR": 42250,
+      "batteryUsed": "65 kWh",
+      "equipmentHighlights": [
+        "Design extérieur N Line dynamique",
+        "Compteurs numériques 12.3\"",
+        "Feux Seamless Horizon à LED",
+        "Régulateur adaptatif intelligent"
+      ]
+    },
+    {
+      "name": "N Line Executive",
+      "price_EUR": 46750,
+      "batteryUsed": "65 kWh",
+      "equipmentHighlights": [
+        "Système audio Premium Bose",
+        "Caméra 360° & Affichage angles morts",
+        "Sièges avant ventilés",
+        "Chargeur inversé (V2L) & Hayon mains-libres"
       ]
     }
   ],
   "leasingSocialEligible": true,
-  "leasingSocial_EUR_per_month": 141,
+  "leasingSocial_EUR_per_month": 95,
   "availableAids": [
     {
-      "label": "Prime coup de pouce CEE",
-      "amount_EUR": 5700,
-      "conditions": "Plafond menage en precarite energetique (5 700 EUR). Menage modeste : 4 700 EUR. Autre menage : 3 500 EUR. Sous conditions de revenus (RFR/part)."
+      "label": "Prime CEE",
+      "amount_EUR": 6500,
+      "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
     },
     {
-      "label": "Surbonus batterie europeenne",
+      "label": "Majoration Batterie Européenne",
       "amount_EUR": 2000,
-      "conditions": "Vehicule assemble en Europe avec batterie fabriquee en zone economique europeenne. Montant indicatif de 1 200 a 2 000 EUR selon constructeur (liste ADEME)."
+      "conditions": "Majoration pour batterie fabriquée en Europe."
     }
   ],
   "configurations": [
     {
-      "id": "hyundai-kona-intuitive",
-      "label": "Kona Electric Intuitive",
+      "id": "hyundai-kona-creative-48",
+      "label": "Kona Electric Creative 48 kWh",
       "battery": "standard",
-      "trim": "Intuitive",
-      "wheelSize_inches": 18,
+      "trim": "Creative",
+      "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 40850,
+      "price_EUR": 37850,
+      "monthlyLease_EUR": 95,
+      "leasingSocialEligible": true,
+      "wltp_km": 377,
+      "wltp_consumption_kWh_100km": 14.6,
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 215,
+        "urban_km": 380,
+        "winter_minus5_km": 240,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 74,
+      "chargingDC_10_80_min": 41,
+      "chargingDC_kWh_30min": 25,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 55
+        },
+        {
+          "soc": 10,
+          "power": 74
+        },
+        {
+          "soc": 50,
+          "power": 55
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "hyundai-kona-ultime-48",
+      "label": "Kona Electric Ultime Edition 48 kWh",
+      "battery": "standard",
+      "trim": "Ultime Edition",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 37850,
+      "monthlyLease_EUR": 95,
+      "leasingSocialEligible": true,
+      "wltp_km": 377,
+      "wltp_consumption_kWh_100km": 14.6,
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 215,
+        "urban_km": 380,
+        "winter_minus5_km": 240,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 74,
+      "chargingDC_10_80_min": 41,
+      "chargingDC_kWh_30min": 25,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 55
+        },
+        {
+          "soc": 10,
+          "power": 74
+        },
+        {
+          "soc": 50,
+          "power": 55
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "hyundai-kona-creative-65",
+      "label": "Kona Electric Creative 65 kWh",
+      "battery": "long-range",
+      "trim": "Creative",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 41250,
       "monthlyLease_EUR": 141,
       "leasingSocialEligible": true,
       "wltp_km": 514,
@@ -193,6 +350,154 @@
           "notes": ""
         }
       ],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 41,
+      "chargingDC_kWh_30min": 32,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 77
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 77
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "hyundai-kona-ultime-65",
+      "label": "Kona Electric Ultime Edition 65 kWh",
+      "battery": "long-range",
+      "trim": "Ultime Edition",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 41250,
+      "monthlyLease_EUR": 141,
+      "leasingSocialEligible": true,
+      "wltp_km": 514,
+      "wltp_consumption_kWh_100km": 14.8,
+      "realRange": {
+        "mixed_km": 440,
+        "highway_130_km": 315,
+        "highway_120_km": 345,
+        "urban_km": 530,
+        "winter_minus5_km": 350,
+        "confidence": "bjorn_nyland"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 41,
+      "chargingDC_kWh_30min": 32,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 77
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 77
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "hyundai-kona-n-line-creative-65",
+      "label": "Kona Electric N Line Creative 65 kWh",
+      "battery": "long-range",
+      "trim": "N Line Creative",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 42250,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 490,
+      "wltp_consumption_kWh_100km": 15.4,
+      "realRange": {
+        "mixed_km": 415,
+        "highway_130_km": 295,
+        "urban_km": 500,
+        "winter_minus5_km": 330,
+        "confidence": "bjorn_nyland"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 41,
+      "chargingDC_kWh_30min": 32,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 77
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 77
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "hyundai-kona-n-line-executive-65",
+      "label": "Kona Electric N Line Executive 65 kWh",
+      "battery": "long-range",
+      "trim": "N Line Executive",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 46750,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 490,
+      "wltp_consumption_kWh_100km": 15.4,
+      "realRange": {
+        "mixed_km": 415,
+        "highway_130_km": 295,
+        "urban_km": 500,
+        "winter_minus5_km": 330,
+        "confidence": "bjorn_nyland"
+      },
+      "rangeTests": [],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 41,
       "chargingDC_kWh_30min": 32,

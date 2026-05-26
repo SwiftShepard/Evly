@@ -21,8 +21,8 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1700,
-  "wltp_max_km": 355,
-  "wltp_min_km": 300,
+  "wltp_max_km": 370,
+  "wltp_min_km": 327,
   "realRange": {
     "mixed_km": 280,
     "highway_130_km": 190,
@@ -82,12 +82,58 @@
   "frunkCapacity_L": null,
   "trims": [
     {
+      "name": "Inster",
+      "price_EUR": 25350,
+      "batteryUsed": "42 kWh",
+      "equipmentHighlights": [
+        "Climatisation automatique",
+        "Régulateur de vitesse adaptatif"
+      ]
+    },
+    {
       "name": "Intuitive",
-      "price_EUR": 25000,
+      "price_EUR": 26850,
+      "batteryUsed": "42 kWh",
+      "equipmentHighlights": [
+        "Aide au stationnement",
+        "Palettes de régénération"
+      ]
+    },
+    {
+      "name": "Intuitive",
+      "price_EUR": 28600,
       "batteryUsed": "49 kWh",
       "equipmentHighlights": [
-        "V2L",
-        "Sièges rabattables"
+        "Aide au stationnement",
+        "Palettes de régénération",
+        "Autonomie étendue"
+      ]
+    },
+    {
+      "name": "Creative",
+      "price_EUR": 29600,
+      "batteryUsed": "49 kWh",
+      "equipmentHighlights": [
+        "Jantes alliage 17\"",
+        "Projecteurs LED"
+      ]
+    },
+    {
+      "name": "Cross Creative",
+      "price_EUR": 30800,
+      "batteryUsed": "49 kWh",
+      "equipmentHighlights": [
+        "Look baroudeur",
+        "Barres de toit"
+      ]
+    },
+    {
+      "name": "Cross Executive",
+      "price_EUR": 32300,
+      "batteryUsed": "49 kWh",
+      "equipmentHighlights": [
+        "Toit ouvrant",
+        "Sièges chauffants"
       ]
     }
   ],
@@ -96,23 +142,268 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "hyundai-inster-intuitive",
-      "label": "Inster Intuitive",
+      "id": "hyundai-inster-inster-42",
+      "label": "Inster 42 kWh",
       "battery": "standard",
-      "trim": "Intuitive",
-      "wheelSize_inches": 18,
+      "trim": "Inster",
+      "wheelSize_inches": 15,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 25000,
+      "price_EUR": 25350,
       "monthlyLease_EUR": 99,
       "leasingSocialEligible": true,
+      "wltp_km": 327,
+      "wltp_consumption_kWh_100km": 15.3,
+      "realRange": {
+        "mixed_km": 250,
+        "highway_130_km": 170,
+        "urban_km": 320,
+        "winter_minus5_km": 200,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 85,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 25,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 65
+        },
+        {
+          "soc": 10,
+          "power": 85
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 33
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "hyundai-inster-intuitive-42",
+      "label": "Inster Intuitive 42 kWh",
+      "battery": "standard",
+      "trim": "Intuitive",
+      "wheelSize_inches": 15,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 26850,
+      "monthlyLease_EUR": 109,
+      "leasingSocialEligible": true,
+      "wltp_km": 327,
+      "wltp_consumption_kWh_100km": 15.3,
+      "realRange": {
+        "mixed_km": 250,
+        "highway_130_km": 170,
+        "urban_km": 320,
+        "winter_minus5_km": 200,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 85,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 25,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 65
+        },
+        {
+          "soc": 10,
+          "power": 85
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 33
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "hyundai-inster-intuitive-49",
+      "label": "Inster Intuitive 49 kWh",
+      "battery": "long-range",
+      "trim": "Intuitive",
+      "wheelSize_inches": 15,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 28600,
+      "monthlyLease_EUR": 119,
+      "leasingSocialEligible": true,
+      "wltp_km": 370,
+      "wltp_consumption_kWh_100km": 15.1,
+      "realRange": {
+        "mixed_km": 285,
+        "highway_130_km": 195,
+        "urban_km": 360,
+        "winter_minus5_km": 235,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 85,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 65
+        },
+        {
+          "soc": 10,
+          "power": 85
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 33
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "hyundai-inster-creative-49",
+      "label": "Inster Creative 49 kWh",
+      "battery": "long-range",
+      "trim": "Creative",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 29600,
+      "monthlyLease_EUR": 129,
+      "leasingSocialEligible": true,
       "wltp_km": 355,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
         "mixed_km": 280,
         "highway_130_km": 190,
         "urban_km": 350,
         "winter_minus5_km": 230,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 85,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 65
+        },
+        {
+          "soc": 10,
+          "power": 85
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 33
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "hyundai-inster-cross-creative-49",
+      "label": "Inster Cross Creative 49 kWh",
+      "battery": "long-range",
+      "trim": "Cross Creative",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 30800,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 350,
+      "wltp_consumption_kWh_100km": 15.7,
+      "realRange": {
+        "mixed_km": 275,
+        "highway_130_km": 185,
+        "urban_km": 345,
+        "winter_minus5_km": 225,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 85,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 65
+        },
+        {
+          "soc": 10,
+          "power": 85
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 33
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "hyundai-inster-cross-executive-49",
+      "label": "Inster Cross Executive 49 kWh",
+      "battery": "long-range",
+      "trim": "Cross Executive",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 32300,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 350,
+      "wltp_consumption_kWh_100km": 15.7,
+      "realRange": {
+        "mixed_km": 275,
+        "highway_130_km": 185,
+        "urban_km": 345,
+        "winter_minus5_km": 225,
         "confidence": "estimated"
       },
       "rangeTests": [],

@@ -1,49 +1,49 @@
 {
-  "slug": "kia-ev2",
+  "slug": "kia-ev2-61",
   "brand": "Kia",
   "model": "EV2",
-  "variant": "42.2 kWh",
+  "variant": "61 kWh",
   "bodyType": "Crossover",
   "segment": "B",
   "productionCountry": "Slovaquie",
   "assemblyPlant": "Žilina",
   "releaseYear": 2026,
   "marketAvailability": "Disponible",
-  "power_kW": 108,
-  "power_hp": 147,
+  "power_kW": 100,
+  "power_hp": 135,
   "torque_Nm": 250,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 8.7,
+  "acceleration_0_100_s": 9.5,
   "topSpeed_kmh": 150,
-  "usableCapacity_kWh": 42.2,
-  "grossCapacity_kWh": 45,
-  "chemistry": "LFP",
+  "usableCapacity_kWh": 61,
+  "grossCapacity_kWh": 64,
+  "chemistry": "NMC",
   "architecture_V": 400,
-  "mass_kg": 1650,
-  "wltp_max_km": 317,
-  "wltp_min_km": 317,
+  "mass_kg": 1720,
+  "wltp_max_km": 453,
+  "wltp_min_km": 453,
   "realRange": {
-    "mixed_km": 260,
-    "highway_130_km": 170,
-    "urban_km": 320,
-    "winter_minus5_km": 190,
+    "mixed_km": 390,
+    "highway_130_km": 270,
+    "urban_km": 460,
+    "winter_minus5_km": 300,
     "confidence": "estimated"
   },
-  "consumption_mixed_kWh_per_100km": 14.2,
-  "consumption_highway_kWh_per_100km": 20.5,
-  "consumption_winter_kWh_per_100km": 18.5,
+  "consumption_mixed_kWh_per_100km": 14.5,
+  "consumption_highway_kWh_per_100km": 21,
+  "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.28,
   "chargingDC": {
     "peakPower_kW": 118,
-    "time_10_80_min": 29,
-    "kWh_added_30min": 30,
+    "time_10_80_min": 30,
+    "kWh_added_30min": 43,
     "confidence": "manufacturer"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
     "phases": 3,
-    "time_0_100_h": 4.5
+    "time_0_100_h": 6.5
   },
   "plugAndCharge": false,
   "v2l": false,
@@ -82,20 +82,9 @@
   "frunkCapacity_L": 25,
   "trims": [
     {
-      "name": "Light",
-      "price_EUR": 26670,
-      "batteryUsed": "42.2 kWh",
-      "equipmentHighlights": [
-        "Compteurs numériques",
-        "Climatisation automatique",
-        "Régulateur de vitesse",
-        "Jantes alliage 17 pouces"
-      ]
-    },
-    {
       "name": "Air",
-      "price_EUR": 28820,
-      "batteryUsed": "42.2 kWh",
+      "price_EUR": 33320,
+      "batteryUsed": "61 kWh",
       "equipmentHighlights": [
         "Compteurs numériques",
         "Climatisation automatique",
@@ -105,13 +94,24 @@
     },
     {
       "name": "Earth",
-      "price_EUR": 31320,
-      "batteryUsed": "42.2 kWh",
+      "price_EUR": 35320,
+      "batteryUsed": "61 kWh",
       "equipmentHighlights": [
         "Compteurs numériques",
         "Double écran panoramique",
         "Régulateur adaptatif intelligent",
         "Sièges avant chauffants"
+      ]
+    },
+    {
+      "name": "GT-Line",
+      "price_EUR": 37320,
+      "batteryUsed": "61 kWh",
+      "equipmentHighlights": [
+        "Style extérieur sportif GT-Line",
+        "Jantes alliage 19 pouces GT-Line",
+        "Projecteurs Full LED matriciels",
+        "Pompe à chaleur de série"
       ]
     }
   ],
@@ -122,82 +122,38 @@
       "label": "Prime CEE",
       "amount_EUR": 6500,
       "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 2000,
+      "conditions": "Majoration pour batterie fabriquée en Europe."
     }
   ],
   "configurations": [
     {
-      "id": "kia-ev2-light-42",
-      "label": "EV2 Light 42.2 kWh",
-      "battery": "standard",
-      "trim": "Light",
-      "wheelSize_inches": 17,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 26670,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 317,
-      "wltp_consumption_kWh_100km": 14.2,
-      "realRange": {
-        "mixed_km": 260,
-        "highway_130_km": 170,
-        "urban_km": 320,
-        "winter_minus5_km": 190,
-        "confidence": "estimated"
-      },
-      "rangeTests": [],
-      "chargingDC_peak_kW": 118,
-      "chargingDC_10_80_min": 29,
-      "chargingDC_kWh_30min": 30,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 80
-        },
-        {
-          "soc": 10,
-          "power": 118
-        },
-        {
-          "soc": 50,
-          "power": 80
-        },
-        {
-          "soc": 80,
-          "power": 40
-        },
-        {
-          "soc": 100,
-          "power": 8
-        }
-      ],
-      "availability": "available",
-      "notes": null
-    },
-    {
-      "id": "kia-ev2-air-42",
-      "label": "EV2 Air 42.2 kWh",
-      "battery": "standard",
+      "id": "kia-ev2-air-61",
+      "label": "EV2 Air 61 kWh",
+      "battery": "long-range",
       "trim": "Air",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 28820,
+      "price_EUR": 33320,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 317,
-      "wltp_consumption_kWh_100km": 14.2,
+      "wltp_km": 453,
+      "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
-        "mixed_km": 260,
-        "highway_130_km": 170,
-        "urban_km": 320,
-        "winter_minus5_km": 190,
+        "mixed_km": 390,
+        "highway_130_km": 270,
+        "urban_km": 460,
+        "winter_minus5_km": 300,
         "confidence": "estimated"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 118,
-      "chargingDC_10_80_min": 29,
-      "chargingDC_kWh_30min": 30,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 43,
       "chargingCurve": [
         {
           "soc": 0,
@@ -224,29 +180,78 @@
       "notes": null
     },
     {
-      "id": "kia-ev2-earth-42",
-      "label": "EV2 Earth 42.2 kWh",
-      "battery": "standard",
+      "id": "kia-ev2-earth-61",
+      "label": "EV2 Earth 61 kWh",
+      "battery": "long-range",
       "trim": "Earth",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 31320,
+      "price_EUR": 35320,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 317,
-      "wltp_consumption_kWh_100km": 14.2,
+      "wltp_km": 453,
+      "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
-        "mixed_km": 260,
-        "highway_130_km": 170,
-        "urban_km": 320,
-        "winter_minus5_km": 190,
+        "mixed_km": 390,
+        "highway_130_km": 270,
+        "urban_km": 460,
+        "winter_minus5_km": 300,
         "confidence": "estimated"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 118,
-      "chargingDC_10_80_min": 29,
-      "chargingDC_kWh_30min": 30,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 43,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 80
+        },
+        {
+          "soc": 10,
+          "power": 118
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "kia-ev2-gt-line-61",
+      "label": "EV2 GT-Line 61 kWh",
+      "battery": "long-range",
+      "trim": "GT-Line",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 37320,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 453,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": {
+        "mixed_km": 390,
+        "highway_130_km": 270,
+        "urban_km": 460,
+        "winter_minus5_km": 300,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 118,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 43,
       "chargingCurve": [
         {
           "soc": 0,
@@ -295,21 +300,22 @@
     },
     {
       "category": "design",
-      "label": "Style crossover robuste et moderne"
+      "label": "Style GT-Line sportif et dynamique"
     }
   ],
   "verdict": {
     "strengths": [
-      "Tarif d'accès compétitif sous les 27k€",
-      "Production européenne assurant le bonus CEE",
-      "Technologie de bord haut de gamme"
+      "Grande batterie NMC fabriquée en Europe",
+      "Eligible à l'aide Prime CEE et majoration complète (8 500 €)",
+      "Autonomie confortable de 453 km WLTP",
+      "Équipements et technologie haut de gamme"
     ],
     "weaknesses": [
-      "Petite batterie LFP fabriquée en Asie (aides partielles)",
-      "Autonomie sur autoroute limitée"
+      "Tarif supérieur à 33k€",
+      "Puissance moteur de 135 ch légèrement inférieure"
     ],
-    "idealUserProfile": "Citadins ou périurbains cherchant un petit crossover compact, bien équipé et économique pour le quotidien.",
-    "notIdealFor": "Conducteurs effectuant fréquemment de longs trajets autoroutiers."
+    "idealUserProfile": "Conducteurs cherchant un petit crossover polyvalent avec une bonne autonomie pour de longs trajets occasionnels, tout en maximisant les subventions de l'État.",
+    "notIdealFor": "Acheteurs à budget serré cherchant le prix d'appel à tout prix."
   },
   "lastUpdated": "2026-05-26",
   "sources": [

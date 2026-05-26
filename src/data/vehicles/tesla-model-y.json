@@ -22,7 +22,7 @@
   "architecture_V": 400,
   "mass_kg": 1700,
   "wltp_max_km": 455,
-  "wltp_min_km": 430,
+  "wltp_min_km": 455,
   "realRange": {
     "mixed_km": 350,
     "highway_130_km": 350,
@@ -160,14 +160,14 @@
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Prime coup de pouce CEE",
-      "amount_EUR": 5700,
-      "conditions": "Plafond menage en precarite energetique (5 700 EUR). Menage modeste : 4 700 EUR. Autre menage : 3 500 EUR. Sous conditions de revenus (RFR/part)."
+      "label": "Prime CEE",
+      "amount_EUR": 6500,
+      "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
     },
     {
-      "label": "Surbonus batterie europeenne",
+      "label": "Majoration Batterie Européenne",
       "amount_EUR": 2000,
-      "conditions": "Vehicule assemble en Europe avec batterie fabriquee en zone economique europeenne. Montant indicatif de 1 200 a 2 000 EUR selon constructeur (liste ADEME)."
+      "conditions": "Majoration pour batterie fabriquée en Europe."
     }
   ],
   "configurations": [

@@ -22,7 +22,7 @@
   "architecture_V": 400,
   "mass_kg": 1700,
   "wltp_max_km": 400,
-  "wltp_min_km": 350,
+  "wltp_min_km": 400,
   "realRange": {
     "mixed_km": 320,
     "highway_130_km": 220,
@@ -82,12 +82,21 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Lounge",
+      "name": "Lounge 7 places",
       "price_EUR": 65000,
       "batteryUsed": "84 kWh",
       "equipmentHighlights": [
+        "7 places individuelles VIP",
+        "Architecture 800V"
+      ]
+    },
+    {
+      "name": "Lounge 9 places",
+      "price_EUR": 67000,
+      "batteryUsed": "84 kWh",
+      "equipmentHighlights": [
         "9 places",
-        "Portes coulissantes"
+        "Portes coulissantes électriques"
       ]
     }
   ],
@@ -96,10 +105,10 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "hyundai-staria-lounge",
-      "label": "Staria Lounge",
+      "id": "hyundai-staria-lounge-7",
+      "label": "Staria Lounge 7 places",
       "battery": "standard",
-      "trim": "Lounge",
+      "trim": "Lounge 7 places",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
@@ -107,7 +116,56 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 400,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_consumption_kWh_100km": 21,
+      "realRange": {
+        "mixed_km": 320,
+        "highway_130_km": 220,
+        "urban_km": 400,
+        "winter_minus5_km": 250,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 240,
+      "chargingDC_10_80_min": 18,
+      "chargingDC_kWh_30min": 60,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "hyundai-staria-lounge-9",
+      "label": "Staria Lounge 9 places",
+      "battery": "standard",
+      "trim": "Lounge 9 places",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 67000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 400,
+      "wltp_consumption_kWh_100km": 21,
       "realRange": {
         "mixed_km": 320,
         "highway_130_km": 220,

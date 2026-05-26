@@ -22,7 +22,7 @@
   "architecture_V": 800,
   "mass_kg": 1700,
   "wltp_max_km": 614,
-  "wltp_min_km": 545,
+  "wltp_min_km": 519,
   "realRange": {
     "mixed_km": 500,
     "highway_130_km": 365,
@@ -121,11 +121,38 @@
   "trims": [
     {
       "name": "Intuitive",
-      "price_EUR": 52000,
+      "price_EUR": 52400,
       "batteryUsed": "77.4 kWh",
       "equipmentHighlights": [
-        "800V",
-        "Cx 0.21"
+        "Double écran 12.3\"",
+        "Aide à la conduite autoroute HDA 2"
+      ]
+    },
+    {
+      "name": "Creative",
+      "price_EUR": 57000,
+      "batteryUsed": "77.4 kWh",
+      "equipmentHighlights": [
+        "Phares Matrix LED",
+        "Sièges avant chauffants & ventilés"
+      ]
+    },
+    {
+      "name": "Executive",
+      "price_EUR": 62500,
+      "batteryUsed": "77.4 kWh",
+      "equipmentHighlights": [
+        "Affichage tête-haute",
+        "Système audio Bose"
+      ]
+    },
+    {
+      "name": "Executive HTRAC AWD",
+      "price_EUR": 65400,
+      "batteryUsed": "77.4 kWh",
+      "equipmentHighlights": [
+        "Transmission intégrale HTRAC",
+        "Puissance 325 ch"
       ]
     }
   ],
@@ -134,18 +161,18 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "hyundai-ioniq-6-intuitive",
-      "label": "Ioniq 6 Intuitive",
+      "id": "hyundai-ioniq-6-intuitive-77",
+      "label": "Ioniq 6 Intuitive 77.4 kWh",
       "battery": "standard",
       "trim": "Intuitive",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 52000,
+      "price_EUR": 52400,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 614,
-      "wltp_consumption_kWh_100km": 14,
+      "wltp_consumption_kWh_100km": 14.3,
       "realRange": {
         "mixed_km": 500,
         "highway_130_km": 365,
@@ -182,6 +209,154 @@
           "notes": ""
         }
       ],
+      "chargingDC_peak_kW": 240,
+      "chargingDC_10_80_min": 18,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "hyundai-ioniq-6-creative-77",
+      "label": "Ioniq 6 Creative 77.4 kWh",
+      "battery": "standard",
+      "trim": "Creative",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 57000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 614,
+      "wltp_consumption_kWh_100km": 14.3,
+      "realRange": {
+        "mixed_km": 500,
+        "highway_130_km": 365,
+        "highway_120_km": 381,
+        "urban_km": 580,
+        "winter_minus5_km": 400,
+        "confidence": "bjorn_nyland"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 240,
+      "chargingDC_10_80_min": 18,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "hyundai-ioniq-6-executive-77",
+      "label": "Ioniq 6 Executive 77.4 kWh",
+      "battery": "standard",
+      "trim": "Executive",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 62500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 545,
+      "wltp_consumption_kWh_100km": 15.1,
+      "realRange": {
+        "mixed_km": 450,
+        "highway_130_km": 320,
+        "urban_km": 520,
+        "winter_minus5_km": 360,
+        "confidence": "bjorn_nyland"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 240,
+      "chargingDC_10_80_min": 18,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "hyundai-ioniq-6-executive-awd-77",
+      "label": "Ioniq 6 Executive HTRAC AWD 77.4 kWh",
+      "battery": "standard",
+      "trim": "Executive HTRAC AWD",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 65400,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 519,
+      "wltp_consumption_kWh_100km": 16,
+      "realRange": {
+        "mixed_km": 420,
+        "highway_130_km": 300,
+        "urban_km": 490,
+        "winter_minus5_km": 340,
+        "confidence": "bjorn_nyland"
+      },
+      "rangeTests": [],
       "chargingDC_peak_kW": 240,
       "chargingDC_10_80_min": 18,
       "chargingDC_kWh_30min": 65,

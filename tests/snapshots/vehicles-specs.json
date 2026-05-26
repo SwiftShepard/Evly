@@ -111,7 +111,7 @@
     "model": "i3 Neue Klasse",
     "power_kW": 340,
     "usableCapacity_kWh": 108.7,
-    "wltp_min_km": 750,
+    "wltp_min_km": 850,
     "wltp_max_km": 850,
     "configurations_count": 1,
     "configuration_ids": [
@@ -184,7 +184,7 @@
     "model": "iX1",
     "power_kW": 230,
     "usableCapacity_kWh": 64.7,
-    "wltp_min_km": 417,
+    "wltp_min_km": 440,
     "wltp_max_km": 475,
     "configurations_count": 2,
     "configuration_ids": [
@@ -198,7 +198,7 @@
     "model": "iX2",
     "power_kW": 230,
     "usableCapacity_kWh": 64.7,
-    "wltp_min_km": 394,
+    "wltp_min_km": 417,
     "wltp_max_km": 449,
     "configurations_count": 2,
     "configuration_ids": [
@@ -212,7 +212,7 @@
     "model": "iX3 Neue Klasse",
     "power_kW": 340,
     "usableCapacity_kWh": 108.7,
-    "wltp_min_km": 680,
+    "wltp_min_km": 805,
     "wltp_max_km": 805,
     "configurations_count": 1,
     "configuration_ids": [
@@ -266,7 +266,7 @@
     "model": "Seal",
     "power_kW": 230,
     "usableCapacity_kWh": 82.5,
-    "wltp_min_km": 520,
+    "wltp_min_km": 570,
     "wltp_max_km": 570,
     "configurations_count": 2,
     "configuration_ids": [
@@ -335,7 +335,7 @@
     "model": "ë-C3 & Aircross",
     "power_kW": 83,
     "usableCapacity_kWh": 44,
-    "wltp_min_km": 300,
+    "wltp_min_km": 320,
     "wltp_max_km": 320,
     "configurations_count": 2,
     "configuration_ids": [
@@ -349,7 +349,7 @@
     "model": "ë-C4 & ë-C4 X",
     "power_kW": 115,
     "usableCapacity_kWh": 50.8,
-    "wltp_min_km": 415,
+    "wltp_min_km": 420,
     "wltp_max_km": 420,
     "configurations_count": 2,
     "configuration_ids": [
@@ -378,7 +378,7 @@
     "model": "e-Jumper",
     "power_kW": 150,
     "usableCapacity_kWh": 110,
-    "wltp_min_km": 340,
+    "wltp_min_km": 380,
     "wltp_max_km": 420,
     "configurations_count": 2,
     "configuration_ids": [
@@ -598,7 +598,7 @@
     "model": "Puma Gen-E",
     "power_kW": 124,
     "usableCapacity_kWh": 43,
-    "wltp_min_km": 349,
+    "wltp_min_km": 365,
     "wltp_max_km": 376,
     "configurations_count": 3,
     "configuration_ids": [
@@ -613,11 +613,16 @@
     "model": "Inster",
     "power_kW": 84,
     "usableCapacity_kWh": 49,
-    "wltp_min_km": 300,
-    "wltp_max_km": 355,
-    "configurations_count": 1,
+    "wltp_min_km": 327,
+    "wltp_max_km": 370,
+    "configurations_count": 6,
     "configuration_ids": [
-      "hyundai-inster-intuitive"
+      "hyundai-inster-creative-49",
+      "hyundai-inster-cross-creative-49",
+      "hyundai-inster-cross-executive-49",
+      "hyundai-inster-inster-42",
+      "hyundai-inster-intuitive-42",
+      "hyundai-inster-intuitive-49"
     ]
   },
   {
@@ -626,11 +631,13 @@
     "model": "Ioniq 3",
     "power_kW": 150,
     "usableCapacity_kWh": 58,
-    "wltp_min_km": 400,
-    "wltp_max_km": 450,
-    "configurations_count": 1,
+    "wltp_min_km": 344,
+    "wltp_max_km": 496,
+    "configurations_count": 3,
     "configuration_ids": [
-      "hyundai-ioniq-3-intuitive"
+      "hyundai-ioniq-3-creative-61",
+      "hyundai-ioniq-3-intuitive-42",
+      "hyundai-ioniq-3-n-line-61"
     ]
   },
   {
@@ -639,11 +646,16 @@
     "model": "Ioniq 5",
     "power_kW": 168,
     "usableCapacity_kWh": 84,
-    "wltp_min_km": 530,
+    "wltp_min_km": 440,
     "wltp_max_km": 570,
-    "configurations_count": 1,
+    "configurations_count": 6,
     "configuration_ids": [
-      "hyundai-ioniq-5-intuitive"
+      "hyundai-ioniq-5-creative-84",
+      "hyundai-ioniq-5-executive-84",
+      "hyundai-ioniq-5-intuitive-63",
+      "hyundai-ioniq-5-intuitive-84",
+      "hyundai-ioniq-5-n-line-84",
+      "hyundai-ioniq-5-n-line-awd-84"
     ]
   },
   {
@@ -652,11 +664,14 @@
     "model": "Ioniq 6",
     "power_kW": 168,
     "usableCapacity_kWh": 77.4,
-    "wltp_min_km": 545,
+    "wltp_min_km": 519,
     "wltp_max_km": 614,
-    "configurations_count": 1,
+    "configurations_count": 4,
     "configuration_ids": [
-      "hyundai-ioniq-6-intuitive"
+      "hyundai-ioniq-6-creative-77",
+      "hyundai-ioniq-6-executive-77",
+      "hyundai-ioniq-6-executive-awd-77",
+      "hyundai-ioniq-6-intuitive-77"
     ]
   },
   {
@@ -665,11 +680,13 @@
     "model": "Ioniq 9",
     "power_kW": 160,
     "usableCapacity_kWh": 110.3,
-    "wltp_min_km": 500,
+    "wltp_min_km": 550,
     "wltp_max_km": 620,
-    "configurations_count": 1,
+    "configurations_count": 3,
     "configuration_ids": [
-      "hyundai-ioniq-9-executive"
+      "hyundai-ioniq-9-calligraphy-110",
+      "hyundai-ioniq-9-creative-110",
+      "hyundai-ioniq-9-executive-110"
     ]
   },
   {
@@ -678,11 +695,16 @@
     "model": "Kona Electric",
     "power_kW": 160,
     "usableCapacity_kWh": 65.4,
-    "wltp_min_km": 454,
+    "wltp_min_km": 377,
     "wltp_max_km": 514,
-    "configurations_count": 1,
+    "configurations_count": 6,
     "configuration_ids": [
-      "hyundai-kona-intuitive"
+      "hyundai-kona-creative-48",
+      "hyundai-kona-creative-65",
+      "hyundai-kona-n-line-creative-65",
+      "hyundai-kona-n-line-executive-65",
+      "hyundai-kona-ultime-48",
+      "hyundai-kona-ultime-65"
     ]
   },
   {
@@ -691,11 +713,12 @@
     "model": "Staria",
     "power_kW": 150,
     "usableCapacity_kWh": 84,
-    "wltp_min_km": 350,
+    "wltp_min_km": 400,
     "wltp_max_km": 400,
-    "configurations_count": 1,
+    "configurations_count": 2,
     "configuration_ids": [
-      "hyundai-staria-lounge"
+      "hyundai-staria-lounge-7",
+      "hyundai-staria-lounge-9"
     ]
   },
   {
@@ -732,13 +755,30 @@
     "slug": "kia-ev2",
     "brand": "Kia",
     "model": "EV2",
-    "power_kW": 100,
-    "usableCapacity_kWh": 42,
-    "wltp_min_km": 300,
-    "wltp_max_km": 350,
-    "configurations_count": 1,
+    "power_kW": 108,
+    "usableCapacity_kWh": 42.2,
+    "wltp_min_km": 317,
+    "wltp_max_km": 317,
+    "configurations_count": 3,
     "configuration_ids": [
-      "kia-ev2-active"
+      "kia-ev2-air-42",
+      "kia-ev2-earth-42",
+      "kia-ev2-light-42"
+    ]
+  },
+  {
+    "slug": "kia-ev2-61",
+    "brand": "Kia",
+    "model": "EV2",
+    "power_kW": 100,
+    "usableCapacity_kWh": 61,
+    "wltp_min_km": 453,
+    "wltp_max_km": 453,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "kia-ev2-air-61",
+      "kia-ev2-earth-61",
+      "kia-ev2-gt-line-61"
     ]
   },
   {
@@ -747,7 +787,7 @@
     "model": "EV3",
     "power_kW": 150,
     "usableCapacity_kWh": 81.4,
-    "wltp_min_km": 560,
+    "wltp_min_km": 605,
     "wltp_max_km": 605,
     "configurations_count": 4,
     "configuration_ids": [
@@ -763,7 +803,7 @@
     "model": "EV4",
     "power_kW": 150,
     "usableCapacity_kWh": 81.4,
-    "wltp_min_km": 410,
+    "wltp_min_km": 440,
     "wltp_max_km": 625,
     "configurations_count": 5,
     "configuration_ids": [
@@ -780,7 +820,7 @@
     "model": "EV4 Fastback",
     "power_kW": 150,
     "usableCapacity_kWh": 81.4,
-    "wltp_min_km": 580,
+    "wltp_min_km": 650,
     "wltp_max_km": 650,
     "configurations_count": 1,
     "configuration_ids": [
@@ -810,7 +850,7 @@
     "model": "EV6",
     "power_kW": 168,
     "usableCapacity_kWh": 84,
-    "wltp_min_km": 505,
+    "wltp_min_km": 582,
     "wltp_max_km": 582,
     "configurations_count": 4,
     "configuration_ids": [
@@ -841,7 +881,7 @@
     "model": "PV5 Cargo",
     "power_kW": 150,
     "usableCapacity_kWh": 81.4,
-    "wltp_min_km": 380,
+    "wltp_min_km": 430,
     "wltp_max_km": 430,
     "configurations_count": 1,
     "configuration_ids": [
@@ -854,7 +894,7 @@
     "model": "PV5 Passenger",
     "power_kW": 150,
     "usableCapacity_kWh": 81.4,
-    "wltp_min_km": 400,
+    "wltp_min_km": 450,
     "wltp_max_km": 450,
     "configurations_count": 1,
     "configuration_ids": [
@@ -896,7 +936,7 @@
     "model": "B10",
     "power_kW": 160,
     "usableCapacity_kWh": 69.9,
-    "wltp_min_km": 400,
+    "wltp_min_km": 420,
     "wltp_max_km": 420,
     "configurations_count": 1,
     "configuration_ids": [
@@ -1022,7 +1062,7 @@
     "model": "EQA",
     "power_kW": 140,
     "usableCapacity_kWh": 70.5,
-    "wltp_min_km": 426,
+    "wltp_min_km": 460,
     "wltp_max_km": 528,
     "configurations_count": 3,
     "configuration_ids": [
@@ -1037,7 +1077,7 @@
     "model": "EQB",
     "power_kW": 140,
     "usableCapacity_kWh": 70.5,
-    "wltp_min_km": 388,
+    "wltp_min_km": 440,
     "wltp_max_km": 494,
     "configurations_count": 3,
     "configuration_ids": [
@@ -1052,7 +1092,7 @@
     "model": "EQE",
     "power_kW": 215,
     "usableCapacity_kWh": 90.6,
-    "wltp_min_km": 505,
+    "wltp_min_km": 533,
     "wltp_max_km": 647,
     "configurations_count": 3,
     "configuration_ids": [
@@ -1082,7 +1122,7 @@
     "model": "eSprinter",
     "power_kW": 150,
     "usableCapacity_kWh": 113,
-    "wltp_min_km": 350,
+    "wltp_min_km": 380,
     "wltp_max_km": 440,
     "configurations_count": 2,
     "configuration_ids": [
@@ -1110,7 +1150,7 @@
     "model": "Cyberster",
     "power_kW": 250,
     "usableCapacity_kWh": 74.4,
-    "wltp_min_km": 443,
+    "wltp_min_km": 507,
     "wltp_max_km": 507,
     "configurations_count": 2,
     "configuration_ids": [
@@ -1139,7 +1179,7 @@
     "model": "MG4",
     "power_kW": 150,
     "usableCapacity_kWh": 61.7,
-    "wltp_min_km": 435,
+    "wltp_min_km": 450,
     "wltp_max_km": 450,
     "configurations_count": 4,
     "configuration_ids": [
@@ -1376,7 +1416,7 @@
     "model": "Movano-e",
     "power_kW": 150,
     "usableCapacity_kWh": 110,
-    "wltp_min_km": 340,
+    "wltp_min_km": 370,
     "wltp_max_km": 420,
     "configurations_count": 2,
     "configuration_ids": [
@@ -1634,7 +1674,7 @@
     "model": "Macan Electric",
     "power_kW": 300,
     "usableCapacity_kWh": 95,
-    "wltp_min_km": 516,
+    "wltp_min_km": 591,
     "wltp_max_km": 641,
     "configurations_count": 3,
     "configuration_ids": [
@@ -1649,8 +1689,8 @@
     "model": "Taycan",
     "power_kW": 300,
     "usableCapacity_kWh": 82.3,
-    "wltp_min_km": 503,
-    "wltp_max_km": 678,
+    "wltp_min_km": 590,
+    "wltp_max_km": 642,
     "configurations_count": 3,
     "configuration_ids": [
       "porsche-taycan-4s",
@@ -1697,7 +1737,7 @@
     "model": "Grand Kangoo E-Tech",
     "power_kW": 90,
     "usableCapacity_kWh": 45,
-    "wltp_min_km": 250,
+    "wltp_min_km": 265,
     "wltp_max_km": 265,
     "configurations_count": 1,
     "configuration_ids": [
@@ -1710,7 +1750,7 @@
     "model": "Kangoo E-Tech",
     "power_kW": 90,
     "usableCapacity_kWh": 45,
-    "wltp_min_km": 265,
+    "wltp_min_km": 285,
     "wltp_max_km": 285,
     "configurations_count": 2,
     "configuration_ids": [
@@ -1724,7 +1764,7 @@
     "model": "Master E-Tech",
     "power_kW": 105,
     "usableCapacity_kWh": 87,
-    "wltp_min_km": 380,
+    "wltp_min_km": 410,
     "wltp_max_km": 460,
     "configurations_count": 2,
     "configuration_ids": [
@@ -1739,7 +1779,7 @@
     "power_kW": 160,
     "usableCapacity_kWh": 60,
     "wltp_min_km": 450,
-    "wltp_max_km": 470,
+    "wltp_max_km": 468,
     "configurations_count": 3,
     "configuration_ids": [
       "renault-megane-esprit-alpine",
@@ -1783,7 +1823,7 @@
     "model": "Twingo E-Tech",
     "power_kW": 60,
     "usableCapacity_kWh": 27.4,
-    "wltp_min_km": 240,
+    "wltp_min_km": 250,
     "wltp_max_km": 263,
     "configurations_count": 2,
     "configuration_ids": [
@@ -1845,7 +1885,7 @@
     "model": "#3",
     "power_kW": 200,
     "usableCapacity_kWh": 62,
-    "wltp_min_km": 325,
+    "wltp_min_km": 415,
     "wltp_max_km": 455,
     "configurations_count": 3,
     "configuration_ids": [
@@ -1875,7 +1915,7 @@
     "model": "Model 3",
     "power_kW": 208,
     "usableCapacity_kWh": 57.5,
-    "wltp_min_km": 513,
+    "wltp_min_km": 554,
     "wltp_max_km": 554,
     "configurations_count": 4,
     "configuration_ids": [
@@ -1891,7 +1931,7 @@
     "model": "Model Y",
     "power_kW": 220,
     "usableCapacity_kWh": 57.5,
-    "wltp_min_km": 430,
+    "wltp_min_km": 455,
     "wltp_max_km": 455,
     "configurations_count": 4,
     "configuration_ids": [
@@ -1923,7 +1963,7 @@
     "model": "Proace City Electric Verso",
     "power_kW": 100,
     "usableCapacity_kWh": 50,
-    "wltp_min_km": 310,
+    "wltp_min_km": 330,
     "wltp_max_km": 330,
     "configurations_count": 3,
     "configuration_ids": [
@@ -1952,7 +1992,7 @@
     "model": "Proace Max Electric",
     "power_kW": 150,
     "usableCapacity_kWh": 110,
-    "wltp_min_km": 340,
+    "wltp_min_km": 370,
     "wltp_max_km": 420,
     "configurations_count": 2,
     "configuration_ids": [
@@ -2027,7 +2067,7 @@
     "model": "ID.Buzz",
     "power_kW": 210,
     "usableCapacity_kWh": 77,
-    "wltp_min_km": 420,
+    "wltp_min_km": 461,
     "wltp_max_km": 461,
     "configurations_count": 3,
     "configuration_ids": [
@@ -2042,7 +2082,7 @@
     "model": "ID.2",
     "power_kW": 166,
     "usableCapacity_kWh": 38,
-    "wltp_min_km": 400,
+    "wltp_min_km": 450,
     "wltp_max_km": 450,
     "configurations_count": 2,
     "configuration_ids": [
@@ -2056,7 +2096,7 @@
     "model": "ID.3",
     "power_kW": 150,
     "usableCapacity_kWh": 58,
-    "wltp_min_km": 420,
+    "wltp_min_km": 434,
     "wltp_max_km": 434,
     "configurations_count": 1,
     "configuration_ids": [
@@ -2069,7 +2109,7 @@
     "model": "ID.4",
     "power_kW": 210,
     "usableCapacity_kWh": 77,
-    "wltp_min_km": 520,
+    "wltp_min_km": 550,
     "wltp_max_km": 550,
     "configurations_count": 1,
     "configuration_ids": [
@@ -2082,7 +2122,7 @@
     "model": "ID.5",
     "power_kW": 210,
     "usableCapacity_kWh": 77,
-    "wltp_min_km": 480,
+    "wltp_min_km": 560,
     "wltp_max_km": 560,
     "configurations_count": 2,
     "configuration_ids": [
@@ -2096,7 +2136,7 @@
     "model": "ID.7",
     "power_kW": 210,
     "usableCapacity_kWh": 77,
-    "wltp_min_km": 580,
+    "wltp_min_km": 621,
     "wltp_max_km": 621,
     "configurations_count": 3,
     "configuration_ids": [
@@ -2125,7 +2165,7 @@
     "model": "YU7",
     "power_kW": 235,
     "usableCapacity_kWh": 70,
-    "wltp_min_km": 400,
+    "wltp_min_km": 480,
     "wltp_max_km": 530,
     "configurations_count": 2,
     "configuration_ids": [

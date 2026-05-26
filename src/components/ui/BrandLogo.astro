@@ -44,7 +44,40 @@ for (const [path, content] of Object.entries(logoModules)) {
       .replace(/\bcolor\s*:\s*(?:#fff(?:fff)?|rgb\(\s*255\s*,\s*255\s*,\s*255\s*\)|white)\s*;?/gi, "");
 
     // Prevent ID collision between different SVGs inlined on the same page
-    const uniqueSuffix = `-${target}`;
+    const randomId = Math.floor(Math.random() * 1000000).toString(36);
+    const uniqueSuffix = `-${target}-${randomId}`;
+
+    // Prevent CSS class name collision between different SVGs inlined on the same page
+    const classNames = [];
+    patchedSvg = patchedSvg.replace(/<style[^>]*>([\s\S]*?)<\/style>/gi, (styleTag, styleContent) => {
+      const matches = styleContent.match(/\.[a-z0-9_-]+/gi);
+      if (matches) {
+        matches.forEach(m => classNames.push(m.slice(1)));
+      }
+      let updatedStyle = styleContent;
+      if (matches) {
+        const uniqueClasses = [...new Set(matches.map(m => m.slice(1)))].sort((a, b) => b.length - a.length);
+        uniqueClasses.forEach(cls => {
+          const regex = new RegExp(`\\.${cls}\\b`, 'g');
+          updatedStyle = updatedStyle.replace(regex, `.${cls}${uniqueSuffix}`);
+        });
+      }
+      return `<style>${updatedStyle}</style>`;
+    });
+
+    if (classNames.length > 0) {
+      const uniqueClasses = [...new Set(classNames)].sort((a, b) => b.length - a.length);
+      patchedSvg = patchedSvg.replace(/\bclass=(["'])(.*?)\1/g, (_m, quote, classList) => {
+        const updatedClasses = classList.split(/\s+/).map(cls => {
+          if (uniqueClasses.includes(cls)) {
+            return `${cls}${uniqueSuffix}`;
+          }
+          return cls;
+        }).join(' ');
+        return `class=${quote}${updatedClasses}${quote}`;
+      });
+    }
+
     patchedSvg = patchedSvg
       .replace(/\bid=(["'])(.*?)\1/g, (_m, quote, id) => `id=${quote}${id}${uniqueSuffix}${quote}`)
       .replace(/url\(\s*(["']?)#([^'")]+)\1\s*\)/g, (_m, quote, id) => `url(${quote}#${id}${uniqueSuffix}${quote})`)

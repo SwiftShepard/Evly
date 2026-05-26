@@ -22,7 +22,7 @@
   "architecture_V": 800,
   "mass_kg": 1700,
   "wltp_max_km": 620,
-  "wltp_min_km": 500,
+  "wltp_min_km": 550,
   "realRange": {
     "mixed_km": 480,
     "highway_130_km": 335,
@@ -83,12 +83,30 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Executive",
-      "price_EUR": 75000,
+      "name": "Creative",
+      "price_EUR": 69900,
       "batteryUsed": "110.3 kWh",
       "equipmentHighlights": [
         "7 places",
-        "110 kWh"
+        "Écrans incurvés 12.3\""
+      ]
+    },
+    {
+      "name": "Executive",
+      "price_EUR": 81500,
+      "batteryUsed": "110.3 kWh",
+      "equipmentHighlights": [
+        "HTRAC AWD",
+        "Aide au stationnement à distance"
+      ]
+    },
+    {
+      "name": "Calligraphy",
+      "price_EUR": 86900,
+      "batteryUsed": "110.3 kWh",
+      "equipmentHighlights": [
+        "HTRAC Performance 428 ch",
+        "Configuration 6 places premium"
       ]
     }
   ],
@@ -97,18 +115,18 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "hyundai-ioniq-9-executive",
-      "label": "Ioniq 9 Executive",
+      "id": "hyundai-ioniq-9-creative-110",
+      "label": "Ioniq 9 Creative 110 kWh",
       "battery": "standard",
-      "trim": "Executive",
-      "wheelSize_inches": 18,
+      "trim": "Creative",
+      "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 75000,
+      "price_EUR": 69900,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 620,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_consumption_kWh_100km": 17.8,
       "realRange": {
         "mixed_km": 480,
         "highway_130_km": 335,
@@ -116,6 +134,104 @@
         "urban_km": 570,
         "winter_minus5_km": 380,
         "confidence": "bjorn_nyland"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 350,
+      "chargingDC_10_80_min": 24,
+      "chargingDC_kWh_30min": 85,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "hyundai-ioniq-9-executive-110",
+      "label": "Ioniq 9 Executive 110 kWh",
+      "battery": "standard",
+      "trim": "Executive",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 81500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 580,
+      "wltp_consumption_kWh_100km": 19,
+      "realRange": {
+        "mixed_km": 450,
+        "highway_130_km": 315,
+        "urban_km": 540,
+        "winter_minus5_km": 360,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 350,
+      "chargingDC_10_80_min": 24,
+      "chargingDC_kWh_30min": 85,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "hyundai-ioniq-9-calligraphy-110",
+      "label": "Ioniq 9 Calligraphy 110 kWh",
+      "battery": "standard",
+      "trim": "Calligraphy",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 86900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 550,
+      "wltp_consumption_kWh_100km": 20.1,
+      "realRange": {
+        "mixed_km": 420,
+        "highway_130_km": 290,
+        "urban_km": 510,
+        "winter_minus5_km": 330,
+        "confidence": "estimated"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 350,
