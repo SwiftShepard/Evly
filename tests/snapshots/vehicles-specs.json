@@ -1263,19 +1263,6 @@
     ]
   },
   {
-    "slug": "mobilize-duo",
-    "brand": "Mobilize",
-    "model": "Duo",
-    "power_kW": 12,
-    "usableCapacity_kWh": 10.4,
-    "wltp_min_km": 161,
-    "wltp_max_km": 161,
-    "configurations_count": 1,
-    "configuration_ids": [
-      "mobilize-duo-duo-80"
-    ]
-  },
-  {
     "slug": "nio-et5",
     "brand": "Nio",
     "model": "ET5",

@@ -629,22 +629,6 @@ grand_kangoo.update({
     "trims": [{"name": "Techno", "price_EUR": 40500, "batteryUsed": "45 kWh", "equipmentHighlights": ["7 places", "Sièges amovibles"]}]
 })
 
-# 24. Mobilize Duo
-duo = base_vehicle("mobilize-duo", "Mobilize", "Duo")
-duo.update({
-    "productionCountry": "Maroc",
-    "variant": "80 Pro", "bodyType": "Quadricycle", "segment": "A",
-    "power_kW": 12, "usableCapacity_kWh": 10.4, "grossCapacity_kWh": 10.4,
-    "wltp_max_km": 161, "wltp_min_km": 161,
-    "topSpeed_kmh": 80,
-    "realRange": {"mixed_km": 120, "highway_130_km": 0, "urban_km": 140, "winter_minus5_km": 90, "confidence": "estimated"},
-    "dragCoefficient_Cx": 0.40,
-    "chargingDC": {"peakPower_kW": 0, "time_10_80_min": 0, "kWh_added_30min": 0, "confidence": "estimated"},
-    "chargingAC": {"onboardCharger_kW": 3.7, "phases": 1, "time_0_100_h": 3.5},
-    "length_mm": 2430, "width_mm": 1300, "height_mm": 1460, "trunkCapacity_L": 0,
-    "trims": [{"name": "Duo 80", "price_EUR": 12500, "batteryUsed": "10.4 kWh", "equipmentHighlights": ["Portes élytre", "Format ultra-compact"]}]
-})
-
 # 25. Citroën Ami
 ami = base_vehicle("citroen-ami", "Citroën", "Ami")
 ami.update({

@@ -55,11 +55,11 @@ function getSoftwareRating(brand: string, model: string): number {
     return 3.5;
   }
   
-  // 2/5 : Stellantis (Peugeot, Citroën, Fiat, Opel, Jeep, Lancia, Alfa Romeo, DS), Toyota, Lexus, Dacia, Mobilize, Maxus
+  // 2/5 : Stellantis (Peugeot, Citroën, Fiat, Opel, Jeep, Lancia, Alfa Romeo, DS), Toyota, Lexus, Dacia, Maxus
   if (
     b === "peugeot" || b === "citroën" || b === "fiat" || b === "opel" || b === "jeep" || 
     b === "lancia" || b === "alfa romeo" || b === "ds" || b === "toyota" || b === "lexus" || 
-    b === "dacia" || b === "mobilize" || b === "maxus"
+    b === "dacia" || b === "maxus"
   ) {
     return 2;
   }
