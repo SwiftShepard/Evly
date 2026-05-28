@@ -29,3 +29,8 @@ pnpm-debug.log*
 src/pages/admin.astro
 src/components/admin/
 src/data/roadmap.ts
+
+# Playwright
+playwright-report/
+test-results/
+
