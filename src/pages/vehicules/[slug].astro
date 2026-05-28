@@ -10,7 +10,6 @@ import SourceTooltip from "@/components/ui/SourceTooltip.astro";
 import MethodologyBadge from "@/components/ui/MethodologyBadge.astro";
 import ChargingCurve from "@/components/vehicle/ChargingCurve.tsx";
 import SeasonalRange from "@/components/vehicle/SeasonalRange.tsx";
-import SpeedConsumption from "@/components/vehicle/SpeedConsumption.tsx";
 import VehicleConfigSelector from "@/components/vehicle/VehicleConfigSelector.tsx";
 import SohSlider from "@/components/vehicle/SohSlider.tsx";
 import TemperatureSlider from "@/components/vehicle/TemperatureSlider.tsx";
@@ -317,37 +316,6 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
               </div>
             </Tile>
 
-            <!-- Tuiles 1x1 : 0-100, puissance, vitesse max, Cx -->
-            <Tile size="1x1" label="0 → 100 km/h" class="reveal">
-              <TileStat value={vehicle.acceleration_0_100_s.toString().replace(".", ",")} unit="s" size="xl" />
-            </Tile>
-
-            <Tile size="1x1" label="Puissance" class="reveal">
-              <TileStat value={vehicle.power_hp.toString()} unit="ch" size="xl" hint={`${vehicle.power_kW} kW`} />
-            </Tile>
-
-            <Tile size="1x1" label="Vitesse max" class="reveal">
-              <TileStat value={vehicle.topSpeed_kmh.toString()} unit="km/h" size="xl" />
-            </Tile>
-
-            <Tile size="1x1" label="Cx aéro" class="reveal">
-              <TileStat value={vehicle.dragCoefficient_Cx.toString().replace(".", ",")} size="xl" tone="accent" />
-            </Tile>
-
-            <!-- 2x2 : conso/vitesse multi-sources (masqué si aucun test avec vitesse) -->
-            {(() => {
-              const tests = config.rangeTests.length > 0 ? config.rangeTests : vehicle.rangeTests;
-              return tests.some((t: any) => t.speed_kmh !== null) && (
-                <Tile size="2x2" variant="elevated" label="Conso / vitesse" class="reveal">
-                  <div class="flex items-center justify-between gap-3 -mt-2 mb-3">
-                    <h3 class="font-display text-base md:text-lg font-semibold tracking-[-0.01em]">Multi-sources mesurées</h3>
-                    <Tag tone="outline" mono>{tests.length} tests</Tag>
-                  </div>
-                  <SpeedConsumption client:visible tests={tests} sourceLabels={sourceLabels} vehicleName={`${vehicle.brand} ${vehicle.model} ${config.trim}`} />
-                </Tile>
-              );
-            })()}
-
             <!-- 1x1 : capacité batterie -->
             <Tile size="1x1" label="Batterie utile" class="reveal">
               <div class="soh-update-capacity" data-base-capacity={batteryCapacity}>
@@ -358,19 +326,6 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
             <!-- 1x1 : pic DC -->
             <Tile size="1x1" label="Pic DC" source={vehicle.chargingDC.confidence === "tested" ? "nyland" : undefined} class="reveal">
               <TileStat value={(config.chargingDC_peak_kW ?? vehicle.chargingDC.peakPower_kW).toString()} unit="kW" size="xl" tone="accent" hint={`10 → 80 % en ${config.chargingDC_10_80_min ?? vehicle.chargingDC.time_10_80_min} min`} />
-            </Tile>
-
-            <!-- 2x2 : courbe de charge -->
-            <Tile size="2x2" variant="elevated" label="Courbe de charge DC" class="reveal">
-              <div class="flex items-center justify-between gap-3 -mt-2 mb-3">
-                <h3 class="font-display text-base md:text-lg font-semibold tracking-[-0.01em]">Puissance vs SoC</h3>
-                <Tag tone="outline" mono>{confidenceLabel[vehicle.chargingDC.confidence] ?? vehicle.chargingDC.confidence}</Tag>
-              </div>
-              {(config.chargingCurve ?? vehicle.chargingCurve) ? (
-                <ChargingCurve client:visible curve={config.chargingCurve ?? vehicle.chargingCurve!} peakPower_kW={config.chargingDC_peak_kW ?? vehicle.chargingDC.peakPower_kW} vehicleName={`${vehicle.brand} ${vehicle.model}`} />
-              ) : (
-                <p class="text-[var(--color-text-faint)] mt-4">Données non mesurées.</p>
-              )}
             </Tile>
 
             <!-- 2x1 : énergie ajoutée + recharge AC -->
@@ -396,6 +351,19 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
               </div>
             </Tile>
 
+            <!-- 2x2 : courbe de charge -->
+            <Tile size="2x2" variant="elevated" label="Courbe de charge DC" class="reveal">
+              <div class="flex items-center justify-between gap-3 -mt-2 mb-3">
+                <h3 class="font-display text-base md:text-lg font-semibold tracking-[-0.01em]">Puissance vs SoC</h3>
+                <Tag tone="outline" mono>{confidenceLabel[vehicle.chargingDC.confidence] ?? vehicle.chargingDC.confidence}</Tag>
+              </div>
+              {(config.chargingCurve ?? vehicle.chargingCurve) ? (
+                <ChargingCurve client:visible curve={config.chargingCurve ?? vehicle.chargingCurve!} peakPower_kW={config.chargingDC_peak_kW ?? vehicle.chargingDC.peakPower_kW} vehicleName={`${vehicle.brand} ${vehicle.model}`} />
+              ) : (
+                <p class="text-[var(--color-text-faint)] mt-4">Données non mesurées.</p>
+              )}
+            </Tile>
+
             <!-- 2x2 : autonomie par usage (chart) -->
             <Tile size="2x2" variant="elevated" label="Autonomie par usage" class="reveal">
               <div class="flex items-center justify-between gap-3 -mt-2 mb-3">
@@ -413,6 +381,73 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
             <!-- 1x1 : pénalité hiver -->
             <Tile size="1x1" label="Pénalité hiver −5°C" class="reveal">
               <TileStat value={`-${Math.round((1 - (config.realRange?.winter_minus5_km ?? vehicle.realRange.winter_minus5_km) / (config.realRange?.mixed_km ?? vehicle.realRange.mixed_km)) * 100)} %`} tone="danger" size="xl" hint="sans préchauffage" />
+            </Tile>
+
+            <!-- 1x1 : performances -->
+            <Tile size="1x1" label="Performances" class="reveal">
+              <div class="flex flex-col gap-2 mt-auto">
+                <div class="flex justify-between items-baseline border-b border-[var(--color-border)] border-dashed pb-1.5 last:border-0 last:pb-0">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">0 → 100 km/h</span>
+                  <span class="font-mono text-sm font-semibold text-[var(--color-text)]">
+                    {vehicle.acceleration_0_100_s.toString().replace(".", ",")} <span class="text-[var(--color-text-faint)] text-[10px] font-normal">s</span>
+                  </span>
+                </div>
+                <div class="flex justify-between items-baseline border-b border-[var(--color-border)] border-dashed pb-1.5 last:border-0 last:pb-0">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Puissance</span>
+                  <span class="font-mono text-sm font-semibold text-[var(--color-text)]">
+                    {vehicle.power_hp} <span class="text-[var(--color-text-faint)] text-[10px] font-normal">ch</span>
+                    <span class="text-[var(--color-text-faint)] text-[10px] font-normal">({vehicle.power_kW} kW)</span>
+                  </span>
+                </div>
+                <div class="flex justify-between items-baseline border-b border-[var(--color-border)] border-dashed pb-1.5 last:border-0 last:pb-0">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Vitesse max</span>
+                  <span class="font-mono text-sm font-semibold text-[var(--color-text)]">
+                    {vehicle.topSpeed_kmh} <span class="text-[var(--color-text-faint)] text-[10px] font-normal">km/h</span>
+                  </span>
+                </div>
+                <div class="flex justify-between items-baseline last:border-0 last:pb-0">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Cx aéro</span>
+                  <span class="font-mono text-sm font-semibold text-[var(--color-accent)]">
+                    {vehicle.dragCoefficient_Cx.toString().replace(".", ",")}
+                  </span>
+                </div>
+              </div>
+            </Tile>
+
+            <!-- 1x1 : garantie & origine -->
+            <Tile size="1x1" label="Garantie & Origine" class="reveal">
+              <div class="flex flex-col gap-2 mt-auto">
+                <div class="flex justify-between items-baseline border-b border-[var(--color-border)] border-dashed pb-1.5 last:border-0 last:pb-0">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Garantie Véh.</span>
+                  <span class="font-mono text-sm font-semibold text-[var(--color-text)]">
+                    {vehicle.warranty.vehicle_years} <span class="text-[var(--color-text-faint)] text-[10px] font-normal">ans</span>
+                    {vehicle.warranty.vehicle_km > 0 && (
+                      <span class="text-[var(--color-text-faint)] text-[10px] font-normal"> / {(vehicle.warranty.vehicle_km / 1000).toFixed(0)}k km</span>
+                    )}
+                  </span>
+                </div>
+                <div class="flex justify-between items-baseline border-b border-[var(--color-border)] border-dashed pb-1.5 last:border-0 last:pb-0">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Garantie Batt.</span>
+                  <span class="font-mono text-sm font-semibold text-[var(--color-text)]">
+                    {vehicle.warranty.battery_years} <span class="text-[var(--color-text-faint)] text-[10px] font-normal">ans</span>
+                    <span class="text-[var(--color-text-faint)] text-[10px] font-normal"> / {vehicle.warranty.battery_soh_minimum_percent}% SoH</span>
+                  </span>
+                </div>
+                {vehicle.assemblyPlant && (
+                  <div class="flex justify-between items-baseline border-b border-[var(--color-border)] border-dashed pb-1.5 last:border-0 last:pb-0">
+                    <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Production</span>
+                    <span class="font-mono text-sm font-semibold text-[var(--color-text)] whitespace-nowrap overflow-hidden text-ellipsis max-w-[120px]" title={vehicle.assemblyPlant}>
+                      {vehicle.assemblyPlant}
+                    </span>
+                  </div>
+                )}
+                <div class="flex justify-between items-baseline last:border-0 last:pb-0">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Pays</span>
+                  <span class="font-mono text-sm font-semibold text-[var(--color-text)]">
+                    {vehicle.productionCountry}
+                  </span>
+                </div>
+              </div>
             </Tile>
 
             <!-- 2x1 : 1000 km challenge -->
