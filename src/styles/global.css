@@ -49,8 +49,8 @@
   --color-border: #e8e8e8;
   --color-border-strong: #cecece;
   --color-text: #0f0f0f;
-  --color-text-muted: #5a5a5a;
-  --color-text-faint: #9a9a9a;
+  --color-text-muted: #4c4c4c;
+  --color-text-faint: #6b6b6b;
 
   /* Surfaces tuiles, blanc pur, images fond blanc intégrées */
   --color-surface: #ffffff;
@@ -62,7 +62,7 @@
   --color-accent-dim: #2d4a0e;
   --color-accent-on: #ffffff;
   --color-danger: #c03020;
-  --color-warning: #9b5a0a;
+  --color-warning: #905207;
 
   /* Glow pour hover tiles */
   --glow-accent: rgba(58, 92, 18, 0.06);

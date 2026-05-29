@@ -337,7 +337,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                   </div>
                   <div class="flex items-center gap-2 flex-wrap justify-end relative z-10">
                     {isLeasing(v) && <Tag tone="accent" mono>Leasing social</Tag>}
-                    <FavoriteButton client:load slug={v.slug} size={15} />
+                    <FavoriteButton client:visible slug={v.slug} size={15} />
                   </div>
                 </div>
                 <div class="flex items-end gap-3 mb-6">

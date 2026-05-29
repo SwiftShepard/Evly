@@ -87,391 +87,402 @@ const fullTitle = title.includes("Evly") || title.includes("evly")
     </main>
     <Footer />
 
-    {/* Scroll Reveal Observer + Reading Progress + Nav Scroll State */}
-    <script is:inline>
-      (function initAnimations() {
-        // Reduced motion check
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    <script>
+      import { GLOSSARY } from "@/data/glossary";
 
-        // ------ Scroll Reveal via IntersectionObserver ------
-        function setupReveal() {
-          var elements = document.querySelectorAll('.reveal, .reveal-fade, .reveal-scale, .reveal-slide-left');
-          if (!elements.length) return;
+      // Reduced motion check
+      const isReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-          var observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-                observer.unobserve(entry.target);
-              }
-            });
-          }, {
-            threshold: 0.08,
-            rootMargin: '0px 0px -40px 0px'
+      // ------ Scroll Reveal via IntersectionObserver ------
+      function setupReveal() {
+        const elements = document.querySelectorAll('.reveal, .reveal-fade, .reveal-scale, .reveal-slide-left');
+        if (!elements.length) return;
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
           });
+        }, {
+          threshold: 0.08,
+          rootMargin: '0px 0px -40px 0px'
+        });
 
-          elements.forEach(function(el) { observer.observe(el); });
-        }
+        elements.forEach((el) => observer.observe(el));
+      }
 
-        // ------ Reading Progress Bar ------
-        function setupProgress() {
-          var bar = document.getElementById('reading-progress');
-          if (!bar) return;
+      // ------ Reading Progress Bar ------
+      function setupProgress() {
+        const bar = document.getElementById('reading-progress');
+        if (!bar) return;
 
-          var ticking = false;
-          window.addEventListener('scroll', function() {
-            if (!ticking) {
-              window.requestAnimationFrame(function() {
-                var scrollTop = window.scrollY;
-                var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-                var progress = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
-                bar.style.transform = 'scaleX(' + progress + ')';
-                ticking = false;
-              });
-              ticking = true;
-            }
-          }, { passive: true });
-        }
-
-        // ------ Nav Scroll State ------
-        function setupNavScroll() {
-          var nav = document.querySelector('.nav-header');
-          if (!nav) return;
-
-          var scrolled = false;
-          window.addEventListener('scroll', function() {
-            var isScrolled = window.scrollY > 10;
-            if (isScrolled !== scrolled) {
-              scrolled = isScrolled;
-              nav.classList.toggle('scrolled', scrolled);
-            }
-          }, { passive: true });
-        }
-
-        // ------ Stat counter animation ------
-        function setupCounters() {
-          var stats = document.querySelectorAll('[data-count]');
-          if (!stats.length) return;
-
-          var observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-              if (entry.isIntersecting) {
-                var el = entry.target;
-                var target = parseInt(el.getAttribute('data-count'), 10);
-                if (isNaN(target)) return;
-
-                var duration = 800;
-                var start = performance.now();
-                var startVal = 0;
-
-                function update(now) {
-                  var elapsed = now - start;
-                  var progress = Math.min(elapsed / duration, 1);
-                  // Ease out expo
-                  var eased = 1 - Math.pow(1 - progress, 3);
-                  el.textContent = Math.round(startVal + (target - startVal) * eased);
-                  if (progress < 1) requestAnimationFrame(update);
-                }
-                requestAnimationFrame(update);
-                observer.unobserve(el);
-              }
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+          if (!ticking) {
+            window.requestAnimationFrame(() => {
+              const scrollTop = window.scrollY;
+              const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+              const progress = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
+              bar.style.transform = `scaleX(${progress})`;
+              ticking = false;
             });
-          }, { threshold: 0.3 });
+            ticking = true;
+          }
+        }, { passive: true });
+      }
 
-          stats.forEach(function(el) { observer.observe(el); });
+      // ------ Nav Scroll State ------
+      function setupNavScroll() {
+        const nav = document.querySelector('.nav-header');
+        if (!nav) return;
+
+        let scrolled = false;
+        window.addEventListener('scroll', () => {
+          const isScrolled = window.scrollY > 10;
+          if (isScrolled !== scrolled) {
+            scrolled = isScrolled;
+            nav.classList.toggle('scrolled', scrolled);
+          }
+        }, { passive: true });
+      }
+
+      // ------ Stat counter animation ------
+      function setupCounters() {
+        const stats = document.querySelectorAll('[data-count]');
+        if (!stats.length) return;
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target;
+              const target = parseInt(el.getAttribute('data-count') || "", 10);
+              if (isNaN(target)) return;
+
+              const duration = 800;
+              const start = performance.now();
+              const startVal = 0;
+
+              function update(now: number) {
+                const elapsed = now - start;
+                const progress = Math.min(elapsed / duration, 1);
+                // Ease out expo
+                const eased = 1 - Math.pow(1 - progress, 3);
+                el.textContent = String(Math.round(startVal + (target - startVal) * eased));
+                if (progress < 1) requestAnimationFrame(update);
+              }
+              requestAnimationFrame(update);
+              observer.unobserve(el);
+            }
+          });
+        }, { threshold: 0.3 });
+
+        stats.forEach((el) => observer.observe(el));
+      }
+
+      // ------ Glossary Highlights ------
+      const IGNORED_TAGS = new Set([
+        'SCRIPT', 'STYLE', 'A', 'BUTTON', 'TEXTAREA', 'INPUT', 'SELECT', 'OPTION', 
+        'CODE', 'PRE', 'NOSCRIPT', 'HEAD', 'TITLE', 'IFRAME', 'SVG', 
+        'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'NAV', 'HEADER', 'FOOTER'
+      ]);
+
+      function escapeRegExp(string: string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      }
+
+      function makeAccentInsensitivePattern(str: string) {
+        return str
+          .replace(/[eéeèêë]/gi, '[eéeèêë]')
+          .replace(/[aàâä]/gi, '[aàâä]')
+          .replace(/[iîï]/gi, '[iîï]')
+          .replace(/[oôö]/gi, '[oôö]')
+          .replace(/[uûüù]/gi, '[uûüù]')
+          .replace(/[cç]/gi, '[cç]');
+      }
+
+      // Compile regexes
+      const terms = [...GLOSSARY].sort((a, b) => {
+        const lenA = Math.max(a.term.length, (a.abbr || "").length);
+        const lenB = Math.max(b.term.length, (b.abbr || "").length);
+        return lenB - lenA;
+      });
+
+      const regexPatterns = terms.map(entry => {
+        const matchPatterns = [escapeRegExp(entry.term)];
+        if (entry.abbr) {
+          if (entry.abbr.includes('/')) {
+            entry.abbr.split('/').forEach(a => matchPatterns.push(escapeRegExp(a.trim())));
+          } else {
+            matchPatterns.push(escapeRegExp(entry.abbr));
+          }
         }
 
-        // Init all
-        setupReveal();
-        setupProgress();
-        setupNavScroll();
-        setupCounters();
+        const combinedPattern = matchPatterns
+          .map(p => `\\b${makeAccentInsensitivePattern(p)}\\b`)
+          .join('|');
 
-        // Re-init after Astro View Transitions navigate
-        document.addEventListener('astro:page-load', function() {
+        return {
+          entry,
+          regex: new RegExp(combinedPattern, 'i')
+        };
+      });
+
+      function processTextNode(node: Text, highlightCounts: Map<string, number>) {
+        if (!node.parentNode) return;
+        const text = node.nodeValue || "";
+        
+        for (const { entry, regex } of regexPatterns) {
+          const count = highlightCounts.get(entry.term) || 0;
+          if (count >= 2) continue; // limit to 2 highlights per term per page
+
+          const match = regex.exec(text);
+          if (match) {
+            const index = match.index;
+            const matchedText = match[0];
+            const before = text.slice(0, index);
+            const after = text.slice(index + matchedText.length);
+
+            const parent = node.parentNode;
+            highlightCounts.set(entry.term, count + 1);
+
+            const beforeNode = document.createTextNode(before);
+            
+            const highlightSpan = document.createElement('span');
+            highlightSpan.className = 'glossary-highlight';
+            highlightSpan.textContent = matchedText;
+            highlightSpan.dataset.term = entry.term;
+            highlightSpan.dataset.definition = entry.definition;
+            
+            const slug = entry.term.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)+/g, "");
+            highlightSpan.dataset.slug = slug;
+
+            const afterNode = document.createTextNode(after);
+
+            parent.insertBefore(beforeNode, node);
+            parent.insertBefore(highlightSpan, node);
+            parent.insertBefore(afterNode, node);
+            parent.removeChild(node);
+
+            processTextNode(afterNode, highlightCounts);
+            return;
+          }
+        }
+      }
+
+      function setupHighlights() {
+        const highlightCounts = new Map<string, number>();
+        const walker = document.createTreeWalker(
+          document.body,
+          NodeFilter.SHOW_TEXT,
+          {
+            acceptNode(node) {
+              let parent = node.parentNode as HTMLElement | null;
+              while (parent) {
+                if (
+                  IGNORED_TAGS.has(parent.tagName) || 
+                  parent.classList?.contains('glossary-highlight') ||
+                  parent.classList?.contains('no-glossary')
+                ) {
+                  return NodeFilter.FILTER_REJECT;
+                }
+                parent = parent.parentNode as HTMLElement | null;
+              }
+              return NodeFilter.FILTER_ACCEPT;
+            }
+          }
+        );
+
+        const nodes: Text[] = [];
+        let currentNode: Text | null;
+        while (currentNode = walker.nextNode() as Text | null) {
+          nodes.push(currentNode);
+        }
+
+        for (const node of nodes) {
+          processTextNode(node, highlightCounts);
+        }
+      }
+
+      // Tooltip logic
+      let tooltipEl: HTMLElement | null = null;
+      let activeHighlight: HTMLElement | null = null;
+      let hideTimeout: number | undefined;
+
+      function createTooltip() {
+        if (tooltipEl && document.getElementById('glossary-tooltip')) return tooltipEl;
+
+        // Remove old tooltip if detached
+        const oldTooltip = document.getElementById('glossary-tooltip');
+        if (oldTooltip) oldTooltip.remove();
+
+        tooltipEl = document.createElement('div');
+        tooltipEl.id = 'glossary-tooltip';
+        tooltipEl.innerHTML = `
+          <div id="glossary-tooltip-term" style="font-weight: 600; color: var(--color-accent); font-size: 13px; margin-bottom: 4px; font-family: var(--font-sans);"></div>
+          <div id="glossary-tooltip-definition" style="color: var(--color-text-muted); font-size: 11.5px; line-height: 1.4; font-family: var(--font-sans);"></div>
+          <div style="margin-top: 10px; padding-top: 8px; border-top: 0.5px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; font-family: var(--font-sans);">
+            <span style="font-family: var(--font-mono); font-size: 9px; color: var(--color-text-faint); text-transform: uppercase; letter-spacing: 0.08em;">Lexique Evly</span>
+            <a id="glossary-tooltip-link" href="/glossaire" style="font-size: 10px; font-weight: 600; color: var(--color-accent); text-decoration: none; display: flex; align-items: center; gap: 4px; transition: color 0.2s;">
+              Comprendre les termes
+              <span style="transition: transform 0.2s ease; display: inline-block;">→</span>
+            </a>
+          </div>
+        `;
+
+        document.body.appendChild(tooltipEl);
+
+        tooltipEl.addEventListener('mouseenter', () => {
+          if (hideTimeout) clearTimeout(hideTimeout);
+        });
+
+        tooltipEl.addEventListener('mouseleave', () => {
+          hideTooltip();
+        });
+
+        const link = tooltipEl.querySelector('#glossary-tooltip-link') as HTMLAnchorElement;
+        const arrow = link.querySelector('span') as HTMLSpanElement;
+        link.addEventListener('mouseenter', () => {
+          arrow.style.transform = 'translateX(2px)';
+        });
+        link.addEventListener('mouseleave', () => {
+          arrow.style.transform = 'translateX(0)';
+        });
+
+        return tooltipEl;
+      }
+
+      function showTooltip(target: HTMLElement, term: string, definition: string, slug?: string) {
+        if (hideTimeout) clearTimeout(hideTimeout);
+
+        const tooltip = createTooltip();
+        const termEl = tooltip.querySelector('#glossary-tooltip-term');
+        const defEl = tooltip.querySelector('#glossary-tooltip-definition');
+        const linkEl = tooltip.querySelector('#glossary-tooltip-link') as HTMLAnchorElement;
+
+        if (termEl) termEl.textContent = term;
+        if (defEl) defEl.textContent = definition;
+        if (linkEl) linkEl.href = slug ? `/glossaire#${slug}` : '/glossaire';
+
+        tooltip.style.display = 'block';
+
+        const rect = target.getBoundingClientRect();
+        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        const tooltipWidth = tooltip.offsetWidth;
+        const tooltipHeight = tooltip.offsetHeight;
+
+        let left = rect.left + rect.width / 2 - tooltipWidth / 2 + scrollLeft;
+        let top = rect.top - tooltipHeight - 8 + scrollTop;
+
+        if (left < 10) left = 10;
+        if (left + tooltipWidth > window.innerWidth - 10) {
+          left = window.innerWidth - tooltipWidth - 10;
+        }
+        
+        if (rect.top - tooltipHeight - 8 < 10) {
+          top = rect.bottom + 8 + scrollTop;
+          tooltip.style.transform = 'translateY(-4px)';
+        } else {
+          tooltip.style.transform = 'translateY(4px)';
+        }
+
+        tooltip.style.left = left + 'px';
+        tooltip.style.top = top + 'px';
+
+        requestAnimationFrame(() => {
+          tooltip.classList.add('visible');
+          if (rect.top - tooltipHeight - 8 >= 10) {
+            tooltip.style.transform = 'translateY(0)';
+          }
+        });
+      }
+
+      function hideTooltip() {
+        if (hideTimeout) clearTimeout(hideTimeout);
+        hideTimeout = setTimeout(() => {
+          if (tooltipEl) {
+            tooltipEl.classList.remove('visible');
+            setTimeout(() => {
+              if (tooltipEl && !tooltipEl.classList.contains('visible')) {
+                tooltipEl.style.display = 'none';
+              }
+            }, 200);
+          }
+        }, 200) as unknown as number;
+      }
+
+      // Defer execution using requestIdleCallback to optimize TBT and Speed Index
+      const runOnIdle = (cb: () => void) => {
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(cb);
+        } else {
+          setTimeout(cb, 50);
+        }
+      };
+
+      function initGlossary() {
+        if (window.location.pathname.endsWith('/glossaire') || window.location.pathname.endsWith('/glossaire/')) {
+          const oldTooltip = document.getElementById('glossary-tooltip');
+          if (oldTooltip) oldTooltip.style.display = 'none';
+          return;
+        }
+
+        runOnIdle(() => {
+          setupHighlights();
+        });
+      }
+
+      // Init all
+      function runAll() {
+        if (!isReducedMotion()) {
           setupReveal();
           setupProgress();
           setupNavScroll();
           setupCounters();
-        });
-      })();
-    </script>
-
-    <script define:vars={{ glossaryData: GLOSSARY }}>
-      (function initGlossaryTooltips() {
-        if (typeof window === 'undefined') return;
-
-        // Check if we are on the glossaire page itself to avoid redundant highlighting
-        if (window.location.pathname.endsWith('/glossaire') || window.location.pathname.endsWith('/glossaire/')) {
-          return;
         }
+        initGlossary();
+      }
 
-        const IGNORED_TAGS = new Set([
-          'SCRIPT', 'STYLE', 'A', 'BUTTON', 'TEXTAREA', 'INPUT', 'SELECT', 'OPTION', 
-          'CODE', 'PRE', 'NOSCRIPT', 'HEAD', 'TITLE', 'IFRAME', 'SVG', 
-          'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'NAV', 'HEADER', 'FOOTER'
-        ]);
+      // Run on initial load
+      runAll();
 
-        function escapeRegExp(string) {
-          return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        }
+      // Re-init after Astro View Transitions navigate
+      document.addEventListener('astro:page-load', () => {
+        tooltipEl = null; // reset tooltip reference for new page body
+        runAll();
+      });
 
-        function makeAccentInsensitivePattern(str) {
-          return str
-            .replace(/[eéeèêë]/gi, '[eéeèêë]')
-            .replace(/[aàâä]/gi, '[aàâä]')
-            .replace(/[iîï]/gi, '[iîï]')
-            .replace(/[oôö]/gi, '[oôö]')
-            .replace(/[uûüù]/gi, '[uûüù]')
-            .replace(/[cç]/gi, '[cç]');
-        }
-
-        // Compile regexes
-        const terms = [...glossaryData].sort((a, b) => {
-          const lenA = Math.max(a.term.length, (a.abbr || "").length);
-          const lenB = Math.max(b.term.length, (b.abbr || "").length);
-          return lenB - lenA;
-        });
-
-        const regexPatterns = terms.map(entry => {
-          const matchPatterns = [escapeRegExp(entry.term)];
-          if (entry.abbr) {
-            if (entry.abbr.includes('/')) {
-              entry.abbr.split('/').forEach(a => matchPatterns.push(escapeRegExp(a.trim())));
-            } else {
-              matchPatterns.push(escapeRegExp(entry.abbr));
-            }
-          }
-
-          const combinedPattern = matchPatterns
-            .map(p => `\\b${makeAccentInsensitivePattern(p)}\\b`)
-            .join('|');
-
-          return {
-            entry,
-            regex: new RegExp(combinedPattern, 'i')
-          };
-        });
-
-        function processTextNode(node, highlightCounts) {
-          if (!node.parentNode) return;
-          const text = node.nodeValue;
-          
-          for (const { entry, regex } of regexPatterns) {
-            const count = highlightCounts.get(entry.term) || 0;
-            if (count >= 2) continue; // limit to 2 highlights per term per page
-
-            const match = regex.exec(text);
-            if (match) {
-              const index = match.index;
-              const matchedText = match[0];
-              const before = text.slice(0, index);
-              const after = text.slice(index + matchedText.length);
-
-              const parent = node.parentNode;
-              highlightCounts.set(entry.term, count + 1);
-
-              const beforeNode = document.createTextNode(before);
-              
-              const highlightSpan = document.createElement('span');
-              highlightSpan.className = 'glossary-highlight';
-              highlightSpan.textContent = matchedText;
-              highlightSpan.dataset.term = entry.term;
-              highlightSpan.dataset.definition = entry.definition;
-              
-              const slug = entry.term.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)+/g, "");
-              highlightSpan.dataset.slug = slug;
-
-              const afterNode = document.createTextNode(after);
-
-              parent.insertBefore(beforeNode, node);
-              parent.insertBefore(highlightSpan, node);
-              parent.insertBefore(afterNode, node);
-              parent.removeChild(node);
-
-              processTextNode(afterNode, highlightCounts);
-              return;
-            }
-          }
-        }
-
-        function setupHighlights() {
-          const highlightCounts = new Map();
-          const walker = document.createTreeWalker(
-            document.body,
-            NodeFilter.SHOW_TEXT,
-            {
-              acceptNode(node) {
-                let parent = node.parentNode;
-                while (parent) {
-                  if (
-                    IGNORED_TAGS.has(parent.tagName) || 
-                    parent.classList?.contains('glossary-highlight') ||
-                    parent.classList?.contains('no-glossary')
-                  ) {
-                    return NodeFilter.FILTER_REJECT;
-                  }
-                  parent = parent.parentNode;
-                }
-                return NodeFilter.FILTER_ACCEPT;
-              }
-            }
+      // Global event delegation for tooltips
+      document.body.addEventListener('mouseover', (e) => {
+        const target = e.target as HTMLElement | null;
+        const highlight = target?.closest('.glossary-highlight') as HTMLElement | null;
+        if (highlight) {
+          if (activeHighlight === highlight) return;
+          activeHighlight = highlight;
+          showTooltip(
+            highlight,
+            highlight.dataset.term || "",
+            highlight.dataset.definition || "",
+            highlight.dataset.slug
           );
-
-          const nodes = [];
-          let currentNode;
-          while (currentNode = walker.nextNode()) {
-            nodes.push(currentNode);
-          }
-
-          for (const node of nodes) {
-            processTextNode(node, highlightCounts);
-          }
         }
+      });
 
-        // Tooltip logic
-        let tooltipEl = null;
-        let activeHighlight = null;
-        let hideTimeout = null;
-
-        function createTooltip() {
-          if (tooltipEl && document.getElementById('glossary-tooltip')) return tooltipEl;
-
-          // Remove old tooltip if detached
-          const oldTooltip = document.getElementById('glossary-tooltip');
-          if (oldTooltip) oldTooltip.remove();
-
-          tooltipEl = document.createElement('div');
-          tooltipEl.id = 'glossary-tooltip';
-          tooltipEl.innerHTML = `
-            <div id="glossary-tooltip-term" style="font-weight: 600; color: var(--color-accent); font-size: 13px; margin-bottom: 4px; font-family: var(--font-sans);"></div>
-            <div id="glossary-tooltip-definition" style="color: var(--color-text-muted); font-size: 11.5px; line-height: 1.4; font-family: var(--font-sans);"></div>
-            <div style="margin-top: 10px; padding-top: 8px; border-top: 0.5px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; font-family: var(--font-sans);">
-              <span style="font-family: var(--font-mono); font-size: 9px; color: var(--color-text-faint); text-transform: uppercase; letter-spacing: 0.08em;">Lexique Evly</span>
-              <a id="glossary-tooltip-link" href="/glossaire" style="font-size: 10px; font-weight: 600; color: var(--color-accent); text-decoration: none; display: flex; align-items: center; gap: 4px; transition: color 0.2s;">
-                Comprendre les termes
-                <span style="transition: transform 0.2s ease; display: inline-block;">→</span>
-              </a>
-            </div>
-          `;
-
-          document.body.appendChild(tooltipEl);
-
-          tooltipEl.addEventListener('mouseenter', () => {
-            if (hideTimeout) clearTimeout(hideTimeout);
-          });
-
-          tooltipEl.addEventListener('mouseleave', () => {
-            hideTooltip();
-          });
-
-          const link = tooltipEl.querySelector('#glossary-tooltip-link');
-          const arrow = link.querySelector('span');
-          link.addEventListener('mouseenter', () => {
-            arrow.style.transform = 'translateX(2px)';
-          });
-          link.addEventListener('mouseleave', () => {
-            arrow.style.transform = 'translateX(0)';
-          });
-
-          return tooltipEl;
-        }
-
-        function showTooltip(target, term, definition, slug) {
-          if (hideTimeout) clearTimeout(hideTimeout);
-
-          const tooltip = createTooltip();
-          tooltip.querySelector('#glossary-tooltip-term').textContent = term;
-          tooltip.querySelector('#glossary-tooltip-definition').textContent = definition;
-          
-          const glossaryUrl = slug ? `/glossaire#${slug}` : '/glossaire';
-          tooltip.querySelector('#glossary-tooltip-link').href = glossaryUrl;
-
-          tooltip.style.display = 'block';
-
-          const rect = target.getBoundingClientRect();
-          const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-          const tooltipWidth = tooltip.offsetWidth;
-          const tooltipHeight = tooltip.offsetHeight;
-
-          let left = rect.left + rect.width / 2 - tooltipWidth / 2 + scrollLeft;
-          let top = rect.top - tooltipHeight - 8 + scrollTop;
-
-          if (left < 10) left = 10;
-          if (left + tooltipWidth > window.innerWidth - 10) {
-            left = window.innerWidth - tooltipWidth - 10;
-          }
-          
-          if (rect.top - tooltipHeight - 8 < 10) {
-            top = rect.bottom + 8 + scrollTop;
-            tooltip.style.transform = 'translateY(-4px)';
-          } else {
-            tooltip.style.transform = 'translateY(4px)';
-          }
-
-          tooltip.style.left = left + 'px';
-          tooltip.style.top = top + 'px';
-
-          requestAnimationFrame(() => {
-            tooltip.classList.add('visible');
-            if (rect.top - tooltipHeight - 8 >= 10) {
-              tooltip.style.transform = 'translateY(0)';
-            }
-          });
-        }
-
-        function hideTooltip() {
-          if (hideTimeout) clearTimeout(hideTimeout);
-          hideTimeout = setTimeout(() => {
-            if (tooltipEl) {
-              tooltipEl.classList.remove('visible');
-              setTimeout(() => {
-                if (!tooltipEl.classList.contains('visible')) {
-                  tooltipEl.style.display = 'none';
-                }
-              }, 200);
-            }
-          }, 200);
-        }
-
-        // Event delegation
-        document.body.addEventListener('mouseover', (e) => {
-          const highlight = e.target.closest('.glossary-highlight');
-          if (highlight) {
-            if (activeHighlight === highlight) return;
-            activeHighlight = highlight;
-            showTooltip(highlight, highlight.dataset.term, highlight.dataset.definition, highlight.dataset.slug);
-          }
-        });
-
-        document.body.addEventListener('mouseout', (e) => {
-          const highlight = e.target.closest('.glossary-highlight');
-          if (highlight) {
-            const relatedTarget = e.relatedTarget;
-            if (relatedTarget && (relatedTarget.closest('#glossary-tooltip') || relatedTarget.closest('.glossary-highlight') === highlight)) {
-              return;
-            }
-            activeHighlight = null;
-            hideTooltip();
-          }
-        });
-
-        // Run setup
-        setupHighlights();
-
-        // Re-run after Astro View Transitions navigate
-        document.addEventListener('astro:page-load', () => {
-          tooltipEl = null; // reset tooltip reference for new page body
-          if (window.location.pathname.endsWith('/glossaire') || window.location.pathname.endsWith('/glossaire/')) {
-            const oldTooltip = document.getElementById('glossary-tooltip');
-            if (oldTooltip) oldTooltip.style.display = 'none';
+      document.body.addEventListener('mouseout', (e) => {
+        const target = e.target as HTMLElement | null;
+        const highlight = target?.closest('.glossary-highlight') as HTMLElement | null;
+        if (highlight) {
+          const relatedTarget = e.relatedTarget as HTMLElement | null;
+          if (relatedTarget && (relatedTarget.closest('#glossary-tooltip') || relatedTarget.closest('.glossary-highlight') === highlight)) {
             return;
           }
-          setupHighlights();
-        });
-      })();
+          activeHighlight = null;
+          hideTooltip();
+        }
+      });
     </script>
   </body>
 </html>
