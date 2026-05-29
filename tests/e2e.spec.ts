@@ -47,10 +47,12 @@ test.describe("Evly E2E Test Suite", () => {
       .count();
     expect(initialCardsCount).toBeGreaterThan(0);
 
-    // Effectuer une recherche sur "5 E-Tech"
-    const searchInput = page.locator("#catalog-search");
-    await expect(searchInput).toBeVisible();
-    await searchInput.fill("5 E-Tech");
+    // Sélectionner la marque "Renault" (desktop aside)
+    const renaultChip = page.locator(
+      'aside .filter-chip[data-filter="brand"][data-value="Renault"]'
+    );
+    await expect(renaultChip).toBeVisible();
+    await renaultChip.click();
 
     // Attendre le filtrage côté client
     await page.waitForTimeout(400);

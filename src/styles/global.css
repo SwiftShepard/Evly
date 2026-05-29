@@ -200,6 +200,17 @@
     }
   }
 
+  /* Landing : sections pleine largeur plus aerees verticalement */
+  .bento-grid.home-bento {
+    row-gap: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .bento-grid.home-bento {
+      row-gap: 4rem;
+    }
+  }
+
   .bento-tile {
     background-color: var(--color-surface);
     border: 0.5px solid var(--color-border);

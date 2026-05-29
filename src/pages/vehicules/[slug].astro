@@ -307,23 +307,6 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                       </p>
                     )}
                   </div>
-                  <div class="md:col-span-5 flex flex-col gap-3 md:items-end">
-                    <div class="flex flex-col gap-2 md:items-end">
-                      <span class="label-eyebrow">Prix config.</span>
-                      {config.price_EUR != null ? (
-                        <span data-numeric class="display-stat text-4xl md:text-5xl">{formatPrice(config.price_EUR)}</span>
-                      ) : (
-                        <span class="font-mono text-lg text-[var(--color-text-muted)]">Prix NC</span>
-                      )}
-                      <span class="font-mono text-[11px] text-[var(--color-text-faint)]">
-                        {config.price_EUR == null
-                          ? "prix non communiqué"
-                          : config.leasingSocialEligible && config.monthlyLease_EUR
-                            ? `leasing social ${config.monthlyLease_EUR} €/mois`
-                            : "hors options"}
-                      </span>
-                    </div>
-                  </div>
                 </div>
               </div>
             </Tile>

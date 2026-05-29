@@ -111,19 +111,9 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
         
         {/* Barre latérale (Filtres) (Desktop) */}
         <aside class="hidden xl:block w-[220px] shrink-0 z-10">
-          <div class="sticky top-24 flex flex-col gap-0 fade-rise">
+          <div class="sticky top-24 flex flex-col gap-0 fade-rise sidebar-sticky">
 
-            <div class="filter-section !border-b-0 pb-4">
-              <span class="font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-text-faint)] block mb-2">Rechercher</span>
-              <div class="relative w-full">
-                <input
-                  type="text"
-                  id="catalog-search"
-                  placeholder="Marque, modèle..."
-                  class="w-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-md px-3 py-2 text-xs text-[var(--color-text)] placeholder-[var(--color-text-faint)] focus:border-[var(--color-accent)] focus:outline-none transition-colors"
-                />
-              </div>
-            </div>
+
 
             <details class="filter-section" open>
               <summary class="filter-section-toggle">Autonomie <span class="filter-chevron" /></summary>
@@ -150,7 +140,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
               </div>
             </details>
 
-            <details class="filter-section">
+            <details class="filter-section" open>
               <summary class="filter-section-toggle">Marques <span class="filter-chevron" /></summary>
               <div class="filter-section-body">
                 {brandGroups.map((group) => (
@@ -209,14 +199,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
 
         {/* Filtres Mobile / Tablette, rangées défilantes */}
         <div class="xl:hidden w-full mb-6 flex flex-col gap-3 fade-rise">
-          <div class="relative w-full">
-            <input
-              type="text"
-              id="catalog-search-mobile"
-              placeholder="Rechercher une marque, un modèle..."
-              class="w-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-md px-4 py-2.5 text-sm text-[var(--color-text)] placeholder-[var(--color-text-faint)] focus:border-[var(--color-accent)] focus:outline-none transition-colors"
-            />
-          </div>
+
           <div class="flex flex-col md:flex-row gap-4 p-4 bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-xl">
             <div class="flex items-center justify-between gap-4">
               <span class="font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Autonomie</span>
@@ -652,6 +635,27 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
   </script>
 
   <style>
+    /* ── Sticky Sidebar ─────────────────────────────────── */
+    .sidebar-sticky {
+      max-height: calc(100vh - 8rem);
+      overflow-y: auto;
+      padding-right: 4px;
+      scrollbar-width: thin;
+    }
+    .sidebar-sticky::-webkit-scrollbar {
+      width: 4px;
+    }
+    .sidebar-sticky::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .sidebar-sticky::-webkit-scrollbar-thumb {
+      background: var(--color-border);
+      border-radius: 2px;
+    }
+    .sidebar-sticky::-webkit-scrollbar-thumb:hover {
+      background: var(--color-border-strong);
+    }
+
     /* ── Filter chips ───────────────────────────────────── */
     .filter-chip {
       display: inline-flex;
