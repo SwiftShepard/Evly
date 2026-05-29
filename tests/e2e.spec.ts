@@ -47,6 +47,9 @@ test.describe("Evly E2E Test Suite", () => {
       .count();
     expect(initialCardsCount).toBeGreaterThan(0);
 
+    // Ouvrir la section de filtre des marques
+    await page.locator('aside summary:has-text("Marques")').click();
+
     // Sélectionner la marque "Renault" (desktop aside)
     const renaultChip = page.locator(
       'aside .filter-chip[data-filter="brand"][data-value="Renault"]'
@@ -80,10 +83,14 @@ test.describe("Evly E2E Test Suite", () => {
       .count();
     expect(afterResetCount).toBe(initialCardsCount);
 
+    // Ouvrir la section de filtre des carrosseries
+    await page.locator('aside summary:has-text("Carrosserie")').click();
+
     // Cliquer sur la catégorie "Citadine" (desktop aside)
     const citadineChip = page.locator(
       'aside .filter-chip[data-filter="cat"][data-value="Citadine"]'
     );
+    await expect(citadineChip).toBeVisible();
     await citadineChip.click();
 
     // Attendre le filtrage
