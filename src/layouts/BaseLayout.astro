@@ -272,14 +272,16 @@ const fullTitle = title.includes("Evly") || title.includes("evly")
       }
 
       function setupHighlights() {
+        const contentArea = document.getElementById('contenu');
+        if (!contentArea) return;
         const highlightCounts = new Map<string, number>();
         const walker = document.createTreeWalker(
-          document.body,
+          contentArea,
           NodeFilter.SHOW_TEXT,
           {
             acceptNode(node) {
               let parent = node.parentNode as HTMLElement | null;
-              while (parent) {
+              while (parent && parent !== contentArea) {
                 if (
                   IGNORED_TAGS.has(parent.tagName) || 
                   parent.classList?.contains('glossary-highlight') ||

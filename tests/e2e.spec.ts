@@ -8,7 +8,7 @@ test.describe("Evly E2E Test Suite", () => {
     await expect(page).toHaveTitle(/Evly/);
 
     // Vérifier la présence du header et du titre principal
-    const wordmark = page.locator('a[aria-label="Evly, accueil"]');
+    const wordmark = page.locator('header a.group');
     await expect(wordmark).toBeVisible();
 
     // 2. Catalogue / Showroom
