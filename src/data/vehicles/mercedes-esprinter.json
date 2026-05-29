@@ -2,7 +2,7 @@
   "slug": "mercedes-esprinter",
   "brand": "Mercedes",
   "model": "eSprinter",
-  "variant": "113 kWh",
+  "variant": "56 / 81 / 113 kWh",
   "bodyType": "Fourgon",
   "segment": "F",
   "productionCountry": "Allemagne",
@@ -18,11 +18,11 @@
   "topSpeed_kmh": 140,
   "usableCapacity_kWh": 113,
   "grossCapacity_kWh": 120,
-  "chemistry": "NMC",
+  "chemistry": "LFP",
   "architecture_V": 400,
   "mass_kg": 2840,
   "wltp_max_km": 440,
-  "wltp_min_km": 380,
+  "wltp_min_km": 220,
   "realRange": {
     "mixed_km": 330,
     "highway_130_km": 215,
@@ -90,23 +90,63 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "L2H2 113 kWh",
-      "price_EUR": 65900,
-      "batteryUsed": "113 kWh",
+      "name": "PRO L2H2 56 kWh",
+      "price_EUR": 58160,
+      "batteryUsed": "56 kWh",
       "equipmentHighlights": [
         "Volume utile 11 m3",
         "MBUX multimedia",
-        "Charge DC 115 kW"
+        "Autonomie urbaine optimisée"
       ]
     },
     {
-      "name": "L3H2 113 kWh",
-      "price_EUR": 69500,
+      "name": "PRO L2H2 81 kWh",
+      "price_EUR": 65000,
+      "batteryUsed": "81 kWh",
+      "equipmentHighlights": [
+        "Volume utile 11 m3",
+        "Idéal pour trajets régionaux",
+        "MBUX multimedia"
+      ]
+    },
+    {
+      "name": "PRO L2H2 113 kWh",
+      "price_EUR": 72500,
+      "batteryUsed": "113 kWh",
+      "equipmentHighlights": [
+        "Volume utile 11 m3",
+        "Grande autonomie 440 km",
+        "Charge rapide DC 115 kW"
+      ]
+    },
+    {
+      "name": "SELECT L2H2 113 kWh",
+      "price_EUR": 75500,
+      "batteryUsed": "113 kWh",
+      "equipmentHighlights": [
+        "Volume utile 11 m3",
+        "Sièges confort ergonomiques",
+        "Aide active au stationnement"
+      ]
+    },
+    {
+      "name": "PRO L3H2 113 kWh",
+      "price_EUR": 76100,
       "batteryUsed": "113 kWh",
       "equipmentHighlights": [
         "Volume utile 14 m3",
         "Empattement long",
-        "Camera de recul 360"
+        "Caméra de recul 360"
+      ]
+    },
+    {
+      "name": "SELECT L3H2 113 kWh",
+      "price_EUR": 79100,
+      "batteryUsed": "113 kWh",
+      "equipmentHighlights": [
+        "Volume utile 14 m3",
+        "Équipement haut de gamme",
+        "Projecteurs LED hautes performances"
       ]
     }
   ],
@@ -115,18 +155,119 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "mercedes-esprinter-l2h2",
-      "label": "eSprinter L2H2 113 kWh",
+      "id": "mercedes-esprinter-l2h2-56",
+      "label": "eSprinter L2H2 56 kWh PRO",
       "battery": "standard",
-      "trim": "L2H2 113 kWh",
+      "trim": "PRO L2H2 56 kWh",
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 65900,
+      "price_EUR": 58160,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 220,
+      "wltp_consumption_kWh_100km": 25.5,
+      "usableCapacity_kWh": 56,
+      "realRange": {
+        "mixed_km": 165,
+        "highway_130_km": 110,
+        "urban_km": 200,
+        "winter_minus5_km": 130,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 115,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 90
+        },
+        {
+          "soc": 10,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "Version d'entrée de gamme, idéale pour la livraison urbaine."
+    },
+    {
+      "id": "mercedes-esprinter-l2h2-81",
+      "label": "eSprinter L2H2 81 kWh PRO",
+      "battery": "standard",
+      "trim": "PRO L2H2 81 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 65000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 270,
+      "wltp_consumption_kWh_100km": 26.0,
+      "usableCapacity_kWh": 81,
+      "realRange": {
+        "mixed_km": 200,
+        "highway_130_km": 130,
+        "urban_km": 245,
+        "winter_minus5_km": 160,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 115,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 45,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 90
+        },
+        {
+          "soc": 10,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "Compromis idéal autonomie/charge utile."
+    },
+    {
+      "id": "mercedes-esprinter-l2h2-113-pro",
+      "label": "eSprinter L2H2 113 kWh PRO",
+      "battery": "long-range",
+      "trim": "PRO L2H2 113 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 72500,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 440,
-      "wltp_consumption_kWh_100km": 26,
+      "wltp_consumption_kWh_100km": 26.0,
+      "usableCapacity_kWh": 113,
       "realRange": {
         "mixed_km": 330,
         "highway_130_km": 215,
@@ -161,21 +302,72 @@
         }
       ],
       "availability": "available",
-      "notes": "Propulsion arriere, rayon de braquage reduit pour manoeuvres urbaines."
+      "notes": "Grande batterie 113 kWh, version PRO utilitaire."
     },
     {
-      "id": "mercedes-esprinter-l3h2",
-      "label": "eSprinter L3H2 113 kWh",
-      "battery": "standard",
-      "trim": "L3H2 113 kWh",
+      "id": "mercedes-esprinter-l2h2-113-select",
+      "label": "eSprinter L2H2 113 kWh SELECT",
+      "battery": "long-range",
+      "trim": "SELECT L2H2 113 kWh",
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 69500,
+      "price_EUR": 75500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 430,
+      "wltp_consumption_kWh_100km": 26.5,
+      "usableCapacity_kWh": 113,
+      "realRange": {
+        "mixed_km": 325,
+        "highway_130_km": 210,
+        "urban_km": 395,
+        "winter_minus5_km": 255,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 115,
+      "chargingDC_10_80_min": 42,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 90
+        },
+        {
+          "soc": 10,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "Finition SELECT tout confort avec grande batterie 113 kWh."
+    },
+    {
+      "id": "mercedes-esprinter-l3h2-113-pro",
+      "label": "eSprinter L3H2 113 kWh PRO",
+      "battery": "long-range",
+      "trim": "PRO L3H2 113 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 76100,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 380,
-      "wltp_consumption_kWh_100km": 30,
+      "wltp_consumption_kWh_100km": 30.0,
+      "usableCapacity_kWh": 113,
       "realRange": {
         "mixed_km": 295,
         "highway_130_km": 190,
@@ -210,7 +402,57 @@
         }
       ],
       "availability": "available",
-      "notes": "Fourgon L3H2, volume utile 14 m3."
+      "notes": "Fourgon L3H2 de 14 m3, version PRO."
+    },
+    {
+      "id": "mercedes-esprinter-l3h2-113-select",
+      "label": "eSprinter L3H2 113 kWh SELECT",
+      "battery": "long-range",
+      "trim": "SELECT L3H2 113 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 79100,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 370,
+      "wltp_consumption_kWh_100km": 30.5,
+      "usableCapacity_kWh": 113,
+      "realRange": {
+        "mixed_km": 290,
+        "highway_130_km": 185,
+        "urban_km": 355,
+        "winter_minus5_km": 230,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 115,
+      "chargingDC_10_80_min": 42,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 90
+        },
+        {
+          "soc": 10,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "Fourgon long L3H2 14 m3, finition SELECT haut de gamme."
     }
   ],
   "warranty": {

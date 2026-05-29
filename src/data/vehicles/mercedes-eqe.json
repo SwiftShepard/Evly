@@ -2,7 +2,7 @@
   "slug": "mercedes-eqe",
   "brand": "Mercedes",
   "model": "EQE",
-  "variant": "90.6 kWh",
+  "variant": "90.6 kWh · RWD/AWD",
   "bodyType": "Berline",
   "segment": "E",
   "productionCountry": "Allemagne",
@@ -21,8 +21,8 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 2355,
-  "wltp_max_km": 647,
-  "wltp_min_km": 533,
+  "wltp_max_km": 693,
+  "wltp_min_km": 518,
   "realRange": {
     "mixed_km": 470,
     "highway_130_km": 340,
@@ -86,23 +86,43 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "EQE 300+",
+      "name": "Executive Line EQE 300",
       "price_EUR": 69900,
       "batteryUsed": "90.6 kWh",
       "equipmentHighlights": [
         "647 km WLTP",
-        "Cx 0,22",
-        "AC 22 kW de serie"
+        "Écran MBUX 12,8 pouces",
+        "Chargeur AC 22 kW de série"
       ]
     },
     {
-      "name": "EQE 350+",
-      "price_EUR": 76900,
+      "name": "AMG Line EQE 300",
+      "price_EUR": 81000,
       "batteryUsed": "90.6 kWh",
       "equipmentHighlights": [
-        "620 km WLTP",
-        "292 ch",
-        "MBUX Hyperscreen en option"
+        "613 km WLTP",
+        "Kit carrosserie AMG",
+        "Jantes alliage AMG 20 pouces"
+      ]
+    },
+    {
+      "name": "Executive Line EQE 350",
+      "price_EUR": 76900,
+      "batteryUsed": "96 kWh",
+      "equipmentHighlights": [
+        "693 km WLTP",
+        "Nouvelle batterie 96 kWh",
+        "Sièges confort chauffants"
+      ]
+    },
+    {
+      "name": "AMG Line EQE 350",
+      "price_EUR": 87000,
+      "batteryUsed": "96 kWh",
+      "equipmentHighlights": [
+        "650 km WLTP",
+        "Look sportif AMG",
+        "Direction paramétrique"
       ]
     },
     {
@@ -112,7 +132,17 @@
       "equipmentHighlights": [
         "AWD 476 ch",
         "0-100 en 4,2 s",
-        "Chassis AMG RIDE CONTROL+"
+        "Châssis AMG RIDE CONTROL+"
+      ]
+    },
+    {
+      "name": "AMG EQE 53 4MATIC+",
+      "price_EUR": 125000,
+      "batteryUsed": "90.6 kWh",
+      "equipmentHighlights": [
+        "AWD 625 ch",
+        "0-100 en 3,5 s",
+        "Suspension pneumatique AMG"
       ]
     }
   ],
@@ -121,10 +151,10 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "mercedes-eqe-300",
-      "label": "EQE 300+",
+      "id": "mercedes-eqe-300-executive",
+      "label": "EQE 300 Executive Line",
       "battery": "standard",
-      "trim": "EQE 300+",
+      "trim": "Executive Line EQE 300",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
@@ -174,23 +204,23 @@
       "notes": "245 ch (180 kW), RWD, AC 22 kW"
     },
     {
-      "id": "mercedes-eqe-350",
-      "label": "EQE 350+",
+      "id": "mercedes-eqe-300-amg",
+      "label": "EQE 300 AMG Line",
       "battery": "standard",
-      "trim": "EQE 350+",
+      "trim": "AMG Line EQE 300",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 76900,
+      "price_EUR": 81000,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 620,
-      "wltp_consumption_kWh_100km": 17,
+      "wltp_km": 613,
+      "wltp_consumption_kWh_100km": 16.9,
       "realRange": {
-        "mixed_km": 455,
-        "highway_130_km": 330,
-        "urban_km": 560,
-        "winter_minus5_km": 360,
+        "mixed_km": 445,
+        "highway_130_km": 320,
+        "urban_km": 550,
+        "winter_minus5_km": 355,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -224,21 +254,129 @@
         }
       ],
       "availability": "available",
-      "notes": "292 ch (215 kW), RWD"
+      "notes": "245 ch (180 kW), RWD, look sportif AMG"
+    },
+    {
+      "id": "mercedes-eqe-350-executive",
+      "label": "EQE 350 Executive Line",
+      "battery": "standard",
+      "trim": "Executive Line EQE 350",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 76900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 693,
+      "wltp_consumption_kWh_100km": 16.5,
+      "usableCapacity_kWh": 96,
+      "realRange": {
+        "mixed_km": 500,
+        "highway_130_km": 360,
+        "urban_km": 615,
+        "winter_minus5_km": 395,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 170,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 120
+        },
+        {
+          "soc": 10,
+          "power": 170
+        },
+        {
+          "soc": 30,
+          "power": 150
+        },
+        {
+          "soc": 50,
+          "power": 110
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "292 ch (215 kW), RWD, nouvelle batterie de 96 kWh"
+    },
+    {
+      "id": "mercedes-eqe-350-amg",
+      "label": "EQE 350 AMG Line",
+      "battery": "standard",
+      "trim": "AMG Line EQE 350",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 87000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 650,
+      "wltp_consumption_kWh_100km": 17.2,
+      "usableCapacity_kWh": 96,
+      "realRange": {
+        "mixed_km": 470,
+        "highway_130_km": 340,
+        "urban_km": 575,
+        "winter_minus5_km": 375,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 170,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 120
+        },
+        {
+          "soc": 10,
+          "power": 170
+        },
+        {
+          "soc": 30,
+          "power": 150
+        },
+        {
+          "soc": 50,
+          "power": 110
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "292 ch (215 kW), RWD, look sportif AMG, nouvelle batterie de 96 kWh"
     },
     {
       "id": "mercedes-eqe-43",
       "label": "AMG EQE 43 4MATIC",
       "battery": "standard",
       "trim": "AMG EQE 43 4MATIC",
-      "wheelSize_inches": 21,
+      "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
       "price_EUR": 96900,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 533,
-      "wltp_consumption_kWh_100km": 20,
+      "wltp_consumption_kWh_100km": 20.0,
       "realRange": {
         "mixed_km": 390,
         "highway_130_km": 280,
@@ -278,6 +416,59 @@
       ],
       "availability": "available",
       "notes": "476 ch (350 kW), AWD 4MATIC, AMG"
+    },
+    {
+      "id": "mercedes-eqe-53-amg",
+      "label": "AMG EQE 53 4MATIC+",
+      "battery": "standard",
+      "trim": "AMG EQE 53 4MATIC+",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 125000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 518,
+      "wltp_consumption_kWh_100km": 21.0,
+      "realRange": {
+        "mixed_km": 380,
+        "highway_130_km": 270,
+        "urban_km": 470,
+        "winter_minus5_km": 300,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 170,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 120
+        },
+        {
+          "soc": 10,
+          "power": 170
+        },
+        {
+          "soc": 30,
+          "power": 150
+        },
+        {
+          "soc": 50,
+          "power": 110
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "625 ch (460 kW), AWD 4MATIC+, AMG performances extrêmes"
     }
   ],
   "warranty": {

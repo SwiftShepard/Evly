@@ -75,14 +75,29 @@ export default function ComparatorCard({
   // Nyland range estimate (capacity / consumption × 100)
   const nylandRangeEstimate = useMemo(() => {
     if (!bestRangeTest || bestRangeTest.sourceId !== "nyland") return null;
+    if (config.usableCapacity_kWh != null) {
+      return Math.round((config.usableCapacity_kWh / bestRangeTest.consumption_kWh_100km) * 100);
+    }
+    const parseKwh = (s: string) => {
+      const m = s.match(/(\d+(?:[.,]\d+)?)/);
+      return m ? Math.round(parseFloat(m[1].replace(",", "."))) : null;
+    };
+    const uniqueKwh = [
+      ...new Set(
+        vehicle.trims
+          .map((t) => parseKwh(t.batteryUsed))
+          .filter((v): v is number => v !== null)
+      ),
+    ].sort((a, b) => a - b);
+    const lrKwh = vehicle.usableCapacity_kWh;
     const capacity =
       config.battery === "long-range"
-        ? vehicle.usableCapacity_kWh
-        : 58.3; // Standard
+        ? lrKwh
+        : (uniqueKwh.find((k) => k < lrKwh) ?? uniqueKwh[0] ?? lrKwh);
     return Math.round(
       (capacity / bestRangeTest.consumption_kWh_100km) * 100
     );
-  }, [bestRangeTest, config.battery, vehicle.usableCapacity_kWh]);
+  }, [bestRangeTest, config, vehicle]);
 
   // Scaled ranges based on battery SoH
   const scaledMixedRange = useMemo(() => {

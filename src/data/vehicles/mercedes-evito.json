@@ -2,7 +2,7 @@
   "slug": "mercedes-evito",
   "brand": "Mercedes",
   "model": "eVito",
-  "variant": "60 kWh",
+  "variant": "60 / 90 kWh · Fourgon/Tourer",
   "bodyType": "Fourgon",
   "segment": "E",
   "productionCountry": "Espagne",
@@ -21,7 +21,7 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 2380,
-  "wltp_max_km": 314,
+  "wltp_max_km": 358,
   "wltp_min_km": 260,
   "realRange": {
     "mixed_km": 230,
@@ -101,7 +101,7 @@
       "batteryUsed": "60 kWh",
       "equipmentHighlights": [
         "MBUX 10 pouces",
-        "Camera de recul",
+        "Caméra de recul",
         "Climatisation automatique"
       ]
     },
@@ -111,8 +111,28 @@
       "batteryUsed": "60 kWh",
       "equipmentHighlights": [
         "Volume utile 6,6 m3",
-        "Empattement long",
+        "Empattement long L3",
         "MBUX 10 pouces"
+      ]
+    },
+    {
+      "name": "PRO L2 90 kWh",
+      "price_EUR": 65000,
+      "batteryUsed": "90 kWh",
+      "equipmentHighlights": [
+        "eVito Tourer (Shuttle)",
+        "Jusqu'à 9 places",
+        "Moteur 204 ch (150 kW)"
+      ]
+    },
+    {
+      "name": "SELECT L2 90 kWh",
+      "price_EUR": 70000,
+      "batteryUsed": "90 kWh",
+      "equipmentHighlights": [
+        "eVito Tourer premium",
+        "Look extérieur soigné",
+        "Suspension pneumatique en option"
       ]
     }
   ],
@@ -121,8 +141,8 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "mercedes-evito-l2",
-      "label": "eVito L2 60 kWh",
+      "id": "mercedes-evito-l2-base",
+      "label": "eVito Fourgon L2 60 kWh Base",
       "battery": "standard",
       "trim": "Base L2 60 kWh",
       "wheelSize_inches": 16,
@@ -132,7 +152,8 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 314,
-      "wltp_consumption_kWh_100km": 21,
+      "wltp_consumption_kWh_100km": 21.0,
+      "usableCapacity_kWh": 60,
       "realRange": {
         "mixed_km": 230,
         "highway_130_km": 150,
@@ -167,11 +188,61 @@
         }
       ],
       "availability": "available",
-      "notes": "Fourgon L2, traction avant."
+      "notes": "Fourgon L2, traction avant, version d'accès."
     },
     {
-      "id": "mercedes-evito-l3",
-      "label": "eVito L3 60 kWh",
+      "id": "mercedes-evito-l2-pro",
+      "label": "eVito Fourgon L2 60 kWh Pro",
+      "battery": "standard",
+      "trim": "Pro L2 60 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 53500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 310,
+      "wltp_consumption_kWh_100km": 21.5,
+      "usableCapacity_kWh": 60,
+      "realRange": {
+        "mixed_km": 225,
+        "highway_130_km": 145,
+        "urban_km": 280,
+        "winter_minus5_km": 180,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 110,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 85
+        },
+        {
+          "soc": 10,
+          "power": 110
+        },
+        {
+          "soc": 50,
+          "power": 70
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
+      ],
+      "availability": "available",
+      "notes": "Fourgon L2, finition Pro mieux équipée."
+    },
+    {
+      "id": "mercedes-evito-l3-pro",
+      "label": "eVito Fourgon L3 60 kWh Pro",
       "battery": "standard",
       "trim": "Pro L3 60 kWh",
       "wheelSize_inches": 16,
@@ -181,7 +252,8 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 260,
-      "wltp_consumption_kWh_100km": 24,
+      "wltp_consumption_kWh_100km": 24.0,
+      "usableCapacity_kWh": 60,
       "realRange": {
         "mixed_km": 200,
         "highway_130_km": 130,
@@ -216,7 +288,107 @@
         }
       ],
       "availability": "available",
-      "notes": "Fourgon L3, empattement long."
+      "notes": "Fourgon L3, empattement long, finition Pro."
+    },
+    {
+      "id": "mercedes-evito-tourer-pro",
+      "label": "eVito Tourer L2 90 kWh PRO",
+      "battery": "long-range",
+      "trim": "PRO L2 90 kWh",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 65000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 358,
+      "wltp_consumption_kWh_100km": 26.2,
+      "usableCapacity_kWh": 90,
+      "realRange": {
+        "mixed_km": 270,
+        "highway_130_km": 195,
+        "urban_km": 335,
+        "winter_minus5_km": 220,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 110,
+      "chargingDC_10_80_min": 40,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 85
+        },
+        {
+          "soc": 10,
+          "power": 110
+        },
+        {
+          "soc": 50,
+          "power": 70
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
+      ],
+      "availability": "available",
+      "notes": "Version transport de personnes Tourer, grande batterie 90 kWh."
+    },
+    {
+      "id": "mercedes-evito-tourer-select",
+      "label": "eVito Tourer L2 90 kWh SELECT",
+      "battery": "long-range",
+      "trim": "SELECT L2 90 kWh",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 70000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 350,
+      "wltp_consumption_kWh_100km": 26.8,
+      "usableCapacity_kWh": 90,
+      "realRange": {
+        "mixed_km": 265,
+        "highway_130_km": 190,
+        "urban_km": 325,
+        "winter_minus5_km": 215,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 110,
+      "chargingDC_10_80_min": 40,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 85
+        },
+        {
+          "soc": 10,
+          "power": 110
+        },
+        {
+          "soc": 50,
+          "power": 70
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
+      ],
+      "availability": "available",
+      "notes": "Version transport de personnes Tourer SELECT, grand confort."
     }
   ],
   "warranty": {

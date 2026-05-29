@@ -1057,18 +1057,38 @@
     ]
   },
   {
+    "slug": "mercedes-cla",
+    "brand": "Mercedes",
+    "model": "CLA",
+    "power_kW": 200,
+    "usableCapacity_kWh": 85,
+    "wltp_min_km": 520,
+    "wltp_max_km": 792,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "mercedes-cla-250-amg",
+      "mercedes-cla-250-pro",
+      "mercedes-cla-350-4matic-amg",
+      "mercedes-cla-58-pro"
+    ]
+  },
+  {
     "slug": "mercedes-eqa",
     "brand": "Mercedes",
     "model": "EQA",
     "power_kW": 140,
     "usableCapacity_kWh": 70.5,
     "wltp_min_km": 460,
-    "wltp_max_km": 528,
-    "configurations_count": 3,
+    "wltp_max_km": 560,
+    "configurations_count": 7,
     "configuration_ids": [
-      "mercedes-eqa-250",
-      "mercedes-eqa-300",
-      "mercedes-eqa-350"
+      "mercedes-eqa-250-amg",
+      "mercedes-eqa-250-business",
+      "mercedes-eqa-250-edition",
+      "mercedes-eqa-250-progressive",
+      "mercedes-eqa-300-amg",
+      "mercedes-eqa-300-progressive",
+      "mercedes-eqa-350-amg"
     ]
   },
   {
@@ -1078,12 +1098,16 @@
     "power_kW": 140,
     "usableCapacity_kWh": 70.5,
     "wltp_min_km": 440,
-    "wltp_max_km": 494,
-    "configurations_count": 3,
+    "wltp_max_km": 537,
+    "configurations_count": 7,
     "configuration_ids": [
-      "mercedes-eqb-250",
-      "mercedes-eqb-300",
-      "mercedes-eqb-350"
+      "mercedes-eqb-250-amg",
+      "mercedes-eqb-250-business",
+      "mercedes-eqb-250-edition",
+      "mercedes-eqb-250-progressive",
+      "mercedes-eqb-300-amg",
+      "mercedes-eqb-300-progressive",
+      "mercedes-eqb-350-amg"
     ]
   },
   {
@@ -1092,13 +1116,16 @@
     "model": "EQE",
     "power_kW": 215,
     "usableCapacity_kWh": 90.6,
-    "wltp_min_km": 533,
-    "wltp_max_km": 647,
-    "configurations_count": 3,
+    "wltp_min_km": 518,
+    "wltp_max_km": 693,
+    "configurations_count": 6,
     "configuration_ids": [
-      "mercedes-eqe-300",
-      "mercedes-eqe-350",
-      "mercedes-eqe-43"
+      "mercedes-eqe-300-amg",
+      "mercedes-eqe-300-executive",
+      "mercedes-eqe-350-amg",
+      "mercedes-eqe-350-executive",
+      "mercedes-eqe-43",
+      "mercedes-eqe-53-amg"
     ]
   },
   {
@@ -1106,13 +1133,14 @@
     "brand": "Mercedes",
     "model": "EQS",
     "power_kW": 265,
-    "usableCapacity_kWh": 108.4,
-    "wltp_min_km": 601,
-    "wltp_max_km": 770,
-    "configurations_count": 3,
+    "usableCapacity_kWh": 118,
+    "wltp_min_km": 625,
+    "wltp_max_km": 822,
+    "configurations_count": 4,
     "configuration_ids": [
-      "mercedes-eqs-450",
-      "mercedes-eqs-580",
+      "mercedes-eqs-450-amg",
+      "mercedes-eqs-450-avantgarde",
+      "mercedes-eqs-580-amg",
       "mercedes-eqs-amg-53"
     ]
   },
@@ -1122,12 +1150,16 @@
     "model": "eSprinter",
     "power_kW": 150,
     "usableCapacity_kWh": 113,
-    "wltp_min_km": 380,
+    "wltp_min_km": 220,
     "wltp_max_km": 440,
-    "configurations_count": 2,
+    "configurations_count": 6,
     "configuration_ids": [
-      "mercedes-esprinter-l2h2",
-      "mercedes-esprinter-l3h2"
+      "mercedes-esprinter-l2h2-113-pro",
+      "mercedes-esprinter-l2h2-113-select",
+      "mercedes-esprinter-l2h2-56",
+      "mercedes-esprinter-l2h2-81",
+      "mercedes-esprinter-l3h2-113-pro",
+      "mercedes-esprinter-l3h2-113-select"
     ]
   },
   {
@@ -1137,11 +1169,14 @@
     "power_kW": 85,
     "usableCapacity_kWh": 60,
     "wltp_min_km": 260,
-    "wltp_max_km": 314,
-    "configurations_count": 2,
+    "wltp_max_km": 358,
+    "configurations_count": 5,
     "configuration_ids": [
-      "mercedes-evito-l2",
-      "mercedes-evito-l3"
+      "mercedes-evito-l2-base",
+      "mercedes-evito-l2-pro",
+      "mercedes-evito-l3-pro",
+      "mercedes-evito-tourer-pro",
+      "mercedes-evito-tourer-select"
     ]
   },
   {

@@ -872,7 +872,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
                           {res.vehicle.model}
                         </h3>
                         <p className="text-xs text-[var(--color-text-muted)] font-medium mt-0.5">
-                          Variante conseillée : <strong className="text-[var(--color-text)]">{res.bestConfig.label}</strong> ({res.vehicle.chemistry} · {res.vehicle.usableCapacity_kWh} kWh)
+                          Variante conseillée : <strong className="text-[var(--color-text)]">{res.bestConfig.label}</strong> ({res.vehicle.chemistry} · {res.bestConfig.usableCapacity_kWh ?? res.vehicle.usableCapacity_kWh} kWh)
                         </p>
                       </div>
 
@@ -1202,7 +1202,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
                             {/* Barre de détails technique et Actions */}
                             <div className="flex items-center justify-between border-t border-[var(--color-border)] pt-4 flex-wrap gap-3">
                               <span className="text-[10px] font-mono text-[var(--color-text-faint)]">
-                                {res.vehicle.chemistry} · {res.vehicle.usableCapacity_kWh} kWh · {res.bestConfig.realRange?.mixed_km ?? res.vehicle.realRange.mixed_km} km réels
+                                {res.vehicle.chemistry} · {res.bestConfig.usableCapacity_kWh ?? res.vehicle.usableCapacity_kWh} kWh · {res.bestConfig.realRange?.mixed_km ?? res.vehicle.realRange.mixed_km} km réels
                               </span>
                               <div className="flex items-center gap-2">
                                 <a

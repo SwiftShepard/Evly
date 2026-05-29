@@ -2,7 +2,7 @@
   "slug": "mercedes-eqa",
   "brand": "Mercedes",
   "model": "EQA",
-  "variant": "70.5 kWh",
+  "variant": "70.5 kWh · FWD/AWD",
   "bodyType": "SUV",
   "segment": "C",
   "productionCountry": "Allemagne",
@@ -21,7 +21,7 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 2040,
-  "wltp_max_km": 528,
+  "wltp_max_km": 560,
   "wltp_min_km": 460,
   "realRange": {
     "mixed_km": 390,
@@ -86,49 +86,259 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "EQA 250+",
-      "price_EUR": 52250,
+      "name": "Edition EQA 250+",
+      "price_EUR": 46950,
+      "batteryUsed": "70.5 kWh",
+      "equipmentHighlights": [
+        "560 km WLTP",
+        "MBUX 10,25 pouces",
+        "Caméra de recul"
+      ]
+    },
+    {
+      "name": "Progressive Line EQA 250+",
+      "price_EUR": 55750,
+      "batteryUsed": "70.5 kWh",
+      "equipmentHighlights": [
+        "560 km WLTP",
+        "Jantes alliage 18 pouces",
+        "Sièges similicuir ARTICO/tissu"
+      ]
+    },
+    {
+      "name": "Business Line EQA 250+",
+      "price_EUR": 55750,
+      "batteryUsed": "70.5 kWh",
+      "equipmentHighlights": [
+        "560 km WLTP",
+        "Pack Stationnement",
+        "Navigation par disque dur"
+      ]
+    },
+    {
+      "name": "AMG Line EQA 250+",
+      "price_EUR": 57750,
       "batteryUsed": "70.5 kWh",
       "equipmentHighlights": [
         "528 km WLTP",
-        "MBUX 10,25 pouces",
-        "Plug & Charge"
+        "Kit carrosserie AMG",
+        "Jantes AMG 19 pouces"
       ]
     },
     {
-      "name": "EQA 300 4MATIC",
-      "price_EUR": 55950,
-      "batteryUsed": "70.5 kWh",
+      "name": "Progressive Line EQA 300 4MATIC",
+      "price_EUR": 59450,
+      "batteryUsed": "66.5 kWh",
       "equipmentHighlights": [
-        "AWD 228 ch",
         "480 km WLTP",
-        "Suspension confort"
+        "Transmission intégrale",
+        "Puissance 228 ch"
       ]
     },
     {
-      "name": "EQA 350 4MATIC",
-      "price_EUR": 58950,
-      "batteryUsed": "70.5 kWh",
+      "name": "AMG Line EQA 300 4MATIC",
+      "price_EUR": 61450,
+      "batteryUsed": "66.5 kWh",
+      "equipmentHighlights": [
+        "465 km WLTP",
+        "Transmission intégrale",
+        "Look sportif AMG"
+      ]
+    },
+    {
+      "name": "AMG Line EQA 350 4MATIC",
+      "price_EUR": 64700,
+      "batteryUsed": "66.5 kWh",
       "equipmentHighlights": [
         "AWD 292 ch",
         "460 km WLTP",
-        "AMG Line disponible"
+        "Performances de pointe"
       ]
     }
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [],
+  "availableAids": [
+    {
+      "label": "Prime CEE",
+      "amount_EUR": 6500,
+      "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 2000,
+      "conditions": "Majoration pour batterie fabriquée en Europe."
+    }
+  ],
   "configurations": [
     {
-      "id": "mercedes-eqa-250",
-      "label": "EQA 250+",
+      "id": "mercedes-eqa-250-edition",
+      "label": "EQA 250+ Edition",
       "battery": "standard",
-      "trim": "EQA 250+",
+      "trim": "Edition EQA 250+",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 52250,
+      "price_EUR": 46950,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 560,
+      "wltp_consumption_kWh_100km": 15.2,
+      "realRange": {
+        "mixed_km": 410,
+        "highway_130_km": 295,
+        "urban_km": 510,
+        "winter_minus5_km": 325,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 70
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 30,
+          "power": 90
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": "190 ch (140 kW), FWD, version Edition optimisée autonomie"
+    },
+    {
+      "id": "mercedes-eqa-250-progressive",
+      "label": "EQA 250+ Progressive Line",
+      "battery": "standard",
+      "trim": "Progressive Line EQA 250+",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 55750,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 560,
+      "wltp_consumption_kWh_100km": 15.2,
+      "realRange": {
+        "mixed_km": 410,
+        "highway_130_km": 295,
+        "urban_km": 510,
+        "winter_minus5_km": 325,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 70
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 30,
+          "power": 90
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": "190 ch (140 kW), FWD, finition élégante confort"
+    },
+    {
+      "id": "mercedes-eqa-250-business",
+      "label": "EQA 250+ Business Line",
+      "battery": "standard",
+      "trim": "Business Line EQA 250+",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 55750,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 560,
+      "wltp_consumption_kWh_100km": 15.2,
+      "realRange": {
+        "mixed_km": 410,
+        "highway_130_km": 295,
+        "urban_km": 510,
+        "winter_minus5_km": 325,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 70
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 30,
+          "power": 90
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": "190 ch (140 kW), FWD, réservé aux professionnels"
+    },
+    {
+      "id": "mercedes-eqa-250-amg",
+      "label": "EQA 250+ AMG Line",
+      "battery": "standard",
+      "trim": "AMG Line EQA 250+",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 57750,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 528,
@@ -171,21 +381,22 @@
         }
       ],
       "availability": "available",
-      "notes": "190 ch (140 kW), FWD"
+      "notes": "190 ch (140 kW), FWD, look et réglages sportifs AMG"
     },
     {
-      "id": "mercedes-eqa-300",
-      "label": "EQA 300 4MATIC",
+      "id": "mercedes-eqa-300-progressive",
+      "label": "EQA 300 4MATIC Progressive Line",
       "battery": "standard",
-      "trim": "EQA 300 4MATIC",
-      "wheelSize_inches": 19,
+      "trim": "Progressive Line EQA 300 4MATIC",
+      "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 55950,
+      "price_EUR": 59450,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 480,
-      "wltp_consumption_kWh_100km": 17,
+      "wltp_consumption_kWh_100km": 17.0,
+      "usableCapacity_kWh": 66.5,
       "realRange": {
         "mixed_km": 360,
         "highway_130_km": 260,
@@ -224,21 +435,76 @@
         }
       ],
       "availability": "available",
-      "notes": "228 ch (168 kW), AWD 4MATIC"
+      "notes": "228 ch (168 kW), AWD 4MATIC, élégance et transmission intégrale"
     },
     {
-      "id": "mercedes-eqa-350",
-      "label": "EQA 350 4MATIC",
+      "id": "mercedes-eqa-300-amg",
+      "label": "EQA 300 4MATIC AMG Line",
       "battery": "standard",
-      "trim": "EQA 350 4MATIC",
+      "trim": "AMG Line EQA 300 4MATIC",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 58950,
+      "price_EUR": 61450,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 465,
+      "wltp_consumption_kWh_100km": 17.5,
+      "usableCapacity_kWh": 66.5,
+      "realRange": {
+        "mixed_km": 350,
+        "highway_130_km": 255,
+        "urban_km": 435,
+        "winter_minus5_km": 280,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 70
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 30,
+          "power": 90
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": "228 ch (168 kW), AWD 4MATIC, look sportif AMG et transmission intégrale"
+    },
+    {
+      "id": "mercedes-eqa-350-amg",
+      "label": "EQA 350 4MATIC AMG Line",
+      "battery": "standard",
+      "trim": "AMG Line EQA 350 4MATIC",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 64700,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 460,
       "wltp_consumption_kWh_100km": 17.8,
+      "usableCapacity_kWh": 66.5,
       "realRange": {
         "mixed_km": 345,
         "highway_130_km": 250,
@@ -277,7 +543,7 @@
         }
       ],
       "availability": "available",
-      "notes": "292 ch (215 kW), AWD 4MATIC"
+      "notes": "292 ch (215 kW), AWD 4MATIC, version la plus puissante"
     }
   ],
   "warranty": {

@@ -200,11 +200,11 @@ const SECTIONS: SectionDef[] = [
       {
         label: "Capacité",
         getValue: (c) => {
-          const v = c.vehicle.usableCapacity_kWh;
+          const v = c.config.usableCapacity_kWh ?? c.vehicle.usableCapacity_kWh;
           return v ? `${fmtN(v * (c.soh ?? 100) / 100, 1)} kWh` : null;
         },
         numeric: (c) => {
-          const v = c.vehicle.usableCapacity_kWh;
+          const v = c.config.usableCapacity_kWh ?? c.vehicle.usableCapacity_kWh;
           return v ? v * (c.soh ?? 100) / 100 : null;
         },
         bestIsMax: true,

@@ -2,7 +2,7 @@
   "slug": "mercedes-eqb",
   "brand": "Mercedes",
   "model": "EQB",
-  "variant": "70.5 kWh",
+  "variant": "70.5 kWh · FWD/AWD",
   "bodyType": "SUV",
   "segment": "C",
   "productionCountry": "Hongrie",
@@ -21,7 +21,7 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 2175,
-  "wltp_max_km": 494,
+  "wltp_max_km": 537,
   "wltp_min_km": 440,
   "realRange": {
     "mixed_km": 365,
@@ -86,49 +86,259 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "EQB 250+",
-      "price_EUR": 54250,
+      "name": "Edition EQB 250+",
+      "price_EUR": 46950,
       "batteryUsed": "70.5 kWh",
       "equipmentHighlights": [
-        "494 km WLTP",
+        "537 km WLTP",
         "7 places en option",
         "MBUX 10,25 pouces"
       ]
     },
     {
-      "name": "EQB 300 4MATIC",
-      "price_EUR": 57250,
+      "name": "Progressive Line EQB 250+",
+      "price_EUR": 55750,
       "batteryUsed": "70.5 kWh",
       "equipmentHighlights": [
-        "AWD 228 ch",
-        "465 km WLTP",
-        "Suspension confort"
+        "537 km WLTP",
+        "Jantes alliage 18 pouces",
+        "Sièges similicuir ARTICO/tissu"
       ]
     },
     {
-      "name": "EQB 350 4MATIC",
-      "price_EUR": 60750,
+      "name": "Business Line EQB 250+",
+      "price_EUR": 55750,
+      "batteryUsed": "70.5 kWh",
+      "equipmentHighlights": [
+        "537 km WLTP",
+        "Pack Stationnement",
+        "Navigation MBUX"
+      ]
+    },
+    {
+      "name": "AMG Line EQB 250+",
+      "price_EUR": 57750,
+      "batteryUsed": "70.5 kWh",
+      "equipmentHighlights": [
+        "494 km WLTP",
+        "Kit carrosserie AMG",
+        "Jantes AMG 19 pouces"
+      ]
+    },
+    {
+      "name": "Progressive Line EQB 300 4MATIC",
+      "price_EUR": 59450,
+      "batteryUsed": "70.5 kWh",
+      "equipmentHighlights": [
+        "465 km WLTP",
+        "Transmission intégrale",
+        "Puissance 228 ch"
+      ]
+    },
+    {
+      "name": "AMG Line EQB 300 4MATIC",
+      "price_EUR": 61450,
+      "batteryUsed": "70.5 kWh",
+      "equipmentHighlights": [
+        "450 km WLTP",
+        "Transmission intégrale",
+        "Style dynamique AMG"
+      ]
+    },
+    {
+      "name": "AMG Line EQB 350 4MATIC",
+      "price_EUR": 68150,
       "batteryUsed": "70.5 kWh",
       "equipmentHighlights": [
         "AWD 292 ch",
         "440 km WLTP",
-        "Pack AMG Line"
+        "Performances de pointe"
       ]
     }
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [],
+  "availableAids": [
+    {
+      "label": "Prime CEE",
+      "amount_EUR": 6500,
+      "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 2000,
+      "conditions": "Majoration pour batterie fabriquée en Europe."
+    }
+  ],
   "configurations": [
     {
-      "id": "mercedes-eqb-250",
-      "label": "EQB 250+",
+      "id": "mercedes-eqb-250-edition",
+      "label": "EQB 250+ Edition",
       "battery": "standard",
-      "trim": "EQB 250+",
+      "trim": "Edition EQB 250+",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 54250,
+      "price_EUR": 46950,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 537,
+      "wltp_consumption_kWh_100km": 16.0,
+      "realRange": {
+        "mixed_km": 395,
+        "highway_130_km": 285,
+        "urban_km": 485,
+        "winter_minus5_km": 315,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 70
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 30,
+          "power": 90
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": "190 ch (140 kW), FWD, 5 places (7 en option), version Edition optimisée autonomie"
+    },
+    {
+      "id": "mercedes-eqb-250-progressive",
+      "label": "EQB 250+ Progressive Line",
+      "battery": "standard",
+      "trim": "Progressive Line EQB 250+",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 55750,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 537,
+      "wltp_consumption_kWh_100km": 16.0,
+      "realRange": {
+        "mixed_km": 395,
+        "highway_130_km": 285,
+        "urban_km": 485,
+        "winter_minus5_km": 315,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 70
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 30,
+          "power": 90
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": "190 ch (140 kW), FWD, 5 places (7 en option)"
+    },
+    {
+      "id": "mercedes-eqb-250-business",
+      "label": "EQB 250+ Business Line",
+      "battery": "standard",
+      "trim": "Business Line EQB 250+",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 55750,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 537,
+      "wltp_consumption_kWh_100km": 16.0,
+      "realRange": {
+        "mixed_km": 395,
+        "highway_130_km": 285,
+        "urban_km": 485,
+        "winter_minus5_km": 315,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 70
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 30,
+          "power": 90
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": "190 ch (140 kW), FWD, réservé aux professionnels"
+    },
+    {
+      "id": "mercedes-eqb-250-amg",
+      "label": "EQB 250+ AMG Line",
+      "battery": "standard",
+      "trim": "AMG Line EQB 250+",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 57750,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 494,
@@ -171,17 +381,17 @@
         }
       ],
       "availability": "available",
-      "notes": "190 ch (140 kW), FWD, 5 places (7 en option)"
+      "notes": "190 ch (140 kW), FWD, look et réglages AMG sport"
     },
     {
-      "id": "mercedes-eqb-300",
-      "label": "EQB 300 4MATIC",
+      "id": "mercedes-eqb-300-progressive",
+      "label": "EQB 300 4MATIC Progressive Line",
       "battery": "standard",
-      "trim": "EQB 300 4MATIC",
-      "wheelSize_inches": 19,
+      "trim": "Progressive Line EQB 300 4MATIC",
+      "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 57250,
+      "price_EUR": 59450,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 465,
@@ -224,17 +434,70 @@
         }
       ],
       "availability": "available",
-      "notes": "228 ch (168 kW), AWD 4MATIC"
+      "notes": "228 ch (168 kW), AWD 4MATIC, élégance et transmission intégrale"
     },
     {
-      "id": "mercedes-eqb-350",
-      "label": "EQB 350 4MATIC",
+      "id": "mercedes-eqb-300-amg",
+      "label": "EQB 300 4MATIC AMG Line",
       "battery": "standard",
-      "trim": "EQB 350 4MATIC",
+      "trim": "AMG Line EQB 300 4MATIC",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 60750,
+      "price_EUR": 61450,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 450,
+      "wltp_consumption_kWh_100km": 17.8,
+      "realRange": {
+        "mixed_km": 335,
+        "highway_130_km": 245,
+        "urban_km": 415,
+        "winter_minus5_km": 270,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 70
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 30,
+          "power": 90
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": "228 ch (168 kW), AWD 4MATIC, look AMG sport"
+    },
+    {
+      "id": "mercedes-eqb-350-amg",
+      "label": "EQB 350 4MATIC AMG Line",
+      "battery": "standard",
+      "trim": "AMG Line EQB 350 4MATIC",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 68150,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 440,
@@ -277,7 +540,7 @@
         }
       ],
       "availability": "available",
-      "notes": "292 ch (215 kW), AWD 4MATIC"
+      "notes": "292 ch (215 kW), AWD 4MATIC, performances de pointe"
     }
   ],
   "warranty": {

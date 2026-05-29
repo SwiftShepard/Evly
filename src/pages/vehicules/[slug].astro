@@ -223,9 +223,21 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
             if (trimMatch) {
               batteryCapacity = parseFloat(trimMatch[1]);
             } else {
-              batteryCapacity = config.battery === "long-range" 
-                ? vehicle.usableCapacity_kWh 
-                : (vehicle.usableCapacity_kWh > 70 ? 58.3 : vehicle.usableCapacity_kWh);
+              const parseKwh = (s: string) => {
+                const m = s.match(/(\d+(?:[.,]\d+)?)/);
+                return m ? Math.round(parseFloat(m[1].replace(",", "."))) : null;
+              };
+              const uniqueKwh = [
+                ...new Set(
+                  vehicle.trims
+                    .map((t) => parseKwh(t.batteryUsed))
+                    .filter((v): v is number => v !== null)
+                ),
+              ].sort((a, b) => a - b);
+              const lrKwh = vehicle.usableCapacity_kWh;
+              batteryCapacity = config.battery === "long-range"
+                ? lrKwh
+                : (uniqueKwh.find((k) => k < lrKwh) ?? uniqueKwh[0] ?? lrKwh);
             }
           }
         }

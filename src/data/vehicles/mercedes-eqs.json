@@ -2,7 +2,7 @@
   "slug": "mercedes-eqs",
   "brand": "Mercedes",
   "model": "EQS",
-  "variant": "108.4 kWh",
+  "variant": "118 kWh · RWD/AWD",
   "bodyType": "Berline",
   "segment": "F",
   "productionCountry": "Allemagne",
@@ -16,18 +16,18 @@
   "motors": 1,
   "acceleration_0_100_s": 6.2,
   "topSpeed_kmh": 210,
-  "usableCapacity_kWh": 108.4,
-  "grossCapacity_kWh": 118,
+  "usableCapacity_kWh": 118,
+  "grossCapacity_kWh": 122,
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 2580,
-  "wltp_max_km": 770,
-  "wltp_min_km": 601,
+  "wltp_max_km": 822,
+  "wltp_min_km": 625,
   "realRange": {
-    "mixed_km": 560,
-    "highway_130_km": 405,
-    "urban_km": 690,
-    "winter_minus5_km": 445,
+    "mixed_km": 610,
+    "highway_130_km": 440,
+    "urban_km": 750,
+    "winter_minus5_km": 485,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 18.5,
@@ -86,33 +86,43 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "EQS 450+",
-      "price_EUR": 109000,
-      "batteryUsed": "108.4 kWh",
+      "name": "Avantgarde Line EQS 450+",
+      "price_EUR": 135000,
+      "batteryUsed": "118 kWh",
       "equipmentHighlights": [
-        "770 km WLTP",
-        "Cx record 0,20",
-        "MBUX Hyperscreen"
+        "822 km WLTP",
+        "Suspension pneumatique AIRMATIC",
+        "Essieu arrière directeur (4,5°)"
       ]
     },
     {
-      "name": "EQS 580 4MATIC",
-      "price_EUR": 137000,
-      "batteryUsed": "108.4 kWh",
+      "name": "AMG Line EQS 450+",
+      "price_EUR": 142000,
+      "batteryUsed": "118 kWh",
       "equipmentHighlights": [
-        "AWD 523 ch",
-        "673 km WLTP",
-        "Essieu arriere directeur"
+        "790 km WLTP",
+        "Kit carrosserie AMG Line",
+        "Jantes AMG 21 pouces"
+      ]
+    },
+    {
+      "name": "AMG Line EQS 580 4MATIC",
+      "price_EUR": 167000,
+      "batteryUsed": "118 kWh",
+      "equipmentHighlights": [
+        "717 km WLTP",
+        "MBUX Hyperscreen de série",
+        "Essieu arrière directeur (10°)"
       ]
     },
     {
       "name": "AMG EQS 53 4MATIC+",
       "price_EUR": 175000,
-      "batteryUsed": "108.4 kWh",
+      "batteryUsed": "118 kWh",
       "equipmentHighlights": [
         "AWD 658 ch",
-        "0-100 en 3,4 s",
-        "Chassis AMG ACTIVE RIDE CONTROL"
+        "625 km WLTP",
+        "Châssis AMG ACTIVE RIDE CONTROL"
       ]
     }
   ],
@@ -121,23 +131,24 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "mercedes-eqs-450",
-      "label": "EQS 450+",
+      "id": "mercedes-eqs-450-avantgarde",
+      "label": "EQS 450+ Avantgarde Line",
       "battery": "long-range",
-      "trim": "EQS 450+",
+      "trim": "Avantgarde Line EQS 450+",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 109000,
+      "price_EUR": 135000,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 770,
-      "wltp_consumption_kWh_100km": 16.2,
+      "wltp_km": 822,
+      "wltp_consumption_kWh_100km": 16.0,
+      "usableCapacity_kWh": 118,
       "realRange": {
-        "mixed_km": 560,
-        "highway_130_km": 405,
-        "urban_km": 690,
-        "winter_minus5_km": 445,
+        "mixed_km": 610,
+        "highway_130_km": 440,
+        "urban_km": 750,
+        "winter_minus5_km": 485,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -171,26 +182,27 @@
         }
       ],
       "availability": "available",
-      "notes": "360 ch (265 kW), RWD, AC 22 kW"
+      "notes": "360 ch (265 kW), RWD, AC 22 kW, nouvelle batterie 118 kWh"
     },
     {
-      "id": "mercedes-eqs-580",
-      "label": "EQS 580 4MATIC",
+      "id": "mercedes-eqs-450-amg",
+      "label": "EQS 450+ AMG Line",
       "battery": "long-range",
-      "trim": "EQS 580 4MATIC",
+      "trim": "AMG Line EQS 450+",
       "wheelSize_inches": 21,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 137000,
+      "price_EUR": 142000,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 673,
-      "wltp_consumption_kWh_100km": 18.5,
+      "wltp_km": 790,
+      "wltp_consumption_kWh_100km": 16.5,
+      "usableCapacity_kWh": 118,
       "realRange": {
-        "mixed_km": 495,
-        "highway_130_km": 355,
-        "urban_km": 610,
-        "winter_minus5_km": 390,
+        "mixed_km": 585,
+        "highway_130_km": 420,
+        "urban_km": 720,
+        "winter_minus5_km": 465,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -224,7 +236,61 @@
         }
       ],
       "availability": "available",
-      "notes": "523 ch (385 kW), AWD 4MATIC, essieu AR directeur"
+      "notes": "360 ch (265 kW), RWD, AC 22 kW, finition dynamique AMG Line, nouvelle batterie 118 kWh"
+    },
+    {
+      "id": "mercedes-eqs-580-amg",
+      "label": "EQS 580 4MATIC AMG Line",
+      "battery": "long-range",
+      "trim": "AMG Line EQS 580 4MATIC",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 167000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 717,
+      "wltp_consumption_kWh_100km": 18.0,
+      "usableCapacity_kWh": 118,
+      "realRange": {
+        "mixed_km": 530,
+        "highway_130_km": 380,
+        "urban_km": 650,
+        "winter_minus5_km": 420,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 200,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 200
+        },
+        {
+          "soc": 30,
+          "power": 180
+        },
+        {
+          "soc": 50,
+          "power": 130
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "523 ch (385 kW), AWD 4MATIC, essieu AR directeur 10 degrés, nouvelle batterie 118 kWh"
     },
     {
       "id": "mercedes-eqs-amg-53",
@@ -237,13 +303,14 @@
       "price_EUR": 175000,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 601,
-      "wltp_consumption_kWh_100km": 21,
+      "wltp_km": 625,
+      "wltp_consumption_kWh_100km": 20.5,
+      "usableCapacity_kWh": 118,
       "realRange": {
-        "mixed_km": 440,
-        "highway_130_km": 315,
-        "urban_km": 540,
-        "winter_minus5_km": 345,
+        "mixed_km": 460,
+        "highway_130_km": 330,
+        "urban_km": 565,
+        "winter_minus5_km": 365,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -277,7 +344,7 @@
         }
       ],
       "availability": "available",
-      "notes": "658 ch (484 kW), AWD 4MATIC+, AMG"
+      "notes": "658 ch (484 kW), AWD 4MATIC+, AMG, nouvelle batterie 118 kWh"
     }
   ],
   "warranty": {

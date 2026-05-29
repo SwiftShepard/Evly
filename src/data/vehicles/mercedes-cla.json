@@ -1,0 +1,405 @@
+{
+  "slug": "mercedes-cla",
+  "brand": "Mercedes",
+  "model": "CLA",
+  "variant": "58 / 85 kWh · Propulsion/4MATIC",
+  "bodyType": "Berline",
+  "segment": "C",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Rastatt",
+  "releaseYear": 2025,
+  "marketAvailability": "À commander",
+  "power_kW": 200,
+  "power_hp": 272,
+  "torque_Nm": 350,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 5.9,
+  "topSpeed_kmh": 210,
+  "usableCapacity_kWh": 85,
+  "grossCapacity_kWh": 90,
+  "chemistry": "NMC",
+  "architecture_V": 800,
+  "mass_kg": 1980,
+  "wltp_max_km": 792,
+  "wltp_min_km": 520,
+  "realRange": {
+    "mixed_km": 600,
+    "highway_130_km": 430,
+    "urban_km": 740,
+    "winter_minus5_km": 470,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 12.0,
+  "consumption_highway_kWh_per_100km": 17.0,
+  "consumption_winter_kWh_per_100km": 15.5,
+  "dragCoefficient_Cx": 0.23,
+  "chargingDC": {
+    "peakPower_kW": 320,
+    "time_10_80_min": 22,
+    "kWh_added_30min": 78,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 9
+  },
+  "plugAndCharge": true,
+  "v2l": true,
+  "v2g": true,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 220
+    },
+    {
+      "soc": 10,
+      "power": 320
+    },
+    {
+      "soc": 30,
+      "power": 280
+    },
+    {
+      "soc": 50,
+      "power": 200
+    },
+    {
+      "soc": 80,
+      "power": 80
+    },
+    {
+      "soc": 100,
+      "power": 12
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4680,
+  "width_mm": 1830,
+  "height_mm": 1430,
+  "wheelbase_mm": 2820,
+  "trunkCapacity_L": 470,
+  "trunkCapacityFolded_L": 1250,
+  "frunkCapacity_L": 40,
+  "trims": [
+    {
+      "name": "PRO CLA 58 kWh",
+      "price_EUR": 46500,
+      "batteryUsed": "58 kWh",
+      "equipmentHighlights": [
+        "Autonomie 520 km WLTP",
+        "Architecture 800V",
+        "Éligible Prime CEE"
+      ]
+    },
+    {
+      "name": "PRO CLA 250+",
+      "price_EUR": 54500,
+      "batteryUsed": "85 kWh",
+      "equipmentHighlights": [
+        "Autonomie record 792 km",
+        "Recharge ultra-rapide 320 kW",
+        "Écran MBUX 12,8 pouces"
+      ]
+    },
+    {
+      "name": "AMG Line CLA 250+",
+      "price_EUR": 58500,
+      "batteryUsed": "85 kWh",
+      "equipmentHighlights": [
+        "Jantes alliage AMG 20 pouces",
+        "Kit carrosserie AMG Line",
+        "Châssis sport surbaissé"
+      ]
+    },
+    {
+      "name": "AMG Line CLA 350 4MATIC",
+      "price_EUR": 64500,
+      "batteryUsed": "85 kWh",
+      "equipmentHighlights": [
+        "Transmission AWD 374 ch",
+        "0 à 100 km/h en 4,8 s",
+        "Équipements AMG exclusifs"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE",
+      "amount_EUR": 6500,
+      "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 2000,
+      "conditions": "Majoration pour batterie fabriquée en Europe."
+    }
+  ],
+  "configurations": [
+    {
+      "id": "mercedes-cla-58-pro",
+      "label": "CLA 58 kWh PRO",
+      "battery": "standard",
+      "trim": "PRO CLA 58 kWh",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 46500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 520,
+      "wltp_consumption_kWh_100km": 12.5,
+      "usableCapacity_kWh": 58,
+      "realRange": {
+        "mixed_km": 390,
+        "highway_130_km": 280,
+        "urban_km": 485,
+        "winter_minus5_km": 310,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 250,
+      "chargingDC_10_80_min": 22,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 180
+        },
+        {
+          "soc": 10,
+          "power": 250
+        },
+        {
+          "soc": 30,
+          "power": 210
+        },
+        {
+          "soc": 50,
+          "power": 150
+        },
+        {
+          "soc": 80,
+          "power": 60
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "upcoming",
+      "notes": "Entrée de gamme, batterie LFP de 58 kWh éligible Prime CEE."
+    },
+    {
+      "id": "mercedes-cla-250-pro",
+      "label": "CLA 250+ 85 kWh PRO",
+      "battery": "long-range",
+      "trim": "PRO CLA 250+",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 54500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 792,
+      "wltp_consumption_kWh_100km": 12.0,
+      "usableCapacity_kWh": 85,
+      "realRange": {
+        "mixed_km": 600,
+        "highway_130_km": 430,
+        "urban_km": 740,
+        "winter_minus5_km": 470,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 320,
+      "chargingDC_10_80_min": 22,
+      "chargingDC_kWh_30min": 78,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 220
+        },
+        {
+          "soc": 10,
+          "power": 320
+        },
+        {
+          "soc": 30,
+          "power": 280
+        },
+        {
+          "soc": 50,
+          "power": 200
+        },
+        {
+          "soc": 80,
+          "power": 80
+        },
+        {
+          "soc": 100,
+          "power": 12
+        }
+      ],
+      "availability": "upcoming",
+      "notes": "RWD de 272 ch, grande autonomie de 792 km, batterie NMC 85 kWh."
+    },
+    {
+      "id": "mercedes-cla-250-amg",
+      "label": "CLA 250+ 85 kWh AMG Line",
+      "battery": "long-range",
+      "trim": "AMG Line CLA 250+",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 58500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 750,
+      "wltp_consumption_kWh_100km": 12.8,
+      "usableCapacity_kWh": 85,
+      "realRange": {
+        "mixed_km": 570,
+        "highway_130_km": 410,
+        "urban_km": 700,
+        "winter_minus5_km": 445,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 320,
+      "chargingDC_10_80_min": 22,
+      "chargingDC_kWh_30min": 78,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 220
+        },
+        {
+          "soc": 10,
+          "power": 320
+        },
+        {
+          "soc": 30,
+          "power": 280
+        },
+        {
+          "soc": 50,
+          "power": 200
+        },
+        {
+          "soc": 80,
+          "power": 80
+        },
+        {
+          "soc": 100,
+          "power": 12
+        }
+      ],
+      "availability": "upcoming",
+      "notes": "Version dynamique avec kit carrosserie AMG et jantes 20 pouces."
+    },
+    {
+      "id": "mercedes-cla-350-4matic-amg",
+      "label": "CLA 350 4MATIC 85 kWh AMG Line",
+      "battery": "long-range",
+      "trim": "AMG Line CLA 350 4MATIC",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 64500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 771,
+      "wltp_consumption_kWh_100km": 13.2,
+      "usableCapacity_kWh": 85,
+      "realRange": {
+        "mixed_km": 550,
+        "highway_130_km": 395,
+        "urban_km": 675,
+        "winter_minus5_km": 430,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 320,
+      "chargingDC_10_80_min": 22,
+      "chargingDC_kWh_30min": 78,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 220
+        },
+        {
+          "soc": 10,
+          "power": 320
+        },
+        {
+          "soc": 30,
+          "power": 280
+        },
+        {
+          "soc": 50,
+          "power": 200
+        },
+        {
+          "soc": 80,
+          "power": 80
+        },
+        {
+          "soc": 100,
+          "power": 12
+        }
+      ],
+      "availability": "upcoming",
+      "notes": "Transmission intégrale 4MATIC de 374 ch, performances de pointe."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 2,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Profil de berline coupé profilé avec frunk de 40 L"
+    },
+    {
+      "category": "technologie",
+      "label": "Plateforme MMA en 800 V supportant des charges ultra-rapides jusqu'à 320 kW"
+    },
+    {
+      "category": "securite",
+      "label": "Projecteurs LED haute performance et aides à la conduite de dernière génération"
+    },
+    {
+      "category": "confort",
+      "label": "Nouvel habitacle digitalisé MBUX avec écran central haute résolution"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Autonomie WLTP remarquable frôlant les 800 km en version 250+",
+      "Vitesse de recharge exceptionnelle (320 kW en crête) grâce à l'architecture 800V",
+      "Version d'entrée de gamme 58 kWh (LFP) très compétitive et éligible aux aides CEE"
+    ],
+    "weaknesses": [
+      "Options nombreuses et chères pour les finitions supérieures",
+      "Tarifs des versions 85 kWh élevés et non éligibles au bonus"
+    ],
+    "idealUserProfile": "Professionnels, cadres et gros rouleurs souhaitant un coupé 4 portes haut de gamme avec une autonomie et une vitesse de recharge maximales.",
+    "notIdealFor": "Familles nombreuses ayant besoin d'un grand coffre vertical ou de 7 places assises."
+  },
+  "lastUpdated": "2026-05-29",
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
+  "imageCredit": "Constructeur"
+}
