@@ -25,20 +25,21 @@
   "wltp_min_km": 337,
   "realRange": {
     "mixed_km": 370,
-    "highway_130_km": 260,
+    "highway_130_km": 280,
     "urban_km": 450,
     "winter_minus5_km": 290,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 357
   },
   "consumption_mixed_kWh_per_100km": 16.5,
   "consumption_highway_kWh_per_100km": 23,
   "consumption_winter_kWh_per_100km": 21,
   "dragCoefficient_Cx": 0.285,
   "chargingDC": {
-    "peakPower_kW": 153,
+    "peakPower_kW": 157,
     "time_10_80_min": 26,
     "kWh_added_30min": 45,
-    "confidence": "estimated"
+    "confidence": "tested"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
@@ -52,31 +53,61 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 110
+      "power": 44
     },
     {
       "soc": 10,
-      "power": 153
+      "power": 55
+    },
+    {
+      "soc": 20,
+      "power": 155
     },
     {
       "soc": 30,
-      "power": 140
+      "power": 157
+    },
+    {
+      "soc": 40,
+      "power": 128
     },
     {
       "soc": 50,
-      "power": 100
+      "power": 101
+    },
+    {
+      "soc": 60,
+      "power": 73
+    },
+    {
+      "soc": 70,
+      "power": 67
     },
     {
       "soc": 80,
-      "power": 45
+      "power": 38
+    },
+    {
+      "soc": 90,
+      "power": 26
     },
     {
       "soc": 100,
-      "power": 8
+      "power": 3
     }
   ],
   "rangeTests": [],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 630,
+    "averageSpeed_kmh": 95.2,
+    "averageConsumption_Wh_km": 228,
+    "chargingStops": null,
+    "averageTemperature_C": 11,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 4233,
   "width_mm": 1837,
   "height_mm": 1550,
@@ -375,9 +406,10 @@
     "idealUserProfile": "Conducteurs urbains cherchant un SUV compact premium performant et bien equipe.",
     "notIdealFor": "Familles nombreuses ou acheteurs comptant sur les aides francaises."
   },
-  "lastUpdated": "2026-05-19",
+  "lastUpdated": "2026-05-29",
   "sources": [
-    "la-chaine-ev"
+    "la-chaine-ev",
+    "nyland"
   ],
   "imageCredit": "Constructeur"
 }

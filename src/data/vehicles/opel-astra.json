@@ -28,7 +28,8 @@
     "highway_130_km": 215,
     "urban_km": 395,
     "winter_minus5_km": 255,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 321
   },
   "consumption_mixed_kWh_per_100km": 14.7,
   "consumption_highway_kWh_per_100km": 19.7,
@@ -76,7 +77,17 @@
     }
   ],
   "rangeTests": [],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 690,
+    "averageSpeed_kmh": 87,
+    "averageConsumption_Wh_km": 259,
+    "chargingStops": null,
+    "averageTemperature_C": 6,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 4374,
   "width_mm": 1860,
   "height_mm": 1470,
@@ -385,10 +396,11 @@
     "idealUserProfile": "Cadre quotidien ou famille petite cherchant une compacte premium allemande. Mix domicile-travail + trajets routes.",
     "notIdealFor": "Gros rouleur autoroutier : l'autonomie 130 km/h tombe sous les 220 km."
   },
-  "lastUpdated": "2026-05-18",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "nyland",
-    "lachaineev"
+    "lachaineev",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

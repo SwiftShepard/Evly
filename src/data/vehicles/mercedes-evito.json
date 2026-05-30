@@ -28,17 +28,18 @@
     "highway_130_km": 150,
     "urban_km": 290,
     "winter_minus5_km": 185,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 338
   },
   "consumption_mixed_kWh_per_100km": 22,
   "consumption_highway_kWh_per_100km": 29,
   "consumption_winter_kWh_per_100km": 27,
   "dragCoefficient_Cx": 0.35,
   "chargingDC": {
-    "peakPower_kW": 110,
+    "peakPower_kW": 114,
     "time_10_80_min": 35,
     "kWh_added_30min": 35,
-    "confidence": "manufacturer"
+    "confidence": "tested"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
@@ -52,31 +53,61 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 85
+      "power": 82
     },
     {
       "soc": 10,
-      "power": 110
+      "power": 103
+    },
+    {
+      "soc": 20,
+      "power": 106
     },
     {
       "soc": 30,
-      "power": 100
+      "power": 108
+    },
+    {
+      "soc": 40,
+      "power": 109
     },
     {
       "soc": 50,
-      "power": 70
+      "power": 111
+    },
+    {
+      "soc": 60,
+      "power": 114
+    },
+    {
+      "soc": 70,
+      "power": 100
     },
     {
       "soc": 80,
-      "power": 30
+      "power": 89
+    },
+    {
+      "soc": 90,
+      "power": 53
     },
     {
       "soc": 100,
-      "power": 7
+      "power": 5
     }
   ],
   "rangeTests": [],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 685,
+    "averageSpeed_kmh": 87.6,
+    "averageConsumption_Wh_km": 367,
+    "chargingStops": null,
+    "averageTemperature_C": 5,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 5140,
   "width_mm": 1928,
   "height_mm": 1910,
@@ -152,7 +183,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 314,
-      "wltp_consumption_kWh_100km": 21.0,
+      "wltp_consumption_kWh_100km": 21,
       "usableCapacity_kWh": 60,
       "realRange": {
         "mixed_km": 230,
@@ -252,7 +283,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 260,
-      "wltp_consumption_kWh_100km": 24.0,
+      "wltp_consumption_kWh_100km": 24,
       "usableCapacity_kWh": 60,
       "realRange": {
         "mixed_km": 200,
@@ -428,10 +459,12 @@
     "idealUserProfile": "Livraison urbaine premium, flottes d'entreprise avec image de marque, artisans avec trajets courts.",
     "notIdealFor": "Longs trajets ou besoin de grande autonomie : l'Expert/Jumpy 75 kWh offre plus d'autonomie a prix inferieur."
   },
-  "lastUpdated": "2026-05-21",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "automobile-propre",
-    "largus"
+    "largus",
+    "nyland",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

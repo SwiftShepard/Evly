@@ -904,7 +904,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
                             const isEU = ["France", "Allemagne", "Espagne", "Italie", "Suède", "Royaume-Uni", "Portugal", "Pologne", "Tchéquie", "Rép. Tchèque", "Slovaquie", "Hongrie", "Belgique", "Autriche", "Roumanie"].includes(res.vehicle.productionCountry);
                             const rawPrice = res.bestConfig.price_EUR ?? 0;
                             const isEligibleCEE = isEU && rawPrice <= 47000;
-                            const totalCeeAid = isEligibleCEE ? (res.vehicle.availableAids || []).reduce((sum, a) => sum + a.amount_EUR, 0) : 0;
+                            const totalCeeAid = isEligibleCEE ? Math.min(8100, (res.vehicle.availableAids || []).reduce((sum, a) => sum + a.amount_EUR, 0)) : 0;
                             const netPrice = rawPrice - totalCeeAid;
                             return (
                               <div className="flex flex-col gap-1.5">
@@ -920,7 +920,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
                                   <div className="text-[10px] text-[var(--color-text-muted)] leading-tight">
                                     Prix catalogue : <span className="line-through">{rawPrice.toLocaleString()} €</span>
                                     <span className="block text-[9px] text-[var(--color-accent)] font-medium mt-1 leading-normal">
-                                      Inclut la Prime CEE de {totalCeeAid.toLocaleString()} € (socle de 6 500 € + 2 000 € de majoration batterie européenne).
+                                      Inclut la Prime CEE de {totalCeeAid.toLocaleString()} € (socle de 6 500 € + 2 000 € de majoration batterie européenne, plafonné à 8 100 €).
                                     </span>
                                   </div>
                                 ) : (
@@ -1010,7 +1010,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
                     const isEU = ["France", "Allemagne", "Espagne", "Italie", "Suède", "Royaume-Uni", "Portugal", "Pologne", "Tchéquie", "Rép. Tchèque", "Slovaquie", "Hongrie", "Belgique", "Autriche", "Roumanie"].includes(res.vehicle.productionCountry);
                     const rawPrice = res.bestConfig.price_EUR ?? 0;
                     const isEligibleCEE = isEU && rawPrice <= 47000;
-                    const totalCeeAid = isEligibleCEE ? (res.vehicle.availableAids || []).reduce((sum, a) => sum + a.amount_EUR, 0) : 0;
+                    const totalCeeAid = isEligibleCEE ? Math.min(8100, (res.vehicle.availableAids || []).reduce((sum, a) => sum + a.amount_EUR, 0)) : 0;
                     const netPrice = rawPrice - totalCeeAid;
 
                     return (
@@ -1082,7 +1082,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
                                     </span>
                                     {isEligibleCEE ? (
                                       <span className="px-1.5 py-0.5 rounded text-[9px] font-semibold bg-[color-mix(in_srgb,var(--color-accent)_8%,transparent)] text-[var(--color-accent)] border border-[color-mix(in_srgb,var(--color-accent)_15%,transparent)]">
-                                        Aide CEE de {totalCeeAid.toLocaleString()} € déduite
+                                        Aide CEE de {totalCeeAid.toLocaleString()} € déduite (plafonné)
                                       </span>
                                     ) : (
                                       <span className="px-1.5 py-0.5 rounded text-[9px] font-semibold bg-[var(--color-border)] text-[var(--color-text-muted)]">
@@ -1124,7 +1124,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
                               {answers.budgetType === "buy" && (
                                 <p className="text-[9px] text-[var(--color-text-faint)] leading-normal mt-1 border-t border-[var(--color-border)] pt-1.5">
                                   {isEligibleCEE 
-                                    ? `*Montant indicatif d'aide CEE de ${totalCeeAid.toLocaleString()} € (socle de 6 500 € + 2 000 € de majoration batterie européenne) applicable selon l'origine de fabrication du véhicule (produit en ${res.vehicle.productionCountry}).`
+                                    ? `*Montant indicatif d'aide CEE de ${totalCeeAid.toLocaleString()} € (socle de 6 500 € + 2 000 € de majoration batterie européenne, plafonné à 8 100 €) applicable selon l'origine de fabrication du véhicule (produit en ${res.vehicle.productionCountry}).`
                                     : `*Non éligible à la Prime CEE car le véhicule est assemblé hors d'Europe (${res.vehicle.productionCountry}) ou dépasse le plafond de 47 000 €.`
                                   }
                                 </p>

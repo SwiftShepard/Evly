@@ -28,17 +28,18 @@
     "highway_130_km": 340,
     "urban_km": 580,
     "winter_minus5_km": 375,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 487
   },
   "consumption_mixed_kWh_per_100km": 18,
   "consumption_highway_kWh_per_100km": 24,
   "consumption_winter_kWh_per_100km": 22,
   "dragCoefficient_Cx": 0.22,
   "chargingDC": {
-    "peakPower_kW": 170,
+    "peakPower_kW": 172,
     "time_10_80_min": 32,
     "kWh_added_30min": 55,
-    "confidence": "estimated"
+    "confidence": "tested"
   },
   "chargingAC": {
     "onboardCharger_kW": 22,
@@ -52,31 +53,61 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 120
+      "power": 130
     },
     {
       "soc": 10,
+      "power": 163
+    },
+    {
+      "soc": 20,
       "power": 170
     },
     {
       "soc": 30,
-      "power": 150
+      "power": 172
+    },
+    {
+      "soc": 40,
+      "power": 167
     },
     {
       "soc": 50,
-      "power": 110
+      "power": 157
+    },
+    {
+      "soc": 60,
+      "power": 140
+    },
+    {
+      "soc": 70,
+      "power": 112
     },
     {
       "soc": 80,
-      "power": 45
+      "power": 81
+    },
+    {
+      "soc": 90,
+      "power": 47
     },
     {
       "soc": 100,
-      "power": 8
+      "power": 5
     }
   ],
   "rangeTests": [],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 575,
+    "averageSpeed_kmh": 104.3,
+    "averageConsumption_Wh_km": 256,
+    "chargingStops": null,
+    "averageTemperature_C": 19,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 4946,
   "width_mm": 1961,
   "height_mm": 1510,
@@ -376,7 +407,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 533,
-      "wltp_consumption_kWh_100km": 20.0,
+      "wltp_consumption_kWh_100km": 20,
       "realRange": {
         "mixed_km": 390,
         "highway_130_km": 280,
@@ -429,7 +460,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 518,
-      "wltp_consumption_kWh_100km": 21.0,
+      "wltp_consumption_kWh_100km": 21,
       "realRange": {
         "mixed_km": 380,
         "highway_130_km": 270,
@@ -508,10 +539,12 @@
     "idealUserProfile": "Cadres et professionnels cherchant une berline electrique haut de gamme.",
     "notIdealFor": "Acheteurs a budget limite ou cherchant un SUV."
   },
-  "lastUpdated": "2026-05-20",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "constructeur",
-    "automobile-propre"
+    "automobile-propre",
+    "nyland",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

@@ -177,7 +177,7 @@ export default function ComparatorView({ vehicles }: Props) {
     const get1080 = (c: ConfiguredCard) => c.config.chargingDC_10_80_min ?? Infinity;
     const get30min = (c: ConfiguredCard) => c.config.chargingDC_kWh_30min ?? 0;
     const getNetPrice = (c: ConfiguredCard) => {
-      const aids = c.vehicle.availableAids.reduce((s, a) => s + a.amount_EUR, 0);
+      const aids = Math.min(8100, c.vehicle.availableAids.reduce((s, a) => s + a.amount_EUR, 0));
       return Math.max(0, c.config.price_EUR - aids);
     };
     const getAccel = (c: ConfiguredCard) => c.vehicle.acceleration_0_100_s ?? Infinity;

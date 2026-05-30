@@ -28,7 +28,8 @@
     "highway_130_km": 335,
     "urban_km": 565,
     "winter_minus5_km": 365,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 200
   },
   "consumption_mixed_kWh_per_100km": 16,
   "consumption_highway_kWh_per_100km": 22,
@@ -52,31 +53,53 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 100
+      "power": 56
     },
     {
-      "soc": 10,
-      "power": 150
+      "soc": 20,
+      "power": 70
     },
     {
       "soc": 30,
-      "power": 130
+      "power": 69
+    },
+    {
+      "soc": 40,
+      "power": 65
     },
     {
       "soc": 50,
-      "power": 90
+      "power": 61
+    },
+    {
+      "soc": 60,
+      "power": 58
+    },
+    {
+      "soc": 70,
+      "power": 46
     },
     {
       "soc": 80,
-      "power": 40
+      "power": 36
     },
     {
       "soc": 100,
-      "power": 8
+      "power": 4
     }
   ],
   "rangeTests": [],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 850,
+    "averageSpeed_kmh": 70.6,
+    "averageConsumption_Wh_km": 177,
+    "chargingStops": null,
+    "averageTemperature_C": -1,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 4350,
   "width_mm": 1810,
   "height_mm": 1550,
@@ -328,10 +351,12 @@
     "idealUserProfile": "Conducteurs cherchant une compacte electrique fiable avec grande autonomie.",
     "notIdealFor": "Acheteurs comptant sur les aides CEE ou cherchant un SUV."
   },
-  "lastUpdated": "2026-05-20",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "constructeur",
-    "automobile-propre"
+    "automobile-propre",
+    "nyland",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

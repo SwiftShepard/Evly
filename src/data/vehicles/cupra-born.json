@@ -28,7 +28,8 @@
     "highway_130_km": 280,
     "urban_km": 510,
     "winter_minus5_km": 330,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 334
   },
   "consumption_mixed_kWh_per_100km": 15.8,
   "consumption_highway_kWh_per_100km": 21,
@@ -76,7 +77,17 @@
     }
   ],
   "rangeTests": [],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 690,
+    "averageSpeed_kmh": 87,
+    "averageConsumption_Wh_km": 267,
+    "chargingStops": null,
+    "averageTemperature_C": -2,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 4322,
   "width_mm": 1809,
   "height_mm": 1540,
@@ -326,10 +337,11 @@
     "idealUserProfile": "Conducteur enthousiaste cherchant une électrique compacte au caractère sportif, sans la prime de prix d'une Tesla Model 3 Performance.",
     "notIdealFor": "Famille nombreuse ayant besoin d'espace ou utilisateur souhaitant un infotainment irréprochable dès la sortie."
   },
-  "lastUpdated": "2026-05-18",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "nyland",
-    "lachaineev"
+    "lachaineev",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

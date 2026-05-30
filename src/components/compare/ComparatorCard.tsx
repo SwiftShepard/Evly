@@ -58,7 +58,7 @@ export default function ComparatorCard({
 
   // Total aids
   const totalAids = useMemo(
-    () => vehicle.availableAids.reduce((sum, a) => sum + a.amount_EUR, 0),
+    () => Math.min(8100, vehicle.availableAids.reduce((sum, a) => sum + a.amount_EUR, 0)),
     [vehicle.availableAids]
   );
   const netPrice = Math.max(0, config.price_EUR - totalAids);

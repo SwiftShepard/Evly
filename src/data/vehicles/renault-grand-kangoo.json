@@ -28,7 +28,8 @@
     "highway_130_km": 130,
     "urban_km": 250,
     "winter_minus5_km": 160,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 371
   },
   "consumption_mixed_kWh_per_100km": 19.5,
   "consumption_highway_kWh_per_100km": 27,
@@ -72,7 +73,17 @@
     }
   ],
   "rangeTests": [],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 610,
+    "averageSpeed_kmh": 98.4,
+    "averageConsumption_Wh_km": 274,
+    "chargingStops": null,
+    "averageTemperature_C": 12,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 4910,
   "width_mm": 1919,
   "height_mm": 1838,
@@ -197,9 +208,10 @@
     "idealUserProfile": "Grandes familles cherchant un vehicule 7 places electrique pour les trajets quotidiens.",
     "notIdealFor": "Gros rouleurs autoroutiers ou departs en vacances longue distance frequents."
   },
-  "lastUpdated": "2026-05-19",
+  "lastUpdated": "2026-05-29",
   "sources": [
-    "la-chaine-ev"
+    "la-chaine-ev",
+    "nyland"
   ],
   "imageCredit": "Constructeur"
 }

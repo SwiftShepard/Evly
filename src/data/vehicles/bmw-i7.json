@@ -28,7 +28,8 @@
     "highway_130_km": 340,
     "urban_km": 580,
     "winter_minus5_km": 380,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 631
   },
   "consumption_mixed_kWh_per_100km": 19.5,
   "consumption_highway_kWh_per_100km": 27.5,
@@ -52,31 +53,61 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 140
+      "power": 148
     },
     {
       "soc": 10,
-      "power": 195
+      "power": 185
+    },
+    {
+      "soc": 20,
+      "power": 194
     },
     {
       "soc": 30,
+      "power": 193
+    },
+    {
+      "soc": 40,
       "power": 170
     },
     {
       "soc": 50,
-      "power": 125
+      "power": 176
+    },
+    {
+      "soc": 60,
+      "power": 143
+    },
+    {
+      "soc": 70,
+      "power": 110
     },
     {
       "soc": 80,
-      "power": 50
+      "power": 71
+    },
+    {
+      "soc": 90,
+      "power": 78
     },
     {
       "soc": 100,
-      "power": 10
+      "power": 8
     }
   ],
   "rangeTests": [],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 580,
+    "averageSpeed_kmh": 103.4,
+    "averageConsumption_Wh_km": 278,
+    "chargingStops": null,
+    "averageTemperature_C": 2,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 5391,
   "width_mm": 1950,
   "height_mm": 1544,
@@ -317,10 +348,12 @@
     "idealUserProfile": "Chauffeurs prives, dirigeants d'entreprise et passionnes de grand luxe technologique.",
     "notIdealFor": "Usage urbain quotidien ou conducteurs cherchant de la discretion."
   },
-  "lastUpdated": "2026-05-21",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "constructeur",
-    "automobile-propre"
+    "automobile-propre",
+    "nyland",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

@@ -28,7 +28,8 @@
     "highway_130_km": 270,
     "urban_km": 460,
     "winter_minus5_km": 295,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 479
   },
   "consumption_mixed_kWh_per_100km": 19,
   "consumption_highway_kWh_per_100km": 26,
@@ -52,31 +53,61 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 100
+      "power": 98
     },
     {
       "soc": 10,
-      "power": 140
+      "power": 122
+    },
+    {
+      "soc": 20,
+      "power": 123
     },
     {
       "soc": 30,
-      "power": 125
+      "power": 108
+    },
+    {
+      "soc": 40,
+      "power": 93
     },
     {
       "soc": 50,
-      "power": 90
+      "power": 86
+    },
+    {
+      "soc": 60,
+      "power": 88
+    },
+    {
+      "soc": 70,
+      "power": 86
     },
     {
       "soc": 80,
-      "power": 40
+      "power": 77
+    },
+    {
+      "soc": 90,
+      "power": 61
     },
     {
       "soc": 100,
-      "power": 8
+      "power": 6
     }
   ],
   "rangeTests": [],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 520,
+    "averageSpeed_kmh": 115.4,
+    "averageConsumption_Wh_km": 273,
+    "chargingStops": null,
+    "averageTemperature_C": -6,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 4790,
   "width_mm": 1960,
   "height_mm": 1499,
@@ -254,10 +285,12 @@
     "idealUserProfile": "Conducteurs interesses par le Battery Swap et cherchant une berline sportive premium.",
     "notIdealFor": "Acheteurs en France cherchant un SAV de proximite ou un modele disponible immediatement."
   },
-  "lastUpdated": "2026-05-19",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "constructeur",
-    "ev-database"
+    "ev-database",
+    "nyland",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

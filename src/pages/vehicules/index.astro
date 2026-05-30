@@ -110,7 +110,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
       <div class="relative w-full flex flex-col xl:flex-row gap-8">
         
         {/* Barre latérale (Filtres) (Desktop) */}
-        <aside class="hidden xl:block w-[220px] shrink-0 z-10">
+        <aside class="hidden xl:block w-[275px] shrink-0 z-10">
           <div class="sticky top-24 flex flex-col gap-0 fade-rise sidebar-sticky">
 
 
@@ -149,7 +149,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                     <div class="flex flex-wrap gap-1.5">
                       {group.items.map((b) => (
                         <button class="filter-chip" data-filter="brand" data-value={b} aria-pressed="false">
-                          <BrandLogo brand={b} class="h-3 w-auto max-w-[32px] flex-shrink-0" />
+                          <BrandLogo brand={b} class="h-[15px] w-auto max-w-[40px] flex-shrink-0" />
                           <span>{b}</span>
                         </button>
                       ))}
@@ -263,7 +263,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
               <p class="mt-6 text-[var(--color-text-muted)] text-sm md:text-base max-w-2xl fade-rise fade-rise-delay-3">
                 Sélectionnez vos critères de filtrage pour affiner la liste.
               </p>
-              <div class="mt-8 pt-6 border-t border-[var(--color-border)] flex flex-wrap items-center gap-2 fade-rise fade-rise-delay-3">
+              <div class="mt-8 pt-6 border-t border-[var(--color-border)] flex flex-wrap xl:flex-nowrap items-center gap-2 fade-rise fade-rise-delay-3">
                 <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)] mr-2">Trier</span>
                 <button class="sort-btn" data-sort="default" data-active="true">Défaut</button>
                 <button class="sort-btn" data-sort="price-asc">Prix ↑</button>
@@ -285,7 +285,10 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
 
         {vehicles.map((v) => {
           const cheapest = v.trims.reduce((a, b) => (a.price_EUR < b.price_EUR ? a : b));
-          const totalAids = v.availableAids.reduce((s, a) => s + a.amount_EUR, 0);
+          const totalAids = Math.min(
+            8100,
+            v.availableAids.reduce((s, a) => s + a.amount_EUR, 0)
+          );
           const priceAided = Math.max(0, cheapest.price_EUR - totalAids);
           const category = getCategory(v);
           
@@ -928,6 +931,63 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
     input[type="range"]:active::-moz-range-thumb {
       transform: scale(0.95);
       background: var(--color-accent-dim);
+    }
+
+    /* ── Sidebar specific overrides (25% larger) ────────────────── */
+    aside .filter-chip {
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 7px;
+      font-size: 0.85rem;
+    }
+    aside .filter-section {
+      padding: 12.5px 0;
+    }
+    aside .filter-section-toggle {
+      font-size: 0.75rem;
+      padding: 3px 0;
+    }
+    aside .filter-chevron {
+      border-left: 4.5px solid transparent;
+      border-right: 4.5px solid transparent;
+      border-top: 4.5px solid currentColor;
+    }
+    aside .filter-subgroup-label {
+      font-size: 0.625rem;
+      margin-bottom: 5px;
+    }
+    aside .reset-btn {
+      font-size: 0.75rem;
+    }
+    aside .range-toggle-btn {
+      padding: 3px 10px;
+      font-size: 12.5px;
+    }
+    aside input[type="range"] {
+      height: 5px;
+    }
+    aside input[type="range"]::-webkit-slider-thumb {
+      width: 18px;
+      height: 18px;
+      border-width: 3px;
+    }
+    aside input[type="range"]::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-width: 3px;
+    }
+    aside .flex.justify-between.items-baseline span:first-child {
+      font-size: 12.5px !important;
+    }
+    aside .flex.justify-between.items-baseline span:last-child {
+      font-size: 15px !important;
+    }
+
+    @media (min-width: 1280px) {
+      aside {
+        margin-left: calc(-1 * max(0px, min(307px, (100vw - 1280px) / 2 + 24px)));
+        transition: margin-left 0.2s ease-in-out;
+      }
     }
   </style>
 </BaseLayout>

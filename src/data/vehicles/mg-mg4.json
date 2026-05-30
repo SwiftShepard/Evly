@@ -25,7 +25,7 @@
   "wltp_min_km": 450,
   "realRange": {
     "mixed_km": 360,
-    "highway_130_km": 282,
+    "highway_130_km": 360,
     "highway_120_km": 310,
     "urban_km": 430,
     "winter_minus5_km": 250,
@@ -505,7 +505,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "nyland",
     "la-chaine-ev"

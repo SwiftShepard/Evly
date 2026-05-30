@@ -28,17 +28,18 @@
     "highway_130_km": 180,
     "urban_km": 380,
     "winter_minus5_km": 190,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 375
   },
   "consumption_mixed_kWh_per_100km": 14,
   "consumption_highway_kWh_per_100km": 19,
   "consumption_winter_kWh_per_100km": 17,
   "dragCoefficient_Cx": 0.29,
   "chargingDC": {
-    "peakPower_kW": 85,
+    "peakPower_kW": 88,
     "time_10_80_min": 30,
     "kWh_added_30min": 30,
-    "confidence": "estimated"
+    "confidence": "tested"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
@@ -52,27 +53,47 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 45
+      "power": 68
     },
     {
       "soc": 10,
       "power": 85
     },
     {
+      "soc": 20,
+      "power": 87
+    },
+    {
       "soc": 30,
-      "power": 75
+      "power": 87
+    },
+    {
+      "soc": 40,
+      "power": 88
     },
     {
       "soc": 50,
-      "power": 60
+      "power": 58
+    },
+    {
+      "soc": 60,
+      "power": 59
+    },
+    {
+      "soc": 70,
+      "power": 59
     },
     {
       "soc": 80,
-      "power": 35
+      "power": 59
+    },
+    {
+      "soc": 90,
+      "power": 33
     },
     {
       "soc": 100,
-      "power": 7
+      "power": 3
     }
   ],
   "rangeTests": [],
@@ -321,10 +342,12 @@
     "idealUserProfile": "Citadins et banlieusards cherchant une petite voiture électrique moderne, suréquipée et abordable.",
     "notIdealFor": "Gros rouleurs effectuant de fréquents et longs trajets autoroutiers en charge maximale."
   },
-  "lastUpdated": "2026-05-22",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "constructeur",
-    "automobile-propre"
+    "automobile-propre",
+    "nyland",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

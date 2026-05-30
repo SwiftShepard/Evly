@@ -52,31 +52,61 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 161
+      "power": 109
     },
     {
       "soc": 10,
-      "power": 175
+      "power": 136
     },
     {
       "soc": 20,
-      "power": 175
+      "power": 166
+    },
+    {
+      "soc": 30,
+      "power": 149
+    },
+    {
+      "soc": 40,
+      "power": 107
     },
     {
       "soc": 50,
-      "power": 124
+      "power": 93
+    },
+    {
+      "soc": 60,
+      "power": 85
+    },
+    {
+      "soc": 70,
+      "power": 74
     },
     {
       "soc": 80,
-      "power": 56
+      "power": 61
+    },
+    {
+      "soc": 90,
+      "power": 49
     },
     {
       "soc": 100,
-      "power": 11
+      "power": 5
     }
   ],
   "rangeTests": [],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 630,
+    "averageSpeed_kmh": 95.2,
+    "averageConsumption_Wh_km": 243,
+    "chargingStops": null,
+    "averageTemperature_C": 7,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 4488,
   "width_mm": 1884,
   "height_mm": 1625,
@@ -387,10 +417,11 @@
     "idealUserProfile": "Famille urbaine ou périurbaine cherchant un SUV compact polyvalent en dessous du plafond Prime CEE VE, avec un grand coffre pour la catégorie.",
     "notIdealFor": "Conducteur sportif cherchant un châssis tranchant, l'Elroq reste un SUV confort avant tout."
   },
-  "lastUpdated": "2026-05-18",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "nyland",
-    "lachaineev"
+    "lachaineev",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

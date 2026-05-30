@@ -28,7 +28,8 @@
     "highway_130_km": 200,
     "urban_km": 370,
     "winter_minus5_km": 245,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 290
   },
   "consumption_mixed_kWh_per_100km": 15.2,
   "consumption_highway_kWh_per_100km": 20.2,
@@ -387,10 +388,11 @@
     "idealUserProfile": "Foyer urbain ou périurbain cherchant un mini-SUV au look affirmé. Mix urbain quotidien avec quelques sorties autoroute.",
     "notIdealFor": "Famille de 4 à l'arrière sur longs trajets, l'espace est compté."
   },
-  "lastUpdated": "2026-05-18",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "nyland",
-    "lachaineev"
+    "lachaineev",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

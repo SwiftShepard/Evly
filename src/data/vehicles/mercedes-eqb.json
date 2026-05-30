@@ -28,7 +28,8 @@
     "highway_130_km": 265,
     "urban_km": 450,
     "winter_minus5_km": 290,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 332
   },
   "consumption_mixed_kWh_per_100km": 18.5,
   "consumption_highway_kWh_per_100km": 24,
@@ -76,7 +77,17 @@
     }
   ],
   "rangeTests": [],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 665,
+    "averageSpeed_kmh": 90.2,
+    "averageConsumption_Wh_km": 291,
+    "chargingStops": null,
+    "averageTemperature_C": 0,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 4684,
   "width_mm": 1834,
   "height_mm": 1706,
@@ -183,7 +194,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 537,
-      "wltp_consumption_kWh_100km": 16.0,
+      "wltp_consumption_kWh_100km": 16,
       "realRange": {
         "mixed_km": 395,
         "highway_130_km": 285,
@@ -236,7 +247,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 537,
-      "wltp_consumption_kWh_100km": 16.0,
+      "wltp_consumption_kWh_100km": 16,
       "realRange": {
         "mixed_km": 395,
         "highway_130_km": 285,
@@ -289,7 +300,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 537,
-      "wltp_consumption_kWh_100km": 16.0,
+      "wltp_consumption_kWh_100km": 16,
       "realRange": {
         "mixed_km": 395,
         "highway_130_km": 285,
@@ -580,10 +591,12 @@
     "idealUserProfile": "Familles cherchant un SUV premium 7 places electrique.",
     "notIdealFor": "Gros rouleurs frequents en charge rapide."
   },
-  "lastUpdated": "2026-05-20",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "constructeur",
-    "automobile-propre"
+    "automobile-propre",
+    "nyland",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

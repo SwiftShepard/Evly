@@ -28,7 +28,8 @@
     "highway_130_km": 255,
     "urban_km": 475,
     "winter_minus5_km": 280,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 373
   },
   "consumption_mixed_kWh_per_100km": 16.8,
   "consumption_highway_kWh_per_100km": 23.5,
@@ -76,7 +77,17 @@
     }
   ],
   "rangeTests": [],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 640,
+    "averageSpeed_kmh": 93.8,
+    "averageConsumption_Wh_km": 258,
+    "chargingStops": null,
+    "averageTemperature_C": 10,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 4443,
   "width_mm": 1843,
   "height_mm": 1661,
@@ -291,10 +302,12 @@
     "idealUserProfile": "Familles recherchant un SUV électrique branché avec du caractère et un intérieur technologique haut de gamme.",
     "notIdealFor": "Conducteurs à la recherche d'une citadine agile et légère pour des manœuvres en ruelles étroites."
   },
-  "lastUpdated": "2026-05-22",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "constructeur",
-    "presse"
+    "presse",
+    "nyland",
+    "la-chaine-ev"
   ],
   "imageCredit": "MINI Presse"
 }

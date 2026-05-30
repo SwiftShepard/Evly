@@ -1,0 +1,655 @@
+Car,Surface,Temp,Tires,Season,Wheel front,Wheel rear,Speed,Wh/km,Capacity,km,mi,75 % range,75 % charging time,75 % km/h
+BMW i3s 120 Ah,Dry,2,Nokian R3,Winter,155/70-19,155/70-19,90,163,38,225,140,146,35,251
+BMW i3s 120 Ah,Dry,2,Nokian R3,Winter,155/70-19,155/70-19,120,231,38,165,102,107,35,184
+Hyundai Ioniq 28 kWh,Wet,−3,Nokian R3,Winter,205/55-16,205/55-16,90,156,28,180,112,117,18,390
+Hyundai Ioniq 28 kWh,Wet,−3,Nokian R3,Winter,205/55-16,205/55-16,120,206,28,135,84,88,18,293
+Kia e-Niro 64 kWh,Wet,−2,Continental VC7,Winter,215/55-17,215/55-17,90,180,65,375,233,244,42,348
+Kia Soul 30 kWh,Wet,−5,Nokian R3,Winter,205/60-16,205/60-16,90,198,29,145,90,94,,
+Kia Soul 30 kWh,Wet,−5,Nokian R3,Winter,205/60-16,205/60-16,120,268,29,110,68,72,,
+Nissan Leaf 40 kWh,Wet,−3,Continental VC6,Winter,215/50-17,215/50-17,90,178,37,200,124,130,,
+VW e-Up 18.7 kWh,Dry,2,Pirelli Ice Zero Fr,Winter,175/65-14,175/65-14,90,156,"15,5",100,62,65,,
+VW e-Up 18.7 kWh,Dry,2,Pirelli Ice Zero Fr,Winter,175/65-14,175/65-14,120,206,"15,5",75,47,49,,
+VW e-Golf 35.8 kWh,Dry,0,Hankook,Winter,205/55-16,205/55-16,120,214,29,136,84,88,31,171
+VW e-Golf 35.8 kWh,Dry,0,Hankook,Winter,205/55-16,205/55-16,90,149,29,190,118,124,31,239
+Tesla Model X 60D,Dry,10,,Summer,,,90,172,"56,6",320,199,208,28,446
+Jaguar I-Pace 90 kWh,Dry,8,,Summer,245/50-20,245/50-20,90,214,"81,8",382,237,248,45,331
+Tesla Model S P100DL,Dry,15,Michelin PS,Summer,245/35-21,245/35-21,90,178,92,515,320,335,34,591
+Kia e-Niro 64 kWh,Dry,26,,Summer,,,90,131,65,500,311,325,42,464
+Opel Ampera-e,Dry,20,,Summer,,,90,144,57,395,245,257,,
+Opel Ampera-e,Dry,20,,Summer,,,120,208,57,275,171,179,,
+Hyundai Kona 64 kWh,Dry,25,Nexen,Summer,,,90,127,65,510,317,332,42,474
+Hyundai Kona 64 kWh,Dry,28,Nexen,Summer,,,120,189,65,345,214,224,42,320
+Audi e-tron 55,Wet,−5,Nokian R3,Winter,255/55-19,255/55-19,90,253,"82,6",330,205,215,24,536
+Audi e-tron 55,Wet,−5,Nokian R3,Winter,255/55-19,255/55-19,120,321,"82,6",257,160,167,24,418
+Hyundai Kona 64 kWh,Wet,−15,Nokian R3,Winter,215/55-17,215/55-17,90,195,64,330,205,215,42,306
+Hyundai Kona 64 kWh,Wet,−13,Nokian R3,Winter,215/55-17,215/55-17,120,256,64,250,155,163,42,232
+VW e-Crafter,Wet,−3,Nokian CR3,Winter,205/75-16,205/75-16,90,363,"31,5",87,54,57,31,109
+Nissan e-NV200 40 kWh,Wet,−5,Continental VC6,Winter,185/65-15,185/65-15,90,227,37,163,101,106,,
+Nissan e-NV200 40 kWh,Wet,−5,Continental VC6,Winter,185/65-15,185/65-15,120,327,37,113,70,73,,
+Mitsubishi i-MiEV,Wet,0,Continental VC6,Winter,175/55-15,175/55-15,90,176,"14,5",82,51,53,,
+Mitsubishi i-MiEV,Wet,0,Continental VC6,Winter,175/55-15,175/55-15,120,251,"14,5",58,36,38,,
+Jaguar I-Pace 90 kWh,Wet,3,Continental VC6,Winter,255/50-20,255/50-20,90,229,"81,8",357,222,232,45,309
+Jaguar I-Pace 90 kWh,Wet,3,Continental VC6,Winter,255/50-20,255/50-20,120,311,"81,8",263,163,171,45,228
+Tesla Model 3 Performance,Dry,5,Nokian R3,Winter,235/35-20,235/35-20,90,171,74,433,269,281,21,804
+Tesla Model 3 Performance,Dry,5,Nokian R3,Winter,235/35-20,235/35-20,120,218,74,339,211,220,21,630
+Audi e-tron 55,Dry,18,Bridgestone Ale,Summer,255/50-20,255/50-20,90,225,"83,1",370,230,241,24,601
+Audi e-tron 55,Dry,18,Bridgestone Ale,Summer,255/50-20,255/50-20,120,308,"83,1",270,168,176,24,439
+Kia e-Soul 64 kWh,Dry,14,Nexen Nfera SU1,Summer,215/55-17,215/55-17,90,153,64,430,267,280,42,399
+Kia e-Soul 64 kWh,Dry,18,Nexen Nfera SU1,Summer,215/55-17,215/55-17,120,210,64,305,189,198,42,283
+Tesla Model X P90DL,Dry,12,Winrun R330,Summer,275/45-20,275/45-20,90,194,"81,8",422,262,274,35,470
+Tesla Model X P90DL,Dry,13,Winrun R330,Summer,275/45-20,275/45-20,120,261,"81,8",313,194,203,35,349
+Nissan Leaf 62 kWh,Dry,24,,Summer,215/50-17,215/50-17,90,151,56,370,230,241,36,401
+Nissan Leaf 62 kWh,Dry,24,,Summer,215/50-17,215/50-17,120,220,56,254,158,165,36,275
+Mercedes EQC,Dry,14,Pirelli Scorpion V,Summer,255/45-20,255/45-20,90,192,80,420,261,273,34,482
+Mercedes EQC,Dry,15,Pirelli Scorpion V,Summer,255/45-20,255/45-20,120,270,80,296,184,192,34,340
+Jaguar I-Pace 90 kWh,Dry,13,Michelin Latitude,Summer,235/65-18,235/65-18,90,196,"81,8",417,259,271,45,361
+Jaguar I-Pace 90 kWh,Dry,13,Michelin Latitude,Summer,235/65-18,235/65-18,120,269,"81,8",304,189,198,45,263
+Model X Long Range Raven,Dry,15,Michelin Lat Sp 3,Summer,255/45-20,275/45-20,90,177,92,520,323,338,34,596
+Model X Long Range Raven,Dry,18,Michelin Lat Sp 3,Summer,255/45-20,275/45-20,120,229,92,402,250,261,34,461
+2019 Tesla Model 3 SR+,Dry,24,Michelin Pri 4,Summer,235/45-18,235/45-18,90,122,49,402,250,261,22,713
+Model S Long Range Raven,Dry,19,Michelin PS4s,Summer,245/35-21,245/35-21,90,164,"92,8",566,352,368,34,649
+Renault Zoe 52 kWh,Dry,3,Nokian R3,Winter,195/55-16,195/55-16,90,147,"42,5",289,180,188,50,225
+Audi e-tron 50,Dry,0,Nokian R3,Winter,255/55-19,255/55-19,90,234,63,270,168,176,22,479
+Hyundai Ioniq 38 kWh,Wet,3,Nokian R3,Winter,215/55-17,215/55-17,90,138,"37,5",270,168,176,44,239
+VW e-Up 36.8 kWh,Dry,3,Nokian R3,Winter,175/65-14,175/65-14,90,147,29,198,123,129,42,184
+VW e-Up 36.8 kWh,Dry,3,Nokian R3,Winter,175/65-14,175/65-14,120,214,29,136,84,88,42,126
+MG ZS EV 44.5 kWh,Dry,−3,Continental VC7,Winter,215/50-17,215/50-17,90,195,"42,6",219,136,142,34,251
+MG ZS EV 44.5 kWh,Dry,−3,Continental VC7,Winter,215/50-17,215/50-17,120,295,"40,8",138,86,90,34,158
+Tesla Model 3 LR RWD,Dry,5,Continental VC7,Winter,235/45-18,235/45-18,90,156,"71,7",459,285,298,21,852
+Tesla Model 3 LR RWD,Dry,2,Continental VC7,Winter,235/45-18,235/45-18,110,205,"71,7",350,217,228,21,650
+Porsche Taycan 4S 79 kWh,Dry,12,Michelin PS4,Summer,245/45-20,285/40-20,90,173,76,439,273,285,18,951
+Porsche Taycan 4S 79 kWh,Dry,12,Michelin PS4,Summer,245/45-20,285/40-20,120,223,76,341,212,222,18,739
+Model S LR Raven,Dry,16,Michelin PS4,Summer,245/45-19,245/45-19,90,144,"92,7",644,400,419,34,739
+Model S LR Raven,Dry,15,Michelin PS4,Summer,245/45-19,245/45-19,120,196,"92,7",473,294,307,34,543
+Jaguar I-Pace 90 kWh,Dry,16,Michelin Latitude,Summer,235/65-18,235/65-18,90,192,82,427,265,278,45,370
+Peugeot e-208 GT,Dry,15,Michelin Pri 4,Summer,205/45-17,205/45-17,90,154,45,292,181,190,30,380
+Peugeot e-208 GT,Dry,11,Michelin Pri 4,Summer,205/45-17,205/45-17,120,241,45,187,116,122,30,243
+DS 3 e-tense,Dry,21,Michelin Pri 4,Summer,215/55-18,205/45-17,90,158,45,285,177,185,30,371
+DS 3 e-tense,Dry,18,Michelin Pri 4,Summer,215/55-18,215/55-18,120,235,45,191,119,124,30,248
+MG ZS EV 44.5 kWh,Dry,18,Michelin Pri 3,Summer,215/50-17,215/55-18,90,160,"42,5",266,165,173,34,305
+MG ZS EV 44.5 kWh,Dry,20,Michelin Pri 3,Summer,215/50-17,215/50-17,120,240,"41,5",173,107,112,34,198
+Honda e,Dry,26,Michelin PS4,Summer,205/45-17,225/45-17,90,151,"28,6",189,117,123,31,238
+Honda e,Dry,24,Michelin PS4,Summer,205/45-17,225/45-17,120,225,"27,2",121,75,79,31,152
+Audi e-tron 50 Sportback,Dry,19,Bridgestone Ale,Summer,255/50-20,255/50-20,90,201,"63,9",318,198,207,22,564
+Audi e-tron 50 Sportback,Dry,18,Bridgestone Ale,Summer,255/50-20,255/50-20,120,256,"63,3",247,153,161,22,438
+Mini Cooper SE,Dry,19,Hankook evo3,Summer,205/45-17,205/45-17,90,128,"30,3",236,147,153,,
+Mini Cooper SE,Dry,19,Hankook evo3,Summer,205/45-17,205/45-17,120,177,"28,8",163,101,106,,
+Xpeng P7 Performance,Dry,21,Michelin PS4,Summer,245/45-19,245/45-19,90,150,"73,8",492,306,320,44,436
+Xpeng P7 Performance,Dry,18,Michelin PS4,Summer,245/45-19,245/45-19,120,212,"73,8",348,216,226,44,308
+Model 3 Performance w/mudflaps,Dry,24,Winrun R330,Summer,235/45-18,235/45-18,90,141,"73,5",521,324,339,21,968
+Model 3 Performance w/mudflaps,Dry,22,Winrun R330,Summer,235/45-18,235/45-18,120,188,"73,5",391,243,254,21,726
+Porsche Taycan 4S 93 kWh,Dry,27,Hankook evo3,Summer,225/55-19,275/45-19,90,150,"86,9",579,360,376,18,1255
+Porsche Taycan 4S 93 kWh,Dry,20,Hankook evo3,Summer,225/55-19,275/45-19,120,203,"86,1",425,264,276,18,921
+Polestar 2 LR DM,Dry,20,Michelin Pri 4,Summer,245/45-19,245/45-19,90,167,"72,8",435,270,283,33,514
+Polestar 2 LR DM,Dry,18,Michelin Pri 4,Summer,245/45-19,245/45-19,120,229,"69,8",305,189,198,33,360
+Model S P85 7 seater,Dry,15,Nokian Hakka Black 2,Summer,245/35-21,245/35-21,90,170,75,441,274,287,49,351
+Model S P85 7 seater,Dry,13,Nokian Hakka Black 2,Summer,245/35-21,245/35-21,120,222,75,338,210,220,49,269
+Peugeot e-2008 GT,Dry,19,Michelin Pri 4,Summer,215/55-18,215/55-18,90,150,45,300,186,195,30,390
+Peugeot e-2008 GT,Dry,18,Michelin Pri 4,Summer,215/55-18,215/55-18,120,225,"44,5",198,123,129,30,257
+Tesla Model S LR Raven,Dry,16,Mag + Winrun R330,Summer,245/45-19,245/45-19,90,152,"92,7",610,379,397,34,700
+Tesla Model S LR Raven,Dry,15,Mag + Winrun R330,Summer,245/45-19,245/45-19,120,211,"92,7",439,273,285,34,504
+Maxus e-Deliver 3,Dry,10,Wanli S-2028,Summer,185/65-15,185/65-15,90,218,"50,9",233,145,151,44,207
+VW ID3 1st 62 kWh,Dry,20,Bridgestone Turanza Eco,Summer,215/55-18,215/55-18,90,135,"55,8",413,257,268,30,537
+VW ID3 1st 62 kWh,Dry,12,Bridgestone Turanza Eco,Summer,215/55-18,215/55-18,120,205,"55,6",271,168,176,30,352
+VW ID3 1st Max 62 kWh,Dry,18,Bridgestone Turanza Eco,Summer,215/45-20,215/45-20,90,142,"55,8",393,244,255,30,511
+VW ID3 1st Max 62 kWh,Dry,18,Bridgestone Turanza Eco,Summer,215/45-20,215/45-20,120,210,"55,6",265,165,172,30,345
+VW ID3 1st Plus 62 kWh,Dry,12,Continental EC6,Summer,215/50-19,215/50-19,90,152,"55,8",367,228,239,30,477
+VW ID3 1st Plus 62 kWh,Dry,13,Continental EC6,Summer,215/50-19,215/50-19,120,201,"55,6",277,172,180,30,360
+BMW i3 42 kWh,Dry,12,Continental VC7,Winter,155/70-19,155/70-19,90,151,39,259,161,168,35,289
+BMW i3 42 kWh,Dry,11,Continental VC7,Winter,155/70-19,155/70-19,120,218,"38,6",177,110,115,35,197
+Mazda MX-30,Wet,3,Continental VC7,Winter,215/55-18,215/55-18,90,189,30,159,99,103,35,177
+Mazda MX-30,Wet,3,Continental VC7,Winter,215/55-18,215/55-18,120,274,30,110,68,72,35,123
+Xpeng G3 520i,Wet,−3,Nokian R3,Winter,215/55-17,215/55-17,90,199,"60,6",304,189,198,53,224
+Xpeng G3 520i,Wet,−5,Nokian R3,Winter,215/55-17,215/55-17,120,257,"60,6",236,147,153,53,174
+Tesla Model 3 LR 2021,Wet,2,Nokian R3,Winter,235/45-18,235/45-18,90,149,"69,9",468,291,304,31,589
+Tesla Model 3 LR 2021,Wet,2,Nokian R3,Winter,235/45-18,235/45-18,120,208,"69,2",333,207,216,31,419
+Jaguar I-Pace EV320,Wet,−2,Continental VC7,Winter,255/50-20,255/50-20,90,225,"83,8",372,231,242,45,322
+Jaguar I-Pace EV320,Wet,−2,Continental VC7,Winter,255/50-20,255/50-20,120,305,"83,8",275,171,179,45,238
+Volvo XC40 78 kWh AWD,Wet,6,Continental VC7,Winter,235/50-19,255/45-19,90,233,"72,9",313,194,203,34,359
+Volvo XC40 78 kWh AWD,Wet,6,Continental VC7,Winter,235/50-19,255/45-19,120,322,"72,1",224,139,146,34,257
+Tesla Model 3 Performance 2021,Wet,1,Frigus EV Ice 3,Winter,235/45-18,235/45-18,90,174,76,438,272,285,30,569
+Tesla Model 3 Performance 2021,Wet,0,Frigus EV Ice 3,Winter,235/45-18,235/45-18,120,219,"75,2",343,213,223,30,446
+Tesla Model 3 LR 2021,Dry,−16,Nokian R3,Winter,235/45-18,235/45-18,90,175,"69,9",399,248,259,31,502
+Tesla Model 3 LR 2021,Dry,−16,Nokian R3,Winter,235/45-18,235/45-18,120,228,"69,2",304,189,198,31,382
+VW ID3 1st Plus,Dry,−20,Nokian R3,Winter,215/55-18,215/55-18,90,227,"55,8",246,153,160,30,320
+VW ID3 1st Plus,Dry,−20,Nokian R3,Winter,215/55-18,215/55-18,120,296,"55,6",188,117,122,30,244
+VW ID3 1st Plus,Dry,−10,Nokian R3,Winter,215/55-18,215/55-18,90,201,"55,7",278,173,181,30,361
+VW ID3 1st Plus,Dry,−8,Nokian R3,Winter,215/55-18,215/55-18,120,271,"55,6",205,127,133,30,267
+Nissan Leaf 62 kWh,Dry,−10,Nokian R3,Winter,215/50-17,215/50-17,90,196,"51,4",262,163,170,36,284
+Nissan Leaf 62 kWh,Dry,−12,Nokian R3,Winter,215/50-17,215/50-17,120,271,"51,2",180,112,117,36,195
+Mercedes EQV,Dry,−12,Nokian R3,Winter,245/55-17,245/55-17,90,344,"84,5",245,152,159,38,251
+Mercedes EQV,Dry,−14,Nokian R3,Winter,245/55-17,245/55-17,120,459,"84,5",186,116,121,38,191
+Ford Mustang Mach-E LR AWD,Wet,−5,Continental VC7,Winter,225/55-19,225/55-19,90,240,84,350,217,228,38,359
+Ford Mustang Mach-E LR AWD,Wet,−5,Continental VC7,Winter,225/55-19,225/55-19,120,320,84,263,163,171,38,270
+Polestar 2,Dry,4,Continental VC7,Winter,245/45-19,245/45-19,90,203,"74,4",366,227,238,36,397
+Tesla Model S P85 (MF),Dry,10,Frigus EV Ice 3,Summer,245/45-19,245/45-19,90,172,"64,9",379,235,246,,
+Tesla Model S P85 (MF),Dry,0,Frigus EV Ice 3,Summer,245/45-19,245/45-19,120,239,"63,5",258,160,168,,
+VW ID4 1st 82 kWh,Dry,15,Hankook Ventus S1evo3,Summer,235/50-20,255/45-20,90,167,75,449,279,292,32,547
+VW ID4 1st 82 kWh,Dry,9,Hankook Ventus S1evo3,Summer,235/50-20,255/45-20,120,251,"74,6",297,184,193,32,362
+VW ID3 82 kWh,Dry,8,Goodyear EfficientGrip,Summer,215/50-19,215/50-19,90,162,"75,5",466,289,303,32,568
+VW ID3 82 kWh,Dry,5,Goodyear EfficientGrip,Summer,215/50-19,215/50-19,120,231,"75,5",325,202,211,32,396
+2021 Tesla Model 3 SR+,Dry,11,Michelin PS4,Summer,235/45-18,235/45-18,90,130,"50,9",391,243,254,28,545
+2021 Tesla Model 3 SR+,Dry,10,Michelin PS4,Summer,235/45-18,235/45-18,120,180,"50,9",283,176,184,28,394
+BMW iX3,Dry,12,Bridgestone Alenza,Summer,245/45-20,275/40-20,90,168,"74,2",442,275,287,27,638
+BMW iX3,Dry,17,Bridgestone Alenza,Summer,245/45-20,275/40-20,120,235,"74,7",318,198,207,27,459
+Lexus UX 300e,Dry,10,Bridgestone Turanza,Summer,225/50-18,225/50-18,90,201,"41,2",205,127,133,39,205
+Lexus UX 300e,Dry,10,Bridgestone Turanza,Summer,225/50-18,225/50-18,120,272,"44,7",166,103,108,39,166
+Skoda Enyaq iV 80,Dry,9,Pirelli Scorpion V,Summer,235/45-21,235/45-21,90,166,75,452,281,294,32,551
+Skoda Enyaq iV 80,Dry,7,Pirelli Scorpion V,Summer,235/45-21,235/45-21,120,236,"74,6",316,196,205,32,385
+2022 Mercedes EQA 250,Dry,13,Bridgestone Alenza,Summer,235/55-18,235/55-18,90,167,"65,1",390,242,254,27,563
+2022 Mercedes EQA 250,Dry,11,Bridgestone Alenza,Summer,235/55-18,235/55-18,120,238,"64,4",271,168,176,27,391
+Audi e-tron GT,Dry,16,Goodyear Eagle F1,Summer,265/35-21,305/30-21,90,173,"84,6",490,304,319,18,1062
+Audi e-tron GT,Dry,14,Goodyear Eagle F1,Summer,265/35-21,305/30-21,120,224,"84,6",378,235,246,18,819
+2021 Tesla Model 3 SR+,Dry,24,Michelin PS4,Summer,235/45-18,235/45-18,90,128,"50,9",398,247,259,28,554
+2021 Tesla Model 3 SR+,Dry,22,Michelin PS4,Summer,235/45-18,235/45-18,120,172,"50,9",296,184,192,28,412
+VW ID4 GTX 82 kWh,Dry,22,Pirelli Scorpion,Summer,235/45-21,255/40-21,90,160,75,456,283,296,32,556
+VW ID4 GTX 82 kWh,Dry,24,Pirelli Scorpion,Summer,235/45-21,255/40-21,120,221,"74,6",330,205,215,32,402
+2021 Tesla Model 3 SR+ MIC,Dry,24,Michelin PS4,Summer,235/45-18,235/45-18,90,122,"49,8",408,253,265,22,723
+2021 Tesla Model 3 SR+ MIC,Dry,23,Michelin PS4,Summer,235/45-18,235/45-18,120,166,"49,8",300,186,195,22,532
+Audi Q4 e-tron 40,Dry,20,Bridgestone Turanza Eco,Summer,235/55-19,255/50-19,90,154,75,487,302,317,32,594
+Audi Q4 e-tron 40,Dry,20,Bridgestone Turanza Eco,Summer,235/55-19,255/50-19,120,225,"74,6",332,206,216,32,405
+2021 Tesla Model 3 LR (82 kWh),Dry,27,Michelin PS4,Summer,235/45-18,235/45-18,90,136,"76,5",563,350,366,28,784
+2021 Tesla Model 3 LR (82 kWh),Dry,25,Michelin PS4,Summer,235/45-18,235/45-18,120,180,76,422,262,274,28,588
+Hyundai Ioniq 5 AWD,Dry,25,Michelin Primacy 4,Summer,235/55-19,235/55-19,90,153,"70,6",461,286,300,17,1058
+Hyundai Ioniq 5 AWD,Dry,21,Michelin Primacy 4,Summer,235/55-19,235/55-19,120,244,"70,6",289,180,188,17,663
+Citroen e-C4,Dry,27,Michelin e Primacy,Summer,195/60-18,195/60-18,90,137,"40,9",299,186,194,24,486
+Citroen e-C4,Dry,22,Michelin e Primacy,Summer,195/60-18,195/60-18,120,207,"40,9",198,123,129,24,322
+Opel Mokka-e,Dry,25,Michelin Primacy 4,Summer,215/55-18,215/55-18,90,148,"42,9",290,180,189,24,471
+Opel Mokka-e,Dry,20,Michelin Primacy 4,Summer,215/55-18,215/55-18,120,221,"42,9",194,120,126,24,315
+Citroen e-Spacetourer,Dry,19,Michelin Primacy 4,Summer,225/55-17,225/55-17,90,211,"62,2",295,183,192,34,338
+Citroen e-Spacetourer,Dry,17,Michelin Primacy 4,Summer,225/55-17,225/55-17,120,346,"62,2",180,112,117,34,206
+Opel Corsa-e,Dry,21,Michelin Primacy 4,Summer,195/55-16,195/55-16,90,140,"40,9",292,181,190,24,475
+Opel Corsa-e,Dry,19,Michelin Primacy 4,Summer,195/55-16,195/55-16,120,205,"40,9",200,124,130,24,325
+Fiat 500e,Dry,21,Continental EC6,Summer,205/45-17,205/45-17,90,146,"36,2",249,155,162,25,388
+Fiat 500e,Dry,17,Continental EC6,Summer,205/45-17,205/45-17,120,213,"36,2",170,106,111,25,265
+Ford Mustang Mach-E LR RWD,Dry,18,Continental PreCon 6,Summer,225/60-18,225/60-18,90,160,"85,6",535,332,348,38,549
+Ford Mustang Mach-E LR RWD,Dry,15,Continental PreCon 6,Summer,225/60-18,225/60-18,120,240,"85,6",357,222,232,38,366
+2021 Tesla Model 3 SR+ MIC,Dry,20,Michelin PS4,Summer,235/45-18,235/45-18,90,118,"52,6",443,275,288,22,785
+2021 Tesla Model 3 SR+ MIC,Dry,19,Michelin PS4,Summer,235/45-18,235/45-18,120,168,"52,6",313,194,203,22,555
+Tesla Model S P85 (MF),Dry,19,Goodyear Eagle RS-A1,Summer,245/45-19,245/45-19,90,160,"65,9",412,256,268,,
+Tesla Model S P85 (MF),Dry,17,Goodyear Eagle RS-A1,Summer,245/45-19,245/45-19,120,218,"65,9",302,188,196,,
+Tesla Model Y LR,Dry,21,Winrun R330,Summer,235/55-18,235/55-18,90,148,70,473,294,307,31,595
+Tesla Model Y LR,Dry,17,Winrun R330,Summer,235/55-18,235/55-18,120,206,70,340,211,221,31,428
+Tesla Model Y LR (caps on),Dry,20,Hankook evo3,Summer,255/45-19,255/45-19,90,142,70,493,306,320,31,620
+Tesla Model Y LR (caps on),Dry,18,Hankook evo3,Summer,255/45-19,255/45-19,120,195,70,359,223,233,31,452
+Tesla Model Y LR (caps off),Dry,20,Hankook evo3,Summer,255/45-19,255/45-19,90,146,70,479,298,311,31,603
+Tesla Model Y LR (caps off),Dry,21,Hankook evo3,Summer,255/45-19,255/45-19,120,201,70,348,216,226,31,438
+VW ID3 55 kWh,Dry,15,Goodyear EfficientGrip,Summer,215/55-18,215/55-18,90,137,"43,5",316,196,205,25,493
+VW ID3 55 kWh,Dry,16,Goodyear EfficientGrip,Summer,215/55-18,215/55-18,120,199,"43,5",219,136,142,25,342
+Nio ES8 100 kWh,Dry,11,Continental MC6,Summer,265/45-21,265/45-21,90,221,"87,9",397,247,258,38,407
+Nio ES8 100 kWh,Dry,6,Continental MC6,Summer,265/45-21,265/45-21,120,300,"87,9",293,182,190,38,301
+Mercedes EQC,Wet,11,Nokian R3,Winter,235/50-20,255/45-20,90,205,80,390,242,254,34,447
+Mercedes EQC,Wet,11,Nokian R3,Winter,235/50-20,255/45-20,120,282,80,284,176,185,34,326
+Maxus Euniq 5,Dry,7,Nokian R3,Winter,215/55-17,215/55-17,90,200,"52,1",267,166,174,35,298
+Maxus Euniq 5,Dry,7,Nokian R3,Winter,215/55-17,215/55-17,120,281,"52,1",185,115,120,35,206
+Kia EV6 AWD,Dry,1,Nokian R3,Winter,235/55-19,235/55-19,90,180,"72,4",402,250,261,17,922
+Kia EV6 AWD,Dry,1,Nokian R3,Winter,235/55-19,235/55-19,120,264,"72,4",274,170,178,17,629
+2021 Tesla Model 3 SR+ MIC,Wet,1,Frigus EV Ice 3,Winter,235/45-18,235/45-18,90,152,"52,6",346,215,225,22,613
+2021 Tesla Model 3 SR+ MIC,Wet,1,Frigus EV Ice 3,Winter,235/45-18,235/45-18,120,202,"52,6",263,163,171,22,466
+Polestar 2 SR SM,Dry,1,Continental VC7,Winter,245/45-19,245/45-19,90,176,"58,6",333,207,216,28,464
+Polestar 2 SR SM,Dry,−1,Continental VC7,Winter,245/45-19,245/45-19,120,242,"58,6",242,150,157,28,337
+Polestar 2 Performance,Dry,0,Michelin X-Ice Snow,Winter,245/40-20,245/40-20,90,215,"74,4",346,215,225,35,386
+Polestar 2 Performance,Dry,0,Michelin X-Ice Snow,Winter,245/40-20,245/40-20,120,266,"74,4",280,174,182,35,312
+Mercedes EQS 580 4Matic,Dry,4,Nokian R3,Winter,265/40-21,265/40-21,90,209,"106,7",511,317,332,28,712
+Mercedes EQS 580 4Matic,Dry,4,Nokian R3,Winter,265/40-21,265/40-21,120,264,"106,7",404,251,263,28,563
+Tesla Model 3 SR+ 60 kWh LFP,Wet,−3,Sailun Ice Blazer Arctic,Winter,235/45-18,235/45-18,90,142,"57,5",404,251,263,27,584
+Tesla Model 3 SR+ 60 kWh LFP,Wet,−3,Sailun Ice Blazer Arctic,Winter,235/45-18,235/45-18,120,199,"57,5",289,180,188,27,417
+Mercedes EQA 350 4Matic,Wet,2,Nokian R3,Winter,235/50-19,235/50-19,90,203,"65,1",321,199,209,27,464
+Mercedes EQA 350 4Matic,Wet,2,Nokian R3,Winter,235/50-19,235/50-19,120,283,"64,4",228,142,148,27,329
+BMW i4 M50,Wet,1,Pirelli P Zero Winter,Winter,245/40-19,255/40-19,90,207,"79,4",385,239,250,26,578
+BMW i4 M50,Wet,2,Pirelli P Zero Winter,Winter,245/40-19,255/40-19,120,279,"79,4",285,177,185,26,428
+BMW iX xDrive50,Dry,4,Michelin Pilot Alpin 5,Winter,255/50-21,255/50-21,90,217,"106,6",489,304,318,29,658
+BMW iX xDrive50,Wet,1,Michelin Pilot Alpin 5,Winter,255/50-21,255/50-21,120,292,"106,6",365,227,237,29,491
+Mercedes EQB 350 4Matic,Dry,0,Nokian R3,Winter,235/50-19,235/50-19,90,196,"65,1",332,206,216,27,480
+Mercedes EQB 350 4Matic,Dry,−2,Nokian R3,Winter,235/50-19,235/50-19,120,275,"64,4",234,145,152,27,338
+Kia EV6 77 kWh RWD,Dry,5,Nokian R3,Winter,235/55-19,235/55-19,90,166,"73,9",445,276,289,17,1021
+Kia EV6 77 kWh RWD,Dry,2,Nokian R3,Winter,235/55-19,235/55-19,120,248,"73,9",298,185,194,17,684
+Tesla Model 3 SR+ 60 kWh LFP,Dry,−1,Nokian R5,Winter,235/45-18,235/45-18,90,140,"56,9",406,252,264,27,586
+Tesla Model 3 SR+ 60 kWh LFP,Dry,1,Nokian R5,Winter,235/45-18,235/45-18,120,194,"56,9",293,182,190,27,423
+Cupra Born 58,Dry,3,Nokian R3,Winter,215/50-19,215/50-19,90,167,"55,8",334,207,217,30,434
+Cupra Born 58,Dry,4,Nokian R3,Winter,215/50-19,215/50-19,120,231,"55,6",241,150,157,30,313
+Volvo C40 AWD,Dry,12,Continental VC7,Winter,235/50-19,255/45-19,90,199,"75,8",381,237,248,34,437
+Volvo C40 AWD,Dry,10,Continental VC7,Winter,235/50-19,255/45-19,120,283,"75,2",266,165,173,34,305
+Audi e-tron 55 Black Edition,Dry,2,Nokian R3,Winter,265/45-21,265/45-21,90,232,"85,7",370,230,241,24,601
+Audi e-tron 55 Black Edition,Dry,4,Nokian R3,Winter,265/45-21,265/45-21,120,306,"84,7",277,172,180,24,450
+Tesla Model Y LR,Dry,4,Nokian R3,Winter,255/45-19,255/45-19,90,155,70,452,281,294,27,653
+Tesla Model Y LR,Dry,5,Nokian R3,Winter,255/45-19,255/45-19,120,214,70,327,203,213,27,472
+Volvo XC40 69 kWh FWD,Dry,17,Continental VC7,Winter,235/50-19,255/45-19,90,175,63,360,224,234,26,540
+Volvo XC40 69 kWh FWD,Dry,17,Continental VC7,Winter,235/50-19,255/45-19,120,265,"62,5",234,145,152,26,351
+BMW iX xDrive40,Dry,16,Bridgestone Alenza,Summer,255/50-21,255/50-21,90,170,"70,5",415,258,270,30,540
+BMW iX xDrive40,Dry,11,Bridgestone Alenza,Summer,255/50-21,255/50-21,120,242,"70,5",291,181,189,30,378
+Porsche Taycan Cross Turismo 4,Dry,17,Goodyear Eagle F1,Summer,265/35-21,305/30-21,90,190,"84,6",445,276,289,18,964
+Porsche Taycan Cross Turismo 4,Dry,16,Goodyear Eagle F1,Summer,265/35-21,305/30-21,120,255,"84,6",327,203,213,18,709
+Tesla Model 3 Performance,Dry,20,Pirelli P Zero,Summer,235/35-20,235/35-20,90,147,"76,5",520,323,338,28,724
+Tesla Model 3 Performance,Dry,20,Pirelli P Zero,Summer,235/35-20,235/35-20,120,197,76,386,240,251,28,538
+Tesla Model Y Performance,Dry,19,Pirelli P Zero,Summer,255/35-21,275/35-21,90,146,"74,4",510,317,332,28,710
+Tesla Model Y Performance,Dry,18,Pirelli P Zero,Summer,255/35-21,275/35-21,120,205,74,361,224,235,28,503
+VW ID5 GTX 82 kWh,Dry,20,Pirelli Scorpion,Summer,235/45-21,255/40-21,90,154,"73,4",477,296,310,34,547
+VW ID5 GTX 82 kWh,Dry,20,Pirelli Scorpion,Summer,235/45-21,255/40-21,120,220,"73,4",334,207,239,34,421
+Mercedes EQE 43 AMG,Dry,25,Yokohama Advan Sport,Summer,265/40-20,295/35-20,90,184,"89,4",487,302,317,27,703
+Mercedes EQE 43 AMG,Dry,20,Yokohama Advan Sport,Summer,265/40-20,295/35-20,120,252,"89,4",355,220,231,27,513
+Tesla Model Y Performance,Dry,26,Falken Azenis FK520,Summer,255/45-19,255/45-19,90,145,"74,4",513,319,333,28,715
+Tesla Model Y Performance,Dry,26,Falken Azenis FK520,Summer,255/45-19,255/45-19,120,197,74,376,234,244,28,524
+BMW i4 eDrive40,Dry,18,Hankook Ventus S1evo3,Summer,245/45-18,255/45-18,90,134,"80,3",599,372,389,26,899
+BMW i4 eDrive40,Dry,20,Hankook Ventus S1evo3,Summer,245/45-18,255/45-18,120,184,"80,3",436,271,283,26,654
+Skoda Enyaq Coupé RS,Dry,21,Pirelli Scorpion,Summer,235/45-21,255/40-21,90,153,"73,4",477,296,310,34,547
+Skoda Enyaq Coupé RS,Dry,18,Pirelli Scorpion,Summer,235/45-21,255/40-21,120,212,"73,4",346,215,225,34,397
+Ford Mustang Mach-E GT,Dry,16,Pirelli P Zero,Summer,245/45-20,245/45-20,90,198,"85,6",432,268,281,40,421
+Ford Mustang Mach-E GT,Dry,14,Pirelli P Zero,Summer,245/45-20,245/45-20,120,271,"85,6",316,196,205,40,308
+BYD Tang,Dry,17,Continental ContiSportContact,Summer,265/40-22,265/40-22,90,216,"83,4",386,240,251,37,407
+BYD Tang,Dry,15,Continental ContiSportContact,Summer,265/40-22,265/40-22,120,317,"83,4",263,163,171,37,277
+BMW i4 M50,Dry,18,Hankook Ventus S1evo3,Summer,245/40-19,255/40-19,90,155,"80,3",518,322,337,26,777
+BMW i4 M50,Dry,16,Hankook Ventus S1evo3,Summer,245/40-19,255/40-19,120,217,"80,3",370,230,241,26,555
+Mercedes EQS 450+,Dry,21,Goodyear Eagle F1,Summer,265/40-21,265/40-21,90,150,"106,7",711,442,462,28,990
+Mercedes EQS 450+,Dry,20,Goodyear Eagle F1,Summer,265/40-21,265/40-21,120,198,"106,7",539,335,350,28,751
+Hongqi E-HS9,Dry,18,Michelin PS4 SUV,Summer,265/45-21,265/45-21,90,218,"86,5",402,250,261,33,475
+Hongqi E-HS9,Dry,13,Michelin PS4 SUV,Summer,265/45-21,265/45-21,120,321,"86,5",269,167,175,33,318
+MG Marvel R Performance,Dry,12,Michelin Primacy 4,Summer,235/45-19,235/45-19,90,182,"69,7",383,238,249,38,393
+MG Marvel R Performance,Dry,9,Michelin Primacy 4,Summer,235/45-19,235/45-19,120,284,"69,7",245,152,159,38,251
+Xpeng P7 Performance Wing Edition,Dry,8,Michelin PS4,Summer,245/45-19,245/45-19,90,193,"72,3",376,234,244,44,333
+Xpeng P7 Performance Wing Edition,Dry,4,Michelin PS4,Summer,245/45-19,245/45-19,120,242,"72,3",299,186,194,44,265
+Nissan Ariya 63 kWh,Dry,13,Michelin Primacy 4,Summer,255/40-20,255/40-20,90,171,"58,5",342,212,222,26,513
+Nissan Ariya 63 kWh,Dry,13,Michelin Primacy 4,Summer,255/40-20,255/40-20,120,252,"58,5",232,144,151,26,348
+Nissan Ariya 87 kWh FWD,Dry,10,Michelin Primacy 4,Summer,255/40-20,255/40-20,90,179,"79,9",447,278,291,30,581
+Nissan Ariya 87 kWh FWD,Dry,8,Michelin Primacy 4,Summer,255/40-20,255/40-20,120,259,"79,9",308,191,200,30,400
+Mercedes EQS 580 4Matic,Dry,11,Goodyear Eagle F1,Summer,265/40-21,265/40-21,90,167,"106,7",639,397,415,28,890
+Mercedes EQS 580 4Matic,Dry,11,Goodyear Eagle F1,Summer,265/40-21,265/40-21,120,223,"106,7",478,297,311,28,666
+Voyah Free,Dry,9,Michelin Primacy 4,Summer,255/45-20,255/45-20,90,229,"97,6",426,265,277,,
+Voyah Free,Dry,7,Michelin Primacy 4,Summer,255/45-20,255/45-20,120,298,"97,6",328,204,213,,
+Kia Niro EV,Dry,12,Continental EC6,Summer,215/55-17,215/55-17,90,154,"64,3",416,258,270,38,427
+Kia Niro EV,Dry,11,Continental EC6,Summer,215/55-17,215/55-17,120,223,"64,3",288,179,187,38,296
+Mercedes EQE 53 4Matic+,Dry,12,Continental VC7,Winter,265/35-21,265/35-21,90,187,"89,4",478,297,311,27,690
+Mercedes EQE 53 4Matic+,Dry,13,Continental VC7,Winter,265/35-21,265/35-21,120,248,"89,4",360,224,234,27,520
+VW ID Buzz 82 kWh,Dry,10,Hankook Ventus S1evo3,Summer,235/45-21,265/40-21,90,206,"74,5",362,225,235,26,543
+VW ID Buzz 82 kWh,Dry/wet,7,Hankook Ventus S1evo3,Summer,235/45-21,265/40-21,120,302,"74,5",247,153,161,26,371
+Mercedes EQE 300,Dry,9,Nokian R5,Winter,255/45-19,255/45-19,90,163,"89,4",548,340,356,27,792
+Mercedes EQE 300,Dry,9,Nokian R5,Winter,255/45-19,255/45-19,120,218,"89,4",411,255,267,27,594
+Mercedes EQV 300,Dry/wet,4,Nokian R3,Winter,245/55-17,245/55-17,90,293,"84,5",299,186,194,38,307
+Mercedes EQV 300,Wet,4,Nokian R3,Winter,245/55-17,245/55-17,120,404,"84,5",209,130,136,38,215
+MG5,Wet,6,Nokian R5,Winter,215/50-17,215/50-17,90,173,"55,5",321,199,209,30,417
+MG5,Wet,6,Nokian R5,Winter,215/50-17,215/50-17,120,247,"55,5",225,140,146,30,293
+Mercedes EQS 53 4Matic+,Wet,3,Nokian R3,Winter,265/40-21,265/40-21,90,222,"106,7",481,299,313,28,670
+Mercedes EQS 53 4Matic+,Wet,6,Nokian R3,Winter,265/40-21,265/40-21,120,274,"106,7",389,242,253,28,542
+VW ID Buzz Cargo 82 kWh,Dry/wet,10,Continental EcoContact 6Q,Winter,235/50-20,265/45-20,90,209,"74,5",356,221,231,26,534
+VW ID Buzz Cargo 82 kWh w/trailer,Dry/wet,9,Continental EcoContact 6Q,Winter,235/50-20,265/45-20,90,340,"74,5",219,136,142,26,329
+VW ID Buzz Cargo 82 kWh,Dry/wet,10,Continental EcoContact 6Q,Winter,235/50-20,265/45-20,120,285,"74,5",261,162,170,26,392
+Renault Megane E-Tech 60 kWh,Dry,13,Nokian R3,Winter,215/45-20,215/45-20,90,147,"54,5",371,230,241,33,438
+Renault Megane E-Tech 60 kWh,Dry,13,Nokian R3,Winter,215/45-20,215/45-20,120,199,"54,5",274,170,178,33,324
+Nissan Ariya 87 kWh FWD,Wet,1,Continental VC7,Winter,235/55-19,235/55-19,90,194,"79,9",412,256,268,30,536
+Nissan Ariya 87 kWh FWD,Wet,1,Continental VC7,Winter,235/55-19,235/55-19,120,274,"79,9",292,181,190,30,380
+MG ZS EV 72 kWh,Wet,2,Continental VC7,Winter,215/50-17,215/50-17,90,190,"67,6",356,221,231,35,397
+MG ZS EV 72 kWh,Wet,2,Continental VC7,Winter,215/50-17,215/50-17,120,260,"67,6",260,161,169,35,290
+VW ID Buzz Pro 82 kWh,Dry,−4,Continental VC7,Winter,235/50-20,265/45-20,90,266,"74,5",280,174,182,26,420
+VW ID Buzz Pro 82 kWh,Dry,−4,Continental VC7,Winter,235/50-20,265/45-20,120,355,"74,5",210,130,137,26,315
+BYD Atto 3 60 kWh,Dry,25,Atlas Batman A51,Summer,215/55-18,215/55-18,90,134,"59,6",445,276,289,40,434
+Ora Good Cat 500 Ultra,Dry,20,GitiComfort,Summer,215/50-18,215/50-18,90,140,59,420,261,273,49,334
+Ora Good Cat GT,Dry,27,GitiComfort,Summer,215/50-18,215/50-18,90,148,"56,8",384,239,250,49,306
+Tesla Model Y RWD,Dry,20,Hankook Ventus S1evo3,Summer,255/45-19,255/45-19,90,129,"56,8",440,273,286,27,636
+BMW i7 xDrive60,Dry,30,Bridgestone Turanza,Summer,255/40-21,285/35-21,90,160,101,631,392,410,29,849
+Volvo XC40 78 kWh AWD,Dry,20,Pirelli P Zero,Summer,235/50-19,255/45-19,90,185,75,405,252,263,34,465
+Volvo XC40 78 kWh AWD,Dry,19,Pirelli P Zero,Summer,235/50-19,255/45-19,120,261,75,288,179,187,34,330
+MG4 51 kWh,Dry,20,Continental PremiumContact C,Summer,215/50-17,215/50-17,90,150,"49,5",330,205,215,31,415
+MG4 51 kWh,Dry,20,Continental PremiumContact C,Summer,215/50-17,215/50-17,120,219,"49,5",226,140,147,31,284
+Mercedes EQS 500 4Matic,Dry,21,Goodyear Eagle F1,Summer,265/40-21,265/40-21,90,160,"108,4",678,421,441,28,944
+Mercedes EQS 500 4Matic,Dry,20,Goodyear Eagle F1,Summer,265/40-21,265/40-21,120,210,"108,4",516,320,335,28,719
+Tesla Model S Plaid,Wet,5,Nokian R5,Winter,245/45-19,275/40-19,90,170,"92,1",542,337,352,25,846
+Tesla Model S Plaid,Wet,6,Nokian R5,Winter,245/45-19,275/40-19,120,235,"92,1",392,243,255,25,612
+Tesla Model S LR Palladium,Dry,8,Nokian R5,Winter,245/45-19,275/40-19,90,157,"92,1",587,365,382,25,916
+Tesla Model S LR Palladium,Dry,7,Nokian R5,Winter,245/45-19,275/40-19,120,216,"92,1",426,265,277,25,665
+Toyota bZ4X AWD,Dry,7,Nokian R5,Winter,235/60-18,235/60-18,90,205,"60,8",297,184,193,30,386
+Toyota bZ4X AWD,Dry,6,Nokian R5,Winter,235/60-18,235/60-18,120,293,"60,8",207,129,135,30,269
+Nio ET7 100 kWh,Dry,−1,Nokian R5,Winter,245/50-19,245/50-19,90,187,"85,8",459,285,298,38,471
+Nio ET7 100 kWh,Dry,−1,Nokian R5,Winter,245/50-19,245/50-19,120,250,"85,8",343,213,223,38,352
+Tesla Model S Plaid (caps off),Dry,4,Nokian R5,Winter,245/50-19,245/50-19,90,176,"92,1",523,325,340,25,816
+Tesla Model S Plaid (caps off),Dry,4,Nokian R5,Winter,245/50-19,245/50-19,120,222,"92,1",415,258,270,25,647
+Tesla Model S Plaid (caps on),Dry,4,Nokian R5,Winter,245/50-19,245/50-19,90,167,"92,1",551,342,358,25,860
+Tesla Model S Plaid (caps on),Dry,4,Nokian R5,Winter,245/50-19,245/50-19,120,217,"92,1",424,263,276,25,661
+Tesla Model S Plaid (caps off),Dry,−8,Nokian R5,Winter,245/50-19,245/50-19,90,188,"92,1",490,304,319,25,764
+Tesla Model S Plaid (caps off),Dry,−8,Nokian R5,Winter,245/50-19,245/50-19,120,244,"92,1",377,234,245,25,588
+Tesla Model S Plaid (caps on),Dry,−9,Nokian R5,Winter,245/50-19,245/50-19,90,189,"92,1",487,302,317,25,760
+Tesla Model S Plaid (caps on),Dry,−9,Nokian R5,Winter,245/50-19,245/50-19,120,238,"92,1",387,240,252,25,604
+Nissan Townstar,Dry,2,Nokian R5,Winter,205/60-15,205/60-15,90,198,"41,9",212,132,138,31,267
+Nissan Townstar,Dry,2,Nokian R5,Winter,205/60-15,205/60-15,120,281,"41,9",149,93,97,31,187
+Audi Q8 e-tron 55 Sportback,Dry/wet,1,Pirelli Ice Zero,Winter,255/50-20,255/50-20,90,227,"98,9",436,271,283,27,630
+Audi Q8 e-tron 55 Sportback,Dry/wet,1,Pirelli Ice Zero,Winter,255/50-20,255/50-20,120,293,"98,9",338,210,220,27,488
+Mercedes EQS 580 4Matic SUV,Dry,2,Nokian R5,Winter,275/45-21,275/45-21,90,223,107,480,298,312,28,669
+Mercedes EQS 580 4Matic SUV,Dry,2,Nokian R5,Winter,275/45-21,275/45-21,120,293,107,365,210,220,28,471
+BMW i7 xDrive60,Dry,6,Pirelli P Zero Winter,Winter,255/45-20,285/40-20,90,187,"99,2",530,329,345,27,766
+BMW i7 xDrive60,Dry,5,Pirelli P Zero Winter,Winter,255/45-20,285/40-20,120,248,"99,2",400,248,260,27,578
+BMW iX1 xDrive30,Dry,11,Continental VC7,Winter,225/50-18,225/50-18,90,160,62,388,241,252,27,560
+BMW iX1 xDrive30,Dry,10,Continental VC7,Winter,225/50-18,225/50-18,120,229,62,271,168,176,27,391
+2023 Mercedes EQA 250,Dry,16,Bridgestone Turanza,Summer,235/55-18,235/55-18,90,147,"66,8",454,282,295,27,656
+2023 Mercedes EQA 250,Dry,15,Bridgestone Turanza,Summer,235/55-18,235/55-18,120,213,"66,8",314,195,204,27,454
+Hyundai Ioniq 6 RWD,Dry,9,Continental VC7,Winter,225/55-18,225/55-18,90,149,"75,1",504,313,328,17,1156
+Hyundai Ioniq 6 RWD,Dry,9,Continental VC7,Winter,225/55-18,225/55-18,120,197,"75,1",381,237,248,17,874
+Nio EL7 100 kWh,Dry,10,Nokian R5 EV,Winter,255/50-20,255/50-20,90,200,"86,3",432,268,281,37,455
+Nio EL7 100 kWh,Dry,10,Nokian R5 EV,Winter,255/50-20,255/50-20,120,283,"86,3",305,189,198,37,321
+Nio ET5 100 kWh,Dry,12,Nokian R5 EV,Winter,245/45-19,245/45-19,90,179,"85,8",479,298,311,37,505
+Nio ET5 100 kWh,Dry,13,Nokian R5 EV,Winter,245/45-19,245/45-19,120,238,"85,8",361,224,235,37,381
+Lucid Air Dream Edition Performance,Dry,16,Pirelli Sottozero 3,Winter,245/45-19,245/45-19,90,161,"114,9",714,443,464,,
+Lucid Air Dream Edition Performance,Dry,15,Pirelli Sottozero 3,Winter,245/45-19,245/45-19,120,198,"114,9",580,360,377,,
+Tesla Model S LR Palladium,Dry,19,Pirelli P Zero,Summer,255/45-19,285/40-19,90,149,"92,1",618,384,402,25,964
+Tesla Model S LR Palladium,Dry,18,Pirelli P Zero,Summer,255/45-19,285/40-19,120,197,"92,1",468,291,304,25,730
+Nissan Ariya 87 kWh e-4orce,Dry,8,Dunlop SP Sport Maxx Oso,Summer,255/45-20,255/45-20,90,199,"79,9",402,250,261,30,523
+Nissan Ariya 87 kWh e-4orce,Dry,8,Dunlop SP Sport Maxx Oso,Summer,255/45-20,255/45-20,120,272,"79,9",294,183,191,30,382
+Toyota bZ4X AWD,Dry,14,Bridgestone Alenza,Summer,235/60-18,235/60-18,90,171,"57,7",366,227,238,28,510
+Toyota bZ4X AWD,Dry,13,Bridgestone Alenza,Summer,235/60-18,235/60-18,120,237,"57,7",240,149,156,28,334
+Toyota Mirai (hydrogen),Dry,19,Nokian R3 SUV,Winter,235/55-19,235/55-19,90,263,172,654,406,425,3,8502
+Toyota Mirai (hydrogen),Dry,18,Nokian R3 SUV,Winter,235/55-19,235/55-19,120,430,172,400,248,260,3,5200
+Tesla Model Y RWD,Dry,18,Michelin Pilot Sport EV,Summer,255/40-20,255/40-20,90,143,"56,8",397,247,258,25,619
+Tesla Model Y RWD,Dry,16,Michelin Pilot Sport EV,Summer,255/40-20,255/40-20,120,202,"56,8",281,175,183,25,438
+Kia EV6 GT,Dry,21,Michelin PS4S,Summer,255/40-21,255/40-21,90,186,"74,4",400,248,260,17,918
+Kia EV6 GT,Dry,19,Michelin PS4S,Summer,255/40-21,255/40-21,120,259,"74,4",287,178,187,17,658
+MG4 Long Range,Dry,19,Continental PremiumContact C,Summer,215/50-17,215/50-17,90,153,"62,1",406,252,264,23,688
+MG4 Long Range,Dry,21,Continental PremiumContact C,Summer,215/50-17,215/50-17,120,220,"62,1",282,175,183,23,478
+BYD Han,Dry,14,Michelin PS4,Summer,245/45-19,245/45-19,90,186,85,457,284,297,36,495
+BYD Han,Dry,16,Michelin PS4,Summer,245/45-19,245/45-19,120,233,85,365,227,237,36,395
+Hongqi E-HS9 Exclusive+,Dry,18,Continental Cross Contact,Summer,275/40-22,275/40-22,90,240,"109,2",455,283,296,46,386
+Hongqi E-HS9 Exclusive+,Dry,18,Continental Cross Contact,Summer,275/40-22,275/40-22,120,324,"109,2",337,209,219,46,286
+Lotus Eletre S,Dry,23,Pirelli P Zero,Summer,275/40-22,315/35-22,90,213,"104,3",490,304,319,19,1006
+Lotus Eletre S,Dry,23,Pirelli P Zero,Summer,275/40-22,315/35-22,120,273,"104,3",382,237,248,19,784
+VW ID3 Pro 62 kWh facelift,Dry,14,Continental EC6,Summer,215/50-19,215/50-19,90,152,55,362,225,235,30,471
+VW ID3 Pro 62 kWh facelift,Dry,14,Continental EC6,Summer,215/50-19,215/50-19,120,211,55,261,162,170,30,339
+VW ID3 Pro 62 kWh facelift,Dry,17,Continental EC6,Summer,215/50-19,215/50-19,90,146,55,377,234,245,30,490
+VW ID3 Pro 62 kWh facelift,Dry,17,Continental EC6,Summer,215/50-19,215/50-19,120,206,55,267,166,174,30,347
+Mercedes EQE 350 4Matic SUV,Dry,12,Cooper Zeon Crossrange,Summer,265/35-22,265/35-22,90,208,"89,4",430,267,280,27,621
+Mercedes EQE 350 4Matic SUV,Dry,13,Cooper Zeon Crossrange,Summer,265/35-22,265/35-22,120,278,"89,4",322,200,209,27,465
+Tesla Model S Plaid,Dry,16,Pirelli P Zero,Summer,255/45-19,285/40-19,90,154,"92,1",598,371,389,25,933
+Tesla Model S Plaid,Dry,16,Pirelli P Zero,Summer,255/45-19,285/40-19,120,208,"92,1",443,275,288,25,691
+BYD Atto 3 60 kWh,Dry,13,Continental EC6,Summer,235/50-18,235/50-18,90,170,"57,7",339,211,220,42,315
+BYD Atto 3 60 kWh,Dry,13,Continental EC6,Summer,235/50-18,235/50-18,120,233,"57,7",248,154,161,42,230
+Maxus eT90,Dry,17,Giti 4x4 HT152,Summer,245/65-17,245/65-17,90,265,"87,6",331,206,215,48,269
+Maxus eT90,Dry,17,Giti 4x4 HT152,Summer,245/65-17,245/65-17,120,398,"87,6",220,137,143,48,179
+Tesla Model S P85 (MF),Dry,15,Goodyear Eagle RS-A1,Summer,245/45-19,245/45-19,200,527,75,142,88,92,50,111
+Tesla Model X P90DL (OP),Dry,4,Michelin Latitude,Summer,265/35-22,285/35-22,200,630,80,127,79,83,35,142
+Tesla Model S P100DL,Dry,20,Michelin PS,Summer,245/35-21,245/35-21,200,483,92,190,118,124,34,218
+Tesla Model 3 Performance (MC),Dry,14,Nokian Hakka Black,Summer,235/45-18,235/45-18,200,501,74,148,92,96,21,275
+Tesla Model S Plaid,Dry/wet,18,Pirelli P Zero,Summer,255/45-19,285/40-19,200,410,"92,1",225,140,146,25,351
+Kia EV6 GT,Dry,16,Michelin PS4S,Summer,255/40-21,255/40-21,200,586,74,126,78,82,17,289
+Polestar 2 LR SM refresh,Dry,16,Continental PreCon 6,Summer,245/40-20,245/40-20,90,153,"79,1",517,321,336,25,807
+Polestar 2 LR SM refresh,Dry,15,Continental PreCon 6,Summer,245/40-20,245/40-20,120,218,"79,1",363,225,236,25,566
+Mercedes EQE 350 4Matic,Dry,18,Bridgestone Turanza,Summer,255/45-19,255/45-19,90,153,"89,4",584,363,380,27,844
+Mercedes EQE 350 4Matic,Dry,18,Bridgestone Turanza,Summer,255/45-19,255/45-19,120,202,"89,4",443,275,288,27,640
+Citroen e-C4X,Dry,18,Michelin e Primacy,Summer,195/60-18,195/60-18,90,129,51,395,245,257,27,571
+Citroen e-C4X,Dry,17,Michelin e Primacy,Summer,195/60-18,195/60-18,120,190,51,268,166,174,27,387
+Jeep Avenger,Dry,15,Goodyear EfficientGrip Performance 2,Summer,215/55-18,215/55-18,90,146,51,349,217,227,27,504
+Jeep Avenger,Dry,14,Goodyear EfficientGrip Performance 2,Summer,215/55-18,215/55-18,120,221,51,231,143,150,27,334
+Maxus Mifa 9,Dry,18,Continental EC6,Summer,235/55-19,235/55-19,90,208,84,404,251,263,31,508
+Maxus Mifa 9,Dry,18,Continental EC6,Summer,235/55-19,235/55-19,120,288,84,292,181,190,31,367
+Polestar 2 Performance 2024,Dry,11,Continental SC6,Summer,245/40-20,245/40-20,90,169,"79,1",468,291,304,27,676
+Polestar 2 Performance 2024,Dry,11,Continental SC6,Summer,245/40-20,245/40-20,120,222,"79,1",356,221,231,27,514
+Honda e:Ny1,Dry,15,Pirelli Ice Zero,Winter,225/50-18,225/50-18,90,176,"59,5",338,210,220,38,347
+Honda e:Ny1,Dry,14,Pirelli Ice Zero,Winter,225/50-18,225/50-18,120,247,"59,5",241,150,157,38,247
+Xpeng G9 Performance,Dry,−1,Nokian R5 SUV,Winter,255/55-19,255/55-19,90,201,94,468,291,304,18,1014
+Xpeng G9 Performance,Dry,−1,Nokian R5 SUV,Winter,255/55-19,255/55-19,120,266,94,353,219,229,18,765
+Hyundai Kona 65 kWh MY2024,Dry,−5,Continental VC7,Winter,235/45-19,235/45-19,90,182,"65,3",359,223,233,32,438
+Hyundai Kona 65 kWh MY2024,Dry,−5,Continental VC7,Winter,235/45-19,235/45-19,120,256,"65,3",255,158,166,32,311
+Nio ET5 Touring 100 kWh,Dry,−2,Nokian R5 EV,Winter,245/45-19,245/45-19,90,202,"85,8",425,264,276,37,448
+Nio ET5 Touring 100 kWh,Dry,−2,Nokian R5 EV,Winter,245/45-19,245/45-19,120,266,"85,3",321,199,209,37,338
+Hyundai Ioniq 28 kWh,Dry,−23,Continental VC7,Winter,205/55-16,205/55-16,90,206,26,126,78,82,17,289
+Hyundai Ioniq 28 kWh,Dry,−23,Continental VC7,Winter,205/55-16,205/55-16,120,246,26,106,66,69,17,243
+Hyundai Ioniq 28 kWh,Dry,−12,Continental VC7,Winter,205/55-16,205/55-16,90,169,26,154,96,100,17,353
+Hyundai Ioniq 28 kWh,Dry,−12,Continental VC7,Winter,205/55-16,205/55-16,120,215,26,121,75,79,17,278
+Nio EL6 100 kWh,Dry,−11,Nokian R5 EV,Winter,255/50-20,255/50-20,90,249,"84,6",340,211,221,37,358
+Nio EL6 100 kWh,Dry,−11,Nokian R5 EV,Winter,255/50-20,255/50-20,120,330,"84,6",256,159,166,37,270
+Nio EL6 100 kWh,Dry,−3,Nokian R5 EV,Winter,255/50-20,255/50-20,90,213,"84,6",397,247,258,37,418
+Nio EL6 100 kWh,Dry,−3,Nokian R5 EV,Winter,255/50-20,255/50-20,120,302,"84,6",280,174,182,37,295
+Volvo XC40 82 kWh AWD,Wet,−5,Continental VC7,Winter,235/50-19,255/45-19,90,262,"77,3",295,183,192,25,460
+Volvo XC40 82 kWh AWD,Wet,−7,Continental VC7,Winter,235/50-19,255/45-19,120,299,"77,3",259,161,168,25,404
+MG4 XPower,Dry,−12,Nokian R5 EV,Winter,235/45-18,235/45-18,90,217,"62,1",286,178,186,23,485
+MG4 XPower,Dry,−12,Nokian R5 EV,Winter,235/45-18,235/45-18,120,297,"62,1",209,130,136,23,354
+MG4 XPower,Dry,−24,Nokian R5 EV,Winter,235/45-18,235/45-18,90,263,"62,1",236,147,153,23,400
+MG4 XPower,Dry,−24,Nokian R5 EV,Winter,235/45-18,235/45-18,120,340,"62,1",183,114,119,23,310
+Tesla Model 3 LR Highland,Wet,3,Falken Winterpeak F-snow 1,Winter,235/45-18,235/45-18,90,161,"74,5",463,288,301,28,645
+Tesla Model 3 LR Highland,Wet,3,Falken Winterpeak F-snow 1,Winter,235/45-18,235/45-18,120,226,"74,5",330,205,215,28,460
+BMW i5 M60,Wet,1,Continental VC TS 860S,Winter,245/40-20,275/35-20,90,223,"78,2",351,218,228,28,489
+BMW i5 M60,Wet,1,Continental VC TS 860S,Winter,245/40-20,275/35-20,120,290,"78,2",270,168,176,28,376
+HiPhi Z,Wet,3,Michelin X-Ice Snow SUV,Winter,255/45-22,285/40-22,90,238,"108,9",458,284,298,,
+HiPhi Z,Wet,3,Michelin X-Ice Snow SUV,Winter,255/45-22,285/40-22,120,311,"108,9",350,217,228,,
+HiPhi X,Wet,−8,Yokohama Ice Guard G075,Winter,265/45-21,265/45-21,90,270,"84,5",313,194,203,,
+HiPhi X,Wet,−8,Yokohama Ice Guard G075,Winter,265/45-21,265/45-21,120,360,"84,5",235,146,153,,
+Audi Q4 e-tron 45 Quattro,Wet,5,Continental VC7,Winter,255/45-20,255/45-20,90,209,"75,5",361,224,235,26,542
+Audi Q4 e-tron 45 Quattro,Wet,6,Continental VC7,Winter,255/45-20,255/45-20,120,279,"75,5",271,168,176,26,407
+Kia EV9 GT-Line,Dry,−10,Nokian R5 SUV,Winter,285/45-21,285/45-21,90,249,"96,6",388,241,252,22,688
+Kia EV9 GT-Line,Dry,−10,Nokian R5 SUV,Winter,285/45-21,285/45-21,120,338,"96,6",286,178,186,22,507
+2024 Polestar 2 LR DM,Wet,−6,Nokian R5 EV,Winter,245/45-19,245/45-19,90,199,"77,5",389,242,253,25,607
+2024 Polestar 2 LR DM,Wet,−6,Nokian R5 EV,Winter,245/45-19,245/45-19,120,266,"77,5",291,181,189,25,454
+VW ID7 Pro,Wet,2,Continental VC7,Winter,235/50-19,255/45-19,90,179,"75,5",422,262,274,23,716
+VW ID7 Pro,Wet,2,Continental VC7,Winter,235/50-19,255/45-19,120,245,"75,5",308,191,200,23,522
+Opel Astra-e Tourer,Wet,4,Nokian R5,Winter,225/45-18,225/45-18,90,159,51,321,199,209,27,464
+Opel Astra-e Tourer,Wet,3,Nokian R5,Winter,225/45-18,225/45-18,120,228,51,224,139,146,27,324
+Smart #1 Brabus,Dry,3,Nokian R5,Winter,235/45-19,235/45-19,90,191,"63,1",330,205,215,25,515
+Smart #1 Brabus,Dry,1,Nokian R5,Winter,235/45-19,235/45-19,120,276,"63,1",229,142,149,25,357
+Mercedes EQE 43 AMG 4Matic SUV,Dry,9,Nokian R5 SUV,Winter,275/40-21,275/40-21,90,202,"89,4",443,275,288,27,640
+Mercedes EQE 43 AMG 4Matic SUV,Dry,9,Nokian R5 SUV,Winter,275/40-21,275/40-21,120,282,"89,4",317,197,206,27,458
+Mercedes EQB 300 4Matic,Dry,6,Nokian R5 EV,Winter,235/45-20,235/45-20,90,185,"66,2",358,222,233,27,517
+Mercedes EQB 300 4Matic,Dry,7,Nokian R5 EV,Winter,235/45-20,235/45-20,120,253,"66,2",262,163,170,27,378
+Mercedes EQA 250+,Wet,7,Nokian R5 EV,Winter,235/45-20,235/45-20,90,174,"70,3",404,251,263,33,477
+Mercedes EQA 250+,Dry,8,Nokian R5 EV,Winter,235/45-20,235/45-20,120,234,"70,3",300,186,195,33,355
+Cupra Born 82 kWh,Dry,2,Cooper SUV,Winter,215/55-18,215/55-18,90,187,"67,5",361,224,235,32,440
+Cupra Born 82 kWh,Dry,2,Cooper SUV,Winter,215/55-18,215/55-18,120,243,"67,5",278,173,181,32,339
+Smart #3 Brabus,Dry,12,Nokian R5,Winter,245/40-20,245/40-20,90,172,"63,1",367,228,239,25,573
+Smart #3 Brabus,Dry,13,Nokian R5,Winter,245/40-20,245/40-20,120,237,"63,1",266,165,173,25,415
+Volvo EX30 Twin Performance,Dry,15,Goodyear EfficientGrip Performance,Summer,245/40-20,245/40-20,90,183,"65,4",357,222,232,26,536
+Volvo EX30 Twin Performance,Dry,14,Goodyear EfficientGrip Performance,Summer,245/40-20,245/40-20,120,245,"65,4",267,166,174,26,401
+Fisker Ocean Extreme,Dry,7,Bridgestone Blizzak DM-V3,Winter,255/50-20,255/50-20,90,233,106,455,283,296,33,538
+Fisker Ocean Extreme,Dry,6,Bridgestone Blizzak DM-V3,Winter,255/50-20,255/50-20,120,296,106,358,222,233,33,423
+Audi Q4 e-tron Sportback 45 Quattro,Dry,8,Goodyear Ultragrip Performance+ SUV,Summer,235/45-21,255/40-21,90,188,"75,5",402,250,261,26,603
+Audi Q4 e-tron Sportback 45 Quattro,Dry,6,Goodyear Ultragrip Performance+ SUV,Summer,235/45-21,255/40-21,120,259,"75,5",292,181,190,26,438
+Nissan Ariya e-4orce Evolve+ 87 kWh,Dry,16,Continental VC7,Winter,235/55-19,235/55-19,90,174,"79,9",459,285,298,30,597
+Nissan Ariya e-4orce Evolve+ 87 kWh,Dry,15,Continental VC7,Winter,235/55-19,235/55-19,120,246,"79,9",325,202,211,30,423
+VW ID4 Pro 4Motion,Dry,16,Hankook Ventus S1evo3,Summer,235/55-19,255/50-19,90,149,"75,5",507,315,330,23,860
+VW ID4 Pro 4Motion,Dry,14,Hankook Ventus S1evo3,Summer,235/55-19,255/50-19,120,218,"75,5",346,215,225,23,587
+Volvo EX30 RWD ER,Dry,22,Goodyear EfficientGrip Performance,Summer,245/40-20,245/40-20,90,158,"65,4",414,257,269,26,621
+Volvo EX30 RWD ER,Dry,22,Goodyear EfficientGrip Performance,Summer,245/40-20,245/40-20,120,220,"65,4",297,184,193,26,446
+Lexus RZ 450e,Dry,19,Yokohama Advan V61,Summer,235/60-18,255/55-18,90,157,"56,7",361,224,235,28,503
+Lexus RZ 450e,Dry,19,Yokohama Advan V61,Summer,235/60-18,255/55-18,120,230,"56,7",247,153,161,28,344
+BYD Dolphin,Dry,17,LingLong ComfortMaster,Summer,205/50-17,205/50-17,90,157,"58,9",375,233,244,39,375
+BYD Dolphin,Dry,17,LingLong ComfortMaster,Summer,205/50-17,205/50-17,120,221,"58,9",267,166,174,39,267
+BYD Seal U,Dry,10,Michelin e Primacy,Summer,235/50-19,235/50-19,90,200,"84,2",421,261,274,40,410
+BYD Seal U,Dry,11,Michelin e Primacy,Summer,235/50-19,235/50-19,120,264,"84,2",319,198,207,40,311
+BYD Seal Performance,Dry,12,Continental EC6 Q,Summer,235/45-19,235/45-19,90,200,"80,8",404,251,263,32,492
+BYD Seal Performance,Dry,14,Continental EC6 Q,Summer,235/45-19,235/45-19,120,236,"80,8",342,212,222,32,417
+Tesla Model 3 Performance Highland,Dry,20,Pirelli P Zero,Summer,235/35-20,275/30-20,90,159,"74,5",469,291,305,28,653
+KGM Torres EVX,Dry,15,Nexen Roadian GTX,Summer,225/60-18,225/60-18,90,179,71,397,247,258,28,553
+KGM Torres EVX,Dry,15,Nexen Roadian GTX,Summer,225/60-18,225/60-18,120,261,71,272,169,177,28,379
+Fiat 600e,Dry,15,Goodyear Efficientgrip Performance 2,Summer,215/55-18,215/55-18,90,147,51,347,216,226,27,501
+Fiat 600e,Dry,14,Goodyear Efficientgrip Performance 2,Summer,215/55-18,215/55-18,120,218,51,234,145,152,27,338
+Audi Q6 e-tron Quattro,Dry,20,Pirelli P Zero,Summer,255/50-20,285/45-20,90,180,"93,8",521,324,339,20,1016
+Audi Q6 e-tron Quattro,Dry,21,Pirelli P Zero,Summer,255/50-20,285/45-20,120,232,"93,8",404,251,263,20,788
+Audi e-tron 55,Dry,24,Hankook Ventus S1evo3,Summer,265/40-22,265/40-22,90,200,"85,7",429,266,279,24,697
+Audi e-tron 55,Dry,23,Hankook Ventus S1evo3,Summer,265/40-22,265/40-22,120,264,"84,7",321,199,209,24,522
+BMW iX2 xDrive30,Dry,20,Pirelli P Zero,Summer,245/40-20,245/40-20,90,148,62,419,260,272,27,605
+BMW iX2 xDrive30,Dry,19,Pirelli P Zero,Summer,245/40-20,245/40-20,120,212,62,292,181,190,27,422
+VW ID7 Pro,Dry,19,Bridgestone Turanza,Summer,235/45-20,255/40-20,90,137,"75,3",550,342,358,23,933
+VW ID7 Pro,Dry,17,Bridgestone Turanza,Summer,235/45-20,255/40-20,120,191,"75,3",394,245,256,23,668
+Nio ES8 75 kWh,Dry,15,Continental MC6,Summer,265/45-21,265/45-21,90,238,"67,9",285,177,185,28,397
+2024 Skoda Enyaq Coupé RS,Dry,22,Hankook evo3,Summer,235/50-20,255/45-20,90,145,"75,3",519,322,337,28,723
+2024 Skoda Enyaq Coupé RS,Dry,21,Hankook evo3,Summer,235/50-20,255/45-20,120,199,"75,3",378,235,246,28,527
+Tesla Model 3 RWD Highland,Dry,19,Michelin e Primacy,Summer,235/45-18,235/45-18,90,114,"56,9",499,310,324,23,846
+Tesla Model 3 RWD Highland,Dry,20,Michelin e Primacy,Summer,235/45-18,235/45-18,120,154,"56,9",367,228,239,23,622
+Renault Scenic E-Tech 92 kWh,Dry,14,Michelin e-Primacy,Summer,235/45-20,235/45-20,90,173,"85,1",492,306,320,33,581
+Renault Scenic E-Tech 92 kWh,Dry,15,Michelin e-Primacy,Summer,235/45-20,235/45-20,120,238,"85,1",358,222,233,33,423
+VW ID7 Tourer Pro,Dry,20,Continental EcoContact 6Q,Summer,235/50-19,255/45-19,90,137,"75,3",550,342,358,23,933
+VW ID7 Tourer Pro,Dry,20,Continental EcoContact 6Q,Summer,235/50-19,255/45-19,120,185,"75,3",407,253,265,23,690
+2014 Tesla Model S 85,Dry,18,Falken Winterpeak F-snow 1,Winter,245/45-19,245/45-19,90,158,"66,4",420,261,273,50,328
+2014 Tesla Model S 85,Dry,18,Falken Winterpeak F-snow 1,Winter,245/45-19,245/45-19,120,214,"66,4",310,193,202,50,242
+Xpeng G6 Performance,Dry,21,Michelin Pilot Sport EV,Summer,255/45-20,255/45-20,90,160,"86,6",541,336,352,19,1110
+Xpeng G6 Performance,Dry,20,Michelin Pilot Sport EV,Summer,255/45-20,255/45-20,120,232,"86,6",373,232,242,19,766
+Tesla Model 3 LR Highland,Dry,17,Michelin e-Primacy,Summer,235/45-18,235/45-18,90,123,"74,5",606,376,394,28,844
+Tesla Model 3 LR Highland,Dry,19,Michelin e-Primacy,Summer,235/45-18,235/45-18,120,161,"74,5",463,288,301,28,645
+2024 Audi RS e-tron GT,Dry,26,Bridgestone Potenza Sport,Summer,265/35-21,305/35-21,90,159,97,610,379,397,15,1586
+2024 Audi RS e-tron GT,Dry,26,Bridgestone Potenza Sport,Summer,265/35-21,305/35-21,120,207,97,469,291,305,15,1219
+Mini Countryman SE All4,Dry,15,Continental EcoContact 6Q,Summer,245/40-20,245/40-20,90,166,62,373,232,242,27,539
+Mini Countryman SE All4,Dry,13,Continental EcoContact 6Q,Summer,245/40-20,245/40-20,120,234,62,265,165,172,27,383
+Mercedes EQE 53 4Matic+ SUV,Dry,16,Michelin Pilot Sport EV,Summer,275/35-22,275/35-22,90,199,"89,4",449,279,292,27,649
+Mercedes EQE 53 4Matic+ SUV,Dry,16,Michelin Pilot Sport EV,Summer,275/35-22,275/35-22,120,274,"89,7",326,202,212,27,471
+Nio EL8 100 kWh,Dry,17,Continental EcoContact 6,Summer,255/50-20,255/50-20,90,188,91,484,301,315,19,993
+Nio EL8 100 kWh,Dry,16,Continental EcoContact 6,Summer,255/50-20,255/50-20,120,248,91,367,228,239,19,753
+Polestar 4 LR DM,Dry,12,Michelin Pilot Sport EV,Summer,255/45-21,255/45-21,90,181,94,519,322,337,28,723
+Polestar 4 LR DM,Dry,11,Michelin Pilot Sport EV,Summer,255/45-21,255/45-21,120,237,94,397,247,258,28,553
+Audi SQ6 e-tron,Dry,8,Nokian R5 EV,Winter,255/45-21,285/40-21,90,178,"93,8",527,327,343,20,1028
+Audi SQ6 e-tron,Dry,8,Nokian R5 EV,Winter,255/45-21,285/40-21,120,245,"93,8",383,238,249,20,747
+Tesla Model 3 Performance Highland,Dry,8,Nokian R5 EV,Winter,235/35-20,275/30-20,90,143,"74,5",521,324,339,28,726
+Tesla Model 3 Performance Highland,Dry,9,Nokian R5 EV,Winter,235/35-20,275/30-20,120,192,"74,5",388,241,252,28,540
+Tesla Model X LR Palladium,Dry,15,Nokian R5 EV,Winter,265/45-20,275/45-20,90,175,"92,1",526,327,342,25,821
+Tesla Model X LR Palladium,Dry,15,Nokian R5 EV,Winter,265/45-20,275/45-20,120,236,"92,1",390,242,254,25,608
+Tesla Model Y LR RWD,Dry,5,Nokian R5 EV,Winter,255/45-19,255/45-19,90,156,"74,5",478,297,311,28,666
+Tesla Model Y LR RWD,Dry,5,Nokian R5 EV,Winter,255/45-19,255/45-19,120,223,"74,5",334,207,217,28,465
+Hyundai Ioniq 5 N,Dry,4,Nokian R5 EV,Winter,275/35-21,275/35-21,90,210,"78,4",373,232,242,18,808
+Hyundai Ioniq 5 N,Dry,3,Nokian R5 EV,Winter,275/35-21,275/35-21,120,301,"78,4",260,161,169,18,563
+Hyundai Ioniq 5 AWD 84 kWh,Dry,3,Continental VC8,Winter,255/45-20,255/45-20,90,174,"78,4",451,280,293,18,977
+Hyundai Ioniq 5 AWD 84 kWh,Dry,3,Continental VC8,Winter,255/45-20,255/45-20,120,248,"78,4",316,196,205,18,685
+2024 Mini Cooper SE,Dry,1,Continental VC7,Winter,195/60-16,195/60-16,90,150,"47,2",315,196,205,27,455
+2024 Mini Cooper SE,Dry,1,Continental VC7,Winter,195/60-16,195/60-16,120,202,"47,2",234,145,152,27,338
+Peugeot e-5008,Dry,3,Nokian R5 EV,Winter,235/55-19,235/55-19,90,179,72,402,250,261,29,541
+Peugeot e-5008,Dry,5,Nokian R5 EV,Winter,235/55-19,235/55-19,120,248,72,290,180,189,29,390
+Kia EV6 AWD facelift,Dry,0,Nokian R5 EV,Winter,255/45-20,255/45-20,90,187,"78,4",419,260,272,18,908
+Kia EV6 AWD facelift,Dry,0,Nokian R5 EV,Winter,255/45-20,255/45-20,120,256,"78,4",306,190,199,18,663
+MG Cyberster,Dry,−8,Nokian R5,Winter,245/40-20,275/35-20,90,197,72,365,227,237,29,491
+MG Cyberster,Dry,−8,Nokian R5,Winter,245/40-20,275/35-20,120,254,72,283,176,184,29,381
+MG Cyberster heater off,Dry,−8,Nokian R5,Winter,245/40-20,275/35-20,90,178,72,404,251,263,29,543
+MG Cyberster heater off,Dry,−8,Nokian R5,Winter,245/40-20,275/35-20,120,246,72,293,182,190,29,394
+"MG Cyberster roof open, heat off",Dry,−8,Nokian R5,Winter,245/40-20,275/35-20,90,196,72,367,228,239,29,494
+"MG Cyberster roof open, heat off",Dry,−8,Nokian R5,Winter,245/40-20,275/35-20,120,273,72,264,164,172,29,355
+"MG Cyberster roof open, heat on",Dry,−8,Nokian R5,Winter,245/40-20,275/35-20,90,262,72,275,171,179,29,370
+"MG Cyberster roof open, heat on",Dry,−8,Nokian R5,Winter,245/40-20,275/35-20,120,326,72,221,137,144,29,297
+Zeekr 001 AWD,Dry,−2,Nokian R5 EV,Winter,265/40-22,265/40-22,90,201,"96,8",482,299,313,28,671
+Zeekr 001 AWD,Dry,−2,Nokian R5 EV,Winter,265/40-22,265/40-22,120,285,"96,3",338,210,220,28,471
+Hyundai Ioniq 5 RWD 72.6 kWh,Dry,24,Michelin Pilot Sport EV,Summer,255/45-20,255/45-20,90,159,"70,6",444,276,289,17,1019
+Hyundai Ioniq 5 RWD 72.6 kWh,Dry,23,Michelin Pilot Sport EV,Summer,255/45-20,255/45-20,120,230,"70,6",307,191,200,17,704
+Deepal S07,Dry,22,Dunlop SP Sport Maxx Oso,Summer,255/45-20,255/45-20,90,165,64,388,241,252,,
+Deepal S07,Dry,22,Dunlop SP Sport Maxx Oso,Summer,255/45-20,255/45-20,120,206,64,311,193,202,,
+BYD Sealion 7 82.5 kWh Performance,Dry,20,Michelin Pilot Sport EV,Summer,245/45-20,245/45-20,90,180,"80,3",446,277,290,,
+BYD Sealion 7 82.5 kWh Performance,Dry,20,Michelin Pilot Sport EV,Summer,245/45-20,245/45-20,120,257,"80,3",312,194,203,,
+GAC Aion ES,Dry,18,Sentury 1,Summer,215/55-17,215/55-17,90,158,"54,7",346,215,225,,
+GAC Aion ES,Dry,18,Sentury 1,Summer,215/55-17,215/55-17,120,208,"54,7",253,157,164,,
+Ora 07 Performance,Dry,20,Michelin Pilot Sport EV,Summer,235/45-19,235/45-19,90,158,"83,5",528,328,343,,
+Ora 07 Performance,Dry,22,Michelin Pilot Sport EV,Summer,235/45-19,235/45-19,120,217,"83,5",385,239,250,,
+Denza D9 Performance,Dry,17,Continental PremiumContact C,Summer,235/60-18,235/60-18,90,220,"102,7",467,290,304,,
+Denza D9 Performance,Dry,17,Continental PremiumContact C,Summer,235/60-18,235/60-18,120,298,"102,7",345,214,224,,
+Zeekr X AWD,Dry,−6,Nokian R5 EV,Winter,235/50-19,235/50-19,90,206,"65,4",317,197,206,26,476
+Zeekr X AWD,Dry,−5,Nokian R5 EV,Winter,235/50-19,235/50-19,120,278,"65,4",235,146,153,26,353
+Audi S6 e-tron Avant,Dry/wet,6,Continental VC7,Winter,245/40-21,275/35-21,90,178,"93,8",527,327,343,20,1028
+Audi S6 e-tron Avant,Dry/wet,6,Continental VC7,Winter,245/40-21,275/35-21,120,241,"93,8",389,242,253,20,759
+BYD Tang 111 kWh,Dry/wet,−4,Nokian R5 EV,Winter,255/50-20,255/50-20,90,263,"102,1",388,241,252,40,378
+BYD Tang 111 kWh,Dry/wet,−4,Nokian R5 EV,Winter,255/50-20,255/50-20,120,368,"102,1",277,172,180,40,270
+BYD Sealion 7 93 kWh AWD,Dry,−7,Nokian R5 EV,Winter,235/50-19,235/50-19,90,225,89,396,246,257,27,572
+BYD Sealion 7 93 kWh AWD,Dry,−7,Nokian R5 EV,Winter,235/50-19,235/50-19,120,296,89,301,187,196,27,435
+Ford Explorer,Dry,1,Nokian R5 EV,Winter,235/55-19,255/50-19,90,186,78,419,260,272,22,743
+Ford Explorer,Dry,1,Nokian R5 EV,Winter,235/55-19,255/50-19,120,253,78,308,191,200,22,546
+Tesla Model Y LR Juniper,Dry,11,Nokian R5 EV,Winter,255/45-19,255/45-19,90,143,"74,5",521,324,339,28,726
+Tesla Model Y LR Juniper,Dry,11,Nokian R5 EV,Winter,255/45-19,255/45-19,120,201,"74,5",371,230,241,28,517
+Ford Capri,Dry,12,Nokian R5 EV,Winter,235/50-20,255/45-20,90,159,78,491,305,319,22,870
+Ford Capri,Dry,12,Nokian R5 EV,Winter,235/50-20,255/45-20,120,226,78,345,214,224,22,612
+Ford F-150 Lightning,Dry,3,Nokian R5 SUV,Winter,275/60-20,275/60-20,90,269,"94,6",352,219,229,31,443
+Ford F-150 Lightning,Dry,2,Nokian R5 SUV,Winter,275/60-20,275/60-20,120,403,"94,6",235,146,153,31,296
+Hyundai Inster,Dry,12,Continental VC8,Winter,215/45-17,215/45-17,90,145,"46,8",323,201,210,27,467
+Hyundai Inster,Dry,12,Continental VC8,Winter,215/45-17,215/45-17,120,210,"46,8",223,139,145,27,322
+VW ID7 GTX Tourer 91 kWh,Dry,8,Continental VC8,Winter,235/50-19,255/45-19,90,166,"84,6",510,317,332,23,865
+VW ID7 GTX Tourer 91 kWh,Dry,10,Continental VC8,Winter,235/50-19,255/45-19,90,161,"84,6",525,326,341,23,890
+VW ID7 GTX Tourer 91 kWh,Dry,19,Continental VC8,Winter,235/50-19,255/45-19,90,155,"84,6",546,339,355,23,926
+VW ID7 GTX Tourer 91 kWh,Dry,5,Continental VC8,Winter,235/50-19,255/45-19,120,232,"84,6",365,227,237,23,619
+VW ID7 GTX Tourer 91 kWh,Dry,9,Continental VC8,Winter,235/50-19,255/45-19,120,222,"84,6",381,237,248,23,646
+Porsche Macan 4,Dry,11,Goodyear Eagle F1 SuperSport,Summer,255/40-22,295/35-22,90,195,"93,8",481,299,313,20,938
+Porsche Macan 4,Dry,10,Goodyear Eagle F1 SuperSport,Summer,255/40-22,295/35-22,120,269,"93,8",349,217,227,20,681
+Seres 5 80 kWh,Wet,11,Continental VC8,Winter,255/45-20,255/45-20,90,208,"73,3",352,219,229,32,429
+Seres 5 80 kWh,Wet,10,Continental VC8,Winter,255/45-20,255/45-20,120,278,"73,3",264,164,172,32,322
+Audi A6 Avant e-tron Quattro,Dry,16,Michelin Pilot Sport EV,Summer,235/45-20,265/40-20,90,150,"93,8",625,388,406,20,1219
+Audi A6 Avant e-tron Quattro,Dry,16,Michelin Pilot Sport EV,Summer,235/45-20,265/40-20,120,211,"93,8",445,276,289,20,868
+Kia EV3 Long Range FWD,Dry,14,Hankook iON evo,Summer,215/50-19,215/50-19,90,162,"77,2",477,296,310,28,664
+Kia EV3 Long Range FWD,Dry,13,Hankook iON evo,Summer,215/50-19,215/50-19,120,229,"77,2",337,209,219,28,469
+2025 VW ID3 Pure 55 kWh,Dry,15,Bridgestone Turanza,Summer,215/55-18,215/55-18,90,144,"50,9",353,219,229,20,688
+2025 VW ID3 Pure 55 kWh,Dry,15,Bridgestone Turanza,Summer,215/55-18,215/55-18,120,198,"50,9",257,160,167,20,501
+Citroen e-C3,Dry,12,LingLong ComfortMaster,Summer,205/50-17,205/50-17,90,169,"42,8",253,157,164,29,340
+Citroen e-C3,Dry,12,LingLong ComfortMaster,Summer,205/50-17,205/50-17,120,234,"42,8",183,114,119,29,246
+MGS5 64 kWh,Dry,16,Bridgestone Turanza,Summer,225/55-18,225/55-18,90,154,"64,3",418,260,272,25,652
+MGS5 64 kWh,Dry,17,Bridgestone Turanza,Summer,225/55-18,225/55-18,120,219,"64,3",294,183,191,25,459
+Cupra Tavascan VZ Adrenaline,Dry,16,Hankook iON evo SUV,Summer,255/40-21,255/40-21,90,164,"75,2",459,285,298,23,778
+Cupra Tavascan VZ Adrenaline,Dry,18,Hankook iON evo SUV,Summer,255/40-21,255/40-21,120,222,"75,2",339,211,220,23,575
+Polestar 3 LR DM,Dry,19,Michelin Pilot Sport EV,Summer,265/45-21,295/40-21,90,183,105,574,357,373,,
+Polestar 3 LR DM,Dry,19,Michelin Pilot Sport EV,Summer,265/45-21,295/40-21,120,257,105,409,254,266,,
+Tesla Model 3 LR RWD Highland,Dry,20,Bridgestone Turanza T005 EV,Summer,235/45-18,235/45-18,90,115,"74,5",654,406,425,28,911
+Tesla Model 3 LR RWD Highland,Dry,20,Bridgestone Turanza T005 EV,Summer,235/45-18,235/45-18,120,160,"74,5",466,289,303,28,649
+Polestar 3 LR Performance,Dry,21,Pirelli P Zero,Summer,265/40-22,295/35-22,90,203,105,517,321,336,31,650
+Polestar 3 LR Performance,Dry,21,Pirelli P Zero,Summer,265/40-22,295/35-22,120,276,105,380,236,247,31,478
+Renault 5 E-Tech 55 kWh,Dry,19,Continental EcoContact 6Q,Summer,195/55-18,195/55-18,90,136,"48,7",358,222,233,28,499
+Renault 5 E-Tech 55 kWh,Dry,19,Continental EcoContact 6Q,Summer,195/55-18,195/55-18,120,198,"48,7",246,153,160,28,343
+Zeekr 7X Performance AWD,Dry,21,Continental EcoContact 7,Summer,265/40-21,265/40-21,90,175,"96,3",550,342,358,13,1650
+Zeekr 7X Performance AWD,Dry,21,Continental EcoContact 7,Summer,265/40-21,265/40-21,120,238,"96,3",405,252,263,13,1215
+Firefly Select,Dry,12,Giti Synergy H2,Summer,215/50-18,215/50-18,90,147,"39,6",269,167,175,26,404
+Firefly Select,Dry,12,Giti Synergy H2,Summer,215/50-18,215/50-18,120,209,"39,6",189,117,123,26,284
+VW ID Buzz LWB GTX,Dry,19,Continental EcoContact 6Q,Summer,235/50-20,265/45-20,90,195,"84,6",434,270,282,23,736
+VW ID Buzz LWB GTX,Dry,19,Continental EcoContact 6Q,Summer,235/50-20,265/45-20,120,275,"84,6",308,191,200,23,522
+Audi Q6 e-tron Sportback Quattro,Dry,20,Goodyear Eagle F1,Summer,255/45-21,285/40-21,90,170,"93,8",552,343,359,20,1076
+Audi Q6 e-tron Sportback Quattro,Dry,17,Goodyear Eagle F1,Summer,255/45-21,285/40-21,120,235,"93,8",399,248,259,20,778
+Audi A6 e-tron Sportback Quattro,Dry,15,Pirelli P Zero,Summer,245/40-21,275/35-21,90,162,"93,8",579,360,376,20,1129
+Audi A6 e-tron Sportback Quattro,Dry,15,Pirelli P Zero,Summer,245/40-21,275/35-21,120,217,"93,8",432,268,281,20,842
+Volvo EX90 Twin Ultra,Dry,17,Pirelli Scorpion,Summer,265/45-21,295/40-21,90,190,105,553,343,359,31,696
+Volvo EX90 Twin Ultra,Dry,17,Pirelli Scorpion,Summer,265/45-21,295/40-21,120,260,105,404,251,263,31,508
+Jac E30X Nordic Edition 50,Dry,21,GitiComfort 225,Summer,205/50-17,205/50-17,90,142,47,331,206,215,32,403
+Jac E30X Nordic Edition 50,Dry,21,GitiComfort 225,Summer,205/50-17,205/50-17,120,210,47,224,139,146,32,273
+Kia EV6 GT facelift,Dry,20,Michelin PS4S,Summer,255/40-21,255/40-21,90,183,"78,4",428,266,278,18,927
+Kia EV6 GT facelift,Dry,20,Michelin PS4S,Summer,255/40-21,255/40-21,120,249,"78,4",315,196,205,18,683
+BYD Sealion 7 93 kWh AWD,Dry,15,Michelin Pilot Sport EV,Summer,245/45-20,245/45-20,90,189,89,471,293,306,21,875
+BYD Sealion 7 93 kWh AWD,Dry,15,Michelin Pilot Sport EV,Summer,245/45-20,245/45-20,120,259,89,344,214,224,21,639
+Hongqi E-HS7 111 kWh AWD,Dry,17,Continental VikingContact 7,Winter,255/45-21,275/40-21,90,189,"102,8",544,338,354,22,964
+Hongqi E-HS7 111 kWh AWD,Dry,17,Continental VikingContact 7,Winter,255/45-21,275/40-21,120,275,"102,8",374,232,243,22,663
+Mercedes CLA 350 4Matic,Dry,12,Michelin ePrimacy/Bridgestone Turanza 6,Summer,225/40-19,255/35-19,90,141,"88,6",628,390,408,18,1361
+Mercedes CLA 350 4Matic,Dry,12,Michelin ePrimacy/Bridgestone Turanza 6,Summer,225/40-19,255/35-19,120,182,"88,6",477,296,310,18,1034
+MG IM6 100 kWh AWD,Dry,7,Pirelli Scorpion,Summer,235/50-20,255/45-20,90,235,"96,5",411,255,267,15,1069
+MG IM6 100 kWh AWD,Dry,7,Pirelli Scorpion,Summer,235/50-20,255/45-20,120,309,"96,5",312,194,203,15,811
+Mercedes G580,Dry,13,Falken Azenis FK520,Summer,265/60-18,265/60-18,90,275,"115,2",419,260,272,29,563
+Mercedes G580,Dry,12,Falken Azenis FK520,Summer,265/60-18,265/60-18,120,400,"115,2",288,179,187,29,387
+Tesla Model Y Performance Juniper,Wet,12,Pirelli P Zero,Summer,255/35-21,275/35-21,90,164,"77,3",471,293,306,30,612
+Tesla Model Y Performance Juniper,Wet,12,Pirelli P Zero,Summer,255/35-21,275/35-21,120,219,"77,3",353,219,229,30,459
+Smart #5 Brabus,Dry,11,Continental VC7,Winter,255/40-21,255/40-21,90,199,"96,3",484,301,315,13,1452
+Smart #5 Brabus,Dry,12,Continental VC7,Winter,255/40-21,255/40-21,120,277,"96,3",348,216,226,13,1044
+Skoda Enyaq Coupé 85x 2025,Dry,7,Pirelli Scorpion,Summer,235/45-21,255/40-21,90,162,"75,7",467,290,304,25,729
+Skoda Enyaq Coupé 85x 2025,Dry,8,Pirelli Scorpion,Summer,235/45-21,255/40-21,120,217,"75,7",349,217,227,25,544
+MG IM5 100 kWh AWD,Wet,13,Hankook iOn Evo,Summer,245/45-19,275/40-19,90,204,"96,5",473,294,307,15,1230
+MG IM5 100 kWh AWD,Wet,13,Hankook iOn Evo,Summer,245/45-19,275/40-19,120,267,"96,5",361,224,235,15,939
+Maxus eTerron 9,Dry,11,Nokian R5 SUV,Winter,275/55-20,275/55-20,90,268,"100,7",376,234,244,36,407
+Maxus eTerron 9,Wet,10,Nokian R5 SUV,Winter,275/55-20,275/55-20,120,359,"100,7",281,175,183,36,304
+Hyundai Ioniq 9 LR AWD,Dry/wet,8,Continental Premium Contact C,Summer,285/45-21,285/45-21,90,212,"106,3",501,311,326,22,888
+Hyundai Ioniq 9 LR AWD,Dry/wet,8,Continental Premium Contact C,Summer,285/45-21,285/45-21,120,291,"106,3",365,227,237,22,647
+KGM Musso,Dry,0,Nokian R5 SUV,Winter,235/60-18,235/60-18,90,243,"79,5",327,203,213,31,411
+KGM Musso,Dry,0,Nokian R5 SUV,Winter,235/60-18,235/60-18,120,348,"79,5",228,142,148,31,287
+MG IM6 75 kWh RWD,Dry,20,Pirelli Scorpion,Summer,235/50-20,255/45-20,90,169,"72,4",428,266,278,,
+MG IM6 75 kWh RWD,Dry,20,Pirelli Scorpion,Summer,235/50-20,255/45-20,120,239,"72,4",303,188,197,,
+Avatr 11 Long Range RWD,Dry,19,Continental PremiumContact 6,Summer,265/40-22,265/40-22,90,177,"110,5",624,388,406,,
+Avatr 11 Long Range RWD,Dry,19,Continental PremiumContact 6,Summer,265/40-22,265/40-22,120,233,"110,5",474,294,308,,
+Leapmotor B10,Dry,16,LingLong SportMaster,Summer,225/50-18,235/50-18,90,154,61,396,246,257,,
+Leapmotor B10,Dry,16,LingLong SportMaster,Summer,225/50-18,235/50-18,120,224,62,272,169,177,,
+Leapmotor C10,Dry,16,Dunlop eSport Maxx,Summer,245/45-20,245/45-20,90,169,"64,5",382,237,248,,
+Leapmotor C10,Dry,15,Dunlop eSport Maxx,Summer,245/45-20,245/45-20,120,240,"64,5",269,167,175,,
+Tesla Model 3 LR RWD Highland,Dry,19,Bridgestone Turanza T005 EV,Summer,235/45-18,235/45-18,90,116,"77,3",666,414,433,30,866
+Tesla Model 3 LR RWD Highland,Dry,19,Bridgestone Turanza T005 EV,Summer,235/45-18,235/45-18,120,160,"77,3",483,300,314,30,628
+Tesla Model Y LR RWD Juniper,Dry,19,Hankook Ventus S1evo3 EV,Summer,255/45-19,255/45-19,90,125,"77,3",618,384,402,30,803
+Tesla Model Y LR RWD Juniper,Dry,19,Hankook Ventus S1evo3 EV,Summer,255/45-19,255/45-19,120,173,"77,3",447,278,291,30,581
+Mazda 6e Standard Range,Dry,−6,Goodyear Ultragrip Ice3,Winter,245/45-19,245/45-19,90,178,"69,5",390,242,254,20,761
+Mazda 6e Standard Range,Dry,−6,Goodyear Ultragrip Ice3,Winter,245/45-19,245/45-19,120,224,"69,5",310,193,202,20,605
+Tesla Cybertruck Long Range,Wet,5,Triangle AgileX AT TR292,Winter,275/60-20,275/60-20,90,252,"111,9",444,276,289,32,541
+Tesla Cybertruck Long Range,Wet,5,Triangle AgileX AT TR292,Winter,275/60-20,275/60-20,120,352,"111,9",318,198,207,32,388
+Firefly Comfort,Dry,−4,Continental VikingContact 7,Winter,215/50-18,215/50-18,90,196,"39,6",202,125,131,26,303
+Firefly Comfort,Dry,−4,Continental VikingContact 7,Winter,215/50-18,215/50-18,120,260,"39,6",152,94,99,26,228
+Deepal S05 AWD 69 kWh,Dry,7,Continental VikingContact 8,Winter,235/50-19,235/50-19,90,182,"69,5",382,237,248,21,709
+Deepal S05 AWD 69 kWh,Dry,6,Continental VikingContact 8,Winter,235/50-19,235/50-19,120,257,"69,5",270,168,176,21,501
+MGS6 AWD,Dry,9,Nokian R5 SUV,Winter,245/50-20,245/50-20,90,178,"75,5",424,263,276,29,570
+MGS6 AWD,Dry,9,Nokian R5 SUV,Winter,245/50-20,245/50-20,120,260,"75,5",290,180,189,29,390
+Kia EV4 Long Range FWD,Dry,11,Nokian R5 EV,Winter,215/50-19,215/50-19,90,141,78,553,343,359,28,770
+Kia EV4 Long Range FWD,Dry,9,Nokian R5 EV,Winter,215/50-19,215/50-19,120,204,78,382,237,248,28,532
+Mercedes eVito,Wet,8,Dunlop Econodrive,Summer,225/55-17,225/55-17,90,250,"84,6",338,210,220,34,388
+Mercedes eVito,Dry,9,Dunlop Econodrive,Summer,225/55-17,225/55-17,120,340,"84,6",249,155,162,34,286
+BMW iX3 50 xDrive,Dry,17,Goodyear Eagle F1,Summer,255/40-21,255/40-21,90,150,"108,6",724,450,471,18,1569
+BMW iX3 50 xDrive,Dry,17,Goodyear Eagle F1,Summer,255/40-21,255/40-21,120,213,"108,6",511,317,332,18,1107
+BYD Atto 3 Evo AWD,Dry,16,Continental EcoContact 7,Summer,235/50-18,235/50-18,90,169,73,432,268,281,25,674
+BYD Atto 3 Evo AWD,Dry,14,Continental EcoContact 7,Summer,235/50-18,235/50-18,120,237,73,308,191,200,25,480
+Volvo ES90 RWD 92 kWh,Dry,7,Pirelli P Zero,Summer,255/40-22,285/35-22,90,167,"86,6",519,322,337,18,1125
+Volvo ES90 RWD 92 kWh,Dry,7,Pirelli P Zero,Summer,255/40-22,285/35-22,120,233,"86,6",372,231,242,18,806
+Tesla Model 3 Standard,Dry,14,Bridgestone Turanza T005EV,Summer,235/45-18,235/45-18,90,118,"57,7",489,304,318,21,908
+Tesla Model 3 Standard,Dry,10,Bridgestone Turanza T005EV,Summer,235/45-18,235/45-18,120,168,"57,7",343,213,223,21,637
+Mazda 6e Standard Range,Dry,14,Michelin ePrimacy,Summer,245/45-19,245/45-19,90,161,67,416,258,270,20,811
+Mazda 6e Standard Range,Dry,13,Michelin ePrimacy,Summer,245/45-19,245/45-19,120,217,67,350,217,228,20,683
+Kia PV5 Passenger,Dry,18,Nexen N blue S,Summer,215/65-16,215/65-16,90,177,"67,1",379,235,246,26,569
+Kia PV5 Passenger,Dry,17,Nexen N blue S,Summer,215/65-16,215/65-16,120,256,"67,1",262,163,170,56,182

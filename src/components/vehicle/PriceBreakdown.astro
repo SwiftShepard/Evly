@@ -7,9 +7,9 @@ interface Props {
 }
 
 const { vehicle } = Astro.props;
-const totalAids = vehicle.availableAids.reduce(
-  (sum, aid) => sum + aid.amount_EUR,
-  0
+const totalAids = Math.min(
+  8100,
+  vehicle.availableAids.reduce((sum, aid) => sum + aid.amount_EUR, 0)
 );
 const cheapest = vehicle.trims.reduce((a, b) => (a.price_EUR < b.price_EUR ? a : b));
 const priceAfterAids = Math.max(0, cheapest.price_EUR - totalAids);

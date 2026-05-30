@@ -26,7 +26,7 @@
   "realRange": {
     "mixed_km": 440,
     "highway_130_km": 315,
-    "highway_120_km": 345,
+    "highway_120_km": 510,
     "urban_km": 530,
     "winter_minus5_km": 350,
     "confidence": "bjorn_nyland"
@@ -53,23 +53,47 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 77
+      "power": 73
     },
     {
       "soc": 10,
-      "power": 100
+      "power": 91
+    },
+    {
+      "soc": 20,
+      "power": 93
+    },
+    {
+      "soc": 30,
+      "power": 94
+    },
+    {
+      "soc": 40,
+      "power": 96
     },
     {
       "soc": 50,
-      "power": 77
+      "power": 97
+    },
+    {
+      "soc": 60,
+      "power": 100
+    },
+    {
+      "soc": 70,
+      "power": 45
     },
     {
       "soc": 80,
       "power": 38
     },
     {
+      "soc": 90,
+      "power": 25
+    },
+    {
       "soc": 100,
-      "power": 8
+      "power": 3
     }
   ],
   "rangeTests": [
@@ -102,12 +126,12 @@
   ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
-    "totalTime_minutes": 660,
-    "averageSpeed_kmh": 90.9,
-    "averageConsumption_Wh_km": 215,
+    "totalTime_minutes": 670,
+    "averageSpeed_kmh": 89.6,
+    "averageConsumption_Wh_km": 256,
     "chargingStops": 5,
-    "averageTemperature_C": 14,
-    "testDate": "2023-09",
+    "averageTemperature_C": -4,
+    "testDate": null,
     "videoUrl": null,
     "confidence": "tested"
   },
@@ -564,7 +588,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "nyland",
     "la-chaine-ev"

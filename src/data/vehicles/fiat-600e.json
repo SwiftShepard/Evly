@@ -28,7 +28,8 @@
     "highway_130_km": 200,
     "urban_km": 380,
     "winter_minus5_km": 245,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 347
   },
   "consumption_mixed_kWh_per_100km": 14.6,
   "consumption_highway_kWh_per_100km": 19.6,
@@ -263,10 +264,11 @@
     "idealUserProfile": "Famille urbaine cherchant le style Fiat sur une plateforme connue et bien rodée. Bon rapport prix/équipement.",
     "notIdealFor": "Acheteurs cherchant la meilleure autonomie autoroute du segment, le 600e reste dans la moyenne."
   },
-  "lastUpdated": "2026-05-18",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "nyland",
-    "lachaineev"
+    "lachaineev",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

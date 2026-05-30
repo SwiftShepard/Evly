@@ -28,7 +28,8 @@
     "highway_130_km": 225,
     "urban_km": 430,
     "winter_minus5_km": 265,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 371
   },
   "consumption_mixed_kWh_per_100km": 15.5,
   "consumption_highway_kWh_per_100km": 22,
@@ -72,7 +73,17 @@
     }
   ],
   "rangeTests": [],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 610,
+    "averageSpeed_kmh": 98.4,
+    "averageConsumption_Wh_km": 274,
+    "chargingStops": null,
+    "averageTemperature_C": 12,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 4140,
   "width_mm": 1800,
   "height_mm": 1570,
@@ -370,7 +381,7 @@
     "idealUserProfile": "Périurbains cherchant un crossover électrique compact avec garde au sol surélevée.",
     "notIdealFor": "Gros rouleurs autoroutiers ou ceux qui cherchent un vrai SUV familial."
   },
-  "lastUpdated": "2026-05-19",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "nyland",
     "la-chaine-ev"

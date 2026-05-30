@@ -28,7 +28,8 @@
     "highway_130_km": 290,
     "urban_km": 535,
     "winter_minus5_km": 345,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 452
   },
   "consumption_mixed_kWh_per_100km": 15.5,
   "consumption_highway_kWh_per_100km": 20,
@@ -52,31 +53,61 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 161
+      "power": 88
     },
     {
       "soc": 10,
-      "power": 175
+      "power": 110
     },
     {
       "soc": 20,
-      "power": 175
+      "power": 173
+    },
+    {
+      "soc": 30,
+      "power": 174
+    },
+    {
+      "soc": 40,
+      "power": 160
     },
     {
       "soc": 50,
-      "power": 124
+      "power": 135
+    },
+    {
+      "soc": 60,
+      "power": 102
+    },
+    {
+      "soc": 70,
+      "power": 88
     },
     {
       "soc": 80,
-      "power": 56
+      "power": 67
+    },
+    {
+      "soc": 90,
+      "power": 31
     },
     {
       "soc": 100,
-      "power": 11
+      "power": 3
     }
   ],
   "rangeTests": [],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 590,
+    "averageSpeed_kmh": 101.7,
+    "averageConsumption_Wh_km": 239,
+    "chargingStops": null,
+    "averageTemperature_C": 14,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 4658,
   "width_mm": 1879,
   "height_mm": 1622,
@@ -387,10 +418,11 @@
     "idealUserProfile": "Famille cherchant un SUV électrique polyvalent à grand coffre, avec un rapport prestations/prix solide et une fabrication européenne.",
     "notIdealFor": "Acheteur recherchant un design tranché ou un infodivertissement irréprochable."
   },
-  "lastUpdated": "2026-05-18",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "nyland",
-    "lachaineev"
+    "lachaineev",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

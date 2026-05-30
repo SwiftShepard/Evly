@@ -755,30 +755,18 @@
     "slug": "kia-ev2",
     "brand": "Kia",
     "model": "EV2",
-    "power_kW": 108,
-    "usableCapacity_kWh": 42.2,
-    "wltp_min_km": 317,
-    "wltp_max_km": 317,
-    "configurations_count": 3,
-    "configuration_ids": [
-      "kia-ev2-air-42",
-      "kia-ev2-earth-42",
-      "kia-ev2-light-42"
-    ]
-  },
-  {
-    "slug": "kia-ev2-61",
-    "brand": "Kia",
-    "model": "EV2",
     "power_kW": 100,
     "usableCapacity_kWh": 61,
-    "wltp_min_km": 453,
+    "wltp_min_km": 317,
     "wltp_max_km": 453,
-    "configurations_count": 3,
+    "configurations_count": 6,
     "configuration_ids": [
+      "kia-ev2-air-42",
       "kia-ev2-air-61",
+      "kia-ev2-earth-42",
       "kia-ev2-earth-61",
-      "kia-ev2-gt-line-61"
+      "kia-ev2-gt-line-61",
+      "kia-ev2-light-42"
     ]
   },
   {

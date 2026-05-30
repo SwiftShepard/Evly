@@ -130,22 +130,22 @@ const SECTIONS: SectionDef[] = [
       {
         label: "CEE max.*",
         getValue: (c) => {
-          const total = c.vehicle.availableAids.reduce((s, a) => s + a.amount_EUR, 0);
+          const total = Math.min(8100, c.vehicle.availableAids.reduce((s, a) => s + a.amount_EUR, 0));
           return total > 0 ? `-${fmtPrix(total)}` : null;
         },
-        numeric: (c) => c.vehicle.availableAids.reduce((s, a) => s + a.amount_EUR, 0),
+        numeric: (c) => Math.min(8100, c.vehicle.availableAids.reduce((s, a) => s + a.amount_EUR, 0)),
         bestIsMax: true,
       },
       {
         label: "Apres CEE max.*",
         getValue: (c) => {
           if (c.config.price_EUR == null) return null;
-          const aids = c.vehicle.availableAids.reduce((s, a) => s + a.amount_EUR, 0);
+          const aids = Math.min(8100, c.vehicle.availableAids.reduce((s, a) => s + a.amount_EUR, 0));
           return fmtPrix(Math.max(0, c.config.price_EUR - aids));
         },
         numeric: (c) => {
           if (c.config.price_EUR == null) return null;
-          const aids = c.vehicle.availableAids.reduce((s, a) => s + a.amount_EUR, 0);
+          const aids = Math.min(8100, c.vehicle.availableAids.reduce((s, a) => s + a.amount_EUR, 0));
           return Math.max(0, c.config.price_EUR - aids);
         },
         bestIsMax: false,

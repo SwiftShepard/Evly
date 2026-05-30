@@ -25,10 +25,11 @@
   "wltp_min_km": 320,
   "realRange": {
     "mixed_km": 240,
-    "highway_130_km": 150,
+    "highway_130_km": 240,
     "urban_km": 295,
     "winter_minus5_km": 185,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 249
   },
   "consumption_mixed_kWh_per_100km": 14.5,
   "consumption_highway_kWh_per_100km": 19.5,
@@ -325,10 +326,11 @@
     "idealUserProfile": "Foyer urbain ou périurbain, 2e voiture du couple, trajets quotidiens < 50 km. Le style et l'usage en font une citadine premium.",
     "notIdealFor": "Familles avec adolescents ou grand rouleur autoroutier régulier, l'autonomie et l'habitabilité ne suivent pas."
   },
-  "lastUpdated": "2026-05-18",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "nyland",
-    "lachaineev"
+    "lachaineev",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

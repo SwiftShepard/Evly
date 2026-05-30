@@ -28,7 +28,8 @@
     "highway_130_km": 245,
     "urban_km": 420,
     "winter_minus5_km": 275,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 492
   },
   "consumption_mixed_kWh_per_100km": 13.6,
   "consumption_highway_kWh_per_100km": 18.5,
@@ -52,31 +53,61 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 250
+      "power": 56
     },
     {
       "soc": 10,
-      "power": 350
+      "power": 70
     },
     {
-      "soc": 30,
-      "power": 340
-    },
-    {
-      "soc": 50,
-      "power": 260
-    },
-    {
-      "soc": 80,
+      "soc": 20,
       "power": 75
     },
     {
+      "soc": 30,
+      "power": 75
+    },
+    {
+      "soc": 40,
+      "power": 71
+    },
+    {
+      "soc": 50,
+      "power": 74
+    },
+    {
+      "soc": 60,
+      "power": 69
+    },
+    {
+      "soc": 70,
+      "power": 53
+    },
+    {
+      "soc": 80,
+      "power": 27
+    },
+    {
+      "soc": 90,
+      "power": 29
+    },
+    {
       "soc": 100,
-      "power": 12
+      "power": 3
     }
   ],
   "rangeTests": [],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 695,
+    "averageSpeed_kmh": 86.3,
+    "averageConsumption_Wh_km": 261,
+    "chargingStops": null,
+    "averageTemperature_C": 11,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 5071,
   "width_mm": 1937,
   "height_mm": 1512,
@@ -330,10 +361,12 @@
     "idealUserProfile": "Grands rouleurs autoroutiers et technophiles recherchant une berline spacieuse, rapide à charger et dotée d'aides à la conduite avancées.",
     "notIdealFor": "Conducteurs urbains à la recherche d'une citadine agile ou de véhicules faciles à garer."
   },
-  "lastUpdated": "2026-05-18",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "constructeur",
-    "automobile-propre"
+    "automobile-propre",
+    "nyland",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

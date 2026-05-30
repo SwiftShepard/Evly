@@ -28,7 +28,8 @@
     "highway_130_km": 280,
     "urban_km": 470,
     "winter_minus5_km": 305,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 459
   },
   "consumption_mixed_kWh_per_100km": 22,
   "consumption_highway_kWh_per_100km": 29,
@@ -76,7 +77,17 @@
     }
   ],
   "rangeTests": [],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 560,
+    "averageSpeed_kmh": 107.1,
+    "averageConsumption_Wh_km": 273,
+    "chargingStops": null,
+    "averageTemperature_C": -12,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 5101,
   "width_mm": 1987,
   "height_mm": 1509,
@@ -254,10 +265,12 @@
     "idealUserProfile": "Amateurs de berlines premium sportives, interesses par le Battery Swap Nio.",
     "notIdealFor": "Acheteurs en France ou cherchant un vehicule avec SAV local etabli."
   },
-  "lastUpdated": "2026-05-19",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "constructeur",
-    "ev-database"
+    "ev-database",
+    "nyland",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

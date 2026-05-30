@@ -1,0 +1,227 @@
+Car,Time,km/h,Wh/km,Date,Temp,T avg,Notes
+Nissan X-Trail e-Power e-4orce,08:35,"116,5",1 134,26.3.2023,-5-5°C,2°C,Fossil reference test
+Nio ET5 100 kWh,08:40,"115,4",273,19.11.2025,-6~-3°C,-4°C,Battery swap only (Tangen)
+Toyota Mirai,08:40,"115,4",468,21.5.2023,7-14°C,10°C,"14 g/km H2, Norway route"
+Nio ET5 Touring 75 kWh,08:50,"113,2",237,30.9.2025,8-15°C,12°C,4x battery swap
+BMW iX3 50 xDrive,08:55,"112,1",254,26.4.2026,-2-6°C,2°C,
+Nio ET5 100 kWh,08:55,"112,1",258,3.5.2023,3-14°C,8°C,2x battery swap at Varberg
+Tesla Model S LR Palladium,08:55,"112,1",220,11.5.2023,11-16°C,14°C,
+Zeekr 7X Performance,08:55,"112,1",267,4.7.2025,13-15°C,14°C,
+Mercedes CLA 350 4Matic,09:00,"111,1",202,20.9.2025,12-18°C,15°C,40 % wet
+Nio ES8 100 kWh,09:00,"111,1",280,20.8.2022,20-24°C,22°C,Battery swap at Lier
+Mercedes EQS 450+,09:05,"110,1",220,28.8.2022,16-21°C,19°C,
+Tesla Model S LR Palladium,09:05,"110,1",248,26.2.2023,-3-1°C,-2°C,
+Audi A6 e-tron Sportback Quattro,09:10,"109,1",236,24.8.2025,5-14°C,10°C,
+Nio EL8 100 kWh,09:10,"109,1",295,28.9.2024,4-13°C,8°C,3x battery swap
+Tesla Model 3 LR RWD Highland,09:10,"109,1",186,18.6.2025,14-17°C,15°C,
+Tesla Model S Plaid,09:10,"109,1",255,18.2.2023,2-7°C,5°C,
+Audi RS e-Tron GT Performance,09:15,"108,1",280,2.10.2024,5-8°C,6°C,
+Tesla Model 3 Performance,09:15,"108,1",212,1.7.2022,19-28°C,24°C,
+BMW i4 eDrive40,09:20,"107,1",208,9.7.2022,17-20°C,18°C,
+Nio ET7 100 kWh,09:20,"107,1",273,8.3.2023,-12-2°C,-4°C,2x battery swap at Varberg
+Smart #5 Brabus,09:20,"107,1",306,12.10.2025,10-14°C,12°C,Fox on the roof
+Tesla Model 3 LR Highland,09:20,"107,1",204,14.9.2024,2-8°C,5°C,
+Tesla Model X LR Palladium,09:20,"107,1",276,21.10.2024,14-15°C,14°C,
+Volvo ES90 RWD,09:20,"107,1",261,9.5.2026,3-5°C,4°C,
+Tesla Model Y LR Juniper,09:25,"106,2",216,15.6.2025,13-17°C,15°C,Rain 40 %
+Tesla Model Y Performance Juniper,09:25,"106,2",230,8.10.2025,12-14°C,13°C,Wet roads 80 %
+Tesla Model 3 Standard,09:25,"106,2",190,12.5.2026,2-8°C,6°C,
+VW ID7 Pro,09:25,"106,2",214,5.8.2024,11-15°C,13°C,
+VW ID7 Tourer Pro,09:25,"106,2",212,2.9.2024,11-16°C,14°C,
+Audi A6 e-tron Avant Quattro,09:30,"105,3",259,26.4.2025,-2-6°C,3°C,
+Audi Q6 e-tron Quattro,09:30,"105,3",266,21.7.2024,15-22°C,18°C,
+Hyundai Ioniq 6 RWD,09:30,"105,3",230,30.4.2023,6-7°C,7°C,
+Porsche Macan 4,09:30,"105,3",264,12.4.2025,10-17°C,14°C,
+Tesla Model 3 RWD Highland,09:30,"105,3",185,16.8.2024,18-22°C,20°C,Rain 40 %
+VW ID7 GTX Tourer,09:30,"105,3",240,3.4.2025,0-17°C,6°C,
+Xpeng G6 Performance,09:30,"105,3",246,18.8.2024,10-17°C,14°C,
+Audi e-tron GT,09:35,"104,3",256,24.5.2021,8-12°C,10°C,"Norway night, some rain"
+Mercedes EQE 43 AMG,09:35,"104,3",256,25.6.2022,19-28°C,24°C,
+Nio EL7 100 kWh,09:35,"104,3",334,1.5.2023,3-14°C,6°C,2x battery swap at Varberg
+BMW i4 M50,09:40,"103,4",229,13.8.2022,19-31°C,26°C,
+BMW i7 xDrive60,09:40,"103,4",278,9.4.2023,2-6°C,4°C,
+Kia EV6 84 kWh facelift,09:40,"103,4",273,27.11.2024,0-8°C,6°C,Norway Mjøsa route
+Nio EL8 100 kWh,09:40,"103,4",288,26.7.2025,19-21°C,20°C,No swap
+Polestar 2 LR SM,09:40,"103,4",246,2.9.2023,8-15°C,12°C,
+Porsche Taycan Cross Turismo 4,09:40,"103,4",275,4.6.2022,15-18°C,17°C,
+Ford Capri,09:45,"102,6",258,9.3.2024,1-4°C,2°C,
+Hyundai Ioniq 5 84 kWh,09:45,"102,6",276,6.11.2024,1-5°C,3°C,Norway Mjøsa route
+Hongqi E-HS7 111 kWh AWD,09:45,"102,6",300,16.9.2025,11-15°C,13°C,
+Tesla Model Y LR,09:45,"102,6",207,4.9.2021,13-21°C,17°C,
+Tesla Model Y Performance,09:45,"102,6",228,11.6.2022,17-24°C,20°C,
+Volvo EX90 Twin Ultra,09:45,"102,6",303,30.8.2025,11-15°C,13°C,
+VW ID4 Pro 4Motion,09:45,"102,6",222,11.5.2024,5-18°C,15°C,
+BMW i4 M50,09:50,"101,7",242,18.9.2022,5-11°C,8°C,
+Mercedes EQS 580 4Matic,09:50,"101,7",294,26.11.2021,-3-5°C,2°C,
+Polestar 3 LR DM,09:50,"101,7",303,8.6.2025,6-12°C,10°C,
+Nio EL6 100 kWh,09:50,"101,7",286,21.8.2025,8-12°C,10°C,No swap
+2024 Skoda Enyaq Coupé RS,09:50,"101,7",239,11.8.2024,14-17°C,15°C,
+Tesla Model S LR Raven,09:50,"101,7",217,12.9.2020,11-17°C,14°C,Norway
+Tesla Model Y LR,09:50,"101,7",254,16.04.2022,-3-5°C,0°C,
+VW ID7 Pro,09:50,"101,7",258,25.02.2024,2-4°C,3°C,
+Hyundai Ioniq 5 N,09:55,"100,8",310,01.11.2024,2-10°C,7°C,Norway Mjøsa route
+Hyundai Ioniq 9 LR AWD,09:55,"100,8",340,16.11.2025,-4-6°C,1°C,
+Kia EV4 LR,09:55,"100,8",232,11.04.2026,2-6°C,4°C,
+Kia EV6 AWD,09:55,"100,8",263,15.11.2021,6-7°C,6°C,
+Skoda Enyaq Coupé 85x,09:55,"100,8",253,18.10.2025,-4-9°C,3°C,
+Tesla Model Y RWD,09:55,"100,8",236,27.05.2023,6-12°C,10°C,
+Cupra Tavascan VZ Adrenaline,10:00,100,256,01.06.2025,7-12°C,9°C,
+Ford Explorer,10:00,100,269,03.03.2025,4-10°C,7°C,
+Hyundai Ioniq 5 AWD,10:00,100,261,27.07.2021,17-21°C,18°C,"Norway, wet half of route"
+Kia EV6 GT,10:00,100,303,04.06.2023,7-15°C,9°C,
+Mercedes EQS 580 4Matic SUV,10:00,100,339,02.04.2023,-6-6°C,0°C,
+Polestar 4 LR DM,10:00,100,277,06.10.2024,6-17°C,9°C,
+Skoda Enyaq Coupé RS,10:00,100,225,21.07.2022,18-31°C,26°C,
+VW ID5 GTX,10:00,100,252,23.06.2022,8-16°C,12°C,
+Xpeng G9 Performance,10:00,100,,29.10.2023,-1-3°C,2°C,Norway
+BYD Sealion 7 93 kWh,10:05,"99,2",317,14.09.2025,12-13°C,12°C,"Wet 75 %, 230 kW update"
+Mercedes EQE 350 4Matic SUV,10:05,"99,2",300,23.07.2023,9-17°C,13°C,
+BMW i4 M50,10:10,"98,4",274,05.02.2022,5-6°C,5°C,"Sweden, wet end"
+BMW iX xDrive50,10:10,"98,4",323,12.02.2022,3-6°C,4°C,Sweden
+Kia EV3 LR,10:10,"98,4",260,04.05.2025,4-11°C,7°C,
+Kia EV6 77 kWh RWD,10:10,"98,4",268,05.03.2022,-1-5°C,3°C,
+MG4 64 kWh,10:10,"98,4",253,13.06.2023,9-13°C,11°C,
+Renault Scenic E-Tech 92 kWh,10:10,"98,4",274,26.08.2024,12-16°C,14°C,
+Zeekr 001 AWD,10:10,"98,4",302,30.11.2024,-3-7°C,0°C,Norway Mjøsa route
+Fisker Ocean Extreme,10:15,"97,6",348,22.04.2024,-5-4°C,-1°C,
+Tesla Cybertruck Long Range,10:15,"97,6",410,28.02.2026,-2-6°C,4°C,
+Audi e-tron 55,10:20,"96,8",291,22.09.2019,12-20°C,16°C,
+Audi Q4 e-tron 45 Quattro,10:20,"96,8",296,04.02.2024,0-5°C,4°C,
+Audi Q4 e-tron 45 Quattro Sportback,10:20,"96,8",288,28.04.2024,-2-4°C,0°C,"Norway, driving slower"
+Audi Q8 e-tron 55 Sportback,10:20,"96,8",332,23.03.2023,5-9°C,7°C,
+BMW iX xDrive40,10:20,"96,8",263,28.05.2022,12-16°C,14°C,
+Deepal S05 69 kWh AWD,10:20,"96,8",268,21.03.2026,0-4°C,2°C,
+Kia EV9 GT-Line,10:20,"96,8",362,11.02.2024,-5-2°C,-1°C,
+Mercedes EQA 250,10:20,"96,8",231,13.05.2021,16-20°C,18°C,Old and faster charging
+MG Cyberster,10:20,"96,8",261,23.11.2024,-4-(-11)°C,-7°C,Norway Mjøsa route
+MGS5,10:20,"96,8",253,24.05.2025,3-8°C,5°C,
+Skoda Enyaq iV 80,10:20,"96,8",231,08.05.2021,12-14°C,13°C,
+Tesla Model Y RWD BYD battery,10:20,"96,8",224,08.11.2023,0-8°C,4°C,Norway
+Tesla Model X LR Raven,10:20,"97,6",258,21.09.2019,15-17°C,16°C,150 kW max
+VW ID3 82 kWh,10:20,"96,8",227,10.4.2021,4-9°C,8.5°C,Norway
+VW ID Buzz LWB GTX 91 kWh,10:20,"96,8",319,10.8.2025,15-17°C,16°C,
+BMW iX2 xDrive30,10:25,96,241,27.7.2024,14-18°C,16°C,
+Ford Mustang Mach-E LR RWD,10:25,96,220,21.8.2021,15-20°C,17°C,
+Tesla Model 3 LR Highland,10:25,96,302,16.1.2024,-27-(-18)°C,-24°C,Norway
+2025 VW ID3 Pure 55 kWh,10:25,96,223,11.5.2025,8-12°C,10°C,
+BMW iX3,10:30,"95,2",261,22.4.2021,-4-10°C,2°C,Norway
+BYD Atto 3 Evo,10:30,"95,2",274,2.5.2026,4-13°C,7°C,
+BYD Seal Performance,10:30,"95,2",252,23.6.2024,13-14°C,14°C,Wet roads 80 %
+Skoda Elroq 60,10:30,"95,2",243,22.6.2025,7-16°C,12°C,
+Volvo EX30 RWD ER,10:30,"95,2",228,18.5.2024,11-26°C,20°C,
+VW ID3 Pro 62 kWh facelift,10:30,"95,2",228,9.7.2023,12-24°C,16°C,
+VW ID Buzz 82 kWh,10:30,"95,2",299,15.10.2022,9-14°C,12°C,
+BMW i5 M60,10:35,"94,5",288,23.1.2024,3-6°C,5°C,
+BYD Sealion 7 93 kWh,10:35,"94,5",321,22.2.2025,1-2°C,1°C,
+Peugeot e-5008,10:35,"94,5",266,20.11.2024,0-3°C,1°C,Norway Mjøsa route
+Volvo C40 AWD,10:35,"94,5",288,26.3.2022,4-14°C,10°C,
+VW ID4 1st 82 kWh,10:35,"94,5",251,03.04.2021,4-12°C,8°C,"Norway, nice weather"
+VW ID4 1st GTX 82 kWh,10:35,"94,5",274,21.10.2023,-1-2°C,1°C,Norway
+VW ID4 1st GTX 82 kWh,10:35,"94,5",256,12.06.2021,18-21°C,19°C,Sweden
+Audi e-tron 55 Black Edition,10:40,"93,8",358,02.04.2022,-5-4°C,-3°C,
+Citroen e-C4X,10:40,"93,8",220,10.09.2023,15-17°C,16°C,
+Mercedes G580,10:40,"93,8",455,28.09.2025,5-10°C,8°C,
+MGS6 AWD,10:40,"93,8",289,29.03.2026,-1-5°C,3°C,
+Mini Countryman SE All4,10:40,"93,8",258,22.09.2024,10-13°C,12°C,
+Polestar 2 Performance,10:40,"93,8",300,23.11.2021,-1-8°C,4°C,Sweden
+BYD Han,10:45,93,,18.06.2023,15-24°C,18°C,
+KGM Torres EVX,10:45,93,267,30.06.2024,14-16°C,15°C,
+VW ID3 1st 62 kWh,10:45,93,200,19.09.2020,9-19°C,14°C,Norway
+BMW iX1 xDrive30,10:50,"92,3",265,16.04.2023,6-8°C,7°C,
+Mercedes EQA 250+,10:50,"92,3",277,30.03.2024,1-7°C,3°C,Norway Mjøsa route
+Nissan Ariya 87 kWh FWD,10:50,"92,3",285,02.10.2022,10-13°C,12°C,Wet roads 40 %
+Hongqi E-HS9 120 kWh,10:55,"91,6",366,02.07.2023,16-18°C,17°C,
+Lexus RZ 450e,10:55,"91,6",223,25.05.2024,22-27°C,25°C,
+Renault 5 55 kWh,10:55,"91,6",216,30.06.2025,10-23°C,17°C,
+Tesla Model S 85D 2016,10:55,"91,6",262,14.03.2026,1-5°C,3°C,
+Volvo XC40 82 kWh AWD,10:55,"91,6",328,24.12.2023,-14-2°C,-8°C,
+Mazda 6e Standard Range,11:00,"90,9",233,20.02.2026,-17-(-1)°C,-8°C,
+Mercedes EQC 400,11:00,"90,9",270,12.09.2019,16-21°C,18.5°C,Some tailwind
+Volvo EX30 Twin Performance,11:00,"90,9",294,14.04.2024,4-7°C,5°C,Wet roads 70 %
+Volvo XC40 69 kWh FWD,11:00,"90,9",311,23.04.2022,5-11°C,8°C,
+Hongqi E-HS9 99 kWh,11:05,"90,2",329,03.09.2022,12-20°C,16°C,
+Mercedes EQB 350 4Matic,11:05,"90,2",291,18.02.2022,0-6°C,4°C,
+Nissan Ariya 63 kWh,11:05,"90,2",276,25.09.2022,9-11°C,10°C,Wet roads 40 %
+Nissan Ariya 87 kWh e-4orce,11:05,"90,2",301,07.05.2023,1-10°C,4°C,
+VW ID3 55 kWh,11:05,"90,2",204,28.08.2021,18-21°C,19°C,
+Hyundai Kona 64 kWh MY2024,11:10,"89,6",256,13.11.2023,-4-2°C,-2°C,Sweden/Norway
+Kia Niro EV 64 kWh,11:10,"89,6",234,08.10.2022,4-13°C,8°C,Norway
+Maxus Mifa 9,11:10,"89,6",330,24.09.2023,5-11°C,8°C,Norway
+Mini Cooper SE 54 kWh,11:10,"89,6",212,15.11.2024,-4-6°C,1°C,Norway Mjøsa route
+Smart #3 Brabus,11:10,"89,6",297,07.04.2024,1-4°C,2°C,
+Citroen e-C4,11:15,"88,9",227,25.07.2021,17-22°C,19°C,Norway
+Mercedes EQB 300 4Matic,11:15,"88,9",277,26.03.2024,1-3°C,2°C,
+Polestar 2 SR SM,11:15,"88,9",264,20.11.2021,7-9°C,8°C,
+Renault Megane E-Tech 60 kWh,11:15,"88,9",243,12.11.2022,7-14°C,12°C,
+Maxus eTerron 9,11:20,"88,2",389,09.11.2025,6-7°C,6°C,
+MG ZS EV 72 kWh,11:20,"88,2",275,26.11.2022,2-6°C,4°C,
+Smart #1 Brabus,11:20,"88,2",295,10.03.2024,0-1°C,0°C,
+BYD Tang 86.4 kWh,11:25,"87,6",327,06.08.2022,16-20°C,18°C,
+Mercedes eVito,11:25,"87,6",367,18.04.2026,5-7°C,6°C,
+Mercedes EQA 350 4Matic,11:25,"87,6",277,22.01.2022,-4-2°C,0°C,
+Nio ES8 100 kWh,11:25,"87,6",318,09.10.2021,14-16°C,15°C,
+Cupra Born 58,11:30,87,267,18.03.2022,-2-4°C,0°C,
+Ford Mustang Mach-E LR AWD,11:30,87,320,20.02.2021,1-4°C,2.5°C,"Norway, wet"
+Hyundai Kona 64 kWh,11:30,87,223,05.10.2019,0-11°C,5.5°C,
+Opel Astra-e Tourer,11:30,87,259,03.03.2024,6-9°C,7°C,
+Firefly Select,11:35,"86,3",214,08.08.2025,14-22°C,17°C,
+Xpeng P7 Performance Wing Edition,11:35,"86,3",261,23.09.2022,11°C,11°C,Wet roads 40 %
+BYD Atto 3,11:40,"85,7",242,09.08.2023,12-16°C,14°C,
+Hyundai Inster Long Range,11:40,"85,7",229,29.03.2025,5-9°C,7°C,
+Ford F-150 Lightning SR,11:45,"85,1",447,17.03.2025,-3-7°C,1°C,
+MG4 Xpower,11:45,"85,1",332,05.01.2024,-28-(-15)°C,-22°C,Norway
+Tesla Model S P85 (MF),11:50,"84,5",254,06.11.2021,1-13°C,8°C,8 year old car
+Toyota bZ4X AWD,11:50,"84,5",262,18.05.2023,7-12°C,10°C,New software
+Audi e-tron 50,11:55,"83,9",319,15.01.2020,7-9°C,8°C,Wet almost all the way
+Hyundai Ioniq 28 kWh,11:55,"83,9",171,22.07.2021,14-28°C,21°C,Norway
+Jac E30X Nordic Edition 50,11:55,"83,9",228,6.9.2025,13-15°C,14°C,
+Mercedes EQV,11:55,"83,9",382,29.10.2022,1-12°C,9°C,
+KGM Musso EV,12:10,"82,2",394,22.11.2025,3-7°C,6°C,Wet 60 % and very windy
+Jaguar I-Pace EV320,12:15,"81,6",321,18.12.2020,0-5°C,2°C,"Norway, wet"
+Volvo XC40 78 kWh AWD,12:15,"81,6",326,19.12.2020,5-7°C,6°C,"Norway, wet"
+Honda e:Ny1,12:20,"81,1",267,15.10.2023,3-11°C,6°C,Norway
+Citroen e-C3 Aircross,12:35,"79,5",279,20.5.2025,5-21°C,12°C,
+Eurabus 3.0 8.5 m,13:15,"75,5",695,18.7.2023,14-26°C,20°C,Limited to 190 kWh
+Maxus eT90,13:30,"74,1",404,13.8.2023,14-18°C,15°C,Norway
+Tesla Model S Plaid,13:30,"74,1",361,1.8.2023,11-22°C,15°C,Trailer PW7339
+Nissan Townstar 45 kWh,13:35,"73,6",319,18.3.2023,3-6°C,5°C,
+Nio EL7 100 kWh,13:40,"73,2",378,19.8.2023,17-27°C,22°C,Trailer PW7337
+Opel Ampera-e,13:50,"72,3",262,22.5.2022,11-15°C,13°C,
+Xpeng G3 520i,13:50,"72,3",244,28.11.2020,-7-1°C,-3°C,Norway
+BMW i3 42 kWh,14:00,"71,4",221,14.11.2020,4-8°C,6°C,"Norway, 50/50 wet"
+Mercedes EQV,14:00,"71,4",460,12.2.2021,-23-(-13°C),-18°C,"Norway, very cold"
+Tesla Model Y Performance,14:05,71,364,16.9.2023,11-20°C,14°C,Trailer PW7337
+Nissan Leaf 62 kWh,14:10,"70,6",177,29.10.2019,-1-9°C,4°C,
+Hyundai Ioniq 38 kWh,14:20,"69,8",200,19.01.2020,0-7°C,3.5°C,
+Mercedes EQE 350 4Matic SUV,14:30,69,406,25.07.2023,11-19°C,15°C,Trailer PW7340
+Polestar 2 Performance,14:30,69,440,08.10.2023,-2-9°C,3°C,Trailer PW7340
+VW ID Buzz 82 kWh,14:30,69,390,30.09.2023,9-15°C,11°C,Trailer PW7340
+Renault Zoe ZE50,14:35,"68,6",227,12.01.2020,1-7°C,4°C,Wet 80 % of the route
+MG ZS EV 44.5 kWh,14:40,"68,2",267,07.02.2020,0-8°C,4°C,
+Lexus UX 300e,14:45,"67,8",257,01.05.2021,5-12°C,8.5°C,Norway
+VW e-Golf 35.8 kWh,15:50,"63,2",181,30.11.2019,-11-2°C,-4.5°C,
+Honda e,16:00,"62,5",208,04.07.2020,11-19°C,15°C,Norway
+2013 Nissan Leaf 24 kWh,19:30,"51,3",140,13.07.2023,11-23°C,16°C,"Norway, 67 % SoH"
+,,,,,,,
+Old results:,,,,,,,
+Car,Time,km/h,Wh/km,Date,Temp,T avg,Notes
+Tesla Model 3 LR 82 kWh,09:20,"107,1",186,11.7.2021,17-22°C,20°C,
+Tesla Model 3 SR+ MIC 2021,09:55,"100,8",185,10.8.2021,4-11°C,7°C,
+Tesla Model 3 Performance,09:55,"100,8",217,17.10.2020,4-11°C,7.5°C,"Norway, nice weather"
+Tesla Model 3 Performance,10:00,100,238,26.10.2019,4-18°C,11°C,"Wet, after 200 kW update"
+2021 Model 3 SR+ (Fremont),10:00,100,178,29.05.2021,22-27°C,24°C,
+Model 3 SR+ 60 kWh,10:05,"99,2",205,30.01.2022,3-6°C,4°C,"Norway, quite windy"
+Tesla Model 3 Performance,10:10,"98,4",229,10.06.2019,12-19°C,15.5°C,Before 200 kW update
+Hyundai Ioniq 5,10:25,96,278,04.10.2021,11-16°C,14°C,
+Tesla Model 3 LR 2021,10:25,96,206,2.1.2021,-2-2°C,0°C,"Norway, some traffic"
+Tesla Model 3 Performance,10:30,"95,2",241,29.12.2019,4-7°C,5.5°C,Delayed at Löddeköpinge
+Tesla Model 3 SR+,10:30,"95,2",218,09.01.2020,5-6°C,5.5°C,
+Tesla Model S P85,10:55,"91,6",217,14.07.2019,17-22°C,19.5°C,6 year old car
+Polestar 2 Performance,11:30,87,279,19.09.2020,5-15°C,10°C,Norway
+Hyundai Ioniq 28 kWh,12:15,"81,6",160,31.08.2019,14-27°C,20.5°C,91k km on odometer
+Peugeot e-208,12:30,80,214,1.6.2020,14-20°C,17°C,Norway
+BYD Atto 3,12:15,"81,6",258,6.8.2023,12-18°C,15°C,
+Volvo XC40 78 kWh AWD,12:15,"81,6",326,19.12.2020,5-7°C,6°C,"Norway, wet"
+Toyota bZ4X AWD,14:25,"69,4",302,03.03.2023,-2-2°C,-1°C,Old software
+MG ZS EV 44.5 kWh,15:00,"66,7",154,08.03.2020,25-35°C,30°C,In Thailand
+Nissan Leaf 62 kWh,15:30,"64,5",155,26.08.2019,13-30°C,21.5°C,30°C that day

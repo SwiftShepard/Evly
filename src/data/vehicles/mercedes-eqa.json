@@ -28,17 +28,18 @@
     "highway_130_km": 280,
     "urban_km": 485,
     "winter_minus5_km": 310,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 390
   },
   "consumption_mixed_kWh_per_100km": 17.5,
   "consumption_highway_kWh_per_100km": 23,
   "consumption_winter_kWh_per_100km": 21,
   "dragCoefficient_Cx": 0.28,
   "chargingDC": {
-    "peakPower_kW": 100,
+    "peakPower_kW": 111,
     "time_10_80_min": 32,
     "kWh_added_30min": 42,
-    "confidence": "estimated"
+    "confidence": "tested"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
@@ -52,23 +53,43 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 70
+      "power": 87
     },
     {
       "soc": 10,
-      "power": 100
+      "power": 109
+    },
+    {
+      "soc": 20,
+      "power": 111
     },
     {
       "soc": 30,
-      "power": 90
+      "power": 110
+    },
+    {
+      "soc": 40,
+      "power": 107
     },
     {
       "soc": 50,
-      "power": 65
+      "power": 103
+    },
+    {
+      "soc": 60,
+      "power": 97
+    },
+    {
+      "soc": 70,
+      "power": 88
     },
     {
       "soc": 80,
-      "power": 30
+      "power": 73
+    },
+    {
+      "soc": 90,
+      "power": 61
     },
     {
       "soc": 100,
@@ -76,7 +97,17 @@
     }
   ],
   "rangeTests": [],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 620,
+    "averageSpeed_kmh": 96.8,
+    "averageConsumption_Wh_km": 231,
+    "chargingStops": null,
+    "averageTemperature_C": 16,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 4463,
   "width_mm": 1834,
   "height_mm": 1620,
@@ -395,7 +426,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 480,
-      "wltp_consumption_kWh_100km": 17.0,
+      "wltp_consumption_kWh_100km": 17,
       "usableCapacity_kWh": 66.5,
       "realRange": {
         "mixed_km": 360,
@@ -583,10 +614,12 @@
     "idealUserProfile": "Conducteurs cherchant un SUV compact premium avec finition Mercedes.",
     "notIdealFor": "Gros rouleurs frequents en charge rapide."
   },
-  "lastUpdated": "2026-05-20",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "constructeur",
-    "automobile-propre"
+    "automobile-propre",
+    "nyland",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

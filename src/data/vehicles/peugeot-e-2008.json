@@ -28,7 +28,8 @@
     "highway_130_km": 200,
     "urban_km": 380,
     "winter_minus5_km": 240,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 300
   },
   "consumption_mixed_kWh_per_100km": 15.2,
   "consumption_highway_kWh_per_100km": 21,
@@ -387,10 +388,11 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra-rapides."
   },
-  "lastUpdated": "2026-05-17",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "nyland",
-    "lachaineev"
+    "lachaineev",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

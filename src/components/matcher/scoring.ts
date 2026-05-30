@@ -197,7 +197,7 @@ export function scoreVehicle(vehicle: Vehicle, answers: MatcherAnswers): MatchRe
     // Déduction des aides CEE 2026 (coup de pouce CEE + surbonus batterie européenne) si applicable (produit en Europe et prix <= 47 000 €)
     const isEU = EUROPEAN_COUNTRIES.has(vehicle.productionCountry);
     const isEligibleCEE = isEU && rawPrice <= 47000;
-    const totalCeeAid = isEligibleCEE ? (vehicle.availableAids || []).reduce((sum: number, a: { amount_EUR: number }) => sum + a.amount_EUR, 0) : 0;
+    const totalCeeAid = isEligibleCEE ? Math.min(8100, (vehicle.availableAids || []).reduce((sum: number, a: { amount_EUR: number }) => sum + a.amount_EUR, 0)) : 0;
     const configPrice = rawPrice - totalCeeAid;
     
     // Calcul du loyer estimé ou réel

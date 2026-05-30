@@ -28,7 +28,8 @@
     "highway_130_km": 240,
     "urban_km": 450,
     "winter_minus5_km": 280,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 371
   },
   "consumption_mixed_kWh_per_100km": 15.5,
   "consumption_highway_kWh_per_100km": 21.5,
@@ -86,7 +87,17 @@
       "notes": "Test autoroutier."
     }
   ],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 610,
+    "averageSpeed_kmh": 98.4,
+    "averageConsumption_Wh_km": 274,
+    "chargingStops": null,
+    "averageTemperature_C": 12,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 3920,
   "width_mm": 1770,
   "height_mm": 1500,
@@ -485,7 +496,7 @@
     "idealUserProfile": "Urbains et périurbains cherchant une citadine électrique polyvalente au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-19",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "nyland",
     "la-chaine-ev"

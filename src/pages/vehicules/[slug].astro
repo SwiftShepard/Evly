@@ -96,7 +96,10 @@ const confidenceLabel: Record<string, string> = {
 
 const tkc = vehicle.thousandKmChallenge;
 const tkcHasData = tkc !== null && (tkc.totalTime_minutes !== null || tkc.averageSpeed_kmh !== null || tkc.averageConsumption_Wh_km !== null || tkc.chargingStops !== null);
-const totalAids = vehicle.availableAids.reduce((sum, aid) => sum + aid.amount_EUR, 0);
+const totalAids = Math.min(
+  8100,
+  vehicle.availableAids.reduce((sum, aid) => sum + aid.amount_EUR, 0)
+);
 
 const cheapestTrim = vehicle.trims.reduce((a, b) => a.price_EUR < b.price_EUR ? a : b);
 
@@ -683,7 +686,10 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
       )}
 
       {configurations.map((config, index) => {
-        const sidebarAids = vehicle.availableAids.reduce((s, a) => s + a.amount_EUR, 0);
+        const sidebarAids = Math.min(
+          8100,
+          vehicle.availableAids.reduce((s, a) => s + a.amount_EUR, 0)
+        );
         const sidebarNet = config.price_EUR != null ? Math.max(0, config.price_EUR - sidebarAids) : null;
         return (
           <div data-config-id={config.id} class="sidebar-config" style={index === 0 ? "" : "display:none"}>

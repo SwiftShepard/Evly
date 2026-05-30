@@ -28,7 +28,8 @@
     "highway_130_km": 290,
     "urban_km": 490,
     "winter_minus5_km": 315,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 342
   },
   "consumption_mixed_kWh_per_100km": 18.5,
   "consumption_highway_kWh_per_100km": 25,
@@ -52,31 +53,61 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 90
+      "power": 93
     },
     {
       "soc": 10,
-      "power": 130
+      "power": 116
     },
     {
-      "soc": 30,
+      "soc": 20,
       "power": 115
     },
     {
+      "soc": 30,
+      "power": 108
+    },
+    {
+      "soc": 40,
+      "power": 100
+    },
+    {
       "soc": 50,
-      "power": 80
+      "power": 92
+    },
+    {
+      "soc": 60,
+      "power": 82
+    },
+    {
+      "soc": 70,
+      "power": 71
     },
     {
       "soc": 80,
-      "power": 35
+      "power": 61
+    },
+    {
+      "soc": 90,
+      "power": 49
     },
     {
       "soc": 100,
-      "power": 8
+      "power": 5
     }
   ],
   "rangeTests": [],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 650,
+    "averageSpeed_kmh": 92.3,
+    "averageConsumption_Wh_km": 285,
+    "chargingStops": null,
+    "averageTemperature_C": 10,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 4595,
   "width_mm": 1850,
   "height_mm": 1660,
@@ -380,10 +411,12 @@
     "idealUserProfile": "Familles cherchant un SUV electrique spacieux et bien equipe a prix contenu.",
     "notIdealFor": "Gros rouleurs necessitant une charge ultra-rapide."
   },
-  "lastUpdated": "2026-05-19",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "constructeur",
-    "automobile-propre"
+    "automobile-propre",
+    "nyland",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

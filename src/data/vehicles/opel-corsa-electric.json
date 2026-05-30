@@ -28,7 +28,8 @@
     "highway_130_km": 205,
     "urban_km": 380,
     "winter_minus5_km": 250,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 292
   },
   "consumption_mixed_kWh_per_100km": 14.6,
   "consumption_highway_kWh_per_100km": 19.6,
@@ -387,10 +388,11 @@
     "idealUserProfile": "Foyer urbain ou périurbain cherchant une citadine électrique fiable, finition sobre allemande, look discret.",
     "notIdealFor": "Acheteur cherchant le maximum d'espace ou le look extraverti, préférer la 600e ou Avenger."
   },
-  "lastUpdated": "2026-05-18",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "nyland",
-    "lachaineev"
+    "lachaineev",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

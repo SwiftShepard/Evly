@@ -25,7 +25,7 @@
   "wltp_min_km": 365,
   "realRange": {
     "mixed_km": 285,
-    "highway_130_km": 205,
+    "highway_130_km": 285,
     "urban_km": 350,
     "winter_minus5_km": 225,
     "confidence": "estimated"
@@ -328,10 +328,12 @@
     "idealUserProfile": "Conducteurs urbains/periurbains cherchant un petit SUV pratique et eligible aux aides.",
     "notIdealFor": "Gros rouleurs necessitant plus de 400 km d'autonomie."
   },
-  "lastUpdated": "2026-05-20",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "constructeur",
-    "automobile-propre"
+    "automobile-propre",
+    "nyland",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

@@ -28,7 +28,8 @@
     "highway_130_km": 140,
     "urban_km": 260,
     "winter_minus5_km": 170,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 371
   },
   "consumption_mixed_kWh_per_100km": 18.5,
   "consumption_highway_kWh_per_100km": 25,
@@ -72,7 +73,17 @@
     }
   ],
   "rangeTests": [],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 610,
+    "averageSpeed_kmh": 98.4,
+    "averageConsumption_Wh_km": 274,
+    "chargingStops": null,
+    "averageTemperature_C": 12,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 4486,
   "width_mm": 1919,
   "height_mm": 1838,
@@ -255,9 +266,10 @@
     "idealUserProfile": "Familles cherchant un ludospace electrique modulable pour les trajets quotidiens.",
     "notIdealFor": "Gros rouleurs autoroutiers ou ceux ayant besoin de plus de 300 km d'autonomie."
   },
-  "lastUpdated": "2026-05-19",
+  "lastUpdated": "2026-05-29",
   "sources": [
-    "la-chaine-ev"
+    "la-chaine-ev",
+    "nyland"
   ],
   "imageCredit": "Constructeur"
 }

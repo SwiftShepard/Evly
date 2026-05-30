@@ -28,7 +28,8 @@
     "highway_130_km": 300,
     "urban_km": 490,
     "winter_minus5_km": 310,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 390
   },
   "consumption_mixed_kWh_per_100km": 19,
   "consumption_highway_kWh_per_100km": 26,
@@ -52,31 +53,61 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 120
+      "power": 117
     },
     {
       "soc": 10,
-      "power": 195
+      "power": 146
+    },
+    {
+      "soc": 20,
+      "power": 167
     },
     {
       "soc": 30,
-      "power": 170
+      "power": 167
+    },
+    {
+      "soc": 40,
+      "power": 167
     },
     {
       "soc": 50,
-      "power": 110
+      "power": 167
+    },
+    {
+      "soc": 60,
+      "power": 167
+    },
+    {
+      "soc": 70,
+      "power": 131
     },
     {
       "soc": 80,
-      "power": 45
+      "power": 103
+    },
+    {
+      "soc": 90,
+      "power": 66
     },
     {
       "soc": 100,
-      "power": 10
+      "power": 7
     }
   ],
   "rangeTests": [],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 660,
+    "averageSpeed_kmh": 90.9,
+    "averageConsumption_Wh_km": 233,
+    "chargingStops": null,
+    "averageTemperature_C": -17,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 4850,
   "width_mm": 1935,
   "height_mm": 1620,
@@ -271,10 +302,12 @@
     "idealUserProfile": "Familles recherchant un SUV électrique moderne, très technologique, avec un confort de roulement premium et un équipement ultra-complet.",
     "notIdealFor": "Conducteurs recherchant une autonomie supérieure à 500 km ou une compatibilité avec le Prime CEE français."
   },
-  "lastUpdated": "2026-05-22",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "constructeur",
-    "automobile-propre"
+    "automobile-propre",
+    "nyland",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

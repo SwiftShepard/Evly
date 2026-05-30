@@ -28,7 +28,8 @@
     "highway_130_km": 195,
     "urban_km": 370,
     "winter_minus5_km": 240,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 349
   },
   "consumption_mixed_kWh_per_100km": 14.8,
   "consumption_highway_kWh_per_100km": 19.8,
@@ -323,10 +324,11 @@
     "idealUserProfile": "Foyer urbain ou périurbain attiré par l'esthétique Jeep mais sans besoin réel de 4×4. Mix urbain/route quotidien.",
     "notIdealFor": "Vrai usage off-road ou famille de 4 sur grands trajets : préférer un SUV familial plus spacieux."
   },
-  "lastUpdated": "2026-05-18",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "nyland",
-    "lachaineev"
+    "lachaineev",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

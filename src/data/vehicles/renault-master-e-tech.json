@@ -28,7 +28,8 @@
     "highway_130_km": 220,
     "urban_km": 420,
     "winter_minus5_km": 270,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 371
   },
   "consumption_mixed_kWh_per_100km": 25.5,
   "consumption_highway_kWh_per_100km": 33,
@@ -80,7 +81,17 @@
     }
   ],
   "rangeTests": [],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 610,
+    "averageSpeed_kmh": 98.4,
+    "averageConsumption_Wh_km": 274,
+    "chargingStops": null,
+    "averageTemperature_C": 12,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 5948,
   "width_mm": 2070,
   "height_mm": 2488,
@@ -259,10 +270,12 @@
     "idealUserProfile": "Artisans, livreurs urbains et periurbains, flottes d'entreprise recherchant un grand volume avec la meilleure autonomie electrique du marche.",
     "notIdealFor": "Tres longs trajets autoroutiers charges : l'autonomie reelle tombe sous 250 km a 130 km/h a pleine charge."
   },
-  "lastUpdated": "2026-05-21",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "renault-fr",
-    "automobile-propre"
+    "automobile-propre",
+    "nyland",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

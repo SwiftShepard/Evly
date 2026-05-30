@@ -25,10 +25,11 @@
   "wltp_min_km": 435,
   "realRange": {
     "mixed_km": 400,
-    "highway_130_km": 310,
+    "highway_130_km": 380,
     "urban_km": 500,
     "winter_minus5_km": 330,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 541
   },
   "consumption_mixed_kWh_per_100km": 16.5,
   "consumption_highway_kWh_per_100km": 22,
@@ -52,31 +53,61 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 250
+      "power": 106
     },
     {
       "soc": 10,
-      "power": 400
+      "power": 133
+    },
+    {
+      "soc": 20,
+      "power": 239
     },
     {
       "soc": 30,
-      "power": 380
+      "power": 242
+    },
+    {
+      "soc": 40,
+      "power": 188
     },
     {
       "soc": 50,
-      "power": 280
+      "power": 193
+    },
+    {
+      "soc": 60,
+      "power": 145
+    },
+    {
+      "soc": 70,
+      "power": 146
     },
     {
       "soc": 80,
-      "power": 80
+      "power": 137
+    },
+    {
+      "soc": 90,
+      "power": 65
     },
     {
       "soc": 100,
-      "power": 12
+      "power": 7
     }
   ],
   "rangeTests": [],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 570,
+    "averageSpeed_kmh": 105.3,
+    "averageConsumption_Wh_km": 246,
+    "chargingStops": null,
+    "averageTemperature_C": 10,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 4753,
   "width_mm": 1920,
   "height_mm": 1650,
@@ -317,10 +348,12 @@
     "idealUserProfile": "Conducteurs technophiles cherchant le SUV coupe le plus rapide a charger du marche.",
     "notIdealFor": "Acheteurs comptant sur les aides ou privilegiant un reseau SAV etendu."
   },
-  "lastUpdated": "2026-05-18",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "constructeur",
-    "automobile-propre"
+    "automobile-propre",
+    "nyland",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

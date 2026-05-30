@@ -25,8 +25,8 @@
   "wltp_min_km": 440,
   "realRange": {
     "mixed_km": 410,
-    "highway_130_km": 265,
-    "highway_120_km": 289,
+    "highway_130_km": 230,
+    "highway_120_km": 461,
     "urban_km": 490,
     "winter_minus5_km": 340,
     "confidence": "bjorn_nyland"
@@ -36,7 +36,7 @@
   "consumption_winter_kWh_per_100km": 22,
   "dragCoefficient_Cx": 0.288,
   "chargingDC": {
-    "peakPower_kW": 240,
+    "peakPower_kW": 257,
     "time_10_80_min": 18,
     "kWh_added_30min": 70,
     "confidence": "tested"
@@ -53,23 +53,47 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 100
+      "power": 58
     },
     {
       "soc": 10,
-      "power": 130
+      "power": 73
+    },
+    {
+      "soc": 20,
+      "power": 208
+    },
+    {
+      "soc": 30,
+      "power": 249
+    },
+    {
+      "soc": 40,
+      "power": 253
     },
     {
       "soc": 50,
-      "power": 100
+      "power": 257
+    },
+    {
+      "soc": 60,
+      "power": 195
+    },
+    {
+      "soc": 70,
+      "power": 119
     },
     {
       "soc": 80,
-      "power": 50
+      "power": 67
+    },
+    {
+      "soc": 90,
+      "power": 32
     },
     {
       "soc": 100,
-      "power": 10
+      "power": 3
     }
   ],
   "rangeTests": [
@@ -102,12 +126,12 @@
   ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
-    "totalTime_minutes": 580,
-    "averageSpeed_kmh": 103.4,
-    "averageConsumption_Wh_km": 240,
+    "totalTime_minutes": 585,
+    "averageSpeed_kmh": 102.6,
+    "averageConsumption_Wh_km": 276,
     "chargingStops": 4,
-    "averageTemperature_C": 18,
-    "testDate": "2021-06",
+    "averageTemperature_C": 1,
+    "testDate": null,
     "videoUrl": null,
     "confidence": "tested"
   },
@@ -552,7 +576,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "nyland",
     "la-chaine-ev"

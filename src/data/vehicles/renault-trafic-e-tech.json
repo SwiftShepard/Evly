@@ -28,7 +28,8 @@
     "highway_130_km": 145,
     "urban_km": 275,
     "winter_minus5_km": 175,
-    "confidence": "estimated"
+    "confidence": "estimated",
+    "highway_120_km": 371
   },
   "consumption_mixed_kWh_per_100km": 23,
   "consumption_highway_kWh_per_100km": 30,
@@ -76,7 +77,17 @@
     }
   ],
   "rangeTests": [],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 610,
+    "averageSpeed_kmh": 98.4,
+    "averageConsumption_Wh_km": 274,
+    "chargingStops": null,
+    "averageTemperature_C": 12,
+    "testDate": null,
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 5080,
   "width_mm": 1956,
   "height_mm": 1971,
@@ -257,10 +268,12 @@
     "idealUserProfile": "Artisans et PME avec tournees urbaines et periurbaines quotidiennes, base de recharge nocturne AC au depot.",
     "notIdealFor": "Longs trajets interurbains quotidiens ou missions depassant 200 km sans retour au depot."
   },
-  "lastUpdated": "2026-05-21",
+  "lastUpdated": "2026-05-29",
   "sources": [
     "renault-fr",
-    "automobile-propre"
+    "automobile-propre",
+    "nyland",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }
