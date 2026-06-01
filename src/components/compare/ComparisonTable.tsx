@@ -3,6 +3,8 @@ import type { Vehicle, VehicleConfiguration } from "@/data/schemas";
 import type { ConfiguredCard } from "@/lib/insights";
 import ConfigSelector from "./ConfigSelector";
 import { url } from "@/lib/url";
+import { calculateCeeAid } from "@/lib/cee";
+import { readUserProfile } from "@/lib/userProfile";
 import { X, Plus } from "lucide-react";
 
 interface Props {
@@ -128,24 +130,54 @@ const SECTIONS: SectionDef[] = [
         bestIsMax: false,
       },
       {
-        label: "CEE max.*",
+        label: "Aide CEE*",
         getValue: (c) => {
-          const total = Math.min(8100, c.vehicle.availableAids.reduce((s, a) => s + a.amount_EUR, 0));
+          const profile = readUserProfile();
+          const total = calculateCeeAid({
+            vehicle: c.vehicle,
+            price: c.config.price_EUR,
+            profileType: profile.hasConfigured ? profile.profileType : "particular",
+            householdSize: profile.hasConfigured ? profile.householdSize : 1,
+            taxIncome: profile.hasConfigured ? profile.taxIncome : 10000,
+          }).amount;
           return total > 0 ? `-${fmtPrix(total)}` : null;
         },
-        numeric: (c) => Math.min(8100, c.vehicle.availableAids.reduce((s, a) => s + a.amount_EUR, 0)),
+        numeric: (c) => {
+          const profile = readUserProfile();
+          return calculateCeeAid({
+            vehicle: c.vehicle,
+            price: c.config.price_EUR,
+            profileType: profile.hasConfigured ? profile.profileType : "particular",
+            householdSize: profile.hasConfigured ? profile.householdSize : 1,
+            taxIncome: profile.hasConfigured ? profile.taxIncome : 10000,
+          }).amount;
+        },
         bestIsMax: true,
       },
       {
-        label: "Apres CEE max.*",
+        label: "Prix net*",
         getValue: (c) => {
           if (c.config.price_EUR == null) return null;
-          const aids = Math.min(8100, c.vehicle.availableAids.reduce((s, a) => s + a.amount_EUR, 0));
+          const profile = readUserProfile();
+          const aids = calculateCeeAid({
+            vehicle: c.vehicle,
+            price: c.config.price_EUR,
+            profileType: profile.hasConfigured ? profile.profileType : "particular",
+            householdSize: profile.hasConfigured ? profile.householdSize : 1,
+            taxIncome: profile.hasConfigured ? profile.taxIncome : 10000,
+          }).amount;
           return fmtPrix(Math.max(0, c.config.price_EUR - aids));
         },
         numeric: (c) => {
           if (c.config.price_EUR == null) return null;
-          const aids = Math.min(8100, c.vehicle.availableAids.reduce((s, a) => s + a.amount_EUR, 0));
+          const profile = readUserProfile();
+          const aids = calculateCeeAid({
+            vehicle: c.vehicle,
+            price: c.config.price_EUR,
+            profileType: profile.hasConfigured ? profile.profileType : "particular",
+            householdSize: profile.hasConfigured ? profile.householdSize : 1,
+            taxIncome: profile.hasConfigured ? profile.taxIncome : 10000,
+          }).amount;
           return Math.max(0, c.config.price_EUR - aids);
         },
         bestIsMax: false,

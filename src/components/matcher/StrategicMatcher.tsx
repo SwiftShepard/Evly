@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import type { Vehicle } from "@/data/schemas";
 import { scoreVehicle, type MatcherAnswers, type MatchResult } from "./scoring";
+import { calculateCeeAid } from "@/lib/cee";
 import { ArrowLeft, ArrowRight, RotateCcw, CheckCircle2, AlertTriangle, Sparkles, ChevronRight, HelpCircle } from "lucide-react";
 
 interface Props {
@@ -901,10 +902,16 @@ export default function StrategicMatcher({ vehicles }: Props) {
                         </span>
                         {answers.budgetType === "buy" ? (
                           (() => {
-                            const isEU = ["France", "Allemagne", "Espagne", "Italie", "Suède", "Royaume-Uni", "Portugal", "Pologne", "Tchéquie", "Rép. Tchèque", "Slovaquie", "Hongrie", "Belgique", "Autriche", "Roumanie"].includes(res.vehicle.productionCountry);
                             const rawPrice = res.bestConfig.price_EUR ?? 0;
-                            const isEligibleCEE = isEU && rawPrice <= 47000;
-                            const totalCeeAid = isEligibleCEE ? Math.min(8100, (res.vehicle.availableAids || []).reduce((sum, a) => sum + a.amount_EUR, 0)) : 0;
+                            const householdSize = answers.household === "large_family" ? 5 : answers.household === "family" ? 3 : 1;
+                            const taxIncome = answers.leasingSocialRfr ? 12000 : 80000;
+                            const { amount: totalCeeAid, isEligible: isEligibleCEE } = calculateCeeAid({
+                              vehicle: res.vehicle,
+                              price: rawPrice,
+                              profileType: "particular",
+                              householdSize,
+                              taxIncome,
+                            });
                             const netPrice = rawPrice - totalCeeAid;
                             return (
                               <div className="flex flex-col gap-1.5">
@@ -1007,11 +1014,16 @@ export default function StrategicMatcher({ vehicles }: Props) {
                       ? (res.vehicle.leasingSocial_EUR_per_month ?? 100) 
                       : (res.bestConfig.monthlyLease_EUR ?? Math.round((res.bestConfig.price_EUR ?? 0) * 0.009));
 
-                    const isEU = ["France", "Allemagne", "Espagne", "Italie", "Suède", "Royaume-Uni", "Portugal", "Pologne", "Tchéquie", "Rép. Tchèque", "Slovaquie", "Hongrie", "Belgique", "Autriche", "Roumanie"].includes(res.vehicle.productionCountry);
-                    const rawPrice = res.bestConfig.price_EUR ?? 0;
-                    const isEligibleCEE = isEU && rawPrice <= 47000;
-                    const totalCeeAid = isEligibleCEE ? Math.min(8100, (res.vehicle.availableAids || []).reduce((sum, a) => sum + a.amount_EUR, 0)) : 0;
-                    const netPrice = rawPrice - totalCeeAid;
+                    const householdSize = answers.household === "large_family" ? 5 : answers.household === "family" ? 3 : 1;
+                    const taxIncome = answers.leasingSocialRfr ? 12000 : 80000;
+                    const { amount: totalCeeAid, isEligible: isEligibleCEE } = calculateCeeAid({
+                      vehicle: res.vehicle,
+                      price: res.bestConfig.price_EUR ?? 0,
+                      profileType: "particular",
+                      householdSize,
+                      taxIncome,
+                    });
+                    const netPrice = (res.bestConfig.price_EUR ?? 0) - totalCeeAid;
 
                     return (
                       <div key={res.vehicle.slug} className="flex flex-col">

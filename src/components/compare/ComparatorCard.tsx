@@ -5,6 +5,8 @@ import ChargingSparkline from "./ChargingSparkline";
 import AnimatedNumber from "@/components/ui/AnimatedNumber";
 import SohSlider from "@/components/vehicle/SohSlider";
 import { url } from "@/lib/url";
+import { calculateCeeAid } from "@/lib/cee";
+import { useUserProfile } from "@/lib/userProfile";
 import { X } from "lucide-react";
 
 const imageModules = import.meta.glob<string>(
@@ -53,15 +55,22 @@ export default function ComparatorCard({
   onRemove,
   isMobile,
 }: Props) {
+  const { profile } = useUserProfile();
+
   const [configCollapsed, setConfigCollapsed] = useState(isMobile);
   const [detailsExpanded, setDetailsExpanded] = useState(!isMobile);
 
-  // Total aids
-  const totalAids = useMemo(
-    () => Math.min(8100, vehicle.availableAids.reduce((sum, a) => sum + a.amount_EUR, 0)),
-    [vehicle.availableAids]
-  );
-  const netPrice = Math.max(0, config.price_EUR - totalAids);
+  // Total aids (estimation personnalisée ou aides max)
+  const totalAids = useMemo(() => {
+    return calculateCeeAid({
+      vehicle,
+      price: config.price_EUR,
+      profileType: profile.hasConfigured ? profile.profileType : "particular",
+      householdSize: profile.hasConfigured ? profile.householdSize : 1,
+      taxIncome: profile.hasConfigured ? profile.taxIncome : 10000, // force "precarite" pour afficher l'aide max par défaut
+    }).amount;
+  }, [vehicle, config.price_EUR, profile]);
+  const netPrice = config.price_EUR !== null ? Math.max(0, config.price_EUR - totalAids) : 0;
 
   // Best range test (Nyland 90 preferred)
   const bestRangeTest = useMemo(() => {

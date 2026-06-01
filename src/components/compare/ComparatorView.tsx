@@ -5,6 +5,8 @@ import ComparisonTable from "./ComparisonTable";
 import VehicleSelectModal from "./VehicleSelectModal";
 import { generateInsights, type ConfiguredCard } from "@/lib/insights";
 import { Plus, Share2, Check, LayoutGrid, Rows3, Table2 } from "lucide-react";
+import { calculateCeeAid } from "@/lib/cee";
+import { useUserProfile } from "@/lib/userProfile";
 
 interface CardState {
   slug: string;
@@ -23,6 +25,7 @@ const MAX_CARDS = 4;
  * Gère l'état des cartes, la synchro URL, et les insights.
  */
 export default function ComparatorView({ vehicles }: Props) {
+  const { profile } = useUserProfile();
   const [cards, setCards] = useState<CardState[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -177,7 +180,13 @@ export default function ComparatorView({ vehicles }: Props) {
     const get1080 = (c: ConfiguredCard) => c.config.chargingDC_10_80_min ?? Infinity;
     const get30min = (c: ConfiguredCard) => c.config.chargingDC_kWh_30min ?? 0;
     const getNetPrice = (c: ConfiguredCard) => {
-      const aids = Math.min(8100, c.vehicle.availableAids.reduce((s, a) => s + a.amount_EUR, 0));
+      const aids = calculateCeeAid({
+        vehicle: c.vehicle,
+        price: c.config.price_EUR,
+        profileType: profile.hasConfigured ? profile.profileType : "particular",
+        householdSize: profile.hasConfigured ? profile.householdSize : 1,
+        taxIncome: profile.hasConfigured ? profile.taxIncome : 10000,
+      }).amount;
       return Math.max(0, c.config.price_EUR - aids);
     };
     const getAccel = (c: ConfiguredCard) => c.vehicle.acceleration_0_100_s ?? Infinity;

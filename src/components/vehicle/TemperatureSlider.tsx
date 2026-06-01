@@ -163,33 +163,6 @@ export default function TemperatureSlider({
 
       {!compact && (
         <div className="flex flex-col gap-3 mt-1">
-          <div className="flex justify-between items-center">
-            <div className="flex gap-1">
-              {[
-                { label: "Hiver -5°", val: -5 },
-                { label: "Frais 10°", val: 10 },
-                { label: "Idéal 20°", val: 20 },
-                { label: "Chaud 35°", val: 35 },
-              ].map((p) => (
-                <button
-                  key={p.val}
-                  type="button"
-                  onClick={() => applyPreset(p.val)}
-                  className={`font-mono text-[9px] px-1.5 py-0.5 rounded border transition-all cursor-pointer ${
-                    temp === p.val
-                      ? "bg-[var(--color-surface-accent)] text-[var(--color-accent)] border-[var(--color-accent)]"
-                      : "bg-[var(--color-bg-subtle)] text-[var(--color-text-faint)] border-[var(--color-border)] hover:text-[var(--color-text-muted)] hover:border-[var(--color-border-strong)]"
-                  }`}
-                >
-                  {p.val > 0 ? `+${p.val}°` : `${p.val}°`}
-                </button>
-              ))}
-            </div>
-            <span className="font-mono text-[9px] text-[var(--color-text-faint)]">
-              -10° à +40°
-            </span>
-          </div>
-
           <div className="flex items-center justify-between pt-1 border-t border-[var(--color-border)] border-dashed">
             <span className="font-mono text-[9px] uppercase tracking-[0.08em] text-[var(--color-text-faint)]">
               Pompe à chaleur (PAC)

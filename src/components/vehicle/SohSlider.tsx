@@ -117,29 +117,6 @@ export default function SohSlider({
         />
       </div>
 
-      {!compact && (
-        <div className="flex justify-between items-center mt-1">
-          <div className="flex gap-1.5">
-            {[100, 90, 80, 70].map((preset) => (
-              <button
-                key={preset}
-                type="button"
-                onClick={() => applyPreset(preset)}
-                className={`font-mono text-[9px] px-1.5 py-0.5 rounded border transition-all cursor-pointer ${
-                  soh === preset
-                    ? "bg-[var(--color-surface-accent)] text-[var(--color-accent)] border-[var(--color-accent)]"
-                    : "bg-[var(--color-bg-subtle)] text-[var(--color-text-faint)] border-[var(--color-border)] hover:text-[var(--color-text-muted)] hover:border-[var(--color-border-strong)]"
-                }`}
-              >
-                {preset === 100 ? "Neuf" : `${preset}%`}
-              </button>
-            ))}
-          </div>
-          <span className="font-mono text-[9px] text-[var(--color-text-faint)]">
-            Min. 70%
-          </span>
-        </div>
-      )}
     </div>
   );
 }

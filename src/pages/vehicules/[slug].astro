@@ -13,6 +13,7 @@ import SeasonalRange from "@/components/vehicle/SeasonalRange.tsx";
 import VehicleConfigSelector from "@/components/vehicle/VehicleConfigSelector.tsx";
 import SohSlider from "@/components/vehicle/SohSlider.tsx";
 import TemperatureSlider from "@/components/vehicle/TemperatureSlider.tsx";
+import CeeSimulator from "@/components/vehicle/CeeSimulator.tsx";
 import { getAllVehicles, getVehicleBySlug } from "@/lib/vehicles";
 import { getSource, getSources, type TrustLevel } from "@/data/sources";
 import { formatDate, formatHours, formatPrice } from "@/lib/format";
@@ -686,15 +687,10 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
       )}
 
       {configurations.map((config, index) => {
-        const sidebarAids = Math.min(
-          8100,
-          vehicle.availableAids.reduce((s, a) => s + a.amount_EUR, 0)
-        );
-        const sidebarNet = config.price_EUR != null ? Math.max(0, config.price_EUR - sidebarAids) : null;
         return (
           <div data-config-id={config.id} class="sidebar-config" style={index === 0 ? "" : "display:none"}>
             <div class="sidebar-block">
-              <span class="sidebar-label">Prix</span>
+              <span class="sidebar-label">Prix brut</span>
               {config.price_EUR != null ? (
                 <span data-numeric class="sidebar-price">{formatPrice(config.price_EUR)}</span>
               ) : (
@@ -710,30 +706,15 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                 </div>
               )}
             </div>
-
-            {sidebarAids > 0 && (
-              <div class="sidebar-block">
-                <span class="sidebar-label">Aides max. cumulables*</span>
-                <ul class="sidebar-aids">
-                  {vehicle.availableAids.map((aid) => (
-                    <li>
-                      <span>{aid.label}</span>
-                      <span data-numeric>-{formatPrice(aid.amount_EUR)}</span>
-                    </li>
-                  ))}
-                </ul>
-                {sidebarNet != null && (
-                  <div class="sidebar-net">
-                    <span>Net potentiel*</span>
-                    <span data-numeric class="sidebar-net-price">{formatPrice(sidebarNet)}</span>
-                  </div>
-                )}
-                <p class="sidebar-aids-note">* Montants maximaux (menage precaire + surbonus batterie UE). Coup de pouce CEE 2026 sous conditions de revenus (RFR/part), d’eligibilite ADEME et de prix du vehicule (&lt; 47 000 EUR). Demande a effectuer avant signature du bon de commande.</p>
-              </div>
-            )}
           </div>
         );
       })}
+
+      {vehicle.availableAids.length > 0 && (
+        <div class="sidebar-block">
+          <CeeSimulator client:load vehicle={vehicle} />
+        </div>
+      )}
 
       <div class="sidebar-block">
         <SohSlider client:idle />

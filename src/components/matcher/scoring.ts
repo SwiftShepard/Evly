@@ -1,4 +1,5 @@
 import type { Vehicle, VehicleConfiguration } from "@/data/schemas";
+import { calculateCeeAid } from "@/lib/cee";
 
 export interface MatcherAnswers {
   usage: "urban" | "mixed" | "highway";
@@ -194,10 +195,19 @@ export function scoreVehicle(vehicle: Vehicle, answers: MatcherAnswers): MatchRe
     // --- CRITÈRE 1 : BUDGET (Éliminatoire ou pénalité) ---
     const rawPrice = config.price_EUR ?? 0;
     
-    // Déduction des aides CEE 2026 (coup de pouce CEE + surbonus batterie européenne) si applicable (produit en Europe et prix <= 47 000 €)
-    const isEU = EUROPEAN_COUNTRIES.has(vehicle.productionCountry);
-    const isEligibleCEE = isEU && rawPrice <= 47000;
-    const totalCeeAid = isEligibleCEE ? Math.min(8100, (vehicle.availableAids || []).reduce((sum: number, a: { amount_EUR: number }) => sum + a.amount_EUR, 0)) : 0;
+    // Déduction des aides CEE 2026 dynamiques (coup de pouce CEE + surbonus batterie européenne)
+    const householdSize = answers.household === "large_family" ? 5 : answers.household === "family" ? 3 : 1;
+    // Si l'utilisateur est éligible au leasing social RFR (RFR/part <= 16300€), il est d'office dans la catégorie précarité.
+    // Sinon, on estime conservateur en le mettant dans la catégorie "autres".
+    const taxIncome = answers.leasingSocialRfr ? 12000 : 80000;
+
+    const { amount: totalCeeAid, isEligible: isEligibleCEE } = calculateCeeAid({
+      vehicle,
+      price: rawPrice,
+      profileType: "particular",
+      householdSize,
+      taxIncome,
+    });
     const configPrice = rawPrice - totalCeeAid;
     
     // Calcul du loyer estimé ou réel
