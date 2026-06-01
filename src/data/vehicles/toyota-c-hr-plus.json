@@ -1,0 +1,257 @@
+{
+  "slug": "toyota-c-hr-plus",
+  "brand": "Toyota",
+  "model": "C-HR+",
+  "variant": "58 - 77 kWh",
+  "bodyType": "SUV Crossover",
+  "segment": "C, SUV compact",
+  "productionCountry": "Turquie",
+  "assemblyPlant": "Sakarya",
+  "releaseYear": 2025,
+  "marketAvailability": "Disponible",
+  "power_kW": 165,
+  "power_hp": 224,
+  "torque_Nm": 350,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 7.3,
+  "topSpeed_kmh": 160,
+  "usableCapacity_kWh": 77.0,
+  "grossCapacity_kWh": 81.0,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1890,
+  "wltp_max_km": 607,
+  "wltp_min_km": 458,
+  "realRange": {
+    "mixed_km": 460,
+    "highway_130_km": 330,
+    "urban_km": 550,
+    "winter_minus5_km": 350,
+    "confidence": "estimated",
+    "highway_120_km": 360
+  },
+  "consumption_mixed_kWh_per_100km": 15.0,
+  "consumption_highway_kWh_per_100km": 21.0,
+  "consumption_winter_kWh_per_100km": 19.5,
+  "dragCoefficient_Cx": 0.28,
+  "chargingDC": {
+    "peakPower_kW": 150,
+    "time_10_80_min": 28,
+    "kWh_added_30min": 54,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11.0,
+    "phases": 3,
+    "time_0_100_h": 7.5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 100 },
+    { "soc": 10, "power": 150 },
+    { "soc": 30, "power": 130 },
+    { "soc": 50, "power": 90 },
+    { "soc": 80, "power": 40 },
+    { "soc": 100, "power": 8 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4524,
+  "width_mm": 1850,
+  "height_mm": 1630,
+  "wheelbase_mm": 2790,
+  "trunkCapacity_L": 416,
+  "trunkCapacityFolded_L": 1200,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Design Autonomie Confort",
+      "price_EUR": 39600,
+      "batteryUsed": "58 kWh",
+      "equipmentHighlights": [
+        "458 km WLTP",
+        "Ecran multimédia 14 pouces",
+        "Pompe à chaleur"
+      ]
+    },
+    {
+      "name": "Design Grande Autonomie",
+      "price_EUR": 43900,
+      "batteryUsed": "77 kWh",
+      "equipmentHighlights": [
+        "607 km WLTP",
+        "Jantes alliage 18 pouces",
+        "Toyota Safety Sense"
+      ]
+    },
+    {
+      "name": "Collection Performance AWD",
+      "price_EUR": 49900,
+      "batteryUsed": "77 kWh",
+      "equipmentHighlights": [
+        "507 km WLTP",
+        "Transmission intégrale AWD",
+        "Toit panoramique"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "toyota-c-hr-plus-design-58",
+      "label": "C-HR+ Design · 58 kWh",
+      "battery": "standard",
+      "trim": "Design Autonomie Confort",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 39600,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 458,
+      "wltp_consumption_kWh_100km": 15.0,
+      "realRange": {
+        "mixed_km": 350,
+        "highway_130_km": 245,
+        "urban_km": 420,
+        "winter_minus5_km": 270,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 24,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 150 },
+        { "soc": 30, "power": 130 },
+        { "soc": 50, "power": 85 },
+        { "soc": 80, "power": 35 },
+        { "soc": 100, "power": 7 }
+      ],
+      "availability": "available",
+      "notes": "167 ch (123 kW), FWD, batterie 58 kWh"
+    },
+    {
+      "id": "toyota-c-hr-plus-design-77",
+      "label": "C-HR+ Design · 77 kWh",
+      "battery": "long-range",
+      "trim": "Design Grande Autonomie",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 43900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 607,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": {
+        "mixed_km": 460,
+        "highway_130_km": 330,
+        "urban_km": 550,
+        "winter_minus5_km": 350,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 54,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 150 },
+        { "soc": 30, "power": 130 },
+        { "soc": 50, "power": 90 },
+        { "soc": 80, "power": 40 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "224 ch (165 kW), FWD, grande autonomie"
+    },
+    {
+      "id": "toyota-c-hr-plus-collection-awd",
+      "label": "C-HR+ Collection · AWD 77 kWh",
+      "battery": "long-range",
+      "trim": "Collection Performance AWD",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 49900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 507,
+      "wltp_consumption_kWh_100km": 16.0,
+      "realRange": {
+        "mixed_km": 400,
+        "highway_130_km": 285,
+        "urban_km": 480,
+        "winter_minus5_km": 310,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 54,
+      "chargingCurve": [
+        { "soc": 0, "power": 100 },
+        { "soc": 10, "power": 150 },
+        { "soc": 30, "power": 130 },
+        { "soc": 50, "power": 90 },
+        { "soc": 80, "power": 40 },
+        { "soc": 100, "power": 8 }
+      ],
+      "availability": "available",
+      "notes": "343 ch (252 kW), AWD, version haut de gamme"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 3,
+    "vehicle_km": 100000,
+    "battery_years": 10,
+    "battery_km": 1000000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "SUV au look de coupé acéré et moderne 100% électrique"
+    },
+    {
+      "category": "technologie",
+      "label": "Système multimédia avec écran tactile 14 pouces"
+    },
+    {
+      "category": "securite",
+      "label": "Toyota Safety Sense et aides à la conduite T-Mate"
+    },
+    {
+      "category": "confort",
+      "label": "Garantie batterie exceptionnelle de 10 ans ou 1 000 000 km"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Autonomie confortable de 607 km WLTP en version Grande Autonomie",
+      "Garantie batterie exceptionnelle de 10 ans ou 1 million de kilomètres",
+      "Aides à la conduite et équipement technologique très complets de série"
+    ],
+    "weaknesses": [
+      "Assemblage en Turquie, pas d'éligibilité au bonus écologique français",
+      "Vitesse de charge rapide limitée à 150 kW",
+      "Tarif premium à partir de 39 600 € hors options"
+    ],
+    "idealUserProfile": "Conducteurs à la recherche d'un SUV coupé électrique moderne, fiable et ultra-garanti pour un usage mixte régulier.",
+    "notIdealFor": "Acheteurs prioritaires sur les aides à l'achat locales ou souhaitant une charge ultra-rapide."
+  },
+  "lastUpdated": "2026-06-02",
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
+  "imageCredit": "Constructeur"
+}

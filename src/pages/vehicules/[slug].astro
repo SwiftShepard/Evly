@@ -36,7 +36,7 @@ if (!vehicle) {
 
 // NOTE: Vite's import.meta.glob is resolved statically. If you add a new vehicle image in dev mode,
 // you must restart the dev server or save this file to force Vite to scan the vehicles folder again.
-// Force rescan comment update 3
+// Force rescan comment update 4
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/vehicles/*');
 const imagePath = Object.keys(images).find((path) => path.startsWith(`/src/assets/vehicles/${slug}.`));
 let VehicleImage;

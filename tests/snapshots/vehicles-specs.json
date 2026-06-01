@@ -1968,6 +1968,21 @@
     ]
   },
   {
+    "slug": "toyota-c-hr-plus",
+    "brand": "Toyota",
+    "model": "C-HR+",
+    "power_kW": 165,
+    "usableCapacity_kWh": 77,
+    "wltp_min_km": 458,
+    "wltp_max_km": 607,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "toyota-c-hr-plus-collection-awd",
+      "toyota-c-hr-plus-design-58",
+      "toyota-c-hr-plus-design-77"
+    ]
+  },
+  {
     "slug": "toyota-proace-city",
     "brand": "Toyota",
     "model": "Proace City Electric Verso",

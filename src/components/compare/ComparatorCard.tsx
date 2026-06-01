@@ -9,6 +9,7 @@ import { calculateCeeAid } from "@/lib/cee";
 import { useUserProfile } from "@/lib/userProfile";
 import { X } from "lucide-react";
 
+// Force rescan comment update 1
 const imageModules = import.meta.glob<string>(
   "/src/assets/vehicles/*.{jpeg,jpg,png,webp,avif,svg}",
   { query: "?url", import: "default", eager: true }
