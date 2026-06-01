@@ -4,6 +4,74 @@ import { scoreVehicle, type MatcherAnswers, type MatchResult } from "./scoring";
 import { calculateCeeAid } from "@/lib/cee";
 import { ArrowLeft, ArrowRight, RotateCcw, CheckCircle2, AlertTriangle, Sparkles, ChevronRight, HelpCircle } from "lucide-react";
 
+const imageModules = import.meta.glob<string>(
+  "/src/assets/vehicles/*.{jpeg,jpg,png,webp,avif,svg}",
+  { query: "?url", import: "default", eager: true }
+);
+
+function getLocalVehicleImageUrl(slug: string): string | null {
+  for (const [path, url] of Object.entries(imageModules)) {
+    const stem = path.split("/").at(-1)!.replace(/\.(jpeg|jpg|png|webp|avif|svg)$/i, "");
+    if (stem === slug) {
+      return url;
+    }
+  }
+  return null;
+}
+
+function VehicleFallbackSvg({ className }: { className?: string }) {
+  return (
+    <svg
+      className={`${className} opacity-50`}
+      viewBox="0 0 290 115"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      {/* Cable */}
+      <path
+        d="M24 34 C30 78 50 82 68 82"
+        stroke="currentColor"
+        strokeWidth="6"
+        strokeLinecap="round"
+      />
+      {/* Plug body */}
+      <rect x="8" y="22" width="16" height="24" rx="3" fill="currentColor" />
+      {/* Lightning bolt */}
+      <path d="M21 23 L17 32 H21 L12 45 L16 36 H12 Z" fill="white" stroke="none" />
+
+      {/* Car body */}
+      <path
+        d="
+          M 68 82
+          L 68 55
+          C 72 26 90 8 112 4
+          L 190 4
+          C 214 4 236 22 248 44
+          L 258 44
+          C 264 44 268 54 268 64
+          L 268 82
+          C 254 82 240 66 214 66
+          C 188 66 174 82 160 82
+          L 144 82
+          C 130 82 116 66 94 66
+          C 72 66 68 82 68 82
+          Z
+        "
+        stroke="currentColor"
+        strokeWidth="6"
+        strokeLinejoin="round"
+        strokeLinecap="round"
+      />
+
+      {/* Rear wheel */}
+      <circle cx="94"  cy="97" r="17" stroke="currentColor" strokeWidth="6" />
+      {/* Front wheel */}
+      <circle cx="214" cy="97" r="17" stroke="currentColor" strokeWidth="6" />
+    </svg>
+  );
+}
+
 interface Props {
   vehicles: Vehicle[];
 }
@@ -851,15 +919,18 @@ export default function StrategicMatcher({ vehicles }: Props) {
 
                       {/* Photo / Silhouette */}
                       <div className="w-32 h-16 flex items-center justify-center mt-3">
-                        {res.vehicle.imageUrl ? (
-                          <img
-                            src={res.vehicle.imageUrl}
-                            alt={`${res.vehicle.brand} ${res.vehicle.model}`}
-                            className="max-w-full max-h-full object-contain"
-                          />
-                        ) : (
-                          <span className="text-[10px] font-mono text-[var(--color-text-faint)]">Visual absent</span>
-                        )}
+                        {(() => {
+                          const imgUrl = getLocalVehicleImageUrl(res.vehicle.slug) || res.vehicle.imageUrl;
+                          return imgUrl ? (
+                            <img
+                              src={imgUrl}
+                              alt={`${res.vehicle.brand} ${res.vehicle.model}`}
+                              className="max-w-full max-h-full object-contain"
+                            />
+                          ) : (
+                            <VehicleFallbackSvg className="max-w-full max-h-full text-[var(--color-text-faint)]" />
+                          );
+                        })()}
                       </div>
                     </div>
 
@@ -1082,66 +1153,84 @@ export default function StrategicMatcher({ vehicles }: Props) {
 
                         {isExpanded && (
                           <div className="p-5 bg-[var(--color-surface-elevated)] border-t border-[var(--color-border)] animate-fade-in flex flex-col gap-4">
-                            {/* Détail financier / Aide d'État */}
-                            <div className="p-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-subtle)] flex flex-col gap-1.5 shadow-sm">
-                              <span className="font-mono text-[9px] uppercase tracking-wider text-[var(--color-text-faint)] font-bold">
-                                Détail du tarif conseillé
-                              </span>
-                              {answers.budgetType === "buy" ? (
-                                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
-                                  <div className="flex items-center gap-2 flex-wrap">
-                                    <span className="text-[var(--color-text)] font-medium">
-                                      Prix Net Evly : <strong className="text-[var(--color-text)] text-sm">{netPrice.toLocaleString()} €</strong>
-                                    </span>
-                                    {isEligibleCEE ? (
-                                      <span className="px-1.5 py-0.5 rounded text-[9px] font-semibold bg-[color-mix(in_srgb,var(--color-accent)_8%,transparent)] text-[var(--color-accent)] border border-[color-mix(in_srgb,var(--color-accent)_15%,transparent)]">
-                                        Aide CEE de {totalCeeAid.toLocaleString()} € déduite (plafonné)
+                            <div className="flex flex-col md:flex-row gap-4 items-stretch">
+                              {/* Photo / Silhouette */}
+                              <div className="w-full md:w-32 h-24 md:h-auto flex-shrink-0 flex items-center justify-center border border-[var(--color-border)] rounded-xl bg-[var(--color-surface)] p-2">
+                                {(() => {
+                                  const imgUrl = getLocalVehicleImageUrl(res.vehicle.slug) || res.vehicle.imageUrl;
+                                  return imgUrl ? (
+                                    <img
+                                      src={imgUrl}
+                                      alt={`${res.vehicle.brand} ${res.vehicle.model}`}
+                                      className="max-w-full max-h-full object-contain"
+                                    />
+                                  ) : (
+                                    <VehicleFallbackSvg className="max-w-full max-h-full text-[var(--color-text-faint)]" />
+                                  );
+                                })()}
+                              </div>
+
+                              {/* Détail financier / Aide d'État */}
+                              <div className="flex-1 p-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-subtle)] flex flex-col gap-1.5 shadow-sm">
+                                <span className="font-mono text-[9px] uppercase tracking-wider text-[var(--color-text-faint)] font-bold">
+                                  Détail du tarif conseillé
+                                </span>
+                                {answers.budgetType === "buy" ? (
+                                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+                                    <div className="flex items-center gap-2 flex-wrap">
+                                      <span className="text-[var(--color-text)] font-medium">
+                                        Prix Net Evly : <strong className="text-[var(--color-text)] text-sm">{netPrice.toLocaleString()} €</strong>
                                       </span>
-                                    ) : (
-                                      <span className="px-1.5 py-0.5 rounded text-[9px] font-semibold bg-[var(--color-border)] text-[var(--color-text-muted)]">
-                                        Non éligible à la Prime CEE
-                                      </span>
-                                    )}
-                                  </div>
-                                  <span className="text-[var(--color-text-muted)] font-mono text-[11px]">
-                                    Prix catalogue constructeur : {isEligibleCEE ? <span className="line-through">{rawPrice.toLocaleString()} €</span> : <span>{rawPrice.toLocaleString()} €</span>}
-                                  </span>
-                                </div>
-                              ) : (
-                                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
-                                  <div className="flex items-center gap-2 flex-wrap">
-                                    <span className="text-[var(--color-text)] font-medium">
-                                      Mensualité estimée : <strong className="text-[var(--color-text)] text-sm">{monthlyPrice} € / mois</strong>
-                                    </span>
-                                    {isLS ? (
-                                      <span className="px-1.5 py-0.5 rounded text-[9px] font-semibold bg-[color-mix(in_srgb,var(--color-accent)_8%,transparent)] text-[var(--color-accent)] border border-[color-mix(in_srgb,var(--color-accent)_15%,transparent)]">
-                                        Leasing Social appliqué
-                                      </span>
-                                    ) : res.vehicle.leasingSocialEligible ? (
-                                      <span className="px-1.5 py-0.5 rounded text-[9px] font-semibold bg-[var(--color-border)] text-[var(--color-text-muted)]">
-                                        Éligible Leasing Social (profils RFR qualifiés)
-                                      </span>
-                                    ) : (
-                                      <span className="px-1.5 py-0.5 rounded text-[9px] font-semibold bg-[var(--color-border)] text-[var(--color-text-faint)]">
-                                        LLD standard
-                                      </span>
-                                    )}
-                                  </div>
-                                  {res.vehicle.leasingSocialEligible && (
+                                      {isEligibleCEE ? (
+                                        <span className="px-1.5 py-0.5 rounded text-[9px] font-semibold bg-[color-mix(in_srgb,var(--color-accent)_8%,transparent)] text-[var(--color-accent)] border border-[color-mix(in_srgb,var(--color-accent)_15%,transparent)]">
+                                          Aide CEE de {totalCeeAid.toLocaleString()} € déduite (plafonné)
+                                        </span>
+                                      ) : (
+                                        <span className="px-1.5 py-0.5 rounded text-[9px] font-semibold bg-[var(--color-border)] text-[var(--color-text-muted)]">
+                                          Non éligible à la Prime CEE
+                                        </span>
+                                      )}
+                                    </div>
                                     <span className="text-[var(--color-text-muted)] font-mono text-[11px]">
-                                      LLD standard : ~{Math.round((res.bestConfig.price_EUR ?? 0) * 0.009)} €/mois
+                                      Prix catalogue constructeur : {isEligibleCEE ? <span className="line-through">{rawPrice.toLocaleString()} €</span> : <span>{rawPrice.toLocaleString()} €</span>}
                                     </span>
-                                  )}
-                                </div>
-                              )}
-                              {answers.budgetType === "buy" && (
-                                <p className="text-[9px] text-[var(--color-text-faint)] leading-normal mt-1 border-t border-[var(--color-border)] pt-1.5">
-                                  {isEligibleCEE 
-                                    ? `*Montant indicatif d'aide CEE de ${totalCeeAid.toLocaleString()} € (socle de 6 500 € + 2 000 € de majoration batterie européenne, plafonné à 8 100 €) applicable selon l'origine de fabrication du véhicule (produit en ${res.vehicle.productionCountry}).`
-                                    : `*Non éligible à la Prime CEE car le véhicule est assemblé hors d'Europe (${res.vehicle.productionCountry}) ou dépasse le plafond de 47 000 €.`
-                                  }
-                                </p>
-                              )}
+                                  </div>
+                                ) : (
+                                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+                                    <div className="flex items-center gap-2 flex-wrap">
+                                      <span className="text-[var(--color-text)] font-medium">
+                                        Mensualité estimée : <strong className="text-[var(--color-text)] text-sm">{monthlyPrice} € / mois</strong>
+                                      </span>
+                                      {isLS ? (
+                                        <span className="px-1.5 py-0.5 rounded text-[9px] font-semibold bg-[color-mix(in_srgb,var(--color-accent)_8%,transparent)] text-[var(--color-accent)] border border-[color-mix(in_srgb,var(--color-accent)_15%,transparent)]">
+                                          Leasing Social appliqué
+                                        </span>
+                                      ) : res.vehicle.leasingSocialEligible ? (
+                                        <span className="px-1.5 py-0.5 rounded text-[9px] font-semibold bg-[var(--color-border)] text-[var(--color-text-muted)]">
+                                          Éligible Leasing Social (profils RFR qualifiés)
+                                        </span>
+                                      ) : (
+                                        <span className="px-1.5 py-0.5 rounded text-[9px] font-semibold bg-[var(--color-border)] text-[var(--color-text-faint)]">
+                                          LLD standard
+                                        </span>
+                                      )}
+                                    </div>
+                                    {res.vehicle.leasingSocialEligible && (
+                                      <span className="text-[var(--color-text-muted)] font-mono text-[11px]">
+                                        LLD standard : ~{Math.round((res.bestConfig.price_EUR ?? 0) * 0.009)} €/mois
+                                      </span>
+                                    )}
+                                  </div>
+                                )}
+                                {answers.budgetType === "buy" && (
+                                  <p className="text-[9px] text-[var(--color-text-faint)] leading-normal mt-1 border-t border-[var(--color-border)] pt-1.5">
+                                    {isEligibleCEE 
+                                      ? `*Montant indicatif d'aide CEE de ${totalCeeAid.toLocaleString()} € (socle de 6 500 € + 2 000 € de majoration batterie européenne, plafonné à 8 100 €) applicable selon l'origine de fabrication du véhicule (produit en ${res.vehicle.productionCountry}).`
+                                      : `*Non éligible à la Prime CEE car le véhicule est assemblé hors d'Europe (${res.vehicle.productionCountry}) ou dépasse le plafond de 47 000 €.`
+                                    }
+                                  </p>
+                                )}
+                              </div>
                             </div>
                             <div className="grid md:grid-cols-2 gap-6">
                               {/* Colonne 1 : Adéquation Matcher */}
