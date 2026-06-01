@@ -90,6 +90,7 @@ export function scoreVehicle(vehicle: Vehicle, answers: MatcherAnswers): MatchRe
   const isPrimary = answers.role === "primary";
   const trunk = vehicle.trunkCapacity_L;
   const length = vehicle.length_mm;
+  const isEU = EUROPEAN_COUNTRIES.has(vehicle.productionCountry);
 
   // Pré-filtre éliminatoire par segment (coeur et segments adjacents) pour éviter les résultats farfelus
   const segment = (vehicle.segment ?? "B").split(",")[0].trim();

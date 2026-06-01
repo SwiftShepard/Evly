@@ -209,4 +209,38 @@ test.describe("Evly E2E Test Suite", () => {
     const finalSavingsText = await savingsHero.innerText();
     expect(finalSavingsText).not.toBe(updatedSavingsText);
   });
+
+  test("Matcher Stratégique - Flow complet", async ({ page }) => {
+    await page.goto("/recommandation/");
+    await page.waitForLoadState("networkidle");
+
+    // Lancer le matcher
+    const startBtn = page.locator('button:has-text("Lancer le matcher")');
+    await expect(startBtn).toBeVisible();
+    await startBtn.click();
+
+    // Cliquer sur "Suivant" pour passer les questions 1 à 9
+    for (let i = 1; i <= 9; i++) {
+      // Attendre la stabilisation du DOM sur la question courante
+      await expect(page.locator(`text=Question ${i} sur 10`)).toBeVisible();
+      const nextBtn = page.locator('button:has-text("Suivant")');
+      await expect(nextBtn).toBeVisible();
+      await nextBtn.click();
+    }
+
+    // Question 10 : Cliquer sur "Découvrir mes résultats"
+    await expect(page.locator('text=Question 10 sur 10')).toBeVisible();
+    const finishBtn = page.locator('button:has-text("Découvrir mes résultats")');
+    await expect(finishBtn).toBeVisible();
+    await finishBtn.click();
+
+    // Attendre l'affichage des résultats (Étape 11)
+    // S'assurer de la présence du titre de fin
+    await expect(page.locator("main h2")).toContainText("Votre sélection sur-mesure.");
+
+    // S'assurer qu'au moins un résultat du Top 3 est affiché
+    const firstResult = page.locator(".rounded-2xl.p-6.border").first();
+    await expect(firstResult).toBeVisible();
+  });
 });
+

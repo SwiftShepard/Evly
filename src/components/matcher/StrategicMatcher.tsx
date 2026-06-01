@@ -1014,16 +1014,17 @@ export default function StrategicMatcher({ vehicles }: Props) {
                       ? (res.vehicle.leasingSocial_EUR_per_month ?? 100) 
                       : (res.bestConfig.monthlyLease_EUR ?? Math.round((res.bestConfig.price_EUR ?? 0) * 0.009));
 
+                    const rawPrice = res.bestConfig.price_EUR ?? 0;
                     const householdSize = answers.household === "large_family" ? 5 : answers.household === "family" ? 3 : 1;
                     const taxIncome = answers.leasingSocialRfr ? 12000 : 80000;
                     const { amount: totalCeeAid, isEligible: isEligibleCEE } = calculateCeeAid({
                       vehicle: res.vehicle,
-                      price: res.bestConfig.price_EUR ?? 0,
+                      price: rawPrice,
                       profileType: "particular",
                       householdSize,
                       taxIncome,
                     });
-                    const netPrice = (res.bestConfig.price_EUR ?? 0) - totalCeeAid;
+                    const netPrice = rawPrice - totalCeeAid;
 
                     return (
                       <div key={res.vehicle.slug} className="flex flex-col">
