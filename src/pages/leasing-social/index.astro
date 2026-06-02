@@ -43,6 +43,23 @@ const counts = {
   potential: grouped["potential"].length,
 };
 
+// Group vehicles by brand under official and ademe-compatible
+const officialByBrand = grouped["official"].reduce((acc, v) => {
+  if (!acc[v.brand]) acc[v.brand] = [];
+  acc[v.brand].push(v);
+  return acc;
+}, {} as Record<string, typeof vehicles>);
+
+const sortedOfficialBrands = Object.keys(officialByBrand).sort();
+
+const ademeByBrand = grouped["ademe-compatible"].reduce((acc, v) => {
+  if (!acc[v.brand]) acc[v.brand] = [];
+  acc[v.brand].push(v);
+  return acc;
+}, {} as Record<string, typeof vehicles>);
+
+const sortedAdemeBrands = Object.keys(ademeByBrand).sort();
+
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -294,46 +311,60 @@ const jsonLd = [
           </p>
         </Tile>
 
-        {grouped["official"].map((v) => {
-          const cheapest = v.trims.reduce((a, b) => (a.price_EUR < b.price_EUR ? a : b));
-          return (
-            <Tile size="2x1" variant="default" href={url(`/vehicules/${v.slug}`)} ariaLabel={`Fiche ${v.brand} ${v.model}`} class="reveal">
-              <div class="flex items-center justify-between gap-3 mb-4">
-                <div class="flex items-center gap-2 text-[var(--color-text-muted)]">
-                  <BrandLogo brand={v.brand} class="w-4 h-4" />
-                  <span class="label-eyebrow">{v.brand}</span>
-                </div>
-                <Tag tone="accent" mono>Éligible officiel</Tag>
+        {sortedOfficialBrands.map((brand) => (
+          <>
+            <div class="col-span-full mt-8 first:mt-4 flex items-center gap-4 reveal">
+              <div class="flex items-center gap-2.5 px-3.5 py-2 bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-xl">
+                <BrandLogo brand={brand} class="w-5 h-5" />
+                <span class="font-display font-semibold text-base text-[var(--color-text)]">{brand}</span>
               </div>
-              <div class="flex items-end gap-3 mb-6">
-                <h3 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.05]">
-                  {v.model}
-                  <span class="block text-[var(--color-text-muted)] text-base md:text-lg mt-1 font-medium">{v.variant}</span>
-                </h3>
-                <div class="flex-1 flex justify-center items-end">
-                  <VehicleImage slug={v.slug} alt={`${v.brand} ${v.model}`} class="w-28 h-14" />
-                </div>
-              </div>
-              <div class="grid grid-cols-3 gap-4 mt-auto pt-5 border-t border-[var(--color-border)]">
-                <div class="flex flex-col gap-1">
-                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Loyer dès</span>
-                  <div class="flex items-baseline gap-1">
-                    <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-accent)]">{v.leasingSocial_EUR_per_month}</span>
-                    <span class="font-mono text-[11px] text-[var(--color-text-faint)]">€/mois*</span>
+              <div class="h-px flex-1 bg-[var(--color-border)]"></div>
+              <Tag tone="accent" mono>
+                {officialByBrand[brand].length} {officialByBrand[brand].length > 1 ? 'modèles' : 'modèle'}
+              </Tag>
+            </div>
+            {officialByBrand[brand].map((v) => {
+              const cheapest = v.trims.reduce((a, b) => (a.price_EUR < b.price_EUR ? a : b));
+              return (
+                <Tile size="2x1" variant="default" href={url(`/vehicules/${v.slug}`)} ariaLabel={`Fiche ${v.brand} ${v.model}`} class="reveal">
+                  <div class="flex items-center justify-between gap-3 mb-4">
+                    <div class="flex items-center gap-2 text-[var(--color-text-muted)]">
+                      <BrandLogo brand={v.brand} class="w-4 h-4" />
+                      <span class="label-eyebrow">{v.brand}</span>
+                    </div>
+                    <Tag tone="accent" mono>Éligible officiel</Tag>
                   </div>
-                </div>
-                <div class="flex flex-col gap-1">
-                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Prix neuf</span>
-                  <span data-numeric class="display-stat text-2xl md:text-3xl">{formatPrice(cheapest.price_EUR)}</span>
-                </div>
-                <div class="flex flex-col gap-1">
-                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Origine</span>
-                  <span class="text-sm text-[var(--color-text)] mt-2">{v.productionCountry}</span>
-                </div>
-              </div>
-            </Tile>
-          );
-        })}
+                  <div class="flex items-end gap-3 mb-6">
+                    <h3 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.05]">
+                      {v.model}
+                      <span class="block text-[var(--color-text-muted)] text-base md:text-lg mt-1 font-medium">{v.variant}</span>
+                    </h3>
+                    <div class="flex-1 flex justify-center items-end">
+                      <VehicleImage slug={v.slug} alt={`${v.brand} ${v.model}`} class="w-28 h-14" />
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-3 gap-4 mt-auto pt-5 border-t border-[var(--color-border)]">
+                    <div class="flex flex-col gap-1">
+                      <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Loyer dès</span>
+                      <div class="flex items-baseline gap-1">
+                        <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-accent)]">{v.leasingSocial_EUR_per_month}</span>
+                        <span class="font-mono text-[11px] text-[var(--color-text-faint)]">€/mois*</span>
+                      </div>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                      <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Prix neuf</span>
+                      <span data-numeric class="display-stat text-2xl md:text-3xl">{formatPrice(cheapest.price_EUR)}</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                      <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Origine</span>
+                      <span class="text-sm text-[var(--color-text)] mt-2">{v.productionCountry}</span>
+                    </div>
+                  </div>
+                </Tile>
+              );
+            })}
+          </>
+        ))}
 
         {/* ───────── CATÉGORIE B, COMPATIBLES ADEME ───────── */}
         <Tile size="full" variant="elevated">
@@ -351,46 +382,60 @@ const jsonLd = [
           </p>
         </Tile>
 
-        {grouped["ademe-compatible"].map((v) => {
-          const cheapest = v.trims.reduce((a, b) => (a.price_EUR < b.price_EUR ? a : b));
-          return (
-            <Tile size="2x1" variant="default" href={url(`/vehicules/${v.slug}`)} ariaLabel={`Fiche ${v.brand} ${v.model}`} class="reveal">
-              <div class="flex items-center justify-between gap-3 mb-4">
-                <div class="flex items-center gap-2 text-[var(--color-text-muted)]">
-                  <BrandLogo brand={v.brand} class="w-4 h-4" />
-                  <span class="label-eyebrow">{v.brand}</span>
-                </div>
-                <Tag tone="warning" mono>Compatible ADEME</Tag>
+        {sortedAdemeBrands.map((brand) => (
+          <>
+            <div class="col-span-full mt-8 first:mt-4 flex items-center gap-4 reveal">
+              <div class="flex items-center gap-2.5 px-3.5 py-2 bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-xl">
+                <BrandLogo brand={brand} class="w-5 h-5" />
+                <span class="font-display font-semibold text-base text-[var(--color-text)]">{brand}</span>
               </div>
-              <div class="flex items-end gap-3 mb-6">
-                <h3 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.05]">
-                  {v.model}
-                  <span class="block text-[var(--color-text-muted)] text-base md:text-lg mt-1 font-medium">{v.variant}</span>
-                </h3>
-                <div class="flex-1 flex justify-center items-end">
-                  <VehicleImage slug={v.slug} alt={`${v.brand} ${v.model}`} class="w-28 h-14" />
-                </div>
-              </div>
-              <div class="grid grid-cols-3 gap-4 mt-auto pt-5 border-t border-[var(--color-border)]">
-                <div class="flex flex-col gap-1">
-                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Dès</span>
-                  <span data-numeric class="display-stat text-2xl md:text-3xl">{formatPrice(cheapest.price_EUR)}</span>
-                </div>
-                <div class="flex flex-col gap-1">
-                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Auto. réelle</span>
-                  <div class="flex items-baseline gap-1">
-                    <span data-numeric class="display-stat text-2xl md:text-3xl">{v.realRange.mixed_km}</span>
-                    <span class="font-mono text-[11px] text-[var(--color-text-faint)]">km</span>
+              <div class="h-px flex-1 bg-[var(--color-border)]"></div>
+              <Tag tone="warning" mono>
+                {ademeByBrand[brand].length} {ademeByBrand[brand].length > 1 ? 'modèles' : 'modèle'}
+              </Tag>
+            </div>
+            {ademeByBrand[brand].map((v) => {
+              const cheapest = v.trims.reduce((a, b) => (a.price_EUR < b.price_EUR ? a : b));
+              return (
+                <Tile size="2x1" variant="default" href={url(`/vehicules/${v.slug}`)} ariaLabel={`Fiche ${v.brand} ${v.model}`} class="reveal">
+                  <div class="flex items-center justify-between gap-3 mb-4">
+                    <div class="flex items-center gap-2 text-[var(--color-text-muted)]">
+                      <BrandLogo brand={v.brand} class="w-4 h-4" />
+                      <span class="label-eyebrow">{v.brand}</span>
+                    </div>
+                    <Tag tone="warning" mono>Compatible ADEME</Tag>
                   </div>
-                </div>
-                <div class="flex flex-col gap-1">
-                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Origine</span>
-                  <span class="text-sm text-[var(--color-text)] mt-2">{v.productionCountry}</span>
-                </div>
-              </div>
-            </Tile>
-          );
-        })}
+                  <div class="flex items-end gap-3 mb-6">
+                    <h3 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.05]">
+                      {v.model}
+                      <span class="block text-[var(--color-text-muted)] text-base md:text-lg mt-1 font-medium">{v.variant}</span>
+                    </h3>
+                    <div class="flex-1 flex justify-center items-end">
+                      <VehicleImage slug={v.slug} alt={`${v.brand} ${v.model}`} class="w-28 h-14" />
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-3 gap-4 mt-auto pt-5 border-t border-[var(--color-border)]">
+                    <div class="flex flex-col gap-1">
+                      <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Dès</span>
+                      <span data-numeric class="display-stat text-2xl md:text-3xl">{formatPrice(cheapest.price_EUR)}</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                      <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Auto. réelle</span>
+                      <div class="flex items-baseline gap-1">
+                        <span data-numeric class="display-stat text-2xl md:text-3xl">{v.realRange.mixed_km}</span>
+                        <span class="font-mono text-[11px] text-[var(--color-text-faint)]">km</span>
+                      </div>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                      <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Origine</span>
+                      <span class="text-sm text-[var(--color-text)] mt-2">{v.productionCountry}</span>
+                    </div>
+                  </div>
+                </Tile>
+              );
+            })}
+          </>
+        ))}
         {/* ───────── FAQ SEO LONG-TAIL ───────── */}
         <Tile size="full" variant="default" class="reveal">
           <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.1] mb-6">
