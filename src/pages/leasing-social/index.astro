@@ -43,7 +43,7 @@ const counts = {
   potential: grouped["potential"].length,
 };
 
-// Group vehicles by brand under official and ademe-compatible
+// Group vehicles by brand under official
 const officialByBrand = grouped["official"].reduce((acc, v) => {
   if (!acc[v.brand]) acc[v.brand] = [];
   acc[v.brand].push(v);
@@ -51,14 +51,6 @@ const officialByBrand = grouped["official"].reduce((acc, v) => {
 }, {} as Record<string, typeof vehicles>);
 
 const sortedOfficialBrands = Object.keys(officialByBrand).sort();
-
-const ademeByBrand = grouped["ademe-compatible"].reduce((acc, v) => {
-  if (!acc[v.brand]) acc[v.brand] = [];
-  acc[v.brand].push(v);
-  return acc;
-}, {} as Record<string, typeof vehicles>);
-
-const sortedAdemeBrands = Object.keys(ademeByBrand).sort();
 
 const jsonLd = [
   {
@@ -159,18 +151,14 @@ const jsonLd = [
 
           {/* Description body, petit */}
           <p class="mt-8 md:mt-10 text-sm md:text-base text-[var(--color-text-muted)] max-w-2xl leading-relaxed fade-rise fade-rise-delay-3">
-            Une location longue durée (LLD/LOA) subventionnée par l'État, sans apport et sous conditions de ressources. Evly décortique les règles du jeu, estime l'éligibilité de votre foyer et liste les modèles officiels ainsi que ceux injustement absents du catalogue des constructeurs.
+            Une location longue durée (LLD/LOA) subventionnée par l'État, sans apport et sous conditions de ressources. Evly décortique les règles du jeu, estime l'éligibilité de votre foyer et liste les modèles officiellement éligibles.
           </p>
 
           {/* Stats, séparées clairement par border-top */}
-          <div class="mt-12 md:mt-16 pt-6 border-t border-[var(--color-border)] grid grid-cols-2 gap-4 md:gap-8 max-w-md fade-rise fade-rise-delay-3">
+          <div class="mt-12 md:mt-16 pt-6 border-t border-[var(--color-border)] max-w-xs fade-rise fade-rise-delay-3">
             <div class="flex flex-col gap-1.5">
               <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-accent)]">{counts.official}</span>
-              <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Éligibles<br/>officiels</span>
-            </div>
-            <div class="flex flex-col gap-1.5">
-              <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-warning)]">{counts.ademe}</span>
-              <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Compatibles<br/>ADEME</span>
+              <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Modèles officiellement éligibles</span>
             </div>
           </div>
         </Tile>
@@ -365,77 +353,6 @@ const jsonLd = [
             })}
           </>
         ))}
-
-        {/* ───────── CATÉGORIE B, COMPATIBLES ADEME ───────── */}
-        <Tile size="full" variant="elevated">
-          <div class="flex flex-wrap items-end justify-between gap-4 mb-2">
-            <h2 class="font-display text-3xl md:text-4xl font-semibold tracking-[-0.015em] leading-[1.05]">
-              Les compatibles absents
-              <span class="block text-[var(--color-warning)] text-lg md:text-xl mt-2 font-medium">
-                Critères ADEME validés, mais non commercialisés dans le cadre du plan.
-              </span>
-            </h2>
-            <Tag tone="warning" mono>{counts.ademe} modèles</Tag>
-          </div>
-          <p class="text-sm text-[var(--color-text-muted)] mt-4 max-w-3xl">
-            Véhicules produits en Europe à moins de 47 000 € que les constructeurs choisissent de ne pas proposer en leasing social.
-          </p>
-        </Tile>
-
-        {sortedAdemeBrands.map((brand) => (
-          <>
-            <div class="col-span-full mt-8 first:mt-4 flex items-center gap-4 reveal">
-              <div class="flex items-center gap-2.5 px-3.5 py-2 bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-xl">
-                <BrandLogo brand={brand} class="w-5 h-5" />
-                <span class="font-display font-semibold text-base text-[var(--color-text)]">{brand}</span>
-              </div>
-              <div class="h-px flex-1 bg-[var(--color-border)]"></div>
-              <Tag tone="warning" mono>
-                {ademeByBrand[brand].length} {ademeByBrand[brand].length > 1 ? 'modèles' : 'modèle'}
-              </Tag>
-            </div>
-            {ademeByBrand[brand].map((v) => {
-              const cheapest = v.trims.reduce((a, b) => (a.price_EUR < b.price_EUR ? a : b));
-              return (
-                <Tile size="2x1" variant="default" href={url(`/vehicules/${v.slug}`)} ariaLabel={`Fiche ${v.brand} ${v.model}`} class="reveal">
-                  <div class="flex items-center justify-between gap-3 mb-4">
-                    <div class="flex items-center gap-2 text-[var(--color-text-muted)]">
-                      <BrandLogo brand={v.brand} class="w-4 h-4" />
-                      <span class="label-eyebrow">{v.brand}</span>
-                    </div>
-                    <Tag tone="warning" mono>Compatible ADEME</Tag>
-                  </div>
-                  <div class="flex items-end gap-3 mb-6">
-                    <h3 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.05]">
-                      {v.model}
-                      <span class="block text-[var(--color-text-muted)] text-base md:text-lg mt-1 font-medium">{v.variant}</span>
-                    </h3>
-                    <div class="flex-1 flex justify-center items-end">
-                      <VehicleImage slug={v.slug} alt={`${v.brand} ${v.model}`} class="w-28 h-14" />
-                    </div>
-                  </div>
-                  <div class="grid grid-cols-3 gap-4 mt-auto pt-5 border-t border-[var(--color-border)]">
-                    <div class="flex flex-col gap-1">
-                      <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Dès</span>
-                      <span data-numeric class="display-stat text-2xl md:text-3xl">{formatPrice(cheapest.price_EUR)}</span>
-                    </div>
-                    <div class="flex flex-col gap-1">
-                      <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Auto. réelle</span>
-                      <div class="flex items-baseline gap-1">
-                        <span data-numeric class="display-stat text-2xl md:text-3xl">{v.realRange.mixed_km}</span>
-                        <span class="font-mono text-[11px] text-[var(--color-text-faint)]">km</span>
-                      </div>
-                    </div>
-                    <div class="flex flex-col gap-1">
-                      <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Origine</span>
-                      <span class="text-sm text-[var(--color-text)] mt-2">{v.productionCountry}</span>
-                    </div>
-                  </div>
-                </Tile>
-              );
-            })}
-          </>
-        ))}
         {/* ───────── FAQ SEO LONG-TAIL ───────── */}
         <Tile size="full" variant="default" class="reveal">
           <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.1] mb-6">
@@ -507,10 +424,10 @@ const jsonLd = [
         {/* ───────── ADVOCACY CTA ───────── */}
         <Tile size="full" variant="elevated">
           <h2 class="display-2 max-w-3xl">
-            Le leasing social ne devrait pas dépendre du bon vouloir des constructeurs.
+            Un comparateur 100 % indépendant pour le leasing électrique.
           </h2>
           <p class="mt-6 text-[var(--color-text-muted)] text-base md:text-lg max-w-3xl leading-relaxed">
-            Evly ne reçoit aucune rémunération constructeur et n'a aucun intérêt à pousser tel ou tel modèle. La liste des véhicules <em>compatibles ADEME mais absents</em> est publique pour une raison : tant que le programme repose sur l'engagement volontaire des marques, le citoyen éligible est privé de choix qu'il devrait avoir.
+            Evly ne reçoit aucune rémunération constructeur et n'a aucun intérêt à pousser tel ou tel modèle. Notre objectif est de vous fournir des informations claires, objectives et techniques pour vous aider à choisir le véhicule le plus adapté à vos besoins parmi les offres officielles du dispositif de l'État.
           </p>
           <div class="mt-8 pt-6 border-t border-[var(--color-border)] flex flex-col md:flex-row gap-4">
             <a
@@ -529,7 +446,7 @@ const jsonLd = [
             </a>
           </div>
           <p class="mt-6 text-[12px] text-[var(--color-text-faint)] font-mono">
-            Les scores ADEME indicatifs sont estimés par Evly à partir du pays d'assemblage et du contenu batterie publié. Le score officiel ADEME requiert un dossier constructeur déposé auprès des services de l'État.
+            Les informations présentées sont indicatives et basées sur les publications officielles des constructeurs. Le choix définitif et la validation de l'éligibilité se font directement auprès des services agréés par l'État.
           </p>
         </Tile>
       </BentoGrid>
