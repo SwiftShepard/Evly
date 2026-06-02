@@ -147,7 +147,7 @@ const jsonLd = {
   },
 };
 
-const description = `Fiche technique ${vehicle.brand} ${vehicle.model} ${vehicle.variant} : autonomie réelle de ${vehicle.realRange.mixed_km} km, puissance de ${vehicle.power_hp} ch, vitesse de recharge rapide et verdict indépendant Evly.`;
+const description = `⚡ Fiche technique ${vehicle.brand} ${vehicle.model} ${vehicle.variant} : autonomie réelle mesurée à ${vehicle.realRange.mixed_km} km (autoroute & mixte), coût d'usage et les pièges à éviter. Verdict 100% indépendant.`;
 
 // Ensure we have at least one configuration to map over, fallback to a dummy one if empty to not break existing vehicles
 const configurations = vehicle.configurations.length > 0 ? vehicle.configurations : [{
@@ -175,7 +175,7 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
 
 ---
 
-<BaseLayout title={`${vehicle.brand} ${vehicle.model} ${vehicle.variant}`} description={description} jsonLd={jsonLd}>
+<BaseLayout title={`${vehicle.brand} ${vehicle.model} : Prix, Autonomie Réelle & Verdict | Evly`} description={description} jsonLd={jsonLd}>
   <!-- Fil d'ariane -->
   <div class="container-edit pt-4 md:pt-6 fade-rise">
     <nav aria-label="Fil d'ariane" class="font-mono text-[11px] md:text-xs text-[var(--color-text-faint)] flex items-center gap-2 flex-wrap">

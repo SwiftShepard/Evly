@@ -36,10 +36,10 @@ const summaries = vehicles
   .sort((a, b) => a.brand.localeCompare(b.brand) || a.model.localeCompare(b.model));
 
 const description =
-  "Calculez le coût total de possession (TCO) réel de votre voiture électrique face au thermique. Intègre le prix d'achat, les aides, l'assurance et l'énergie.";
+  "💰 Calculez ce que vous allez VRAIMENT économiser en passant à l'électrique. Calculez le coût total (TCO) sur 1 à 10 ans : achat, aides, assurance, entretien, décote.";
 ---
 
-<BaseLayout title="Simulateur TCO, Evly" description={description}>
+<BaseLayout title="Simulateur de Coût Réel : Voiture Électrique vs Thermique | Evly" description={description}>
   <div class="tco-page-wrap">
     <div class="tco-page-header">
       <h1 class="display-1 max-w-4xl fade-rise fade-rise-delay-1">
