@@ -137,28 +137,54 @@ const jsonLd = [
     <div class="container-edit">
       <BentoGrid>
         {/* ───────── HERO ───────── */}
-        <Tile size="full" variant="elevated" class="md:!p-12 lg:!p-16">
-          {/* H1 punchy, une ligne max */}
-          <h1 class="display-1 max-w-4xl fade-rise fade-rise-delay-1">
-            Leasing Social 2026 :
-            <span class="text-[var(--color-accent)]">Dès 95 €/mois, sans apport.</span>
-          </h1>
+        <Tile size="full" variant="elevated">
+          <div class="grid lg:grid-cols-12 gap-8 items-center">
+            {/* Colonne Gauche : Titre et Slogan court */}
+            <div class="lg:col-span-5 flex flex-col justify-center">
+              <h1 class="display-2 fade-rise fade-rise-delay-1">
+                Leasing Social <span class="text-[var(--color-accent)]">2026</span>
+              </h1>
+              <p class="mt-2 text-lg md:text-xl font-medium text-[var(--color-text-muted)] leading-tight fade-rise fade-rise-delay-2">
+                L'électrique pour tous, sans apport.
+              </p>
+              <div class="mt-6 flex items-center gap-2 fade-rise fade-rise-delay-3">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[var(--color-bg-subtle)] text-[var(--color-accent)] font-mono border border-[var(--color-border)]">
+                  {counts.official} modèles
+                </span>
+                <span class="text-xs text-[var(--color-text-faint)] font-mono">officiels et confirmés</span>
+              </div>
+            </div>
 
-          {/* Sous-titre éditorial, visiblement plus petit */}
-          <p class="mt-6 md:mt-8 font-display text-xl md:text-2xl lg:text-3xl font-medium tracking-[-0.01em] leading-[1.2] text-[var(--color-text-muted)] max-w-3xl fade-rise fade-rise-delay-2">
-            Qui peut, comment, et pourquoi tant de modèles éligibles sont absents.
-          </p>
-
-          {/* Description body, petit */}
-          <p class="mt-8 md:mt-10 text-sm md:text-base text-[var(--color-text-muted)] max-w-2xl leading-relaxed fade-rise fade-rise-delay-3">
-            Une location longue durée (LLD/LOA) subventionnée par l'État, sans apport et sous conditions de ressources. Evly décortique les règles du jeu, estime l'éligibilité de votre foyer et liste les modèles officiellement éligibles.
-          </p>
-
-          {/* Stats, séparées clairement par border-top */}
-          <div class="mt-12 md:mt-16 pt-6 border-t border-[var(--color-border)] max-w-xs fade-rise fade-rise-delay-3">
-            <div class="flex flex-col gap-1.5">
-              <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-accent)]">{counts.official}</span>
-              <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Modèles officiellement éligibles</span>
+            {/* Colonne Droite : Infos Capitales (Grille 2x2 compacte) */}
+            <div class="lg:col-span-7 grid grid-cols-2 gap-3 fade-rise fade-rise-delay-3">
+              <div class="p-4 border border-[var(--color-border)] rounded-xl bg-[var(--color-bg-subtle)] flex flex-col justify-between gap-1">
+                <span class="font-mono text-[9px] uppercase tracking-wider text-[var(--color-text-faint)]">Mensualités</span>
+                <div>
+                  <span class="font-display text-lg md:text-xl font-bold text-[var(--color-text)]">Dès 95 €</span>
+                  <span class="font-mono text-[10px] text-[var(--color-text-faint)]">/mois</span>
+                </div>
+              </div>
+              <div class="p-4 border border-[var(--color-border)] rounded-xl bg-[var(--color-bg-subtle)] flex flex-col justify-between gap-1">
+                <span class="font-mono text-[9px] uppercase tracking-wider text-[var(--color-text-faint)]">Apport initial</span>
+                <div>
+                  <span class="font-display text-lg md:text-xl font-bold text-[var(--color-accent)]">0 €</span>
+                  <span class="font-mono text-[10px] text-[var(--color-text-faint)]"> (sans apport)</span>
+                </div>
+              </div>
+              <div class="p-4 border border-[var(--color-border)] rounded-xl bg-[var(--color-bg-subtle)] flex flex-col justify-between gap-1">
+                <span class="font-mono text-[9px] uppercase tracking-wider text-[var(--color-text-faint)]">Plafond revenus</span>
+                <div>
+                  <span class="font-mono text-sm md:text-base font-semibold text-[var(--color-text)]">RFR ≤ 16 300 €</span>
+                  <span class="font-mono text-[10px] text-[var(--color-text-faint)]">/part</span>
+                </div>
+              </div>
+              <div class="p-4 border border-[var(--color-border)] rounded-xl bg-[var(--color-bg-subtle)] flex flex-col justify-between gap-1">
+                <span class="font-mono text-[9px] uppercase tracking-wider text-[var(--color-text-faint)]">Trajet requis</span>
+                <div>
+                  <span class="font-mono text-xs md:text-sm font-semibold text-[var(--color-text)]">≥ 15 km</span>
+                  <span class="font-mono text-[10px] text-[var(--color-text-faint)]">aller ou 8k km/an</span>
+                </div>
+              </div>
             </div>
           </div>
         </Tile>
