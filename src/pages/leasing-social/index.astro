@@ -42,11 +42,87 @@ const counts = {
   ademe: grouped["ademe-compatible"].length,
   potential: grouped["potential"].length,
 };
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": new URL("/", Astro.site).toString()
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Leasing Social 2026",
+        "item": new URL("/leasing-social", Astro.site).toString()
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Qu'est-ce que le leasing social (ou leasing électrique de l'État) ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Le leasing social est un dispositif gouvernemental français permettant aux ménages les plus modestes d'accéder à une voiture électrique en location longue durée (LLD) ou location avec option d'achat (LOA) pour un loyer très bas, compris entre 95 € et 150 € par mois, sans apport initial, grâce aux subventions publiques."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quel est le plafond de Revenu Fiscal de Référence (RFR) pour le leasing social 2026 ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pour être éligible au leasing social 2026, le Revenu Fiscal de Référence (RFR) par part de votre foyer fiscal doit être inférieur ou égal à 16 300 € (sur l'avis d'imposition 2025 portant sur les revenus de 2024)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quelles sont les conditions de distance domicile-travail pour être éligible au leasing social ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Vous devez résider à plus de 15 km de votre lieu de travail (distance aller simple) ou justifier d'un kilométrage annuel professionnel supérieur à 8 000 km avec votre véhicule personnel. Certaines professions d'assistance sont dispensées de cette condition de trajet."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quelles voitures électriques sont éligibles au leasing social en 2026 ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sont éligibles les véhicules électriques ayant un score environnemental ADEME égal ou supérieur à 60/100 (principalement les véhicules assemblés en Europe avec des batteries bas carbone) et dont le prix d'achat neuf ne dépasse pas 47 000 €. Des exemples incluent la Renault 5 E-Tech, Peugeot e-208, Citroën ë-C3, Opel Corsa Electric, Jeep Avenger, ou la nouvelle Skoda Epiq."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Le premier loyer majoré ou apport est-il à la charge du locataire dans le cadre du leasing social ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Non, aucun apport n'est requis de la part du bénéficiaire. L'État prend en charge 100 % du premier loyer majoré (apport) sous forme d'une aide directe, permettant un accès sans apport personnel."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "L'assurance tous risques et l'entretien sont-ils inclus dans le loyer du leasing social ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "En général, le loyer de base comprend uniquement la location du véhicule et la garantie constructeur. L'assurance tous risques (hautement recommandée) ainsi que les coûts d'entretien, de pneumatiques et de recharge électrique restent à ajouter à votre budget mensuel."
+        }
+      }
+    ]
+  }
+];
 ---
 
 <BaseLayout
-  title="Leasing social, comprendre, comparer, exiger | Evly"
-  description="Le leasing social 2026 expliqué simplement. Règles d'éligibilité, loyers plafonnés et liste détaillée des voitures électriques éligibles au dispositif."
+  title="Leasing Social 2026 : Liste des Voitures Éligibles & Guide complet | Evly"
+  description="Découvrez la liste complète des voitures électriques éligibles au leasing social 2026 (dès 95€/mois). Calculez votre éligibilité (RFR, km) et comparez les modèles sans apport."
+  jsonLd={jsonLd}
 >
   <div class="py-6 md:py-10">
     <div class="container-edit">
@@ -55,8 +131,8 @@ const counts = {
         <Tile size="full" variant="elevated" class="md:!p-12 lg:!p-16">
           {/* H1 punchy, une ligne max */}
           <h1 class="display-1 max-w-4xl fade-rise fade-rise-delay-1">
-            À partir de 95 €/mois,
-            <span class="text-[var(--color-accent)]">sans apport.</span>
+            Leasing Social 2026 :
+            <span class="text-[var(--color-accent)]">Dès 95 €/mois, sans apport.</span>
           </h1>
 
           {/* Sous-titre éditorial, visiblement plus petit */}
@@ -315,8 +391,73 @@ const counts = {
             </Tile>
           );
         })}
+        {/* ───────── FAQ SEO LONG-TAIL ───────── */}
+        <Tile size="full" variant="default" class="reveal">
+          <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.1] mb-6">
+            Foire Aux Questions (FAQ) — Tout comprendre sur le leasing électrique de l'État
+          </h2>
+          <div class="flex flex-col gap-4 mt-6">
+            <details class="group border-b border-[var(--color-border)] pb-4 last:border-0">
+              <summary class="flex justify-between items-center font-display text-base md:text-lg font-medium cursor-pointer list-none select-none text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors">
+                <span>Qu'est-ce que le leasing social (ou leasing électrique de l'État) ?</span>
+                <span class="font-mono text-sm transform group-open:rotate-180 transition-transform select-none shrink-0 ml-4">▼</span>
+              </summary>
+              <p class="mt-3 text-sm text-[var(--color-text-muted)] leading-relaxed max-w-4xl">
+                Le leasing social est un dispositif gouvernemental français permettant aux ménages les plus modestes d'accéder à une voiture électrique en location longue durée (LLD) ou location avec option d'achat (LOA) pour un loyer très bas, compris entre 95 € et 150 € par mois, sans apport initial, grâce aux subventions publiques.
+              </p>
+            </details>
 
+            <details class="group border-b border-[var(--color-border)] pb-4 last:border-0">
+              <summary class="flex justify-between items-center font-display text-base md:text-lg font-medium cursor-pointer list-none select-none text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors">
+                <span>Quel est le plafond de Revenu Fiscal de Référence (RFR) pour 2026 ?</span>
+                <span class="font-mono text-sm transform group-open:rotate-180 transition-transform select-none shrink-0 ml-4">▼</span>
+              </summary>
+              <p class="mt-3 text-sm text-[var(--color-text-muted)] leading-relaxed max-w-4xl">
+                Pour être éligible au leasing social 2026, le Revenu Fiscal de Référence (RFR) par part de votre foyer fiscal doit être inférieur ou égal à 16 300 € (sur l'avis d'imposition 2025 portant sur les revenus de 2024).
+              </p>
+            </details>
 
+            <details class="group border-b border-[var(--color-border)] pb-4 last:border-0">
+              <summary class="flex justify-between items-center font-display text-base md:text-lg font-medium cursor-pointer list-none select-none text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors">
+                <span>Quelles sont les conditions de distance domicile-travail pour être éligible ?</span>
+                <span class="font-mono text-sm transform group-open:rotate-180 transition-transform select-none shrink-0 ml-4">▼</span>
+              </summary>
+              <p class="mt-3 text-sm text-[var(--color-text-muted)] leading-relaxed max-w-4xl">
+                Vous devez résider à plus de 15 km de votre lieu de travail (distance aller simple) ou justifier d'un kilométrage annuel professionnel supérieur à 8 000 km avec votre véhicule personnel. Notez que certaines professions d'assistance (santé, aide à domicile, etc.) sont dispensées de cette condition de trajet.
+              </p>
+            </details>
+
+            <details class="group border-b border-[var(--color-border)] pb-4 last:border-0">
+              <summary class="flex justify-between items-center font-display text-base md:text-lg font-medium cursor-pointer list-none select-none text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors">
+                <span>Quelles voitures électriques sont éligibles au leasing social en 2026 ?</span>
+                <span class="font-mono text-sm transform group-open:rotate-180 transition-transform select-none shrink-0 ml-4">▼</span>
+              </summary>
+              <p class="mt-3 text-sm text-[var(--color-text-muted)] leading-relaxed max-w-4xl">
+                Sont éligibles les véhicules électriques ayant un score environnemental ADEME égal ou supérieur à 60/100 (principalement les véhicules assemblés en Europe avec des batteries bas carbone) et dont le prix d'achat neuf ne dépasse pas 47 000 €. Des exemples incluent la Renault 5 E-Tech, Peugeot e-208, Citroën ë-C3, Opel Corsa Electric, Jeep Avenger, ou la nouvelle Skoda Epiq.
+              </p>
+            </details>
+
+            <details class="group border-b border-[var(--color-border)] pb-4 last:border-0">
+              <summary class="flex justify-between items-center font-display text-base md:text-lg font-medium cursor-pointer list-none select-none text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors">
+                <span>Le premier loyer majoré ou apport est-il à la charge du locataire ?</span>
+                <span class="font-mono text-sm transform group-open:rotate-180 transition-transform select-none shrink-0 ml-4">▼</span>
+              </summary>
+              <p class="mt-3 text-sm text-[var(--color-text-muted)] leading-relaxed max-w-4xl">
+                Non, aucun apport n'est requis de la part du bénéficiaire. L'État prend en charge 100 % du premier loyer majoré (apport) sous forme d'une aide directe, permettant un accès sans débourser d'argent initial.
+              </p>
+            </details>
+
+            <details class="group border-b border-[var(--color-border)] pb-4 last:border-0">
+              <summary class="flex justify-between items-center font-display text-base md:text-lg font-medium cursor-pointer list-none select-none text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors">
+                <span>L'assurance tous risques et l'entretien sont-ils inclus dans le loyer ?</span>
+                <span class="font-mono text-sm transform group-open:rotate-180 transition-transform select-none shrink-0 ml-4">▼</span>
+              </summary>
+              <p class="mt-3 text-sm text-[var(--color-text-muted)] leading-relaxed max-w-4xl">
+                En général, le loyer de base comprend uniquement la location du véhicule et la garantie constructeur. L'assurance tous risques (hautement recommandée) ainsi que les coûts d'entretien, de pneumatiques et de recharge électrique restent à ajouter à votre budget mensuel.
+              </p>
+            </details>
+          </div>
+        </Tile>
 
         {/* ───────── ADVOCACY CTA ───────── */}
         <Tile size="full" variant="elevated">
