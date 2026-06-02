@@ -105,23 +105,16 @@ function isGroupActive(group: typeof navigationStructure[0]): boolean {
     </nav>
 
     <div class="flex items-center gap-3">
-      {/* Barre de recherche compacte (desktop) */}
-      <form action={url("/vehicules")} method="GET" role="search" class="hidden md:block">
-        <label class="relative flex items-center w-48 lg:w-60">
-          <span class="absolute left-3 text-[var(--color-text-faint)] flex items-center pointer-events-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </span>
-          <input
-            type="text"
-            name="q"
-            placeholder="Rechercher un modèle..."
-            aria-label="Rechercher un véhicule électrique"
-            class="w-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-full py-2 pl-9 pr-3 text-sm text-[var(--color-text)] placeholder-[var(--color-text-faint)] focus:outline-none focus:border-[var(--color-accent)] focus:bg-[var(--color-bg)] transition-all duration-200"
-          />
-        </label>
-      </form>
+      {/* Bouton CTA d'aide au choix (desktop) */}
+      <a
+        href={url("/recommandation")}
+        class="hidden md:inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full bg-[var(--color-accent)] text-[var(--color-accent-on)] text-sm font-semibold shadow-sm hover:bg-[var(--color-accent-dim)] hover:-translate-y-0.5 transition-all duration-200"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+        </svg>
+        Trouver mon VE
+      </a>
 
       <details class="md:hidden relative">
         <summary
@@ -145,23 +138,6 @@ function isGroupActive(group: typeof navigationStructure[0]): boolean {
         <div
           class="mobile-menu absolute right-0 top-full mt-2 w-64 bg-[var(--color-bg-elevated)] border border-[var(--color-border)] p-3 rounded-[var(--radius-tile-sm)] shadow-xl z-50"
         >
-          {/* Barre de recherche (mobile) */}
-          <form action={url("/vehicules")} method="GET" role="search" class="mb-4">
-            <label class="relative flex items-center">
-              <span class="absolute left-3 text-[var(--color-text-faint)] flex items-center pointer-events-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </span>
-              <input
-                type="text"
-                name="q"
-                placeholder="Rechercher un modèle..."
-                aria-label="Rechercher un véhicule électrique"
-                class="w-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-full py-2 pl-9 pr-3 text-sm text-[var(--color-text)] placeholder-[var(--color-text-faint)] focus:outline-none focus:border-[var(--color-accent)] transition-all duration-200"
-              />
-            </label>
-          </form>
           {
             navigationStructure.map((group, groupIdx) => (
               <div class:list={["mb-4", groupIdx === navigationStructure.length - 1 ? "mb-0" : ""]}>

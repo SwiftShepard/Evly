@@ -112,8 +112,23 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
         {/* Barre latérale (Filtres) (Desktop) */}
         <aside class="hidden xl:block w-[275px] shrink-0 z-10">
           <div class="sticky top-24 flex flex-col gap-0 fade-rise sidebar-sticky">
-
-
+            {/* Recherche textuelle (Desktop) */}
+            <div class="pb-4 mb-4 border-b border-[var(--color-border)]">
+              <label class="relative flex items-center w-full">
+                <span class="absolute left-3 text-[var(--color-text-faint)] flex items-center pointer-events-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </span>
+                <input
+                  type="text"
+                  id="catalog-search"
+                  placeholder="Rechercher un modèle..."
+                  aria-label="Rechercher un véhicule électrique"
+                  class="w-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-full py-2 pl-9 pr-3 text-sm text-[var(--color-text)] placeholder-[var(--color-text-faint)] focus:outline-none focus:border-[var(--color-accent)] focus:bg-[var(--color-bg)] transition-all duration-200"
+                />
+              </label>
+            </div>
 
             <details class="filter-section">
               <summary class="filter-section-toggle">Autonomie <span class="filter-chevron" /></summary>
@@ -199,6 +214,23 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
 
         {/* Filtres Mobile / Tablette, rangées défilantes */}
         <div class="xl:hidden w-full mb-6 flex flex-col gap-3 fade-rise">
+          {/* Recherche textuelle (Mobile) */}
+          <div class="w-full">
+            <label class="relative flex items-center w-full">
+              <span class="absolute left-3 text-[var(--color-text-faint)] flex items-center pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </span>
+              <input
+                type="text"
+                id="catalog-search-mobile"
+                placeholder="Rechercher un modèle..."
+                aria-label="Rechercher un véhicule électrique"
+                class="w-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-full py-2 pl-9 pr-3 text-sm text-[var(--color-text)] placeholder-[var(--color-text-faint)] focus:outline-none focus:border-[var(--color-accent)] focus:bg-[var(--color-bg)] transition-all duration-200"
+              />
+            </label>
+          </div>
 
           <div class="flex flex-col md:flex-row gap-4 p-4 bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-xl">
             <div class="flex items-center justify-between gap-4">
