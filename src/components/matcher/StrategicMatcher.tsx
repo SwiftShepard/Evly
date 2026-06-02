@@ -4,7 +4,7 @@ import { scoreVehicle, type MatcherAnswers, type MatchResult } from "./scoring";
 import { calculateCeeAid } from "@/lib/cee";
 import { ArrowLeft, ArrowRight, RotateCcw, CheckCircle2, AlertTriangle, Sparkles, ChevronRight, HelpCircle } from "lucide-react";
 
-// Force rescan comment update 10
+// Force rescan comment update 12
 const imageModules = import.meta.glob<string>(
   "/src/assets/vehicles/*.{jpeg,jpg,png,webp,avif,svg}",
   { query: "?url", import: "default", eager: true }
