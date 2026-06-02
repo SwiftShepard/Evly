@@ -1,0 +1,261 @@
+{
+  "slug": "mercedes-eqs-suv",
+  "brand": "Mercedes",
+  "model": "EQS SUV",
+  "variant": "118 kWh · Propulsion/4MATIC",
+  "bodyType": "SUV",
+  "segment": "F",
+  "productionCountry": "États-Unis",
+  "assemblyPlant": "Tuscaloosa",
+  "releaseYear": 2023,
+  "marketAvailability": "Disponible",
+  "power_kW": 265,
+  "power_hp": 360,
+  "torque_Nm": 568,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 6.7,
+  "topSpeed_kmh": 210,
+  "usableCapacity_kWh": 118,
+  "grossCapacity_kWh": 122,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2620,
+  "wltp_max_km": 660,
+  "wltp_min_km": 540,
+  "realRange": {
+    "mixed_km": 510,
+    "highway_130_km": 370,
+    "urban_km": 620,
+    "winter_minus5_km": 410,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 23,
+  "consumption_highway_kWh_per_100km": 31,
+  "consumption_winter_kWh_per_100km": 28.5,
+  "dragCoefficient_Cx": 0.26,
+  "chargingDC": {
+    "peakPower_kW": 200,
+    "time_10_80_min": 31,
+    "kWh_added_30min": 65,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 22,
+    "phases": 3,
+    "time_0_100_h": 6
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 140
+    },
+    {
+      "soc": 10,
+      "power": 200
+    },
+    {
+      "soc": 30,
+      "power": 180
+    },
+    {
+      "soc": 50,
+      "power": 130
+    },
+    {
+      "soc": 80,
+      "power": 50
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
+  ],
+  "thousandKmChallenge": null,
+  "length_mm": 5125,
+  "width_mm": 1959,
+  "height_mm": 1718,
+  "wheelbase_mm": 3210,
+  "trunkCapacity_L": 645,
+  "trunkCapacityFolded_L": 2100,
+  "frunkCapacity_L": null,
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "lastUpdated": "2026-06-02",
+  "trims": [
+    {
+      "name": "Electric Art EQS SUV 450+",
+      "price_EUR": 139900,
+      "batteryUsed": "118 kWh",
+      "equipmentHighlights": [
+        "Autonomie 660 km WLTP",
+        "Sellerie en cuir et inserts bois",
+        "Toit ouvrant panoramique"
+      ]
+    },
+    {
+      "name": "AMG Line EQS SUV 580 4MATIC",
+      "price_EUR": 168900,
+      "batteryUsed": "118 kWh",
+      "equipmentHighlights": [
+        "AWD 544 ch et 0-100 en 4,6 s",
+        "MBUX Hyperscreen de série",
+        "Suspension pneumatique de série"
+      ]
+    }
+  ],
+  "configurations": [
+    {
+      "id": "mercedes-eqs-suv-450-art",
+      "label": "EQS SUV 450+ Electric Art",
+      "battery": "standard",
+      "trim": "Electric Art EQS SUV 450+",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 139900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 660,
+      "wltp_consumption_kWh_100km": 20.2,
+      "realRange": {
+        "mixed_km": 510,
+        "highway_130_km": 370,
+        "urban_km": 620,
+        "winter_minus5_km": 410,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 200,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 200
+        },
+        {
+          "soc": 30,
+          "power": 180
+        },
+        {
+          "soc": 50,
+          "power": 130
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "Propulsion 360 ch, efficience et autonomie maximisées."
+    },
+    {
+      "id": "mercedes-eqs-suv-580-amg",
+      "label": "EQS SUV 580 4MATIC AMG Line",
+      "battery": "standard",
+      "trim": "AMG Line EQS SUV 580 4MATIC",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 168900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 590,
+      "wltp_consumption_kWh_100km": 21.8,
+      "realRange": {
+        "mixed_km": 480,
+        "highway_130_km": 350,
+        "urban_km": 580,
+        "winter_minus5_km": 390,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 200,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 200
+        },
+        {
+          "soc": 30,
+          "power": 180
+        },
+        {
+          "soc": 50,
+          "power": 130
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "Version haut de gamme avec transmission intégrale 4MATIC."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 3,
+    "vehicle_km": 150000,
+    "battery_years": 10,
+    "battery_km": 250000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Gros gabarit de 5,12 m avec design raffiné et aérodynamique"
+    },
+    {
+      "category": "technologie",
+      "label": "MBUX Hyperscreen triple écran et sono Burmester 3D"
+    },
+    {
+      "category": "securite",
+      "label": "Conduite autonome de niveau 3 sur autoroute (Drive Pilot)"
+    },
+    {
+      "category": "confort",
+      "label": "Option 7 places et suspensions pneumatiques haut de gamme"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Luxe exceptionnel et espace à bord remarquable en configuration 5 ou 7 places",
+      "Garantie batterie de 10 ans et intégration de la technologie Drive Pilot"
+    ],
+    "weaknesses": [
+      "Vitesse de charge rapide correcte mais en retrait par rapport à la concurrence 800V",
+      "Encombrement routier difficile en centre-ville (longueur 5,12 m)"
+    ],
+    "idealUserProfile": "Familles fortunées ou cadres à la recherche du maximum de confort et d'espace disponible dans l'univers électrique.",
+    "notIdealFor": "Acheteurs cherchant de la maniabilité urbaine ou à budget restreint."
+  },
+  "sources": [
+    "constructeur"
+  ],
+  "imageCredit": "Constructeur"
+}

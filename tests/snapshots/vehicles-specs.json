@@ -1061,47 +1061,36 @@
     ]
   },
   {
-    "slug": "mercedes-eqa",
+    "slug": "mercedes-classe-c-berline",
     "brand": "Mercedes",
-    "model": "EQA",
-    "power_kW": 140,
-    "usableCapacity_kWh": 70.5,
-    "wltp_min_km": 460,
-    "wltp_max_km": 560,
-    "configurations_count": 7,
+    "model": "Classe C Berline",
+    "power_kW": 215,
+    "usableCapacity_kWh": 83,
+    "wltp_min_km": 590,
+    "wltp_max_km": 720,
+    "configurations_count": 2,
     "configuration_ids": [
-      "mercedes-eqa-250-amg",
-      "mercedes-eqa-250-business",
-      "mercedes-eqa-250-edition",
-      "mercedes-eqa-250-progressive",
-      "mercedes-eqa-300-amg",
-      "mercedes-eqa-300-progressive",
-      "mercedes-eqa-350-amg"
+      "mercedes-classe-c-berline-amg",
+      "mercedes-classe-c-berline-pro"
     ]
   },
   {
-    "slug": "mercedes-eqb",
+    "slug": "mercedes-classe-g",
     "brand": "Mercedes",
-    "model": "EQB",
-    "power_kW": 140,
-    "usableCapacity_kWh": 70.5,
-    "wltp_min_km": 440,
-    "wltp_max_km": 537,
-    "configurations_count": 7,
+    "model": "Classe G",
+    "power_kW": 432,
+    "usableCapacity_kWh": 116,
+    "wltp_min_km": 450,
+    "wltp_max_km": 473,
+    "configurations_count": 1,
     "configuration_ids": [
-      "mercedes-eqb-250-amg",
-      "mercedes-eqb-250-business",
-      "mercedes-eqb-250-edition",
-      "mercedes-eqb-250-progressive",
-      "mercedes-eqb-300-amg",
-      "mercedes-eqb-300-progressive",
-      "mercedes-eqb-350-amg"
+      "mercedes-classe-g-580-edition-one"
     ]
   },
   {
     "slug": "mercedes-eqe",
     "brand": "Mercedes",
-    "model": "EQE",
+    "model": "EQE Berline",
     "power_kW": 215,
     "usableCapacity_kWh": 90.6,
     "wltp_min_km": 518,
@@ -1117,9 +1106,23 @@
     ]
   },
   {
+    "slug": "mercedes-eqe-suv",
+    "brand": "Mercedes",
+    "model": "EQE SUV",
+    "power_kW": 215,
+    "usableCapacity_kWh": 90.6,
+    "wltp_min_km": 480,
+    "wltp_max_km": 590,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "mercedes-eqe-suv-300-art",
+      "mercedes-eqe-suv-350-amg"
+    ]
+  },
+  {
     "slug": "mercedes-eqs",
     "brand": "Mercedes",
-    "model": "EQS",
+    "model": "EQS Berline",
     "power_kW": 265,
     "usableCapacity_kWh": 118,
     "wltp_min_km": 625,
@@ -1133,38 +1136,64 @@
     ]
   },
   {
-    "slug": "mercedes-esprinter",
+    "slug": "mercedes-eqs-suv",
     "brand": "Mercedes",
-    "model": "eSprinter",
-    "power_kW": 150,
-    "usableCapacity_kWh": 113,
-    "wltp_min_km": 220,
-    "wltp_max_km": 440,
-    "configurations_count": 6,
+    "model": "EQS SUV",
+    "power_kW": 265,
+    "usableCapacity_kWh": 118,
+    "wltp_min_km": 540,
+    "wltp_max_km": 660,
+    "configurations_count": 2,
     "configuration_ids": [
-      "mercedes-esprinter-l2h2-113-pro",
-      "mercedes-esprinter-l2h2-113-select",
-      "mercedes-esprinter-l2h2-56",
-      "mercedes-esprinter-l2h2-81",
-      "mercedes-esprinter-l3h2-113-pro",
-      "mercedes-esprinter-l3h2-113-select"
+      "mercedes-eqs-suv-450-art",
+      "mercedes-eqs-suv-580-amg"
     ]
   },
   {
-    "slug": "mercedes-evito",
+    "slug": "mercedes-eqv",
     "brand": "Mercedes",
-    "model": "eVito",
-    "power_kW": 85,
-    "usableCapacity_kWh": 60,
-    "wltp_min_km": 260,
+    "model": "EQV",
+    "power_kW": 150,
+    "usableCapacity_kWh": 90,
+    "wltp_min_km": 350,
     "wltp_max_km": 358,
-    "configurations_count": 5,
+    "configurations_count": 2,
     "configuration_ids": [
-      "mercedes-evito-l2-base",
-      "mercedes-evito-l2-pro",
-      "mercedes-evito-l3-pro",
-      "mercedes-evito-tourer-pro",
-      "mercedes-evito-tourer-select"
+      "mercedes-eqv-tourer-avantgarde",
+      "mercedes-eqv-tourer-pro"
+    ]
+  },
+  {
+    "slug": "mercedes-glb",
+    "brand": "Mercedes",
+    "model": "GLB",
+    "power_kW": 140,
+    "usableCapacity_kWh": 70.5,
+    "wltp_min_km": 440,
+    "wltp_max_km": 537,
+    "configurations_count": 7,
+    "configuration_ids": [
+      "mercedes-glb-250-amg",
+      "mercedes-glb-250-business",
+      "mercedes-glb-250-edition",
+      "mercedes-glb-250-progressive",
+      "mercedes-glb-300-amg",
+      "mercedes-glb-300-progressive",
+      "mercedes-glb-350-amg"
+    ]
+  },
+  {
+    "slug": "mercedes-glc",
+    "brand": "Mercedes",
+    "model": "GLC",
+    "power_kW": 200,
+    "usableCapacity_kWh": 85,
+    "wltp_min_km": 510,
+    "wltp_max_km": 610,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "mercedes-glc-amg",
+      "mercedes-glc-pro"
     ]
   },
   {

@@ -1,0 +1,261 @@
+{
+  "slug": "mercedes-classe-c-berline",
+  "brand": "Mercedes",
+  "model": "Classe C Berline",
+  "variant": "83 kWh · Propulsion/4MATIC",
+  "bodyType": "Berline",
+  "segment": "D",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Bremen",
+  "releaseYear": 2026,
+  "marketAvailability": "À commander",
+  "power_kW": 215,
+  "power_hp": 292,
+  "torque_Nm": 400,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 5.7,
+  "topSpeed_kmh": 210,
+  "usableCapacity_kWh": 83,
+  "grossCapacity_kWh": 88,
+  "chemistry": "NMC",
+  "architecture_V": 800,
+  "mass_kg": 2050,
+  "wltp_max_km": 720,
+  "wltp_min_km": 590,
+  "realRange": {
+    "mixed_km": 550,
+    "highway_130_km": 390,
+    "urban_km": 670,
+    "winter_minus5_km": 430,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 13,
+  "consumption_highway_kWh_per_100km": 18.5,
+  "consumption_winter_kWh_per_100km": 16.5,
+  "dragCoefficient_Cx": 0.22,
+  "chargingDC": {
+    "peakPower_kW": 250,
+    "time_10_80_min": 22,
+    "kWh_added_30min": 70,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 8.5
+  },
+  "plugAndCharge": true,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 100
+    },
+    {
+      "soc": 10,
+      "power": 250
+    },
+    {
+      "soc": 30,
+      "power": 210
+    },
+    {
+      "soc": 50,
+      "power": 160
+    },
+    {
+      "soc": 80,
+      "power": 65
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
+  ],
+  "thousandKmChallenge": null,
+  "length_mm": 4751,
+  "width_mm": 1820,
+  "height_mm": 1438,
+  "wheelbase_mm": 2865,
+  "trunkCapacity_L": 455,
+  "trunkCapacityFolded_L": 1375,
+  "frunkCapacity_L": null,
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "lastUpdated": "2026-06-02",
+  "trims": [
+    {
+      "name": "PRO C 250e Berline",
+      "price_EUR": 52900,
+      "batteryUsed": "83 kWh",
+      "equipmentHighlights": [
+        "720 km d'autonomie WLTP",
+        "Architecture de charge 800V",
+        "Écran tactile vertical MBUX"
+      ]
+    },
+    {
+      "name": "AMG Line C 250e Berline",
+      "price_EUR": 58900,
+      "batteryUsed": "83 kWh",
+      "equipmentHighlights": [
+        "Style extérieur sport AMG Line",
+        "Jantes AMG 19 pouces",
+        "Sièges Sport Similicuir Artico"
+      ]
+    }
+  ],
+  "configurations": [
+    {
+      "id": "mercedes-classe-c-berline-pro",
+      "label": "Classe C Berline 250e PRO",
+      "battery": "standard",
+      "trim": "PRO C 250e Berline",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 52900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 720,
+      "wltp_consumption_kWh_100km": 12.8,
+      "realRange": {
+        "mixed_km": 550,
+        "highway_130_km": 390,
+        "urban_km": 670,
+        "winter_minus5_km": 430,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 250,
+      "chargingDC_10_80_min": 22,
+      "chargingDC_kWh_30min": 70,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 250
+        },
+        {
+          "soc": 30,
+          "power": 210
+        },
+        {
+          "soc": 50,
+          "power": 160
+        },
+        {
+          "soc": 80,
+          "power": 65
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "upcoming",
+      "notes": "Version d'efficience maximale, aérodynamisme optimisé."
+    },
+    {
+      "id": "mercedes-classe-c-berline-amg",
+      "label": "Classe C Berline 250e AMG Line",
+      "battery": "standard",
+      "trim": "AMG Line C 250e Berline",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 58900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 670,
+      "wltp_consumption_kWh_100km": 13.5,
+      "realRange": {
+        "mixed_km": 520,
+        "highway_130_km": 370,
+        "urban_km": 630,
+        "winter_minus5_km": 410,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 250,
+      "chargingDC_10_80_min": 22,
+      "chargingDC_kWh_30min": 70,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 250
+        },
+        {
+          "soc": 30,
+          "power": 210
+        },
+        {
+          "soc": 50,
+          "power": 160
+        },
+        {
+          "soc": 80,
+          "power": 65
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "upcoming",
+      "notes": "Look dynamique avec suspensions sport de série."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 2,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Silhouette tricorps épurée avec feux LED matriciels"
+    },
+    {
+      "category": "technologie",
+      "label": "Système multimédia MBUX 3 avec commande vocale et 5G"
+    },
+    {
+      "category": "securite",
+      "label": "Aides à la conduite actives et pack sécurité passagers"
+    },
+    {
+      "category": "confort",
+      "label": "Suspension confortable et insonorisation de premier plan"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Autonomie confortable de plus de 700 km WLTP",
+      "Recharge 800V rapide à 250 kW en pointe"
+    ],
+    "weaknesses": [
+      "Volume de coffre réduit par rapport au GLC thermique",
+      "Tarifs premium et liste d'options habituelle de Mercedes"
+    ],
+    "idealUserProfile": "Cadres et professionnels de la route cherchant une berline statutaire, efficiente et rapide.",
+    "notIdealFor": "Utilisateurs ayant un besoin impératif d'un hayon de chargement vertical."
+  },
+  "sources": [
+    "constructeur"
+  ],
+  "imageCredit": "Constructeur"
+}

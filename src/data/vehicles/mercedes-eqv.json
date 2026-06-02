@@ -1,0 +1,278 @@
+{
+  "slug": "mercedes-eqv",
+  "brand": "Mercedes",
+  "model": "EQV",
+  "variant": "90 kWh",
+  "bodyType": "Monospace",
+  "segment": "E",
+  "productionCountry": "Espagne",
+  "assemblyPlant": "Vitoria-Gasteiz",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 150,
+  "power_hp": 204,
+  "torque_Nm": 362,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 12.1,
+  "topSpeed_kmh": 140,
+  "usableCapacity_kWh": 90,
+  "grossCapacity_kWh": 100,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2635,
+  "wltp_max_km": 358,
+  "wltp_min_km": 350,
+  "realRange": {
+    "mixed_km": 230,
+    "highway_130_km": 150,
+    "urban_km": 290,
+    "winter_minus5_km": 185,
+    "confidence": "estimated",
+    "highway_120_km": 338
+  },
+  "consumption_mixed_kWh_per_100km": 22,
+  "consumption_highway_kWh_per_100km": 29,
+  "consumption_winter_kWh_per_100km": 27,
+  "dragCoefficient_Cx": 0.35,
+  "chargingDC": {
+    "peakPower_kW": 114,
+    "time_10_80_min": 35,
+    "kWh_added_30min": 35,
+    "confidence": "tested"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 6.5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 82
+    },
+    {
+      "soc": 10,
+      "power": 103
+    },
+    {
+      "soc": 20,
+      "power": 106
+    },
+    {
+      "soc": 30,
+      "power": 108
+    },
+    {
+      "soc": 40,
+      "power": 109
+    },
+    {
+      "soc": 50,
+      "power": 111
+    },
+    {
+      "soc": 60,
+      "power": 114
+    },
+    {
+      "soc": 70,
+      "power": 100
+    },
+    {
+      "soc": 80,
+      "power": 89
+    },
+    {
+      "soc": 90,
+      "power": 53
+    },
+    {
+      "soc": 100,
+      "power": 5
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 5140,
+  "width_mm": 1928,
+  "height_mm": 1910,
+  "wheelbase_mm": 3200,
+  "trunkCapacity_L": 1030,
+  "trunkCapacityFolded_L": 4630,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "EQV 300 Tourer Pro",
+      "price_EUR": 78900,
+      "batteryUsed": "90 kWh",
+      "equipmentHighlights": [
+        "Jusqu'à 8 places",
+        "Écran MBUX 10 pouces",
+        "Portes latérales coulissantes"
+      ]
+    },
+    {
+      "name": "EQV 300 Tourer Avantgarde",
+      "price_EUR": 86500,
+      "batteryUsed": "90 kWh",
+      "equipmentHighlights": [
+        "Sièges en cuir individuel",
+        "Pack Assistance à la conduite",
+        "Jantes alliage 17 pouces"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "mercedes-eqv-tourer-pro",
+      "label": "EQV 300 Tourer Pro",
+      "battery": "standard",
+      "trim": "EQV 300 Tourer Pro",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 78900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 358,
+      "wltp_consumption_kWh_100km": 26.2,
+      "realRange": {
+        "mixed_km": 270,
+        "highway_130_km": 195,
+        "urban_km": 335,
+        "winter_minus5_km": 220,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 110,
+      "chargingDC_10_80_min": 40,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 85
+        },
+        {
+          "soc": 10,
+          "power": 110
+        },
+        {
+          "soc": 50,
+          "power": 70
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
+      ],
+      "availability": "available",
+      "notes": "Minivan de prestige 7 ou 8 places, grande batterie."
+    },
+    {
+      "id": "mercedes-eqv-tourer-avantgarde",
+      "label": "EQV 300 Tourer Avantgarde",
+      "battery": "standard",
+      "trim": "EQV 300 Tourer Avantgarde",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 86500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 350,
+      "wltp_consumption_kWh_100km": 26.8,
+      "realRange": {
+        "mixed_km": 265,
+        "highway_130_km": 190,
+        "urban_km": 325,
+        "winter_minus5_km": 215,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 110,
+      "chargingDC_10_80_min": 40,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 85
+        },
+        {
+          "soc": 10,
+          "power": 110
+        },
+        {
+          "soc": 50,
+          "power": 70
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
+      ],
+      "availability": "available",
+      "notes": "Finition grand luxe, sièges individuels en vis-à-vis."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 3,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "confort",
+      "label": "Salon mobile ultra-confortable jusqu'à 8 places modulables"
+    },
+    {
+      "category": "technologie",
+      "label": "Interface intelligente MBUX avec navigation spécifique EV"
+    },
+    {
+      "category": "securite",
+      "label": "Assistance active au freinage et détection d'angle mort"
+    },
+    {
+      "category": "design",
+      "label": "Monospace de prestige avec portes coulissantes électriques"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Espace interieur geant et modulaire",
+      "Finition et standing premium"
+    ],
+    "weaknesses": [
+      "Consommation importante a haute vitesse",
+      "Plateforme thermique adaptee"
+    ],
+    "idealUserProfile": "Chauffeurs VIP, navettes d'hotel haut de gamme et familles nombreuses.",
+    "notIdealFor": "Navetteurs longue distance pressés ou petits budgets."
+  },
+  "lastUpdated": "2026-06-02",
+  "sources": [
+    "automobile-propre",
+    "largus",
+    "nyland",
+    "la-chaine-ev"
+  ],
+  "imageCredit": "Constructeur"
+}

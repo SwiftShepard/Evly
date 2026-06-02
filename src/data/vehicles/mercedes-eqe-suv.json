@@ -1,0 +1,261 @@
+{
+  "slug": "mercedes-eqe-suv",
+  "brand": "Mercedes",
+  "model": "EQE SUV",
+  "variant": "90.6 kWh · Propulsion/4MATIC",
+  "bodyType": "SUV",
+  "segment": "E",
+  "productionCountry": "États-Unis",
+  "assemblyPlant": "Tuscaloosa",
+  "releaseYear": 2023,
+  "marketAvailability": "Disponible",
+  "power_kW": 215,
+  "power_hp": 292,
+  "torque_Nm": 565,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 6.7,
+  "topSpeed_kmh": 210,
+  "usableCapacity_kWh": 90.6,
+  "grossCapacity_kWh": 96,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 2430,
+  "wltp_max_km": 590,
+  "wltp_min_km": 480,
+  "realRange": {
+    "mixed_km": 430,
+    "highway_130_km": 310,
+    "urban_km": 520,
+    "winter_minus5_km": 340,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 21,
+  "consumption_highway_kWh_per_100km": 28,
+  "consumption_winter_kWh_per_100km": 25.5,
+  "dragCoefficient_Cx": 0.25,
+  "chargingDC": {
+    "peakPower_kW": 170,
+    "time_10_80_min": 32,
+    "kWh_added_30min": 52,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 22,
+    "phases": 3,
+    "time_0_100_h": 4.5
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 120
+    },
+    {
+      "soc": 10,
+      "power": 170
+    },
+    {
+      "soc": 30,
+      "power": 150
+    },
+    {
+      "soc": 50,
+      "power": 110
+    },
+    {
+      "soc": 80,
+      "power": 45
+    },
+    {
+      "soc": 100,
+      "power": 8
+    }
+  ],
+  "thousandKmChallenge": null,
+  "length_mm": 4863,
+  "width_mm": 1940,
+  "height_mm": 1686,
+  "wheelbase_mm": 3030,
+  "trunkCapacity_L": 520,
+  "trunkCapacityFolded_L": 1675,
+  "frunkCapacity_L": null,
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "lastUpdated": "2026-06-02",
+  "trims": [
+    {
+      "name": "Electric Art EQE SUV 300",
+      "price_EUR": 84900,
+      "batteryUsed": "90.6 kWh",
+      "equipmentHighlights": [
+        "Autonomie 590 km WLTP",
+        "Sellerie similicuir ARTICO",
+        "Chargeur embarqué AC 22 kW"
+      ]
+    },
+    {
+      "name": "AMG Line EQE SUV 350 4MATIC",
+      "price_EUR": 95600,
+      "batteryUsed": "90.6 kWh",
+      "equipmentHighlights": [
+        "Transmission intégrale AWD",
+        "Kit carrosserie AMG exclusif",
+        "Direction de l'essieu arrière (10°)"
+      ]
+    }
+  ],
+  "configurations": [
+    {
+      "id": "mercedes-eqe-suv-300-art",
+      "label": "EQE SUV 300 Electric Art",
+      "battery": "standard",
+      "trim": "Electric Art EQE SUV 300",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 84900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 590,
+      "wltp_consumption_kWh_100km": 18.2,
+      "realRange": {
+        "mixed_km": 430,
+        "highway_130_km": 310,
+        "urban_km": 520,
+        "winter_minus5_km": 340,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 170,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 52,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 120
+        },
+        {
+          "soc": 10,
+          "power": 170
+        },
+        {
+          "soc": 30,
+          "power": 150
+        },
+        {
+          "soc": 50,
+          "power": 110
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "Modèle propulsion confortable et sobre."
+    },
+    {
+      "id": "mercedes-eqe-suv-350-amg",
+      "label": "EQE SUV 350 4MATIC AMG Line",
+      "battery": "standard",
+      "trim": "AMG Line EQE SUV 350 4MATIC",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 95600,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 540,
+      "wltp_consumption_kWh_100km": 19.5,
+      "realRange": {
+        "mixed_km": 410,
+        "highway_130_km": 295,
+        "urban_km": 495,
+        "winter_minus5_km": 320,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 170,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 52,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 120
+        },
+        {
+          "soc": 10,
+          "power": 170
+        },
+        {
+          "soc": 30,
+          "power": 150
+        },
+        {
+          "soc": 50,
+          "power": 110
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "Transmission intégrale, excellent comportement routier."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 3,
+    "vehicle_km": 150000,
+    "battery_years": 10,
+    "battery_km": 250000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Lignes fluides optimisant le coefficient de traînée Cx à 0,25"
+    },
+    {
+      "category": "technologie",
+      "label": "MBUX Hyperscreen et climatisation intelligente THERMOTRONIC"
+    },
+    {
+      "category": "securite",
+      "label": "Pack Assistance à la conduite Plus et caméras 360°"
+    },
+    {
+      "category": "confort",
+      "label": "Suspension pneumatique AIRMATIC et essieu arrière directeur"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Insonorisation remarquable et grand confort de roulement",
+      "Écran géant Hyperscreen en option et chargeur AC 22 kW de série"
+    ],
+    "weaknesses": [
+      "Poids important dépassant les 2,4 tonnes",
+      "Tarifs élitistes et coffre plus petit que la berline en volume utile"
+    ],
+    "idealUserProfile": "Acheteurs à la recherche d'un grand SUV familial ultra-confortable et à la pointe de la technologie.",
+    "notIdealFor": "Petits garages ou personnes ayant un budget limité."
+  },
+  "sources": [
+    "constructeur"
+  ],
+  "imageCredit": "Constructeur"
+}

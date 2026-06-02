@@ -1,0 +1,198 @@
+{
+  "slug": "mercedes-classe-g",
+  "brand": "Mercedes",
+  "model": "Classe G",
+  "variant": "116 kWh · 4MATIC",
+  "bodyType": "Tout-terrain",
+  "segment": "F",
+  "productionCountry": "Autriche",
+  "assemblyPlant": "Graz",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 432,
+  "power_hp": 587,
+  "torque_Nm": 1164,
+  "drivetrain": "AWD",
+  "motors": 4,
+  "acceleration_0_100_s": 4.7,
+  "topSpeed_kmh": 180,
+  "usableCapacity_kWh": 116,
+  "grossCapacity_kWh": 122,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 3085,
+  "wltp_max_km": 473,
+  "wltp_min_km": 450,
+  "realRange": {
+    "mixed_km": 360,
+    "highway_130_km": 240,
+    "urban_km": 440,
+    "winter_minus5_km": 280,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 27.5,
+  "consumption_highway_kWh_per_100km": 38,
+  "consumption_winter_kWh_per_100km": 34,
+  "dragCoefficient_Cx": 0.44,
+  "chargingDC": {
+    "peakPower_kW": 200,
+    "time_10_80_min": 32,
+    "kWh_added_30min": 65,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 12
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 120
+    },
+    {
+      "soc": 10,
+      "power": 200
+    },
+    {
+      "soc": 30,
+      "power": 180
+    },
+    {
+      "soc": 50,
+      "power": 130
+    },
+    {
+      "soc": 80,
+      "power": 50
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
+  ],
+  "thousandKmChallenge": null,
+  "length_mm": 4624,
+  "width_mm": 1931,
+  "height_mm": 1987,
+  "wheelbase_mm": 2890,
+  "trunkCapacity_L": 640,
+  "trunkCapacityFolded_L": 1940,
+  "frunkCapacity_L": null,
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "lastUpdated": "2026-06-02",
+  "trims": [
+    {
+      "name": "G 580 EDITION ONE",
+      "price_EUR": 165000,
+      "batteryUsed": "116 kWh",
+      "equipmentHighlights": [
+        "4 moteurs électriques indépendants",
+        "Fonction G-TURN (demi-tour sur place)",
+        "G-STEERING pour braquage ultra-court"
+      ]
+    }
+  ],
+  "configurations": [
+    {
+      "id": "mercedes-classe-g-580-edition-one",
+      "label": "G 580 EDITION ONE",
+      "battery": "standard",
+      "trim": "G 580 EDITION ONE",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 165000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 473,
+      "wltp_consumption_kWh_100km": 26.3,
+      "realRange": {
+        "mixed_km": 360,
+        "highway_130_km": 240,
+        "urban_km": 440,
+        "winter_minus5_km": 280,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 200,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 120
+        },
+        {
+          "soc": 10,
+          "power": 200
+        },
+        {
+          "soc": 30,
+          "power": 180
+        },
+        {
+          "soc": 50,
+          "power": 130
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "Version de lancement haut de gamme, capacités off-road ultimes."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 3,
+    "vehicle_km": 150000,
+    "battery_years": 10,
+    "battery_km": 250000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Design boxy emblématique préservé avec calandre éclairée"
+    },
+    {
+      "category": "technologie",
+      "label": "4 moteurs électriques permettant le G-TURN (rotation 360°)"
+    },
+    {
+      "category": "securite",
+      "label": "Protection sous châssis ultra-résistante en carbone et kevlar"
+    },
+    {
+      "category": "confort",
+      "label": "Aptitude exceptionnelle au franchissement off-road (pente 100%)"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Capacités de franchissement et fonctions technologiques off-road révolutionnaires (G-TURN)",
+      "Préservation du design iconique et finitions intérieures luxueuses"
+    ],
+    "weaknesses": [
+      "Poids démesuré de plus de 3 tonnes limitant l'efficience",
+      "Consommation colossale sur autoroute et aérodynamisme d'armoire normande"
+    ],
+    "idealUserProfile": "Passionnés de franchissement et amateurs de véhicules d'exception souhaitant allier l'icône G avec le silence et la force du couple électrique.",
+    "notIdealFor": "Navetteurs autoroutiers réguliers ou personnes soucieuses d'efficience énergétique."
+  },
+  "sources": [
+    "constructeur"
+  ],
+  "imageCredit": "Constructeur"
+}

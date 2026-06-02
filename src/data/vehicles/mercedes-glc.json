@@ -1,0 +1,261 @@
+{
+  "slug": "mercedes-glc",
+  "brand": "Mercedes",
+  "model": "GLC",
+  "variant": "85 kWh · Propulsion/4MATIC",
+  "bodyType": "SUV",
+  "segment": "D",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Bremen",
+  "releaseYear": 2026,
+  "marketAvailability": "À commander",
+  "power_kW": 200,
+  "power_hp": 272,
+  "torque_Nm": 380,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 6.2,
+  "topSpeed_kmh": 190,
+  "usableCapacity_kWh": 85,
+  "grossCapacity_kWh": 90,
+  "chemistry": "NMC",
+  "architecture_V": 800,
+  "mass_kg": 2150,
+  "wltp_max_km": 610,
+  "wltp_min_km": 510,
+  "realRange": {
+    "mixed_km": 470,
+    "highway_130_km": 330,
+    "urban_km": 560,
+    "winter_minus5_km": 375,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 18,
+  "consumption_highway_kWh_per_100km": 25,
+  "consumption_winter_kWh_per_100km": 23,
+  "dragCoefficient_Cx": 0.26,
+  "chargingDC": {
+    "peakPower_kW": 250,
+    "time_10_80_min": 22,
+    "kWh_added_30min": 68,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 8.5
+  },
+  "plugAndCharge": true,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 100
+    },
+    {
+      "soc": 10,
+      "power": 250
+    },
+    {
+      "soc": 30,
+      "power": 210
+    },
+    {
+      "soc": 50,
+      "power": 160
+    },
+    {
+      "soc": 80,
+      "power": 65
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
+  ],
+  "thousandKmChallenge": null,
+  "length_mm": 4716,
+  "width_mm": 1890,
+  "height_mm": 1640,
+  "wheelbase_mm": 2888,
+  "trunkCapacity_L": 550,
+  "trunkCapacityFolded_L": 1600,
+  "frunkCapacity_L": null,
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "lastUpdated": "2026-06-02",
+  "trims": [
+    {
+      "name": "PRO GLC 250e SUV",
+      "price_EUR": 59900,
+      "batteryUsed": "85 kWh",
+      "equipmentHighlights": [
+        "610 km WLTP",
+        "Architecture de charge 800V",
+        "MBUX écran 11,9 pouces"
+      ]
+    },
+    {
+      "name": "AMG Line GLC 250e SUV",
+      "price_EUR": 66900,
+      "batteryUsed": "85 kWh",
+      "equipmentHighlights": [
+        "Kit carrosserie AMG de série",
+        "Jantes alliage AMG 19 pouces",
+        "Sellerie similicuir/microfibre"
+      ]
+    }
+  ],
+  "configurations": [
+    {
+      "id": "mercedes-glc-pro",
+      "label": "GLC 250e SUV PRO",
+      "battery": "standard",
+      "trim": "PRO GLC 250e SUV",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 59900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 610,
+      "wltp_consumption_kWh_100km": 15.2,
+      "realRange": {
+        "mixed_km": 470,
+        "highway_130_km": 330,
+        "urban_km": 560,
+        "winter_minus5_km": 375,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 250,
+      "chargingDC_10_80_min": 22,
+      "chargingDC_kWh_30min": 68,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 250
+        },
+        {
+          "soc": 30,
+          "power": 210
+        },
+        {
+          "soc": 50,
+          "power": 160
+        },
+        {
+          "soc": 80,
+          "power": 65
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "upcoming",
+      "notes": "SUV familial polyvalent d'efficience maximale."
+    },
+    {
+      "id": "mercedes-glc-amg",
+      "label": "GLC 250e SUV AMG Line",
+      "battery": "standard",
+      "trim": "AMG Line GLC 250e SUV",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 66900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 560,
+      "wltp_consumption_kWh_100km": 16.5,
+      "realRange": {
+        "mixed_km": 440,
+        "highway_130_km": 310,
+        "urban_km": 520,
+        "winter_minus5_km": 350,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 250,
+      "chargingDC_10_80_min": 22,
+      "chargingDC_kWh_30min": 68,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 250
+        },
+        {
+          "soc": 30,
+          "power": 210
+        },
+        {
+          "soc": 50,
+          "power": 160
+        },
+        {
+          "soc": 80,
+          "power": 65
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "upcoming",
+      "notes": "Look dynamique avec kit AMG et jantes sport."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 2,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Design de SUV athlétique avec d'excellentes finitions"
+    },
+    {
+      "category": "technologie",
+      "label": "Charge ultra-rapide 800V 250 kW et écran central vertical"
+    },
+    {
+      "category": "securite",
+      "label": "Pack assistance active et projecteurs DIGITAL LIGHT"
+    },
+    {
+      "category": "confort",
+      "label": "Suspensions confortables et coffre polyvalent de 550 L"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Autonomie réelle confortable et charge ultra-rapide 800V",
+      "Volume de coffre pratique et polyvalence de SUV familial"
+    ],
+    "weaknesses": [
+      "Tarif supérieur à la berline équivalente",
+      "Poids important de plus de 2,1 tonnes"
+    ],
+    "idealUserProfile": "Familles et professionnels recherchant le compromis idéal de confort, d'habitabilité et de vitesse de recharge sur autoroute.",
+    "notIdealFor": "Acheteurs prioritaires sur les petits budgets ou cherchant un véhicule ultra-compact."
+  },
+  "sources": [
+    "constructeur"
+  ],
+  "imageCredit": "Constructeur"
+}
