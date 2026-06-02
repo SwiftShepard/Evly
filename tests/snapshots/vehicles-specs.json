@@ -1903,6 +1903,20 @@
     ]
   },
   {
+    "slug": "skoda-epiq",
+    "brand": "Skoda",
+    "model": "Epiq",
+    "power_kW": 99,
+    "usableCapacity_kWh": 37,
+    "wltp_min_km": 310,
+    "wltp_max_km": 430,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "skoda-epiq-40-37-kwh",
+      "skoda-epiq-55-52-kwh"
+    ]
+  },
+  {
     "slug": "smart-1",
     "brand": "Smart",
     "model": "#1",
@@ -2147,7 +2161,7 @@
   {
     "slug": "vw-id2",
     "brand": "Volkswagen",
-    "model": "ID.2",
+    "model": "ID. Polo",
     "power_kW": 166,
     "usableCapacity_kWh": 38,
     "wltp_min_km": 450,
@@ -2161,7 +2175,7 @@
   {
     "slug": "vw-id3",
     "brand": "Volkswagen",
-    "model": "ID.3",
+    "model": "ID.3 Neo",
     "power_kW": 150,
     "usableCapacity_kWh": 58,
     "wltp_min_km": 434,

@@ -1,0 +1,265 @@
+{
+  "slug": "skoda-epiq",
+  "brand": "Skoda",
+  "model": "Epiq",
+  "variant": "37 / 52 kWh",
+  "bodyType": "SUV urbain",
+  "segment": "B",
+  "productionCountry": "Espagne",
+  "assemblyPlant": "Pampelune",
+  "releaseYear": 2026,
+  "marketAvailability": "Disponible",
+  "power_kW": 99,
+  "power_hp": 135,
+  "torque_Nm": 250,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 9,
+  "topSpeed_kmh": 150,
+  "usableCapacity_kWh": 37,
+  "grossCapacity_kWh": 40,
+  "chemistry": "LFP",
+  "architecture_V": 400,
+  "mass_kg": 1550,
+  "wltp_max_km": 430,
+  "wltp_min_km": 310,
+  "realRange": {
+    "mixed_km": 240,
+    "highway_130_km": 160,
+    "urban_km": 290,
+    "winter_minus5_km": 180,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 14.5,
+  "consumption_highway_kWh_per_100km": 21,
+  "consumption_winter_kWh_per_100km": 19,
+  "dragCoefficient_Cx": 0.28,
+  "chargingDC": {
+    "peakPower_kW": 100,
+    "time_10_80_min": 25,
+    "kWh_added_30min": 25,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 4
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 80
+    },
+    {
+      "soc": 10,
+      "power": 100
+    },
+    {
+      "soc": 50,
+      "power": 75
+    },
+    {
+      "soc": 80,
+      "power": 40
+    },
+    {
+      "soc": 100,
+      "power": 5
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4100,
+  "width_mm": 1800,
+  "height_mm": 1550,
+  "wheelbase_mm": 2600,
+  "trunkCapacity_L": 490,
+  "trunkCapacityFolded_L": 1400,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Epiq 40 (37 kWh · 99 kW FWD) 37 kWh",
+      "price_EUR": 25000,
+      "batteryUsed": "37 kWh",
+      "equipmentHighlights": [
+        "WLTP ~310 km",
+        "Coffre 490 L",
+        "Charge V2L"
+      ]
+    },
+    {
+      "name": "Epiq 55 (52 kWh · 155 kW FWD) 52 kWh",
+      "price_EUR": 32000,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "WLTP ~430 km",
+        "Moteur 211 ch",
+        "Écran 13\""
+      ]
+    }
+  ],
+  "leasingSocialEligible": true,
+  "leasingSocial_EUR_per_month": 119,
+  "availableAids": [
+    {
+      "label": "Prime CEE",
+      "amount_EUR": 6500,
+      "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 2000,
+      "conditions": "Majoration pour batterie fabriquée en Europe."
+    }
+  ],
+  "configurations": [
+    {
+      "id": "skoda-epiq-40-37-kwh",
+      "label": "Epiq 40 · 37 kWh",
+      "battery": "standard",
+      "trim": "Epiq 40 (37 kWh · 99 kW FWD)",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 25000,
+      "monthlyLease_EUR": 119,
+      "leasingSocialEligible": true,
+      "wltp_km": 310,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": {
+        "mixed_km": 240,
+        "highway_130_km": 160,
+        "urban_km": 290,
+        "winter_minus5_km": 180,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 25,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 80
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 75
+        },
+        {
+          "soc": 80,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 5
+        }
+      ],
+      "availability": "upcoming",
+      "notes": null
+    },
+    {
+      "id": "skoda-epiq-55-52-kwh",
+      "label": "Epiq 55 · 52 kWh",
+      "battery": "long-range",
+      "trim": "Epiq 55 (52 kWh · 155 kW FWD)",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 32000,
+      "monthlyLease_EUR": 159,
+      "leasingSocialEligible": true,
+      "wltp_km": 430,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": {
+        "mixed_km": 320,
+        "highway_130_km": 220,
+        "urban_km": 390,
+        "winter_minus5_km": 250,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 80
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 75
+        },
+        {
+          "soc": 80,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 5
+        }
+      ],
+      "availability": "upcoming",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Nouveau langage Modern Solid, signature lumineuse en T"
+    },
+    {
+      "category": "technologie",
+      "label": "Écran central tactile 13\" · Recharge bidirectionnelle (V2L)"
+    },
+    {
+      "category": "confort",
+      "label": "Volume de coffre géant de 490 L"
+    },
+    {
+      "category": "securite",
+      "label": "Aides à la conduite avancées · projecteurs LED de série"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Rapport prix/prestations exceptionnel",
+      "Grand coffre de 490 L",
+      "Production européenne (Espagne)"
+    ],
+    "weaknesses": [
+      "Vitesse de recharge de base modeste",
+      "Pas de version 4x4 prévue"
+    ],
+    "idealUserProfile": "Famille urbaine ou jeunes conducteurs ayant besoin de place et d'un coffre généreux pour un budget contenu.",
+    "notIdealFor": "Gros rouleurs réguliers sur autoroute cherchant une recharge en moins de 15 minutes."
+  },
+  "lastUpdated": "2026-06-02",
+  "sources": [
+    "automobile-propre",
+    "largus",
+    "constructeur"
+  ],
+  "imageCredit": "Constructeur",
+  "availability": "upcoming"
+}

@@ -1,7 +1,7 @@
 {
   "slug": "vw-id3",
   "brand": "Volkswagen",
-  "model": "ID.3",
+  "model": "ID.3 Neo",
   "variant": "Pro",
   "bodyType": "Hatchback 5 portes",
   "segment": "C",
@@ -170,7 +170,7 @@
   "configurations": [
     {
       "id": "vw-id3-pro",
-      "label": "ID.3 Pro",
+      "label": "ID.3 Neo Pro",
       "battery": "standard",
       "trim": "Pro",
       "wheelSize_inches": 18,

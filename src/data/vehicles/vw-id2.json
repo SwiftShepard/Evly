@@ -1,7 +1,7 @@
 {
   "slug": "vw-id2",
   "brand": "Volkswagen",
-  "model": "ID.2",
+  "model": "ID. Polo",
   "variant": "38 kWh",
   "bodyType": "Citadine",
   "segment": "B",
@@ -100,8 +100,8 @@
       ]
     }
   ],
-  "leasingSocialEligible": false,
-  "leasingSocial_EUR_per_month": null,
+  "leasingSocialEligible": true,
+  "leasingSocial_EUR_per_month": 99,
   "availableAids": [
     {
       "label": "Prime CEE",
@@ -117,15 +117,15 @@
   "configurations": [
     {
       "id": "vw-id2-id.2",
-      "label": "ID.2 ID.2",
+      "label": "ID. Polo",
       "battery": "standard",
-      "trim": "ID.2",
+      "trim": "ID. Polo",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
       "price_EUR": 25000,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
+      "monthlyLease_EUR": 99,
+      "leasingSocialEligible": true,
       "wltp_km": 450,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
@@ -166,7 +166,7 @@
     },
     {
       "id": "vw-id2-id.2-gtx",
-      "label": "ID.2 ID.2 GTX",
+      "label": "ID. Polo GTX",
       "battery": "standard",
       "trim": "ID.2 GTX",
       "wheelSize_inches": 18,
