@@ -1,8 +1,11 @@
 ---
 import Wordmark from "@/components/ui/Wordmark.astro";
 import { url } from "@/lib/url";
+import { getAllVehicles } from "@/lib/vehicles";
 
 const year = new Date().getFullYear();
+const totalVehicles = getAllVehicles().length;
+const version = "v1.2.0";
 
 const cols = [
   {
@@ -50,7 +53,7 @@ const cols = [
         <div class="flex flex-col gap-1">
           <span class="label-eyebrow">État du projet</span>
           <span class="text-sm text-[var(--color-text-muted)] font-mono">
-            v0.2 · 2 modèles · mise à jour {year}
+            {version} · {totalVehicles} modèles · mise à jour {year}
           </span>
         </div>
       </div>
