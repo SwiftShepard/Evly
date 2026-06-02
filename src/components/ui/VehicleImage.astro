@@ -14,7 +14,7 @@ const { slug, alt, class: className = "" } = Astro.props;
 
 // NOTE: Vite's import.meta.glob is resolved statically. If you add a new vehicle image in dev mode,
 // you must restart the dev server or save this file to force Vite to scan the vehicles folder again.
-// Force rescan comment update 13
+// Force rescan comment update 16
 const imageModules = import.meta.glob<string>(
   "/src/assets/vehicles/*.{jpeg,jpg,png,webp,avif,svg}",
   { query: "?url", import: "default", eager: true }
