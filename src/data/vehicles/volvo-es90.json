@@ -1,0 +1,264 @@
+{
+  "slug": "volvo-es90",
+  "brand": "Volvo",
+  "model": "ES90",
+  "variant": "Single Motor Extended Range",
+  "bodyType": "Berline",
+  "segment": "E",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Chengdu",
+  "releaseYear": 2026,
+  "marketAvailability": "A venir",
+  "power_kW": 245,
+  "power_hp": 328,
+  "torque_Nm": 480,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 6.3,
+  "topSpeed_kmh": 180,
+  "usableCapacity_kWh": 88,
+  "grossCapacity_kWh": 92,
+  "chemistry": "NMC",
+  "architecture_V": 800,
+  "mass_kg": 2410,
+  "wltp_max_km": 680,
+  "wltp_min_km": 620,
+  "realRange": {
+    "mixed_km": 500,
+    "highway_130_km": 360,
+    "urban_km": 620,
+    "winter_minus5_km": 390,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 17.6,
+  "consumption_highway_kWh_per_100km": 24.4,
+  "consumption_winter_kWh_per_100km": 22.5,
+  "dragCoefficient_Cx": 0.22,
+  "chargingDC": {
+    "peakPower_kW": 300,
+    "time_10_80_min": 21,
+    "kWh_added_30min": 68,
+    "confidence": "manufacturer"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 8.5
+  },
+  "plugAndCharge": true,
+  "v2l": true,
+  "v2g": true,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 200
+    },
+    {
+      "soc": 10,
+      "power": 300
+    },
+    {
+      "soc": 30,
+      "power": 270
+    },
+    {
+      "soc": 50,
+      "power": 200
+    },
+    {
+      "soc": 80,
+      "power": 80
+    },
+    {
+      "soc": 100,
+      "power": 15
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 5000,
+  "width_mm": 1942,
+  "height_mm": 1546,
+  "wheelbase_mm": 3102,
+  "trunkCapacity_L": 520,
+  "trunkCapacityFolded_L": 1500,
+  "frunkCapacity_L": 50,
+  "trims": [
+    {
+      "name": "Plus Single Motor",
+      "price_EUR": 72900,
+      "batteryUsed": "92 kWh",
+      "equipmentHighlights": [
+        "Ecran tactile 14.5 pouces",
+        "Systeme audio premium Harmon Kardon",
+        "Toit panoramique fixe"
+      ]
+    },
+    {
+      "name": "Ultra Single Motor",
+      "price_EUR": 79900,
+      "batteryUsed": "92 kWh",
+      "equipmentHighlights": [
+        "Affichage tete haute",
+        "Suspension pneumatique active",
+        "Systeme audio Bowers & Wilkins 25 HP"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "volvo-es90-plus-sm",
+      "label": "ES90 Plus · Single Motor",
+      "battery": "standard",
+      "trim": "Plus Single Motor",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 72900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 680,
+      "wltp_consumption_kWh_100km": 13.5,
+      "realRange": {
+        "mixed_km": 500,
+        "highway_130_km": 360,
+        "urban_km": 620,
+        "winter_minus5_km": 390,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 300,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 68,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 200
+        },
+        {
+          "soc": 10,
+          "power": 300
+        },
+        {
+          "soc": 30,
+          "power": 270
+        },
+        {
+          "soc": 50,
+          "power": 200
+        },
+        {
+          "soc": 80,
+          "power": 80
+        },
+        {
+          "soc": 100,
+          "power": 15
+        }
+      ],
+      "availability": "upcoming",
+      "notes": "Berline premium 328 ch, RWD"
+    },
+    {
+      "id": "volvo-es90-ultra-sm",
+      "label": "ES90 Ultra · Single Motor",
+      "battery": "standard",
+      "trim": "Ultra Single Motor",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 79900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 640,
+      "wltp_consumption_kWh_100km": 14.3,
+      "realRange": {
+        "mixed_km": 470,
+        "highway_130_km": 340,
+        "urban_km": 580,
+        "winter_minus5_km": 360,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 300,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 68,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 200
+        },
+        {
+          "soc": 10,
+          "power": 300
+        },
+        {
+          "soc": 30,
+          "power": 270
+        },
+        {
+          "soc": 50,
+          "power": 200
+        },
+        {
+          "soc": 80,
+          "power": 80
+        },
+        {
+          "soc": 100,
+          "power": 15
+        }
+      ],
+      "availability": "upcoming",
+      "notes": "Berline premium 328 ch, RWD, suspension pneumatique"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Berline routiere premium au profil liftback dynamique"
+    },
+    {
+      "category": "technologie",
+      "label": "Architecture 800V avec recharge ultra-rapide 300 kW"
+    },
+    {
+      "category": "securite",
+      "label": "LIDAR Luminar integre et systemes anticollision avances"
+    },
+    {
+      "category": "confort",
+      "label": "Systeme audio Bowers & Wilkins 25 HP et grand toit panoramique"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Recharge 800V extrêmement performante allant jusqu'a 300 kW",
+      "Autonomie WLTP genereuse de plus de 650 km",
+      "Interieur scandinave epure haut de gamme avec Bowers & Wilkins"
+    ],
+    "weaknesses": [
+      "Pas d'aide bonus en France en raison d'une production en Chine",
+      "Dimensions imposantes de 5 metres peu adaptees aux centres urbains"
+    ],
+    "idealUserProfile": "Grands voyageurs, cadres et professionnels a la recherche d'une berline electrique statutaire de grand confort capable d'enchainer les longues distances grace au 800V.",
+    "notIdealFor": "Conducteurs a la recherche d'un vehicule compact et maniable en ville ou d'un tarif abordable eligible au bonus ecologique."
+  },
+  "lastUpdated": "2026-06-02",
+  "sources": [
+    "volvo-fr",
+    "automobile-propre"
+  ],
+  "imageCredit": "Constructeur"
+}

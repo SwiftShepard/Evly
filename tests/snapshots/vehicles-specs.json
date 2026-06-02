@@ -2070,6 +2070,20 @@
     ]
   },
   {
+    "slug": "volvo-es90",
+    "brand": "Volvo",
+    "model": "ES90",
+    "power_kW": 245,
+    "usableCapacity_kWh": 88,
+    "wltp_min_km": 620,
+    "wltp_max_km": 680,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "volvo-es90-plus-sm",
+      "volvo-es90-ultra-sm"
+    ]
+  },
+  {
     "slug": "volvo-ex30",
     "brand": "Volvo",
     "model": "EX30",
