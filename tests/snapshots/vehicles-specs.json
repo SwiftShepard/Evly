@@ -1242,6 +1242,21 @@
     ]
   },
   {
+    "slug": "mg-mg4-urban",
+    "brand": "MG",
+    "model": "MG4 Urban",
+    "power_kW": 118,
+    "usableCapacity_kWh": 54,
+    "wltp_min_km": 325,
+    "wltp_max_km": 416,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "mg-mg4-urban-comfort-43",
+      "mg-mg4-urban-comfort-54",
+      "mg-mg4-urban-premium-54"
+    ]
+  },
+  {
     "slug": "mg-mg5",
     "brand": "MG",
     "model": "MG5",

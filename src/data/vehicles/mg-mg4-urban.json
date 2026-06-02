@@ -1,0 +1,313 @@
+{
+  "slug": "mg-mg4-urban",
+  "brand": "MG",
+  "model": "MG4 Urban",
+  "variant": "54 kWh Comfort",
+  "bodyType": "Berline compacte",
+  "segment": "C",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Nanjing",
+  "releaseYear": 2026,
+  "marketAvailability": "Disponible",
+  "power_kW": 118,
+  "power_hp": 160,
+  "torque_Nm": 250,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 9.5,
+  "topSpeed_kmh": 150,
+  "usableCapacity_kWh": 54.0,
+  "grossCapacity_kWh": 54.0,
+  "chemistry": "LFP",
+  "architecture_V": 400,
+  "mass_kg": 1460,
+  "wltp_max_km": 416,
+  "wltp_min_km": 325,
+  "realRange": {
+    "mixed_km": 320,
+    "highway_130_km": 220,
+    "highway_120_km": 245,
+    "urban_km": 390,
+    "winter_minus5_km": 210,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 13.0,
+  "consumption_highway_kWh_per_100km": 18.0,
+  "consumption_winter_kWh_per_100km": 17.5,
+  "dragCoefficient_Cx": 0.28,
+  "chargingDC": {
+    "peakPower_kW": 87,
+    "time_10_80_min": 28,
+    "kWh_added_30min": 35,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11.0,
+    "phases": 3,
+    "time_0_100_h": 6.0
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 60
+    },
+    {
+      "soc": 10,
+      "power": 87
+    },
+    {
+      "soc": 50,
+      "power": 75
+    },
+    {
+      "soc": 80,
+      "power": 38
+    },
+    {
+      "soc": 100,
+      "power": 7
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4395,
+  "width_mm": 1842,
+  "height_mm": 1549,
+  "wheelbase_mm": 2750,
+  "trunkCapacity_L": 480,
+  "trunkCapacityFolded_L": 1364,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Comfort 43 kWh",
+      "price_EUR": 24995,
+      "batteryUsed": "43 kWh LFP",
+      "equipmentHighlights": [
+        "Écran tactile 12,8 pouces",
+        "Aides à la conduite MG Pilot",
+        "Pompe à chaleur de série"
+      ]
+    },
+    {
+      "name": "Comfort 54 kWh",
+      "price_EUR": 27495,
+      "batteryUsed": "54 kWh LFP",
+      "equipmentHighlights": [
+        "Autonomie étendue 416 km WLTP",
+        "Pompe à chaleur de série"
+      ]
+    },
+    {
+      "name": "Premium 54 kWh",
+      "price_EUR": 30495,
+      "batteryUsed": "54 kWh LFP",
+      "equipmentHighlights": [
+        "Caméra panoramique 360°",
+        "Services connectés supplémentaires"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "mg-mg4-urban-comfort-43",
+      "label": "MG4 Urban Comfort 43 kWh",
+      "battery": "standard",
+      "trim": "Comfort 43 kWh",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 24995,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 325,
+      "wltp_consumption_kWh_100km": 13.2,
+      "realRange": {
+        "mixed_km": 250,
+        "highway_130_km": 170,
+        "highway_120_km": 190,
+        "urban_km": 300,
+        "winter_minus5_km": 165,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 82,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 28,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 55
+        },
+        {
+          "soc": 10,
+          "power": 82
+        },
+        {
+          "soc": 50,
+          "power": 70
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": "Moteur avant 110 kW (150 ch), traction FWD"
+    },
+    {
+      "id": "mg-mg4-urban-comfort-54",
+      "label": "MG4 Urban Comfort 54 kWh",
+      "battery": "long-range",
+      "trim": "Comfort 54 kWh",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 27495,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 416,
+      "wltp_consumption_kWh_100km": 13.0,
+      "realRange": {
+        "mixed_km": 320,
+        "highway_130_km": 220,
+        "highway_120_km": 245,
+        "urban_km": 390,
+        "winter_minus5_km": 210,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 87,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 60
+        },
+        {
+          "soc": 10,
+          "power": 87
+        },
+        {
+          "soc": 50,
+          "power": 75
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
+      ],
+      "availability": "available",
+      "notes": "Moteur avant 118 kW (160 ch), traction FWD"
+    },
+    {
+      "id": "mg-mg4-urban-premium-54",
+      "label": "MG4 Urban Premium 54 kWh",
+      "battery": "long-range",
+      "trim": "Premium 54 kWh",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 30495,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 416,
+      "wltp_consumption_kWh_100km": 13.0,
+      "realRange": {
+        "mixed_km": 320,
+        "highway_130_km": 220,
+        "highway_120_km": 245,
+        "urban_km": 390,
+        "winter_minus5_km": 210,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 87,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 60
+        },
+        {
+          "soc": 10,
+          "power": 87
+        },
+        {
+          "soc": 50,
+          "power": 75
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
+      ],
+      "availability": "available",
+      "notes": "Moteur avant 118 kW (160 ch), traction FWD"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 7,
+    "vehicle_km": 150000,
+    "battery_years": 7,
+    "battery_km": 150000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "confort",
+      "label": "Pompe à chaleur de série"
+    },
+    {
+      "category": "technologie",
+      "label": "Grand écran tactile central 12,8\""
+    },
+    {
+      "category": "securite",
+      "label": "Aides à la conduite MG Pilot"
+    },
+    {
+      "category": "design",
+      "label": "Volume de coffre arrière 480L"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Excellent rapport habitabilité/prix",
+      "Coffre très généreux de 480L",
+      "Pompe à chaleur de série sur toutes les versions"
+    ],
+    "weaknesses": [
+      "Pas d'aides de l'État en France (production Chine)",
+      "Puissance de charge DC modeste (82-87 kW)"
+    ],
+    "idealUserProfile": "Famille citadine recherchant une compacte électrique très spacieuse, confortable et abordable au quotidien.",
+    "notIdealFor": "Grands rouleurs autoroutiers fréquents en raison de la puissance de charge DC de moins de 90 kW."
+  },
+  "lastUpdated": "2026-06-02",
+  "sources": [
+    "automobile-propre",
+    "largus"
+  ],
+  "imageCredit": "Constructeur"
+}
