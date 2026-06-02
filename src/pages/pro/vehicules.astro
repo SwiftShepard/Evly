@@ -11,67 +11,46 @@ import { url } from "@/lib/url";
 import FavoriteButton from "@/components/ui/FavoriteButton";
 import type { Vehicle } from "@/data/schemas";
 
-// Véhicules utilitaires stricts (fourgons et versions cargo uniquement) exclus du showroom particuliers
-const STRICT_UTILITY_SLUGS = new Set([
-  "citroen-e-jumper",
-  "citroen-e-jumpy",
+// Véhicules considérés comme utilitaires / professionnels (flottes, navette VIP, ludospaces pro, vans Combi)
+const UTILITY_SLUGS = new Set([
+  // Utilitaires de base
+  "peugeot-e-rifter",
+  "peugeot-e-traveller",
+  "peugeot-e-expert-combi",
+  "citroen-e-berlingo",
   "citroen-e-spacetourer",
+  "renault-kangoo",
+  "renault-grand-kangoo",
+  "hyundai-staria",
+  "kia-pv5-cargo",
+  "kia-pv5-passenger",
+  // Vague utilitaires V2 (A2)
+  "renault-master-e-tech",
+  "renault-trafic-e-tech",
+  "peugeot-e-partner",
+  "peugeot-e-boxer",
+  "citroen-e-jumpy",
+  "citroen-e-jumper",
+  "opel-combo-e-life",
+  "opel-vivaro-e-life",
+  "opel-movano-e",
   "fiat-e-ducato",
   "fiat-e-scudo",
+  "toyota-proace-electric",
+  "toyota-proace-max-electric",
+  "toyota-proace-city",
+  "mercedes-eqv",
   "ford-e-transit",
-  "kia-pv5-cargo",
   "maxus-edeliver-3",
   "maxus-edeliver-5",
   "maxus-edeliver-7",
   "maxus-edeliver-9",
-  "opel-movano-e",
-  "opel-vivaro-e-life",
-  "peugeot-e-boxer",
-  "peugeot-e-expert-combi",
-  "peugeot-e-partner",
-  "peugeot-e-traveller",
-  "renault-master-e-tech",
-  "renault-trafic-e-tech",
-  "toyota-proace-max-electric",
 ]);
 
-// Les 10 véhicules mixtes (ludospaces, navettes VIP) présents dans les deux showrooms
-const HYBRID_SLUGS = new Set([
-  "citroen-e-berlingo",
-  "hyundai-staria",
-  "kia-pv5-passenger",
-  "mercedes-eqv",
-  "opel-combo-e-life",
-  "peugeot-e-rifter",
-  "renault-grand-kangoo",
-  "renault-kangoo",
-  "toyota-proace-city",
-  "toyota-proace-electric",
-]);
-
-const vehicles = getAllVehicles().filter((v) => !STRICT_UTILITY_SLUGS.has(v.slug));
+const vehicles = getAllVehicles().filter((v) => UTILITY_SLUGS.has(v.slug));
 
 function getCategory(v: Vehicle) {
-  const body = v.bodyType.toLowerCase();
-  const segment = v.segment.toLowerCase();
-
-  if (
-    body.includes("monospace") ||
-    body.includes("ludospace") ||
-    body.includes("van") ||
-    v.variant.toLowerCase().includes("monospace") ||
-    HYBRID_SLUGS.has(v.slug)
-  ) {
-    return "Monospace";
-  }
-  if (body.includes("quadricycle") || v.segment.includes("quadricycle")) return "Quadricycle";
-  if (segment.includes("a") || (segment.includes("b") && (body.includes("suv") || body.includes("crossover"))) || body.includes("urbain")) return "Mini-SUV";
-  if (body.includes("suv") || body.includes("crossover")) return "SUV";
-  if (segment.includes("b") || body.includes("citadine")) return "Citadine";
-  if (segment.includes("c") || body.includes("compacte")) return "Compacte";
-  if (body.includes("berline") || body.includes("hatchback") || segment.includes("d")) return "Berline";
-
-  return "SUV";
+  return "Utilitaire";
 }
 
 function isLeasing(v: Vehicle) {
@@ -88,7 +67,7 @@ function isDaily(v: Vehicle) {
   return s.includes("a") || s.includes("b") || s.includes("c");
 }
 
-const categories = ["Mini-SUV", "SUV", "Compacte", "Berline", "Citadine", "Monospace", "Quadricycle"];
+const categories = ["Utilitaire"];
 const brands = [...new Set(vehicles.map((v) => v.brand))].sort((a, b) =>
   a.localeCompare(b, "fr", { sensitivity: "base" }),
 );
@@ -123,7 +102,6 @@ const specificFilters = [
   { label: "Coup de pouce CEE", value: "cee" },
   { label: "Recharge rapide", value: "fast-charge" },
   { label: "Made in Europe", value: "eu" },
-  { label: "Familiale", value: "familiale" },
 ];
 
 const europeanCountries = ["France", "Allemagne", "Slovaquie", "Rép. Tchèque", "Pologne", "Espagne", "Italie", "Belgique", "Suède", "Slovénie", "Hongrie", "Autriche", "Portugal"];
@@ -132,8 +110,8 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
 ---
 
 <BaseLayout
-  title="Catalogue Voitures Électriques : Autonomies & Vrais Prix | Evly"
-  description="⚡ Trouvez la meilleure voiture électrique ! Filtrez 150+ modèles par budget réel, autonomie mesurée sur autoroute, vitesse de charge et éligibilité aux aides d'État."
+  title="Catalogue Utilitaires Électriques : Showroom Pro & Prix Nets | Evly"
+  description="⚡ Comparez et trouvez les meilleurs utilitaires électriques pour votre entreprise. Filtrez par budget, autonomie réelle et aides fiscales Pro 2026."
 >
   <div class="py-6 md:py-10">
     <div class="container-edit">
@@ -154,13 +132,13 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                   type="text"
                   id="catalog-search"
                   placeholder="Rechercher un modèle..."
-                  aria-label="Rechercher un véhicule électrique"
+                  aria-label="Rechercher un utilitaire électrique"
                   class="w-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-full py-2 pl-9 pr-3 text-sm text-[var(--color-text)] placeholder-[var(--color-text-faint)] focus:outline-none focus:border-[var(--color-accent)] focus:bg-[var(--color-bg)] transition-all duration-200"
                 />
               </label>
             </div>
 
-            <details class="filter-section">
+            <details class="filter-section" open>
               <summary class="filter-section-toggle">Autonomie <span class="filter-chevron" /></summary>
               <div class="filter-section-body flex flex-col gap-4 mt-2">
                 <div class="range-toggle-group self-start">
@@ -185,7 +163,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
               </div>
             </details>
 
-            <details class="filter-section">
+            <details class="filter-section" open>
               <summary class="filter-section-toggle">Marques <span class="filter-chevron" /></summary>
               <div class="filter-section-body">
                 {brandGroups.map((group) => (
@@ -201,17 +179,6 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                     </div>
                   </div>
                 ))}
-              </div>
-            </details>
-
-            <details class="filter-section">
-              <summary class="filter-section-toggle">Carrosserie <span class="filter-chevron" /></summary>
-              <div class="filter-section-body">
-                <div class="flex flex-wrap gap-1.5">
-                  {categories.map((c) => (
-                    <button class="filter-chip" data-filter="cat" data-value={c} aria-pressed="false">{c}</button>
-                  ))}
-                </div>
               </div>
             </details>
 
@@ -256,7 +223,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                 type="text"
                 id="catalog-search-mobile"
                 placeholder="Rechercher un modèle..."
-                aria-label="Rechercher un véhicule électrique"
+                aria-label="Rechercher un utilitaire électrique"
                 class="w-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-full py-2 pl-9 pr-3 text-sm text-[var(--color-text)] placeholder-[var(--color-text-faint)] focus:outline-none focus:border-[var(--color-accent)] focus:bg-[var(--color-bg)] transition-all duration-200"
               />
             </label>
@@ -297,10 +264,6 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
             ))}
           </div>
           <div class="filter-scroll-row">
-            {categories.map((c) => (
-              <button class="filter-chip" data-filter="cat" data-value={c} aria-pressed="false">{c}</button>
-            ))}
-            <span class="filter-row-sep" />
             {budgetFilters.map(({ label, value }) => (
               <button class="filter-chip" data-filter="budget" data-value={value} aria-pressed="false">{label}</button>
             ))}
@@ -319,11 +282,11 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
           <BentoGrid>
             <Tile size="full" variant="elevated">
               <h1 class="display-1 max-w-3xl fade-rise fade-rise-delay-2">
-                Tous les véhicules
+                Showroom Utilitaires (Pro)
                 <span class="text-[var(--color-accent)]">· mis à jour {new Date().getFullYear()}.</span>
               </h1>
               <p class="mt-6 text-[var(--color-text-muted)] text-sm md:text-base max-w-2xl fade-rise fade-rise-delay-3">
-                Sélectionnez vos critères de filtrage pour affiner la liste.
+                Trouvez et comparez les meilleurs véhicules utilitaires pour votre flotte.
               </p>
               <div class="mt-8 pt-6 border-t border-[var(--color-border)] flex flex-wrap xl:flex-nowrap items-center gap-2 fade-rise fade-rise-delay-3">
                 <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)] mr-2">Trier</span>

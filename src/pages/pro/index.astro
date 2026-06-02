@@ -13,6 +13,7 @@ const vehicles = getAllVehicles();
 
 // Mêmes slugs que UTILITY_SLUGS dans /vehicules/index.astro
 const UTILITY_SLUGS = new Set([
+  // Utilitaires de base
   "peugeot-e-rifter",
   "peugeot-e-traveller",
   "peugeot-e-expert-combi",
@@ -22,6 +23,28 @@ const UTILITY_SLUGS = new Set([
   "renault-grand-kangoo",
   "hyundai-staria",
   "kia-pv5-cargo",
+  "kia-pv5-passenger",
+  // Vague utilitaires V2 (A2)
+  "renault-master-e-tech",
+  "renault-trafic-e-tech",
+  "peugeot-e-partner",
+  "peugeot-e-boxer",
+  "citroen-e-jumpy",
+  "citroen-e-jumper",
+  "opel-combo-e-life",
+  "opel-vivaro-e-life",
+  "opel-movano-e",
+  "fiat-e-ducato",
+  "fiat-e-scudo",
+  "toyota-proace-electric",
+  "toyota-proace-max-electric",
+  "toyota-proace-city",
+  "mercedes-eqv",
+  "ford-e-transit",
+  "maxus-edeliver-3",
+  "maxus-edeliver-5",
+  "maxus-edeliver-7",
+  "maxus-edeliver-9",
 ]);
 
 const utilities = vehicles
@@ -281,10 +304,10 @@ const description =
               Ludospaces et navettes professionnelles couverts par Évly.
             </span>
           </h2>
-          <a href={url("/vehicules?filtre=Utilitaire")} class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-muted)] hover:text-[var(--color-text)]">Filtre catalogue →</a>
+          <a href={url("/pro/vehicules")} class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-muted)] hover:text-[var(--color-text)]">Showroom Pro →</a>
         </div>
         <p class="text-sm text-[var(--color-text-muted)] mt-4 max-w-3xl">
-          Couverture actuelle limitée. Une <strong class="text-[var(--color-text)]">V2 utilitaires</strong> est en préparation : Master / Trafic E-Tech, Peugeot e-Partner / e-Expert / e-Boxer, Stellantis vans (ë-Jumpy, ë-Jumper, ë-Berlingo Van), Mercedes eSprinter / eVito, Ford E-Transit. Une vingtaine de modèles flottes prioritaires à intégrer.
+          Découvrez la gamme complète de nos véhicules utilitaires électriques audités pour votre entreprise : Master / Trafic E-Tech, Peugeot e-Partner / e-Expert / e-Boxer, Stellantis vans (ë-Jumpy, ë-Jumper, ë-Berlingo Van), Mercedes eSprinter / eVito, Ford E-Transit et Maxus eDeliver.
         </p>
       </Tile>
 
