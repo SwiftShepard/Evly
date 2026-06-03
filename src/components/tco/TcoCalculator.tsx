@@ -294,6 +294,25 @@ export default function TcoCalculator({ vehicles }: Props) {
   // Selected EV
   const [selectedSlug, setSelectedSlug] = useState(vehicles[0]?.slug ?? "");
   const selectedEv = vehicles.find((v) => v.slug === selectedSlug);
+  
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const vParam = params.get("v");
+      if (vParam) {
+        const found = vehicles.find((v) => v.slug === vParam);
+        if (found) {
+          setSelectedSlug(vParam);
+          const configParam = params.get("config") || params.get("c");
+          if (configParam && found.configs.some((c) => c.id === configParam)) {
+            setSelectedConfigId(configParam);
+          } else if (found.configs.length > 0) {
+            setSelectedConfigId(found.configs[0].id);
+          }
+        }
+      }
+    }
+  }, [vehicles]);
 
   // Selected configuration
   const [selectedConfigId, setSelectedConfigId] = useState<string | null>(

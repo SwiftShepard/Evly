@@ -201,13 +201,23 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
         <div class="border-t border-[var(--color-border)] border-dashed pt-4">
           <TemperatureSlider client:idle chemistry={vehicle.chemistry} />
         </div>
-        <div class="border-t border-[var(--color-border)] border-dashed pt-4 flex gap-2">
+        <div class="border-t border-[var(--color-border)] border-dashed pt-4 flex flex-col gap-2">
           <a
             href={url(`/comparer/?v=${vehicle.slug}:${configurations[0]?.id}`)}
             class="sidebar-cta w-full"
             id="compare-link-mobile"
           >
             Comparer ce modèle
+          </a>
+          <a
+            href={url(`/simulateur/?v=${vehicle.slug}`)}
+            class="sidebar-tco-btn w-full"
+            id="tco-simulator-link-mobile"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+            Calculateur TCO (coût réel)
           </a>
         </div>
       </div>
@@ -740,6 +750,19 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
         </a>
       </div>
 
+      <div class="sidebar-block">
+        <a
+          href={url(`/simulateur/?v=${vehicle.slug}`)}
+          class="sidebar-tco-btn"
+          id="tco-simulator-link"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+          Simuler le coût de détention (TCO)
+        </a>
+      </div>
+
       <div class="sidebar-block sidebar-meta">
         <div class="sidebar-meta-row">
           <span>Garantie</span>
@@ -767,7 +790,7 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
     </aside>
   </div>
 
-  <script define:vars={{ vehicleSlug: vehicle.slug, initialConfigId: configurations[0]?.id || "default", compareBaseUrl: url("/comparer/") }}>
+  <script define:vars={{ vehicleSlug: vehicle.slug, initialConfigId: configurations[0]?.id || "default", compareBaseUrl: url("/comparer/"), simulateurBaseUrl: url("/simulateur/") }}>
     let currentConfigId = initialConfigId;
     let currentSoh = 100;
     let currentTempMultiplier = 1.0;
@@ -783,6 +806,17 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
       }
     }
 
+    function updateTcoLink() {
+      const link = document.getElementById("tco-simulator-link");
+      if (link) {
+        link.href = `${simulateurBaseUrl}?v=${vehicleSlug}&config=${currentConfigId}`;
+      }
+      const mobileLink = document.getElementById("tco-simulator-link-mobile");
+      if (mobileLink) {
+        mobileLink.href = `${simulateurBaseUrl}?v=${vehicleSlug}&config=${currentConfigId}`;
+      }
+    }
+
     function toggleConfigs(id) {
       document.querySelectorAll(".config-wrapper").forEach((el) => {
         el.style.display = el.getAttribute("data-config-id") === id ? "contents" : "none";
@@ -791,6 +825,18 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
         el.style.display = el.getAttribute("data-config-id") === id ? "block" : "none";
       });
     }
+
+    // Handle interactive toggle
+    window.addEventListener("config-changed", (e) => {
+      const id = e.detail.configId;
+      currentConfigId = id;
+      toggleConfigs(id);
+      const url = new URL(window.location.href);
+      url.searchParams.set("config", id);
+      window.history.replaceState(null, "", url.toString());
+      updateCompareLink();
+      updateTcoLink();
+    });
 
     function updateRanges() {
       // Update range numbers based on currentSoh and currentTempMultiplier
@@ -817,17 +863,7 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
       }
     }
     updateCompareLink();
-
-    // Handle interactive toggle
-    window.addEventListener("config-changed", (e) => {
-      const id = e.detail.configId;
-      currentConfigId = id;
-      toggleConfigs(id);
-      const url = new URL(window.location.href);
-      url.searchParams.set("config", id);
-      window.history.replaceState(null, "", url.toString());
-      updateCompareLink();
-    });
+    updateTcoLink();
 
     // Handle SoH slider change
     window.addEventListener("soh-changed", (e) => {
@@ -1060,6 +1096,33 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
     background: var(--color-surface-accent);
     color: var(--color-accent);
     border-color: var(--color-accent);
+  }
+
+  .sidebar-tco-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 16px;
+    border-radius: 10px;
+    background: var(--color-accent);
+    color: var(--color-accent-on);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    width: 100%;
+    box-shadow: 0 4px 12px -2px rgba(58, 92, 18, 0.15);
+    cursor: pointer;
+  }
+  .sidebar-tco-btn:hover {
+    background: var(--color-accent-dim);
+    color: var(--color-accent-on);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px -2px rgba(58, 92, 18, 0.25);
+  }
+  .sidebar-tco-btn:active {
+    transform: translateY(0);
   }
 
   .sidebar-meta {

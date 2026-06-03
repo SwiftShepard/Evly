@@ -244,5 +244,38 @@ test.describe("Evly E2E Test Suite", () => {
     const firstResult = page.locator(".rounded-2xl.p-6.border").first();
     await expect(firstResult).toBeVisible();
   });
+
+  test("Raccourci TCO depuis Fiche Véhicule - Pré-remplissage et Configuration", async ({ page }) => {
+    // 1. Ouvrir la fiche de la Mercedes EQE (qui possède plus de 4 finitions, donc utilise le dropdown)
+    await page.goto("/vehicules/mercedes-eqe/");
+    await page.waitForLoadState("networkidle");
+
+    // 2. Vérifier que la finition utilise un <select> et sélectionner une autre finition
+    const finitionSelect = page.locator('aside div:has(> span:has-text("Finition")) select');
+    await expect(finitionSelect).toBeVisible();
+    
+    // Sélectionner la finition "Executive Line EQE 350"
+    await finitionSelect.selectOption("Executive Line EQE 350");
+    await page.waitForTimeout(300);
+
+    // 3. Vérifier que le bouton TCO s'est mis à jour avec le bon paramètre de config
+    const tcoLink = page.locator("#tco-simulator-link");
+    await expect(tcoLink).toBeVisible();
+    
+    const href = await tcoLink.getAttribute("href");
+    expect(href).toContain("v=mercedes-eqe");
+    expect(href).toContain("config=mercedes-eqe-350-executive");
+
+    // 4. Cliquer pour ouvrir le simulateur
+    await tcoLink.click();
+    await page.waitForLoadState("networkidle");
+
+    // 5. Vérifier que le simulateur s'affiche avec la Mercedes EQE pré-remplie et la bonne configuration active
+    const vehicleSelect = page.locator("select.tco-select");
+    await expect(vehicleSelect).toHaveValue("mercedes-eqe");
+
+    const activeConfigBtn = page.locator(".tco-config-btn.active");
+    await expect(activeConfigBtn).toContainText("EQE 350 Executive Line");
+  });
 });
 

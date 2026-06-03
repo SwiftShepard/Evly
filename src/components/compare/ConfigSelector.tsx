@@ -278,6 +278,8 @@ function SegmentedControl({
   value: string;
   onChange: (value: string) => void;
 }) {
+  const isDropdown = options.length > 4;
+
   return (
     <div className="flex flex-col gap-1.5">
       <span
@@ -286,43 +288,61 @@ function SegmentedControl({
       >
         {label}
       </span>
-      <div
-        className="flex flex-wrap gap-1 p-0.5 rounded-lg"
-        style={{ backgroundColor: "var(--color-bg-subtle)" }}
-        role="radiogroup"
-        aria-label={label}
-      >
-        {options.map((opt) => {
-          const isActive = opt.value === value;
-          return (
-            <button
+      {isDropdown ? (
+        <select
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="w-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-lg py-1.5 px-2.5 text-xs font-medium text-[var(--color-text)] focus:outline-none focus:border-[var(--color-accent)] transition-all cursor-pointer"
+        >
+          {options.map((opt) => (
+            <option
               key={opt.value}
-              type="button"
-              role="radio"
-              aria-checked={isActive}
+              value={opt.value}
               disabled={opt.disabled}
-              onClick={() => !opt.disabled && onChange(opt.value)}
-              className="flex-1 min-w-0 py-1.5 px-2 text-center text-xs font-medium rounded-md transition-all duration-200 truncate"
-              title={opt.disabled ? (opt.tooltip ?? "Configuration non disponible au catalogue") : undefined}
-              style={{
-                backgroundColor: isActive ? "var(--color-surface-elevated)" : "transparent",
-                color: opt.disabled
-                  ? "var(--color-text-faint)"
-                  : isActive
-                    ? "var(--color-text)"
-                    : "var(--color-text-muted)",
-                boxShadow: isActive
-                  ? "0 1px 3px rgba(0,0,0,0.1), 0 0 0 0.5px var(--color-border)"
-                  : "none",
-                opacity: opt.disabled ? 0.4 : 1,
-                cursor: opt.disabled ? "not-allowed" : "pointer",
-              }}
             >
-              {opt.label}
-            </button>
-          );
-        })}
-      </div>
+              {opt.label} {opt.disabled ? " (Indisponible)" : ""}
+            </option>
+          ))}
+        </select>
+      ) : (
+        <div
+          className="flex flex-wrap gap-1 p-0.5 rounded-lg"
+          style={{ backgroundColor: "var(--color-bg-subtle)" }}
+          role="radiogroup"
+          aria-label={label}
+        >
+          {options.map((opt) => {
+            const isActive = opt.value === value;
+            return (
+              <button
+                key={opt.value}
+                type="button"
+                role="radio"
+                aria-checked={isActive}
+                disabled={opt.disabled}
+                onClick={() => !opt.disabled && onChange(opt.value)}
+                className="flex-1 min-w-[60px] py-1.5 px-2 text-center text-xs font-medium rounded-md transition-all duration-200 truncate"
+                title={opt.disabled ? (opt.tooltip ?? "Configuration non disponible au catalogue") : undefined}
+                style={{
+                  backgroundColor: isActive ? "var(--color-surface-elevated)" : "transparent",
+                  color: opt.disabled
+                    ? "var(--color-text-faint)"
+                    : isActive
+                      ? "var(--color-text)"
+                      : "var(--color-text-muted)",
+                  boxShadow: isActive
+                    ? "0 1px 3px rgba(0,0,0,0.1), 0 0 0 0.5px var(--color-border)"
+                    : "none",
+                  opacity: opt.disabled ? 0.4 : 1,
+                  cursor: opt.disabled ? "not-allowed" : "pointer",
+                }}
+              >
+                {opt.label}
+              </button>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
