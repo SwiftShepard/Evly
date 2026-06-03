@@ -151,6 +151,8 @@ test.describe("Evly E2E Test Suite", () => {
   });
 
   test("Simulateur TCO - Calculs interactifs", async ({ page }) => {
+    page.on('console', msg => console.log('BROWSER CONSOLE LOG:', msg.text()));
+    page.on('pageerror', err => console.log('BROWSER PAGE ERROR:', err));
     await page.goto("/simulateur/");
     await page.waitForLoadState("networkidle");
 
@@ -236,7 +238,7 @@ test.describe("Evly E2E Test Suite", () => {
 
     // Attendre l'affichage des résultats (Étape 12)
     // S'assurer de la présence du titre de fin
-    await expect(page.locator("main h2")).toContainText("Votre sélection sur-mesure.");
+    await expect(page.locator("main h2").first()).toContainText("Votre sélection sur-mesure.");
 
     // S'assurer qu'au moins un résultat du Top 3 est affiché
     const firstResult = page.locator(".rounded-2xl.p-6.border").first();

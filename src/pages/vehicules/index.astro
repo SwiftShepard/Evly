@@ -479,6 +479,33 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
     </main>
   </div>
 
+  <!-- ═════════ SECTION SEO / DÉCOUVERTE ═════════ -->
+  <section class="mt-16 pt-16 border-t border-[var(--color-border)]">
+    <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] mb-6">
+      Comment bien utiliser notre comparatif de voitures électriques ?
+    </h2>
+    <div class="grid md:grid-cols-3 gap-6 text-xs md:text-sm text-[var(--color-text-muted)] leading-relaxed">
+      <div class="flex flex-col gap-3">
+        <h3 class="font-display text-base font-semibold text-[var(--color-text)]">1. Filtrer par autonomie réelle</h3>
+        <p>
+          L'autonomie WLTP annoncée par les constructeurs est souvent optimiste. Notre <strong>comparateur de voiture électrique</strong> met l'accent sur l'<strong>autonomie réelle</strong> mesurée lors de tests routiers (mixte et autoroute à 130 km/h). Ajustez le slider d'autonomie pour éliminer les modèles qui ne correspondent pas à vos exigences de longs trajets.
+        </p>
+      </div>
+      <div class="flex flex-col gap-3">
+        <h3 class="font-display text-base font-semibold text-[var(--color-text)]">2. Simuler le vrai prix net</h3>
+        <p>
+          Grâce à l'intégration dynamique du dispositif <strong>CEE 2026</strong>, notre catalogue calcule automatiquement les aides de l'État en fonction de votre situation. Basculez l'affichage en tarif "Net" pour comparer les voitures électriques selon leur coût réel après application des primes, bonus et aides régionales.
+        </p>
+      </div>
+      <div class="flex flex-col gap-3">
+        <h3 class="font-display text-base font-semibold text-[var(--color-text)]">3. Comparer les temps de charge</h3>
+        <p>
+          La puissance de recharge en pic n'est pas le seul indicateur. Analysez la vitesse de recharge en DC (de 10% à 80% d'énergie récupérée en moins de 30 min) pour évaluer le confort d'utilisation lors des longs trajets de vacances en famille ou professionnels.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <script is:inline>
     const chips    = document.querySelectorAll('.filter-chip');
     const cards    = document.querySelectorAll('.vehicle-card');

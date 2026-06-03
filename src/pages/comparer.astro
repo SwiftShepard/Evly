@@ -88,6 +88,31 @@ const vehiclesData = vehicles.map((v) => ({
   <div class="comparator-wide pb-12">
     <ComparatorView client:load vehicles={vehiclesData} />
   </div>
+
+  <!-- ═════════ SECTION SEO / DÉCOUVERTE ═════════ -->
+  <section class="container-edit mt-8 pb-16 pt-12 border-t border-[var(--color-border)]">
+    <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] mb-6">
+      Un comparateur de voiture électrique conçu pour l'acheteur, pas pour le vendeur
+    </h2>
+    <div class="grid md:grid-cols-2 gap-8 text-sm text-[var(--color-text-muted)] leading-relaxed">
+      <div class="flex flex-col gap-4">
+        <p>
+          Le choix d'un véhicule propre est devenu complexe en raison de la multiplication des technologies de batteries (NMC, LFP, 400V vs 800V) et de la disparité entre l'autonomie WLTP et la réalité. Notre <strong>comparateur de voiture électrique indépendant</strong> a été conçu pour simplifier cette décision en vous permettant de confronter de 2 à 4 modèles simultanément selon leurs caractéristiques techniques réelles.
+        </p>
+        <p>
+          Sélectionnez les modèles de votre choix et ajustez précisément leur configuration. Notre outil vous permet de modifier la finition, la capacité de la batterie, le diamètre des jantes et de simuler l'état de santé de la batterie (SoH) ou l'impact des conditions climatiques sur l'autonomie réelle.
+        </p>
+      </div>
+      <div class="flex flex-col gap-4">
+        <p>
+          En comparant les voitures côte-à-côte, vous pouvez analyser les critères essentiels : puissance utile en kW, vitesse de recharge DC sur autoroute, présence de la pompe à chaleur, habilité du coffre et éligibilité aux bonus fiscaux ou au Leasing Social 2026.
+        </p>
+        <p>
+          Notre objectif est de vous fournir un <strong>comparatif de voiture électrique</strong> neutre et objectif pour vous éviter les mauvaises surprises après l'achat. Toutes les données proviennent de tests routiers réels documentés et de fiches d'homologation officielles.
+        </p>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
