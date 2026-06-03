@@ -68,15 +68,16 @@
     "slug": "audi-e-tron-gt",
     "brand": "Audi",
     "model": "e-tron GT",
-    "power_kW": 370,
+    "power_kW": 500,
     "usableCapacity_kWh": 97,
-    "wltp_min_km": 495,
-    "wltp_max_km": 609,
-    "configurations_count": 3,
+    "wltp_min_km": 583,
+    "wltp_max_km": 616,
+    "configurations_count": 4,
     "configuration_ids": [
       "audi-etron-gt-quattro",
       "audi-rs-etron-gt",
-      "audi-rs-etron-gt-perf"
+      "audi-rs-etron-gt-perf",
+      "audi-s-etron-gt"
     ]
   },
   {
@@ -85,14 +86,16 @@
     "model": "Q4 e-tron",
     "power_kW": 210,
     "usableCapacity_kWh": 77,
-    "wltp_min_km": 361,
-    "wltp_max_km": 562,
-    "configurations_count": 4,
+    "wltp_min_km": 375,
+    "wltp_max_km": 580,
+    "configurations_count": 6,
     "configuration_ids": [
-      "audi-q4-35",
-      "audi-q4-40",
-      "audi-q4-45-quattro",
-      "audi-q4-50-quattro"
+      "audi-q4-etron-base",
+      "audi-q4-etron-perf",
+      "audi-q4-etron-quattro",
+      "audi-q4-sportback-base",
+      "audi-q4-sportback-perf",
+      "audi-q4-sportback-quattro"
     ]
   },
   {
@@ -100,14 +103,21 @@
     "brand": "Audi",
     "model": "Q6 e-tron",
     "power_kW": 285,
-    "usableCapacity_kWh": 83.7,
-    "wltp_min_km": 533,
-    "wltp_max_km": 625,
-    "configurations_count": 3,
+    "usableCapacity_kWh": 94.9,
+    "wltp_min_km": 590,
+    "wltp_max_km": 656,
+    "configurations_count": 10,
     "configuration_ids": [
-      "audi-q6-performance",
-      "audi-q6-quattro",
-      "audi-sq6-e-tron"
+      "audi-q6-performance-design",
+      "audi-q6-performance-sline",
+      "audi-q6-quattro-design",
+      "audi-q6-quattro-sline",
+      "audi-q6-sportback-perf-design",
+      "audi-q6-sportback-perf-sline",
+      "audi-q6-sportback-quattro-design",
+      "audi-q6-sportback-quattro-sline",
+      "audi-sq6-e-tron",
+      "audi-sq6-sportback-e-tron"
     ]
   },
   {

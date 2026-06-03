@@ -2,7 +2,7 @@
   "slug": "audi-q6-e-tron",
   "brand": "Audi",
   "model": "Q6 e-tron",
-  "variant": "83.7 kWh",
+  "variant": "94.9 kWh",
   "bodyType": "SUV",
   "segment": "D",
   "productionCountry": "Allemagne",
@@ -16,18 +16,18 @@
   "motors": 2,
   "acceleration_0_100_s": 5.9,
   "topSpeed_kmh": 210,
-  "usableCapacity_kWh": 83.7,
+  "usableCapacity_kWh": 94.9,
   "grossCapacity_kWh": 100,
   "chemistry": "NMC",
   "architecture_V": 800,
   "mass_kg": 2325,
-  "wltp_max_km": 625,
-  "wltp_min_km": 533,
+  "wltp_max_km": 656,
+  "wltp_min_km": 590,
   "realRange": {
-    "mixed_km": 450,
-    "highway_130_km": 325,
-    "urban_km": 555,
-    "winter_minus5_km": 355,
+    "mixed_km": 470,
+    "highway_130_km": 335,
+    "urban_km": 580,
+    "winter_minus5_km": 365,
     "confidence": "estimated",
     "highway_120_km": 521
   },
@@ -36,15 +36,15 @@
   "consumption_winter_kWh_per_100km": 22,
   "dragCoefficient_Cx": 0.28,
   "chargingDC": {
-    "peakPower_kW": 286,
+    "peakPower_kW": 270,
     "time_10_80_min": 21,
-    "kWh_added_30min": 65,
+    "kWh_added_30min": 75,
     "confidence": "tested"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
     "phases": 3,
-    "time_0_100_h": 8
+    "time_0_100_h": 10
   },
   "plugAndCharge": true,
   "v2l": false,
@@ -61,11 +61,11 @@
     },
     {
       "soc": 20,
-      "power": 282
+      "power": 270
     },
     {
       "soc": 30,
-      "power": 286
+      "power": 270
     },
     {
       "soc": 40,
@@ -117,33 +117,103 @@
   "frunkCapacity_L": 64,
   "trims": [
     {
-      "name": "Q6 e-tron performance",
-      "price_EUR": 65200,
-      "batteryUsed": "83.7 kWh",
+      "name": "Q6 e-tron Performance Design",
+      "price_EUR": 70900,
+      "batteryUsed": "94.9 kWh",
       "equipmentHighlights": [
-        "625 km WLTP",
+        "639 km WLTP",
         "306 ch RWD",
         "Architecture 800 V"
       ]
     },
     {
-      "name": "Q6 e-tron quattro",
-      "price_EUR": 72200,
-      "batteryUsed": "83.7 kWh",
+      "name": "Q6 e-tron Performance S line",
+      "price_EUR": 74500,
+      "batteryUsed": "94.9 kWh",
       "equipmentHighlights": [
-        "AWD 387 ch",
-        "580 km WLTP",
-        "Charge DC 270 kW"
+        "Style S line athlétique",
+        "Autonomie WLTP optimisée",
+        "Lumière d'ambiance LED"
+      ]
+    },
+    {
+      "name": "Q6 e-tron quattro Design",
+      "price_EUR": 76950,
+      "batteryUsed": "94.9 kWh",
+      "equipmentHighlights": [
+        "AWD 387 ch (428 ch boost)",
+        "625 km WLTP",
+        "Recharge DC 270 kW"
+      ]
+    },
+    {
+      "name": "Q6 e-tron quattro S line",
+      "price_EUR": 80550,
+      "batteryUsed": "94.9 kWh",
+      "equipmentHighlights": [
+        "AWD 387 ch (428 ch boost)",
+        "Style S line athlétique",
+        "Châssis sport FSD"
       ]
     },
     {
       "name": "SQ6 e-tron",
-      "price_EUR": 93800,
-      "batteryUsed": "83.7 kWh",
+      "price_EUR": 99870,
+      "batteryUsed": "94.9 kWh",
       "equipmentHighlights": [
-        "AWD 517 ch",
-        "0-100 en 4,3 s",
-        "Chassis sport RS"
+        "AWD 490 ch (517 ch boost)",
+        "0-100 km/h en 4.3 s",
+        "Châssis sport S adaptatif"
+      ]
+    },
+    {
+      "name": "Q6 Sportback e-tron Performance Design",
+      "price_EUR": 72900,
+      "batteryUsed": "94.9 kWh",
+      "equipmentHighlights": [
+        "Ligne Sportback profilée (Cx 0.26)",
+        "656 km WLTP",
+        "306 ch RWD"
+      ]
+    },
+    {
+      "name": "Q6 Sportback e-tron Performance S line",
+      "price_EUR": 76500,
+      "batteryUsed": "94.9 kWh",
+      "equipmentHighlights": [
+        "Silhouette Sportback profilée",
+        "Style S line athlétique",
+        "Autonomie WLTP maximale 656 km"
+      ]
+    },
+    {
+      "name": "Q6 Sportback e-tron quattro Design",
+      "price_EUR": 78950,
+      "batteryUsed": "94.9 kWh",
+      "equipmentHighlights": [
+        "Sportback avec quattro AWD 387 ch",
+        "636 km WLTP",
+        "Recharge DC 270 kW"
+      ]
+    },
+    {
+      "name": "Q6 Sportback e-tron quattro S line",
+      "price_EUR": 82550,
+      "batteryUsed": "94.9 kWh",
+      "equipmentHighlights": [
+        "Sportback avec quattro AWD 387 ch",
+        "Style S line athlétique",
+        "Châssis sport FSD"
+      ]
+    },
+    {
+      "name": "SQ6 Sportback e-tron",
+      "price_EUR": 102270,
+      "batteryUsed": "94.9 kWh",
+      "equipmentHighlights": [
+        "Sportback haute performance 490 ch",
+        "0-100 km/h en 4.3 s",
+        "Châssis sport S adaptatif"
       ]
     }
   ],
@@ -152,29 +222,29 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "audi-q6-performance",
-      "label": "Q6 e-tron performance · 83.7 kWh",
+      "id": "audi-q6-performance-design",
+      "label": "SUV Performance Design · 94.9 kWh",
       "battery": "long-range",
-      "trim": "Q6 e-tron performance",
+      "trim": "Q6 e-tron Performance Design",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 65200,
+      "price_EUR": 70900,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 625,
-      "wltp_consumption_kWh_100km": 15.6,
+      "wltp_km": 639,
+      "wltp_consumption_kWh_100km": 17.0,
       "realRange": {
-        "mixed_km": 450,
-        "highway_130_km": 325,
-        "urban_km": 555,
-        "winter_minus5_km": 355,
+        "mixed_km": 490,
+        "highway_130_km": 350,
+        "urban_km": 600,
+        "winter_minus5_km": 380,
         "confidence": "estimated"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 260,
       "chargingDC_10_80_min": 21,
-      "chargingDC_kWh_30min": 62,
+      "chargingDC_kWh_30min": 72,
       "chargingCurve": [
         {
           "soc": 0,
@@ -202,32 +272,85 @@
         }
       ],
       "availability": "available",
-      "notes": "306 ch (225 kW), RWD"
+      "notes": "306 ch (225 kW), RWD, SUV standard"
     },
     {
-      "id": "audi-q6-quattro",
-      "label": "Q6 e-tron quattro · 83.7 kWh",
+      "id": "audi-q6-performance-sline",
+      "label": "SUV Performance S line · 94.9 kWh",
       "battery": "long-range",
-      "trim": "Q6 e-tron quattro",
+      "trim": "Q6 e-tron Performance S line",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 74500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 639,
+      "wltp_consumption_kWh_100km": 17.0,
+      "realRange": {
+        "mixed_km": 490,
+        "highway_130_km": 350,
+        "urban_km": 600,
+        "winter_minus5_km": 380,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 260,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 72,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 170
+        },
+        {
+          "soc": 10,
+          "power": 260
+        },
+        {
+          "soc": 30,
+          "power": 230
+        },
+        {
+          "soc": 50,
+          "power": 170
+        },
+        {
+          "soc": 80,
+          "power": 55
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "306 ch (225 kW), RWD, SUV finition sport"
+    },
+    {
+      "id": "audi-q6-quattro-design",
+      "label": "SUV quattro Design · 94.9 kWh",
+      "battery": "long-range",
+      "trim": "Q6 e-tron quattro Design",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 72200,
+      "price_EUR": 76950,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 580,
-      "wltp_consumption_kWh_100km": 17,
+      "wltp_km": 625,
+      "wltp_consumption_kWh_100km": 17.5,
       "realRange": {
-        "mixed_km": 425,
-        "highway_130_km": 305,
-        "urban_km": 525,
-        "winter_minus5_km": 335,
+        "mixed_km": 470,
+        "highway_130_km": 335,
+        "urban_km": 580,
+        "winter_minus5_km": 365,
         "confidence": "estimated"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 270,
       "chargingDC_10_80_min": 21,
-      "chargingDC_kWh_30min": 65,
+      "chargingDC_kWh_30min": 75,
       "chargingCurve": [
         {
           "soc": 0,
@@ -255,32 +378,85 @@
         }
       ],
       "availability": "available",
-      "notes": "387 ch (285 kW), AWD quattro"
+      "notes": "387 ch (285 kW) - 428 ch boost, AWD quattro, SUV"
+    },
+    {
+      "id": "audi-q6-quattro-sline",
+      "label": "SUV quattro S line · 94.9 kWh",
+      "battery": "long-range",
+      "trim": "Q6 e-tron quattro S line",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 80550,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 625,
+      "wltp_consumption_kWh_100km": 17.5,
+      "realRange": {
+        "mixed_km": 470,
+        "highway_130_km": 335,
+        "urban_km": 580,
+        "winter_minus5_km": 365,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 270,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 75,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 180
+        },
+        {
+          "soc": 10,
+          "power": 270
+        },
+        {
+          "soc": 30,
+          "power": 240
+        },
+        {
+          "soc": 50,
+          "power": 175
+        },
+        {
+          "soc": 80,
+          "power": 60
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "387 ch (285 kW) - 428 ch boost, AWD quattro, SUV sport"
     },
     {
       "id": "audi-sq6-e-tron",
-      "label": "SQ6 e-tron · 83.7 kWh",
+      "label": "SQ6 e-tron · 94.9 kWh",
       "battery": "long-range",
       "trim": "SQ6 e-tron",
       "wheelSize_inches": 21,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 93800,
+      "price_EUR": 99870,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 533,
+      "wltp_km": 590,
       "wltp_consumption_kWh_100km": 18.5,
       "realRange": {
-        "mixed_km": 390,
-        "highway_130_km": 280,
-        "urban_km": 480,
-        "winter_minus5_km": 310,
+        "mixed_km": 440,
+        "highway_130_km": 315,
+        "urban_km": 540,
+        "winter_minus5_km": 340,
         "confidence": "estimated"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 270,
       "chargingDC_10_80_min": 21,
-      "chargingDC_kWh_30min": 65,
+      "chargingDC_kWh_30min": 75,
       "chargingCurve": [
         {
           "soc": 0,
@@ -308,7 +484,272 @@
         }
       ],
       "availability": "available",
-      "notes": "517 ch (380 kW), AWD quattro, S line"
+      "notes": "490 ch (360 kW) - 517 ch boost, AWD quattro, SUV sport extreme"
+    },
+    {
+      "id": "audi-q6-sportback-perf-design",
+      "label": "Sportback Performance Design · 94.9 kWh",
+      "battery": "long-range",
+      "trim": "Q6 Sportback e-tron Performance Design",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 72900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 656,
+      "wltp_consumption_kWh_100km": 16.5,
+      "realRange": {
+        "mixed_km": 500,
+        "highway_130_km": 360,
+        "urban_km": 615,
+        "winter_minus5_km": 390,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 260,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 72,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 170
+        },
+        {
+          "soc": 10,
+          "power": 260
+        },
+        {
+          "soc": 30,
+          "power": 230
+        },
+        {
+          "soc": 50,
+          "power": 170
+        },
+        {
+          "soc": 80,
+          "power": 55
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "306 ch (225 kW), RWD, coupé Sportback"
+    },
+    {
+      "id": "audi-q6-sportback-perf-sline",
+      "label": "Sportback Performance S line · 94.9 kWh",
+      "battery": "long-range",
+      "trim": "Q6 Sportback e-tron Performance S line",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 76500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 656,
+      "wltp_consumption_kWh_100km": 16.5,
+      "realRange": {
+        "mixed_km": 500,
+        "highway_130_km": 360,
+        "urban_km": 615,
+        "winter_minus5_km": 390,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 260,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 72,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 170
+        },
+        {
+          "soc": 10,
+          "power": 260
+        },
+        {
+          "soc": 30,
+          "power": 230
+        },
+        {
+          "soc": 50,
+          "power": 170
+        },
+        {
+          "soc": 80,
+          "power": 55
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "306 ch (225 kW), RWD, coupé Sportback sport"
+    },
+    {
+      "id": "audi-q6-sportback-quattro-design",
+      "label": "Sportback quattro Design · 94.9 kWh",
+      "battery": "long-range",
+      "trim": "Q6 Sportback e-tron quattro Design",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 78950,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 636,
+      "wltp_consumption_kWh_100km": 17.2,
+      "realRange": {
+        "mixed_km": 485,
+        "highway_130_km": 345,
+        "urban_km": 595,
+        "winter_minus5_km": 375,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 270,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 75,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 180
+        },
+        {
+          "soc": 10,
+          "power": 270
+        },
+        {
+          "soc": 30,
+          "power": 240
+        },
+        {
+          "soc": 50,
+          "power": 175
+        },
+        {
+          "soc": 80,
+          "power": 60
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "387 ch (285 kW) - 428 ch boost, AWD quattro, coupé Sportback"
+    },
+    {
+      "id": "audi-q6-sportback-quattro-sline",
+      "label": "Sportback quattro S line · 94.9 kWh",
+      "battery": "long-range",
+      "trim": "Q6 Sportback e-tron quattro S line",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 82550,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 636,
+      "wltp_consumption_kWh_100km": 17.2,
+      "realRange": {
+        "mixed_km": 485,
+        "highway_130_km": 345,
+        "urban_km": 595,
+        "winter_minus5_km": 375,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 270,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 75,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 180
+        },
+        {
+          "soc": 10,
+          "power": 270
+        },
+        {
+          "soc": 30,
+          "power": 240
+        },
+        {
+          "soc": 50,
+          "power": 175
+        },
+        {
+          "soc": 80,
+          "power": 60
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "387 ch (285 kW) - 428 ch boost, AWD quattro, coupé Sportback sport"
+    },
+    {
+      "id": "audi-sq6-sportback-e-tron",
+      "label": "SQ6 Sportback e-tron · 94.9 kWh",
+      "battery": "long-range",
+      "trim": "SQ6 Sportback e-tron",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 102270,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 601,
+      "wltp_consumption_kWh_100km": 18.0,
+      "realRange": {
+        "mixed_km": 450,
+        "highway_130_km": 325,
+        "urban_km": 555,
+        "winter_minus5_km": 350,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 270,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 75,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 180
+        },
+        {
+          "soc": 10,
+          "power": 270
+        },
+        {
+          "soc": 30,
+          "power": 240
+        },
+        {
+          "soc": 50,
+          "power": 175
+        },
+        {
+          "soc": 80,
+          "power": 60
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "490 ch (360 kW) - 517 ch boost, AWD quattro, coupé Sportback sport extreme"
     }
   ],
   "warranty": {
@@ -321,39 +762,38 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "SUV premium sur plateforme PPE, frunk 64 L"
+      "label": "SUV premium de dernière génération disponible en silhouette classique et Sportback, frunk 64 L"
     },
     {
       "category": "technologie",
-      "label": "Architecture 800 V et charge DC 270 kW"
+      "label": "Architecture 800 V PPE permettant des charges ultra-rapides jusqu'à 270 kW"
     },
     {
       "category": "securite",
-      "label": "Freinage automatique et assistance active"
+      "label": "Projecteurs OLED digitaux interactifs et aides à la conduite intelligentes de pointe"
     },
     {
       "category": "confort",
-      "label": "Coffre genereux (526 L), Plug & Charge et preconditionnement"
+      "label": "Habitacle spacieux, coffre modulable de 526 L et Plug & Charge de série"
     }
   ],
   "verdict": {
     "strengths": [
-      "Architecture 800 V et charge ultra-rapide 270 kW",
-      "Assemble en Allemagne, eligible prime CEE"
+      "Vitesse de recharge incroyable (10-80 % en 21 min) grâce au 800V",
+      "Comportement dynamique exceptionnel sur les versions quattro et SQ6",
+      "Autonomie réelle confortable approchant les 500 km sur autoroute"
     ],
     "weaknesses": [
-      "Prix eleve (a partir de 65 200 euros)",
-      "AC limite a 11 kW malgre le 800 V"
+      "Tarifs catalogue élevés débutant à 70 900 €",
+      "Chargeur embarqué AC limité à 11 kW"
     ],
-    "idealUserProfile": "Conducteurs premium cherchant un SUV avec charge ultra-rapide 800 V.",
-    "notIdealFor": "Budget limite ou besoin de 7 places."
+    "idealUserProfile": "Conducteurs premium effectuant de longs trajets réguliers sur autoroute, à la recherche de la technologie de charge la plus rapide du marché.",
+    "notIdealFor": "Budgets serrés ou personnes recherchant la compacité en ville."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-06-03",
   "sources": [
     "constructeur",
-    "automobile-propre",
-    "nyland",
-    "la-chaine-ev"
+    "automobile-propre"
   ],
   "imageCredit": "Constructeur"
 }

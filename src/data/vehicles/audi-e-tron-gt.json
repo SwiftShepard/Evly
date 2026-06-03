@@ -9,31 +9,30 @@
   "assemblyPlant": "Neckarsulm",
   "releaseYear": 2022,
   "marketAvailability": "Disponible",
-  "power_kW": 370,
-  "power_hp": 503,
-  "torque_Nm": 640,
+  "power_kW": 500,
+  "power_hp": 679,
+  "torque_Nm": 740,
   "drivetrain": "AWD",
   "motors": 2,
-  "acceleration_0_100_s": 3.5,
+  "acceleration_0_100_s": 3.4,
   "topSpeed_kmh": 245,
   "usableCapacity_kWh": 97,
   "grossCapacity_kWh": 105,
   "chemistry": "NMC",
   "architecture_V": 800,
-  "mass_kg": 2340,
-  "wltp_max_km": 609,
-  "wltp_min_km": 495,
+  "mass_kg": 2355,
+  "wltp_max_km": 616,
+  "wltp_min_km": 583,
   "realRange": {
-    "mixed_km": 430,
-    "highway_130_km": 310,
-    "urban_km": 530,
-    "winter_minus5_km": 340,
-    "confidence": "estimated",
-    "highway_120_km": 490
+    "mixed_km": 425,
+    "highway_130_km": 305,
+    "urban_km": 525,
+    "winter_minus5_km": 335,
+    "confidence": "estimated"
   },
-  "consumption_mixed_kWh_per_100km": 21,
-  "consumption_highway_kWh_per_100km": 27,
-  "consumption_winter_kWh_per_100km": 25,
+  "consumption_mixed_kWh_per_100km": 18.5,
+  "consumption_highway_kWh_per_100km": 25,
+  "consumption_winter_kWh_per_100km": 23,
   "dragCoefficient_Cx": 0.24,
   "chargingDC": {
     "peakPower_kW": 320,
@@ -57,15 +56,15 @@
     },
     {
       "soc": 10,
-      "power": 243
+      "power": 320
     },
     {
       "soc": 20,
-      "power": 258
+      "power": 320
     },
     {
       "soc": 30,
-      "power": 253
+      "power": 280
     },
     {
       "soc": 40,
@@ -73,7 +72,7 @@
     },
     {
       "soc": 50,
-      "power": 249
+      "power": 200
     },
     {
       "soc": 60,
@@ -118,32 +117,42 @@
   "trims": [
     {
       "name": "e-tron GT quattro",
-      "price_EUR": 105200,
+      "price_EUR": 119000,
       "batteryUsed": "97 kWh",
       "equipmentHighlights": [
         "503 ch AWD",
-        "609 km WLTP",
-        "Architecture 800 V"
+        "616 km WLTP",
+        "0-100 km/h en 4.2 s"
+      ]
+    },
+    {
+      "name": "S e-tron GT",
+      "price_EUR": 128650,
+      "batteryUsed": "97 kWh",
+      "equipmentHighlights": [
+        "679 ch AWD",
+        "604 km WLTP",
+        "Suspension pneumatique active"
       ]
     },
     {
       "name": "RS e-tron GT",
-      "price_EUR": 150700,
+      "price_EUR": 155680,
       "batteryUsed": "97 kWh",
       "equipmentHighlights": [
-        "646 ch AWD",
-        "0-100 en 3,2 s",
+        "856 ch AWD",
+        "0-100 en 2.8 s",
         "Chassis sport RS"
       ]
     },
     {
       "name": "RS e-tron GT performance",
-      "price_EUR": 210000,
+      "price_EUR": 163560,
       "batteryUsed": "97 kWh",
       "equipmentHighlights": [
         "925 ch AWD",
-        "0-100 en 2,5 s",
-        "Couple 1 000 Nm"
+        "0-100 en 2.5 s",
+        "Couple 1 027 Nm"
       ]
     }
   ],
@@ -159,16 +168,16 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 105200,
+      "price_EUR": 119000,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 609,
-      "wltp_consumption_kWh_100km": 18.5,
+      "wltp_km": 616,
+      "wltp_consumption_kWh_100km": 18.0,
       "realRange": {
-        "mixed_km": 430,
-        "highway_130_km": 310,
-        "urban_km": 530,
-        "winter_minus5_km": 340,
+        "mixed_km": 435,
+        "highway_130_km": 315,
+        "urban_km": 540,
+        "winter_minus5_km": 345,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -202,7 +211,60 @@
         }
       ],
       "availability": "available",
-      "notes": "503 ch (370 kW), AWD, AC 22 kW"
+      "notes": "503 ch (370 kW), AWD, 625 Nm"
+    },
+    {
+      "id": "audi-s-etron-gt",
+      "label": "S e-tron GT · 97 kWh",
+      "battery": "long-range",
+      "trim": "S e-tron GT",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 128650,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 604,
+      "wltp_consumption_kWh_100km": 18.5,
+      "realRange": {
+        "mixed_km": 425,
+        "highway_130_km": 305,
+        "urban_km": 525,
+        "winter_minus5_km": 335,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 320,
+      "chargingDC_10_80_min": 18,
+      "chargingDC_kWh_30min": 70,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 200
+        },
+        {
+          "soc": 10,
+          "power": 320
+        },
+        {
+          "soc": 30,
+          "power": 280
+        },
+        {
+          "soc": 50,
+          "power": 200
+        },
+        {
+          "soc": 80,
+          "power": 70
+        },
+        {
+          "soc": 100,
+          "power": 12
+        }
+      ],
+      "availability": "available",
+      "notes": "679 ch (500 kW), AWD, 740 Nm"
     },
     {
       "id": "audi-rs-etron-gt",
@@ -212,15 +274,68 @@
       "wheelSize_inches": 21,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 150700,
+      "price_EUR": 155680,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 560,
-      "wltp_consumption_kWh_100km": 20,
+      "wltp_km": 586,
+      "wltp_consumption_kWh_100km": 19.5,
       "realRange": {
-        "mixed_km": 400,
+        "mixed_km": 410,
+        "highway_130_km": 295,
+        "urban_km": 510,
+        "winter_minus5_km": 325,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 320,
+      "chargingDC_10_80_min": 18,
+      "chargingDC_kWh_30min": 70,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 200
+        },
+        {
+          "soc": 10,
+          "power": 320
+        },
+        {
+          "soc": 30,
+          "power": 280
+        },
+        {
+          "soc": 50,
+          "power": 200
+        },
+        {
+          "soc": 80,
+          "power": 70
+        },
+        {
+          "soc": 100,
+          "power": 12
+        }
+      ],
+      "availability": "available",
+      "notes": "856 ch (630 kW), AWD, 895 Nm"
+    },
+    {
+      "id": "audi-rs-etron-gt-perf",
+      "label": "RS e-tron GT performance · 97 kWh",
+      "battery": "long-range",
+      "trim": "RS e-tron GT performance",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 163560,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 583,
+      "wltp_consumption_kWh_100km": 20.0,
+      "realRange": {
+        "mixed_km": 405,
         "highway_130_km": 290,
-        "urban_km": 495,
+        "urban_km": 505,
         "winter_minus5_km": 320,
         "confidence": "estimated"
       },
@@ -255,60 +370,7 @@
         }
       ],
       "availability": "available",
-      "notes": "646 ch (475 kW), AWD, RS"
-    },
-    {
-      "id": "audi-rs-etron-gt-perf",
-      "label": "RS e-tron GT performance · 97 kWh",
-      "battery": "long-range",
-      "trim": "RS e-tron GT performance",
-      "wheelSize_inches": 21,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 210000,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 495,
-      "wltp_consumption_kWh_100km": 22.5,
-      "realRange": {
-        "mixed_km": 360,
-        "highway_130_km": 260,
-        "urban_km": 445,
-        "winter_minus5_km": 285,
-        "confidence": "estimated"
-      },
-      "rangeTests": [],
-      "chargingDC_peak_kW": 320,
-      "chargingDC_10_80_min": 18,
-      "chargingDC_kWh_30min": 70,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 200
-        },
-        {
-          "soc": 10,
-          "power": 320
-        },
-        {
-          "soc": 30,
-          "power": 280
-        },
-        {
-          "soc": 50,
-          "power": 200
-        },
-        {
-          "soc": 80,
-          "power": 70
-        },
-        {
-          "soc": 100,
-          "power": 12
-        }
-      ],
-      "availability": "available",
-      "notes": "925 ch (680 kW), AWD, 1 000 Nm"
+      "notes": "925 ch (680 kW), AWD, 1 027 Nm"
     }
   ],
   "warranty": {
@@ -342,18 +404,17 @@
       "Assemble a la main en Allemagne (Neckarsulm)"
     ],
     "weaknesses": [
-      "Prix tres eleve (a partir de 105 200 euros)",
+      "Prix tres eleve",
       "Consommation elevee et autonomie reelle limitee sur autoroute"
     ],
     "idealUserProfile": "Passionnes de GT electriques cherchant performance et prestige.",
     "notIdealFor": "Usage quotidien familial ou budget inferieur a 100 000 euros."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-06-03",
   "sources": [
     "constructeur",
     "automobile-propre",
-    "nyland",
-    "la-chaine-ev"
+    "evkx"
   ],
   "imageCredit": "Constructeur"
 }
