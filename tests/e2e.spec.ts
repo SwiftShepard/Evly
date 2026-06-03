@@ -219,22 +219,22 @@ test.describe("Evly E2E Test Suite", () => {
     await expect(startBtn).toBeVisible();
     await startBtn.click();
 
-    // Cliquer sur "Suivant" pour passer les questions 1 à 9
-    for (let i = 1; i <= 9; i++) {
+    // Cliquer sur "Suivant" pour passer les questions 1 à 10
+    for (let i = 1; i <= 10; i++) {
       // Attendre la stabilisation du DOM sur la question courante
-      await expect(page.locator(`text=Question ${i} sur 10`)).toBeVisible();
+      await expect(page.locator(`text=Question ${i} sur 11`)).toBeVisible();
       const nextBtn = page.locator('button:has-text("Suivant")');
       await expect(nextBtn).toBeVisible();
       await nextBtn.click();
     }
 
-    // Question 10 : Cliquer sur "Découvrir mes résultats"
-    await expect(page.locator('text=Question 10 sur 10')).toBeVisible();
+    // Question 11 : Cliquer sur "Découvrir mes résultats"
+    await expect(page.locator('text=Question 11 sur 11')).toBeVisible();
     const finishBtn = page.locator('button:has-text("Découvrir mes résultats")');
     await expect(finishBtn).toBeVisible();
     await finishBtn.click();
 
-    // Attendre l'affichage des résultats (Étape 11)
+    // Attendre l'affichage des résultats (Étape 12)
     // S'assurer de la présence du titre de fin
     await expect(page.locator("main h2")).toContainText("Votre sélection sur-mesure.");
 

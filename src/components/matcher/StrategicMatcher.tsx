@@ -100,6 +100,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
     charging: "home",
     role: "primary",
     household: "family",
+    trunkNeed: "any",
     bodyType: "any",
     chargingSpeed: "any",
     budgetType: "buy",
@@ -118,9 +119,9 @@ export default function StrategicMatcher({ vehicles }: Props) {
     }));
   }, [answers.budgetType]);
 
-  // Résultats calculés (maintenant à l'étape 10)
+  // Résultats calculés (maintenant à l'étape 12)
   const results = useMemo<MatchResult[]>(() => {
-    if (step < 11) return [];
+    if (step < 12) return [];
     return vehicles
       .map((v) => scoreVehicle(v, answers))
       .filter((r): r is MatchResult => r !== null)
@@ -145,7 +146,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
       // Ignorer si on est sur un champ de saisie actif (ex: input)
       if (document.activeElement?.tagName === "INPUT") return;
 
-      if (step > 0 && step <= 10) {
+      if (step > 0 && step <= 11) {
         if (e.key === "Backspace" || e.key === "ArrowLeft") {
           // Retour
           goToPrev();
@@ -174,18 +175,22 @@ export default function StrategicMatcher({ vehicles }: Props) {
           if (e.key === "2") setAnswers((prev) => ({ ...prev, household: "family" }));
           if (e.key === "3") setAnswers((prev) => ({ ...prev, household: "large_family" }));
         } else if (step === 6) {
+          if (e.key === "1") setAnswers((prev) => ({ ...prev, trunkNeed: "any" }));
+          if (e.key === "2") setAnswers((prev) => ({ ...prev, trunkNeed: "medium" }));
+          if (e.key === "3") setAnswers((prev) => ({ ...prev, trunkNeed: "large" }));
+        } else if (step === 7) {
           if (e.key === "1") setAnswers((prev) => ({ ...prev, bodyType: "any" }));
           if (e.key === "2") setAnswers((prev) => ({ ...prev, bodyType: "hatchback_city" }));
           if (e.key === "3") setAnswers((prev) => ({ ...prev, bodyType: "sedan_break" }));
           if (e.key === "4") setAnswers((prev) => ({ ...prev, bodyType: "suv_crossover" }));
           if (e.key === "5") setAnswers((prev) => ({ ...prev, bodyType: "van_monospace" }));
-        } else if (step === 7) {
+        } else if (step === 8) {
           if (e.key === "1") setAnswers((prev) => ({ ...prev, softwareImportance: "any" }));
           if (e.key === "2") setAnswers((prev) => ({ ...prev, softwareImportance: "good_software" }));
-        } else if (step === 9) {
+        } else if (step === 10) {
           if (e.key === "1") setAnswers((prev) => ({ ...prev, leasingSocialRfr: !prev.leasingSocialRfr }));
           if (e.key === "2") setAnswers((prev) => ({ ...prev, leasingSocialUsage: !prev.leasingSocialUsage }));
-        } else if (step === 10) {
+        } else if (step === 11) {
           if (e.key === "1" || e.key === " ") {
             setAnswers((prev) => ({ ...prev, preferEurope: !prev.preferEurope }));
           }
@@ -209,6 +214,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
       charging: "home",
       role: "primary",
       household: "family",
+      trunkNeed: "any",
       bodyType: "any",
       chargingSpeed: "any",
       budgetType: "buy",
@@ -306,20 +312,20 @@ export default function StrategicMatcher({ vehicles }: Props) {
         </div>
       )}
 
-      {/* ────────────────── QUESTIONNAIRE (ÉTAPES 1 à 10) ────────────────── */}
-      {step > 0 && step <= 10 && (
+      {/* ────────────────── QUESTIONNAIRE (ÉTAPES 1 à 11) ────────────────── */}
+      {step > 0 && step <= 11 && (
         <div className="rounded-3xl p-6 md:p-8 border border-[var(--color-border)] bg-[var(--color-surface)] shadow-xl relative min-h-[460px] flex flex-col justify-between transition-all duration-300">
           
           {/* Top Progress bar */}
           <div>
             <div className="flex items-center justify-between mb-4">
-              <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-text-faint)]">Question {step} sur 10</span>
-              <span className="font-mono text-xs font-semibold text-[var(--color-accent)]">{Math.round((step / 10) * 100)}%</span>
+              <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-text-faint)]">Question {step} sur 11</span>
+              <span className="font-mono text-xs font-semibold text-[var(--color-accent)]">{Math.round((step / 11) * 100)}%</span>
             </div>
             <div className="w-full h-1 bg-[var(--color-border)] rounded-full overflow-hidden">
               <div 
                 className="h-full bg-[var(--color-accent)] transition-all duration-300"
-                style={{ width: `${(step / 10) * 100}%` }}
+                style={{ width: `${(step / 11) * 100}%` }}
               ></div>
             </div>
           </div>
@@ -537,12 +543,50 @@ export default function StrategicMatcher({ vehicles }: Props) {
               </div>
             )}
 
-            {/* STEP 6 : SILHOUETTE / CARROSSERIE */}
+            {/* STEP 6 : BESOIN EN COFFRE */}
             {step === 6 && (
               <div className="flex flex-col gap-5">
                 <div>
                   <h3 className="font-display text-xl md:text-2xl font-semibold text-[var(--color-text)]">
-                    6. Quelle silhouette (carrosserie) préférez-vous ?
+                    6. De quel volume de coffre avez-vous besoin ?
+                  </h3>
+                  <p className="text-xs text-[var(--color-text-muted)] mt-1.5">
+                    Le volume du coffre est mesuré avec les sièges en position normale (non rabattus).
+                  </p>
+                </div>
+
+                <div className="grid md:grid-cols-3 gap-3">
+                  {(
+                    [
+                      { key: "any", label: "Peu importe", desc: "Usage principalement urbain, trajets quotidiens sans chargement volumineux." },
+                      { key: "medium", label: "Moyen (≥ 350 L)", desc: "Pour les courses hebdomadaires, bagages de week-end, poussette compacte." },
+                      { key: "large", label: "Grand (≥ 450 L)", desc: "Pour les départs en vacances en famille, matériel encombrant, poussette classique." },
+                    ] as const
+                  ).map((opt) => {
+                    const active = answers.trunkNeed === opt.key;
+                    return (
+                      <button
+                        key={opt.key}
+                        onClick={() => setAnswers(prev => ({ ...prev, trunkNeed: opt.key }))}
+                        className={`text-left p-4 rounded-xl border transition-all ${
+                          active ? "border-[var(--color-accent)] bg-[color-mix(in_srgb,var(--color-accent)_4%,transparent)]" : "border-[var(--color-border)] hover:border-[var(--color-border-strong)] bg-[var(--color-bg-subtle)]"
+                        }`}
+                      >
+                        <span className="block font-medium text-sm text-[var(--color-text)]">{opt.label}</span>
+                        <span className="block text-xs text-[var(--color-text-muted)] mt-1 leading-relaxed">{opt.desc}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* STEP 7 : SILHOUETTE / CARROSSERIE */}
+            {step === 7 && (
+              <div className="flex flex-col gap-5">
+                <div>
+                  <h3 className="font-display text-xl md:text-2xl font-semibold text-[var(--color-text)]">
+                    7. Quelle silhouette (carrosserie) préférez-vous ?
                   </h3>
                   <p className="text-xs text-[var(--color-text-muted)] mt-1.5">
                     Sélectionnez votre format idéal. Les modèles ne correspondant pas seront pénalisés mais restent visibles s'ils conviennent à votre budget.
@@ -577,12 +621,12 @@ export default function StrategicMatcher({ vehicles }: Props) {
               </div>
             )}
 
-            {/* STEP 7 : LOGICIEL / ERGONOMIE */}
-            {step === 7 && (
+            {/* STEP 8 : LOGICIEL / ERGONOMIE */}
+            {step === 8 && (
               <div className="flex flex-col gap-5">
                 <div>
                   <h3 className="font-display text-xl md:text-2xl font-semibold text-[var(--color-text)]">
-                    7. Quelle importance accordez-vous au logiciel embarqué ?
+                    8. Quelle importance accordez-vous au logiciel embarqué ?
                   </h3>
                   <p className="text-xs text-[var(--color-text-muted)] mt-1.5">
                     Cela concerne la fluidité de l'écran central, la réactivité du système, l'ergonomie des menus et la fiabilité du planificateur d'itinéraire.
@@ -614,12 +658,12 @@ export default function StrategicMatcher({ vehicles }: Props) {
               </div>
             )}
 
-            {/* STEP 8 : BUDGET */}
-            {step === 8 && (
+            {/* STEP 9 : BUDGET */}
+            {step === 9 && (
               <div className="flex flex-col gap-5">
                 <div>
                   <h3 className="font-display text-xl md:text-2xl font-semibold text-[var(--color-text)]">
-                    8. Quel est votre budget maximal ?
+                    9. Quel est votre budget maximal ?
                   </h3>
                   <p className="text-xs text-[var(--color-text-muted)] mt-1.5">
                     Les aides de l'État et remises seront déduites des résultats pour évaluer le coût réel d'accès.
@@ -689,12 +733,12 @@ export default function StrategicMatcher({ vehicles }: Props) {
               </div>
             )}
 
-            {/* STEP 9 : LEASING SOCIAL PRE-QUAL */}
-            {step === 9 && (
+            {/* STEP 10 : LEASING SOCIAL PRE-QUAL */}
+            {step === 10 && (
               <div className="flex flex-col gap-5">
                 <div>
                   <h3 className="font-display text-xl md:text-2xl font-semibold text-[var(--color-text)]">
-                    9. Éligibilité au Leasing Social
+                    10. Éligibilité au Leasing Social
                   </h3>
                   <p className="text-xs text-[var(--color-text-muted)] mt-1.5">
                     Le Leasing Social (mensualité <strong className="text-[var(--color-text)]">à partir de 95 € / mois</strong> sans apport) est soumis à deux conditions cumulatives d'éligibilité. Cochez si vous remplissez ces critères :
@@ -753,12 +797,12 @@ export default function StrategicMatcher({ vehicles }: Props) {
               </div>
             )}
 
-            {/* STEP 10 : PRÉFÉRENCES ORIGINE */}
-            {step === 10 && (
+            {/* STEP 11 : PRÉFÉRENCES ORIGINE */}
+            {step === 11 && (
               <div className="flex flex-col gap-5">
                 <div>
                   <h3 className="font-display text-xl md:text-2xl font-semibold text-[var(--color-text)]">
-                    10. Sensibilité écologique & Origine
+                    11. Sensibilité écologique & Origine
                   </h3>
                   <p className="text-xs text-[var(--color-text-muted)] mt-1.5">
                     Le nouveau dispositif français exclut de la Prime CEE les véhicules produits dans des pays à mix énergétique carboné (ex: Chine, Japon).
@@ -802,15 +846,15 @@ export default function StrategicMatcher({ vehicles }: Props) {
               onClick={goToNext}
               className="btn-interactive inline-flex items-center gap-1.5 px-5 py-2.5 bg-[var(--color-accent)] text-[var(--color-accent-on)] text-xs font-semibold rounded-lg shadow transition-colors"
             >
-              {step === 10 ? "Découvrir mes résultats" : "Suivant"}
+              {step === 11 ? "Découvrir mes résultats" : "Suivant"}
               <ArrowRight size={13} />
             </button>
           </div>
         </div>
       )}
 
-      {/* ────────────────── ÉTAPE 11 : RÉSULTATS ────────────────── */}
-      {step === 11 && (
+      {/* ────────────────── ÉTAPE 12 : RÉSULTATS ────────────────── */}
+      {step === 12 && (
         <div className="flex flex-col gap-8 animate-fade-in">
           
           {/* Header & Meta */}

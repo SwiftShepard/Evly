@@ -7,6 +7,7 @@ export interface MatcherAnswers {
   charging: "home" | "public_slow" | "public_fast";
   role: "primary" | "secondary";
   household: "single_couple" | "family" | "large_family";
+  trunkNeed: "any" | "medium" | "large";
   bodyType: "any" | "hatchback_city" | "sedan_break" | "suv_crossover" | "van_monospace";
   chargingSpeed: "any" | "under_30";
   budgetType: "buy" | "lease";
@@ -407,6 +408,25 @@ export function scoreVehicle(vehicle: Vehicle, answers: MatcherAnswers): MatchRe
           score -= 20;
           warnings.push("Gabarit important et surdimensionné pour l'usage quotidien d'un célibataire/couple");
         }
+      }
+    }
+
+    // --- CRITÈRE 3.5 : BESOIN EXPRESS DE COFFRE ---
+    if (answers.trunkNeed === "medium") {
+      if (trunk >= 350) {
+        score += 15;
+        reasons.push(`Volume de coffre de ${trunk} L en adéquation avec votre besoin moyen (≥ 350 L)`);
+      } else {
+        score -= 25;
+        warnings.push(`Volume de coffre (${trunk} L) inférieur à votre souhait de 350 L minimum`);
+      }
+    } else if (answers.trunkNeed === "large") {
+      if (trunk >= 450) {
+        score += 25;
+        reasons.push(`Gros volume de coffre (${trunk} L) répondant parfaitement à votre besoin (≥ 450 L)`);
+      } else {
+        score -= 35;
+        warnings.push(`Volume de coffre (${trunk} L) insuffisant par rapport à votre besoin de 450 L minimum`);
       }
     }
 

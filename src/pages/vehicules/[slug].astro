@@ -327,6 +327,11 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
               <TileStat value={(config.chargingDC_peak_kW ?? vehicle.chargingDC.peakPower_kW).toString()} unit="kW" size="xl" tone="accent" hint={`10 → 80 % en ${config.chargingDC_10_80_min ?? vehicle.chargingDC.time_10_80_min} min`} />
             </Tile>
 
+            <!-- 1x1 : volume coffre -->
+            <Tile size="1x1" label="Volume du coffre" class="reveal">
+              <TileStat value={vehicle.trunkCapacity_L.toString()} unit="L" size="xl" hint={(vehicle.frunkCapacity_L && vehicle.frunkCapacity_L > 0 ? `+ ${vehicle.frunkCapacity_L} L (frunk) · ` : "") + (vehicle.trunkCapacityFolded_L ? `${vehicle.trunkCapacityFolded_L} L rabattu` : "Sièges en position normale")} />
+            </Tile>
+
             <!-- 2x1 : énergie ajoutée + recharge AC -->
             <Tile size="2x1" label="Recharge AC complète" class="reveal">
               <div class="grid grid-cols-2 gap-6 mt-auto">
@@ -743,6 +748,10 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
         <div class="sidebar-meta-row">
           <span>Batterie</span>
           <span>{vehicle.warranty.battery_years} ans / {vehicle.warranty.battery_soh_minimum_percent}% SoH</span>
+        </div>
+        <div class="sidebar-meta-row">
+          <span>Coffre</span>
+          <span>{vehicle.trunkCapacity_L} L {vehicle.frunkCapacity_L ? `(+ ${vehicle.frunkCapacity_L} L frunk)` : ""}</span>
         </div>
         {vehicle.assemblyPlant && (
           <div class="sidebar-meta-row">
