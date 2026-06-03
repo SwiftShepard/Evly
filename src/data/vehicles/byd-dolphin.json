@@ -18,15 +18,15 @@
   "topSpeed_kmh": 160,
   "usableCapacity_kWh": 60.4,
   "grossCapacity_kWh": 60.4,
-  "chemistry": "NMC",
+  "chemistry": "LFP",
   "architecture_V": 400,
-  "mass_kg": 1700,
+  "mass_kg": 1650,
   "wltp_max_km": 427,
   "wltp_min_km": 427,
   "realRange": {
     "mixed_km": 340,
     "highway_130_km": 255,
-    "highway_120_km": 375,
+    "highway_120_km": 280,
     "urban_km": 400,
     "winter_minus5_km": 240,
     "confidence": "bjorn_nyland"
@@ -135,11 +135,22 @@
   "trims": [
     {
       "name": "Comfort",
-      "price_EUR": 28990,
+      "price_EUR": 33990,
       "batteryUsed": "60.4 kWh LFP",
       "equipmentHighlights": [
         "V2L",
-        "Sièges chauffants"
+        "Sièges chauffants",
+        "Caméra 360°"
+      ]
+    },
+    {
+      "name": "Design",
+      "price_EUR": 35990,
+      "batteryUsed": "60.4 kWh LFP",
+      "equipmentHighlights": [
+        "Toit panoramique",
+        "Chargeur smartphone par induction",
+        "Peinture bicolore"
       ]
     }
   ],
@@ -152,10 +163,87 @@
       "label": "Dolphin Comfort",
       "battery": "standard",
       "trim": "Comfort",
-      "wheelSize_inches": 18,
+      "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 28990,
+      "price_EUR": 33990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 427,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": {
+        "mixed_km": 340,
+        "highway_130_km": 255,
+        "highway_120_km": 280,
+        "urban_km": 400,
+        "winter_minus5_km": 240,
+        "confidence": "bjorn_nyland"
+      },
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": "2023-08",
+          "speed_kmh": 90,
+          "range_km": 390,
+          "consumption_kWh_100km": 15.5,
+          "temperature_C": 20,
+          "wheelSize_inches": 17,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "BYD Dolphin standard range."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": "2023-08",
+          "speed_kmh": 120,
+          "range_km": 280,
+          "consumption_kWh_100km": 21.6,
+          "temperature_C": 20,
+          "wheelSize_inches": 17,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": ""
+        }
+      ],
+      "chargingDC_peak_kW": 88,
+      "chargingDC_10_80_min": 40,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 68
+        },
+        {
+          "soc": 10,
+          "power": 88
+        },
+        {
+          "soc": 50,
+          "power": 68
+        },
+        {
+          "soc": 80,
+          "power": 34
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "byd-dolphin-design",
+      "label": "Dolphin Design",
+      "battery": "standard",
+      "trim": "Design",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 35990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 427,

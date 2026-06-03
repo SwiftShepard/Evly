@@ -268,9 +268,10 @@
     "usableCapacity_kWh": 60.4,
     "wltp_min_km": 420,
     "wltp_max_km": 420,
-    "configurations_count": 1,
+    "configurations_count": 2,
     "configuration_ids": [
-      "byd-atto-3-design"
+      "byd-atto-3-design",
+      "byd-atto-3-excellence"
     ]
   },
   {
@@ -281,9 +282,10 @@
     "usableCapacity_kWh": 60.4,
     "wltp_min_km": 427,
     "wltp_max_km": 427,
-    "configurations_count": 1,
+    "configurations_count": 2,
     "configuration_ids": [
-      "byd-dolphin-comfort"
+      "byd-dolphin-comfort",
+      "byd-dolphin-design"
     ]
   },
   {
@@ -307,7 +309,7 @@
     "model": "Seal",
     "power_kW": 230,
     "usableCapacity_kWh": 82.5,
-    "wltp_min_km": 570,
+    "wltp_min_km": 520,
     "wltp_max_km": 570,
     "configurations_count": 2,
     "configuration_ids": [
@@ -322,10 +324,11 @@
     "power_kW": 160,
     "usableCapacity_kWh": 71.8,
     "wltp_min_km": 420,
-    "wltp_max_km": 420,
-    "configurations_count": 1,
+    "wltp_max_km": 500,
+    "configurations_count": 2,
     "configuration_ids": [
-      "byd-seal-u-comfort"
+      "byd-seal-u-comfort",
+      "byd-seal-u-design"
     ]
   },
   {
@@ -995,8 +998,9 @@
     "usableCapacity_kWh": 69.9,
     "wltp_min_km": 420,
     "wltp_max_km": 420,
-    "configurations_count": 1,
+    "configurations_count": 2,
     "configuration_ids": [
+      "leapmotor-c10-design",
       "leapmotor-c10-style"
     ]
   },
@@ -1010,7 +1014,7 @@
     "wltp_max_km": 265,
     "configurations_count": 1,
     "configuration_ids": [
-      "leapmotor-t03-t03"
+      "leapmotor-t03-design"
     ]
   },
   {

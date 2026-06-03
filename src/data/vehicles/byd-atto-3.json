@@ -11,16 +11,16 @@
   "marketAvailability": "Disponible",
   "power_kW": 150,
   "power_hp": 204,
-  "torque_Nm": 300,
+  "torque_Nm": 310,
   "drivetrain": "FWD",
   "motors": 1,
   "acceleration_0_100_s": 7.5,
   "topSpeed_kmh": 160,
   "usableCapacity_kWh": 60.4,
   "grossCapacity_kWh": 60.4,
-  "chemistry": "NMC",
+  "chemistry": "LFP",
   "architecture_V": 400,
-  "mass_kg": 1700,
+  "mass_kg": 1750,
   "wltp_max_km": 420,
   "wltp_min_km": 420,
   "realRange": {
@@ -138,18 +138,29 @@
   "length_mm": 4455,
   "width_mm": 1875,
   "height_mm": 1615,
-  "wheelbase_mm": 2700,
+  "wheelbase_mm": 2720,
   "trunkCapacity_L": 440,
   "trunkCapacityFolded_L": 1200,
   "frunkCapacity_L": null,
   "trims": [
     {
       "name": "Design",
-      "price_EUR": 37990,
+      "price_EUR": 38990,
       "batteryUsed": "60.4 kWh LFP",
       "equipmentHighlights": [
         "Écran rotatif 15.6\"",
         "Toit panoramique"
+      ]
+    },
+    {
+      "name": "Excellence",
+      "price_EUR": 42490,
+      "batteryUsed": "60.4 kWh LFP",
+      "equipmentHighlights": [
+        "Écran rotatif 15.6\"",
+        "Système audio Rythme",
+        "Hayon électrique",
+        "Purificateur d'air PM2.5"
       ]
     }
   ],
@@ -165,7 +176,84 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 37990,
+      "price_EUR": 38990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 420,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": {
+        "mixed_km": 330,
+        "highway_130_km": 245,
+        "highway_120_km": 269,
+        "urban_km": 380,
+        "winter_minus5_km": 230,
+        "confidence": "bjorn_nyland"
+      },
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": "2023-06",
+          "speed_kmh": 90,
+          "range_km": 380,
+          "consumption_kWh_100km": 15.9,
+          "temperature_C": 18,
+          "wheelSize_inches": 18,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "BYD Atto 3 60 kWh."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": "2023-06",
+          "speed_kmh": 120,
+          "range_km": 269,
+          "consumption_kWh_100km": 22.5,
+          "temperature_C": 18,
+          "wheelSize_inches": 18,
+          "tyreModel": null,
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": ""
+        }
+      ],
+      "chargingDC_peak_kW": 88,
+      "chargingDC_10_80_min": 44,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 68
+        },
+        {
+          "soc": 10,
+          "power": 88
+        },
+        {
+          "soc": 50,
+          "power": 68
+        },
+        {
+          "soc": 80,
+          "power": 34
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "byd-atto-3-excellence",
+      "label": "Atto 3 Excellence",
+      "battery": "standard",
+      "trim": "Excellence",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 42490,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 420,

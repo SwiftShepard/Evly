@@ -2,7 +2,7 @@
   "slug": "byd-seal-u",
   "brand": "BYD",
   "model": "Seal U",
-  "variant": "71.8 kWh",
+  "variant": "71.8 - 87 kWh",
   "bodyType": "SUV familial",
   "segment": "D",
   "productionCountry": "Chine",
@@ -10,18 +10,18 @@
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
   "power_kW": 160,
-  "power_hp": 204,
-  "torque_Nm": 300,
+  "power_hp": 218,
+  "torque_Nm": 330,
   "drivetrain": "FWD",
   "motors": 1,
   "acceleration_0_100_s": 7.5,
   "topSpeed_kmh": 160,
   "usableCapacity_kWh": 71.8,
   "grossCapacity_kWh": 71.8,
-  "chemistry": "NMC",
+  "chemistry": "LFP",
   "architecture_V": 400,
-  "mass_kg": 1700,
-  "wltp_max_km": 420,
+  "mass_kg": 2020,
+  "wltp_max_km": 500,
   "wltp_min_km": 420,
   "realRange": {
     "mixed_km": 340,
@@ -29,7 +29,7 @@
     "urban_km": 400,
     "winter_minus5_km": 240,
     "confidence": "tested",
-    "highway_120_km": 421
+    "highway_120_km": 260
   },
   "consumption_mixed_kWh_per_100km": 15,
   "consumption_highway_kWh_per_100km": 21,
@@ -111,7 +111,7 @@
   "length_mm": 4785,
   "width_mm": 1890,
   "height_mm": 1668,
-  "wheelbase_mm": 2700,
+  "wheelbase_mm": 2765,
   "trunkCapacity_L": 552,
   "trunkCapacityFolded_L": 1200,
   "frunkCapacity_L": null,
@@ -121,8 +121,19 @@
       "price_EUR": 41890,
       "batteryUsed": "71.8 kWh LFP",
       "equipmentHighlights": [
-        "Confort royal",
-        "V2L"
+        "Toit panoramique ouvrant",
+        "Sièges avant chauffants et ventilés",
+        "Caméra 360°"
+      ]
+    },
+    {
+      "name": "Design",
+      "price_EUR": 45390,
+      "batteryUsed": "87 kWh LFP",
+      "equipmentHighlights": [
+        "Affichage tête haute",
+        "Système audio Infinity 10 HP",
+        "Chargeur double pour smartphone par induction"
       ]
     }
   ],
@@ -135,7 +146,7 @@
       "label": "Seal U Comfort",
       "battery": "standard",
       "trim": "Comfort",
-      "wheelSize_inches": 18,
+      "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
       "price_EUR": 41890,
@@ -148,7 +159,8 @@
         "highway_130_km": 250,
         "urban_km": 400,
         "winter_minus5_km": 240,
-        "confidence": "tested"
+        "confidence": "tested",
+        "highway_120_km": 260
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 115,
@@ -174,6 +186,64 @@
         {
           "soc": 100,
           "power": 9
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "byd-seal-u-design",
+      "label": "Seal U Design",
+      "battery": "long-range",
+      "trim": "Design",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 45390,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 500,
+      "wltp_consumption_kWh_100km": 16,
+      "realRange": {
+        "mixed_km": 400,
+        "highway_130_km": 290,
+        "urban_km": 470,
+        "winter_minus5_km": 280,
+        "confidence": "tested",
+        "highway_120_km": 310
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 140,
+      "chargingDC_10_80_min": 43,
+      "chargingDC_kWh_30min": 48,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 102
+        },
+        {
+          "soc": 10,
+          "power": 127
+        },
+        {
+          "soc": 20,
+          "power": 140
+        },
+        {
+          "soc": 30,
+          "power": 140
+        },
+        {
+          "soc": 50,
+          "power": 74
+        },
+        {
+          "soc": 80,
+          "power": 85
+        },
+        {
+          "soc": 100,
+          "power": 5
         }
       ],
       "availability": "available",

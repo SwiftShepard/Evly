@@ -10,17 +10,17 @@
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
   "power_kW": 70,
-  "power_hp": 204,
-  "torque_Nm": 300,
+  "power_hp": 95,
+  "torque_Nm": 158,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
-  "topSpeed_kmh": 160,
+  "acceleration_0_100_s": 12,
+  "topSpeed_kmh": 135,
   "usableCapacity_kWh": 37.3,
   "grossCapacity_kWh": 37.3,
-  "chemistry": "NMC",
+  "chemistry": "LFP",
   "architecture_V": 400,
-  "mass_kg": 1700,
+  "mass_kg": 1125,
   "wltp_max_km": 265,
   "wltp_min_km": 265,
   "realRange": {
@@ -76,18 +76,19 @@
   "length_mm": 3620,
   "width_mm": 1652,
   "height_mm": 1577,
-  "wheelbase_mm": 2700,
+  "wheelbase_mm": 2400,
   "trunkCapacity_L": 210,
   "trunkCapacityFolded_L": 1200,
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "T03",
+      "name": "Design",
       "price_EUR": 18900,
       "batteryUsed": "37.3 kWh",
       "equipmentHighlights": [
-        "Format mini",
-        "Réseau Stellantis"
+        "Format citadin compact",
+        "Réseau Stellantis",
+        "Écran tactile 10.1\""
       ]
     }
   ],
@@ -107,11 +108,11 @@
   ],
   "configurations": [
     {
-      "id": "leapmotor-t03-t03",
-      "label": "T03 T03",
+      "id": "leapmotor-t03-design",
+      "label": "T03 Design",
       "battery": "standard",
-      "trim": "T03",
-      "wheelSize_inches": 18,
+      "trim": "Design",
+      "wheelSize_inches": 15,
       "tyreType": "summer",
       "options": [],
       "price_EUR": 18900,

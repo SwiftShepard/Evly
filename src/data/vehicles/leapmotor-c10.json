@@ -10,17 +10,17 @@
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
   "power_kW": 160,
-  "power_hp": 204,
-  "torque_Nm": 300,
-  "drivetrain": "FWD",
+  "power_hp": 218,
+  "torque_Nm": 320,
+  "drivetrain": "RWD",
   "motors": 1,
   "acceleration_0_100_s": 7.5,
   "topSpeed_kmh": 160,
   "usableCapacity_kWh": 69.9,
   "grossCapacity_kWh": 69.9,
-  "chemistry": "NMC",
+  "chemistry": "LFP",
   "architecture_V": 400,
-  "mass_kg": 1700,
+  "mass_kg": 1940,
   "wltp_max_km": 420,
   "wltp_min_km": 420,
   "realRange": {
@@ -29,7 +29,7 @@
     "urban_km": 400,
     "winter_minus5_km": 260,
     "confidence": "estimated",
-    "highway_120_km": 382
+    "highway_120_km": 240
   },
   "consumption_mixed_kWh_per_100km": 15,
   "consumption_highway_kWh_per_100km": 21,
@@ -77,18 +77,30 @@
   "length_mm": 4739,
   "width_mm": 1900,
   "height_mm": 1680,
-  "wheelbase_mm": 2700,
+  "wheelbase_mm": 2825,
   "trunkCapacity_L": 435,
   "trunkCapacityFolded_L": 1200,
   "frunkCapacity_L": null,
   "trims": [
     {
       "name": "Style",
-      "price_EUR": 36400,
-      "batteryUsed": "69.9 kWh",
+      "price_EUR": 34900,
+      "batteryUsed": "69.9 kWh LFP",
       "equipmentHighlights": [
-        "Habitabilité",
-        "Rapport prix/prestation"
+        "Jantes alliage 18\"",
+        "Tableau de bord numérique 10.25\"",
+        "Écran central 14.6\""
+      ]
+    },
+    {
+      "name": "Design",
+      "price_EUR": 36400,
+      "batteryUsed": "69.9 kWh LFP",
+      "equipmentHighlights": [
+        "Jantes alliage 20\"",
+        "Hayon électrique",
+        "Vitres arrière surteintées",
+        "Éclairage d'ambiance dynamique"
       ]
     }
   ],
@@ -104,6 +116,56 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
+      "price_EUR": 34900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 420,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": {
+        "mixed_km": 330,
+        "highway_130_km": 220,
+        "urban_km": 400,
+        "winter_minus5_km": 260,
+        "confidence": "estimated",
+        "highway_120_km": 240
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 84,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 65
+        },
+        {
+          "soc": 10,
+          "power": 84
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "leapmotor-c10-design",
+      "label": "C10 Design",
+      "battery": "standard",
+      "trim": "Design",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
       "price_EUR": 36400,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
@@ -114,7 +176,8 @@
         "highway_130_km": 220,
         "urban_km": 400,
         "winter_minus5_km": 260,
-        "confidence": "estimated"
+        "confidence": "estimated",
+        "highway_120_km": 240
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 84,
