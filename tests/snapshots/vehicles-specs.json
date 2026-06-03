@@ -7,10 +7,12 @@
     "usableCapacity_kWh": 54,
     "wltp_min_km": 400,
     "wltp_max_km": 410,
-    "configurations_count": 3,
+    "configurations_count": 5,
     "configuration_ids": [
       "alfa-romeo-junior-junior",
-      "alfa-romeo-junior-speciale",
+      "alfa-romeo-junior-sprint",
+      "alfa-romeo-junior-sprint-speciale",
+      "alfa-romeo-junior-ti",
       "alfa-romeo-junior-veloce"
     ]
   },
@@ -52,11 +54,14 @@
     "usableCapacity_kWh": 94.9,
     "wltp_min_km": 627,
     "wltp_max_km": 756,
-    "configurations_count": 3,
+    "configurations_count": 6,
     "configuration_ids": [
-      "audi-a6-etron-base",
-      "audi-a6-etron-perf",
-      "audi-a6-etron-quattro"
+      "audi-a6-etron-design-base",
+      "audi-a6-etron-design-perf",
+      "audi-a6-etron-design-quattro",
+      "audi-a6-etron-sline-base",
+      "audi-a6-etron-sline-perf",
+      "audi-a6-etron-sline-quattro"
     ]
   },
   {
@@ -103,6 +108,20 @@
       "audi-q6-performance",
       "audi-q6-quattro",
       "audi-sq6-e-tron"
+    ]
+  },
+  {
+    "slug": "audi-s6-e-tron",
+    "brand": "Audi",
+    "model": "S6 e-tron",
+    "power_kW": 370,
+    "usableCapacity_kWh": 94.9,
+    "wltp_min_km": 647,
+    "wltp_max_km": 675,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "audi-s6-etron-avant",
+      "audi-s6-etron-sportback"
     ]
   },
   {

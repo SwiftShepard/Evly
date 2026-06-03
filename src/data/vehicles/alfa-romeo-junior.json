@@ -92,23 +92,43 @@
       ]
     },
     {
-      "name": "Speciale",
-      "price_EUR": 42000,
+      "name": "Sprint",
+      "price_EUR": 41750,
+      "batteryUsed": "54 kWh",
+      "equipmentHighlights": [
+        "410 km WLTP",
+        "Régulateur adaptatif",
+        "Caméra de recul"
+      ]
+    },
+    {
+      "name": "TI",
+      "price_EUR": 43500,
+      "batteryUsed": "54 kWh",
+      "equipmentHighlights": [
+        "410 km WLTP",
+        "Sièges électriques chauffants",
+        "Jantes alliage 18 pouces"
+      ]
+    },
+    {
+      "name": "Sprint Speciale",
+      "price_EUR": 45500,
       "batteryUsed": "54 kWh",
       "equipmentHighlights": [
         "410 km WLTP",
         "Sellerie cuir/Alcantara",
-        "Camera de recul"
+        "Hayon mains libres"
       ]
     },
     {
       "name": "Veloce",
-      "price_EUR": 48000,
+      "price_EUR": 46900,
       "batteryUsed": "54 kWh",
       "equipmentHighlights": [
-        "280 ch AWD",
-        "0-100 en 5,9 s",
-        "Suspensions sport"
+        "280 ch FWD/AWD",
+        "Châssis sport surbaissé",
+        "Différentiel mécanique Torsen"
       ]
     }
   ],
@@ -177,16 +197,16 @@
       "notes": "156 ch (115 kW), FWD"
     },
     {
-      "id": "alfa-romeo-junior-speciale",
-      "label": "Junior Speciale · 54 kWh",
+      "id": "alfa-romeo-junior-sprint",
+      "label": "Junior Sprint · 54 kWh",
       "battery": "standard",
-      "trim": "Speciale",
+      "trim": "Sprint",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 42000,
-      "monthlyLease_EUR": 199,
-      "leasingSocialEligible": true,
+      "price_EUR": 41750,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
       "wltp_km": 410,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
@@ -223,7 +243,105 @@
         }
       ],
       "availability": "available",
-      "notes": "156 ch (115 kW), FWD, finition haut de gamme"
+      "notes": "156 ch (115 kW), FWD, finition intermédiaire avec aides à la conduite"
+    },
+    {
+      "id": "alfa-romeo-junior-ti",
+      "label": "Junior TI · 54 kWh",
+      "battery": "standard",
+      "trim": "TI",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 43500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 410,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": {
+        "mixed_km": 315,
+        "highway_130_km": 210,
+        "urban_km": 400,
+        "winter_minus5_km": 250,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 37,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 77
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 77
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "156 ch (115 kW), FWD, finition élégante avec intérieur soigné"
+    },
+    {
+      "id": "alfa-romeo-junior-sprint-speciale",
+      "label": "Junior Sprint Speciale · 54 kWh",
+      "battery": "standard",
+      "trim": "Sprint Speciale",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 45500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 410,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": {
+        "mixed_km": 315,
+        "highway_130_km": 210,
+        "urban_km": 400,
+        "winter_minus5_km": 250,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 37,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 77
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 77
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "156 ch (115 kW), FWD, édition de lancement suréquipée"
     },
     {
       "id": "alfa-romeo-junior-veloce",
@@ -233,7 +351,7 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 48000,
+      "price_EUR": 46900,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 400,

@@ -1,0 +1,265 @@
+{
+  "slug": "audi-s6-e-tron",
+  "brand": "Audi",
+  "model": "S6 e-tron",
+  "variant": "94.9 kWh",
+  "bodyType": "Berline",
+  "segment": "E",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Ingolstadt",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 370,
+  "power_hp": 503,
+  "torque_Nm": 855,
+  "drivetrain": "AWD",
+  "motors": 2,
+  "acceleration_0_100_s": 3.9,
+  "topSpeed_kmh": 240,
+  "usableCapacity_kWh": 94.9,
+  "grossCapacity_kWh": 100,
+  "chemistry": "NMC",
+  "architecture_V": 800,
+  "mass_kg": 2325,
+  "wltp_max_km": 675,
+  "wltp_min_km": 647,
+  "realRange": {
+    "mixed_km": 520,
+    "highway_130_km": 370,
+    "urban_km": 630,
+    "winter_minus5_km": 390,
+    "confidence": "estimated",
+    "highway_120_km": 560
+  },
+  "consumption_mixed_kWh_per_100km": 18.3,
+  "consumption_highway_kWh_per_100km": 25.6,
+  "consumption_winter_kWh_per_100km": 24.3,
+  "dragCoefficient_Cx": 0.21,
+  "chargingDC": {
+    "peakPower_kW": 270,
+    "time_10_80_min": 21,
+    "kWh_added_30min": 75,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 10
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 180
+    },
+    {
+      "soc": 10,
+      "power": 270
+    },
+    {
+      "soc": 30,
+      "power": 240
+    },
+    {
+      "soc": 50,
+      "power": 175
+    },
+    {
+      "soc": 80,
+      "power": 60
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4928,
+  "width_mm": 1923,
+  "height_mm": 1487,
+  "wheelbase_mm": 2946,
+  "trunkCapacity_L": 502,
+  "trunkCapacityFolded_L": 1330,
+  "frunkCapacity_L": 27,
+  "trims": [
+    {
+      "name": "S6 Sportback e-tron",
+      "price_EUR": 105020,
+      "batteryUsed": "94.9 kWh",
+      "equipmentHighlights": [
+        "Suspension pneumatique adaptative S",
+        "Projecteurs Matrix LED",
+        "Transmission intégrale quattro (503 ch)"
+      ]
+    },
+    {
+      "name": "S6 Avant e-tron",
+      "price_EUR": 107020,
+      "batteryUsed": "94.9 kWh",
+      "equipmentHighlights": [
+        "Silhouette break Avant exclusive",
+        "Volume de coffre modulable jusqu'à 1420 L",
+        "Suspension pneumatique adaptative S"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "audi-s6-etron-sportback",
+      "label": "Sportback · 94.9 kWh",
+      "battery": "long-range",
+      "trim": "S6 Sportback e-tron",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 105020,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 675,
+      "wltp_consumption_kWh_100km": 16,
+      "realRange": {
+        "mixed_km": 520,
+        "highway_130_km": 370,
+        "urban_km": 630,
+        "winter_minus5_km": 390,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 270,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 75,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 180
+        },
+        {
+          "soc": 10,
+          "power": 270
+        },
+        {
+          "soc": 30,
+          "power": 240
+        },
+        {
+          "soc": 50,
+          "power": 175
+        },
+        {
+          "soc": 80,
+          "power": 60
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "503 ch (370 kW) - 551 ch (405 kW) boost, AWD, Sportback"
+    },
+    {
+      "id": "audi-s6-etron-avant",
+      "label": "Avant · 94.9 kWh",
+      "battery": "long-range",
+      "trim": "S6 Avant e-tron",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 107020,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 647,
+      "wltp_consumption_kWh_100km": 17,
+      "realRange": {
+        "mixed_km": 500,
+        "highway_130_km": 355,
+        "urban_km": 610,
+        "winter_minus5_km": 375,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 270,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 75,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 180
+        },
+        {
+          "soc": 10,
+          "power": 270
+        },
+        {
+          "soc": 30,
+          "power": 240
+        },
+        {
+          "soc": 50,
+          "power": 175
+        },
+        {
+          "soc": 80,
+          "power": 60
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "503 ch (370 kW) - 551 ch (405 kW) boost, AWD, Avant"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 2,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Silhouette sportive haute performance en version Sportback et break Avant"
+    },
+    {
+      "category": "technologie",
+      "label": "Motorisation quattro de 503 ch et jusqu'à 551 ch avec Launch Control"
+    },
+    {
+      "category": "technologie",
+      "label": "Architecture 800V PPE permettant de récupérer 10 à 80 % d'énergie en 21 min"
+    },
+    {
+      "category": "confort",
+      "label": "Suspension pneumatique adaptative S de série pour une tenue de route et un confort optimaux"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Performances de premier ordre (0-100 km/h en 3,9 s)",
+      "Recharge ultra-rapide 800V jusqu'à 270 kW de puissance de crête",
+      "Excellent compromis entre sportivité et habitabilité (notamment en Avant)"
+    ],
+    "weaknesses": [
+      "Tarifs très élitistes débutant à plus de 105 000 euros",
+      "Consommation plus élevée que les versions standard RWD"
+    ],
+    "idealUserProfile": "Conducteurs à la recherche d'une berline ou d'un break électrique aux performances sportives extrêmes sans compromis sur les trajets au long cours.",
+    "notIdealFor": "Budgets raisonnables et conducteurs cherchant l'efficience d'autonomie maximale (la version A6 Performance RWD fait mieux)."
+  },
+  "lastUpdated": "2026-06-03",
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
+  "imageCredit": "Constructeur"
+}
