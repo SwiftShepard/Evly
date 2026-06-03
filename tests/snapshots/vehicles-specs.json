@@ -152,14 +152,18 @@
     "brand": "BMW",
     "model": "i4",
     "power_kW": 250,
-    "usableCapacity_kWh": 80.7,
+    "usableCapacity_kWh": 81.3,
     "wltp_min_km": 414,
     "wltp_max_km": 590,
-    "configurations_count": 3,
+    "configurations_count": 7,
     "configuration_ids": [
-      "bmw-i4-edrive35",
-      "bmw-i4-edrive40",
-      "bmw-i4-m50"
+      "bmw-i4-edrive35-base",
+      "bmw-i4-edrive35-msport",
+      "bmw-i4-edrive40-base",
+      "bmw-i4-edrive40-msport",
+      "bmw-i4-m50-msport",
+      "bmw-i4-xdrive40-base",
+      "bmw-i4-xdrive40-msport"
     ]
   },
   {
@@ -170,21 +174,23 @@
     "usableCapacity_kWh": 81.2,
     "wltp_min_km": 455,
     "wltp_max_km": 582,
-    "configurations_count": 3,
+    "configurations_count": 5,
     "configuration_ids": [
-      "bmw-i5-edrive40",
+      "bmw-i5-edrive40-base",
+      "bmw-i5-edrive40-msport",
       "bmw-i5-m60",
-      "bmw-i5-xdrive40"
+      "bmw-i5-xdrive40-base",
+      "bmw-i5-xdrive40-msport"
     ]
   },
   {
     "slug": "bmw-i7",
     "brand": "BMW",
     "model": "i7",
-    "power_kW": 400,
+    "power_kW": 335,
     "usableCapacity_kWh": 101.7,
     "wltp_min_km": 560,
-    "wltp_max_km": 625,
+    "wltp_max_km": 728,
     "configurations_count": 3,
     "configuration_ids": [
       "bmw-i7-edrive50",
@@ -196,7 +202,7 @@
     "slug": "bmw-ix",
     "brand": "BMW",
     "model": "iX",
-    "power_kW": 326,
+    "power_kW": 385,
     "usableCapacity_kWh": 105.2,
     "wltp_min_km": 419,
     "wltp_max_km": 630,
@@ -213,12 +219,16 @@
     "model": "iX1",
     "power_kW": 230,
     "usableCapacity_kWh": 64.7,
-    "wltp_min_km": 440,
+    "wltp_min_km": 439,
     "wltp_max_km": 475,
-    "configurations_count": 2,
+    "configurations_count": 6,
     "configuration_ids": [
-      "bmw-ix1-edrive20",
-      "bmw-ix1-xdrive30"
+      "bmw-ix1-edrive20-base",
+      "bmw-ix1-edrive20-msport",
+      "bmw-ix1-edrive20-xline",
+      "bmw-ix1-xdrive30-base",
+      "bmw-ix1-xdrive30-msport",
+      "bmw-ix1-xdrive30-xline"
     ]
   },
   {
@@ -229,10 +239,12 @@
     "usableCapacity_kWh": 64.7,
     "wltp_min_km": 417,
     "wltp_max_km": 449,
-    "configurations_count": 2,
+    "configurations_count": 4,
     "configuration_ids": [
-      "bmw-ix2-edrive20",
-      "bmw-ix2-xdrive30"
+      "bmw-ix2-edrive20-base",
+      "bmw-ix2-edrive20-msport",
+      "bmw-ix2-xdrive30-base",
+      "bmw-ix2-xdrive30-msport"
     ]
   },
   {

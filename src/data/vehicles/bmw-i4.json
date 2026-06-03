@@ -16,7 +16,7 @@
   "motors": 1,
   "acceleration_0_100_s": 5.6,
   "topSpeed_kmh": 190,
-  "usableCapacity_kWh": 80.7,
+  "usableCapacity_kWh": 81.3,
   "grossCapacity_kWh": 83.9,
   "chemistry": "NMC",
   "architecture_V": 400,
@@ -25,11 +25,10 @@
   "wltp_min_km": 414,
   "realRange": {
     "mixed_km": 425,
-    "highway_130_km": 430,
+    "highway_130_km": 305,
     "urban_km": 525,
     "winter_minus5_km": 335,
-    "confidence": "estimated",
-    "highway_120_km": 385
+    "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 18,
   "consumption_highway_kWh_per_100km": 24,
@@ -117,9 +116,9 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "i4 eDrive35",
-      "price_EUR": 52550,
-      "batteryUsed": "66 kWh",
+      "name": "i4 eDrive35 (Base)",
+      "price_EUR": 57550,
+      "batteryUsed": "67 kWh",
       "equipmentHighlights": [
         "414 km WLTP",
         "286 ch RWD",
@@ -127,23 +126,63 @@
       ]
     },
     {
-      "name": "i4 eDrive40",
-      "price_EUR": 58850,
+      "name": "i4 eDrive35 M Sport",
+      "price_EUR": 61650,
+      "batteryUsed": "67 kWh",
+      "equipmentHighlights": [
+        "Pack aerodynamique M",
+        "Sellerie Alcantara/Sensatec",
+        "Jantes 18 pouces aero M"
+      ]
+    },
+    {
+      "name": "i4 eDrive40 (Base)",
+      "price_EUR": 63950,
       "batteryUsed": "83.9 kWh",
       "equipmentHighlights": [
         "590 km WLTP",
         "340 ch RWD",
-        "Charge DC 205 kW"
+        "Projecteurs LED"
       ]
     },
     {
-      "name": "i4 M50 xDrive",
-      "price_EUR": 74550,
+      "name": "i4 eDrive40 M Sport",
+      "price_EUR": 68050,
       "batteryUsed": "83.9 kWh",
       "equipmentHighlights": [
-        "AWD 544 ch",
-        "0-100 en 3,9 s",
-        "Chassis M Sport adaptatif"
+        "Pack M Sport dynamique",
+        "Jantes 18 pouces aero M",
+        "Chassis sport et sieges sport"
+      ]
+    },
+    {
+      "name": "i4 xDrive40 (Base)",
+      "price_EUR": 67450,
+      "batteryUsed": "83.9 kWh",
+      "equipmentHighlights": [
+        "540 km WLTP",
+        "401 ch AWD xDrive",
+        "0-100 km/h en 5.1 s"
+      ]
+    },
+    {
+      "name": "i4 xDrive40 M Sport",
+      "price_EUR": 71550,
+      "batteryUsed": "83.9 kWh",
+      "equipmentHighlights": [
+        "Pack M Sport dynamique",
+        "Transmission integrale xDrive",
+        "Volant M gaine cuir"
+      ]
+    },
+    {
+      "name": "i4 M50 xDrive (M Sport)",
+      "price_EUR": 78600,
+      "batteryUsed": "83.9 kWh",
+      "equipmentHighlights": [
+        "AWD M Performance 544 ch",
+        "0-100 en 3.9 s",
+        "Chassis M adaptatif"
       ]
     }
   ],
@@ -152,18 +191,18 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "bmw-i4-edrive35",
-      "label": "i4 eDrive35 · 66 kWh",
+      "id": "bmw-i4-edrive35-base",
+      "label": "eDrive35 (Base) · 67 kWh",
       "battery": "standard",
-      "trim": "i4 eDrive35",
-      "wheelSize_inches": 18,
+      "trim": "i4 eDrive35 (Base)",
+      "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 52550,
+      "price_EUR": 57550,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 414,
-      "wltp_consumption_kWh_100km": 17,
+      "wltp_consumption_kWh_100km": 17.0,
       "realRange": {
         "mixed_km": 310,
         "highway_130_km": 225,
@@ -202,21 +241,74 @@
         }
       ],
       "availability": "available",
-      "notes": "286 ch (210 kW), RWD"
+      "notes": "286 ch (210 kW), RWD, version d'acces"
     },
     {
-      "id": "bmw-i4-edrive40",
-      "label": "i4 eDrive40 · 83.9 kWh",
-      "battery": "long-range",
-      "trim": "i4 eDrive40",
-      "wheelSize_inches": 19,
+      "id": "bmw-i4-edrive35-msport",
+      "label": "eDrive35 M Sport · 67 kWh",
+      "battery": "standard",
+      "trim": "i4 eDrive35 M Sport",
+      "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 58850,
+      "price_EUR": 61650,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 414,
+      "wltp_consumption_kWh_100km": 17.0,
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 225,
+        "urban_km": 385,
+        "winter_minus5_km": 250,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 180,
+      "chargingDC_10_80_min": 24,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 120
+        },
+        {
+          "soc": 10,
+          "power": 180
+        },
+        {
+          "soc": 30,
+          "power": 160
+        },
+        {
+          "soc": 50,
+          "power": 110
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "286 ch (210 kW), RWD, finition sport"
+    },
+    {
+      "id": "bmw-i4-edrive40-base",
+      "label": "eDrive40 (Base) · 83.9 kWh",
+      "battery": "long-range",
+      "trim": "i4 eDrive40 (Base)",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 63950,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 590,
-      "wltp_consumption_kWh_100km": 16,
+      "wltp_consumption_kWh_100km": 16.0,
       "realRange": {
         "mixed_km": 425,
         "highway_130_km": 305,
@@ -258,14 +350,173 @@
       "notes": "340 ch (250 kW), RWD"
     },
     {
-      "id": "bmw-i4-m50",
-      "label": "i4 M50 xDrive · 83.9 kWh",
+      "id": "bmw-i4-edrive40-msport",
+      "label": "eDrive40 M Sport · 83.9 kWh",
       "battery": "long-range",
-      "trim": "i4 M50 xDrive",
-      "wheelSize_inches": 20,
+      "trim": "i4 eDrive40 M Sport",
+      "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 74550,
+      "price_EUR": 68050,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 590,
+      "wltp_consumption_kWh_100km": 16.0,
+      "realRange": {
+        "mixed_km": 425,
+        "highway_130_km": 305,
+        "urban_km": 525,
+        "winter_minus5_km": 335,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 205,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 205
+        },
+        {
+          "soc": 30,
+          "power": 180
+        },
+        {
+          "soc": 50,
+          "power": 130
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 9
+        }
+      ],
+      "availability": "available",
+      "notes": "340 ch (250 kW), RWD, finition sport"
+    },
+    {
+      "id": "bmw-i4-xdrive40-base",
+      "label": "xDrive40 (Base) · 83.9 kWh",
+      "battery": "long-range",
+      "trim": "i4 xDrive40 (Base)",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 67450,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 540,
+      "wltp_consumption_kWh_100km": 17.5,
+      "realRange": {
+        "mixed_km": 405,
+        "highway_130_km": 290,
+        "urban_km": 495,
+        "winter_minus5_km": 315,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 205,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 205
+        },
+        {
+          "soc": 30,
+          "power": 180
+        },
+        {
+          "soc": 50,
+          "power": 130
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 9
+        }
+      ],
+      "availability": "available",
+      "notes": "401 ch (295 kW), AWD xDrive"
+    },
+    {
+      "id": "bmw-i4-xdrive40-msport",
+      "label": "xDrive40 M Sport · 83.9 kWh",
+      "battery": "long-range",
+      "trim": "i4 xDrive40 M Sport",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 71550,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 540,
+      "wltp_consumption_kWh_100km": 17.5,
+      "realRange": {
+        "mixed_km": 405,
+        "highway_130_km": 290,
+        "urban_km": 495,
+        "winter_minus5_km": 315,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 205,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 205
+        },
+        {
+          "soc": 30,
+          "power": 180
+        },
+        {
+          "soc": 50,
+          "power": 130
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 9
+        }
+      ],
+      "availability": "available",
+      "notes": "401 ch (295 kW), AWD xDrive, finition sport"
+    },
+    {
+      "id": "bmw-i4-m50-msport",
+      "label": "M50 xDrive · 83.9 kWh",
+      "battery": "long-range",
+      "trim": "i4 M50 xDrive (M Sport)",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 78600,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 520,
@@ -308,7 +559,7 @@
         }
       ],
       "availability": "available",
-      "notes": "544 ch (400 kW), AWD xDrive, M Sport"
+      "notes": "544 ch (400 kW), AWD xDrive, M Performance"
     }
   ],
   "warranty": {
@@ -348,12 +599,11 @@
     "idealUserProfile": "Conducteurs cherchant une berline electrique sportive et dynamique.",
     "notIdealFor": "Acheteurs cherchant la charge 800 V ultra-rapide."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-06-04",
   "sources": [
     "constructeur",
     "automobile-propre",
-    "nyland",
-    "la-chaine-ev"
+    "evkx"
   ],
   "imageCredit": "Constructeur"
 }

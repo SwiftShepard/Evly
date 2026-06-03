@@ -9,9 +9,9 @@
   "assemblyPlant": "Dingolfing",
   "releaseYear": 2022,
   "marketAvailability": "Disponible",
-  "power_kW": 326,
-  "power_hp": 443,
-  "torque_Nm": 700,
+  "power_kW": 385,
+  "power_hp": 523,
+  "torque_Nm": 765,
   "drivetrain": "AWD",
   "motors": 2,
   "acceleration_0_100_s": 4.6,
@@ -28,8 +28,7 @@
     "highway_130_km": 325,
     "urban_km": 560,
     "winter_minus5_km": 360,
-    "confidence": "estimated",
-    "highway_120_km": 489
+    "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 21,
   "consumption_highway_kWh_per_100km": 27,
@@ -97,9 +96,9 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "iX xDrive40",
-      "price_EUR": 79950,
-      "batteryUsed": "76.6 kWh",
+      "name": "iX xDrive40 (Base)",
+      "price_EUR": 84200,
+      "batteryUsed": "71 kWh",
       "equipmentHighlights": [
         "419 km WLTP",
         "AWD 326 ch",
@@ -107,8 +106,8 @@
       ]
     },
     {
-      "name": "iX xDrive50",
-      "price_EUR": 99950,
+      "name": "iX xDrive50 (Base)",
+      "price_EUR": 111200,
       "batteryUsed": "105.2 kWh",
       "equipmentHighlights": [
         "630 km WLTP",
@@ -118,12 +117,12 @@
     },
     {
       "name": "iX M60",
-      "price_EUR": 134550,
+      "price_EUR": 143050,
       "batteryUsed": "105.2 kWh",
       "equipmentHighlights": [
         "AWD 619 ch",
-        "0-100 en 3,8 s",
-        "Chassis M adaptatif"
+        "0-100 en 3.8 s",
+        "Chassis M adaptatif Professional"
       ]
     }
   ],
@@ -133,17 +132,17 @@
   "configurations": [
     {
       "id": "bmw-ix-xdrive40",
-      "label": "iX xDrive40 · 76.6 kWh",
+      "label": "xDrive40 (Base) · 71 kWh",
       "battery": "standard",
-      "trim": "iX xDrive40",
+      "trim": "iX xDrive40 (Base)",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 79950,
+      "price_EUR": 84200,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 419,
-      "wltp_consumption_kWh_100km": 20,
+      "wltp_consumption_kWh_100km": 20.0,
       "realRange": {
         "mixed_km": 315,
         "highway_130_km": 230,
@@ -186,13 +185,13 @@
     },
     {
       "id": "bmw-ix-xdrive50",
-      "label": "iX xDrive50 · 105.2 kWh",
+      "label": "xDrive50 (Base) · 105.2 kWh",
       "battery": "long-range",
-      "trim": "iX xDrive50",
+      "trim": "iX xDrive50 (Base)",
       "wheelSize_inches": 21,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 99950,
+      "price_EUR": 111200,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 630,
@@ -239,17 +238,17 @@
     },
     {
       "id": "bmw-ix-m60",
-      "label": "iX M60 · 105.2 kWh",
+      "label": "M60 · 105.2 kWh",
       "battery": "long-range",
       "trim": "iX M60",
       "wheelSize_inches": 22,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 134550,
+      "price_EUR": 143050,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 560,
-      "wltp_consumption_kWh_100km": 22,
+      "wltp_consumption_kWh_100km": 22.0,
       "realRange": {
         "mixed_km": 410,
         "highway_130_km": 295,
@@ -322,18 +321,17 @@
       "Assemble en Allemagne (Dingolfing), eligible prime CEE"
     ],
     "weaknesses": [
-      "Prix tres eleve (a partir de 79 950 euros)",
+      "Prix tres eleve (a partir de 84 200 euros)",
       "Consommation elevee et poids important (2 510 kg)"
     ],
     "idealUserProfile": "Familles aisees cherchant un grand SUV electrique premium.",
     "notIdealFor": "Budget limite ou sensibilite a la consommation."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-06-04",
   "sources": [
     "constructeur",
     "automobile-propre",
-    "nyland",
-    "la-chaine-ev"
+    "evkx"
   ],
   "imageCredit": "Constructeur"
 }

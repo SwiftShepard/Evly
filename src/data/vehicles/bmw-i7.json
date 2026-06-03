@@ -9,36 +9,35 @@
   "assemblyPlant": "Dingolfing",
   "releaseYear": 2022,
   "marketAvailability": "Disponible",
-  "power_kW": 400,
-  "power_hp": 544,
-  "torque_Nm": 745,
-  "drivetrain": "AWD",
-  "motors": 2,
-  "acceleration_0_100_s": 4.7,
-  "topSpeed_kmh": 250,
+  "power_kW": 335,
+  "power_hp": 455,
+  "torque_Nm": 650,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 5.5,
+  "topSpeed_kmh": 205,
   "usableCapacity_kWh": 101.7,
   "grossCapacity_kWh": 105.7,
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 2640,
-  "wltp_max_km": 625,
+  "wltp_max_km": 728,
   "wltp_min_km": 560,
   "realRange": {
-    "mixed_km": 480,
-    "highway_130_km": 340,
-    "urban_km": 580,
-    "winter_minus5_km": 380,
-    "confidence": "estimated",
-    "highway_120_km": 631
+    "mixed_km": 490,
+    "highway_130_km": 350,
+    "urban_km": 595,
+    "winter_minus5_km": 395,
+    "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 19.5,
   "consumption_highway_kWh_per_100km": 27.5,
   "consumption_winter_kWh_per_100km": 25,
   "dragCoefficient_Cx": 0.24,
   "chargingDC": {
-    "peakPower_kW": 195,
-    "time_10_80_min": 34,
-    "kWh_added_30min": 65,
+    "peakPower_kW": 250,
+    "time_10_80_min": 28,
+    "kWh_added_30min": 75,
     "confidence": "estimated"
   },
   "chargingAC": {
@@ -53,47 +52,47 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 148
+      "power": 160
     },
     {
       "soc": 10,
-      "power": 185
+      "power": 250
     },
     {
       "soc": 20,
-      "power": 194
+      "power": 240
     },
     {
       "soc": 30,
-      "power": 193
+      "power": 210
     },
     {
       "soc": 40,
-      "power": 170
+      "power": 180
     },
     {
       "soc": 50,
-      "power": 176
+      "power": 150
     },
     {
       "soc": 60,
-      "power": 143
+      "power": 120
     },
     {
       "soc": 70,
-      "power": 110
+      "power": 95
     },
     {
       "soc": 80,
-      "power": 71
+      "power": 70
     },
     {
       "soc": 90,
-      "power": 78
+      "power": 50
     },
     {
       "soc": 100,
-      "power": 8
+      "power": 10
     }
   ],
   "rangeTests": [],
@@ -117,23 +116,23 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "i7 eDrive50 M Sport",
-      "price_EUR": 128500,
+      "name": "i7 eDrive50 (Base)",
+      "price_EUR": 138300,
       "batteryUsed": "101.7 kWh",
       "equipmentHighlights": [
-        "611 km WLTP",
+        "728 km WLTP",
         "455 ch RWD",
-        "Projecteurs en cristal Swarovski"
+        "Projecteurs LED adaptatifs"
       ]
     },
     {
-      "name": "i7 xDrive60 M Sport",
-      "price_EUR": 151800,
+      "name": "i7 xDrive60 (Base)",
+      "price_EUR": 159100,
       "batteryUsed": "101.7 kWh",
       "equipmentHighlights": [
-        "625 km WLTP",
-        "544 ch AWD",
-        "Suspension pneumatique Executive Drive Pro"
+        "625 km WLTP (est.)",
+        "544 ch AWD xDrive",
+        "Suspension pneumatique adaptative"
       ]
     },
     {
@@ -153,48 +152,48 @@
   "configurations": [
     {
       "id": "bmw-i7-edrive50",
-      "label": "i7 eDrive50 · 101.7 kWh",
+      "label": "eDrive50 (Base) · 101.7 kWh",
       "battery": "standard",
-      "trim": "i7 eDrive50 M Sport",
+      "trim": "i7 eDrive50 (Base)",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 128500,
+      "price_EUR": 138300,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 611,
+      "wltp_km": 728,
       "wltp_consumption_kWh_100km": 19.1,
       "realRange": {
-        "mixed_km": 470,
-        "highway_130_km": 330,
-        "urban_km": 570,
-        "winter_minus5_km": 370,
+        "mixed_km": 490,
+        "highway_130_km": 350,
+        "urban_km": 595,
+        "winter_minus5_km": 395,
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 195,
-      "chargingDC_10_80_min": 34,
-      "chargingDC_kWh_30min": 63,
+      "chargingDC_peak_kW": 250,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 75,
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 140
+          "power": 150
         },
         {
           "soc": 10,
-          "power": 195
+          "power": 250
         },
         {
           "soc": 30,
-          "power": 170
+          "power": 210
         },
         {
           "soc": 50,
-          "power": 125
+          "power": 150
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 70
         },
         {
           "soc": 100,
@@ -202,17 +201,17 @@
         }
       ],
       "availability": "available",
-      "notes": "455 ch (335 kW), RWD"
+      "notes": "455 ch (335 kW), RWD, autonomie amelioree Phase 2"
     },
     {
       "id": "bmw-i7-xdrive60",
-      "label": "i7 xDrive60 · 101.7 kWh",
+      "label": "xDrive60 (Base) · 101.7 kWh",
       "battery": "long-range",
-      "trim": "i7 xDrive60 M Sport",
+      "trim": "i7 xDrive60 (Base)",
       "wheelSize_inches": 21,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 151800,
+      "price_EUR": 159100,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 625,
@@ -225,29 +224,29 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 195,
-      "chargingDC_10_80_min": 34,
-      "chargingDC_kWh_30min": 65,
+      "chargingDC_peak_kW": 250,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 75,
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 140
+          "power": 150
         },
         {
           "soc": 10,
-          "power": 195
+          "power": 250
         },
         {
           "soc": 30,
-          "power": 170
+          "power": 210
         },
         {
           "soc": 50,
-          "power": 125
+          "power": 150
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 70
         },
         {
           "soc": 100,
@@ -307,8 +306,8 @@
           "power": 10
         }
       ],
-      "availability": "available",
-      "notes": "659 ch (485 kW), AWD xDrive, M Performance"
+      "availability": "discontinued",
+      "notes": "659 ch (485 kW), AWD xDrive, M Performance (Non disponible a la commande)"
     }
   ],
   "warranty": {
@@ -348,12 +347,11 @@
     "idealUserProfile": "Chauffeurs prives, dirigeants d'entreprise et passionnes de grand luxe technologique.",
     "notIdealFor": "Usage urbain quotidien ou conducteurs cherchant de la discretion."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-06-04",
   "sources": [
     "constructeur",
     "automobile-propre",
-    "nyland",
-    "la-chaine-ev"
+    "evkx"
   ],
   "imageCredit": "Constructeur"
 }

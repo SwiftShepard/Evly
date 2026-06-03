@@ -22,14 +22,13 @@
   "architecture_V": 400,
   "mass_kg": 1960,
   "wltp_max_km": 475,
-  "wltp_min_km": 440,
+  "wltp_min_km": 439,
   "realRange": {
     "mixed_km": 345,
     "highway_130_km": 250,
     "urban_km": 425,
     "winter_minus5_km": 275,
-    "confidence": "estimated",
-    "highway_120_km": 388
+    "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 17.5,
   "consumption_highway_kWh_per_100km": 23,
@@ -117,59 +116,88 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "iX1 eDrive20",
-      "price_EUR": 46950,
+      "name": "iX1 eDrive20 (Base)",
+      "price_EUR": 46900,
       "batteryUsed": "64.7 kWh",
       "equipmentHighlights": [
         "475 km WLTP",
-        "204 ch FWD",
-        "BMW iDrive 9"
+        "204 ch RWD",
+        "Climatisation automatique bi-zone"
       ]
     },
     {
-      "name": "iX1 xDrive30",
-      "price_EUR": 52850,
+      "name": "iX1 eDrive20 xLine",
+      "price_EUR": 49790,
       "batteryUsed": "64.7 kWh",
       "equipmentHighlights": [
-        "AWD 313 ch",
-        "440 km WLTP",
-        "M Sport disponible"
+        "Style baroudeur xLine",
+        "Jantes 18 pouces aero",
+        "Sellerie similicuir Veganza"
+      ]
+    },
+    {
+      "name": "iX1 eDrive20 M Sport",
+      "price_EUR": 51040,
+      "batteryUsed": "64.7 kWh",
+      "equipmentHighlights": [
+        "Pack aerodynamique M",
+        "Suspensions adaptatives M",
+        "Sieges Sport avant"
+      ]
+    },
+    {
+      "name": "iX1 xDrive30 (Base)",
+      "price_EUR": 57300,
+      "batteryUsed": "64.7 kWh",
+      "equipmentHighlights": [
+        "466 km WLTP",
+        "313 ch AWD xDrive",
+        "0-100 km/h en 5.6 s"
+      ]
+    },
+    {
+      "name": "iX1 xDrive30 xLine",
+      "price_EUR": 59900,
+      "batteryUsed": "64.7 kWh",
+      "equipmentHighlights": [
+        "Style baroudeur xLine",
+        "Jantes 18 pouces aero",
+        "Projecteurs LED adaptatifs"
+      ]
+    },
+    {
+      "name": "iX1 xDrive30 M Sport",
+      "price_EUR": 60950,
+      "batteryUsed": "64.7 kWh",
+      "equipmentHighlights": [
+        "Pack aerodynamique M",
+        "Suspensions adaptatives M",
+        "Sieges Sport et inserts alu M"
       ]
     }
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [
-    {
-      "label": "Prime CEE",
-      "amount_EUR": 6500,
-      "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
-    },
-    {
-      "label": "Majoration Batterie Européenne",
-      "amount_EUR": 2000,
-      "conditions": "Majoration pour batterie fabriquée en Europe."
-    }
-  ],
+  "availableAids": [],
   "configurations": [
     {
-      "id": "bmw-ix1-edrive20",
-      "label": "iX1 eDrive20",
+      "id": "bmw-ix1-edrive20-base",
+      "label": "eDrive20 (Base) · 64.7 kWh",
       "battery": "standard",
-      "trim": "iX1 eDrive20",
-      "wheelSize_inches": 18,
+      "trim": "iX1 eDrive20 (Base)",
+      "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 46950,
+      "price_EUR": 46900,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 475,
-      "wltp_consumption_kWh_100km": 16,
+      "wltp_consumption_kWh_100km": 15.4,
       "realRange": {
-        "mixed_km": 345,
-        "highway_130_km": 250,
-        "urban_km": 425,
-        "winter_minus5_km": 275,
+        "mixed_km": 355,
+        "highway_130_km": 255,
+        "urban_km": 440,
+        "winter_minus5_km": 285,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -203,24 +231,183 @@
         }
       ],
       "availability": "available",
-      "notes": "204 ch (150 kW), FWD"
+      "notes": "204 ch (150 kW), FWD, version d'acces"
     },
     {
-      "id": "bmw-ix1-xdrive30",
-      "label": "iX1 xDrive30",
+      "id": "bmw-ix1-edrive20-xline",
+      "label": "eDrive20 xLine · 64.7 kWh",
       "battery": "standard",
-      "trim": "iX1 xDrive30",
-      "wheelSize_inches": 19,
+      "trim": "iX1 eDrive20 xLine",
+      "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 52850,
+      "price_EUR": 49790,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 440,
-      "wltp_consumption_kWh_100km": 17,
+      "wltp_km": 472,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": {
+        "mixed_km": 350,
+        "highway_130_km": 250,
+        "urban_km": 435,
+        "winter_minus5_km": 280,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 85
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 30,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
+      ],
+      "availability": "available",
+      "notes": "204 ch (150 kW), FWD, finition xLine"
+    },
+    {
+      "id": "bmw-ix1-edrive20-msport",
+      "label": "eDrive20 M Sport · 64.7 kWh",
+      "battery": "standard",
+      "trim": "iX1 eDrive20 M Sport",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 51040,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 472,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": {
+        "mixed_km": 350,
+        "highway_130_km": 250,
+        "urban_km": 435,
+        "winter_minus5_km": 280,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 85
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 30,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
+      ],
+      "availability": "available",
+      "notes": "204 ch (150 kW), FWD, finition sport"
+    },
+    {
+      "id": "bmw-ix1-xdrive30-base",
+      "label": "xDrive30 (Base) · 64.7 kWh",
+      "battery": "standard",
+      "trim": "iX1 xDrive30 (Base)",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 57300,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 442,
+      "wltp_consumption_kWh_100km": 16.8,
+      "realRange": {
+        "mixed_km": 330,
+        "highway_130_km": 235,
+        "urban_km": 405,
+        "winter_minus5_km": 265,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 85
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 30,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
+      ],
+      "availability": "available",
+      "notes": "313 ch (230 kW), AWD xDrive, version d'acces"
+    },
+    {
+      "id": "bmw-ix1-xdrive30-xline",
+      "label": "xDrive30 xLine · 64.7 kWh",
+      "battery": "standard",
+      "trim": "iX1 xDrive30 xLine",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 59900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 439,
+      "wltp_consumption_kWh_100km": 16.9,
       "realRange": {
         "mixed_km": 325,
-        "highway_130_km": 235,
+        "highway_130_km": 230,
         "urban_km": 400,
         "winter_minus5_km": 260,
         "confidence": "estimated"
@@ -256,7 +443,60 @@
         }
       ],
       "availability": "available",
-      "notes": "313 ch (230 kW), AWD xDrive"
+      "notes": "313 ch (230 kW), AWD xDrive, finition xLine"
+    },
+    {
+      "id": "bmw-ix1-xdrive30-msport",
+      "label": "xDrive30 M Sport · 64.7 kWh",
+      "battery": "standard",
+      "trim": "iX1 xDrive30 M Sport",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 60950,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 439,
+      "wltp_consumption_kWh_100km": 16.9,
+      "realRange": {
+        "mixed_km": 325,
+        "highway_130_km": 230,
+        "urban_km": 400,
+        "winter_minus5_km": 260,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 85
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 30,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
+      ],
+      "availability": "available",
+      "notes": "313 ch (230 kW), AWD xDrive, finition sport"
     }
   ],
   "warranty": {
@@ -296,12 +536,11 @@
     "idealUserProfile": "Conducteurs cherchant un SUV compact premium dynamique.",
     "notIdealFor": "Gros rouleurs cherchant grande autonomie ou charge ultra-rapide."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-06-04",
   "sources": [
     "constructeur",
     "automobile-propre",
-    "nyland",
-    "la-chaine-ev"
+    "evkx"
   ],
   "imageCredit": "Constructeur"
 }

@@ -28,8 +28,7 @@
     "highway_130_km": 300,
     "urban_km": 515,
     "winter_minus5_km": 330,
-    "confidence": "estimated",
-    "highway_120_km": 351
+    "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 18.5,
   "consumption_highway_kWh_per_100km": 24,
@@ -117,33 +116,53 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "i5 eDrive40",
-      "price_EUR": 70150,
+      "name": "i5 eDrive40 (Base)",
+      "price_EUR": 76200,
       "batteryUsed": "81.2 kWh",
       "equipmentHighlights": [
         "582 km WLTP",
         "340 ch RWD",
-        "BMW iDrive 9"
+        "BMW Live Cockpit Plus"
       ]
     },
     {
-      "name": "i5 xDrive40",
-      "price_EUR": 74750,
+      "name": "i5 eDrive40 M Sport",
+      "price_EUR": 80250,
+      "batteryUsed": "81.2 kWh",
+      "equipmentHighlights": [
+        "Pack M Sport dynamique",
+        "Jantes 19 pouces aero M",
+        "Volant M gaine cuir et inserts alu"
+      ]
+    },
+    {
+      "name": "i5 xDrive40 (Base)",
+      "price_EUR": 81600,
       "batteryUsed": "81.2 kWh",
       "equipmentHighlights": [
         "AWD 340 ch",
         "536 km WLTP",
-        "xDrive transmission integrale"
+        "Transmission integrale xDrive"
       ]
     },
     {
-      "name": "i5 M60 xDrive",
-      "price_EUR": 105650,
+      "name": "i5 xDrive40 M Sport",
+      "price_EUR": 85650,
+      "batteryUsed": "81.2 kWh",
+      "equipmentHighlights": [
+        "Pack M Sport dynamique",
+        "Suspensions adaptatives",
+        "Projecteurs LED adaptatifs"
+      ]
+    },
+    {
+      "name": "i5 M60 xDrive (M Sport)",
+      "price_EUR": 107500,
       "batteryUsed": "81.2 kWh",
       "equipmentHighlights": [
         "AWD 601 ch",
-        "0-100 en 3,8 s",
-        "Chassis M adaptatif"
+        "0-100 en 3.8 s",
+        "Chassis M adaptatif Professional"
       ]
     }
   ],
@@ -152,14 +171,14 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "bmw-i5-edrive40",
-      "label": "i5 eDrive40 · 81.2 kWh",
+      "id": "bmw-i5-edrive40-base",
+      "label": "eDrive40 (Base) · 81.2 kWh",
       "battery": "standard",
-      "trim": "i5 eDrive40",
+      "trim": "i5 eDrive40 (Base)",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 70150,
+      "price_EUR": 76200,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 582,
@@ -202,17 +221,70 @@
         }
       ],
       "availability": "available",
-      "notes": "340 ch (250 kW), RWD"
+      "notes": "340 ch (250 kW), RWD, version d'acces"
     },
     {
-      "id": "bmw-i5-xdrive40",
-      "label": "i5 xDrive40 · 81.2 kWh",
+      "id": "bmw-i5-edrive40-msport",
+      "label": "eDrive40 M Sport · 81.2 kWh",
       "battery": "standard",
-      "trim": "i5 xDrive40",
+      "trim": "i5 eDrive40 M Sport",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 74750,
+      "price_EUR": 80250,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 582,
+      "wltp_consumption_kWh_100km": 16.2,
+      "realRange": {
+        "mixed_km": 420,
+        "highway_130_km": 300,
+        "urban_km": 515,
+        "winter_minus5_km": 330,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 205,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 205
+        },
+        {
+          "soc": 30,
+          "power": 180
+        },
+        {
+          "soc": 50,
+          "power": 130
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 9
+        }
+      ],
+      "availability": "available",
+      "notes": "340 ch (250 kW), RWD, finition sport"
+    },
+    {
+      "id": "bmw-i5-xdrive40-base",
+      "label": "xDrive40 (Base) · 81.2 kWh",
+      "battery": "standard",
+      "trim": "i5 xDrive40 (Base)",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 81600,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 536,
@@ -255,17 +327,70 @@
         }
       ],
       "availability": "available",
-      "notes": "340 ch (250 kW), AWD xDrive"
+      "notes": "340 ch (250 kW), AWD xDrive, version d'acces"
+    },
+    {
+      "id": "bmw-i5-xdrive40-msport",
+      "label": "xDrive40 M Sport · 81.2 kWh",
+      "battery": "standard",
+      "trim": "i5 xDrive40 M Sport",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 85650,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 536,
+      "wltp_consumption_kWh_100km": 17.5,
+      "realRange": {
+        "mixed_km": 395,
+        "highway_130_km": 285,
+        "urban_km": 485,
+        "winter_minus5_km": 315,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 205,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 205
+        },
+        {
+          "soc": 30,
+          "power": 180
+        },
+        {
+          "soc": 50,
+          "power": 130
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 9
+        }
+      ],
+      "availability": "available",
+      "notes": "340 ch (250 kW), AWD xDrive, finition sport"
     },
     {
       "id": "bmw-i5-m60",
-      "label": "i5 M60 xDrive · 81.2 kWh",
+      "label": "M60 xDrive · 81.2 kWh",
       "battery": "standard",
-      "trim": "i5 M60 xDrive",
-      "wheelSize_inches": 21,
+      "trim": "i5 M60 xDrive (M Sport)",
+      "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 105650,
+      "price_EUR": 107500,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 455,
@@ -308,7 +433,7 @@
         }
       ],
       "availability": "available",
-      "notes": "601 ch (442 kW), AWD xDrive, M Sport"
+      "notes": "601 ch (442 kW), AWD xDrive, M Performance"
     }
   ],
   "warranty": {
@@ -342,18 +467,17 @@
       "Assemble en Allemagne (Dingolfing), eligible prime CEE"
     ],
     "weaknesses": [
-      "Prix eleve (a partir de 70 150 euros)",
+      "Prix eleve",
       "Architecture 400 V, pas de 800 V"
     ],
     "idealUserProfile": "Cadres et professionnels cherchant une berline electrique premium et dynamique.",
     "notIdealFor": "Budget limite ou besoin de charge 800 V ultra-rapide."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-06-04",
   "sources": [
     "constructeur",
     "automobile-propre",
-    "nyland",
-    "la-chaine-ev"
+    "evkx"
   ],
   "imageCredit": "Constructeur"
 }

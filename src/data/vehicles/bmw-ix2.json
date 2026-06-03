@@ -28,8 +28,7 @@
     "highway_130_km": 240,
     "urban_km": 405,
     "winter_minus5_km": 265,
-    "confidence": "estimated",
-    "highway_120_km": 419
+    "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 18,
   "consumption_highway_kWh_per_100km": 24,
@@ -97,8 +96,8 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "iX2 eDrive20",
-      "price_EUR": 49950,
+      "name": "iX2 eDrive20 (Base)",
+      "price_EUR": 46990,
       "batteryUsed": "64.7 kWh",
       "equipmentHighlights": [
         "449 km WLTP",
@@ -107,13 +106,33 @@
       ]
     },
     {
-      "name": "iX2 xDrive30",
-      "price_EUR": 54950,
+      "name": "iX2 eDrive20 M Sport",
+      "price_EUR": 51040,
+      "batteryUsed": "64.7 kWh",
+      "equipmentHighlights": [
+        "Pack aerodynamique M",
+        "Suspensions adaptatives M",
+        "Sieges Sport et inserts alu M"
+      ]
+    },
+    {
+      "name": "iX2 xDrive30 (Base)",
+      "price_EUR": 59300,
       "batteryUsed": "64.7 kWh",
       "equipmentHighlights": [
         "AWD 313 ch",
         "417 km WLTP",
-        "M Sport disponible"
+        "xDrive transmission integrale"
+      ]
+    },
+    {
+      "name": "iX2 xDrive30 M Sport",
+      "price_EUR": 63350,
+      "batteryUsed": "64.7 kWh",
+      "equipmentHighlights": [
+        "Pack aerodynamique M sport",
+        "Suspensions adaptatives M",
+        "Sieges Sport et Projecteurs LED"
       ]
     }
   ],
@@ -122,14 +141,14 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "bmw-ix2-edrive20",
-      "label": "iX2 eDrive20",
+      "id": "bmw-ix2-edrive20-base",
+      "label": "eDrive20 (Base) · 64.7 kWh",
       "battery": "standard",
-      "trim": "iX2 eDrive20",
+      "trim": "iX2 eDrive20 (Base)",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 49950,
+      "price_EUR": 46990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 449,
@@ -172,17 +191,70 @@
         }
       ],
       "availability": "available",
-      "notes": "204 ch (150 kW), FWD"
+      "notes": "204 ch (150 kW), FWD, version d'acces"
     },
     {
-      "id": "bmw-ix2-xdrive30",
-      "label": "iX2 xDrive30",
+      "id": "bmw-ix2-edrive20-msport",
+      "label": "eDrive20 M Sport · 64.7 kWh",
       "battery": "standard",
-      "trim": "iX2 xDrive30",
+      "trim": "iX2 eDrive20 M Sport",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 51040,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 449,
+      "wltp_consumption_kWh_100km": 16.5,
+      "realRange": {
+        "mixed_km": 330,
+        "highway_130_km": 240,
+        "urban_km": 405,
+        "winter_minus5_km": 265,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 85
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 30,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
+      ],
+      "availability": "available",
+      "notes": "204 ch (150 kW), FWD, finition sport"
+    },
+    {
+      "id": "bmw-ix2-xdrive30-base",
+      "label": "xDrive30 (Base) · 64.7 kWh",
+      "battery": "standard",
+      "trim": "iX2 xDrive30 (Base)",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 54950,
+      "price_EUR": 59300,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 417,
@@ -225,7 +297,60 @@
         }
       ],
       "availability": "available",
-      "notes": "313 ch (230 kW), AWD xDrive"
+      "notes": "313 ch (230 kW), AWD xDrive, version d'acces"
+    },
+    {
+      "id": "bmw-ix2-xdrive30-msport",
+      "label": "xDrive30 M Sport · 64.7 kWh",
+      "battery": "standard",
+      "trim": "iX2 xDrive30 M Sport",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 63350,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 417,
+      "wltp_consumption_kWh_100km": 17.5,
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 225,
+        "urban_km": 385,
+        "winter_minus5_km": 250,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 85
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 30,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
+      ],
+      "availability": "available",
+      "notes": "313 ch (230 kW), AWD xDrive, finition sport"
     }
   ],
   "warranty": {
@@ -265,12 +390,11 @@
     "idealUserProfile": "Conducteurs cherchant un SUV coupe premium compact et dynamique.",
     "notIdealFor": "Gros rouleurs ou familles nombreuses."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-06-04",
   "sources": [
     "constructeur",
     "automobile-propre",
-    "nyland",
-    "la-chaine-ev"
+    "evkx"
   ],
   "imageCredit": "Constructeur"
 }
