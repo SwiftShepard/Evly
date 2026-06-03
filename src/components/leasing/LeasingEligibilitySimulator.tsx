@@ -24,7 +24,7 @@ export default function LeasingEligibilitySimulator() {
   // Eligibility conditions checks
   const isFiscallyEligible = rfrPerPart <= 16300;
   
-  const isGeographicallyEligible = commuteDistance >= 15 || proMileage >= 8000 || isDependentProfession;
+  const isGeographicallyEligible = commuteDistance >= 10 || proMileage >= 8000 || isDependentProfession;
   
   const isEligibleBasic = isAdultAndResident && !hasBenefitedBefore;
 
@@ -204,7 +204,7 @@ export default function LeasingEligibilitySimulator() {
             />
             <div className="flex justify-between font-mono text-[9px] text-[var(--color-text-faint)] mt-2">
               <span>0 km</span>
-              <span className={commuteDistance >= 15 ? "text-[var(--color-accent)] font-semibold" : ""}>Seuil 15 km</span>
+              <span className={commuteDistance >= 10 ? "text-[var(--color-accent)] font-semibold" : ""}>Seuil 10 km</span>
               <span>50 km</span>
             </div>
           </div>
@@ -333,7 +333,7 @@ export default function LeasingEligibilitySimulator() {
             <span className={isGeographicallyEligible ? "text-[var(--color-text)]" : "text-[var(--color-text-muted)]"}>
               {isDependentProfession 
                 ? "Profession dépendante déclarée (Éligible)" 
-                : `Usage gros rouleur : ${commuteDistance} km (seuil 15) ou ${proMileage.toLocaleString()} km (seuil 8k)`}
+                : `Usage gros rouleur : ${commuteDistance} km (seuil 10) ou ${proMileage.toLocaleString()} km (seuil 8k)`}
             </span>
           </div>
 

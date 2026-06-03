@@ -779,7 +779,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
                         Condition de distance de trajet ou d'usage pro
                       </span>
                       <span className="block text-xs text-[var(--color-text-muted)] mt-1 leading-relaxed">
-                        J'habite à <strong className="text-[var(--color-text)]">plus de 15 km de mon lieu de travail</strong> (trajet aller) OU je parcours plus de <strong className="text-[var(--color-text)]">8 000 km par an</strong> dans le cadre de mon activité pro avec ma voiture personnelle.
+                        J'habite à <strong className="text-[var(--color-text)]">plus de 10 km de mon lieu de travail</strong> (trajet aller) OU je parcours plus de <strong className="text-[var(--color-text)]">8 000 km par an</strong> dans le cadre de mon activité pro avec ma voiture personnelle.
                       </span>
                     </div>
                   </button>
