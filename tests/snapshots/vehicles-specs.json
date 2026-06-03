@@ -350,9 +350,10 @@
     "usableCapacity_kWh": 5.5,
     "wltp_min_km": 75,
     "wltp_max_km": 75,
-    "configurations_count": 1,
+    "configurations_count": 2,
     "configuration_ids": [
-      "citroen-ami-ami"
+      "citroen-ami-original",
+      "citroen-ami-peps"
     ]
   },
   {
@@ -363,11 +364,12 @@
     "usableCapacity_kWh": 50,
     "wltp_min_km": 320,
     "wltp_max_km": 345,
-    "configurations_count": 3,
+    "configurations_count": 4,
     "configuration_ids": [
+      "citroen-e-berlingo-max-m",
+      "citroen-e-berlingo-max-xl",
       "citroen-e-berlingo-plus-m",
-      "citroen-e-berlingo-plus-xl",
-      "citroen-e-berlingo-you-m"
+      "citroen-e-berlingo-plus-xl"
     ]
   },
   {
@@ -376,12 +378,16 @@
     "model": "ë-C3 & Aircross",
     "power_kW": 83,
     "usableCapacity_kWh": 44,
-    "wltp_min_km": 320,
-    "wltp_max_km": 320,
-    "configurations_count": 2,
+    "wltp_min_km": 200,
+    "wltp_max_km": 400,
+    "configurations_count": 6,
     "configuration_ids": [
-      "citroen-e-c3-e-c3-aircross",
-      "citroen-e-c3-e-c3-you"
+      "citroen-e-c3-aircross-extended-54",
+      "citroen-e-c3-aircross-max-44",
+      "citroen-e-c3-aircross-you-44",
+      "citroen-e-c3-max-44",
+      "citroen-e-c3-you-30",
+      "citroen-e-c3-you-44"
     ]
   },
   {
@@ -390,12 +396,18 @@
     "model": "ë-C4 & ë-C4 X",
     "power_kW": 115,
     "usableCapacity_kWh": 50.8,
-    "wltp_min_km": 420,
+    "wltp_min_km": 350,
     "wltp_max_km": 420,
-    "configurations_count": 2,
+    "configurations_count": 8,
     "configuration_ids": [
-      "citroen-e-c4-e-c4-plus",
-      "citroen-e-c4-e-c4-x-plus"
+      "citroen-e-c4-max-156",
+      "citroen-e-c4-plus-136",
+      "citroen-e-c4-plus-156",
+      "citroen-e-c4-x-max-156",
+      "citroen-e-c4-x-plus-136",
+      "citroen-e-c4-x-plus-156",
+      "citroen-e-c4-x-you-136",
+      "citroen-e-c4-you-136"
     ]
   },
   {
@@ -405,26 +417,29 @@
     "power_kW": 157,
     "usableCapacity_kWh": 73,
     "wltp_min_km": 500,
-    "wltp_max_km": 520,
-    "configurations_count": 3,
+    "wltp_max_km": 680,
+    "configurations_count": 5,
     "configuration_ids": [
-      "citroen-e-c5-aircross-max",
-      "citroen-e-c5-aircross-plus",
-      "citroen-e-c5-aircross-you"
+      "citroen-e-c5-aircross-max-73",
+      "citroen-e-c5-aircross-max-97",
+      "citroen-e-c5-aircross-plus-73",
+      "citroen-e-c5-aircross-plus-97",
+      "citroen-e-c5-aircross-you-73"
     ]
   },
   {
     "slug": "citroen-e-jumper",
     "brand": "Citroën",
     "model": "e-Jumper",
-    "power_kW": 150,
+    "power_kW": 200,
     "usableCapacity_kWh": 110,
-    "wltp_min_km": 380,
+    "wltp_min_km": 360,
     "wltp_max_km": 420,
-    "configurations_count": 2,
+    "configurations_count": 3,
     "configuration_ids": [
       "citroen-e-jumper-l2h2",
-      "citroen-e-jumper-l3h2"
+      "citroen-e-jumper-l3h2",
+      "citroen-e-jumper-l4h3"
     ]
   },
   {

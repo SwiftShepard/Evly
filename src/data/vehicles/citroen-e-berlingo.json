@@ -2,23 +2,23 @@
   "slug": "citroen-e-berlingo",
   "brand": "Citroën",
   "model": "ë-Berlingo",
-  "variant": "50 kWh LFP",
+  "variant": "54 kWh LFP",
   "bodyType": "Ludospace",
   "segment": "C",
   "productionCountry": "Espagne",
-  "assemblyPlant": "Ulsan",
+  "assemblyPlant": "Vigo",
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
   "power_kW": 100,
-  "power_hp": 204,
-  "torque_Nm": 300,
+  "power_hp": 136,
+  "torque_Nm": 260,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
-  "topSpeed_kmh": 160,
+  "acceleration_0_100_s": 11.2,
+  "topSpeed_kmh": 135,
   "usableCapacity_kWh": 50,
-  "grossCapacity_kWh": 50,
-  "chemistry": "NMC",
+  "grossCapacity_kWh": 54,
+  "chemistry": "LFP",
   "architecture_V": 400,
   "mass_kg": 1700,
   "wltp_max_km": 345,
@@ -30,9 +30,9 @@
     "winter_minus5_km": 200,
     "confidence": "tested"
   },
-  "consumption_mixed_kWh_per_100km": 15,
-  "consumption_highway_kWh_per_100km": 21,
-  "consumption_winter_kWh_per_100km": 19,
+  "consumption_mixed_kWh_per_100km": 16,
+  "consumption_highway_kWh_per_100km": 23,
+  "consumption_winter_kWh_per_100km": 21,
   "dragCoefficient_Cx": 0.35,
   "chargingDC": {
     "peakPower_kW": 100,
@@ -43,7 +43,7 @@
   "chargingAC": {
     "onboardCharger_kW": 11,
     "phases": 3,
-    "time_0_100_h": 6.5
+    "time_0_100_h": 5.0
   },
   "plugAndCharge": false,
   "v2l": false,
@@ -76,43 +76,53 @@
   "length_mm": 4400,
   "width_mm": 1848,
   "height_mm": 1844,
-  "wheelbase_mm": 2700,
+  "wheelbase_mm": 2785,
   "trunkCapacity_L": 775,
-  "trunkCapacityFolded_L": 1200,
+  "trunkCapacityFolded_L": 3000,
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "You M",
-      "price_EUR": 33900,
-      "batteryUsed": "50 kWh",
+      "name": "Plus M",
+      "price_EUR": 37050,
+      "batteryUsed": "54 kWh",
       "equipmentHighlights": [
-        "345 km WLTP",
-        "Portes coulissantes",
-        "Ecran 10 pouces"
+        "Taille M (4,40 m) - 5 places",
+        "Suspensions Advanced Comfort",
+        "Aide au stationnement arrière"
       ]
     },
     {
-      "name": "Plus M",
-      "price_EUR": 36900,
-      "batteryUsed": "50 kWh",
+      "name": "Max M",
+      "price_EUR": 41000,
+      "batteryUsed": "54 kWh",
       "equipmentHighlights": [
-        "345 km WLTP",
-        "Camera de recul",
-        "Sieges chauffants"
+        "Climatisation automatique bi-zone",
+        "Caméra de recul Top Rear Vision",
+        "Jantes alliage 16 pouces"
       ]
     },
     {
       "name": "Plus XL",
-      "price_EUR": 38400,
-      "batteryUsed": "50 kWh",
+      "price_EUR": 38050,
+      "batteryUsed": "54 kWh",
       "equipmentHighlights": [
-        "320 km WLTP",
-        "Carrosserie XL (4,75 m)",
-        "7 places"
+        "Taille XL (4,75 m) - 5 ou 7 places",
+        "Portes coulissantes arrière",
+        "Aide au stationnement arrière"
+      ]
+    },
+    {
+      "name": "Max XL",
+      "price_EUR": 42000,
+      "batteryUsed": "54 kWh",
+      "equipmentHighlights": [
+        "Climatisation automatique bi-zone",
+        "Barres de toit longitudinales",
+        "Citroën Connect Navigation 3D"
       ]
     }
   ],
-  "leasingSocialEligible": false,
+  "leasingSocialEligible": true,
   "leasingSocial_EUR_per_month": 149,
   "availableAids": [
     {
@@ -128,55 +138,6 @@
   ],
   "configurations": [
     {
-      "id": "citroen-e-berlingo-you-m",
-      "label": "ë-Berlingo You M",
-      "battery": "standard",
-      "trim": "You M",
-      "wheelSize_inches": 16,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 33900,
-      "monthlyLease_EUR": 149,
-      "leasingSocialEligible": false,
-      "wltp_km": 345,
-      "wltp_consumption_kWh_100km": 15,
-      "realRange": {
-        "mixed_km": 250,
-        "highway_130_km": 160,
-        "urban_km": 320,
-        "winter_minus5_km": 200,
-        "confidence": "tested"
-      },
-      "rangeTests": [],
-      "chargingDC_peak_kW": 100,
-      "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 30,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 77
-        },
-        {
-          "soc": 10,
-          "power": 100
-        },
-        {
-          "soc": 50,
-          "power": 77
-        },
-        {
-          "soc": 80,
-          "power": 38
-        },
-        {
-          "soc": 100,
-          "power": 8
-        }
-      ],
-      "availability": "available",
-      "notes": "136 ch (100 kW), FWD, taille M"
-    },
-    {
       "id": "citroen-e-berlingo-plus-m",
       "label": "ë-Berlingo Plus M",
       "battery": "standard",
@@ -184,11 +145,11 @@
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 36900,
-      "monthlyLease_EUR": 149,
-      "leasingSocialEligible": false,
+      "price_EUR": 37050,
+      "monthlyLease_EUR": 299,
+      "leasingSocialEligible": true,
       "wltp_km": 345,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
         "mixed_km": 250,
         "highway_130_km": 160,
@@ -200,30 +161,37 @@
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 30,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 77
-        },
-        {
-          "soc": 10,
-          "power": 100
-        },
-        {
-          "soc": 50,
-          "power": 77
-        },
-        {
-          "soc": 80,
-          "power": 38
-        },
-        {
-          "soc": 100,
-          "power": 8
-        }
-      ],
+      "chargingCurve": null,
       "availability": "available",
-      "notes": "136 ch (100 kW), FWD, taille M"
+      "notes": "Taille M 5 places"
+    },
+    {
+      "id": "citroen-e-berlingo-max-m",
+      "label": "ë-Berlingo Max M",
+      "battery": "standard",
+      "trim": "Max M",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 41000,
+      "monthlyLease_EUR": 329,
+      "leasingSocialEligible": true,
+      "wltp_km": 345,
+      "wltp_consumption_kWh_100km": 15.7,
+      "realRange": {
+        "mixed_km": 248,
+        "highway_130_km": 158,
+        "urban_km": 318,
+        "winter_minus5_km": 198,
+        "confidence": "tested"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": null,
+      "availability": "available",
+      "notes": "Taille M 5 places haut de gamme"
     },
     {
       "id": "citroen-e-berlingo-plus-xl",
@@ -233,9 +201,9 @@
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 38400,
-      "monthlyLease_EUR": 149,
-      "leasingSocialEligible": false,
+      "price_EUR": 38050,
+      "monthlyLease_EUR": 309,
+      "leasingSocialEligible": true,
       "wltp_km": 320,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
@@ -249,30 +217,37 @@
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 30,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 77
-        },
-        {
-          "soc": 10,
-          "power": 100
-        },
-        {
-          "soc": 50,
-          "power": 77
-        },
-        {
-          "soc": 80,
-          "power": 38
-        },
-        {
-          "soc": 100,
-          "power": 8
-        }
-      ],
+      "chargingCurve": null,
       "availability": "available",
-      "notes": "136 ch (100 kW), FWD, taille XL 7 places"
+      "notes": "Taille XL rallongée, option 7 places"
+    },
+    {
+      "id": "citroen-e-berlingo-max-xl",
+      "label": "ë-Berlingo Max XL",
+      "battery": "standard",
+      "trim": "Max XL",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 42000,
+      "monthlyLease_EUR": 339,
+      "leasingSocialEligible": true,
+      "wltp_km": 320,
+      "wltp_consumption_kWh_100km": 16.2,
+      "realRange": {
+        "mixed_km": 232,
+        "highway_130_km": 148,
+        "urban_km": 298,
+        "winter_minus5_km": 182,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": null,
+      "availability": "available",
+      "notes": "Taille XL rallongée haut de gamme, option 7 places"
     }
   ],
   "warranty": {
@@ -285,37 +260,37 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "label": "Modularité exceptionnelle avec sièges arrière individuels escamotables"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "Combiné d'instruments numérique et écran tactile HD 10 pouces"
     },
     {
       "category": "securite",
-      "label": "Freinage automatique d'urgence"
+      "label": "Aides à la conduite avancées avec freinage automatique d'urgence"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "Style ludospace baroudeur avec les célèbres Airbump latéraux"
     }
   ],
   "verdict": {
     "strengths": [
-      "Bon compromis prix/autonomie",
-      "Confort de suspension"
+      "Volume de coffre géant et modularité remarquable",
+      "Confort de suspension excellent pour le segment"
     ],
     "weaknesses": [
-      "Vitesse de charge rapide en retrait",
-      "Infodivertissement perfectible"
+      "Autonomie sur autoroute limitée par l'aérodynamique d'armoire normande",
+      "Consommation énergétique élevée à haute vitesse"
     ],
-    "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
-    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
+    "idealUserProfile": "Familles actives cherchant un maximum d'espace de chargement et une grande modularité au quotidien.",
+    "notIdealFor": "Grands voyageurs autoroutiers ayant besoin de faire de longs trajets réguliers à 130 km/h."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-06-04",
   "sources": [
-    "nyland",
-    "la-chaine-ev"
+    "citroen-fr",
+    "automobile-propre"
   ],
   "imageCredit": "Constructeur"
 }

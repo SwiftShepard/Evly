@@ -2,25 +2,25 @@
   "slug": "citroen-e-spacetourer",
   "brand": "Citroën",
   "model": "ë-SpaceTourer",
-  "variant": "75 kWh",
+  "variant": "50 / 75 kWh",
   "bodyType": "Monospace",
   "segment": "E",
   "productionCountry": "France",
-  "assemblyPlant": "Ulsan",
-  "releaseYear": 2024,
+  "assemblyPlant": "Hordain",
+  "releaseYear": 2020,
   "marketAvailability": "Disponible",
   "power_kW": 100,
-  "power_hp": 204,
-  "torque_Nm": 300,
+  "power_hp": 136,
+  "torque_Nm": 260,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
-  "topSpeed_kmh": 160,
+  "acceleration_0_100_s": 12.1,
+  "topSpeed_kmh": 130,
   "usableCapacity_kWh": 75,
   "grossCapacity_kWh": 75,
   "chemistry": "NMC",
   "architecture_V": 400,
-  "mass_kg": 1700,
+  "mass_kg": 2100,
   "wltp_max_km": 350,
   "wltp_min_km": 230,
   "realRange": {
@@ -30,9 +30,9 @@
     "winter_minus5_km": 220,
     "confidence": "estimated"
   },
-  "consumption_mixed_kWh_per_100km": 15,
-  "consumption_highway_kWh_per_100km": 21,
-  "consumption_winter_kWh_per_100km": 19,
+  "consumption_mixed_kWh_per_100km": 21.5,
+  "consumption_highway_kWh_per_100km": 29,
+  "consumption_winter_kWh_per_100km": 27,
   "dragCoefficient_Cx": 0.35,
   "chargingDC": {
     "peakPower_kW": 100,
@@ -43,7 +43,7 @@
   "chargingAC": {
     "onboardCharger_kW": 11,
     "phases": 3,
-    "time_0_100_h": 6.5
+    "time_0_100_h": 7.0
   },
   "plugAndCharge": false,
   "v2l": false,
@@ -76,39 +76,39 @@
   "length_mm": 4959,
   "width_mm": 1920,
   "height_mm": 1905,
-  "wheelbase_mm": 2700,
+  "wheelbase_mm": 3275,
   "trunkCapacity_L": 798,
-  "trunkCapacityFolded_L": 1200,
+  "trunkCapacityFolded_L": 3968,
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Feel 50 kWh M",
-      "price_EUR": 48000,
+      "name": "Feel M 50 kWh",
+      "price_EUR": 53150,
       "batteryUsed": "50 kWh",
       "equipmentHighlights": [
         "230 km WLTP",
-        "Jusqu'a 9 places",
-        "Portes coulissantes"
+        "Jusqu'à 9 places",
+        "Portes coulissantes latérales"
       ]
     },
     {
-      "name": "Business 75 kWh M",
-      "price_EUR": 52000,
+      "name": "Business M 75 kWh",
+      "price_EUR": 61900,
       "batteryUsed": "75 kWh",
       "equipmentHighlights": [
         "330 km WLTP",
-        "Ecran 10 pouces",
-        "Climatisation auto"
+        "Écran tactile 10 pouces",
+        "Climatisation automatique"
       ]
     },
     {
-      "name": "Business 75 kWh XL",
-      "price_EUR": 55000,
+      "name": "Business XL 75 kWh",
+      "price_EUR": 63900,
       "batteryUsed": "75 kWh",
       "equipmentHighlights": [
         "350 km WLTP",
         "Carrosserie XL (5,30 m)",
-        "9 places"
+        "Jusqu'à 9 places"
       ]
     }
   ],
@@ -120,11 +120,11 @@
       "id": "citroen-e-spacetourer-feel-50",
       "label": "ë-SpaceTourer Feel · 50 kWh M",
       "battery": "standard",
-      "trim": "Feel 50 kWh M",
+      "trim": "Feel M 50 kWh",
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 48000,
+      "price_EUR": 53150,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 230,
@@ -140,44 +140,23 @@
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 30,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 77
-        },
-        {
-          "soc": 10,
-          "power": 100
-        },
-        {
-          "soc": 50,
-          "power": 77
-        },
-        {
-          "soc": 80,
-          "power": 38
-        },
-        {
-          "soc": 100,
-          "power": 8
-        }
-      ],
+      "chargingCurve": null,
       "availability": "available",
-      "notes": "136 ch (100 kW), FWD, taille M"
+      "notes": "Taille M, 50 kWh standard"
     },
     {
       "id": "citroen-e-spacetourer-business-75-m",
       "label": "ë-SpaceTourer Business · 75 kWh M",
       "battery": "long-range",
-      "trim": "Business 75 kWh M",
+      "trim": "Business M 75 kWh",
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 52000,
-      "monthlyLease_EUR": null,
+      "price_EUR": 61900,
+      "monthlyLease_EUR": 809,
       "leasingSocialEligible": false,
       "wltp_km": 330,
-      "wltp_consumption_kWh_100km": 21,
+      "wltp_consumption_kWh_100km": 21.5,
       "realRange": {
         "mixed_km": 260,
         "highway_130_km": 170,
@@ -189,44 +168,23 @@
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 45,
       "chargingDC_kWh_30min": 40,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 77
-        },
-        {
-          "soc": 10,
-          "power": 100
-        },
-        {
-          "soc": 50,
-          "power": 77
-        },
-        {
-          "soc": 80,
-          "power": 38
-        },
-        {
-          "soc": 100,
-          "power": 8
-        }
-      ],
+      "chargingCurve": null,
       "availability": "available",
-      "notes": "136 ch (100 kW), FWD, taille M"
+      "notes": "Taille M, grande autonomie"
     },
     {
       "id": "citroen-e-spacetourer-business-75-xl",
       "label": "ë-SpaceTourer Business · 75 kWh XL",
       "battery": "long-range",
-      "trim": "Business 75 kWh XL",
+      "trim": "Business XL 75 kWh",
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 55000,
-      "monthlyLease_EUR": null,
+      "price_EUR": 63900,
+      "monthlyLease_EUR": 839,
       "leasingSocialEligible": false,
       "wltp_km": 350,
-      "wltp_consumption_kWh_100km": 21,
+      "wltp_consumption_kWh_100km": 21.8,
       "realRange": {
         "mixed_km": 280,
         "highway_130_km": 180,
@@ -238,30 +196,9 @@
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 45,
       "chargingDC_kWh_30min": 40,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 77
-        },
-        {
-          "soc": 10,
-          "power": 100
-        },
-        {
-          "soc": 50,
-          "power": 77
-        },
-        {
-          "soc": 80,
-          "power": 38
-        },
-        {
-          "soc": 100,
-          "power": 8
-        }
-      ],
+      "chargingCurve": null,
       "availability": "available",
-      "notes": "136 ch (100 kW), FWD, taille XL 9 places"
+      "notes": "Taille XL 9 places, grande autonomie"
     }
   ],
   "warranty": {
@@ -274,37 +211,37 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "label": "Modularité et configuration salon avec sièges individuels coulissants"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "Nouvel écran d'infodivertissement HD tactile 10 pouces"
     },
     {
       "category": "securite",
-      "label": "Freinage automatique d'urgence"
+      "label": "Aides à la conduite avancées avec freinage automatique d'urgence"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "Nouvelle face avant Citroën avec logo ovale distinctif"
     }
   ],
   "verdict": {
     "strengths": [
-      "Bon compromis prix/autonomie",
-      "Confort de suspension"
+      "Volume utile gigantesque et espace remarquable pour 9 passagers",
+      "Confort de premier ordre pour les trajets en groupe ou navettes"
     ],
     "weaknesses": [
-      "Vitesse de charge rapide en retrait",
-      "Infodivertissement perfectible"
+      "Autonomie limitée sur autoroute en raison de la traînée aérodynamique",
+      "Tarif élevé avec la batterie de 75 kWh"
     ],
-    "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
-    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
+    "idealUserProfile": "Professionnels du transport de personnes, navettes d'hôtel ou familles très nombreuses ayant besoin de place et de confort.",
+    "notIdealFor": "Grands rouleurs longue distance n'ayant pas la possibilité de charger fréquemment sur autoroute."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-06-04",
   "sources": [
-    "nyland",
-    "la-chaine-ev"
+    "citroen-fr",
+    "automobile-propre"
   ],
   "imageCredit": "Constructeur"
 }

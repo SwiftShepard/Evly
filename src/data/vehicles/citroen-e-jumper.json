@@ -9,12 +9,12 @@
   "assemblyPlant": "Atessa",
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
-  "power_kW": 150,
-  "power_hp": 204,
-  "torque_Nm": 350,
+  "power_kW": 200,
+  "power_hp": 270,
+  "torque_Nm": 410,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 15,
+  "acceleration_0_100_s": 10.0,
   "topSpeed_kmh": 130,
   "usableCapacity_kWh": 110,
   "grossCapacity_kWh": 115,
@@ -22,7 +22,7 @@
   "architecture_V": 400,
   "mass_kg": 2700,
   "wltp_max_km": 420,
-  "wltp_min_km": 380,
+  "wltp_min_km": 360,
   "realRange": {
     "mixed_km": 310,
     "highway_130_km": 200,
@@ -86,12 +86,12 @@
   "height_mm": 2524,
   "wheelbase_mm": 3450,
   "trunkCapacity_L": 11500,
-  "trunkCapacityFolded_L": 13000,
+  "trunkCapacityFolded_L": 17000,
   "frunkCapacity_L": null,
   "trims": [
     {
       "name": "Worker L2H2 110 kWh",
-      "price_EUR": 55800,
+      "price_EUR": 56400,
       "batteryUsed": "110 kWh",
       "equipmentHighlights": [
         "Volume utile 11,5 m3",
@@ -106,7 +106,7 @@
       "equipmentHighlights": [
         "Volume utile 13 m3",
         "Empattement long",
-        "Camera de recul"
+        "Caméra de recul"
       ]
     },
     {
@@ -132,7 +132,7 @@
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 55800,
+      "price_EUR": 56400,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 420,
@@ -148,30 +148,9 @@
       "chargingDC_peak_kW": 150,
       "chargingDC_10_80_min": 42,
       "chargingDC_kWh_30min": 55,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 110
-        },
-        {
-          "soc": 10,
-          "power": 150
-        },
-        {
-          "soc": 50,
-          "power": 100
-        },
-        {
-          "soc": 80,
-          "power": 38
-        },
-        {
-          "soc": 100,
-          "power": 8
-        }
-      ],
+      "chargingCurve": null,
       "availability": "available",
-      "notes": "Grand fourgon L2H2, volume utile 11,5 m3."
+      "notes": "Grand fourgon L2H2, volume utile 11,5 m3"
     },
     {
       "id": "citroen-e-jumper-l3h2",
@@ -197,30 +176,37 @@
       "chargingDC_peak_kW": 150,
       "chargingDC_10_80_min": 42,
       "chargingDC_kWh_30min": 55,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 110
-        },
-        {
-          "soc": 10,
-          "power": 150
-        },
-        {
-          "soc": 50,
-          "power": 100
-        },
-        {
-          "soc": 80,
-          "power": 38
-        },
-        {
-          "soc": 100,
-          "power": 8
-        }
-      ],
+      "chargingCurve": null,
       "availability": "available",
-      "notes": "Grand fourgon L3H2, volume utile 13 m3."
+      "notes": "Grand fourgon L3H2, volume utile 13 m3"
+    },
+    {
+      "id": "citroen-e-jumper-l4h3",
+      "label": "e-Jumper L4H3 110 kWh",
+      "battery": "standard",
+      "trim": "Worker L4H3 110 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 63000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 360,
+      "wltp_consumption_kWh_100km": 30,
+      "realRange": {
+        "mixed_km": 270,
+        "highway_130_km": 170,
+        "urban_km": 340,
+        "winter_minus5_km": 210,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 42,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": null,
+      "availability": "available",
+      "notes": "Grand fourgon L4H3, volume utile 17 m3"
     }
   ],
   "warranty": {
@@ -233,11 +219,11 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "Cabine spacieuse avec rangements superieurs integres"
+      "label": "Cabine spacieuse avec rangements supérieurs intégrés"
     },
     {
       "category": "technologie",
-      "label": "Charge rapide 150 kW pour complements en tournee"
+      "label": "Charge rapide 150 kW pour compléments en tournée"
     },
     {
       "category": "securite",
@@ -245,25 +231,25 @@
     },
     {
       "category": "design",
-      "label": "Volumes utiles de 11,5 a 17 m3, charge utile jusqu'a 1,5 t"
+      "label": "Volumes utiles de 11,5 à 17 m3, charge utile jusqu'à 1,5 t"
     }
   ],
   "verdict": {
     "strengths": [
-      "Volume utile jusqu'a 17 m3 et charge utile 1,5 t",
-      "Autonomie de 420 km WLTP, nouvelle generation entierement revue"
+      "Volume utile gigantesque jusqu'à 17 m3 et charge utile 1,5 t",
+      "Nouvelle motorisation très performante de 270 ch"
     ],
     "weaknesses": [
-      "Consommation elevee sur autoroute (> 35 kWh/100 km charge)",
-      "Prix eleve, TCO competitif uniquement avec usage intensif urbain"
+      "Consommation très élevée sur autoroute à pleine charge",
+      "Tarif d'acquisition élevé pour les petites structures"
     ],
-    "idealUserProfile": "Demenageurs, logisticiens et artisans avec gros volumes, tournees urbaines et acces ZFE requis.",
-    "notIdealFor": "Professionnels roulant principalement sur autoroute ou sans infrastructure de recharge au depot."
+    "idealUserProfile": "Logisticiens, déménageurs et flottes d'entreprises effectuant des livraisons urbaines et périurbaines volumineuses.",
+    "notIdealFor": "Conducteurs effectuant de longs trajets autoroutiers sans point de charge à destination."
   },
-  "lastUpdated": "2026-05-21",
+  "lastUpdated": "2026-06-04",
   "sources": [
-    "automobile-propre",
-    "largus"
+    "citroen-fr",
+    "automobile-propre"
   ],
   "imageCredit": "Constructeur"
 }

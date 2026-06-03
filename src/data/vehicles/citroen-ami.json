@@ -6,21 +6,21 @@
   "bodyType": "Quadricycle",
   "segment": "A",
   "productionCountry": "Maroc",
-  "assemblyPlant": "Ulsan",
-  "releaseYear": 2024,
+  "assemblyPlant": "Kénitra",
+  "releaseYear": 2020,
   "marketAvailability": "Disponible",
   "power_kW": 6,
-  "power_hp": 204,
-  "torque_Nm": 300,
-  "drivetrain": "FWD",
+  "power_hp": 8,
+  "torque_Nm": 40,
+  "drivetrain": "RWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
+  "acceleration_0_100_s": 99.9,
   "topSpeed_kmh": 45,
   "usableCapacity_kWh": 5.5,
   "grossCapacity_kWh": 5.5,
   "chemistry": "NMC",
   "architecture_V": 400,
-  "mass_kg": 1700,
+  "mass_kg": 485,
   "wltp_max_km": 75,
   "wltp_min_km": 75,
   "realRange": {
@@ -30,9 +30,9 @@
     "winter_minus5_km": 50,
     "confidence": "estimated"
   },
-  "consumption_mixed_kWh_per_100km": 15,
-  "consumption_highway_kWh_per_100km": 21,
-  "consumption_winter_kWh_per_100km": 19,
+  "consumption_mixed_kWh_per_100km": 8,
+  "consumption_highway_kWh_per_100km": 8,
+  "consumption_winter_kWh_per_100km": 11,
   "dragCoefficient_Cx": 0.45,
   "chargingDC": {
     "peakPower_kW": 0,
@@ -41,9 +41,9 @@
     "confidence": "estimated"
   },
   "chargingAC": {
-    "onboardCharger_kW": 3,
+    "onboardCharger_kW": 2.3,
     "phases": 1,
-    "time_0_100_h": 3
+    "time_0_100_h": 4
   },
   "plugAndCharge": false,
   "v2l": false,
@@ -76,18 +76,29 @@
   "length_mm": 2410,
   "width_mm": 1390,
   "height_mm": 1520,
-  "wheelbase_mm": 2700,
+  "wheelbase_mm": 1728,
   "trunkCapacity_L": 63,
-  "trunkCapacityFolded_L": 1200,
+  "trunkCapacityFolded_L": 63,
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Ami",
-      "price_EUR": 7990,
+      "name": "Ami l'Original",
+      "price_EUR": 8190,
       "batteryUsed": "5.5 kWh",
       "equipmentHighlights": [
         "Format ultra compact",
-        "Sans permis"
+        "Sans permis dès 14 ans",
+        "Câble de charge intégré"
+      ]
+    },
+    {
+      "name": "My Ami Peps",
+      "price_EUR": 8990,
+      "batteryUsed": "5.5 kWh",
+      "equipmentHighlights": [
+        "Style dynamique et coloré",
+        "Support smartphone",
+        "Filets de porte et tapis de sol"
       ]
     }
   ],
@@ -96,18 +107,18 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "citroen-ami-ami",
-      "label": "Ami Ami",
+      "id": "citroen-ami-original",
+      "label": "Ami l'Original",
       "battery": "standard",
-      "trim": "Ami",
-      "wheelSize_inches": 18,
+      "trim": "Ami l'Original",
+      "wheelSize_inches": 14,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 7990,
-      "monthlyLease_EUR": null,
+      "price_EUR": 8190,
+      "monthlyLease_EUR": 69,
       "leasingSocialEligible": false,
       "wltp_km": 75,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_consumption_kWh_100km": 8,
       "realRange": {
         "mixed_km": 70,
         "highway_130_km": 0,
@@ -119,73 +130,80 @@
       "chargingDC_peak_kW": 0,
       "chargingDC_10_80_min": 0,
       "chargingDC_kWh_30min": 0,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 0
-        },
-        {
-          "soc": 10,
-          "power": 0
-        },
-        {
-          "soc": 50,
-          "power": 0
-        },
-        {
-          "soc": 80,
-          "power": 0
-        },
-        {
-          "soc": 100,
-          "power": 0
-        }
-      ],
+      "chargingCurve": null,
       "availability": "available",
-      "notes": null
+      "notes": "Version d'entrée de gamme"
+    },
+    {
+      "id": "citroen-ami-peps",
+      "label": "My Ami Peps",
+      "battery": "standard",
+      "trim": "My Ami Peps",
+      "wheelSize_inches": 14,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 8990,
+      "monthlyLease_EUR": 89,
+      "leasingSocialEligible": false,
+      "wltp_km": 75,
+      "wltp_consumption_kWh_100km": 8,
+      "realRange": {
+        "mixed_km": 70,
+        "highway_130_km": 0,
+        "urban_km": 75,
+        "winter_minus5_km": 50,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 0,
+      "chargingDC_10_80_min": 0,
+      "chargingDC_kWh_30min": 0,
+      "chargingCurve": null,
+      "availability": "available",
+      "notes": "Finition haute avec pack déco"
     }
   ],
   "warranty": {
-    "vehicle_years": 5,
-    "vehicle_km": 100000,
-    "battery_years": 8,
-    "battery_km": 160000,
+    "vehicle_years": 2,
+    "vehicle_km": 50000,
+    "battery_years": 3,
+    "battery_km": 40000,
     "battery_soh_minimum_percent": 70
   },
   "keyFeatures": [
     {
+      "category": "design",
+      "label": "Design symétrique unique avec pièces identiques"
+    },
+    {
       "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "label": "Habitacle fermé et chauffé pour deux personnes"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "Intégration smartphone via la box Dat@mi"
     },
     {
       "category": "securite",
-      "label": "Freinage automatique d'urgence"
-    },
-    {
-      "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "Structure tubulaire plus protectrice qu'un deux-roues"
     }
   ],
   "verdict": {
     "strengths": [
-      "Bon compromis prix/autonomie",
-      "Confort de suspension"
+      "Format ultra-compact parfait pour la ville",
+      "Accessible sans permis dès 14 ans (BSR/AM)"
     ],
     "weaknesses": [
-      "Vitesse de charge rapide en retrait",
-      "Infodivertissement perfectible"
+      "Confort très spartiate",
+      "Pas d'accès aux voies rapides et autoroutes"
     ],
-    "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
-    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
+    "idealUserProfile": "Jeunes dès 14 ans ou citadins cherchant une alternative fermée et sécurisée aux deux-roues pour des trajets exclusivement urbains.",
+    "notIdealFor": "Conducteurs effectuant des trajets hors agglomération ou nécessitant d'emprunter des voies rapides."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-06-04",
   "sources": [
-    "nyland",
-    "la-chaine-ev"
+    "citroen-fr",
+    "automobile-propre"
   ],
   "imageCredit": "Constructeur"
 }

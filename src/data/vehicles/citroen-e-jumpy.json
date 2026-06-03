@@ -14,7 +14,7 @@
   "torque_Nm": 260,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 13.3,
+  "acceleration_0_100_s": 12.1,
   "topSpeed_kmh": 130,
   "usableCapacity_kWh": 75,
   "grossCapacity_kWh": 78,
@@ -80,24 +80,24 @@
   "length_mm": 4959,
   "width_mm": 1920,
   "height_mm": 1890,
-  "wheelbase_mm": 2925,
+  "wheelbase_mm": 3275,
   "trunkCapacity_L": 5300,
   "trunkCapacityFolded_L": 6100,
   "frunkCapacity_L": null,
   "trims": [
     {
       "name": "Worker M 50 kWh",
-      "price_EUR": 42500,
+      "price_EUR": 40500,
       "batteryUsed": "50 kWh",
       "equipmentHighlights": [
         "Volume utile 5,3 m3",
         "Charge utile 1000 kg",
-        "Ecran tactile 8 pouces"
+        "Écran tactile 10 pouces"
       ]
     },
     {
       "name": "Worker M 75 kWh",
-      "price_EUR": 48500,
+      "price_EUR": 46500,
       "batteryUsed": "75 kWh",
       "equipmentHighlights": [
         "Volume utile 5,3 m3",
@@ -107,12 +107,12 @@
     },
     {
       "name": "Worker XL 75 kWh",
-      "price_EUR": 50200,
+      "price_EUR": 48200,
       "batteryUsed": "75 kWh",
       "equipmentHighlights": [
         "Volume utile 6,1 m3",
         "Empattement long",
-        "Grande autonomie"
+        "Grande autonomie 330 km WLTP"
       ]
     }
   ],
@@ -139,7 +139,7 @@
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 42500,
+      "price_EUR": 40500,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 230,
@@ -155,30 +155,9 @@
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 32,
       "chargingDC_kWh_30min": 30,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 92
-        },
-        {
-          "soc": 10,
-          "power": 100
-        },
-        {
-          "soc": 50,
-          "power": 71
-        },
-        {
-          "soc": 80,
-          "power": 32
-        },
-        {
-          "soc": 100,
-          "power": 6
-        }
-      ],
+      "chargingCurve": null,
       "availability": "available",
-      "notes": "Fourgon M, volume utile 5,3 m3."
+      "notes": "Fourgon M, volume utile 5,3 m3"
     },
     {
       "id": "citroen-e-jumpy-m-75",
@@ -188,7 +167,7 @@
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 48500,
+      "price_EUR": 46500,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 350,
@@ -204,30 +183,9 @@
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 45,
       "chargingDC_kWh_30min": 40,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 92
-        },
-        {
-          "soc": 10,
-          "power": 100
-        },
-        {
-          "soc": 50,
-          "power": 71
-        },
-        {
-          "soc": 80,
-          "power": 32
-        },
-        {
-          "soc": 100,
-          "power": 6
-        }
-      ],
+      "chargingCurve": null,
       "availability": "available",
-      "notes": "Fourgon M, volume utile 5,3 m3, grande autonomie."
+      "notes": "Fourgon M, volume utile 5,3 m3, grande autonomie"
     },
     {
       "id": "citroen-e-jumpy-xl-75",
@@ -237,7 +195,7 @@
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 50200,
+      "price_EUR": 48200,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 330,
@@ -253,30 +211,9 @@
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 45,
       "chargingDC_kWh_30min": 40,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 92
-        },
-        {
-          "soc": 10,
-          "power": 100
-        },
-        {
-          "soc": 50,
-          "power": 71
-        },
-        {
-          "soc": 80,
-          "power": 32
-        },
-        {
-          "soc": 100,
-          "power": 6
-        }
-      ],
+      "chargingCurve": null,
       "availability": "available",
-      "notes": "Fourgon XL, volume utile 6,1 m3, grande autonomie."
+      "notes": "Fourgon XL, volume utile 6,1 m3, grande autonomie"
     }
   ],
   "warranty": {
@@ -289,37 +226,37 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "Cabine confortable avec siege conducteur reglable en hauteur"
+      "label": "Cabine de conduite confortable avec rangements astucieux"
     },
     {
       "category": "technologie",
-      "label": "Charge DC 100 kW et AC triphasee 11 kW"
+      "label": "Charge rapide 100 kW et écran tactile HD 10 pouces"
     },
     {
       "category": "securite",
-      "label": "Freinage automatique d'urgence avec detection pietons"
+      "label": "Freinage automatique d'urgence et alerte de franchissement de ligne"
     },
     {
       "category": "design",
-      "label": "Porte laterale coulissante et charge utile 1000 kg"
+      "label": "Volume de chargement optimisé avec la cloison Moduwork"
     }
   ],
   "verdict": {
     "strengths": [
-      "Production francaise (Hordain), eligible Prime CEE VE selon plafond",
-      "Volume utile genereux (5,3 a 6,1 m3) et charge utile 1000 kg"
+      "Production française (Hordain), volume utile généreux de 5,3 à 6,1 m3",
+      "Grande modularité de la cabine avec cloison de séparation rabattable"
     ],
     "weaknesses": [
-      "Charge DC limitee a 100 kW, lente pour la batterie 75 kWh",
-      "Autonomie reelle modeste sur autoroute (170 km en 75 kWh)"
+      "Vitesse de recharge limitée à 100 kW pour la batterie 75 kWh",
+      "Autonomie réelle modeste sur autoroute"
     ],
-    "idealUserProfile": "Artisans et livreurs urbains avec besoin de volume et d'acces ZFE. Ideal pour tournees quotidiennes < 250 km.",
-    "notIdealFor": "Longs trajets interurbains quotidiens. La charge limitee a 100 kW penalise les usages intensifs."
+    "idealUserProfile": "Professionnels et artisans effectuant des trajets périurbains et nécessitant un grand volume d'accès ZFE.",
+    "notIdealFor": "Grands rouleurs autoroutiers ayant besoin de charges ultra-rapides."
   },
-  "lastUpdated": "2026-05-21",
+  "lastUpdated": "2026-06-04",
   "sources": [
-    "automobile-propre",
-    "la-chaine-ev"
+    "citroen-fr",
+    "automobile-propre"
   ],
   "imageCredit": "Constructeur"
 }

@@ -2,26 +2,26 @@
   "slug": "citroen-e-c5-aircross",
   "brand": "Citroën",
   "model": "ë-C5 Aircross",
-  "variant": "73 kWh",
+  "variant": "73 / 97 kWh",
   "bodyType": "SUV familial",
   "segment": "C",
   "productionCountry": "France",
-  "assemblyPlant": "Ulsan",
+  "assemblyPlant": "Rennes",
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
   "power_kW": 157,
-  "power_hp": 204,
-  "torque_Nm": 300,
+  "power_hp": 210,
+  "torque_Nm": 345,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
-  "topSpeed_kmh": 160,
+  "acceleration_0_100_s": 8.0,
+  "topSpeed_kmh": 170,
   "usableCapacity_kWh": 73,
-  "grossCapacity_kWh": 73,
+  "grossCapacity_kWh": 77,
   "chemistry": "NMC",
   "architecture_V": 400,
-  "mass_kg": 1700,
-  "wltp_max_km": 520,
+  "mass_kg": 1840,
+  "wltp_max_km": 680,
   "wltp_min_km": 500,
   "realRange": {
     "mixed_km": 400,
@@ -76,39 +76,59 @@
   "length_mm": 4500,
   "width_mm": 1860,
   "height_mm": 1670,
-  "wheelbase_mm": 2700,
+  "wheelbase_mm": 2730,
   "trunkCapacity_L": 580,
-  "trunkCapacityFolded_L": 1200,
+  "trunkCapacityFolded_L": 1600,
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "You",
-      "price_EUR": 38990,
+      "name": "You 73 kWh",
+      "price_EUR": 40290,
       "batteryUsed": "73 kWh",
       "equipmentHighlights": [
-        "520 km WLTP",
-        "Ecran 10 pouces",
+        "Écran central 13 pouces",
+        "Combiné numérique 10 pouces",
         "Suspensions Advanced Comfort"
       ]
     },
     {
-      "name": "Plus",
-      "price_EUR": 42990,
+      "name": "Plus 73 kWh",
+      "price_EUR": 43290,
       "batteryUsed": "73 kWh",
       "equipmentHighlights": [
-        "520 km WLTP",
-        "Camera de recul",
-        "Sieges chauffants"
+        "Navigation connectée 3D",
+        "Recharge smartphone à induction",
+        "Caméra de recul 180°"
       ]
     },
     {
-      "name": "Max",
-      "price_EUR": 46990,
+      "name": "Max 73 kWh",
+      "price_EUR": 46290,
       "batteryUsed": "73 kWh",
       "equipmentHighlights": [
-        "520 km WLTP",
-        "Toit panoramique",
-        "Chargeur smartphone induction"
+        "Vision 360° avec caméras",
+        "Projecteurs Matrix LED",
+        "Sièges et volant chauffants"
+      ]
+    },
+    {
+      "name": "Plus 97 kWh",
+      "price_EUR": 46990,
+      "batteryUsed": "97 kWh",
+      "equipmentHighlights": [
+        "Grande Autonomie 680 km WLTP",
+        "Navigation connectée 3D",
+        "Recharge smartphone induction"
+      ]
+    },
+    {
+      "name": "Max 97 kWh",
+      "price_EUR": 50990,
+      "batteryUsed": "97 kWh",
+      "equipmentHighlights": [
+        "Grande Autonomie 680 km WLTP",
+        "Projecteurs Matrix LED",
+        "Conduite semi-autonome de niveau 2"
       ]
     }
   ],
@@ -128,14 +148,14 @@
   ],
   "configurations": [
     {
-      "id": "citroen-e-c5-aircross-you",
-      "label": "ë-C5 Aircross You",
+      "id": "citroen-e-c5-aircross-you-73",
+      "label": "ë-C5 Aircross You · 73 kWh",
       "battery": "standard",
-      "trim": "You",
+      "trim": "You 73 kWh",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 38990,
+      "price_EUR": 40290,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 520,
@@ -174,17 +194,17 @@
         }
       ],
       "availability": "available",
-      "notes": "218 ch (157 kW), FWD"
+      "notes": "210 ch (157 kW), FWD, batterie 73.7 kWh utilisable"
     },
     {
-      "id": "citroen-e-c5-aircross-plus",
-      "label": "ë-C5 Aircross Plus",
+      "id": "citroen-e-c5-aircross-plus-73",
+      "label": "ë-C5 Aircross Plus · 73 kWh",
       "battery": "standard",
-      "trim": "Plus",
+      "trim": "Plus 73 kWh",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 42990,
+      "price_EUR": 43290,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 520,
@@ -223,17 +243,17 @@
         }
       ],
       "availability": "available",
-      "notes": "218 ch (157 kW), FWD"
+      "notes": "210 ch (157 kW), FWD, batterie 73.7 kWh utilisable"
     },
     {
-      "id": "citroen-e-c5-aircross-max",
-      "label": "ë-C5 Aircross Max",
+      "id": "citroen-e-c5-aircross-max-73",
+      "label": "ë-C5 Aircross Max · 73 kWh",
       "battery": "standard",
-      "trim": "Max",
+      "trim": "Max 73 kWh",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 46990,
+      "price_EUR": 46290,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 500,
@@ -272,7 +292,105 @@
         }
       ],
       "availability": "available",
-      "notes": "218 ch (157 kW), FWD, full options"
+      "notes": "210 ch (157 kW), FWD, version haut de gamme"
+    },
+    {
+      "id": "citroen-e-c5-aircross-plus-97",
+      "label": "ë-C5 Aircross Plus · 97 kWh",
+      "battery": "long-range",
+      "trim": "Plus 97 kWh",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 46990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 680,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": {
+        "mixed_km": 510,
+        "highway_130_km": 350,
+        "urban_km": 600,
+        "winter_minus5_km": 400,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 60,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "230 ch (170 kW), FWD, batterie 97 kWh utilisable Grande Autonomie"
+    },
+    {
+      "id": "citroen-e-c5-aircross-max-97",
+      "label": "ë-C5 Aircross Max · 97 kWh",
+      "battery": "long-range",
+      "trim": "Max 97 kWh",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 50990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 680,
+      "wltp_consumption_kWh_100km": 14.8,
+      "realRange": {
+        "mixed_km": 500,
+        "highway_130_km": 340,
+        "urban_km": 590,
+        "winter_minus5_km": 390,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 60,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "230 ch (170 kW), FWD, haut de gamme Grande Autonomie"
     }
   ],
   "warranty": {
@@ -285,37 +403,37 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "label": "Suspensions Citroën Advanced Comfort et isolation acoustique renforcée"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "Combiné d'instruments numérique et écran tactile HD 13 pouces"
     },
     {
       "category": "securite",
-      "label": "Freinage automatique d'urgence"
+      "label": "Aide à la conduite de niveau 2 avec Highway Driver Assist"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "Silhouette SUV musclée avec passages de roues contrastés"
     }
   ],
   "verdict": {
     "strengths": [
-      "Bon compromis prix/autonomie",
-      "Confort de suspension"
+      "Confort souverain sur route et autoroute",
+      "Autonomie record allant jusqu'à 680 km WLTP en batterie 97 kWh"
     ],
     "weaknesses": [
-      "Vitesse de charge rapide en retrait",
-      "Infodivertissement perfectible"
+      "Gabarit imposant en ville",
+      "Tarif de la version 97 kWh qui franchit la barre des 50 000 €"
     ],
-    "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
-    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
+    "idealUserProfile": "Familles réalisant de fréquents et longs trajets autoroutiers, à la recherche d'un confort exceptionnel.",
+    "notIdealFor": "Conducteurs citadins n'ayant pas besoin d'une telle autonomie et préférant des modèles plus maniables."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-06-04",
   "sources": [
-    "nyland",
-    "la-chaine-ev"
+    "citroen-fr",
+    "automobile-propre"
   ],
   "imageCredit": "Constructeur"
 }
