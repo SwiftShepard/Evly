@@ -104,6 +104,32 @@ const totalAids = Math.min(
 
 const cheapestTrim = vehicle.trims.reduce((a, b) => a.price_EUR < b.price_EUR ? a : b);
 
+// Calculateur d'impact de taille de jantes sur l'autonomie (C3)
+const getWheelRangePenalty = (currentConfig: any, allConfigs: any[]) => {
+  const sameBatteryTrim = allConfigs.filter(
+    (c) => c.battery === currentConfig.battery && c.trim === currentConfig.trim
+  );
+  if (sameBatteryTrim.length <= 1) return null;
+  
+  const baseConfig = sameBatteryTrim.reduce((min, c) => 
+    c.wheelSize_inches < min.wheelSize_inches ? c : min
+  , sameBatteryTrim[0]);
+  
+  if (currentConfig.wheelSize_inches <= baseConfig.wheelSize_inches) return null;
+  if (!currentConfig.wltp_km || !baseConfig.wltp_km) return null;
+  
+  const diff = baseConfig.wltp_km - currentConfig.wltp_km;
+  if (diff <= 0) return null;
+  
+  const pct = Math.round((diff / baseConfig.wltp_km) * 100);
+  return {
+    pct,
+    baseSize: baseConfig.wheelSize_inches,
+    currentSize: currentConfig.wheelSize_inches
+  };
+};
+
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Car",
@@ -226,6 +252,7 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
       {configurations.map((config, index) => {
         // Compute config-specific values
         const nyland90 = config.rangeTests.find((t: any) => t.protocol === "nyland" && t.speed_kmh === 90);
+        const wheelPenalty = getWheelRangePenalty(config, vehicle.configurations);
         
         let batteryCapacity = config.usableCapacity_kWh;
         if (batteryCapacity == null) {
@@ -389,7 +416,12 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
 
             <!-- 1x1 : écart WLTP -->
             <Tile size="1x1" label="Écart WLTP / mixte" class="reveal">
-              <TileStat value={`-${Math.round((1 - (config.realRange?.mixed_km ?? vehicle.realRange.mixed_km) / (config.wltp_km ?? vehicle.wltp_max_km)) * 100)} %`} tone="warning" size="xl" hint="commun à tous les VE" />
+              <TileStat 
+                value={`-${Math.round((1 - (config.realRange?.mixed_km ?? vehicle.realRange.mixed_km) / (config.wltp_km ?? vehicle.wltp_max_km)) * 100)} %`} 
+                tone="warning" 
+                size="xl" 
+                hint={"commun à tous les VE" + (wheelPenalty ? ` (dont -${wheelPenalty.pct}% lié aux jantes ${wheelPenalty.currentSize}\")` : "")} 
+              />
             </Tile>
 
             <!-- 1x1 : pénalité hiver -->
@@ -702,6 +734,7 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
       )}
 
       {configurations.map((config, index) => {
+        const wheelPenalty = getWheelRangePenalty(config, vehicle.configurations);
         return (
           <div data-config-id={config.id} class="sidebar-config" style={index === 0 ? "" : "display:none"}>
             <div class="sidebar-block">
@@ -714,6 +747,11 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
               <span class="sidebar-hint">
                 {config.label} · hors options
               </span>
+              {wheelPenalty && (
+                <span class="text-[var(--color-danger)] block mt-1 font-mono text-[9px] uppercase tracking-wider">
+                  ⚠️ Impact jantes : -{wheelPenalty.pct}% d'autonomie
+                </span>
+              )}
               {config.leasingSocialEligible && config.monthlyLease_EUR && (
                 <div class="sidebar-leasing">
                   <Tag tone="accent" mono>Leasing social</Tag>

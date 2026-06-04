@@ -121,6 +121,25 @@ export default function ComparatorCard({
     return config.wltp_km ? Math.round(config.wltp_km * soh / 100) : null;
   }, [config.wltp_km, soh]);
 
+  const wheelPenalty = useMemo(() => {
+    const sameBatteryTrim = vehicle.configurations.filter(
+      (c) => c.battery === config.battery && c.trim === config.trim
+    );
+    if (sameBatteryTrim.length <= 1) return null;
+    
+    const baseConfig = sameBatteryTrim.reduce((min, c) => 
+      c.wheelSize_inches < min.wheelSize_inches ? c : min
+    , sameBatteryTrim[0]);
+    
+    if (config.wheelSize_inches <= baseConfig.wheelSize_inches) return null;
+    if (!config.wltp_km || !baseConfig.wltp_km) return null;
+    
+    const diff = baseConfig.wltp_km - config.wltp_km;
+    if (diff <= 0) return null;
+    
+    return Math.round((diff / baseConfig.wltp_km) * 100);
+  }, [config, vehicle.configurations]);
+
   const scaledHighway = useMemo(() => {
     return config.realRange?.highway_130_km
       ? Math.round(config.realRange.highway_130_km * soh / 100)
@@ -377,6 +396,11 @@ export default function ComparatorCard({
               </span>
             )}
           </div>
+          {wheelPenalty && (
+            <span className="block font-mono text-[9px] text-[var(--color-danger)] uppercase tracking-wider mt-1.5">
+              ⚠️ Impact jantes : -{wheelPenalty}% autonomie
+            </span>
+          )}
         </DataBlock>
       )}
 
