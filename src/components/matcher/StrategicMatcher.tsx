@@ -83,6 +83,74 @@ export default function StrategicMatcher({ vehicles }: Props) {
   const [showAllResults, setShowAllResults] = useState(false);
   const [expandedOtherSlug, setExpandedOtherSlug] = useState<string | null>(null);
 
+  // Payment states
+  const [isPaid, setIsPaid] = useState<boolean>(false);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [paymentLoading, setPaymentLoading] = useState(false);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const [paymentEmail, setPaymentEmail] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [cardExpiry, setCardExpiry] = useState("");
+  const [cardCvc, setCardCvc] = useState("");
+
+  // Parse parameters on load
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const searchParams = new URLSearchParams(window.location.search);
+      setIsPaid(searchParams.get("paid") === "true");
+      
+      const usage = searchParams.get("usage");
+      if (usage) {
+        setAnswers({
+          usage: (searchParams.get("usage") as any) || "mixed",
+          mileage: parseInt(searchParams.get("mileage") || "15000", 10),
+          charging: (searchParams.get("charging") as any) || "home",
+          role: (searchParams.get("role") as any) || "primary",
+          household: (searchParams.get("household") as any) || "family",
+          trunkNeed: (searchParams.get("trunkNeed") as any) || "any",
+          bodyType: (searchParams.get("bodyType") as any) || "any",
+          chargingSpeed: (searchParams.get("chargingSpeed") as any) || "any",
+          budgetType: (searchParams.get("budgetType") as any) || "buy",
+          budgetMax: parseInt(searchParams.get("budgetMax") || "40000", 10),
+          leasingSocialRfr: searchParams.get("leasingSocialRfr") === "true",
+          leasingSocialUsage: searchParams.get("leasingSocialUsage") === "true",
+          preferEurope: searchParams.get("preferEurope") === "true",
+          softwareImportance: (searchParams.get("softwareImportance") as any) || "any",
+        });
+        setStep(12); // Go directly to results slide
+      }
+    }
+  }, []);
+
+  const handlePaymentSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setPaymentLoading(true);
+    setTimeout(() => {
+      setPaymentLoading(false);
+      setPaymentSuccess(true);
+      setTimeout(() => {
+        const query = new URLSearchParams({
+          usage: answers.usage,
+          mileage: answers.mileage.toString(),
+          charging: answers.charging,
+          role: answers.role,
+          household: answers.household,
+          trunkNeed: answers.trunkNeed,
+          bodyType: answers.bodyType,
+          chargingSpeed: answers.chargingSpeed,
+          budgetType: answers.budgetType,
+          budgetMax: answers.budgetMax.toString(),
+          leasingSocialRfr: answers.leasingSocialRfr ? "true" : "false",
+          leasingSocialUsage: answers.leasingSocialUsage ? "true" : "false",
+          preferEurope: answers.preferEurope ? "true" : "false",
+          softwareImportance: answers.softwareImportance,
+          paid: "true"
+        }).toString();
+        window.location.href = `/recommandation/?${query}`;
+      }, 1500);
+    }, 2000);
+  };
+
   const goToNext = useCallback(() => {
     setDirection("next");
     setStep((prev) => prev + 1);
@@ -226,6 +294,10 @@ export default function StrategicMatcher({ vehicles }: Props) {
     });
     setShowAllResults(false);
     setExpandedOtherSlug(null);
+    setIsPaid(false);
+    if (typeof window !== "undefined") {
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
     setDirection("prev");
     setStep(0);
   };
@@ -908,22 +980,18 @@ export default function StrategicMatcher({ vehicles }: Props) {
               </button>
             </div>
           ) : (
-            
             // GRID DU TOP 3
             <div className="grid gap-6">
               {top3.map((res, index) => {
+                const isBlurred = index > 0 && !isPaid;
                 const isLS = answers.leasingSocialRfr && answers.leasingSocialUsage && res.vehicle.leasingSocialEligible;
-                const monthlyPrice = isLS 
-                  ? (res.vehicle.leasingSocial_EUR_per_month ?? 100) 
-                  : (res.bestConfig.monthlyLease_EUR ?? Math.round((res.bestConfig.price_EUR ?? 0) * 0.009));
-
                 return (
                   <div
                     key={res.vehicle.slug}
-                    className="rounded-2xl p-6 border relative overflow-hidden transition-all duration-300 flex flex-col md:flex-row gap-6 shadow-md hover:shadow-xl bg-[var(--color-surface)] border-[var(--color-border)] hover:border-[var(--color-border-strong)]"
+                    className="rounded-2xl p-6 border relative overflow-hidden transition-all duration-300 shadow-md hover:shadow-xl bg-[var(--color-surface)] border-[var(--color-border)] hover:border-[var(--color-border-strong)]"
                   >
                     {/* Badge Podiums */}
-                    <div className="absolute top-4 left-4 flex items-center gap-2">
+                    <div className="absolute top-4 left-4 flex items-center gap-2 z-20">
                       <span className="w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-mono font-semibold bg-[var(--color-bg-subtle)] border border-[var(--color-border-strong)] text-[var(--color-text)]">
                         #{index + 1}
                       </span>
@@ -934,174 +1002,202 @@ export default function StrategicMatcher({ vehicles }: Props) {
                       )}
                     </div>
 
-                    {/* Gauche : Image et Score */}
-                    <div className="flex flex-col items-center justify-center md:w-1/4 pt-6 md:pt-0">
-                      {/* Radial score ring */}
-                      <div className="relative w-20 h-20 flex items-center justify-center">
-                        <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-                          <path
-                            className="text-[var(--color-border)]"
-                            strokeWidth="2.5"
-                            stroke="currentColor"
-                            fill="none"
-                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                          />
-                          <path
-                            className="text-[var(--color-accent)]"
-                            strokeDasharray={`${res.score}, 100`}
-                            strokeWidth="2.5"
-                            strokeLinecap="round"
-                            stroke="currentColor"
-                            fill="none"
-                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                          />
-                        </svg>
-                        <div className="absolute flex flex-col items-center">
-                          <span className="font-mono text-base font-bold leading-none text-[var(--color-text)]">{res.score}%</span>
-                          <span className="text-[8px] font-mono uppercase tracking-wider text-[var(--color-text-faint)]">Match</span>
+                    <div className={`flex flex-col md:flex-row gap-6 w-full h-full ${isBlurred ? "filter blur-md select-none pointer-events-none transition-all" : ""}`}>
+                      {/* Gauche : Image et Score */}
+                      <div className="flex flex-col items-center justify-center md:w-1/4 pt-6 md:pt-0">
+                        {/* Radial score ring */}
+                        <div className="relative w-20 h-20 flex items-center justify-center">
+                          <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                            <path
+                              className="text-[var(--color-border)]"
+                              strokeWidth="2.5"
+                              stroke="currentColor"
+                              fill="none"
+                              d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                            />
+                            <path
+                              className="text-[var(--color-accent)]"
+                              strokeDasharray={`${res.score}, 100`}
+                              strokeWidth="2.5"
+                              strokeLinecap="round"
+                              stroke="currentColor"
+                              fill="none"
+                              d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                            />
+                          </svg>
+                          <div className="absolute flex flex-col items-center">
+                            <span className="font-mono text-base font-bold leading-none text-[var(--color-text)]">{res.score}%</span>
+                            <span className="text-[8px] font-mono uppercase tracking-wider text-[var(--color-text-faint)]">Match</span>
+                          </div>
+                        </div>
+
+                        {/* Photo / Silhouette */}
+                        <div className="w-32 h-16 flex items-center justify-center mt-3">
+                          {(() => {
+                            const imgUrl = getLocalVehicleImageUrl(res.vehicle.slug) || res.vehicle.imageUrl;
+                            return imgUrl ? (
+                              <img
+                                src={imgUrl}
+                                alt={`${res.vehicle.brand} ${res.vehicle.model}`}
+                                className="max-w-full max-h-full object-contain"
+                              />
+                            ) : (
+                              <VehicleFallbackSvg className="max-w-full max-h-full text-[var(--color-text-faint)]" />
+                            );
+                          })()}
                         </div>
                       </div>
 
-                      {/* Photo / Silhouette */}
-                      <div className="w-32 h-16 flex items-center justify-center mt-3">
-                        {(() => {
-                          const imgUrl = getLocalVehicleImageUrl(res.vehicle.slug) || res.vehicle.imageUrl;
-                          return imgUrl ? (
-                            <img
-                              src={imgUrl}
-                              alt={`${res.vehicle.brand} ${res.vehicle.model}`}
-                              className="max-w-full max-h-full object-contain"
-                            />
-                          ) : (
-                            <VehicleFallbackSvg className="max-w-full max-h-full text-[var(--color-text-faint)]" />
-                          );
-                        })()}
-                      </div>
-                    </div>
+                      {/* Milieu : Infos et Raisons */}
+                      <div className="flex-1 flex flex-col justify-between">
+                        <div>
+                          <span className="text-[10px] font-mono text-[var(--color-text-faint)] uppercase tracking-wide">
+                            {res.vehicle.brand}
+                          </span>
+                          <h3 className="font-display text-2xl font-bold leading-tight text-[var(--color-text)]">
+                            {res.vehicle.model}
+                          </h3>
+                          <p className="text-xs text-[var(--color-text-muted)] font-medium mt-0.5">
+                            Variante conseillée : <strong className="text-[var(--color-text)]">{res.bestConfig.label}</strong> ({res.vehicle.chemistry} · {res.bestConfig.usableCapacity_kWh ?? res.vehicle.usableCapacity_kWh} kWh)
+                          </p>
+                        </div>
 
-                    {/* Milieu : Infos et Raisons */}
-                    <div className="flex-1 flex flex-col justify-between">
-                      <div>
-                        <span className="text-[10px] font-mono text-[var(--color-text-faint)] uppercase tracking-wide">
-                          {res.vehicle.brand}
-                        </span>
-                        <h3 className="font-display text-2xl font-bold leading-tight text-[var(--color-text)]">
-                          {res.vehicle.model}
-                        </h3>
-                        <p className="text-xs text-[var(--color-text-muted)] font-medium mt-0.5">
-                          Variante conseillée : <strong className="text-[var(--color-text)]">{res.bestConfig.label}</strong> ({res.vehicle.chemistry} · {res.bestConfig.usableCapacity_kWh ?? res.vehicle.usableCapacity_kWh} kWh)
-                        </p>
-                      </div>
-
-                      {/* Bullet points d'adéquation */}
-                      <div className="mt-4 flex flex-col gap-2">
-                        {res.reasons.map((r, i) => (
-                          <div key={i} className="flex gap-2 items-start text-xs leading-relaxed text-[var(--color-text-muted)]">
-                            <CheckCircle2 size={14} className="text-[var(--color-accent)] mt-0.5 flex-shrink-0" />
-                            <span>{r}</span>
-                          </div>
-                        ))}
-                        {res.warnings.map((w, i) => (
-                          <div key={i} className="flex gap-2 items-start text-xs leading-relaxed text-[var(--color-warning)]">
-                            <AlertTriangle size={14} className="text-[var(--color-warning)] mt-0.5 flex-shrink-0" />
-                            <span>{w}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Droite : Prix et Action */}
-                    <div className="md:w-1/4 border-t md:border-t-0 md:border-l border-[var(--color-border)] pt-4 md:pt-0 md:pl-6 flex flex-col justify-between">
-                      <div className="flex flex-col gap-2">
-                        <span className="font-mono text-[10px] uppercase tracking-wide text-[var(--color-text-faint)]">
-                          {answers.budgetType === "buy" ? "Tarif conseillé" : "Mensualité conseillée"}
-                        </span>
-                        {answers.budgetType === "buy" ? (
-                          (() => {
-                            const rawPrice = res.bestConfig.price_EUR ?? 0;
-                            const householdSize = answers.household === "large_family" ? 5 : answers.household === "family" ? 3 : 1;
-                            const taxIncome = answers.leasingSocialRfr ? 12000 : 80000;
-                            const { amount: totalCeeAid, isEligible: isEligibleCEE } = calculateCeeAid({
-                              vehicle: res.vehicle,
-                              price: rawPrice,
-                              profileType: "particular",
-                              householdSize,
-                              taxIncome,
-                            });
-                            const netPrice = rawPrice - totalCeeAid;
-                            return (
-                              <div className="flex flex-col gap-1.5">
-                                <div className="flex items-baseline gap-1.5">
-                                  <span className="font-display text-2xl font-bold text-[var(--color-text)]">
-                                    {netPrice.toLocaleString()} €
-                                  </span>
-                                  <span className={`px-1.5 py-0.5 rounded text-[8px] font-semibold ${isEligibleCEE ? "bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] text-[var(--color-accent)] border border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)]" : "bg-[var(--color-bg-subtle)] text-[var(--color-text-faint)] border border-[var(--color-border)]"}`}>
-                                    {isEligibleCEE ? "Aide CEE incluse" : "Hors aides"}
-                                  </span>
-                                </div>
-                                {isEligibleCEE ? (
-                                  <div className="text-[10px] text-[var(--color-text-muted)] leading-tight">
-                                    Prix catalogue : <span className="line-through">{rawPrice.toLocaleString()} €</span>
-                                    <span className="block text-[9px] text-[var(--color-accent)] font-medium mt-1 leading-normal">
-                                      Inclut la Prime CEE de {totalCeeAid.toLocaleString()} € (socle de 6 500 € + 2 000 € de majoration batterie européenne, plafonné à 8 100 €).
-                                    </span>
-                                  </div>
-                                ) : (
-                                  <div className="text-[10px] text-[var(--color-text-muted)] leading-tight">
-                                    Prix catalogue : <span>{rawPrice.toLocaleString()} €</span>
-                                    <span className="block text-[9px] text-[var(--color-warning)] font-medium mt-1 leading-normal">
-                                      Non éligible à la Prime CEE (produit en {res.vehicle.productionCountry}).
-                                    </span>
-                                  </div>
-                                )}
-                              </div>
-                            );
-                          })()
-                        ) : (
-                          <div className="flex flex-col gap-1.5">
-                            <div className="flex items-baseline gap-1">
-                              <span className="font-display text-2xl font-bold text-[var(--color-text)]">
-                                {monthlyPrice} €
-                              </span>
-                              <span className="text-xs font-mono text-[var(--color-text-faint)]">/ mois</span>
+                        {/* Bullet points d'adéquation */}
+                        <div className="mt-4 flex flex-col gap-2">
+                          {res.reasons.map((r, i) => (
+                            <div key={i} className="flex gap-2 items-start text-xs leading-relaxed text-[var(--color-text-muted)]">
+                              <CheckCircle2 size={14} className="text-[var(--color-accent)] mt-0.5 flex-shrink-0" />
+                              <span>{r}</span>
                             </div>
-                            {isLS ? (
-                              <span className="block text-[9px] text-[var(--color-accent)] font-semibold leading-normal">
-                                (Tarif exceptionnel Leasing Social appliqué)
-                              </span>
-                            ) : res.vehicle.leasingSocialEligible ? (
-                              <span className="block text-[9px] text-[var(--color-text-muted)] leading-normal">
-                                Éligible au Leasing Social à {res.vehicle.leasingSocial_EUR_per_month} €/mois pour les profils qualifiés.
-                              </span>
-                            ) : (
-                              <span className="block text-[9px] text-[var(--color-text-faint)] leading-normal">
-                                LLD classique (Non éligible au Leasing Social)
-                              </span>
-                            )}
-                          </div>
-                        )}
-                        <span className="text-[9px] font-mono text-[var(--color-text-faint)] leading-normal mt-1 border-t border-[var(--color-border)] pt-1">
-                          *Montants indicatifs susceptibles d'évoluer selon les revenus du foyer, les signataires CEE et l'éligibilité réelle du véhicule.
-                        </span>
+                          ))}
+                          {res.warnings.map((w, i) => (
+                            <div key={i} className="flex gap-2 items-start text-xs leading-relaxed text-[var(--color-warning)]">
+                              <AlertTriangle size={14} className="text-[var(--color-warning)] mt-0.5 flex-shrink-0" />
+                              <span>{w}</span>
+                            </div>
+                          ))}
+                        </div>
                       </div>
 
-                      <div className="mt-4 flex flex-col gap-2">
-                        <a
-                          href={`/vehicules/${res.vehicle.slug}`}
-                          className="btn-interactive inline-flex items-center justify-between px-3 py-2 border border-[var(--color-border-strong)] rounded-lg text-xs font-semibold text-[var(--color-text)] hover:bg-[var(--color-bg-subtle)] transition-colors"
-                        >
-                          Fiche technique
-                          <ChevronRight size={13} />
-                        </a>
-                        <a
-                          href={`/comparer?v=${res.vehicle.slug}:${res.bestConfig.id}:100`}
-                          className="btn-interactive inline-flex items-center justify-between px-3 py-2 border border-[var(--color-accent-dim)] rounded-lg text-xs font-semibold text-[var(--color-accent)] bg-[color-mix(in_srgb,var(--color-accent)_5%,transparent)] hover:bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] transition-colors"
-                        >
-                          Ajouter au comparateur
-                          <ChevronRight size={13} />
-                        </a>
+                      {/* Droite : Prix et Action */}
+                      <div className="md:w-1/4 border-t md:border-t-0 md:border-l border-[var(--color-border)] pt-4 md:pt-0 md:pl-6 flex flex-col justify-between">
+                        <div className="flex flex-col gap-2">
+                          <span className="font-mono text-[10px] uppercase tracking-wide text-[var(--color-text-faint)]">
+                            {answers.budgetType === "buy" ? "Tarif conseillé" : "Mensualité conseillée"}
+                          </span>
+                          {answers.budgetType === "buy" ? (
+                            (() => {
+                              const rawPrice = res.bestConfig.price_EUR ?? 0;
+                              const householdSize = answers.household === "large_family" ? 5 : answers.household === "family" ? 3 : 1;
+                              const taxIncome = answers.leasingSocialRfr ? 12000 : 80000;
+                              const { amount: totalCeeAid, isEligible: isEligibleCEE } = calculateCeeAid({
+                                vehicle: res.vehicle,
+                                price: rawPrice,
+                                profileType: "particular",
+                                householdSize,
+                                taxIncome,
+                              });
+                              const netPrice = rawPrice - totalCeeAid;
+                              return (
+                                <div className="flex flex-col gap-1.5">
+                                  <div className="flex items-baseline gap-1.5">
+                                    <span className="font-display text-2xl font-bold text-[var(--color-text)]">
+                                      {netPrice.toLocaleString()} €
+                                    </span>
+                                    <span className={`px-1.5 py-0.5 rounded text-[8px] font-semibold ${isEligibleCEE ? "bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] text-[var(--color-accent)] border border-[color-mix(in_srgb,var(--color-accent)_20%,transparent)]" : "bg-[var(--color-bg-subtle)] text-[var(--color-text-faint)] border border-[var(--color-border)]"}`}>
+                                      {isEligibleCEE ? "Aide CEE incluse" : "Hors aides"}
+                                    </span>
+                                  </div>
+                                  {isEligibleCEE ? (
+                                    <div className="text-[10px] text-[var(--color-text-muted)] leading-tight">
+                                      Prix catalogue : <span className="line-through">{rawPrice.toLocaleString()} €</span>
+                                      <span className="block text-[9px] text-[var(--color-accent)] font-medium mt-1 leading-normal">
+                                        Inclut la Prime CEE de {totalCeeAid.toLocaleString()} € (socle de 6 500 € + 2 000 € de majoration batterie européenne, plafonné à 8 100 €).
+                                      </span>
+                                    </div>
+                                  ) : (
+                                    <div className="text-[10px] text-[var(--color-text-muted)] leading-tight">
+                                      Prix catalogue : <span>{rawPrice.toLocaleString()} €</span>
+                                      <span className="block text-[9px] text-[var(--color-warning)] font-medium mt-1 leading-normal">
+                                        Non éligible à la Prime CEE (produit en {res.vehicle.productionCountry}).
+                                      </span>
+                                    </div>
+                                  )}
+                                </div>
+                              );
+                            })()
+                          ) : (
+                            <div className="flex flex-col gap-1.5">
+                              <div className="flex items-baseline gap-1">
+                                <span className="font-display text-2xl font-bold text-[var(--color-text)]">
+                                  {monthlyPrice} €
+                                </span>
+                                <span className="text-xs font-mono text-[var(--color-text-faint)]">/ mois</span>
+                              </div>
+                              {isLS ? (
+                                <span className="block text-[9px] text-[var(--color-accent)] font-semibold leading-normal">
+                                  (Tarif exceptionnel Leasing Social appliqué)
+                                </span>
+                              ) : res.vehicle.leasingSocialEligible ? (
+                                <span className="block text-[9px] text-[var(--color-text-muted)] leading-normal">
+                                  Éligible au Leasing Social à {res.vehicle.leasingSocial_EUR_per_month} €/mois pour les profils qualifiés.
+                                </span>
+                              ) : (
+                                <span className="block text-[9px] text-[var(--color-text-faint)] leading-normal">
+                                  LLD classique (Non éligible au Leasing Social)
+                                </span>
+                              )}
+                            </div>
+                          )}
+                          <span className="text-[9px] font-mono text-[var(--color-text-faint)] leading-normal mt-1 border-t border-[var(--color-border)] pt-1">
+                            *Montants indicatifs susceptibles d'évoluer selon les revenus du foyer, les signataires CEE et l'éligibilité réelle du véhicule.
+                          </span>
+                        </div>
+
+                        <div className="mt-4 flex flex-col gap-2">
+                          <a
+                            href={`/vehicules/${res.vehicle.slug}`}
+                            className="btn-interactive inline-flex items-center justify-between px-3 py-2 border border-[var(--color-border-strong)] rounded-lg text-xs font-semibold text-[var(--color-text)] hover:bg-[var(--color-bg-subtle)] transition-colors"
+                          >
+                            Fiche technique
+                            <ChevronRight size={13} />
+                          </a>
+                          <a
+                            href={`/comparer?v=${res.vehicle.slug}:${res.bestConfig.id}:100`}
+                            className="btn-interactive inline-flex items-center justify-between px-3 py-2 border border-[var(--color-accent-dim)] rounded-lg text-xs font-semibold text-[var(--color-accent)] bg-[color-mix(in_srgb,var(--color-accent)_5%,transparent)] hover:bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] transition-colors"
+                          >
+                            Ajouter au comparateur
+                            <ChevronRight size={13} />
+                          </a>
+                          {isPaid && (
+                            <a
+                              href={`/simulateur/rapport-premium/?v=${res.vehicle.slug}&config=${res.bestConfig.id}&paid=true&km=${answers.mileage}`}
+                              className="btn-interactive inline-flex items-center justify-between px-3 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-lg text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20 transition-colors"
+                            >
+                              Rapport TCO Premium (Inclus) ↗
+                              <ChevronRight size={13} strokeWidth={2.5} />
+                            </a>
+                          )}
+                        </div>
                       </div>
                     </div>
+
+                    {isBlurred && (
+                      <div className="absolute inset-0 bg-black/10 backdrop-blur-[6px] z-10 flex flex-col items-center justify-center p-4 text-center">
+                        <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-6 shadow-xl max-w-xs flex flex-col gap-3 animate-fade-in">
+                          <h4 className="text-sm font-bold tracking-tight">Podium Bloqué</h4>
+                          <p className="text-[11px] text-[var(--color-text-muted)] leading-relaxed">
+                            Découvrez les modèles #2 et #3 de votre diagnostic et obtenez leur rapport TCO Premium complet.
+                          </p>
+                          <button
+                            onClick={() => setShowPaymentModal(true)}
+                            className="px-4 py-2.5 bg-[var(--color-accent)] hover:bg-[var(--color-accent-dim)] text-[var(--color-accent-on)] text-xs font-bold rounded-lg cursor-pointer shadow-md transition-colors"
+                          >
+                            Débloquer pour 9,90 €
+                          </button>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 );
               })}
@@ -1112,11 +1208,17 @@ export default function StrategicMatcher({ vehicles }: Props) {
           {others.length > 0 && (
             <div className="mt-6 border border-[var(--color-border)] rounded-2xl overflow-hidden">
               <button
-                onClick={() => setShowAllResults(!showAllResults)}
+                onClick={() => {
+                  if (!isPaid) {
+                    setShowPaymentModal(true);
+                  } else {
+                    setShowAllResults(!showAllResults);
+                  }
+                }}
                 className="w-full cursor-pointer p-4 flex items-center justify-between text-xs font-mono uppercase tracking-[0.1em] text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface)] transition-all"
               >
-                <span>Autres alternatives compatibles ({others.length})</span>
-                <span className="text-[var(--color-text-faint)] transition-transform duration-300" style={{ transform: showAllResults ? "rotate(180deg)" : "rotate(0deg)" }}>
+                <span>Autres alternatives compatibles ({others.length}) {!isPaid && "🔒"}</span>
+                <span className="text-[var(--color-text-faint)] transition-transform duration-300" style={{ transform: showAllResults && isPaid ? "rotate(180deg)" : "rotate(0deg)" }}>
                   ↓
                 </span>
               </button>
@@ -1379,6 +1481,161 @@ export default function StrategicMatcher({ vehicles }: Props) {
         </div>
       )}
 
+      {showPaymentModal && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl max-w-md w-full p-6 shadow-2xl relative flex flex-col gap-5 text-[var(--color-text)]">
+            <button
+              onClick={() => {
+                if (!paymentLoading && !paymentSuccess) setShowPaymentModal(false);
+              }}
+              className="absolute top-4 right-4 text-[var(--color-text-faint)] hover:text-[var(--color-text)] cursor-pointer"
+              title="Fermer"
+              disabled={paymentLoading || paymentSuccess}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {paymentSuccess ? (
+              <div className="flex flex-col items-center justify-center py-8 text-center gap-4 animate-fade-in">
+                <div className="w-16 h-16 rounded-full bg-[var(--color-accent-dim)] flex items-center justify-center text-[var(--color-accent)] animate-bounce">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold">Paiement validé !</h3>
+                <p className="text-sm text-[var(--color-text-muted)] max-w-xs leading-relaxed">
+                  Votre transaction de 9,90 € a été traitée avec succès. Déblocage du podium en cours...
+                </p>
+              </div>
+            ) : paymentLoading ? (
+              <div className="flex flex-col items-center justify-center py-8 text-center gap-4 animate-fade-in">
+                <div className="w-12 h-12 border-4 border-[var(--color-accent-dim)] border-t-[var(--color-accent)] rounded-full animate-spin"></div>
+                <h3 className="text-lg font-semibold">Traitement en cours...</h3>
+                <p className="text-xs text-[var(--color-text-faint)]">
+                  Connexion sécurisée avec Stripe. Veuillez ne pas fermer cette fenêtre.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handlePaymentSubmit} className="flex flex-col gap-4 animate-fade-in">
+                <div className="flex flex-col gap-1.5">
+                  <h3 className="text-lg font-bold">Débloquez votre diagnostic Premium</h3>
+                  <p className="text-xs text-[var(--color-text-muted)]">
+                    Découvrez les modèles #2 et #3 du podium, l'accès complet aux fiches comparatives et les 3 rapports TCO Premium inclus.
+                  </p>
+                </div>
+
+                <div className="flex justify-between items-center bg-[var(--color-bg-subtle)] p-3 rounded-lg border border-[var(--color-border)]">
+                  <span className="text-xs font-mono uppercase text-[var(--color-text-muted)]">Total à payer</span>
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="text-xs text-[var(--color-text-faint)] line-through">19,90 €</span>
+                    <span className="text-xl font-bold text-[var(--color-accent)]">9,90 €</span>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-3">
+                  <div className="flex flex-col gap-1">
+                    <label className="font-mono text-[9px] uppercase tracking-wider text-[var(--color-text-faint)]">Adresse e-mail</label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="votre@email.com"
+                      value={paymentEmail}
+                      onChange={(e) => setPaymentEmail(e.target.value)}
+                      className="w-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-lg p-2.5 text-sm focus:outline-none focus:border-[var(--color-accent)]"
+                    />
+                  </div>
+
+                  <div className="flex flex-col gap-1">
+                    <label className="font-mono text-[9px] uppercase tracking-wider text-[var(--color-text-faint)]">Numéro de carte</label>
+                    <div className="relative">
+                      <input
+                        type="text"
+                        required
+                        maxLength={19}
+                        placeholder="4242 4242 4242 4242"
+                        value={cardNumber}
+                        onChange={(e) => {
+                          const val = e.target.value.replace(/\s+/g, "").replace(/[^0-9]/gi, "");
+                          const matches = val.match(/\d{4,16}/g);
+                          const match = (matches && matches[0]) || "";
+                          const parts = [];
+                          for (let i = 0, len = match.length; i < len; i += 4) {
+                            parts.push(match.substring(i, i + 4));
+                          }
+                          if (parts.length > 0) {
+                            setCardNumber(parts.join(" "));
+                          } else {
+                            setCardNumber(val);
+                          }
+                        }}
+                        className="w-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-lg p-2.5 pr-10 text-sm font-mono focus:outline-none focus:border-[var(--color-accent)]"
+                      />
+                      <div className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-text-faint)]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                          <rect width="22" height="16" x="1" y="4" rx="3" />
+                          <line x1="1" x2="23" y1="10" y2="10" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="flex flex-col gap-1">
+                      <label className="font-mono text-[9px] uppercase tracking-wider text-[var(--color-text-faint)]">Date d'exp.</label>
+                      <input
+                        type="text"
+                        required
+                        maxLength={5}
+                        placeholder="MM/AA"
+                        value={cardExpiry}
+                        onChange={(e) => {
+                          let val = e.target.value.replace(/\s+/g, "").replace(/[^0-9]/gi, "");
+                          if (val.length >= 2) {
+                            val = val.substring(0, 2) + "/" + val.substring(2, 4);
+                          }
+                          setCardExpiry(val);
+                        }}
+                        className="w-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-lg p-2.5 text-sm font-mono focus:outline-none focus:border-[var(--color-accent)]"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <label className="font-mono text-[9px] uppercase tracking-wider text-[var(--color-text-faint)]">CVC</label>
+                      <input
+                        type="password"
+                        required
+                        maxLength={3}
+                        placeholder="123"
+                        value={cardCvc}
+                        onChange={(e) => setCardCvc(e.target.value.replace(/[^0-9]/gi, ""))}
+                        className="w-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-lg p-2.5 text-sm font-mono focus:outline-none focus:border-[var(--color-accent)]"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full py-3 bg-[var(--color-accent)] hover:bg-[var(--color-accent-dim)] text-[var(--color-accent-on)] text-xs font-bold uppercase tracking-wider rounded-lg transition-colors cursor-pointer shadow-md mt-2 flex items-center justify-center gap-2"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+                    <path d="M7 11V7a5 5 0 0110 0v4" />
+                  </svg>
+                  Payer 9,90 € via Stripe
+                </button>
+
+                <div className="flex items-center justify-center gap-1.5 text-[10px] text-[var(--color-text-faint)] font-mono mt-1">
+                  <span>🔒 SSL chiffré 100% sécurisé</span>
+                  <span>·</span>
+                  <span>Garantie 14j</span>
+                </div>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

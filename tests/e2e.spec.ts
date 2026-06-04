@@ -213,6 +213,8 @@ test.describe("Evly E2E Test Suite", () => {
   });
 
   test("Matcher Stratégique - Flow complet", async ({ page }) => {
+    page.on('console', msg => console.log('BROWSER CONSOLE LOG:', msg.text()));
+    page.on('pageerror', err => console.log('BROWSER PAGE ERROR:', err));
     await page.goto("/recommandation/");
     await page.waitForLoadState("networkidle");
 
@@ -236,9 +238,8 @@ test.describe("Evly E2E Test Suite", () => {
     await expect(finishBtn).toBeVisible();
     await finishBtn.click();
 
-    // Attendre l'affichage des résultats (Étape 12)
     // S'assurer de la présence du titre de fin
-    await expect(page.locator("main h2").first()).toContainText("Votre sélection sur-mesure.");
+    await expect(page.locator("text=Votre sélection sur-mesure.")).toBeVisible();
 
     // S'assurer qu'au moins un résultat du Top 3 est affiché
     const firstResult = page.locator(".rounded-2xl.p-6.border").first();
