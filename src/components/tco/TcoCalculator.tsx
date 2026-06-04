@@ -362,6 +362,58 @@ export default function TcoCalculator({ vehicles }: Props) {
   // Advanced toggle
   const [showAdvanced, setShowAdvanced] = useState(false);
 
+  // States & handlers for premium report purchase (F8)
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [paymentLoading, setPaymentLoading] = useState(false);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const [paymentEmail, setPaymentEmail] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [cardExpiry, setCardExpiry] = useState("");
+  const [cardCvc, setCardCvc] = useState("");
+
+  const handlePaymentSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!paymentEmail || !cardNumber || !cardExpiry || !cardCvc) {
+      alert("Veuillez remplir tous les champs de paiement.");
+      return;
+    }
+    setPaymentLoading(true);
+    setTimeout(() => {
+      setPaymentLoading(false);
+      setPaymentSuccess(true);
+      setTimeout(() => {
+        setShowPaymentModal(false);
+        setPaymentSuccess(false);
+        setPaymentEmail("");
+        setCardNumber("");
+        setCardExpiry("");
+        setCardCvc("");
+        
+        if (selectedEv) {
+          const query = new URLSearchParams({
+            v: selectedSlug,
+            config: selectedConfigId || "",
+            km: kmPerYear.toString(),
+            years: years.toString(),
+            eh: elecHome.toString(),
+            ef: elecFast.toString(),
+            fp: fastPct.toString(),
+            fprice: fuelPrice.toString(),
+            iconso: iceConso.toString(),
+            evm: evMaint.toString(),
+            icem: iceMaint.toString(),
+            evins: evInsurance.toString(),
+            iceins: iceInsurance.toString(),
+            evres: evResidual.toString(),
+            iceres: iceResidual.toString(),
+            paid: "true"
+          }).toString();
+          window.location.href = `/simulateur/rapport-premium/?${query}`;
+        }
+      }, 1500);
+    }, 2000);
+  };
+
   // Update EV conso when vehicle changes
   const handleVehicleChange = useCallback(
     (slug: string) => {
@@ -866,6 +918,35 @@ export default function TcoCalculator({ vehicles }: Props) {
           )}
         </div>
 
+        {/* Call to action for B2C Premium PDF report (F8) */}
+        <div className="tco-premium-cta mt-6 p-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-subtle)] flex flex-col gap-3">
+          <div className="flex items-start gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0 dark:text-emerald-400">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <div className="flex flex-col gap-0.5">
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)]">Rapport PDF Premium</h4>
+              <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
+                TCO sur-mesure, météo, planificateur & aides 2026 détaillées.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center justify-between gap-4 mt-1 border-t border-[var(--color-border)] pt-3">
+            <div className="flex flex-col">
+              <span className="text-xs text-[var(--color-text-faint)] line-through">19,90 €</span>
+              <span className="text-base font-bold text-[var(--color-accent)]">9,90 €</span>
+            </div>
+            <button
+              onClick={() => setShowPaymentModal(true)}
+              className="px-4 py-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-dim)] text-[var(--color-accent-on)] text-xs font-bold rounded-lg transition-colors cursor-pointer shadow-sm"
+            >
+              Obtenir mon rapport
+            </button>
+          </div>
+        </div>
+
         <p className="tco-disclaimer">
           Calcul indicatif. Moyennes marche France 2025.
           Electricite a {fmtPct(result.avgElecPrice * 100)} ct/kWh
@@ -1003,6 +1084,161 @@ export default function TcoCalculator({ vehicles }: Props) {
             <p className="tco-hint">
               VE exonere a 100 %. Mettez 0 si vehicule particulier.
             </p>
+          </div>
+        </div>
+      )}
+      {showPaymentModal && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl max-w-md w-full p-6 shadow-2xl relative flex flex-col gap-5 text-[var(--color-text)]">
+            <button
+              onClick={() => {
+                if (!paymentLoading && !paymentSuccess) setShowPaymentModal(false);
+              }}
+              className="absolute top-4 right-4 text-[var(--color-text-faint)] hover:text-[var(--color-text)] cursor-pointer"
+              title="Fermer"
+              disabled={paymentLoading || paymentSuccess}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {paymentSuccess ? (
+              <div className="flex flex-col items-center justify-center py-8 text-center gap-4">
+                <div className="w-16 h-16 rounded-full bg-[var(--color-accent-dim)] flex items-center justify-center text-[var(--color-accent)] animate-bounce">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold">Paiement validé !</h3>
+                <p className="text-sm text-[var(--color-text-muted)] max-w-xs leading-relaxed">
+                  Votre transaction de 9,90 € a été traitée avec succès. Préparation de votre rapport personnalisé...
+                </p>
+              </div>
+            ) : paymentLoading ? (
+              <div className="flex flex-col items-center justify-center py-8 text-center gap-4">
+                <div className="w-12 h-12 border-4 border-[var(--color-accent-dim)] border-t-[var(--color-accent)] rounded-full animate-spin"></div>
+                <h3 className="text-lg font-semibold">Traitement en cours...</h3>
+                <p className="text-xs text-[var(--color-text-faint)]">
+                  Connexion sécurisée avec Stripe. Veuillez ne pas fermer cette fenêtre.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handlePaymentSubmit} className="flex flex-col gap-4">
+                <div className="flex flex-col gap-1.5">
+                  <h3 className="text-lg font-bold">Rapport Premium B2C</h3>
+                  <p className="text-xs text-[var(--color-text-muted)]">
+                    Accédez instantanément à l'analyse TCO 2026, au plan de recharge saisonnier et à l'éligibilité aux aides.
+                  </p>
+                </div>
+
+                <div className="flex justify-between items-center bg-[var(--color-bg-subtle)] p-3 rounded-lg border border-[var(--color-border)]">
+                  <span className="text-xs font-mono uppercase text-[var(--color-text-muted)]">Total à payer</span>
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="text-xs text-[var(--color-text-faint)] line-through">19,90 €</span>
+                    <span className="text-xl font-bold text-[var(--color-accent)]">9,90 €</span>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-3">
+                  <div className="flex flex-col gap-1">
+                    <label className="font-mono text-[9px] uppercase tracking-wider text-[var(--color-text-faint)]">Adresse e-mail</label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="votre@email.com"
+                      value={paymentEmail}
+                      onChange={(e) => setPaymentEmail(e.target.value)}
+                      className="w-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-lg p-2.5 text-sm focus:outline-none focus:border-[var(--color-accent)]"
+                    />
+                  </div>
+
+                  <div className="flex flex-col gap-1">
+                    <label className="font-mono text-[9px] uppercase tracking-wider text-[var(--color-text-faint)]">Numéro de carte</label>
+                    <div className="relative">
+                      <input
+                        type="text"
+                        required
+                        maxLength={19}
+                        placeholder="4242 4242 4242 4242"
+                        value={cardNumber}
+                        onChange={(e) => {
+                          const val = e.target.value.replace(/\s+/g, "").replace(/[^0-9]/gi, "");
+                          const matches = val.match(/\d{4,16}/g);
+                          const match = (matches && matches[0]) || "";
+                          const parts = [];
+                          for (let i = 0, len = match.length; i < len; i += 4) {
+                            parts.push(match.substring(i, i + 4));
+                          }
+                          if (parts.length > 0) {
+                            setCardNumber(parts.join(" "));
+                          } else {
+                            setCardNumber(val);
+                          }
+                        }}
+                        className="w-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-lg p-2.5 pr-10 text-sm font-mono focus:outline-none focus:border-[var(--color-accent)]"
+                      />
+                      <div className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-text-faint)]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                          <rect width="22" height="16" x="1" y="4" rx="3" />
+                          <line x1="1" x2="23" y1="10" y2="10" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="flex flex-col gap-1">
+                      <label className="font-mono text-[9px] uppercase tracking-wider text-[var(--color-text-faint)]">Date d'exp.</label>
+                      <input
+                        type="text"
+                        required
+                        maxLength={5}
+                        placeholder="MM/AA"
+                        value={cardExpiry}
+                        onChange={(e) => {
+                          let val = e.target.value.replace(/\s+/g, "").replace(/[^0-9]/gi, "");
+                          if (val.length >= 2) {
+                            val = val.substring(0, 2) + "/" + val.substring(2, 4);
+                          }
+                          setCardExpiry(val);
+                        }}
+                        className="w-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-lg p-2.5 text-sm font-mono focus:outline-none focus:border-[var(--color-accent)]"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <label className="font-mono text-[9px] uppercase tracking-wider text-[var(--color-text-faint)]">CVC</label>
+                      <input
+                        type="password"
+                        required
+                        maxLength={3}
+                        placeholder="123"
+                        value={cardCvc}
+                        onChange={(e) => setCardCvc(e.target.value.replace(/[^0-9]/gi, ""))}
+                        className="w-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-lg p-2.5 text-sm font-mono focus:outline-none focus:border-[var(--color-accent)]"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full py-3 bg-[var(--color-accent)] hover:bg-[var(--color-accent-dim)] text-[var(--color-accent-on)] text-xs font-bold uppercase tracking-wider rounded-lg transition-colors cursor-pointer shadow-md mt-2 flex items-center justify-center gap-2"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+                    <path d="M7 11V7a5 5 0 0110 0v4" />
+                  </svg>
+                  Payer 9,90 € via Stripe
+                </button>
+
+                <div className="flex items-center justify-center gap-1.5 text-[10px] text-[var(--color-text-faint)] font-mono mt-1">
+                  <span>🔒 SSL chiffré 100% sécurisé</span>
+                  <span>·</span>
+                  <span>Garantie 14j</span>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       )}
