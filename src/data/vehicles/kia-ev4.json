@@ -214,7 +214,7 @@
   "trims": [
     {
       "name": "Air",
-      "price_EUR": 38290,
+      "price_EUR": 36490,
       "batteryUsed": "58,3 kWh",
       "equipmentHighlights": [
         "Jantes 17\" aérodynamiques",
@@ -226,7 +226,7 @@
     },
     {
       "name": "Earth",
-      "price_EUR": 40590,
+      "price_EUR": 39090,
       "batteryUsed": "58,3 kWh",
       "equipmentHighlights": [
         "Jantes 17\" diamantées",
@@ -238,7 +238,7 @@
     },
     {
       "name": "Air",
-      "price_EUR": 42890,
+      "price_EUR": 41490,
       "batteryUsed": "81,4 kWh",
       "equipmentHighlights": [
         "Jantes 17\" aérodynamiques",
@@ -250,7 +250,7 @@
     },
     {
       "name": "Earth",
-      "price_EUR": 45190,
+      "price_EUR": 43790,
       "batteryUsed": "81,4 kWh",
       "equipmentHighlights": [
         "Jantes 17\" diamantées",
@@ -262,7 +262,7 @@
     },
     {
       "name": "GT-Line",
-      "price_EUR": 46990,
+      "price_EUR": 46790,
       "batteryUsed": "81,4 kWh",
       "equipmentHighlights": [
         "Jantes 19\" GT-Line",
@@ -296,7 +296,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 38290,
+      "price_EUR": 36490,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": true,
       "wltp_km": 440,
@@ -413,7 +413,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 40590,
+      "price_EUR": 39090,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 440,
@@ -441,7 +441,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 42890,
+      "price_EUR": 41490,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 625,
@@ -518,7 +518,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 45190,
+      "price_EUR": 43790,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 625,
@@ -546,7 +546,7 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 46990,
+      "price_EUR": 46790,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 584,
@@ -733,7 +733,7 @@
       "Finition GT-Line indisponible avec batterie Standard, gamme contrainte",
       "Pas de version traction intégrale possible"
     ],
-    "idealUserProfile": "Foyer dont elle est l'unique voiture, qui effectue plusieurs trajets longue distance par mois. Le Standard Air à 38 290 € est l'achat le plus accessible ; le Long Range Air à 42 890 € le plus rationnel pour un usage mixte.",
+    "idealUserProfile": "Foyer dont elle est l'unique voiture, qui effectue plusieurs trajets longue distance par mois. Le Standard Air à 36 490 € est l'achat le plus accessible ; le Long Range Air à 41 490 € le plus rationnel pour un usage mixte.",
     "notIdealFor": "Conducteur strictement urbain n'ayant jamais besoin de plus de 200 km : la Standard suffit. Voyageurs autoroutiers très fréquents trouveront la charge 400 V en retrait des architectures 800 V."
   },
   "lastUpdated": "2026-05-29",
