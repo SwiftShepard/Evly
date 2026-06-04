@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import type { Vehicle } from "@/data/schemas";
 import { scoreVehicle, type MatcherAnswers, type MatchResult } from "./scoring";
 import { calculateCeeAid } from "@/lib/cee";
@@ -179,13 +179,6 @@ export default function StrategicMatcher({ vehicles }: Props) {
     softwareImportance: "any",
   });
 
-  // Ajustement du budget max selon le type choisi
-  useEffect(() => {
-    setAnswers((prev) => ({
-      ...prev,
-      budgetMax: prev.budgetType === "buy" ? 40000 : 300,
-    }));
-  }, [answers.budgetType]);
 
   // Résultats calculés (maintenant à l'étape 12)
   const results = useMemo<MatchResult[]>(() => {
@@ -985,6 +978,9 @@ export default function StrategicMatcher({ vehicles }: Props) {
               {top3.map((res, index) => {
                 const isBlurred = index > 0 && !isPaid;
                 const isLS = answers.leasingSocialRfr && answers.leasingSocialUsage && res.vehicle.leasingSocialEligible;
+                const monthlyPrice = isLS 
+                  ? (res.vehicle.leasingSocial_EUR_per_month ?? 100) 
+                  : (res.bestConfig.monthlyLease_EUR ?? Math.round((res.bestConfig.price_EUR ?? 0) * 0.009));
                 return (
                   <div
                     key={res.vehicle.slug}

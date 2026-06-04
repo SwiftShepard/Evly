@@ -278,5 +278,23 @@ test.describe("Evly E2E Test Suite", () => {
     const activeConfigBtn = page.locator(".tco-config-btn.active");
     await expect(activeConfigBtn).toContainText("EQE 350 Executive Line");
   });
+
+  test("Matcher Stratégique - Cas limite : Aucun résultat (Pas de crash)", async ({ page }) => {
+    page.on('console', msg => console.log('BROWSER CONSOLE LOG:', msg.text()));
+    page.on('pageerror', err => console.log('BROWSER PAGE ERROR:', err));
+    // Envoyer des paramètres URL impossibles à satisfaire (budget de 10 €/mois en LLD)
+    await page.goto("/recommandation/?usage=mixed&budgetType=lease&budgetMax=10&paid=false");
+    await page.waitForLoadState("networkidle");
+
+    // S'assurer que le titre de fin est affiché et pas de crash
+    await expect(page.locator("text=Votre sélection sur-mesure.")).toBeVisible();
+
+    // S'assurer que le message spécial "Aucun véhicule ne correspond" est bien visible
+    await expect(page.locator("text=Aucun véhicule ne correspond à vos critères")).toBeVisible();
+    
+    // S'assurer que le bouton "Ajuster mes réponses" est cliquable
+    const adjustBtn = page.locator('button:has-text("Ajuster mes réponses")');
+    await expect(adjustBtn).toBeVisible();
+  });
 });
 

@@ -68,7 +68,7 @@ function getCategory(v: Vehicle) {
   if (segment.includes("a") || (segment.includes("b") && (body.includes("suv") || body.includes("crossover"))) || body.includes("urbain")) return "Mini-SUV";
   if (body.includes("suv") || body.includes("crossover")) return "SUV";
   if (segment.includes("b") || body.includes("citadine")) return "Citadine";
-  if (segment.includes("c") || body.includes("compacte")) return "Compacte";
+  if (segment.includes("c") || body.includes("compacte")) return "Berline compacte";
   if (body.includes("berline") || body.includes("hatchback") || segment.includes("d")) return "Berline";
 
   return "SUV";
@@ -88,7 +88,7 @@ function isDaily(v: Vehicle) {
   return s.includes("a") || s.includes("b") || s.includes("c");
 }
 
-const categories = ["Mini-SUV", "SUV", "Compacte", "Berline", "Citadine", "Monospace", "Quadricycle"];
+const categories = ["Mini-SUV", "SUV", "Berline compacte", "Berline", "Citadine", "Monospace", "Quadricycle"];
 const brands = [...new Set(vehicles.map((v) => v.brand))].sort((a, b) =>
   a.localeCompare(b, "fr", { sensitivity: "base" }),
 );

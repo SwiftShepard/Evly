@@ -783,33 +783,38 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
               <div className="md:col-span-6 flex flex-col gap-4 bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-2xl p-6 justify-between">
                 <div className="flex flex-col gap-3">
                   <h3 className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-text-faint)] font-bold">
-                    Planificateur de voyage type : Paris - Nice (Aller-Retour, 1 860 km)
+                    Planificateur de voyage type : Paris - Nice (Aller Simple, 930 km)
                   </h3>
                   <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
-                    Simulation aller-retour pour un départ à 100% de charge sur autoroute en condition mixte (110-130 km/h) avec arrêts optimisés de 10% à 80% :
+                    Simulation pour un départ à 100% de charge sur autoroute en condition mixte (110-130 km/h) avec arrêts optimisés de 10% à 80% :
                   </p>
                   
                   {/* Detailed planner specs */}
-                  <div className="flex flex-col gap-2.5 mt-2 font-mono text-xs">
-                    <div className="flex justify-between border-b border-[var(--color-border)] border-dashed pb-2">
-                      <span className="text-[var(--color-text-muted)]">Nombre d'arrêts de charge (A/R) :</span>
-                      <span className="font-bold text-[var(--color-accent)]">{Math.ceil(1860 / (highwayRange * 0.7))} arrêts</span>
-                    </div>
-                    <div className="flex justify-between border-b border-[var(--color-border)] border-dashed pb-2">
-                      <span className="text-[var(--color-text-muted)]">Durée d'un arrêt (10-80%) :</span>
-                      <span className="font-semibold">{config.chargingDC_10_80_min || vehicle.chargingDC.time_10_80_min || 30} min</span>
-                    </div>
-                    <div className="flex justify-between border-b border-[var(--color-border)] border-dashed pb-2">
-                      <span className="text-[var(--color-text-muted)]">Temps total de charge cumulé :</span>
-                      <span className="font-semibold">{Math.ceil(1860 / (highwayRange * 0.7)) * (config.chargingDC_10_80_min || vehicle.chargingDC.time_10_80_min || 30)} min</span>
-                    </div>
-                    <div className="flex justify-between border-b border-[var(--color-border)] border-dashed pb-2">
-                      <span className="text-[var(--color-text-muted)]">Coût total électricité (A/R) :</span>
-                      <span className="font-bold text-[var(--color-accent)]">
-                        {fmtPrice(Math.round(((1860 / 100) * (evConso * 1.35)) * elecFast))}
-                      </span>
-                    </div>
-                  </div>
+                  {(() => {
+                    const singleStops = Math.max(0, Math.ceil((930 - highwayRange * 0.9) / (highwayRange * 0.7)));
+                    return (
+                      <div className="flex flex-col gap-2.5 mt-2 font-mono text-xs">
+                        <div className="flex justify-between border-b border-[var(--color-border)] border-dashed pb-2">
+                          <span className="text-[var(--color-text-muted)]">Nombre d'arrêts de charge :</span>
+                          <span className="font-bold text-[var(--color-accent)]">{singleStops} {singleStops > 1 ? 'arrêts' : 'arrêt'}</span>
+                        </div>
+                        <div className="flex justify-between border-b border-[var(--color-border)] border-dashed pb-2">
+                          <span className="text-[var(--color-text-muted)]">Durée d'un arrêt (10-80%) :</span>
+                          <span className="font-semibold">{config.chargingDC_10_80_min || vehicle.chargingDC.time_10_80_min || 30} min</span>
+                        </div>
+                        <div className="flex justify-between border-b border-[var(--color-border)] border-dashed pb-2">
+                          <span className="text-[var(--color-text-muted)]">Temps total de charge cumulé :</span>
+                          <span className="font-semibold">{singleStops * (config.chargingDC_10_80_min || vehicle.chargingDC.time_10_80_min || 30)} min</span>
+                        </div>
+                        <div className="flex justify-between border-b border-[var(--color-border)] border-dashed pb-2">
+                          <span className="text-[var(--color-text-muted)]">Coût total électricité du trajet :</span>
+                          <span className="font-bold text-[var(--color-accent)]">
+                            {fmtPrice(Math.round(((930 / 100) * (evConso * 1.35)) * elecFast))}
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })()}
                 </div>
 
                 <div className="border-t border-[var(--color-border)] pt-4 text-[10px] text-[var(--color-text-faint)] leading-normal flex gap-2">

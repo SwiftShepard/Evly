@@ -46,12 +46,12 @@ export default function VehicleSelectModal({
     if (segment.includes("a") || (segment.includes("b") && (body.includes("suv") || body.includes("crossover"))) || body.includes("urbain")) return "Mini-SUV";
     if (body.includes("suv") || body.includes("crossover")) return "SUV";
     if (segment.includes("b") || body.includes("citadine")) return "Citadine";
-    if (segment.includes("c") || body.includes("compacte")) return "Compacte";
+    if (segment.includes("c") || body.includes("compacte")) return "Berline compacte";
     if (body.includes("berline") || body.includes("hatchback") || segment.includes("d")) return "Berline";
     return "SUV";
   };
 
-  const categories = ["Tous", "Mini-SUV", "SUV", "Compacte", "Berline", "Citadine", "Monospace", "Quadricycle"];
+  const categories = ["Tous", "Mini-SUV", "SUV", "Berline compacte", "Berline", "Citadine", "Monospace", "Quadricycle"];
 
   const filtered = vehicles.filter((v) => {
     const text = `${v.brand} ${v.model} ${v.variant}`.toLowerCase();
