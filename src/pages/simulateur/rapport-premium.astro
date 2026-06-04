@@ -3,32 +3,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import PremiumReportDashboard from "@/components/premium/PremiumReportDashboard";
 import { getAllVehicles } from "@/lib/vehicles";
 
-const vehicles = getAllVehicles().map((v) => {
-  const cheapest = v.trims.reduce((a, b) =>
-    a.price_EUR < b.price_EUR ? a : b
-  );
-  const aids = v.availableAids.reduce((sum, a) => sum + a.amount_EUR, 0);
-  return {
-    slug: v.slug,
-    brand: v.brand,
-    model: v.model,
-    variant: v.variant,
-    segment: v.segment,
-    price_EUR: cheapest.price_EUR,
-    aids_EUR: aids,
-    consumption_kWh_100km: v.consumption_mixed_kWh_per_100km,
-    realRange_mixed_km: v.realRange.mixed_km,
-    configs: v.configurations.map((c) => ({
-      id: c.id,
-      label: c.label,
-      trim: c.trim,
-      battery: c.battery,
-      price_EUR: c.price_EUR,
-      consumption_kWh_100km: c.wltp_consumption_kWh_100km,
-      realRange_mixed_km: c.realRange?.mixed_km ?? v.realRange.mixed_km,
-    })),
-  };
-});
+const vehicles = getAllVehicles();
 ---
 
 <BaseLayout title="Rapport Premium B2C | Evly" description="Votre rapport PDF Premium personnalisé indépendant.">
@@ -38,13 +13,15 @@ const vehicles = getAllVehicles().map((v) => {
 <style>
   /* ── Print Media layout (4 exact A4 pages) ───────────── */
   @media print {
-    .no-print {
+    .no-print, header, footer, nav, #reading-progress, .reading-progress, [class*="nav-header"] {
       display: none !important;
     }
     body, html {
       background: #ffffff !important;
       color: #111111 !important;
-      font-size: 11pt !important;
+      font-size: 10pt !important;
+      margin: 0 !important;
+      padding: 0 !important;
     }
     .premium-report-container {
       width: 100% !important;
@@ -56,11 +33,11 @@ const vehicles = getAllVehicles().map((v) => {
       display: flex !important;
       flex-direction: column !important;
       justify-content: space-between !important;
-      height: 297mm !important; /* Height of A4 */
+      height: 296mm !important; /* Slightly under 297mm to prevent blank pages */
       width: 210mm !important;  /* Width of A4 */
       page-break-after: always !important;
       break-after: page !important;
-      padding: 1.5cm !important;
+      padding: 1.8cm !important;
       box-sizing: border-box !important;
       background: #ffffff !important;
       border: none !important;
