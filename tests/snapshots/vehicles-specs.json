@@ -834,14 +834,15 @@
     "model": "EV3",
     "power_kW": 150,
     "usableCapacity_kWh": 81.4,
-    "wltp_min_km": 605,
+    "wltp_min_km": 436,
     "wltp_max_km": 605,
-    "configurations_count": 4,
+    "configurations_count": 5,
     "configuration_ids": [
       "kia-ev3-long-range-air",
       "kia-ev3-long-range-earth",
       "kia-ev3-long-range-gt-line",
-      "kia-ev3-standard-range-air"
+      "kia-ev3-standard-range-air",
+      "kia-ev3-standard-range-earth"
     ]
   },
   {

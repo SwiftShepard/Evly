@@ -10,7 +10,7 @@ const vehicles = getAllVehicles();
   <PremiumReportDashboard client:only="react" vehicles={vehicles} />
 </BaseLayout>
 
-<style>
+<style is:global>
   /* ── Print Media layout (4 exact A4 pages) ───────────── */
   @media print {
     .no-print, header, footer, nav, #reading-progress, .reading-progress, [class*="nav-header"] {

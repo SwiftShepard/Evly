@@ -512,10 +512,10 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
           </div>
 
           {/* Page 1 conversion footer */}
-          <div className="no-print mt-6 bg-gradient-to-r from-[var(--color-accent-dim)] to-transparent border border-l-4 border-l-[var(--color-accent)] border-[var(--color-border)] rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="no-print mt-6 bg-gradient-to-r from-[var(--color-accent-dim)] to-[var(--color-accent)] border-none rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm">
             <div className="flex flex-col gap-0.5">
-              <h4 className="text-xs font-bold text-[var(--color-text)]">Envie de concrétiser ce projet ? Mandataire Élite-Auto</h4>
-              <p className="text-[11px] text-[var(--color-text-muted)] leading-relaxed">
+              <h4 className="text-xs font-bold text-white">Envie de concrétiser ce projet ? Mandataire Élite-Auto</h4>
+              <p className="text-[11px] text-emerald-100/90 leading-relaxed">
                 Profitez de remises négociées jusqu'à <strong>-12%</strong> sur les stocks de {vehicle.brand} en France.
               </p>
             </div>
@@ -523,7 +523,7 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
               href="https://www.elite-auto.fr"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 bg-[var(--color-text)] hover:opacity-90 text-[var(--color-bg)] text-xs font-bold rounded-lg transition-colors text-center shrink-0"
+              className="px-4 py-2 bg-white hover:bg-emerald-50 text-[var(--color-accent-dim)] text-xs font-bold rounded-lg transition-colors text-center shrink-0 shadow-sm"
             >
               Négocier mon offre ↗
             </a>
@@ -673,6 +673,37 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
                 </div>
               </div>
             </div>
+
+            {/* 3-column cost explanation grid */}
+            <div className="border-t border-[var(--color-border)] pt-5 mt-2 flex flex-col gap-3">
+              <h3 className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-text-faint)] font-bold">4. Décryptage de l'avantage budgétaire électrique</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs text-[var(--color-text-muted)] leading-relaxed">
+                <div className="flex flex-col gap-1.5 bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-xl p-4">
+                  <span className="font-bold text-[var(--color-text)] flex items-center gap-1.5">
+                    ⚙️ Entretien mécanique réduit
+                  </span>
+                  <p>
+                    L'absence de pièces d'usure complexes (vidange, filtre à huile, bougies, courroie de distribution, boîte de vitesses complexe) diminue le budget entretien de près de 50%. Les plaquettes de frein durent 2x plus longtemps grâce au freinage régénératif.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-1.5 bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-xl p-4">
+                  <span className="font-bold text-[var(--color-text)] flex items-center gap-1.5">
+                    🔋 Garantie & Résilience Batterie
+                  </span>
+                  <p>
+                    La batterie est garantie 8 ans ou 160 000 km par le constructeur pour un niveau de santé (SOH) de 70% minimum. De plus, la chimie {vehicle.chemistry} maintient une valeur résiduelle élevée du véhicule sur le marché secondaire de l'occasion en 2026.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-1.5 bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-xl p-4">
+                  <span className="font-bold text-[var(--color-text)] flex items-center gap-1.5">
+                    ⚡ Coût d'énergie ultra-compétitif
+                  </span>
+                  <p>
+                    Avec une recharge à domicile à {elecHome} €/kWh, le coût aux 100 km s'établit à seulement {fmtPrice(evConso * elecHome)} (contre plus de {fmtPrice(iceConso * fuelPrice)} en thermique). Même avec {fastPct}% de recharge rapide, l'économie annuelle brute de carburant reste majeure.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="border-t border-[var(--color-border)] pt-4 text-[10px] text-[var(--color-text-faint)] leading-normal flex justify-between items-center">
@@ -752,17 +783,17 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
               <div className="md:col-span-6 flex flex-col gap-4 bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-2xl p-6 justify-between">
                 <div className="flex flex-col gap-3">
                   <h3 className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-text-faint)] font-bold">
-                    Planificateur de voyage type : Paris - Nice (930 km)
+                    Planificateur de voyage type : Paris - Nice (Aller-Retour, 1 860 km)
                   </h3>
                   <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
-                    Simulation pour un départ à 100% de charge sur autoroute en condition mixte (110-130 km/h) avec arrêts optimisés de 10% à 80% :
+                    Simulation aller-retour pour un départ à 100% de charge sur autoroute en condition mixte (110-130 km/h) avec arrêts optimisés de 10% à 80% :
                   </p>
                   
                   {/* Detailed planner specs */}
                   <div className="flex flex-col gap-2.5 mt-2 font-mono text-xs">
                     <div className="flex justify-between border-b border-[var(--color-border)] border-dashed pb-2">
-                      <span className="text-[var(--color-text-muted)]">Nombre d'arrêts de charge :</span>
-                      <span className="font-bold text-[var(--color-accent)]">{Math.ceil(930 / (highwayRange * 0.7))} arrêts</span>
+                      <span className="text-[var(--color-text-muted)]">Nombre d'arrêts de charge (A/R) :</span>
+                      <span className="font-bold text-[var(--color-accent)]">{Math.ceil(1860 / (highwayRange * 0.7))} arrêts</span>
                     </div>
                     <div className="flex justify-between border-b border-[var(--color-border)] border-dashed pb-2">
                       <span className="text-[var(--color-text-muted)]">Durée d'un arrêt (10-80%) :</span>
@@ -770,12 +801,12 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
                     </div>
                     <div className="flex justify-between border-b border-[var(--color-border)] border-dashed pb-2">
                       <span className="text-[var(--color-text-muted)]">Temps total de charge cumulé :</span>
-                      <span className="font-semibold">{Math.ceil(930 / (highwayRange * 0.7)) * (config.chargingDC_10_80_min || vehicle.chargingDC.time_10_80_min || 30)} min</span>
+                      <span className="font-semibold">{Math.ceil(1860 / (highwayRange * 0.7)) * (config.chargingDC_10_80_min || vehicle.chargingDC.time_10_80_min || 30)} min</span>
                     </div>
                     <div className="flex justify-between border-b border-[var(--color-border)] border-dashed pb-2">
-                      <span className="text-[var(--color-text-muted)]">Coût total électricité du trajet :</span>
+                      <span className="text-[var(--color-text-muted)]">Coût total électricité (A/R) :</span>
                       <span className="font-bold text-[var(--color-accent)]">
-                        {fmtPrice(Math.round(((930 / 100) * (evConso * 1.35)) * elecFast))}
+                        {fmtPrice(Math.round(((1860 / 100) * (evConso * 1.35)) * elecFast))}
                       </span>
                     </div>
                   </div>
@@ -785,6 +816,86 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
                   <AlertTriangle size={14} className="shrink-0 text-amber-500" />
                   <p>
                     <strong>Recommandation</strong> : Planifiez vos arrêts via le GPS embarqué du véhicule pour pré-conditionner la batterie, garantissant le maintien de la courbe de charge rapide maximale dès votre arrivée à la borne.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Detailed travel timeline & tips */}
+            <div className="border-t border-[var(--color-border)] pt-5 mt-2 flex flex-col gap-4">
+              <h3 className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-text-faint)] font-bold">
+                4. Simulation d'itinéraire & Conseils de charge rapide autoroutière
+              </h3>
+              
+              {/* Horizontal visual timeline */}
+              <div className="bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-2xl p-6 flex flex-col gap-4">
+                <span className="text-[10px] font-mono text-[var(--color-text-faint)] uppercase tracking-wider block">
+                  Chronologie du trajet type aller simple Paris - Nice (930 km)
+                </span>
+                
+                <div className="relative flex justify-between items-center w-full px-4 md:px-8 mt-2">
+                  {/* Timeline connecting line */}
+                  <div className="absolute top-1/2 left-0 right-0 h-1 bg-[var(--color-border)] -translate-y-1/2 z-0"></div>
+                  
+                  {/* Point 1: Paris */}
+                  <div className="flex flex-col items-center gap-1 z-10 bg-[var(--color-bg-subtle)] px-2">
+                    <div className="w-5 h-5 rounded-full bg-[var(--color-accent)] border-4 border-white flex items-center justify-center shadow-sm"></div>
+                    <span className="font-bold text-[11px] text-[var(--color-text)] mt-1">Paris</span>
+                    <span className="font-mono text-[9px] text-emerald-600 font-semibold">100% SoC</span>
+                  </div>
+
+                  {/* Point 2: Auxerre */}
+                  <div className="flex flex-col items-center gap-1 z-10 bg-[var(--color-bg-subtle)] px-2">
+                    <div className="w-5 h-5 rounded-full bg-amber-500 border-4 border-white flex items-center justify-center shadow-sm"></div>
+                    <span className="font-bold text-[11px] text-[var(--color-text)] mt-1">Auxerre</span>
+                    <span className="font-mono text-[9px] text-[var(--color-text-muted)]">
+                      +{config.chargingDC_10_80_min || vehicle.chargingDC.time_10_80_min || 30}m
+                    </span>
+                  </div>
+
+                  {/* Point 3: Lyon */}
+                  <div className="flex flex-col items-center gap-1 z-10 bg-[var(--color-bg-subtle)] px-2">
+                    <div className="w-5 h-5 rounded-full bg-amber-500 border-4 border-white flex items-center justify-center shadow-sm"></div>
+                    <span className="font-bold text-[11px] text-[var(--color-text)] mt-1">Lyon</span>
+                    <span className="font-mono text-[9px] text-[var(--color-text-muted)]">
+                      +{config.chargingDC_10_80_min || vehicle.chargingDC.time_10_80_min || 30}m
+                    </span>
+                  </div>
+
+                  {/* Point 4: Salon-de-P */}
+                  <div className="flex flex-col items-center gap-1 z-10 bg-[var(--color-bg-subtle)] px-2">
+                    <div className="w-5 h-5 rounded-full bg-amber-500 border-4 border-white flex items-center justify-center shadow-sm"></div>
+                    <span className="font-bold text-[11px] text-[var(--color-text)] mt-1">Marseille</span>
+                    <span className="font-mono text-[9px] text-[var(--color-text-muted)]">
+                      +{config.chargingDC_10_80_min || vehicle.chargingDC.time_10_80_min || 30}m
+                    </span>
+                  </div>
+
+                  {/* Point 5: Nice */}
+                  <div className="flex flex-col items-center gap-1 z-10 bg-[var(--color-bg-subtle)] px-2">
+                    <div className="w-5 h-5 rounded-full bg-[var(--color-accent)] border-4 border-white flex items-center justify-center shadow-sm"></div>
+                    <span className="font-bold text-[11px] text-[var(--color-text)] mt-1">Nice</span>
+                    <span className="font-mono text-[9px] text-emerald-600 font-semibold">~15% SoC</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Best practices tips box */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs text-[var(--color-text-muted)] leading-relaxed mt-2">
+                <div className="flex flex-col gap-1 bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-xl p-4">
+                  <span className="font-bold text-[var(--color-text)] flex items-center gap-1.5">
+                    🌡️ Préconditionnement thermique
+                  </span>
+                  <p>
+                    Activer la navigation vers la borne rapide dans le GPS intégré. Le véhicule réchauffe ou refroidit automatiquement la batterie à sa température optimale (~25°C), garantissant d'atteindre la puissance de recharge crête de {config.chargingDC_peak_kW || vehicle.chargingDC.peakPower_kW} kW dès la connexion.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-1 bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-xl p-4">
+                  <span className="font-bold text-[var(--color-text)] flex items-center gap-1.5">
+                    ⏳ La règle d'or des 10% - 80%
+                  </span>
+                  <p>
+                    La vitesse de charge ralentit drastiquement après 80% pour préserver la chimie. Il est toujours plus rapide de repartir dès que vous atteignez 80% de SoC (State of Charge) plutôt que d'attendre une charge complète à 100%, réduisant ainsi votre temps de trajet global.
                   </p>
                 </div>
               </div>
@@ -895,6 +1006,40 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
                 </div>
               </div>
             </div>
+
+            {/* Guide to claim subsidies */}
+            <div className="border-t border-[var(--color-border)] pt-5 mt-2 flex flex-col gap-3">
+              <h3 className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-text-faint)] font-bold">
+                4. Guide d'obtention des subventions & conformité de recharge
+              </h3>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-xs text-[var(--color-text-muted)] leading-relaxed">
+                <div className="flex flex-col gap-1 bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-xl p-4">
+                  <span className="font-bold text-[var(--color-text)]">
+                    📥 Bonus Écologique
+                  </span>
+                  <p>
+                    Le bonus est généralement déduit directement de la facture par le concessionnaire. En cas d'achat direct sans avance, vous devez en faire la demande en ligne sur le site de l'ASP dans les 6 mois suivant la livraison du véhicule.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-1 bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-xl p-4">
+                  <span className="font-bold text-[var(--color-text)]">
+                    📝 Crédit d'Impôt Wallbox
+                  </span>
+                  <p>
+                    À déclarer lors de votre déclaration de revenus de l'année suivante (formulaire 2042 RICI). Conservez précieusement la facture acquittée de l'installateur qui doit mentionner la norme IRVE et son habilitation de niveau 1 minimum.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-1 bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-xl p-4">
+                  <span className="font-bold text-[var(--color-text)]">
+                    🔌 Choix de Puissance
+                  </span>
+                  <p>
+                    Une puissance de 7,4 kW est optimale en monophasé (32A) pour une recharge nocturne complète. Si votre abonnement est triphasé, optez pour une borne de 11 kW ou 22 kW si le chargeur embarqué (OBC) du véhicule le permet.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Expert Signature and conversion */}
@@ -925,7 +1070,7 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
         <style>{`
           @media print {
             body::after {
-              content: "Généré de manière sécurisée par Evly (https://evly.fr). Document d'aide à la décision à valeur informative, non contractuelle.";
+              content: "Généré de manière sécurisée par Evly (https://ev-ly.com). Document d'aide à la décision à valeur informative, non contractuelle.";
               position: fixed;
               bottom: 10px;
               left: 0;

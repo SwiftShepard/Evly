@@ -199,7 +199,7 @@ ev3.update({
     "productionCountry": "Corée", "power_kW": 150, "power_hp": 204, "torque_Nm": 283,
     "acceleration_0_100_s": 7.7, "topSpeed_kmh": 170,
     "usableCapacity_kWh": 81.4, "grossCapacity_kWh": 84.6, "mass_kg": 1850,
-    "wltp_max_km": 605, "wltp_min_km": 560,
+    "wltp_max_km": 605, "wltp_min_km": 436,
     "realRange": {"mixed_km": 500, "highway_130_km": 360, "urban_km": 600, "winter_minus5_km": 400, "confidence": "tested"},
     "consumption_mixed_kWh_per_100km": 15.0, "consumption_highway_kWh_per_100km": 22.5, "consumption_winter_kWh_per_100km": 19.5,
     "dragCoefficient_Cx": 0.26,
@@ -207,10 +207,11 @@ ev3.update({
     "length_mm": 4300, "width_mm": 1850, "height_mm": 1560, "wheelbase_mm": 2680,
     "trunkCapacity_L": 460, "trunkCapacityFolded_L": 1250, "frunkCapacity_L": 25,
     "trims": [
-        {"name": "Standard Range Air", "price_EUR": 35990, "batteryUsed": "Standard 58.3 kWh", "wltp_km": 436, "equipmentHighlights": ["Ecran panoramique", "Jantes 17\""]},
-        {"name": "Long Range Air", "price_EUR": 39990, "batteryUsed": "Long Range 81.4 kWh", "wltp_km": 605, "equipmentHighlights": ["Batterie 81.4 kWh", "Jantes 17\""]},
-        {"name": "Long Range Earth", "price_EUR": 40990, "batteryUsed": "Long Range 81.4 kWh", "wltp_km": 605, "equipmentHighlights": ["Confort ++", "Double écran 12.3\""]},
-        {"name": "Long Range GT-Line", "price_EUR": 45990, "batteryUsed": "Long Range 81.4 kWh", "wltp_km": 580, "equipmentHighlights": ["Jantes 19\"", "Pompe à chaleur"]}
+        {"name": "Standard Range Air", "price_EUR": 36490, "batteryUsed": "Standard 58.3 kWh", "wltp_km": 436, "equipmentHighlights": ["Ecran panoramique", "Jantes 17\""]},
+        {"name": "Standard Range Earth", "price_EUR": 39090, "batteryUsed": "Standard 58.3 kWh", "wltp_km": 436, "equipmentHighlights": ["Sièges avant chauffants", "Volant chauffant", "Recharge smartphone sans fil"]},
+        {"name": "Long Range Air", "price_EUR": 41490, "batteryUsed": "Long Range 81.4 kWh", "wltp_km": 605, "equipmentHighlights": ["Batterie 81.4 kWh", "Jantes 17\""]},
+        {"name": "Long Range Earth", "price_EUR": 43790, "batteryUsed": "Long Range 81.4 kWh", "wltp_km": 605, "equipmentHighlights": ["Confort ++", "Double écran 12.3\""]},
+        {"name": "Long Range GT-Line", "price_EUR": 46790, "batteryUsed": "Long Range 81.4 kWh", "wltp_km": 580, "equipmentHighlights": ["Jantes 19\"", "Pompe à chaleur"]}
     ],
     "warranty": {"vehicle_years": 7, "vehicle_km": 150000, "battery_years": 7, "battery_km": 150000, "battery_soh_minimum_percent": 70},
     "rangeTests": [

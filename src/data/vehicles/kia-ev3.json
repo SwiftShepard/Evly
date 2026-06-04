@@ -22,7 +22,7 @@
   "architecture_V": 400,
   "mass_kg": 1850,
   "wltp_max_km": 605,
-  "wltp_min_km": 605,
+  "wltp_min_km": 436,
   "realRange": {
     "mixed_km": 500,
     "highway_130_km": 360,
@@ -145,7 +145,7 @@
   "trims": [
     {
       "name": "Air",
-      "price_EUR": 35990,
+      "price_EUR": 36490,
       "batteryUsed": "58.3 kWh",
       "wltp_km": 436,
       "equipmentHighlights": [
@@ -154,8 +154,19 @@
       ]
     },
     {
+      "name": "Earth",
+      "price_EUR": 39090,
+      "batteryUsed": "58.3 kWh",
+      "wltp_km": 436,
+      "equipmentHighlights": [
+        "Sièges avant chauffants",
+        "Volant chauffant",
+        "Recharge smartphone sans fil"
+      ]
+    },
+    {
       "name": "Air",
-      "price_EUR": 39990,
+      "price_EUR": 41490,
       "batteryUsed": "81.4 kWh",
       "wltp_km": 605,
       "equipmentHighlights": [
@@ -165,7 +176,7 @@
     },
     {
       "name": "Earth",
-      "price_EUR": 40990,
+      "price_EUR": 43790,
       "batteryUsed": "81.4 kWh",
       "wltp_km": 605,
       "equipmentHighlights": [
@@ -175,7 +186,7 @@
     },
     {
       "name": "GT-Line",
-      "price_EUR": 45990,
+      "price_EUR": 46790,
       "batteryUsed": "81.4 kWh",
       "wltp_km": 580,
       "equipmentHighlights": [
@@ -196,73 +207,53 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 35990,
+      "price_EUR": 36490,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 605,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_km": 436,
+      "wltp_consumption_kWh_100km": 14.9,
       "realRange": {
-        "mixed_km": 500,
-        "highway_130_km": 360,
-        "urban_km": 600,
-        "winter_minus5_km": 400,
-        "confidence": "tested"
+        "mixed_km": 350,
+        "highway_130_km": 245,
+        "urban_km": 420,
+        "winter_minus5_km": 270,
+        "confidence": "estimated"
       },
-      "rangeTests": [
-        {
-          "sourceId": "nyland",
-          "testDate": "2024-09",
-          "speed_kmh": 90,
-          "range_km": 599,
-          "consumption_kWh_100km": 13.5,
-          "temperature_C": 20,
-          "wheelSize_inches": 19,
-          "tyreModel": null,
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Très efficient"
-        },
-        {
-          "sourceId": "nyland",
-          "testDate": "2024-09",
-          "speed_kmh": 120,
-          "range_km": 412,
-          "consumption_kWh_100km": 19.5,
-          "temperature_C": 20,
-          "wheelSize_inches": 19,
-          "tyreModel": null,
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": ""
-        }
-      ],
-      "chargingDC_peak_kW": 128,
-      "chargingDC_10_80_min": 31,
-      "chargingDC_kWh_30min": 57,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 100
-        },
-        {
-          "soc": 10,
-          "power": 130
-        },
-        {
-          "soc": 50,
-          "power": 100
-        },
-        {
-          "soc": 80,
-          "power": 50
-        },
-        {
-          "soc": 100,
-          "power": 10
-        }
-      ],
+      "rangeTests": [],
+      "chargingDC_peak_kW": 102,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 41,
+      "chargingCurve": null,
       "availability": "available",
-      "notes": null
+      "notes": "Batterie Standard Range 58.3 kWh."
+    },
+    {
+      "id": "kia-ev3-standard-range-earth",
+      "label": "EV3 Earth",
+      "battery": "standard",
+      "trim": "Earth",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 39090,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 436,
+      "wltp_consumption_kWh_100km": 14.9,
+      "realRange": {
+        "mixed_km": 350,
+        "highway_130_km": 245,
+        "urban_km": 420,
+        "winter_minus5_km": 270,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 102,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 41,
+      "chargingCurve": null,
+      "availability": "available",
+      "notes": "Batterie Standard Range 58.3 kWh, finition Earth."
     },
     {
       "id": "kia-ev3-long-range-air",
@@ -272,7 +263,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 39990,
+      "price_EUR": 41490,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 605,
@@ -348,7 +339,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 40990,
+      "price_EUR": 43790,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 605,
@@ -424,7 +415,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 45990,
+      "price_EUR": 46790,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 605,
