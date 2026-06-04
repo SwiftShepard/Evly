@@ -2223,9 +2223,9 @@
     "brand": "Volkswagen",
     "model": "ID.Buzz",
     "power_kW": 210,
-    "usableCapacity_kWh": 77,
-    "wltp_min_km": 461,
-    "wltp_max_km": 461,
+    "usableCapacity_kWh": 79,
+    "wltp_min_km": 420,
+    "wltp_max_km": 470,
     "configurations_count": 3,
     "configuration_ids": [
       "vw-id-buzz-5-places",
@@ -2243,21 +2243,26 @@
     "wltp_max_km": 450,
     "configurations_count": 2,
     "configuration_ids": [
-      "vw-id2-id.2",
-      "vw-id2-id.2-gtx"
+      "vw-id2-id-gti",
+      "vw-id2-id-polo"
     ]
   },
   {
     "slug": "vw-id3",
     "brand": "Volkswagen",
     "model": "ID.3 Neo",
-    "power_kW": 150,
+    "power_kW": 170,
     "usableCapacity_kWh": 58,
-    "wltp_min_km": 434,
-    "wltp_max_km": 434,
-    "configurations_count": 1,
+    "wltp_min_km": 410,
+    "wltp_max_km": 630,
+    "configurations_count": 6,
     "configuration_ids": [
-      "vw-id3-pro"
+      "vw-id3-life-50",
+      "vw-id3-life-58",
+      "vw-id3-life-79",
+      "vw-id3-style-58",
+      "vw-id3-style-79",
+      "vw-id3-trend-50"
     ]
   },
   {
@@ -2266,11 +2271,13 @@
     "model": "ID.4",
     "power_kW": 210,
     "usableCapacity_kWh": 77,
-    "wltp_min_km": 550,
+    "wltp_min_km": 360,
     "wltp_max_km": 550,
-    "configurations_count": 1,
+    "configurations_count": 3,
     "configuration_ids": [
-      "vw-id4-pro"
+      "vw-id4-gtx-life-max",
+      "vw-id4-pro-life-max",
+      "vw-id4-pure-life"
     ]
   },
   {
@@ -2279,7 +2286,7 @@
     "model": "ID.5",
     "power_kW": 210,
     "usableCapacity_kWh": 77,
-    "wltp_min_km": 560,
+    "wltp_min_km": 515,
     "wltp_max_km": 560,
     "configurations_count": 2,
     "configuration_ids": [
@@ -2293,8 +2300,8 @@
     "model": "ID.7",
     "power_kW": 210,
     "usableCapacity_kWh": 77,
-    "wltp_min_km": 621,
-    "wltp_max_km": 621,
+    "wltp_min_km": 605,
+    "wltp_max_km": 709,
     "configurations_count": 3,
     "configuration_ids": [
       "vw-id7-pro",

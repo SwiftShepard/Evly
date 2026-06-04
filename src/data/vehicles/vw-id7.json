@@ -2,7 +2,7 @@
   "slug": "vw-id7",
   "brand": "Volkswagen",
   "model": "ID.7",
-  "variant": "Pro 77 kWh",
+  "variant": "Pro - Pro S",
   "bodyType": "Berline",
   "segment": "E",
   "productionCountry": "Allemagne",
@@ -10,19 +10,19 @@
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
   "power_kW": 210,
-  "power_hp": 204,
-  "torque_Nm": 300,
-  "drivetrain": "FWD",
+  "power_hp": 286,
+  "torque_Nm": 545,
+  "drivetrain": "RWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
-  "topSpeed_kmh": 160,
+  "acceleration_0_100_s": 6.5,
+  "topSpeed_kmh": 180,
   "usableCapacity_kWh": 77,
   "grossCapacity_kWh": 82,
   "chemistry": "NMC",
   "architecture_V": 400,
-  "mass_kg": 1700,
-  "wltp_max_km": 621,
-  "wltp_min_km": 621,
+  "mass_kg": 2172,
+  "wltp_max_km": 709,
+  "wltp_min_km": 605,
   "realRange": {
     "mixed_km": 490,
     "highway_130_km": 410,
@@ -114,36 +114,39 @@
   "length_mm": 4961,
   "width_mm": 1862,
   "height_mm": 1536,
-  "wheelbase_mm": 2700,
+  "wheelbase_mm": 2966,
   "trunkCapacity_L": 532,
   "trunkCapacityFolded_L": 1200,
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Pro",
-      "price_EUR": 54990,
-      "batteryUsed": "77 kWh NMC",
+      "name": "Pro Life Max",
+      "price_EUR": 53000,
+      "batteryUsed": "77 kWh",
       "equipmentHighlights": [
-        "Cx 0.23 record",
-        "Charge 175 kW"
+        "Nouveau moteur AP550 286 ch",
+        "Conduite semi-autonome",
+        "Phares Matrix LED IQ.Light"
       ]
     },
     {
-      "name": "Pro S 86 kWh",
-      "price_EUR": 62990,
-      "batteryUsed": "86 kWh NMC",
+      "name": "Pro S Life Max",
+      "price_EUR": 62690,
+      "batteryUsed": "86 kWh",
       "equipmentHighlights": [
-        "700 km WLTP",
-        "Autonomie maxi"
+        "Grande autonomie 709 km WLTP",
+        "Conduite semi-autonome",
+        "Sièges avant climatisés et massants"
       ]
     },
     {
-      "name": "Tourer",
-      "price_EUR": 57990,
-      "batteryUsed": "77 kWh NMC",
+      "name": "Tourer Pro Life Max",
+      "price_EUR": 53700,
+      "batteryUsed": "77 kWh",
       "equipmentHighlights": [
-        "Break caisson",
-        "Volume XXL"
+        "Silhouette break aérodynamique",
+        "Grand coffre de 605 à 1714 L",
+        "Phares Matrix LED IQ.Light"
       ]
     }
   ],
@@ -153,14 +156,14 @@
   "configurations": [
     {
       "id": "vw-id7-pro",
-      "label": "ID.7 Pro",
+      "label": "ID.7 Pro Life Max",
       "battery": "standard",
-      "trim": "Pro",
-      "wheelSize_inches": 18,
+      "trim": "Pro Life Max",
+      "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 54990,
-      "monthlyLease_EUR": null,
+      "price_EUR": 53000,
+      "monthlyLease_EUR": 669,
       "leasingSocialEligible": false,
       "wltp_km": 621,
       "wltp_consumption_kWh_100km": 15,
@@ -226,27 +229,27 @@
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": "286 ch (210 kW)"
     },
     {
       "id": "vw-id7-pro-s-86-kwh",
-      "label": "ID.7 Pro S 86 kWh",
-      "battery": "standard",
-      "trim": "Pro S 86 kWh",
-      "wheelSize_inches": 18,
+      "label": "ID.7 Pro S Life Max",
+      "battery": "long-range",
+      "trim": "Pro S Life Max",
+      "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 62990,
+      "price_EUR": 62690,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 621,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_km": 709,
+      "wltp_consumption_kWh_100km": 14.8,
       "realRange": {
-        "mixed_km": 490,
-        "highway_130_km": 410,
-        "highway_120_km": 449,
-        "urban_km": 580,
-        "winter_minus5_km": 340,
+        "mixed_km": 550,
+        "highway_130_km": 450,
+        "highway_120_km": 490,
+        "urban_km": 650,
+        "winter_minus5_km": 390,
         "confidence": "bjorn_nyland"
       },
       "rangeTests": [
@@ -277,53 +280,53 @@
           "notes": "Très bon score malgré temp. basse."
         }
       ],
-      "chargingDC_peak_kW": 175,
-      "chargingDC_10_80_min": 28,
-      "chargingDC_kWh_30min": 55,
+      "chargingDC_peak_kW": 200,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 60,
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 100
+          "power": 110
         },
         {
           "soc": 10,
-          "power": 130
+          "power": 200
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 110
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 60
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 12
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": "286 ch (210 kW), grande autonomie"
     },
     {
       "id": "vw-id7-tourer",
-      "label": "ID.7 Tourer",
+      "label": "ID.7 Tourer Pro Life Max",
       "battery": "standard",
-      "trim": "Tourer",
-      "wheelSize_inches": 18,
+      "trim": "Tourer Pro Life Max",
+      "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 57990,
-      "monthlyLease_EUR": null,
+      "price_EUR": 53700,
+      "monthlyLease_EUR": 689,
       "leasingSocialEligible": false,
-      "wltp_km": 621,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_km": 605,
+      "wltp_consumption_kWh_100km": 15.3,
       "realRange": {
-        "mixed_km": 490,
-        "highway_130_km": 410,
-        "highway_120_km": 449,
-        "urban_km": 580,
-        "winter_minus5_km": 340,
+        "mixed_km": 480,
+        "highway_130_km": 400,
+        "highway_120_km": 435,
+        "urban_km": 570,
+        "winter_minus5_km": 330,
         "confidence": "bjorn_nyland"
       },
       "rangeTests": [
@@ -380,7 +383,7 @@
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": "Silhouette break, coffre 605 L"
     }
   ],
   "warranty": {

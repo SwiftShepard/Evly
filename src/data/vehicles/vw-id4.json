@@ -22,7 +22,7 @@
   "architecture_V": 400,
   "mass_kg": 2120,
   "wltp_max_km": 550,
-  "wltp_min_km": 550,
+  "wltp_min_km": 360,
   "realRange": {
     "mixed_km": 450,
     "highway_130_km": 315,
@@ -110,12 +110,35 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Pro",
-      "price_EUR": 45000,
+      "name": "Pure Life",
+      "price_EUR": 41500,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "Moteur 170 ch",
+        "Écran central 12.9\"",
+        "Projecteurs LED",
+        "Radars de stationnement AV/AR"
+      ]
+    },
+    {
+      "name": "Pro Life Max",
+      "price_EUR": 46990,
       "batteryUsed": "77 kWh",
       "equipmentHighlights": [
-        "Moteur AP550",
-        "Ecran 12.9\""
+        "Nouveau moteur AP550 286 ch",
+        "Projecteurs Matrix LED",
+        "Caméra de recul",
+        "Sièges avant et volant chauffants"
+      ]
+    },
+    {
+      "name": "GTX Life Max",
+      "price_EUR": 55000,
+      "batteryUsed": "77 kWh",
+      "equipmentHighlights": [
+        "Transmission intégrale AWD 340 ch",
+        "Style extérieur sportif GTX",
+        "Châssis sport spécifique"
       ]
     }
   ],
@@ -135,14 +158,64 @@
   ],
   "configurations": [
     {
-      "id": "vw-id4-pro",
-      "label": "ID.4 Pro",
+      "id": "vw-id4-pure-life",
+      "label": "ID.4 Pure Life",
       "battery": "standard",
-      "trim": "Pro",
+      "trim": "Pure Life",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 45000,
+      "price_EUR": 41500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": true,
+      "wltp_km": 360,
+      "wltp_consumption_kWh_100km": 15.5,
+      "realRange": {
+        "mixed_km": 300,
+        "highway_130_km": 210,
+        "urban_km": 360,
+        "winter_minus5_km": 220,
+        "confidence": "estimated",
+        "highway_120_km": 230
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 115,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 80
+        },
+        {
+          "soc": 10,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "vw-id4-pro-life-max",
+      "label": "ID.4 Pro Life Max",
+      "battery": "standard",
+      "trim": "Pro Life Max",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 46990,
       "monthlyLease_EUR": 169,
       "leasingSocialEligible": true,
       "wltp_km": 550,
@@ -210,6 +283,56 @@
       ],
       "availability": "available",
       "notes": null
+    },
+    {
+      "id": "vw-id4-gtx-life-max",
+      "label": "ID.4 GTX Life Max",
+      "battery": "standard",
+      "trim": "GTX Life Max",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 55000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 515,
+      "wltp_consumption_kWh_100km": 17,
+      "realRange": {
+        "mixed_km": 410,
+        "highway_130_km": 285,
+        "highway_120_km": 315,
+        "urban_km": 480,
+        "winter_minus5_km": 320,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 175,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "340 ch (250 kW), AWD"
     }
   ],
   "warranty": {

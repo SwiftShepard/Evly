@@ -10,19 +10,19 @@
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
   "power_kW": 210,
-  "power_hp": 204,
-  "torque_Nm": 300,
-  "drivetrain": "FWD",
+  "power_hp": 286,
+  "torque_Nm": 560,
+  "drivetrain": "RWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
+  "acceleration_0_100_s": 7.6,
   "topSpeed_kmh": 160,
-  "usableCapacity_kWh": 77,
-  "grossCapacity_kWh": 82,
+  "usableCapacity_kWh": 79,
+  "grossCapacity_kWh": 84,
   "chemistry": "NMC",
   "architecture_V": 400,
-  "mass_kg": 1700,
-  "wltp_max_km": 461,
-  "wltp_min_km": 461,
+  "mass_kg": 2450,
+  "wltp_max_km": 470,
+  "wltp_min_km": 420,
   "realRange": {
     "mixed_km": 360,
     "highway_130_km": 285,
@@ -138,36 +138,39 @@
   "length_mm": 4712,
   "width_mm": 1985,
   "height_mm": 1937,
-  "wheelbase_mm": 2700,
+  "wheelbase_mm": 2989,
   "trunkCapacity_L": 1121,
   "trunkCapacityFolded_L": 1200,
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "5 places",
-      "price_EUR": 59995,
-      "batteryUsed": "77 kWh NMC",
+      "name": "Pro 5 places",
+      "price_EUR": 53680,
+      "batteryUsed": "79 kWh",
       "equipmentHighlights": [
-        "Icône moderne",
-        "Modulable"
+        "Moteur 286 ch",
+        "Volume de coffre géant de 1121 L",
+        "Écran central tactile 12.9\""
       ]
     },
     {
-      "name": "GTX AWD",
-      "price_EUR": 72495,
-      "batteryUsed": "86 kWh NMC",
+      "name": "GTX 5 places",
+      "price_EUR": 70900,
+      "batteryUsed": "79 kWh",
       "equipmentHighlights": [
-        "AWD 340 ch",
-        "Charge 200 kW"
+        "Transmission intégrale AWD 340 ch",
+        "Style extérieur sportif GTX",
+        "Jantes alliage 20\""
       ]
     },
     {
-      "name": "7 places LWB",
-      "price_EUR": 69995,
-      "batteryUsed": "86 kWh NMC",
+      "name": "Pro LWB 7 places",
+      "price_EUR": 59350,
+      "batteryUsed": "86 kWh",
       "equipmentHighlights": [
-        "3 rangées",
-        "Empattement long"
+        "Empattement long LWB (+25 cm)",
+        "3 rangées de sièges (7 places)",
+        "Grande batterie 86 kWh"
       ]
     }
   ],
@@ -177,17 +180,17 @@
   "configurations": [
     {
       "id": "vw-id-buzz-5-places",
-      "label": "ID.Buzz 5 places",
+      "label": "ID.Buzz Pro 5 places",
       "battery": "standard",
-      "trim": "5 places",
-      "wheelSize_inches": 18,
+      "trim": "Pro 5 places",
+      "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 59995,
+      "price_EUR": 53680,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 461,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_consumption_kWh_100km": 17.5,
       "realRange": {
         "mixed_km": 360,
         "highway_130_km": 285,
@@ -224,7 +227,7 @@
           "notes": "Cx pénalisé à haute vitesse."
         }
       ],
-      "chargingDC_peak_kW": 170,
+      "chargingDC_peak_kW": 185,
       "chargingDC_10_80_min": 26,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
@@ -234,7 +237,7 @@
         },
         {
           "soc": 10,
-          "power": 130
+          "power": 185
         },
         {
           "soc": 50,
@@ -254,23 +257,23 @@
     },
     {
       "id": "vw-id-buzz-gtx-awd",
-      "label": "ID.Buzz GTX AWD",
+      "label": "ID.Buzz GTX 5 places",
       "battery": "standard",
-      "trim": "GTX AWD",
-      "wheelSize_inches": 18,
+      "trim": "GTX 5 places",
+      "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 72495,
+      "price_EUR": 70900,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 461,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_km": 423,
+      "wltp_consumption_kWh_100km": 18.5,
       "realRange": {
-        "mixed_km": 360,
-        "highway_130_km": 285,
-        "highway_120_km": 313,
-        "urban_km": 430,
-        "winter_minus5_km": 260,
+        "mixed_km": 330,
+        "highway_130_km": 255,
+        "highway_120_km": 285,
+        "urban_km": 390,
+        "winter_minus5_km": 240,
         "confidence": "bjorn_nyland"
       },
       "rangeTests": [
@@ -301,7 +304,7 @@
           "notes": "Cx pénalisé à haute vitesse."
         }
       ],
-      "chargingDC_peak_kW": 170,
+      "chargingDC_peak_kW": 185,
       "chargingDC_10_80_min": 26,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
@@ -311,7 +314,7 @@
         },
         {
           "soc": 10,
-          "power": 130
+          "power": 185
         },
         {
           "soc": 50,
@@ -327,27 +330,27 @@
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": "340 ch (250 kW), AWD, version sportive"
     },
     {
       "id": "vw-id-buzz-7-places-lwb",
-      "label": "ID.Buzz 7 places LWB",
-      "battery": "standard",
-      "trim": "7 places LWB",
-      "wheelSize_inches": 18,
+      "label": "ID.Buzz Pro LWB 7 places",
+      "battery": "long-range",
+      "trim": "Pro LWB 7 places",
+      "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 69995,
+      "price_EUR": 59350,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 461,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_km": 469,
+      "wltp_consumption_kWh_100km": 18.2,
       "realRange": {
-        "mixed_km": 360,
-        "highway_130_km": 285,
-        "highway_120_km": 313,
-        "urban_km": 430,
-        "winter_minus5_km": 260,
+        "mixed_km": 380,
+        "highway_130_km": 300,
+        "highway_120_km": 330,
+        "urban_km": 450,
+        "winter_minus5_km": 280,
         "confidence": "bjorn_nyland"
       },
       "rangeTests": [
@@ -378,33 +381,33 @@
           "notes": "Cx pénalisé à haute vitesse."
         }
       ],
-      "chargingDC_peak_kW": 170,
+      "chargingDC_peak_kW": 200,
       "chargingDC_10_80_min": 26,
-      "chargingDC_kWh_30min": 55,
+      "chargingDC_kWh_30min": 60,
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 100
+          "power": 110
         },
         {
           "soc": 10,
-          "power": 130
+          "power": 200
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 110
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 60
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 12
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": "286 ch (210 kW), empattement long, 7 places"
     }
   ],
   "warranty": {

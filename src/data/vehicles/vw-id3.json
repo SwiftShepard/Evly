@@ -2,15 +2,15 @@
   "slug": "vw-id3",
   "brand": "Volkswagen",
   "model": "ID.3 Neo",
-  "variant": "Pro",
+  "variant": "50 - 79 kWh",
   "bodyType": "Hatchback 5 portes",
   "segment": "C",
   "productionCountry": "Allemagne",
   "assemblyPlant": "Zwickau",
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
-  "power_kW": 150,
-  "power_hp": 204,
+  "power_kW": 170,
+  "power_hp": 231,
   "torque_Nm": 310,
   "drivetrain": "RWD",
   "motors": 1,
@@ -21,11 +21,11 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1812,
-  "wltp_max_km": 434,
-  "wltp_min_km": 434,
+  "wltp_max_km": 630,
+  "wltp_min_km": 410,
   "realRange": {
     "mixed_km": 360,
-    "highway_130_km": 348,
+    "highway_130_km": 240,
     "highway_120_km": 261,
     "urban_km": 440,
     "winter_minus5_km": 280,
@@ -144,12 +144,63 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Pro",
-      "price_EUR": 39990,
+      "name": "Trend (50 kWh)",
+      "price_EUR": 34990,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "Écran central 12.9\"",
+        "Régulateur adaptatif ACC",
+        "Apple CarPlay / Android Auto sans fil"
+      ]
+    },
+    {
+      "name": "Life (50 kWh)",
+      "price_EUR": 36800,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "Jantes alliage 18\"",
+        "Caméra de recul",
+        "Chargeur smartphone par induction"
+      ]
+    },
+    {
+      "name": "Life (58 kWh)",
+      "price_EUR": 40500,
       "batteryUsed": "58 kWh",
       "equipmentHighlights": [
-        "Ecran 12\"",
-        "Apple CarPlay sans fil"
+        "Jantes alliage 18\"",
+        "Caméra de recul",
+        "Chargeur smartphone par induction"
+      ]
+    },
+    {
+      "name": "Style (58 kWh)",
+      "price_EUR": 42500,
+      "batteryUsed": "58 kWh",
+      "equipmentHighlights": [
+        "Projecteurs Matrix LED",
+        "Accès mains libres Keyless",
+        "Sièges avant et volant chauffants"
+      ]
+    },
+    {
+      "name": "Life (79 kWh)",
+      "price_EUR": 45900,
+      "batteryUsed": "79 kWh",
+      "equipmentHighlights": [
+        "Grande autonomie 629 km",
+        "Jantes alliage 18\"",
+        "Caméra de recul"
+      ]
+    },
+    {
+      "name": "Style (79 kWh)",
+      "price_EUR": 47900,
+      "batteryUsed": "79 kWh",
+      "equipmentHighlights": [
+        "Projecteurs Matrix LED",
+        "Accès mains libres Keyless",
+        "Navigation et volant chauffant"
       ]
     }
   ],
@@ -169,81 +220,304 @@
   ],
   "configurations": [
     {
-      "id": "vw-id3-pro",
-      "label": "ID.3 Neo Pro",
+      "id": "vw-id3-trend-50",
+      "label": "ID.3 Neo Trend 50 kWh",
       "battery": "standard",
-      "trim": "Pro",
+      "trim": "Trend (50 kWh)",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 39990,
+      "price_EUR": 34990,
       "monthlyLease_EUR": 139,
       "leasingSocialEligible": true,
-      "wltp_km": 434,
-      "wltp_consumption_kWh_100km": 15.5,
+      "wltp_km": 417,
+      "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
-        "mixed_km": 360,
-        "highway_130_km": 240,
-        "highway_120_km": 261,
-        "urban_km": 440,
-        "winter_minus5_km": 280,
+        "mixed_km": 330,
+        "highway_130_km": 230,
+        "highway_120_km": 250,
+        "urban_km": 410,
+        "winter_minus5_km": 240,
         "confidence": "bjorn_nyland"
       },
-      "rangeTests": [
-        {
-          "sourceId": "nyland",
-          "testDate": "2021-08",
-          "speed_kmh": 90,
-          "range_km": 414,
-          "consumption_kWh_100km": 13.9,
-          "temperature_C": 18,
-          "wheelSize_inches": 18,
-          "tyreModel": null,
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": ""
-        },
-        {
-          "sourceId": "nyland",
-          "testDate": "2021-08",
-          "speed_kmh": 120,
-          "range_km": 274,
-          "consumption_kWh_100km": 21,
-          "temperature_C": 18,
-          "wheelSize_inches": 18,
-          "tyreModel": null,
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": ""
-        }
-      ],
-      "chargingDC_peak_kW": 120,
+      "rangeTests": [],
+      "chargingDC_peak_kW": 105,
       "chargingDC_10_80_min": 35,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 92
+          "power": 70
         },
         {
           "soc": 10,
-          "power": 120
+          "power": 105
         },
         {
           "soc": 50,
-          "power": 92
+          "power": 80
         },
         {
           "soc": 80,
-          "power": 46
+          "power": 45
         },
         {
           "soc": 100,
-          "power": 9
+          "power": 8
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": "170 ch (125 kW)"
+    },
+    {
+      "id": "vw-id3-life-50",
+      "label": "ID.3 Neo Life 50 kWh",
+      "battery": "standard",
+      "trim": "Life (50 kWh)",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 36800,
+      "monthlyLease_EUR": 159,
+      "leasingSocialEligible": true,
+      "wltp_km": 417,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": {
+        "mixed_km": 330,
+        "highway_130_km": 230,
+        "highway_120_km": 250,
+        "urban_km": 410,
+        "winter_minus5_km": 240,
+        "confidence": "bjorn_nyland"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 105,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 70
+        },
+        {
+          "soc": 10,
+          "power": 105
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "170 ch (125 kW)"
+    },
+    {
+      "id": "vw-id3-life-58",
+      "label": "ID.3 Neo Life 58 kWh",
+      "battery": "standard",
+      "trim": "Life (58 kWh)",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 40500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 492,
+      "wltp_consumption_kWh_100km": 15.2,
+      "realRange": {
+        "mixed_km": 370,
+        "highway_130_km": 260,
+        "highway_120_km": 285,
+        "urban_km": 460,
+        "winter_minus5_km": 270,
+        "confidence": "bjorn_nyland"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 105,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 70
+        },
+        {
+          "soc": 10,
+          "power": 105
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "190 ch (140 kW)"
+    },
+    {
+      "id": "vw-id3-style-58",
+      "label": "ID.3 Neo Style 58 kWh",
+      "battery": "standard",
+      "trim": "Style (58 kWh)",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 42500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 492,
+      "wltp_consumption_kWh_100km": 15.2,
+      "realRange": {
+        "mixed_km": 370,
+        "highway_130_km": 260,
+        "highway_120_km": 285,
+        "urban_km": 460,
+        "winter_minus5_km": 270,
+        "confidence": "bjorn_nyland"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 105,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 70
+        },
+        {
+          "soc": 10,
+          "power": 105
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "190 ch (140 kW)"
+    },
+    {
+      "id": "vw-id3-life-79",
+      "label": "ID.3 Neo Life 79 kWh",
+      "battery": "long-range",
+      "trim": "Life (79 kWh)",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 45900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 629,
+      "wltp_consumption_kWh_100km": 15.8,
+      "realRange": {
+        "mixed_km": 490,
+        "highway_130_km": 340,
+        "highway_120_km": 375,
+        "urban_km": 610,
+        "winter_minus5_km": 350,
+        "confidence": "bjorn_nyland"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 183,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 183
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "231 ch (170 kW)"
+    },
+    {
+      "id": "vw-id3-style-79",
+      "label": "ID.3 Neo Style 79 kWh",
+      "battery": "long-range",
+      "trim": "Style (79 kWh)",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 47900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 629,
+      "wltp_consumption_kWh_100km": 15.8,
+      "realRange": {
+        "mixed_km": 490,
+        "highway_130_km": 340,
+        "highway_120_km": 375,
+        "urban_km": 610,
+        "winter_minus5_km": 350,
+        "confidence": "bjorn_nyland"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 183,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 183
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "231 ch (170 kW)"
     }
   ],
   "warranty": {

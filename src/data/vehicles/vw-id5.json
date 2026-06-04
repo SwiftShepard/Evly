@@ -10,19 +10,19 @@
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
   "power_kW": 210,
-  "power_hp": 204,
-  "torque_Nm": 300,
-  "drivetrain": "FWD",
+  "power_hp": 286,
+  "torque_Nm": 545,
+  "drivetrain": "RWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
-  "topSpeed_kmh": 160,
+  "acceleration_0_100_s": 6.7,
+  "topSpeed_kmh": 180,
   "usableCapacity_kWh": 77,
   "grossCapacity_kWh": 82,
   "chemistry": "NMC",
   "architecture_V": 400,
-  "mass_kg": 1700,
+  "mass_kg": 2120,
   "wltp_max_km": 560,
-  "wltp_min_km": 560,
+  "wltp_min_km": 515,
   "realRange": {
     "mixed_km": 430,
     "highway_130_km": 320,
@@ -104,27 +104,29 @@
   "length_mm": 4599,
   "width_mm": 1852,
   "height_mm": 1612,
-  "wheelbase_mm": 2700,
+  "wheelbase_mm": 2771,
   "trunkCapacity_L": 549,
   "trunkCapacityFolded_L": 1200,
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Pro",
-      "price_EUR": 51990,
-      "batteryUsed": "77 kWh NMC",
+      "name": "Pro Life",
+      "price_EUR": 50500,
+      "batteryUsed": "77 kWh",
       "equipmentHighlights": [
-        "Ligne fastback",
-        "Propulsion"
+        "Nouveau moteur AP550 286 ch",
+        "Ligne SUV Coupé profilée",
+        "Projecteurs LED"
       ]
     },
     {
-      "name": "GTX",
-      "price_EUR": 58990,
-      "batteryUsed": "77 kWh NMC",
+      "name": "GTX Life Max",
+      "price_EUR": 60000,
+      "batteryUsed": "77 kWh",
       "equipmentHighlights": [
-        "AWD 300 ch",
-        "0-100 en 6.3s"
+        "Transmission intégrale AWD 340 ch",
+        "0-100 km/h en 5.4s",
+        "Châssis sport spécifique"
       ]
     }
   ],
@@ -134,13 +136,13 @@
   "configurations": [
     {
       "id": "vw-id5-pro",
-      "label": "ID.5 Pro",
+      "label": "ID.5 Pro Life",
       "battery": "standard",
-      "trim": "Pro",
-      "wheelSize_inches": 18,
+      "trim": "Pro Life",
+      "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 51990,
+      "price_EUR": 50500,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 560,
@@ -211,23 +213,23 @@
     },
     {
       "id": "vw-id5-gtx",
-      "label": "ID.5 GTX",
+      "label": "ID.5 GTX Life Max",
       "battery": "standard",
-      "trim": "GTX",
-      "wheelSize_inches": 18,
+      "trim": "GTX Life Max",
+      "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 58990,
+      "price_EUR": 60000,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 560,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_km": 515,
+      "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
-        "mixed_km": 430,
-        "highway_130_km": 320,
-        "highway_120_km": 352,
-        "urban_km": 510,
-        "winter_minus5_km": 290,
+        "mixed_km": 390,
+        "highway_130_km": 285,
+        "highway_120_km": 315,
+        "urban_km": 460,
+        "winter_minus5_km": 310,
         "confidence": "bjorn_nyland"
       },
       "rangeTests": [
@@ -258,9 +260,9 @@
           "notes": ""
         }
       ],
-      "chargingDC_peak_kW": 135,
-      "chargingDC_10_80_min": 29,
-      "chargingDC_kWh_30min": 48,
+      "chargingDC_peak_kW": 175,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 55,
       "chargingCurve": [
         {
           "soc": 0,
@@ -284,7 +286,7 @@
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": "340 ch (250 kW), AWD, 0-100 en 5.4s"
     }
   ],
   "warranty": {

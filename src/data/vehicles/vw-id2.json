@@ -18,7 +18,7 @@
   "topSpeed_kmh": 160,
   "usableCapacity_kWh": 38,
   "grossCapacity_kWh": 38,
-  "chemistry": "NMC",
+  "chemistry": "LFP",
   "architecture_V": 400,
   "mass_kg": 1700,
   "wltp_max_km": 450,
@@ -82,21 +82,23 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "ID.2",
+      "name": "ID. Polo",
       "price_EUR": 25000,
       "batteryUsed": "38 kWh",
       "equipmentHighlights": [
-        "<25 000 €",
-        "Citadine abordable"
+        "Tarif inférieur à 25 000 €",
+        "Citadine électrique abordable",
+        "Écran central 12.9\""
       ]
     },
     {
-      "name": "ID.2 GTX",
+      "name": "ID. GTI",
       "price_EUR": 30000,
       "batteryUsed": "50 kWh",
       "equipmentHighlights": [
-        "AWD",
-        "Version chaude"
+        "Version sportive GTI",
+        "Performances accrues",
+        "Jantes alliage 18\""
       ]
     }
   ],
@@ -116,7 +118,7 @@
   ],
   "configurations": [
     {
-      "id": "vw-id2-id.2",
+      "id": "vw-id2-id-polo",
       "label": "ID. Polo",
       "battery": "standard",
       "trim": "ID. Polo",
@@ -165,10 +167,10 @@
       "notes": null
     },
     {
-      "id": "vw-id2-id.2-gtx",
-      "label": "ID. Polo GTX",
+      "id": "vw-id2-id-gti",
+      "label": "ID. GTI",
       "battery": "standard",
-      "trim": "ID.2 GTX",
+      "trim": "ID. GTI",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],

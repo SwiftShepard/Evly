@@ -1173,8 +1173,8 @@ idbuzz.update({
     ]
 })
 
-# 57. Volkswagen ID.2 (Upcoming)
-id2 = base_vehicle("vw-id2", "Volkswagen", "ID.2")
+# 57. Volkswagen ID. Polo (Upcoming)
+id2 = base_vehicle("vw-id2", "Volkswagen", "ID. Polo")
 id2.update({
     "productionCountry": "Espagne",
     "assemblyPlant": "Pampelune",
@@ -1187,8 +1187,8 @@ id2.update({
     "length_mm": 4050, "width_mm": 1812, "height_mm": 1530, "trunkCapacity_L": 340,
     "availability": "upcoming",
     "trims": [
-        {"name": "ID.2", "price_EUR": 25000, "batteryUsed": "38 kWh", "equipmentHighlights": ["<25 000 €", "Citadine abordable"]},
-        {"name": "ID.2 GTX", "price_EUR": 30000, "batteryUsed": "50 kWh", "equipmentHighlights": ["AWD", "Version chaude"]}
+        {"name": "ID. Polo", "price_EUR": 25000, "batteryUsed": "38 kWh", "equipmentHighlights": ["<25 000 €", "Citadine abordable"]},
+        {"name": "ID. GTI", "price_EUR": 30000, "batteryUsed": "50 kWh", "equipmentHighlights": ["Performances GTI", "Citadine sportive"]}
     ]
 })
 
@@ -1305,7 +1305,7 @@ raval.update({
     ],
     "verdict": {
         "strengths": ["Style extérieur et intérieur très dynamique", "Bonne capacité de coffre pour le gabarit (441 L)", "Autonomie confortable avec la batterie de 52 kWh"],
-        "weaknesses": ["Tarifs supérieurs à la Volkswagen ID.2", "Confort de suspension ferme à basse vitesse"],
+        "weaknesses": ["Tarifs supérieurs à la Volkswagen ID. Polo", "Confort de suspension ferme à basse vitesse"],
         "idealUserProfile": "Jeunes citadins dynamiques cherchant une citadine électrique performante et stylée.",
         "notIdealFor": "Familles nombreuses ou conducteurs privilégiant le confort feutré de suspension."
     },
