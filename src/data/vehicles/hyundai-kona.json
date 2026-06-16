@@ -145,7 +145,7 @@
   "trims": [
     {
       "name": "Creative",
-      "price_EUR": 37850,
+      "price_EUR": 36850,
       "batteryUsed": "48 kWh",
       "equipmentHighlights": [
         "Compteurs numériques 12.3\"",
@@ -168,7 +168,7 @@
     },
     {
       "name": "Ultime Edition",
-      "price_EUR": 37850,
+      "price_EUR": 36850,
       "batteryUsed": "48 kWh",
       "equipmentHighlights": [
         "Climatisation automatique bi-zone",
@@ -217,12 +217,12 @@
   "availableAids": [
     {
       "label": "Prime CEE",
-      "amount_EUR": 6500,
+      "amount_EUR": 4800,
       "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
     },
     {
       "label": "Majoration Batterie Européenne",
-      "amount_EUR": 2000,
+      "amount_EUR": 1200,
       "conditions": "Majoration pour batterie fabriquée en Europe."
     }
   ],
@@ -235,7 +235,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 37850,
+      "price_EUR": 36850,
       "monthlyLease_EUR": 95,
       "leasingSocialEligible": true,
       "wltp_km": 377,
@@ -284,7 +284,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 37850,
+      "price_EUR": 36850,
       "monthlyLease_EUR": 95,
       "leasingSocialEligible": true,
       "wltp_km": 377,

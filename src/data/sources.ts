@@ -162,6 +162,16 @@ export const SOURCES: Record<string, Source> = {
     protocolUrl: null,
     trustLevel: "medium",
   },
+  "genesis-fr": {
+    id: "genesis-fr",
+    name: "Genesis France",
+    type: "manufacturer",
+    url: "https://www.genesis.com/fr",
+    description:
+      "Données constructeur officielles : fiches techniques, garanties, prix catalogue, finitions. À recouper avec les mesures terrain pour les données d'autonomie réelle.",
+    protocolUrl: null,
+    trustLevel: "medium",
+  },
 };
 
 export function getSource(id: string): Source | undefined {

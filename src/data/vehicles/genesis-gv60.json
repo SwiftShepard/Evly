@@ -1,0 +1,350 @@
+{
+  "slug": "genesis-gv60",
+  "brand": "Genesis",
+  "model": "GV60",
+  "variant": "Pure",
+  "bodyType": "SUV familial",
+  "segment": "C",
+  "productionCountry": "Corée du Sud",
+  "assemblyPlant": "Ulsan",
+  "releaseYear": 2026,
+  "marketAvailability": "Disponible",
+  "power_kW": 168,
+  "power_hp": 229,
+  "torque_Nm": 350,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 7.8,
+  "topSpeed_kmh": 185,
+  "usableCapacity_kWh": 84,
+  "grossCapacity_kWh": 84,
+  "chemistry": "NMC",
+  "architecture_V": 800,
+  "mass_kg": 2075,
+  "wltp_max_km": 561,
+  "wltp_min_km": 470,
+  "realRange": {
+    "mixed_km": 460,
+    "highway_130_km": 320,
+    "highway_120_km": 350,
+    "urban_km": 560,
+    "winter_minus5_km": 330,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 17.0,
+  "consumption_highway_kWh_per_100km": 23.0,
+  "consumption_winter_kWh_per_100km": 22.0,
+  "dragCoefficient_Cx": 0.29,
+  "chargingDC": {
+    "peakPower_kW": 260,
+    "time_10_80_min": 18,
+    "kWh_added_30min": 60,
+    "confidence": "tested"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 8.0
+  },
+  "plugAndCharge": true,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": 0,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 100
+    },
+    {
+      "soc": 10,
+      "power": 260
+    },
+    {
+      "soc": 30,
+      "power": 260
+    },
+    {
+      "soc": 50,
+      "power": 200
+    },
+    {
+      "soc": 70,
+      "power": 140
+    },
+    {
+      "soc": 80,
+      "power": 60
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4515,
+  "width_mm": 1890,
+  "height_mm": 1580,
+  "wheelbase_mm": 2900,
+  "trunkCapacity_L": 432,
+  "trunkCapacityFolded_L": 1460,
+  "frunkCapacity_L": 53,
+  "trims": [
+    {
+      "name": "Pure",
+      "price_EUR": 54200,
+      "batteryUsed": "84 kWh",
+      "equipmentHighlights": [
+        "Jantes alliage 19\"",
+        "Projecteurs Matrix LED",
+        "Affichage tête haute (HUD)",
+        "Garantie 5 ans entretien inclus"
+      ]
+    },
+    {
+      "name": "Premium",
+      "price_EUR": 64100,
+      "batteryUsed": "84 kWh",
+      "equipmentHighlights": [
+        "Transmission intégrale AWD 318 ch",
+        "Système audio Bang & Olufsen",
+        "Moniteurs de vision panoramique 360°",
+        "Sièges avant ventilés et chauffants"
+      ]
+    },
+    {
+      "name": "Luxury",
+      "price_EUR": 74100,
+      "batteryUsed": "84 kWh",
+      "equipmentHighlights": [
+        "Motorisation Performance AWD 490 ch",
+        "Suspension pilotée avec pré-lecture de la route",
+        "Jantes alliage de 21\"",
+        "Différentiel à glissement limité électronique (e-LSD)"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "genesis-gv60-pure-rwd",
+      "label": "Pure RWD · 84 kWh · 19\"",
+      "battery": "standard",
+      "trim": "Pure",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 54200,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 561,
+      "wltp_consumption_kWh_100km": 17.0,
+      "realRange": {
+        "mixed_km": 460,
+        "highway_130_km": 320,
+        "highway_120_km": 350,
+        "urban_km": 560,
+        "winter_minus5_km": 330,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 260,
+      "chargingDC_10_80_min": 18,
+      "chargingDC_kWh_30min": 60,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 260
+        },
+        {
+          "soc": 30,
+          "power": 260
+        },
+        {
+          "soc": 50,
+          "power": 200
+        },
+        {
+          "soc": 70,
+          "power": 140
+        },
+        {
+          "soc": 80,
+          "power": 60
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "genesis-gv60-premium-awd",
+      "label": "Premium AWD · 84 kWh · 19\"",
+      "battery": "standard",
+      "trim": "Premium",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 64100,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 512,
+      "wltp_consumption_kWh_100km": 18.2,
+      "realRange": {
+        "mixed_km": 420,
+        "highway_130_km": 290,
+        "highway_120_km": 320,
+        "urban_km": 510,
+        "winter_minus5_km": 300,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 260,
+      "chargingDC_10_80_min": 18,
+      "chargingDC_kWh_30min": 60,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 260
+        },
+        {
+          "soc": 30,
+          "power": 260
+        },
+        {
+          "soc": 50,
+          "power": 200
+        },
+        {
+          "soc": 70,
+          "power": 140
+        },
+        {
+          "soc": 80,
+          "power": 60
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "genesis-gv60-luxury-awd",
+      "label": "Luxury AWD · 84 kWh · 21\"",
+      "battery": "standard",
+      "trim": "Luxury",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 74100,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 470,
+      "wltp_consumption_kWh_100km": 19.1,
+      "realRange": {
+        "mixed_km": 390,
+        "highway_130_km": 270,
+        "highway_120_km": 300,
+        "urban_km": 470,
+        "winter_minus5_km": 280,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 260,
+      "chargingDC_10_80_min": 18,
+      "chargingDC_kWh_30min": 60,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 260
+        },
+        {
+          "soc": 30,
+          "power": 260
+        },
+        {
+          "soc": 50,
+          "power": 200
+        },
+        {
+          "soc": 70,
+          "power": 140
+        },
+        {
+          "soc": 80,
+          "power": 60
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "technologie",
+      "label": "Système d'infodivertissement de 12,3 pouces"
+    },
+    {
+      "category": "securite",
+      "label": "Alerte de collision dans l'angle mort avec affichage caméra"
+    },
+    {
+      "category": "confort",
+      "label": "Sièges Ergo Motion massants"
+    },
+    {
+      "category": "design",
+      "label": "Projecteurs LED doubles lignes distinctifs"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Vitesse de charge exceptionnelle (800 V)",
+      "Confort de roulement de haut niveau",
+      "Qualité de finition premium"
+    ],
+    "weaknesses": [
+      "Consommation autoroutière élevée",
+      "Volume de coffre moyen pour le segment"
+    ],
+    "idealUserProfile": "Conducteur cherchant un crossover électrique exclusif avec des recharges ultra-rapides sur autoroute.",
+    "notIdealFor": "Familles nécessitant un très grand coffre ou un budget d'achat serré."
+  },
+  "lastUpdated": "2026-06-05",
+  "sources": [
+    "genesis-fr",
+    "evkx"
+  ],
+  "imageCredit": "Constructeur"
+}

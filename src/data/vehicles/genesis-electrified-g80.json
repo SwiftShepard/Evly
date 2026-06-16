@@ -1,0 +1,212 @@
+{
+  "slug": "genesis-electrified-g80",
+  "brand": "Genesis",
+  "model": "Electrified G80",
+  "variant": "Luxury",
+  "bodyType": "Berline grande",
+  "segment": "E",
+  "productionCountry": "Corée du Sud",
+  "assemblyPlant": "Ulsan",
+  "releaseYear": 2026,
+  "marketAvailability": "Disponible",
+  "power_kW": 272,
+  "power_hp": 370,
+  "torque_Nm": 700,
+  "drivetrain": "AWD",
+  "motors": 2,
+  "acceleration_0_100_s": 4.9,
+  "topSpeed_kmh": 225,
+  "usableCapacity_kWh": 95.4,
+  "grossCapacity_kWh": 95.4,
+  "chemistry": "NMC",
+  "architecture_V": 800,
+  "mass_kg": 2325,
+  "wltp_max_km": 520,
+  "wltp_min_km": 490,
+  "realRange": {
+    "mixed_km": 450,
+    "highway_130_km": 320,
+    "highway_120_km": 350,
+    "urban_km": 540,
+    "winter_minus5_km": 325,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 18.0,
+  "consumption_highway_kWh_per_100km": 24.0,
+  "consumption_winter_kWh_per_100km": 23.0,
+  "dragCoefficient_Cx": 0.26,
+  "chargingDC": {
+    "peakPower_kW": 260,
+    "time_10_80_min": 22,
+    "kWh_added_30min": 68,
+    "confidence": "tested"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 9.0
+  },
+  "plugAndCharge": true,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": 0,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 100
+    },
+    {
+      "soc": 10,
+      "power": 260
+    },
+    {
+      "soc": 30,
+      "power": 260
+    },
+    {
+      "soc": 50,
+      "power": 200
+    },
+    {
+      "soc": 70,
+      "power": 140
+    },
+    {
+      "soc": 80,
+      "power": 60
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 5135,
+  "width_mm": 1925,
+  "height_mm": 1475,
+  "wheelbase_mm": 3140,
+  "trunkCapacity_L": 354,
+  "trunkCapacityFolded_L": 354,
+  "frunkCapacity_L": 0,
+  "trims": [
+    {
+      "name": "Luxury",
+      "price_EUR": 81500,
+      "batteryUsed": "95.4 kWh",
+      "equipmentHighlights": [
+        "Double motorisation AWD 370 ch",
+        "Empattement allongé (+13 cm)",
+        "Suspension prédictive par caméra",
+        "Système d'infodivertissement arrière avec écrans individuels"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "genesis-electrified-g80-luxury-awd",
+      "label": "Luxury AWD · 95.4 kWh · 19\"",
+      "battery": "standard",
+      "trim": "Luxury",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 81500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 520,
+      "wltp_consumption_kWh_100km": 18.0,
+      "realRange": {
+        "mixed_km": 450,
+        "highway_130_km": 320,
+        "highway_120_km": 350,
+        "urban_km": 540,
+        "winter_minus5_km": 325,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 260,
+      "chargingDC_10_80_min": 22,
+      "chargingDC_kWh_30min": 68,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 260
+        },
+        {
+          "soc": 30,
+          "power": 260
+        },
+        {
+          "soc": 50,
+          "power": 200
+        },
+        {
+          "soc": 70,
+          "power": 140
+        },
+        {
+          "soc": 80,
+          "power": 60
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "technologie",
+      "label": "Grand écran OLED intégré de 27 pouces"
+    },
+    {
+      "category": "securite",
+      "label": "Projecteurs intelligents MLA doubles lignes"
+    },
+    {
+      "category": "confort",
+      "label": "Portes à fermeture assistée électrique et sièges de relaxation arrière"
+    },
+    {
+      "category": "design",
+      "label": "Calandre Crest G-Matrix inversée distinctive"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Espace arrière géant (version longue empattement)",
+      "Silence de fonctionnement de premier ordre",
+      "Vitesse de recharge ultra-rapide"
+    ],
+    "weaknesses": [
+      "Volume de coffre limité",
+      "Poids élevé impactant l'agilité"
+    ],
+    "idealUserProfile": "Cadre ou chauffeur VIP recherchant le confort absolu d'une limousine avec une motorisation électrique discrète et performante.",
+    "notIdealFor": "Familles avec de nombreux bagages ou conducteurs recherchant une conduite dynamique."
+  },
+  "lastUpdated": "2026-06-05",
+  "sources": [
+    "genesis-fr",
+    "evkx"
+  ],
+  "imageCredit": "Constructeur"
+}

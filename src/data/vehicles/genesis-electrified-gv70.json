@@ -1,0 +1,212 @@
+{
+  "slug": "genesis-electrified-gv70",
+  "brand": "Genesis",
+  "model": "Electrified GV70",
+  "variant": "Luxury",
+  "bodyType": "SUV familial",
+  "segment": "D",
+  "productionCountry": "Corée du Sud",
+  "assemblyPlant": "Ulsan",
+  "releaseYear": 2026,
+  "marketAvailability": "Disponible",
+  "power_kW": 360,
+  "power_hp": 490,
+  "torque_Nm": 700,
+  "drivetrain": "AWD",
+  "motors": 2,
+  "acceleration_0_100_s": 4.2,
+  "topSpeed_kmh": 235,
+  "usableCapacity_kWh": 84,
+  "grossCapacity_kWh": 84,
+  "chemistry": "NMC",
+  "architecture_V": 800,
+  "mass_kg": 2310,
+  "wltp_max_km": 490,
+  "wltp_min_km": 445,
+  "realRange": {
+    "mixed_km": 400,
+    "highway_130_km": 275,
+    "highway_120_km": 300,
+    "urban_km": 480,
+    "winter_minus5_km": 290,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 18.5,
+  "consumption_highway_kWh_per_100km": 24.5,
+  "consumption_winter_kWh_per_100km": 23.5,
+  "dragCoefficient_Cx": 0.29,
+  "chargingDC": {
+    "peakPower_kW": 260,
+    "time_10_80_min": 18,
+    "kWh_added_30min": 60,
+    "confidence": "tested"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 8.0
+  },
+  "plugAndCharge": true,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": 0,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 100
+    },
+    {
+      "soc": 10,
+      "power": 260
+    },
+    {
+      "soc": 30,
+      "power": 260
+    },
+    {
+      "soc": 50,
+      "power": 200
+    },
+    {
+      "soc": 70,
+      "power": 140
+    },
+    {
+      "soc": 80,
+      "power": 60
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4715,
+  "width_mm": 1910,
+  "height_mm": 1630,
+  "wheelbase_mm": 2875,
+  "trunkCapacity_L": 503,
+  "trunkCapacityFolded_L": 1678,
+  "frunkCapacity_L": 25,
+  "trims": [
+    {
+      "name": "Luxury",
+      "price_EUR": 75600,
+      "batteryUsed": "84 kWh",
+      "equipmentHighlights": [
+        "Double motorisation AWD 490 ch",
+        "Jantes alliage de 20\"",
+        "Intérieur en cuir Nappa",
+        "Sièges Ergo Motion chauffants et ventilés"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "genesis-electrified-gv70-luxury-awd",
+      "label": "Luxury AWD · 84 kWh · 20\"",
+      "battery": "standard",
+      "trim": "Luxury",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 75600,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 490,
+      "wltp_consumption_kWh_100km": 18.5,
+      "realRange": {
+        "mixed_km": 400,
+        "highway_130_km": 275,
+        "highway_120_km": 300,
+        "urban_km": 480,
+        "winter_minus5_km": 290,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 260,
+      "chargingDC_10_80_min": 18,
+      "chargingDC_kWh_30min": 60,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 260
+        },
+        {
+          "soc": 30,
+          "power": 260
+        },
+        {
+          "soc": 50,
+          "power": 200
+        },
+        {
+          "soc": 70,
+          "power": 140
+        },
+        {
+          "soc": 80,
+          "power": 60
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "technologie",
+      "label": "Tableau de bord numérique 3D et écran d'infodivertissement de 14,5 pouces"
+    },
+    {
+      "category": "securite",
+      "label": "Assistance active à la conduite sur autoroute de niveau 2 (HDA II)"
+    },
+    {
+      "category": "confort",
+      "label": "Technologie de contrôle actif du bruit de la route (ANC-R)"
+    },
+    {
+      "category": "design",
+      "label": "Calandre Crest G-Matrix inversée fermée"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Performances exceptionnelles (mode Boost)",
+      "Raffinement et insonorisation remarquables",
+      "Recharge ultra-rapide 800 V"
+    ],
+    "weaknesses": [
+      "Volume de coffre arrière grevé par rapport au thermique",
+      "Consommation d'énergie élevée à haute vitesse"
+    ],
+    "idealUserProfile": "Professionnel ou famille recherchant un grand SUV de luxe discret, très performant et à recharge rapide.",
+    "notIdealFor": "Conducteurs à la recherche d'une autonomie maximale de plus de 600 km ou d'un tarif abordable."
+  },
+  "lastUpdated": "2026-06-05",
+  "sources": [
+    "genesis-fr",
+    "evkx"
+  ],
+  "imageCredit": "Constructeur"
+}

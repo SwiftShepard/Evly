@@ -667,6 +667,47 @@
     ]
   },
   {
+    "slug": "genesis-electrified-g80",
+    "brand": "Genesis",
+    "model": "Electrified G80",
+    "power_kW": 272,
+    "usableCapacity_kWh": 95.4,
+    "wltp_min_km": 490,
+    "wltp_max_km": 520,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "genesis-electrified-g80-luxury-awd"
+    ]
+  },
+  {
+    "slug": "genesis-electrified-gv70",
+    "brand": "Genesis",
+    "model": "Electrified GV70",
+    "power_kW": 360,
+    "usableCapacity_kWh": 84,
+    "wltp_min_km": 445,
+    "wltp_max_km": 490,
+    "configurations_count": 1,
+    "configuration_ids": [
+      "genesis-electrified-gv70-luxury-awd"
+    ]
+  },
+  {
+    "slug": "genesis-gv60",
+    "brand": "Genesis",
+    "model": "GV60",
+    "power_kW": 168,
+    "usableCapacity_kWh": 84,
+    "wltp_min_km": 470,
+    "wltp_max_km": 561,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "genesis-gv60-luxury-awd",
+      "genesis-gv60-premium-awd",
+      "genesis-gv60-pure-rwd"
+    ]
+  },
+  {
     "slug": "hyundai-inster",
     "brand": "Hyundai",
     "model": "Inster",

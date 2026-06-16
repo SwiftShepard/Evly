@@ -193,7 +193,25 @@ export function calculateCeeAid({
   // Particulier (personne physique) -> Coup de Pouce classique ou bonifié
   const category = getHouseholdCategory(householdSize, taxIncome);
   const mode = isBatteryUE ? "bonified" : "classic";
-  const amount = PRIME_AMOUNTS[mode][category];
+  
+  // Custom aids adaptation (e.g. for Kona which has 4800 € / 1200 € instead of standard 6500 € / 2000 €)
+  const ceeAid = vehicle.availableAids?.find((aid) => aid.label === "Prime CEE");
+  const batteryAid = vehicle.availableAids?.find((aid) => /batterie/i.test(aid.label) || /majoration/i.test(aid.label));
+  const customBase = ceeAid ? ceeAid.amount_EUR : 6500;
+  const customBattery = batteryAid ? batteryAid.amount_EUR : 2000;
+
+  let amount = PRIME_AMOUNTS[mode][category];
+
+  if (customBase !== 6500 || customBattery !== 2000) {
+    const baseFactor = customBase / 6500;
+    const batteryFactor = customBattery / 2000;
+    const classicAmount = PRIME_AMOUNTS.classic[category] * baseFactor;
+    const extraBattery = (PRIME_AMOUNTS.bonified[category] - PRIME_AMOUNTS.classic[category]) * batteryFactor;
+    const calculatedAmount = mode === "bonified" ? (classicAmount + extraBattery) : classicAmount;
+    const maxAllowed = customBase + (mode === "bonified" ? customBattery : 0);
+    amount = Math.round(Math.min(maxAllowed, calculatedAmount));
+  }
+
   const label = isBatteryUE ? "Prime Coup de Pouce bonifié" : "Prime Coup de Pouce classique";
 
   return {

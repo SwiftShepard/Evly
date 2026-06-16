@@ -1108,7 +1108,14 @@ export default function StrategicMatcher({ vehicles }: Props) {
                                     <div className="text-[10px] text-[var(--color-text-muted)] leading-tight">
                                       Prix catalogue : <span className="line-through">{rawPrice.toLocaleString()} €</span>
                                       <span className="block text-[9px] text-[var(--color-accent)] font-medium mt-1 leading-normal">
-                                        Inclut la Prime CEE de {totalCeeAid.toLocaleString()} € (socle de 6 500 € + 2 000 € de majoration batterie européenne, plafonné à 8 100 €).
+                                        {(() => {
+                                          const ceeAid = res.vehicle.availableAids?.find((aid) => aid.label === "Prime CEE");
+                                          const batteryAid = res.vehicle.availableAids?.find((aid) => /batterie/i.test(aid.label) || /majoration/i.test(aid.label));
+                                          const baseVal = ceeAid ? ceeAid.amount_EUR : 6500;
+                                          const battVal = batteryAid ? batteryAid.amount_EUR : 2000;
+                                          const capVal = Math.min(8100, baseVal + battVal);
+                                          return `Inclut la Prime CEE de ${totalCeeAid.toLocaleString()} € (socle de ${baseVal.toLocaleString()} € + ${battVal.toLocaleString()} € de majoration batterie européenne, plafonné à ${capVal.toLocaleString()} €).`;
+                                        })()}
                                       </span>
                                     </div>
                                   ) : (
@@ -1368,7 +1375,14 @@ export default function StrategicMatcher({ vehicles }: Props) {
                                 {answers.budgetType === "buy" && (
                                   <p className="text-[9px] text-[var(--color-text-faint)] leading-normal mt-1 border-t border-[var(--color-border)] pt-1.5">
                                     {isEligibleCEE 
-                                      ? `*Montant indicatif d'aide CEE de ${totalCeeAid.toLocaleString()} € (socle de 6 500 € + 2 000 € de majoration batterie européenne, plafonné à 8 100 €) applicable selon l'origine de fabrication du véhicule (produit en ${res.vehicle.productionCountry}).`
+                                      ? (() => {
+                                          const ceeAid = res.vehicle.availableAids?.find((aid) => aid.label === "Prime CEE");
+                                          const batteryAid = res.vehicle.availableAids?.find((aid) => /batterie/i.test(aid.label) || /majoration/i.test(aid.label));
+                                          const baseVal = ceeAid ? ceeAid.amount_EUR : 6500;
+                                          const battVal = batteryAid ? batteryAid.amount_EUR : 2000;
+                                          const capVal = Math.min(8100, baseVal + battVal);
+                                          return `*Montant indicatif d'aide CEE de ${totalCeeAid.toLocaleString()} € (socle de ${baseVal.toLocaleString()} € + ${battVal.toLocaleString()} € de majoration batterie européenne, plafonné à ${capVal.toLocaleString()} €) applicable selon l'origine de fabrication du véhicule (produit en ${res.vehicle.productionCountry}).`;
+                                        })()
                                       : `*Non éligible à la Prime CEE car le véhicule est assemblé hors d'Europe (${res.vehicle.productionCountry}) ou dépasse le plafond de 47 000 €.`
                                     }
                                   </p>
