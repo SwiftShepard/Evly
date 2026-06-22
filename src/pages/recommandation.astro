@@ -3,7 +3,36 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import StrategicMatcher from "@/components/matcher/StrategicMatcher.tsx";
 import { getAllVehicles } from "@/lib/vehicles";
 
-const vehicles = getAllVehicles();
+const STRICT_UTILITY_SLUGS = new Set([
+  "citroen-e-jumper",
+  "citroen-e-jumpy",
+  "citroen-e-spacetourer",
+  "fiat-e-ducato",
+  "fiat-e-scudo",
+  "ford-e-transit",
+  "kia-pv5-cargo",
+  "maxus-edeliver-3",
+  "maxus-edeliver-5",
+  "maxus-edeliver-7",
+  "maxus-edeliver-9",
+  "opel-movano-e",
+  "opel-vivaro-e-life",
+  "peugeot-e-boxer",
+  "peugeot-e-expert-combi",
+  "peugeot-e-partner",
+  "peugeot-e-traveller",
+  "renault-master-e-tech",
+  "renault-trafic-e-tech",
+  "toyota-proace-max-electric",
+]);
+
+const vehicles = getAllVehicles().filter(
+  (v) =>
+    !STRICT_UTILITY_SLUGS.has(v.slug) &&
+    v.bodyType !== "Fourgon" &&
+    v.bodyType !== "Fourgonnette" &&
+    v.bodyType !== "Combi utilitaire"
+);
 ---
 
 <BaseLayout

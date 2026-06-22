@@ -6,6 +6,7 @@ export interface MatcherAnswers {
   mileage: number; // km/an
   charging: "home" | "public_slow" | "public_fast";
   role: "primary" | "secondary";
+  longTripDistance: number; // km (plus long trajet habituel/annuel)
   household: "single_couple" | "family" | "large_family";
   trunkNeed: "any" | "medium" | "large";
   bodyType: "any" | "hatchback_city" | "sedan_break" | "suv_crossover" | "van_monospace";
@@ -338,6 +339,47 @@ export function scoreVehicle(vehicle: Vehicle, answers: MatcherAnswers): MatchRe
       } else if (mixedRange >= 480) {
         score += 10;
         reasons.push(`Grande autonomie limitant la contrainte des recharges publiques (1 fois par semaine ou moins)`);
+      }
+    }
+
+    // --- CRITÈRE 2.5 : GRAND TRAJET DE L'ANNÉE (Simulation de trajet) ---
+    const D = answers.longTripDistance || 500;
+    const hasFastCharge = (config.chargingDC_peak_kW ?? vehicle.chargingDC.peakPower_kW ?? 0) > 0;
+    
+    if (!hasFastCharge && D > 150) {
+      score -= 40;
+      warnings.push("Pas de recharge rapide DC : inadapté pour les trajets de plus de 150 km");
+    } else if (hasFastCharge) {
+      const dcTime = config.chargingDC_10_80_min ?? vehicle.chargingDC.time_10_80_min ?? 30;
+      const firstRelay = highwayRange;
+      
+      if (D <= firstRelay) {
+        score += 15;
+        reasons.push(`Grand trajet (${D} km) réalisable d'une seule traite (zéro arrêt charge)`);
+      } else {
+        const remainingD = D - firstRelay;
+        const relaySize = highwayRange * 0.7; // relais suivants de 80% à 10% SoC
+        const legSize = Math.max(50, relaySize); // évite division par 0
+        const stops = Math.ceil(remainingD / legSize);
+        const chargeTime = stops * dcTime;
+        
+        if (stops === 1) {
+          score += 10;
+          reasons.push(`Voyage efficace : 1 seul arrêt charge (${chargeTime} min) pour faire ${D} km`);
+        } else if (stops === 2) {
+          score += 5;
+          reasons.push(`Voyage correct : 2 arrêts charge (${chargeTime} min au total) sur ${D} km`);
+        } else if (stops >= 4) {
+          score -= 15;
+          warnings.push(`Grand trajet de ${D} km pénible : au moins ${stops} arrêts charge requis (${chargeTime} min)`);
+        } else {
+          if (chargeTime > 90) {
+            score -= 10;
+            warnings.push(`Trajet de ${D} km avec 3 arrêts charge et un temps d'attente important (${chargeTime} min)`);
+          } else {
+            reasons.push(`Trajet de ${D} km avec 3 arrêts charge (total : ${chargeTime} min)`);
+          }
+        }
       }
     }
 

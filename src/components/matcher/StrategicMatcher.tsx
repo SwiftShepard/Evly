@@ -77,6 +77,8 @@ interface Props {
   vehicles: Vehicle[];
 }
 
+const PAYWALL_ENABLED = false; // Permet d'activer/désactiver le paywall facilement
+
 export default function StrategicMatcher({ vehicles }: Props) {
   const [step, setStep] = useState<number>(0);
   const [direction, setDirection] = useState<"next" | "prev">("next");
@@ -84,7 +86,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
   const [expandedOtherSlug, setExpandedOtherSlug] = useState<string | null>(null);
 
   // Payment states
-  const [isPaid, setIsPaid] = useState<boolean>(false);
+  const [isPaid, setIsPaid] = useState<boolean>(!PAYWALL_ENABLED);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [paymentLoading, setPaymentLoading] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
@@ -97,7 +99,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const searchParams = new URLSearchParams(window.location.search);
-      setIsPaid(searchParams.get("paid") === "true");
+      setIsPaid(!PAYWALL_ENABLED || searchParams.get("paid") === "true");
       
       const usage = searchParams.get("usage");
       if (usage) {
@@ -106,6 +108,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
           mileage: parseInt(searchParams.get("mileage") || "15000", 10),
           charging: (searchParams.get("charging") as any) || "home",
           role: (searchParams.get("role") as any) || "primary",
+          longTripDistance: parseInt(searchParams.get("longTripDistance") || "600", 10),
           household: (searchParams.get("household") as any) || "family",
           trunkNeed: (searchParams.get("trunkNeed") as any) || "any",
           bodyType: (searchParams.get("bodyType") as any) || "any",
@@ -117,7 +120,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
           preferEurope: searchParams.get("preferEurope") === "true",
           softwareImportance: (searchParams.get("softwareImportance") as any) || "any",
         });
-        setStep(12); // Go directly to results slide
+        setStep(13); // Go directly to results slide (shifted to 13)
       }
     }
   }, []);
@@ -134,6 +137,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
           mileage: answers.mileage.toString(),
           charging: answers.charging,
           role: answers.role,
+          longTripDistance: answers.longTripDistance.toString(),
           household: answers.household,
           trunkNeed: answers.trunkNeed,
           bodyType: answers.bodyType,
@@ -167,6 +171,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
     mileage: 15000,
     charging: "home",
     role: "primary",
+    longTripDistance: 600,
     household: "family",
     trunkNeed: "any",
     bodyType: "any",
@@ -180,9 +185,9 @@ export default function StrategicMatcher({ vehicles }: Props) {
   });
 
 
-  // Résultats calculés (maintenant à l'étape 12)
+  // Résultats calculés (maintenant à l'étape 13)
   const results = useMemo<MatchResult[]>(() => {
-    if (step < 12) return [];
+    if (step < 13) return [];
     return vehicles
       .map((v) => scoreVehicle(v, answers))
       .filter((r): r is MatchResult => r !== null)
@@ -207,7 +212,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
       // Ignorer si on est sur un champ de saisie actif (ex: input)
       if (document.activeElement?.tagName === "INPUT") return;
 
-      if (step > 0 && step <= 11) {
+      if (step > 0 && step <= 12) {
         if (e.key === "Backspace" || e.key === "ArrowLeft") {
           // Retour
           goToPrev();
@@ -229,29 +234,29 @@ export default function StrategicMatcher({ vehicles }: Props) {
           if (e.key === "1") setAnswers((prev) => ({ ...prev, chargingSpeed: "any" }));
           if (e.key === "2") setAnswers((prev) => ({ ...prev, chargingSpeed: "under_30" }));
         } else if (step === 4) {
-          if (e.key === "1") setAnswers((prev) => ({ ...prev, role: "primary" }));
-          if (e.key === "2") setAnswers((prev) => ({ ...prev, role: "secondary" }));
-        } else if (step === 5) {
+          if (e.key === "1") setAnswers((prev) => ({ ...prev, role: "primary", longTripDistance: 600 }));
+          if (e.key === "2") setAnswers((prev) => ({ ...prev, role: "secondary", longTripDistance: 150 }));
+        } else if (step === 6) {
           if (e.key === "1") setAnswers((prev) => ({ ...prev, household: "single_couple" }));
           if (e.key === "2") setAnswers((prev) => ({ ...prev, household: "family" }));
           if (e.key === "3") setAnswers((prev) => ({ ...prev, household: "large_family" }));
-        } else if (step === 6) {
+        } else if (step === 7) {
           if (e.key === "1") setAnswers((prev) => ({ ...prev, trunkNeed: "any" }));
           if (e.key === "2") setAnswers((prev) => ({ ...prev, trunkNeed: "medium" }));
           if (e.key === "3") setAnswers((prev) => ({ ...prev, trunkNeed: "large" }));
-        } else if (step === 7) {
+        } else if (step === 8) {
           if (e.key === "1") setAnswers((prev) => ({ ...prev, bodyType: "any" }));
           if (e.key === "2") setAnswers((prev) => ({ ...prev, bodyType: "hatchback_city" }));
           if (e.key === "3") setAnswers((prev) => ({ ...prev, bodyType: "sedan_break" }));
           if (e.key === "4") setAnswers((prev) => ({ ...prev, bodyType: "suv_crossover" }));
           if (e.key === "5") setAnswers((prev) => ({ ...prev, bodyType: "van_monospace" }));
-        } else if (step === 8) {
+        } else if (step === 9) {
           if (e.key === "1") setAnswers((prev) => ({ ...prev, softwareImportance: "any" }));
           if (e.key === "2") setAnswers((prev) => ({ ...prev, softwareImportance: "good_software" }));
-        } else if (step === 10) {
+        } else if (step === 11) {
           if (e.key === "1") setAnswers((prev) => ({ ...prev, leasingSocialRfr: !prev.leasingSocialRfr }));
           if (e.key === "2") setAnswers((prev) => ({ ...prev, leasingSocialUsage: !prev.leasingSocialUsage }));
-        } else if (step === 11) {
+        } else if (step === 12) {
           if (e.key === "1" || e.key === " ") {
             setAnswers((prev) => ({ ...prev, preferEurope: !prev.preferEurope }));
           }
@@ -274,6 +279,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
       mileage: 15000,
       charging: "home",
       role: "primary",
+      longTripDistance: 600,
       household: "family",
       trunkNeed: "any",
       bodyType: "any",
@@ -287,7 +293,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
     });
     setShowAllResults(false);
     setExpandedOtherSlug(null);
-    setIsPaid(false);
+    setIsPaid(!PAYWALL_ENABLED);
     if (typeof window !== "undefined") {
       window.history.replaceState({}, document.title, window.location.pathname);
     }
@@ -377,20 +383,20 @@ export default function StrategicMatcher({ vehicles }: Props) {
         </div>
       )}
 
-      {/* ────────────────── QUESTIONNAIRE (ÉTAPES 1 à 11) ────────────────── */}
-      {step > 0 && step <= 11 && (
+      {/* ────────────────── QUESTIONNAIRE (ÉTAPES 1 à 12) ────────────────── */}
+      {step > 0 && step <= 12 && (
         <div className="rounded-3xl p-6 md:p-8 border border-[var(--color-border)] bg-[var(--color-surface)] shadow-xl relative min-h-[460px] flex flex-col justify-between transition-all duration-300">
           
           {/* Top Progress bar */}
           <div>
             <div className="flex items-center justify-between mb-4">
-              <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-text-faint)]">Question {step} sur 11</span>
-              <span className="font-mono text-xs font-semibold text-[var(--color-accent)]">{Math.round((step / 11) * 100)}%</span>
+              <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-text-faint)]">Question {step} sur 12</span>
+              <span className="font-mono text-xs font-semibold text-[var(--color-accent)]">{Math.round((step / 12) * 100)}%</span>
             </div>
             <div className="w-full h-1 bg-[var(--color-border)] rounded-full overflow-hidden">
               <div 
                 className="h-full bg-[var(--color-accent)] transition-all duration-300"
-                style={{ width: `${(step / 11) * 100}%` }}
+                style={{ width: `${(step / 12) * 100}%` }}
               ></div>
             </div>
           </div>
@@ -556,7 +562,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
                     return (
                       <button
                         key={opt.key}
-                        onClick={() => setAnswers(prev => ({ ...prev, role: opt.key }))}
+                        onClick={() => setAnswers(prev => ({ ...prev, role: opt.key, longTripDistance: opt.key === "primary" ? 600 : 150 }))}
                         className={`text-left p-5 rounded-xl border transition-all ${
                           active ? "border-[var(--color-accent)] bg-[color-mix(in_srgb,var(--color-accent)_4%,transparent)]" : "border-[var(--color-border)] hover:border-[var(--color-border-strong)] bg-[var(--color-bg-subtle)]"
                         }`}
@@ -570,12 +576,51 @@ export default function StrategicMatcher({ vehicles }: Props) {
               </div>
             )}
 
-            {/* STEP 5 : FOYER & COFFRE */}
+            {/* STEP 5 : GRAND TRAJET DE L'ANNÉE */}
             {step === 5 && (
               <div className="flex flex-col gap-5">
                 <div>
                   <h3 className="font-display text-xl md:text-2xl font-semibold text-[var(--color-text)]">
-                    5. Quelle est la composition de votre foyer ?
+                    5. Quelle est la distance de votre plus long trajet de l'année ?
+                  </h3>
+                  <p className="text-xs text-[var(--color-text-muted)] mt-1.5">
+                    Cette distance sert à estimer le nombre d'arrêts de recharge et le temps perdu sur la route lors de vos longs déplacements.
+                  </p>
+                </div>
+
+                <div className="p-5 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-subtle)]">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="font-mono text-xs text-[var(--color-text-muted)] uppercase tracking-wide">
+                      Distance du trajet aller simple
+                    </span>
+                    <span className="font-mono text-lg font-semibold text-[var(--color-accent)]">
+                      {answers.longTripDistance.toLocaleString()} km
+                    </span>
+                  </div>
+                  <input
+                    type="range"
+                    min="100"
+                    max="1000"
+                    step="50"
+                    value={answers.longTripDistance}
+                    onChange={(e) => setAnswers(prev => ({ ...prev, longTripDistance: Number(e.target.value) }))}
+                    className="w-full h-1 bg-[var(--color-border)] rounded-lg appearance-none cursor-pointer accent-[var(--color-accent)]"
+                  />
+                  <div className="flex justify-between font-mono text-[9px] text-[var(--color-text-faint)] mt-2">
+                    <span>100 km</span>
+                    <span>550 km</span>
+                    <span>1 000 km</span>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* STEP 6 : FOYER & COFFRE */}
+            {step === 6 && (
+              <div className="flex flex-col gap-5">
+                <div>
+                  <h3 className="font-display text-xl md:text-2xl font-semibold text-[var(--color-text)]">
+                    6. Quelle est la composition de votre foyer ?
                   </h3>
                   <p className="text-xs text-[var(--color-text-muted)] mt-1.5">
                     Le volume de coffre requis en dépend pour garantir le confort de tous les passagers.
@@ -608,12 +653,12 @@ export default function StrategicMatcher({ vehicles }: Props) {
               </div>
             )}
 
-            {/* STEP 6 : BESOIN EN COFFRE */}
-            {step === 6 && (
+            {/* STEP 7 : BESOIN EN COFFRE */}
+            {step === 7 && (
               <div className="flex flex-col gap-5">
                 <div>
                   <h3 className="font-display text-xl md:text-2xl font-semibold text-[var(--color-text)]">
-                    6. De quel volume de coffre avez-vous besoin ?
+                    7. De quel volume de coffre avez-vous besoin ?
                   </h3>
                   <p className="text-xs text-[var(--color-text-muted)] mt-1.5">
                     Le volume du coffre est mesuré avec les sièges en position normale (non rabattus).
@@ -646,12 +691,12 @@ export default function StrategicMatcher({ vehicles }: Props) {
               </div>
             )}
 
-            {/* STEP 7 : SILHOUETTE / CARROSSERIE */}
-            {step === 7 && (
+            {/* STEP 8 : SILHOUETTE / CARROSSERIE */}
+            {step === 8 && (
               <div className="flex flex-col gap-5">
                 <div>
                   <h3 className="font-display text-xl md:text-2xl font-semibold text-[var(--color-text)]">
-                    7. Quelle silhouette (carrosserie) préférez-vous ?
+                    8. Quelle silhouette (carrosserie) préférez-vous ?
                   </h3>
                   <p className="text-xs text-[var(--color-text-muted)] mt-1.5">
                     Sélectionnez votre format idéal. Les modèles ne correspondant pas seront pénalisés mais restent visibles s'ils conviennent à votre budget.
@@ -686,12 +731,12 @@ export default function StrategicMatcher({ vehicles }: Props) {
               </div>
             )}
 
-            {/* STEP 8 : LOGICIEL / ERGONOMIE */}
-            {step === 8 && (
+            {/* STEP 9 : LOGICIEL / ERGONOMIE */}
+            {step === 9 && (
               <div className="flex flex-col gap-5">
                 <div>
                   <h3 className="font-display text-xl md:text-2xl font-semibold text-[var(--color-text)]">
-                    8. Quelle importance accordez-vous au logiciel embarqué ?
+                    9. Quelle importance accordez-vous au logiciel embarqué ?
                   </h3>
                   <p className="text-xs text-[var(--color-text-muted)] mt-1.5">
                     Cela concerne la fluidité de l'écran central, la réactivité du système, l'ergonomie des menus et la fiabilité du planificateur d'itinéraire.
@@ -723,12 +768,12 @@ export default function StrategicMatcher({ vehicles }: Props) {
               </div>
             )}
 
-            {/* STEP 9 : BUDGET */}
-            {step === 9 && (
+            {/* STEP 10 : BUDGET */}
+            {step === 10 && (
               <div className="flex flex-col gap-5">
                 <div>
                   <h3 className="font-display text-xl md:text-2xl font-semibold text-[var(--color-text)]">
-                    9. Quel est votre budget maximal ?
+                    10. Quel est votre budget maximal ?
                   </h3>
                   <p className="text-xs text-[var(--color-text-muted)] mt-1.5">
                     Les aides de l'État et remises seront déduites des résultats pour évaluer le coût réel d'accès.
@@ -798,12 +843,12 @@ export default function StrategicMatcher({ vehicles }: Props) {
               </div>
             )}
 
-            {/* STEP 10 : LEASING SOCIAL PRE-QUAL */}
-            {step === 10 && (
+            {/* STEP 11 : LEASING SOCIAL PRE-QUAL */}
+            {step === 11 && (
               <div className="flex flex-col gap-5">
                 <div>
                   <h3 className="font-display text-xl md:text-2xl font-semibold text-[var(--color-text)]">
-                    10. Éligibilité au Leasing Social
+                    11. Éligibilité au Leasing Social
                   </h3>
                   <p className="text-xs text-[var(--color-text-muted)] mt-1.5">
                     Le Leasing Social (mensualité <strong className="text-[var(--color-text)]">à partir de 95 € / mois</strong> sans apport) est soumis à deux conditions cumulatives d'éligibilité. Cochez si vous remplissez ces critères :
@@ -862,12 +907,12 @@ export default function StrategicMatcher({ vehicles }: Props) {
               </div>
             )}
 
-            {/* STEP 11 : PRÉFÉRENCES ORIGINE */}
-            {step === 11 && (
+            {/* STEP 12 : PRÉFÉRENCES ORIGINE */}
+            {step === 12 && (
               <div className="flex flex-col gap-5">
                 <div>
                   <h3 className="font-display text-xl md:text-2xl font-semibold text-[var(--color-text)]">
-                    11. Sensibilité écologique & Origine
+                    12. Sensibilité écologique & Origine
                   </h3>
                   <p className="text-xs text-[var(--color-text-muted)] mt-1.5">
                     Le nouveau dispositif français exclut de la Prime CEE les véhicules produits dans des pays à mix énergétique carboné (ex: Chine, Japon).
@@ -911,15 +956,15 @@ export default function StrategicMatcher({ vehicles }: Props) {
               onClick={goToNext}
               className="btn-interactive inline-flex items-center gap-1.5 px-5 py-2.5 bg-[var(--color-accent)] text-[var(--color-accent-on)] text-xs font-semibold rounded-lg shadow transition-colors"
             >
-              {step === 11 ? "Découvrir mes résultats" : "Suivant"}
+              {step === 12 ? "Découvrir mes résultats" : "Suivant"}
               <ArrowRight size={13} />
             </button>
           </div>
         </div>
       )}
 
-      {/* ────────────────── ÉTAPE 12 : RÉSULTATS ────────────────── */}
-      {step === 12 && (
+      {/* ────────────────── ÉTAPE 13 : RÉSULTATS ────────────────── */}
+      {step === 13 && (
         <div className="flex flex-col gap-8 animate-fade-in">
           
           {/* Header & Meta */}

@@ -1,0 +1,419 @@
+{
+  "slug": "renault-megane-2026",
+  "brand": "Renault",
+  "model": "Megane 2026",
+  "variant": "67 kWh",
+  "bodyType": "Hatchback 5 portes",
+  "segment": "C",
+  "productionCountry": "France",
+  "assemblyPlant": "Douai",
+  "releaseYear": 2026,
+  "marketAvailability": "Disponible",
+  "power_kW": 160,
+  "power_hp": 220,
+  "torque_Nm": 300,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 7.4,
+  "topSpeed_kmh": 160,
+  "usableCapacity_kWh": 67,
+  "grossCapacity_kWh": 72,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1650,
+  "wltp_max_km": 500,
+  "wltp_min_km": 480,
+  "realRange": {
+    "mixed_km": 435,
+    "highway_130_km": 280,
+    "highway_120_km": 305,
+    "urban_km": 535,
+    "winter_minus5_km": 345,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 15.4,
+  "consumption_highway_kWh_per_100km": 21.8,
+  "consumption_winter_kWh_per_100km": 19.2,
+  "dragCoefficient_Cx": 0.29,
+  "chargingDC": {
+    "peakPower_kW": 165,
+    "time_10_80_min": 26,
+    "kWh_added_30min": 50,
+    "confidence": "manufacturer"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 22,
+    "phases": 3,
+    "time_0_100_h": 3.5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 110
+    },
+    {
+      "soc": 10,
+      "power": 165
+    },
+    {
+      "soc": 20,
+      "power": 155
+    },
+    {
+      "soc": 30,
+      "power": 135
+    },
+    {
+      "soc": 40,
+      "power": 115
+    },
+    {
+      "soc": 50,
+      "power": 100
+    },
+    {
+      "soc": 60,
+      "power": 85
+    },
+    {
+      "soc": 70,
+      "power": 70
+    },
+    {
+      "soc": 80,
+      "power": 55
+    },
+    {
+      "soc": 90,
+      "power": 35
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4199,
+  "width_mm": 1768,
+  "height_mm": 1505,
+  "wheelbase_mm": 2685,
+  "trunkCapacity_L": 440,
+  "trunkCapacityFolded_L": 1332,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Techno",
+      "price_EUR": 39500,
+      "batteryUsed": "67 kWh",
+      "equipmentHighlights": [
+        "OpenR Link Google",
+        "Ecran 12 pouces",
+        "Chargeur AC 22 kW"
+      ]
+    },
+    {
+      "name": "Esprit Alpine",
+      "price_EUR": 41500,
+      "batteryUsed": "67 kWh",
+      "equipmentHighlights": [
+        "Jantes 20 pouces diamantees",
+        "Volant Alpine",
+        "Sieges sport"
+      ]
+    },
+    {
+      "name": "Iconic",
+      "price_EUR": 43000,
+      "batteryUsed": "67 kWh",
+      "equipmentHighlights": [
+        "Toit panoramique",
+        "Sieges chauffants",
+        "Conduite semi-autonome"
+      ]
+    }
+  ],
+  "leasingSocialEligible": true,
+  "leasingSocial_EUR_per_month": 190,
+  "availableAids": [
+    {
+      "label": "Prime CEE",
+      "amount_EUR": 6500,
+      "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 2000,
+      "conditions": "Majoration pour batterie fabriquée en Europe."
+    }
+  ],
+  "configurations": [
+    {
+      "id": "renault-megane-2026-techno",
+      "label": "Megane 2026 Techno",
+      "battery": "standard",
+      "trim": "Techno",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 39500,
+      "monthlyLease_EUR": 190,
+      "leasingSocialEligible": true,
+      "wltp_km": 500,
+      "wltp_consumption_kWh_100km": 15.4,
+      "realRange": {
+        "mixed_km": 435,
+        "highway_130_km": 280,
+        "urban_km": 535,
+        "winter_minus5_km": 345,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 165,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 110
+        },
+        {
+          "soc": 10,
+          "power": 165
+        },
+        {
+          "soc": 20,
+          "power": 155
+        },
+        {
+          "soc": 30,
+          "power": 135
+        },
+        {
+          "soc": 40,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 60,
+          "power": 85
+        },
+        {
+          "soc": 70,
+          "power": 70
+        },
+        {
+          "soc": 80,
+          "power": 55
+        },
+        {
+          "soc": 90,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "220 ch (160 kW)"
+    },
+    {
+      "id": "renault-megane-2026-esprit-alpine",
+      "label": "Megane 2026 Esprit Alpine",
+      "battery": "standard",
+      "trim": "Esprit Alpine",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 41500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 480,
+      "wltp_consumption_kWh_100km": 16.0,
+      "realRange": {
+        "mixed_km": 425,
+        "highway_130_km": 270,
+        "urban_km": 520,
+        "winter_minus5_km": 335,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 165,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 110
+        },
+        {
+          "soc": 10,
+          "power": 165
+        },
+        {
+          "soc": 20,
+          "power": 155
+        },
+        {
+          "soc": 30,
+          "power": 135
+        },
+        {
+          "soc": 40,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 60,
+          "power": 85
+        },
+        {
+          "soc": 70,
+          "power": 70
+        },
+        {
+          "soc": 80,
+          "power": 55
+        },
+        {
+          "soc": 90,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "220 ch (160 kW), jantes 20 pouces diamantees"
+    },
+    {
+      "id": "renault-megane-2026-iconic",
+      "label": "Megane 2026 Iconic",
+      "battery": "standard",
+      "trim": "Iconic",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 43000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 480,
+      "wltp_consumption_kWh_100km": 16.0,
+      "realRange": {
+        "mixed_km": 425,
+        "highway_130_km": 270,
+        "urban_km": 520,
+        "winter_minus5_km": 335,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 165,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 110
+        },
+        {
+          "soc": 10,
+          "power": 165
+        },
+        {
+          "soc": 20,
+          "power": 155
+        },
+        {
+          "soc": 30,
+          "power": 135
+        },
+        {
+          "soc": 40,
+          "power": 115
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 60,
+          "power": 85
+        },
+        {
+          "soc": 70,
+          "power": 70
+        },
+        {
+          "soc": 80,
+          "power": 55
+        },
+        {
+          "soc": 90,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "220 ch (160 kW), full options"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "confort",
+      "label": "Sièges confort de haute qualité"
+    },
+    {
+      "category": "technologie",
+      "label": "Système d'infodivertissement avancé"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence"
+    },
+    {
+      "category": "design",
+      "label": "Signature lumineuse LED distinctive"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Autonomie WLTP portée à 500 km avec la nouvelle batterie de 67 kWh",
+      "Vitesse de charge améliorée (15-80% en 24 minutes, pic à 165 kW)",
+      "Bon compromis prix/autonomie",
+      "Confort de suspension"
+    ],
+    "weaknesses": [
+      "Infodivertissement perfectible",
+      "Courbe de charge après 80% très lente"
+    ],
+    "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
+    "notIdealFor": "Gros rouleurs autoroutiers pressés après 80% de charge."
+  },
+  "lastUpdated": "2026-06-22",
+  "sources": [
+    "constructeur"
+  ],
+  "imageCredit": "Constructeur"
+}

@@ -1944,6 +1944,21 @@
     ]
   },
   {
+    "slug": "renault-megane-2026",
+    "brand": "Renault",
+    "model": "Megane 2026",
+    "power_kW": 160,
+    "usableCapacity_kWh": 67,
+    "wltp_min_km": 480,
+    "wltp_max_km": 500,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "renault-megane-2026-esprit-alpine",
+      "renault-megane-2026-iconic",
+      "renault-megane-2026-techno"
+    ]
+  },
+  {
     "slug": "renault-scenic",
     "brand": "Renault",
     "model": "Scenic E-Tech",
