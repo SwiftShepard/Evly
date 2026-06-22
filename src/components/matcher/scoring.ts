@@ -9,6 +9,7 @@ export interface MatcherAnswers {
   longTripDistance: number; // km (plus long trajet habituel/annuel)
   household: "single_couple" | "family" | "large_family";
   trunkNeed: "any" | "medium" | "large";
+  trunkHatchbackMandatory: boolean;
   bodyType: "any" | "hatchback_city" | "sedan_break" | "suv_crossover" | "van_monospace";
   chargingSpeed: "any" | "under_30";
   budgetType: "buy" | "lease";
@@ -88,11 +89,32 @@ function matchesBodyType(vehicleBody: string, preference: string): boolean {
   return true;
 }
 
+function hasHatchback(vehicle: { slug: string }): boolean {
+  const NON_HATCHBACK_SLUGS = new Set([
+    "tesla-model-3",
+    "byd-seal",
+    "hyundai-ioniq-6",
+    "xiaomi-su7",
+    "bmw-i7",
+    "mercedes-eqe",
+    "mercedes-classe-c-berline",
+    "genesis-electrified-g80",
+    "audi-e-tron-gt",
+    "porsche-taycan"
+  ]);
+  return !NON_HATCHBACK_SLUGS.has(vehicle.slug);
+}
+
 export function scoreVehicle(vehicle: Vehicle, answers: MatcherAnswers): MatchResult | null {
   const isPrimary = answers.role === "primary";
   const trunk = vehicle.trunkCapacity_L;
   const length = vehicle.length_mm;
   const isEU = EUROPEAN_COUNTRIES.has(vehicle.productionCountry);
+
+  // Filtre hayon impératif
+  if (answers.trunkHatchbackMandatory && !hasHatchback(vehicle)) {
+    return null;
+  }
 
   // Pré-filtre éliminatoire par segment (coeur et segments adjacents) pour éviter les résultats farfelus
   const segment = (vehicle.segment ?? "B").split(",")[0].trim();
@@ -364,19 +386,22 @@ export function scoreVehicle(vehicle: Vehicle, answers: MatcherAnswers): MatchRe
         const chargeTime = stops * dcTime;
         
         if (stops === 1) {
-          score += 10;
+          score += 15;
           reasons.push(`Voyage efficace : 1 seul arrêt charge (${chargeTime} min) pour faire ${D} km`);
         } else if (stops === 2) {
-          score += 5;
+          score += 8;
           reasons.push(`Voyage correct : 2 arrêts charge (${chargeTime} min au total) sur ${D} km`);
         } else if (stops >= 4) {
-          score -= 15;
+          const penalty = 15 + (stops - 3) * 10;
+          score -= penalty;
           warnings.push(`Grand trajet de ${D} km pénible : au moins ${stops} arrêts charge requis (${chargeTime} min)`);
         } else {
-          if (chargeTime > 90) {
+          // 3 stops
+          if (chargeTime > 90 && D <= 700) {
             score -= 10;
             warnings.push(`Trajet de ${D} km avec 3 arrêts charge et un temps d'attente important (${chargeTime} min)`);
           } else {
+            score += 2;
             reasons.push(`Trajet de ${D} km avec 3 arrêts charge (total : ${chargeTime} min)`);
           }
         }
@@ -393,6 +418,12 @@ export function scoreVehicle(vehicle: Vehicle, answers: MatcherAnswers): MatchRe
         if (trunk >= 480 && length >= 4400) {
           score += 20;
           reasons.push(`Gabarit routier généreux (${trunk} L de coffre) adapté en véhicule principal`);
+          if (trunk >= 650) {
+            score += 15;
+            reasons.push(`Volume de coffre géant (${trunk} L) idéal pour une grande famille`);
+          } else if (trunk >= 550) {
+            score += 5;
+          }
         } else if (trunk < 380 || length < 4300) {
           score -= 40;
           warnings.push(`Gabarit trop compact pour être le véhicule principal d'une grande famille`);
@@ -414,6 +445,13 @@ export function scoreVehicle(vehicle: Vehicle, answers: MatcherAnswers): MatchRe
         if (trunk >= 380 && length >= 4250) {
           score += 20;
           reasons.push(`Coffre adapté (${trunk} L) et gabarit routier en véhicule principal`);
+          if (trunk >= 600) {
+            score += 15;
+            reasons.push(`Volume de coffre exceptionnel (${trunk} L) idéal pour charger les bagages de la famille`);
+          } else if (trunk >= 500) {
+            score += 5;
+            reasons.push(`Très bon volume de coffre (${trunk} L) pour une famille`);
+          }
         } else if (trunk < 320 || length < 4150) {
           score -= 35;
           warnings.push(`Format citadine / petit coffre (${trunk} L), juste pour être le véhicule principal de la famille`);
@@ -466,6 +504,12 @@ export function scoreVehicle(vehicle: Vehicle, answers: MatcherAnswers): MatchRe
       if (trunk >= 450) {
         score += 25;
         reasons.push(`Gros volume de coffre (${trunk} L) répondant parfaitement à votre besoin (≥ 450 L)`);
+        if (trunk >= 650) {
+          score += 15;
+          reasons.push(`Espace de chargement gigantesque (${trunk} L) au-delà de vos attentes`);
+        } else if (trunk >= 550) {
+          score += 5;
+        }
       } else {
         score -= 35;
         warnings.push(`Volume de coffre (${trunk} L) insuffisant par rapport à votre besoin de 450 L minimum`);
@@ -548,8 +592,8 @@ export function scoreVehicle(vehicle: Vehicle, answers: MatcherAnswers): MatchRe
       }
     }
 
-    // Normalisation du score final entre 0 et 100
-    const finalScore = Math.max(0, Math.min(100, Math.round(score)));
+    // Score final (au moins 0, sans limite supérieure de 100 pour préserver le tri)
+    const finalScore = Math.max(0, Math.round(score));
 
     if (finalScore > highestScore) {
       highestScore = finalScore;

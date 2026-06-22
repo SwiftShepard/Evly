@@ -52,7 +52,7 @@ test.describe("Parcours d'Achat du Rapport Premium B2C", () => {
 
   test("Parcours d'achat du Podium Premium dans le Matcher", async ({ page }) => {
     // 1. Ouvrir le Matcher directement avec des réponses pré-remplies dans l'URL pour sauter les étapes
-    await page.goto("/recommandation/?usage=mixed&mileage=15000&charging=home&role=primary&household=family&trunkNeed=any&bodyType=any&chargingSpeed=any&budgetType=buy&budgetMax=40000");
+    await page.goto("/recommandation/?usage=mixed&mileage=15000&charging=home&role=primary&household=family&trunkNeed=any&bodyType=any&chargingSpeed=any&budgetType=buy&budgetMax=40000&paywall=true");
     await page.waitForLoadState("networkidle");
 
     // 2. Vérifier que le Matcher s'affiche directement sur les résultats (étape 12)

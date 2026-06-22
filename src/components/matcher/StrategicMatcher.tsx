@@ -86,7 +86,15 @@ export default function StrategicMatcher({ vehicles }: Props) {
   const [expandedOtherSlug, setExpandedOtherSlug] = useState<string | null>(null);
 
   // Payment states
-  const [isPaid, setIsPaid] = useState<boolean>(!PAYWALL_ENABLED);
+  const [isPaid, setIsPaid] = useState<boolean>(() => {
+    if (typeof window !== "undefined") {
+      const searchParams = new URLSearchParams(window.location.search);
+      if (searchParams.get("paywall") === "true") {
+        return searchParams.get("paid") === "true";
+      }
+    }
+    return true; // paywall désactivé par défaut
+  });
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [paymentLoading, setPaymentLoading] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
@@ -99,7 +107,8 @@ export default function StrategicMatcher({ vehicles }: Props) {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const searchParams = new URLSearchParams(window.location.search);
-      setIsPaid(!PAYWALL_ENABLED || searchParams.get("paid") === "true");
+      const paywallParam = searchParams.get("paywall") === "true";
+      setIsPaid(!paywallParam || searchParams.get("paid") === "true");
       
       const usage = searchParams.get("usage");
       if (usage) {
@@ -111,6 +120,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
           longTripDistance: parseInt(searchParams.get("longTripDistance") || "600", 10),
           household: (searchParams.get("household") as any) || "family",
           trunkNeed: (searchParams.get("trunkNeed") as any) || "any",
+          trunkHatchbackMandatory: searchParams.get("trunkHatchbackMandatory") === "true",
           bodyType: (searchParams.get("bodyType") as any) || "any",
           chargingSpeed: (searchParams.get("chargingSpeed") as any) || "any",
           budgetType: (searchParams.get("budgetType") as any) || "buy",
@@ -132,7 +142,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
       setPaymentLoading(false);
       setPaymentSuccess(true);
       setTimeout(() => {
-        const query = new URLSearchParams({
+        const queryParams: Record<string, string> = {
           usage: answers.usage,
           mileage: answers.mileage.toString(),
           charging: answers.charging,
@@ -140,6 +150,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
           longTripDistance: answers.longTripDistance.toString(),
           household: answers.household,
           trunkNeed: answers.trunkNeed,
+          trunkHatchbackMandatory: answers.trunkHatchbackMandatory ? "true" : "false",
           bodyType: answers.bodyType,
           chargingSpeed: answers.chargingSpeed,
           budgetType: answers.budgetType,
@@ -149,7 +160,14 @@ export default function StrategicMatcher({ vehicles }: Props) {
           preferEurope: answers.preferEurope ? "true" : "false",
           softwareImportance: answers.softwareImportance,
           paid: "true"
-        }).toString();
+        };
+        if (typeof window !== "undefined") {
+          const searchParams = new URLSearchParams(window.location.search);
+          if (searchParams.get("paywall") === "true") {
+            queryParams.paywall = "true";
+          }
+        }
+        const query = new URLSearchParams(queryParams).toString();
         window.location.href = `/recommandation/?${query}`;
       }, 1500);
     }, 2000);
@@ -174,6 +192,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
     longTripDistance: 600,
     household: "family",
     trunkNeed: "any",
+    trunkHatchbackMandatory: false,
     bodyType: "any",
     chargingSpeed: "any",
     budgetType: "buy",
@@ -191,7 +210,11 @@ export default function StrategicMatcher({ vehicles }: Props) {
     return vehicles
       .map((v) => scoreVehicle(v, answers))
       .filter((r): r is MatchResult => r !== null)
-      .sort((a, b) => b.score - a.score);
+      .sort((a, b) => b.score - a.score)
+      .map((r) => ({
+        ...r,
+        score: Math.min(100, r.score),
+      }));
   }, [step, answers, vehicles]);
 
   const top3 = useMemo(() => results.slice(0, 3), [results]);
@@ -244,6 +267,9 @@ export default function StrategicMatcher({ vehicles }: Props) {
           if (e.key === "1") setAnswers((prev) => ({ ...prev, trunkNeed: "any" }));
           if (e.key === "2") setAnswers((prev) => ({ ...prev, trunkNeed: "medium" }));
           if (e.key === "3") setAnswers((prev) => ({ ...prev, trunkNeed: "large" }));
+          if (e.key === "h" || e.key === "H") {
+            setAnswers((prev) => ({ ...prev, trunkHatchbackMandatory: !prev.trunkHatchbackMandatory }));
+          }
         } else if (step === 8) {
           if (e.key === "1") setAnswers((prev) => ({ ...prev, bodyType: "any" }));
           if (e.key === "2") setAnswers((prev) => ({ ...prev, bodyType: "hatchback_city" }));
@@ -282,6 +308,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
       longTripDistance: 600,
       household: "family",
       trunkNeed: "any",
+      trunkHatchbackMandatory: false,
       bodyType: "any",
       chargingSpeed: "any",
       budgetType: "buy",
@@ -293,9 +320,13 @@ export default function StrategicMatcher({ vehicles }: Props) {
     });
     setShowAllResults(false);
     setExpandedOtherSlug(null);
-    setIsPaid(!PAYWALL_ENABLED);
     if (typeof window !== "undefined") {
-      window.history.replaceState({}, document.title, window.location.pathname);
+      const searchParams = new URLSearchParams(window.location.search);
+      const paywallParam = searchParams.get("paywall") === "true";
+      setIsPaid(!paywallParam);
+      window.history.replaceState({}, document.title, window.location.pathname + (paywallParam ? "?paywall=true" : ""));
+    } else {
+      setIsPaid(true);
     }
     setDirection("prev");
     setStep(0);
@@ -687,6 +718,34 @@ export default function StrategicMatcher({ vehicles }: Props) {
                       </button>
                     );
                   })}
+                </div>
+
+                <div className="mt-2">
+                  <button
+                    onClick={() => setAnswers(prev => ({ ...prev, trunkHatchbackMandatory: !prev.trunkHatchbackMandatory }))}
+                    className={`flex items-start text-left p-4 rounded-xl border transition-all w-full ${
+                      answers.trunkHatchbackMandatory 
+                        ? "border-[var(--color-accent)] bg-[color-mix(in_srgb,var(--color-accent)_4%,transparent)]" 
+                        : "border-[var(--color-border)] hover:border-[var(--color-border-strong)] bg-[var(--color-bg-subtle)]"
+                    }`}
+                  >
+                    <div className="flex items-center justify-center w-5 h-5 rounded border border-[var(--color-border-strong)] mr-4 mt-0.5 bg-[var(--color-bg)] flex-shrink-0">
+                      {answers.trunkHatchbackMandatory && <div className="w-2.5 h-2.5 bg-[var(--color-accent)] rounded-sm" />}
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <span className="block font-medium text-sm text-[var(--color-text)]">
+                          Hayon arrière impératif (5 portes / Crossover / Break)
+                        </span>
+                        <span className="font-mono text-[9px] text-[var(--color-text-faint)] border border-[var(--color-border)] px-1.5 py-0.5 rounded">
+                          Touche H
+                        </span>
+                      </div>
+                      <span className="block text-xs text-[var(--color-text-muted)] mt-1 leading-relaxed">
+                        Exclure les berlines classiques à 4 portes avec une malle (ex: Tesla Model 3, BYD Seal, Hyundai Ioniq 6) qui compliquent le chargement d'objets encombrants (poussettes, vélos) ou d'animaux de compagnie.
+                      </span>
+                    </div>
+                  </button>
                 </div>
               </div>
             )}

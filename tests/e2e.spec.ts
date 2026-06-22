@@ -223,17 +223,17 @@ test.describe("Evly E2E Test Suite", () => {
     await expect(startBtn).toBeVisible();
     await startBtn.click();
 
-    // Cliquer sur "Suivant" pour passer les questions 1 à 10
-    for (let i = 1; i <= 10; i++) {
+    // Cliquer sur "Suivant" pour passer les questions 1 à 11
+    for (let i = 1; i <= 11; i++) {
       // Attendre la stabilisation du DOM sur la question courante
-      await expect(page.locator(`text=Question ${i} sur 11`)).toBeVisible();
+      await expect(page.locator(`text=Question ${i} sur 12`)).toBeVisible();
       const nextBtn = page.locator('button:has-text("Suivant")');
       await expect(nextBtn).toBeVisible();
       await nextBtn.click();
     }
 
-    // Question 11 : Cliquer sur "Découvrir mes résultats"
-    await expect(page.locator('text=Question 11 sur 11')).toBeVisible();
+    // Question 12 : Cliquer sur "Découvrir mes résultats"
+    await expect(page.locator('text=Question 12 sur 12')).toBeVisible();
     const finishBtn = page.locator('button:has-text("Découvrir mes résultats")');
     await expect(finishBtn).toBeVisible();
     await finishBtn.click();
