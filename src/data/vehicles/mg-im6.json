@@ -1,0 +1,257 @@
+{
+  "slug": "mg-im6",
+  "brand": "MG",
+  "model": "IM6",
+  "variant": "76 kWh",
+  "bodyType": "SUV",
+  "segment": "D",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Shanghai",
+  "releaseYear": 2025,
+  "marketAvailability": "À venir en Europe",
+  "power_kW": 250,
+  "power_hp": 340,
+  "torque_Nm": 450,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 5.9,
+  "topSpeed_kmh": 200,
+  "usableCapacity_kWh": 71.0,
+  "grossCapacity_kWh": 76.0,
+  "chemistry": "LFP",
+  "architecture_V": 800,
+  "mass_kg": 2140,
+  "wltp_max_km": 590,
+  "wltp_min_km": 450,
+  "realRange": {
+    "mixed_km": 400,
+    "highway_130_km": 290,
+    "urban_km": 480,
+    "winter_minus5_km": 310,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 17.8,
+  "consumption_highway_kWh_per_100km": 24.5,
+  "consumption_winter_kWh_per_100km": 22.9,
+  "dragCoefficient_Cx": 0.24,
+  "chargingDC": {
+    "peakPower_kW": 300,
+    "time_10_80_min": 15,
+    "kWh_added_30min": 60,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 7.5
+  },
+  "plugAndCharge": true,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 180
+    },
+    {
+      "soc": 10,
+      "power": 300
+    },
+    {
+      "soc": 30,
+      "power": 260
+    },
+    {
+      "soc": 50,
+      "power": 200
+    },
+    {
+      "soc": 80,
+      "power": 65
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4904,
+  "width_mm": 1988,
+  "height_mm": 1669,
+  "wheelbase_mm": 2950,
+  "trunkCapacity_L": 646,
+  "trunkCapacityFolded_L": 1665,
+  "frunkCapacity_L": 42,
+  "trims": [
+    {
+      "name": "76 kWh",
+      "price_EUR": null,
+      "batteryUsed": "76 kWh",
+      "equipmentHighlights": [
+        "Plateforme 800V de SAIC",
+        "Volume de coffre familial de 646 L",
+        "Conduite autonome avancée avec LiDAR"
+      ]
+    },
+    {
+      "name": "100 kWh",
+      "price_EUR": null,
+      "batteryUsed": "100 kWh",
+      "equipmentHighlights": [
+        "Autonomie étendue WLTP 590 km",
+        "Châssis numérique intelligent",
+        "Toit panoramique géant"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "mg-im6-standard",
+      "label": "IM6 · 76 kWh",
+      "battery": "standard",
+      "trim": "76 kWh",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": null,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 450,
+      "wltp_consumption_kWh_100km": 15.8,
+      "realRange": {
+        "mixed_km": 370,
+        "highway_130_km": 270,
+        "urban_km": 440,
+        "winter_minus5_km": 290,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 250,
+      "chargingDC_10_80_min": 17,
+      "chargingDC_kWh_30min": 54,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 150
+        },
+        {
+          "soc": 10,
+          "power": 250
+        },
+        {
+          "soc": 50,
+          "power": 180
+        },
+        {
+          "soc": 80,
+          "power": 55
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "upcoming",
+      "notes": "340 ch, RWD, SUV Coupé 800V"
+    },
+    {
+      "id": "mg-im6-long-range",
+      "label": "IM6 · 100 kWh",
+      "battery": "long-range",
+      "trim": "100 kWh",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": null,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 590,
+      "wltp_consumption_kWh_100km": 16.1,
+      "realRange": {
+        "mixed_km": 470,
+        "highway_130_km": 340,
+        "urban_km": 560,
+        "winter_minus5_km": 360,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 300,
+      "chargingDC_10_80_min": 15,
+      "chargingDC_kWh_30min": 78,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 180
+        },
+        {
+          "soc": 10,
+          "power": 300
+        },
+        {
+          "soc": 50,
+          "power": 200
+        },
+        {
+          "soc": 80,
+          "power": 65
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "upcoming",
+      "notes": "340 ch RWD, plateforme 800V, autonomie 590 km"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 7,
+    "vehicle_km": 150000,
+    "battery_years": 7,
+    "battery_km": 150000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "SUV Coupé premium au style aérodynamique"
+    },
+    {
+      "category": "technologie",
+      "label": "Plateforme de charge ultra-rapide 800V"
+    },
+    {
+      "category": "confort",
+      "label": "Coffre géant de 646 L idéal pour les familles"
+    },
+    {
+      "category": "securite",
+      "label": "Système de vision de nuit Rainy Night Mode"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Vitesse de recharge de référence (10-80% en 15 min)",
+      "Excellent volume de coffre avec hayon",
+      "Technologies de cockpit très haut de gamme"
+    ],
+    "weaknesses": [
+      "Marque premium IM confidentielle en Europe",
+      "Gabarit imposant (4,90 m) pour les villes françaises"
+    ],
+    "idealUserProfile": "Familles cherchant un SUV électrique spacieux, ultra-technologique et qui recharge à la vitesse de l'éclair.",
+    "notIdealFor": "Conducteurs recherchant un format compact urbain."
+  },
+  "lastUpdated": "2026-07-07",
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
+  "imageCredit": "Constructeur",
+  "availability": "upcoming"
+}

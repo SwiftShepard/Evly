@@ -125,7 +125,7 @@ const SECTIONS: SectionDef[] = [
     rows: [
       {
         label: "Prix brut",
-        getValue: (c) => fmtPrix(c.config.price_EUR),
+        getValue: (c) => fmtPrix(c.config.price_EUR) ?? "Tarif à venir",
         numeric: (c) => c.config.price_EUR ?? null,
         bestIsMax: false,
       },
@@ -157,7 +157,7 @@ const SECTIONS: SectionDef[] = [
       {
         label: "Prix net*",
         getValue: (c) => {
-          if (c.config.price_EUR == null) return null;
+          if (c.config.price_EUR == null) return "Tarif à venir";
           const profile = readUserProfile();
           const aids = calculateCeeAid({
             vehicle: c.vehicle,
@@ -559,10 +559,10 @@ export default function ComparisonTable({ cards, onRemove, onConfigChange, onAdd
                           {displayVal != null ? (
                             <div className="flex items-center gap-1.5">
                               <span
-                                className="text-sm font-semibold tabular-nums"
+                                className={displayVal === "Tarif à venir" ? "text-xs italic font-normal text-[var(--color-text-faint)]" : "text-sm font-semibold tabular-nums"}
                                 style={{
-                                  color: isBest ? "var(--color-accent)" : "var(--color-text)",
-                                  letterSpacing: "-0.01em",
+                                  color: displayVal === "Tarif à venir" ? "var(--color-text-faint)" : (isBest ? "var(--color-accent)" : "var(--color-text)"),
+                                  letterSpacing: displayVal === "Tarif à venir" ? "normal" : "-0.01em",
                                 }}
                               >
                                 {displayVal}

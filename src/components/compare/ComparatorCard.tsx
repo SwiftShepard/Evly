@@ -451,40 +451,21 @@ export default function ComparatorCard({
       <div className="mx-4" style={{ borderTop: "0.5px solid var(--color-border)" }} />
 
       {/* Prix */}
-      <DataBlock label="Prix" best={bestMetrics?.netPrice}>
+      <DataBlock label="Prix" best={config.price_EUR !== null ? bestMetrics?.netPrice : false}>
         <div className="flex flex-col gap-1.5">
-          <div className="flex items-baseline gap-2">
-            <span
-              className="text-2xl font-semibold tabular-nums"
-              style={{
-                color: (bestMetrics?.netPrice && totalAids === 0) ? "var(--color-accent)" : "var(--color-text)",
-                letterSpacing: "-0.02em"
-              }}
-            >
-              <AnimatedNumber value={config.price_EUR} format={fmtPrice} />
-            </span>
-            {(bestMetrics?.netPrice && totalAids === 0) && (
-              <span
-                className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[var(--color-surface-accent)] text-[var(--color-accent)] border border-[rgba(58,92,18,0.15)] ml-1"
-                title="Prix le plus bas de la sélection"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-              </span>
-            )}
-          </div>
-          {totalAids > 0 && (
+          {config.price_EUR !== null ? (
             <>
-              <span className="font-mono text-[10px]" style={{ color: "var(--color-text-faint)" }}>
-                CEE max.* : −<AnimatedNumber value={totalAids} format={fmtPrice} />
-              </span>
               <div className="flex items-baseline gap-2">
-                <span className="text-lg font-semibold tabular-nums" style={{ color: bestMetrics?.netPrice ? "var(--color-accent)" : "var(--color-text)" }}>
-                  <AnimatedNumber value={netPrice} format={fmtPrice} />
+                <span
+                  className="text-2xl font-semibold tabular-nums"
+                  style={{
+                    color: (bestMetrics?.netPrice && totalAids === 0) ? "var(--color-accent)" : "var(--color-text)",
+                    letterSpacing: "-0.02em"
+                  }}
+                >
+                  <AnimatedNumber value={config.price_EUR} format={fmtPrice} />
                 </span>
-                <span className="font-mono text-[10px]" style={{ color: "var(--color-text-faint)" }}>
-                  apres coup de pouce CEE max.*
-                </span>
-                {bestMetrics?.netPrice && (
+                {(bestMetrics?.netPrice && totalAids === 0) && (
                   <span
                     className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[var(--color-surface-accent)] text-[var(--color-accent)] border border-[rgba(58,92,18,0.15)] ml-1"
                     title="Prix le plus bas de la sélection"
@@ -493,7 +474,34 @@ export default function ComparatorCard({
                   </span>
                 )}
               </div>
+              {totalAids > 0 && (
+                <>
+                  <span className="font-mono text-[10px]" style={{ color: "var(--color-text-faint)" }}>
+                    CEE max.* : −<AnimatedNumber value={totalAids} format={fmtPrice} />
+                  </span>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-lg font-semibold tabular-nums" style={{ color: bestMetrics?.netPrice ? "var(--color-accent)" : "var(--color-text)" }}>
+                      <AnimatedNumber value={netPrice} format={fmtPrice} />
+                    </span>
+                    <span className="font-mono text-[10px]" style={{ color: "var(--color-text-faint)" }}>
+                      apres coup de pouce CEE max.*
+                    </span>
+                    {bestMetrics?.netPrice && (
+                      <span
+                        className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[var(--color-surface-accent)] text-[var(--color-accent)] border border-[rgba(58,92,18,0.15)] ml-1"
+                        title="Prix le plus bas de la sélection"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                      </span>
+                    )}
+                  </div>
+                </>
+              )}
             </>
+          ) : (
+            <span className="text-base text-[var(--color-text-faint)] italic font-normal">
+              Tarif à venir
+            </span>
           )}
           {config.leasingSocialEligible && config.monthlyLease_EUR && (
             <div

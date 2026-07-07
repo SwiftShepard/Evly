@@ -6,10 +6,11 @@ import { getAllVehicles } from "@/lib/vehicles";
 const vehicles = getAllVehicles();
 
 const summaries = vehicles
-  .filter((v) => v.trims.length > 0)
+  .filter((v) => v.trims.length > 0 && v.trims.some((t) => t.price_EUR !== null))
   .map((v) => {
-    const cheapest = v.trims.reduce((a, b) =>
-      a.price_EUR < b.price_EUR ? a : b
+    const validTrims = v.trims.filter((t) => t.price_EUR !== null);
+    const cheapest = validTrims.reduce((a, b) =>
+      a.price_EUR! < b.price_EUR! ? a : b
     );
     const aids = v.availableAids.reduce((sum, a) => sum + a.amount_EUR, 0);
     return {
@@ -18,7 +19,7 @@ const summaries = vehicles
       model: v.model,
       variant: v.variant,
       segment: v.segment,
-      price_EUR: cheapest.price_EUR,
+      price_EUR: cheapest.price_EUR!,
       aids_EUR: aids,
       consumption_kWh_100km: v.consumption_mixed_kWh_per_100km,
       realRange_mixed_km: v.realRange.mixed_km,

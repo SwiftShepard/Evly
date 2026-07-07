@@ -1,0 +1,257 @@
+{
+  "slug": "mg-im5",
+  "brand": "MG",
+  "model": "IM5",
+  "variant": "75 kWh",
+  "bodyType": "Berline",
+  "segment": "D",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Shanghai",
+  "releaseYear": 2025,
+  "marketAvailability": "À venir en Europe",
+  "power_kW": 217,
+  "power_hp": 291,
+  "torque_Nm": 450,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 5.9,
+  "topSpeed_kmh": 200,
+  "usableCapacity_kWh": 70.0,
+  "grossCapacity_kWh": 75.0,
+  "chemistry": "LFP",
+  "architecture_V": 800,
+  "mass_kg": 1960,
+  "wltp_max_km": 655,
+  "wltp_min_km": 490,
+  "realRange": {
+    "mixed_km": 450,
+    "highway_130_km": 330,
+    "urban_km": 540,
+    "winter_minus5_km": 350,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 15.2,
+  "consumption_highway_kWh_per_100km": 21.0,
+  "consumption_winter_kWh_per_100km": 20.0,
+  "dragCoefficient_Cx": 0.22,
+  "chargingDC": {
+    "peakPower_kW": 300,
+    "time_10_80_min": 15,
+    "kWh_added_30min": 65,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 7
+  },
+  "plugAndCharge": true,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 180
+    },
+    {
+      "soc": 10,
+      "power": 300
+    },
+    {
+      "soc": 30,
+      "power": 260
+    },
+    {
+      "soc": 50,
+      "power": 200
+    },
+    {
+      "soc": 80,
+      "power": 65
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4931,
+  "width_mm": 1960,
+  "height_mm": 1474,
+  "wheelbase_mm": 2950,
+  "trunkCapacity_L": 457,
+  "trunkCapacityFolded_L": 1150,
+  "frunkCapacity_L": 50,
+  "trims": [
+    {
+      "name": "75 kWh",
+      "price_EUR": null,
+      "batteryUsed": "75 kWh",
+      "equipmentHighlights": [
+        "Plateforme 800V de SAIC",
+        "Écran de bord de 26,3 pouces",
+        "Conduite autonome avancée avec LiDAR"
+      ]
+    },
+    {
+      "name": "100 kWh",
+      "price_EUR": null,
+      "batteryUsed": "100 kWh",
+      "equipmentHighlights": [
+        "Autonomie étendue WLTP 655 km",
+        "Système de direction à 4 roues",
+        "Suspension pneumatique active"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "mg-im5-standard",
+      "label": "IM5 · 75 kWh",
+      "battery": "standard",
+      "trim": "75 kWh",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": null,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 490,
+      "wltp_consumption_kWh_100km": 14.3,
+      "realRange": {
+        "mixed_km": 410,
+        "highway_130_km": 300,
+        "urban_km": 490,
+        "winter_minus5_km": 320,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 250,
+      "chargingDC_10_80_min": 17,
+      "chargingDC_kWh_30min": 58,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 150
+        },
+        {
+          "soc": 10,
+          "power": 250
+        },
+        {
+          "soc": 50,
+          "power": 180
+        },
+        {
+          "soc": 80,
+          "power": 55
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "upcoming",
+      "notes": "291 ch, RWD, 800V architecture"
+    },
+    {
+      "id": "mg-im5-long-range",
+      "label": "IM5 · 100 kWh",
+      "battery": "long-range",
+      "trim": "100 kWh",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": null,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 655,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": {
+        "mixed_km": 530,
+        "highway_130_km": 390,
+        "urban_km": 630,
+        "winter_minus5_km": 410,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 300,
+      "chargingDC_10_80_min": 15,
+      "chargingDC_kWh_30min": 78,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 180
+        },
+        {
+          "soc": 10,
+          "power": 300
+        },
+        {
+          "soc": 50,
+          "power": 200
+        },
+        {
+          "soc": 80,
+          "power": 65
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "upcoming",
+      "notes": "340 ch (ou RWD haute puissance), plateforme 800V de SAIC"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 7,
+    "vehicle_km": 150000,
+    "battery_years": 7,
+    "battery_km": 150000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Berline liftback premium aérodynamique"
+    },
+    {
+      "category": "technologie",
+      "label": "Plateforme ultra-rapide 800V de SAIC"
+    },
+    {
+      "category": "confort",
+      "label": "Grand écran panoramique de cockpit de 26,3 pouces"
+    },
+    {
+      "category": "securite",
+      "label": "Châssis numérique agile avec 4 roues directrices"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Vitesse de recharge ultra-rapide (10-80% en 15 min)",
+      "Technologie de châssis numérique agile avec roues arrière directrices",
+      "Excellent rapport technologie/prestations théorique"
+    ],
+    "weaknesses": [
+      "Image de marque IM encore peu connue en Europe",
+      "Pas encore de commercialisation ni de réseau SAV dédié en France"
+    ],
+    "idealUserProfile": "Acheteurs à la recherche d'une berline électrique hautement technologique avec une charge ultra-rapide.",
+    "notIdealFor": "Conducteurs souhaitant un réseau de concessions traditionnel très implanté."
+  },
+  "lastUpdated": "2026-07-07",
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
+  "imageCredit": "Constructeur",
+  "availability": "upcoming"
+}

@@ -7,9 +7,10 @@ interface Props {
 }
 
 const { vehicle } = Astro.props;
-const cheapestTrim = vehicle.trims.reduce((a, b) =>
-  a.price_EUR < b.price_EUR ? a : b
-);
+const validTrims = vehicle.trims.filter((t) => t.price_EUR !== null);
+const cheapestTrim = validTrims.length > 0
+  ? validTrims.reduce((a, b) => (a.price_EUR! < b.price_EUR! ? a : b))
+  : null;
 ---
 
 <section class="relative overflow-hidden border-b border-[var(--color-border)]">
@@ -106,15 +107,27 @@ const cheapestTrim = vehicle.trims.reduce((a, b) =>
       <div class="py-6 md:py-8 pr-4 md:pl-6">
         <span class="label-eyebrow block mb-3">Prix d'accès</span>
         <div class="flex items-baseline gap-1.5">
-          <span data-numeric class="display-stat text-3xl md:text-4xl">
-            {formatPrice(cheapestTrim.price_EUR)}
-          </span>
+          {cheapestTrim !== null ? (
+            <span data-numeric class="display-stat text-3xl md:text-4xl">
+              {formatPrice(cheapestTrim.price_EUR!)}
+            </span>
+          ) : (
+            <span class="display-stat text-xl md:text-2xl text-[var(--color-text-faint)] italic font-normal tracking-tight">
+              Tarif à venir
+            </span>
+          )}
         </div>
         <span class="font-mono text-xs text-[var(--color-text-faint)] mt-1 block">
-          finition {cheapestTrim.name}
-          {vehicle.leasingSocialEligible && vehicle.leasingSocial_EUR_per_month
-            ? ` · leasing social ${vehicle.leasingSocial_EUR_per_month} €/mois`
-            : ""}
+          {cheapestTrim !== null ? (
+            <>
+              finition {cheapestTrim.name}
+              {vehicle.leasingSocialEligible && vehicle.leasingSocial_EUR_per_month
+                ? ` · leasing social ${vehicle.leasingSocial_EUR_per_month} €/mois`
+                : ""}
+            </>
+          ) : (
+            "Tarif non communiqué"
+          )}
         </span>
       </div>
     </div>

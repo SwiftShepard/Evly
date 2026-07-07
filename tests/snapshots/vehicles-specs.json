@@ -1009,7 +1009,7 @@
     "brand": "Leapmotor",
     "model": "B05",
     "power_kW": 160,
-    "usableCapacity_kWh": 67.1,
+    "usableCapacity_kWh": 53.4,
     "wltp_min_km": 401,
     "wltp_max_km": 482,
     "configurations_count": 3,
@@ -1310,6 +1310,34 @@
     "configuration_ids": [
       "mg-cyberster-gt-awd",
       "mg-cyberster-trophy-rwd"
+    ]
+  },
+  {
+    "slug": "mg-im5",
+    "brand": "MG",
+    "model": "IM5",
+    "power_kW": 217,
+    "usableCapacity_kWh": 70,
+    "wltp_min_km": 490,
+    "wltp_max_km": 655,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "mg-im5-long-range",
+      "mg-im5-standard"
+    ]
+  },
+  {
+    "slug": "mg-im6",
+    "brand": "MG",
+    "model": "IM6",
+    "power_kW": 250,
+    "usableCapacity_kWh": 71,
+    "wltp_min_km": 450,
+    "wltp_max_km": 590,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "mg-im6-long-range",
+      "mg-im6-standard"
     ]
   },
   {
@@ -1950,11 +1978,10 @@
     "power_kW": 160,
     "usableCapacity_kWh": 67,
     "wltp_min_km": 480,
-    "wltp_max_km": 500,
-    "configurations_count": 3,
+    "wltp_max_km": 501,
+    "configurations_count": 2,
     "configuration_ids": [
       "renault-megane-2026-esprit-alpine",
-      "renault-megane-2026-iconic",
       "renault-megane-2026-techno"
     ]
   },
@@ -2422,6 +2449,20 @@
       "xpeng-g9-long-range",
       "xpeng-g9-performance",
       "xpeng-g9-standard"
+    ]
+  },
+  {
+    "slug": "xpeng-l03",
+    "brand": "Xpeng",
+    "model": "L03",
+    "power_kW": 140,
+    "usableCapacity_kWh": 49,
+    "wltp_min_km": 390,
+    "wltp_max_km": 470,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "xpeng-l03-long-range",
+      "xpeng-l03-standard"
     ]
   },
   {

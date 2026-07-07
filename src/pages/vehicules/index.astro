@@ -385,12 +385,13 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
             </Tile>
 
         {vehicles.map((v) => {
-          const cheapest = v.trims.reduce((a, b) => (a.price_EUR < b.price_EUR ? a : b));
+          const validTrims = v.trims.filter((t) => t.price_EUR !== null);
+          const cheapest = validTrims.length > 0 ? validTrims.reduce((a, b) => (a.price_EUR! < b.price_EUR! ? a : b)) : null;
           const totalAids = Math.min(
             8100,
             v.availableAids.reduce((s, a) => s + a.amount_EUR, 0)
           );
-          const priceAided = Math.max(0, cheapest.price_EUR - totalAids);
+          const priceAided = cheapest !== null ? Math.max(0, cheapest.price_EUR! - totalAids) : null;
           const category = getCategory(v);
           
           const familial = isFamiliale(v) ? "Familiale" : "";
@@ -406,12 +407,12 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
               data-model={v.model}
               data-variant={v.variant}
               data-usage={usageTags}
-              data-price={cheapest.price_EUR}
-              data-price-aided={priceAided}
+              data-price={cheapest ? cheapest.price_EUR : ""}
+              data-price-aided={priceAided ?? ""}
               data-range={v.realRange.mixed_km}
               data-wltp={v.wltp_max_km}
               data-dc={v.chargingDC.peakPower_kW}
-              data-ratio={Math.round(v.realRange.mixed_km / cheapest.price_EUR * 10000)}
+              data-ratio={cheapest ? Math.round(v.realRange.mixed_km / cheapest.price_EUR! * 10000) : 0}
               data-origin={isEU(v) ? "eu" : "other"}
               data-cee={hasCEE(v) ? "1" : "0"}
               data-trunk={v.trunkCapacity_L}
@@ -463,11 +464,21 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                       <span class="price-mode-aided">Après aides max.*</span>
                     </span>
                     <div class="price-mode-gross flex items-baseline justify-end gap-1">
-                      <span data-numeric class="display-stat text-2xl md:text-3xl">{formatPrice(cheapest.price_EUR)}</span>
+                      {cheapest !== null ? (
+                        <span data-numeric class="display-stat text-2xl md:text-3xl">{formatPrice(cheapest.price_EUR!)}</span>
+                      ) : (
+                        <span class="display-stat text-base md:text-lg text-[var(--color-text-faint)] italic font-normal tracking-tight">Tarif à venir</span>
+                      )}
                     </div>
                     <div class="price-mode-aided flex flex-col items-end gap-0.5">
-                      <span data-numeric class="display-stat text-2xl md:text-3xl" style="color:var(--color-accent)">{formatPrice(priceAided)}</span>
-                      {totalAids > 0 && <span class="font-mono text-[10px] text-[var(--color-text-faint)]" style="text-decoration:line-through">{formatPrice(cheapest.price_EUR)}</span>}
+                      {cheapest !== null && priceAided !== null ? (
+                        <>
+                          <span data-numeric class="display-stat text-2xl md:text-3xl" style="color:var(--color-accent)">{formatPrice(priceAided)}</span>
+                          {totalAids > 0 && <span class="font-mono text-[10px] text-[var(--color-text-faint)]" style="text-decoration:line-through">{formatPrice(cheapest.price_EUR!)}</span>}
+                        </>
+                      ) : (
+                        <span class="display-stat text-base md:text-lg text-[var(--color-text-faint)] italic font-normal tracking-tight">Tarif à venir</span>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -628,8 +639,9 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
     } catch (e) {}
 
     function getCardPrice(card) {
-      if (priceMode === 'aided') return +(card.dataset.priceAided ?? card.dataset.price);
-      return +card.dataset.price;
+      const pStr = priceMode === 'aided' ? (card.dataset.priceAided || card.dataset.price) : card.dataset.price;
+      if (!pStr || pStr === 'null' || pStr === 'undefined' || isNaN(pStr)) return Infinity;
+      return +pStr;
     }
 
     // Shared active state across desktop + mobile chip duplicates
@@ -762,8 +774,22 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
         ? [...originalOrder]
         : [...originalOrder].sort((a, b) => {
             switch (sortKey) {
-              case 'price-asc':  return getCardPrice(a) - getCardPrice(b);
-              case 'price-desc': return getCardPrice(b) - getCardPrice(a);
+              case 'price-asc': {
+                const pa = getCardPrice(a);
+                const pb = getCardPrice(b);
+                if (pa === pb) return 0;
+                if (pa === Infinity) return 1;
+                if (pb === Infinity) return -1;
+                return pa - pb;
+              }
+              case 'price-desc': {
+                const pa = getCardPrice(a);
+                const pb = getCardPrice(b);
+                if (pa === pb) return 0;
+                if (pa === Infinity) return 1;
+                if (pb === Infinity) return -1;
+                return pb - pa;
+              }
               case 'range-desc': return +b.dataset.range - +a.dataset.range;
               case 'dc-desc':    return +b.dataset.dc    - +a.dataset.dc;
               case 'ratio-desc': return +b.dataset.ratio - +a.dataset.ratio;

@@ -11,8 +11,9 @@ const totalAids = Math.min(
   8100,
   vehicle.availableAids.reduce((sum, aid) => sum + aid.amount_EUR, 0)
 );
-const cheapest = vehicle.trims.reduce((a, b) => (a.price_EUR < b.price_EUR ? a : b));
-const priceAfterAids = Math.max(0, cheapest.price_EUR - totalAids);
+const validTrims = vehicle.trims.filter((t) => t.price_EUR !== null);
+const cheapest = validTrims.length > 0 ? validTrims.reduce((a, b) => (a.price_EUR! < b.price_EUR! ? a : b)) : null;
+const priceAfterAids = cheapest !== null ? Math.max(0, cheapest.price_EUR! - totalAids) : null;
 ---
 
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-px bg-[var(--color-border)]">
@@ -48,7 +49,11 @@ const priceAfterAids = Math.max(0, cheapest.price_EUR - totalAids);
                 data-numeric
                 class="font-display text-2xl md:text-3xl font-semibold tabular tracking-[-0.01em]"
               >
-                {formatPrice(trim.price_EUR)}
+                {trim.price_EUR !== null ? (
+                  formatPrice(trim.price_EUR)
+                ) : (
+                  <span class="text-base text-[var(--color-text-faint)] italic font-normal">Tarif à venir</span>
+                )}
               </span>
             </div>
           </div>
@@ -95,10 +100,14 @@ const priceAfterAids = Math.max(0, cheapest.price_EUR - totalAids);
         class="mt-6 pt-6 border-t border-[var(--color-border-strong)] flex items-baseline justify-between"
       >
         <span class="text-sm text-[var(--color-text-muted)]">
-          Prix net potentiel ({cheapest.name})
+          Prix net potentiel {cheapest !== null ? `(${cheapest.name})` : ""}
         </span>
         <span data-numeric class="font-display text-2xl font-semibold tabular">
-          {formatPrice(priceAfterAids)}
+          {priceAfterAids !== null ? (
+            formatPrice(priceAfterAids)
+          ) : (
+            <span class="text-base text-[var(--color-text-faint)] italic font-normal">Tarif à venir</span>
+          )}
         </span>
       </div>
     </div>

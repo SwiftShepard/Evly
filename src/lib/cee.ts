@@ -77,7 +77,8 @@ export function isVehicleEligibleCEE(vehicle: Vehicle, price: number | null): bo
   if (!isMadeInEU) return false;
 
   // Si le prix d'achat de la configuration ou finition dépasse le plafond
-  const actualPrice = price ?? Math.min(...vehicle.trims.map((t) => t.price_EUR));
+  const validTrimPrices = vehicle.trims.map((t) => t.price_EUR).filter((p): p is number => p !== null);
+  const actualPrice = price ?? (validTrimPrices.length > 0 ? Math.min(...validTrimPrices) : 0);
   if (actualPrice > CEE_PRICE_CAP_EUR) return false;
 
   // Poids < 2,4 tonnes

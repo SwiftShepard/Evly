@@ -17,7 +17,10 @@ const totalTests = vehicles.reduce((sum, v) => sum + v.rangeTests.length, 0);
 const totalConfigs = vehicles.reduce((sum, v) => sum + v.configurations.length, 0);
 
 // "À la une", 2 catégories de véhicules pour scroll rows
-const cheapestOf = (v: (typeof vehicles)[number]) => Math.min(...v.trims.map((t) => t.price_EUR));
+const cheapestOf = (v: (typeof vehicles)[number]) => {
+  const validPrices = v.trims.map((t) => t.price_EUR).filter((p): p is number => p !== null);
+  return validPrices.length > 0 ? Math.min(...validPrices) : null;
+};
 
 // Tri par date de dernière mise à jour / ajout (lastUpdated) décroissant, puis par marque/modèle
 const latestVehicles = [...vehicles]
@@ -365,7 +368,11 @@ const description =
                   </div>
                   <div class="flex flex-col gap-0.5">
                     <span class="font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Dès</span>
-                    <span data-numeric class="display-stat text-xl">{formatPrice(cheapest)}</span>
+                    {cheapest !== null ? (
+                      <span data-numeric class="display-stat text-xl">{formatPrice(cheapest)}</span>
+                    ) : (
+                      <span class="display-stat text-sm text-[var(--color-text-faint)] italic font-normal tracking-tight">Tarif à venir</span>
+                    )}
                   </div>
                 </div>
               </a>

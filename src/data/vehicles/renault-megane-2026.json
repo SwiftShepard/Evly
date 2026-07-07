@@ -21,7 +21,7 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1650,
-  "wltp_max_km": 500,
+  "wltp_max_km": 501,
   "wltp_min_km": 480,
   "realRange": {
     "mixed_km": 435,
@@ -37,7 +37,7 @@
   "dragCoefficient_Cx": 0.29,
   "chargingDC": {
     "peakPower_kW": 165,
-    "time_10_80_min": 26,
+    "time_10_80_min": 24,
     "kWh_added_30min": 50,
     "confidence": "manufacturer"
   },
@@ -108,7 +108,7 @@
   "trims": [
     {
       "name": "Techno",
-      "price_EUR": 39500,
+      "price_EUR": 37500,
       "batteryUsed": "67 kWh",
       "equipmentHighlights": [
         "OpenR Link Google",
@@ -118,22 +118,12 @@
     },
     {
       "name": "Esprit Alpine",
-      "price_EUR": 41500,
+      "price_EUR": 40500,
       "batteryUsed": "67 kWh",
       "equipmentHighlights": [
         "Jantes 20 pouces diamantees",
         "Volant Alpine",
         "Sieges sport"
-      ]
-    },
-    {
-      "name": "Iconic",
-      "price_EUR": 43000,
-      "batteryUsed": "67 kWh",
-      "equipmentHighlights": [
-        "Toit panoramique",
-        "Sieges chauffants",
-        "Conduite semi-autonome"
       ]
     }
   ],
@@ -160,10 +150,10 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 39500,
-      "monthlyLease_EUR": 190,
+      "price_EUR": 37500,
+      "monthlyLease_EUR": 220,
       "leasingSocialEligible": true,
-      "wltp_km": 500,
+      "wltp_km": 501,
       "wltp_consumption_kWh_100km": 15.4,
       "realRange": {
         "mixed_km": 435,
@@ -174,7 +164,7 @@
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 165,
-      "chargingDC_10_80_min": 26,
+      "chargingDC_10_80_min": 24,
       "chargingDC_kWh_30min": 50,
       "chargingCurve": [
         {
@@ -233,7 +223,7 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 41500,
+      "price_EUR": 40500,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 480,
@@ -247,7 +237,7 @@
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 165,
-      "chargingDC_10_80_min": 26,
+      "chargingDC_10_80_min": 24,
       "chargingDC_kWh_30min": 50,
       "chargingCurve": [
         {
@@ -297,79 +287,6 @@
       ],
       "availability": "available",
       "notes": "220 ch (160 kW), jantes 20 pouces diamantees"
-    },
-    {
-      "id": "renault-megane-2026-iconic",
-      "label": "Megane 2026 Iconic",
-      "battery": "standard",
-      "trim": "Iconic",
-      "wheelSize_inches": 20,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 43000,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 480,
-      "wltp_consumption_kWh_100km": 16.0,
-      "realRange": {
-        "mixed_km": 425,
-        "highway_130_km": 270,
-        "urban_km": 520,
-        "winter_minus5_km": 335,
-        "confidence": "estimated"
-      },
-      "rangeTests": [],
-      "chargingDC_peak_kW": 165,
-      "chargingDC_10_80_min": 26,
-      "chargingDC_kWh_30min": 50,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 110
-        },
-        {
-          "soc": 10,
-          "power": 165
-        },
-        {
-          "soc": 20,
-          "power": 155
-        },
-        {
-          "soc": 30,
-          "power": 135
-        },
-        {
-          "soc": 40,
-          "power": 115
-        },
-        {
-          "soc": 50,
-          "power": 100
-        },
-        {
-          "soc": 60,
-          "power": 85
-        },
-        {
-          "soc": 70,
-          "power": 70
-        },
-        {
-          "soc": 80,
-          "power": 55
-        },
-        {
-          "soc": 90,
-          "power": 35
-        },
-        {
-          "soc": 100,
-          "power": 10
-        }
-      ],
-      "availability": "available",
-      "notes": "220 ch (160 kW), full options"
     }
   ],
   "warranty": {
@@ -399,8 +316,8 @@
   ],
   "verdict": {
     "strengths": [
-      "Autonomie WLTP portée à 500 km avec la nouvelle batterie de 67 kWh",
-      "Vitesse de charge améliorée (15-80% en 24 minutes, pic à 165 kW)",
+      "Autonomie WLTP portée à 501 km avec la nouvelle batterie de 67 kWh",
+      "Vitesse de charge améliorée (10-80% en 24 minutes, pic à 165 kW)",
       "Bon compromis prix/autonomie",
       "Confort de suspension"
     ],

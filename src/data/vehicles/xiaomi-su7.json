@@ -87,7 +87,7 @@
   "trims": [
     {
       "name": "73.6 kWh",
-      "price_EUR": 41000,
+      "price_EUR": null,
       "batteryUsed": "73.6 kWh",
       "equipmentHighlights": [
         "700 km WLTP (est.)",
@@ -97,7 +97,7 @@
     },
     {
       "name": "Max 101 kWh",
-      "price_EUR": 56000,
+      "price_EUR": null,
       "batteryUsed": "101 kWh",
       "equipmentHighlights": [
         "AWD 673 ch",
@@ -118,7 +118,7 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 41000,
+      "price_EUR": null,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 700,
@@ -171,7 +171,7 @@
       "wheelSize_inches": 21,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 56000,
+      "price_EUR": null,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 590,

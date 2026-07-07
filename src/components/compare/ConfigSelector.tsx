@@ -210,8 +210,8 @@ export default function ConfigSelector({
                 return {
                   value: b,
                   label: batteryLabels[b] ?? b,
-                  disabled: !priced,
-                  tooltip: !priced ? "Prix non communiqué" : undefined,
+                  disabled: false,
+                  tooltip: !priced ? "Tarif à venir" : undefined,
                 };
               })}
               value={activeBattery}
@@ -228,8 +228,8 @@ export default function ConfigSelector({
                 return {
                   value: t,
                   label: trimDisplayLabel(t),
-                  disabled: !priced,
-                  tooltip: !priced ? "Prix non communiqué" : undefined,
+                  disabled: false,
+                  tooltip: !priced ? "Tarif à venir" : undefined,
                 };
               })}
               value={activeTrim}

@@ -1,0 +1,253 @@
+{
+  "slug": "xpeng-l03",
+  "brand": "Xpeng",
+  "model": "L03",
+  "variant": "51.8 kWh",
+  "bodyType": "Berline",
+  "segment": "C",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Zhaoqing",
+  "releaseYear": 2025,
+  "marketAvailability": "À venir en Europe",
+  "power_kW": 140,
+  "power_hp": 190,
+  "torque_Nm": 250,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 7.8,
+  "topSpeed_kmh": 155,
+  "usableCapacity_kWh": 49.0,
+  "grossCapacity_kWh": 51.8,
+  "chemistry": "LFP",
+  "architecture_V": 400,
+  "mass_kg": 1500,
+  "wltp_max_km": 470,
+  "wltp_min_km": 390,
+  "realRange": {
+    "mixed_km": 360,
+    "highway_130_km": 250,
+    "urban_km": 420,
+    "winter_minus5_km": 280,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 14.5,
+  "consumption_highway_kWh_per_100km": 20.0,
+  "consumption_winter_kWh_per_100km": 18.5,
+  "dragCoefficient_Cx": 0.194,
+  "chargingDC": {
+    "peakPower_kW": 120,
+    "time_10_80_min": 26,
+    "kWh_added_30min": 40,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 5.5
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 80
+    },
+    {
+      "soc": 10,
+      "power": 120
+    },
+    {
+      "soc": 50,
+      "power": 90
+    },
+    {
+      "soc": 80,
+      "power": 35
+    },
+    {
+      "soc": 100,
+      "power": 6
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4780,
+  "width_mm": 1896,
+  "height_mm": 1445,
+  "wheelbase_mm": 2815,
+  "trunkCapacity_L": 621,
+  "trunkCapacityFolded_L": 1603,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "51.8 kWh",
+      "price_EUR": null,
+      "batteryUsed": "51.8 kWh",
+      "equipmentHighlights": [
+        "Aérodynamisme de pointe (Cx 0,194)",
+        "Hayon arrière électrique de 621 L",
+        "Écran tactile 15,6 pouces avec processeur de pointe"
+      ]
+    },
+    {
+      "name": "62.2 kWh",
+      "price_EUR": null,
+      "batteryUsed": "62.2 kWh",
+      "equipmentHighlights": [
+        "Autonomie étendue WLTP 470 km",
+        "Conduite autonome assistée Xpilot",
+        "Système audio 18 haut-parleurs"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "xpeng-l03-standard",
+      "label": "L03 · 51.8 kWh",
+      "battery": "standard",
+      "trim": "51.8 kWh",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": null,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 390,
+      "wltp_consumption_kWh_100km": 13.3,
+      "realRange": {
+        "mixed_km": 330,
+        "highway_130_km": 230,
+        "urban_km": 380,
+        "winter_minus5_km": 250,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 70
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 5
+        }
+      ],
+      "availability": "upcoming",
+      "notes": "190 ch (140 kW), FWD, berline compacte Mona M03"
+    },
+    {
+      "id": "xpeng-l03-long-range",
+      "label": "L03 · 62.2 kWh",
+      "battery": "long-range",
+      "trim": "62.2 kWh",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": null,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 470,
+      "wltp_consumption_kWh_100km": 13.5,
+      "realRange": {
+        "mixed_km": 400,
+        "highway_130_km": 280,
+        "urban_km": 460,
+        "winter_minus5_km": 310,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 120,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 45,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 80
+        },
+        {
+          "soc": 10,
+          "power": 120
+        },
+        {
+          "soc": 50,
+          "power": 95
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "upcoming",
+      "notes": "218 ch (160 kW), FWD, grande autonomie"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 120000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Berline liftback ultra-profilée (Cx 0,194)"
+    },
+    {
+      "category": "confort",
+      "label": "Coffre immense de 621 L avec large hayon"
+    },
+    {
+      "category": "technologie",
+      "label": "Système d'infodivertissement complet avec son 3D"
+    },
+    {
+      "category": "securite",
+      "label": "Assistance à la conduite avancée Xpilot"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Excellent aérodynamisme favorisant l'efficience",
+      "Grand coffre avec hayon très logeable et pratique",
+      "Technologie embarquée haut de gamme"
+    ],
+    "weaknesses": [
+      "Pas de commercialisation officielle en France annoncée",
+      "Performances de charge DC standard par rapport aux modèles 800V"
+    ],
+    "idealUserProfile": "Conducteurs à la recherche d'une berline électrique logeable, aérodynamique et moderne à budget maîtrisé.",
+    "notIdealFor": "Gros rouleurs autoroutiers pressés qui recherchent une charge ultra-rapide en moins de 15 minutes."
+  },
+  "lastUpdated": "2026-07-07",
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
+  "imageCredit": "Constructeur",
+  "availability": "upcoming"
+}
