@@ -2471,9 +2471,9 @@
     "brand": "Xpeng",
     "model": "L03",
     "power_kW": 140,
-    "usableCapacity_kWh": 49,
-    "wltp_min_km": 390,
-    "wltp_max_km": 470,
+    "usableCapacity_kWh": 65,
+    "wltp_min_km": 420,
+    "wltp_max_km": 500,
     "configurations_count": 2,
     "configuration_ids": [
       "xpeng-l03-long-range",
