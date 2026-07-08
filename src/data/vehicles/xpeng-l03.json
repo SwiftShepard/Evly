@@ -77,7 +77,7 @@
   "width_mm": 1896,
   "height_mm": 1445,
   "wheelbase_mm": 2815,
-  "trunkCapacity_L": 621,
+  "trunkCapacity_L": 539,
   "trunkCapacityFolded_L": 1603,
   "frunkCapacity_L": null,
   "trims": [
@@ -87,7 +87,7 @@
       "batteryUsed": "56 kWh",
       "equipmentHighlights": [
         "Aérodynamisme de pointe (Cx 0,194)",
-        "Hayon arrière électrique de 621 L",
+        "Hayon arrière électrique de 539 L",
         "Écran tactile 15,6 pouces avec processeur de pointe"
       ]
     },
@@ -219,7 +219,7 @@
     },
     {
       "category": "confort",
-      "label": "Coffre immense de 621 L avec large hayon"
+      "label": "Coffre immense de 539 L avec large hayon"
     },
     {
       "category": "technologie",
