@@ -167,7 +167,7 @@
       "options": [],
       "price_EUR": 21090,
       "monthlyLease_EUR": 139,
-      "leasingSocialEligible": true,
+      "leasingSocialEligible": false,
       "wltp_km": 250,
       "wltp_consumption_kWh_100km": 13.2,
       "realRange": {

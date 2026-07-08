@@ -93,9 +93,9 @@ const EXCLUDED_BRANDS = [
 ];
 
 export function getLeasingStatus(v: Vehicle): LeasingStatus {
+  if (v.leasingSocialEligible) return "official";
   if (EXCLUDED_BRANDS.includes(v.brand)) return "not-eligible";
   const cheapest = Math.min(...v.trims.map((t) => t.price_EUR));
-  if (v.leasingSocialEligible) return "official";
   if (cheapest > LEASING_PRICE_CAP_EUR) return "not-eligible";
   if (isEU(v.productionCountry)) return "ademe-compatible";
   return "potential";

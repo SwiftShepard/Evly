@@ -1,0 +1,260 @@
+{
+  "slug": "nissan-micra",
+  "brand": "Nissan",
+  "model": "Micra",
+  "variant": "40 & 52 kWh",
+  "bodyType": "Hatchback 5 portes",
+  "segment": "B",
+  "productionCountry": "France",
+  "assemblyPlant": "Douai",
+  "releaseYear": 2026,
+  "marketAvailability": "À venir en Europe",
+  "power_kW": 110,
+  "power_hp": 150,
+  "torque_Nm": 245,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 8.0,
+  "topSpeed_kmh": 150,
+  "usableCapacity_kWh": 52,
+  "grossCapacity_kWh": 55,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1450,
+  "wltp_max_km": 419,
+  "wltp_min_km": 319,
+  "realRange": {
+    "mixed_km": 360,
+    "highway_130_km": 240,
+    "urban_km": 450,
+    "winter_minus5_km": 280,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 15.5,
+  "consumption_highway_kWh_per_100km": 21.5,
+  "consumption_winter_kWh_per_100km": 18.5,
+  "dragCoefficient_Cx": 0.29,
+  "chargingDC": {
+    "peakPower_kW": 100,
+    "time_10_80_min": 30,
+    "kWh_added_30min": 35,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 6.5
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": true,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 77
+    },
+    {
+      "soc": 10,
+      "power": 100
+    },
+    {
+      "soc": 50,
+      "power": 77
+    },
+    {
+      "soc": 80,
+      "power": 38
+    },
+    {
+      "soc": 100,
+      "power": 8
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 3970,
+  "width_mm": 1770,
+  "height_mm": 1500,
+  "wheelbase_mm": 2540,
+  "trunkCapacity_L": 326,
+  "trunkCapacityFolded_L": 1100,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Visia 40 kWh",
+      "price_EUR": null,
+      "batteryUsed": "40 kWh",
+      "equipmentHighlights": [
+        "OpenR Link Google intégré",
+        "Chargeur bidirectionnel V2G",
+        "e-Pedal pour conduite urbaine"
+      ]
+    },
+    {
+      "name": "Acenta 40 kWh",
+      "price_EUR": null,
+      "batteryUsed": "40 kWh",
+      "equipmentHighlights": [
+        "Jantes alliage 16 pouces",
+        "Caméra de recul",
+        "Services Google connectés"
+      ]
+    },
+    {
+      "name": "N-Connecta 52 kWh",
+      "price_EUR": null,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "Autonomie WLTP 419 km",
+        "Sièges et volant chauffants",
+        "Régulateur adaptatif intelligent"
+      ]
+    }
+  ],
+  "leasingSocialEligible": true,
+  "leasingSocial_EUR_per_month": 139,
+  "availableAids": [
+    {
+      "label": "Prime CEE",
+      "amount_EUR": 6500,
+      "conditions": "Socle de base de la Prime CEE pour véhicule éligible à l'éco-score ADEME."
+    },
+    {
+      "label": "Majoration Batterie Européenne",
+      "amount_EUR": 2000,
+      "conditions": "Majoration pour batterie fabriquée en Europe."
+    }
+  ],
+  "configurations": [
+    {
+      "id": "nissan-micra-visia-40",
+      "label": "Micra Visia · 40 kWh",
+      "battery": "standard",
+      "trim": "Visia 40 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": null,
+      "monthlyLease_EUR": 139,
+      "leasingSocialEligible": true,
+      "wltp_km": 319,
+      "wltp_consumption_kWh_100km": 15.0,
+      "realRange": {
+        "mixed_km": 280,
+        "highway_130_km": 180,
+        "urban_km": 350,
+        "winter_minus5_km": 210,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 80,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 28,
+      "chargingCurve": [],
+      "availability": "upcoming",
+      "notes": "Version d'entrée de gamme éligible au leasing social"
+    },
+    {
+      "id": "nissan-micra-acenta-40",
+      "label": "Micra Acenta · 40 kWh",
+      "battery": "standard",
+      "trim": "Acenta 40 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": null,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 319,
+      "wltp_consumption_kWh_100km": 15.0,
+      "realRange": {
+        "mixed_km": 280,
+        "highway_130_km": 180,
+        "urban_km": 350,
+        "winter_minus5_km": 210,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 80,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 28,
+      "chargingCurve": [],
+      "availability": "upcoming",
+      "notes": "Finition intermédiaire confortable"
+    },
+    {
+      "id": "nissan-micra-nconnecta-52",
+      "label": "Micra N-Connecta · 52 kWh",
+      "battery": "long-range",
+      "trim": "N-Connecta 52 kWh",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": null,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 419,
+      "wltp_consumption_kWh_100km": 15.2,
+      "realRange": {
+        "mixed_km": 360,
+        "highway_130_km": 240,
+        "urban_km": 450,
+        "winter_minus5_km": 280,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [],
+      "availability": "upcoming",
+      "notes": "Version grande autonomie"
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 3,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Citadine moderne au style néo-rétro japonais"
+    },
+    {
+      "category": "technologie",
+      "label": "Système d'infodivertissement Google intégré de pointe"
+    },
+    {
+      "category": "confort",
+      "label": "Suspensions réglées pour un confort urbain optimal"
+    },
+    {
+      "category": "securite",
+      "label": "Aides à la conduite de série ProPilot Assist"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Plateforme AmpR Small très efficiente partagée avec la R5",
+      "Système multimédia avec Google intégré très ergonomique",
+      "Charge bidirectionnelle V2G"
+    ],
+    "weaknesses": [
+      "Volume de coffre dans la moyenne basse",
+      "Pas encore de tarifs d'achat officiels pour la France"
+    ],
+    "idealUserProfile": "Conducteurs urbains et périurbains cherchant une citadine moderne, technologique et éligible au leasing social.",
+    "notIdealFor": "Conducteurs ayant besoin de beaucoup d'espace à l'arrière ou d'un coffre de type familial."
+  },
+  "lastUpdated": "2026-07-08",
+  "sources": [
+    "constructeur",
+    "automobile-propre"
+  ],
+  "imageCredit": "Constructeur",
+  "availability": "upcoming"
+}

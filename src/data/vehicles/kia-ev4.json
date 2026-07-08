@@ -273,8 +273,8 @@
       ]
     }
   ],
-  "leasingSocialEligible": true,
-  "leasingSocial_EUR_per_month": 189,
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
       "label": "Prime CEE",
@@ -298,7 +298,7 @@
       "options": [],
       "price_EUR": 36490,
       "monthlyLease_EUR": null,
-      "leasingSocialEligible": true,
+      "leasingSocialEligible": false,
       "wltp_km": 440,
       "wltp_consumption_kWh_100km": 14.4,
       "realRange": {

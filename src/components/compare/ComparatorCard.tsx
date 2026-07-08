@@ -503,7 +503,8 @@ export default function ComparatorCard({
               Tarif à venir
             </span>
           )}
-          {config.leasingSocialEligible && config.monthlyLease_EUR && (
+
+          {config.leasingSocialEligible && (vehicle.leasingSocial_EUR_per_month || config.monthlyLease_EUR) && (
             <div
               className="inline-flex items-center gap-1.5 px-2 py-1 mt-1 rounded text-[10px] uppercase tracking-[0.12em] font-mono self-start"
               style={{
@@ -512,7 +513,7 @@ export default function ComparatorCard({
                 border: "0.5px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border-strong))",
               }}
             >
-              Leasing social · <AnimatedNumber value={config.monthlyLease_EUR} /> €/mois
+              Leasing social · <AnimatedNumber value={vehicle.leasingSocial_EUR_per_month || config.monthlyLease_EUR || 0} /> €/mois
             </div>
           )}
         </div>

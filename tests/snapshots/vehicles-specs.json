@@ -1519,6 +1519,21 @@
     ]
   },
   {
+    "slug": "nissan-micra",
+    "brand": "Nissan",
+    "model": "Micra",
+    "power_kW": 110,
+    "usableCapacity_kWh": 52,
+    "wltp_min_km": 319,
+    "wltp_max_km": 419,
+    "configurations_count": 3,
+    "configuration_ids": [
+      "nissan-micra-acenta-40",
+      "nissan-micra-nconnecta-52",
+      "nissan-micra-visia-40"
+    ]
+  },
+  {
     "slug": "opel-astra",
     "brand": "Opel",
     "model": "Astra Electric",

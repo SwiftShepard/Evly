@@ -125,8 +125,8 @@
       ]
     }
   ],
-  "leasingSocialEligible": true,
-  "leasingSocial_EUR_per_month": 189,
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
       "label": "Prime CEE",
@@ -150,7 +150,7 @@
       "options": [],
       "price_EUR": 38500,
       "monthlyLease_EUR": 189,
-      "leasingSocialEligible": true,
+      "leasingSocialEligible": false,
       "wltp_km": 425,
       "wltp_consumption_kWh_100km": 15.3,
       "realRange": {
@@ -203,7 +203,7 @@
       "options": [],
       "price_EUR": 43500,
       "monthlyLease_EUR": 189,
-      "leasingSocialEligible": true,
+      "leasingSocialEligible": false,
       "wltp_km": 555,
       "wltp_consumption_kWh_100km": 15.8,
       "realRange": {
@@ -256,7 +256,7 @@
       "options": [],
       "price_EUR": 47900,
       "monthlyLease_EUR": 189,
-      "leasingSocialEligible": true,
+      "leasingSocialEligible": false,
       "wltp_km": 555,
       "wltp_consumption_kWh_100km": 15.8,
       "realRange": {

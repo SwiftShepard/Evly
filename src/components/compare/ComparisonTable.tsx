@@ -185,10 +185,10 @@ const SECTIONS: SectionDef[] = [
       {
         label: "Leasing social",
         getValue: (c) =>
-          c.config.leasingSocialEligible && c.config.monthlyLease_EUR != null
-            ? `${fmtN(c.config.monthlyLease_EUR)} €/mois`
+          c.config.leasingSocialEligible && (c.vehicle.leasingSocial_EUR_per_month != null || c.config.monthlyLease_EUR != null)
+            ? `${fmtN(c.vehicle.leasingSocial_EUR_per_month ?? c.config.monthlyLease_EUR)} €/mois`
             : null,
-        numeric: (c) => c.config.monthlyLease_EUR ?? null,
+        numeric: (c) => c.vehicle.leasingSocial_EUR_per_month ?? c.config.monthlyLease_EUR ?? null,
         bestIsMax: false,
       },
     ],

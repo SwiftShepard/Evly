@@ -119,7 +119,7 @@
     }
   ],
   "leasingSocialEligible": false,
-  "leasingSocial_EUR_per_month": 155,
+  "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
       "label": "Prime CEE",

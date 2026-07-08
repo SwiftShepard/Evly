@@ -155,7 +155,7 @@
     }
   ],
   "leasingSocialEligible": true,
-  "leasingSocial_EUR_per_month": 200,
+  "leasingSocial_EUR_per_month": 199,
   "availableAids": [
     {
       "label": "Prime CEE",
@@ -178,7 +178,7 @@
       "tyreType": "summer",
       "options": [],
       "price_EUR": 42600,
-      "monthlyLease_EUR": 200,
+      "monthlyLease_EUR": 199,
       "leasingSocialEligible": true,
       "wltp_km": 450,
       "wltp_consumption_kWh_100km": 14.7,
@@ -232,7 +232,7 @@
       "options": [],
       "price_EUR": 44000,
       "monthlyLease_EUR": 200,
-      "leasingSocialEligible": true,
+      "leasingSocialEligible": false,
       "wltp_km": 450,
       "wltp_consumption_kWh_100km": 14.7,
       "realRange": {
@@ -285,7 +285,7 @@
       "options": [],
       "price_EUR": 46350,
       "monthlyLease_EUR": 200,
-      "leasingSocialEligible": true,
+      "leasingSocialEligible": false,
       "wltp_km": 450,
       "wltp_consumption_kWh_100km": 14.7,
       "realRange": {
@@ -338,7 +338,7 @@
       "options": [],
       "price_EUR": 47950,
       "monthlyLease_EUR": 200,
-      "leasingSocialEligible": true,
+      "leasingSocialEligible": false,
       "wltp_km": 450,
       "wltp_consumption_kWh_100km": 14.7,
       "realRange": {
@@ -391,7 +391,7 @@
       "options": [],
       "price_EUR": 42600,
       "monthlyLease_EUR": 200,
-      "leasingSocialEligible": true,
+      "leasingSocialEligible": false,
       "wltp_km": 450,
       "wltp_consumption_kWh_100km": 14.7,
       "realRange": {
@@ -444,7 +444,7 @@
       "options": [],
       "price_EUR": 44000,
       "monthlyLease_EUR": 200,
-      "leasingSocialEligible": true,
+      "leasingSocialEligible": false,
       "wltp_km": 450,
       "wltp_consumption_kWh_100km": 14.7,
       "realRange": {
@@ -497,7 +497,7 @@
       "options": [],
       "price_EUR": 46350,
       "monthlyLease_EUR": 200,
-      "leasingSocialEligible": true,
+      "leasingSocialEligible": false,
       "wltp_km": 450,
       "wltp_consumption_kWh_100km": 14.7,
       "realRange": {
@@ -550,7 +550,7 @@
       "options": [],
       "price_EUR": 47950,
       "monthlyLease_EUR": 200,
-      "leasingSocialEligible": true,
+      "leasingSocialEligible": false,
       "wltp_km": 450,
       "wltp_consumption_kWh_100km": 14.7,
       "realRange": {
