@@ -2,48 +2,48 @@
   "slug": "xpeng-l03",
   "brand": "Xpeng",
   "model": "L03",
-  "variant": "56 & 69 kWh",
-  "bodyType": "Berline",
+  "variant": "58 & 71 kWh",
+  "bodyType": "SUV Coupé",
   "segment": "C",
   "productionCountry": "Chine",
   "assemblyPlant": "Zhaoqing",
-  "releaseYear": 2025,
-  "marketAvailability": "À venir en Europe",
-  "power_kW": 140,
-  "power_hp": 190,
-  "torque_Nm": 250,
-  "drivetrain": "FWD",
+  "releaseYear": 2026,
+  "marketAvailability": "Disponible",
+  "power_kW": 180,
+  "power_hp": 245,
+  "torque_Nm": 280,
+  "drivetrain": "RWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.8,
-  "topSpeed_kmh": 155,
-  "usableCapacity_kWh": 65.0,
-  "grossCapacity_kWh": 69.0,
+  "acceleration_0_100_s": 6.6,
+  "topSpeed_kmh": 180,
+  "usableCapacity_kWh": 70.6,
+  "grossCapacity_kWh": 71.2,
   "chemistry": "LFP",
   "architecture_V": 400,
-  "mass_kg": 1500,
-  "wltp_max_km": 500,
-  "wltp_min_km": 420,
+  "mass_kg": 1850,
+  "wltp_max_km": 520,
+  "wltp_min_km": 440,
   "realRange": {
-    "mixed_km": 390,
-    "highway_130_km": 275,
-    "urban_km": 450,
-    "winter_minus5_km": 305,
+    "mixed_km": 430,
+    "highway_130_km": 310,
+    "urban_km": 510,
+    "winter_minus5_km": 350,
     "confidence": "estimated"
   },
-  "consumption_mixed_kWh_per_100km": 14.5,
-  "consumption_highway_kWh_per_100km": 20.0,
-  "consumption_winter_kWh_per_100km": 18.5,
-  "dragCoefficient_Cx": 0.194,
+  "consumption_mixed_kWh_per_100km": 16.0,
+  "consumption_highway_kWh_per_100km": 21.5,
+  "consumption_winter_kWh_per_100km": 19.0,
+  "dragCoefficient_Cx": 0.248,
   "chargingDC": {
-    "peakPower_kW": 120,
-    "time_10_80_min": 26,
-    "kWh_added_30min": 40,
-    "confidence": "estimated"
+    "peakPower_kW": 130,
+    "time_10_80_min": 20,
+    "kWh_added_30min": 52,
+    "confidence": "manufacturer"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
     "phases": 3,
-    "time_0_100_h": 5.5
+    "time_0_100_h": 7.5
   },
   "plugAndCharge": false,
   "v2l": true,
@@ -52,19 +52,19 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 80
-    },
-    {
-      "soc": 10,
-      "power": 120
-    },
-    {
-      "soc": 50,
       "power": 90
     },
     {
+      "soc": 10,
+      "power": 130
+    },
+    {
+      "soc": 50,
+      "power": 110
+    },
+    {
       "soc": 80,
-      "power": 35
+      "power": 45
     },
     {
       "soc": 100,
@@ -73,32 +73,52 @@
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
-  "length_mm": 4780,
-  "width_mm": 1896,
-  "height_mm": 1445,
-  "wheelbase_mm": 2815,
+  "length_mm": 4650,
+  "width_mm": 1920,
+  "height_mm": 1600,
+  "wheelbase_mm": 2850,
   "trunkCapacity_L": 539,
-  "trunkCapacityFolded_L": 1603,
-  "frunkCapacity_L": null,
+  "trunkCapacityFolded_L": 1640,
+  "frunkCapacity_L": 89,
   "trims": [
     {
-      "name": "56 kWh",
-      "price_EUR": null,
-      "batteryUsed": "56 kWh",
+      "name": "RWD Standard Range",
+      "price_EUR": 34990,
+      "batteryUsed": "58.3 kWh",
       "equipmentHighlights": [
-        "Aérodynamisme de pointe (Cx 0,194)",
-        "Hayon arrière électrique de 539 L",
-        "Écran tactile 15,6 pouces avec processeur de pointe"
+        "Pompe à chaleur de série",
+        "Sièges avant chauffants et ventilés",
+        "Toit panoramique en verre"
       ]
     },
     {
-      "name": "69 kWh",
-      "price_EUR": null,
-      "batteryUsed": "69 kWh",
+      "name": "RWD Long Range",
+      "price_EUR": 37990,
+      "batteryUsed": "71.2 kWh",
       "equipmentHighlights": [
-        "Autonomie étendue WLTP 500 km",
-        "Conduite autonome assistée Xpilot",
-        "Système audio 18 haut-parleurs"
+        "Autonomie maximale de 520 km WLTP",
+        "Jantes alliage 18 pouces aérodynamiques",
+        "Système audio haut de gamme"
+      ]
+    },
+    {
+      "name": "RWD Long Range Ultra",
+      "price_EUR": 42990,
+      "batteryUsed": "71.2 kWh",
+      "equipmentHighlights": [
+        "Jantes alliage 20 pouces",
+        "Sellerie premium et confort amélioré",
+        "Conduite autonome assistée Xpilot"
+      ]
+    },
+    {
+      "name": "AWD Performance Ultra",
+      "price_EUR": 46990,
+      "batteryUsed": "71.2 kWh",
+      "equipmentHighlights": [
+        "Transmission intégrale (Dual Motor 285 kW)",
+        "0 à 100 km/h en 4,5 secondes",
+        "Comportement dynamique typé sport"
       ]
     }
   ],
@@ -107,102 +127,116 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "xpeng-l03-standard",
-      "label": "L03 · 56 kWh",
+      "id": "xpeng-l03-rwd-standard-range",
+      "label": "L03 RWD Standard Range · 58.3 kWh",
       "battery": "standard",
-      "trim": "56 kWh",
+      "trim": "RWD Standard Range",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": null,
+      "price_EUR": 34990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 420,
-      "wltp_consumption_kWh_100km": 13.3,
+      "wltp_km": 445,
+      "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 350,
-        "highway_130_km": 245,
-        "urban_km": 400,
-        "winter_minus5_km": 270,
+        "mixed_km": 360,
+        "highway_130_km": 260,
+        "urban_km": 420,
+        "winter_minus5_km": 295,
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 100,
-      "chargingDC_10_80_min": 26,
-      "chargingDC_kWh_30min": 35,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 70
-        },
-        {
-          "soc": 10,
-          "power": 100
-        },
-        {
-          "soc": 50,
-          "power": 80
-        },
-        {
-          "soc": 80,
-          "power": 30
-        },
-        {
-          "soc": 100,
-          "power": 5
-        }
-      ],
-      "availability": "upcoming",
-      "notes": "190 ch (140 kW), FWD, berline compacte Mona M03"
+      "chargingDC_peak_kW": 110,
+      "chargingDC_10_80_min": 20,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [],
+      "availability": "available",
+      "notes": "180 kW (245 ch), RWD, jantes 18 pouces"
     },
     {
-      "id": "xpeng-l03-long-range",
-      "label": "L03 · 69 kWh",
+      "id": "xpeng-l03-rwd-long-range",
+      "label": "L03 RWD Long Range · 71.2 kWh",
       "battery": "long-range",
-      "trim": "69 kWh",
-      "wheelSize_inches": 19,
+      "trim": "RWD Long Range",
+      "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": null,
+      "price_EUR": 37990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 500,
-      "wltp_consumption_kWh_100km": 13.8,
+      "wltp_km": 520,
+      "wltp_consumption_kWh_100km": 16.0,
       "realRange": {
-        "mixed_km": 425,
-        "highway_130_km": 300,
-        "urban_km": 490,
-        "winter_minus5_km": 330,
+        "mixed_km": 430,
+        "highway_130_km": 310,
+        "urban_km": 510,
+        "winter_minus5_km": 350,
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 120,
-      "chargingDC_10_80_min": 26,
-      "chargingDC_kWh_30min": 45,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 80
-        },
-        {
-          "soc": 10,
-          "power": 120
-        },
-        {
-          "soc": 50,
-          "power": 95
-        },
-        {
-          "soc": 80,
-          "power": 35
-        },
-        {
-          "soc": 100,
-          "power": 6
-        }
-      ],
-      "availability": "upcoming",
-      "notes": "218 ch (160 kW), FWD, grande autonomie"
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 20,
+      "chargingDC_kWh_30min": 52,
+      "chargingCurve": [],
+      "availability": "available",
+      "notes": "180 kW (245 ch), RWD, autonomie maximale"
+    },
+    {
+      "id": "xpeng-l03-rwd-long-range-ultra",
+      "label": "L03 RWD Long Range Ultra · 71.2 kWh",
+      "battery": "long-range",
+      "trim": "RWD Long Range Ultra",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 42990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 480,
+      "wltp_consumption_kWh_100km": 16.8,
+      "realRange": {
+        "mixed_km": 400,
+        "highway_130_km": 285,
+        "urban_km": 470,
+        "winter_minus5_km": 325,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 20,
+      "chargingDC_kWh_30min": 52,
+      "chargingCurve": [],
+      "availability": "available",
+      "notes": "180 kW (245 ch), RWD, jantes 20 pouces, équipement complet"
+    },
+    {
+      "id": "xpeng-l03-awd-performance-ultra",
+      "label": "L03 AWD Performance Ultra · 71.2 kWh",
+      "battery": "long-range",
+      "trim": "AWD Performance Ultra",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 46990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 440,
+      "wltp_consumption_kWh_100km": 17.2,
+      "realRange": {
+        "mixed_km": 365,
+        "highway_130_km": 260,
+        "urban_km": 430,
+        "winter_minus5_km": 295,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 20,
+      "chargingDC_kWh_30min": 52,
+      "chargingCurve": [],
+      "availability": "available",
+      "notes": "Dual Motor 285 kW (387 ch), AWD, performances sportives, 0-100 en 4,5 s"
     }
   ],
   "warranty": {
@@ -215,39 +249,39 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "Berline liftback ultra-profilée (Cx 0,194)"
+      "label": "Silhouette SUV Coupé aérodynamique (Cx 0,248)"
     },
     {
       "category": "confort",
-      "label": "Coffre immense de 539 L avec large hayon"
+      "label": "Coffre de 539 L et frunk de 89 L très logeables"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement complet avec son 3D"
+      "label": "Cockpit moderne avec pompe à chaleur de série"
     },
     {
       "category": "securite",
-      "label": "Assistance à la conduite avancée Xpilot"
+      "label": "Système avancé d'assistance XPILOT"
     }
   ],
   "verdict": {
     "strengths": [
-      "Excellent aérodynamisme favorisant l'efficience",
-      "Grand coffre avec hayon très logeable et pratique",
-      "Technologie embarquée haut de gamme"
+      "Excellent rapport prix/équipements par rapport au Model Y",
+      "Vitesse de charge DC de référence (10-80% en 20 min)",
+      "Équipement de confort de série très complet (pompe à chaleur, sièges ventilés)"
     ],
     "weaknesses": [
-      "Pas de commercialisation officielle en France annoncée",
-      "Performances de charge DC standard par rapport aux modèles 800V"
+      "Image de marque encore à construire en Europe",
+      "Autonomie sur autoroute en version 20 pouces plus limitée"
     ],
-    "idealUserProfile": "Conducteurs à la recherche d'une berline électrique logeable, aérodynamique et moderne à budget maîtrisé.",
-    "notIdealFor": "Gros rouleurs autoroutiers pressés qui recherchent une charge ultra-rapide en moins de 15 minutes."
+    "idealUserProfile": "Conducteurs cherchant un SUV électrique moderne, très spacieux et doté d'une charge rapide de pointe avec un excellent rapport prix/prestations.",
+    "notIdealFor": "Acheteurs très attachés aux réseaux de distribution traditionnels de marques historiques."
   },
-  "lastUpdated": "2026-07-07",
+  "lastUpdated": "2026-07-20",
   "sources": [
     "constructeur",
     "automobile-propre"
   ],
   "imageCredit": "Constructeur",
-  "availability": "upcoming"
+  "availability": "available"
 }

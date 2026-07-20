@@ -2470,14 +2470,16 @@
     "slug": "xpeng-l03",
     "brand": "Xpeng",
     "model": "L03",
-    "power_kW": 140,
-    "usableCapacity_kWh": 65,
-    "wltp_min_km": 420,
-    "wltp_max_km": 500,
-    "configurations_count": 2,
+    "power_kW": 180,
+    "usableCapacity_kWh": 70.6,
+    "wltp_min_km": 440,
+    "wltp_max_km": 520,
+    "configurations_count": 4,
     "configuration_ids": [
-      "xpeng-l03-long-range",
-      "xpeng-l03-standard"
+      "xpeng-l03-awd-performance-ultra",
+      "xpeng-l03-rwd-long-range",
+      "xpeng-l03-rwd-long-range-ultra",
+      "xpeng-l03-rwd-standard-range"
     ]
   },
   {
