@@ -33,11 +33,11 @@
   "consumption_mixed_kWh_per_100km": 16.0,
   "consumption_highway_kWh_per_100km": 21.5,
   "consumption_winter_kWh_per_100km": 19.0,
-  "dragCoefficient_Cx": 0.248,
+  "dragCoefficient_Cx": 0.228,
   "chargingDC": {
-    "peakPower_kW": 130,
+    "peakPower_kW": 236,
     "time_10_80_min": 20,
-    "kWh_added_30min": 52,
+    "kWh_added_30min": 58,
     "confidence": "manufacturer"
   },
   "chargingAC": {
@@ -77,7 +77,7 @@
   "width_mm": 1920,
   "height_mm": 1600,
   "wheelbase_mm": 2850,
-  "trunkCapacity_L": 539,
+  "trunkCapacity_L": 367,
   "trunkCapacityFolded_L": 1640,
   "frunkCapacity_L": 89,
   "trims": [
@@ -147,9 +147,9 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 110,
+      "chargingDC_peak_kW": 193,
       "chargingDC_10_80_min": 20,
-      "chargingDC_kWh_30min": 42,
+      "chargingDC_kWh_30min": 48,
       "chargingCurve": [],
       "availability": "available",
       "notes": "180 kW (245 ch), RWD, jantes 18 pouces"
@@ -175,9 +175,9 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 130,
+      "chargingDC_peak_kW": 236,
       "chargingDC_10_80_min": 20,
-      "chargingDC_kWh_30min": 52,
+      "chargingDC_kWh_30min": 58,
       "chargingCurve": [],
       "availability": "available",
       "notes": "180 kW (245 ch), RWD, autonomie maximale"
@@ -203,9 +203,9 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 130,
+      "chargingDC_peak_kW": 236,
       "chargingDC_10_80_min": 20,
-      "chargingDC_kWh_30min": 52,
+      "chargingDC_kWh_30min": 58,
       "chargingCurve": [],
       "availability": "available",
       "notes": "180 kW (245 ch), RWD, jantes 20 pouces, équipement complet"
@@ -231,9 +231,9 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 130,
+      "chargingDC_peak_kW": 236,
       "chargingDC_10_80_min": 20,
-      "chargingDC_kWh_30min": 52,
+      "chargingDC_kWh_30min": 58,
       "chargingCurve": [],
       "availability": "available",
       "notes": "Dual Motor 285 kW (387 ch), AWD, performances sportives, 0-100 en 4,5 s"
@@ -249,11 +249,11 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "Silhouette SUV Coupé aérodynamique (Cx 0,248)"
+      "label": "Silhouette SUV Coupé aérodynamique (Cx 0,228)"
     },
     {
       "category": "confort",
-      "label": "Coffre de 539 L et frunk de 89 L très logeables"
+      "label": "Coffre de 367 L et frunk de 89 L très logeables"
     },
     {
       "category": "technologie",
