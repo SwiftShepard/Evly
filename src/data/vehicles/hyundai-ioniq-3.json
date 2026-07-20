@@ -8,7 +8,7 @@
   "productionCountry": "Corée",
   "assemblyPlant": "Ulsan",
   "releaseYear": 2024,
-  "marketAvailability": "Disponible",
+  "marketAvailability": "À venir en Europe",
   "power_kW": 150,
   "power_hp": 204,
   "torque_Nm": 300,
@@ -83,7 +83,7 @@
   "trims": [
     {
       "name": "Intuitive",
-      "price_EUR": 29500,
+      "price_EUR": null,
       "batteryUsed": "42.2 kWh",
       "equipmentHighlights": [
         "Ecran 12.9\"",
@@ -92,7 +92,7 @@
     },
     {
       "name": "Creative",
-      "price_EUR": 33500,
+      "price_EUR": null,
       "batteryUsed": "61 kWh",
       "equipmentHighlights": [
         "Projecteurs LED",
@@ -101,7 +101,7 @@
     },
     {
       "name": "N Line",
-      "price_EUR": 36500,
+      "price_EUR": null,
       "batteryUsed": "61 kWh",
       "equipmentHighlights": [
         "Style sportif N Line",
@@ -121,7 +121,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 29500,
+      "price_EUR": null,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 344,
@@ -159,7 +159,7 @@
           "power": 10
         }
       ],
-      "availability": "available",
+      "availability": "upcoming",
       "notes": null
     },
     {
@@ -170,7 +170,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 33500,
+      "price_EUR": null,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 496,
@@ -208,7 +208,7 @@
           "power": 10
         }
       ],
-      "availability": "available",
+      "availability": "upcoming",
       "notes": null
     },
     {
@@ -219,7 +219,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 36500,
+      "price_EUR": null,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 496,
@@ -257,7 +257,7 @@
           "power": 10
         }
       ],
-      "availability": "available",
+      "availability": "upcoming",
       "notes": null
     }
   ],
@@ -303,5 +303,6 @@
     "nyland",
     "la-chaine-ev"
   ],
-  "imageCredit": "Constructeur"
+  "imageCredit": "Constructeur",
+  "availability": "upcoming"
 }
