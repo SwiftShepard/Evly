@@ -246,6 +246,31 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
             Calculateur TCO (coût réel)
           </a>
         </div>
+
+        <div class="border-t border-[var(--color-border)] border-dashed pt-3 flex flex-col gap-1.5 sidebar-meta">
+          <div class="sidebar-meta-row">
+            <span>Garantie</span>
+            <span>{vehicle.warranty.vehicle_years} ans / {(vehicle.warranty.vehicle_km / 1000).toFixed(0)}k km</span>
+          </div>
+          <div class="sidebar-meta-row">
+            <span>Batterie</span>
+            <span>{vehicle.warranty.battery_years} ans / {vehicle.warranty.battery_soh_minimum_percent}% SoH</span>
+          </div>
+          <div class="sidebar-meta-row">
+            <span>Coffre</span>
+            <span>{vehicle.trunkCapacity_L} L {vehicle.frunkCapacity_L ? `(+ ${vehicle.frunkCapacity_L} L frunk)` : ""}</span>
+          </div>
+          {vehicle.assemblyPlant && (
+            <div class="sidebar-meta-row">
+              <span>Production</span>
+              <span>{vehicle.assemblyPlant}, {vehicle.productionCountry}</span>
+            </div>
+          )}
+          <div class="sidebar-meta-row">
+            <span>Maj.</span>
+            <span>{formatDate(vehicle.lastUpdated)}</span>
+          </div>
+        </div>
       </div>
 
       <BentoGrid>
@@ -347,6 +372,21 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                         conso mixte {(config.wltp_consumption_kWh_100km ?? vehicle.consumption_mixed_kWh_per_100km).toString().replace(".", ",")} kWh/100&nbsp;km, WLTP annoncée <span class="soh-update-text-wltp font-semibold" data-base-wltp={config.wltp_km ?? vehicle.wltp_max_km}>{config.wltp_km ?? vehicle.wltp_max_km}</span> km
                       </p>
                     )}
+
+                    <!-- Badges indicateurs d'écart WLTP et d'impact hiver -->
+                    <div class="flex items-center gap-2 mt-2 flex-wrap">
+                      <Tag tone="warning" mono size="sm">
+                        -{Math.round((1 - (config.realRange?.mixed_km ?? vehicle.realRange.mixed_km) / (config.wltp_km ?? vehicle.wltp_max_km)) * 100)} % vs WLTP
+                      </Tag>
+                      <Tag tone="danger" mono size="sm">
+                        -{Math.round((1 - (config.realRange?.winter_minus5_km ?? vehicle.realRange.winter_minus5_km) / (config.realRange?.mixed_km ?? vehicle.realRange.mixed_km)) * 100)} % en hiver (−5°C)
+                      </Tag>
+                      {wheelPenalty && (
+                        <span class="font-mono text-[10px] text-[var(--color-text-faint)]">
+                          (dont -{wheelPenalty.pct}% jantes {wheelPenalty.currentSize}")
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -359,50 +399,68 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
               </div>
             </Tile>
 
-            <!-- 1x1 : pic DC -->
-            <Tile size="1x1" label="Pic DC" source={vehicle.chargingDC.confidence === "tested" ? "nyland" : undefined} class="reveal">
-              <TileStat value={(config.chargingDC_peak_kW ?? vehicle.chargingDC.peakPower_kW).toString()} unit="kW" size="xl" tone="accent" hint={`10 → 80 % en ${config.chargingDC_10_80_min ?? vehicle.chargingDC.time_10_80_min} min`} />
+            <!-- 2x1 : Synthèse Recharge DC & AC avec volet courbe dépliable -->
+            <Tile size="2x1" variant="elevated" label="Recharge DC & AC" source={vehicle.chargingDC.confidence === "tested" ? "nyland" : undefined} class="reveal">
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 my-auto">
+                <div class="flex flex-col gap-1">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">10 → 80 % DC</span>
+                  <div class="flex items-baseline gap-1">
+                    <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-accent)]">{config.chargingDC_10_80_min ?? vehicle.chargingDC.time_10_80_min}</span>
+                    <span class="font-mono text-xs text-[var(--color-text-faint)]">min</span>
+                  </div>
+                  <span class="font-mono text-[10px] text-[var(--color-text-faint)]">bornes rapides DC</span>
+                </div>
+
+                <div class="flex flex-col gap-1">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Pic DC</span>
+                  <div class="flex items-baseline gap-1">
+                    <span data-numeric class="display-stat text-2xl md:text-3xl">{config.chargingDC_peak_kW ?? vehicle.chargingDC.peakPower_kW}</span>
+                    <span class="font-mono text-xs text-[var(--color-text-faint)]">kW</span>
+                  </div>
+                  <span class="font-mono text-[10px] text-[var(--color-text-faint)]">{vehicle.architecture_V} V</span>
+                </div>
+
+                <div class="flex flex-col gap-1">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">+30 min DC</span>
+                  <div class="flex items-baseline gap-1">
+                    <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-accent)]">+{Math.round(((config.chargingDC_kWh_30min ?? vehicle.chargingDC.kWh_added_30min) / (config.wltp_consumption_kWh_100km ?? vehicle.consumption_mixed_kWh_per_100km)) * 100)}</span>
+                    <span class="font-mono text-xs text-[var(--color-text-faint)]">km</span>
+                  </div>
+                  <span class="font-mono text-[10px] text-[var(--color-text-faint)]">({config.chargingDC_kWh_30min ?? vehicle.chargingDC.kWh_added_30min} kWh)</span>
+                </div>
+
+                <div class="flex flex-col gap-1">
+                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">0 → 100 % AC</span>
+                  <div class="flex items-baseline gap-1">
+                    <span data-numeric class="display-stat text-2xl md:text-3xl">{formatHours(vehicle.chargingAC.time_0_100_h)}</span>
+                  </div>
+                  <span class="font-mono text-[10px] text-[var(--color-text-faint)]">{vehicle.chargingAC.onboardCharger_kW} kW wallbox</span>
+                </div>
+              </div>
+
+              <details class="group mt-3 pt-3 border-t border-[var(--color-border)]">
+                <summary class="cursor-pointer font-mono text-[11px] text-[var(--color-text-muted)] hover:text-[var(--color-text)] flex items-center justify-between transition-colors list-none select-none">
+                  <span class="flex items-center gap-2">
+                    <svg class="w-3.5 h-3.5 text-[var(--color-accent)] transition-transform duration-200 group-open:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                    Voir la courbe de puissance détaillée (kW / SoC)
+                  </span>
+                  <Tag tone="outline" mono>{confidenceLabel[vehicle.chargingDC.confidence] ?? vehicle.chargingDC.confidence}</Tag>
+                </summary>
+                <div class="pt-4">
+                  {(config.chargingCurve ?? vehicle.chargingCurve) ? (
+                    <ChargingCurve client:visible curve={config.chargingCurve ?? vehicle.chargingCurve!} peakPower_kW={config.chargingDC_peak_kW ?? vehicle.chargingDC.peakPower_kW} vehicleName={`${vehicle.brand} ${vehicle.model}`} />
+                  ) : (
+                    <p class="text-[var(--color-text-faint)] font-mono text-xs mt-2">Données non mesurées.</p>
+                  )}
+                </div>
+              </details>
             </Tile>
 
             <!-- 1x1 : volume coffre -->
             <Tile size="1x1" label="Volume du coffre" class="reveal">
               <TileStat value={vehicle.trunkCapacity_L.toString()} unit="L" size="xl" hint={(vehicle.frunkCapacity_L && vehicle.frunkCapacity_L > 0 ? `+ ${vehicle.frunkCapacity_L} L (frunk) · ` : "") + (vehicle.trunkCapacityFolded_L ? `${vehicle.trunkCapacityFolded_L} L rabattu` : "Sièges en position normale")} />
-            </Tile>
-
-            <!-- 2x1 : énergie ajoutée + recharge AC -->
-            <Tile size="2x1" label="Recharge AC complète" class="reveal">
-              <div class="grid grid-cols-2 gap-6 mt-auto">
-                <div class="flex flex-col gap-1.5">
-                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">+30 min DC</span>
-                  <div class="flex items-baseline gap-1.5">
-                    <span data-numeric class="display-stat text-3xl md:text-4xl text-[var(--color-accent)]">{config.chargingDC_kWh_30min ?? vehicle.chargingDC.kWh_added_30min}</span>
-                    <span class="font-mono text-xs text-[var(--color-text-faint)]">kWh</span>
-                  </div>
-                  <span class="font-mono text-[11px] text-[var(--color-text-faint)]">
-                    ≈ {Math.round(((config.chargingDC_kWh_30min ?? vehicle.chargingDC.kWh_added_30min) / (config.wltp_consumption_kWh_100km ?? vehicle.consumption_mixed_kWh_per_100km)) * 100)} km mixte
-                  </span>
-                </div>
-                <div class="flex flex-col gap-1.5">
-                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">0 → 100 % AC</span>
-                  <div class="flex items-baseline gap-1.5">
-                    <span data-numeric class="display-stat text-3xl md:text-4xl">{formatHours(vehicle.chargingAC.time_0_100_h)}</span>
-                  </div>
-                  <span class="font-mono text-[11px] text-[var(--color-text-faint)]">wallbox {vehicle.chargingAC.onboardCharger_kW} kW, {vehicle.chargingAC.phases} phases</span>
-                </div>
-              </div>
-            </Tile>
-
-            <!-- 2x2 : courbe de charge -->
-            <Tile size="2x2" variant="elevated" label="Courbe de charge DC" class="reveal">
-              <div class="flex items-center justify-between gap-3 -mt-2 mb-3">
-                <h3 class="font-display text-base md:text-lg font-semibold tracking-[-0.01em]">Puissance vs SoC</h3>
-                <Tag tone="outline" mono>{confidenceLabel[vehicle.chargingDC.confidence] ?? vehicle.chargingDC.confidence}</Tag>
-              </div>
-              {(config.chargingCurve ?? vehicle.chargingCurve) ? (
-                <ChargingCurve client:visible curve={config.chargingCurve ?? vehicle.chargingCurve!} peakPower_kW={config.chargingDC_peak_kW ?? vehicle.chargingDC.peakPower_kW} vehicleName={`${vehicle.brand} ${vehicle.model}`} />
-              ) : (
-                <p class="text-[var(--color-text-faint)] mt-4">Données non mesurées.</p>
-              )}
             </Tile>
 
             <!-- 2x2 : autonomie par usage (chart) -->
@@ -412,21 +470,6 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                 <Tag tone="outline" mono>{confidenceLabel[config.realRange?.confidence ?? vehicle.realRange.confidence] ?? (config.realRange?.confidence ?? vehicle.realRange.confidence)}</Tag>
               </div>
               <SeasonalRange client:visible urban={config.realRange?.urban_km ?? vehicle.realRange.urban_km} mixed={config.realRange?.mixed_km ?? vehicle.realRange.mixed_km} highway={config.realRange?.highway_130_km ?? vehicle.realRange.highway_130_km} winter={config.realRange?.winter_minus5_km ?? vehicle.realRange.winter_minus5_km} vehicleName={`${vehicle.brand} ${vehicle.model} ${config.trim}`} />
-            </Tile>
-
-            <!-- 1x1 : écart WLTP -->
-            <Tile size="1x1" label="Écart WLTP / mixte" class="reveal">
-              <TileStat 
-                value={`-${Math.round((1 - (config.realRange?.mixed_km ?? vehicle.realRange.mixed_km) / (config.wltp_km ?? vehicle.wltp_max_km)) * 100)} %`} 
-                tone="warning" 
-                size="xl" 
-                hint={"commun à tous les VE" + (wheelPenalty ? ` (dont -${wheelPenalty.pct}% lié aux jantes ${wheelPenalty.currentSize}\")` : "")} 
-              />
-            </Tile>
-
-            <!-- 1x1 : pénalité hiver -->
-            <Tile size="1x1" label="Pénalité hiver −5°C" class="reveal">
-              <TileStat value={`-${Math.round((1 - (config.realRange?.winter_minus5_km ?? vehicle.realRange.winter_minus5_km) / (config.realRange?.mixed_km ?? vehicle.realRange.mixed_km)) * 100)} %`} tone="danger" size="xl" hint="sans préchauffage" />
             </Tile>
 
             <!-- 1x1 : performances -->
@@ -495,6 +538,8 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                 </div>
               </div>
             </Tile>
+
+
 
             <!-- 2x1 : 1000 km challenge -->
             {tkc && (
