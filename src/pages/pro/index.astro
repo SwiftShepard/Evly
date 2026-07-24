@@ -525,9 +525,9 @@ const description =
     }
   </style>
 
-  <script is:inline>
-    // Calculateur TCO, JS vanilla, recalcul à chaque input
-    (() => {
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      // Calculateur TCO, JS vanilla, recalcul à chaque input
       const $ = (id) => document.getElementById(id);
       const fmt = (n) => new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(Math.round(n));
       const inputs = [
@@ -568,26 +568,39 @@ const description =
           breakeven = 0;
         }
 
-        $("tco-out-ev-net").textContent = fmt(evNet);
-        $("tco-out-ev-energy").textContent = fmt(evEnergyCost);
-        $("tco-out-ev-total").textContent = fmt(evTotal) + " €";
-        $("tco-out-ice-net").textContent = fmt(iceNet);
-        $("tco-out-ice-energy").textContent = fmt(iceEnergyCost);
-        $("tco-out-ice-total").textContent = fmt(iceTotal) + " €";
+        const evNetEl = $("tco-out-ev-net");
+        const evEnergyEl = $("tco-out-ev-energy");
+        const evTotalEl = $("tco-out-ev-total");
+        const iceNetEl = $("tco-out-ice-net");
+        const iceEnergyEl = $("tco-out-ice-energy");
+        const iceTotalEl = $("tco-out-ice-total");
+
+        if (evNetEl) evNetEl.textContent = fmt(evNet);
+        if (evEnergyEl) evEnergyEl.textContent = fmt(evEnergyCost);
+        if (evTotalEl) evTotalEl.textContent = fmt(evTotal) + " €";
+        if (iceNetEl) iceNetEl.textContent = fmt(iceNet);
+        if (iceEnergyEl) iceEnergyEl.textContent = fmt(iceEnergyCost);
+        if (iceTotalEl) iceTotalEl.textContent = fmt(iceTotal) + " €";
 
         const savingsEl = $("tco-out-savings");
         const savingsBlock = $("tco-savings-block");
         const sign = savings >= 0 ? "− " : "+ ";
-        savingsEl.textContent = sign + fmt(Math.abs(savings)) + " €";
-        savingsBlock.classList.toggle("negative", savings < 0);
 
-        $("tco-out-savings-pct").textContent = (savings >= 0 ? "−" : "+") + fmt(Math.abs(savingsPct)) + " %";
-        if (breakeven === null) {
-          $("tco-out-breakeven").textContent = "n/c";
-        } else if (breakeven === 0) {
-          $("tco-out-breakeven").textContent = "immédiat";
-        } else {
-          $("tco-out-breakeven").textContent = breakeven.toFixed(1);
+        if (savingsEl) savingsEl.textContent = sign + fmt(Math.abs(savings)) + " €";
+        if (savingsBlock) savingsBlock.classList.toggle("negative", savings < 0);
+
+        const savingsPctEl = $("tco-out-savings-pct");
+        if (savingsPctEl) savingsPctEl.textContent = (savings >= 0 ? "−" : "+") + fmt(Math.abs(savingsPct)) + " %";
+        
+        const breakevenEl = $("tco-out-breakeven");
+        if (breakevenEl) {
+          if (breakeven === null) {
+            breakevenEl.textContent = "n/c";
+          } else if (breakeven === 0) {
+            breakevenEl.textContent = "immédiat";
+          } else {
+            breakevenEl.textContent = breakeven.toFixed(1);
+          }
         }
       }
 
@@ -595,7 +608,11 @@ const description =
         const el = $(id);
         if (el) el.addEventListener("input", calc);
       });
-      calc();
-    })();
+      
+      // Only calc if elements exist on page
+      if ($("tco-km")) {
+        calc();
+      }
+    });
   </script>
 </BaseLayout>

@@ -402,264 +402,273 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
     </main>
   </div>
 
-  <script is:inline>
-    const chips    = document.querySelectorAll('.filter-chip');
-    const cards    = document.querySelectorAll('.vehicle-card');
-    const sortBtns = document.querySelectorAll('.sort-btn');
-    const grid     = document.querySelector('.bento-grid');
-    const resetBtns = document.querySelectorAll('#reset-filters, #reset-filters-mobile');
-    const originalOrder = Array.from(cards);
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const chips    = document.querySelectorAll('.filter-chip');
+      const cards    = document.querySelectorAll('.vehicle-card');
+      const sortBtns = document.querySelectorAll('.sort-btn');
+      const grid     = document.querySelector('.bento-grid');
+      const resetBtns = document.querySelectorAll('#reset-filters, #reset-filters-mobile');
+      const originalOrder = Array.from(cards);
 
-    const searchDesktop = document.querySelector('#catalog-search');
-    const searchMobile  = document.querySelector('#catalog-search-mobile');
+      const searchDesktop = document.querySelector('#catalog-search');
+      const searchMobile  = document.querySelector('#catalog-search-mobile');
 
-    // Price mode, 'gross' | 'aided'
-    let priceMode = 'gross';
-    let currentSort = 'default';
-    let currentSearch = '';
+      // Price mode, 'gross' | 'aided'
+      let priceMode = 'gross';
+      let currentSort = 'default';
+      let currentSearch = '';
 
-    // Range filter state
-    let rangeType = 'real';
-    let minRange = 0;
+      // Range filter state
+      let rangeType = 'real';
+      let minRange = 0;
 
-    const sliderDesktop = document.querySelector('#range-slider');
-    const sliderMobile  = document.querySelector('#range-slider-mobile');
-    const displayDesktop = document.querySelector('#range-value-display');
-    const displayMobile  = document.querySelector('#range-value-display-mobile');
-    
-    const toggleRealDesktop = document.querySelector('#range-type-real');
-    const toggleWltpDesktop = document.querySelector('#range-type-wltp');
-    const toggleRealMobile  = document.querySelector('#range-type-real-mobile');
-    const toggleWltpMobile  = document.querySelector('#range-type-wltp-mobile');
-
-    function updateSliderBackground(slider) {
-      if (!slider) return;
-      const min = slider.min || 0;
-      const max = slider.max || 100;
-      const val = slider.value;
-      const percentage = ((val - min) / (max - min)) * 100;
-      slider.style.background = `linear-gradient(to right, var(--color-accent) 0%, var(--color-accent) ${percentage}%, var(--color-border) ${percentage}%, var(--color-border) 100%)`;
-    }
-
-    function updateRangeUI() {
-      if (sliderDesktop) sliderDesktop.value = minRange;
-      if (sliderMobile) sliderMobile.value = minRange;
-      if (displayDesktop) displayDesktop.textContent = minRange;
-      if (displayMobile) displayMobile.textContent = minRange;
-
-      updateSliderBackground(sliderDesktop);
-      updateSliderBackground(sliderMobile);
-
-      const isReal = rangeType === 'real';
+      const sliderDesktop = document.querySelector('#range-slider');
+      const sliderMobile  = document.querySelector('#range-slider-mobile');
+      const displayDesktop = document.querySelector('#range-value-display');
+      const displayMobile  = document.querySelector('#range-value-display-mobile');
       
-      // Update body dataset to update card range displays
-      document.body.dataset.rangeMode = rangeType;
+      const toggleRealDesktop = document.querySelector('#range-type-real');
+      const toggleWltpDesktop = document.querySelector('#range-type-wltp');
+      const toggleRealMobile  = document.querySelector('#range-type-real-mobile');
+      const toggleWltpMobile  = document.querySelector('#range-type-wltp-mobile');
 
-      // Update toggles active attribute
-      if (toggleRealDesktop && toggleWltpDesktop) {
-        toggleRealDesktop.setAttribute('data-active', isReal ? 'true' : 'false');
-        toggleWltpDesktop.setAttribute('data-active', !isReal ? 'true' : 'false');
+      function updateSliderBackground(slider) {
+        if (!slider) return;
+        const min = slider.min || 0;
+        const max = slider.max || 100;
+        const val = slider.value;
+        const percentage = ((val - min) / (max - min)) * 100;
+        slider.style.background = `linear-gradient(to right, var(--color-accent) 0%, var(--color-accent) ${percentage}%, var(--color-border) ${percentage}%, var(--color-border) 100%)`;
       }
 
-      if (toggleRealMobile && toggleWltpMobile) {
-        toggleRealMobile.setAttribute('data-active', isReal ? 'true' : 'false');
-        toggleWltpMobile.setAttribute('data-active', !isReal ? 'true' : 'false');
+      function updateRangeUI() {
+        if (sliderDesktop) sliderDesktop.value = minRange;
+        if (sliderMobile) sliderMobile.value = minRange;
+        if (displayDesktop) displayDesktop.textContent = minRange;
+        if (displayMobile) displayMobile.textContent = minRange;
+
+        updateSliderBackground(sliderDesktop);
+        updateSliderBackground(sliderMobile);
+
+        const isReal = rangeType === 'real';
+        
+        // Update body dataset to update card range displays
+        document.body.dataset.rangeMode = rangeType;
+
+        // Update toggles active attribute
+        if (toggleRealDesktop && toggleWltpDesktop) {
+          toggleRealDesktop.setAttribute('data-active', isReal ? 'true' : 'false');
+          toggleWltpDesktop.setAttribute('data-active', !isReal ? 'true' : 'false');
+        }
+
+        if (toggleRealMobile && toggleWltpMobile) {
+          toggleRealMobile.setAttribute('data-active', isReal ? 'true' : 'false');
+          toggleWltpMobile.setAttribute('data-active', !isReal ? 'true' : 'false');
+        }
       }
-    }
 
-    function handleRangeTypeChange(type) {
-      rangeType = type;
-      updateRangeUI();
-      updateFilters();
-      updateResetVisibility();
-    }
-
-    if (toggleRealDesktop) toggleRealDesktop.addEventListener('click', () => handleRangeTypeChange('real'));
-    if (toggleWltpDesktop) toggleWltpDesktop.addEventListener('click', () => handleRangeTypeChange('wltp'));
-    if (toggleRealMobile) toggleRealMobile.addEventListener('click', () => handleRangeTypeChange('real'));
-    if (toggleWltpMobile) toggleWltpMobile.addEventListener('click', () => handleRangeTypeChange('wltp'));
-
-    function handleSliderInput(e) {
-      minRange = +e.target.value;
-      updateRangeUI();
-      updateFilters();
-      updateResetVisibility();
-    }
-
-    if (sliderDesktop) sliderDesktop.addEventListener('input', handleSliderInput);
-    if (sliderMobile) sliderMobile.addEventListener('input', handleSliderInput);
-
-    // Initialize search from URL query parameter
-    try {
-      const urlParams = new URLSearchParams(window.location.search);
-      currentSearch = urlParams.get('q') || '';
-      if (searchDesktop) searchDesktop.value = currentSearch;
-      if (searchMobile) searchMobile.value = currentSearch;
-    } catch (e) {}
-
-    function getCardPrice(card) {
-      if (priceMode === 'aided') return +(card.dataset.priceAided ?? card.dataset.price);
-      return +card.dataset.price;
-    }
-
-    // Shared active state across desktop + mobile chip duplicates
-    const active = { brand: new Set(), cat: new Set(), budget: new Set(), specific: new Set() };
-
-    function getSelected(type) { return Array.from(active[type]); }
-
-    function syncChips(filter, value) {
-      document.querySelectorAll(`.filter-chip[data-filter="${filter}"][data-value="${value}"]`)
-        .forEach(c => c.setAttribute('aria-pressed', active[filter].has(value) ? 'true' : 'false'));
-    }
-
-    function updateResetVisibility() {
-      const any = Object.values(active).some(s => s.size > 0) || 
-                  currentSearch.trim() !== '' || 
-                  minRange !== 0 || 
-                  rangeType !== 'real';
-      resetBtns.forEach(b => b.style.display = any ? '' : 'none');
-    }
-
-    function getFavorites() {
-      try {
-        const raw = localStorage.getItem('evly-favorites');
-        return raw ? JSON.parse(raw) : [];
-      } catch { return []; }
-    }
-
-    window.addEventListener('favorites-changed', () => updateFilters());
-
-    function updateFilters() {
-      const selBrands   = getSelected('brand');
-      const selCats     = getSelected('cat');
-      const selBudgets  = getSelected('budget');
-      const selSpecific = getSelected('specific');
-      const favSlugs    = selSpecific.includes('favorites') ? new Set(getFavorites()) : null;
-      const query       = currentSearch.toLowerCase().trim();
-
-      cards.forEach(card => {
-        const brand   = card.dataset.brand;
-        const cat     = card.dataset.category;
-        const price   = getCardPrice(card);
-        const dc      = +card.dataset.dc;
-        const origin  = card.dataset.origin;
-        const cee     = card.dataset.cee === '1';
-        const usages  = (card.dataset.usage || '').split(',').filter(Boolean);
-        const slug    = card.dataset.slug;
-        const model   = (card.dataset.model || '').toLowerCase();
-        const variant = (card.dataset.variant || '').toLowerCase();
-
-        const range = rangeType === 'wltp' ? +card.dataset.wltp : +card.dataset.range;
-
-        let ok = true;
-        if (selBrands.length  && !selBrands.includes(brand)) ok = false;
-        if (selCats.length    && !selCats.includes(cat))     ok = false;
-        if (selBudgets.length) {
-          const maxBudget = Math.max(...selBudgets.map(Number));
-          if (price > maxBudget) ok = false;
-        }
-        if (range < minRange) ok = false;
-        if (selSpecific.length) {
-          for (const s of selSpecific) {
-            if (s === 'favorites'   && (!favSlugs || !favSlugs.has(slug)))  { ok = false; break; }
-            if (s === 'fast-charge' && dc < 100)                     { ok = false; break; }
-            if (s === 'eu'          && origin !== 'eu')               { ok = false; break; }
-            if (s === 'cee'          && !cee)                         { ok = false; break; }
-            if (s === 'leasing'     && !usages.includes('Leasing social')) { ok = false; break; }
-            if (s === 'familiale'   && !usages.includes('Familiale'))      { ok = false; break; }
-          }
-        }
-        if (query) {
-          if (!model.includes(query) && !brand.toLowerCase().includes(query) && !variant.includes(query)) {
-            ok = false;
-          }
-        }
-        card.style.display = ok ? 'contents' : 'none';
-      });
-    }
-
-    function handleSearchInput(e) {
-      currentSearch = e.target.value;
-      if (searchDesktop && searchDesktop !== e.target) searchDesktop.value = currentSearch;
-      if (searchMobile && searchMobile !== e.target) searchMobile.value = currentSearch;
-      updateFilters();
-      updateResetVisibility();
-    }
-
-    if (searchDesktop) searchDesktop.addEventListener('input', handleSearchInput);
-    if (searchMobile) searchMobile.addEventListener('input', handleSearchInput);
-
-    chips.forEach(chip => {
-      chip.addEventListener('click', () => {
-        const f = chip.dataset.filter;
-        const v = chip.dataset.value;
-        if (active[f].has(v)) active[f].delete(v);
-        else                   active[f].add(v);
-        syncChips(f, v);
+      function handleRangeTypeChange(type) {
+        rangeType = type;
+        updateRangeUI();
         updateFilters();
         updateResetVisibility();
-      });
-    });
+      }
 
-    resetBtns.forEach(btn => btn.addEventListener('click', () => {
-      Object.values(active).forEach(s => s.clear());
-      chips.forEach(c => c.setAttribute('aria-pressed', 'false'));
-      currentSearch = '';
-      if (searchDesktop) searchDesktop.value = '';
-      if (searchMobile) searchMobile.value = '';
-      
-      // Reset range filters
-      rangeType = 'real';
-      minRange = 0;
-      updateRangeUI();
-      
-      updateFilters();
-      updateResetVisibility();
-    }));
+      if (toggleRealDesktop) toggleRealDesktop.addEventListener('click', () => handleRangeTypeChange('real'));
+      if (toggleWltpDesktop) toggleWltpDesktop.addEventListener('click', () => handleRangeTypeChange('wltp'));
+      if (toggleRealMobile) toggleRealMobile.addEventListener('click', () => handleRangeTypeChange('real'));
+      if (toggleWltpMobile) toggleWltpMobile.addEventListener('click', () => handleRangeTypeChange('wltp'));
 
-    function applySort(sortKey) {
-      currentSort = sortKey;
-      sortBtns.forEach(btn => delete btn.dataset.active);
-      document.querySelector(`.sort-btn[data-sort="${sortKey}"]`).dataset.active = 'true';
-      const sorted = sortKey === 'default'
-        ? [...originalOrder]
-        : [...originalOrder].sort((a, b) => {
-            switch (sortKey) {
-              case 'price-asc':  return getCardPrice(a) - getCardPrice(b);
-              case 'price-desc': return getCardPrice(b) - getCardPrice(a);
-              case 'range-desc': return +b.dataset.range - +a.dataset.range;
-              case 'dc-desc':    return +b.dataset.dc    - +a.dataset.dc;
-              case 'ratio-desc': return +b.dataset.ratio - +a.dataset.ratio;
-              default:           return 0;
-            }
-          });
-      sorted.forEach(card => grid.appendChild(card));
-    }
-
-    sortBtns.forEach(btn => btn.addEventListener('click', () => applySort(btn.dataset.sort)));
-
-    // Price mode toggle
-    const priceBtns = document.querySelectorAll('.price-toggle-btn');
-    priceBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        priceMode = btn.dataset.mode;
-        priceBtns.forEach(b => delete b.dataset.active);
-        btn.dataset.active = 'true';
-        document.body.dataset.priceMode = priceMode;
+      function handleSliderInput(e) {
+        minRange = +e.target.value;
+        updateRangeUI();
         updateFilters();
-        applySort(currentSort);
+        updateResetVisibility();
+      }
+
+      if (sliderDesktop) sliderDesktop.addEventListener('input', handleSliderInput);
+      if (sliderMobile) sliderMobile.addEventListener('input', handleSliderInput);
+
+      // Initialize search from URL query parameter
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        currentSearch = urlParams.get('q') || '';
+        if (searchDesktop) searchDesktop.value = currentSearch;
+        if (searchMobile) searchMobile.value = currentSearch;
+      } catch (e) {}
+
+      function getCardPrice(card) {
+        if (priceMode === 'aided') return +(card.dataset.priceAided ?? card.dataset.price);
+        return +card.dataset.price;
+      }
+
+      // Shared active state across desktop + mobile chip duplicates
+      const active = { brand: new Set(), cat: new Set(), budget: new Set(), specific: new Set() };
+
+      function getSelected(type) { return Array.from(active[type]); }
+
+      function syncChips(filter, value) {
+        document.querySelectorAll(`.filter-chip[data-filter="${filter}"][data-value="${value}"]`)
+          .forEach(c => c.setAttribute('aria-pressed', active[filter].has(value) ? 'true' : 'false'));
+      }
+
+      function updateResetVisibility() {
+        const any = Object.values(active).some(s => s.size > 0) || 
+                    currentSearch.trim() !== '' || 
+                    minRange !== 0 || 
+                    rangeType !== 'real';
+        resetBtns.forEach(b => b.style.display = any ? '' : 'none');
+      }
+
+      function getFavorites() {
+        try {
+          const raw = localStorage.getItem('evly-favorites');
+          return raw ? JSON.parse(raw) : [];
+        } catch { return []; }
+      }
+
+      const handleFavoritesChange = () => {
+        updateFilters();
+      };
+      window.addEventListener('favorites-changed', handleFavoritesChange);
+      document.addEventListener('astro:before-swap', () => {
+        window.removeEventListener('favorites-changed', handleFavoritesChange);
+      }, { once: true });
+
+      function updateFilters() {
+        const selBrands   = getSelected('brand');
+        const selCats     = getSelected('cat');
+        const selBudgets  = getSelected('budget');
+        const selSpecific = getSelected('specific');
+        const favSlugs    = selSpecific.includes('favorites') ? new Set(getFavorites()) : null;
+        const query       = currentSearch.toLowerCase().trim();
+
+        cards.forEach(card => {
+          const brand   = card.dataset.brand;
+          const cat     = card.dataset.category;
+          const price   = getCardPrice(card);
+          const dc      = +card.dataset.dc;
+          const origin  = card.dataset.origin;
+          const cee     = card.dataset.cee === '1';
+          const usages  = (card.dataset.usage || '').split(',').filter(Boolean);
+          const slug    = card.dataset.slug;
+          const model   = (card.dataset.model || '').toLowerCase();
+          const variant = (card.dataset.variant || '').toLowerCase();
+
+          const range = rangeType === 'wltp' ? +card.dataset.wltp : +card.dataset.range;
+
+          let ok = true;
+          if (selBrands.length  && !selBrands.includes(brand)) ok = false;
+          if (selCats.length    && !selCats.includes(cat))     ok = false;
+          if (selBudgets.length) {
+            const maxBudget = Math.max(...selBudgets.map(Number));
+            if (price > maxBudget) ok = false;
+          }
+          if (range < minRange) ok = false;
+          if (selSpecific.length) {
+            for (const s of selSpecific) {
+              if (s === 'favorites'   && (!favSlugs || !favSlugs.has(slug)))  { ok = false; break; }
+              if (s === 'fast-charge' && dc < 100)                     { ok = false; break; }
+              if (s === 'eu'          && origin !== 'eu')               { ok = false; break; }
+              if (s === 'cee'          && !cee)                         { ok = false; break; }
+              if (s === 'leasing'     && !usages.includes('Leasing social')) { ok = false; break; }
+              if (s === 'familiale'   && !usages.includes('Familiale'))      { ok = false; break; }
+            }
+          }
+          if (query) {
+            if (!model.includes(query) && !brand.toLowerCase().includes(query) && !variant.includes(query)) {
+              ok = false;
+            }
+          }
+          card.style.display = ok ? 'contents' : 'none';
+        });
+      }
+
+      function handleSearchInput(e) {
+        currentSearch = e.target.value;
+        if (searchDesktop && searchDesktop !== e.target) searchDesktop.value = currentSearch;
+        if (searchMobile && searchMobile !== e.target) searchMobile.value = currentSearch;
+        updateFilters();
+        updateResetVisibility();
+      }
+
+      if (searchDesktop) searchDesktop.addEventListener('input', handleSearchInput);
+      if (searchMobile) searchMobile.addEventListener('input', handleSearchInput);
+
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          const f = chip.dataset.filter;
+          const v = chip.dataset.value;
+          if (active[f].has(v)) active[f].delete(v);
+          else                   active[f].add(v);
+          syncChips(f, v);
+          updateFilters();
+          updateResetVisibility();
+        });
       });
+
+      resetBtns.forEach(btn => btn.addEventListener('click', () => {
+        Object.values(active).forEach(s => s.clear());
+        chips.forEach(c => c.setAttribute('aria-pressed', 'false'));
+        currentSearch = '';
+        if (searchDesktop) searchDesktop.value = '';
+        if (searchMobile) searchMobile.value = '';
+        
+        // Reset range filters
+        rangeType = 'real';
+        minRange = 0;
+        updateRangeUI();
+        
+        updateFilters();
+        updateResetVisibility();
+      }));
+
+      function applySort(sortKey) {
+        currentSort = sortKey;
+        sortBtns.forEach(btn => delete btn.dataset.active);
+        const activeSortBtn = document.querySelector(`.sort-btn[data-sort="${sortKey}"]`);
+        if (activeSortBtn) activeSortBtn.setAttribute('data-active', 'true');
+        const sorted = sortKey === 'default'
+          ? [...originalOrder]
+          : [...originalOrder].sort((a, b) => {
+              switch (sortKey) {
+                case 'price-asc':  return getCardPrice(a) - getCardPrice(b);
+                case 'price-desc': return getCardPrice(b) - getCardPrice(a);
+                case 'range-desc': return +b.dataset.range - +a.dataset.range;
+                case 'dc-desc':    return +b.dataset.dc    - +a.dataset.dc;
+                case 'ratio-desc': return +b.dataset.ratio - +a.dataset.ratio;
+                default:           return 0;
+              }
+            });
+        sorted.forEach(card => grid.appendChild(card));
+      }
+
+      sortBtns.forEach(btn => btn.addEventListener('click', () => applySort(btn.dataset.sort)));
+
+      // Price mode toggle
+      const priceBtns = document.querySelectorAll('.price-toggle-btn');
+      priceBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          priceMode = btn.dataset.mode;
+          priceBtns.forEach(b => delete b.dataset.active);
+          btn.setAttribute('data-active', 'true');
+          document.body.dataset.priceMode = priceMode;
+          updateFilters();
+          applySort(currentSort);
+        });
+      });
+
+      // Initialize defaults on load
+      document.body.dataset.priceMode = priceMode;
+      updateRangeUI();
+
+      // Run initial filter on load if URL contains query parameter
+      if (currentSearch) {
+        updateFilters();
+        updateResetVisibility();
+      }
     });
-
-    // Initialize defaults on load
-    document.body.dataset.priceMode = priceMode;
-    updateRangeUI();
-
-    // Run initial filter on load if URL contains query parameter
-    if (currentSearch) {
-      updateFilters();
-      updateResetVisibility();
-    }
   </script>
 
   <style>
