@@ -34,3 +34,6 @@ src/data/roadmap.ts
 playwright-report/
 test-results/
 
+# Scratch (scripts et exports de travail, pas destinés au repo)
+scratch/
+

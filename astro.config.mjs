@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
+import { EnumChangefreq } from 'sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import fs from 'node:fs/promises';
 import fsSync from 'node:fs';
