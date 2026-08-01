@@ -198,26 +198,26 @@ const SECTIONS: SectionDef[] = [
     rows: [
       {
         label: "Puissance",
-        getValue: (c) => `${fmtN(c.vehicle.power_kW)} kW · ${fmtN(c.vehicle.power_hp)} ch`,
-        numeric: (c) => c.vehicle.power_kW,
+        getValue: (c) => `${fmtN(c.config.power_kW ?? c.vehicle.power_kW)} kW · ${fmtN(c.config.power_hp ?? c.vehicle.power_hp)} ch`,
+        numeric: (c) => c.config.power_kW ?? c.vehicle.power_kW,
         bestIsMax: true,
       },
       {
         label: "Couple",
-        getValue: (c) => `${fmtN(c.vehicle.torque_Nm)} Nm`,
-        numeric: (c) => c.vehicle.torque_Nm,
+        getValue: (c) => `${fmtN(c.config.torque_Nm ?? c.vehicle.torque_Nm)} Nm`,
+        numeric: (c) => c.config.torque_Nm ?? c.vehicle.torque_Nm,
         bestIsMax: true,
       },
       {
         label: "0-100 km/h",
-        getValue: (c) => `${c.vehicle.acceleration_0_100_s.toString().replace(".", ",")} s`,
-        numeric: (c) => c.vehicle.acceleration_0_100_s,
+        getValue: (c) => `${(c.config.acceleration_0_100_s ?? c.vehicle.acceleration_0_100_s).toString().replace(".", ",")} s`,
+        numeric: (c) => c.config.acceleration_0_100_s ?? c.vehicle.acceleration_0_100_s,
         bestIsMax: false,
       },
       {
         label: "V max",
-        getValue: (c) => `${fmtN(c.vehicle.topSpeed_kmh)} km/h`,
-        numeric: (c) => c.vehicle.topSpeed_kmh,
+        getValue: (c) => `${fmtN(c.config.topSpeed_kmh ?? c.vehicle.topSpeed_kmh)} km/h`,
+        numeric: (c) => c.config.topSpeed_kmh ?? c.vehicle.topSpeed_kmh,
         bestIsMax: true,
       },
       {

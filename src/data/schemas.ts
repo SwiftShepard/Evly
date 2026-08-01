@@ -135,6 +135,15 @@ const VehicleConfigurationSchema = z.object({
   tyreType: z.enum(["summer", "all-season", "winter"]).default("summer"),
   options: z.array(z.string()).default([]),
 
+  // Motorisation propre à la configuration (override le niveau véhicule).
+  // Optionnel : à renseigner uniquement quand une finition change réellement
+  // de moteur (cas rare, ex: variante d'entrée de gamme moins puissante).
+  power_kW: z.number().int().positive().optional(),
+  power_hp: z.number().int().positive().optional(),
+  torque_Nm: z.number().int().positive().optional(),
+  acceleration_0_100_s: z.number().positive().optional(),
+  topSpeed_kmh: z.number().int().positive().optional(),
+
   // Données qui dépendent de la configuration
   usableCapacity_kWh: z.number().positive().optional(),
   price_EUR: z.number().int().positive().nullable(), // null = prix non encore communiqué

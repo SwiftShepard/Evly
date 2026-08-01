@@ -189,7 +189,7 @@ export default function ComparatorView({ vehicles }: Props) {
       }).amount;
       return Math.max(0, c.config.price_EUR - aids);
     };
-    const getAccel = (c: ConfiguredCard) => c.vehicle.acceleration_0_100_s ?? Infinity;
+    const getAccel = (c: ConfiguredCard) => c.config.acceleration_0_100_s ?? c.vehicle.acceleration_0_100_s ?? Infinity;
     const getTrunk = (c: ConfiguredCard) => c.vehicle.trunkCapacity_L ?? 0;
 
     const maxMixed = Math.max(...configuredCards.map(getMixed));

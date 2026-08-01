@@ -530,8 +530,8 @@ export default function ComparatorCard({
         {/* Performance */}
         <DataBlock label="Performance" compact>
           <div className="grid grid-cols-2 gap-3">
-            <MiniStat label="0-100" value={vehicle.acceleration_0_100_s.toString().replace(".", ",")} unit="s" best={bestMetrics?.acceleration} />
-            <MiniStat label="V max" value={`${vehicle.topSpeed_kmh}`} unit="km/h" />
+            <MiniStat label="0-100" value={(config.acceleration_0_100_s ?? vehicle.acceleration_0_100_s).toString().replace(".", ",")} unit="s" best={bestMetrics?.acceleration} />
+            <MiniStat label="V max" value={`${config.topSpeed_kmh ?? vehicle.topSpeed_kmh}`} unit="km/h" />
           </div>
         </DataBlock>
 

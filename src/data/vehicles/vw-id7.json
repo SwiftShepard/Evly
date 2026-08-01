@@ -2,7 +2,7 @@
   "slug": "vw-id7",
   "brand": "Volkswagen",
   "model": "ID.7",
-  "variant": "Pro - Pro S",
+  "variant": "Pure - Pro - Pro S",
   "bodyType": "Berline",
   "segment": "E",
   "productionCountry": "Allemagne",
@@ -22,7 +22,7 @@
   "architecture_V": 400,
   "mass_kg": 2172,
   "wltp_max_km": 709,
-  "wltp_min_km": 605,
+  "wltp_min_km": 460,
   "realRange": {
     "mixed_km": 490,
     "highway_130_km": 410,
@@ -120,6 +120,26 @@
   "frunkCapacity_L": null,
   "trims": [
     {
+      "name": "Pure Life Max",
+      "price_EUR": 54700,
+      "batteryUsed": "59 kWh",
+      "equipmentHighlights": [
+        "Nouveau point d'entree accessible de la gamme ID.7",
+        "Moteur AP310 150 kW (204 ch)",
+        "Phares Matrix LED IQ.Light"
+      ]
+    },
+    {
+      "name": "Tourer Pure Life Max",
+      "price_EUR": 55400,
+      "batteryUsed": "59 kWh",
+      "equipmentHighlights": [
+        "Silhouette break, coffre 605 L",
+        "Moteur AP310 150 kW (204 ch)",
+        "Phares Matrix LED IQ.Light"
+      ]
+    },
+    {
       "name": "Pro Life Max",
       "price_EUR": 53000,
       "batteryUsed": "77 kWh",
@@ -154,6 +174,118 @@
   "leasingSocial_EUR_per_month": null,
   "availableAids": [],
   "configurations": [
+    {
+      "id": "vw-id7-pure",
+      "label": "ID.7 Pure Life Max",
+      "battery": "standard",
+      "trim": "Pure Life Max",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "power_kW": 150,
+      "power_hp": 204,
+      "torque_Nm": 350,
+      "acceleration_0_100_s": 7.9,
+      "topSpeed_kmh": 160,
+      "usableCapacity_kWh": 59,
+      "price_EUR": 54700,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 474,
+      "wltp_consumption_kWh_100km": 12.5,
+      "realRange": {
+        "mixed_km": 394,
+        "highway_130_km": 330,
+        "highway_120_km": 361,
+        "urban_km": 466,
+        "winter_minus5_km": 273,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 47,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 90
+        },
+        {
+          "soc": 10,
+          "power": 160
+        },
+        {
+          "soc": 50,
+          "power": 95
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "Nouvelle version d'entree de gamme (commercialisation mars 2026) : batterie nette 59 kWh (brute 63 kWh, NMC) et moteur AP310 de 150 kW / 204 ch, moins puissant que le moteur AP550 210 kW / 286 ch des versions Pro / Pro S. Autonomie reelle non encore testee independamment (Nyland/EVKX) : valeur estimee au prorata de la baisse de capacite et d'autonomie WLTP par rapport a la version Pro."
+    },
+    {
+      "id": "vw-id7-tourer-pure",
+      "label": "ID.7 Tourer Pure Life Max",
+      "battery": "standard",
+      "trim": "Tourer Pure Life Max",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "power_kW": 150,
+      "power_hp": 204,
+      "torque_Nm": 350,
+      "acceleration_0_100_s": 8.0,
+      "topSpeed_kmh": 160,
+      "usableCapacity_kWh": 59,
+      "price_EUR": 55400,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 460,
+      "wltp_consumption_kWh_100km": 13,
+      "realRange": {
+        "mixed_km": 370,
+        "highway_130_km": 308,
+        "highway_120_km": 335,
+        "urban_km": 439,
+        "winter_minus5_km": 254,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 47,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 90
+        },
+        {
+          "soc": 10,
+          "power": 160
+        },
+        {
+          "soc": 50,
+          "power": 95
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "Silhouette Tourer (break) de la nouvelle version Pure : batterie nette 59 kWh (brute 63 kWh, NMC), moteur AP310 150 kW / 204 ch. Autonomie reelle mixte de 370 km reprise de l'estimation EV Database (conditions mixtes, climat tempere), a confirmer par un test terrain independant."
+    },
     {
       "id": "vw-id7-pro",
       "label": "ID.7 Pro Life Max",
@@ -423,10 +555,12 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-08-01",
   "sources": [
     "nyland",
-    "la-chaine-ev"
+    "la-chaine-ev",
+    "automobile-propre",
+    "caradisiac"
   ],
   "imageCredit": "Constructeur"
 }

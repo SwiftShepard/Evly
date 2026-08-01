@@ -477,20 +477,20 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                 <div class="flex justify-between items-baseline border-b border-[var(--color-border)] border-dashed pb-1.5 last:border-0 last:pb-0">
                   <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">0 → 100 km/h</span>
                   <span class="font-mono text-sm font-semibold text-[var(--color-text)]">
-                    {vehicle.acceleration_0_100_s.toString().replace(".", ",")} <span class="text-[var(--color-text-faint)] text-[10px] font-normal">s</span>
+                    {(config.acceleration_0_100_s ?? vehicle.acceleration_0_100_s).toString().replace(".", ",")} <span class="text-[var(--color-text-faint)] text-[10px] font-normal">s</span>
                   </span>
                 </div>
                 <div class="flex justify-between items-baseline border-b border-[var(--color-border)] border-dashed pb-1.5 last:border-0 last:pb-0">
                   <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Puissance</span>
                   <span class="font-mono text-sm font-semibold text-[var(--color-text)]">
-                    {vehicle.power_hp} <span class="text-[var(--color-text-faint)] text-[10px] font-normal">ch</span>
-                    <span class="text-[var(--color-text-faint)] text-[10px] font-normal">({vehicle.power_kW} kW)</span>
+                    {config.power_hp ?? vehicle.power_hp} <span class="text-[var(--color-text-faint)] text-[10px] font-normal">ch</span>
+                    <span class="text-[var(--color-text-faint)] text-[10px] font-normal">({config.power_kW ?? vehicle.power_kW} kW)</span>
                   </span>
                 </div>
                 <div class="flex justify-between items-baseline border-b border-[var(--color-border)] border-dashed pb-1.5 last:border-0 last:pb-0">
                   <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Vitesse max</span>
                   <span class="font-mono text-sm font-semibold text-[var(--color-text)]">
-                    {vehicle.topSpeed_kmh} <span class="text-[var(--color-text-faint)] text-[10px] font-normal">km/h</span>
+                    {config.topSpeed_kmh ?? vehicle.topSpeed_kmh} <span class="text-[var(--color-text-faint)] text-[10px] font-normal">km/h</span>
                   </span>
                 </div>
                 <div class="flex justify-between items-baseline last:border-0 last:pb-0">

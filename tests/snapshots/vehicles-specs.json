@@ -2399,13 +2399,15 @@
     "model": "ID.7",
     "power_kW": 210,
     "usableCapacity_kWh": 77,
-    "wltp_min_km": 605,
+    "wltp_min_km": 460,
     "wltp_max_km": 709,
-    "configurations_count": 3,
+    "configurations_count": 5,
     "configuration_ids": [
       "vw-id7-pro",
       "vw-id7-pro-s-86-kwh",
-      "vw-id7-tourer"
+      "vw-id7-pure",
+      "vw-id7-tourer",
+      "vw-id7-tourer-pure"
     ]
   },
   {

@@ -45,7 +45,12 @@
       "Bash(node -e \"const fs=require\\('fs'\\);const d='src/data/vehicles';const files=fs.readdirSync\\(d\\).filter\\(f=>f.endsWith\\('.json'\\)\\);const brands=new Set\\(\\);files.forEach\\(f=>{const j=JSON.parse\\(fs.readFileSync\\(d+'/'+f,'utf8'\\)\\);brands.add\\(j.brand\\)}\\);console.log\\([...brands].sort\\(\\).join\\('\\\\n'\\)\\)\")",
       "Bash(xargs grep -l -i \"fourgon\\\\|van\\\\|utilitaire\\\\|combi\\\\|navette\\\\|shuttle\\\\|cargo\\\\|trafic\\\\|master\\\\|expert\\\\|jumpy\\\\|jumper\\\\|transit\\\\|sprinter\\\\|vito\\\\|boxer\\\\|partner\\\\|berlingo\\\\|kangoo\\\\|proace\\\\|spacetourer\\\\|traveller\")",
       "Bash(node scripts/check-vehicle-snapshots.mjs --update)",
-      "Bash(node scripts/check-vehicle-snapshots.mjs)"
+      "Bash(node scripts/check-vehicle-snapshots.mjs)",
+      "WebFetch(domain:www.clubic.com)",
+      "WebFetch(domain:www.volkswagen.fr)",
+      "WebFetch(domain:www.automobile-propre.com)",
+      "WebFetch(domain:ev-database.org)",
+      "Read(//tmp/**)"
     ]
   }
 }
