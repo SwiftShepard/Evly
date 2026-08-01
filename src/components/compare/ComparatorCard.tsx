@@ -8,22 +8,7 @@ import { url } from "@/lib/url";
 import { calculateCeeAid } from "@/lib/cee";
 import { useUserProfile } from "@/lib/userProfile";
 import { X } from "lucide-react";
-
-// Force rescan comment update 14
-const imageModules = import.meta.glob<string>(
-  "/src/assets/vehicles/*.{jpeg,jpg,png,webp,avif,svg}",
-  { query: "?url", import: "default", eager: true }
-);
-
-function getLocalVehicleImageUrl(slug: string): string | null {
-  for (const [path, url] of Object.entries(imageModules)) {
-    const stem = path.split("/").at(-1)!.replace(/\.(jpeg|jpg|png|webp|avif|svg)$/i, "");
-    if (stem === slug) {
-      return url;
-    }
-  }
-  return null;
-}
+import { getLocalVehicleImageUrl } from "@/lib/vehicleImages";
 
 interface Props {
   vehicle: Vehicle;

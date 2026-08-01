@@ -37,3 +37,7 @@ test-results/
 # Scratch (scripts et exports de travail, pas destinés au repo)
 scratch/
 
+# Python (generate_vehicles.py)
+__pycache__/
+*.pyc
+
