@@ -9,12 +9,19 @@ const version = "v1.2.0";
 
 const cols = [
   {
-    title: "Comparer",
+    title: "Véhicules",
     links: [
-      { href: url("/vehicules"), label: "Showroom Particuliers" },
-      { href: url("/pro/vehicules"), label: "Showroom Utilitaires (Pro)" },
-      { href: url("/comparer"), label: "Comparateur multi" },
-      { href: url("/simulateur"), label: "Simulateur TCO" },
+      { href: url("/vehicules"), label: "Particuliers" },
+      { href: url("/pro/vehicules"), label: "Utilitaires (Pro)" },
+      { href: url("/leasing-social"), label: "Leasing Social" },
+    ],
+  },
+  {
+    title: "Outils",
+    links: [
+      { href: url("/comparer"), label: "Comparateur" },
+      { href: url("/simulateur"), label: "Calculateur TCO" },
+      { href: url("/pro"), label: "Simulateur Pro" },
       { href: url("/recommandation"), label: "Recommandation guidée" },
     ],
   },
@@ -25,13 +32,6 @@ const cols = [
       { href: url("/methodologie") + "#protocoles", label: "Protocoles de test" },
       { href: url("/methodologie") + "#sources", label: "Nos sources" },
       { href: url("/methodologie") + "#limites", label: "Limites & honnêteté" },
-    ],
-  },
-  {
-    title: "Projet",
-    links: [
-      { href: "https://github.com/", label: "Code source" },
-      { href: url("/methodologie") + "#contact", label: "Contact" },
     ],
   },
 ];

@@ -300,10 +300,9 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                     .filter((v): v is number => v !== null)
                 ),
               ].sort((a, b) => a - b);
-              const lrKwh = vehicle.usableCapacity_kWh;
-              batteryCapacity = config.battery === "long-range"
-                ? lrKwh
-                : (uniqueKwh.find((k) => k < lrKwh) ?? uniqueKwh[0] ?? lrKwh);
+              const maxKwh = uniqueKwh.length > 0 ? Math.max(...uniqueKwh) : vehicle.usableCapacity_kWh;
+              const minKwh = uniqueKwh.length > 0 ? Math.min(...uniqueKwh) : vehicle.usableCapacity_kWh;
+              batteryCapacity = config.battery === "long-range" ? maxKwh : minKwh;
             }
           }
         }

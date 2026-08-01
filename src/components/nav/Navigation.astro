@@ -7,19 +7,19 @@ const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 
 const navigationStructure = [
   {
-    label: "Catalogue",
+    label: "Véhicules",
     items: [
-      { href: url("/vehicules"), label: "Showroom Particuliers" },
-      { href: url("/pro/vehicules"), label: "Showroom Utilitaires (Pro)" },
-      { href: url("/comparer"), label: "Comparer les modèles" },
+      { href: url("/vehicules"), label: "Particuliers" },
+      { href: url("/pro/vehicules"), label: "Utilitaires (Pro)" },
+      { href: url("/leasing-social"), label: "Leasing Social" },
     ]
   },
   {
-    label: "Simulateurs",
+    label: "Outils",
     items: [
+      { href: url("/comparer"), label: "Comparateur" },
       { href: url("/simulateur"), label: "Calculateur TCO" },
       { href: url("/pro"), label: "Simulateur Pro" },
-      { href: url("/leasing-social"), label: "Leasing Social" },
     ]
   },
   {

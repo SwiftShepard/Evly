@@ -21,7 +21,7 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1700,
-  "wltp_max_km": 455,
+  "wltp_max_km": 600,
   "wltp_min_km": 455,
   "realRange": {
     "mixed_km": 350,
@@ -200,6 +200,7 @@
       "label": "Model Y Propulsion",
       "battery": "standard",
       "trim": "Propulsion",
+      "usableCapacity_kWh": 57.5,
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
@@ -275,76 +276,49 @@
     {
       "id": "tesla-model-y-grande-autonomie-prop",
       "label": "Model Y Grande Autonomie Prop",
-      "battery": "standard",
+      "battery": "long-range",
       "trim": "Grande Autonomie Prop",
-      "wheelSize_inches": 18,
+      "usableCapacity_kWh": 75,
+      "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
       "price_EUR": 44990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 455,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_km": 600,
+      "wltp_consumption_kWh_100km": 14.9,
       "realRange": {
-        "mixed_km": 350,
-        "highway_130_km": 350,
-        "highway_120_km": 384,
-        "urban_km": 420,
-        "winter_minus5_km": 220,
-        "confidence": "bjorn_nyland"
+        "mixed_km": 480,
+        "highway_130_km": 390,
+        "highway_120_km": 435,
+        "urban_km": 560,
+        "winter_minus5_km": 310,
+        "confidence": "tested"
       },
       "rangeTests": [
         {
           "sourceId": "nyland",
-          "testDate": "2024-06",
+          "testDate": "2024-05",
           "speed_kmh": 90,
-          "range_km": 479,
-          "consumption_kWh_100km": 12.5,
-          "temperature_C": 20,
+          "range_km": 580,
+          "consumption_kWh_100km": 13.0,
+          "temperature_C": 18,
           "wheelSize_inches": 19,
           "tyreModel": null,
           "protocol": "nyland",
           "videoUrl": null,
-          "notes": "Model Y Propulsion (Juniper). Berlin."
-        },
-        {
-          "sourceId": "nyland",
-          "testDate": "2024-06",
-          "speed_kmh": 120,
-          "range_km": 384,
-          "consumption_kWh_100km": 15.6,
-          "temperature_C": 20,
-          "wheelSize_inches": 19,
-          "tyreModel": null,
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": ""
+          "notes": "Model Y LR RWD."
         }
       ],
-      "chargingDC_peak_kW": 170,
-      "chargingDC_10_80_min": 25,
-      "chargingDC_kWh_30min": 40,
+      "chargingDC_peak_kW": 250,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 53,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 100
-        },
-        {
-          "soc": 10,
-          "power": 130
-        },
-        {
-          "soc": 50,
-          "power": 100
-        },
-        {
-          "soc": 80,
-          "power": 50
-        },
-        {
-          "soc": 100,
-          "power": 10
-        }
+        { "soc": 0, "power": 170 },
+        { "soc": 10, "power": 250 },
+        { "soc": 50, "power": 115 },
+        { "soc": 80, "power": 52 },
+        { "soc": 100, "power": 12 }
       ],
       "availability": "available",
       "notes": null
@@ -352,76 +326,49 @@
     {
       "id": "tesla-model-y-grande-autonomie-awd",
       "label": "Model Y Grande Autonomie AWD",
-      "battery": "standard",
+      "battery": "long-range",
       "trim": "Grande Autonomie AWD",
-      "wheelSize_inches": 18,
+      "usableCapacity_kWh": 75,
+      "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
       "price_EUR": 48990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 455,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_km": 533,
+      "wltp_consumption_kWh_100km": 16.9,
       "realRange": {
-        "mixed_km": 350,
-        "highway_130_km": 350,
-        "highway_120_km": 384,
-        "urban_km": 420,
-        "winter_minus5_km": 220,
-        "confidence": "bjorn_nyland"
+        "mixed_km": 440,
+        "highway_130_km": 360,
+        "highway_120_km": 405,
+        "urban_km": 520,
+        "winter_minus5_km": 280,
+        "confidence": "tested"
       },
       "rangeTests": [
         {
           "sourceId": "nyland",
-          "testDate": "2024-06",
+          "testDate": "2024-04",
           "speed_kmh": 90,
-          "range_km": 479,
-          "consumption_kWh_100km": 12.5,
-          "temperature_C": 20,
+          "range_km": 540,
+          "consumption_kWh_100km": 14.1,
+          "temperature_C": 15,
           "wheelSize_inches": 19,
           "tyreModel": null,
           "protocol": "nyland",
           "videoUrl": null,
-          "notes": "Model Y Propulsion (Juniper). Berlin."
-        },
-        {
-          "sourceId": "nyland",
-          "testDate": "2024-06",
-          "speed_kmh": 120,
-          "range_km": 384,
-          "consumption_kWh_100km": 15.6,
-          "temperature_C": 20,
-          "wheelSize_inches": 19,
-          "tyreModel": null,
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": ""
+          "notes": "Model Y LR AWD."
         }
       ],
-      "chargingDC_peak_kW": 170,
-      "chargingDC_10_80_min": 25,
-      "chargingDC_kWh_30min": 40,
+      "chargingDC_peak_kW": 250,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 53,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 100
-        },
-        {
-          "soc": 10,
-          "power": 130
-        },
-        {
-          "soc": 50,
-          "power": 100
-        },
-        {
-          "soc": 80,
-          "power": 50
-        },
-        {
-          "soc": 100,
-          "power": 10
-        }
+        { "soc": 0, "power": 170 },
+        { "soc": 10, "power": 250 },
+        { "soc": 50, "power": 115 },
+        { "soc": 80, "power": 52 },
+        { "soc": 100, "power": 12 }
       ],
       "availability": "available",
       "notes": null
@@ -429,76 +376,49 @@
     {
       "id": "tesla-model-y-performance",
       "label": "Model Y Performance",
-      "battery": "standard",
+      "battery": "long-range",
       "trim": "Performance",
-      "wheelSize_inches": 18,
+      "usableCapacity_kWh": 75,
+      "wheelSize_inches": 21,
       "tyreType": "summer",
       "options": [],
       "price_EUR": 57990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 455,
-      "wltp_consumption_kWh_100km": 15,
+      "wltp_km": 514,
+      "wltp_consumption_kWh_100km": 17.3,
       "realRange": {
-        "mixed_km": 350,
-        "highway_130_km": 350,
-        "highway_120_km": 384,
-        "urban_km": 420,
-        "winter_minus5_km": 220,
-        "confidence": "bjorn_nyland"
+        "mixed_km": 420,
+        "highway_130_km": 340,
+        "highway_120_km": 380,
+        "urban_km": 490,
+        "winter_minus5_km": 260,
+        "confidence": "tested"
       },
       "rangeTests": [
         {
           "sourceId": "nyland",
-          "testDate": "2024-06",
-          "speed_kmh": 90,
-          "range_km": 479,
-          "consumption_kWh_100km": 12.5,
-          "temperature_C": 20,
-          "wheelSize_inches": 19,
-          "tyreModel": null,
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Model Y Propulsion (Juniper). Berlin."
-        },
-        {
-          "sourceId": "nyland",
-          "testDate": "2024-06",
+          "testDate": "2024-04",
           "speed_kmh": 120,
-          "range_km": 384,
-          "consumption_kWh_100km": 15.6,
-          "temperature_C": 20,
-          "wheelSize_inches": 19,
+          "range_km": 380,
+          "consumption_kWh_100km": 19.8,
+          "temperature_C": 15,
+          "wheelSize_inches": 21,
           "tyreModel": null,
           "protocol": "nyland",
           "videoUrl": null,
-          "notes": ""
+          "notes": "Model Y Performance."
         }
       ],
-      "chargingDC_peak_kW": 170,
-      "chargingDC_10_80_min": 25,
-      "chargingDC_kWh_30min": 40,
+      "chargingDC_peak_kW": 250,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 53,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 100
-        },
-        {
-          "soc": 10,
-          "power": 130
-        },
-        {
-          "soc": 50,
-          "power": 100
-        },
-        {
-          "soc": 80,
-          "power": 50
-        },
-        {
-          "soc": 100,
-          "power": 10
-        }
+        { "soc": 0, "power": 170 },
+        { "soc": 10, "power": 250 },
+        { "soc": 50, "power": 115 },
+        { "soc": 80, "power": 52 },
+        { "soc": 100, "power": 12 }
       ],
       "availability": "available",
       "notes": null

@@ -163,8 +163,9 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
             <details class="filter-section">
               <summary class="filter-section-toggle">Autonomie <span class="filter-chevron" /></summary>
               <div class="filter-section-body flex flex-col gap-4 mt-2">
-                <div class="range-toggle-group self-start">
-                  <button type="button" id="range-type-real" class="range-toggle-btn" data-active="true">Réelle</button>
+                <div class="range-toggle-group self-start flex-wrap">
+                  <button type="button" id="range-type-mixed" class="range-toggle-btn" data-active="true">Mixte</button>
+                  <button type="button" id="range-type-highway" class="range-toggle-btn" data-active="false">Autoroute (130)</button>
                   <button type="button" id="range-type-wltp" class="range-toggle-btn" data-active="false">WLTP</button>
                 </div>
                 <div class="flex flex-col gap-1.5 w-full">
@@ -182,6 +183,42 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                     class="w-full cursor-pointer"
                   />
                 </div>
+              </div>
+            </details>
+
+            <details class="filter-section">
+              <summary class="filter-section-toggle">Recharge (10 → 80 %) <span class="filter-chevron" /></summary>
+              <div class="filter-section-body flex flex-col gap-3 mt-2">
+                <div class="flex flex-col gap-1.5">
+                  <span class="text-[10px] font-mono uppercase tracking-wider text-[var(--color-text-faint)]">Profil de trajet</span>
+                  <div class="range-toggle-group self-start flex-wrap">
+                    <button type="button" id="charge-profile-highway" class="range-toggle-btn" data-active="true">Autoroute</button>
+                    <button type="button" id="charge-profile-mixed" class="range-toggle-btn" data-active="false">Mixte</button>
+                    <button type="button" id="charge-profile-urban" class="range-toggle-btn" data-active="false">Ville</button>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-1.5 w-full">
+                  <div class="flex justify-between items-baseline">
+                    <span class="text-[10px] text-[var(--color-text-muted)]">Km récupérés (10-80%) min.</span>
+                    <span class="font-mono text-xs font-semibold text-[var(--color-accent)]">+<span id="charge-value-display">0</span> km</span>
+                  </div>
+                  <input
+                    type="range"
+                    id="charge-slider"
+                    min="0"
+                    max="450"
+                    step="10"
+                    value="0"
+                    class="w-full cursor-pointer"
+                  />
+                  <span class="font-mono text-[9px] text-[var(--color-text-faint)] leading-tight">
+                    (durée de la pause 10-80% spécifique à chaque modèle, ex: 18 à 30 min)
+                  </span>
+                </div>
+                <label class="flex items-center gap-2 cursor-pointer text-[11px] text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors pt-2 border-t border-[var(--color-border)] mt-1">
+                  <input type="checkbox" id="toggle-charge-filter" class="w-3.5 h-3.5 accent-[var(--color-accent)] cursor-pointer" />
+                  <span>Afficher la recharge sur les cartes</span>
+                </label>
               </div>
             </details>
 
@@ -287,7 +324,8 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
             <div class="flex items-center justify-between gap-4">
               <span class="font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Autonomie</span>
               <div class="range-toggle-group">
-                <button type="button" id="range-type-real-mobile" class="range-toggle-btn" data-active="true">Réelle</button>
+                <button type="button" id="range-type-mixed-mobile" class="range-toggle-btn" data-active="true">Mixte</button>
+                <button type="button" id="range-type-highway-mobile" class="range-toggle-btn" data-active="false">Autoroute</button>
                 <button type="button" id="range-type-wltp-mobile" class="range-toggle-btn" data-active="false">WLTP</button>
               </div>
             </div>
@@ -303,6 +341,33 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
               />
               <span class="font-mono text-xs font-semibold text-[var(--color-accent)] min-w-[55px] text-right"><span id="range-value-display-mobile">0</span> km</span>
             </div>
+          </div>
+
+          <div class="flex flex-col gap-3 p-4 bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-xl">
+            <div class="flex items-center justify-between gap-2 flex-wrap">
+              <span class="font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Recharge (10-80%)</span>
+              <div class="range-toggle-group">
+                <button type="button" id="charge-profile-highway-mobile" class="range-toggle-btn" data-active="true">Autoroute</button>
+                <button type="button" id="charge-profile-mixed-mobile" class="range-toggle-btn" data-active="false">Mixte</button>
+                <button type="button" id="charge-profile-urban-mobile" class="range-toggle-btn" data-active="false">Ville</button>
+              </div>
+            </div>
+            <div class="flex-1 flex items-center gap-3">
+              <input
+                type="range"
+                id="charge-slider-mobile"
+                min="0"
+                max="450"
+                step="10"
+                value="0"
+                class="flex-1 cursor-pointer"
+              />
+              <span class="font-mono text-xs font-semibold text-[var(--color-accent)] min-w-[65px] text-right">+<span id="charge-value-display-mobile">0</span> km</span>
+            </div>
+            <label class="flex items-center gap-2 cursor-pointer text-[11px] text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors pt-2 border-t border-[var(--color-border)]">
+              <input type="checkbox" id="toggle-charge-filter-mobile" class="w-3.5 h-3.5 accent-[var(--color-accent)] cursor-pointer" />
+              <span>Afficher la recharge sur les cartes</span>
+            </label>
           </div>
 
           <div class="flex flex-col md:flex-row gap-4 p-4 bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-xl">
@@ -410,12 +475,16 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
               data-price={cheapest ? cheapest.price_EUR : ""}
               data-price-aided={priceAided ?? ""}
               data-range={v.realRange.mixed_km}
+              data-range-highway={v.realRange.highway_130_km}
               data-wltp={v.wltp_max_km}
               data-dc={v.chargingDC.peakPower_kW}
               data-ratio={cheapest ? Math.round(v.realRange.mixed_km / cheapest.price_EUR! * 10000) : 0}
               data-origin={isEU(v) ? "eu" : "other"}
               data-cee={hasCEE(v) ? "1" : "0"}
               data-trunk={v.trunkCapacity_L}
+              data-charge-highway={Math.round(v.realRange.highway_130_km * 0.70)}
+              data-charge-mixed={Math.round(v.realRange.mixed_km * 0.70)}
+              data-charge-urban={Math.round(v.realRange.urban_km * 0.70)}
               class="vehicle-card contents"
             >
               <Tile size="2x1" variant="default" href={url(`/vehicules/${v.slug}`)} ariaLabel={`Fiche ${v.brand} ${v.model} ${v.variant}`} class="reveal">
@@ -444,40 +513,58 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                     </div>
                   </div>
                 </div>
-                <div class="grid grid-cols-2 gap-4 mt-auto pt-5 border-t border-[var(--color-border)]">
+                <div class="card-footer-grid grid grid-cols-2 gap-2 md:gap-4 mt-auto pt-5 border-t border-[var(--color-border)]">
                   <div class="flex flex-col gap-1">
                     <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">
-                      <span class="range-mode-real">Auto. réelle</span>
+                      <span class="range-mode-mixed">Auto. mixte</span>
+                      <span class="range-mode-highway">Auto. 130</span>
                       <span class="range-mode-wltp">Auto. WLTP</span>
                     </span>
                     <div class="flex items-baseline gap-1">
-                      <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-accent)]">
-                        <span class="range-mode-real">{v.realRange.mixed_km}</span>
+                      <span data-numeric class="display-stat text-xl sm:text-2xl md:text-3xl text-[var(--color-accent)]">
+                        <span class="range-mode-mixed">{v.realRange.mixed_km}</span>
+                        <span class="range-mode-highway">{v.realRange.highway_130_km}</span>
                         <span class="range-mode-wltp">{v.wltp_max_km}</span>
                       </span>
-                      <span class="font-mono text-[11px] text-[var(--color-text-faint)]">km</span>
+                      <span class="font-mono text-[10px] md:text-[11px] text-[var(--color-text-faint)]">km</span>
                     </div>
                   </div>
+
+                  <div class="card-charge-col hidden flex-col gap-1">
+                    <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)] whitespace-nowrap">
+                      10 → 80 % DC
+                    </span>
+                    <div class="flex items-baseline gap-1">
+                      <span data-numeric class="display-stat text-xl sm:text-2xl md:text-3xl text-[var(--color-accent)]">
+                        +{Math.round(v.realRange.highway_130_km * 0.70)}
+                      </span>
+                      <span class="font-mono text-[10px] md:text-[11px] text-[var(--color-text-faint)]">km</span>
+                    </div>
+                    <span class="font-mono text-[9px] md:text-[10px] text-[var(--color-text-faint)] leading-none">
+                      en {v.chargingDC.time_10_80_min} min (130)
+                    </span>
+                  </div>
+
                   <div class="flex flex-col gap-1 text-right items-end">
                     <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">
                       <span class="price-mode-gross">Dès</span>
-                      <span class="price-mode-aided">Après aides max.*</span>
+                      <span class="price-mode-aided">Après aides*</span>
                     </span>
                     <div class="price-mode-gross flex items-baseline justify-end gap-1">
                       {cheapest !== null ? (
-                        <span data-numeric class="display-stat text-2xl md:text-3xl">{formatPrice(cheapest.price_EUR!)}</span>
+                        <span data-numeric class="display-stat text-xl sm:text-2xl md:text-3xl">{formatPrice(cheapest.price_EUR!)}</span>
                       ) : (
-                        <span class="display-stat text-base md:text-lg text-[var(--color-text-faint)] italic font-normal tracking-tight">Tarif à venir</span>
+                        <span class="display-stat text-xs md:text-base text-[var(--color-text-faint)] italic font-normal tracking-tight">Tarif à venir</span>
                       )}
                     </div>
                     <div class="price-mode-aided flex flex-col items-end gap-0.5">
                       {cheapest !== null && priceAided !== null ? (
                         <>
-                          <span data-numeric class="display-stat text-2xl md:text-3xl" style="color:var(--color-accent)">{formatPrice(priceAided)}</span>
+                          <span data-numeric class="display-stat text-xl sm:text-2xl md:text-3xl" style="color:var(--color-accent)">{formatPrice(priceAided)}</span>
                           {totalAids > 0 && <span class="font-mono text-[10px] text-[var(--color-text-faint)]" style="text-decoration:line-through">{formatPrice(cheapest.price_EUR!)}</span>}
                         </>
                       ) : (
-                        <span class="display-stat text-base md:text-lg text-[var(--color-text-faint)] italic font-normal tracking-tight">Tarif à venir</span>
+                        <span class="display-stat text-xs md:text-base text-[var(--color-text-faint)] italic font-normal tracking-tight">Tarif à venir</span>
                       )}
                     </div>
                   </div>
@@ -535,7 +622,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
       let currentSearch = '';
 
       // Range filter state
-      let rangeType = 'real';
+      let rangeType = 'mixed'; // 'mixed' | 'highway' | 'wltp'
       let minRange = 0;
       let minTrunk = 0;
 
@@ -544,15 +631,42 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
       const displayDesktop = document.querySelector('#range-value-display');
       const displayMobile  = document.querySelector('#range-value-display-mobile');
       
-      const toggleRealDesktop = document.querySelector('#range-type-real');
-      const toggleWltpDesktop = document.querySelector('#range-type-wltp');
-      const toggleRealMobile  = document.querySelector('#range-type-real-mobile');
-      const toggleWltpMobile  = document.querySelector('#range-type-wltp-mobile');
+      const toggleMixedDesktop   = document.querySelector('#range-type-mixed');
+      const toggleHighwayDesktop = document.querySelector('#range-type-highway');
+      const toggleWltpDesktop    = document.querySelector('#range-type-wltp');
+
+      const toggleMixedMobile   = document.querySelector('#range-type-mixed-mobile');
+      const toggleHighwayMobile = document.querySelector('#range-type-highway-mobile');
+      const toggleWltpMobile    = document.querySelector('#range-type-wltp-mobile');
 
       const trunkSliderDesktop = document.querySelector('#trunk-slider');
       const trunkSliderMobile  = document.querySelector('#trunk-slider-mobile');
       const trunkDisplayDesktop = document.querySelector('#trunk-value-display');
       const trunkDisplayMobile  = document.querySelector('#trunk-value-display-mobile');
+
+      // Recharge 10-80% filter state
+      let chargeFilterEnabled = false;
+      let chargeProfile = 'highway'; // 'highway' | 'mixed' | 'urban'
+      let minChargeRange = 0;
+
+      const toggleChargeDesktop = document.querySelector('#toggle-charge-filter');
+      const toggleChargeMobile  = document.querySelector('#toggle-charge-filter-mobile');
+
+      const chargeContentDesktop = document.querySelector('#charge-filter-content');
+      const chargeContentMobile  = document.querySelector('#charge-filter-content-mobile');
+
+      const chargeSliderDesktop = document.querySelector('#charge-slider');
+      const chargeSliderMobile  = document.querySelector('#charge-slider-mobile');
+      const chargeDisplayDesktop = document.querySelector('#charge-value-display');
+      const chargeDisplayMobile  = document.querySelector('#charge-value-display-mobile');
+
+      const btnProfileHighwayDesktop = document.querySelector('#charge-profile-highway');
+      const btnProfileMixedDesktop   = document.querySelector('#charge-profile-mixed');
+      const btnProfileUrbanDesktop   = document.querySelector('#charge-profile-urban');
+
+      const btnProfileHighwayMobile = document.querySelector('#charge-profile-highway-mobile');
+      const btnProfileMixedMobile   = document.querySelector('#charge-profile-mixed-mobile');
+      const btnProfileUrbanMobile   = document.querySelector('#charge-profile-urban-mobile');
 
       function updateSliderBackground(slider) {
         if (!slider) return;
@@ -563,6 +677,20 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
         slider.style.background = `linear-gradient(to right, var(--color-accent) 0%, var(--color-accent) ${percentage}%, var(--color-border) ${percentage}%, var(--color-border) 100%)`;
       }
 
+      function updateChargeFilterEnabled(enabled) {
+        chargeFilterEnabled = enabled;
+        if (toggleChargeDesktop) toggleChargeDesktop.checked = enabled;
+        if (toggleChargeMobile)  toggleChargeMobile.checked = enabled;
+
+        document.body.dataset.showCharge = enabled ? 'true' : 'false';
+
+        updateFilters();
+        updateResetVisibility();
+      }
+
+      if (toggleChargeDesktop) toggleChargeDesktop.addEventListener('change', (e) => updateChargeFilterEnabled(e.target.checked));
+      if (toggleChargeMobile)  toggleChargeMobile.addEventListener('change', (e) => updateChargeFilterEnabled(e.target.checked));
+
       function updateRangeUI() {
         if (sliderDesktop) sliderDesktop.value = minRange;
         if (sliderMobile) sliderMobile.value = minRange;
@@ -572,22 +700,73 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
         updateSliderBackground(sliderDesktop);
         updateSliderBackground(sliderMobile);
 
-        const isReal = rangeType === 'real';
-        
         // Update body dataset to update card range displays
         document.body.dataset.rangeMode = rangeType;
 
-        // Update toggles active attribute
-        if (toggleRealDesktop && toggleWltpDesktop) {
-          toggleRealDesktop.setAttribute('data-active', isReal ? 'true' : 'false');
-          toggleWltpDesktop.setAttribute('data-active', !isReal ? 'true' : 'false');
-        }
+        const isMixed   = rangeType === 'mixed';
+        const isHighway = rangeType === 'highway';
+        const isWltp    = rangeType === 'wltp';
 
-        if (toggleRealMobile && toggleWltpMobile) {
-          toggleRealMobile.setAttribute('data-active', isReal ? 'true' : 'false');
-          toggleWltpMobile.setAttribute('data-active', !isReal ? 'true' : 'false');
+        if (toggleMixedDesktop)   toggleMixedDesktop.setAttribute('data-active', isMixed ? 'true' : 'false');
+        if (toggleHighwayDesktop) toggleHighwayDesktop.setAttribute('data-active', isHighway ? 'true' : 'false');
+        if (toggleWltpDesktop)    toggleWltpDesktop.setAttribute('data-active', isWltp ? 'true' : 'false');
+
+        if (toggleMixedMobile)   toggleMixedMobile.setAttribute('data-active', isMixed ? 'true' : 'false');
+        if (toggleHighwayMobile) toggleHighwayMobile.setAttribute('data-active', isHighway ? 'true' : 'false');
+        if (toggleWltpMobile)    toggleWltpMobile.setAttribute('data-active', isWltp ? 'true' : 'false');
+      }
+
+      function updateChargeUI() {
+        if (chargeSliderDesktop) chargeSliderDesktop.value = minChargeRange;
+        if (chargeSliderMobile) chargeSliderMobile.value = minChargeRange;
+        if (chargeDisplayDesktop) chargeDisplayDesktop.textContent = minChargeRange;
+        if (chargeDisplayMobile) chargeDisplayMobile.textContent = minChargeRange;
+
+        updateSliderBackground(chargeSliderDesktop);
+        updateSliderBackground(chargeSliderMobile);
+
+        const profiles = ['highway', 'mixed', 'urban'];
+        const btnsDesktop = [btnProfileHighwayDesktop, btnProfileMixedDesktop, btnProfileUrbanDesktop];
+        const btnsMobile  = [btnProfileHighwayMobile, btnProfileMixedMobile, btnProfileUrbanMobile];
+
+        profiles.forEach((p, idx) => {
+          const active = chargeProfile === p ? 'true' : 'false';
+          if (btnsDesktop[idx]) btnsDesktop[idx].setAttribute('data-active', active);
+          if (btnsMobile[idx])  btnsMobile[idx].setAttribute('data-active', active);
+        });
+      }
+
+      function handleChargeProfileChange(profile) {
+        chargeProfile = profile;
+        if (!chargeFilterEnabled) updateChargeFilterEnabled(true);
+        else {
+          updateChargeUI();
+          updateFilters();
+          updateResetVisibility();
         }
       }
+
+      function handleChargeSliderInput(e) {
+        minChargeRange = +e.target.value;
+        if (!chargeFilterEnabled && minChargeRange > 0) {
+          updateChargeFilterEnabled(true);
+        } else {
+          updateChargeUI();
+          updateFilters();
+          updateResetVisibility();
+        }
+      }
+
+      if (btnProfileHighwayDesktop) btnProfileHighwayDesktop.addEventListener('click', () => handleChargeProfileChange('highway'));
+      if (btnProfileMixedDesktop)   btnProfileMixedDesktop.addEventListener('click', () => handleChargeProfileChange('mixed'));
+      if (btnProfileUrbanDesktop)   btnProfileUrbanDesktop.addEventListener('click', () => handleChargeProfileChange('urban'));
+
+      if (btnProfileHighwayMobile) btnProfileHighwayMobile.addEventListener('click', () => handleChargeProfileChange('highway'));
+      if (btnProfileMixedMobile)   btnProfileMixedMobile.addEventListener('click', () => handleChargeProfileChange('mixed'));
+      if (btnProfileUrbanMobile)   btnProfileUrbanMobile.addEventListener('click', () => handleChargeProfileChange('urban'));
+
+      if (chargeSliderDesktop) chargeSliderDesktop.addEventListener('input', handleChargeSliderInput);
+      if (chargeSliderMobile)  chargeSliderMobile.addEventListener('input', handleChargeSliderInput);
 
       function handleRangeTypeChange(type) {
         rangeType = type;
@@ -596,10 +775,13 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
         updateResetVisibility();
       }
 
-      if (toggleRealDesktop) toggleRealDesktop.addEventListener('click', () => handleRangeTypeChange('real'));
-      if (toggleWltpDesktop) toggleWltpDesktop.addEventListener('click', () => handleRangeTypeChange('wltp'));
-      if (toggleRealMobile) toggleRealMobile.addEventListener('click', () => handleRangeTypeChange('real'));
-      if (toggleWltpMobile) toggleWltpMobile.addEventListener('click', () => handleRangeTypeChange('wltp'));
+      if (toggleMixedDesktop)   toggleMixedDesktop.addEventListener('click', () => handleRangeTypeChange('mixed'));
+      if (toggleHighwayDesktop) toggleHighwayDesktop.addEventListener('click', () => handleRangeTypeChange('highway'));
+      if (toggleWltpDesktop)    toggleWltpDesktop.addEventListener('click', () => handleRangeTypeChange('wltp'));
+
+      if (toggleMixedMobile)   toggleMixedMobile.addEventListener('click', () => handleRangeTypeChange('mixed'));
+      if (toggleHighwayMobile) toggleHighwayMobile.addEventListener('click', () => handleRangeTypeChange('highway'));
+      if (toggleWltpMobile)    toggleWltpMobile.addEventListener('click', () => handleRangeTypeChange('wltp'));
 
       function handleSliderInput(e) {
         minRange = +e.target.value;
@@ -660,7 +842,10 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                     currentSearch.trim() !== '' || 
                     minRange !== 0 || 
                     minTrunk !== 0 || 
-                    rangeType !== 'real';
+                    chargeFilterEnabled || 
+                    minChargeRange !== 0 || 
+                    chargeProfile !== 'highway' || 
+                    rangeType !== 'mixed';
         resetBtns.forEach(b => b.style.display = any ? '' : 'none');
       }
 
@@ -700,7 +885,11 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
           const variant = (card.dataset.variant || '').toLowerCase();
           const trunk   = +card.dataset.trunk;
 
-          const range = rangeType === 'wltp' ? +card.dataset.wltp : +card.dataset.range;
+          const range = rangeType === 'wltp' 
+            ? +card.dataset.wltp 
+            : rangeType === 'highway' 
+              ? +card.dataset.rangeHighway 
+              : +card.dataset.range;
 
           let ok = true;
           if (selBrands.length  && !selBrands.includes(brand)) ok = false;
@@ -711,6 +900,16 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
           }
           if (range < minRange) ok = false;
           if (trunk < minTrunk) ok = false;
+
+          if (chargeFilterEnabled && minChargeRange > 0) {
+            const chargeKm = chargeProfile === 'highway' 
+              ? +card.dataset.chargeHighway 
+              : chargeProfile === 'mixed' 
+                ? +card.dataset.chargeMixed 
+                : +card.dataset.chargeUrban;
+            if (chargeKm < minChargeRange) ok = false;
+          }
+
           if (selSpecific.length) {
             for (const s of selSpecific) {
               if (s === 'favorites'   && (!favSlugs || !favSlugs.has(slug)))  { ok = false; break; }
@@ -761,7 +960,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
         if (searchMobile) searchMobile.value = '';
         
         // Reset range filters
-        rangeType = 'real';
+        rangeType = 'mixed';
         minRange = 0;
         updateRangeUI();
 
@@ -769,6 +968,12 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
         minTrunk = 0;
         updateTrunkUI();
         
+        // Reset charge filter
+        minChargeRange = 0;
+        chargeProfile = 'highway';
+        updateChargeFilterEnabled(false);
+        updateChargeUI();
+
         updateFilters();
         updateResetVisibility();
       }));
@@ -1039,9 +1244,23 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
     }
 
     /* ── Range display in cards ─────────────────────────── */
-    .range-mode-wltp { display: none; }
-    body[data-range-mode="wltp"] .range-mode-real { display: none; }
+    .range-mode-highway, .range-mode-wltp { display: none; }
+    body[data-range-mode="mixed"] .range-mode-mixed { display: inline; }
+    body[data-range-mode="mixed"] .range-mode-highway, body[data-range-mode="mixed"] .range-mode-wltp { display: none; }
+
+    body[data-range-mode="highway"] .range-mode-highway { display: inline; }
+    body[data-range-mode="highway"] .range-mode-mixed, body[data-range-mode="highway"] .range-mode-wltp { display: none; }
+
     body[data-range-mode="wltp"] .range-mode-wltp { display: inline; }
+    body[data-range-mode="wltp"] .range-mode-mixed, body[data-range-mode="wltp"] .range-mode-highway { display: none; }
+
+    /* ── Recharge column toggle on cards ───────────────── */
+    body[data-show-charge="true"] .card-footer-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    body[data-show-charge="true"] .card-charge-col {
+      display: flex;
+    }
 
     /* ── Range toggle group ─────────────────────────────── */
     .range-toggle-group {

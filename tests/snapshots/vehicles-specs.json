@@ -2142,8 +2142,8 @@
     "model": "Model 3",
     "power_kW": 208,
     "usableCapacity_kWh": 57.5,
-    "wltp_min_km": 554,
-    "wltp_max_km": 554,
+    "wltp_min_km": 528,
+    "wltp_max_km": 702,
     "configurations_count": 4,
     "configuration_ids": [
       "tesla-model-3-grande-autonomie-awd",
@@ -2159,7 +2159,7 @@
     "power_kW": 220,
     "usableCapacity_kWh": 57.5,
     "wltp_min_km": 455,
-    "wltp_max_km": 455,
+    "wltp_max_km": 600,
     "configurations_count": 4,
     "configuration_ids": [
       "tesla-model-y-grande-autonomie-awd",
