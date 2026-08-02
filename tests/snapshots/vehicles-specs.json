@@ -2333,6 +2333,23 @@
     ]
   },
   {
+    "slug": "vw-id-cross",
+    "brand": "Volkswagen",
+    "model": "ID. Cross",
+    "power_kW": 155,
+    "usableCapacity_kWh": 52,
+    "wltp_min_km": 316,
+    "wltp_max_km": 427,
+    "configurations_count": 5,
+    "configuration_ids": [
+      "vw-id-cross-life",
+      "vw-id-cross-life-edition",
+      "vw-id-cross-style",
+      "vw-id-cross-style-exclusive",
+      "vw-id-cross-trend"
+    ]
+  },
+  {
     "slug": "vw-id2",
     "brand": "Volkswagen",
     "model": "ID. Polo",

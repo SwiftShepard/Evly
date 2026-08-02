@@ -1,0 +1,448 @@
+{
+  "slug": "vw-id-cross",
+  "brand": "Volkswagen",
+  "model": "ID. Cross",
+  "variant": "Trend - Life - Style",
+  "bodyType": "SUV compact",
+  "segment": "B",
+  "productionCountry": "Espagne",
+  "assemblyPlant": "Pampelune",
+  "releaseYear": 2026,
+  "marketAvailability": "Disponible",
+  "power_kW": 155,
+  "power_hp": 211,
+  "torque_Nm": 290,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 6.8,
+  "topSpeed_kmh": 175,
+  "usableCapacity_kWh": 52,
+  "grossCapacity_kWh": null,
+  "chemistry": "NMC",
+  "architecture_V": 400,
+  "mass_kg": 1548,
+  "wltp_max_km": 427,
+  "wltp_min_km": 316,
+  "realRange": {
+    "mixed_km": 330,
+    "highway_130_km": 270,
+    "highway_120_km": 295,
+    "urban_km": 390,
+    "winter_minus5_km": 230,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 15.8,
+  "consumption_highway_kWh_per_100km": 19.3,
+  "consumption_winter_kWh_per_100km": 22.6,
+  "dragCoefficient_Cx": 0.28,
+  "chargingDC": {
+    "peakPower_kW": 105,
+    "time_10_80_min": 24,
+    "kWh_added_30min": 45,
+    "confidence": "manufacturer"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 5.5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 70
+    },
+    {
+      "soc": 10,
+      "power": 105
+    },
+    {
+      "soc": 50,
+      "power": 70
+    },
+    {
+      "soc": 80,
+      "power": 35
+    },
+    {
+      "soc": 100,
+      "power": 8
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4161,
+  "width_mm": 1839,
+  "height_mm": 1588,
+  "wheelbase_mm": 2601,
+  "trunkCapacity_L": 475,
+  "trunkCapacityFolded_L": 1330,
+  "frunkCapacity_L": 25,
+  "trims": [
+    {
+      "name": "Trend",
+      "price_EUR": 27995,
+      "batteryUsed": "37 kWh",
+      "equipmentHighlights": [
+        "Motorisation d'entrée de gamme 116 ch (85 kW), batterie LFP",
+        "Combiné numérique Digital Cockpit Pro 10,25\"",
+        "Écran central Innovision 12,9\""
+      ]
+    },
+    {
+      "name": "Life",
+      "price_EUR": 37800,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "Motorisation 211 ch (155 kW), batterie NMC",
+        "Autonomie WLTP jusqu'à 427 km",
+        "Sièges avant électriques disponibles en option"
+      ]
+    },
+    {
+      "name": "Life Edition",
+      "price_EUR": 39200,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "Finition Life enrichie",
+        "Jantes alliage spécifiques",
+        "Assistants de conduite étendus"
+      ]
+    },
+    {
+      "name": "Style",
+      "price_EUR": 41650,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "Habillage intérieur premium",
+        "Éclairage d'ambiance",
+        "Caméra de recul de série"
+      ]
+    },
+    {
+      "name": "Style Exclusive",
+      "price_EUR": 44500,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "Niveau d'équipement maximal de la gamme",
+        "Sièges avant chauffants et massants",
+        "Toit ouvrant panoramique disponible en option"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "vw-id-cross-trend",
+      "label": "ID.Cross Trend",
+      "battery": "standard",
+      "trim": "Trend",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "power_kW": 85,
+      "power_hp": 116,
+      "torque_Nm": 290,
+      "acceleration_0_100_s": 9.0,
+      "topSpeed_kmh": 160,
+      "usableCapacity_kWh": 37,
+      "price_EUR": 27995,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 316,
+      "wltp_consumption_kWh_100km": 11.7,
+      "realRange": {
+        "mixed_km": 245,
+        "highway_130_km": 195,
+        "highway_120_km": 215,
+        "urban_km": 290,
+        "winter_minus5_km": 170,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 90,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 28,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 60
+        },
+        {
+          "soc": 10,
+          "power": 90
+        },
+        {
+          "soc": 50,
+          "power": 60
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 7
+        }
+      ],
+      "availability": "upcoming",
+      "notes": "Motorisation d'entrée de gamme 116 ch (85 kW), batterie LFP 37 kWh nette. Commercialisation annoncée à partir de mi-octobre 2026."
+    },
+    {
+      "id": "vw-id-cross-life",
+      "label": "ID.Cross Life",
+      "battery": "long-range",
+      "trim": "Life",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "usableCapacity_kWh": 52,
+      "price_EUR": 37800,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 427,
+      "wltp_consumption_kWh_100km": 12.2,
+      "realRange": {
+        "mixed_km": 330,
+        "highway_130_km": 270,
+        "highway_120_km": 295,
+        "urban_km": 390,
+        "winter_minus5_km": 230,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 105,
+      "chargingDC_10_80_min": 24,
+      "chargingDC_kWh_30min": 45,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 70
+        },
+        {
+          "soc": 10,
+          "power": 105
+        },
+        {
+          "soc": 50,
+          "power": 70
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "vw-id-cross-life-edition",
+      "label": "ID.Cross Life Edition",
+      "battery": "long-range",
+      "trim": "Life Edition",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "usableCapacity_kWh": 52,
+      "price_EUR": 39200,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 427,
+      "wltp_consumption_kWh_100km": 12.2,
+      "realRange": {
+        "mixed_km": 330,
+        "highway_130_km": 270,
+        "highway_120_km": 295,
+        "urban_km": 390,
+        "winter_minus5_km": 230,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 105,
+      "chargingDC_10_80_min": 24,
+      "chargingDC_kWh_30min": 45,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 70
+        },
+        {
+          "soc": 10,
+          "power": 105
+        },
+        {
+          "soc": 50,
+          "power": 70
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "Finition Life enrichie (jantes spécifiques, assistants de conduite étendus)."
+    },
+    {
+      "id": "vw-id-cross-style",
+      "label": "ID.Cross Style",
+      "battery": "long-range",
+      "trim": "Style",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "usableCapacity_kWh": 52,
+      "price_EUR": 41650,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 427,
+      "wltp_consumption_kWh_100km": 12.2,
+      "realRange": {
+        "mixed_km": 325,
+        "highway_130_km": 265,
+        "highway_120_km": 290,
+        "urban_km": 385,
+        "winter_minus5_km": 225,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 105,
+      "chargingDC_10_80_min": 24,
+      "chargingDC_kWh_30min": 45,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 70
+        },
+        {
+          "soc": 10,
+          "power": 105
+        },
+        {
+          "soc": 50,
+          "power": 70
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "Jantes 20\" de série, habillage intérieur premium et éclairage d'ambiance."
+    },
+    {
+      "id": "vw-id-cross-style-exclusive",
+      "label": "ID.Cross Style Exclusive",
+      "battery": "long-range",
+      "trim": "Style Exclusive",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "usableCapacity_kWh": 52,
+      "price_EUR": 44500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 427,
+      "wltp_consumption_kWh_100km": 12.2,
+      "realRange": {
+        "mixed_km": 320,
+        "highway_130_km": 260,
+        "highway_120_km": 285,
+        "urban_km": 380,
+        "winter_minus5_km": 220,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 105,
+      "chargingDC_10_80_min": 24,
+      "chargingDC_kWh_30min": 45,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 70
+        },
+        {
+          "soc": 10,
+          "power": 105
+        },
+        {
+          "soc": 50,
+          "power": 70
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "Niveau d'équipement maximal : sièges avant chauffants et massants, toit ouvrant panoramique disponible en option."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 5,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "technologie",
+      "label": "Écran tactile Innovision 12,9\" avec assistant vocal IDA"
+    },
+    {
+      "category": "technologie",
+      "label": "Combiné numérique Digital Cockpit Pro 10,25\""
+    },
+    {
+      "category": "confort",
+      "label": "Sièges avant électriques et massants disponibles en option"
+    },
+    {
+      "category": "design",
+      "label": "Coffre modulable 475 L avec frunk avant de 25 L"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence de série"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Positionnement tarifaire agressif pour un SUV compact électrique",
+      "Habitabilité et volume de coffre généreux pour la catégorie (475 L + frunk)"
+    ],
+    "weaknesses": [
+      "Autonomie modeste sur la version d'entrée 116 ch / 37 kWh LFP",
+      "Recharge DC plafonnée à 90-105 kW, en retrait face à la concurrence en 800V"
+    ],
+    "idealUserProfile": "Citadin ou famille urbaine cherchant un SUV compact électrique abordable pour un usage quotidien et occasionnellement routier.",
+    "notIdealFor": "Gros rouleurs autoroutiers réguliers qui privilégieront un modèle à charge plus rapide et à l'autonomie supérieure."
+  },
+  "lastUpdated": "2026-08-02",
+  "sources": [
+    "automobile-propre",
+    "largus"
+  ],
+  "imageCredit": "Constructeur"
+}

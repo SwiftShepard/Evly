@@ -50,7 +50,11 @@
       "WebFetch(domain:www.volkswagen.fr)",
       "WebFetch(domain:www.automobile-propre.com)",
       "WebFetch(domain:ev-database.org)",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "WebFetch(domain:www.largus.fr)",
+      "WebFetch(domain:fr.motor1.com)",
+      "WebFetch(domain:en.wikipedia.org)",
+      "Bash(python -c \"import json; json.load\\(open\\('src/data/vehicles/vw-id-cross.json', encoding='utf-8'\\)\\); print\\('JSON OK'\\)\")"
     ]
   }
 }
