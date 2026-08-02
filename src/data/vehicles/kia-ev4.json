@@ -214,7 +214,7 @@
   "trims": [
     {
       "name": "Air",
-      "price_EUR": 36490,
+      "price_EUR": 38690,
       "batteryUsed": "58,3 kWh",
       "equipmentHighlights": [
         "Jantes 17\" aérodynamiques",
@@ -226,7 +226,7 @@
     },
     {
       "name": "Earth",
-      "price_EUR": 39090,
+      "price_EUR": 40990,
       "batteryUsed": "58,3 kWh",
       "equipmentHighlights": [
         "Jantes 17\" diamantées",
@@ -238,7 +238,7 @@
     },
     {
       "name": "Air",
-      "price_EUR": 41490,
+      "price_EUR": 43290,
       "batteryUsed": "81,4 kWh",
       "equipmentHighlights": [
         "Jantes 17\" aérodynamiques",
@@ -250,7 +250,7 @@
     },
     {
       "name": "Earth",
-      "price_EUR": 43790,
+      "price_EUR": 45590,
       "batteryUsed": "81,4 kWh",
       "equipmentHighlights": [
         "Jantes 17\" diamantées",
@@ -261,14 +261,38 @@
       ]
     },
     {
+      "name": "Earth AWD",
+      "price_EUR": 48890,
+      "batteryUsed": "81,4 kWh",
+      "equipmentHighlights": [
+        "Transmission intégrale 4x4 (AWD), 195 kW / 265 ch",
+        "Sièges chauffants conducteur + passager",
+        "Volant chauffant",
+        "Système audio Harman Kardon 8 HP",
+        "Toit ouvrant panoramique"
+      ]
+    },
+    {
       "name": "GT-Line",
-      "price_EUR": 46790,
+      "price_EUR": 47590,
       "batteryUsed": "81,4 kWh",
       "equipmentHighlights": [
         "Jantes 19\" GT-Line",
         "Sièges sport ergonomiques avec ventilation",
         "Suspension à amortissement piloté",
         "Pédalier alu et aileron arrière",
+        "Affichage tête haute couleur"
+      ]
+    },
+    {
+      "name": "GT-Line AWD",
+      "price_EUR": 50490,
+      "batteryUsed": "81,4 kWh",
+      "equipmentHighlights": [
+        "Transmission intégrale 4x4 (AWD), 195 kW / 265 ch",
+        "Jantes 19\" GT-Line",
+        "Sièges sport ergonomiques avec ventilation",
+        "Suspension à amortissement piloté",
         "Affichage tête haute couleur"
       ]
     }
@@ -296,7 +320,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 36490,
+      "price_EUR": 38690,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 440,
@@ -413,7 +437,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 39090,
+      "price_EUR": 40990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 440,
@@ -441,7 +465,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 41490,
+      "price_EUR": 43290,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 625,
@@ -518,7 +542,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 43790,
+      "price_EUR": 45590,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 625,
@@ -539,6 +563,40 @@
       "notes": "Long Range Earth, mêmes performances que Air LR avec finition supérieure."
     },
     {
+      "id": "lr-earth-awd-19",
+      "label": "· Earth AWD · 19\"",
+      "battery": "long-range",
+      "trim": "Earth AWD",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "power_kW": 195,
+      "power_hp": 265,
+      "torque_Nm": 385,
+      "acceleration_0_100_s": 6.5,
+      "topSpeed_kmh": 170,
+      "usableCapacity_kWh": 81.4,
+      "price_EUR": 48890,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 560,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": {
+        "mixed_km": 457,
+        "highway_130_km": 345,
+        "urban_km": 520,
+        "winter_minus5_km": 376,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 128,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 57,
+      "chargingCurve": null,
+      "availability": "available",
+      "notes": "Transmission intégrale 4x4 (AWD) : 125 kW avant + 70 kW arrière. Poids ~2011 kg et coffre réduit à 390 L (moteur arrière additionnel) contre 435 L en version 4x2. Autonomie réelle non encore recoupée par un test indépendant, valeur estimée au prorata du WLTP."
+    },
+    {
       "id": "lr-gt-line-19",
       "label": "· GT-Line · 19\"",
       "battery": "long-range",
@@ -546,7 +604,7 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 46790,
+      "price_EUR": 47590,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 584,
@@ -667,6 +725,40 @@
       ],
       "availability": "available",
       "notes": "Configuration testée par Nyland. Jantes 19\" = autonomie réduite vs 17\"."
+    },
+    {
+      "id": "lr-gt-line-awd-19",
+      "label": "· GT-Line AWD · 19\"",
+      "battery": "long-range",
+      "trim": "GT-Line AWD",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "power_kW": 195,
+      "power_hp": 265,
+      "torque_Nm": 385,
+      "acceleration_0_100_s": 6.5,
+      "topSpeed_kmh": 170,
+      "usableCapacity_kWh": 81.4,
+      "price_EUR": 50490,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 550,
+      "wltp_consumption_kWh_100km": 14.8,
+      "realRange": {
+        "mixed_km": 461,
+        "highway_130_km": 347,
+        "urban_km": 522,
+        "winter_minus5_km": 377,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 128,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 57,
+      "chargingCurve": null,
+      "availability": "available",
+      "notes": "Transmission intégrale 4x4 (AWD) : 125 kW avant + 70 kW arrière. Poids ~2011 kg et coffre réduit à 390 L (moteur arrière additionnel) contre 435 L en version 4x2. Autonomie réelle non encore recoupée par un test indépendant, valeur estimée au prorata du WLTP."
     }
   ],
   "warranty": {
@@ -731,12 +823,12 @@
       "Autonomie autoroute Standard limitante (~265 km réels à 130 km/h)",
       "Prix qui grimpe vite avec les options (proche de 50 000 € en GT-Line équipée)",
       "Finition GT-Line indisponible avec batterie Standard, gamme contrainte",
-      "Pas de version traction intégrale possible"
+      "Version AWD disponible uniquement avec la grande batterie 81,4 kWh, coffre réduit à 390 L"
     ],
     "idealUserProfile": "Foyer dont elle est l'unique voiture, qui effectue plusieurs trajets longue distance par mois. Le Standard Air à 36 490 € est l'achat le plus accessible ; le Long Range Air à 41 490 € le plus rationnel pour un usage mixte.",
     "notIdealFor": "Conducteur strictement urbain n'ayant jamais besoin de plus de 200 km : la Standard suffit. Voyageurs autoroutiers très fréquents trouveront la charge 400 V en retrait des architectures 800 V."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-08-02",
   "sources": [
     "nyland",
     "insideevs-de",

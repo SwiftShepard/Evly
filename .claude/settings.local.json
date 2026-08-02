@@ -54,7 +54,10 @@
       "WebFetch(domain:www.largus.fr)",
       "WebFetch(domain:fr.motor1.com)",
       "WebFetch(domain:en.wikipedia.org)",
-      "Bash(python -c \"import json; json.load\\(open\\('src/data/vehicles/vw-id-cross.json', encoding='utf-8'\\)\\); print\\('JSON OK'\\)\")"
+      "Bash(python -c \"import json; json.load\\(open\\('src/data/vehicles/vw-id-cross.json', encoding='utf-8'\\)\\); print\\('JSON OK'\\)\")",
+      "Bash(python3 -c ' *)",
+      "WebFetch(domain:www.avem.fr)",
+      "Bash(python -c \"import json; json.load\\(open\\('src/data/vehicles/kia-ev4.json', encoding='utf-8'\\)\\); print\\('JSON OK'\\)\")"
     ]
   }
 }

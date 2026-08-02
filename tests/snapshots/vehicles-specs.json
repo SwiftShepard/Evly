@@ -894,11 +894,13 @@
     "usableCapacity_kWh": 81.4,
     "wltp_min_km": 440,
     "wltp_max_km": 625,
-    "configurations_count": 5,
+    "configurations_count": 7,
     "configuration_ids": [
       "lr-air-17",
       "lr-earth-17",
+      "lr-earth-awd-19",
       "lr-gt-line-19",
+      "lr-gt-line-awd-19",
       "std-air-17",
       "std-earth-17"
     ]
