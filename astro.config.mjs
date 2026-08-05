@@ -132,7 +132,7 @@ export default defineConfig({
               }
             }
           }
-        } else if (['/comparer/', '/simulateur/', '/recommandation/', '/leasing-social/', '/methodologie/', '/glossaire/', '/pro/'].includes(pathname)) {
+        } else if (['/comparer/', '/simulateur/', '/recommandation/', '/leasing-social/', '/methodologie/', '/glossaire/', '/pro/', '/bons-plans/'].includes(pathname)) {
           item.priority = 0.9;
           item.changefreq = 'weekly';
           item.lastmod = new Date().toISOString().split('T')[0];

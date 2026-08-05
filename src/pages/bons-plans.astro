@@ -1,0 +1,263 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Tag from "@/components/ui/Tag.astro";
+import BrandLogo from "@/components/ui/BrandLogo.astro";
+import VehicleImage from "@/components/ui/VehicleImage.astro";
+import { getAllVehicles } from "@/lib/vehicles";
+import { getValueComparisons } from "@/lib/valueComparisons";
+import { formatPrice } from "@/lib/format";
+import { url } from "@/lib/url";
+
+const vehicles = getAllVehicles();
+const comparisons = getValueComparisons(vehicles, 15);
+
+const description =
+  "🔎 Pour le prix d'une citadine ou d'un SUV électrique connu, une autre voiture fait parfois mieux : plus d'autonomie réelle, une charge plus rapide ou plus de puissance. On compare, chiffres à l'appui.";
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Qu'est-ce qu'un \"bon plan\" voiture électrique sur Evly ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "C'est un modèle qui, à budget égal ou inférieur à une voiture électrique déjà connue du grand public, fait mieux sur au moins un critère concret : l'autonomie réelle mesurée, la vitesse de recharge rapide, ou la puissance. On l'affiche avec les trois écarts chiffrés, y compris quand l'un d'eux est défavorable.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Comment ces comparaisons sont-elles choisies ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Par calcul automatique à partir de notre base de données véhicules, sans placement payant ni accord commercial : on compare les prix de départ et les caractéristiques mesurées de véhicules de gabarit comparable (même segment, SUV ou non), puis on ne garde que les écarts jugés significatifs.",
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Bons Plans Voiture Électrique : Plus pour le Même Prix | Evly"
+  description={description}
+  jsonLd={faqJsonLd}
+>
+  <div class="container-edit py-6 md:py-10">
+    <section class="mb-12 md:mb-16">
+      <h1 class="display-1 max-w-3xl fade-rise fade-rise-delay-1">
+        Le même budget.
+        <span class="text-[var(--color-accent)]">Une meilleure voiture.</span>
+      </h1>
+      <p class="mt-6 text-base md:text-lg text-[var(--color-text-muted)] max-w-2xl leading-relaxed fade-rise fade-rise-delay-2">
+        Vous n'êtes pas obligé de vous y connaître en voitures pour ne pas vous faire avoir. En concession, on vous propose souvent la marque que vous connaissez déjà, celle que vous êtes venu voir. Elle n'est pas forcément la meilleure affaire pour votre budget. Ici, on compare des modèles de taille comparable, chiffres à l'appui : autonomie réelle, vitesse de recharge, puissance. À vous de juger si le nom sur le capot vaut la différence.
+      </p>
+    </section>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      {comparisons.map((c) => {
+        const refConfigId = c.reference.configurations[0]?.id;
+        const altConfigId = c.alternative.configurations[0]?.id;
+        const compareHref = `${url("/comparer")}/?v=${c.reference.slug}${refConfigId ? `:${refConfigId}` : ""},${c.alternative.slug}${altConfigId ? `:${altConfigId}` : ""}`;
+        return (
+          <div class="value-card reveal">
+            <div class="value-card-pair">
+              <div class="value-side">
+                <span class="label-eyebrow">Vous alliez regarder</span>
+                <div class="value-side-head">
+                  <BrandLogo brand={c.reference.brand} class="w-4 h-4 flex-shrink-0 text-[var(--color-text-faint)]" />
+                  <h3 class="font-display text-base font-semibold tracking-[-0.01em] text-[var(--color-text-muted)]">
+                    {c.reference.brand} {c.reference.model}
+                  </h3>
+                </div>
+                <VehicleImage slug={c.reference.slug} alt={`${c.reference.brand} ${c.reference.model}`} class="value-side-img opacity-70" />
+                <span class="font-mono text-lg font-semibold text-[var(--color-text-muted)]">{formatPrice(c.referencePrice)}</span>
+                <ul class="value-stats">
+                  <li><span>Autonomie réelle</span><strong>{c.reference.realRange.mixed_km} km</strong></li>
+                  <li><span>Charge 10→80 %</span><strong>{c.reference.chargingDC.time_10_80_min} min</strong></li>
+                  <li><span>Puissance</span><strong>{c.reference.power_hp} ch</strong></li>
+                </ul>
+              </div>
+
+              <div class="value-arrow" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </div>
+
+              <div class="value-side value-side-accent">
+                <span class="label-eyebrow text-[var(--color-accent)]">Regardez plutôt</span>
+                <div class="value-side-head">
+                  <BrandLogo brand={c.alternative.brand} class="w-4 h-4 flex-shrink-0 text-[var(--color-accent)]" />
+                  <h3 class="font-display text-base font-semibold tracking-[-0.01em] text-[var(--color-text)]">
+                    {c.alternative.brand} {c.alternative.model}
+                  </h3>
+                </div>
+                <VehicleImage slug={c.alternative.slug} alt={`${c.alternative.brand} ${c.alternative.model}`} class="value-side-img" />
+                <span class="font-mono text-lg font-semibold text-[var(--color-text)]">{formatPrice(c.alternativePrice)}</span>
+                <ul class="value-stats">
+                  <li><span>Autonomie réelle</span><strong class:list={[c.rangeDeltaKm > 0 && "text-[var(--color-accent)]"]}>{c.alternative.realRange.mixed_km} km</strong></li>
+                  <li><span>Charge 10→80 %</span><strong class:list={[c.chargeDeltaMin > 0 && "text-[var(--color-accent)]"]}>{c.alternative.chargingDC.time_10_80_min} min</strong></li>
+                  <li><span>Puissance</span><strong class:list={[c.powerDeltaHp > 0 && "text-[var(--color-accent)]"]}>{c.alternative.power_hp} ch</strong></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="value-footer">
+              <Tag tone="accent" mono>{c.headline}</Tag>
+              <div class="flex items-center gap-3">
+                <a href={url(`/vehicules/${c.alternative.slug}`)} class="value-link">Voir la fiche →</a>
+                <a href={compareHref} class="value-link value-link-strong">Comparer côte à côte →</a>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    {comparisons.length === 0 && (
+      <p class="text-sm text-[var(--color-text-muted)]">Aucune comparaison ne remplit nos critères pour le moment, revenez bientôt.</p>
+    )}
+
+    <!-- ═════════ SECTION SEO / DÉCOUVERTE ═════════ -->
+    <section class="mt-16 pt-16 border-t border-[var(--color-border)]">
+      <h2 class="font-display text-3xl md:text-4xl font-semibold tracking-[-0.015em] mb-8">
+        Pourquoi le nom sur le capot ne suffit pas.
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8 text-sm text-[var(--color-text-muted)] leading-relaxed">
+        <div class="flex flex-col gap-4">
+          <p>
+            Personne ne vous demande d'être expert en électrique avant d'en acheter une. Le problème, c'est que le marché avance vite : de nouvelles marques arrivent chaque année avec de meilleures batteries et des prix plus serrés, pendant que les modèles connus depuis longtemps gardent parfois le même tarif pour moins de technologie. Un vendeur en concession vous montrera surtout ce qu'il vend, pas forcément ce qui existe ailleurs.
+          </p>
+          <p>
+            Cette page compare, à budget identique ou inférieur, des voitures électriques de même gabarit (même catégorie, citadine contre citadine, SUV contre SUV) sur trois choses qui changent vraiment le quotidien : l'autonomie réelle mesurée, le temps passé sur une borne rapide, et la puissance disponible.
+          </p>
+        </div>
+        <div class="flex flex-col gap-4">
+          <p>
+            Chaque comparaison affiche les trois écarts, dans les deux sens : quand l'alternative fait mieux, c'est indiqué en vert, quand elle fait moins bien sur un point, c'est affiché aussi. Aucune marque ne paie pour apparaître ici, aucun classement n'est acheté : le calcul est le même pour tout le catalogue.
+          </p>
+          <p>
+            Avant de signer, emmenez ces chiffres avec vous, comparez les deux modèles <a href={url("/comparer")} class="text-[var(--color-accent)] hover:underline">côte à côte dans notre comparateur</a>, et faites votre propre essai. Notre travail s'arrête à vous donner de quoi négocier en connaissance de cause.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <style>
+    .value-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      background: var(--color-surface-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-tile);
+      overflow: hidden;
+      transition: border-color 300ms ease, box-shadow 300ms ease;
+    }
+    .value-card:hover {
+      border-color: var(--color-accent-dim);
+    }
+
+    .value-card-pair {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: stretch;
+      gap: 0;
+    }
+
+    .value-side {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 18px 16px;
+      min-width: 0;
+    }
+    .value-side-accent {
+      background: color-mix(in srgb, var(--color-accent) 5%, transparent);
+    }
+
+    .value-side-head {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .value-side-img {
+      width: 100%;
+      height: 64px;
+      object-fit: contain;
+      object-position: left center;
+      margin-block: 2px;
+    }
+
+    .value-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 6px;
+      color: var(--color-text-faint);
+      background: var(--color-bg-subtle);
+    }
+
+    .value-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: auto;
+      padding-top: 8px;
+      border-top: 1px dashed var(--color-border);
+    }
+    .value-stats li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 11px;
+      font-family: ui-monospace, monospace;
+      color: var(--color-text-faint);
+    }
+    .value-stats li strong {
+      color: var(--color-text-muted);
+      font-weight: 600;
+    }
+
+    .value-footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 14px 16px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .value-link {
+      font-family: ui-monospace, monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-text-muted);
+      transition: color 200ms ease;
+    }
+    .value-link:hover {
+      color: var(--color-text);
+    }
+    .value-link-strong {
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+
+    @media (max-width: 640px) {
+      .value-card-pair {
+        grid-template-columns: 1fr;
+      }
+      .value-arrow {
+        padding: 8px 0;
+      }
+      .value-arrow svg {
+        transform: rotate(90deg);
+      }
+    }
+  </style>
+</BaseLayout>

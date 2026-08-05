@@ -26,6 +26,35 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const fullTitle = title.includes("Evly") || title.includes("evly")
   ? title
   : `${title}, Evly`;
+
+// Organization + WebSite : présents sur toutes les pages pour ancrer l'entité
+// Evly dans le Knowledge Graph, indépendamment du jsonLd propre à chaque page.
+const siteJsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${Astro.site}#organization`,
+    name: "Evly",
+    url: Astro.site?.toString(),
+    logo: new URL("/favicon.svg", Astro.site).toString(),
+    description:
+      "Comparateur indépendant de voitures électriques : autonomies réelles mesurées, coût total de possession et verdicts sans publicité ni commission.",
+    slogan: "L'électrique mesuré",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${Astro.site}#website`,
+    name: "Evly",
+    url: Astro.site?.toString(),
+    inLanguage: "fr-FR",
+    publisher: { "@id": `${Astro.site}#organization` },
+  },
+];
+
+const combinedJsonLd = jsonLd
+  ? [...siteJsonLd, ...(Array.isArray(jsonLd) ? jsonLd : [jsonLd])]
+  : siteJsonLd;
 ---
 
 <!doctype html>
@@ -68,15 +97,11 @@ const fullTitle = title.includes("Evly") || title.includes("evly")
     <meta name="twitter:description" content={description} />
     <meta name="twitter:site" content="@evly" />
 
-    {
-      jsonLd && (
-        <script
-          is:inline
-          type="application/ld+json"
-          set:html={JSON.stringify(jsonLd)}
-        />
-      )
-    }
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(combinedJsonLd)}
+    />
   </head>
   <body class="min-h-dvh flex flex-col">
     {/* Reading progress bar */}
