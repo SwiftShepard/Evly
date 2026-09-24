@@ -5,8 +5,8 @@
   "variant": "26.8 kWh",
   "bodyType": "Citadine",
   "segment": "A",
-  "productionCountry": "Chine",
-  "assemblyPlant": "Shiyan",
+  "productionCountry": "Slovénie",
+  "assemblyPlant": "Novo Mesto",
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
   "power_kW": 48,
@@ -114,13 +114,13 @@
       ]
     }
   ],
-  "leasingSocialEligible": false,
-  "leasingSocial_EUR_per_month": null,
+  "leasingSocialEligible": true,
+  "leasingSocial_EUR_per_month": 110,
   "availableAids": [
     {
-      "label": "Prime CEE (Coup de pouce)",
-      "amount_EUR": 3500,
-      "conditions": "Prime CEE attribuée selon critères de ressources pour l'acquisition d'un véhicule électrique neuf."
+      "label": "Prime CEE",
+      "amount_EUR": 6500,
+      "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
     }
   ],
   "configurations": [
@@ -134,7 +134,7 @@
       "options": [],
       "price_EUR": 18900,
       "monthlyLease_EUR": 129,
-      "leasingSocialEligible": false,
+      "leasingSocialEligible": true,
       "wltp_km": 225,
       "wltp_consumption_kWh_100km": 13.2,
       "realRange": {
@@ -183,7 +183,7 @@
       "options": [],
       "price_EUR": 20900,
       "monthlyLease_EUR": 149,
-      "leasingSocialEligible": false,
+      "leasingSocialEligible": true,
       "wltp_km": 225,
       "wltp_consumption_kWh_100km": 13.5,
       "realRange": {
@@ -251,14 +251,14 @@
   "verdict": {
     "strengths": [
       "Tarif d'achat neuf ultra-compétitif parmi les plus bas du marché",
-      "Consommation d'énergie très contenue et excellent volume de coffre",
-      "Disponibilité de la technologie V2L bi-directionnelle"
+      "Éligibilité aux aides CEE et au leasing social (production Novo Mesto)",
+      "Consommation d'énergie très contenue et système V2L bi-directionnel"
     ],
     "weaknesses": [
-      "Non éligible au bonus écologique en raison de sa fabrication en Chine",
+      "Insonorisation et confort sur voie rapide très basiques",
       "Vitesse de recharge rapide DC (30 kW) et performances autoroutières limitées"
     ],
-    "idealUserProfile": "Automobilistes cherchant une citadine 100% électrique neuve très accessible, pratique et peu coûteuse en énergie pour le quotidien.",
+    "idealUserProfile": "Automobilistes cherchant une citadine 100% électrique neuve très accessible, éligible aux aides et peu coûteuse en énergie pour le quotidien.",
     "notIdealFor": "Conducteurs effectuant de fréquents trajets autoroutiers ou recherchant une recharge très rapide."
   },
   "lastUpdated": "2026-09-24",
