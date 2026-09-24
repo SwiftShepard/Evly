@@ -54,8 +54,8 @@ function getSoftwareRating(brand: string, model: string): number {
     return 4;
   }
   
-  // 3.5/5 : Leapmotor
-  if (b === "leapmotor") {
+  // 3.5/5 : Leapmotor, Geely
+  if (b === "leapmotor" || b === "geely") {
     return 3.5;
   }
   

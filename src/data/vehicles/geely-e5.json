@@ -1,0 +1,254 @@
+{
+  "slug": "geely-e5",
+  "brand": "Geely",
+  "model": "E5",
+  "variant": "60.2 kWh",
+  "bodyType": "SUV",
+  "segment": "C",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Taizhou",
+  "releaseYear": 2026,
+  "marketAvailability": "Disponible",
+  "power_kW": 160,
+  "power_hp": 218,
+  "torque_Nm": 320,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 6.9,
+  "topSpeed_kmh": 175,
+  "usableCapacity_kWh": 60.2,
+  "grossCapacity_kWh": 60.2,
+  "chemistry": "LFP",
+  "architecture_V": 400,
+  "mass_kg": 1715,
+  "wltp_max_km": 475,
+  "wltp_min_km": 430,
+  "realRange": {
+    "mixed_km": 380,
+    "highway_130_km": 260,
+    "urban_km": 450,
+    "winter_minus5_km": 300,
+    "confidence": "manufacturer"
+  },
+  "consumption_mixed_kWh_per_100km": 14.5,
+  "consumption_highway_kWh_per_100km": 20.5,
+  "consumption_winter_kWh_per_100km": 18.5,
+  "dragCoefficient_Cx": 0.269,
+  "chargingDC": {
+    "peakPower_kW": 135,
+    "time_10_80_min": 20,
+    "kWh_added_30min": 42,
+    "confidence": "manufacturer"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 6.0
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 90
+    },
+    {
+      "soc": 10,
+      "power": 135
+    },
+    {
+      "soc": 50,
+      "power": 110
+    },
+    {
+      "soc": 80,
+      "power": 55
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4615,
+  "width_mm": 1901,
+  "height_mm": 1670,
+  "wheelbase_mm": 2750,
+  "trunkCapacity_L": 461,
+  "trunkCapacityFolded_L": 1477,
+  "frunkCapacity_L": null,
+  "trims": [
+    {
+      "name": "Pro",
+      "price_EUR": 37990,
+      "batteryUsed": "60.2 kWh",
+      "equipmentHighlights": [
+        "Écran central tactile 15.4\" 2.5K",
+        "Système audio Flyme Sound 16 haut-parleurs",
+        "Garantie constructeur 8 ans / 200 000 km",
+        "Toit panoramique vitré"
+      ]
+    },
+    {
+      "name": "Max",
+      "price_EUR": 40990,
+      "batteryUsed": "68.4 kWh",
+      "equipmentHighlights": [
+        "Batterie haute capacité 68.4 kWh (475 km)",
+        "Affichage tête haute HUD",
+        "Sièges avant chauffants, ventilés et massants"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "geely-e5-pro-60",
+      "label": "Geely E5 Pro 60.2 kWh",
+      "battery": "standard",
+      "trim": "Pro",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 37990,
+      "monthlyLease_EUR": 279,
+      "leasingSocialEligible": false,
+      "wltp_km": 430,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": {
+        "mixed_km": 350,
+        "highway_130_km": 240,
+        "urban_km": 420,
+        "winter_minus5_km": 280,
+        "confidence": "manufacturer"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 135,
+      "chargingDC_10_80_min": 20,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 90
+        },
+        {
+          "soc": 10,
+          "power": 135
+        },
+        {
+          "soc": 50,
+          "power": 110
+        },
+        {
+          "soc": 80,
+          "power": 55
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "geely-e5-max-68",
+      "label": "Geely E5 Max 68.4 kWh",
+      "battery": "long-range",
+      "trim": "Max",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 40990,
+      "monthlyLease_EUR": 309,
+      "leasingSocialEligible": false,
+      "wltp_km": 475,
+      "wltp_consumption_kWh_100km": 14.8,
+      "realRange": {
+        "mixed_km": 380,
+        "highway_130_km": 260,
+        "urban_km": 450,
+        "winter_minus5_km": 300,
+        "confidence": "manufacturer"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 135,
+      "chargingDC_10_80_min": 20,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 90
+        },
+        {
+          "soc": 10,
+          "power": 135
+        },
+        {
+          "soc": 50,
+          "power": 110
+        },
+        {
+          "soc": 80,
+          "power": 55
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 8,
+    "vehicle_km": 200000,
+    "battery_years": 8,
+    "battery_km": 200000,
+    "battery_soh_minimum_percent": 75
+  },
+  "keyFeatures": [
+    {
+      "category": "technologie",
+      "label": "Système d'exploitation Flyme Auto avec processeur 7nm ultra-fluide"
+    },
+    {
+      "category": "securite",
+      "label": "Batterie Short Blade LFP ultra-sécurisée contre la perforation"
+    },
+    {
+      "category": "confort",
+      "label": "Garantie constructeur longue durée de 8 ans ou 200 000 km"
+    },
+    {
+      "category": "design",
+      "label": "Design aérodynamique soigné (Cx 0.269) et signature LED épurée"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Rapport prix/prestations très agressif sous la barre des 38 000 €",
+      "Recharge rapide DC impressionnante (30% à 80% en 20 minutes)",
+      "Garantie constructeur de 8 ans ou 200 000 km très rassurante"
+    ],
+    "weaknesses": [
+      "Inéligible au bonus écologique français en raison de son origine d'assemblage",
+      "Réseau de concessions Geely en cours de déploiement en France"
+    ],
+    "idealUserProfile": "Familles à la recherche d'un SUV électrique familial très bien équipé, performant et garanti longtemps au meilleur prix.",
+    "notIdealFor": "Acheteurs dépendant impérativement du bonus écologique d'État."
+  },
+  "lastUpdated": "2026-09-24",
+  "sources": [
+    "geely-presse",
+    "automobile-propre"
+  ],
+  "imageCredit": "Geely Auto",
+  "availability": "available"
+}

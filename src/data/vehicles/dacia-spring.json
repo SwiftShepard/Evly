@@ -1,0 +1,271 @@
+{
+  "slug": "dacia-spring",
+  "brand": "Dacia",
+  "model": "Spring",
+  "variant": "26.8 kWh",
+  "bodyType": "Citadine",
+  "segment": "A",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Shiyan",
+  "releaseYear": 2024,
+  "marketAvailability": "Disponible",
+  "power_kW": 48,
+  "power_hp": 65,
+  "torque_Nm": 113,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 13.7,
+  "topSpeed_kmh": 125,
+  "usableCapacity_kWh": 26.8,
+  "grossCapacity_kWh": 26.8,
+  "chemistry": "LFP",
+  "architecture_V": 400,
+  "mass_kg": 984,
+  "wltp_max_km": 225,
+  "wltp_min_km": 225,
+  "realRange": {
+    "mixed_km": 170,
+    "highway_130_km": 110,
+    "urban_km": 240,
+    "winter_minus5_km": 130,
+    "confidence": "tested"
+  },
+  "consumption_mixed_kWh_per_100km": 13.2,
+  "consumption_highway_kWh_per_100km": 19.5,
+  "consumption_winter_kWh_per_100km": 17.0,
+  "dragCoefficient_Cx": 0.34,
+  "chargingDC": {
+    "peakPower_kW": 30,
+    "time_10_80_min": 45,
+    "kWh_added_30min": 15,
+    "confidence": "manufacturer"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 7.4,
+    "phases": 1,
+    "time_0_100_h": 4.0
+  },
+  "plugAndCharge": false,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": 200,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 25
+    },
+    {
+      "soc": 10,
+      "power": 30
+    },
+    {
+      "soc": 50,
+      "power": 26
+    },
+    {
+      "soc": 80,
+      "power": 15
+    },
+    {
+      "soc": 100,
+      "power": 4
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 3701,
+  "width_mm": 1583,
+  "height_mm": 1519,
+  "wheelbase_mm": 2423,
+  "trunkCapacity_L": 308,
+  "trunkCapacityFolded_L": 1004,
+  "frunkCapacity_L": 35,
+  "trims": [
+    {
+      "name": "Expression 45",
+      "price_EUR": 18900,
+      "batteryUsed": "26.8 kWh",
+      "equipmentHighlights": [
+        "Tableau de bord numérique 7\"",
+        "Système d'ancrage YouClip",
+        "Système Media Control",
+        "Climatisation manuelle"
+      ]
+    },
+    {
+      "name": "Expression 65",
+      "price_EUR": 19900,
+      "batteryUsed": "26.8 kWh",
+      "equipmentHighlights": [
+        "Moteur 65 ch plus polyvalent",
+        "Jantes Flexwheel 15\"",
+        "Lève-vitres électriques avant et arrière"
+      ]
+    },
+    {
+      "name": "Extreme 65",
+      "price_EUR": 20900,
+      "batteryUsed": "26.8 kWh",
+      "equipmentHighlights": [
+        "Système V2L bi-directionnel",
+        "Écran tactile Media Nav Live 10\"",
+        "Caméra de recul et radars de stationnement",
+        "Éléments de design exclusifs Brun Cuivré"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE (Coup de pouce)",
+      "amount_EUR": 3500,
+      "conditions": "Prime CEE attribuée selon critères de ressources pour l'acquisition d'un véhicule électrique neuf."
+    }
+  ],
+  "configurations": [
+    {
+      "id": "dacia-spring-expression-45",
+      "label": "Spring Expression 45 ch",
+      "battery": "standard",
+      "trim": "Expression 45",
+      "wheelSize_inches": 14,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 18900,
+      "monthlyLease_EUR": 129,
+      "leasingSocialEligible": false,
+      "wltp_km": 225,
+      "wltp_consumption_kWh_100km": 13.2,
+      "realRange": {
+        "mixed_km": 170,
+        "highway_130_km": 110,
+        "urban_km": 240,
+        "winter_minus5_km": 130,
+        "confidence": "tested"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 30,
+      "chargingDC_10_80_min": 45,
+      "chargingDC_kWh_30min": 15,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 25
+        },
+        {
+          "soc": 10,
+          "power": 30
+        },
+        {
+          "soc": 50,
+          "power": 26
+        },
+        {
+          "soc": 80,
+          "power": 15
+        },
+        {
+          "soc": 100,
+          "power": 4
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "dacia-spring-extreme-65",
+      "label": "Spring Extreme 65 ch",
+      "battery": "standard",
+      "trim": "Extreme 65",
+      "wheelSize_inches": 15,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 20900,
+      "monthlyLease_EUR": 149,
+      "leasingSocialEligible": false,
+      "wltp_km": 225,
+      "wltp_consumption_kWh_100km": 13.5,
+      "realRange": {
+        "mixed_km": 170,
+        "highway_130_km": 110,
+        "urban_km": 240,
+        "winter_minus5_km": 130,
+        "confidence": "tested"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 30,
+      "chargingDC_10_80_min": 45,
+      "chargingDC_kWh_30min": 15,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 25
+        },
+        {
+          "soc": 10,
+          "power": 30
+        },
+        {
+          "soc": 50,
+          "power": 26
+        },
+        {
+          "soc": 80,
+          "power": 15
+        },
+        {
+          "soc": 100,
+          "power": 4
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 3,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 120000,
+    "battery_soh_minimum_percent": 75
+  },
+  "keyFeatures": [
+    {
+      "category": "confort",
+      "label": "Volume de coffre record de 308 L et système d'ancrage YouClip"
+    },
+    {
+      "category": "technologie",
+      "label": "Fonction V2L bi-directionnelle pour alimenter des appareils 230V"
+    },
+    {
+      "category": "securite",
+      "label": "Freinage automatique d'urgence et aides à la conduite ADAS de série"
+    },
+    {
+      "category": "design",
+      "label": "Design SUV moderne inspiré du Duster avec nouvelle identité visuelle"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Tarif d'achat neuf ultra-compétitif parmi les plus bas du marché",
+      "Consommation d'énergie très contenue et excellent volume de coffre",
+      "Disponibilité de la technologie V2L bi-directionnelle"
+    ],
+    "weaknesses": [
+      "Non éligible au bonus écologique en raison de sa fabrication en Chine",
+      "Vitesse de recharge rapide DC (30 kW) et performances autoroutières limitées"
+    ],
+    "idealUserProfile": "Automobilistes cherchant une citadine 100% électrique neuve très accessible, pratique et peu coûteuse en énergie pour le quotidien.",
+    "notIdealFor": "Conducteurs effectuant de fréquents trajets autoroutiers ou recherchant une recharge très rapide."
+  },
+  "lastUpdated": "2026-09-24",
+  "sources": [
+    "dacia-presse",
+    "automobile-propre"
+  ],
+  "imageCredit": "Dacia",
+  "availability": "available"
+}

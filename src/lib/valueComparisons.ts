@@ -13,7 +13,7 @@ import type { Vehicle } from "@/data/schemas";
 // Marques que le grand public connaît déjà et vient chercher en concession.
 // Ce sont elles qui servent de "référence" dans la comparaison.
 const MAINSTREAM_BRANDS = new Set([
-  "Peugeot", "Renault", "Citroën", "Volkswagen", "Opel", "Fiat", "Toyota",
+  "Peugeot", "Renault", "Citroën", "Dacia", "Volkswagen", "Opel", "Fiat", "Toyota",
   "Hyundai", "Kia", "Nissan", "Tesla", "BMW", "Mercedes", "Audi", "Skoda",
   "Mini", "Ford", "Mazda",
 ]);

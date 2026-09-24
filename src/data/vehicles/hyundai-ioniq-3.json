@@ -2,51 +2,51 @@
   "slug": "hyundai-ioniq-3",
   "brand": "Hyundai",
   "model": "Ioniq 3",
-  "variant": "58 kWh",
-  "bodyType": "SUV compact",
+  "variant": "42.2 kWh",
+  "bodyType": "Berline compacte",
   "segment": "C",
   "productionCountry": "Corée",
   "assemblyPlant": "Ulsan",
-  "releaseYear": 2024,
-  "marketAvailability": "À venir en Europe",
-  "power_kW": 150,
-  "power_hp": 204,
-  "torque_Nm": 300,
+  "releaseYear": 2026,
+  "marketAvailability": "Disponible",
+  "power_kW": 108,
+  "power_hp": 147,
+  "torque_Nm": 250,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
+  "acceleration_0_100_s": 8.8,
   "topSpeed_kmh": 160,
-  "usableCapacity_kWh": 58,
-  "grossCapacity_kWh": 64,
-  "chemistry": "NMC",
+  "usableCapacity_kWh": 42.2,
+  "grossCapacity_kWh": 45.0,
+  "chemistry": "LFP",
   "architecture_V": 400,
-  "mass_kg": 1700,
-  "wltp_max_km": 496,
+  "mass_kg": 1580,
+  "wltp_max_km": 497,
   "wltp_min_km": 344,
   "realRange": {
-    "mixed_km": 380,
-    "highway_130_km": 230,
-    "urban_km": 450,
-    "winter_minus5_km": 300,
-    "confidence": "estimated"
+    "mixed_km": 280,
+    "highway_130_km": 190,
+    "urban_km": 340,
+    "winter_minus5_km": 220,
+    "confidence": "manufacturer"
   },
-  "consumption_mixed_kWh_per_100km": 15,
-  "consumption_highway_kWh_per_100km": 21,
-  "consumption_winter_kWh_per_100km": 19,
-  "dragCoefficient_Cx": 0.28,
+  "consumption_mixed_kWh_per_100km": 14.8,
+  "consumption_highway_kWh_per_100km": 20.5,
+  "consumption_winter_kWh_per_100km": 18.5,
+  "dragCoefficient_Cx": 0.27,
   "chargingDC": {
     "peakPower_kW": 130,
     "time_10_80_min": 30,
-    "kWh_added_30min": 40,
-    "confidence": "estimated"
+    "kWh_added_30min": 30,
+    "confidence": "manufacturer"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
     "phases": 3,
-    "time_0_100_h": 6.5
+    "time_0_100_h": 4.5
   },
   "plugAndCharge": false,
-  "v2l": false,
+  "v2l": true,
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
@@ -73,56 +73,88 @@
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
-  "length_mm": 4350,
-  "width_mm": 1850,
-  "height_mm": 1580,
-  "wheelbase_mm": 2700,
-  "trunkCapacity_L": 400,
-  "trunkCapacityFolded_L": 1200,
+  "length_mm": 4160,
+  "width_mm": 1830,
+  "height_mm": 1560,
+  "wheelbase_mm": 2720,
+  "trunkCapacity_L": 390,
+  "trunkCapacityFolded_L": 1180,
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Intuitive",
-      "price_EUR": null,
+      "name": "Select",
+      "price_EUR": 29995,
       "batteryUsed": "42.2 kWh",
       "equipmentHighlights": [
-        "Ecran 12.9\"",
-        "Aide à la conduite"
+        "Écran tactile 12.3\"",
+        "Surveillance angles morts et régulateur adaptatif",
+        "Climatisation automatique bi-zone",
+        "Jantes alliage 16\""
       ]
     },
     {
-      "name": "Creative",
-      "price_EUR": null,
+      "name": "Trend",
+      "price_EUR": 32495,
+      "batteryUsed": "42.2 kWh",
+      "equipmentHighlights": [
+        "Sièges avant chauffants",
+        "Jantes 17\"",
+        "Chargeur smartphone sans fil",
+        "Préconditionnement de batterie"
+      ]
+    },
+    {
+      "name": "Vision",
+      "price_EUR": 38495,
       "batteryUsed": "61 kWh",
       "equipmentHighlights": [
-        "Projecteurs LED",
-        "Sellerie tissu recyclé"
+        "Pompe à chaleur",
+        "Projecteurs Matrix LED",
+        "Jantes alliage 18\""
       ]
     },
     {
       "name": "N Line",
-      "price_EUR": null,
+      "price_EUR": 40495,
       "batteryUsed": "61 kWh",
       "equipmentHighlights": [
         "Style sportif N Line",
-        "Ecran tactile 14.6\""
+        "Sellerie tissu/suédine",
+        "Vision 360° & Navigation Europe",
+        "Jantes 18\""
+      ]
+    },
+    {
+      "name": "Prime / N Line Evo",
+      "price_EUR": 43595,
+      "batteryUsed": "61 kWh",
+      "equipmentHighlights": [
+        "Système audio premium Bose",
+        "Clé numérique & Conduite assistée autoroute",
+        "Toit vitré panoramique"
       ]
     }
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [],
+  "availableAids": [
+    {
+      "label": "Prime CEE (Coup de pouce)",
+      "amount_EUR": 6000,
+      "conditions": "Aide basée sur le dispositif CEE (Coup de pouce) pouvant atteindre 6 000 € selon conditions de ressources du foyer pour l'achat d'un véhicule électrique éligible."
+    }
+  ],
   "configurations": [
     {
-      "id": "hyundai-ioniq-3-intuitive-42",
-      "label": "Ioniq 3 Intuitive 42 kWh",
+      "id": "hyundai-ioniq-3-select-42",
+      "label": "Ioniq 3 Select 42.2 kWh",
       "battery": "standard",
-      "trim": "Intuitive",
-      "wheelSize_inches": 18,
+      "trim": "Select",
+      "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": null,
-      "monthlyLease_EUR": null,
+      "price_EUR": 29995,
+      "monthlyLease_EUR": 199,
       "leasingSocialEligible": false,
       "wltp_km": 344,
       "wltp_consumption_kWh_100km": 14.8,
@@ -131,7 +163,7 @@
         "highway_130_km": 190,
         "urban_km": 340,
         "winter_minus5_km": 220,
-        "confidence": "estimated"
+        "confidence": "manufacturer"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 130,
@@ -159,28 +191,77 @@
           "power": 10
         }
       ],
-      "availability": "upcoming",
+      "availability": "available",
       "notes": null
     },
     {
-      "id": "hyundai-ioniq-3-creative-61",
-      "label": "Ioniq 3 Creative 61 kWh",
+      "id": "hyundai-ioniq-3-trend-42",
+      "label": "Ioniq 3 Trend 42.2 kWh",
+      "battery": "standard",
+      "trim": "Trend",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 32495,
+      "monthlyLease_EUR": 229,
+      "leasingSocialEligible": false,
+      "wltp_km": 344,
+      "wltp_consumption_kWh_100km": 14.8,
+      "realRange": {
+        "mixed_km": 280,
+        "highway_130_km": 190,
+        "urban_km": 340,
+        "winter_minus5_km": 220,
+        "confidence": "manufacturer"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "hyundai-ioniq-3-vision-61",
+      "label": "Ioniq 3 Vision 61 kWh",
       "battery": "long-range",
-      "trim": "Creative",
+      "trim": "Vision",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": null,
-      "monthlyLease_EUR": null,
+      "price_EUR": 38495,
+      "monthlyLease_EUR": 289,
       "leasingSocialEligible": false,
-      "wltp_km": 496,
+      "wltp_km": 497,
       "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
         "mixed_km": 400,
         "highway_130_km": 280,
         "urban_km": 490,
         "winter_minus5_km": 310,
-        "confidence": "estimated"
+        "confidence": "manufacturer"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 130,
@@ -208,7 +289,7 @@
           "power": 10
         }
       ],
-      "availability": "upcoming",
+      "availability": "available",
       "notes": null
     },
     {
@@ -219,17 +300,17 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": null,
-      "monthlyLease_EUR": null,
+      "price_EUR": 40495,
+      "monthlyLease_EUR": 319,
       "leasingSocialEligible": false,
-      "wltp_km": 496,
+      "wltp_km": 497,
       "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
         "mixed_km": 400,
         "highway_130_km": 280,
         "urban_km": 490,
         "winter_minus5_km": 310,
-        "confidence": "estimated"
+        "confidence": "manufacturer"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 130,
@@ -257,7 +338,7 @@
           "power": 10
         }
       ],
-      "availability": "upcoming",
+      "availability": "available",
       "notes": null
     }
   ],
@@ -271,38 +352,39 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "label": "Sièges confort chauffants et volant chauffant"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "Plateforme E-GMP 400V avec préconditionnement de batterie"
     },
     {
       "category": "securite",
-      "label": "Freinage automatique d'urgence"
+      "label": "Surveillance des angles morts et conduite semi-autonome"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "Design aéro-hatch dynamique et signature lumineuse Parametric Pixels"
     }
   ],
   "verdict": {
     "strengths": [
-      "Bon compromis prix/autonomie",
-      "Confort de suspension"
+      "Tarif d'accès sous la barre des 30 000 € très attractif",
+      "Autonomie jusqu'à 497 km WLTP en version 61 kWh",
+      "Équipement technologique complet de série"
     ],
     "weaknesses": [
-      "Vitesse de charge rapide en retrait",
-      "Infodivertissement perfectible"
+      "Vitesse de charge DC plafonnée à 130 kW",
+      "Habitabilité arrière moyenne par rapport au Kona"
     ],
-    "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
-    "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
+    "idealUserProfile": "Conducteurs à la recherche d'une berline compacte moderne, efficiente et accessible pour un usage mixte quotidien et longs trajets.",
+    "notIdealFor": "Gros rouleurs autoroutiers réguliers nécessitant une recharge ultra-rapide 800V."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-09-24",
   "sources": [
-    "nyland",
-    "la-chaine-ev"
+    "hyundai-presse",
+    "automobile-propre"
   ],
-  "imageCredit": "Constructeur",
-  "availability": "upcoming"
+  "imageCredit": "Hyundai",
+  "availability": "available"
 }

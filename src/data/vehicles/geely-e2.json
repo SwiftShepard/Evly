@@ -1,0 +1,254 @@
+{
+  "slug": "geely-e2",
+  "brand": "Geely",
+  "model": "E2",
+  "variant": "35.3 kWh",
+  "bodyType": "Citadine",
+  "segment": "B",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Taizhou",
+  "releaseYear": 2026,
+  "marketAvailability": "Disponible",
+  "power_kW": 60,
+  "power_hp": 82,
+  "torque_Nm": 150,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 11.5,
+  "topSpeed_kmh": 130,
+  "usableCapacity_kWh": 35.35,
+  "grossCapacity_kWh": 35.35,
+  "chemistry": "LFP",
+  "architecture_V": 400,
+  "mass_kg": 1210,
+  "wltp_max_km": 345,
+  "wltp_min_km": 260,
+  "realRange": {
+    "mixed_km": 240,
+    "highway_130_km": 150,
+    "urban_km": 300,
+    "winter_minus5_km": 180,
+    "confidence": "manufacturer"
+  },
+  "consumption_mixed_kWh_per_100km": 13.8,
+  "consumption_highway_kWh_per_100km": 19.0,
+  "consumption_winter_kWh_per_100km": 17.5,
+  "dragCoefficient_Cx": 0.32,
+  "chargingDC": {
+    "peakPower_kW": 80,
+    "time_10_80_min": 26,
+    "kWh_added_30min": 24,
+    "confidence": "manufacturer"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 6.6,
+    "phases": 1,
+    "time_0_100_h": 5.5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 50
+    },
+    {
+      "soc": 10,
+      "power": 80
+    },
+    {
+      "soc": 50,
+      "power": 65
+    },
+    {
+      "soc": 80,
+      "power": 30
+    },
+    {
+      "soc": 100,
+      "power": 5
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4135,
+  "width_mm": 1770,
+  "height_mm": 1570,
+  "wheelbase_mm": 2500,
+  "trunkCapacity_L": 375,
+  "trunkCapacityFolded_L": 1100,
+  "frunkCapacity_L": 70,
+  "trims": [
+    {
+      "name": "Standard",
+      "price_EUR": 20990,
+      "batteryUsed": "35.3 kWh",
+      "equipmentHighlights": [
+        "Frunk sous le capot avant de 70 L",
+        "Écran central tactile 10.1\"",
+        "Garantie 8 ans / 200 000 km",
+        "Radars de recul"
+      ]
+    },
+    {
+      "name": "Comfort",
+      "price_EUR": 22990,
+      "batteryUsed": "47.1 kWh",
+      "equipmentHighlights": [
+        "Moteur 116 ch plus tonique",
+        "Batterie 47.1 kWh (autonomie 345 km)",
+        "Caméra de recul & démarrage sans clé"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [],
+  "configurations": [
+    {
+      "id": "geely-e2-standard-35",
+      "label": "Geely E2 Standard 35.3 kWh",
+      "battery": "standard",
+      "trim": "Standard",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 20990,
+      "monthlyLease_EUR": 159,
+      "leasingSocialEligible": false,
+      "wltp_km": 260,
+      "wltp_consumption_kWh_100km": 13.8,
+      "realRange": {
+        "mixed_km": 200,
+        "highway_130_km": 130,
+        "urban_km": 250,
+        "winter_minus5_km": 150,
+        "confidence": "manufacturer"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 80,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 24,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 50
+        },
+        {
+          "soc": 10,
+          "power": 80
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 5
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "geely-e2-comfort-47",
+      "label": "Geely E2 Comfort 47.1 kWh",
+      "battery": "long-range",
+      "trim": "Comfort",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 22990,
+      "monthlyLease_EUR": 179,
+      "leasingSocialEligible": false,
+      "wltp_km": 345,
+      "wltp_consumption_kWh_100km": 13.6,
+      "realRange": {
+        "mixed_km": 260,
+        "highway_130_km": 170,
+        "urban_km": 320,
+        "winter_minus5_km": 190,
+        "confidence": "manufacturer"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 80,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 24,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 50
+        },
+        {
+          "soc": 10,
+          "power": 80
+        },
+        {
+          "soc": 50,
+          "power": 65
+        },
+        {
+          "soc": 80,
+          "power": 30
+        },
+        {
+          "soc": 100,
+          "power": 5
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 8,
+    "vehicle_km": 200000,
+    "battery_years": 8,
+    "battery_km": 200000,
+    "battery_soh_minimum_percent": 75
+  },
+  "keyFeatures": [
+    {
+      "category": "confort",
+      "label": "Double coffre : 375 L arrière + 70 L de frunk sous le capot"
+    },
+    {
+      "category": "technologie",
+      "label": "Recharge rapide DC 80 kW (10 à 80 % en 26 minutes)"
+    },
+    {
+      "category": "securite",
+      "label": "Garantie constructeur de 8 ans ou 200 000 km incluse"
+    },
+    {
+      "category": "design",
+      "label": "Format citadin compact de 4.14 m idéal pour le stationnement urbain"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Présence d'un frunk avant de 70 L très rare sur ce segment",
+      "Autonomie confortable de 345 km en version Comfort",
+      "Garantie 8 ans / 200 000 km très sécurisante"
+    ],
+    "weaknesses": [
+      "Puissance de 82 ch modeste sur la version d'accès",
+      "Absence de bonus écologique en France"
+    ],
+    "idealUserProfile": "Conducteurs urbains et périurbains souhaitant une citadine électrique polyvalente, pratique avec son frunk et garantie très longtemps.",
+    "notIdealFor": "Conducteurs à la recherche d'une sportive ou de capacités de charge ultra-rapide 800V."
+  },
+  "lastUpdated": "2026-09-24",
+  "sources": [
+    "geely-presse",
+    "automobile-propre"
+  ],
+  "imageCredit": "Geely Auto",
+  "availability": "available"
+}

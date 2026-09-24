@@ -74,6 +74,7 @@ const brands = [...new Set(vehicles.map((v) => v.brand))].sort((a, b) =>
 
 const BRAND_ORIGINS: { label: string; set: Set<string> }[] = [
   { label: "Français", set: new Set(["Alpine", "Citroën", "Peugeot", "Renault"]) },
+  { label: "Roumain", set: new Set(["Dacia"]) },
   { label: "Allemand", set: new Set(["Audi", "BMW", "Mercedes", "Opel", "Porsche", "Smart", "Volkswagen"]) },
   { label: "Italien", set: new Set(["Alfa Romeo", "Fiat", "Lancia"]) },
   { label: "Coréen", set: new Set(["Hyundai", "Kia"]) },
@@ -81,7 +82,7 @@ const BRAND_ORIGINS: { label: string; set: Set<string> }[] = [
   { label: "Américain", set: new Set(["Cadillac", "Ford", "Jeep", "Tesla"]) },
   { label: "Scandinave", set: new Set(["Polestar", "Volvo"]) },
   { label: "Britannique", set: new Set(["Mini"]) },
-  { label: "Chinois", set: new Set(["BYD", "Leapmotor", "Maxus", "MG", "Nio", "Xiaomi", "Xpeng", "Zeekr"]) },
+  { label: "Chinois", set: new Set(["BYD", "Geely", "Leapmotor", "Maxus", "MG", "Nio", "Xiaomi", "Xpeng", "Zeekr"]) },
 ];
 const assignedBrands = new Set(BRAND_ORIGINS.flatMap((g) => [...g.set]));
 const brandGroups = [
