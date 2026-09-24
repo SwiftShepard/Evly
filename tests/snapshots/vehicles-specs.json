@@ -520,6 +520,20 @@
     ]
   },
   {
+    "slug": "dacia-spring",
+    "brand": "Dacia",
+    "model": "Spring",
+    "power_kW": 48,
+    "usableCapacity_kWh": 26.8,
+    "wltp_min_km": 225,
+    "wltp_max_km": 225,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "dacia-spring-expression-45",
+      "dacia-spring-extreme-65"
+    ]
+  },
+  {
     "slug": "fiat-500e",
     "brand": "Fiat",
     "model": "500e",
@@ -667,6 +681,34 @@
     ]
   },
   {
+    "slug": "geely-e2",
+    "brand": "Geely",
+    "model": "E2",
+    "power_kW": 60,
+    "usableCapacity_kWh": 35.35,
+    "wltp_min_km": 260,
+    "wltp_max_km": 345,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "geely-e2-comfort-47",
+      "geely-e2-standard-35"
+    ]
+  },
+  {
+    "slug": "geely-e5",
+    "brand": "Geely",
+    "model": "E5",
+    "power_kW": 160,
+    "usableCapacity_kWh": 60.2,
+    "wltp_min_km": 430,
+    "wltp_max_km": 475,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "geely-e5-max-68",
+      "geely-e5-pro-60"
+    ]
+  },
+  {
     "slug": "genesis-electrified-g80",
     "brand": "Genesis",
     "model": "Electrified G80",
@@ -729,15 +771,16 @@
     "slug": "hyundai-ioniq-3",
     "brand": "Hyundai",
     "model": "Ioniq 3",
-    "power_kW": 150,
-    "usableCapacity_kWh": 58,
+    "power_kW": 108,
+    "usableCapacity_kWh": 42.2,
     "wltp_min_km": 344,
-    "wltp_max_km": 496,
-    "configurations_count": 3,
+    "wltp_max_km": 497,
+    "configurations_count": 4,
     "configuration_ids": [
-      "hyundai-ioniq-3-creative-61",
-      "hyundai-ioniq-3-intuitive-42",
-      "hyundai-ioniq-3-n-line-61"
+      "hyundai-ioniq-3-n-line-61",
+      "hyundai-ioniq-3-select-42",
+      "hyundai-ioniq-3-trend-42",
+      "hyundai-ioniq-3-vision-61"
     ]
   },
   {
