@@ -16,7 +16,7 @@ import TemperatureSlider from "@/components/vehicle/TemperatureSlider.tsx";
 import CeeSimulator from "@/components/vehicle/CeeSimulator.tsx";
 import { getAllVehicles, getVehicleBySlug } from "@/lib/vehicles";
 import { getSource, getSources, type TrustLevel } from "@/data/sources";
-import { formatDate, formatHours, formatPrice } from "@/lib/format";
+import { formatDate, formatHours, formatLiters, formatMm, formatNm, formatNumber, formatPrice, formatSeconds } from "@/lib/format";
 import { url } from "@/lib/url";
 import FavoriteButton from "@/components/ui/FavoriteButton";
 
@@ -188,7 +188,7 @@ const faqEntries: { question: string; answer: string }[] = [
   {
     question: `Quel est le prix de la ${vehicle.brand} ${vehicle.model} avec les aides de l'État ?`,
     answer: faqPriceAfterAids != null && faqCheapestPrice != null && faqTotalAids > 0
-      ? `Le prix affiché part de ${formatPrice(faqCheapestPrice)}. En cumulant les aides disponibles (bonus écologique, prime à la conversion, coup de pouce CEE selon votre situation), il peut descendre jusqu'à ${formatPrice(faqPriceAfterAids)}. Ces aides dépendent de vos revenus et ne sont pas automatiques : il faut en faire la demande avant de signer le bon de commande.`
+      ? `Le prix affiché part de ${formatPrice(faqCheapestPrice)}. En cumulant les aides disponibles (coup de pouce CEE et sa majoration batterie européenne, selon votre situation), il peut descendre jusqu'à ${formatPrice(faqPriceAfterAids)}. Ces aides dépendent de vos revenus et ne sont pas automatiques : il faut en faire la demande avant de signer le bon de commande.`
       : faqCheapestPrice != null
         ? `Le prix affiché part de ${formatPrice(faqCheapestPrice)}, hors options. Vérifiez votre éligibilité aux aides de l'État sur les fiches véhicules concernées : elles ne s'appliquent pas à tous les modèles ni à tous les foyers.`
         : `Le tarif de ce modèle n'est pas encore communiqué par le constructeur.`,
@@ -244,505 +244,363 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
   notes: null
 } as any];
 
+// Somme brute des aides listées ; l'affichage est plafonné à `totalAids` (8 100 €)
+const totalAidsRaw = vehicle.availableAids.reduce((sum, aid) => sum + aid.amount_EUR, 0);
+const aidsCapped = totalAidsRaw > totalAids;
+
+const drivetrainLabels: Record<string, string> = {
+  FWD: "Traction",
+  RWD: "Propulsion",
+  AWD: "Intégrale",
+};
+
+const fmtKwh = (value: number) => `${formatNumber(value, Number.isInteger(value) ? 0 : 1)} kWh`;
+
+// Valeurs dérivées par configuration, partagées par toutes les sections de la fiche
+const configViews = configurations.map((config) => {
+  const nyland90 = config.rangeTests.find((t: any) => t.protocol === "nyland" && t.speed_kmh === 90);
+  const wheelPenalty = getWheelRangePenalty(config, vehicle.configurations);
+
+  let batteryCapacity = config.usableCapacity_kWh;
+  if (batteryCapacity == null) {
+    const labelMatch = config.label?.match(/(\d+(?:\.\d+)?)\s*kWh/);
+    if (labelMatch) {
+      batteryCapacity = parseFloat(labelMatch[1]);
+    } else {
+      const trimMatch = config.trim?.match(/(\d+(?:\.\d+)?)\s*kWh/);
+      if (trimMatch) {
+        batteryCapacity = parseFloat(trimMatch[1]);
+      } else {
+        const parseKwh = (s: string) => {
+          const m = s.match(/(\d+(?:[.,]\d+)?)/);
+          return m ? Math.round(parseFloat(m[1].replace(",", "."))) : null;
+        };
+        const uniqueKwh = [
+          ...new Set(
+            vehicle.trims
+              .map((t) => parseKwh(t.batteryUsed))
+              .filter((v): v is number => v !== null)
+          ),
+        ].sort((a, b) => a - b);
+        const maxKwh = uniqueKwh.length > 0 ? Math.max(...uniqueKwh) : vehicle.usableCapacity_kWh;
+        const minKwh = uniqueKwh.length > 0 ? Math.min(...uniqueKwh) : vehicle.usableCapacity_kWh;
+        batteryCapacity = config.battery === "long-range" ? maxKwh : minKwh;
+      }
+    }
+  }
+
+  const nylandRangeEstimate = nyland90 ? Math.round((batteryCapacity / nyland90.consumption_kWh_100km) * 100) : null;
+  const priceAfterAids = config.price_EUR != null ? Math.max(0, config.price_EUR - totalAids) : null;
+  const realRange = config.realRange ?? vehicle.realRange;
+  const rangeConfidence = realRange.confidence;
+  const isRangeMeasured = rangeConfidence === "tested" || rangeConfidence === "bjorn_nyland";
+  const heroRangeLabel = nyland90
+    ? "Autonomie réelle à 90 km/h, conso mesurée Nyland"
+    : isRangeMeasured
+      ? "Autonomie réelle mixte mesurée"
+      : rangeConfidence === "manufacturer"
+        ? "Autonomie mixte, donnée constructeur"
+        : "Autonomie réelle mixte estimée";
+  const wltpKm = config.wltp_km ?? vehicle.wltp_max_km;
+  const wltpGapPct = Math.round((1 - realRange.mixed_km / wltpKm) * 100);
+  const winterLossPct = Math.round((1 - realRange.winter_minus5_km / realRange.mixed_km) * 100);
+  const dcMin = config.chargingDC_10_80_min ?? vehicle.chargingDC.time_10_80_min;
+  const dcPeak = config.chargingDC_peak_kW ?? vehicle.chargingDC.peakPower_kW;
+  const dcKwh30 = config.chargingDC_kWh_30min ?? vehicle.chargingDC.kWh_added_30min;
+  const consoMixed = config.wltp_consumption_kWh_100km ?? vehicle.consumption_mixed_kWh_per_100km;
+  const rangeTests = config.rangeTests.length > 0 ? config.rangeTests : vehicle.rangeTests;
+
+  const specGroups: { title: string; rows: [string, string][] }[] = [
+    {
+      title: "Motorisation",
+      rows: [
+        ["Puissance", `${config.power_hp ?? vehicle.power_hp} ch (${config.power_kW ?? vehicle.power_kW} kW)`],
+        ["Couple", formatNm(config.torque_Nm ?? vehicle.torque_Nm)],
+        ["Transmission", `${drivetrainLabels[vehicle.drivetrain] ?? vehicle.drivetrain} · ${vehicle.motors} moteur${vehicle.motors > 1 ? "s" : ""}`],
+        ["0 → 100 km/h", formatSeconds(config.acceleration_0_100_s ?? vehicle.acceleration_0_100_s)],
+        ["Vitesse max", `${config.topSpeed_kmh ?? vehicle.topSpeed_kmh} km/h`],
+      ],
+    },
+    {
+      title: "Batterie & recharge",
+      rows: [
+        ["Capacité utile", fmtKwh(batteryCapacity)],
+        ...(vehicle.grossCapacity_kWh ? [["Capacité brute", fmtKwh(vehicle.grossCapacity_kWh)] as [string, string]] : []),
+        ["Chimie", vehicle.chemistry],
+        ["Architecture", `${vehicle.architecture_V} V`],
+        ["Pic DC", `${dcPeak} kW`],
+        ["Chargeur AC", `${formatNumber(vehicle.chargingAC.onboardCharger_kW, Number.isInteger(vehicle.chargingAC.onboardCharger_kW) ? 0 : 1)} kW · ${vehicle.chargingAC.phases} phase${vehicle.chargingAC.phases > 1 ? "s" : ""}`],
+      ],
+    },
+    {
+      title: "Dimensions & poids",
+      rows: [
+        ["Longueur", formatMm(vehicle.length_mm)],
+        ["Largeur", formatMm(vehicle.width_mm)],
+        ["Hauteur", formatMm(vehicle.height_mm)],
+        ["Empattement", formatMm(vehicle.wheelbase_mm)],
+        ...(vehicle.mass_kg ? [["Poids", `${formatNumber(vehicle.mass_kg)} kg`] as [string, string]] : []),
+        ["Cx aéro", formatNumber(vehicle.dragCoefficient_Cx, 2)],
+      ],
+    },
+    {
+      title: "Pratique & garantie",
+      rows: [
+        ["Coffre", formatLiters(vehicle.trunkCapacity_L)],
+        ["Coffre rabattu", formatLiters(vehicle.trunkCapacityFolded_L)],
+        ...(vehicle.frunkCapacity_L ? [["Coffre avant", formatLiters(vehicle.frunkCapacity_L)] as [string, string]] : []),
+        ["Garantie véhicule", `${vehicle.warranty.vehicle_years} ans / ${formatNumber(vehicle.warranty.vehicle_km)} km`],
+        ["Garantie batterie", `${vehicle.warranty.battery_years} ans / ${formatNumber(vehicle.warranty.battery_km)} km · ${vehicle.warranty.battery_soh_minimum_percent} % SoH`],
+        ["Production", `${vehicle.assemblyPlant}, ${vehicle.productionCountry}`],
+        ["Disponibilité", `${vehicle.marketAvailability} (${vehicle.releaseYear})`],
+      ],
+    },
+  ];
+
+  return {
+    config,
+    nyland90,
+    wheelPenalty,
+    batteryCapacity,
+    nylandRangeEstimate,
+    priceAfterAids,
+    realRange,
+    rangeConfidence,
+    isRangeMeasured,
+    heroRangeLabel,
+    wltpKm,
+    wltpGapPct,
+    winterLossPct,
+    dcMin,
+    dcPeak,
+    dcKwh30,
+    consoMixed,
+    rangeTests,
+    specGroups,
+  };
+});
+
+const hasVerdict = vehicle.verdict.strengths.length > 0 || vehicle.verdict.weaknesses.length > 0;
+
+// Sommaire collant de la fiche (ordre = ordre de lecture)
+const tocSections = [
+  ...(hasVerdict ? [{ id: "verdict", label: "Verdict" }] : []),
+  { id: "autonomie", label: "Autonomie" },
+  { id: "recharge", label: "Recharge" },
+  { id: "prix", label: "Prix & aides" },
+  { id: "fiche-technique", label: "Fiche technique" },
+  { id: "sources", label: "Tests & sources" },
+  { id: "faq", label: "Questions" },
+];
+
 ---
 
 <BaseLayout title={`${vehicle.brand} ${vehicle.model} : Prix, Autonomie Réelle & Verdict | Evly`} description={description} jsonLd={pageJsonLd}>
   <!-- Fil d'ariane -->
-  <div class="container-edit pt-4 md:pt-6 fade-rise">
+  <div class="container-edit pt-2 md:pt-3 fade-rise">
     <nav aria-label="Fil d'ariane" class="font-mono text-[11px] md:text-xs text-[var(--color-text-faint)] flex items-center gap-2 flex-wrap">
-      <a href={url("/")} class="hover:text-[var(--color-text-muted)] min-h-[44px] inline-flex items-center">Accueil</a>
+      <a href={url("/")} class="hover:text-[var(--color-text-muted)] min-h-[32px] inline-flex items-center">Accueil</a>
       <span aria-hidden="true">/</span>
-      <a href={url("/vehicules")} class="hover:text-[var(--color-text-muted)] min-h-[44px] inline-flex items-center">Véhicules</a>
+      <a href={url("/vehicules")} class="hover:text-[var(--color-text-muted)] min-h-[32px] inline-flex items-center">Véhicules</a>
       <span aria-hidden="true">/</span>
-      <span class="text-[var(--color-text-muted)] inline-flex items-center min-h-[44px]">{vehicle.brand} {vehicle.model}</span>
+      <span class="text-[var(--color-text-muted)] inline-flex items-center min-h-[32px]">{vehicle.brand} {vehicle.model}</span>
     </nav>
   </div>
 
-  <div class="vehicle-page py-6 md:py-10">
+  <div class="vehicle-page pt-2 pb-8 md:pt-3 md:pb-12">
     <!-- Main content -->
     <div class="vehicle-main">
       {vehicle.configurations.length > 1 && (
-        <div class="mb-6 md:mb-8 fade-rise xl:hidden">
+        <div class="mb-3 fade-rise xl:hidden">
           <VehicleConfigSelector client:idle vehicle={vehicle} />
         </div>
       )}
 
-      <div class="mb-6 md:mb-8 fade-rise xl:hidden bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-4 flex flex-col gap-4">
-        <SohSlider client:idle />
-        <div class="border-t border-[var(--color-border)] border-dashed pt-4">
-          <TemperatureSlider client:idle chemistry={vehicle.chemistry} />
-        </div>
-        <div class="border-t border-[var(--color-border)] border-dashed pt-4 flex flex-col gap-2">
-          <a
-            href={url(`/comparer/?v=${vehicle.slug}:${configurations[0]?.id}`)}
-            class="sidebar-cta w-full"
-            id="compare-link-mobile"
-          >
-            Comparer ce modèle
-          </a>
-          <a
-            href={url(`/simulateur/?v=${vehicle.slug}`)}
-            class="sidebar-tco-btn w-full"
-            id="tco-simulator-link-mobile"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-            </svg>
-            Calculateur TCO (coût réel)
-          </a>
-        </div>
-
-        <div class="border-t border-[var(--color-border)] border-dashed pt-3 flex flex-col gap-1.5 sidebar-meta">
-          <div class="sidebar-meta-row">
-            <span>Garantie</span>
-            <span>{vehicle.warranty.vehicle_years} ans / {(vehicle.warranty.vehicle_km / 1000).toFixed(0)}k km</span>
-          </div>
-          <div class="sidebar-meta-row">
-            <span>Batterie</span>
-            <span>{vehicle.warranty.battery_years} ans / {vehicle.warranty.battery_soh_minimum_percent}% SoH</span>
-          </div>
-          <div class="sidebar-meta-row">
-            <span>Coffre</span>
-            <span>{vehicle.trunkCapacity_L} L {vehicle.frunkCapacity_L ? `(+ ${vehicle.frunkCapacity_L} L frunk)` : ""}</span>
-          </div>
-          {vehicle.assemblyPlant && (
-            <div class="sidebar-meta-row">
-              <span>Production</span>
-              <span>{vehicle.assemblyPlant}, {vehicle.productionCountry}</span>
-            </div>
-          )}
-          <div class="sidebar-meta-row">
-            <span>Maj.</span>
-            <span>{formatDate(vehicle.lastUpdated)}</span>
-          </div>
-        </div>
-      </div>
-
+      <!-- ═══ 1. Identité + l'essentiel en 10 secondes ═══ -->
       <BentoGrid>
-      {configurations.map((config, index) => {
-        // Compute config-specific values
-        const nyland90 = config.rangeTests.find((t: any) => t.protocol === "nyland" && t.speed_kmh === 90);
-        const wheelPenalty = getWheelRangePenalty(config, vehicle.configurations);
-        
-        let batteryCapacity = config.usableCapacity_kWh;
-        if (batteryCapacity == null) {
-          const labelMatch = config.label?.match(/(\d+(?:\.\d+)?)\s*kWh/);
-          if (labelMatch) {
-            batteryCapacity = parseFloat(labelMatch[1]);
-          } else {
-            const trimMatch = config.trim?.match(/(\d+(?:\.\d+)?)\s*kWh/);
-            if (trimMatch) {
-              batteryCapacity = parseFloat(trimMatch[1]);
-            } else {
-              const parseKwh = (s: string) => {
-                const m = s.match(/(\d+(?:[.,]\d+)?)/);
-                return m ? Math.round(parseFloat(m[1].replace(",", "."))) : null;
-              };
-              const uniqueKwh = [
-                ...new Set(
-                  vehicle.trims
-                    .map((t) => parseKwh(t.batteryUsed))
-                    .filter((v): v is number => v !== null)
-                ),
-              ].sort((a, b) => a - b);
-              const maxKwh = uniqueKwh.length > 0 ? Math.max(...uniqueKwh) : vehicle.usableCapacity_kWh;
-              const minKwh = uniqueKwh.length > 0 ? Math.min(...uniqueKwh) : vehicle.usableCapacity_kWh;
-              batteryCapacity = config.battery === "long-range" ? maxKwh : minKwh;
-            }
-          }
-        }
-        
-        const nylandRangeEstimate = nyland90 ? Math.round((batteryCapacity / nyland90.consumption_kWh_100km) * 100) : null;
-        const priceAfterAids = config.price_EUR != null ? Math.max(0, config.price_EUR - totalAids) : null;
-        const realRangeMixed = config.realRange?.mixed_km ?? vehicle.realRange.mixed_km;
-        const rangeConfidence = config.realRange?.confidence ?? vehicle.realRange.confidence;
-        const isRangeMeasured = rangeConfidence === "tested" || rangeConfidence === "bjorn_nyland";
-        const heroRangeLabel = nyland90
-          ? "Autonomie réelle à 90 km/h, conso mesurée Nyland"
-          : isRangeMeasured
-            ? "Autonomie réelle mixte mesurée"
-            : rangeConfidence === "manufacturer"
-              ? "Autonomie mixte, donnée constructeur"
-              : "Autonomie réelle mixte estimée";
-        
-        return (
-          <div data-config-id={config.id} style={{ display: index === 0 ? "contents" : "none" }} class="config-wrapper">
-            <!-- HERO TILE -->
-            <Tile size="full" variant="elevated" class="md:!p-10 lg:!p-12">
-              <div class="flex flex-wrap items-center gap-x-4 gap-y-2 mb-6 md:mb-8 fade-rise">
-                <span class="label-eyebrow">{vehicle.segment}</span>
-                <span class="label-eyebrow">{vehicle.bodyType}</span>
-                <span class="label-eyebrow">{vehicle.drivetrain} · {vehicle.architecture_V} V</span>
-                {config.leasingSocialEligible && <Tag tone="accent" mono>Leasing social</Tag>}
-              </div>
-
-              <div class="flex flex-col gap-5 md:gap-6 relative">
-                {BrandLogo ? (
-                  <div class="h-5 md:h-6 mb-[-1rem] relative z-10 fade-rise fade-rise-delay-1 flex items-start">
-                    <img src={typeof BrandLogo === 'string' ? BrandLogo : BrandLogo.src} alt={vehicle.brand} class="h-full w-auto object-contain brand-logo" />
+        {configViews.map((cv, index) => (
+          <div data-config-id={cv.config.id} style={{ display: index === 0 ? "contents" : "none" }} class="config-wrapper">
+            <Tile size="full" variant="elevated" class="md:!p-7 lg:!p-8 !overflow-visible">
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+                <!-- Gauche : identité + autonomie -->
+                <div class="lg:col-span-6 flex flex-col gap-4 min-w-0">
+                  <div class="flex flex-wrap items-center gap-x-4 gap-y-2 fade-rise">
+                    <span class="label-eyebrow">{vehicle.segment}</span>
+                    <span class="label-eyebrow">{vehicle.bodyType}</span>
+                    <span class="label-eyebrow">{vehicle.drivetrain} · {vehicle.architecture_V} V</span>
+                    {cv.config.leasingSocialEligible && <Tag tone="accent" mono>Leasing social</Tag>}
                   </div>
-                ) : (
-                  <p class="font-mono text-xs md:text-sm text-[var(--color-text-muted)] fade-rise fade-rise-delay-1 relative z-10">{vehicle.brand}</p>
-                )}
-                <h1 class="display-1 fade-rise fade-rise-delay-1 md:max-w-[55%] relative z-10">
-                  {vehicle.model}
-                  <span class="block text-[var(--color-text-muted)] mt-1.5 text-[0.5em] md:text-[0.55em] tracking-[-0.01em] font-medium">
-                    {config.label}
-                  </span>
-                </h1>
 
-                {VehicleImage && (
-                  <div class="w-full md:absolute md:top-1/2 md:-translate-y-[60%] lg:-translate-y-1/2 md:right-0 md:w-[48%] lg:w-[55%] flex justify-center md:justify-end items-center pointer-events-none z-0 mt-4 md:mt-0">
-                    <img
-                      src={VehicleImage.src}
-                      alt={`${vehicle.brand} ${vehicle.model} ${vehicle.variant}`}
-                      loading="eager"
-                      class="w-[110%] max-w-[400px] md:w-[120%] md:max-w-[700px] h-auto object-contain vehicle-hero-img md:translate-x-8"
-                    />
-                  </div>
-                )}
-
-                <div class="mt-2 md:mt-4 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-end relative z-10">
-                  <div class="md:col-span-7 flex flex-col gap-2">
-                    <div class="flex items-center gap-2">
-                      <span class="label-eyebrow">
-                        {heroRangeLabel}
-                      </span>
-                      {nyland90 && <SourceTooltip sourceId="nyland" date={nyland90.testDate ?? undefined} />}
-                    </div>
-                    <div class="flex items-baseline gap-3 md:gap-4">
-                      <span data-numeric class="display-stat text-[var(--color-accent)] text-[clamp(4rem,16vw,10rem)] leading-[0.85] soh-update-range" data-base-range={nylandRangeEstimate ?? realRangeMixed}>
-                        {nylandRangeEstimate ?? realRangeMixed}
-                      </span>
-                      <span class="font-mono text-xl md:text-2xl text-[var(--color-text-faint)]">km</span>
-                    </div>
-                    {nyland90 ? (
-                      <p class="font-mono text-[11px] md:text-xs text-[var(--color-text-faint)] leading-relaxed">
-                        Conso mesurée à {nyland90.consumption_kWh_100km.toString().replace(".", ",")} kWh/100&nbsp;km, batterie utile <span class="soh-update-text-capacity font-semibold" data-base-capacity={batteryCapacity}>{batteryCapacity.toString().replace(".", ",")}</span> kWh, WLTP annoncée <span class="soh-update-text-wltp font-semibold" data-base-wltp={config.wltp_km}>{config.wltp_km}</span> km.
-                      </p>
+                  <div class="flex flex-col gap-2">
+                    {BrandLogo ? (
+                      <div class="h-5 md:h-6 fade-rise fade-rise-delay-1 flex items-start">
+                        <img src={typeof BrandLogo === 'string' ? BrandLogo : BrandLogo.src} alt={vehicle.brand} class="h-full w-auto object-contain brand-logo" />
+                      </div>
                     ) : (
-                      <p class="font-mono text-[11px] md:text-xs text-[var(--color-text-faint)] leading-relaxed">
-                        conso mixte {(config.wltp_consumption_kWh_100km ?? vehicle.consumption_mixed_kWh_per_100km).toString().replace(".", ",")} kWh/100&nbsp;km, WLTP annoncée <span class="soh-update-text-wltp font-semibold" data-base-wltp={config.wltp_km ?? vehicle.wltp_max_km}>{config.wltp_km ?? vehicle.wltp_max_km}</span> km
-                      </p>
+                      <p class="font-mono text-xs md:text-sm text-[var(--color-text-muted)] fade-rise fade-rise-delay-1">{vehicle.brand}</p>
                     )}
+                    <h1 class="display-1 fade-rise fade-rise-delay-1">
+                      {vehicle.model}
+                      <span class="block text-[var(--color-text-muted)] mt-1 text-[0.5em] tracking-[-0.01em] font-medium">
+                        {cv.config.label}
+                      </span>
+                    </h1>
+                  </div>
 
-                    <!-- Badges indicateurs d'écart WLTP et d'impact hiver -->
-                    <div class="flex items-center gap-2 mt-2 flex-wrap">
-                      <Tag tone="warning" mono size="sm">
-                        -{Math.round((1 - (config.realRange?.mixed_km ?? vehicle.realRange.mixed_km) / (config.wltp_km ?? vehicle.wltp_max_km)) * 100)} % vs WLTP
-                      </Tag>
-                      <Tag tone="danger" mono size="sm">
-                        -{Math.round((1 - (config.realRange?.winter_minus5_km ?? vehicle.realRange.winter_minus5_km) / (config.realRange?.mixed_km ?? vehicle.realRange.mixed_km)) * 100)} % en hiver (−5°C)
-                      </Tag>
-                      {wheelPenalty && (
-                        <span class="font-mono text-[10px] text-[var(--color-text-faint)]">
-                          (dont -{wheelPenalty.pct}% jantes {wheelPenalty.currentSize}")
+                  <div class="flex flex-col gap-1.5 mt-1" data-hint-group>
+                    <div class="stat-hint" tabindex="0" aria-describedby={`hint-range-${cv.config.id}`}>
+                      <div class="flex items-center gap-2">
+                        <span class="label-eyebrow inline-flex items-center gap-1.5">{cv.heroRangeLabel}<svg class="stat-hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path stroke-linecap="round" d="M12 11v5M12 8h.01" /></svg></span>
+                        {cv.nyland90 && <SourceTooltip sourceId="nyland" date={cv.nyland90.testDate ?? undefined} />}
+                      </div>
+                      <div class="flex items-baseline gap-3 mt-1.5">
+                        <span data-numeric class="display-stat text-[var(--color-accent)] text-[clamp(3.5rem,11vw,7rem)] leading-[0.85] soh-update-range" data-base-range={cv.nylandRangeEstimate ?? cv.realRange.mixed_km}>
+                          {cv.nylandRangeEstimate ?? cv.realRange.mixed_km}
+                        </span>
+                        <span class="font-mono text-xl md:text-2xl text-[var(--color-text-faint)]">km</span>
+                      </div>
+                      <div class="stat-hint-detail" id={`hint-range-${cv.config.id}`}>
+                        <span>
+                        {cv.nyland90 ? (
+                          <span>
+                            Conso mesurée à {formatNumber(cv.nyland90.consumption_kWh_100km, 1)} kWh/100&nbsp;km, batterie utile <span class="soh-update-text-capacity font-semibold" data-base-capacity={cv.batteryCapacity}>{formatNumber(cv.batteryCapacity, Number.isInteger(cv.batteryCapacity) ? 0 : 1)}</span> kWh, WLTP annoncée <span class="soh-update-text-wltp font-semibold" data-base-wltp={cv.wltpKm}>{cv.wltpKm}</span> km.
+                          </span>
+                        ) : (
+                          <span>
+                            Conso mixte {formatNumber(cv.consoMixed, 1)} kWh/100&nbsp;km, WLTP annoncée <span class="soh-update-text-wltp font-semibold" data-base-wltp={cv.wltpKm}>{cv.wltpKm}</span> km
+                          </span>
+                        )}
+                        </span>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-2 mt-1 flex-wrap">
+                      <Tag tone="warning" mono>-{cv.wltpGapPct} % vs WLTP</Tag>
+                      <Tag tone="danger" mono>-{cv.winterLossPct} % en hiver (-5 °C)</Tag>
+                      {cv.wheelPenalty && (
+                        <span class="font-mono text-[11px] text-[var(--color-text-faint)]">
+                          (dont -{cv.wheelPenalty.pct} % jantes {cv.wheelPenalty.currentSize}")
                         </span>
                       )}
                     </div>
                   </div>
                 </div>
-              </div>
-            </Tile>
 
-            <!-- 1x1 : capacité batterie -->
-            <Tile size="1x1" label="Batterie utile" class="reveal">
-              <div class="soh-update-capacity" data-base-capacity={batteryCapacity}>
-                <TileStat value={batteryCapacity.toString().replace(".", ",")} unit="kWh" size="xl" hint={`${vehicle.chemistry} · ${vehicle.architecture_V} V`} />
-              </div>
-            </Tile>
-
-            <!-- 2x1 : Synthèse Recharge DC & AC avec volet courbe dépliable -->
-            <Tile size="2x1" variant="elevated" label="Recharge DC & AC" source={vehicle.chargingDC.confidence === "tested" ? "nyland" : undefined} class="reveal">
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 my-auto">
-                <div class="flex flex-col gap-1">
-                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">10 → 80 % DC</span>
-                  <div class="flex items-baseline gap-1">
-                    <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-accent)]">{config.chargingDC_10_80_min ?? vehicle.chargingDC.time_10_80_min}</span>
-                    <span class="font-mono text-xs text-[var(--color-text-faint)]">min</span>
-                  </div>
-                  <span class="font-mono text-[10px] text-[var(--color-text-faint)]">bornes rapides DC</span>
-                </div>
-
-                <div class="flex flex-col gap-1">
-                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Pic DC</span>
-                  <div class="flex items-baseline gap-1">
-                    <span data-numeric class="display-stat text-2xl md:text-3xl">{config.chargingDC_peak_kW ?? vehicle.chargingDC.peakPower_kW}</span>
-                    <span class="font-mono text-xs text-[var(--color-text-faint)]">kW</span>
-                  </div>
-                  <span class="font-mono text-[10px] text-[var(--color-text-faint)]">{vehicle.architecture_V} V</span>
-                </div>
-
-                <div class="flex flex-col gap-1">
-                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">+30 min DC</span>
-                  <div class="flex items-baseline gap-1">
-                    <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-accent)]">+{Math.round(((config.chargingDC_kWh_30min ?? vehicle.chargingDC.kWh_added_30min) / (config.wltp_consumption_kWh_100km ?? vehicle.consumption_mixed_kWh_per_100km)) * 100)}</span>
-                    <span class="font-mono text-xs text-[var(--color-text-faint)]">km</span>
-                  </div>
-                  <span class="font-mono text-[10px] text-[var(--color-text-faint)]">({config.chargingDC_kWh_30min ?? vehicle.chargingDC.kWh_added_30min} kWh)</span>
-                </div>
-
-                <div class="flex flex-col gap-1">
-                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">0 → 100 % AC</span>
-                  <div class="flex items-baseline gap-1">
-                    <span data-numeric class="display-stat text-2xl md:text-3xl">{formatHours(vehicle.chargingAC.time_0_100_h)}</span>
-                  </div>
-                  <span class="font-mono text-[10px] text-[var(--color-text-faint)]">{vehicle.chargingAC.onboardCharger_kW} kW wallbox</span>
-                </div>
-              </div>
-
-              <details class="group mt-3 pt-3 border-t border-[var(--color-border)]">
-                <summary class="cursor-pointer font-mono text-[11px] text-[var(--color-text-muted)] hover:text-[var(--color-text)] flex items-center justify-between transition-colors list-none select-none">
-                  <span class="flex items-center gap-2">
-                    <svg class="w-3.5 h-3.5 text-[var(--color-accent)] transition-transform duration-200 group-open:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
-                    Voir la courbe de puissance détaillée (kW / SoC)
-                  </span>
-                  <Tag tone="outline" mono>{confidenceLabel[vehicle.chargingDC.confidence] ?? vehicle.chargingDC.confidence}</Tag>
-                </summary>
-                <div class="pt-4">
-                  {(config.chargingCurve ?? vehicle.chargingCurve) ? (
-                    <ChargingCurve client:visible curve={config.chargingCurve ?? vehicle.chargingCurve!} peakPower_kW={config.chargingDC_peak_kW ?? vehicle.chargingDC.peakPower_kW} vehicleName={`${vehicle.brand} ${vehicle.model}`} />
-                  ) : (
-                    <p class="text-[var(--color-text-faint)] font-mono text-xs mt-2">Données non mesurées.</p>
+                <!-- Droite : photo + chiffres clés -->
+                <div class="lg:col-span-6 flex flex-col gap-5 min-w-0">
+                  {VehicleImage && (
+                    <div class="flex justify-center items-end pointer-events-none">
+                      <img
+                        src={VehicleImage.src}
+                        alt={`${vehicle.brand} ${vehicle.model} ${vehicle.variant}`}
+                        loading={index === 0 ? "eager" : "lazy"}
+                        fetchpriority={index === 0 ? "high" : undefined}
+                        class="w-full max-w-[560px] max-h-[260px] h-auto object-contain vehicle-hero-img"
+                      />
+                    </div>
                   )}
-                </div>
-              </details>
-            </Tile>
 
-            <!-- 1x1 : volume coffre -->
-            <Tile size="1x1" label="Volume du coffre" class="reveal">
-              <TileStat value={vehicle.trunkCapacity_L.toString()} unit="L" size="xl" hint={(vehicle.frunkCapacity_L && vehicle.frunkCapacity_L > 0 ? `+ ${vehicle.frunkCapacity_L} L (frunk) · ` : "") + (vehicle.trunkCapacityFolded_L ? `${vehicle.trunkCapacityFolded_L} L rabattu` : "Sièges en position normale")} />
-            </Tile>
-
-            <!-- 2x2 : autonomie par usage (chart) -->
-            <Tile size="2x2" variant="elevated" label="Autonomie par usage" class="reveal">
-              <div class="flex items-center justify-between gap-3 -mt-2 mb-3">
-                <h3 class="font-display text-base md:text-lg font-semibold tracking-[-0.01em]">{isRangeMeasured ? "Quatre profils mesurés" : "Quatre profils d'usage"}</h3>
-                <Tag tone="outline" mono>{confidenceLabel[config.realRange?.confidence ?? vehicle.realRange.confidence] ?? (config.realRange?.confidence ?? vehicle.realRange.confidence)}</Tag>
-              </div>
-              <SeasonalRange client:visible urban={config.realRange?.urban_km ?? vehicle.realRange.urban_km} mixed={config.realRange?.mixed_km ?? vehicle.realRange.mixed_km} highway={config.realRange?.highway_130_km ?? vehicle.realRange.highway_130_km} winter={config.realRange?.winter_minus5_km ?? vehicle.realRange.winter_minus5_km} vehicleName={`${vehicle.brand} ${vehicle.model} ${config.trim}`} />
-            </Tile>
-
-            <!-- 1x1 : performances -->
-            <Tile size="1x1" label="Performances" class="reveal">
-              <div class="flex flex-col gap-2 mt-auto">
-                <div class="flex justify-between items-baseline border-b border-[var(--color-border)] border-dashed pb-1.5 last:border-0 last:pb-0">
-                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">0 → 100 km/h</span>
-                  <span class="font-mono text-sm font-semibold text-[var(--color-text)]">
-                    {(config.acceleration_0_100_s ?? vehicle.acceleration_0_100_s).toString().replace(".", ",")} <span class="text-[var(--color-text-faint)] text-[10px] font-normal">s</span>
-                  </span>
-                </div>
-                <div class="flex justify-between items-baseline border-b border-[var(--color-border)] border-dashed pb-1.5 last:border-0 last:pb-0">
-                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Puissance</span>
-                  <span class="font-mono text-sm font-semibold text-[var(--color-text)]">
-                    {config.power_hp ?? vehicle.power_hp} <span class="text-[var(--color-text-faint)] text-[10px] font-normal">ch</span>
-                    <span class="text-[var(--color-text-faint)] text-[10px] font-normal">({config.power_kW ?? vehicle.power_kW} kW)</span>
-                  </span>
-                </div>
-                <div class="flex justify-between items-baseline border-b border-[var(--color-border)] border-dashed pb-1.5 last:border-0 last:pb-0">
-                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Vitesse max</span>
-                  <span class="font-mono text-sm font-semibold text-[var(--color-text)]">
-                    {config.topSpeed_kmh ?? vehicle.topSpeed_kmh} <span class="text-[var(--color-text-faint)] text-[10px] font-normal">km/h</span>
-                  </span>
-                </div>
-                <div class="flex justify-between items-baseline last:border-0 last:pb-0">
-                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Cx aéro</span>
-                  <span class="font-mono text-sm font-semibold text-[var(--color-accent)]">
-                    {vehicle.dragCoefficient_Cx.toString().replace(".", ",")}
-                  </span>
-                </div>
-              </div>
-            </Tile>
-
-            <!-- 1x1 : garantie & origine -->
-            <Tile size="1x1" label="Garantie & Origine" class="reveal">
-              <div class="flex flex-col gap-2 mt-auto">
-                <div class="flex justify-between items-baseline border-b border-[var(--color-border)] border-dashed pb-1.5 last:border-0 last:pb-0">
-                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Garantie Véh.</span>
-                  <span class="font-mono text-sm font-semibold text-[var(--color-text)]">
-                    {vehicle.warranty.vehicle_years} <span class="text-[var(--color-text-faint)] text-[10px] font-normal">ans</span>
-                    {vehicle.warranty.vehicle_km > 0 && (
-                      <span class="text-[var(--color-text-faint)] text-[10px] font-normal"> / {(vehicle.warranty.vehicle_km / 1000).toFixed(0)}k km</span>
+                  <!--
+                    L'essentiel. Sur grand écran, prix et leasing sont déjà dans la sidebar :
+                    on les remplace par puissance et garantie batterie pour éviter les doublons.
+                  -->
+                  <dl class="stat-hints pt-4 border-t border-[var(--color-border)]" data-hint-group>
+                    <div class="flex flex-col gap-0.5 xl:hidden stat-hint" tabindex="0" aria-describedby={`hint-prix-${cv.config.id}`}>
+                      <dt class="label-eyebrow inline-flex items-center gap-1.5">Prix<svg class="stat-hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path stroke-linecap="round" d="M12 11v5M12 8h.01" /></svg></dt>
+                      <dd data-numeric class="display-stat text-2xl">
+                        {cv.config.price_EUR != null ? formatPrice(cv.config.price_EUR) : "NC"}
+                      </dd>
+                      <dd class="stat-hint-detail" id={`hint-prix-${cv.config.id}`}><span>
+                        {cv.priceAfterAids != null && totalAids > 0
+                          ? `Hors options. Dès ${formatPrice(cv.priceAfterAids)} après ${formatPrice(totalAids)} d'aides max.`
+                          : "Hors options, avant aides."}
+                      </span></dd>
+                    </div>
+                    <div class="flex flex-col gap-0.5 stat-hint" tabindex="0" aria-describedby={`hint-recharge-${cv.config.id}`}>
+                      <dt class="label-eyebrow inline-flex items-center gap-1.5">Recharge 10 → 80 %<svg class="stat-hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path stroke-linecap="round" d="M12 11v5M12 8h.01" /></svg></dt>
+                      <dd data-numeric class="display-stat text-2xl">{cv.dcMin}<span class="font-mono text-sm text-[var(--color-text-faint)] ml-1">min</span></dd>
+                      <dd class="stat-hint-detail" id={`hint-recharge-${cv.config.id}`}><span>Sur borne rapide, pic à {cv.dcPeak} kW. À domicile (wallbox {vehicle.chargingAC.onboardCharger_kW} kW), 0 → 100 % en {formatHours(vehicle.chargingAC.time_0_100_h)}.</span></dd>
+                    </div>
+                    <div class="flex flex-col gap-0.5 stat-hint" tabindex="0" aria-describedby={`hint-coffre-${cv.config.id}`}>
+                      <dt class="label-eyebrow inline-flex items-center gap-1.5">Coffre<svg class="stat-hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path stroke-linecap="round" d="M12 11v5M12 8h.01" /></svg></dt>
+                      <dd data-numeric class="display-stat text-2xl">{vehicle.trunkCapacity_L}<span class="font-mono text-sm text-[var(--color-text-faint)] ml-1">L</span></dd>
+                      <dd class="stat-hint-detail" id={`hint-coffre-${cv.config.id}`}><span>
+                        {vehicle.trunkCapacityFolded_L} L sièges rabattus{vehicle.frunkCapacity_L ? `, +${vehicle.frunkCapacity_L} L de coffre avant` : ""}.
+                      </span></dd>
+                    </div>
+                    <div class="hidden xl:flex flex-col gap-0.5 stat-hint" tabindex="0" aria-describedby={`hint-puissance-${cv.config.id}`}>
+                      <dt class="label-eyebrow inline-flex items-center gap-1.5">Puissance<svg class="stat-hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path stroke-linecap="round" d="M12 11v5M12 8h.01" /></svg></dt>
+                      <dd data-numeric class="display-stat text-2xl">{cv.config.power_hp ?? vehicle.power_hp}<span class="font-mono text-sm text-[var(--color-text-faint)] ml-1">ch</span></dd>
+                      <dd class="stat-hint-detail" id={`hint-puissance-${cv.config.id}`}><span>{cv.config.power_kW ?? vehicle.power_kW} kW, {formatNm(cv.config.torque_Nm ?? vehicle.torque_Nm)}. 0 → 100 km/h en {formatSeconds(cv.config.acceleration_0_100_s ?? vehicle.acceleration_0_100_s)}.</span></dd>
+                    </div>
+                    {cv.config.leasingSocialEligible && cv.config.monthlyLease_EUR && (
+                      <div class="flex flex-col gap-0.5 xl:hidden stat-hint" tabindex="0" aria-describedby={`hint-leasing-${cv.config.id}`}>
+                        <dt class="label-eyebrow inline-flex items-center gap-1.5">Leasing social<svg class="stat-hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path stroke-linecap="round" d="M12 11v5M12 8h.01" /></svg></dt>
+                        <dd data-numeric class="display-stat text-2xl text-[var(--color-accent)]">{cv.config.monthlyLease_EUR}<span class="font-mono text-sm text-[var(--color-text-faint)] ml-1">€/mois</span></dd>
+                        <dd class="stat-hint-detail" id={`hint-leasing-${cv.config.id}`}><span>Barème 2026, sous conditions de revenus. 1<sup>er</sup> loyer pris en charge.</span></dd>
+                      </div>
                     )}
-                  </span>
-                </div>
-                <div class="flex justify-between items-baseline border-b border-[var(--color-border)] border-dashed pb-1.5 last:border-0 last:pb-0">
-                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Garantie Batt.</span>
-                  <span class="font-mono text-sm font-semibold text-[var(--color-text)]">
-                    {vehicle.warranty.battery_years} <span class="text-[var(--color-text-faint)] text-[10px] font-normal">ans</span>
-                    <span class="text-[var(--color-text-faint)] text-[10px] font-normal"> / {vehicle.warranty.battery_soh_minimum_percent}% SoH</span>
-                  </span>
-                </div>
-                {vehicle.assemblyPlant && (
-                  <div class="flex justify-between items-baseline border-b border-[var(--color-border)] border-dashed pb-1.5 last:border-0 last:pb-0">
-                    <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Production</span>
-                    <span class="font-mono text-sm font-semibold text-[var(--color-text)] whitespace-nowrap overflow-hidden text-ellipsis max-w-[120px]" title={vehicle.assemblyPlant}>
-                      {vehicle.assemblyPlant}
-                    </span>
-                  </div>
-                )}
-                <div class="flex justify-between items-baseline last:border-0 last:pb-0">
-                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Pays</span>
-                  <span class="font-mono text-sm font-semibold text-[var(--color-text)]">
-                    {vehicle.productionCountry}
-                  </span>
+                    <div tabindex="0" aria-describedby={`hint-garantie-${cv.config.id}`} class:list={["stat-hint flex-col gap-0.5", cv.config.leasingSocialEligible && cv.config.monthlyLease_EUR ? "hidden xl:flex" : "flex"]}>
+                      <dt class="label-eyebrow inline-flex items-center gap-1.5">Garantie batterie<svg class="stat-hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path stroke-linecap="round" d="M12 11v5M12 8h.01" /></svg></dt>
+                      <dd data-numeric class="display-stat text-2xl">{vehicle.warranty.battery_years}<span class="font-mono text-sm text-[var(--color-text-faint)] ml-1">ans</span></dd>
+                      <dd class="stat-hint-detail" id={`hint-garantie-${cv.config.id}`}><span>{vehicle.warranty.battery_years} ans ou {formatNumber(vehicle.warranty.battery_km)} km, avec au moins {vehicle.warranty.battery_soh_minimum_percent} % de capacité garantie.</span></dd>
+                    </div>
+                  </dl>
                 </div>
               </div>
             </Tile>
+          </div>
+        ))}
+      </BentoGrid>
 
+      <!-- Actions mobiles / tablette (la sidebar les porte sur grand écran) -->
+      <div class="xl:hidden mt-3 flex items-center gap-2">
+        <FavoriteButton client:idle slug={vehicle.slug} size={16} className="sidebar-fav-btn" />
+        <a
+          href={url(`/comparer/?v=${vehicle.slug}:${configurations[0]?.id}`)}
+          class="sidebar-cta flex-1"
+          id="compare-link-mobile"
+        >
+          Comparer
+        </a>
+        <a
+          href={url(`/simulateur/?v=${vehicle.slug}`)}
+          class="sidebar-tco-btn flex-1"
+          id="tco-simulator-link-mobile"
+        >
+          Coût réel (TCO)
+        </a>
+      </div>
 
+      <!-- ═══ Sommaire collant ═══ -->
+      <nav class="vehicle-toc" aria-label="Sections de la fiche">
+        <ul>
+          {tocSections.map((s) => (
+            <li><a href={`#${s.id}`} data-toc-link={s.id}>{s.label}</a></li>
+          ))}
+        </ul>
+      </nav>
 
-            <!-- 2x1 : 1000 km challenge -->
-            {tkc && (
-              <Tile size="2x1" variant={tkcHasData ? "accent" : "outlined"} label="1000 km challenge" source={tkc.sourceId} sourceDate={tkc.testDate ?? undefined} class="reveal">
-                <div class="flex items-center justify-between gap-3 -mt-2 mb-3">
-                  <h3 class="font-display text-base md:text-lg font-semibold tracking-[-0.01em]">Protocole Nyland</h3>
-                  <Tag tone={tkcHasData ? "accent" : "warning"} mono>{confidenceLabel[tkc.confidence] ?? tkc.confidence}</Tag>
+      <!-- ═══ 2. Verdict (la valeur ajoutée d'Evly, avant les chiffres de détail) ═══ -->
+      {hasVerdict && (
+        <section id="verdict" class="vehicle-section" aria-labelledby="verdict-title">
+          <header class="vehicle-section-head">
+            <h2 id="verdict-title" class="vehicle-section-title">Verdict</h2>
+            <p class="vehicle-section-sub">Notre avis indépendant : pour qui, et pour qui pas.</p>
+          </header>
+          <BentoGrid>
+            <Tile size="full" class="reveal">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-[var(--color-border)] rounded-lg overflow-hidden mb-5">
+                <div class="bg-[var(--color-surface)] p-4 md:p-5 flex flex-col gap-2">
+                  <h3 class="label-eyebrow text-[var(--color-accent)]">Pour qui</h3>
+                  <p class="text-[var(--color-text)] text-base leading-relaxed">{vehicle.verdict.idealUserProfile}</p>
                 </div>
-                {tkcHasData ? (
-                  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-auto">
-                    <div class="flex flex-col gap-1">
-                      <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Temps</span>
-                      <span data-numeric class="display-stat text-2xl md:text-3xl">{tkc.totalTime_minutes ?? "n/c"}<span class="text-sm text-[var(--color-text-faint)] ml-1 font-mono">min</span></span>
-                    </div>
-                    <div class="flex flex-col gap-1">
-                      <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Vit. moy</span>
-                      <span data-numeric class="display-stat text-2xl md:text-3xl">{tkc.averageSpeed_kmh ?? "n/c"}<span class="text-sm text-[var(--color-text-faint)] ml-1 font-mono">km/h</span></span>
-                    </div>
-                    <div class="flex flex-col gap-1">
-                      <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Conso</span>
-                      <span data-numeric class="display-stat text-2xl md:text-3xl">{tkc.averageConsumption_Wh_km ?? "n/c"}<span class="text-sm text-[var(--color-text-faint)] ml-1 font-mono">Wh/km</span></span>
-                    </div>
-                    <div class="flex flex-col gap-1">
-                      <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Arrêts</span>
-                      <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-accent)]">{tkc.chargingStops ?? "n/c"}</span>
-                    </div>
-                  </div>
-                ) : (
-                  <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Test publié par {sourceLabels[tkc.sourceId] ?? tkc.sourceId}. Valeurs en cours de vérification, Evly s'interdit toute estimation à la place de la mesure.</p>
-                )}
-                {tkc.videoUrl && (
-                  <a href={tkc.videoUrl} target="_blank" rel="noopener noreferrer" class="font-mono text-[11px] text-[var(--color-accent)] hover:underline mt-3 self-start min-h-[44px] inline-flex items-center">Voir la vidéo source ↗</a>
-                )}
-              </Tile>
-            )}
-
-            <!-- 3x1 : table des tests terrain -->
-            {(config.rangeTests.length > 0 ? config.rangeTests : vehicle.rangeTests).length > 0 && (
-              <Tile size="3x1" label="Tests terrain agrégés" class="reveal">
-                <div class="flex items-center justify-between gap-3 -mt-2 mb-4">
-                  <h3 class="font-display text-base md:text-lg font-semibold tracking-[-0.01em]">Chaque chiffre attribué à sa source</h3>
-                  <Tag tone="outline" mono>{Object.keys(sourceLabels).length} sources</Tag>
-                </div>
-                <div class="overflow-x-auto -mx-5 md:-mx-7">
-                  <table class="w-full text-sm min-w-[640px]">
-                    <thead>
-                      <tr class="text-left border-b border-[var(--color-border)]">
-                        <th class="label-eyebrow font-normal py-3 px-5 md:px-7">Source</th>
-                        <th class="label-eyebrow font-normal py-3 px-2 text-right">Vit.</th>
-                        <th class="label-eyebrow font-normal py-3 px-2 text-right">Conso</th>
-                        <th class="label-eyebrow font-normal py-3 px-2 text-right">Range</th>
-                        <th class="label-eyebrow font-normal py-3 px-2 text-right">T°</th>
-                        <th class="label-eyebrow font-normal py-3 px-5 md:px-7">Protocole</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {(config.rangeTests.length > 0 ? config.rangeTests : vehicle.rangeTests).map((test: any) => {
-                        const sourceName = sourceLabels[test.sourceId] ?? test.sourceId;
-                        return (
-                          <tr class="border-b border-[var(--color-border)] last:border-0 row-hover transition-colors">
-                            <td class="py-3 px-5 md:px-7">
-                              <div class="flex items-center gap-2 flex-wrap">
-                                <span class="text-[var(--color-text)]">{sourceName}</span>
-                                <SourceTooltip sourceId={test.sourceId} date={test.testDate ?? undefined} />
-                                {test.videoUrl && <a href={test.videoUrl} target="_blank" rel="noopener noreferrer" class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-accent)] hover:underline">vidéo ↗</a>}
-                              </div>
-                            </td>
-                            <td class="py-3 px-2 text-right font-mono tabular text-[var(--color-text-muted)] whitespace-nowrap">{test.speed_kmh ? `${test.speed_kmh}` : "n/c"}</td>
-                            <td class="py-3 px-2 text-right font-mono tabular text-[var(--color-accent)] whitespace-nowrap">{test.consumption_kWh_100km.toString().replace(".", ",")}</td>
-                            <td class="py-3 px-2 text-right font-mono tabular text-[var(--color-text-muted)] whitespace-nowrap">{test.range_km ? `${test.range_km}` : "n/c"}</td>
-                            <td class="py-3 px-2 text-right font-mono tabular text-[var(--color-text-muted)] whitespace-nowrap">{test.temperature_C !== null ? `${test.temperature_C}°` : "n/c"}</td>
-                            <td class="py-3 px-5 md:px-7"><MethodologyBadge protocol={test.protocol} speed_kmh={test.speed_kmh} wheelSize_inches={test.wheelSize_inches} /></td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
-              </Tile>
-            )}
-
-            <!-- 2x1 : aides cumulables + prix net -->
-            <Tile size="2x1" variant="accent" label="Aides cumulables*" class="reveal">
-              <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mt-auto">
-                <ul class="md:col-span-7 flex flex-col gap-2">
-                  {vehicle.availableAids.map((aid) => (
-                    <li class="flex items-baseline justify-between gap-3 text-sm">
-                      <span class="text-[var(--color-text)]">{aid.label}</span>
-                      <span data-numeric class="font-mono text-[var(--color-accent)] whitespace-nowrap">- {formatPrice(aid.amount_EUR)}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div class="md:col-span-5 md:border-l md:border-[var(--color-border)] md:pl-6 flex flex-col gap-1">
-                  <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Prix net potentiel*</span>
-                  {priceAfterAids != null ? (
-                    <>
-                      <span data-numeric class="display-stat text-3xl md:text-4xl">{formatPrice(priceAfterAids)}</span>
-                      <span class="font-mono text-[11px] text-[var(--color-text-faint)]">apres {formatPrice(totalAids)} d'aides max.</span>
-                    </>
-                  ) : (
-                    <span class="font-mono text-sm text-[var(--color-text-faint)]">Prix non communiqué</span>
-                  )}
+                <div class="bg-[var(--color-surface)] p-4 md:p-5 flex flex-col gap-2">
+                  <h3 class="label-eyebrow text-[var(--color-danger)]">Pas pour</h3>
+                  <p class="text-[var(--color-text-muted)] text-base leading-relaxed">{vehicle.verdict.notIdealFor}</p>
                 </div>
               </div>
-              <p class="mt-4 font-mono text-[10px] text-[var(--color-text-faint)] leading-relaxed">
-                * Montants maximaux (menage precaire + surbonus batterie UE). Coup de pouce CEE 2026 sous conditions de revenus (RFR/part), d’eligibilite ADEME et de prix du vehicule (&lt; 47 000 EUR). Demande a effectuer avant signature du bon de commande.
-              </p>
-            </Tile>
-
-            <!-- 2x1 : leasing social (conditionnel) -->
-            {config.leasingSocialEligible && config.monthlyLease_EUR && (
-              <Tile size="2x1" variant="accent" label="Leasing social" class="reveal">
-                <div class="flex items-end justify-between gap-6 mt-auto">
-                  <div class="flex flex-col gap-1">
-                    <span class="font-display text-lg font-semibold tracking-[-0.01em]">Loyer plafonné</span>
-                    <p class="text-xs text-[var(--color-text-muted)] leading-relaxed max-w-sm">
-                      A partir de {config.monthlyLease_EUR} €/mois (barème 2026), sous conditions de revenus. 1<sup>er</sup> loyer pris en charge.
-                    </p>
-                  </div>
-                  <div class="flex items-baseline gap-2 shrink-0">
-                    <span data-numeric class="display-stat text-4xl md:text-5xl text-[var(--color-accent)]">{config.monthlyLease_EUR}</span>
-                    <span class="font-mono text-sm text-[var(--color-text-muted)]">€/mois</span>
-                  </div>
-                </div>
-              </Tile>
-            )}
-
-            <!-- full : équipements en colonnes (masqué si aucun équipement) -->
-            {Object.keys(featuresByCategory).length > 0 && (
-              <Tile size="full" label="Équipements structurants" class="reveal">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-2">
-                  {Object.entries(featuresByCategory).map(([cat, items]) => (
-                    <div class="flex flex-col gap-3">
-                      <h3 class="label-eyebrow">{categoryLabels[cat] ?? cat}</h3>
-                      <ul class="flex flex-col gap-2.5">
-                        {items.map((item) => (
-                          <li class="text-sm text-[var(--color-text-muted)] leading-relaxed before:content-['•'] before:mr-2 before:text-[var(--color-text-faint)]">{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              </Tile>
-            )}
-
-            <!-- full : verdict (masqué si vide) -->
-            {(vehicle.verdict.strengths.length > 0 || vehicle.verdict.weaknesses.length > 0) && (
-            <Tile size="full" label="Verdict éditorial" class="reveal">
-              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 mt-2">
-                <div class="flex flex-col gap-5">
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+                <div class="flex flex-col gap-2">
                   <div class="flex items-center gap-3">
                     <span class="w-1.5 h-1.5 bg-[var(--color-accent)] inline-block"></span>
                     <h3 class="label-eyebrow text-[var(--color-accent)]">Forces</h3>
@@ -750,14 +608,14 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                   </div>
                   <ol class="flex flex-col">
                     {vehicle.verdict.strengths.map((s, i) => (
-                      <li class="py-3.5 border-b border-[var(--color-border)] last:border-0 flex gap-4">
+                      <li class="py-2.5 border-b border-[var(--color-border)] last:border-0 flex gap-4">
                         <span data-numeric class="font-mono text-[11px] text-[var(--color-text-faint)] pt-1 w-6 shrink-0">{String(i + 1).padStart(2, "0")}</span>
                         <p class="text-[var(--color-text)] text-sm md:text-base leading-relaxed">{s}</p>
                       </li>
                     ))}
                   </ol>
                 </div>
-                <div class="flex flex-col gap-5">
+                <div class="flex flex-col gap-2">
                   <div class="flex items-center gap-3">
                     <span class="w-1.5 h-1.5 bg-[var(--color-danger)] inline-block"></span>
                     <h3 class="label-eyebrow text-[var(--color-danger)]">Faiblesses</h3>
@@ -765,7 +623,7 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                   </div>
                   <ol class="flex flex-col">
                     {vehicle.verdict.weaknesses.map((s, i) => (
-                      <li class="py-3.5 border-b border-[var(--color-border)] last:border-0 flex gap-4">
+                      <li class="py-2.5 border-b border-[var(--color-border)] last:border-0 flex gap-4">
                         <span data-numeric class="font-mono text-[11px] text-[var(--color-text-faint)] pt-1 w-6 shrink-0">{String(i + 1).padStart(2, "0")}</span>
                         <p class="text-[var(--color-text)] text-sm md:text-base leading-relaxed">{s}</p>
                       </li>
@@ -773,73 +631,444 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                   </ol>
                 </div>
               </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-[var(--color-border)] mt-10">
-                <div class="bg-[var(--color-surface)] p-6 flex flex-col gap-3">
-                  <h3 class="label-eyebrow">Pour qui</h3>
-                  <p class="text-[var(--color-text)] text-base leading-relaxed">{vehicle.verdict.idealUserProfile}</p>
-                </div>
-                <div class="bg-[var(--color-surface)] p-6 flex flex-col gap-3">
-                  <h3 class="label-eyebrow">Pas pour</h3>
-                  <p class="text-[var(--color-text-muted)] text-base leading-relaxed">{vehicle.verdict.notIdealFor}</p>
-                </div>
-              </div>
             </Tile>
-            )}
+          </BentoGrid>
+        </section>
+      )}
 
-            <!-- full : questions fréquentes (langage simple, pour les non-initiés) -->
-            <Tile size="full" label="Questions fréquentes" class="reveal">
-              <h2 class="display-2 text-2xl md:text-3xl mb-6">
-                {vehicle.brand} {vehicle.model}, en clair
-              </h2>
-              <div class="flex flex-col">
-                {faqEntries.map((f, i) => (
-                  <details class="faq-item group py-4 border-b border-[var(--color-border)] last:border-0">
-                    <summary class="cursor-pointer list-none select-none flex items-start justify-between gap-4">
-                      <span class="text-[var(--color-text)] text-sm md:text-base font-semibold leading-snug">{f.question}</span>
-                      <svg class="w-4 h-4 mt-1 text-[var(--color-accent)] flex-shrink-0 transition-transform duration-200 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+      <!-- ═══ 3. Autonomie ═══ -->
+      <section id="autonomie" class="vehicle-section" aria-labelledby="autonomie-title">
+        <header class="vehicle-section-head">
+          <h2 id="autonomie-title" class="vehicle-section-title">Autonomie</h2>
+          <p class="vehicle-section-sub">Selon l'usage, la saison et l'usure de la batterie.</p>
+        </header>
+
+        <!-- Simulateurs (sur grand écran, ils sont dans la sidebar) -->
+        <div class="xl:hidden mb-4 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-4 flex flex-col gap-4">
+          <SohSlider client:idle />
+          <div class="border-t border-[var(--color-border)] border-dashed pt-4">
+            <TemperatureSlider client:idle chemistry={vehicle.chemistry} />
+          </div>
+        </div>
+
+        <BentoGrid>
+          {configViews.map((cv, index) => (
+            <div data-config-id={cv.config.id} style={{ display: index === 0 ? "contents" : "none" }} class="config-wrapper">
+              <Tile size="2x2" variant="elevated" label="Autonomie par usage" class="reveal">
+                <div class="flex items-center justify-between gap-3 -mt-2 mb-3">
+                  <h3 class="font-display text-base md:text-lg font-semibold tracking-[-0.01em]">{cv.isRangeMeasured ? "Quatre profils mesurés" : "Quatre profils d'usage"}</h3>
+                  <Tag tone="outline" mono>{confidenceLabel[cv.rangeConfidence] ?? cv.rangeConfidence}</Tag>
+                </div>
+                <SeasonalRange client:visible urban={cv.realRange.urban_km} mixed={cv.realRange.mixed_km} highway={cv.realRange.highway_130_km} winter={cv.realRange.winter_minus5_km} vehicleName={`${vehicle.brand} ${vehicle.model} ${cv.config.trim}`} />
+              </Tile>
+
+              <Tile size="1x1" label="Batterie utile" class="reveal">
+                <div class="soh-update-capacity" data-base-capacity={cv.batteryCapacity}>
+                  <TileStat value={formatNumber(cv.batteryCapacity, Number.isInteger(cv.batteryCapacity) ? 0 : 1)} unit="kWh" size="xl" hint={`${vehicle.chemistry} · ${vehicle.architecture_V} V`} />
+                </div>
+              </Tile>
+
+              <Tile size="1x1" label="WLTP annoncée" class="reveal">
+                <TileStat value={cv.wltpKm.toString()} unit="km" size="xl" hint={`Réel : -${cv.wltpGapPct} % en usage mixte`} />
+              </Tile>
+
+              <Tile size="2x1" label="Consommation" class="reveal">
+                <div class="grid grid-cols-3 gap-4 mt-auto">
+                  <div class="flex flex-col gap-1">
+                    <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)]">Mixte</span>
+                    <span data-numeric class="display-stat text-2xl md:text-3xl">{formatNumber(cv.consoMixed, 1)}</span>
+                    <span class="font-mono text-[11px] text-[var(--color-text-faint)]">kWh/100 km</span>
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)]">Autoroute</span>
+                    <span data-numeric class="display-stat text-2xl md:text-3xl">{formatNumber(vehicle.consumption_highway_kWh_per_100km, 1)}</span>
+                    <span class="font-mono text-[11px] text-[var(--color-text-faint)]">kWh/100 km</span>
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)]">Hiver</span>
+                    <span data-numeric class="display-stat text-2xl md:text-3xl">{formatNumber(vehicle.consumption_winter_kWh_per_100km, 1)}</span>
+                    <span class="font-mono text-[11px] text-[var(--color-text-faint)]">kWh/100 km</span>
+                  </div>
+                </div>
+              </Tile>
+            </div>
+          ))}
+        </BentoGrid>
+      </section>
+
+      <!-- ═══ 4. Recharge ═══ -->
+      <section id="recharge" class="vehicle-section" aria-labelledby="recharge-title">
+        <header class="vehicle-section-head">
+          <h2 id="recharge-title" class="vehicle-section-title">Recharge</h2>
+          <p class="vehicle-section-sub">Sur la route et à la maison.</p>
+        </header>
+        <BentoGrid>
+          {configViews.map((cv, index) => (
+            <div data-config-id={cv.config.id} style={{ display: index === 0 ? "contents" : "none" }} class="config-wrapper">
+              <Tile size={tkc ? "2x1" : "full"} variant="elevated" label="Recharge DC & AC" source={vehicle.chargingDC.confidence === "tested" ? "nyland" : undefined} class="reveal">
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 my-auto">
+                  <div class="flex flex-col gap-1">
+                    <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)]">10 → 80 % DC</span>
+                    <div class="flex items-baseline gap-1">
+                      <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-accent)]">{cv.dcMin}</span>
+                      <span class="font-mono text-xs text-[var(--color-text-faint)]">min</span>
+                    </div>
+                    <span class="font-mono text-[11px] text-[var(--color-text-faint)]">bornes rapides DC</span>
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)]">Pic DC</span>
+                    <div class="flex items-baseline gap-1">
+                      <span data-numeric class="display-stat text-2xl md:text-3xl">{cv.dcPeak}</span>
+                      <span class="font-mono text-xs text-[var(--color-text-faint)]">kW</span>
+                    </div>
+                    <span class="font-mono text-[11px] text-[var(--color-text-faint)]">{vehicle.architecture_V} V</span>
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)]">+30 min DC</span>
+                    <div class="flex items-baseline gap-1">
+                      <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-accent)]">+{Math.round((cv.dcKwh30 / cv.consoMixed) * 100)}</span>
+                      <span class="font-mono text-xs text-[var(--color-text-faint)]">km</span>
+                    </div>
+                    <span class="font-mono text-[11px] text-[var(--color-text-faint)]">({cv.dcKwh30} kWh)</span>
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)]">0 → 100 % AC</span>
+                    <div class="flex items-baseline gap-1">
+                      <span data-numeric class="display-stat text-2xl md:text-3xl">{formatHours(vehicle.chargingAC.time_0_100_h)}</span>
+                    </div>
+                    <span class="font-mono text-[11px] text-[var(--color-text-faint)]">wallbox {vehicle.chargingAC.onboardCharger_kW} kW</span>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 mt-4">
+                  <Tag tone={vehicle.v2l ? "accent" : "outline"} mono>V2L {vehicle.v2l ? (vehicle.v2l_option_EUR ? `option ${formatPrice(vehicle.v2l_option_EUR)}` : "oui") : "non"}</Tag>
+                  <Tag tone={vehicle.v2g ? "accent" : "outline"} mono>V2G {vehicle.v2g ? "oui" : "non"}</Tag>
+                  <Tag tone={vehicle.plugAndCharge ? "accent" : "outline"} mono>Plug & Charge {vehicle.plugAndCharge ? "oui" : "non"}</Tag>
+                </div>
+
+                <details class="group mt-3 pt-3 border-t border-[var(--color-border)]">
+                  <summary class="cursor-pointer font-mono text-[11px] text-[var(--color-text-muted)] hover:text-[var(--color-text)] flex items-center justify-between transition-colors list-none select-none min-h-[36px]">
+                    <span class="flex items-center gap-2">
+                      <svg class="w-3.5 h-3.5 text-[var(--color-accent)] transition-transform duration-200 group-open:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                       </svg>
-                    </summary>
-                    <p class="mt-3 text-sm md:text-base text-[var(--color-text-muted)] leading-relaxed max-w-3xl">{f.answer}</p>
-                  </details>
+                      Voir la courbe de puissance détaillée (kW / SoC)
+                    </span>
+                    <Tag tone="outline" mono>{confidenceLabel[vehicle.chargingDC.confidence] ?? vehicle.chargingDC.confidence}</Tag>
+                  </summary>
+                  <div class="pt-4">
+                    {(cv.config.chargingCurve ?? vehicle.chargingCurve) ? (
+                      <ChargingCurve client:visible curve={cv.config.chargingCurve ?? vehicle.chargingCurve!} peakPower_kW={cv.dcPeak} vehicleName={`${vehicle.brand} ${vehicle.model}`} />
+                    ) : (
+                      <p class="text-[var(--color-text-faint)] font-mono text-xs mt-2">Données non mesurées.</p>
+                    )}
+                  </div>
+                </details>
+              </Tile>
+
+              {tkc && (
+                <Tile size="2x1" variant={tkcHasData ? "accent" : "outlined"} label="1000 km challenge" source={tkc.sourceId} sourceDate={tkc.testDate ?? undefined} class="reveal">
+                  <div class="flex items-center justify-between gap-3 -mt-2 mb-3">
+                    <h3 class="font-display text-base md:text-lg font-semibold tracking-[-0.01em]">Protocole Nyland</h3>
+                    <Tag tone={tkcHasData ? "accent" : "warning"} mono>{confidenceLabel[tkc.confidence] ?? tkc.confidence}</Tag>
+                  </div>
+                  {tkcHasData ? (
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-auto">
+                      <div class="flex flex-col gap-1">
+                        <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)]">Temps</span>
+                        <span data-numeric class="display-stat text-2xl md:text-3xl">{tkc.totalTime_minutes != null ? formatHours(tkc.totalTime_minutes / 60) : "n/c"}</span>
+                      </div>
+                      <div class="flex flex-col gap-1">
+                        <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)]">Vit. moy</span>
+                        <span data-numeric class="display-stat text-2xl md:text-3xl">{tkc.averageSpeed_kmh != null ? formatNumber(tkc.averageSpeed_kmh, 1) : "n/c"}<span class="text-sm text-[var(--color-text-faint)] ml-1 font-mono">km/h</span></span>
+                      </div>
+                      <div class="flex flex-col gap-1">
+                        <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)]">Conso</span>
+                        <span data-numeric class="display-stat text-2xl md:text-3xl">{tkc.averageConsumption_Wh_km ?? "n/c"}<span class="text-sm text-[var(--color-text-faint)] ml-1 font-mono">Wh/km</span></span>
+                      </div>
+                      <div class="flex flex-col gap-1">
+                        <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)]">Arrêts</span>
+                        <span data-numeric class="display-stat text-2xl md:text-3xl text-[var(--color-accent)]">{tkc.chargingStops ?? "n/c"}</span>
+                      </div>
+                    </div>
+                  ) : (
+                    <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">Test publié par {sourceLabels[tkc.sourceId] ?? tkc.sourceId}. Valeurs en cours de vérification, Evly s'interdit toute estimation à la place de la mesure.</p>
+                  )}
+                  {tkc.videoUrl && (
+                    <a href={tkc.videoUrl} target="_blank" rel="noopener noreferrer" class="font-mono text-[11px] text-[var(--color-accent)] hover:underline mt-3 self-start min-h-[44px] inline-flex items-center">Voir la vidéo source ↗</a>
+                  )}
+                </Tile>
+              )}
+            </div>
+          ))}
+        </BentoGrid>
+      </section>
+
+      <!-- ═══ 5. Prix & aides ═══ -->
+      <section id="prix" class="vehicle-section" aria-labelledby="prix-title">
+        <header class="vehicle-section-head">
+          <h2 id="prix-title" class="vehicle-section-title">Prix & aides</h2>
+          <p class="vehicle-section-sub">Du prix catalogue à ce que vous paierez vraiment.</p>
+        </header>
+
+        {vehicle.availableAids.length > 0 && (
+          <div class="xl:hidden mb-4 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-4">
+            <CeeSimulator client:visible vehicle={vehicle} />
+          </div>
+        )}
+
+        <BentoGrid>
+          {configViews.map((cv, index) => {
+            const hasLeasing = cv.config.leasingSocialEligible && cv.config.monthlyLease_EUR;
+            return (
+              <div data-config-id={cv.config.id} style={{ display: index === 0 ? "contents" : "none" }} class="config-wrapper">
+                <Tile size={hasLeasing ? "2x1" : "full"} variant="accent" label="Aides cumulables*" class="reveal">
+                  {vehicle.availableAids.length > 0 ? (
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mt-auto">
+                      <ul class="md:col-span-7 flex flex-col gap-2">
+                        {vehicle.availableAids.map((aid) => (
+                          <li class="flex items-baseline justify-between gap-3 text-sm">
+                            <span class="text-[var(--color-text)]">{aid.label}</span>
+                            <span data-numeric class="font-mono text-[var(--color-accent)] whitespace-nowrap">- {formatPrice(aid.amount_EUR)}</span>
+                          </li>
+                        ))}
+                        {aidsCapped && (
+                          <li class="flex items-baseline justify-between gap-3 text-sm pt-2 border-t border-[var(--color-border)]">
+                            <span class="text-[var(--color-text-muted)]">Plafond de cumul</span>
+                            <span data-numeric class="font-mono text-[var(--color-text)] whitespace-nowrap">{formatPrice(totalAids)}</span>
+                          </li>
+                        )}
+                      </ul>
+                      <div class="md:col-span-5 md:border-l md:border-[var(--color-border)] md:pl-6 flex flex-col gap-1">
+                        <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)]">Prix net potentiel*</span>
+                        {cv.priceAfterAids != null ? (
+                          <>
+                            <span data-numeric class="display-stat text-3xl md:text-4xl">{formatPrice(cv.priceAfterAids)}</span>
+                            <span class="font-mono text-[11px] text-[var(--color-text-faint)]">au lieu de {formatPrice(cv.config.price_EUR!)}, après {formatPrice(totalAids)} d'aides max.</span>
+                          </>
+                        ) : (
+                          <span class="font-mono text-sm text-[var(--color-text-faint)]">Prix non communiqué</span>
+                        )}
+                      </div>
+                    </div>
+                  ) : (
+                    <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mt-auto">
+                      Aucune aide CEE applicable à ce modèle. Prix catalogue : <span class="font-semibold text-[var(--color-text)]">{cv.config.price_EUR != null ? formatPrice(cv.config.price_EUR) : "non communiqué"}</span>.
+                    </p>
+                  )}
+                  <p class="mt-4 font-mono text-[11px] text-[var(--color-text-faint)] leading-relaxed">
+                    * Montants maximaux (ménage précaire + majoration batterie européenne). Coup de pouce CEE 2026 sous conditions de revenus (RFR/part), d'éligibilité ADEME et de prix du véhicule (&lt; 47 000 €). Demande à effectuer avant signature du bon de commande.
+                  </p>
+                </Tile>
+
+                {hasLeasing && (
+                  <Tile size="2x1" variant="accent" label="Leasing social" class="reveal">
+                    <div class="flex items-end justify-between gap-6 mt-auto">
+                      <div class="flex flex-col gap-1">
+                        <span class="font-display text-lg font-semibold tracking-[-0.01em]">Loyer plafonné</span>
+                        <p class="text-xs text-[var(--color-text-muted)] leading-relaxed max-w-sm">
+                          À partir de {cv.config.monthlyLease_EUR} €/mois (barème 2026), sous conditions de revenus. 1<sup>er</sup> loyer pris en charge.
+                        </p>
+                        <a href={url("/leasing-social")} class="font-mono text-[11px] text-[var(--color-accent)] hover:underline mt-2 self-start">Vérifier mon éligibilité ↗</a>
+                      </div>
+                      <div class="flex items-baseline gap-2 shrink-0">
+                        <span data-numeric class="display-stat text-4xl md:text-5xl text-[var(--color-accent)]">{cv.config.monthlyLease_EUR}</span>
+                        <span class="font-mono text-sm text-[var(--color-text-muted)]">€/mois</span>
+                      </div>
+                    </div>
+                  </Tile>
+                )}
+              </div>
+            );
+          })}
+
+          <Tile size="full" label="Gamme & tarifs" class="reveal">
+            <div class="overflow-x-auto -mx-5 md:-mx-7">
+              <table class="w-full text-sm min-w-[560px]">
+                <thead>
+                  <tr class="text-left border-b border-[var(--color-border)]">
+                    <th class="label-eyebrow font-normal py-3 px-5 md:px-7">Finition</th>
+                    <th class="label-eyebrow font-normal py-3 px-2">Batterie</th>
+                    <th class="label-eyebrow font-normal py-3 px-2 text-right">Prix</th>
+                    <th class="label-eyebrow font-normal py-3 px-5 md:px-7">Points forts</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {vehicle.trims.map((trim) => (
+                    <tr class="border-b border-[var(--color-border)] last:border-0 row-hover transition-colors align-top">
+                      <td class="py-3 px-5 md:px-7 text-[var(--color-text)] font-medium">{trim.name.replace(/\s*\d+([.,]\d+)?\s*kWh.*$/i, "").trim() || trim.name}</td>
+                      <td class="py-3 px-2 font-mono tabular text-[var(--color-text-muted)] whitespace-nowrap">{trim.batteryUsed}</td>
+                      <td class="py-3 px-2 text-right font-mono tabular text-[var(--color-text)] whitespace-nowrap">{trim.price_EUR != null ? formatPrice(trim.price_EUR) : "NC"}</td>
+                      <td class="py-3 px-5 md:px-7 text-[var(--color-text-muted)] leading-relaxed">{trim.equipmentHighlights.slice(0, 3).join(" · ")}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </Tile>
+        </BentoGrid>
+      </section>
+
+      <!-- ═══ 6. Fiche technique ═══ -->
+      <section id="fiche-technique" class="vehicle-section" aria-labelledby="fiche-technique-title">
+        <header class="vehicle-section-head">
+          <h2 id="fiche-technique-title" class="vehicle-section-title">Fiche technique</h2>
+          <p class="vehicle-section-sub">Toutes les caractéristiques de la configuration choisie.</p>
+        </header>
+        <BentoGrid>
+          {configViews.map((cv, index) => (
+            <div data-config-id={cv.config.id} style={{ display: index === 0 ? "contents" : "none" }} class="config-wrapper">
+              <Tile size="full" class="reveal">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8">
+                  {cv.specGroups.map((group) => (
+                    <div class="flex flex-col gap-3">
+                      <h3 class="label-eyebrow">{group.title}</h3>
+                      <dl class="flex flex-col">
+                        {group.rows.map(([label, value]) => (
+                          <div class="flex justify-between items-baseline gap-3 py-2 border-b border-[var(--color-border)] border-dashed last:border-0">
+                            <dt class="text-xs text-[var(--color-text-muted)]">{label}</dt>
+                            <dd class="font-mono text-sm font-medium text-[var(--color-text)] text-right">{value}</dd>
+                          </div>
+                        ))}
+                      </dl>
+                    </div>
+                  ))}
+                </div>
+              </Tile>
+            </div>
+          ))}
+
+          {Object.keys(featuresByCategory).length > 0 && (
+            <Tile size="full" label="Équipements structurants" class="reveal">
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-2">
+                {Object.entries(featuresByCategory).map(([cat, items]) => (
+                  <div class="flex flex-col gap-3">
+                    <h3 class="label-eyebrow">{categoryLabels[cat] ?? cat}</h3>
+                    <ul class="flex flex-col gap-2.5">
+                      {items.map((item) => (
+                        <li class="text-sm text-[var(--color-text-muted)] leading-relaxed before:content-['•'] before:mr-2 before:text-[var(--color-text-faint)]">{item}</li>
+                      ))}
+                    </ul>
+                  </div>
                 ))}
               </div>
             </Tile>
+          )}
+        </BentoGrid>
+      </section>
 
-            <!-- full : sources -->
-            <Tile size="full" label="Sources & méthodologie" class="reveal">
-              <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-2">
-                <div class="lg:col-span-4 flex flex-col gap-4">
-                  <h2 class="display-2 text-2xl md:text-3xl">Transparence</h2>
-                  <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">
-                    Tests Nyland, supertests indépendants et fiche constructeur croisés. Chaque chiffre porte un niveau de confiance, <span class="font-mono text-[var(--color-accent)] text-xs">mesuré</span>, <span class="font-mono text-[var(--color-warning)] text-xs">constructeur</span>, <span class="font-mono text-[var(--color-text-muted)] text-xs">estimé</span> ou <span class="font-mono text-[var(--color-text-muted)] text-xs">pending</span>.
-                  </p>
-                  <div class="flex flex-col gap-1 mt-2">
-                    <span class="label-eyebrow">Dernière mise à jour</span>
-                    <span class="font-mono text-sm text-[var(--color-text)]">{formatDate(vehicle.lastUpdated)}</span>
+      <!-- ═══ 7. Tests & sources ═══ -->
+      <section id="sources" class="vehicle-section" aria-labelledby="sources-title">
+        <header class="vehicle-section-head">
+          <h2 id="sources-title" class="vehicle-section-title">Tests & sources</h2>
+          <p class="vehicle-section-sub">D'où vient chaque chiffre, et son niveau de confiance.</p>
+        </header>
+        <BentoGrid>
+          {configViews.map((cv, index) => (
+            <div data-config-id={cv.config.id} style={{ display: index === 0 ? "contents" : "none" }} class="config-wrapper">
+              {cv.rangeTests.length > 0 && (
+                <Tile size="full" label="Tests terrain agrégés" class="reveal">
+                  <div class="flex items-center justify-between gap-3 -mt-2 mb-4">
+                    <h3 class="font-display text-base md:text-lg font-semibold tracking-[-0.01em]">Chaque chiffre attribué à sa source</h3>
+                    <Tag tone="outline" mono>{cv.rangeTests.length} test{cv.rangeTests.length > 1 ? "s" : ""}</Tag>
                   </div>
-                  <a href={url("/methodologie") + "#sources"} class="font-mono text-xs text-[var(--color-accent)] hover:underline self-start min-h-[44px] inline-flex items-center">Méthodologie complète ↗</a>
+                  <div class="overflow-x-auto -mx-5 md:-mx-7">
+                    <table class="w-full text-sm min-w-[640px]">
+                      <thead>
+                        <tr class="text-left border-b border-[var(--color-border)]">
+                          <th class="label-eyebrow font-normal py-3 px-5 md:px-7">Source</th>
+                          <th class="label-eyebrow font-normal py-3 px-2 text-right">Vitesse</th>
+                          <th class="label-eyebrow font-normal py-3 px-2 text-right">Conso</th>
+                          <th class="label-eyebrow font-normal py-3 px-2 text-right">Autonomie</th>
+                          <th class="label-eyebrow font-normal py-3 px-2 text-right">T°</th>
+                          <th class="label-eyebrow font-normal py-3 px-5 md:px-7">Protocole</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {cv.rangeTests.map((test: any) => (
+                          <tr class="border-b border-[var(--color-border)] last:border-0 row-hover transition-colors">
+                            <td class="py-3 px-5 md:px-7">
+                              <div class="flex items-center gap-2 flex-wrap">
+                                <span class="text-[var(--color-text)]">{sourceLabels[test.sourceId] ?? test.sourceId}</span>
+                                <SourceTooltip sourceId={test.sourceId} date={test.testDate ?? undefined} />
+                                {test.videoUrl && <a href={test.videoUrl} target="_blank" rel="noopener noreferrer" class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-accent)] hover:underline">vidéo ↗</a>}
+                              </div>
+                            </td>
+                            <td class="py-3 px-2 text-right font-mono tabular text-[var(--color-text-muted)] whitespace-nowrap">{test.speed_kmh ? `${test.speed_kmh} km/h` : "n/c"}</td>
+                            <td class="py-3 px-2 text-right font-mono tabular text-[var(--color-accent)] whitespace-nowrap">{formatNumber(test.consumption_kWh_100km, 1)}</td>
+                            <td class="py-3 px-2 text-right font-mono tabular text-[var(--color-text-muted)] whitespace-nowrap">{test.range_km ? `${test.range_km} km` : "n/c"}</td>
+                            <td class="py-3 px-2 text-right font-mono tabular text-[var(--color-text-muted)] whitespace-nowrap">{test.temperature_C !== null ? `${test.temperature_C} °C` : "n/c"}</td>
+                            <td class="py-3 px-5 md:px-7"><MethodologyBadge protocol={test.protocol} speed_kmh={test.speed_kmh} wheelSize_inches={test.wheelSize_inches} /></td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </Tile>
+              )}
+            </div>
+          ))}
+
+          <Tile size="full" label="Sources & méthodologie" class="reveal">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-2">
+              <div class="lg:col-span-4 flex flex-col gap-4">
+                <h3 class="display-2 text-2xl md:text-3xl">Transparence</h3>
+                <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">
+                  Tests Nyland, supertests indépendants et fiche constructeur croisés. Chaque chiffre porte un niveau de confiance, <span class="font-mono text-[var(--color-accent)] text-xs">mesuré</span>, <span class="font-mono text-[var(--color-warning)] text-xs">constructeur</span>, <span class="font-mono text-[var(--color-text-muted)] text-xs">estimé</span> ou <span class="font-mono text-[var(--color-text-muted)] text-xs">en attente</span>.
+                </p>
+                <div class="flex flex-col gap-1 mt-2">
+                  <span class="label-eyebrow">Dernière mise à jour</span>
+                  <span class="font-mono text-sm text-[var(--color-text)]">{formatDate(vehicle.lastUpdated)}</span>
                 </div>
-                <ol class="lg:col-span-8 flex flex-col">
-                  {sources.map((source, idx) => (
-                    <li class:list={["py-4 grid grid-cols-12 gap-x-4 gap-y-2 items-baseline", idx !== sources.length - 1 && "border-b border-[var(--color-border)]"]}>
-                      <span data-numeric class="col-span-1 font-mono text-xs text-[var(--color-text-faint)]">{String(idx + 1).padStart(2, "0")}</span>
-                      <div class="col-span-12 md:col-span-7 flex flex-col gap-1">
-                        <a href={source.url} target="_blank" rel="noopener noreferrer" class="text-[var(--color-text)] text-base leading-snug hover:text-[var(--color-accent)] transition-colors min-h-[44px] inline-flex items-center">{source.name}</a>
-                        <span class="font-mono text-[11px] text-[var(--color-text-faint)]">{new URL(source.url).hostname.replace(/^www\./, "")} · {source.type}</span>
-                      </div>
-                      <span class="col-span-12 md:col-span-4 md:text-right">
-                        <Tag tone={trustTone[source.trustLevel]} mono>{trustLabels[source.trustLevel]}</Tag>
-                      </span>
-                    </li>
-                  ))}
-                </ol>
+                <div class="flex flex-col gap-1">
+                  <span class="label-eyebrow">Crédit photo</span>
+                  <span class="font-mono text-xs text-[var(--color-text-muted)]">{vehicle.imageCredit}</span>
+                </div>
+                <a href={url("/methodologie") + "#sources"} class="font-mono text-xs text-[var(--color-accent)] hover:underline self-start min-h-[44px] inline-flex items-center">Méthodologie complète ↗</a>
               </div>
-            </Tile>
-          </div>
-        );
-      })}
-    </BentoGrid>
+              <ol class="lg:col-span-8 flex flex-col">
+                {sources.map((source, idx) => (
+                  <li class:list={["py-4 grid grid-cols-12 gap-x-4 gap-y-2 items-baseline", idx !== sources.length - 1 && "border-b border-[var(--color-border)]"]}>
+                    <span data-numeric class="col-span-1 font-mono text-xs text-[var(--color-text-faint)]">{String(idx + 1).padStart(2, "0")}</span>
+                    <div class="col-span-12 md:col-span-7 flex flex-col gap-1">
+                      <a href={source.url} target="_blank" rel="noopener noreferrer" class="text-[var(--color-text)] text-base leading-snug hover:text-[var(--color-accent)] transition-colors min-h-[44px] inline-flex items-center">{source.name}</a>
+                      <span class="font-mono text-[11px] text-[var(--color-text-faint)]">{new URL(source.url).hostname.replace(/^www\./, "")} · {source.type}</span>
+                    </div>
+                    <span class="col-span-12 md:col-span-4 md:text-right">
+                      <Tag tone={trustTone[source.trustLevel]} mono>{trustLabels[source.trustLevel]}</Tag>
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </Tile>
+        </BentoGrid>
+      </section>
+
+      <!-- ═══ 8. Questions fréquentes ═══ -->
+      <section id="faq" class="vehicle-section" aria-labelledby="faq-title">
+        <header class="vehicle-section-head">
+          <h2 id="faq-title" class="vehicle-section-title">{vehicle.brand} {vehicle.model}, en clair</h2>
+          <p class="vehicle-section-sub">Les questions qu'on se pose avant d'acheter.</p>
+        </header>
+        <BentoGrid>
+          <Tile size="full" class="reveal">
+            <div class="flex flex-col -mt-2">
+              {faqEntries.map((f) => (
+                <details class="faq-item group py-4 border-b border-[var(--color-border)] last:border-0">
+                  <summary class="cursor-pointer list-none select-none flex items-start justify-between gap-4">
+                    <span class="text-[var(--color-text)] text-sm md:text-base font-semibold leading-snug">{f.question}</span>
+                    <svg class="w-4 h-4 mt-1 text-[var(--color-accent)] flex-shrink-0 transition-transform duration-200 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                  </summary>
+                  <p class="mt-3 text-sm md:text-base text-[var(--color-text-muted)] leading-relaxed max-w-3xl">{f.answer}</p>
+                </details>
+              ))}
+            </div>
+          </Tile>
+        </BentoGrid>
+      </section>
     </div>
 
     <!-- Sticky sidebar (xl+ only) -->
@@ -902,7 +1131,7 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
           class="sidebar-cta"
           id="compare-link"
         >
-          Comparer ce modele
+          Comparer ce modèle
         </a>
       </div>
 
@@ -919,30 +1148,6 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
         </a>
       </div>
 
-      <div class="sidebar-block sidebar-meta">
-        <div class="sidebar-meta-row">
-          <span>Garantie</span>
-          <span>{vehicle.warranty.vehicle_years} ans / {(vehicle.warranty.vehicle_km / 1000).toFixed(0)}k km</span>
-        </div>
-        <div class="sidebar-meta-row">
-          <span>Batterie</span>
-          <span>{vehicle.warranty.battery_years} ans / {vehicle.warranty.battery_soh_minimum_percent}% SoH</span>
-        </div>
-        <div class="sidebar-meta-row">
-          <span>Coffre</span>
-          <span>{vehicle.trunkCapacity_L} L {vehicle.frunkCapacity_L ? `(+ ${vehicle.frunkCapacity_L} L frunk)` : ""}</span>
-        </div>
-        {vehicle.assemblyPlant && (
-          <div class="sidebar-meta-row">
-            <span>Production</span>
-            <span>{vehicle.assemblyPlant}, {vehicle.productionCountry}</span>
-          </div>
-        )}
-        <div class="sidebar-meta-row">
-          <span>Maj.</span>
-          <span>{formatDate(vehicle.lastUpdated)}</span>
-        </div>
-      </div>
     </aside>
   </div>
 
@@ -1075,6 +1280,142 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
       updateCompareLink();
       updateRanges();
     });
+
+    // Chiffres clés : au survol, la case s'élargit et son détail se déplie dans le flux ;
+    // les autres cases glissent vers leur nouvelle place (animation FLIP).
+    // Tap sur écran tactile, focus clavier, Échap pour refermer.
+    const HINT_EASE = "cubic-bezier(0.2, 0.8, 0.2, 1)";
+    const HINT_DURATION = 380;
+    const hintReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const hintWideLayout = window.matchMedia("(min-width: 640px)");
+
+    function setHintOpen(group, cell) {
+      const isGrid = group.classList.contains("stat-hints");
+      const items = isGrid ? [...group.children].filter((el) => el.offsetParent !== null) : [];
+      const first = new Map(items.map((el) => [el, el.getBoundingClientRect()]));
+      const heightBefore = group.getBoundingClientRect().height;
+
+      group.querySelectorAll(".stat-hint.is-open").forEach((el) => {
+        el.classList.remove("is-open");
+        el.style.order = "";
+      });
+      if (cell) {
+        if (isGrid && hintWideLayout.matches) {
+          // Case de la première ligne : elle s'ouvre en haut, sinon en bas.
+          // Elle reste ainsi sous le curseur pendant la réorganisation.
+          const topRow = Math.min(...items.map((el) => first.get(el).top));
+          cell.style.order = first.get(cell).top - topRow < 4 ? "-1" : "99";
+        }
+        cell.classList.add("is-open");
+      }
+      group.classList.toggle("has-open", Boolean(cell));
+
+      if (hintReducedMotion || !isGrid) return;
+      items.forEach((el) => {
+        const before = first.get(el);
+        const after = el.getBoundingClientRect();
+        const dx = before.left - after.left;
+        const dy = before.top - after.top;
+        if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
+        el.animate(
+          [{ transform: `translate(${dx}px, ${dy}px)` }, { transform: "translate(0, 0)" }],
+          { duration: HINT_DURATION, easing: HINT_EASE }
+        );
+      });
+      const heightAfter = group.getBoundingClientRect().height;
+      if (Math.abs(heightAfter - heightBefore) > 1) {
+        group.animate(
+          [{ height: `${heightBefore}px` }, { height: `${heightAfter}px` }],
+          { duration: HINT_DURATION, easing: HINT_EASE }
+        );
+      }
+    }
+
+    document.querySelectorAll("[data-hint-group]").forEach((group) => {
+      let current = null;
+      let openTimer = null;
+      let closeTimer = null;
+      let lockedUntil = 0;
+
+      const open = (cell) => {
+        clearTimeout(openTimer);
+        clearTimeout(closeTimer);
+        if (cell === current) return;
+        current = cell;
+        setHintOpen(group, cell);
+        // Pendant l'animation les cases bougent sous le curseur : on ignore la souris
+        lockedUntil = performance.now() + HINT_DURATION + 40;
+      };
+      const close = () => open(null);
+      group.__closeHint = close;
+
+      group.addEventListener("pointermove", (e) => {
+        if (e.pointerType !== "mouse") return;
+        clearTimeout(closeTimer);
+        const cell = e.target.closest(".stat-hint");
+        if (!cell || cell === current) {
+          clearTimeout(openTimer);
+          return;
+        }
+        if (performance.now() < lockedUntil) return;
+        clearTimeout(openTimer);
+        openTimer = setTimeout(() => open(cell), current ? 140 : 90);
+      });
+      group.addEventListener("pointerleave", (e) => {
+        if (e.pointerType !== "mouse") return;
+        clearTimeout(openTimer);
+        closeTimer = setTimeout(close, 220);
+      });
+      group.addEventListener("click", (e) => {
+        if (e.pointerType === "mouse" || e.target.closest("a, button")) return;
+        const cell = e.target.closest(".stat-hint");
+        if (cell) open(cell === current ? null : cell);
+      });
+      group.addEventListener("focusin", (e) => {
+        const cell = e.target.closest(".stat-hint");
+        if (cell && e.target === cell) open(cell);
+      });
+      group.addEventListener("focusout", (e) => {
+        if (!group.contains(e.relatedTarget)) close();
+      });
+      group.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") close();
+      });
+    });
+
+    if (!window.__evlyStatHintOutside) {
+      window.__evlyStatHintOutside = true;
+      document.addEventListener("click", (e) => {
+        if (e.pointerType === "mouse" || e.target.closest("[data-hint-group]")) return;
+        document.querySelectorAll("[data-hint-group].has-open, [data-hint-group]:has(.is-open)").forEach((group) => {
+          group.__closeHint?.();
+        });
+      });
+    }
+
+    // Sommaire collant : surligne la section en cours de lecture
+    const tocLinks = document.querySelectorAll("[data-toc-link]");
+    const tocSections = [...tocLinks]
+      .map((link) => document.getElementById(link.getAttribute("data-toc-link")))
+      .filter(Boolean);
+    if (tocSections.length > 0) {
+      const setActive = (id) => {
+        tocLinks.forEach((link) => {
+          const isActive = link.getAttribute("data-toc-link") === id;
+          if (isActive) {
+            link.setAttribute("aria-current", "true");
+            link.scrollIntoView({ block: "nearest", inline: "nearest" });
+          } else {
+            link.removeAttribute("aria-current");
+          }
+        });
+      };
+      const tocObserver = new IntersectionObserver((entries) => {
+        const visible = entries.filter((e) => e.isIntersecting);
+        if (visible.length > 0) setActive(visible[0].target.id);
+      }, { rootMargin: "-130px 0px -60% 0px" });
+      tocSections.forEach((section) => tocObserver.observe(section));
+    }
   </script>
 
 <style>
@@ -1097,6 +1438,211 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
       max-width: 1560px;
       padding-inline: 2.5rem;
     }
+  }
+
+  /* ── Chiffres clés : le détail se déplie dans le flux au survol ── */
+  .stat-hint {
+    position: relative;
+    cursor: help;
+    border-radius: 8px;
+    outline: none;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .stat-hint:hover,
+  .stat-hint.is-open {
+    background-color: color-mix(in srgb, var(--color-accent) 6%, transparent);
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-accent) 6%, transparent);
+  }
+  .stat-hint:focus-visible {
+    box-shadow: 0 0 0 2px var(--color-accent);
+  }
+  .stat-hint-icon {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+    color: var(--color-text-faint);
+    transition: color 0.2s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .stat-hint:hover .stat-hint-icon,
+  .stat-hint:focus-visible .stat-hint-icon,
+  .stat-hint.is-open .stat-hint-icon {
+    color: var(--color-accent);
+  }
+  .stat-hint.is-open .stat-hint-icon {
+    transform: rotate(180deg);
+  }
+
+  /* Texte de détail : hauteur 0 -> auto animée (0fr -> 1fr), fondu + glissement */
+  .stat-hint-detail {
+    display: grid;
+    grid-template-rows: 0fr;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(-6px);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--color-text-muted);
+    transition:
+      grid-template-rows 0.38s cubic-bezier(0.2, 0.8, 0.2, 1),
+      opacity 0.28s ease,
+      transform 0.38s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .stat-hint-detail > span {
+    min-height: 0;
+    overflow: hidden;
+  }
+  .stat-hint.is-open .stat-hint-detail {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    transform: none;
+    transition-delay: 0s, 0.08s, 0s;
+  }
+
+  /* Grille des chiffres clés : 2 par ligne (4 en tablette). La case ouverte
+     prend toute la ligne, les autres se regroupent sur une seule ligne. */
+  .stat-hints {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+  }
+  .stat-hints > .stat-hint {
+    flex: 1 1 calc(50% - 1.5rem);
+    min-width: 0;
+  }
+  @media (min-width: 640px) {
+    .stat-hints > .stat-hint {
+      flex-basis: calc(25% - 1.5rem);
+    }
+  }
+  @media (min-width: 1024px) {
+    .stat-hints > .stat-hint {
+      flex-basis: calc(50% - 1.5rem);
+    }
+  }
+  /* Sur mobile, la grille 2x2 reste fixe : le détail se déplie sous la valeur.
+     Dès 640 px, la case ouverte prend la ligne avec son texte à côté. */
+  @media (min-width: 640px) {
+    .stat-hints.has-open > .stat-hint {
+      flex: 1 1 0;
+      min-width: 96px;
+    }
+    .stat-hints.has-open > .stat-hint.is-open {
+      flex-basis: 100%;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      column-gap: 1.25rem;
+      row-gap: 0.125rem;
+      align-items: center;
+    }
+    .stat-hints > .stat-hint.is-open > dt {
+      grid-column: 1 / -1;
+    }
+    .stat-hints > .stat-hint.is-open > .stat-hint-detail {
+      grid-column: 2;
+      grid-row: 2;
+      padding-left: 1.25rem;
+      border-left: 1px solid var(--color-border);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stat-hint-detail,
+    .stat-hint-icon {
+      transition: none;
+    }
+  }
+
+  /* ── Sommaire collant ── */
+  .vehicle-toc {
+    position: sticky;
+    top: 56px;
+    z-index: 30;
+    margin-top: 0.75rem;
+    margin-inline: -1rem;
+    padding-inline: 1rem;
+    background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 0.5px solid var(--color-border);
+  }
+  @media (min-width: 768px) {
+    .vehicle-toc {
+      top: 64px;
+      margin-inline: 0;
+      padding-inline: 0;
+    }
+  }
+  .vehicle-toc ul {
+    display: flex;
+    gap: 0.25rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-block: 0.5rem;
+  }
+  .vehicle-toc ul::-webkit-scrollbar {
+    display: none;
+  }
+  .vehicle-toc a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    padding-inline: 0.875rem;
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    letter-spacing: -0.01em;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    transition: color 0.15s ease, background-color 0.15s ease;
+  }
+  .vehicle-toc a:hover {
+    color: var(--color-text);
+    background: var(--color-bg-subtle);
+  }
+  .vehicle-toc a[aria-current="true"] {
+    color: var(--color-accent);
+    background: var(--color-surface-accent);
+    font-weight: 500;
+  }
+
+  /* ── Sections de la fiche ── */
+  .vehicle-section {
+    margin-top: 1.75rem;
+    scroll-margin-top: 116px;
+  }
+  @media (min-width: 768px) {
+    .vehicle-section {
+      margin-top: 2.25rem;
+      scroll-margin-top: 124px;
+    }
+  }
+  .vehicle-section-head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    margin-bottom: 0.75rem;
+  }
+  @media (min-width: 768px) {
+    .vehicle-section-head {
+      flex-direction: row;
+      align-items: baseline;
+      gap: 1rem;
+    }
+  }
+  .vehicle-section-title {
+    flex-shrink: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+    font-weight: 600;
+    letter-spacing: -0.022em;
+    line-height: 1.15;
+    color: var(--color-text);
+  }
+  .vehicle-section-sub {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    max-width: 60ch;
   }
 
   /* ── Sidebar ── */
@@ -1281,30 +1827,6 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
     transform: translateY(0);
   }
 
-  .sidebar-meta {
-    gap: 6px;
-  }
-  .sidebar-meta-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    font-size: 11px;
-    line-height: 1.5;
-  }
-  .sidebar-meta-row > span:first-child {
-    font-family: ui-monospace, monospace;
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-text-faint);
-  }
-  .sidebar-meta-row > span:last-child {
-    color: var(--color-text-muted);
-    font-family: ui-monospace, monospace;
-    font-size: 10px;
-    text-align: right;
-  }
-
   /* ── Existing styles ── */
   .vehicle-hero-img {
     background-color: transparent;
@@ -1328,7 +1850,7 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
   /* ── Print layout (PDF export / sharing) (D6) ── */
   @media print {
     /* Hide UI chrome, navigation, headers, footers, sidebars and selectors */
-    header, nav, footer, .vehicle-sidebar, .xl\:hidden, .sidebar-fav-btn, #compare-link, #compare-link-mobile, .sidebar-block, .sidebar-actions, .sidebar-meta, .reset-btn, .Tag, :global(.favorite-button) {
+    header, nav, footer, .vehicle-sidebar, .xl\:hidden, .sidebar-fav-btn, #compare-link, #compare-link-mobile, .sidebar-block, .sidebar-actions, .reset-btn, .Tag, :global(.favorite-button) {
       display: none !important;
     }
 
