@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback, useEffect, useRef } from "react";
-import CardPaymentModal from "@/components/shared/CardPaymentModal";
+import { url } from "@/lib/url";
 
 /* ---------------------------------------------------------------- */
 /* Types                                                             */
@@ -363,57 +363,26 @@ export default function TcoCalculator({ vehicles }: Props) {
   // Advanced toggle
   const [showAdvanced, setShowAdvanced] = useState(false);
 
-  // States & handlers for premium report purchase (F8)
-  const [showPaymentModal, setShowPaymentModal] = useState(false);
-  const [paymentLoading, setPaymentLoading] = useState(false);
-  const [paymentSuccess, setPaymentSuccess] = useState(false);
-  const [paymentEmail, setPaymentEmail] = useState("");
-  const [cardNumber, setCardNumber] = useState("");
-  const [cardExpiry, setCardExpiry] = useState("");
-  const [cardCvc, setCardCvc] = useState("");
-
-  const handlePaymentSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!paymentEmail || !cardNumber || !cardExpiry || !cardCvc) {
-      alert("Veuillez remplir tous les champs de paiement.");
-      return;
-    }
-    setPaymentLoading(true);
-    setTimeout(() => {
-      setPaymentLoading(false);
-      setPaymentSuccess(true);
-      setTimeout(() => {
-        setShowPaymentModal(false);
-        setPaymentSuccess(false);
-        setPaymentEmail("");
-        setCardNumber("");
-        setCardExpiry("");
-        setCardCvc("");
-        
-        if (selectedEv) {
-          const query = new URLSearchParams({
-            v: selectedSlug,
-            config: selectedConfigId || "",
-            km: kmPerYear.toString(),
-            years: years.toString(),
-            eh: elecHome.toString(),
-            ef: elecFast.toString(),
-            fp: fastPct.toString(),
-            fprice: fuelPrice.toString(),
-            iconso: iceConso.toString(),
-            evm: evMaint.toString(),
-            icem: iceMaint.toString(),
-            evins: evInsurance.toString(),
-            iceins: iceInsurance.toString(),
-            evres: evResidual.toString(),
-            iceres: iceResidual.toString(),
-            paid: "true"
-          }).toString();
-          window.location.href = `/simulateur/rapport-premium/?${query}`;
-        }
-      }, 1500);
-    }, 2000);
-  };
+  // Lien vers le rapport détaillé (F8), gratuit pendant la bêta
+  const reportHref = selectedEv
+    ? url(`/simulateur/rapport-premium/?${new URLSearchParams({
+        v: selectedSlug,
+        config: selectedConfigId || "",
+        km: kmPerYear.toString(),
+        years: years.toString(),
+        eh: elecHome.toString(),
+        ef: elecFast.toString(),
+        fp: fastPct.toString(),
+        fprice: fuelPrice.toString(),
+        iconso: iceConso.toString(),
+        evm: evMaint.toString(),
+        icem: iceMaint.toString(),
+        evins: evInsurance.toString(),
+        iceins: iceInsurance.toString(),
+        evres: evResidual.toString(),
+        iceres: iceResidual.toString(),
+      }).toString()}`)
+    : null;
 
   // Update EV conso when vehicle changes
   const handleVehicleChange = useCallback(
@@ -928,23 +897,22 @@ export default function TcoCalculator({ vehicles }: Props) {
               </svg>
             </div>
             <div className="flex flex-col gap-0.5">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)]">Rapport PDF Premium</h4>
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)]">Rapport PDF détaillé</h4>
               <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
                 TCO sur-mesure, météo, planificateur & aides 2026 détaillées.
               </p>
             </div>
           </div>
           <div className="flex items-center justify-between gap-4 mt-1 border-t border-[var(--color-border)] pt-3">
-            <div className="flex flex-col">
-              <span className="text-xs text-[var(--color-text-faint)] line-through">19,90 €</span>
-              <span className="text-base font-bold text-[var(--color-accent)]">9,90 €</span>
-            </div>
-            <button
-              onClick={() => setShowPaymentModal(true)}
-              className="px-4 py-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-dim)] text-[var(--color-accent-on)] text-xs font-bold rounded-lg transition-colors cursor-pointer shadow-sm"
-            >
-              Obtenir mon rapport
-            </button>
+            <span className="text-xs font-semibold text-[var(--color-accent)]">Gratuit pendant la bêta</span>
+            {reportHref && (
+              <a
+                href={reportHref}
+                className="px-4 py-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-dim)] text-[var(--color-accent-on)] text-xs font-bold rounded-lg transition-colors shadow-sm"
+              >
+                Obtenir mon rapport
+              </a>
+            )}
           </div>
         </div>
 
@@ -1088,24 +1056,6 @@ export default function TcoCalculator({ vehicles }: Props) {
           </div>
         </div>
       )}
-      <CardPaymentModal
-        isOpen={showPaymentModal}
-        onClose={() => setShowPaymentModal(false)}
-        loading={paymentLoading}
-        success={paymentSuccess}
-        email={paymentEmail}
-        onEmailChange={setPaymentEmail}
-        cardNumber={cardNumber}
-        onCardNumberChange={setCardNumber}
-        cardExpiry={cardExpiry}
-        onCardExpiryChange={setCardExpiry}
-        cardCvc={cardCvc}
-        onCardCvcChange={setCardCvc}
-        onSubmit={handlePaymentSubmit}
-        title="Rapport Premium B2C"
-        description="Accédez instantanément à l'analyse TCO 2026, au plan de recharge saisonnier et à l'éligibilité aux aides."
-        successMessage="Votre transaction de 9,90 € a été traitée avec succès. Préparation de votre rapport personnalisé..."
-      />
     </div>
   );
 }

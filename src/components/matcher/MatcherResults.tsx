@@ -2,6 +2,7 @@ import type { Dispatch, SetStateAction } from "react";
 import { RotateCcw, CheckCircle2, AlertTriangle, ChevronRight } from "lucide-react";
 import { calculateCeeAid } from "@/lib/cee";
 import { getLocalVehicleImageUrl } from "@/lib/vehicleImages";
+import { url } from "@/lib/url";
 import type { MatcherAnswers, MatchResult } from "./scoring";
 
 function VehicleFallbackSvg({ className }: { className?: string }) {
@@ -61,7 +62,6 @@ interface Props {
   vehicleCount: number;
   top3: MatchResult[];
   others: MatchResult[];
-  isPaid: boolean;
   answers: MatcherAnswers;
   showAllResults: boolean;
   setShowAllResults: Dispatch<SetStateAction<boolean>>;
@@ -69,14 +69,12 @@ interface Props {
   setExpandedOtherSlug: Dispatch<SetStateAction<string | null>>;
   restart: () => void;
   compareUrl: string;
-  setShowPaymentModal: Dispatch<SetStateAction<boolean>>;
 }
 
 export default function MatcherResults({
   vehicleCount,
   top3,
   others,
-  isPaid,
   answers,
   showAllResults,
   setShowAllResults,
@@ -84,7 +82,6 @@ export default function MatcherResults({
   setExpandedOtherSlug,
   restart,
   compareUrl,
-  setShowPaymentModal,
 }: Props) {
   return (
     <div className="flex flex-col gap-8 animate-fade-in">
@@ -143,7 +140,6 @@ export default function MatcherResults({
         // GRID DU TOP 3
         <div className="grid gap-6">
           {top3.map((res, index) => {
-            const isBlurred = index > 0 && !isPaid;
             const isLS = answers.leasingSocialRfr && answers.leasingSocialUsage && res.vehicle.leasingSocialEligible;
             const monthlyPrice = isLS
               ? (res.vehicle.leasingSocial_EUR_per_month ?? 100)
@@ -165,7 +161,7 @@ export default function MatcherResults({
                   )}
                 </div>
 
-                <div className={`flex flex-col md:flex-row gap-6 w-full h-full ${isBlurred ? "filter blur-md select-none pointer-events-none transition-all" : ""}`}>
+                <div className="flex flex-col md:flex-row gap-6 w-full h-full">
                   {/* Gauche : Image et Score */}
                   <div className="flex flex-col items-center justify-center md:w-1/4 pt-6 md:pt-0">
                     {/* Radial score ring */}
@@ -339,35 +335,17 @@ export default function MatcherResults({
                         Ajouter au comparateur
                         <ChevronRight size={13} />
                       </a>
-                      {isPaid && (
-                        <a
-                          href={`/simulateur/rapport-premium/?v=${res.vehicle.slug}&config=${res.bestConfig.id}&paid=true&km=${answers.mileage}`}
-                          className="btn-interactive inline-flex items-center justify-between px-3 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-lg text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20 transition-colors"
-                        >
-                          Rapport TCO Premium (Inclus) ↗
-                          <ChevronRight size={13} strokeWidth={2.5} />
-                        </a>
-                      )}
+                      <a
+                        href={url(`/simulateur/rapport-premium/?v=${res.vehicle.slug}&config=${res.bestConfig.id}&km=${answers.mileage}`)}
+                        className="btn-interactive inline-flex items-center justify-between px-3 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-lg text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20 transition-colors"
+                      >
+                        Rapport TCO détaillé ↗
+                        <ChevronRight size={13} strokeWidth={2.5} />
+                      </a>
                     </div>
                   </div>
                 </div>
 
-                {isBlurred && (
-                  <div className="absolute inset-0 bg-black/10 backdrop-blur-[6px] z-10 flex flex-col items-center justify-center p-4 text-center">
-                    <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-6 shadow-xl max-w-xs flex flex-col gap-3 animate-fade-in">
-                      <h4 className="text-sm font-bold tracking-tight">Podium Bloqué</h4>
-                      <p className="text-[11px] text-[var(--color-text-muted)] leading-relaxed">
-                        Découvrez les modèles #2 et #3 de votre diagnostic et obtenez leur rapport TCO Premium complet.
-                      </p>
-                      <button
-                        onClick={() => setShowPaymentModal(true)}
-                        className="px-4 py-2.5 bg-[var(--color-accent)] hover:bg-[var(--color-accent-dim)] text-[var(--color-accent-on)] text-xs font-bold rounded-lg cursor-pointer shadow-md transition-colors"
-                      >
-                        Débloquer pour 9,90 €
-                      </button>
-                    </div>
-                  </div>
-                )}
               </div>
             );
           })}
@@ -378,17 +356,11 @@ export default function MatcherResults({
       {others.length > 0 && (
         <div className="mt-6 border border-[var(--color-border)] rounded-2xl overflow-hidden">
           <button
-            onClick={() => {
-              if (!isPaid) {
-                setShowPaymentModal(true);
-              } else {
-                setShowAllResults(!showAllResults);
-              }
-            }}
+            onClick={() => setShowAllResults(!showAllResults)}
             className="w-full cursor-pointer p-4 flex items-center justify-between text-xs font-mono uppercase tracking-[0.1em] text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface)] transition-all"
           >
-            <span>Autres alternatives compatibles ({others.length}) {!isPaid && "🔒"}</span>
-            <span className="text-[var(--color-text-faint)] transition-transform duration-300" style={{ transform: showAllResults && isPaid ? "rotate(180deg)" : "rotate(0deg)" }}>
+            <span>Autres alternatives compatibles ({others.length})</span>
+            <span className="text-[var(--color-text-faint)] transition-transform duration-300" style={{ transform: showAllResults ? "rotate(180deg)" : "rotate(0deg)" }}>
               ↓
             </span>
           </button>

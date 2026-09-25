@@ -3,14 +3,11 @@ import type { Vehicle } from "@/data/schemas";
 import { scoreVehicle, type MatcherAnswers, type MatchResult } from "./scoring";
 import MatcherQuestions from "./MatcherQuestions";
 import MatcherResults from "./MatcherResults";
-import CardPaymentModal from "@/components/shared/CardPaymentModal";
 import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
 
 interface Props {
   vehicles: Vehicle[];
 }
-
-const PAYWALL_ENABLED = false; // Permet d'activer/désactiver le paywall facilement
 
 export default function StrategicMatcher({ vehicles }: Props) {
   const [step, setStep] = useState<number>(0);
@@ -18,30 +15,10 @@ export default function StrategicMatcher({ vehicles }: Props) {
   const [showAllResults, setShowAllResults] = useState(false);
   const [expandedOtherSlug, setExpandedOtherSlug] = useState<string | null>(null);
 
-  // Payment states
-  const [isPaid, setIsPaid] = useState<boolean>(() => {
-    if (typeof window !== "undefined") {
-      const searchParams = new URLSearchParams(window.location.search);
-      if (searchParams.get("paywall") === "true") {
-        return searchParams.get("paid") === "true";
-      }
-    }
-    return true; // paywall désactivé par défaut
-  });
-  const [showPaymentModal, setShowPaymentModal] = useState(false);
-  const [paymentLoading, setPaymentLoading] = useState(false);
-  const [paymentSuccess, setPaymentSuccess] = useState(false);
-  const [paymentEmail, setPaymentEmail] = useState("");
-  const [cardNumber, setCardNumber] = useState("");
-  const [cardExpiry, setCardExpiry] = useState("");
-  const [cardCvc, setCardCvc] = useState("");
-
   // Parse parameters on load
   useEffect(() => {
     if (typeof window !== "undefined") {
       const searchParams = new URLSearchParams(window.location.search);
-      const paywallParam = searchParams.get("paywall") === "true";
-      setIsPaid(!paywallParam || searchParams.get("paid") === "true");
 
       const usage = searchParams.get("usage");
       if (usage) {
@@ -67,44 +44,6 @@ export default function StrategicMatcher({ vehicles }: Props) {
       }
     }
   }, []);
-
-  const handlePaymentSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setPaymentLoading(true);
-    setTimeout(() => {
-      setPaymentLoading(false);
-      setPaymentSuccess(true);
-      setTimeout(() => {
-        const queryParams: Record<string, string> = {
-          usage: answers.usage,
-          mileage: answers.mileage.toString(),
-          charging: answers.charging,
-          role: answers.role,
-          longTripDistance: answers.longTripDistance.toString(),
-          household: answers.household,
-          trunkNeed: answers.trunkNeed,
-          trunkHatchbackMandatory: answers.trunkHatchbackMandatory ? "true" : "false",
-          bodyType: answers.bodyType,
-          chargingSpeed: answers.chargingSpeed,
-          budgetType: answers.budgetType,
-          budgetMax: answers.budgetMax.toString(),
-          leasingSocialRfr: answers.leasingSocialRfr ? "true" : "false",
-          leasingSocialUsage: answers.leasingSocialUsage ? "true" : "false",
-          preferEurope: answers.preferEurope ? "true" : "false",
-          softwareImportance: answers.softwareImportance,
-          paid: "true"
-        };
-        if (typeof window !== "undefined") {
-          const searchParams = new URLSearchParams(window.location.search);
-          if (searchParams.get("paywall") === "true") {
-            queryParams.paywall = "true";
-          }
-        }
-        const query = new URLSearchParams(queryParams).toString();
-        window.location.href = `/recommandation/?${query}`;
-      }, 1500);
-    }, 2000);
-  };
 
   const goToNext = useCallback(() => {
     setDirection("next");
@@ -254,12 +193,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
     setShowAllResults(false);
     setExpandedOtherSlug(null);
     if (typeof window !== "undefined") {
-      const searchParams = new URLSearchParams(window.location.search);
-      const paywallParam = searchParams.get("paywall") === "true";
-      setIsPaid(!paywallParam);
-      window.history.replaceState({}, document.title, window.location.pathname + (paywallParam ? "?paywall=true" : ""));
-    } else {
-      setIsPaid(true);
+      window.history.replaceState({}, document.title, window.location.pathname);
     }
     setDirection("prev");
     setStep(0);
@@ -397,7 +331,6 @@ export default function StrategicMatcher({ vehicles }: Props) {
           vehicleCount={vehicles.length}
           top3={top3}
           others={others}
-          isPaid={isPaid}
           answers={answers}
           showAllResults={showAllResults}
           setShowAllResults={setShowAllResults}
@@ -405,28 +338,9 @@ export default function StrategicMatcher({ vehicles }: Props) {
           setExpandedOtherSlug={setExpandedOtherSlug}
           restart={restart}
           compareUrl={compareUrl}
-          setShowPaymentModal={setShowPaymentModal}
         />
       )}
 
-      <CardPaymentModal
-        isOpen={showPaymentModal}
-        onClose={() => setShowPaymentModal(false)}
-        loading={paymentLoading}
-        success={paymentSuccess}
-        email={paymentEmail}
-        onEmailChange={setPaymentEmail}
-        cardNumber={cardNumber}
-        onCardNumberChange={setCardNumber}
-        cardExpiry={cardExpiry}
-        onCardExpiryChange={setCardExpiry}
-        cardCvc={cardCvc}
-        onCardCvcChange={setCardCvc}
-        onSubmit={handlePaymentSubmit}
-        title="Débloquez votre diagnostic Premium"
-        description="Découvrez les modèles #2 et #3 du podium, l'accès complet aux fiches comparatives et les 3 rapports TCO Premium inclus."
-        successMessage="Votre transaction de 9,90 € a été traitée avec succès. Déblocage du podium en cours..."
-      />
     </div>
   );
 }

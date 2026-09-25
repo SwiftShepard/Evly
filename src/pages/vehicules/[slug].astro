@@ -90,6 +90,7 @@ const trustTone: Record<TrustLevel, "accent" | "warning" | "danger"> = {
 
 const confidenceLabel: Record<string, string> = {
   tested: "Mesurée",
+  bjorn_nyland: "Mesurée (Nyland)",
   manufacturer: "Constructeur",
   estimated: "Estimée",
   pending: "En attente",
@@ -354,6 +355,15 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
         const nylandRangeEstimate = nyland90 ? Math.round((batteryCapacity / nyland90.consumption_kWh_100km) * 100) : null;
         const priceAfterAids = config.price_EUR != null ? Math.max(0, config.price_EUR - totalAids) : null;
         const realRangeMixed = config.realRange?.mixed_km ?? vehicle.realRange.mixed_km;
+        const rangeConfidence = config.realRange?.confidence ?? vehicle.realRange.confidence;
+        const isRangeMeasured = rangeConfidence === "tested" || rangeConfidence === "bjorn_nyland";
+        const heroRangeLabel = nyland90
+          ? "Autonomie réelle à 90 km/h, conso mesurée Nyland"
+          : isRangeMeasured
+            ? "Autonomie réelle mixte mesurée"
+            : rangeConfidence === "manufacturer"
+              ? "Autonomie mixte, donnée constructeur"
+              : "Autonomie réelle mixte estimée";
         
         return (
           <div data-config-id={config.id} style={{ display: index === 0 ? "contents" : "none" }} class="config-wrapper">
@@ -396,7 +406,7 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
                   <div class="md:col-span-7 flex flex-col gap-2">
                     <div class="flex items-center gap-2">
                       <span class="label-eyebrow">
-                        {nyland90 ? "Autonomie estimée, Nyland 90 km/h" : "Autonomie réelle mixte mesurée"}
+                        {heroRangeLabel}
                       </span>
                       {nyland90 && <SourceTooltip sourceId="nyland" date={nyland90.testDate ?? undefined} />}
                     </div>
@@ -509,7 +519,7 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
             <!-- 2x2 : autonomie par usage (chart) -->
             <Tile size="2x2" variant="elevated" label="Autonomie par usage" class="reveal">
               <div class="flex items-center justify-between gap-3 -mt-2 mb-3">
-                <h3 class="font-display text-base md:text-lg font-semibold tracking-[-0.01em]">Quatre profils mesurés</h3>
+                <h3 class="font-display text-base md:text-lg font-semibold tracking-[-0.01em]">{isRangeMeasured ? "Quatre profils mesurés" : "Quatre profils d'usage"}</h3>
                 <Tag tone="outline" mono>{confidenceLabel[config.realRange?.confidence ?? vehicle.realRange.confidence] ?? (config.realRange?.confidence ?? vehicle.realRange.confidence)}</Tag>
               </div>
               <SeasonalRange client:visible urban={config.realRange?.urban_km ?? vehicle.realRange.urban_km} mixed={config.realRange?.mixed_km ?? vehicle.realRange.mixed_km} highway={config.realRange?.highway_130_km ?? vehicle.realRange.highway_130_km} winter={config.realRange?.winter_minus5_km ?? vehicle.realRange.winter_minus5_km} vehicleName={`${vehicle.brand} ${vehicle.model} ${config.trim}`} />

@@ -1,4 +1,6 @@
 ---
+import { getImage } from "astro:assets";
+
 export interface Props {
   brand: string;
   class?: string;
@@ -11,6 +13,13 @@ const { brand, class: className = "w-5 h-5" } = Astro.props;
 const logoModules = import.meta.glob<string>("/src/assets/logos/*.svg", {
   query: "?raw",
   import: "default",
+  eager: true,
+});
+
+// Logos raster (webp/png) : pour les emblèmes trop détaillés pour un SVG léger
+// (ex. blason Porsche, dont le SVG vectorisé pesait 776 Ko inliné à chaque carte).
+// Le SVG reste prioritaire s'il existe.
+const rasterLogos = import.meta.glob<{ default: ImageMetadata }>("/src/assets/logos/*.{webp,png}", {
   eager: true,
 });
 
@@ -87,10 +96,36 @@ for (const [path, content] of Object.entries(logoModules)) {
   }
 }
 
+let rasterLogo: { src: string; width: number; height: number } | null = null;
+if (!patchedSvg) {
+  const rasterPath = Object.keys(rasterLogos).find(
+    (path) => normalize(path.split("/").at(-1)!.replace(/\.(webp|png)$/i, "")) === target
+  );
+  if (rasterPath) {
+    const img = await getImage({ src: rasterLogos[rasterPath]!.default, format: "webp", height: 96 });
+    rasterLogo = {
+      src: img.src,
+      width: Number(img.attributes.width),
+      height: Number(img.attributes.height),
+    };
+  }
+}
+
 const b = normalize(brand);
 ---
 
-{patchedSvg ? (
+{rasterLogo ? (
+  <img
+    src={rasterLogo.src}
+    width={rasterLogo.width}
+    height={rasterLogo.height}
+    alt=""
+    class={className}
+    style="object-fit: contain;"
+    loading="lazy"
+    decoding="async"
+  />
+) : patchedSvg ? (
   <Fragment set:html={patchedSvg} />
 ) : b === "renault" ? (
   <svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

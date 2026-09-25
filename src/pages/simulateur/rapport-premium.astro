@@ -6,7 +6,7 @@ import { getAllVehicles } from "@/lib/vehicles";
 const vehicles = getAllVehicles();
 ---
 
-<BaseLayout title="Rapport Premium B2C | Evly" description="Votre rapport PDF Premium personnalisé indépendant.">
+<BaseLayout title="Rapport TCO détaillé | Evly" description="Votre rapport PDF personnalisé et indépendant." noindex>
   <PremiumReportDashboard client:only="react" vehicles={vehicles} />
 </BaseLayout>
 

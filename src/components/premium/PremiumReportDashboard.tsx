@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import type { Vehicle } from "@/data/schemas";
 import { calculateCeeAid } from "@/lib/cee";
+import { url } from "@/lib/url";
 import { ArrowLeft, Printer, RotateCcw, AlertTriangle, Sparkles, CheckCircle2 } from "lucide-react";
 
 interface Props {
@@ -14,12 +15,10 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const searchParams = new URLSearchParams(window.location.search);
-      const isPaid = searchParams.get("paid") === "true";
       const slug = searchParams.get("v");
-      
-      if (!isPaid || !slug) {
-        alert("Accès refusé : Ce rapport requiert un paiement validé.");
-        window.location.href = "/simulateur";
+
+      if (!slug) {
+        window.location.href = url("/simulateur/");
         return;
       }
 
@@ -361,7 +360,7 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
         <div className="flex items-center gap-2.5">
           <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
           <span className="font-mono text-[10px] font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">
-            Rapport Premium débloqué
+            Rapport détaillé · bêta gratuite
           </span>
         </div>
         <div className="flex items-center gap-3">
