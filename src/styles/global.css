@@ -133,6 +133,31 @@
     }
   }
 
+  /* Niveau de confiance d'une autonomie (cartes véhicule) : pastille pleine = mesurée */
+  .card-confidence {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 1;
+    color: var(--color-text-faint);
+  }
+  .card-confidence::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: 1.5px solid currentColor;
+    flex-shrink: 0;
+  }
+  .card-confidence[data-level="measured"] {
+    color: var(--color-accent);
+  }
+  .card-confidence[data-level="measured"]::before {
+    background: currentColor;
+  }
+
   .label-eyebrow {
     font-family: var(--font-mono);
     font-size: 10px;

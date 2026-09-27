@@ -43,7 +43,7 @@ test.describe("Evly E2E Test Suite", () => {
 
     // S'assurer de la présence d'au moins une carte
     const initialCardsCount = await page
-      .locator('.vehicle-card:not([style*="display: none"])')
+      .locator('.vehicle-card[data-match="1"]')
       .count();
     expect(initialCardsCount).toBeGreaterThan(0);
 
@@ -62,7 +62,7 @@ test.describe("Evly E2E Test Suite", () => {
 
     // Vérifier que la liste s'est réduite et que la R5 E-Tech est présente
     const filteredCount = await page
-      .locator('.vehicle-card:not([style*="display: none"])')
+      .locator('.vehicle-card[data-match="1"]')
       .count();
     expect(filteredCount).toBeLessThan(initialCardsCount);
 
@@ -79,7 +79,7 @@ test.describe("Evly E2E Test Suite", () => {
     // Attendre le reset
     await page.waitForTimeout(400);
     const afterResetCount = await page
-      .locator('.vehicle-card:not([style*="display: none"])')
+      .locator('.vehicle-card[data-match="1"]')
       .count();
     expect(afterResetCount).toBe(initialCardsCount);
 
@@ -96,9 +96,45 @@ test.describe("Evly E2E Test Suite", () => {
     // Attendre le filtrage
     await page.waitForTimeout(400);
     const citadineCount = await page
-      .locator('.vehicle-card:not([style*="display: none"])')
+      .locator('.vehicle-card[data-match="1"]')
       .count();
     expect(citadineCount).toBeLessThan(initialCardsCount);
+  });
+
+  test("Showroom - Pagination, URL et panneau de filtres mobile", async ({ page }) => {
+    await page.goto("/vehicules/");
+    await page.waitForLoadState("networkidle");
+
+    // 24 cartes affichées au chargement, le reste derrière « Voir plus »
+    const visible = page.locator('.vehicle-card:not([style*="display: none"])');
+    await expect(visible).toHaveCount(24);
+    const total = await page.locator('.vehicle-card[data-match="1"]').count();
+    expect(total).toBeGreaterThan(24);
+    await page.locator("#load-more").click();
+    await expect(visible).toHaveCount(Math.min(48, total));
+
+    // Les filtres sont reflétés dans l'URL et restaurés au rechargement
+    await page.locator('aside summary:has-text("Marques")').click();
+    await page.locator('aside .filter-chip[data-filter="brand"][data-value="Renault"]').click();
+    await expect(page).toHaveURL(/marques=Renault/);
+    await page.reload();
+    await page.waitForLoadState("networkidle");
+    await expect(page.locator('aside .filter-chip[data-filter="brand"][data-value="Renault"]')).toHaveAttribute("aria-pressed", "true");
+    const renaultCount = await page.locator('.vehicle-card[data-match="1"]').count();
+    expect(renaultCount).toBeLessThan(total);
+
+    // Mobile : bouton Filtres avec badge, panneau, compteur de résultats
+    await page.setViewportSize({ width: 390, height: 844 });
+    await expect(page.locator("#filters-badge")).toHaveText("1");
+    await page.locator("#open-filters").click();
+    const sheet = page.locator("#filters-sheet");
+    await expect(sheet).toBeVisible();
+    await expect(page.locator("#sheet-results-count")).toHaveText(String(renaultCount));
+    await sheet.locator('.filter-chip[data-filter="brand"][data-value="Renault"]').click();
+    await expect(page.locator("#sheet-results-count")).toHaveText(String(total));
+    await sheet.locator(".filters-sheet-apply").click();
+    await expect(sheet).toBeHidden();
+    await expect(page).not.toHaveURL(/marques=/);
   });
 
   test("Comparateur - Ajout et Suppression", async ({ page }) => {

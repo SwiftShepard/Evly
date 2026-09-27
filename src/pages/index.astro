@@ -3,24 +3,17 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import BentoGrid from "@/components/ui/BentoGrid.astro";
 import Tile from "@/components/ui/Tile.astro";
 import Tag from "@/components/ui/Tag.astro";
-import Wordmark from "@/components/ui/Wordmark.astro";
 import VehicleImage from "@/components/ui/VehicleImage.astro";
 import BrandLogo from "@/components/ui/BrandLogo.astro";
 import { getAllVehicles } from "@/lib/vehicles";
 import { formatPrice } from "@/lib/format";
+import { getVehicleCardSummary } from "@/lib/vehicleCard";
 import { url } from "@/lib/url";
-import { getLeasingStatus } from "@/lib/leasing";
 
 const vehicles = getAllVehicles();
 const totalVehicles = vehicles.length;
 const totalTests = vehicles.reduce((sum, v) => sum + v.rangeTests.length, 0);
 const totalConfigs = vehicles.reduce((sum, v) => sum + v.configurations.length, 0);
-
-// "À la une", 2 catégories de véhicules pour scroll rows
-const cheapestOf = (v: (typeof vehicles)[number]) => {
-  const validPrices = v.trims.map((t) => t.price_EUR).filter((p): p is number => p !== null);
-  return validPrices.length > 0 ? Math.min(...validPrices) : null;
-};
 
 // Tri par date de dernière mise à jour / ajout (lastUpdated) décroissant, puis par marque/modèle
 const latestVehicles = [...vehicles]
@@ -338,40 +331,41 @@ const description =
 
         <div class="featured-scroll-row">
           {latestVehicles.map((v) => {
-            const cheapest = cheapestOf(v);
+            const card = getVehicleCardSummary(v);
             const isNew = v.releaseYear >= 2026;
             return (
               <a href={url(`/vehicules/${v.slug}`)} class="featured-card">
                 <div class="flex items-center justify-between gap-2 mb-3">
                   <div class="flex items-center gap-1.5 text-[var(--color-text-muted)]">
                     <BrandLogo brand={v.brand} class="w-3.5 h-3.5" />
-                    <span class="label-eyebrow text-[9px]">{v.brand}</span>
+                    <span class="label-eyebrow">{v.brand}</span>
                   </div>
-                  <Tag tone={isNew ? "accent" : "default"} mono>
+                  <Tag tone={isNew ? "accent" : "neutral"} mono>
                     {isNew ? "Nouveauté" : "Mis à jour"}
                   </Tag>
                 </div>
                 <div class="flex items-end justify-between gap-2 mb-4">
                   <h3 class="font-display text-lg md:text-xl font-semibold tracking-[-0.015em] leading-[1.05]">
                     {v.model}
-                    <span class="block text-[var(--color-text-muted)] text-xs md:text-sm mt-1 font-medium">{v.variant}</span>
+                    <span class="block text-[var(--color-text-muted)] font-mono text-[11px] mt-1 font-normal tracking-normal">{card.subtitle}</span>
                   </h3>
                   <VehicleImage slug={v.slug} alt={`${v.brand} ${v.model}`} class="w-20 h-12 flex-shrink-0" />
                 </div>
                 <div class="grid grid-cols-2 gap-3 mt-auto pt-3 border-t border-[var(--color-border)]">
                   <div class="flex flex-col gap-0.5">
-                    <span class="font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Auto.</span>
+                    <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)] whitespace-nowrap">Autonomie réelle</span>
                     <div class="flex items-baseline gap-1">
                       <span data-numeric class="display-stat text-xl text-[var(--color-accent)]">{v.realRange.mixed_km}</span>
-                      <span class="font-mono text-[10px] text-[var(--color-text-faint)]">km</span>
+                      <span class="font-mono text-[11px] text-[var(--color-text-faint)]">km</span>
                     </div>
+                    <span class="card-confidence" data-level={card.rangeConfidence}>{card.rangeConfidenceLabel}</span>
                   </div>
                   <div class="flex flex-col gap-0.5">
-                    <span class="font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Dès</span>
-                    {cheapest !== null ? (
-                      <span data-numeric class="display-stat text-xl">{formatPrice(cheapest)}</span>
+                    <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)]">{card.cheapestPrice !== null ? "Dès" : "Prix"}</span>
+                    {card.cheapestPrice !== null ? (
+                      <span data-numeric class="display-stat text-xl">{formatPrice(card.cheapestPrice)}</span>
                     ) : (
-                      <span class="display-stat text-sm text-[var(--color-text-faint)] italic font-normal tracking-tight">Tarif à venir</span>
+                      <span class="font-display text-sm font-medium text-[var(--color-text-faint)] leading-tight">Prix non communiqué</span>
                     )}
                   </div>
                 </div>
