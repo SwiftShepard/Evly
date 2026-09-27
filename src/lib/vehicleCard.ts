@@ -1,5 +1,6 @@
 import type { Vehicle } from "@/data/schemas";
 import { formatNumber } from "@/lib/format";
+import { isVehicleEligibleCEE } from "@/lib/cee";
 
 /** Plafond de cumul des aides affiché partout sur le site (CEE + majoration batterie UE). */
 export const MAX_TOTAL_AIDS_EUR = 8100;
@@ -59,7 +60,9 @@ export function getVehicleCardSummary(v: Vehicle): VehicleCardSummary {
     MAX_TOTAL_AIDS_EUR,
     v.availableAids.reduce((sum, a) => sum + a.amount_EUR, 0)
   );
-  const priceAided = cheapestPrice !== null ? Math.max(0, cheapestPrice - totalAids) : null;
+  // Pas d'aide si la version la moins chère dépasse le plafond (prix, masse) : prix après aides = prix
+  const aidsApply = totalAids > 0 && isVehicleEligibleCEE(v, cheapestPrice);
+  const priceAided = cheapestPrice !== null ? Math.max(0, cheapestPrice - (aidsApply ? totalAids : 0)) : null;
 
   const confidence = getRangeConfidenceInfo(v.realRange.confidence);
 

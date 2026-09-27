@@ -6,7 +6,7 @@
   "bodyType": "SUV familial",
   "segment": "D",
   "productionCountry": "Allemagne",
-  "assemblyPlant": "Ulsan",
+  "assemblyPlant": "Grünheide",
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
   "power_kW": 220,
@@ -186,12 +186,7 @@
     {
       "label": "Prime CEE",
       "amount_EUR": 6500,
-      "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
-    },
-    {
-      "label": "Majoration Batterie Européenne",
-      "amount_EUR": 2000,
-      "conditions": "Majoration pour batterie fabriquée en Europe."
+      "conditions": "Coup de pouce CEE 2026 réservé aux versions Propulsion et Grande Autonomie Propulsion (éco-score ADEME ≥ 60, prix < 47 000 €), selon les revenus du foyer. Transmission intégrale et Performance non éligibles. Pas de majoration batterie européenne ni de leasing social pour Tesla."
     }
   ],
   "configurations": [
@@ -517,11 +512,12 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-09-27",
   "sources": [
     "nyland",
     "la-chaine-ev",
-    "ev-database"
+    "ev-database",
+    "automobile-propre"
   ],
   "imageCredit": "Constructeur"
 }

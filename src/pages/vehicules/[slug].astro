@@ -18,6 +18,7 @@ import { getAllVehicles, getVehicleBySlug } from "@/lib/vehicles";
 import { getSource, getSources, type TrustLevel } from "@/data/sources";
 import { formatDate, formatHours, formatLiters, formatMm, formatNm, formatNumber, formatPrice, formatSeconds } from "@/lib/format";
 import { url } from "@/lib/url";
+import { isVehicleEligibleCEE, CEE_PRICE_CAP_EUR } from "@/lib/cee";
 import FavoriteButton from "@/components/ui/FavoriteButton";
 
 export function getStaticPaths() {
@@ -290,7 +291,8 @@ const configViews = configurations.map((config) => {
   }
 
   const nyland120 = config.rangeTests.find((t: any) => t.protocol === "nyland" && t.speed_kmh === 120);
-  const priceAfterAids = config.price_EUR != null ? Math.max(0, config.price_EUR - totalAids) : null;
+  const aidsEligible = totalAids > 0 && isVehicleEligibleCEE(vehicle, config.price_EUR);
+  const priceAfterAids = config.price_EUR != null && aidsEligible ? Math.max(0, config.price_EUR - totalAids) : null;
   const realRange = config.realRange ?? vehicle.realRange;
   const rangeConfidence = realRange.confidence;
   const isRangeMeasured = rangeConfidence === "tested" || rangeConfidence === "bjorn_nyland";
@@ -364,6 +366,7 @@ const configViews = configurations.map((config) => {
     batteryCapacity,
     nyland120,
     priceAfterAids,
+    aidsEligible,
     realRange,
     rangeConfidence,
     isRangeMeasured,
@@ -852,6 +855,15 @@ const tocSections = [
                           <>
                             <span data-numeric class="display-stat text-3xl md:text-4xl">{formatPrice(cv.priceAfterAids)}</span>
                             <span class="font-mono text-[11px] text-[var(--color-text-faint)]">au lieu de {formatPrice(cv.config.price_EUR!)}, après {formatPrice(totalAids)} d'aides max.</span>
+                          </>
+                        ) : cv.config.price_EUR != null && !cv.aidsEligible ? (
+                          <>
+                            <span data-numeric class="display-stat text-3xl md:text-4xl">{formatPrice(cv.config.price_EUR)}</span>
+                            <span class="font-mono text-[11px] text-[var(--color-text-faint)] leading-relaxed">
+                              {cv.config.price_EUR > CEE_PRICE_CAP_EUR
+                                ? `Cette version dépasse le plafond de ${formatPrice(CEE_PRICE_CAP_EUR)} : pas de prime CEE.`
+                                : "Cette version n'est pas éligible à la prime CEE."}
+                            </span>
                           </>
                         ) : (
                           <span class="font-mono text-sm text-[var(--color-text-faint)]">Prix non communiqué</span>

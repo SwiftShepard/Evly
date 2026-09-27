@@ -73,8 +73,10 @@ export const MORAL_PERSON_PRIME_AMOUNTS = {
  * Détermine si le véhicule est éligible au dispositif CEE 2026.
  */
 export function isVehicleEligibleCEE(vehicle: Vehicle, price: number | null): boolean {
-  const isMadeInEU = isEU(vehicle.productionCountry);
-  if (!isMadeInEU) return false;
+  // Éco-score ADEME ≥ 60 : renseigné dans la fiche par la présence d'une prime CEE.
+  // (Le pays seul ne suffit pas : Inster coréen et Grande Panda serbe sont éligibles.)
+  const hasEcoScore = vehicle.availableAids?.some((aid) => /cee|coup de pouce/i.test(aid.label)) ?? false;
+  if (!hasEcoScore) return false;
 
   // Si le prix d'achat de la configuration ou finition dépasse le plafond
   const validTrimPrices = vehicle.trims.map((t) => t.price_EUR).filter((p): p is number => p !== null);

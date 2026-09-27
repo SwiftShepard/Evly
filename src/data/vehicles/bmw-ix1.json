@@ -206,7 +206,13 @@
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [],
+  "availableAids": [
+    {
+      "label": "Prime CEE",
+      "amount_EUR": 6500,
+      "conditions": "Coup de pouce CEE 2026 (éco-score ADEME validé pour l'iX1 eDrive20 et xDrive30), pour les versions sous 47 000 €, selon les revenus du foyer."
+    }
+  ],
   "configurations": [
     {
       "id": "bmw-ix1-edrive20-base",

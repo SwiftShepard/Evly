@@ -134,7 +134,13 @@
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [],
+  "availableAids": [
+    {
+      "label": "Prime CEE",
+      "amount_EUR": 6500,
+      "conditions": "Coup de pouce CEE 2026 (gamme ID éligible à l'éco-score ADEME), pour les versions sous 47 000 €, selon les revenus du foyer."
+    }
+  ],
   "configurations": [
     {
       "id": "vw-id-cross-trend",
