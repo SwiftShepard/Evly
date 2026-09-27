@@ -515,7 +515,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
               class="vehicle-card contents"
               style={i >= PAGE_SIZE ? "display: none" : undefined}
             >
-              <Tile size="2x1" variant="default" href={url(`/vehicules/${v.slug}`)} ariaLabel={`Fiche ${v.brand} ${v.model}`} class="reveal">
+              <Tile size="2x1" variant="default" href={url(`/vehicules/${v.slug}/`)} ariaLabel={`Fiche ${v.brand} ${v.model}`} class="reveal">
                 <div class="flex items-center justify-between gap-3 mb-4">
                   <div class="flex items-center gap-2 text-[var(--color-text-muted)] min-w-0">
                     <BrandLogo brand={v.brand} class="w-4 h-4" />
@@ -1127,6 +1127,43 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
         dragZone?.addEventListener('pointercancel', endDrag);
       }
 
+      // ── « Retour à la liste » depuis une fiche ──────────────
+      // Au clic sur une carte, on mémorise la liste exacte (URL filtrée, cartes
+      // dépliées) ; la fiche n'affiche son bouton retour que pour ce modèle.
+      const RETURN_KEY = 'evly-catalog-return';
+      type ReturnEntry = { slug: string; url: string; pageLimit: number; ts: number; restore?: boolean };
+
+      grid.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        if (target.closest('button')) return; // bouton favori dans la carte
+        const card = target.closest<HTMLElement>('.vehicle-card');
+        if (!card?.dataset.slug || !target.closest('a')) return;
+        const entry: ReturnEntry = {
+          slug: card.dataset.slug,
+          url: `${window.location.pathname}${window.location.search}`,
+          pageLimit,
+          ts: Date.now(),
+        };
+        try { sessionStorage.setItem(RETURN_KEY, JSON.stringify(entry)); } catch { /* stockage indisponible */ }
+      });
+
+      function restoreFromVehiclePage() {
+        let entry: ReturnEntry | null = null;
+        try { entry = JSON.parse(sessionStorage.getItem(RETURN_KEY) || 'null'); } catch { return; }
+        if (!entry?.restore || entry.url !== `${window.location.pathname}${window.location.search}`) return;
+        try { sessionStorage.setItem(RETURN_KEY, JSON.stringify({ ...entry, restore: false })); } catch { /* ignore */ }
+
+        pageLimit = Math.max(PAGE_SIZE, entry.pageLimit);
+        applyPagination();
+        const tile = grid!.querySelector<HTMLElement>(`.vehicle-card[data-slug="${CSS.escape(entry.slug)}"] .bento-tile`);
+        if (!tile) return;
+        requestAnimationFrame(() => {
+          tile.scrollIntoView({ block: 'center' });
+          tile.classList.add('is-return-target');
+          window.setTimeout(() => tile.classList.remove('is-return-target'), 1800);
+        });
+      }
+
       // ── Initialisation depuis l'URL ─────────────────────────
       readURL();
       searchInputs.forEach((input) => { input.value = currentSearch; });
@@ -1137,6 +1174,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
       applyPriceMode(priceMode);
       applySort(currentSort);
       onStateChange();
+      restoreFromVehiclePage();
     });
   </script>
 
@@ -1487,6 +1525,18 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
     }
     body[data-range-mode="wltp"] .card-confidence::before {
       background: transparent;
+    }
+
+    /* ── Carte consultée, mise en évidence au retour depuis sa fiche ── */
+    .catalog-grid :global(.is-return-target) {
+      animation: return-target 1.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    @keyframes return-target {
+      0%, 35% { box-shadow: 0 0 0 2px var(--color-accent), 0 0 0 8px color-mix(in srgb, var(--color-accent) 18%, transparent); }
+      100% { box-shadow: 0 0 0 0 transparent; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .catalog-grid :global(.is-return-target) { animation: none; outline: 2px solid var(--color-accent); }
     }
 
     /* ── Pagination ─────────────────────────────────────── */

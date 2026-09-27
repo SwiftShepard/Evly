@@ -334,7 +334,7 @@ const description =
             const card = getVehicleCardSummary(v);
             const isNew = v.releaseYear >= 2026;
             return (
-              <a href={url(`/vehicules/${v.slug}`)} class="featured-card">
+              <a href={url(`/vehicules/${v.slug}/`)} class="featured-card">
                 <div class="flex items-center justify-between gap-2 mb-3">
                   <div class="flex items-center gap-1.5 text-[var(--color-text-muted)]">
                     <BrandLogo brand={v.brand} class="w-3.5 h-3.5" />

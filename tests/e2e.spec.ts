@@ -101,6 +101,31 @@ test.describe("Evly E2E Test Suite", () => {
     expect(citadineCount).toBeLessThan(initialCardsCount);
   });
 
+  test("Fiche - Retour à la liste uniquement depuis le catalogue", async ({ page }) => {
+    // Arrivée directe : pas de bouton
+    await page.goto("/vehicules/renault-5/");
+    await expect(page.locator("#catalog-back-link")).toBeHidden();
+
+    // Depuis le catalogue filtré, trié, avec « Voir plus »
+    await page.goto("/vehicules/?tri=price-asc&options=cee");
+    await page.waitForLoadState("networkidle");
+    await page.locator("#load-more").click();
+    const card = page.locator('.vehicle-card:not([style*="display: none"])').nth(30);
+    const slug = await card.getAttribute("data-slug");
+    await card.locator("a").first().click();
+    await page.waitForURL(`**/vehicules/${slug}/`);
+
+    const back = page.locator("#catalog-back-link");
+    await expect(back).toBeVisible();
+    await expect(back).toHaveAttribute("href", "/vehicules/?tri=price-asc&options=cee");
+    await back.click();
+    await page.waitForURL("**/vehicules/?tri=price-asc&options=cee");
+
+    // Liste restaurée : cartes dépliées, carte consultée à l'écran
+    await expect(page.locator('.vehicle-card:not([style*="display: none"])')).toHaveCount(48);
+    await expect(page.locator(`.vehicle-card[data-slug="${slug}"] .bento-tile`)).toBeInViewport();
+  });
+
   test("Showroom - Pagination, URL et panneau de filtres mobile", async ({ page }) => {
     await page.goto("/vehicules/");
     await page.waitForLoadState("networkidle");

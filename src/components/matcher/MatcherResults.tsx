@@ -322,14 +322,14 @@ export default function MatcherResults({
 
                     <div className="mt-4 flex flex-col gap-2">
                       <a
-                        href={`/vehicules/${res.vehicle.slug}`}
+                        href={url(`/vehicules/${res.vehicle.slug}/`)}
                         className="btn-interactive inline-flex items-center justify-between px-3 py-2 border border-[var(--color-border-strong)] rounded-lg text-xs font-semibold text-[var(--color-text)] hover:bg-[var(--color-bg-subtle)] transition-colors"
                       >
                         Fiche technique
                         <ChevronRight size={13} />
                       </a>
                       <a
-                        href={`/comparer?v=${res.vehicle.slug}:${res.bestConfig.id}:100`}
+                        href={url(`/comparer/?v=${res.vehicle.slug}:${res.bestConfig.id}:100`)}
                         className="btn-interactive inline-flex items-center justify-between px-3 py-2 border border-[var(--color-accent-dim)] rounded-lg text-xs font-semibold text-[var(--color-accent)] bg-[color-mix(in_srgb,var(--color-accent)_5%,transparent)] hover:bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] transition-colors"
                       >
                         Ajouter au comparateur
@@ -604,13 +604,13 @@ export default function MatcherResults({
                           </span>
                           <div className="flex items-center gap-2">
                             <a
-                              href={`/vehicules/${res.vehicle.slug}`}
+                              href={url(`/vehicules/${res.vehicle.slug}/`)}
                               className="inline-flex items-center gap-1 px-3 py-1.5 border border-[var(--color-border-strong)] rounded text-[10px] font-semibold text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-bg-subtle)] transition-colors"
                             >
                               Fiche technique
                             </a>
                             <a
-                              href={`/comparer?v=${res.vehicle.slug}:${res.bestConfig.id}:100`}
+                              href={url(`/comparer/?v=${res.vehicle.slug}:${res.bestConfig.id}:100`)}
                               className="inline-flex items-center gap-1 px-3 py-1.5 border border-[var(--color-accent-dim)] rounded text-[10px] font-semibold text-[var(--color-accent)] bg-[color-mix(in_srgb,var(--color-accent)_5%,transparent)] hover:bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] transition-colors"
                             >
                               Ajouter au comparateur

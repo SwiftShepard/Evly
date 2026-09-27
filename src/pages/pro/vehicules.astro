@@ -341,7 +341,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
               data-cee={hasCEE(v) ? "1" : "0"}
               class="vehicle-card contents"
             >
-              <Tile size="2x1" variant="default" href={url(`/vehicules/${v.slug}`)} ariaLabel={`Fiche ${v.brand} ${v.model} ${v.variant}`} class="reveal">
+              <Tile size="2x1" variant="default" href={url(`/vehicules/${v.slug}/`)} ariaLabel={`Fiche ${v.brand} ${v.model} ${v.variant}`} class="reveal">
                 <div class="flex items-center justify-between gap-3 mb-4">
                   <div class="flex items-center gap-2 text-[var(--color-text-muted)]">
                     <BrandLogo brand={v.brand} class="w-4 h-4" />

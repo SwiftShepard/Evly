@@ -166,7 +166,7 @@ const breadcrumbJsonLd = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Accueil", item: new URL(url("/"), Astro.site).toString() },
     { "@type": "ListItem", position: 2, name: "Véhicules", item: new URL(url("/vehicules"), Astro.site).toString() },
-    { "@type": "ListItem", position: 3, name: `${vehicle.brand} ${vehicle.model}`, item: new URL(url(`/vehicules/${vehicle.slug}`), Astro.site).toString() },
+    { "@type": "ListItem", position: 3, name: `${vehicle.brand} ${vehicle.model}`, item: new URL(url(`/vehicules/${vehicle.slug}/`), Astro.site).toString() },
   ],
 };
 
@@ -397,7 +397,14 @@ const tocSections = [
 
 <BaseLayout title={`${vehicle.brand} ${vehicle.model} : Prix, Autonomie Réelle & Verdict | Evly`} description={description} jsonLd={pageJsonLd}>
   <!-- Fil d'ariane -->
-  <div class="container-edit pt-2 md:pt-3 fade-rise">
+  <div class="container-edit pt-2 md:pt-3 fade-rise flex items-center gap-x-4 gap-y-1 flex-wrap">
+    <!-- Affiché uniquement si l'on arrive depuis le catalogue (cf. script en bas de page) -->
+    <a href={url("/vehicules/")} id="catalog-back-link" class="back-to-list" hidden>
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.25" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+      Retour à la liste
+    </a>
     <nav aria-label="Fil d'ariane" class="font-mono text-[11px] md:text-xs text-[var(--color-text-faint)] flex items-center gap-2 flex-wrap">
       <a href={url("/")} class="hover:text-[var(--color-text-muted)] min-h-[32px] inline-flex items-center">Accueil</a>
       <span aria-hidden="true">/</span>
@@ -1153,6 +1160,24 @@ const tocSections = [
 
   <script define:vars={{ vehicleSlug: vehicle.slug, initialConfigId: configurations[0]?.id || "default", compareBaseUrl: url("/comparer/"), simulateurBaseUrl: url("/simulateur/") }}>
     let currentConfigId = initialConfigId;
+
+    // « Retour à la liste » : visible seulement si cette fiche a été ouverte
+    // depuis une carte du catalogue (mémorisé par le catalogue en sessionStorage)
+    try {
+      const RETURN_KEY = "evly-catalog-return";
+      const entry = JSON.parse(sessionStorage.getItem(RETURN_KEY) || "null");
+      const backLink = document.getElementById("catalog-back-link");
+      const isFresh = entry && Date.now() - entry.ts < 6 * 60 * 60 * 1000;
+      if (backLink && isFresh && entry.slug === vehicleSlug && typeof entry.url === "string") {
+        backLink.href = entry.url;
+        backLink.hidden = false;
+        backLink.addEventListener("click", () => {
+          sessionStorage.setItem(RETURN_KEY, JSON.stringify({ ...entry, restore: true }));
+        });
+      }
+    } catch (e) {
+      // sessionStorage indisponible (navigation privée stricte) : le bouton reste masqué
+    }
     let currentSoh = 100;
     let currentTempMultiplier = 1.0;
 
@@ -1551,6 +1576,36 @@ const tocSections = [
     .stat-hint-icon {
       transition: none;
     }
+  }
+
+  /* ── Retour à la liste (arrivée depuis le catalogue) ── */
+  .back-to-list {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    min-height: 32px;
+    padding: 0 0.875rem 0 0.625rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-border-strong);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: border-color 0.15s, background-color 0.15s, transform 0.15s;
+  }
+  .back-to-list[hidden] {
+    display: none;
+  }
+  .back-to-list:hover {
+    border-color: var(--color-accent);
+    background: var(--color-surface-accent);
+  }
+  .back-to-list:hover svg {
+    transform: translateX(-2px);
+  }
+  .back-to-list svg {
+    transition: transform 0.15s;
   }
 
   /* ── Sommaire collant ── */
