@@ -574,20 +574,20 @@
   },
   "keyFeatures": [
     {
-      "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "category": "securite",
+      "label": "Conduite semi-autonome (selon finition)"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "Recharge bidirectionnelle V2L et écran 10\" (selon finition)"
     },
     {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
+      "category": "confort",
+      "label": "Sièges chauffants et toit vitré (selon finition)"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "Design néo-rétro inspiré de la R5 originelle"
     }
   ],
   "verdict": {

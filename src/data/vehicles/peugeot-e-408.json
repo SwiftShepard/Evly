@@ -297,20 +297,20 @@
   },
   "keyFeatures": [
     {
-      "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "category": "securite",
+      "label": "Conduite semi-autonome de niveau 2 (ADML)"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "i-Cockpit 3D"
     },
     {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
+      "category": "confort",
+      "label": "Sièges AGR et Hi-Fi Focal"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "Silhouette fastback surélevée"
     }
   ],
   "verdict": {

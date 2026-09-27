@@ -506,20 +506,20 @@
   },
   "keyFeatures": [
     {
-      "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "category": "securite",
+      "label": "Autopilot de série (régulateur adaptatif et maintien de voie)"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "Écran central 15,4\" et écran arrière 8\""
     },
     {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
+      "category": "confort",
+      "label": "Sièges avant et arrière chauffants"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "Berline très aérodynamique (Cx 0,219)"
     }
   ],
   "verdict": {

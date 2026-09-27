@@ -207,7 +207,7 @@
     },
     {
       "category": "securite",
-      "label": "Freinage automatique d'urgence"
+      "label": "Freinage d'urgence et maintien dans la voie de série (norme GSR2)"
     }
   ],
   "verdict": {

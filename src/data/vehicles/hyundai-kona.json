@@ -47,7 +47,7 @@
     "time_0_100_h": 6.5
   },
   "plugAndCharge": false,
-  "v2l": false,
+  "v2l": true,
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
@@ -643,20 +643,20 @@
   },
   "keyFeatures": [
     {
-      "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "category": "securite",
+      "label": "Caméra 360° et affichage des angles morts"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "Navigation 12,3\" et chargeur inversé V2L (selon finition)"
     },
     {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
+      "category": "confort",
+      "label": "Volant et sièges avant chauffants, ventilés en finition haute"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "Bandeau lumineux « Seamless Horizon » à LED"
     }
   ],
   "verdict": {

@@ -619,20 +619,20 @@
   },
   "keyFeatures": [
     {
-      "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "category": "securite",
+      "label": "Régulateur adaptatif et aide au stationnement"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "Palettes de réglage de la régénération au volant"
     },
     {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
+      "category": "confort",
+      "label": "Climatisation automatique, sièges chauffants et toit ouvrant"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "Version Cross au look baroudeur avec barres de toit"
     }
   ],
   "verdict": {

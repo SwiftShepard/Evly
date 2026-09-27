@@ -46,7 +46,7 @@
     "time_0_100_h": 6.5
   },
   "plugAndCharge": false,
-  "v2l": false,
+  "v2l": true,
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
@@ -340,20 +340,20 @@
   },
   "keyFeatures": [
     {
-      "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "category": "securite",
+      "label": "Freinage d'urgence et maintien dans la voie de série (norme GSR2)"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "Architecture 800 V et recharge bidirectionnelle V2L"
     },
     {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
+      "category": "confort",
+      "label": "Coffre avant de 52 L en plus du coffre"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "Silhouette crossover sportive, jantes 20\" en GT-Line"
     }
   ],
   "verdict": {

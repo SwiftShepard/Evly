@@ -221,20 +221,20 @@
   },
   "keyFeatures": [
     {
-      "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "category": "securite",
+      "label": "Freinage d'urgence et maintien dans la voie de série (norme GSR2)"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "Recharge rapide jusqu'à 100 kW, batterie NMC"
     },
     {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
+      "category": "confort",
+      "label": "Coffre de 450 L"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "SUV compact de 4,50 m"
     }
   ],
   "verdict": {

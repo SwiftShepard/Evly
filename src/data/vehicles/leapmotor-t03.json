@@ -166,20 +166,20 @@
   },
   "keyFeatures": [
     {
-      "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "category": "securite",
+      "label": "Freinage d'urgence et maintien dans la voie de série (norme GSR2)"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "Écran tactile 10,1\" et batterie LFP"
     },
     {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
+      "category": "confort",
+      "label": "Entretien assuré par le réseau Stellantis"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "Citadine 5 portes de 3,62 m"
     }
   ],
   "verdict": {

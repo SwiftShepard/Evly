@@ -456,20 +456,20 @@
   },
   "keyFeatures": [
     {
-      "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "category": "securite",
+      "label": "Freinage d'urgence et maintien dans la voie de série (norme GSR2)"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "Écran 12,3\" et batterie de 88 kWh (selon version)"
     },
     {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
+      "category": "confort",
+      "label": "Sellerie cuir, siège conducteur électrique et toit ouvrant (selon finition)"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "SUV familial, jantes 20\" en finition sportive"
     }
   ],
   "verdict": {

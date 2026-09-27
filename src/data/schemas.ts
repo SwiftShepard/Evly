@@ -70,9 +70,23 @@ const KeyFeatureCategory = z.enum([
   "design",
 ]);
 
+// Libellés passe-partout autrefois recopiés sur des dizaines de fiches : ils ne disent rien
+// du modèle. Un équipement doit être propre au véhicule (cf. roadmap A17).
+const GENERIC_FEATURE_LABELS = new Set([
+  "Sièges confort de haute qualité",
+  "Système d'infodivertissement avancé",
+  "Signature lumineuse LED distinctive",
+  "Signature lumineuse LED",
+  "Système multimédia tactile, compatible Apple CarPlay / Android Auto",
+  "Freinage automatique d'urgence",
+]);
+
 const KeyFeatureSchema = z.object({
   category: KeyFeatureCategory,
-  label: z.string().min(1),
+  label: z.string().min(1).refine(
+    (label) => !GENERIC_FEATURE_LABELS.has(label),
+    { message: "Équipement générique interdit : décrire un équipement propre au modèle" }
+  ),
 });
 
 const VerdictSchema = z.object({

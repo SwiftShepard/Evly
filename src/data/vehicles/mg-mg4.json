@@ -449,20 +449,20 @@
   },
   "keyFeatures": [
     {
-      "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "category": "securite",
+      "label": "Aides à la conduite MG Pilot"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "Propulsion, et 435 ch en XPower avec launch control"
     },
     {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
+      "category": "confort",
+      "label": "Pompe à chaleur et sièges chauffants (selon finition)"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "Compacte à répartition des masses 50/50"
     }
   ],
   "verdict": {

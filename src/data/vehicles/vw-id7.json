@@ -497,20 +497,20 @@
   },
   "keyFeatures": [
     {
-      "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "category": "securite",
+      "label": "Conduite semi-autonome"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "Phares Matrix LED IQ.Light"
     },
     {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
+      "category": "confort",
+      "label": "Sièges avant climatisés et massants (selon finition)"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "Berline ou break Tourer, coffre de 605 à 1 714 L"
     }
   ],
   "verdict": {

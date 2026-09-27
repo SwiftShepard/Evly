@@ -488,20 +488,20 @@
   },
   "keyFeatures": [
     {
-      "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "category": "securite",
+      "label": "Conduite semi-autonome"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "OpenR Link avec services Google intégrés, écran 12\""
     },
     {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
+      "category": "confort",
+      "label": "Toit Solarbay à opacification variable et sièges massants"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "Jantes 20\" et finition Esprit Alpine"
     }
   ],
   "verdict": {

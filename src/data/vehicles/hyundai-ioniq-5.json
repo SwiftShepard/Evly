@@ -47,7 +47,7 @@
     "time_0_100_h": 6.5
   },
   "plugAndCharge": false,
-  "v2l": false,
+  "v2l": true,
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
@@ -547,20 +547,20 @@
   },
   "keyFeatures": [
     {
-      "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "category": "securite",
+      "label": "Caméra 360° et régulateur adaptatif intelligent"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "Affichage tête haute à réalité augmentée (selon finition)"
     },
     {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
+      "category": "confort",
+      "label": "Pompe à chaleur, volant chauffant et sièges avant ventilés"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "Feux Matrix LED à signature Parametric Pixels"
     }
   ],
   "verdict": {

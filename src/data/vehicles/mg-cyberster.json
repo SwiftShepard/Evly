@@ -302,20 +302,20 @@
   },
   "keyFeatures": [
     {
-      "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "category": "securite",
+      "label": "Freinage d'urgence et maintien dans la voie de série (norme GSR2)"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "Jusqu'à 510 ch en GT AWD, 0 à 100 km/h en 3,2 s"
     },
     {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
+      "category": "confort",
+      "label": "Roadster à capote électrique"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "Portes en élytre à ouverture électrique"
     }
   ],
   "verdict": {

@@ -388,20 +388,20 @@
   },
   "keyFeatures": [
     {
-      "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "category": "securite",
+      "label": "Stationnement à distance depuis la clé"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "Écrans incurvés 12,3\" et architecture 800 V"
     },
     {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
+      "category": "confort",
+      "label": "7 places, ou 6 places premium en option"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "Grand SUV profilé (Cx 0,26)"
     }
   ],
   "verdict": {

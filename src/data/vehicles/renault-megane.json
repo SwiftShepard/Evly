@@ -430,20 +430,20 @@
   },
   "keyFeatures": [
     {
-      "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "category": "securite",
+      "label": "Conduite semi-autonome (selon finition)"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "OpenR Link avec services Google et chargeur AC 22 kW"
     },
     {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
+      "category": "confort",
+      "label": "Sièges chauffants et toit panoramique (selon finition)"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "Jantes 20\" diamantées et finition Esprit Alpine"
     }
   ],
   "verdict": {

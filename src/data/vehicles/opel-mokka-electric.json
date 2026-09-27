@@ -443,20 +443,20 @@
   },
   "keyFeatures": [
     {
-      "category": "confort",
-      "label": "Climatisation automatique"
+      "category": "securite",
+      "label": "Caméra 360° et Pack Drive Assist (selon finition)"
     },
     {
       "category": "technologie",
-      "label": "Système multimédia tactile, compatible Apple CarPlay / Android Auto"
+      "label": "Double écran Pure Panel"
     },
     {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence avec détection piétons"
+      "category": "confort",
+      "label": "Sellerie premium (selon finition)"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED"
+      "label": "Face avant Opel Vizor et look sportif"
     }
   ],
   "verdict": {

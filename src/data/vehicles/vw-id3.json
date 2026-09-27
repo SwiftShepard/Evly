@@ -635,20 +635,20 @@
   },
   "keyFeatures": [
     {
-      "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "category": "securite",
+      "label": "Régulateur adaptatif ACC et caméra de recul"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "Apple CarPlay et Android Auto sans fil, écran 12,9\""
     },
     {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
+      "category": "confort",
+      "label": "Sièges avant et volant chauffants, accès sans clé"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "Projecteurs Matrix LED (selon finition)"
     }
   ],
   "verdict": {

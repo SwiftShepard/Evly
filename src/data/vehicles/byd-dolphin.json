@@ -47,7 +47,7 @@
     "time_0_100_h": 6.5
   },
   "plugAndCharge": false,
-  "v2l": false,
+  "v2l": true,
   "v2g": false,
   "v2l_option_EUR": null,
   "chargingCurve": [
@@ -322,20 +322,20 @@
   },
   "keyFeatures": [
     {
-      "category": "confort",
-      "label": "Sièges confort de haute qualité"
+      "category": "securite",
+      "label": "Caméra 360°"
     },
     {
       "category": "technologie",
-      "label": "Système d'infodivertissement avancé"
+      "label": "Recharge bidirectionnelle V2L"
     },
     {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence"
+      "category": "confort",
+      "label": "Sièges chauffants et recharge smartphone par induction"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED distinctive"
+      "label": "Toit panoramique et peinture bicolore"
     }
   ],
   "verdict": {

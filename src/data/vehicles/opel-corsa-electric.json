@@ -443,20 +443,20 @@
   },
   "keyFeatures": [
     {
-      "category": "confort",
-      "label": "Climatisation automatique"
+      "category": "securite",
+      "label": "Caméra de recul et aides à la conduite de niveau 2 (selon finition)"
     },
     {
       "category": "technologie",
-      "label": "Système multimédia tactile, compatible Apple CarPlay / Android Auto"
+      "label": "Écran tactile 10\""
     },
     {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence avec détection piétons"
+      "category": "confort",
+      "label": "Sièges sport et toit panoramique (selon finition)"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED"
+      "label": "Face avant Opel Vizor"
     }
   ],
   "verdict": {

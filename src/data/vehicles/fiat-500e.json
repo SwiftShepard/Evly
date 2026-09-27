@@ -409,20 +409,20 @@
   },
   "keyFeatures": [
     {
-      "category": "confort",
-      "label": "Climatisation automatique"
+      "category": "securite",
+      "label": "Freinage d'urgence et maintien dans la voie de série (norme GSR2)"
     },
     {
       "category": "technologie",
-      "label": "Système multimédia tactile, compatible Apple CarPlay / Android Auto"
+      "label": "Écran tactile 10,25\" (selon finition)"
     },
     {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence avec détection piétons"
+      "category": "confort",
+      "label": "Toit ouvrant panoramique et sellerie cuir éco (selon finition)"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED"
+      "label": "Citadine iconique de 3,63 m, série spéciale (RED)"
     }
   ],
   "verdict": {

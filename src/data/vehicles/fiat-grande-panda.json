@@ -224,20 +224,20 @@
   },
   "keyFeatures": [
     {
-      "category": "confort",
-      "label": "Climatisation automatique"
+      "category": "securite",
+      "label": "Freinage d'urgence et maintien dans la voie de série (norme GSR2)"
     },
     {
       "category": "technologie",
-      "label": "Système multimédia tactile, compatible Apple CarPlay / Android Auto"
+      "label": "Câble de recharge intégré à la voiture"
     },
     {
-      "category": "securite",
-      "label": "Freinage automatique d'urgence avec détection piétons"
+      "category": "confort",
+      "label": "Toit panoramique et sellerie premium (selon finition)"
     },
     {
       "category": "design",
-      "label": "Signature lumineuse LED"
+      "label": "Design néo-rétro inspiré de la Panda de 1980"
     }
   ],
   "verdict": {
