@@ -38,7 +38,7 @@
   "chargingDC": {
     "peakPower_kW": 175,
     "time_10_80_min": 28,
-    "kWh_added_30min": 80,
+    "kWh_added_30min": 58,
     "confidence": "estimated"
   },
   "chargingAC": {
@@ -423,7 +423,6 @@
   "lastUpdated": "2026-05-29",
   "sources": [
     "nyland",
-    "lachaineev",
     "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"

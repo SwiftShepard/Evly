@@ -9,18 +9,18 @@
   "assemblyPlant": "Martorell",
   "releaseYear": 2025,
   "marketAvailability": "À venir",
-  "power_kW": 166,
-  "power_hp": 226,
-  "torque_Nm": 310,
+  "power_kW": 155,
+  "power_hp": 211,
+  "torque_Nm": 290,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
+  "acceleration_0_100_s": 7.1,
   "topSpeed_kmh": 160,
   "usableCapacity_kWh": 52,
   "grossCapacity_kWh": 56,
   "chemistry": "NMC",
   "architecture_V": 400,
-  "mass_kg": 1550,
+  "mass_kg": 1610,
   "wltp_max_km": 440,
   "wltp_min_km": 340,
   "realRange": {
@@ -73,10 +73,10 @@
   ],
   "rangeTests": [],
   "thousandKmChallenge": null,
-  "length_mm": 4030,
-  "width_mm": 1780,
-  "height_mm": 1460,
-  "wheelbase_mm": 2700,
+  "length_mm": 4046,
+  "width_mm": 1784,
+  "height_mm": 1514,
+  "wheelbase_mm": 2599,
   "trunkCapacity_L": 441,
   "trunkCapacityFolded_L": 1200,
   "frunkCapacity_L": null,
@@ -316,7 +316,8 @@
   "sources": [
     "automobile-propre",
     "largus",
-    "constructeur"
+    "constructeur",
+    "ev-database"
   ],
   "imageCredit": "Constructeur"
 }

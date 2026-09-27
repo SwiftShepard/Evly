@@ -12,7 +12,8 @@
     "check": "astro check",
     "lint:typo": "node scripts/check-emdash.mjs",
     "test:e2e": "playwright test",
-    "sync:nyland": "node scripts/download-nyland.mjs && node scripts/sync-nyland-ranges.mjs"
+    "sync:nyland": "node scripts/download-nyland.mjs && node scripts/sync-nyland-ranges.mjs",
+    "audit:data": "node scripts/audit-vehicles.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

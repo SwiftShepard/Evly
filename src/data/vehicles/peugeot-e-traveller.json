@@ -31,8 +31,8 @@
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 22,
-  "consumption_highway_kWh_per_100km": 21,
-  "consumption_winter_kWh_per_100km": 19,
+  "consumption_highway_kWh_per_100km": 30.1,
+  "consumption_winter_kWh_per_100km": 27.7,
   "dragCoefficient_Cx": 0.35,
   "chargingDC": {
     "peakPower_kW": 100,
@@ -619,7 +619,7 @@
   "lastUpdated": "2026-05-17",
   "sources": [
     "nyland",
-    "lachaineev"
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }

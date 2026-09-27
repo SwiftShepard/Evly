@@ -44,7 +44,7 @@
   "chargingAC": {
     "onboardCharger_kW": 11,
     "phases": 3,
-    "time_0_100_h": 6.5
+    "time_0_100_h": 9.0
   },
   "plugAndCharge": false,
   "v2l": false,

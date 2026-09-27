@@ -172,6 +172,96 @@ export const SOURCES: Record<string, Source> = {
     protocolUrl: null,
     trustLevel: "medium",
   },
+  "constructeur": {
+    id: "constructeur",
+    name: "Données constructeur",
+    type: "manufacturer",
+    url: "https://www.ev-ly.com/methodologie/",
+    description:
+      "Données constructeur officielles : fiches techniques, garanties, prix catalogue, finitions. À recouper avec les mesures terrain pour les données d'autonomie réelle.",
+    protocolUrl: null,
+    trustLevel: "medium",
+  },
+  "citroen-fr": {
+    id: "citroen-fr",
+    name: "Citroën France",
+    type: "manufacturer",
+    url: "https://www.citroen.fr",
+    description:
+      "Données constructeur officielles : fiches techniques, garanties, prix catalogue, finitions. À recouper avec les mesures terrain pour les données d'autonomie réelle.",
+    protocolUrl: null,
+    trustLevel: "medium",
+  },
+  "dacia-presse": {
+    id: "dacia-presse",
+    name: "Dacia (espace presse)",
+    type: "manufacturer",
+    url: "https://media.dacia.fr",
+    description:
+      "Données constructeur officielles : fiches techniques, garanties, prix catalogue, finitions. À recouper avec les mesures terrain pour les données d'autonomie réelle.",
+    protocolUrl: null,
+    trustLevel: "medium",
+  },
+  "geely-presse": {
+    id: "geely-presse",
+    name: "Geely (espace presse)",
+    type: "manufacturer",
+    url: "https://www.geely.com",
+    description:
+      "Données constructeur officielles : fiches techniques, garanties, prix catalogue, finitions. À recouper avec les mesures terrain pour les données d'autonomie réelle.",
+    protocolUrl: null,
+    trustLevel: "medium",
+  },
+  "hyundai-presse": {
+    id: "hyundai-presse",
+    name: "Hyundai (espace presse)",
+    type: "manufacturer",
+    url: "https://www.hyundai.news/fr",
+    description:
+      "Données constructeur officielles : fiches techniques, garanties, prix catalogue, finitions. À recouper avec les mesures terrain pour les données d'autonomie réelle.",
+    protocolUrl: null,
+    trustLevel: "medium",
+  },
+  "volvo-fr": {
+    id: "volvo-fr",
+    name: "Volvo Cars France",
+    type: "manufacturer",
+    url: "https://www.volvocars.com/fr",
+    description:
+      "Données constructeur officielles : fiches techniques, garanties, prix catalogue, finitions. À recouper avec les mesures terrain pour les données d'autonomie réelle.",
+    protocolUrl: null,
+    trustLevel: "medium",
+  },
+  "ev-database": {
+    id: "ev-database",
+    name: "EV Database",
+    type: "aggregator",
+    url: "https://ev-database.org",
+    description:
+      "Base de données européenne des véhicules électriques : caractéristiques techniques homogènes (puissance, couple, masse, dimensions, recharge) et estimations d'autonomie réelle. Utilisée pour recouper les fiches techniques.",
+    protocolUrl: "https://ev-database.org/cheatsheet/range-electric-car",
+    trustLevel: "medium",
+  },
+  presse: {
+    id: "presse",
+    name: "Presse automobile",
+    type: "magazine",
+    url: "https://www.ev-ly.com/methodologie/",
+    description:
+      "Articles de presse automobile généraliste, sans essai d'autonomie détaillé. Source d'appoint à remplacer par une référence précise.",
+    protocolUrl: null,
+    trustLevel: "low",
+  },
+  wikipedia: {
+    id: "wikipedia",
+    name: "Wikipédia",
+    type: "aggregator",
+    url: "https://fr.wikipedia.org",
+    description:
+      "Encyclopédie collaborative, utilisée uniquement pour des informations générales (lancement, usine). Source d'appoint à remplacer par une référence primaire.",
+    protocolUrl: null,
+    trustLevel: "low",
+  },
 };
 
 export function getSource(id: string): Source | undefined {

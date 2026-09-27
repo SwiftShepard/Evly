@@ -14,7 +14,7 @@
   "torque_Nm": 300,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
+  "acceleration_0_100_s": 7.6,
   "topSpeed_kmh": 160,
   "usableCapacity_kWh": 83,
   "grossCapacity_kWh": 87,
@@ -527,7 +527,8 @@
     "constructeur",
     "automobile-propre",
     "nyland",
-    "la-chaine-ev"
+    "la-chaine-ev",
+    "ev-database"
   ],
   "imageCredit": "Constructeur"
 }

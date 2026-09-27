@@ -11,16 +11,16 @@
   "marketAvailability": "Disponible",
   "power_kW": 168,
   "power_hp": 228,
-  "torque_Nm": 300,
+  "torque_Nm": 350,
   "drivetrain": "RWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
-  "topSpeed_kmh": 160,
+  "acceleration_0_100_s": 7.3,
+  "topSpeed_kmh": 185,
   "usableCapacity_kWh": 84,
   "grossCapacity_kWh": 88,
   "chemistry": "NMC",
   "architecture_V": 800,
-  "mass_kg": 1700,
+  "mass_kg": 2050,
   "wltp_max_km": 582,
   "wltp_min_km": 582,
   "realRange": {
@@ -52,23 +52,23 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 100
+      "power": 198
     },
     {
       "soc": 10,
-      "power": 130
+      "power": 258
     },
     {
       "soc": 50,
-      "power": 100
+      "power": 198
     },
     {
       "soc": 80,
-      "power": 50
+      "power": 99
     },
     {
       "soc": 100,
-      "power": 10
+      "power": 20
     }
   ],
   "rangeTests": [],
@@ -84,9 +84,9 @@
     "confidence": "tested"
   },
   "length_mm": 4695,
-  "width_mm": 1890,
-  "height_mm": 1550,
-  "wheelbase_mm": 2700,
+  "width_mm": 1880,
+  "height_mm": 1575,
+  "wheelbase_mm": 2900,
   "trunkCapacity_L": 490,
   "trunkCapacityFolded_L": 1200,
   "frunkCapacity_L": 52,
@@ -371,7 +371,8 @@
   "lastUpdated": "2026-05-29",
   "sources": [
     "nyland",
-    "la-chaine-ev"
+    "la-chaine-ev",
+    "ev-database"
   ],
   "imageCredit": "Constructeur"
 }

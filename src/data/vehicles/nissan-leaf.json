@@ -53,39 +53,39 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 56
+      "power": 120
     },
     {
       "soc": 20,
-      "power": 70
+      "power": 150
     },
     {
       "soc": 30,
-      "power": 69
+      "power": 148
     },
     {
       "soc": 40,
-      "power": 65
+      "power": 139
     },
     {
       "soc": 50,
-      "power": 61
+      "power": 131
     },
     {
       "soc": 60,
-      "power": 58
+      "power": 124
     },
     {
       "soc": 70,
-      "power": 46
+      "power": 99
     },
     {
       "soc": 80,
-      "power": 36
+      "power": 77
     },
     {
       "soc": 100,
-      "power": 4
+      "power": 9
     }
   ],
   "rangeTests": [

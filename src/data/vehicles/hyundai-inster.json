@@ -9,18 +9,18 @@
   "assemblyPlant": "Ulsan",
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
-  "power_kW": 84,
-  "power_hp": 115,
+  "power_kW": 85,
+  "power_hp": 116,
   "torque_Nm": 147,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
-  "topSpeed_kmh": 160,
+  "acceleration_0_100_s": 10.6,
+  "topSpeed_kmh": 150,
   "usableCapacity_kWh": 49,
   "grossCapacity_kWh": 51,
   "chemistry": "NMC",
   "architecture_V": 400,
-  "mass_kg": 1700,
+  "mass_kg": 1410,
   "wltp_max_km": 370,
   "wltp_min_km": 327,
   "realRange": {
@@ -138,7 +138,7 @@
   "length_mm": 3825,
   "width_mm": 1610,
   "height_mm": 1575,
-  "wheelbase_mm": 2700,
+  "wheelbase_mm": 2580,
   "trunkCapacity_L": 280,
   "trunkCapacityFolded_L": 1200,
   "frunkCapacity_L": null,
@@ -650,7 +650,8 @@
   "lastUpdated": "2026-05-29",
   "sources": [
     "nyland",
-    "la-chaine-ev"
+    "la-chaine-ev",
+    "ev-database"
   ],
   "imageCredit": "Constructeur"
 }

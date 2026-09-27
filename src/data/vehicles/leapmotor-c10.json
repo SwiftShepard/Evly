@@ -37,8 +37,8 @@
   "dragCoefficient_Cx": 0.32,
   "chargingDC": {
     "peakPower_kW": 84,
-    "time_10_80_min": 30,
-    "kWh_added_30min": 30,
+    "time_10_80_min": 44,
+    "kWh_added_30min": 33,
     "confidence": "estimated"
   },
   "chargingAC": {
@@ -185,7 +185,7 @@
         }
       ],
       "chargingDC_peak_kW": 84,
-      "chargingDC_10_80_min": 30,
+      "chargingDC_10_80_min": 44,
       "chargingDC_kWh_30min": 30,
       "chargingCurve": [
         {
@@ -262,7 +262,7 @@
         }
       ],
       "chargingDC_peak_kW": 84,
-      "chargingDC_10_80_min": 30,
+      "chargingDC_10_80_min": 44,
       "chargingDC_kWh_30min": 30,
       "chargingCurve": [
         {
@@ -330,7 +330,8 @@
   "lastUpdated": "2026-05-29",
   "sources": [
     "nyland",
-    "la-chaine-ev"
+    "la-chaine-ev",
+    "ev-database"
   ],
   "imageCredit": "Constructeur"
 }

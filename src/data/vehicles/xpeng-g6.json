@@ -53,47 +53,47 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 106
+      "power": 175
     },
     {
       "soc": 10,
-      "power": 133
+      "power": 220
     },
     {
       "soc": 20,
-      "power": 239
+      "power": 395
     },
     {
       "soc": 30,
-      "power": 242
+      "power": 400
     },
     {
       "soc": 40,
-      "power": 188
+      "power": 311
     },
     {
       "soc": 50,
-      "power": 193
+      "power": 319
     },
     {
       "soc": 60,
-      "power": 145
+      "power": 240
     },
     {
       "soc": 70,
-      "power": 146
+      "power": 241
     },
     {
       "soc": 80,
-      "power": 137
+      "power": 226
     },
     {
       "soc": 90,
-      "power": 65
+      "power": 107
     },
     {
       "soc": 100,
-      "power": 7
+      "power": 12
     }
   ],
   "rangeTests": [

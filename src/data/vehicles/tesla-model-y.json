@@ -10,17 +10,17 @@
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
   "power_kW": 220,
-  "power_hp": 204,
+  "power_hp": 299,
   "torque_Nm": 300,
-  "drivetrain": "FWD",
+  "drivetrain": "RWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
-  "topSpeed_kmh": 160,
+  "acceleration_0_100_s": 7.2,
+  "topSpeed_kmh": 201,
   "usableCapacity_kWh": 57.5,
   "grossCapacity_kWh": 60,
   "chemistry": "NMC",
   "architecture_V": 400,
-  "mass_kg": 1700,
+  "mass_kg": 1981,
   "wltp_max_km": 600,
   "wltp_min_km": 455,
   "realRange": {
@@ -135,10 +135,10 @@
     "videoUrl": null,
     "confidence": "tested"
   },
-  "length_mm": 4751,
-  "width_mm": 1921,
-  "height_mm": 1624,
-  "wheelbase_mm": 2700,
+  "length_mm": 4794,
+  "width_mm": 1982,
+  "height_mm": 1621,
+  "wheelbase_mm": 2890,
   "trunkCapacity_L": 971,
   "trunkCapacityFolded_L": 1200,
   "frunkCapacity_L": null,
@@ -211,7 +211,7 @@
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 350,
-        "highway_130_km": 350,
+        "highway_130_km": 252,
         "urban_km": 420,
         "winter_minus5_km": 220,
         "confidence": "estimated"
@@ -520,7 +520,8 @@
   "lastUpdated": "2026-05-29",
   "sources": [
     "nyland",
-    "la-chaine-ev"
+    "la-chaine-ev",
+    "ev-database"
   ],
   "imageCredit": "Constructeur"
 }

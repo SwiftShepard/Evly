@@ -9,18 +9,18 @@
   "assemblyPlant": "Mulhouse",
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
-  "power_kW": 155,
-  "power_hp": 210,
-  "torque_Nm": 345,
+  "power_kW": 157,
+  "power_hp": 213,
+  "torque_Nm": 343,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
-  "topSpeed_kmh": 170,
+  "acceleration_0_100_s": 7.2,
+  "topSpeed_kmh": 160,
   "usableCapacity_kWh": 58,
   "grossCapacity_kWh": 61,
   "chemistry": "NMC",
   "architecture_V": 400,
-  "mass_kg": 1700,
+  "mass_kg": 1879,
   "wltp_max_km": 453,
   "wltp_min_km": 453,
   "realRange": {
@@ -78,9 +78,9 @@
   "rangeTests": [],
   "thousandKmChallenge": null,
   "length_mm": 4687,
-  "width_mm": 1848,
+  "width_mm": 1859,
   "height_mm": 1478,
-  "wheelbase_mm": 2700,
+  "wheelbase_mm": 2787,
   "trunkCapacity_L": 471,
   "trunkCapacityFolded_L": 1200,
   "frunkCapacity_L": null,
@@ -328,7 +328,8 @@
   "lastUpdated": "2026-05-17",
   "sources": [
     "nyland",
-    "lachaineev"
+    "ev-database",
+    "la-chaine-ev"
   ],
   "imageCredit": "Constructeur"
 }
