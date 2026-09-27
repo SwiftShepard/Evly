@@ -24,12 +24,12 @@
   "wltp_max_km": 406,
   "wltp_min_km": 338,
   "realRange": {
-    "mixed_km": 310,
-    "highway_130_km": 200,
-    "urban_km": 370,
-    "winter_minus5_km": 245,
-    "confidence": "estimated",
-    "highway_120_km": 290
+    "mixed_km": 242,
+    "highway_130_km": 175,
+    "urban_km": 319,
+    "winter_minus5_km": 182,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 194
   },
   "consumption_mixed_kWh_per_100km": 15.2,
   "consumption_highway_kWh_per_100km": 20.2,
@@ -76,7 +76,34 @@
       "power": 6
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 290,
+      "consumption_kWh_100km": 14.8,
+      "temperature_C": 25,
+      "wheelSize_inches": 18,
+      "tyreModel": "Michelin Primacy 4",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Opel Mokka-e » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 194,
+      "consumption_kWh_100km": 22.1,
+      "temperature_C": 20,
+      "wheelSize_inches": 18,
+      "tyreModel": "Michelin Primacy 4",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Opel Mokka-e » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4151,
   "width_mm": 1791,
@@ -152,13 +179,41 @@
       "wltp_km": 338,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 265,
-        "highway_130_km": 170,
-        "urban_km": 320,
-        "winter_minus5_km": 205,
-        "confidence": "estimated"
+        "mixed_km": 242,
+        "highway_130_km": 175,
+        "urban_km": 319,
+        "winter_minus5_km": 182,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 194
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 290,
+          "consumption_kWh_100km": 14.8,
+          "temperature_C": 25,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin Primacy 4",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Opel Mokka-e » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 194,
+          "consumption_kWh_100km": 22.1,
+          "temperature_C": 20,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin Primacy 4",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Opel Mokka-e » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 50,
@@ -205,13 +260,41 @@
       "wltp_km": 338,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 265,
-        "highway_130_km": 170,
-        "urban_km": 320,
-        "winter_minus5_km": 205,
-        "confidence": "estimated"
+        "mixed_km": 242,
+        "highway_130_km": 175,
+        "urban_km": 319,
+        "winter_minus5_km": 182,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 194
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 290,
+          "consumption_kWh_100km": 14.8,
+          "temperature_C": 25,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin Primacy 4",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Opel Mokka-e » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 194,
+          "consumption_kWh_100km": 22.1,
+          "temperature_C": 20,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin Primacy 4",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Opel Mokka-e » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 50,

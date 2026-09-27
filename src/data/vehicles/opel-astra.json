@@ -24,12 +24,12 @@
   "wltp_max_km": 416,
   "wltp_min_km": 416,
   "realRange": {
-    "mixed_km": 330,
-    "highway_130_km": 215,
-    "urban_km": 395,
-    "winter_minus5_km": 255,
-    "confidence": "estimated",
-    "highway_120_km": 321
+    "mixed_km": 273,
+    "highway_130_km": 202,
+    "urban_km": 353,
+    "winter_minus5_km": 205,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 224
   },
   "consumption_mixed_kWh_per_100km": 14.7,
   "consumption_highway_kWh_per_100km": 19.7,
@@ -76,7 +76,34 @@
       "power": 6
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 321,
+      "consumption_kWh_100km": 15.9,
+      "temperature_C": 4,
+      "wheelSize_inches": 18,
+      "tyreModel": "Nokian R5",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Opel Astra-e Tourer » (hiver, route humide)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 224,
+      "consumption_kWh_100km": 22.8,
+      "temperature_C": 3,
+      "wheelSize_inches": 18,
+      "tyreModel": "Nokian R5",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Opel Astra-e Tourer » (hiver, route humide)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 690,
@@ -266,13 +293,41 @@
       "wltp_km": 416,
       "wltp_consumption_kWh_100km": 14.7,
       "realRange": {
-        "mixed_km": 330,
-        "highway_130_km": 215,
-        "urban_km": 395,
-        "winter_minus5_km": 255,
-        "confidence": "estimated"
+        "mixed_km": 273,
+        "highway_130_km": 202,
+        "urban_km": 353,
+        "winter_minus5_km": 205,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 224
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 321,
+          "consumption_kWh_100km": 15.9,
+          "temperature_C": 4,
+          "wheelSize_inches": 18,
+          "tyreModel": "Nokian R5",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Opel Astra-e Tourer » (hiver, route humide)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 224,
+          "consumption_kWh_100km": 22.8,
+          "temperature_C": 3,
+          "wheelSize_inches": 18,
+          "tyreModel": "Nokian R5",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Opel Astra-e Tourer » (hiver, route humide)."
+        }
+      ],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 50,
@@ -319,13 +374,41 @@
       "wltp_km": 416,
       "wltp_consumption_kWh_100km": 14.7,
       "realRange": {
-        "mixed_km": 330,
-        "highway_130_km": 215,
-        "urban_km": 395,
-        "winter_minus5_km": 255,
-        "confidence": "estimated"
+        "mixed_km": 273,
+        "highway_130_km": 202,
+        "urban_km": 353,
+        "winter_minus5_km": 205,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 224
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 321,
+          "consumption_kWh_100km": 15.9,
+          "temperature_C": 4,
+          "wheelSize_inches": 18,
+          "tyreModel": "Nokian R5",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Opel Astra-e Tourer » (hiver, route humide)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 224,
+          "consumption_kWh_100km": 22.8,
+          "temperature_C": 3,
+          "wheelSize_inches": 18,
+          "tyreModel": "Nokian R5",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Opel Astra-e Tourer » (hiver, route humide)."
+        }
+      ],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 50,

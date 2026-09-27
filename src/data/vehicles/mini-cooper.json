@@ -24,12 +24,12 @@
   "wltp_max_km": 402,
   "wltp_min_km": 305,
   "realRange": {
-    "mixed_km": 315,
-    "highway_130_km": 220,
-    "urban_km": 410,
-    "winter_minus5_km": 245,
-    "confidence": "estimated",
-    "highway_120_km": 236
+    "mixed_km": 275,
+    "highway_130_km": 211,
+    "urban_km": 347,
+    "winter_minus5_km": 206,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 234
   },
   "consumption_mixed_kWh_per_100km": 14.1,
   "consumption_highway_kWh_per_100km": 19.8,
@@ -96,7 +96,34 @@
       "power": 2
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 315,
+      "consumption_kWh_100km": 15,
+      "temperature_C": 1,
+      "wheelSize_inches": 16,
+      "tyreModel": "Continental VC7",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « 2024 Mini Cooper SE » (hiver, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 234,
+      "consumption_kWh_100km": 20.2,
+      "temperature_C": 1,
+      "wheelSize_inches": 16,
+      "tyreModel": "Continental VC7",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « 2024 Mini Cooper SE » (hiver, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 670,
@@ -212,7 +239,8 @@
         }
       ],
       "availability": "available",
-      "notes": "Version d'entrée de gamme de 184 ch avec petite batterie"
+      "notes": "Version d'entrée de gamme de 184 ch avec petite batterie",
+      "rangeTests": []
     },
     {
       "id": "mini-cooper-se-classic",
@@ -229,11 +257,12 @@
       "wltp_km": 402,
       "wltp_consumption_kWh_100km": 14.1,
       "realRange": {
-        "mixed_km": 315,
-        "highway_130_km": 220,
-        "urban_km": 410,
-        "winter_minus5_km": 245,
-        "confidence": "estimated"
+        "mixed_km": 275,
+        "highway_130_km": 211,
+        "urban_km": 347,
+        "winter_minus5_km": 206,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 234
       },
       "chargingDC_peak_kW": 95,
       "chargingDC_10_80_min": 30,
@@ -265,7 +294,35 @@
         }
       ],
       "availability": "available",
-      "notes": "Moteur performant de 218 ch avec grande batterie"
+      "notes": "Moteur performant de 218 ch avec grande batterie",
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 315,
+          "consumption_kWh_100km": 15,
+          "temperature_C": 1,
+          "wheelSize_inches": 16,
+          "tyreModel": "Continental VC7",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « 2024 Mini Cooper SE » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 234,
+          "consumption_kWh_100km": 20.2,
+          "temperature_C": 1,
+          "wheelSize_inches": 16,
+          "tyreModel": "Continental VC7",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « 2024 Mini Cooper SE » (hiver, route sèche)."
+        }
+      ]
     }
   ],
   "warranty": {

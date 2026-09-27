@@ -24,11 +24,12 @@
   "wltp_max_km": 400,
   "wltp_min_km": 320,
   "realRange": {
-    "mixed_km": 320,
-    "highway_130_km": 230,
-    "urban_km": 380,
-    "winter_minus5_km": 220,
-    "confidence": "tested"
+    "mixed_km": 273,
+    "highway_130_km": 203,
+    "urban_km": 353,
+    "winter_minus5_km": 205,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 225
   },
   "consumption_mixed_kWh_per_100km": 15,
   "consumption_highway_kWh_per_100km": 21,
@@ -71,7 +72,34 @@
       "power": 7
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 321,
+      "consumption_kWh_100km": 17.3,
+      "temperature_C": 6,
+      "wheelSize_inches": 17,
+      "tyreModel": "Nokian R5",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « MG5 » (hiver, route humide)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 225,
+      "consumption_kWh_100km": 24.7,
+      "temperature_C": 6,
+      "wheelSize_inches": 17,
+      "tyreModel": "Nokian R5",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « MG5 » (hiver, route humide)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4600,
   "width_mm": 1818,
@@ -228,13 +256,41 @@
       "wltp_km": 400,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 320,
-        "highway_130_km": 230,
-        "urban_km": 380,
-        "winter_minus5_km": 220,
-        "confidence": "tested"
+        "mixed_km": 273,
+        "highway_130_km": 203,
+        "urban_km": 353,
+        "winter_minus5_km": 205,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 225
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 321,
+          "consumption_kWh_100km": 17.3,
+          "temperature_C": 6,
+          "wheelSize_inches": 17,
+          "tyreModel": "Nokian R5",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « MG5 » (hiver, route humide)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 225,
+          "consumption_kWh_100km": 24.7,
+          "temperature_C": 6,
+          "wheelSize_inches": 17,
+          "tyreModel": "Nokian R5",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « MG5 » (hiver, route humide)."
+        }
+      ],
       "chargingDC_peak_kW": 87,
       "chargingDC_10_80_min": 40,
       "chargingDC_kWh_30min": 35,

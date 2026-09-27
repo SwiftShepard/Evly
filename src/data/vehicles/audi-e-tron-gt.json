@@ -24,11 +24,12 @@
   "wltp_max_km": 616,
   "wltp_min_km": 583,
   "realRange": {
-    "mixed_km": 425,
-    "highway_130_km": 305,
-    "urban_km": 525,
-    "winter_minus5_km": 335,
-    "confidence": "estimated"
+    "mixed_km": 540,
+    "highway_130_km": 422,
+    "urban_km": 671,
+    "winter_minus5_km": 405,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 469
   },
   "consumption_mixed_kWh_per_100km": 18.5,
   "consumption_highway_kWh_per_100km": 25,
@@ -95,7 +96,34 @@
       "power": 5
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 610,
+      "consumption_kWh_100km": 15.9,
+      "temperature_C": 26,
+      "wheelSize_inches": 21,
+      "tyreModel": "Bridgestone Potenza Sport",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « 2024 Audi RS e-tron GT » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 469,
+      "consumption_kWh_100km": 20.7,
+      "temperature_C": 26,
+      "wheelSize_inches": 21,
+      "tyreModel": "Bridgestone Potenza Sport",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « 2024 Audi RS e-tron GT » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 555,
@@ -172,7 +200,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 616,
-      "wltp_consumption_kWh_100km": 18.0,
+      "wltp_consumption_kWh_100km": 18,
       "realRange": {
         "mixed_km": 435,
         "highway_130_km": 315,
@@ -280,13 +308,41 @@
       "wltp_km": 586,
       "wltp_consumption_kWh_100km": 19.5,
       "realRange": {
-        "mixed_km": 410,
-        "highway_130_km": 295,
-        "urban_km": 510,
-        "winter_minus5_km": 325,
-        "confidence": "estimated"
+        "mixed_km": 540,
+        "highway_130_km": 422,
+        "urban_km": 671,
+        "winter_minus5_km": 405,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 469
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 610,
+          "consumption_kWh_100km": 15.9,
+          "temperature_C": 26,
+          "wheelSize_inches": 21,
+          "tyreModel": "Bridgestone Potenza Sport",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « 2024 Audi RS e-tron GT » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 469,
+          "consumption_kWh_100km": 20.7,
+          "temperature_C": 26,
+          "wheelSize_inches": 21,
+          "tyreModel": "Bridgestone Potenza Sport",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « 2024 Audi RS e-tron GT » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 320,
       "chargingDC_10_80_min": 18,
       "chargingDC_kWh_30min": 70,
@@ -331,7 +387,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 583,
-      "wltp_consumption_kWh_100km": 20.0,
+      "wltp_consumption_kWh_100km": 20,
       "realRange": {
         "mixed_km": 405,
         "highway_130_km": 290,
@@ -414,7 +470,8 @@
   "sources": [
     "constructeur",
     "automobile-propre",
-    "evkx"
+    "evkx",
+    "nyland"
   ],
   "imageCredit": "Constructeur"
 }

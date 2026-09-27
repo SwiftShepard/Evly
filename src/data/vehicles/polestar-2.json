@@ -24,11 +24,12 @@
   "wltp_max_km": 654,
   "wltp_min_km": 546,
   "realRange": {
-    "mixed_km": 490,
-    "highway_130_km": 360,
-    "urban_km": 590,
-    "winter_minus5_km": 380,
-    "confidence": "estimated"
+    "mixed_km": 440,
+    "highway_130_km": 327,
+    "urban_km": 569,
+    "winter_minus5_km": 330,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 363
   },
   "consumption_mixed_kWh_per_100km": 16,
   "consumption_highway_kWh_per_100km": 22,
@@ -75,7 +76,34 @@
       "power": 10
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 517,
+      "consumption_kWh_100km": 15.3,
+      "temperature_C": 16,
+      "wheelSize_inches": 20,
+      "tyreModel": "Continental PreCon 6",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Polestar 2 LR SM refresh » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 363,
+      "consumption_kWh_100km": 21.8,
+      "temperature_C": 15,
+      "wheelSize_inches": 20,
+      "tyreModel": "Continental PreCon 6",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Polestar 2 LR SM refresh » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4606,
   "width_mm": 1859,
@@ -182,13 +210,41 @@
       "wltp_km": 654,
       "wltp_consumption_kWh_100km": 14.4,
       "realRange": {
-        "mixed_km": 490,
-        "highway_130_km": 360,
-        "urban_km": 590,
-        "winter_minus5_km": 380,
-        "confidence": "estimated"
+        "mixed_km": 440,
+        "highway_130_km": 327,
+        "urban_km": 569,
+        "winter_minus5_km": 330,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 363
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 517,
+          "consumption_kWh_100km": 15.3,
+          "temperature_C": 16,
+          "wheelSize_inches": 20,
+          "tyreModel": "Continental PreCon 6",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Polestar 2 LR SM refresh » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 363,
+          "consumption_kWh_100km": 21.8,
+          "temperature_C": 15,
+          "wheelSize_inches": 20,
+          "tyreModel": "Continental PreCon 6",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Polestar 2 LR SM refresh » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 205,
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 55,
@@ -235,13 +291,41 @@
       "wltp_km": 592,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
-        "mixed_km": 445,
-        "highway_130_km": 330,
-        "urban_km": 540,
-        "winter_minus5_km": 360,
-        "confidence": "estimated"
+        "mixed_km": 340,
+        "highway_130_km": 262,
+        "urban_km": 428,
+        "winter_minus5_km": 255,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 291
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 389,
+          "consumption_kWh_100km": 19.9,
+          "temperature_C": -6,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « 2024 Polestar 2 LR DM » (hiver, route humide)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 291,
+          "consumption_kWh_100km": 26.6,
+          "temperature_C": -6,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « 2024 Polestar 2 LR DM » (hiver, route humide)."
+        }
+      ],
       "chargingDC_peak_kW": 205,
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 55,
@@ -314,7 +398,8 @@
   },
   "lastUpdated": "2026-05-18",
   "sources": [
-    "la-chaine-ev"
+    "la-chaine-ev",
+    "nyland"
   ],
   "imageCredit": "Constructeur"
 }

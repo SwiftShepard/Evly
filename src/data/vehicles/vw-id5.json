@@ -24,11 +24,11 @@
   "wltp_max_km": 560,
   "wltp_min_km": 515,
   "realRange": {
-    "mixed_km": 430,
-    "highway_130_km": 320,
-    "highway_120_km": 352,
-    "urban_km": 510,
-    "winter_minus5_km": 290,
+    "mixed_km": 406,
+    "highway_130_km": 301,
+    "highway_120_km": 334,
+    "urban_km": 525,
+    "winter_minus5_km": 305,
     "confidence": "bjorn_nyland"
   },
   "consumption_mixed_kWh_per_100km": 15,
@@ -75,29 +75,29 @@
   "rangeTests": [
     {
       "sourceId": "nyland",
-      "testDate": "2022-10",
+      "testDate": null,
       "speed_kmh": 90,
-      "range_km": 487,
-      "consumption_kWh_100km": 15.8,
-      "temperature_C": 14,
-      "wheelSize_inches": 19,
-      "tyreModel": null,
+      "range_km": 477,
+      "consumption_kWh_100km": 15.4,
+      "temperature_C": 20,
+      "wheelSize_inches": 21,
+      "tyreModel": "Pirelli Scorpion",
       "protocol": "nyland",
       "videoUrl": null,
-      "notes": "ID.5 Pro (2022)."
+      "notes": "Essai Nyland « VW ID5 GTX 82 kWh » (été, route sèche)."
     },
     {
       "sourceId": "nyland",
-      "testDate": "2022-10",
+      "testDate": null,
       "speed_kmh": 120,
-      "range_km": 352,
-      "consumption_kWh_100km": 21.9,
-      "temperature_C": 14,
-      "wheelSize_inches": 19,
-      "tyreModel": null,
+      "range_km": 334,
+      "consumption_kWh_100km": 22,
+      "temperature_C": 20,
+      "wheelSize_inches": 21,
+      "tyreModel": "Pirelli Scorpion",
       "protocol": "nyland",
       "videoUrl": null,
-      "notes": ""
+      "notes": "Essai Nyland « VW ID5 GTX 82 kWh » (été, route sèche)."
     }
   ],
   "thousandKmChallenge": null,
@@ -150,39 +150,11 @@
       "realRange": {
         "mixed_km": 430,
         "highway_130_km": 320,
-        "highway_120_km": 352,
         "urban_km": 510,
         "winter_minus5_km": 290,
-        "confidence": "bjorn_nyland"
+        "confidence": "estimated"
       },
-      "rangeTests": [
-        {
-          "sourceId": "nyland",
-          "testDate": "2022-10",
-          "speed_kmh": 90,
-          "range_km": 487,
-          "consumption_kWh_100km": 15.8,
-          "temperature_C": 14,
-          "wheelSize_inches": 19,
-          "tyreModel": null,
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "ID.5 Pro (2022)."
-        },
-        {
-          "sourceId": "nyland",
-          "testDate": "2022-10",
-          "speed_kmh": 120,
-          "range_km": 352,
-          "consumption_kWh_100km": 21.9,
-          "temperature_C": 14,
-          "wheelSize_inches": 19,
-          "tyreModel": null,
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": ""
-        }
-      ],
+      "rangeTests": [],
       "chargingDC_peak_kW": 135,
       "chargingDC_10_80_min": 29,
       "chargingDC_kWh_30min": 48,
@@ -225,39 +197,39 @@
       "wltp_km": 515,
       "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
-        "mixed_km": 390,
-        "highway_130_km": 285,
-        "highway_120_km": 315,
-        "urban_km": 460,
-        "winter_minus5_km": 310,
+        "mixed_km": 406,
+        "highway_130_km": 301,
+        "highway_120_km": 334,
+        "urban_km": 525,
+        "winter_minus5_km": 305,
         "confidence": "bjorn_nyland"
       },
       "rangeTests": [
         {
           "sourceId": "nyland",
-          "testDate": "2022-10",
+          "testDate": null,
           "speed_kmh": 90,
-          "range_km": 487,
-          "consumption_kWh_100km": 15.8,
-          "temperature_C": 14,
-          "wheelSize_inches": 19,
-          "tyreModel": null,
+          "range_km": 477,
+          "consumption_kWh_100km": 15.4,
+          "temperature_C": 20,
+          "wheelSize_inches": 21,
+          "tyreModel": "Pirelli Scorpion",
           "protocol": "nyland",
           "videoUrl": null,
-          "notes": "ID.5 Pro (2022)."
+          "notes": "Essai Nyland « VW ID5 GTX 82 kWh » (été, route sèche)."
         },
         {
           "sourceId": "nyland",
-          "testDate": "2022-10",
+          "testDate": null,
           "speed_kmh": 120,
-          "range_km": 352,
-          "consumption_kWh_100km": 21.9,
-          "temperature_C": 14,
-          "wheelSize_inches": 19,
-          "tyreModel": null,
+          "range_km": 334,
+          "consumption_kWh_100km": 22,
+          "temperature_C": 20,
+          "wheelSize_inches": 21,
+          "tyreModel": "Pirelli Scorpion",
           "protocol": "nyland",
           "videoUrl": null,
-          "notes": ""
+          "notes": "Essai Nyland « VW ID5 GTX 82 kWh » (été, route sèche)."
         }
       ],
       "chargingDC_peak_kW": 175,

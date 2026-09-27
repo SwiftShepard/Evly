@@ -18,13 +18,23 @@ export interface VehicleCardSummary {
   rangeConfidence: RangeConfidenceLevel;
   /** « mesurée » | « constructeur » | « estimée » */
   rangeConfidenceLabel: string;
+  /** Libellé pour l'autonomie autoroute (130 km/h), dérivée de l'essai à 120 km/h si Nyland */
+  highwayConfidenceLabel: string;
 }
 
-const CONFIDENCE_LABELS: Record<RangeConfidenceLevel, string> = {
-  measured: "mesurée",
-  manufacturer: "constructeur",
-  estimated: "estimée",
-};
+/**
+ * Niveau et libellé court d'une autonomie selon sa provenance.
+ * « bjorn_nyland » : autonomie mixte = moyenne des essais Nyland à 90 et 120 km/h.
+ */
+export function getRangeConfidenceInfo(confidence: string | null | undefined): {
+  level: RangeConfidenceLevel;
+  label: string;
+} {
+  if (confidence === "bjorn_nyland") return { level: "measured", label: "mesurée" };
+  if (confidence === "tested") return { level: "measured", label: "mesurée" };
+  if (confidence === "manufacturer") return { level: "manufacturer", label: "constructeur" };
+  return { level: "estimated", label: "estimée" };
+}
 
 function parseKwh(label: string): number | null {
   const m = label.match(/(\d+(?:[.,]\d+)?)/);
@@ -51,16 +61,15 @@ export function getVehicleCardSummary(v: Vehicle): VehicleCardSummary {
   );
   const priceAided = cheapestPrice !== null ? Math.max(0, cheapestPrice - totalAids) : null;
 
-  const c = v.realRange.confidence;
-  const rangeConfidence: RangeConfidenceLevel =
-    c === "tested" || c === "bjorn_nyland" ? "measured" : c === "manufacturer" ? "manufacturer" : "estimated";
+  const confidence = getRangeConfidenceInfo(v.realRange.confidence);
 
   return {
     subtitle,
     cheapestPrice,
     totalAids,
     priceAided,
-    rangeConfidence,
-    rangeConfidenceLabel: CONFIDENCE_LABELS[rangeConfidence],
+    rangeConfidence: confidence.level,
+    rangeConfidenceLabel: confidence.label,
+    highwayConfidenceLabel: v.realRange.confidence === "bjorn_nyland" ? "d'après essai 120 km/h" : confidence.label,
   };
 }

@@ -24,12 +24,12 @@
   "wltp_max_km": 501,
   "wltp_min_km": 432,
   "realRange": {
-    "mixed_km": 360,
-    "highway_130_km": 255,
-    "urban_km": 475,
-    "winter_minus5_km": 280,
-    "confidence": "estimated",
-    "highway_120_km": 373
+    "mixed_km": 319,
+    "highway_130_km": 239,
+    "urban_km": 410,
+    "winter_minus5_km": 239,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 265
   },
   "consumption_mixed_kWh_per_100km": 16.8,
   "consumption_highway_kWh_per_100km": 23.5,
@@ -76,7 +76,34 @@
       "power": 6
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 373,
+      "consumption_kWh_100km": 16.6,
+      "temperature_C": 15,
+      "wheelSize_inches": 20,
+      "tyreModel": "Continental EcoContact 6Q",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Mini Countryman SE All4 » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 265,
+      "consumption_kWh_100km": 23.4,
+      "temperature_C": 13,
+      "wheelSize_inches": 20,
+      "tyreModel": "Continental EcoContact 6Q",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Mini Countryman SE All4 » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 640,
@@ -207,7 +234,8 @@
         }
       ],
       "availability": "available",
-      "notes": "Version 204 ch mise à jour en 2026 avec autonomie de 501 km"
+      "notes": "Version 204 ch mise à jour en 2026 avec autonomie de 501 km",
+      "rangeTests": []
     },
     {
       "id": "mini-countryman-se-classic",
@@ -224,11 +252,12 @@
       "wltp_km": 432,
       "wltp_consumption_kWh_100km": 16.8,
       "realRange": {
-        "mixed_km": 360,
-        "highway_130_km": 255,
-        "urban_km": 475,
-        "winter_minus5_km": 280,
-        "confidence": "estimated"
+        "mixed_km": 319,
+        "highway_130_km": 239,
+        "urban_km": 410,
+        "winter_minus5_km": 239,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 265
       },
       "chargingDC_peak_kW": 130,
       "chargingDC_10_80_min": 29,
@@ -260,7 +289,35 @@
         }
       ],
       "availability": "available",
-      "notes": "Version bimoteur 4 roues motrices de 313 ch"
+      "notes": "Version bimoteur 4 roues motrices de 313 ch",
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 373,
+          "consumption_kWh_100km": 16.6,
+          "temperature_C": 15,
+          "wheelSize_inches": 20,
+          "tyreModel": "Continental EcoContact 6Q",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mini Countryman SE All4 » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 265,
+          "consumption_kWh_100km": 23.4,
+          "temperature_C": 13,
+          "wheelSize_inches": 20,
+          "tyreModel": "Continental EcoContact 6Q",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mini Countryman SE All4 » (été, route sèche)."
+        }
+      ]
     }
   ],
   "warranty": {

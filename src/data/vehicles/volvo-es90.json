@@ -24,11 +24,12 @@
   "wltp_max_km": 680,
   "wltp_min_km": 620,
   "realRange": {
-    "mixed_km": 500,
-    "highway_130_km": 360,
-    "urban_km": 620,
-    "winter_minus5_km": 390,
-    "confidence": "estimated"
+    "mixed_km": 446,
+    "highway_130_km": 335,
+    "urban_km": 571,
+    "winter_minus5_km": 335,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 372
   },
   "consumption_mixed_kWh_per_100km": 17.6,
   "consumption_highway_kWh_per_100km": 24.4,
@@ -75,7 +76,34 @@
       "power": 15
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 519,
+      "consumption_kWh_100km": 16.7,
+      "temperature_C": 7,
+      "wheelSize_inches": 22,
+      "tyreModel": "Pirelli P Zero",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Volvo ES90 RWD 92 kWh » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 372,
+      "consumption_kWh_100km": 23.3,
+      "temperature_C": 7,
+      "wheelSize_inches": 22,
+      "tyreModel": "Pirelli P Zero",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Volvo ES90 RWD 92 kWh » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 5000,
   "width_mm": 1942,
@@ -124,13 +152,41 @@
       "wltp_km": 680,
       "wltp_consumption_kWh_100km": 13.5,
       "realRange": {
-        "mixed_km": 500,
-        "highway_130_km": 360,
-        "urban_km": 620,
-        "winter_minus5_km": 390,
-        "confidence": "estimated"
+        "mixed_km": 446,
+        "highway_130_km": 335,
+        "urban_km": 571,
+        "winter_minus5_km": 335,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 372
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 519,
+          "consumption_kWh_100km": 16.7,
+          "temperature_C": 7,
+          "wheelSize_inches": 22,
+          "tyreModel": "Pirelli P Zero",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Volvo ES90 RWD 92 kWh » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 372,
+          "consumption_kWh_100km": 23.3,
+          "temperature_C": 7,
+          "wheelSize_inches": 22,
+          "tyreModel": "Pirelli P Zero",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Volvo ES90 RWD 92 kWh » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 300,
       "chargingDC_10_80_min": 21,
       "chargingDC_kWh_30min": 68,
@@ -177,13 +233,41 @@
       "wltp_km": 640,
       "wltp_consumption_kWh_100km": 14.3,
       "realRange": {
-        "mixed_km": 470,
-        "highway_130_km": 340,
-        "urban_km": 580,
-        "winter_minus5_km": 360,
-        "confidence": "estimated"
+        "mixed_km": 446,
+        "highway_130_km": 335,
+        "urban_km": 571,
+        "winter_minus5_km": 335,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 372
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 519,
+          "consumption_kWh_100km": 16.7,
+          "temperature_C": 7,
+          "wheelSize_inches": 22,
+          "tyreModel": "Pirelli P Zero",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Volvo ES90 RWD 92 kWh » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 372,
+          "consumption_kWh_100km": 23.3,
+          "temperature_C": 7,
+          "wheelSize_inches": 22,
+          "tyreModel": "Pirelli P Zero",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Volvo ES90 RWD 92 kWh » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 300,
       "chargingDC_10_80_min": 21,
       "chargingDC_kWh_30min": 68,
@@ -258,7 +342,8 @@
   "lastUpdated": "2026-06-02",
   "sources": [
     "volvo-fr",
-    "automobile-propre"
+    "automobile-propre",
+    "nyland"
   ],
   "imageCredit": "Constructeur"
 }

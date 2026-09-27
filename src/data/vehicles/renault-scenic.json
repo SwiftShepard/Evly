@@ -24,12 +24,12 @@
   "wltp_max_km": 625,
   "wltp_min_km": 420,
   "realRange": {
-    "mixed_km": 490,
-    "highway_130_km": 355,
-    "highway_120_km": 492,
-    "urban_km": 580,
-    "winter_minus5_km": 380,
-    "confidence": "bjorn_nyland"
+    "mixed_km": 425,
+    "highway_130_km": 322,
+    "urban_km": 541,
+    "winter_minus5_km": 319,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 358
   },
   "consumption_mixed_kWh_per_100km": 15,
   "consumption_highway_kWh_per_100km": 21,
@@ -99,29 +99,29 @@
   "rangeTests": [
     {
       "sourceId": "nyland",
-      "testDate": "2023-09",
+      "testDate": null,
       "speed_kmh": 90,
-      "range_km": 562,
-      "consumption_kWh_100km": 15.5,
-      "temperature_C": 18,
-      "wheelSize_inches": 19,
-      "tyreModel": null,
+      "range_km": 492,
+      "consumption_kWh_100km": 17.3,
+      "temperature_C": 14,
+      "wheelSize_inches": 20,
+      "tyreModel": "Michelin e-Primacy",
       "protocol": "nyland",
       "videoUrl": null,
-      "notes": "Scénic E-Tech 87 kWh. Très bon à 90."
+      "notes": "Essai Nyland « Renault Scenic E-Tech 92 kWh » (été, route sèche)."
     },
     {
       "sourceId": "nyland",
-      "testDate": "2023-09",
+      "testDate": null,
       "speed_kmh": 120,
-      "range_km": 390,
-      "consumption_kWh_100km": 22.3,
-      "temperature_C": 18,
-      "wheelSize_inches": 19,
-      "tyreModel": null,
+      "range_km": 358,
+      "consumption_kWh_100km": 23.8,
+      "temperature_C": 15,
+      "wheelSize_inches": 20,
+      "tyreModel": "Michelin e-Primacy",
       "protocol": "nyland",
       "videoUrl": null,
-      "notes": "Consommation plus élevée à haute vitesse."
+      "notes": "Essai Nyland « Renault Scenic E-Tech 92 kWh » (été, route sèche)."
     }
   ],
   "thousandKmChallenge": {
@@ -261,38 +261,39 @@
       "wltp_km": 625,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 490,
-        "highway_130_km": 355,
-        "urban_km": 580,
-        "winter_minus5_km": 380,
-        "confidence": "bjorn_nyland"
+        "mixed_km": 425,
+        "highway_130_km": 322,
+        "urban_km": 541,
+        "winter_minus5_km": 319,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 358
       },
       "rangeTests": [
         {
           "sourceId": "nyland",
-          "testDate": "2023-09",
+          "testDate": null,
           "speed_kmh": 90,
-          "range_km": 562,
-          "consumption_kWh_100km": 15.5,
-          "temperature_C": 18,
-          "wheelSize_inches": 19,
-          "tyreModel": null,
+          "range_km": 492,
+          "consumption_kWh_100km": 17.3,
+          "temperature_C": 14,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin e-Primacy",
           "protocol": "nyland",
           "videoUrl": null,
-          "notes": "Scenic E-Tech 87 kWh. Tres bon a 90."
+          "notes": "Essai Nyland « Renault Scenic E-Tech 92 kWh » (été, route sèche)."
         },
         {
           "sourceId": "nyland",
-          "testDate": "2023-09",
+          "testDate": null,
           "speed_kmh": 120,
-          "range_km": 390,
-          "consumption_kWh_100km": 22.3,
-          "temperature_C": 18,
-          "wheelSize_inches": 19,
-          "tyreModel": null,
+          "range_km": 358,
+          "consumption_kWh_100km": 23.8,
+          "temperature_C": 15,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin e-Primacy",
           "protocol": "nyland",
           "videoUrl": null,
-          "notes": "Consommation plus elevee a haute vitesse."
+          "notes": "Essai Nyland « Renault Scenic E-Tech 92 kWh » (été, route sèche)."
         }
       ],
       "chargingDC_peak_kW": 150,
@@ -337,38 +338,39 @@
       "wltp_km": 610,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 480,
-        "highway_130_km": 345,
-        "urban_km": 570,
-        "winter_minus5_km": 370,
-        "confidence": "estimated"
+        "mixed_km": 425,
+        "highway_130_km": 322,
+        "urban_km": 541,
+        "winter_minus5_km": 319,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 358
       },
       "rangeTests": [
         {
           "sourceId": "nyland",
-          "testDate": "2023-09",
+          "testDate": null,
           "speed_kmh": 90,
-          "range_km": 562,
-          "consumption_kWh_100km": 15.5,
-          "temperature_C": 18,
-          "wheelSize_inches": 19,
-          "tyreModel": null,
+          "range_km": 492,
+          "consumption_kWh_100km": 17.3,
+          "temperature_C": 14,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin e-Primacy",
           "protocol": "nyland",
           "videoUrl": null,
-          "notes": "Scenic E-Tech 87 kWh. Tres bon a 90."
+          "notes": "Essai Nyland « Renault Scenic E-Tech 92 kWh » (été, route sèche)."
         },
         {
           "sourceId": "nyland",
-          "testDate": "2023-09",
+          "testDate": null,
           "speed_kmh": 120,
-          "range_km": 390,
-          "consumption_kWh_100km": 22.3,
-          "temperature_C": 18,
-          "wheelSize_inches": 19,
-          "tyreModel": null,
+          "range_km": 358,
+          "consumption_kWh_100km": 23.8,
+          "temperature_C": 15,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin e-Primacy",
           "protocol": "nyland",
           "videoUrl": null,
-          "notes": "Consommation plus elevee a haute vitesse."
+          "notes": "Essai Nyland « Renault Scenic E-Tech 92 kWh » (été, route sèche)."
         }
       ],
       "chargingDC_peak_kW": 150,
@@ -413,38 +415,39 @@
       "wltp_km": 610,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 480,
-        "highway_130_km": 345,
-        "urban_km": 570,
-        "winter_minus5_km": 370,
-        "confidence": "estimated"
+        "mixed_km": 425,
+        "highway_130_km": 322,
+        "urban_km": 541,
+        "winter_minus5_km": 319,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 358
       },
       "rangeTests": [
         {
           "sourceId": "nyland",
-          "testDate": "2023-09",
+          "testDate": null,
           "speed_kmh": 90,
-          "range_km": 562,
-          "consumption_kWh_100km": 15.5,
-          "temperature_C": 18,
-          "wheelSize_inches": 19,
-          "tyreModel": null,
+          "range_km": 492,
+          "consumption_kWh_100km": 17.3,
+          "temperature_C": 14,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin e-Primacy",
           "protocol": "nyland",
           "videoUrl": null,
-          "notes": "Scenic E-Tech 87 kWh. Tres bon a 90."
+          "notes": "Essai Nyland « Renault Scenic E-Tech 92 kWh » (été, route sèche)."
         },
         {
           "sourceId": "nyland",
-          "testDate": "2023-09",
+          "testDate": null,
           "speed_kmh": 120,
-          "range_km": 390,
-          "consumption_kWh_100km": 22.3,
-          "temperature_C": 18,
-          "wheelSize_inches": 19,
-          "tyreModel": null,
+          "range_km": 358,
+          "consumption_kWh_100km": 23.8,
+          "temperature_C": 15,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin e-Primacy",
           "protocol": "nyland",
           "videoUrl": null,
-          "notes": "Consommation plus elevee a haute vitesse."
+          "notes": "Essai Nyland « Renault Scenic E-Tech 92 kWh » (été, route sèche)."
         }
       ],
       "chargingDC_peak_kW": 150,

@@ -24,12 +24,12 @@
   "wltp_max_km": 402,
   "wltp_min_km": 370,
   "realRange": {
-    "mixed_km": 320,
-    "highway_130_km": 220,
-    "urban_km": 380,
-    "winter_minus5_km": 220,
-    "confidence": "tested",
-    "highway_120_km": 383
+    "mixed_km": 314,
+    "highway_130_km": 221,
+    "urban_km": 421,
+    "winter_minus5_km": 236,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 245
   },
   "consumption_mixed_kWh_per_100km": 15,
   "consumption_highway_kWh_per_100km": 21,
@@ -96,7 +96,34 @@
       "power": 2
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 383,
+      "consumption_kWh_100km": 18.2,
+      "temperature_C": 12,
+      "wheelSize_inches": 19,
+      "tyreModel": "Michelin Primacy 4",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « MG Marvel R Performance » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 245,
+      "consumption_kWh_100km": 28.4,
+      "temperature_C": 9,
+      "wheelSize_inches": 19,
+      "tyreModel": "Michelin Primacy 4",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « MG Marvel R Performance » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4674,
   "width_mm": 1919,
@@ -159,7 +186,7 @@
         "highway_130_km": 220,
         "urban_km": 380,
         "winter_minus5_km": 220,
-        "confidence": "tested"
+        "confidence": "estimated"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 92,
@@ -208,7 +235,7 @@
         "highway_130_km": 220,
         "urban_km": 380,
         "winter_minus5_km": 220,
-        "confidence": "tested"
+        "confidence": "estimated"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 92,
@@ -253,13 +280,41 @@
       "wltp_km": 370,
       "wltp_consumption_kWh_100km": 17,
       "realRange": {
-        "mixed_km": 290,
-        "highway_130_km": 200,
-        "urban_km": 350,
-        "winter_minus5_km": 200,
-        "confidence": "estimated"
+        "mixed_km": 314,
+        "highway_130_km": 221,
+        "urban_km": 421,
+        "winter_minus5_km": 236,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 245
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 383,
+          "consumption_kWh_100km": 18.2,
+          "temperature_C": 12,
+          "wheelSize_inches": 19,
+          "tyreModel": "Michelin Primacy 4",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « MG Marvel R Performance » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 245,
+          "consumption_kWh_100km": 28.4,
+          "temperature_C": 9,
+          "wheelSize_inches": 19,
+          "tyreModel": "Michelin Primacy 4",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « MG Marvel R Performance » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 92,
       "chargingDC_10_80_min": 43,
       "chargingDC_kWh_30min": 35,

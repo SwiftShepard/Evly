@@ -24,12 +24,12 @@
   "wltp_max_km": 600,
   "wltp_min_km": 440,
   "realRange": {
-    "mixed_km": 430,
-    "highway_130_km": 310,
-    "urban_km": 530,
-    "winter_minus5_km": 340,
-    "confidence": "estimated",
-    "highway_120_km": 350
+    "mixed_km": 446,
+    "highway_130_km": 321,
+    "urban_km": 589,
+    "winter_minus5_km": 335,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 357
   },
   "consumption_mixed_kWh_per_100km": 19,
   "consumption_highway_kWh_per_100km": 25,
@@ -92,7 +92,34 @@
       "power": 1
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 535,
+      "consumption_kWh_100km": 16,
+      "temperature_C": 18,
+      "wheelSize_inches": 18,
+      "tyreModel": "Continental PreCon 6",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Ford Mustang Mach-E LR RWD » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 357,
+      "consumption_kWh_100km": 24,
+      "temperature_C": 15,
+      "wheelSize_inches": 18,
+      "tyreModel": "Continental PreCon 6",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Ford Mustang Mach-E LR RWD » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 625,
@@ -214,13 +241,41 @@
       "wltp_km": 600,
       "wltp_consumption_kWh_100km": 17.8,
       "realRange": {
-        "mixed_km": 430,
-        "highway_130_km": 310,
-        "urban_km": 530,
-        "winter_minus5_km": 340,
-        "confidence": "estimated"
+        "mixed_km": 446,
+        "highway_130_km": 321,
+        "urban_km": 589,
+        "winter_minus5_km": 335,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 357
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 535,
+          "consumption_kWh_100km": 16,
+          "temperature_C": 18,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental PreCon 6",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Ford Mustang Mach-E LR RWD » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 357,
+          "consumption_kWh_100km": 24,
+          "temperature_C": 15,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental PreCon 6",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Ford Mustang Mach-E LR RWD » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 150,
       "chargingDC_10_80_min": 38,
       "chargingDC_kWh_30min": 55,
@@ -267,13 +322,41 @@
       "wltp_km": 490,
       "wltp_consumption_kWh_100km": 22,
       "realRange": {
-        "mixed_km": 360,
-        "highway_130_km": 260,
-        "urban_km": 445,
-        "winter_minus5_km": 285,
-        "confidence": "estimated"
+        "mixed_km": 374,
+        "highway_130_km": 284,
+        "urban_km": 475,
+        "winter_minus5_km": 281,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 316
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 432,
+          "consumption_kWh_100km": 19.8,
+          "temperature_C": 16,
+          "wheelSize_inches": 20,
+          "tyreModel": "Pirelli P Zero",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Ford Mustang Mach-E GT » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 316,
+          "consumption_kWh_100km": 27.1,
+          "temperature_C": 14,
+          "wheelSize_inches": 20,
+          "tyreModel": "Pirelli P Zero",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Ford Mustang Mach-E GT » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 150,
       "chargingDC_10_80_min": 38,
       "chargingDC_kWh_30min": 55,

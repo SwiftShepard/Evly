@@ -24,12 +24,12 @@
   "wltp_max_km": 476,
   "wltp_min_km": 337,
   "realRange": {
-    "mixed_km": 370,
-    "highway_130_km": 280,
-    "urban_km": 450,
-    "winter_minus5_km": 290,
-    "confidence": "estimated",
-    "highway_120_km": 357
+    "mixed_km": 356,
+    "highway_130_km": 267,
+    "urban_km": 455,
+    "winter_minus5_km": 267,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 297
   },
   "consumption_mixed_kWh_per_100km": 16.5,
   "consumption_highway_kWh_per_100km": 23,
@@ -96,7 +96,34 @@
       "power": 3
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 414,
+      "consumption_kWh_100km": 15.8,
+      "temperature_C": 22,
+      "wheelSize_inches": 20,
+      "tyreModel": "Goodyear EfficientGrip Performance",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Volvo EX30 RWD ER » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 297,
+      "consumption_kWh_100km": 22,
+      "temperature_C": 22,
+      "wheelSize_inches": 20,
+      "tyreModel": "Goodyear EfficientGrip Performance",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Volvo EX30 RWD ER » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 630,
@@ -223,13 +250,41 @@
       "wltp_km": 476,
       "wltp_consumption_kWh_100km": 15.7,
       "realRange": {
-        "mixed_km": 370,
-        "highway_130_km": 260,
-        "urban_km": 450,
-        "winter_minus5_km": 290,
-        "confidence": "estimated"
+        "mixed_km": 356,
+        "highway_130_km": 267,
+        "urban_km": 455,
+        "winter_minus5_km": 267,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 297
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 414,
+          "consumption_kWh_100km": 15.8,
+          "temperature_C": 22,
+          "wheelSize_inches": 20,
+          "tyreModel": "Goodyear EfficientGrip Performance",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Volvo EX30 RWD ER » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 297,
+          "consumption_kWh_100km": 22,
+          "temperature_C": 22,
+          "wheelSize_inches": 20,
+          "tyreModel": "Goodyear EfficientGrip Performance",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Volvo EX30 RWD ER » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 153,
       "chargingDC_10_80_min": 26,
       "chargingDC_kWh_30min": 45,
@@ -276,13 +331,41 @@
       "wltp_km": 400,
       "wltp_consumption_kWh_100km": 18.8,
       "realRange": {
-        "mixed_km": 320,
-        "highway_130_km": 230,
-        "urban_km": 400,
-        "winter_minus5_km": 260,
-        "confidence": "estimated"
+        "mixed_km": 312,
+        "highway_130_km": 240,
+        "urban_km": 393,
+        "winter_minus5_km": 234,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 267
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 357,
+          "consumption_kWh_100km": 18.3,
+          "temperature_C": 15,
+          "wheelSize_inches": 20,
+          "tyreModel": "Goodyear EfficientGrip Performance",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Volvo EX30 Twin Performance » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 267,
+          "consumption_kWh_100km": 24.5,
+          "temperature_C": 14,
+          "wheelSize_inches": 20,
+          "tyreModel": "Goodyear EfficientGrip Performance",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Volvo EX30 Twin Performance » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 153,
       "chargingDC_10_80_min": 26,
       "chargingDC_kWh_30min": 45,
@@ -329,13 +412,41 @@
       "wltp_km": 460,
       "wltp_consumption_kWh_100km": 16.1,
       "realRange": {
-        "mixed_km": 355,
-        "highway_130_km": 250,
-        "urban_km": 435,
-        "winter_minus5_km": 280,
-        "confidence": "estimated"
+        "mixed_km": 356,
+        "highway_130_km": 267,
+        "urban_km": 455,
+        "winter_minus5_km": 267,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 297
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 414,
+          "consumption_kWh_100km": 15.8,
+          "temperature_C": 22,
+          "wheelSize_inches": 20,
+          "tyreModel": "Goodyear EfficientGrip Performance",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Volvo EX30 RWD ER » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 297,
+          "consumption_kWh_100km": 22,
+          "temperature_C": 22,
+          "wheelSize_inches": 20,
+          "tyreModel": "Goodyear EfficientGrip Performance",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Volvo EX30 RWD ER » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 153,
       "chargingDC_10_80_min": 26,
       "chargingDC_kWh_30min": 45,

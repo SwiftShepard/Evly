@@ -24,12 +24,12 @@
   "wltp_max_km": 756,
   "wltp_min_km": 627,
   "realRange": {
-    "mixed_km": 580,
-    "highway_130_km": 410,
-    "urban_km": 710,
-    "winter_minus5_km": 440,
-    "confidence": "estimated",
-    "highway_120_km": 625
+    "mixed_km": 506,
+    "highway_130_km": 389,
+    "urban_km": 637,
+    "winter_minus5_km": 380,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 432
   },
   "consumption_mixed_kWh_per_100km": 16.3,
   "consumption_highway_kWh_per_100km": 23.1,
@@ -96,7 +96,34 @@
       "power": 7
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 579,
+      "consumption_kWh_100km": 16.2,
+      "temperature_C": 15,
+      "wheelSize_inches": 21,
+      "tyreModel": "Pirelli P Zero",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Audi A6 e-tron Sportback Quattro » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 432,
+      "consumption_kWh_100km": 21.7,
+      "temperature_C": 15,
+      "wheelSize_inches": 21,
+      "tyreModel": "Pirelli P Zero",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Audi A6 e-tron Sportback Quattro » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 550,
@@ -301,13 +328,41 @@
       "wltp_km": 716,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 550,
-        "highway_130_km": 390,
-        "urban_km": 670,
-        "winter_minus5_km": 420,
-        "confidence": "estimated"
+        "mixed_km": 506,
+        "highway_130_km": 389,
+        "urban_km": 637,
+        "winter_minus5_km": 380,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 432
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 579,
+          "consumption_kWh_100km": 16.2,
+          "temperature_C": 15,
+          "wheelSize_inches": 21,
+          "tyreModel": "Pirelli P Zero",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Audi A6 e-tron Sportback Quattro » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 432,
+          "consumption_kWh_100km": 21.7,
+          "temperature_C": 15,
+          "wheelSize_inches": 21,
+          "tyreModel": "Pirelli P Zero",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Audi A6 e-tron Sportback Quattro » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 270,
       "chargingDC_10_80_min": 21,
       "chargingDC_kWh_30min": 75,
@@ -460,13 +515,41 @@
       "wltp_km": 716,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 550,
-        "highway_130_km": 390,
-        "urban_km": 670,
-        "winter_minus5_km": 420,
-        "confidence": "estimated"
+        "mixed_km": 506,
+        "highway_130_km": 389,
+        "urban_km": 637,
+        "winter_minus5_km": 380,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 432
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 579,
+          "consumption_kWh_100km": 16.2,
+          "temperature_C": 15,
+          "wheelSize_inches": 21,
+          "tyreModel": "Pirelli P Zero",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Audi A6 e-tron Sportback Quattro » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 432,
+          "consumption_kWh_100km": 21.7,
+          "temperature_C": 15,
+          "wheelSize_inches": 21,
+          "tyreModel": "Pirelli P Zero",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Audi A6 e-tron Sportback Quattro » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 270,
       "chargingDC_10_80_min": 21,
       "chargingDC_kWh_30min": 75,

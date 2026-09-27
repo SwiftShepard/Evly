@@ -24,12 +24,12 @@
   "wltp_max_km": 500,
   "wltp_min_km": 420,
   "realRange": {
-    "mixed_km": 340,
-    "highway_130_km": 250,
-    "urban_km": 400,
-    "winter_minus5_km": 240,
-    "confidence": "tested",
-    "highway_120_km": 260
+    "mixed_km": 370,
+    "highway_130_km": 287,
+    "urban_km": 463,
+    "winter_minus5_km": 278,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 319
   },
   "consumption_mixed_kWh_per_100km": 15,
   "consumption_highway_kWh_per_100km": 21,
@@ -96,7 +96,34 @@
       "power": 5
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 421,
+      "consumption_kWh_100km": 20,
+      "temperature_C": 10,
+      "wheelSize_inches": 19,
+      "tyreModel": "Michelin e Primacy",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « BYD Seal U » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 319,
+      "consumption_kWh_100km": 26.4,
+      "temperature_C": 11,
+      "wheelSize_inches": 19,
+      "tyreModel": "Michelin e Primacy",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « BYD Seal U » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 630,
@@ -159,8 +186,7 @@
         "highway_130_km": 250,
         "urban_km": 400,
         "winter_minus5_km": 240,
-        "confidence": "tested",
-        "highway_120_km": 260
+        "confidence": "estimated"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 115,
@@ -205,14 +231,41 @@
       "wltp_km": 500,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
-        "mixed_km": 400,
-        "highway_130_km": 290,
-        "urban_km": 470,
-        "winter_minus5_km": 280,
-        "confidence": "tested",
-        "highway_120_km": 310
+        "mixed_km": 370,
+        "highway_130_km": 287,
+        "urban_km": 463,
+        "winter_minus5_km": 278,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 319
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 421,
+          "consumption_kWh_100km": 20,
+          "temperature_C": 10,
+          "wheelSize_inches": 19,
+          "tyreModel": "Michelin e Primacy",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BYD Seal U » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 319,
+          "consumption_kWh_100km": 26.4,
+          "temperature_C": 11,
+          "wheelSize_inches": 19,
+          "tyreModel": "Michelin e Primacy",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BYD Seal U » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 140,
       "chargingDC_10_80_min": 43,
       "chargingDC_kWh_30min": 48,

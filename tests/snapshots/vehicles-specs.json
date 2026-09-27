@@ -47,6 +47,22 @@
     ]
   },
   {
+    "slug": "audi-a2-e-tron",
+    "brand": "Audi",
+    "model": "A2 e-tron",
+    "power_kW": 140,
+    "usableCapacity_kWh": 58,
+    "wltp_min_km": 423,
+    "wltp_max_km": 646,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "audi-a2-e-tron-125-52",
+      "audi-a2-e-tron-140-61",
+      "audi-a2-e-tron-170-84",
+      "audi-a2-e-tron-240-84"
+    ]
+  },
+  {
     "slug": "audi-a6-e-tron",
     "brand": "Audi",
     "model": "A6 e-tron",

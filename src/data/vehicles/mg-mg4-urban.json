@@ -16,8 +16,8 @@
   "motors": 1,
   "acceleration_0_100_s": 9.5,
   "topSpeed_kmh": 150,
-  "usableCapacity_kWh": 54.0,
-  "grossCapacity_kWh": 54.0,
+  "usableCapacity_kWh": 54,
+  "grossCapacity_kWh": 54,
   "chemistry": "LFP",
   "architecture_V": 400,
   "mass_kg": 1460,
@@ -26,13 +26,12 @@
   "realRange": {
     "mixed_km": 320,
     "highway_130_km": 220,
-    "highway_120_km": 245,
     "urban_km": 390,
     "winter_minus5_km": 210,
     "confidence": "estimated"
   },
-  "consumption_mixed_kWh_per_100km": 13.0,
-  "consumption_highway_kWh_per_100km": 18.0,
+  "consumption_mixed_kWh_per_100km": 13,
+  "consumption_highway_kWh_per_100km": 18,
   "consumption_winter_kWh_per_100km": 17.5,
   "dragCoefficient_Cx": 0.28,
   "chargingDC": {
@@ -42,9 +41,9 @@
     "confidence": "estimated"
   },
   "chargingAC": {
-    "onboardCharger_kW": 11.0,
+    "onboardCharger_kW": 11,
     "phases": 3,
-    "time_0_100_h": 6.0
+    "time_0_100_h": 6
   },
   "plugAndCharge": false,
   "v2l": true,
@@ -131,7 +130,6 @@
       "realRange": {
         "mixed_km": 250,
         "highway_130_km": 170,
-        "highway_120_km": 190,
         "urban_km": 300,
         "winter_minus5_km": 165,
         "confidence": "estimated"
@@ -177,11 +175,10 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 416,
-      "wltp_consumption_kWh_100km": 13.0,
+      "wltp_consumption_kWh_100km": 13,
       "realRange": {
         "mixed_km": 320,
         "highway_130_km": 220,
-        "highway_120_km": 245,
         "urban_km": 390,
         "winter_minus5_km": 210,
         "confidence": "estimated"
@@ -227,11 +224,10 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 416,
-      "wltp_consumption_kWh_100km": 13.0,
+      "wltp_consumption_kWh_100km": 13,
       "realRange": {
         "mixed_km": 320,
         "highway_130_km": 220,
-        "highway_120_km": 245,
         "urban_km": 390,
         "winter_minus5_km": 210,
         "confidence": "estimated"

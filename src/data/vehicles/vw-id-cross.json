@@ -26,7 +26,6 @@
   "realRange": {
     "mixed_km": 330,
     "highway_130_km": 270,
-    "highway_120_km": 295,
     "urban_km": 390,
     "winter_minus5_km": 230,
     "confidence": "estimated"
@@ -148,7 +147,7 @@
       "power_kW": 85,
       "power_hp": 116,
       "torque_Nm": 290,
-      "acceleration_0_100_s": 9.0,
+      "acceleration_0_100_s": 9,
       "topSpeed_kmh": 160,
       "usableCapacity_kWh": 37,
       "price_EUR": 27995,
@@ -159,7 +158,6 @@
       "realRange": {
         "mixed_km": 245,
         "highway_130_km": 195,
-        "highway_120_km": 215,
         "urban_km": 290,
         "winter_minus5_km": 170,
         "confidence": "estimated"
@@ -210,7 +208,6 @@
       "realRange": {
         "mixed_km": 330,
         "highway_130_km": 270,
-        "highway_120_km": 295,
         "urban_km": 390,
         "winter_minus5_km": 230,
         "confidence": "estimated"
@@ -261,7 +258,6 @@
       "realRange": {
         "mixed_km": 330,
         "highway_130_km": 270,
-        "highway_120_km": 295,
         "urban_km": 390,
         "winter_minus5_km": 230,
         "confidence": "estimated"
@@ -312,7 +308,6 @@
       "realRange": {
         "mixed_km": 325,
         "highway_130_km": 265,
-        "highway_120_km": 290,
         "urban_km": 385,
         "winter_minus5_km": 225,
         "confidence": "estimated"
@@ -363,7 +358,6 @@
       "realRange": {
         "mixed_km": 320,
         "highway_130_km": 260,
-        "highway_120_km": 285,
         "urban_km": 380,
         "winter_minus5_km": 220,
         "confidence": "estimated"

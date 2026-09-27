@@ -24,11 +24,12 @@
   "wltp_max_km": 440,
   "wltp_min_km": 310,
   "realRange": {
-    "mixed_km": 340,
-    "highway_130_km": 240,
-    "urban_km": 420,
-    "winter_minus5_km": 265,
-    "confidence": "estimated"
+    "mixed_km": 280,
+    "highway_130_km": 206,
+    "urban_km": 363,
+    "winter_minus5_km": 210,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 229
   },
   "consumption_mixed_kWh_per_100km": 17.5,
   "consumption_highway_kWh_per_100km": 24,
@@ -75,7 +76,34 @@
       "power": 8
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 330,
+      "consumption_kWh_100km": 19.1,
+      "temperature_C": 3,
+      "wheelSize_inches": 19,
+      "tyreModel": "Nokian R5",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Smart #1 Brabus » (hiver, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 229,
+      "consumption_kWh_100km": 27.6,
+      "temperature_C": 1,
+      "wheelSize_inches": 19,
+      "tyreModel": "Nokian R5",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Smart #1 Brabus » (hiver, route sèche)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4270,
   "width_mm": 1822,
@@ -298,13 +326,41 @@
       "wltp_km": 400,
       "wltp_consumption_kWh_100km": 18.5,
       "realRange": {
-        "mixed_km": 310,
-        "highway_130_km": 220,
-        "urban_km": 385,
-        "winter_minus5_km": 245,
-        "confidence": "estimated"
+        "mixed_km": 280,
+        "highway_130_km": 206,
+        "urban_km": 363,
+        "winter_minus5_km": 210,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 229
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 330,
+          "consumption_kWh_100km": 19.1,
+          "temperature_C": 3,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nokian R5",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Smart #1 Brabus » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 229,
+          "consumption_kWh_100km": 27.6,
+          "temperature_C": 1,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nokian R5",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Smart #1 Brabus » (hiver, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 150,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 42,
@@ -377,7 +433,8 @@
   },
   "lastUpdated": "2026-05-19",
   "sources": [
-    "la-chaine-ev"
+    "la-chaine-ev",
+    "nyland"
   ],
   "imageCredit": "Constructeur"
 }

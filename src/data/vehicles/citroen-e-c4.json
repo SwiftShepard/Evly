@@ -24,11 +24,12 @@
   "wltp_max_km": 420,
   "wltp_min_km": 350,
   "realRange": {
-    "mixed_km": 330,
-    "highway_130_km": 220,
-    "urban_km": 400,
-    "winter_minus5_km": 260,
-    "confidence": "tested"
+    "mixed_km": 249,
+    "highway_130_km": 178,
+    "urban_km": 329,
+    "winter_minus5_km": 187,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 198
   },
   "consumption_mixed_kWh_per_100km": 15,
   "consumption_highway_kWh_per_100km": 21,
@@ -71,7 +72,34 @@
       "power": 8
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 299,
+      "consumption_kWh_100km": 13.7,
+      "temperature_C": 27,
+      "wheelSize_inches": 18,
+      "tyreModel": "Michelin e Primacy",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Citroen e-C4 » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 198,
+      "consumption_kWh_100km": 20.7,
+      "temperature_C": 22,
+      "wheelSize_inches": 18,
+      "tyreModel": "Michelin e Primacy",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Citroen e-C4 » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4360,
   "width_mm": 1800,
@@ -191,13 +219,41 @@
       "wltp_km": 350,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 280,
-        "highway_130_km": 185,
-        "urban_km": 340,
-        "winter_minus5_km": 220,
-        "confidence": "estimated"
+        "mixed_km": 249,
+        "highway_130_km": 178,
+        "urban_km": 329,
+        "winter_minus5_km": 187,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 198
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 299,
+          "consumption_kWh_100km": 13.7,
+          "temperature_C": 27,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin e Primacy",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Citroen e-C4 » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 198,
+          "consumption_kWh_100km": 20.7,
+          "temperature_C": 22,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin e Primacy",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Citroen e-C4 » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 32,
@@ -219,13 +275,41 @@
       "wltp_km": 350,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 280,
-        "highway_130_km": 185,
-        "urban_km": 340,
-        "winter_minus5_km": 220,
-        "confidence": "estimated"
+        "mixed_km": 249,
+        "highway_130_km": 178,
+        "urban_km": 329,
+        "winter_minus5_km": 187,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 198
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 299,
+          "consumption_kWh_100km": 13.7,
+          "temperature_C": 27,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin e Primacy",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Citroen e-C4 » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 198,
+          "consumption_kWh_100km": 20.7,
+          "temperature_C": 22,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin e Primacy",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Citroen e-C4 » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 32,
@@ -251,7 +335,7 @@
         "highway_130_km": 220,
         "urban_km": 400,
         "winter_minus5_km": 260,
-        "confidence": "tested"
+        "confidence": "estimated"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 100,
@@ -279,7 +363,7 @@
         "highway_130_km": 215,
         "urban_km": 395,
         "winter_minus5_km": 255,
-        "confidence": "tested"
+        "confidence": "estimated"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 100,
@@ -359,13 +443,41 @@
       "wltp_km": 420,
       "wltp_consumption_kWh_100km": 14.9,
       "realRange": {
-        "mixed_km": 335,
-        "highway_130_km": 225,
-        "urban_km": 405,
-        "winter_minus5_km": 265,
-        "confidence": "estimated"
+        "mixed_km": 332,
+        "highway_130_km": 241,
+        "urban_km": 435,
+        "winter_minus5_km": 249,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 268
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 395,
+          "consumption_kWh_100km": 12.9,
+          "temperature_C": 18,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin e Primacy",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Citroen e-C4X » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 268,
+          "consumption_kWh_100km": 19,
+          "temperature_C": 17,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin e Primacy",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Citroen e-C4X » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 38,
@@ -387,13 +499,41 @@
       "wltp_km": 420,
       "wltp_consumption_kWh_100km": 15.1,
       "realRange": {
-        "mixed_km": 330,
-        "highway_130_km": 220,
-        "urban_km": 400,
-        "winter_minus5_km": 260,
-        "confidence": "estimated"
+        "mixed_km": 332,
+        "highway_130_km": 241,
+        "urban_km": 435,
+        "winter_minus5_km": 249,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 268
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 395,
+          "consumption_kWh_100km": 12.9,
+          "temperature_C": 18,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin e Primacy",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Citroen e-C4X » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 268,
+          "consumption_kWh_100km": 19,
+          "temperature_C": 17,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin e Primacy",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Citroen e-C4X » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 38,
@@ -442,7 +582,8 @@
   "lastUpdated": "2026-06-04",
   "sources": [
     "citroen-fr",
-    "automobile-propre"
+    "automobile-propre",
+    "nyland"
   ],
   "imageCredit": "Constructeur"
 }

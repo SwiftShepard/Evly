@@ -24,11 +24,12 @@
   "wltp_max_km": 475,
   "wltp_min_km": 439,
   "realRange": {
-    "mixed_km": 345,
-    "highway_130_km": 250,
-    "urban_km": 425,
-    "winter_minus5_km": 275,
-    "confidence": "estimated"
+    "mixed_km": 330,
+    "highway_130_km": 244,
+    "urban_km": 427,
+    "winter_minus5_km": 248,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 271
   },
   "consumption_mixed_kWh_per_100km": 17.5,
   "consumption_highway_kWh_per_100km": 23,
@@ -95,7 +96,34 @@
       "power": 4
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 388,
+      "consumption_kWh_100km": 16,
+      "temperature_C": 11,
+      "wheelSize_inches": 18,
+      "tyreModel": "Continental VC7",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « BMW iX1 xDrive30 » (hiver, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 271,
+      "consumption_kWh_100km": 22.9,
+      "temperature_C": 10,
+      "wheelSize_inches": 18,
+      "tyreModel": "Continental VC7",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « BMW iX1 xDrive30 » (hiver, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 650,
@@ -354,12 +382,40 @@
       "wltp_consumption_kWh_100km": 16.8,
       "realRange": {
         "mixed_km": 330,
-        "highway_130_km": 235,
-        "urban_km": 405,
-        "winter_minus5_km": 265,
-        "confidence": "estimated"
+        "highway_130_km": 244,
+        "urban_km": 427,
+        "winter_minus5_km": 248,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 271
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 388,
+          "consumption_kWh_100km": 16,
+          "temperature_C": 11,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental VC7",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BMW iX1 xDrive30 » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 271,
+          "consumption_kWh_100km": 22.9,
+          "temperature_C": 10,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental VC7",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BMW iX1 xDrive30 » (hiver, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 130,
       "chargingDC_10_80_min": 29,
       "chargingDC_kWh_30min": 40,
@@ -406,13 +462,41 @@
       "wltp_km": 439,
       "wltp_consumption_kWh_100km": 16.9,
       "realRange": {
-        "mixed_km": 325,
-        "highway_130_km": 230,
-        "urban_km": 400,
-        "winter_minus5_km": 260,
-        "confidence": "estimated"
+        "mixed_km": 330,
+        "highway_130_km": 244,
+        "urban_km": 427,
+        "winter_minus5_km": 248,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 271
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 388,
+          "consumption_kWh_100km": 16,
+          "temperature_C": 11,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental VC7",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BMW iX1 xDrive30 » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 271,
+          "consumption_kWh_100km": 22.9,
+          "temperature_C": 10,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental VC7",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BMW iX1 xDrive30 » (hiver, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 130,
       "chargingDC_10_80_min": 29,
       "chargingDC_kWh_30min": 40,
@@ -459,13 +543,41 @@
       "wltp_km": 439,
       "wltp_consumption_kWh_100km": 16.9,
       "realRange": {
-        "mixed_km": 325,
-        "highway_130_km": 230,
-        "urban_km": 400,
-        "winter_minus5_km": 260,
-        "confidence": "estimated"
+        "mixed_km": 330,
+        "highway_130_km": 244,
+        "urban_km": 427,
+        "winter_minus5_km": 248,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 271
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 388,
+          "consumption_kWh_100km": 16,
+          "temperature_C": 11,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental VC7",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BMW iX1 xDrive30 » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 271,
+          "consumption_kWh_100km": 22.9,
+          "temperature_C": 10,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental VC7",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BMW iX1 xDrive30 » (hiver, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 130,
       "chargingDC_10_80_min": 29,
       "chargingDC_kWh_30min": 40,
@@ -540,7 +652,8 @@
   "sources": [
     "constructeur",
     "automobile-propre",
-    "evkx"
+    "evkx",
+    "nyland"
   ],
   "imageCredit": "Constructeur"
 }

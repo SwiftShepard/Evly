@@ -24,11 +24,12 @@
   "wltp_max_km": 573,
   "wltp_min_km": 425,
   "realRange": {
-    "mixed_km": 430,
-    "highway_130_km": 310,
-    "urban_km": 520,
-    "winter_minus5_km": 335,
-    "confidence": "estimated"
+    "mixed_km": 277,
+    "highway_130_km": 233,
+    "urban_km": 325,
+    "winter_minus5_km": 208,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 259
   },
   "consumption_mixed_kWh_per_100km": 18,
   "consumption_highway_kWh_per_100km": 24,
@@ -75,7 +76,34 @@
       "power": 9
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 295,
+      "consumption_kWh_100km": 26.2,
+      "temperature_C": -5,
+      "wheelSize_inches": 19,
+      "tyreModel": "Continental VC7",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Volvo XC40 82 kWh AWD » (hiver, route humide)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 259,
+      "consumption_kWh_100km": 29.9,
+      "temperature_C": -7,
+      "wheelSize_inches": 19,
+      "tyreModel": "Continental VC7",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Volvo XC40 82 kWh AWD » (hiver, route humide)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4440,
   "width_mm": 1873,
@@ -187,13 +215,41 @@
       "wltp_km": 425,
       "wltp_consumption_kWh_100km": 21.8,
       "realRange": {
-        "mixed_km": 335,
-        "highway_130_km": 245,
-        "urban_km": 410,
-        "winter_minus5_km": 270,
-        "confidence": "estimated"
+        "mixed_km": 277,
+        "highway_130_km": 233,
+        "urban_km": 325,
+        "winter_minus5_km": 208,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 259
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 295,
+          "consumption_kWh_100km": 26.2,
+          "temperature_C": -5,
+          "wheelSize_inches": 19,
+          "tyreModel": "Continental VC7",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Volvo XC40 82 kWh AWD » (hiver, route humide)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 259,
+          "consumption_kWh_100km": 29.9,
+          "temperature_C": -7,
+          "wheelSize_inches": 19,
+          "tyreModel": "Continental VC7",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Volvo XC40 82 kWh AWD » (hiver, route humide)."
+        }
+      ],
       "chargingDC_peak_kW": 200,
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 55,
@@ -319,7 +375,8 @@
   },
   "lastUpdated": "2026-05-19",
   "sources": [
-    "la-chaine-ev"
+    "la-chaine-ev",
+    "nyland"
   ],
   "imageCredit": "Constructeur"
 }

@@ -24,12 +24,12 @@
   "wltp_max_km": 805,
   "wltp_min_km": 805,
   "realRange": {
-    "mixed_km": 615,
-    "highway_130_km": 435,
-    "urban_km": 755,
-    "winter_minus5_km": 475,
-    "confidence": "estimated",
-    "highway_120_km": 442
+    "mixed_km": 618,
+    "highway_130_km": 460,
+    "urban_km": 796,
+    "winter_minus5_km": 464,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 511
   },
   "consumption_mixed_kWh_per_100km": 17.6,
   "consumption_highway_kWh_per_100km": 25,
@@ -96,7 +96,34 @@
       "power": 5
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 724,
+      "consumption_kWh_100km": 15,
+      "temperature_C": 17,
+      "wheelSize_inches": 21,
+      "tyreModel": "Goodyear Eagle F1",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « BMW iX3 50 xDrive » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 511,
+      "consumption_kWh_100km": 21.3,
+      "temperature_C": 17,
+      "wheelSize_inches": 21,
+      "tyreModel": "Goodyear Eagle F1",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « BMW iX3 50 xDrive » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 535,
@@ -145,13 +172,41 @@
       "wltp_km": 805,
       "wltp_consumption_kWh_100km": 14.1,
       "realRange": {
-        "mixed_km": 615,
-        "highway_130_km": 435,
-        "urban_km": 755,
-        "winter_minus5_km": 475,
-        "confidence": "estimated"
+        "mixed_km": 618,
+        "highway_130_km": 460,
+        "urban_km": 796,
+        "winter_minus5_km": 464,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 511
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 724,
+          "consumption_kWh_100km": 15,
+          "temperature_C": 17,
+          "wheelSize_inches": 21,
+          "tyreModel": "Goodyear Eagle F1",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BMW iX3 50 xDrive » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 511,
+          "consumption_kWh_100km": 21.3,
+          "temperature_C": 17,
+          "wheelSize_inches": 21,
+          "tyreModel": "Goodyear Eagle F1",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BMW iX3 50 xDrive » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 400,
       "chargingDC_10_80_min": 21,
       "chargingDC_kWh_30min": 85,

@@ -1,0 +1,327 @@
+{
+  "slug": "audi-a2-e-tron",
+  "brand": "Audi",
+  "model": "A2 e-tron",
+  "variant": "Compacte électrique",
+  "bodyType": "Berline compacte",
+  "segment": "C",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Ingolstadt",
+  "releaseYear": 2026,
+  "marketAvailability": "Commandes ouvertes, livraisons dès décembre 2026",
+  "power_kW": 140,
+  "power_hp": 190,
+  "torque_Nm": 350,
+  "drivetrain": "RWD",
+  "motors": 1,
+  "acceleration_0_100_s": 7.9,
+  "topSpeed_kmh": 160,
+  "usableCapacity_kWh": 58,
+  "grossCapacity_kWh": 61,
+  "chemistry": "LFP",
+  "architecture_V": 400,
+  "mass_kg": 1915,
+  "wltp_max_km": 646,
+  "wltp_min_km": 423,
+  "realRange": {
+    "mixed_km": 415,
+    "highway_130_km": 290,
+    "urban_km": 500,
+    "winter_minus5_km": 330,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 12.8,
+  "consumption_highway_kWh_per_100km": 19.8,
+  "consumption_winter_kWh_per_100km": 17.5,
+  "dragCoefficient_Cx": 0.24,
+  "chargingDC": {
+    "peakPower_kW": 105,
+    "time_10_80_min": 26,
+    "kWh_added_30min": 42,
+    "confidence": "manufacturer"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 6.25
+  },
+  "plugAndCharge": true,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    { "soc": 0, "power": 75 },
+    { "soc": 10, "power": 105 },
+    { "soc": 50, "power": 85 },
+    { "soc": 80, "power": 45 },
+    { "soc": 100, "power": 10 }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4324,
+  "width_mm": 1789,
+  "height_mm": 1583,
+  "wheelbase_mm": 2770,
+  "trunkCapacity_L": 396,
+  "trunkCapacityFolded_L": 1336,
+  "frunkCapacity_L": 13,
+  "trims": [
+    {
+      "name": "e-tron 170 ch",
+      "price_EUR": 38600,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "Combiné numérique 11,9\" et écran central 12,8\"",
+        "Climatisation automatique bizone",
+        "Caméra de recul et radars de stationnement",
+        "Projecteurs LED"
+      ]
+    },
+    {
+      "name": "e-tron 190 ch",
+      "price_EUR": 42900,
+      "batteryUsed": "61 kWh",
+      "equipmentHighlights": [
+        "Batterie LFP 61 kWh, 12,8 kWh/100 km WLTP",
+        "Jusqu'à 501 km WLTP",
+        "Double recharge smartphone sans fil"
+      ]
+    },
+    {
+      "name": "e-tron 231 ch",
+      "price_EUR": 46900,
+      "batteryUsed": "84 kWh",
+      "equipmentHighlights": [
+        "Batterie NMC 84 kWh, jusqu'à 646 km WLTP",
+        "Recharge rapide jusqu'à 183 kW",
+        "Éligible au coup de pouce CEE (prix < 47 000 €)"
+      ]
+    },
+    {
+      "name": "e-tron 326 ch",
+      "price_EUR": 52000,
+      "batteryUsed": "84 kWh",
+      "equipmentHighlights": [
+        "240 kW et 545 Nm, 0 à 100 km/h en 5,7 s",
+        "Vitesse maximale 200 km/h",
+        "Recharge rapide jusqu'à 183 kW"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE",
+      "amount_EUR": 6500,
+      "conditions": "Coup de pouce CEE 2026 sous conditions de ressources, pour les versions sous 47 000 € et sous réserve de la publication de l'éco-score ADEME du modèle."
+    }
+  ],
+  "configurations": [
+    {
+      "id": "audi-a2-e-tron-125-52",
+      "label": "A2 e-tron 170 ch · 52 kWh",
+      "battery": "standard",
+      "trim": "e-tron 170 ch",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "power_kW": 125,
+      "power_hp": 170,
+      "torque_Nm": 350,
+      "acceleration_0_100_s": 8.8,
+      "topSpeed_kmh": 160,
+      "usableCapacity_kWh": 50,
+      "price_EUR": 38600,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 423,
+      "wltp_consumption_kWh_100km": 13.7,
+      "realRange": {
+        "mixed_km": 350,
+        "highway_130_km": 245,
+        "urban_km": 425,
+        "winter_minus5_km": 280,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 24,
+      "chargingDC_kWh_30min": 36,
+      "chargingCurve": [
+        { "soc": 0, "power": 70 },
+        { "soc": 10, "power": 100 },
+        { "soc": 50, "power": 80 },
+        { "soc": 80, "power": 40 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "upcoming",
+      "notes": "Taille de jantes de série non communiquée à ce jour."
+    },
+    {
+      "id": "audi-a2-e-tron-140-61",
+      "label": "A2 e-tron 190 ch · 61 kWh",
+      "battery": "standard",
+      "trim": "e-tron 190 ch",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "power_kW": 140,
+      "power_hp": 190,
+      "torque_Nm": 350,
+      "acceleration_0_100_s": 7.9,
+      "topSpeed_kmh": 160,
+      "usableCapacity_kWh": 58,
+      "price_EUR": 42900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 501,
+      "wltp_consumption_kWh_100km": 12.8,
+      "realRange": {
+        "mixed_km": 415,
+        "highway_130_km": 290,
+        "urban_km": 500,
+        "winter_minus5_km": 330,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 105,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 42,
+      "chargingCurve": [
+        { "soc": 0, "power": 75 },
+        { "soc": 10, "power": 105 },
+        { "soc": 50, "power": 85 },
+        { "soc": 80, "power": 45 },
+        { "soc": 100, "power": 10 }
+      ],
+      "availability": "upcoming",
+      "notes": "Taille de jantes de série non communiquée à ce jour."
+    },
+    {
+      "id": "audi-a2-e-tron-170-84",
+      "label": "A2 e-tron 231 ch · 84 kWh",
+      "battery": "long-range",
+      "trim": "e-tron 231 ch",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "power_kW": 170,
+      "power_hp": 231,
+      "torque_Nm": 350,
+      "acceleration_0_100_s": 7.0,
+      "topSpeed_kmh": 160,
+      "usableCapacity_kWh": 79,
+      "price_EUR": 46900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 646,
+      "wltp_consumption_kWh_100km": 13.9,
+      "realRange": {
+        "mixed_km": 535,
+        "highway_130_km": 375,
+        "urban_km": 645,
+        "winter_minus5_km": 425,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 183,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 57,
+      "chargingCurve": [
+        { "soc": 0, "power": 120 },
+        { "soc": 10, "power": 183 },
+        { "soc": 50, "power": 140 },
+        { "soc": 80, "power": 70 },
+        { "soc": 100, "power": 12 }
+      ],
+      "availability": "upcoming",
+      "notes": "Taille de jantes de série non communiquée à ce jour."
+    },
+    {
+      "id": "audi-a2-e-tron-240-84",
+      "label": "A2 e-tron 326 ch · 84 kWh",
+      "battery": "long-range",
+      "trim": "e-tron 326 ch",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "power_kW": 240,
+      "power_hp": 326,
+      "torque_Nm": 545,
+      "acceleration_0_100_s": 5.7,
+      "topSpeed_kmh": 200,
+      "usableCapacity_kWh": 79,
+      "price_EUR": 52000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 630,
+      "wltp_consumption_kWh_100km": 14.2,
+      "realRange": {
+        "mixed_km": 520,
+        "highway_130_km": 365,
+        "urban_km": 630,
+        "winter_minus5_km": 415,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 183,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 57,
+      "chargingCurve": [
+        { "soc": 0, "power": 120 },
+        { "soc": 10, "power": 183 },
+        { "soc": 50, "power": 140 },
+        { "soc": 80, "power": 70 },
+        { "soc": 100, "power": 12 }
+      ],
+      "availability": "upcoming",
+      "notes": "Jantes 19 pouces avec le pack S line, à confirmer sur cette version."
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 2,
+    "vehicle_km": 100000,
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "technologie",
+      "label": "Combiné numérique 11,9\" et écran central tactile 12,8\""
+    },
+    {
+      "category": "confort",
+      "label": "Climatisation bizone et double recharge smartphone sans fil"
+    },
+    {
+      "category": "securite",
+      "label": "Caméra de recul, radars de stationnement et maintien de voie"
+    },
+    {
+      "category": "design",
+      "label": "Silhouette très aérodynamique (Cx 0,24) et projecteurs LED"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Efficience de premier plan : Cx de 0,24 et 12,8 kWh/100 km annoncés en 61 kWh",
+      "Jusqu'à 646 km WLTP avec la batterie 84 kWh, rare dans ce gabarit",
+      "Coffre de 396 L, plus un petit coffre avant, pour 4,32 m de long"
+    ],
+    "weaknesses": [
+      "Pompe à chaleur en option, alors qu'elle pèse lourd sur l'autonomie hivernale",
+      "Recharge rapide plafonnée à 100-105 kW sur les batteries LFP",
+      "Version 326 ch au-delà du plafond de 47 000 € du coup de pouce CEE"
+    ],
+    "idealUserProfile": "Conducteurs qui veulent une compacte premium sobre, capable de longs trajets en version 84 kWh sans passer à un SUV.",
+    "notIdealFor": "Budgets serrés et familles nombreuses : l'habitabilité reste celle d'une compacte et les versions LFP rechargent moins vite."
+  },
+  "lastUpdated": "2026-09-27",
+  "sources": [
+    "automobile-propre",
+    "largus"
+  ],
+  "imageCredit": "Audi"
+}

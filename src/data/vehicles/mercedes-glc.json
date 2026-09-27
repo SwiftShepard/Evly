@@ -24,11 +24,12 @@
   "wltp_max_km": 610,
   "wltp_min_km": 510,
   "realRange": {
-    "mixed_km": 470,
-    "highway_130_km": 330,
-    "urban_km": 560,
-    "winter_minus5_km": 375,
-    "confidence": "estimated"
+    "mixed_km": 563,
+    "highway_130_km": 428,
+    "urban_km": 716,
+    "winter_minus5_km": 422,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 475
   },
   "consumption_mixed_kWh_per_100km": 18,
   "consumption_highway_kWh_per_100km": 25,
@@ -124,13 +125,41 @@
       "wltp_km": 610,
       "wltp_consumption_kWh_100km": 15.2,
       "realRange": {
-        "mixed_km": 470,
-        "highway_130_km": 330,
-        "urban_km": 560,
-        "winter_minus5_km": 375,
-        "confidence": "estimated"
+        "mixed_km": 563,
+        "highway_130_km": 428,
+        "urban_km": 716,
+        "winter_minus5_km": 422,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 475
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 651,
+          "consumption_kWh_100km": 14.6,
+          "temperature_C": 17,
+          "wheelSize_inches": 20,
+          "tyreModel": "Nexen Nfera Sport",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes GLC 400 » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 475,
+          "consumption_kWh_100km": 20,
+          "temperature_C": 17,
+          "wheelSize_inches": 20,
+          "tyreModel": "Nexen Nfera Sport",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes GLC 400 » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 250,
       "chargingDC_10_80_min": 22,
       "chargingDC_kWh_30min": 68,
@@ -177,13 +206,41 @@
       "wltp_km": 560,
       "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
-        "mixed_km": 440,
-        "highway_130_km": 310,
-        "urban_km": 520,
-        "winter_minus5_km": 350,
-        "confidence": "estimated"
+        "mixed_km": 563,
+        "highway_130_km": 428,
+        "urban_km": 716,
+        "winter_minus5_km": 422,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 475
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 651,
+          "consumption_kWh_100km": 14.6,
+          "temperature_C": 17,
+          "wheelSize_inches": 20,
+          "tyreModel": "Nexen Nfera Sport",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes GLC 400 » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 475,
+          "consumption_kWh_100km": 20,
+          "temperature_C": 17,
+          "wheelSize_inches": 20,
+          "tyreModel": "Nexen Nfera Sport",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes GLC 400 » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 250,
       "chargingDC_10_80_min": 22,
       "chargingDC_kWh_30min": 68,
@@ -255,7 +312,36 @@
     "notIdealFor": "Acheteurs prioritaires sur les petits budgets ou cherchant un véhicule ultra-compact."
   },
   "sources": [
-    "constructeur"
+    "constructeur",
+    "nyland"
   ],
-  "imageCredit": "Constructeur"
+  "imageCredit": "Constructeur",
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 651,
+      "consumption_kWh_100km": 14.6,
+      "temperature_C": 17,
+      "wheelSize_inches": 20,
+      "tyreModel": "Nexen Nfera Sport",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Mercedes GLC 400 » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 475,
+      "consumption_kWh_100km": 20,
+      "temperature_C": 17,
+      "wheelSize_inches": 20,
+      "tyreModel": "Nexen Nfera Sport",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Mercedes GLC 400 » (été, route sèche)."
+    }
+  ]
 }

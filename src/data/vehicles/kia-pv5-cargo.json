@@ -28,8 +28,7 @@
     "highway_130_km": 220,
     "urban_km": 390,
     "winter_minus5_km": 250,
-    "confidence": "estimated",
-    "highway_120_km": 379
+    "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 15,
   "consumption_highway_kWh_per_100km": 21,

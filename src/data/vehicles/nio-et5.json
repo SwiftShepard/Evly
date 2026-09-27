@@ -24,12 +24,12 @@
   "wltp_max_km": 500,
   "wltp_min_km": 410,
   "realRange": {
-    "mixed_km": 370,
-    "highway_130_km": 270,
-    "urban_km": 460,
-    "winter_minus5_km": 295,
-    "confidence": "estimated",
-    "highway_120_km": 479
+    "mixed_km": 420,
+    "highway_130_km": 325,
+    "urban_km": 527,
+    "winter_minus5_km": 315,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 361
   },
   "consumption_mixed_kWh_per_100km": 19,
   "consumption_highway_kWh_per_100km": 26,
@@ -96,7 +96,34 @@
       "power": 6
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 479,
+      "consumption_kWh_100km": 17.9,
+      "temperature_C": 12,
+      "wheelSize_inches": 19,
+      "tyreModel": "Nokian R5 EV",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Nio ET5 100 kWh » (hiver, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 361,
+      "consumption_kWh_100km": 23.8,
+      "temperature_C": 13,
+      "wheelSize_inches": 19,
+      "tyreModel": "Nokian R5 EV",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Nio ET5 100 kWh » (hiver, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 520,
@@ -208,13 +235,41 @@
       "wltp_km": 500,
       "wltp_consumption_kWh_100km": 19.6,
       "realRange": {
-        "mixed_km": 370,
-        "highway_130_km": 270,
-        "urban_km": 460,
-        "winter_minus5_km": 295,
-        "confidence": "estimated"
+        "mixed_km": 420,
+        "highway_130_km": 325,
+        "urban_km": 527,
+        "winter_minus5_km": 315,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 361
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 479,
+          "consumption_kWh_100km": 17.9,
+          "temperature_C": 12,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Nio ET5 100 kWh » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 361,
+          "consumption_kWh_100km": 23.8,
+          "temperature_C": 13,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Nio ET5 100 kWh » (hiver, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 140,
       "chargingDC_10_80_min": 35,
       "chargingDC_kWh_30min": 55,

@@ -24,11 +24,12 @@
   "wltp_max_km": 631,
   "wltp_min_km": 560,
   "realRange": {
-    "mixed_km": 470,
-    "highway_130_km": 340,
-    "urban_km": 570,
-    "winter_minus5_km": 360,
-    "confidence": "estimated"
+    "mixed_km": 492,
+    "highway_130_km": 368,
+    "urban_km": 631,
+    "winter_minus5_km": 369,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 409
   },
   "consumption_mixed_kWh_per_100km": 22.5,
   "consumption_highway_kWh_per_100km": 29,
@@ -75,7 +76,34 @@
       "power": 12
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 574,
+      "consumption_kWh_100km": 18.3,
+      "temperature_C": 19,
+      "wheelSize_inches": 21,
+      "tyreModel": "Michelin Pilot Sport EV",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Polestar 3 LR DM » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 409,
+      "consumption_kWh_100km": 25.7,
+      "temperature_C": 19,
+      "wheelSize_inches": 21,
+      "tyreModel": "Michelin Pilot Sport EV",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Polestar 3 LR DM » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4900,
   "width_mm": 1968,
@@ -124,13 +152,41 @@
       "wltp_km": 631,
       "wltp_consumption_kWh_100km": 20.1,
       "realRange": {
-        "mixed_km": 470,
-        "highway_130_km": 340,
-        "urban_km": 570,
-        "winter_minus5_km": 360,
-        "confidence": "estimated"
+        "mixed_km": 492,
+        "highway_130_km": 368,
+        "urban_km": 631,
+        "winter_minus5_km": 369,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 409
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 574,
+          "consumption_kWh_100km": 18.3,
+          "temperature_C": 19,
+          "wheelSize_inches": 21,
+          "tyreModel": "Michelin Pilot Sport EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Polestar 3 LR DM » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 409,
+          "consumption_kWh_100km": 25.7,
+          "temperature_C": 19,
+          "wheelSize_inches": 21,
+          "tyreModel": "Michelin Pilot Sport EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Polestar 3 LR DM » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 250,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 70,
@@ -177,13 +233,41 @@
       "wltp_km": 560,
       "wltp_consumption_kWh_100km": 22,
       "realRange": {
-        "mixed_km": 420,
-        "highway_130_km": 310,
-        "urban_km": 520,
-        "winter_minus5_km": 330,
-        "confidence": "estimated"
+        "mixed_km": 449,
+        "highway_130_km": 342,
+        "urban_km": 569,
+        "winter_minus5_km": 337,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 380
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 517,
+          "consumption_kWh_100km": 20.3,
+          "temperature_C": 21,
+          "wheelSize_inches": 22,
+          "tyreModel": "Pirelli P Zero",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Polestar 3 LR Performance » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 380,
+          "consumption_kWh_100km": 27.6,
+          "temperature_C": 21,
+          "wheelSize_inches": 22,
+          "tyreModel": "Pirelli P Zero",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Polestar 3 LR Performance » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 250,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 70,
@@ -256,7 +340,8 @@
   },
   "lastUpdated": "2026-05-18",
   "sources": [
-    "la-chaine-ev"
+    "la-chaine-ev",
+    "nyland"
   ],
   "imageCredit": "Constructeur"
 }

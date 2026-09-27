@@ -24,12 +24,12 @@
   "wltp_max_km": 320,
   "wltp_min_km": 320,
   "realRange": {
-    "mixed_km": 240,
-    "highway_130_km": 240,
-    "urban_km": 295,
-    "winter_minus5_km": 185,
-    "confidence": "estimated",
-    "highway_120_km": 249
+    "mixed_km": 210,
+    "highway_130_km": 153,
+    "urban_km": 274,
+    "winter_minus5_km": 158,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 170
   },
   "consumption_mixed_kWh_per_100km": 14.5,
   "consumption_highway_kWh_per_100km": 19.5,
@@ -76,7 +76,34 @@
       "power": 5
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 249,
+      "consumption_kWh_100km": 14.6,
+      "temperature_C": 21,
+      "wheelSize_inches": 17,
+      "tyreModel": "Continental EC6",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Fiat 500e » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 170,
+      "consumption_kWh_100km": 21.3,
+      "temperature_C": 17,
+      "wheelSize_inches": 17,
+      "tyreModel": "Continental EC6",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Fiat 500e » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 3632,
   "width_mm": 1683,
@@ -143,13 +170,41 @@
       "wltp_km": 320,
       "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
-        "mixed_km": 240,
-        "highway_130_km": 150,
-        "urban_km": 295,
-        "winter_minus5_km": 185,
-        "confidence": "estimated"
+        "mixed_km": 210,
+        "highway_130_km": 153,
+        "urban_km": 274,
+        "winter_minus5_km": 158,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 170
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 249,
+          "consumption_kWh_100km": 14.6,
+          "temperature_C": 21,
+          "wheelSize_inches": 17,
+          "tyreModel": "Continental EC6",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Fiat 500e » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 170,
+          "consumption_kWh_100km": 21.3,
+          "temperature_C": 17,
+          "wheelSize_inches": 17,
+          "tyreModel": "Continental EC6",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Fiat 500e » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 85,
       "chargingDC_10_80_min": 35,
       "chargingDC_kWh_30min": 50,
@@ -196,13 +251,41 @@
       "wltp_km": 320,
       "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
-        "mixed_km": 240,
-        "highway_130_km": 150,
-        "urban_km": 295,
-        "winter_minus5_km": 185,
-        "confidence": "estimated"
+        "mixed_km": 210,
+        "highway_130_km": 153,
+        "urban_km": 274,
+        "winter_minus5_km": 158,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 170
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 249,
+          "consumption_kWh_100km": 14.6,
+          "temperature_C": 21,
+          "wheelSize_inches": 17,
+          "tyreModel": "Continental EC6",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Fiat 500e » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 170,
+          "consumption_kWh_100km": 21.3,
+          "temperature_C": 17,
+          "wheelSize_inches": 17,
+          "tyreModel": "Continental EC6",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Fiat 500e » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 85,
       "chargingDC_10_80_min": 35,
       "chargingDC_kWh_30min": 50,
@@ -249,13 +332,41 @@
       "wltp_km": 320,
       "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
-        "mixed_km": 240,
-        "highway_130_km": 150,
-        "urban_km": 295,
-        "winter_minus5_km": 185,
-        "confidence": "estimated"
+        "mixed_km": 210,
+        "highway_130_km": 153,
+        "urban_km": 274,
+        "winter_minus5_km": 158,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 170
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 249,
+          "consumption_kWh_100km": 14.6,
+          "temperature_C": 21,
+          "wheelSize_inches": 17,
+          "tyreModel": "Continental EC6",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Fiat 500e » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 170,
+          "consumption_kWh_100km": 21.3,
+          "temperature_C": 17,
+          "wheelSize_inches": 17,
+          "tyreModel": "Continental EC6",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Fiat 500e » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 85,
       "chargingDC_10_80_min": 35,
       "chargingDC_kWh_30min": 50,

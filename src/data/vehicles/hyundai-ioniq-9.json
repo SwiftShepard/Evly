@@ -24,12 +24,12 @@
   "wltp_max_km": 620,
   "wltp_min_km": 550,
   "realRange": {
-    "mixed_km": 480,
-    "highway_130_km": 230,
-    "highway_120_km": 501,
-    "urban_km": 570,
-    "winter_minus5_km": 380,
-    "confidence": "bjorn_nyland"
+    "mixed_km": 433,
+    "highway_130_km": 329,
+    "urban_km": 551,
+    "winter_minus5_km": 325,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 365
   },
   "consumption_mixed_kWh_per_100km": 15,
   "consumption_highway_kWh_per_100km": 21,
@@ -96,7 +96,34 @@
       "power": 4
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 501,
+      "consumption_kWh_100km": 21.2,
+      "temperature_C": 8,
+      "wheelSize_inches": 21,
+      "tyreModel": "Continental Premium Contact C",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Hyundai Ioniq 9 LR AWD » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 365,
+      "consumption_kWh_100km": 29.1,
+      "temperature_C": 8,
+      "wheelSize_inches": 21,
+      "tyreModel": "Continental Premium Contact C",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Hyundai Ioniq 9 LR AWD » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 595,
@@ -164,10 +191,9 @@
       "realRange": {
         "mixed_km": 480,
         "highway_130_km": 335,
-        "highway_120_km": 365,
         "urban_km": 570,
         "winter_minus5_km": 380,
-        "confidence": "bjorn_nyland"
+        "confidence": "estimated"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 350,
@@ -212,13 +238,41 @@
       "wltp_km": 580,
       "wltp_consumption_kWh_100km": 19,
       "realRange": {
-        "mixed_km": 450,
-        "highway_130_km": 315,
-        "urban_km": 540,
-        "winter_minus5_km": 360,
-        "confidence": "estimated"
+        "mixed_km": 433,
+        "highway_130_km": 329,
+        "urban_km": 551,
+        "winter_minus5_km": 325,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 365
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 501,
+          "consumption_kWh_100km": 21.2,
+          "temperature_C": 8,
+          "wheelSize_inches": 21,
+          "tyreModel": "Continental Premium Contact C",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Hyundai Ioniq 9 LR AWD » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 365,
+          "consumption_kWh_100km": 29.1,
+          "temperature_C": 8,
+          "wheelSize_inches": 21,
+          "tyreModel": "Continental Premium Contact C",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Hyundai Ioniq 9 LR AWD » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 350,
       "chargingDC_10_80_min": 24,
       "chargingDC_kWh_30min": 85,
@@ -261,13 +315,41 @@
       "wltp_km": 550,
       "wltp_consumption_kWh_100km": 20.1,
       "realRange": {
-        "mixed_km": 420,
-        "highway_130_km": 290,
-        "urban_km": 510,
-        "winter_minus5_km": 330,
-        "confidence": "estimated"
+        "mixed_km": 433,
+        "highway_130_km": 329,
+        "urban_km": 551,
+        "winter_minus5_km": 325,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 365
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 501,
+          "consumption_kWh_100km": 21.2,
+          "temperature_C": 8,
+          "wheelSize_inches": 21,
+          "tyreModel": "Continental Premium Contact C",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Hyundai Ioniq 9 LR AWD » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 365,
+          "consumption_kWh_100km": 29.1,
+          "temperature_C": 8,
+          "wheelSize_inches": 21,
+          "tyreModel": "Continental Premium Contact C",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Hyundai Ioniq 9 LR AWD » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 350,
       "chargingDC_10_80_min": 24,
       "chargingDC_kWh_30min": 85,

@@ -24,12 +24,12 @@
   "wltp_max_km": 409,
   "wltp_min_km": 409,
   "realRange": {
-    "mixed_km": 315,
-    "highway_130_km": 200,
-    "urban_km": 380,
-    "winter_minus5_km": 245,
-    "confidence": "estimated",
-    "highway_120_km": 347
+    "mixed_km": 291,
+    "highway_130_km": 211,
+    "urban_km": 382,
+    "winter_minus5_km": 218,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 234
   },
   "consumption_mixed_kWh_per_100km": 14.6,
   "consumption_highway_kWh_per_100km": 19.6,
@@ -76,7 +76,34 @@
       "power": 6
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 347,
+      "consumption_kWh_100km": 14.7,
+      "temperature_C": 15,
+      "wheelSize_inches": 18,
+      "tyreModel": "Goodyear Efficientgrip Performance 2",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Fiat 600e » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 234,
+      "consumption_kWh_100km": 21.8,
+      "temperature_C": 14,
+      "wheelSize_inches": 18,
+      "tyreModel": "Goodyear Efficientgrip Performance 2",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Fiat 600e » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4171,
   "width_mm": 1781,
@@ -134,13 +161,41 @@
       "wltp_km": 409,
       "wltp_consumption_kWh_100km": 14.6,
       "realRange": {
-        "mixed_km": 315,
-        "highway_130_km": 200,
-        "urban_km": 380,
-        "winter_minus5_km": 245,
-        "confidence": "estimated"
+        "mixed_km": 291,
+        "highway_130_km": 211,
+        "urban_km": 382,
+        "winter_minus5_km": 218,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 234
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 347,
+          "consumption_kWh_100km": 14.7,
+          "temperature_C": 15,
+          "wheelSize_inches": 18,
+          "tyreModel": "Goodyear Efficientgrip Performance 2",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Fiat 600e » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 234,
+          "consumption_kWh_100km": 21.8,
+          "temperature_C": 14,
+          "wheelSize_inches": 18,
+          "tyreModel": "Goodyear Efficientgrip Performance 2",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Fiat 600e » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 27,
       "chargingDC_kWh_30min": 50,
@@ -187,13 +242,41 @@
       "wltp_km": 409,
       "wltp_consumption_kWh_100km": 14.6,
       "realRange": {
-        "mixed_km": 315,
-        "highway_130_km": 200,
-        "urban_km": 380,
-        "winter_minus5_km": 245,
-        "confidence": "estimated"
+        "mixed_km": 291,
+        "highway_130_km": 211,
+        "urban_km": 382,
+        "winter_minus5_km": 218,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 234
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 347,
+          "consumption_kWh_100km": 14.7,
+          "temperature_C": 15,
+          "wheelSize_inches": 18,
+          "tyreModel": "Goodyear Efficientgrip Performance 2",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Fiat 600e » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 234,
+          "consumption_kWh_100km": 21.8,
+          "temperature_C": 14,
+          "wheelSize_inches": 18,
+          "tyreModel": "Goodyear Efficientgrip Performance 2",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Fiat 600e » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 27,
       "chargingDC_kWh_30min": 50,

@@ -26,7 +26,6 @@
   "realRange": {
     "mixed_km": 400,
     "highway_130_km": 275,
-    "highway_120_km": 300,
     "urban_km": 480,
     "winter_minus5_km": 290,
     "confidence": "estimated"
@@ -44,7 +43,7 @@
   "chargingAC": {
     "onboardCharger_kW": 11,
     "phases": 3,
-    "time_0_100_h": 8.0
+    "time_0_100_h": 8
   },
   "plugAndCharge": true,
   "v2l": true,
@@ -122,7 +121,6 @@
       "realRange": {
         "mixed_km": 400,
         "highway_130_km": 275,
-        "highway_120_km": 300,
         "urban_km": 480,
         "winter_minus5_km": 290,
         "confidence": "estimated"

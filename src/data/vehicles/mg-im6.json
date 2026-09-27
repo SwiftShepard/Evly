@@ -16,19 +16,20 @@
   "motors": 1,
   "acceleration_0_100_s": 5.9,
   "topSpeed_kmh": 200,
-  "usableCapacity_kWh": 71.0,
-  "grossCapacity_kWh": 76.0,
+  "usableCapacity_kWh": 71,
+  "grossCapacity_kWh": 76,
   "chemistry": "LFP",
   "architecture_V": 800,
   "mass_kg": 2140,
   "wltp_max_km": 590,
   "wltp_min_km": 450,
   "realRange": {
-    "mixed_km": 400,
-    "highway_130_km": 290,
-    "urban_km": 480,
-    "winter_minus5_km": 310,
-    "confidence": "estimated"
+    "mixed_km": 366,
+    "highway_130_km": 273,
+    "urban_km": 471,
+    "winter_minus5_km": 275,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 303
   },
   "consumption_mixed_kWh_per_100km": 17.8,
   "consumption_highway_kWh_per_100km": 24.5,
@@ -75,7 +76,34 @@
       "power": 10
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 428,
+      "consumption_kWh_100km": 16.9,
+      "temperature_C": 20,
+      "wheelSize_inches": 20,
+      "tyreModel": "Pirelli Scorpion",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « MG IM6 75 kWh RWD » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 303,
+      "consumption_kWh_100km": 23.9,
+      "temperature_C": 20,
+      "wheelSize_inches": 20,
+      "tyreModel": "Pirelli Scorpion",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « MG IM6 75 kWh RWD » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4904,
   "width_mm": 1988,
@@ -124,13 +152,41 @@
       "wltp_km": 450,
       "wltp_consumption_kWh_100km": 15.8,
       "realRange": {
-        "mixed_km": 370,
-        "highway_130_km": 270,
-        "urban_km": 440,
-        "winter_minus5_km": 290,
-        "confidence": "estimated"
+        "mixed_km": 366,
+        "highway_130_km": 273,
+        "urban_km": 471,
+        "winter_minus5_km": 275,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 303
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 428,
+          "consumption_kWh_100km": 16.9,
+          "temperature_C": 20,
+          "wheelSize_inches": 20,
+          "tyreModel": "Pirelli Scorpion",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « MG IM6 75 kWh RWD » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 303,
+          "consumption_kWh_100km": 23.9,
+          "temperature_C": 20,
+          "wheelSize_inches": 20,
+          "tyreModel": "Pirelli Scorpion",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « MG IM6 75 kWh RWD » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 250,
       "chargingDC_10_80_min": 17,
       "chargingDC_kWh_30min": 54,
@@ -173,13 +229,41 @@
       "wltp_km": 590,
       "wltp_consumption_kWh_100km": 16.1,
       "realRange": {
-        "mixed_km": 470,
-        "highway_130_km": 340,
-        "urban_km": 560,
-        "winter_minus5_km": 360,
-        "confidence": "estimated"
+        "mixed_km": 362,
+        "highway_130_km": 281,
+        "urban_km": 452,
+        "winter_minus5_km": 272,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 312
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 411,
+          "consumption_kWh_100km": 23.5,
+          "temperature_C": 7,
+          "wheelSize_inches": 20,
+          "tyreModel": "Pirelli Scorpion",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « MG IM6 100 kWh AWD » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 312,
+          "consumption_kWh_100km": 30.9,
+          "temperature_C": 7,
+          "wheelSize_inches": 20,
+          "tyreModel": "Pirelli Scorpion",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « MG IM6 100 kWh AWD » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 300,
       "chargingDC_10_80_min": 15,
       "chargingDC_kWh_30min": 78,
@@ -250,7 +334,8 @@
   "lastUpdated": "2026-07-07",
   "sources": [
     "constructeur",
-    "automobile-propre"
+    "automobile-propre",
+    "nyland"
   ],
   "imageCredit": "Constructeur",
   "availability": "upcoming"

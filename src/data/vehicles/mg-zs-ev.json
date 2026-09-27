@@ -24,12 +24,12 @@
   "wltp_max_km": 440,
   "wltp_min_km": 320,
   "realRange": {
-    "mixed_km": 340,
-    "highway_130_km": 240,
-    "urban_km": 400,
-    "winter_minus5_km": 230,
-    "confidence": "tested",
-    "highway_120_km": 219
+    "mixed_km": 308,
+    "highway_130_km": 234,
+    "urban_km": 392,
+    "winter_minus5_km": 231,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 260
   },
   "consumption_mixed_kWh_per_100km": 15,
   "consumption_highway_kWh_per_100km": 21,
@@ -96,7 +96,34 @@
       "power": 1
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 356,
+      "consumption_kWh_100km": 19,
+      "temperature_C": 2,
+      "wheelSize_inches": 17,
+      "tyreModel": "Continental VC7",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « MG ZS EV 72 kWh » (hiver, route humide)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 260,
+      "consumption_kWh_100km": 26,
+      "temperature_C": 2,
+      "wheelSize_inches": 17,
+      "tyreModel": "Continental VC7",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « MG ZS EV 72 kWh » (hiver, route humide)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 680,
@@ -273,13 +300,41 @@
       "wltp_km": 440,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 340,
-        "highway_130_km": 240,
-        "urban_km": 400,
-        "winter_minus5_km": 230,
-        "confidence": "tested"
+        "mixed_km": 308,
+        "highway_130_km": 234,
+        "urban_km": 392,
+        "winter_minus5_km": 231,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 260
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 356,
+          "consumption_kWh_100km": 19,
+          "temperature_C": 2,
+          "wheelSize_inches": 17,
+          "tyreModel": "Continental VC7",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « MG ZS EV 72 kWh » (hiver, route humide)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 260,
+          "consumption_kWh_100km": 26,
+          "temperature_C": 2,
+          "wheelSize_inches": 17,
+          "tyreModel": "Continental VC7",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « MG ZS EV 72 kWh » (hiver, route humide)."
+        }
+      ],
       "chargingDC_peak_kW": 92,
       "chargingDC_10_80_min": 40,
       "chargingDC_kWh_30min": 35,
@@ -322,13 +377,41 @@
       "wltp_km": 440,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 340,
-        "highway_130_km": 240,
-        "urban_km": 400,
-        "winter_minus5_km": 230,
-        "confidence": "tested"
+        "mixed_km": 308,
+        "highway_130_km": 234,
+        "urban_km": 392,
+        "winter_minus5_km": 231,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 260
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 356,
+          "consumption_kWh_100km": 19,
+          "temperature_C": 2,
+          "wheelSize_inches": 17,
+          "tyreModel": "Continental VC7",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « MG ZS EV 72 kWh » (hiver, route humide)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 260,
+          "consumption_kWh_100km": 26,
+          "temperature_C": 2,
+          "wheelSize_inches": 17,
+          "tyreModel": "Continental VC7",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « MG ZS EV 72 kWh » (hiver, route humide)."
+        }
+      ],
       "chargingDC_peak_kW": 92,
       "chargingDC_10_80_min": 40,
       "chargingDC_kWh_30min": 35,

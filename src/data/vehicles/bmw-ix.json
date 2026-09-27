@@ -24,11 +24,12 @@
   "wltp_max_km": 630,
   "wltp_min_km": 419,
   "realRange": {
-    "mixed_km": 455,
-    "highway_130_km": 325,
-    "urban_km": 560,
-    "winter_minus5_km": 360,
-    "confidence": "estimated"
+    "mixed_km": 353,
+    "highway_130_km": 262,
+    "urban_km": 457,
+    "winter_minus5_km": 265,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 291
   },
   "consumption_mixed_kWh_per_100km": 21,
   "consumption_highway_kWh_per_100km": 27,
@@ -75,7 +76,34 @@
       "power": 10
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 415,
+      "consumption_kWh_100km": 17,
+      "temperature_C": 16,
+      "wheelSize_inches": 21,
+      "tyreModel": "Bridgestone Alenza",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « BMW iX xDrive40 » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 291,
+      "consumption_kWh_100km": 24.2,
+      "temperature_C": 11,
+      "wheelSize_inches": 21,
+      "tyreModel": "Bridgestone Alenza",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « BMW iX xDrive40 » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 610,
@@ -142,15 +170,43 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 419,
-      "wltp_consumption_kWh_100km": 20.0,
+      "wltp_consumption_kWh_100km": 20,
       "realRange": {
-        "mixed_km": 315,
-        "highway_130_km": 230,
-        "urban_km": 390,
-        "winter_minus5_km": 250,
-        "confidence": "estimated"
+        "mixed_km": 353,
+        "highway_130_km": 262,
+        "urban_km": 457,
+        "winter_minus5_km": 265,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 291
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 415,
+          "consumption_kWh_100km": 17,
+          "temperature_C": 16,
+          "wheelSize_inches": 21,
+          "tyreModel": "Bridgestone Alenza",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BMW iX xDrive40 » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 291,
+          "consumption_kWh_100km": 24.2,
+          "temperature_C": 11,
+          "wheelSize_inches": 21,
+          "tyreModel": "Bridgestone Alenza",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BMW iX xDrive40 » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 150,
       "chargingDC_10_80_min": 31,
       "chargingDC_kWh_30min": 48,
@@ -197,13 +253,41 @@
       "wltp_km": 630,
       "wltp_consumption_kWh_100km": 19.5,
       "realRange": {
-        "mixed_km": 455,
-        "highway_130_km": 325,
-        "urban_km": 560,
-        "winter_minus5_km": 360,
-        "confidence": "estimated"
+        "mixed_km": 427,
+        "highway_130_km": 329,
+        "urban_km": 538,
+        "winter_minus5_km": 320,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 365
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 489,
+          "consumption_kWh_100km": 21.7,
+          "temperature_C": 4,
+          "wheelSize_inches": 21,
+          "tyreModel": "Michelin Pilot Alpin 5",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BMW iX xDrive50 » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 365,
+          "consumption_kWh_100km": 29.2,
+          "temperature_C": 1,
+          "wheelSize_inches": 21,
+          "tyreModel": "Michelin Pilot Alpin 5",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BMW iX xDrive50 » (hiver, route humide)."
+        }
+      ],
       "chargingDC_peak_kW": 200,
       "chargingDC_10_80_min": 31,
       "chargingDC_kWh_30min": 65,
@@ -248,7 +332,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 560,
-      "wltp_consumption_kWh_100km": 22.0,
+      "wltp_consumption_kWh_100km": 22,
       "realRange": {
         "mixed_km": 410,
         "highway_130_km": 295,
@@ -331,7 +415,8 @@
   "sources": [
     "constructeur",
     "automobile-propre",
-    "evkx"
+    "evkx",
+    "nyland"
   ],
   "imageCredit": "Constructeur"
 }

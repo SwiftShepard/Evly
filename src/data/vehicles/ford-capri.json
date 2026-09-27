@@ -24,12 +24,12 @@
   "wltp_max_km": 627,
   "wltp_min_km": 395,
   "realRange": {
-    "mixed_km": 450,
-    "highway_130_km": 320,
-    "urban_km": 550,
-    "winter_minus5_km": 355,
-    "confidence": "estimated",
-    "highway_120_km": 491
+    "mixed_km": 418,
+    "highway_130_km": 311,
+    "urban_km": 540,
+    "winter_minus5_km": 314,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 345
   },
   "consumption_mixed_kWh_per_100km": 16.5,
   "consumption_highway_kWh_per_100km": 22,
@@ -96,7 +96,34 @@
       "power": 7
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 491,
+      "consumption_kWh_100km": 15.9,
+      "temperature_C": 12,
+      "wheelSize_inches": 20,
+      "tyreModel": "Nokian R5 EV",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Ford Capri » (hiver, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 345,
+      "consumption_kWh_100km": 22.6,
+      "temperature_C": 12,
+      "wheelSize_inches": 20,
+      "tyreModel": "Nokian R5 EV",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Ford Capri » (hiver, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 585,
@@ -239,13 +266,41 @@
       "wltp_km": 627,
       "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
-        "mixed_km": 450,
-        "highway_130_km": 320,
-        "urban_km": 550,
-        "winter_minus5_km": 355,
-        "confidence": "estimated"
+        "mixed_km": 418,
+        "highway_130_km": 311,
+        "urban_km": 540,
+        "winter_minus5_km": 314,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 345
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 491,
+          "consumption_kWh_100km": 15.9,
+          "temperature_C": 12,
+          "wheelSize_inches": 20,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Ford Capri » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 345,
+          "consumption_kWh_100km": 22.6,
+          "temperature_C": 12,
+          "wheelSize_inches": 20,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Ford Capri » (hiver, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 185,
       "chargingDC_10_80_min": 26,
       "chargingDC_kWh_30min": 55,
@@ -292,13 +347,41 @@
       "wltp_km": 610,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 440,
-        "highway_130_km": 315,
+        "mixed_km": 418,
+        "highway_130_km": 311,
         "urban_km": 540,
-        "winter_minus5_km": 345,
-        "confidence": "estimated"
+        "winter_minus5_km": 314,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 345
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 491,
+          "consumption_kWh_100km": 15.9,
+          "temperature_C": 12,
+          "wheelSize_inches": 20,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Ford Capri » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 345,
+          "consumption_kWh_100km": 22.6,
+          "temperature_C": 12,
+          "wheelSize_inches": 20,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Ford Capri » (hiver, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 185,
       "chargingDC_10_80_min": 26,
       "chargingDC_kWh_30min": 55,

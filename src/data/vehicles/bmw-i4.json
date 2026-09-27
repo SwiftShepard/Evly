@@ -24,11 +24,12 @@
   "wltp_max_km": 590,
   "wltp_min_km": 414,
   "realRange": {
-    "mixed_km": 425,
-    "highway_130_km": 305,
-    "urban_km": 525,
-    "winter_minus5_km": 335,
-    "confidence": "estimated"
+    "mixed_km": 518,
+    "highway_130_km": 392,
+    "urban_km": 659,
+    "winter_minus5_km": 389,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 436
   },
   "consumption_mixed_kWh_per_100km": 18,
   "consumption_highway_kWh_per_100km": 24,
@@ -95,7 +96,34 @@
       "power": 5
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 599,
+      "consumption_kWh_100km": 13.4,
+      "temperature_C": 18,
+      "wheelSize_inches": 18,
+      "tyreModel": "Hankook Ventus S1evo3",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « BMW i4 eDrive40 » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 436,
+      "consumption_kWh_100km": 18.4,
+      "temperature_C": 20,
+      "wheelSize_inches": 18,
+      "tyreModel": "Hankook Ventus S1evo3",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « BMW i4 eDrive40 » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 560,
@@ -202,7 +230,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 414,
-      "wltp_consumption_kWh_100km": 17.0,
+      "wltp_consumption_kWh_100km": 17,
       "realRange": {
         "mixed_km": 310,
         "highway_130_km": 225,
@@ -255,7 +283,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 414,
-      "wltp_consumption_kWh_100km": 17.0,
+      "wltp_consumption_kWh_100km": 17,
       "realRange": {
         "mixed_km": 310,
         "highway_130_km": 225,
@@ -308,15 +336,43 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 590,
-      "wltp_consumption_kWh_100km": 16.0,
+      "wltp_consumption_kWh_100km": 16,
       "realRange": {
-        "mixed_km": 425,
-        "highway_130_km": 305,
-        "urban_km": 525,
-        "winter_minus5_km": 335,
-        "confidence": "estimated"
+        "mixed_km": 518,
+        "highway_130_km": 392,
+        "urban_km": 659,
+        "winter_minus5_km": 389,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 436
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 599,
+          "consumption_kWh_100km": 13.4,
+          "temperature_C": 18,
+          "wheelSize_inches": 18,
+          "tyreModel": "Hankook Ventus S1evo3",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BMW i4 eDrive40 » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 436,
+          "consumption_kWh_100km": 18.4,
+          "temperature_C": 20,
+          "wheelSize_inches": 18,
+          "tyreModel": "Hankook Ventus S1evo3",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BMW i4 eDrive40 » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 205,
       "chargingDC_10_80_min": 26,
       "chargingDC_kWh_30min": 55,
@@ -361,15 +417,43 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 590,
-      "wltp_consumption_kWh_100km": 16.0,
+      "wltp_consumption_kWh_100km": 16,
       "realRange": {
-        "mixed_km": 425,
-        "highway_130_km": 305,
-        "urban_km": 525,
-        "winter_minus5_km": 335,
-        "confidence": "estimated"
+        "mixed_km": 518,
+        "highway_130_km": 392,
+        "urban_km": 659,
+        "winter_minus5_km": 389,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 436
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 599,
+          "consumption_kWh_100km": 13.4,
+          "temperature_C": 18,
+          "wheelSize_inches": 18,
+          "tyreModel": "Hankook Ventus S1evo3",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BMW i4 eDrive40 » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 436,
+          "consumption_kWh_100km": 18.4,
+          "temperature_C": 20,
+          "wheelSize_inches": 18,
+          "tyreModel": "Hankook Ventus S1evo3",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BMW i4 eDrive40 » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 205,
       "chargingDC_10_80_min": 26,
       "chargingDC_kWh_30min": 55,
@@ -522,13 +606,41 @@
       "wltp_km": 520,
       "wltp_consumption_kWh_100km": 18.5,
       "realRange": {
-        "mixed_km": 380,
-        "highway_130_km": 275,
-        "urban_km": 470,
-        "winter_minus5_km": 300,
-        "confidence": "estimated"
+        "mixed_km": 444,
+        "highway_130_km": 333,
+        "urban_km": 570,
+        "winter_minus5_km": 333,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 370
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 518,
+          "consumption_kWh_100km": 15.5,
+          "temperature_C": 18,
+          "wheelSize_inches": 19,
+          "tyreModel": "Hankook Ventus S1evo3",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BMW i4 M50 » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 370,
+          "consumption_kWh_100km": 21.7,
+          "temperature_C": 16,
+          "wheelSize_inches": 19,
+          "tyreModel": "Hankook Ventus S1evo3",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BMW i4 M50 » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 205,
       "chargingDC_10_80_min": 26,
       "chargingDC_kWh_30min": 55,
@@ -603,7 +715,8 @@
   "sources": [
     "constructeur",
     "automobile-propre",
-    "evkx"
+    "evkx",
+    "nyland"
   ],
   "imageCredit": "Constructeur"
 }

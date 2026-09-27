@@ -24,11 +24,12 @@
   "wltp_max_km": 400,
   "wltp_min_km": 200,
   "realRange": {
-    "mixed_km": 240,
-    "highway_130_km": 160,
-    "urban_km": 300,
-    "winter_minus5_km": 190,
-    "confidence": "tested"
+    "mixed_km": 218,
+    "highway_130_km": 165,
+    "urban_km": 278,
+    "winter_minus5_km": 164,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 183
   },
   "consumption_mixed_kWh_per_100km": 15,
   "consumption_highway_kWh_per_100km": 21,
@@ -71,7 +72,34 @@
       "power": 8
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 253,
+      "consumption_kWh_100km": 16.9,
+      "temperature_C": 12,
+      "wheelSize_inches": 17,
+      "tyreModel": "LingLong ComfortMaster",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Citroen e-C3 » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 183,
+      "consumption_kWh_100km": 23.4,
+      "temperature_C": 12,
+      "wheelSize_inches": 17,
+      "tyreModel": "LingLong ComfortMaster",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Citroen e-C3 » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4015,
   "width_mm": 1755,
@@ -219,13 +247,41 @@
       "wltp_km": 320,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 240,
-        "highway_130_km": 160,
-        "urban_km": 300,
-        "winter_minus5_km": 190,
-        "confidence": "tested"
+        "mixed_km": 218,
+        "highway_130_km": 165,
+        "urban_km": 278,
+        "winter_minus5_km": 164,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 183
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 253,
+          "consumption_kWh_100km": 16.9,
+          "temperature_C": 12,
+          "wheelSize_inches": 17,
+          "tyreModel": "LingLong ComfortMaster",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Citroen e-C3 » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 183,
+          "consumption_kWh_100km": 23.4,
+          "temperature_C": 12,
+          "wheelSize_inches": 17,
+          "tyreModel": "LingLong ComfortMaster",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Citroen e-C3 » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 26,
       "chargingDC_kWh_30min": 35,
@@ -247,13 +303,41 @@
       "wltp_km": 320,
       "wltp_consumption_kWh_100km": 15.2,
       "realRange": {
-        "mixed_km": 238,
-        "highway_130_km": 158,
-        "urban_km": 298,
-        "winter_minus5_km": 188,
-        "confidence": "tested"
+        "mixed_km": 218,
+        "highway_130_km": 165,
+        "urban_km": 278,
+        "winter_minus5_km": 164,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 183
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 253,
+          "consumption_kWh_100km": 16.9,
+          "temperature_C": 12,
+          "wheelSize_inches": 17,
+          "tyreModel": "LingLong ComfortMaster",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Citroen e-C3 » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 183,
+          "consumption_kWh_100km": 23.4,
+          "temperature_C": 12,
+          "wheelSize_inches": 17,
+          "tyreModel": "LingLong ComfortMaster",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Citroen e-C3 » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 26,
       "chargingDC_kWh_30min": 35,
@@ -386,7 +470,8 @@
   "lastUpdated": "2026-06-04",
   "sources": [
     "citroen-fr",
-    "automobile-propre"
+    "automobile-propre",
+    "nyland"
   ],
   "imageCredit": "Constructeur"
 }

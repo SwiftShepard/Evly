@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { getRangeConfidenceInfo } from "@/lib/vehicleCard";
 import type { Vehicle, VehicleConfiguration } from "@/data/schemas";
 import ConfigSelector from "./ConfigSelector";
 import ChargingSparkline from "./ChargingSparkline";
@@ -58,49 +59,11 @@ export default function ComparatorCard({
   }, [vehicle, config.price_EUR, profile]);
   const netPrice = config.price_EUR !== null ? Math.max(0, config.price_EUR - totalAids) : 0;
 
-  // Best range test (Nyland 90 preferred)
-  const bestRangeTest = useMemo(() => {
-    const nyland90 = config.rangeTests.find(
-      (t) => t.sourceId === "nyland" && t.speed_kmh === 90
-    );
-    if (nyland90) return nyland90;
-    return config.rangeTests[0] ?? null;
-  }, [config.rangeTests]);
-
-  // Nyland range estimate (capacity / consumption × 100)
-  const nylandRangeEstimate = useMemo(() => {
-    if (!bestRangeTest || bestRangeTest.sourceId !== "nyland") return null;
-    if (config.usableCapacity_kWh != null) {
-      return Math.round((config.usableCapacity_kWh / bestRangeTest.consumption_kWh_100km) * 100);
-    }
-    const parseKwh = (s: string) => {
-      const m = s.match(/(\d+(?:[.,]\d+)?)/);
-      return m ? Math.round(parseFloat(m[1].replace(",", "."))) : null;
-    };
-    const uniqueKwh = [
-      ...new Set(
-        vehicle.trims
-          .map((t) => parseKwh(t.batteryUsed))
-          .filter((v): v is number => v !== null)
-      ),
-    ].sort((a, b) => a - b);
-    const lrKwh = vehicle.usableCapacity_kWh;
-    const capacity =
-      config.battery === "long-range"
-        ? lrKwh
-        : (uniqueKwh.find((k) => k < lrKwh) ?? uniqueKwh[0] ?? lrKwh);
-    return Math.round(
-      (capacity / bestRangeTest.consumption_kWh_100km) * 100
-    );
-  }, [bestRangeTest, config, vehicle]);
-
-  // Scaled ranges based on battery SoH
+  // Autonomie réelle : même valeur que la fiche (moyenne des mesures Nyland 90/120 km/h, sinon estimation)
   const scaledMixedRange = useMemo(() => {
-    const base = bestRangeTest
-      ? (nylandRangeEstimate ?? bestRangeTest.range_km ?? config.realRange?.mixed_km)
-      : config.realRange?.mixed_km;
+    const base = config.realRange?.mixed_km;
     return base ? Math.round(base * soh / 100) : null;
-  }, [bestRangeTest, nylandRangeEstimate, config.realRange, soh]);
+  }, [config.realRange, soh]);
 
   const scaledWltp = useMemo(() => {
     return config.wltp_km ? Math.round(config.wltp_km * soh / 100) : null;
@@ -339,23 +302,16 @@ export default function ComparatorCard({
             </span>
           )}
         </div>
-        {bestRangeTest ? (
+        {config.realRange && (
           <span
             className="font-mono text-[10px] leading-relaxed mt-1"
             style={{ color: "var(--color-text-faint)" }}
           >
-            {bestRangeTest.sourceId === "nyland"
-              ? `Nyland · ${bestRangeTest.speed_kmh} km/h · ${bestRangeTest.consumption_kWh_100km.toString().replace(".", ",")} kWh/100km`
-              : `${bestRangeTest.sourceId} · ${bestRangeTest.consumption_kWh_100km.toString().replace(".", ",")} kWh/100km`}
+            {config.realRange.confidence === "bjorn_nyland"
+              ? "Mesurée · moyenne 90 / 120 km/h (Nyland)"
+              : `Autonomie ${getRangeConfidenceInfo(config.realRange.confidence).label}`}
           </span>
-        ) : config.realRange ? (
-          <span
-            className="font-mono text-[10px] mt-1"
-            style={{ color: "var(--color-text-faint)" }}
-          >
-            Mixte mesuré · {config.realRange.confidence}
-          </span>
-        ) : null}
+        )}
       </DataBlock>
 
       {/* WLTP */}

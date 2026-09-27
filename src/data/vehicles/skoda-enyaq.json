@@ -24,12 +24,12 @@
   "wltp_max_km": 580,
   "wltp_min_km": 423,
   "realRange": {
-    "mixed_km": 445,
-    "highway_130_km": 290,
-    "urban_km": 535,
-    "winter_minus5_km": 345,
-    "confidence": "estimated",
-    "highway_120_km": 452
+    "mixed_km": 408,
+    "highway_130_km": 314,
+    "urban_km": 514,
+    "winter_minus5_km": 306,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 349
   },
   "consumption_mixed_kWh_per_100km": 15.5,
   "consumption_highway_kWh_per_100km": 20,
@@ -96,7 +96,34 @@
       "power": 3
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 467,
+      "consumption_kWh_100km": 16.2,
+      "temperature_C": 7,
+      "wheelSize_inches": 21,
+      "tyreModel": "Pirelli Scorpion",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Skoda Enyaq Coupé 85x 2025 » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 349,
+      "consumption_kWh_100km": 21.7,
+      "temperature_C": 8,
+      "wheelSize_inches": 21,
+      "tyreModel": "Pirelli Scorpion",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Skoda Enyaq Coupé 85x 2025 » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 590,
@@ -288,13 +315,41 @@
       "wltp_km": 580,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 445,
-        "highway_130_km": 290,
-        "urban_km": 535,
-        "winter_minus5_km": 345,
-        "confidence": "estimated"
+        "mixed_km": 408,
+        "highway_130_km": 314,
+        "urban_km": 514,
+        "winter_minus5_km": 306,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 349
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 467,
+          "consumption_kWh_100km": 16.2,
+          "temperature_C": 7,
+          "wheelSize_inches": 21,
+          "tyreModel": "Pirelli Scorpion",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Skoda Enyaq Coupé 85x 2025 » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 349,
+          "consumption_kWh_100km": 21.7,
+          "temperature_C": 8,
+          "wheelSize_inches": 21,
+          "tyreModel": "Pirelli Scorpion",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Skoda Enyaq Coupé 85x 2025 » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 175,
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 80,

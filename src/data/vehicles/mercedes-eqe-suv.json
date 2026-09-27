@@ -24,11 +24,12 @@
   "wltp_max_km": 590,
   "wltp_min_km": 480,
   "realRange": {
-    "mixed_km": 430,
-    "highway_130_km": 310,
-    "urban_km": 520,
-    "winter_minus5_km": 340,
-    "confidence": "estimated"
+    "mixed_km": 376,
+    "highway_130_km": 290,
+    "urban_km": 473,
+    "winter_minus5_km": 282,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 322
   },
   "consumption_mixed_kWh_per_100km": 21,
   "consumption_highway_kWh_per_100km": 28,
@@ -177,13 +178,41 @@
       "wltp_km": 540,
       "wltp_consumption_kWh_100km": 19.5,
       "realRange": {
-        "mixed_km": 410,
-        "highway_130_km": 295,
-        "urban_km": 495,
-        "winter_minus5_km": 320,
-        "confidence": "estimated"
+        "mixed_km": 376,
+        "highway_130_km": 290,
+        "urban_km": 473,
+        "winter_minus5_km": 282,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 322
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 430,
+          "consumption_kWh_100km": 20.8,
+          "temperature_C": 12,
+          "wheelSize_inches": 22,
+          "tyreModel": "Cooper Zeon Crossrange",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes EQE 350 4Matic SUV » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 322,
+          "consumption_kWh_100km": 27.8,
+          "temperature_C": 13,
+          "wheelSize_inches": 22,
+          "tyreModel": "Cooper Zeon Crossrange",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes EQE 350 4Matic SUV » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 170,
       "chargingDC_10_80_min": 32,
       "chargingDC_kWh_30min": 52,
@@ -255,7 +284,36 @@
     "notIdealFor": "Petits garages ou personnes ayant un budget limité."
   },
   "sources": [
-    "constructeur"
+    "constructeur",
+    "nyland"
   ],
-  "imageCredit": "Constructeur"
+  "imageCredit": "Constructeur",
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 430,
+      "consumption_kWh_100km": 20.8,
+      "temperature_C": 12,
+      "wheelSize_inches": 22,
+      "tyreModel": "Cooper Zeon Crossrange",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Mercedes EQE 350 4Matic SUV » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 322,
+      "consumption_kWh_100km": 27.8,
+      "temperature_C": 13,
+      "wheelSize_inches": 22,
+      "tyreModel": "Cooper Zeon Crossrange",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Mercedes EQE 350 4Matic SUV » (été, route sèche)."
+    }
+  ]
 }

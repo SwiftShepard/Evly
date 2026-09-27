@@ -24,12 +24,12 @@
   "wltp_max_km": 420,
   "wltp_min_km": 420,
   "realRange": {
-    "mixed_km": 330,
-    "highway_130_km": 220,
-    "urban_km": 400,
-    "winter_minus5_km": 260,
-    "confidence": "estimated",
-    "highway_120_km": 240
+    "mixed_km": 326,
+    "highway_130_km": 242,
+    "urban_km": 420,
+    "winter_minus5_km": 245,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 269
   },
   "consumption_mixed_kWh_per_100km": 15,
   "consumption_highway_kWh_per_100km": 21,
@@ -72,7 +72,34 @@
       "power": 6
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 382,
+      "consumption_kWh_100km": 16.9,
+      "temperature_C": 16,
+      "wheelSize_inches": 20,
+      "tyreModel": "Dunlop eSport Maxx",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Leapmotor C10 » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 269,
+      "consumption_kWh_100km": 24,
+      "temperature_C": 15,
+      "wheelSize_inches": 20,
+      "tyreModel": "Dunlop eSport Maxx",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Leapmotor C10 » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4739,
   "width_mm": 1900,
@@ -122,14 +149,41 @@
       "wltp_km": 420,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 330,
-        "highway_130_km": 220,
-        "urban_km": 400,
-        "winter_minus5_km": 260,
-        "confidence": "estimated",
-        "highway_120_km": 240
+        "mixed_km": 326,
+        "highway_130_km": 242,
+        "urban_km": 420,
+        "winter_minus5_km": 245,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 269
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 382,
+          "consumption_kWh_100km": 16.9,
+          "temperature_C": 16,
+          "wheelSize_inches": 20,
+          "tyreModel": "Dunlop eSport Maxx",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Leapmotor C10 » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 269,
+          "consumption_kWh_100km": 24,
+          "temperature_C": 15,
+          "wheelSize_inches": 20,
+          "tyreModel": "Dunlop eSport Maxx",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Leapmotor C10 » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 84,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 30,
@@ -172,14 +226,41 @@
       "wltp_km": 420,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 330,
-        "highway_130_km": 220,
-        "urban_km": 400,
-        "winter_minus5_km": 260,
-        "confidence": "estimated",
-        "highway_120_km": 240
+        "mixed_km": 326,
+        "highway_130_km": 242,
+        "urban_km": 420,
+        "winter_minus5_km": 245,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 269
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 382,
+          "consumption_kWh_100km": 16.9,
+          "temperature_C": 16,
+          "wheelSize_inches": 20,
+          "tyreModel": "Dunlop eSport Maxx",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Leapmotor C10 » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 269,
+          "consumption_kWh_100km": 24,
+          "temperature_C": 15,
+          "wheelSize_inches": 20,
+          "tyreModel": "Dunlop eSport Maxx",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Leapmotor C10 » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 84,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 30,

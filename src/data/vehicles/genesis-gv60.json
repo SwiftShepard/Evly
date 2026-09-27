@@ -26,14 +26,13 @@
   "realRange": {
     "mixed_km": 460,
     "highway_130_km": 320,
-    "highway_120_km": 350,
     "urban_km": 560,
     "winter_minus5_km": 330,
     "confidence": "estimated"
   },
-  "consumption_mixed_kWh_per_100km": 17.0,
-  "consumption_highway_kWh_per_100km": 23.0,
-  "consumption_winter_kWh_per_100km": 22.0,
+  "consumption_mixed_kWh_per_100km": 17,
+  "consumption_highway_kWh_per_100km": 23,
+  "consumption_winter_kWh_per_100km": 22,
   "dragCoefficient_Cx": 0.29,
   "chargingDC": {
     "peakPower_kW": 260,
@@ -44,7 +43,7 @@
   "chargingAC": {
     "onboardCharger_kW": 11,
     "phases": 3,
-    "time_0_100_h": 8.0
+    "time_0_100_h": 8
   },
   "plugAndCharge": true,
   "v2l": true,
@@ -140,11 +139,10 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 561,
-      "wltp_consumption_kWh_100km": 17.0,
+      "wltp_consumption_kWh_100km": 17,
       "realRange": {
         "mixed_km": 460,
         "highway_130_km": 320,
-        "highway_120_km": 350,
         "urban_km": 560,
         "winter_minus5_km": 330,
         "confidence": "estimated"
@@ -202,7 +200,6 @@
       "realRange": {
         "mixed_km": 420,
         "highway_130_km": 290,
-        "highway_120_km": 320,
         "urban_km": 510,
         "winter_minus5_km": 300,
         "confidence": "estimated"
@@ -260,7 +257,6 @@
       "realRange": {
         "mixed_km": 390,
         "highway_130_km": 270,
-        "highway_120_km": 300,
         "urban_km": 470,
         "winter_minus5_km": 280,
         "confidence": "estimated"

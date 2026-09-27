@@ -24,12 +24,12 @@
   "wltp_max_km": 668,
   "wltp_min_km": 502,
   "realRange": {
-    "mixed_km": 510,
-    "highway_130_km": 360,
-    "urban_km": 615,
-    "winter_minus5_km": 400,
-    "confidence": "estimated",
-    "highway_120_km": 402
+    "mixed_km": 346,
+    "highway_130_km": 261,
+    "urban_km": 442,
+    "winter_minus5_km": 260,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 290
   },
   "consumption_mixed_kWh_per_100km": 17,
   "consumption_highway_kWh_per_100km": 21,
@@ -96,7 +96,34 @@
       "power": 2
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 402,
+      "consumption_kWh_100km": 17.9,
+      "temperature_C": 3,
+      "wheelSize_inches": 19,
+      "tyreModel": "Nokian R5 EV",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Peugeot e-5008 » (hiver, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 290,
+      "consumption_kWh_100km": 24.8,
+      "temperature_C": 5,
+      "wheelSize_inches": 19,
+      "tyreModel": "Nokian R5 EV",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Peugeot e-5008 » (hiver, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 635,
@@ -210,13 +237,41 @@
       "wltp_km": 502,
       "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
-        "mixed_km": 395,
-        "highway_130_km": 270,
-        "urban_km": 475,
-        "winter_minus5_km": 310,
-        "confidence": "estimated"
+        "mixed_km": 346,
+        "highway_130_km": 261,
+        "urban_km": 442,
+        "winter_minus5_km": 260,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 290
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 402,
+          "consumption_kWh_100km": 17.9,
+          "temperature_C": 3,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Peugeot e-5008 » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 290,
+          "consumption_kWh_100km": 24.8,
+          "temperature_C": 5,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Peugeot e-5008 » (hiver, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 160,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 50,
@@ -263,13 +318,41 @@
       "wltp_km": 502,
       "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
-        "mixed_km": 395,
-        "highway_130_km": 270,
-        "urban_km": 475,
-        "winter_minus5_km": 310,
-        "confidence": "estimated"
+        "mixed_km": 346,
+        "highway_130_km": 261,
+        "urban_km": 442,
+        "winter_minus5_km": 260,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 290
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 402,
+          "consumption_kWh_100km": 17.9,
+          "temperature_C": 3,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Peugeot e-5008 » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 290,
+          "consumption_kWh_100km": 24.8,
+          "temperature_C": 5,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Peugeot e-5008 » (hiver, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 160,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 50,
@@ -316,13 +399,41 @@
       "wltp_km": 502,
       "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
-        "mixed_km": 395,
-        "highway_130_km": 270,
-        "urban_km": 475,
-        "winter_minus5_km": 310,
-        "confidence": "estimated"
+        "mixed_km": 346,
+        "highway_130_km": 261,
+        "urban_km": 442,
+        "winter_minus5_km": 260,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 290
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 402,
+          "consumption_kWh_100km": 17.9,
+          "temperature_C": 3,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Peugeot e-5008 » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 290,
+          "consumption_kWh_100km": 24.8,
+          "temperature_C": 5,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Peugeot e-5008 » (hiver, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 160,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 50,

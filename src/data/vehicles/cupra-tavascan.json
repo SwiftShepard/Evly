@@ -24,12 +24,12 @@
   "wltp_max_km": 568,
   "wltp_min_km": 568,
   "realRange": {
-    "mixed_km": 410,
-    "highway_130_km": 265,
-    "urban_km": 490,
-    "winter_minus5_km": 320,
-    "confidence": "estimated",
-    "highway_120_km": 459
+    "mixed_km": 399,
+    "highway_130_km": 305,
+    "urban_km": 505,
+    "winter_minus5_km": 299,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 339
   },
   "consumption_mixed_kWh_per_100km": 17.2,
   "consumption_highway_kWh_per_100km": 21,
@@ -96,7 +96,34 @@
       "power": 3
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 459,
+      "consumption_kWh_100km": 16.4,
+      "temperature_C": 16,
+      "wheelSize_inches": 21,
+      "tyreModel": "Hankook iON evo SUV",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Cupra Tavascan VZ Adrenaline » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 339,
+      "consumption_kWh_100km": 22.2,
+      "temperature_C": 18,
+      "wheelSize_inches": 21,
+      "tyreModel": "Hankook iON evo SUV",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Cupra Tavascan VZ Adrenaline » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 600,
@@ -206,13 +233,41 @@
       "wltp_km": 568,
       "wltp_consumption_kWh_100km": 17.2,
       "realRange": {
-        "mixed_km": 410,
-        "highway_130_km": 265,
-        "urban_km": 490,
-        "winter_minus5_km": 320,
-        "confidence": "estimated"
+        "mixed_km": 399,
+        "highway_130_km": 305,
+        "urban_km": 505,
+        "winter_minus5_km": 299,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 339
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 459,
+          "consumption_kWh_100km": 16.4,
+          "temperature_C": 16,
+          "wheelSize_inches": 21,
+          "tyreModel": "Hankook iON evo SUV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Cupra Tavascan VZ Adrenaline » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 339,
+          "consumption_kWh_100km": 22.2,
+          "temperature_C": 18,
+          "wheelSize_inches": 21,
+          "tyreModel": "Hankook iON evo SUV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Cupra Tavascan VZ Adrenaline » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 135,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 70,

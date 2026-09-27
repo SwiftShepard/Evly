@@ -24,11 +24,12 @@
   "wltp_max_km": 660,
   "wltp_min_km": 540,
   "realRange": {
-    "mixed_km": 510,
-    "highway_130_km": 370,
-    "urban_km": 620,
-    "winter_minus5_km": 410,
-    "confidence": "estimated"
+    "mixed_km": 423,
+    "highway_130_km": 329,
+    "urban_km": 528,
+    "winter_minus5_km": 317,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 365
   },
   "consumption_mixed_kWh_per_100km": 23,
   "consumption_highway_kWh_per_100km": 31,
@@ -177,13 +178,41 @@
       "wltp_km": 590,
       "wltp_consumption_kWh_100km": 21.8,
       "realRange": {
-        "mixed_km": 480,
-        "highway_130_km": 350,
-        "urban_km": 580,
-        "winter_minus5_km": 390,
-        "confidence": "estimated"
+        "mixed_km": 423,
+        "highway_130_km": 329,
+        "urban_km": 528,
+        "winter_minus5_km": 317,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 365
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 480,
+          "consumption_kWh_100km": 22.3,
+          "temperature_C": 2,
+          "wheelSize_inches": 21,
+          "tyreModel": "Nokian R5",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes EQS 580 4Matic SUV » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 365,
+          "consumption_kWh_100km": 29.3,
+          "temperature_C": 2,
+          "wheelSize_inches": 21,
+          "tyreModel": "Nokian R5",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes EQS 580 4Matic SUV » (hiver, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 200,
       "chargingDC_10_80_min": 31,
       "chargingDC_kWh_30min": 65,
@@ -255,7 +284,36 @@
     "notIdealFor": "Acheteurs cherchant de la maniabilité urbaine ou à budget restreint."
   },
   "sources": [
-    "constructeur"
+    "constructeur",
+    "nyland"
   ],
-  "imageCredit": "Constructeur"
+  "imageCredit": "Constructeur",
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 480,
+      "consumption_kWh_100km": 22.3,
+      "temperature_C": 2,
+      "wheelSize_inches": 21,
+      "tyreModel": "Nokian R5",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Mercedes EQS 580 4Matic SUV » (hiver, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 365,
+      "consumption_kWh_100km": 29.3,
+      "temperature_C": 2,
+      "wheelSize_inches": 21,
+      "tyreModel": "Nokian R5",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Mercedes EQS 580 4Matic SUV » (hiver, route sèche)."
+    }
+  ]
 }

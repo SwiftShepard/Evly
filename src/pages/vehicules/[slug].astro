@@ -289,13 +289,13 @@ const configViews = configurations.map((config) => {
     }
   }
 
-  const nylandRangeEstimate = nyland90 ? Math.round((batteryCapacity / nyland90.consumption_kWh_100km) * 100) : null;
+  const nyland120 = config.rangeTests.find((t: any) => t.protocol === "nyland" && t.speed_kmh === 120);
   const priceAfterAids = config.price_EUR != null ? Math.max(0, config.price_EUR - totalAids) : null;
   const realRange = config.realRange ?? vehicle.realRange;
   const rangeConfidence = realRange.confidence;
   const isRangeMeasured = rangeConfidence === "tested" || rangeConfidence === "bjorn_nyland";
-  const heroRangeLabel = nyland90
-    ? "Autonomie réelle à 90 km/h, conso mesurée Nyland"
+  const heroRangeLabel = rangeConfidence === "bjorn_nyland"
+    ? "Autonomie réelle mixte, mesurée par Bjørn Nyland"
     : isRangeMeasured
       ? "Autonomie réelle mixte mesurée"
       : rangeConfidence === "manufacturer"
@@ -362,7 +362,7 @@ const configViews = configurations.map((config) => {
     nyland90,
     wheelPenalty,
     batteryCapacity,
-    nylandRangeEstimate,
+    nyland120,
     priceAfterAids,
     realRange,
     rangeConfidence,
@@ -461,16 +461,16 @@ const tocSections = [
                         {cv.nyland90 && <SourceTooltip sourceId="nyland" date={cv.nyland90.testDate ?? undefined} />}
                       </div>
                       <div class="flex items-baseline gap-3 mt-1.5">
-                        <span data-numeric class="display-stat text-[var(--color-accent)] text-[clamp(3.5rem,11vw,7rem)] leading-[0.85] soh-update-range" data-base-range={cv.nylandRangeEstimate ?? cv.realRange.mixed_km}>
-                          {cv.nylandRangeEstimate ?? cv.realRange.mixed_km}
+                        <span data-numeric class="display-stat text-[var(--color-accent)] text-[clamp(3.5rem,11vw,7rem)] leading-[0.85] soh-update-range" data-base-range={cv.realRange.mixed_km}>
+                          {cv.realRange.mixed_km}
                         </span>
                         <span class="font-mono text-xl md:text-2xl text-[var(--color-text-faint)]">km</span>
                       </div>
                       <div class="stat-hint-detail" id={`hint-range-${cv.config.id}`}>
                         <span>
-                        {cv.nyland90 ? (
+                        {cv.nyland90 && cv.nyland120 && cv.rangeConfidence === "bjorn_nyland" ? (
                           <span>
-                            Conso mesurée à {formatNumber(cv.nyland90.consumption_kWh_100km, 1)} kWh/100&nbsp;km, batterie utile <span class="soh-update-text-capacity font-semibold" data-base-capacity={cv.batteryCapacity}>{formatNumber(cv.batteryCapacity, Number.isInteger(cv.batteryCapacity) ? 0 : 1)}</span> kWh, WLTP annoncée <span class="soh-update-text-wltp font-semibold" data-base-wltp={cv.wltpKm}>{cv.wltpKm}</span> km.
+                            Moyenne des essais Nyland à 90 km/h ({cv.nyland90.range_km} km, {formatNumber(cv.nyland90.consumption_kWh_100km, 1)} kWh/100&nbsp;km) et 120 km/h ({cv.nyland120.range_km} km, {formatNumber(cv.nyland120.consumption_kWh_100km, 1)} kWh/100&nbsp;km){cv.nyland90.temperature_C !== null ? `, par ${cv.nyland90.temperature_C} °C` : ""}. WLTP annoncée <span class="soh-update-text-wltp font-semibold" data-base-wltp={cv.wltpKm}>{cv.wltpKm}</span> km.
                           </span>
                         ) : (
                           <span>
@@ -481,7 +481,7 @@ const tocSections = [
                       </div>
                     </div>
                     <div class="flex items-center gap-2 mt-1 flex-wrap">
-                      <Tag tone="warning" mono>-{cv.wltpGapPct} % vs WLTP</Tag>
+                      <Tag tone="warning" mono>{cv.wltpGapPct > 0 ? `-${cv.wltpGapPct} %` : cv.wltpGapPct < 0 ? `+${-cv.wltpGapPct} %` : "="} vs WLTP</Tag>
                       <Tag tone="danger" mono>-{cv.winterLossPct} % en hiver (-5 °C)</Tag>
                       {cv.wheelPenalty && (
                         <span class="font-mono text-[11px] text-[var(--color-text-faint)]">
@@ -663,7 +663,7 @@ const tocSections = [
             <div data-config-id={cv.config.id} style={{ display: index === 0 ? "contents" : "none" }} class="config-wrapper">
               <Tile size="2x2" variant="elevated" label="Autonomie par usage" class="reveal">
                 <div class="flex items-center justify-between gap-3 -mt-2 mb-3">
-                  <h3 class="font-display text-base md:text-lg font-semibold tracking-[-0.01em]">{cv.isRangeMeasured ? "Quatre profils mesurés" : "Quatre profils d'usage"}</h3>
+                  <h3 class="font-display text-base md:text-lg font-semibold tracking-[-0.01em]">{cv.isRangeMeasured ? "Quatre profils calés sur les mesures" : "Quatre profils d'usage estimés"}</h3>
                   <Tag tone="outline" mono>{confidenceLabel[cv.rangeConfidence] ?? cv.rangeConfidence}</Tag>
                 </div>
                 <SeasonalRange client:visible urban={cv.realRange.urban_km} mixed={cv.realRange.mixed_km} highway={cv.realRange.highway_130_km} winter={cv.realRange.winter_minus5_km} vehicleName={`${vehicle.brand} ${vehicle.model} ${cv.config.trim}`} />

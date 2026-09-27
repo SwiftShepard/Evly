@@ -24,12 +24,12 @@
   "wltp_max_km": 641,
   "wltp_min_km": 591,
   "realRange": {
-    "mixed_km": 440,
-    "highway_130_km": 320,
-    "urban_km": 540,
-    "winter_minus5_km": 350,
-    "confidence": "estimated",
-    "highway_120_km": 481
+    "mixed_km": 415,
+    "highway_130_km": 314,
+    "urban_km": 529,
+    "winter_minus5_km": 311,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 349
   },
   "consumption_mixed_kWh_per_100km": 18.8,
   "consumption_highway_kWh_per_100km": 24.5,
@@ -76,7 +76,34 @@
       "power": 12
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 481,
+      "consumption_kWh_100km": 19.5,
+      "temperature_C": 11,
+      "wheelSize_inches": 22,
+      "tyreModel": "Goodyear Eagle F1 SuperSport",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Porsche Macan 4 » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 349,
+      "consumption_kWh_100km": 26.9,
+      "temperature_C": 10,
+      "wheelSize_inches": 22,
+      "tyreModel": "Goodyear Eagle F1 SuperSport",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Porsche Macan 4 » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 570,
@@ -198,13 +225,41 @@
       "wltp_km": 613,
       "wltp_consumption_kWh_100km": 18.8,
       "realRange": {
-        "mixed_km": 440,
-        "highway_130_km": 320,
-        "urban_km": 540,
-        "winter_minus5_km": 350,
-        "confidence": "estimated"
+        "mixed_km": 415,
+        "highway_130_km": 314,
+        "urban_km": 529,
+        "winter_minus5_km": 311,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 349
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 481,
+          "consumption_kWh_100km": 19.5,
+          "temperature_C": 11,
+          "wheelSize_inches": 22,
+          "tyreModel": "Goodyear Eagle F1 SuperSport",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Porsche Macan 4 » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 349,
+          "consumption_kWh_100km": 26.9,
+          "temperature_C": 10,
+          "wheelSize_inches": 22,
+          "tyreModel": "Goodyear Eagle F1 SuperSport",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Porsche Macan 4 » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 270,
       "chargingDC_10_80_min": 21,
       "chargingDC_kWh_30min": 75,

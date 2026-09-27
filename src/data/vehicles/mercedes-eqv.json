@@ -24,12 +24,12 @@
   "wltp_max_km": 358,
   "wltp_min_km": 350,
   "realRange": {
-    "mixed_km": 230,
-    "highway_130_km": 150,
-    "urban_km": 290,
-    "winter_minus5_km": 185,
-    "confidence": "estimated",
-    "highway_120_km": 338
+    "mixed_km": 254,
+    "highway_130_km": 188,
+    "urban_km": 329,
+    "winter_minus5_km": 191,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 209
   },
   "consumption_mixed_kWh_per_100km": 22,
   "consumption_highway_kWh_per_100km": 29,
@@ -96,7 +96,34 @@
       "power": 5
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 299,
+      "consumption_kWh_100km": 29.3,
+      "temperature_C": 4,
+      "wheelSize_inches": 17,
+      "tyreModel": "Nokian R3",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Mercedes EQV 300 » (hiver, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 209,
+      "consumption_kWh_100km": 40.4,
+      "temperature_C": 4,
+      "wheelSize_inches": 17,
+      "tyreModel": "Nokian R3",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Mercedes EQV 300 » (hiver, route humide)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 5140,
   "width_mm": 1928,
@@ -145,13 +172,41 @@
       "wltp_km": 358,
       "wltp_consumption_kWh_100km": 26.2,
       "realRange": {
-        "mixed_km": 270,
-        "highway_130_km": 195,
-        "urban_km": 335,
-        "winter_minus5_km": 220,
-        "confidence": "estimated"
+        "mixed_km": 254,
+        "highway_130_km": 188,
+        "urban_km": 329,
+        "winter_minus5_km": 191,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 209
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 299,
+          "consumption_kWh_100km": 29.3,
+          "temperature_C": 4,
+          "wheelSize_inches": 17,
+          "tyreModel": "Nokian R3",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes EQV 300 » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 209,
+          "consumption_kWh_100km": 40.4,
+          "temperature_C": 4,
+          "wheelSize_inches": 17,
+          "tyreModel": "Nokian R3",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes EQV 300 » (hiver, route humide)."
+        }
+      ],
       "chargingDC_peak_kW": 110,
       "chargingDC_10_80_min": 40,
       "chargingDC_kWh_30min": 42,
@@ -194,13 +249,41 @@
       "wltp_km": 350,
       "wltp_consumption_kWh_100km": 26.8,
       "realRange": {
-        "mixed_km": 265,
-        "highway_130_km": 190,
-        "urban_km": 325,
-        "winter_minus5_km": 215,
-        "confidence": "estimated"
+        "mixed_km": 254,
+        "highway_130_km": 188,
+        "urban_km": 329,
+        "winter_minus5_km": 191,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 209
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 299,
+          "consumption_kWh_100km": 29.3,
+          "temperature_C": 4,
+          "wheelSize_inches": 17,
+          "tyreModel": "Nokian R3",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes EQV 300 » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 209,
+          "consumption_kWh_100km": 40.4,
+          "temperature_C": 4,
+          "wheelSize_inches": 17,
+          "tyreModel": "Nokian R3",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes EQV 300 » (hiver, route humide)."
+        }
+      ],
       "chargingDC_peak_kW": 110,
       "chargingDC_10_80_min": 40,
       "chargingDC_kWh_30min": 42,

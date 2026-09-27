@@ -24,11 +24,12 @@
   "wltp_max_km": 582,
   "wltp_min_km": 455,
   "realRange": {
-    "mixed_km": 420,
-    "highway_130_km": 300,
-    "urban_km": 515,
-    "winter_minus5_km": 330,
-    "confidence": "estimated"
+    "mixed_km": 311,
+    "highway_130_km": 243,
+    "urban_km": 386,
+    "winter_minus5_km": 233,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 270
   },
   "consumption_mixed_kWh_per_100km": 18.5,
   "consumption_highway_kWh_per_100km": 24,
@@ -95,7 +96,34 @@
       "power": 6
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 351,
+      "consumption_kWh_100km": 22.3,
+      "temperature_C": 1,
+      "wheelSize_inches": 20,
+      "tyreModel": "Continental VC TS 860S",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « BMW i5 M60 » (hiver, route humide)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 270,
+      "consumption_kWh_100km": 29,
+      "temperature_C": 1,
+      "wheelSize_inches": 20,
+      "tyreModel": "Continental VC TS 860S",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « BMW i5 M60 » (hiver, route humide)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 635,
@@ -396,13 +424,41 @@
       "wltp_km": 455,
       "wltp_consumption_kWh_100km": 20.5,
       "realRange": {
-        "mixed_km": 340,
-        "highway_130_km": 245,
-        "urban_km": 420,
-        "winter_minus5_km": 270,
-        "confidence": "estimated"
+        "mixed_km": 311,
+        "highway_130_km": 243,
+        "urban_km": 386,
+        "winter_minus5_km": 233,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 270
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 351,
+          "consumption_kWh_100km": 22.3,
+          "temperature_C": 1,
+          "wheelSize_inches": 20,
+          "tyreModel": "Continental VC TS 860S",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BMW i5 M60 » (hiver, route humide)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 270,
+          "consumption_kWh_100km": 29,
+          "temperature_C": 1,
+          "wheelSize_inches": 20,
+          "tyreModel": "Continental VC TS 860S",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BMW i5 M60 » (hiver, route humide)."
+        }
+      ],
       "chargingDC_peak_kW": 205,
       "chargingDC_10_80_min": 27,
       "chargingDC_kWh_30min": 55,
@@ -477,7 +533,8 @@
   "sources": [
     "constructeur",
     "automobile-propre",
-    "evkx"
+    "evkx",
+    "nyland"
   ],
   "imageCredit": "Constructeur"
 }

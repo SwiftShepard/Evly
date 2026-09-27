@@ -24,12 +24,12 @@
   "wltp_max_km": 530,
   "wltp_min_km": 455,
   "realRange": {
-    "mixed_km": 350,
-    "highway_130_km": 245,
-    "urban_km": 420,
-    "winter_minus5_km": 275,
-    "confidence": "estimated",
-    "highway_120_km": 492
+    "mixed_km": 463,
+    "highway_130_km": 349,
+    "urban_km": 592,
+    "winter_minus5_km": 347,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 388
   },
   "consumption_mixed_kWh_per_100km": 13.6,
   "consumption_highway_kWh_per_100km": 18.5,
@@ -96,7 +96,34 @@
       "power": 3
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 538,
+      "consumption_kWh_100km": 14.2,
+      "temperature_C": 21,
+      "wheelSize_inches": 20,
+      "tyreModel": "Michelin Pilot Sport EV",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Xpeng P7+ LR RWD » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 388,
+      "consumption_kWh_100km": 19.7,
+      "temperature_C": 20,
+      "wheelSize_inches": 20,
+      "tyreModel": "Michelin Pilot Sport EV",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Xpeng P7+ LR RWD » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 695,
@@ -230,13 +257,41 @@
       "wltp_km": 530,
       "wltp_consumption_kWh_100km": 14.2,
       "realRange": {
-        "mixed_km": 425,
-        "highway_130_km": 300,
-        "urban_km": 510,
-        "winter_minus5_km": 330,
-        "confidence": "estimated"
+        "mixed_km": 463,
+        "highway_130_km": 349,
+        "urban_km": 592,
+        "winter_minus5_km": 347,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 388
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 538,
+          "consumption_kWh_100km": 14.2,
+          "temperature_C": 21,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin Pilot Sport EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Xpeng P7+ LR RWD » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 388,
+          "consumption_kWh_100km": 19.7,
+          "temperature_C": 20,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin Pilot Sport EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Xpeng P7+ LR RWD » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 400,
       "chargingDC_10_80_min": 12,
       "chargingDC_kWh_30min": 68,

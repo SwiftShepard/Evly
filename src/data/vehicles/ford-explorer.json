@@ -24,12 +24,12 @@
   "wltp_max_km": 602,
   "wltp_min_km": 380,
   "realRange": {
-    "mixed_km": 430,
-    "highway_130_km": 310,
-    "urban_km": 530,
-    "winter_minus5_km": 340,
-    "confidence": "estimated",
-    "highway_120_km": 419
+    "mixed_km": 364,
+    "highway_130_km": 277,
+    "urban_km": 461,
+    "winter_minus5_km": 273,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 308
   },
   "consumption_mixed_kWh_per_100km": 17,
   "consumption_highway_kWh_per_100km": 23,
@@ -96,7 +96,34 @@
       "power": 7
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 419,
+      "consumption_kWh_100km": 18.6,
+      "temperature_C": 1,
+      "wheelSize_inches": 19,
+      "tyreModel": "Nokian R5 EV",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Ford Explorer » (hiver, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 308,
+      "consumption_kWh_100km": 25.3,
+      "temperature_C": 1,
+      "wheelSize_inches": 19,
+      "tyreModel": "Nokian R5 EV",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Ford Explorer » (hiver, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 600,
@@ -239,13 +266,41 @@
       "wltp_km": 602,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 430,
-        "highway_130_km": 310,
-        "urban_km": 530,
-        "winter_minus5_km": 340,
-        "confidence": "estimated"
+        "mixed_km": 364,
+        "highway_130_km": 277,
+        "urban_km": 461,
+        "winter_minus5_km": 273,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 308
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 419,
+          "consumption_kWh_100km": 18.6,
+          "temperature_C": 1,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Ford Explorer » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 308,
+          "consumption_kWh_100km": 25.3,
+          "temperature_C": 1,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Ford Explorer » (hiver, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 185,
       "chargingDC_10_80_min": 26,
       "chargingDC_kWh_30min": 55,
@@ -292,13 +347,41 @@
       "wltp_km": 580,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 420,
-        "highway_130_km": 300,
-        "urban_km": 515,
-        "winter_minus5_km": 330,
-        "confidence": "estimated"
+        "mixed_km": 364,
+        "highway_130_km": 277,
+        "urban_km": 461,
+        "winter_minus5_km": 273,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 308
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 419,
+          "consumption_kWh_100km": 18.6,
+          "temperature_C": 1,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Ford Explorer » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 308,
+          "consumption_kWh_100km": 25.3,
+          "temperature_C": 1,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Ford Explorer » (hiver, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 185,
       "chargingDC_10_80_min": 26,
       "chargingDC_kWh_30min": 55,

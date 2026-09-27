@@ -24,12 +24,12 @@
   "wltp_max_km": 410,
   "wltp_min_km": 312,
   "realRange": {
-    "mixed_km": 360,
-    "highway_130_km": 240,
-    "urban_km": 450,
-    "winter_minus5_km": 280,
-    "confidence": "estimated",
-    "highway_120_km": 371
+    "mixed_km": 302,
+    "highway_130_km": 221,
+    "urban_km": 394,
+    "winter_minus5_km": 227,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 246
   },
   "consumption_mixed_kWh_per_100km": 15.5,
   "consumption_highway_kWh_per_100km": 21.5,
@@ -73,6 +73,32 @@
     }
   ],
   "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 358,
+      "consumption_kWh_100km": 13.6,
+      "temperature_C": 19,
+      "wheelSize_inches": 18,
+      "tyreModel": "Continental EcoContact 6Q",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Renault 5 E-Tech 55 kWh » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 246,
+      "consumption_kWh_100km": 19.8,
+      "temperature_C": 19,
+      "wheelSize_inches": 18,
+      "tyreModel": "Continental EcoContact 6Q",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Renault 5 E-Tech 55 kWh » (été, route sèche)."
+    },
     {
       "sourceId": "la-chaine-ev",
       "testDate": "2024-05",
@@ -282,13 +308,40 @@
       "wltp_km": 410,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 360,
-        "highway_130_km": 240,
-        "urban_km": 450,
-        "winter_minus5_km": 280,
-        "confidence": "estimated"
+        "mixed_km": 302,
+        "highway_130_km": 221,
+        "urban_km": 394,
+        "winter_minus5_km": 227,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 246
       },
       "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 358,
+          "consumption_kWh_100km": 13.6,
+          "temperature_C": 19,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental EcoContact 6Q",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Renault 5 E-Tech 55 kWh » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 246,
+          "consumption_kWh_100km": 19.8,
+          "temperature_C": 19,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental EcoContact 6Q",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Renault 5 E-Tech 55 kWh » (été, route sèche)."
+        },
         {
           "sourceId": "la-chaine-ev",
           "testDate": "2024-05",
@@ -345,13 +398,40 @@
       "wltp_km": 410,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 360,
-        "highway_130_km": 240,
-        "urban_km": 450,
-        "winter_minus5_km": 280,
-        "confidence": "estimated"
+        "mixed_km": 302,
+        "highway_130_km": 221,
+        "urban_km": 394,
+        "winter_minus5_km": 227,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 246
       },
       "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 358,
+          "consumption_kWh_100km": 13.6,
+          "temperature_C": 19,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental EcoContact 6Q",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Renault 5 E-Tech 55 kWh » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 246,
+          "consumption_kWh_100km": 19.8,
+          "temperature_C": 19,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental EcoContact 6Q",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Renault 5 E-Tech 55 kWh » (été, route sèche)."
+        },
         {
           "sourceId": "la-chaine-ev",
           "testDate": "2024-05",
@@ -408,13 +488,40 @@
       "wltp_km": 410,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 360,
-        "highway_130_km": 240,
-        "urban_km": 450,
-        "winter_minus5_km": 280,
-        "confidence": "estimated"
+        "mixed_km": 302,
+        "highway_130_km": 221,
+        "urban_km": 394,
+        "winter_minus5_km": 227,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 246
       },
       "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 358,
+          "consumption_kWh_100km": 13.6,
+          "temperature_C": 19,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental EcoContact 6Q",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Renault 5 E-Tech 55 kWh » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 246,
+          "consumption_kWh_100km": 19.8,
+          "temperature_C": 19,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental EcoContact 6Q",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Renault 5 E-Tech 55 kWh » (été, route sèche)."
+        },
         {
           "sourceId": "la-chaine-ev",
           "testDate": "2024-05",

@@ -24,11 +24,12 @@
   "wltp_max_km": 415,
   "wltp_min_km": 330,
   "realRange": {
-    "mixed_km": 320,
-    "highway_130_km": 235,
-    "urban_km": 395,
-    "winter_minus5_km": 255,
-    "confidence": "estimated"
+    "mixed_km": 321,
+    "highway_130_km": 248,
+    "urban_km": 403,
+    "winter_minus5_km": 241,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 275
   },
   "consumption_mixed_kWh_per_100km": 18,
   "consumption_highway_kWh_per_100km": 25,
@@ -75,7 +76,34 @@
       "power": 8
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 366,
+      "consumption_kWh_100km": 16.5,
+      "temperature_C": 15,
+      "wheelSize_inches": 19,
+      "tyreModel": "Continental EC6",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Zeekr X LR RWD 2026 » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 275,
+      "consumption_kWh_100km": 22,
+      "temperature_C": 14,
+      "wheelSize_inches": 19,
+      "tyreModel": "Continental EC6",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Zeekr X LR RWD 2026 » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4432,
   "width_mm": 1836,
@@ -187,13 +215,41 @@
       "wltp_km": 405,
       "wltp_consumption_kWh_100km": 17.2,
       "realRange": {
-        "mixed_km": 310,
-        "highway_130_km": 230,
-        "urban_km": 385,
-        "winter_minus5_km": 250,
-        "confidence": "estimated"
+        "mixed_km": 321,
+        "highway_130_km": 248,
+        "urban_km": 403,
+        "winter_minus5_km": 241,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 275
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 366,
+          "consumption_kWh_100km": 16.5,
+          "temperature_C": 15,
+          "wheelSize_inches": 19,
+          "tyreModel": "Continental EC6",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Zeekr X LR RWD 2026 » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 275,
+          "consumption_kWh_100km": 22,
+          "temperature_C": 14,
+          "wheelSize_inches": 19,
+          "tyreModel": "Continental EC6",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Zeekr X LR RWD 2026 » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 150,
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 42,
@@ -240,13 +296,41 @@
       "wltp_km": 415,
       "wltp_consumption_kWh_100km": 18.5,
       "realRange": {
-        "mixed_km": 320,
-        "highway_130_km": 235,
-        "urban_km": 395,
-        "winter_minus5_km": 255,
-        "confidence": "estimated"
+        "mixed_km": 276,
+        "highway_130_km": 212,
+        "urban_km": 349,
+        "winter_minus5_km": 207,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 235
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 317,
+          "consumption_kWh_100km": 20.6,
+          "temperature_C": -6,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Zeekr X AWD » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 235,
+          "consumption_kWh_100km": 27.8,
+          "temperature_C": -5,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Zeekr X AWD » (hiver, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 150,
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 48,
@@ -320,7 +404,8 @@
   "lastUpdated": "2026-05-18",
   "sources": [
     "constructeur",
-    "automobile-propre"
+    "automobile-propre",
+    "nyland"
   ],
   "imageCredit": "Constructeur"
 }

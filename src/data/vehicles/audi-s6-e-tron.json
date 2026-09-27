@@ -24,12 +24,12 @@
   "wltp_max_km": 675,
   "wltp_min_km": 647,
   "realRange": {
-    "mixed_km": 520,
-    "highway_130_km": 370,
-    "urban_km": 630,
-    "winter_minus5_km": 390,
-    "confidence": "estimated",
-    "highway_120_km": 560
+    "mixed_km": 458,
+    "highway_130_km": 350,
+    "urban_km": 580,
+    "winter_minus5_km": 344,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 389
   },
   "consumption_mixed_kWh_per_100km": 18.3,
   "consumption_highway_kWh_per_100km": 25.6,
@@ -76,7 +76,34 @@
       "power": 10
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 527,
+      "consumption_kWh_100km": 17.8,
+      "temperature_C": 6,
+      "wheelSize_inches": 21,
+      "tyreModel": "Continental VC7",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Audi S6 e-tron Avant » (hiver, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 389,
+      "consumption_kWh_100km": 24.1,
+      "temperature_C": 6,
+      "wheelSize_inches": 21,
+      "tyreModel": "Continental VC7",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Audi S6 e-tron Avant » (hiver, route sèche)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4928,
   "width_mm": 1923,
@@ -178,13 +205,41 @@
       "wltp_km": 647,
       "wltp_consumption_kWh_100km": 17,
       "realRange": {
-        "mixed_km": 500,
-        "highway_130_km": 355,
-        "urban_km": 610,
-        "winter_minus5_km": 375,
-        "confidence": "estimated"
+        "mixed_km": 458,
+        "highway_130_km": 350,
+        "urban_km": 580,
+        "winter_minus5_km": 344,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 389
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 527,
+          "consumption_kWh_100km": 17.8,
+          "temperature_C": 6,
+          "wheelSize_inches": 21,
+          "tyreModel": "Continental VC7",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Audi S6 e-tron Avant » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 389,
+          "consumption_kWh_100km": 24.1,
+          "temperature_C": 6,
+          "wheelSize_inches": 21,
+          "tyreModel": "Continental VC7",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Audi S6 e-tron Avant » (hiver, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 270,
       "chargingDC_10_80_min": 21,
       "chargingDC_kWh_30min": 75,
@@ -259,7 +314,8 @@
   "lastUpdated": "2026-06-03",
   "sources": [
     "constructeur",
-    "automobile-propre"
+    "automobile-propre",
+    "nyland"
   ],
   "imageCredit": "Constructeur"
 }

@@ -24,12 +24,12 @@
   "wltp_max_km": 620,
   "wltp_min_km": 580,
   "realRange": {
-    "mixed_km": 470,
-    "highway_130_km": 340,
-    "urban_km": 580,
-    "winter_minus5_km": 370,
-    "confidence": "estimated",
-    "highway_120_km": 482
+    "mixed_km": 410,
+    "highway_130_km": 304,
+    "urban_km": 530,
+    "winter_minus5_km": 308,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 338
   },
   "consumption_mixed_kWh_per_100km": 20,
   "consumption_highway_kWh_per_100km": 27,
@@ -76,7 +76,34 @@
       "power": 10
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 482,
+      "consumption_kWh_100km": 20.1,
+      "temperature_C": -2,
+      "wheelSize_inches": 22,
+      "tyreModel": "Nokian R5 EV",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Zeekr 001 AWD » (hiver, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 338,
+      "consumption_kWh_100km": 28.5,
+      "temperature_C": -2,
+      "wheelSize_inches": 22,
+      "tyreModel": "Nokian R5 EV",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Zeekr 001 AWD » (hiver, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 610,
@@ -198,13 +225,41 @@
       "wltp_km": 590,
       "wltp_consumption_kWh_100km": 18.2,
       "realRange": {
-        "mixed_km": 445,
-        "highway_130_km": 325,
-        "urban_km": 555,
-        "winter_minus5_km": 355,
-        "confidence": "estimated"
+        "mixed_km": 410,
+        "highway_130_km": 304,
+        "urban_km": 530,
+        "winter_minus5_km": 308,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 338
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 482,
+          "consumption_kWh_100km": 20.1,
+          "temperature_C": -2,
+          "wheelSize_inches": 22,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Zeekr 001 AWD » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 338,
+          "consumption_kWh_100km": 28.5,
+          "temperature_C": -2,
+          "wheelSize_inches": 22,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Zeekr 001 AWD » (hiver, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 200,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 65,

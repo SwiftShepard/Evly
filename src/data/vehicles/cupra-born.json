@@ -24,12 +24,12 @@
   "wltp_max_km": 555,
   "wltp_min_km": 425,
   "realRange": {
-    "mixed_km": 425,
-    "highway_130_km": 280,
-    "urban_km": 510,
-    "winter_minus5_km": 330,
-    "confidence": "estimated",
-    "highway_120_km": 334
+    "mixed_km": 288,
+    "highway_130_km": 217,
+    "urban_km": 367,
+    "winter_minus5_km": 216,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 241
   },
   "consumption_mixed_kWh_per_100km": 15.8,
   "consumption_highway_kWh_per_100km": 21,
@@ -76,7 +76,34 @@
       "power": 11
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 334,
+      "consumption_kWh_100km": 16.7,
+      "temperature_C": 3,
+      "wheelSize_inches": 19,
+      "tyreModel": "Nokian R3",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Cupra Born 58 » (hiver, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 241,
+      "consumption_kWh_100km": 23.1,
+      "temperature_C": 4,
+      "wheelSize_inches": 19,
+      "tyreModel": "Nokian R3",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Cupra Born 58 » (hiver, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 690,
@@ -154,13 +181,41 @@
       "wltp_km": 425,
       "wltp_consumption_kWh_100km": 15.3,
       "realRange": {
-        "mixed_km": 320,
-        "highway_130_km": 205,
-        "urban_km": 380,
-        "winter_minus5_km": 250,
-        "confidence": "estimated"
+        "mixed_km": 288,
+        "highway_130_km": 217,
+        "urban_km": 367,
+        "winter_minus5_km": 216,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 241
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 334,
+          "consumption_kWh_100km": 16.7,
+          "temperature_C": 3,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nokian R3",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Cupra Born 58 » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 241,
+          "consumption_kWh_100km": 23.1,
+          "temperature_C": 4,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nokian R3",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Cupra Born 58 » (hiver, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 135,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 60,
@@ -207,13 +262,41 @@
       "wltp_km": 555,
       "wltp_consumption_kWh_100km": 15.8,
       "realRange": {
-        "mixed_km": 425,
-        "highway_130_km": 280,
-        "urban_km": 510,
-        "winter_minus5_km": 330,
-        "confidence": "estimated"
+        "mixed_km": 320,
+        "highway_130_km": 250,
+        "urban_km": 397,
+        "winter_minus5_km": 240,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 278
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 361,
+          "consumption_kWh_100km": 18.7,
+          "temperature_C": 2,
+          "wheelSize_inches": 18,
+          "tyreModel": "Cooper SUV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Cupra Born 82 kWh » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 278,
+          "consumption_kWh_100km": 24.3,
+          "temperature_C": 2,
+          "wheelSize_inches": 18,
+          "tyreModel": "Cooper SUV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Cupra Born 82 kWh » (hiver, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 175,
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 80,

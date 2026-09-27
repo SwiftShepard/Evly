@@ -24,11 +24,12 @@
   "wltp_max_km": 350,
   "wltp_min_km": 230,
   "realRange": {
-    "mixed_km": 280,
-    "highway_130_km": 180,
-    "urban_km": 340,
-    "winter_minus5_km": 220,
-    "confidence": "estimated"
+    "mixed_km": 238,
+    "highway_130_km": 162,
+    "urban_km": 325,
+    "winter_minus5_km": 179,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 180
   },
   "consumption_mixed_kWh_per_100km": 21.5,
   "consumption_highway_kWh_per_100km": 29,
@@ -43,7 +44,7 @@
   "chargingAC": {
     "onboardCharger_kW": 11,
     "phases": 3,
-    "time_0_100_h": 7.0
+    "time_0_100_h": 7
   },
   "plugAndCharge": false,
   "v2l": false,
@@ -71,7 +72,34 @@
       "power": 8
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 295,
+      "consumption_kWh_100km": 21.1,
+      "temperature_C": 19,
+      "wheelSize_inches": 17,
+      "tyreModel": "Michelin Primacy 4",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Citroen e-Spacetourer » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 180,
+      "consumption_kWh_100km": 34.6,
+      "temperature_C": 17,
+      "wheelSize_inches": 17,
+      "tyreModel": "Michelin Primacy 4",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Citroen e-Spacetourer » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4959,
   "width_mm": 1920,
@@ -158,13 +186,41 @@
       "wltp_km": 330,
       "wltp_consumption_kWh_100km": 21.5,
       "realRange": {
-        "mixed_km": 260,
-        "highway_130_km": 170,
-        "urban_km": 320,
-        "winter_minus5_km": 205,
-        "confidence": "estimated"
+        "mixed_km": 238,
+        "highway_130_km": 162,
+        "urban_km": 325,
+        "winter_minus5_km": 179,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 180
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 295,
+          "consumption_kWh_100km": 21.1,
+          "temperature_C": 19,
+          "wheelSize_inches": 17,
+          "tyreModel": "Michelin Primacy 4",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Citroen e-Spacetourer » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 180,
+          "consumption_kWh_100km": 34.6,
+          "temperature_C": 17,
+          "wheelSize_inches": 17,
+          "tyreModel": "Michelin Primacy 4",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Citroen e-Spacetourer » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 45,
       "chargingDC_kWh_30min": 40,
@@ -186,13 +242,41 @@
       "wltp_km": 350,
       "wltp_consumption_kWh_100km": 21.8,
       "realRange": {
-        "mixed_km": 280,
-        "highway_130_km": 180,
-        "urban_km": 340,
-        "winter_minus5_km": 220,
-        "confidence": "estimated"
+        "mixed_km": 238,
+        "highway_130_km": 162,
+        "urban_km": 325,
+        "winter_minus5_km": 179,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 180
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 295,
+          "consumption_kWh_100km": 21.1,
+          "temperature_C": 19,
+          "wheelSize_inches": 17,
+          "tyreModel": "Michelin Primacy 4",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Citroen e-Spacetourer » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 180,
+          "consumption_kWh_100km": 34.6,
+          "temperature_C": 17,
+          "wheelSize_inches": 17,
+          "tyreModel": "Michelin Primacy 4",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Citroen e-Spacetourer » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 45,
       "chargingDC_kWh_30min": 40,
@@ -241,7 +325,8 @@
   "lastUpdated": "2026-06-04",
   "sources": [
     "citroen-fr",
-    "automobile-propre"
+    "automobile-propre",
+    "nyland"
   ],
   "imageCredit": "Constructeur"
 }

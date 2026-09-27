@@ -24,12 +24,12 @@
   "wltp_max_km": 656,
   "wltp_min_km": 590,
   "realRange": {
-    "mixed_km": 470,
-    "highway_130_km": 335,
-    "urban_km": 580,
-    "winter_minus5_km": 365,
-    "confidence": "estimated",
-    "highway_120_km": 521
+    "mixed_km": 416,
+    "highway_130_km": 320,
+    "urban_km": 524,
+    "winter_minus5_km": 312,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 355
   },
   "consumption_mixed_kWh_per_100km": 18,
   "consumption_highway_kWh_per_100km": 24,
@@ -96,7 +96,34 @@
       "power": 4
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 476,
+      "consumption_kWh_100km": 19.7,
+      "temperature_C": 10,
+      "wheelSize_inches": 21,
+      "tyreModel": "Pirelli P Zero",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « 2026 Audi Q6 e-tron Quattro » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 355,
+      "consumption_kWh_100km": 26.4,
+      "temperature_C": 10,
+      "wheelSize_inches": 21,
+      "tyreModel": "Pirelli P Zero",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « 2026 Audi Q6 e-tron Quattro » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 570,
@@ -233,7 +260,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 639,
-      "wltp_consumption_kWh_100km": 17.0,
+      "wltp_consumption_kWh_100km": 17,
       "realRange": {
         "mixed_km": 490,
         "highway_130_km": 350,
@@ -286,7 +313,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 639,
-      "wltp_consumption_kWh_100km": 17.0,
+      "wltp_consumption_kWh_100km": 17,
       "realRange": {
         "mixed_km": 490,
         "highway_130_km": 350,
@@ -341,13 +368,41 @@
       "wltp_km": 625,
       "wltp_consumption_kWh_100km": 17.5,
       "realRange": {
-        "mixed_km": 470,
-        "highway_130_km": 335,
-        "urban_km": 580,
-        "winter_minus5_km": 365,
-        "confidence": "estimated"
+        "mixed_km": 416,
+        "highway_130_km": 320,
+        "urban_km": 524,
+        "winter_minus5_km": 312,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 355
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 476,
+          "consumption_kWh_100km": 19.7,
+          "temperature_C": 10,
+          "wheelSize_inches": 21,
+          "tyreModel": "Pirelli P Zero",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « 2026 Audi Q6 e-tron Quattro » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 355,
+          "consumption_kWh_100km": 26.4,
+          "temperature_C": 10,
+          "wheelSize_inches": 21,
+          "tyreModel": "Pirelli P Zero",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « 2026 Audi Q6 e-tron Quattro » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 270,
       "chargingDC_10_80_min": 21,
       "chargingDC_kWh_30min": 75,
@@ -394,13 +449,41 @@
       "wltp_km": 625,
       "wltp_consumption_kWh_100km": 17.5,
       "realRange": {
-        "mixed_km": 470,
-        "highway_130_km": 335,
-        "urban_km": 580,
-        "winter_minus5_km": 365,
-        "confidence": "estimated"
+        "mixed_km": 416,
+        "highway_130_km": 320,
+        "urban_km": 524,
+        "winter_minus5_km": 312,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 355
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 476,
+          "consumption_kWh_100km": 19.7,
+          "temperature_C": 10,
+          "wheelSize_inches": 21,
+          "tyreModel": "Pirelli P Zero",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « 2026 Audi Q6 e-tron Quattro » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 355,
+          "consumption_kWh_100km": 26.4,
+          "temperature_C": 10,
+          "wheelSize_inches": 21,
+          "tyreModel": "Pirelli P Zero",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « 2026 Audi Q6 e-tron Quattro » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 270,
       "chargingDC_10_80_min": 21,
       "chargingDC_kWh_30min": 75,
@@ -447,13 +530,41 @@
       "wltp_km": 590,
       "wltp_consumption_kWh_100km": 18.5,
       "realRange": {
-        "mixed_km": 440,
-        "highway_130_km": 315,
-        "urban_km": 540,
-        "winter_minus5_km": 340,
-        "confidence": "estimated"
+        "mixed_km": 455,
+        "highway_130_km": 345,
+        "urban_km": 580,
+        "winter_minus5_km": 341,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 383
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 527,
+          "consumption_kWh_100km": 17.8,
+          "temperature_C": 8,
+          "wheelSize_inches": 21,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Audi SQ6 e-tron » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 383,
+          "consumption_kWh_100km": 24.5,
+          "temperature_C": 8,
+          "wheelSize_inches": 21,
+          "tyreModel": "Nokian R5 EV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Audi SQ6 e-tron » (hiver, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 270,
       "chargingDC_10_80_min": 21,
       "chargingDC_kWh_30min": 75,
@@ -606,13 +717,41 @@
       "wltp_km": 636,
       "wltp_consumption_kWh_100km": 17.2,
       "realRange": {
-        "mixed_km": 485,
-        "highway_130_km": 345,
-        "urban_km": 595,
-        "winter_minus5_km": 375,
-        "confidence": "estimated"
+        "mixed_km": 476,
+        "highway_130_km": 359,
+        "urban_km": 607,
+        "winter_minus5_km": 357,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 399
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 552,
+          "consumption_kWh_100km": 17,
+          "temperature_C": 20,
+          "wheelSize_inches": 21,
+          "tyreModel": "Goodyear Eagle F1",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Audi Q6 e-tron Sportback Quattro » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 399,
+          "consumption_kWh_100km": 23.5,
+          "temperature_C": 17,
+          "wheelSize_inches": 21,
+          "tyreModel": "Goodyear Eagle F1",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Audi Q6 e-tron Sportback Quattro » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 270,
       "chargingDC_10_80_min": 21,
       "chargingDC_kWh_30min": 75,
@@ -659,13 +798,41 @@
       "wltp_km": 636,
       "wltp_consumption_kWh_100km": 17.2,
       "realRange": {
-        "mixed_km": 485,
-        "highway_130_km": 345,
-        "urban_km": 595,
-        "winter_minus5_km": 375,
-        "confidence": "estimated"
+        "mixed_km": 476,
+        "highway_130_km": 359,
+        "urban_km": 607,
+        "winter_minus5_km": 357,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 399
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 552,
+          "consumption_kWh_100km": 17,
+          "temperature_C": 20,
+          "wheelSize_inches": 21,
+          "tyreModel": "Goodyear Eagle F1",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Audi Q6 e-tron Sportback Quattro » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 399,
+          "consumption_kWh_100km": 23.5,
+          "temperature_C": 17,
+          "wheelSize_inches": 21,
+          "tyreModel": "Goodyear Eagle F1",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Audi Q6 e-tron Sportback Quattro » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 270,
       "chargingDC_10_80_min": 21,
       "chargingDC_kWh_30min": 75,
@@ -710,7 +877,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 601,
-      "wltp_consumption_kWh_100km": 18.0,
+      "wltp_consumption_kWh_100km": 18,
       "realRange": {
         "mixed_km": 450,
         "highway_130_km": 325,
@@ -793,7 +960,8 @@
   "lastUpdated": "2026-06-03",
   "sources": [
     "constructeur",
-    "automobile-propre"
+    "automobile-propre",
+    "nyland"
   ],
   "imageCredit": "Constructeur"
 }

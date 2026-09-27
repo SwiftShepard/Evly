@@ -14,7 +14,7 @@
   "torque_Nm": 245,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 8.0,
+  "acceleration_0_100_s": 8,
   "topSpeed_kmh": 150,
   "usableCapacity_kWh": 52,
   "grossCapacity_kWh": 55,
@@ -24,11 +24,12 @@
   "wltp_max_km": 419,
   "wltp_min_km": 319,
   "realRange": {
-    "mixed_km": 360,
-    "highway_130_km": 240,
-    "urban_km": 450,
-    "winter_minus5_km": 280,
-    "confidence": "estimated"
+    "mixed_km": 312,
+    "highway_130_km": 230,
+    "urban_km": 406,
+    "winter_minus5_km": 234,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 255
   },
   "consumption_mixed_kWh_per_100km": 15.5,
   "consumption_highway_kWh_per_100km": 21.5,
@@ -71,7 +72,34 @@
       "power": 8
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 369,
+      "consumption_kWh_100km": 13.2,
+      "temperature_C": 18,
+      "wheelSize_inches": 18,
+      "tyreModel": "Hankook iOn Evo",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Nissan Micra 55 kWh » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 255,
+      "consumption_kWh_100km": 19.1,
+      "temperature_C": 18,
+      "wheelSize_inches": 18,
+      "tyreModel": "Hankook iOn Evo",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Nissan Micra 55 kWh » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 3970,
   "width_mm": 1770,
@@ -139,7 +167,7 @@
       "monthlyLease_EUR": 139,
       "leasingSocialEligible": true,
       "wltp_km": 319,
-      "wltp_consumption_kWh_100km": 15.0,
+      "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 280,
         "highway_130_km": 180,
@@ -167,7 +195,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 319,
-      "wltp_consumption_kWh_100km": 15.0,
+      "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 280,
         "highway_130_km": 180,
@@ -197,13 +225,41 @@
       "wltp_km": 419,
       "wltp_consumption_kWh_100km": 15.2,
       "realRange": {
-        "mixed_km": 360,
-        "highway_130_km": 240,
-        "urban_km": 450,
-        "winter_minus5_km": 280,
-        "confidence": "estimated"
+        "mixed_km": 312,
+        "highway_130_km": 230,
+        "urban_km": 406,
+        "winter_minus5_km": 234,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 255
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 369,
+          "consumption_kWh_100km": 13.2,
+          "temperature_C": 18,
+          "wheelSize_inches": 18,
+          "tyreModel": "Hankook iOn Evo",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Nissan Micra 55 kWh » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 255,
+          "consumption_kWh_100km": 19.1,
+          "temperature_C": 18,
+          "wheelSize_inches": 18,
+          "tyreModel": "Hankook iOn Evo",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Nissan Micra 55 kWh » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 35,
@@ -253,7 +309,8 @@
   "lastUpdated": "2026-07-08",
   "sources": [
     "constructeur",
-    "automobile-propre"
+    "automobile-propre",
+    "nyland"
   ],
   "imageCredit": "Constructeur",
   "availability": "upcoming"

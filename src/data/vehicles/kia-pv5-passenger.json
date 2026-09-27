@@ -24,12 +24,12 @@
   "wltp_max_km": 450,
   "wltp_min_km": 450,
   "realRange": {
-    "mixed_km": 350,
-    "highway_130_km": 250,
-    "urban_km": 420,
-    "winter_minus5_km": 280,
-    "confidence": "estimated",
-    "highway_120_km": 379
+    "mixed_km": 321,
+    "highway_130_km": 236,
+    "urban_km": 417,
+    "winter_minus5_km": 241,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 262
   },
   "consumption_mixed_kWh_per_100km": 15,
   "consumption_highway_kWh_per_100km": 21,
@@ -96,7 +96,34 @@
       "power": 3
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 379,
+      "consumption_kWh_100km": 17.7,
+      "temperature_C": 18,
+      "wheelSize_inches": 16,
+      "tyreModel": "Nexen N blue S",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Kia PV5 Passenger » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 262,
+      "consumption_kWh_100km": 25.6,
+      "temperature_C": 17,
+      "wheelSize_inches": 16,
+      "tyreModel": "Nexen N blue S",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Kia PV5 Passenger » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4700,
   "width_mm": 1900,
@@ -134,13 +161,41 @@
       "wltp_km": 450,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 350,
-        "highway_130_km": 250,
-        "urban_km": 420,
-        "winter_minus5_km": 280,
-        "confidence": "estimated"
+        "mixed_km": 321,
+        "highway_130_km": 236,
+        "urban_km": 417,
+        "winter_minus5_km": 241,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 262
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 379,
+          "consumption_kWh_100km": 17.7,
+          "temperature_C": 18,
+          "wheelSize_inches": 16,
+          "tyreModel": "Nexen N blue S",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Kia PV5 Passenger » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 262,
+          "consumption_kWh_100km": 25.6,
+          "temperature_C": 17,
+          "wheelSize_inches": 16,
+          "tyreModel": "Nexen N blue S",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Kia PV5 Passenger » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 128,
       "chargingDC_10_80_min": 31,
       "chargingDC_kWh_30min": 50,

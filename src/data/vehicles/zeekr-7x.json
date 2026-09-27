@@ -24,12 +24,12 @@
   "wltp_max_km": 615,
   "wltp_min_km": 480,
   "realRange": {
-    "mixed_km": 460,
-    "highway_130_km": 335,
-    "urban_km": 570,
-    "winter_minus5_km": 365,
-    "confidence": "estimated",
-    "highway_120_km": 550
+    "mixed_km": 478,
+    "highway_130_km": 365,
+    "urban_km": 605,
+    "winter_minus5_km": 359,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 405
   },
   "consumption_mixed_kWh_per_100km": 20.5,
   "consumption_highway_kWh_per_100km": 27,
@@ -96,7 +96,34 @@
       "power": 8
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 550,
+      "consumption_kWh_100km": 17.5,
+      "temperature_C": 21,
+      "wheelSize_inches": 21,
+      "tyreModel": "Continental EcoContact 7",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Zeekr 7X Performance AWD » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 405,
+      "consumption_kWh_100km": 23.8,
+      "temperature_C": 21,
+      "wheelSize_inches": 21,
+      "tyreModel": "Continental EcoContact 7",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Zeekr 7X Performance AWD » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 535,
@@ -271,13 +298,41 @@
       "wltp_km": 590,
       "wltp_consumption_kWh_100km": 19,
       "realRange": {
-        "mixed_km": 440,
-        "highway_130_km": 320,
-        "urban_km": 545,
-        "winter_minus5_km": 350,
-        "confidence": "estimated"
+        "mixed_km": 478,
+        "highway_130_km": 365,
+        "urban_km": 605,
+        "winter_minus5_km": 359,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 405
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 550,
+          "consumption_kWh_100km": 17.5,
+          "temperature_C": 21,
+          "wheelSize_inches": 21,
+          "tyreModel": "Continental EcoContact 7",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Zeekr 7X Performance AWD » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 405,
+          "consumption_kWh_100km": 23.8,
+          "temperature_C": 21,
+          "wheelSize_inches": 21,
+          "tyreModel": "Continental EcoContact 7",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Zeekr 7X Performance AWD » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 480,
       "chargingDC_10_80_min": 16,
       "chargingDC_kWh_30min": 80,

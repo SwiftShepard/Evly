@@ -24,12 +24,12 @@
   "wltp_max_km": 505,
   "wltp_min_km": 415,
   "realRange": {
-    "mixed_km": 380,
-    "highway_130_km": 280,
-    "urban_km": 470,
-    "winter_minus5_km": 305,
-    "confidence": "estimated",
-    "highway_120_km": 459
+    "mixed_km": 401,
+    "highway_130_km": 309,
+    "urban_km": 505,
+    "winter_minus5_km": 301,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 343
   },
   "consumption_mixed_kWh_per_100km": 22,
   "consumption_highway_kWh_per_100km": 29,
@@ -76,7 +76,34 @@
       "power": 8
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 459,
+      "consumption_kWh_100km": 18.7,
+      "temperature_C": -1,
+      "wheelSize_inches": 19,
+      "tyreModel": "Nokian R5",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Nio ET7 100 kWh » (hiver, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 343,
+      "consumption_kWh_100km": 25,
+      "temperature_C": -1,
+      "wheelSize_inches": 19,
+      "tyreModel": "Nokian R5",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Nio ET7 100 kWh » (hiver, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 560,
@@ -188,13 +215,41 @@
       "wltp_km": 505,
       "wltp_consumption_kWh_100km": 21.5,
       "realRange": {
-        "mixed_km": 380,
-        "highway_130_km": 280,
-        "urban_km": 470,
-        "winter_minus5_km": 305,
-        "confidence": "estimated"
+        "mixed_km": 401,
+        "highway_130_km": 309,
+        "urban_km": 505,
+        "winter_minus5_km": 301,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 343
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 459,
+          "consumption_kWh_100km": 18.7,
+          "temperature_C": -1,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nokian R5",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Nio ET7 100 kWh » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 343,
+          "consumption_kWh_100km": 25,
+          "temperature_C": -1,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nokian R5",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Nio ET7 100 kWh » (hiver, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 140,
       "chargingDC_10_80_min": 35,
       "chargingDC_kWh_30min": 55,

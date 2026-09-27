@@ -24,11 +24,11 @@
   "wltp_max_km": 427,
   "wltp_min_km": 427,
   "realRange": {
-    "mixed_km": 340,
-    "highway_130_km": 255,
-    "highway_120_km": 280,
-    "urban_km": 400,
-    "winter_minus5_km": 240,
+    "mixed_km": 321,
+    "highway_130_km": 240,
+    "highway_120_km": 267,
+    "urban_km": 413,
+    "winter_minus5_km": 241,
     "confidence": "bjorn_nyland"
   },
   "consumption_mixed_kWh_per_100km": 15,
@@ -99,29 +99,29 @@
   "rangeTests": [
     {
       "sourceId": "nyland",
-      "testDate": "2023-08",
+      "testDate": null,
       "speed_kmh": 90,
-      "range_km": 390,
-      "consumption_kWh_100km": 15.5,
-      "temperature_C": 20,
+      "range_km": 375,
+      "consumption_kWh_100km": 15.7,
+      "temperature_C": 17,
       "wheelSize_inches": 17,
-      "tyreModel": null,
+      "tyreModel": "LingLong ComfortMaster",
       "protocol": "nyland",
       "videoUrl": null,
-      "notes": "BYD Dolphin standard range."
+      "notes": "Essai Nyland « BYD Dolphin » (été, route sèche)."
     },
     {
       "sourceId": "nyland",
-      "testDate": "2023-08",
+      "testDate": null,
       "speed_kmh": 120,
-      "range_km": 280,
-      "consumption_kWh_100km": 21.6,
-      "temperature_C": 20,
+      "range_km": 267,
+      "consumption_kWh_100km": 22.1,
+      "temperature_C": 17,
       "wheelSize_inches": 17,
-      "tyreModel": null,
+      "tyreModel": "LingLong ComfortMaster",
       "protocol": "nyland",
       "videoUrl": null,
-      "notes": ""
+      "notes": "Essai Nyland « BYD Dolphin » (été, route sèche)."
     }
   ],
   "thousandKmChallenge": null,
@@ -172,39 +172,39 @@
       "wltp_km": 427,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 340,
-        "highway_130_km": 255,
-        "highway_120_km": 280,
-        "urban_km": 400,
-        "winter_minus5_km": 240,
+        "mixed_km": 321,
+        "highway_130_km": 240,
+        "highway_120_km": 267,
+        "urban_km": 413,
+        "winter_minus5_km": 241,
         "confidence": "bjorn_nyland"
       },
       "rangeTests": [
         {
           "sourceId": "nyland",
-          "testDate": "2023-08",
+          "testDate": null,
           "speed_kmh": 90,
-          "range_km": 390,
-          "consumption_kWh_100km": 15.5,
-          "temperature_C": 20,
+          "range_km": 375,
+          "consumption_kWh_100km": 15.7,
+          "temperature_C": 17,
           "wheelSize_inches": 17,
-          "tyreModel": null,
+          "tyreModel": "LingLong ComfortMaster",
           "protocol": "nyland",
           "videoUrl": null,
-          "notes": "BYD Dolphin standard range."
+          "notes": "Essai Nyland « BYD Dolphin » (été, route sèche)."
         },
         {
           "sourceId": "nyland",
-          "testDate": "2023-08",
+          "testDate": null,
           "speed_kmh": 120,
-          "range_km": 280,
-          "consumption_kWh_100km": 21.6,
-          "temperature_C": 20,
+          "range_km": 267,
+          "consumption_kWh_100km": 22.1,
+          "temperature_C": 17,
           "wheelSize_inches": 17,
-          "tyreModel": null,
+          "tyreModel": "LingLong ComfortMaster",
           "protocol": "nyland",
           "videoUrl": null,
-          "notes": ""
+          "notes": "Essai Nyland « BYD Dolphin » (été, route sèche)."
         }
       ],
       "chargingDC_peak_kW": 88,
@@ -249,39 +249,39 @@
       "wltp_km": 427,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 340,
-        "highway_130_km": 255,
-        "highway_120_km": 280,
-        "urban_km": 400,
-        "winter_minus5_km": 240,
+        "mixed_km": 321,
+        "highway_130_km": 240,
+        "highway_120_km": 267,
+        "urban_km": 413,
+        "winter_minus5_km": 241,
         "confidence": "bjorn_nyland"
       },
       "rangeTests": [
         {
           "sourceId": "nyland",
-          "testDate": "2023-08",
+          "testDate": null,
           "speed_kmh": 90,
-          "range_km": 390,
-          "consumption_kWh_100km": 15.5,
-          "temperature_C": 20,
+          "range_km": 375,
+          "consumption_kWh_100km": 15.7,
+          "temperature_C": 17,
           "wheelSize_inches": 17,
-          "tyreModel": null,
+          "tyreModel": "LingLong ComfortMaster",
           "protocol": "nyland",
           "videoUrl": null,
-          "notes": "BYD Dolphin standard range."
+          "notes": "Essai Nyland « BYD Dolphin » (été, route sèche)."
         },
         {
           "sourceId": "nyland",
-          "testDate": "2023-08",
+          "testDate": null,
           "speed_kmh": 120,
-          "range_km": 280,
-          "consumption_kWh_100km": 21.6,
-          "temperature_C": 20,
+          "range_km": 267,
+          "consumption_kWh_100km": 22.1,
+          "temperature_C": 17,
           "wheelSize_inches": 17,
-          "tyreModel": null,
+          "tyreModel": "LingLong ComfortMaster",
           "protocol": "nyland",
           "videoUrl": null,
-          "notes": ""
+          "notes": "Essai Nyland « BYD Dolphin » (été, route sèche)."
         }
       ],
       "chargingDC_peak_kW": 88,

@@ -16,23 +16,24 @@
   "motors": 1,
   "acceleration_0_100_s": 5.9,
   "topSpeed_kmh": 200,
-  "usableCapacity_kWh": 70.0,
-  "grossCapacity_kWh": 75.0,
+  "usableCapacity_kWh": 70,
+  "grossCapacity_kWh": 75,
   "chemistry": "LFP",
   "architecture_V": 800,
   "mass_kg": 1960,
   "wltp_max_km": 655,
   "wltp_min_km": 490,
   "realRange": {
-    "mixed_km": 450,
-    "highway_130_km": 330,
-    "urban_km": 540,
-    "winter_minus5_km": 350,
-    "confidence": "estimated"
+    "mixed_km": 417,
+    "highway_130_km": 325,
+    "urban_km": 520,
+    "winter_minus5_km": 313,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 361
   },
   "consumption_mixed_kWh_per_100km": 15.2,
-  "consumption_highway_kWh_per_100km": 21.0,
-  "consumption_winter_kWh_per_100km": 20.0,
+  "consumption_highway_kWh_per_100km": 21,
+  "consumption_winter_kWh_per_100km": 20,
   "dragCoefficient_Cx": 0.22,
   "chargingDC": {
     "peakPower_kW": 300,
@@ -75,7 +76,34 @@
       "power": 10
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 473,
+      "consumption_kWh_100km": 20.4,
+      "temperature_C": 13,
+      "wheelSize_inches": 19,
+      "tyreModel": "Hankook iOn Evo",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « MG IM5 100 kWh AWD » (été, route humide)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 361,
+      "consumption_kWh_100km": 26.7,
+      "temperature_C": 13,
+      "wheelSize_inches": 19,
+      "tyreModel": "Hankook iOn Evo",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « MG IM5 100 kWh AWD » (été, route humide)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4931,
   "width_mm": 1960,
@@ -173,13 +201,41 @@
       "wltp_km": 655,
       "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
-        "mixed_km": 530,
-        "highway_130_km": 390,
-        "urban_km": 630,
-        "winter_minus5_km": 410,
-        "confidence": "estimated"
+        "mixed_km": 417,
+        "highway_130_km": 325,
+        "urban_km": 520,
+        "winter_minus5_km": 313,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 361
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 473,
+          "consumption_kWh_100km": 20.4,
+          "temperature_C": 13,
+          "wheelSize_inches": 19,
+          "tyreModel": "Hankook iOn Evo",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « MG IM5 100 kWh AWD » (été, route humide)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 361,
+          "consumption_kWh_100km": 26.7,
+          "temperature_C": 13,
+          "wheelSize_inches": 19,
+          "tyreModel": "Hankook iOn Evo",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « MG IM5 100 kWh AWD » (été, route humide)."
+        }
+      ],
       "chargingDC_peak_kW": 300,
       "chargingDC_10_80_min": 15,
       "chargingDC_kWh_30min": 78,
@@ -250,7 +306,8 @@
   "lastUpdated": "2026-07-07",
   "sources": [
     "constructeur",
-    "automobile-propre"
+    "automobile-propre",
+    "nyland"
   ],
   "imageCredit": "Constructeur",
   "availability": "upcoming"

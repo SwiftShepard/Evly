@@ -26,10 +26,9 @@
   "realRange": {
     "mixed_km": 450,
     "highway_130_km": 315,
-    "highway_120_km": 346,
     "urban_km": 530,
     "winter_minus5_km": 360,
-    "confidence": "bjorn_nyland"
+    "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 16,
   "consumption_highway_kWh_per_100km": 23.5,
@@ -72,34 +71,7 @@
       "power": 10
     }
   ],
-  "rangeTests": [
-    {
-      "sourceId": "nyland",
-      "testDate": "2023-08",
-      "speed_kmh": 90,
-      "range_km": 498,
-      "consumption_kWh_100km": 15.4,
-      "temperature_C": 18,
-      "wheelSize_inches": 19,
-      "tyreModel": null,
-      "protocol": "nyland",
-      "videoUrl": null,
-      "notes": ""
-    },
-    {
-      "sourceId": "nyland",
-      "testDate": "2023-08",
-      "speed_kmh": 120,
-      "range_km": 334,
-      "consumption_kWh_100km": 22.9,
-      "temperature_C": 18,
-      "wheelSize_inches": 19,
-      "tyreModel": null,
-      "protocol": "nyland",
-      "videoUrl": null,
-      "notes": ""
-    }
-  ],
+  "rangeTests": [],
   "thousandKmChallenge": null,
   "length_mm": 4584,
   "width_mm": 1852,
@@ -175,8 +147,7 @@
         "highway_130_km": 210,
         "urban_km": 360,
         "winter_minus5_km": 220,
-        "confidence": "estimated",
-        "highway_120_km": 230
+        "confidence": "estimated"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 115,
@@ -223,39 +194,11 @@
       "realRange": {
         "mixed_km": 450,
         "highway_130_km": 315,
-        "highway_120_km": 346,
         "urban_km": 530,
         "winter_minus5_km": 360,
-        "confidence": "bjorn_nyland"
+        "confidence": "estimated"
       },
-      "rangeTests": [
-        {
-          "sourceId": "nyland",
-          "testDate": "2023-08",
-          "speed_kmh": 90,
-          "range_km": 498,
-          "consumption_kWh_100km": 15.4,
-          "temperature_C": 18,
-          "wheelSize_inches": 19,
-          "tyreModel": null,
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": ""
-        },
-        {
-          "sourceId": "nyland",
-          "testDate": "2023-08",
-          "speed_kmh": 120,
-          "range_km": 334,
-          "consumption_kWh_100km": 22.9,
-          "temperature_C": 18,
-          "wheelSize_inches": 19,
-          "tyreModel": null,
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": ""
-        }
-      ],
+      "rangeTests": [],
       "chargingDC_peak_kW": 175,
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 55,
@@ -300,7 +243,6 @@
       "realRange": {
         "mixed_km": 410,
         "highway_130_km": 285,
-        "highway_120_km": 315,
         "urban_km": 480,
         "winter_minus5_km": 320,
         "confidence": "estimated"

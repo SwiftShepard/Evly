@@ -24,11 +24,12 @@
   "wltp_max_km": 473,
   "wltp_min_km": 450,
   "realRange": {
-    "mixed_km": 360,
-    "highway_130_km": 240,
-    "urban_km": 440,
-    "winter_minus5_km": 280,
-    "confidence": "estimated"
+    "mixed_km": 354,
+    "highway_130_km": 259,
+    "urban_km": 461,
+    "winter_minus5_km": 266,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 288
   },
   "consumption_mixed_kWh_per_100km": 27.5,
   "consumption_highway_kWh_per_100km": 38,
@@ -114,13 +115,41 @@
       "wltp_km": 473,
       "wltp_consumption_kWh_100km": 26.3,
       "realRange": {
-        "mixed_km": 360,
-        "highway_130_km": 240,
-        "urban_km": 440,
-        "winter_minus5_km": 280,
-        "confidence": "estimated"
+        "mixed_km": 354,
+        "highway_130_km": 259,
+        "urban_km": 461,
+        "winter_minus5_km": 266,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 288
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 419,
+          "consumption_kWh_100km": 27.5,
+          "temperature_C": 13,
+          "wheelSize_inches": 18,
+          "tyreModel": "Falken Azenis FK520",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes G580 » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 288,
+          "consumption_kWh_100km": 40,
+          "temperature_C": 12,
+          "wheelSize_inches": 18,
+          "tyreModel": "Falken Azenis FK520",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes G580 » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 200,
       "chargingDC_10_80_min": 32,
       "chargingDC_kWh_30min": 65,
@@ -192,7 +221,36 @@
     "notIdealFor": "Navetteurs autoroutiers réguliers ou personnes soucieuses d'efficience énergétique."
   },
   "sources": [
-    "constructeur"
+    "constructeur",
+    "nyland"
   ],
-  "imageCredit": "Constructeur"
+  "imageCredit": "Constructeur",
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 419,
+      "consumption_kWh_100km": 27.5,
+      "temperature_C": 13,
+      "wheelSize_inches": 18,
+      "tyreModel": "Falken Azenis FK520",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Mercedes G580 » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 288,
+      "consumption_kWh_100km": 40,
+      "temperature_C": 12,
+      "wheelSize_inches": 18,
+      "tyreModel": "Falken Azenis FK520",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Mercedes G580 » (été, route sèche)."
+    }
+  ]
 }

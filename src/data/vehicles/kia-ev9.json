@@ -24,12 +24,12 @@
   "wltp_max_km": 563,
   "wltp_min_km": 505,
   "realRange": {
-    "mixed_km": 480,
-    "highway_130_km": 350,
-    "urban_km": 550,
-    "winter_minus5_km": 380,
-    "confidence": "tested",
-    "highway_120_km": 388
+    "mixed_km": 337,
+    "highway_130_km": 257,
+    "urban_km": 427,
+    "winter_minus5_km": 253,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 286
   },
   "consumption_mixed_kWh_per_100km": 15,
   "consumption_highway_kWh_per_100km": 21,
@@ -96,7 +96,34 @@
       "power": 4
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 388,
+      "consumption_kWh_100km": 24.9,
+      "temperature_C": -10,
+      "wheelSize_inches": 21,
+      "tyreModel": "Nokian R5 SUV",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Kia EV9 GT-Line » (hiver, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 286,
+      "consumption_kWh_100km": 33.8,
+      "temperature_C": -10,
+      "wheelSize_inches": 21,
+      "tyreModel": "Nokian R5 SUV",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Kia EV9 GT-Line » (hiver, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 620,
@@ -168,7 +195,7 @@
         "highway_130_km": 350,
         "urban_km": 550,
         "winter_minus5_km": 380,
-        "confidence": "tested"
+        "confidence": "estimated"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 210,
@@ -217,7 +244,7 @@
         "highway_130_km": 350,
         "urban_km": 550,
         "winter_minus5_km": 380,
-        "confidence": "tested"
+        "confidence": "estimated"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 210,
@@ -262,13 +289,41 @@
       "wltp_km": 505,
       "wltp_consumption_kWh_100km": 21,
       "realRange": {
-        "mixed_km": 440,
-        "highway_130_km": 320,
-        "urban_km": 510,
-        "winter_minus5_km": 350,
-        "confidence": "estimated"
+        "mixed_km": 337,
+        "highway_130_km": 257,
+        "urban_km": 427,
+        "winter_minus5_km": 253,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 286
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 388,
+          "consumption_kWh_100km": 24.9,
+          "temperature_C": -10,
+          "wheelSize_inches": 21,
+          "tyreModel": "Nokian R5 SUV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Kia EV9 GT-Line » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 286,
+          "consumption_kWh_100km": 33.8,
+          "temperature_C": -10,
+          "wheelSize_inches": 21,
+          "tyreModel": "Nokian R5 SUV",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Kia EV9 GT-Line » (hiver, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 210,
       "chargingDC_10_80_min": 24,
       "chargingDC_kWh_30min": 70,

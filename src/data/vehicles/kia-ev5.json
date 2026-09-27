@@ -24,11 +24,12 @@
   "wltp_max_km": 530,
   "wltp_min_km": 400,
   "realRange": {
-    "mixed_km": 450,
-    "highway_130_km": 320,
-    "urban_km": 530,
-    "winter_minus5_km": 350,
-    "confidence": "estimated"
+    "mixed_km": 361,
+    "highway_130_km": 273,
+    "urban_km": 461,
+    "winter_minus5_km": 271,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 303
   },
   "consumption_mixed_kWh_per_100km": 15,
   "consumption_highway_kWh_per_100km": 21,
@@ -71,7 +72,34 @@
       "power": 10
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 419,
+      "consumption_kWh_100km": 18,
+      "temperature_C": 12,
+      "wheelSize_inches": 19,
+      "tyreModel": "Nexen Nfera Sport",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Kia EV5 Long Range FWD » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 303,
+      "consumption_kWh_100km": 24.9,
+      "temperature_C": 11,
+      "wheelSize_inches": 19,
+      "tyreModel": "Nexen Nfera Sport",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Kia EV5 Long Range FWD » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4615,
   "width_mm": 1875,
@@ -201,13 +229,41 @@
       "wltp_km": 530,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 450,
-        "highway_130_km": 320,
-        "urban_km": 530,
-        "winter_minus5_km": 350,
-        "confidence": "estimated"
+        "mixed_km": 361,
+        "highway_130_km": 273,
+        "urban_km": 461,
+        "winter_minus5_km": 271,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 303
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 419,
+          "consumption_kWh_100km": 18,
+          "temperature_C": 12,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nexen Nfera Sport",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Kia EV5 Long Range FWD » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 303,
+          "consumption_kWh_100km": 24.9,
+          "temperature_C": 11,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nexen Nfera Sport",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Kia EV5 Long Range FWD » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 140,
       "chargingDC_10_80_min": 35,
       "chargingDC_kWh_30min": 50,
@@ -250,13 +306,41 @@
       "wltp_km": 530,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 450,
-        "highway_130_km": 320,
-        "urban_km": 530,
-        "winter_minus5_km": 350,
-        "confidence": "estimated"
+        "mixed_km": 361,
+        "highway_130_km": 273,
+        "urban_km": 461,
+        "winter_minus5_km": 271,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 303
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 419,
+          "consumption_kWh_100km": 18,
+          "temperature_C": 12,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nexen Nfera Sport",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Kia EV5 Long Range FWD » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 303,
+          "consumption_kWh_100km": 24.9,
+          "temperature_C": 11,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nexen Nfera Sport",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Kia EV5 Long Range FWD » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 140,
       "chargingDC_10_80_min": 35,
       "chargingDC_kWh_30min": 50,
@@ -299,13 +383,41 @@
       "wltp_km": 510,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
-        "mixed_km": 430,
-        "highway_130_km": 300,
-        "urban_km": 510,
-        "winter_minus5_km": 330,
-        "confidence": "estimated"
+        "mixed_km": 361,
+        "highway_130_km": 273,
+        "urban_km": 461,
+        "winter_minus5_km": 271,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 303
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 419,
+          "consumption_kWh_100km": 18,
+          "temperature_C": 12,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nexen Nfera Sport",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Kia EV5 Long Range FWD » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 303,
+          "consumption_kWh_100km": 24.9,
+          "temperature_C": 11,
+          "wheelSize_inches": 19,
+          "tyreModel": "Nexen Nfera Sport",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Kia EV5 Long Range FWD » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 140,
       "chargingDC_10_80_min": 35,
       "chargingDC_kWh_30min": 50,

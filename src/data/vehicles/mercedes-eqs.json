@@ -24,12 +24,12 @@
   "wltp_max_km": 822,
   "wltp_min_km": 625,
   "realRange": {
-    "mixed_km": 610,
-    "highway_130_km": 440,
-    "urban_km": 750,
-    "winter_minus5_km": 485,
-    "confidence": "estimated",
-    "highway_120_km": 511
+    "mixed_km": 625,
+    "highway_130_km": 485,
+    "urban_km": 782,
+    "winter_minus5_km": 469,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 539
   },
   "consumption_mixed_kWh_per_100km": 18.5,
   "consumption_highway_kWh_per_100km": 25,
@@ -96,7 +96,34 @@
       "power": 6
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 711,
+      "consumption_kWh_100km": 15,
+      "temperature_C": 21,
+      "wheelSize_inches": 21,
+      "tyreModel": "Goodyear Eagle F1",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Mercedes EQS 450+ » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 539,
+      "consumption_kWh_100km": 19.8,
+      "temperature_C": 20,
+      "wheelSize_inches": 21,
+      "tyreModel": "Goodyear Eagle F1",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Mercedes EQS 450+ » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 545,
@@ -176,13 +203,41 @@
       "wltp_consumption_kWh_100km": 16,
       "usableCapacity_kWh": 118,
       "realRange": {
-        "mixed_km": 610,
-        "highway_130_km": 440,
-        "urban_km": 750,
-        "winter_minus5_km": 485,
-        "confidence": "estimated"
+        "mixed_km": 625,
+        "highway_130_km": 485,
+        "urban_km": 782,
+        "winter_minus5_km": 469,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 539
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 711,
+          "consumption_kWh_100km": 15,
+          "temperature_C": 21,
+          "wheelSize_inches": 21,
+          "tyreModel": "Goodyear Eagle F1",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes EQS 450+ » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 539,
+          "consumption_kWh_100km": 19.8,
+          "temperature_C": 20,
+          "wheelSize_inches": 21,
+          "tyreModel": "Goodyear Eagle F1",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes EQS 450+ » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 200,
       "chargingDC_10_80_min": 31,
       "chargingDC_kWh_30min": 65,
@@ -230,13 +285,41 @@
       "wltp_consumption_kWh_100km": 16.5,
       "usableCapacity_kWh": 118,
       "realRange": {
-        "mixed_km": 585,
-        "highway_130_km": 420,
-        "urban_km": 720,
-        "winter_minus5_km": 465,
-        "confidence": "estimated"
+        "mixed_km": 625,
+        "highway_130_km": 485,
+        "urban_km": 782,
+        "winter_minus5_km": 469,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 539
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 711,
+          "consumption_kWh_100km": 15,
+          "temperature_C": 21,
+          "wheelSize_inches": 21,
+          "tyreModel": "Goodyear Eagle F1",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes EQS 450+ » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 539,
+          "consumption_kWh_100km": 19.8,
+          "temperature_C": 20,
+          "wheelSize_inches": 21,
+          "tyreModel": "Goodyear Eagle F1",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes EQS 450+ » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 200,
       "chargingDC_10_80_min": 31,
       "chargingDC_kWh_30min": 65,
@@ -284,13 +367,41 @@
       "wltp_consumption_kWh_100km": 18,
       "usableCapacity_kWh": 118,
       "realRange": {
-        "mixed_km": 530,
-        "highway_130_km": 380,
-        "urban_km": 650,
-        "winter_minus5_km": 420,
-        "confidence": "estimated"
+        "mixed_km": 559,
+        "highway_130_km": 430,
+        "urban_km": 703,
+        "winter_minus5_km": 419,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 478
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 639,
+          "consumption_kWh_100km": 16.7,
+          "temperature_C": 11,
+          "wheelSize_inches": 21,
+          "tyreModel": "Goodyear Eagle F1",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes EQS 580 4Matic » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 478,
+          "consumption_kWh_100km": 22.3,
+          "temperature_C": 11,
+          "wheelSize_inches": 21,
+          "tyreModel": "Goodyear Eagle F1",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes EQS 580 4Matic » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 200,
       "chargingDC_10_80_min": 31,
       "chargingDC_kWh_30min": 65,
@@ -338,13 +449,41 @@
       "wltp_consumption_kWh_100km": 20.5,
       "usableCapacity_kWh": 118,
       "realRange": {
-        "mixed_km": 460,
-        "highway_130_km": 330,
-        "urban_km": 565,
-        "winter_minus5_km": 365,
-        "confidence": "estimated"
+        "mixed_km": 435,
+        "highway_130_km": 350,
+        "urban_km": 529,
+        "winter_minus5_km": 326,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 389
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 481,
+          "consumption_kWh_100km": 22.2,
+          "temperature_C": 3,
+          "wheelSize_inches": 21,
+          "tyreModel": "Nokian R3",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes EQS 53 4Matic+ » (hiver, route humide)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 389,
+          "consumption_kWh_100km": 27.4,
+          "temperature_C": 6,
+          "wheelSize_inches": 21,
+          "tyreModel": "Nokian R3",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes EQS 53 4Matic+ » (hiver, route humide)."
+        }
+      ],
       "chargingDC_peak_kW": 200,
       "chargingDC_10_80_min": 31,
       "chargingDC_kWh_30min": 65,

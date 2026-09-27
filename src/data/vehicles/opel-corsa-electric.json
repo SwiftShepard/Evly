@@ -24,12 +24,12 @@
   "wltp_max_km": 405,
   "wltp_min_km": 357,
   "realRange": {
-    "mixed_km": 320,
-    "highway_130_km": 205,
-    "urban_km": 380,
-    "winter_minus5_km": 250,
-    "confidence": "estimated",
-    "highway_120_km": 292
+    "mixed_km": 246,
+    "highway_130_km": 180,
+    "urban_km": 321,
+    "winter_minus5_km": 185,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 200
   },
   "consumption_mixed_kWh_per_100km": 14.6,
   "consumption_highway_kWh_per_100km": 19.6,
@@ -76,7 +76,34 @@
       "power": 6
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 292,
+      "consumption_kWh_100km": 14,
+      "temperature_C": 21,
+      "wheelSize_inches": 16,
+      "tyreModel": "Michelin Primacy 4",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Opel Corsa-e » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 200,
+      "consumption_kWh_100km": 20.5,
+      "temperature_C": 19,
+      "wheelSize_inches": 16,
+      "tyreModel": "Michelin Primacy 4",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Opel Corsa-e » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4060,
   "width_mm": 1765,
@@ -152,13 +179,41 @@
       "wltp_km": 357,
       "wltp_consumption_kWh_100km": 14.8,
       "realRange": {
-        "mixed_km": 280,
+        "mixed_km": 246,
         "highway_130_km": 180,
-        "urban_km": 340,
-        "winter_minus5_km": 220,
-        "confidence": "estimated"
+        "urban_km": 321,
+        "winter_minus5_km": 185,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 200
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 292,
+          "consumption_kWh_100km": 14,
+          "temperature_C": 21,
+          "wheelSize_inches": 16,
+          "tyreModel": "Michelin Primacy 4",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Opel Corsa-e » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 200,
+          "consumption_kWh_100km": 20.5,
+          "temperature_C": 19,
+          "wheelSize_inches": 16,
+          "tyreModel": "Michelin Primacy 4",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Opel Corsa-e » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 50,
@@ -205,13 +260,41 @@
       "wltp_km": 357,
       "wltp_consumption_kWh_100km": 14.8,
       "realRange": {
-        "mixed_km": 280,
+        "mixed_km": 246,
         "highway_130_km": 180,
-        "urban_km": 340,
-        "winter_minus5_km": 220,
-        "confidence": "estimated"
+        "urban_km": 321,
+        "winter_minus5_km": 185,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 200
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 292,
+          "consumption_kWh_100km": 14,
+          "temperature_C": 21,
+          "wheelSize_inches": 16,
+          "tyreModel": "Michelin Primacy 4",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Opel Corsa-e » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 200,
+          "consumption_kWh_100km": 20.5,
+          "temperature_C": 19,
+          "wheelSize_inches": 16,
+          "tyreModel": "Michelin Primacy 4",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Opel Corsa-e » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 50,

@@ -28,11 +28,11 @@
     "highway_130_km": 110,
     "urban_km": 240,
     "winter_minus5_km": 130,
-    "confidence": "tested"
+    "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 13.2,
   "consumption_highway_kWh_per_100km": 19.5,
-  "consumption_winter_kWh_per_100km": 17.0,
+  "consumption_winter_kWh_per_100km": 17,
   "dragCoefficient_Cx": 0.34,
   "chargingDC": {
     "peakPower_kW": 30,
@@ -43,7 +43,7 @@
   "chargingAC": {
     "onboardCharger_kW": 7.4,
     "phases": 1,
-    "time_0_100_h": 4.0
+    "time_0_100_h": 4
   },
   "plugAndCharge": false,
   "v2l": true,
@@ -142,7 +142,7 @@
         "highway_130_km": 110,
         "urban_km": 240,
         "winter_minus5_km": 130,
-        "confidence": "tested"
+        "confidence": "estimated"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 30,
@@ -191,7 +191,7 @@
         "highway_130_km": 110,
         "urban_km": 240,
         "winter_minus5_km": 130,
-        "confidence": "tested"
+        "confidence": "estimated"
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 30,

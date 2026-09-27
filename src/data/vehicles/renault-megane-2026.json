@@ -26,7 +26,6 @@
   "realRange": {
     "mixed_km": 435,
     "highway_130_km": 280,
-    "highway_120_km": 305,
     "urban_km": 535,
     "winter_minus5_km": 345,
     "confidence": "estimated"
@@ -227,7 +226,7 @@
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 480,
-      "wltp_consumption_kWh_100km": 16.0,
+      "wltp_consumption_kWh_100km": 16,
       "realRange": {
         "mixed_km": 425,
         "highway_130_km": 270,

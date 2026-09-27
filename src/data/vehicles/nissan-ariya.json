@@ -24,12 +24,12 @@
   "wltp_max_km": 536,
   "wltp_min_km": 395,
   "realRange": {
-    "mixed_km": 400,
-    "highway_130_km": 290,
-    "urban_km": 490,
-    "winter_minus5_km": 315,
-    "confidence": "estimated",
-    "highway_120_km": 342
+    "mixed_km": 287,
+    "highway_130_km": 209,
+    "urban_km": 376,
+    "winter_minus5_km": 215,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 232
   },
   "consumption_mixed_kWh_per_100km": 18.5,
   "consumption_highway_kWh_per_100km": 25,
@@ -96,7 +96,34 @@
       "power": 5
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 342,
+      "consumption_kWh_100km": 17.1,
+      "temperature_C": 13,
+      "wheelSize_inches": 20,
+      "tyreModel": "Michelin Primacy 4",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Nissan Ariya 63 kWh » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 232,
+      "consumption_kWh_100km": 25.2,
+      "temperature_C": 13,
+      "wheelSize_inches": 20,
+      "tyreModel": "Michelin Primacy 4",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Nissan Ariya 63 kWh » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 650,
@@ -175,13 +202,41 @@
       "wltp_km": 404,
       "wltp_consumption_kWh_100km": 17.5,
       "realRange": {
-        "mixed_km": 310,
-        "highway_130_km": 225,
-        "urban_km": 385,
-        "winter_minus5_km": 245,
-        "confidence": "estimated"
+        "mixed_km": 287,
+        "highway_130_km": 209,
+        "urban_km": 376,
+        "winter_minus5_km": 215,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 232
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 342,
+          "consumption_kWh_100km": 17.1,
+          "temperature_C": 13,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin Primacy 4",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Nissan Ariya 63 kWh » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 232,
+          "consumption_kWh_100km": 25.2,
+          "temperature_C": 13,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin Primacy 4",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Nissan Ariya 63 kWh » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 130,
       "chargingDC_10_80_min": 25,
       "chargingDC_kWh_30min": 42,
@@ -228,13 +283,41 @@
       "wltp_km": 395,
       "wltp_consumption_kWh_100km": 18,
       "realRange": {
-        "mixed_km": 305,
-        "highway_130_km": 220,
-        "urban_km": 375,
-        "winter_minus5_km": 240,
-        "confidence": "estimated"
+        "mixed_km": 287,
+        "highway_130_km": 209,
+        "urban_km": 376,
+        "winter_minus5_km": 215,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 232
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 342,
+          "consumption_kWh_100km": 17.1,
+          "temperature_C": 13,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin Primacy 4",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Nissan Ariya 63 kWh » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 232,
+          "consumption_kWh_100km": 25.2,
+          "temperature_C": 13,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin Primacy 4",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Nissan Ariya 63 kWh » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 130,
       "chargingDC_10_80_min": 25,
       "chargingDC_kWh_30min": 42,
@@ -281,13 +364,41 @@
       "wltp_km": 536,
       "wltp_consumption_kWh_100km": 17.8,
       "realRange": {
-        "mixed_km": 400,
-        "highway_130_km": 290,
-        "urban_km": 490,
-        "winter_minus5_km": 315,
-        "confidence": "estimated"
+        "mixed_km": 378,
+        "highway_130_km": 277,
+        "urban_km": 492,
+        "winter_minus5_km": 284,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 308
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 447,
+          "consumption_kWh_100km": 17.9,
+          "temperature_C": 10,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin Primacy 4",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Nissan Ariya 87 kWh FWD » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 308,
+          "consumption_kWh_100km": 25.9,
+          "temperature_C": 8,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin Primacy 4",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Nissan Ariya 87 kWh FWD » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 130,
       "chargingDC_10_80_min": 35,
       "chargingDC_kWh_30min": 55,

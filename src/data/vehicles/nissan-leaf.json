@@ -24,12 +24,12 @@
   "wltp_max_km": 622,
   "wltp_min_km": 436,
   "realRange": {
-    "mixed_km": 460,
-    "highway_130_km": 335,
-    "urban_km": 565,
-    "winter_minus5_km": 365,
-    "confidence": "estimated",
-    "highway_120_km": 200
+    "mixed_km": 438,
+    "highway_130_km": 327,
+    "urban_km": 564,
+    "winter_minus5_km": 329,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 363
   },
   "consumption_mixed_kWh_per_100km": 16,
   "consumption_highway_kWh_per_100km": 22,
@@ -88,7 +88,34 @@
       "power": 4
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 513,
+      "consumption_kWh_100km": 15,
+      "temperature_C": 18,
+      "wheelSize_inches": 19,
+      "tyreModel": "Hankook iOn Evo",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Nissan Leaf 75 kWh » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 363,
+      "consumption_kWh_100km": 21.2,
+      "temperature_C": 17,
+      "wheelSize_inches": 19,
+      "tyreModel": "Hankook iOn Evo",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Nissan Leaf 75 kWh » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 850,
@@ -221,13 +248,41 @@
       "wltp_km": 622,
       "wltp_consumption_kWh_100km": 14.2,
       "realRange": {
-        "mixed_km": 460,
-        "highway_130_km": 335,
-        "urban_km": 565,
-        "winter_minus5_km": 365,
-        "confidence": "estimated"
+        "mixed_km": 438,
+        "highway_130_km": 327,
+        "urban_km": 564,
+        "winter_minus5_km": 329,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 363
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 513,
+          "consumption_kWh_100km": 15,
+          "temperature_C": 18,
+          "wheelSize_inches": 19,
+          "tyreModel": "Hankook iOn Evo",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Nissan Leaf 75 kWh » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 363,
+          "consumption_kWh_100km": 21.2,
+          "temperature_C": 17,
+          "wheelSize_inches": 19,
+          "tyreModel": "Hankook iOn Evo",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Nissan Leaf 75 kWh » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 150,
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 55,
@@ -274,13 +329,41 @@
       "wltp_km": 610,
       "wltp_consumption_kWh_100km": 14.6,
       "realRange": {
-        "mixed_km": 450,
-        "highway_130_km": 325,
-        "urban_km": 550,
-        "winter_minus5_km": 355,
-        "confidence": "estimated"
+        "mixed_km": 438,
+        "highway_130_km": 327,
+        "urban_km": 564,
+        "winter_minus5_km": 329,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 363
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 513,
+          "consumption_kWh_100km": 15,
+          "temperature_C": 18,
+          "wheelSize_inches": 19,
+          "tyreModel": "Hankook iOn Evo",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Nissan Leaf 75 kWh » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 363,
+          "consumption_kWh_100km": 21.2,
+          "temperature_C": 17,
+          "wheelSize_inches": 19,
+          "tyreModel": "Hankook iOn Evo",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Nissan Leaf 75 kWh » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 150,
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 55,

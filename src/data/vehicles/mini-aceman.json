@@ -181,7 +181,8 @@
         }
       ],
       "availability": "available",
-      "notes": "Version d'entrée de gamme de 184 ch"
+      "notes": "Version d'entrée de gamme de 184 ch",
+      "rangeTests": []
     },
     {
       "id": "mini-aceman-se-classic",
@@ -234,7 +235,8 @@
         }
       ],
       "availability": "available",
-      "notes": "Version SE performante de 218 ch"
+      "notes": "Version SE performante de 218 ch",
+      "rangeTests": []
     }
   ],
   "warranty": {

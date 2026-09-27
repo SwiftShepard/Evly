@@ -24,12 +24,12 @@
   "wltp_max_km": 420,
   "wltp_min_km": 420,
   "realRange": {
-    "mixed_km": 340,
-    "highway_130_km": 230,
-    "urban_km": 410,
-    "winter_minus5_km": 270,
-    "confidence": "estimated",
-    "highway_120_km": 396
+    "mixed_km": 334,
+    "highway_130_km": 245,
+    "urban_km": 436,
+    "winter_minus5_km": 251,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 272
   },
   "consumption_mixed_kWh_per_100km": 15,
   "consumption_highway_kWh_per_100km": 21,
@@ -72,7 +72,34 @@
       "power": 8
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 396,
+      "consumption_kWh_100km": 15.4,
+      "temperature_C": 16,
+      "wheelSize_inches": 18,
+      "tyreModel": "LingLong SportMaster",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Leapmotor B10 » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 272,
+      "consumption_kWh_100km": 22.4,
+      "temperature_C": 16,
+      "wheelSize_inches": 18,
+      "tyreModel": "LingLong SportMaster",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Leapmotor B10 » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4500,
   "width_mm": 1900,
@@ -121,13 +148,41 @@
       "wltp_km": 420,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 340,
-        "highway_130_km": 230,
-        "urban_km": 410,
-        "winter_minus5_km": 270,
-        "confidence": "estimated"
+        "mixed_km": 334,
+        "highway_130_km": 245,
+        "urban_km": 436,
+        "winter_minus5_km": 251,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 272
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 396,
+          "consumption_kWh_100km": 15.4,
+          "temperature_C": 16,
+          "wheelSize_inches": 18,
+          "tyreModel": "LingLong SportMaster",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Leapmotor B10 » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 272,
+          "consumption_kWh_100km": 22.4,
+          "temperature_C": 16,
+          "wheelSize_inches": 18,
+          "tyreModel": "LingLong SportMaster",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Leapmotor B10 » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 35,

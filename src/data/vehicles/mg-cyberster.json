@@ -24,12 +24,12 @@
   "wltp_max_km": 507,
   "wltp_min_km": 507,
   "realRange": {
-    "mixed_km": 400,
-    "highway_130_km": 280,
-    "urban_km": 460,
-    "winter_minus5_km": 270,
-    "confidence": "estimated",
-    "highway_120_km": 365
+    "mixed_km": 324,
+    "highway_130_km": 255,
+    "urban_km": 402,
+    "winter_minus5_km": 243,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 283
   },
   "consumption_mixed_kWh_per_100km": 15,
   "consumption_highway_kWh_per_100km": 21,
@@ -96,7 +96,34 @@
       "power": 3
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 365,
+      "consumption_kWh_100km": 19.7,
+      "temperature_C": -8,
+      "wheelSize_inches": 20,
+      "tyreModel": "Nokian R5",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « MG Cyberster » (hiver, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 283,
+      "consumption_kWh_100km": 25.4,
+      "temperature_C": -8,
+      "wheelSize_inches": 20,
+      "tyreModel": "Nokian R5",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « MG Cyberster » (hiver, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 620,
@@ -202,13 +229,41 @@
       "wltp_km": 507,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 400,
-        "highway_130_km": 280,
-        "urban_km": 460,
-        "winter_minus5_km": 270,
-        "confidence": "estimated"
+        "mixed_km": 324,
+        "highway_130_km": 255,
+        "urban_km": 402,
+        "winter_minus5_km": 243,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 283
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 365,
+          "consumption_kWh_100km": 19.7,
+          "temperature_C": -8,
+          "wheelSize_inches": 20,
+          "tyreModel": "Nokian R5",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « MG Cyberster » (hiver, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 283,
+          "consumption_kWh_100km": 25.4,
+          "temperature_C": -8,
+          "wheelSize_inches": 20,
+          "tyreModel": "Nokian R5",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « MG Cyberster » (hiver, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 144,
       "chargingDC_10_80_min": 38,
       "chargingDC_kWh_30min": 45,
