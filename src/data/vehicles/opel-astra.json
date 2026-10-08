@@ -125,7 +125,7 @@
   "trims": [
     {
       "name": "Berline GS 54 kWh",
-      "price_EUR": 40200,
+      "price_EUR": 40990,
       "batteryUsed": "54 kWh",
       "equipmentHighlights": [
         "Berline · pack sportif",
@@ -134,7 +134,7 @@
     },
     {
       "name": "Berline Ultimate 54 kWh",
-      "price_EUR": 43700,
+      "price_EUR": 43090,
       "batteryUsed": "54 kWh",
       "equipmentHighlights": [
         "Toit pano",
@@ -143,7 +143,7 @@
     },
     {
       "name": "Sports Tourer GS 54 kWh",
-      "price_EUR": 41200,
+      "price_EUR": 42190,
       "batteryUsed": "54 kWh",
       "equipmentHighlights": [
         "Break · coffre 516 L"
@@ -151,7 +151,7 @@
     },
     {
       "name": "Sports Tourer Ultimate 54 kWh",
-      "price_EUR": 44700,
+      "price_EUR": 44590,
       "batteryUsed": "54 kWh",
       "equipmentHighlights": [
         "Break premium · toit pano"
@@ -181,7 +181,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 40200,
+      "price_EUR": 40990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 416,
@@ -234,7 +234,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 43700,
+      "price_EUR": 43090,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 416,
@@ -287,7 +287,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 41200,
+      "price_EUR": 42190,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 416,
@@ -368,7 +368,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 44700,
+      "price_EUR": 44590,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 416,
@@ -479,7 +479,7 @@
     "idealUserProfile": "Cadre quotidien ou famille petite cherchant une compacte premium allemande. Mix domicile-travail + trajets routes.",
     "notIdealFor": "Gros rouleur autoroutier : l'autonomie 130 km/h tombe sous les 220 km."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

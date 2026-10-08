@@ -145,7 +145,7 @@
   "trims": [
     {
       "name": "Essential E",
-      "price_EUR": 34000,
+      "price_EUR": 30700,
       "batteryUsed": "36.6 kWh (E)",
       "equipmentHighlights": [
         "Ecran OLED central circulaire 240mm",
@@ -156,7 +156,7 @@
     },
     {
       "name": "Classic E",
-      "price_EUR": 36500,
+      "price_EUR": 32620,
       "batteryUsed": "36.6 kWh (E)",
       "equipmentHighlights": [
         "Volant sport à 3 branches",
@@ -167,7 +167,7 @@
     },
     {
       "name": "Classic SE",
-      "price_EUR": 40500,
+      "price_EUR": 37610,
       "batteryUsed": "49.2 kWh (SE)",
       "equipmentHighlights": [
         "Projecteurs LED adaptatifs",
@@ -178,7 +178,7 @@
     },
     {
       "name": "Favoured SE",
-      "price_EUR": 43000,
+      "price_EUR": 39330,
       "batteryUsed": "49.2 kWh (SE)",
       "equipmentHighlights": [
         "Sièges John Cooper Works sportifs",
@@ -201,7 +201,7 @@
       "tyreType": "summer",
       "options": [],
       "usableCapacity_kWh": 36.6,
-      "price_EUR": 34000,
+      "price_EUR": 30700,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 305,
@@ -251,7 +251,7 @@
       "tyreType": "summer",
       "options": [],
       "usableCapacity_kWh": 49.2,
-      "price_EUR": 40500,
+      "price_EUR": 37610,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 402,
@@ -364,7 +364,7 @@
     "idealUserProfile": "Citadins à la recherche d'un véhicule chic et dynamique pour les trajets quotidiens et périurbains.",
     "notIdealFor": "Familles voyageant régulièrement sur autoroute avec beaucoup de bagages."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "presse",

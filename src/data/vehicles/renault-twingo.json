@@ -93,7 +93,7 @@
   "trims": [
     {
       "name": "Evolution",
-      "price_EUR": 19500,
+      "price_EUR": 19490,
       "batteryUsed": "27.4 kWh",
       "equipmentHighlights": [
         "Ecran 7 pouces",
@@ -136,7 +136,7 @@
       "wheelSize_inches": 15,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 19500,
+      "price_EUR": 19490,
       "monthlyLease_EUR": 130,
       "leasingSocialEligible": true,
       "wltp_km": 263,
@@ -212,7 +212,7 @@
   ],
   "verdict": {
     "strengths": [
-      "Prix d'entree tres competitif a 18 500 euros",
+      "Prix d'entree tres competitif a 19 490 euros",
       "Batterie LFP durable et adaptee a l'usage urbain",
       "Legere et efficiente (13 kWh/100 km)"
     ],
@@ -223,7 +223,7 @@
     "idealUserProfile": "Urbains cherchant une citadine electrique abordable pour les trajets quotidiens.",
     "notIdealFor": "Gros rouleurs ou familles ayant besoin d'espace et d'autonomie autoroutiere."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "la-chaine-ev",
     "nyland"

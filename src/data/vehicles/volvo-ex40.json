@@ -114,8 +114,18 @@
   "frunkCapacity_L": 0,
   "trims": [
     {
-      "name": "Core Single Motor ER",
-      "price_EUR": 48100,
+      "name": "Start P5 (70 kWh)",
+      "price_EUR": 46950,
+      "batteryUsed": "70 kWh",
+      "equipmentHighlights": [
+        "Moteur 238 ch",
+        "Keyless Entry",
+        "Batterie 70 kWh"
+      ]
+    },
+    {
+      "name": "Plus P5 Long Range",
+      "price_EUR": 53450,
       "batteryUsed": "82 kWh",
       "equipmentHighlights": [
         "Ecran 9 pouces Google",
@@ -124,39 +134,101 @@
       ]
     },
     {
-      "name": "Plus Twin Motor",
-      "price_EUR": 55400,
-      "batteryUsed": "82 kWh",
-      "equipmentHighlights": [
-        "AWD 408 ch",
-        "Toit panoramique",
-        "Harman Kardon"
-      ]
-    },
-    {
-      "name": "Ultra Single Motor ER",
-      "price_EUR": 55400,
+      "name": "Ultra P5 Long Range",
+      "price_EUR": 58700,
       "batteryUsed": "82 kWh",
       "equipmentHighlights": [
         "Pixel LED",
         "Sieges cuir ventiles",
         "Aide au stationnement auto"
       ]
+    },
+    {
+      "name": "Ultra P8 AWD Performance",
+      "price_EUR": 62900,
+      "batteryUsed": "82 kWh",
+      "equipmentHighlights": [
+        "AWD 408 ch",
+        "Toit panoramique",
+        "Harman Kardon"
+      ]
     }
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [],
+  "availableAids": [
+    {
+      "label": "Prime CEE",
+      "amount_EUR": 6500,
+      "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
+    }
+  ],
   "configurations": [
     {
-      "id": "volvo-ex40-core-sm-er",
-      "label": "EX40 Core · SM ER",
+      "id": "volvo-ex40-start-sm",
+      "label": "EX40 Start P5 (70 kWh)",
       "battery": "standard",
-      "trim": "Core Single Motor ER",
+      "trim": "Start P5 (70 kWh)",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 48100,
+      "price_EUR": 46950,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 476,
+      "wltp_consumption_kWh_100km": 16.3,
+      "realRange": {
+        "mixed_km": 395,
+        "highway_130_km": 271,
+        "urban_km": 500,
+        "winter_minus5_km": 309,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 200,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 200
+        },
+        {
+          "soc": 30,
+          "power": 180
+        },
+        {
+          "soc": 50,
+          "power": 120
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 9
+        }
+      ],
+      "availability": "available",
+      "notes": "252 ch (185 kW), RWD",
+      "usableCapacity_kWh": 66,
+      "power_hp": 238,
+      "power_kW": 175
+    },
+    {
+      "id": "volvo-ex40-core-sm-er",
+      "label": "EX40 Plus P5 Long Range",
+      "battery": "standard",
+      "trim": "Plus P5 Long Range",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 53450,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 573,
@@ -202,14 +274,67 @@
       "notes": "252 ch (185 kW), RWD"
     },
     {
-      "id": "volvo-ex40-plus-tm",
-      "label": "EX40 Plus · Twin Motor",
+      "id": "volvo-ex40-ultra-sm-er",
+      "label": "EX40 Ultra P5 Long Range",
       "battery": "standard",
-      "trim": "Plus Twin Motor",
+      "trim": "Ultra P5 Long Range",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 58700,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 550,
+      "wltp_consumption_kWh_100km": 16.8,
+      "realRange": {
+        "mixed_km": 415,
+        "highway_130_km": 300,
+        "urban_km": 505,
+        "winter_minus5_km": 325,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 200,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 200
+        },
+        {
+          "soc": 30,
+          "power": 180
+        },
+        {
+          "soc": 50,
+          "power": 120
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 9
+        }
+      ],
+      "availability": "available",
+      "notes": "252 ch (185 kW), RWD, full options"
+    },
+    {
+      "id": "volvo-ex40-plus-tm",
+      "label": "EX40 Ultra P8 AWD Performance",
+      "battery": "standard",
+      "trim": "Ultra P8 AWD Performance",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 55400,
+      "price_EUR": 62900,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 425,
@@ -281,59 +406,6 @@
       ],
       "availability": "available",
       "notes": "408 ch (300 kW), AWD"
-    },
-    {
-      "id": "volvo-ex40-ultra-sm-er",
-      "label": "EX40 Ultra · SM ER",
-      "battery": "standard",
-      "trim": "Ultra Single Motor ER",
-      "wheelSize_inches": 20,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 55400,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 550,
-      "wltp_consumption_kWh_100km": 16.8,
-      "realRange": {
-        "mixed_km": 415,
-        "highway_130_km": 300,
-        "urban_km": 505,
-        "winter_minus5_km": 325,
-        "confidence": "estimated"
-      },
-      "rangeTests": [],
-      "chargingDC_peak_kW": 200,
-      "chargingDC_10_80_min": 28,
-      "chargingDC_kWh_30min": 55,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 140
-        },
-        {
-          "soc": 10,
-          "power": 200
-        },
-        {
-          "soc": 30,
-          "power": 180
-        },
-        {
-          "soc": 50,
-          "power": 120
-        },
-        {
-          "soc": 80,
-          "power": 50
-        },
-        {
-          "soc": 100,
-          "power": 9
-        }
-      ],
-      "availability": "available",
-      "notes": "252 ch (185 kW), RWD, full options"
     }
   ],
   "warranty": {
@@ -373,7 +445,7 @@
     "idealUserProfile": "Conducteurs premium cherchant un SUV electrique assemble en Europe avec aides francaises.",
     "notIdealFor": "Budgets moderes ou acheteurs cherchant le meilleur rapport taille/prix."
   },
-  "lastUpdated": "2026-05-19",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "la-chaine-ev",
     "nyland"

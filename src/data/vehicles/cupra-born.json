@@ -2,7 +2,7 @@
   "slug": "cupra-born",
   "brand": "Cupra",
   "model": "Born",
-  "variant": "58 / 77 kWh",
+  "variant": "59 & 79 kWh",
   "bodyType": "Berline compacte",
   "segment": "C",
   "productionCountry": "Allemagne",
@@ -21,22 +21,21 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1830,
-  "wltp_max_km": 555,
-  "wltp_min_km": 425,
+  "wltp_max_km": 631,
+  "wltp_min_km": 484,
   "realRange": {
-    "mixed_km": 288,
-    "highway_130_km": 217,
-    "urban_km": 367,
-    "winter_minus5_km": 216,
-    "confidence": "bjorn_nyland",
-    "highway_120_km": 241
+    "mixed_km": 402,
+    "highway_130_km": 276,
+    "urban_km": 508,
+    "winter_minus5_km": 315,
+    "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 15.8,
   "consumption_highway_kWh_per_100km": 21,
   "consumption_winter_kWh_per_100km": 19.5,
   "dragCoefficient_Cx": 0.27,
   "chargingDC": {
-    "peakPower_kW": 175,
+    "peakPower_kW": 183,
     "time_10_80_min": 28,
     "kWh_added_30min": 58,
     "confidence": "estimated"
@@ -76,34 +75,7 @@
       "power": 11
     }
   ],
-  "rangeTests": [
-    {
-      "sourceId": "nyland",
-      "testDate": null,
-      "speed_kmh": 90,
-      "range_km": 334,
-      "consumption_kWh_100km": 16.7,
-      "temperature_C": 3,
-      "wheelSize_inches": 19,
-      "tyreModel": "Nokian R3",
-      "protocol": "nyland",
-      "videoUrl": null,
-      "notes": "Essai Nyland « Cupra Born 58 » (hiver, route sèche)."
-    },
-    {
-      "sourceId": "nyland",
-      "testDate": null,
-      "speed_kmh": 120,
-      "range_km": 241,
-      "consumption_kWh_100km": 23.1,
-      "temperature_C": 4,
-      "wheelSize_inches": 19,
-      "tyreModel": "Nokian R3",
-      "protocol": "nyland",
-      "videoUrl": null,
-      "notes": "Essai Nyland « Cupra Born 58 » (hiver, route sèche)."
-    }
-  ],
+  "rangeTests": [],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 690,
@@ -124,27 +96,27 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "58 kWh e-Boost (170 kW) 58 kWh",
-      "price_EUR": 38500,
-      "batteryUsed": "58 kWh",
+      "name": "59 kWh (140 kW)",
+      "price_EUR": 40070,
+      "batteryUsed": "59 kWh",
       "equipmentHighlights": [
         "170 kW · 231 ch",
         "Sièges baquet CupBucket en option"
       ]
     },
     {
-      "name": "77 kWh e-Boost (170 kW) 77 kWh",
-      "price_EUR": 43500,
-      "batteryUsed": "77 kWh",
+      "name": "79 kWh Endurance (170 kW)",
+      "price_EUR": 46070,
+      "batteryUsed": "79 kWh",
       "equipmentHighlights": [
-        "170 kW · 231 ch · WLTP 555 km",
+        "170 kW · 231 ch · WLTP 627 km",
         "Pack Drive Assist"
       ]
     },
     {
-      "name": "77 kWh VZ (240 kW) 77 kWh",
-      "price_EUR": 47900,
-      "batteryUsed": "77 kWh",
+      "name": "79 kWh VZ (240 kW)",
+      "price_EUR": 49670,
+      "batteryUsed": "79 kWh",
       "equipmentHighlights": [
         "VZ, 240 kW · 326 ch · 0-100 en 5,6 s",
         "Sièges CupBucket de série",
@@ -169,53 +141,25 @@
   "configurations": [
     {
       "id": "cupra-born-58-kwh-e-boost-170-kw--58",
-      "label": "58 kWh e-Boost (170 kW) · 58 kWh",
+      "label": "Born 190 ch · 59 kWh",
       "battery": "standard",
-      "trim": "58 kWh e-Boost (170 kW)",
+      "trim": "59 kWh (140 kW)",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 38500,
+      "price_EUR": 40070,
       "monthlyLease_EUR": 189,
       "leasingSocialEligible": false,
-      "wltp_km": 425,
+      "wltp_km": 484,
       "wltp_consumption_kWh_100km": 15.3,
       "realRange": {
-        "mixed_km": 288,
-        "highway_130_km": 217,
-        "urban_km": 367,
-        "winter_minus5_km": 216,
-        "confidence": "bjorn_nyland",
-        "highway_120_km": 241
+        "mixed_km": 402,
+        "highway_130_km": 276,
+        "urban_km": 508,
+        "winter_minus5_km": 315,
+        "confidence": "estimated"
       },
-      "rangeTests": [
-        {
-          "sourceId": "nyland",
-          "testDate": null,
-          "speed_kmh": 90,
-          "range_km": 334,
-          "consumption_kWh_100km": 16.7,
-          "temperature_C": 3,
-          "wheelSize_inches": 19,
-          "tyreModel": "Nokian R3",
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Essai Nyland « Cupra Born 58 » (hiver, route sèche)."
-        },
-        {
-          "sourceId": "nyland",
-          "testDate": null,
-          "speed_kmh": 120,
-          "range_km": 241,
-          "consumption_kWh_100km": 23.1,
-          "temperature_C": 4,
-          "wheelSize_inches": 19,
-          "tyreModel": "Nokian R3",
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Essai Nyland « Cupra Born 58 » (hiver, route sèche)."
-        }
-      ],
+      "rangeTests": [],
       "chargingDC_peak_kW": 135,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 60,
@@ -246,111 +190,33 @@
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "power_hp": 190,
+      "power_kW": 140,
+      "usableCapacity_kWh": 59
     },
     {
       "id": "cupra-born-77-kwh-e-boost-170-kw--77",
-      "label": "77 kWh e-Boost (170 kW) · 77 kWh",
+      "label": "Born Endurance 231 ch · 79 kWh",
       "battery": "long-range",
-      "trim": "77 kWh e-Boost (170 kW)",
+      "trim": "79 kWh Endurance (170 kW)",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 43500,
+      "price_EUR": 46070,
       "monthlyLease_EUR": 189,
       "leasingSocialEligible": false,
-      "wltp_km": 555,
+      "wltp_km": 627,
       "wltp_consumption_kWh_100km": 15.8,
       "realRange": {
-        "mixed_km": 320,
-        "highway_130_km": 250,
-        "urban_km": 397,
-        "winter_minus5_km": 240,
-        "confidence": "bjorn_nyland",
-        "highway_120_km": 278
-      },
-      "rangeTests": [
-        {
-          "sourceId": "nyland",
-          "testDate": null,
-          "speed_kmh": 90,
-          "range_km": 361,
-          "consumption_kWh_100km": 18.7,
-          "temperature_C": 2,
-          "wheelSize_inches": 18,
-          "tyreModel": "Cooper SUV",
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Essai Nyland « Cupra Born 82 kWh » (hiver, route sèche)."
-        },
-        {
-          "sourceId": "nyland",
-          "testDate": null,
-          "speed_kmh": 120,
-          "range_km": 278,
-          "consumption_kWh_100km": 24.3,
-          "temperature_C": 2,
-          "wheelSize_inches": 18,
-          "tyreModel": "Cooper SUV",
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Essai Nyland « Cupra Born 82 kWh » (hiver, route sèche)."
-        }
-      ],
-      "chargingDC_peak_kW": 175,
-      "chargingDC_10_80_min": 28,
-      "chargingDC_kWh_30min": 80,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 161
-        },
-        {
-          "soc": 10,
-          "power": 175
-        },
-        {
-          "soc": 20,
-          "power": 175
-        },
-        {
-          "soc": 50,
-          "power": 124
-        },
-        {
-          "soc": 80,
-          "power": 56
-        },
-        {
-          "soc": 100,
-          "power": 11
-        }
-      ],
-      "availability": "available",
-      "notes": null
-    },
-    {
-      "id": "cupra-born-77-kwh-vz-240-kw--77",
-      "label": "77 kWh VZ (240 kW) · 77 kWh",
-      "battery": "long-range",
-      "trim": "77 kWh VZ (240 kW)",
-      "wheelSize_inches": 20,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 47900,
-      "monthlyLease_EUR": 189,
-      "leasingSocialEligible": false,
-      "wltp_km": 555,
-      "wltp_consumption_kWh_100km": 15.8,
-      "realRange": {
-        "mixed_km": 425,
-        "highway_130_km": 280,
-        "urban_km": 510,
-        "winter_minus5_km": 330,
+        "mixed_km": 520,
+        "highway_130_km": 357,
+        "urban_km": 658,
+        "winter_minus5_km": 408,
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 175,
+      "chargingDC_peak_kW": 183,
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 80,
       "chargingCurve": [
@@ -380,7 +246,66 @@
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "power_hp": 231,
+      "power_kW": 170,
+      "usableCapacity_kWh": 79
+    },
+    {
+      "id": "cupra-born-77-kwh-vz-240-kw--77",
+      "label": "Born VZ 325 ch · 79 kWh",
+      "battery": "long-range",
+      "trim": "79 kWh VZ (240 kW)",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 49670,
+      "monthlyLease_EUR": 189,
+      "leasingSocialEligible": false,
+      "wltp_km": 631,
+      "wltp_consumption_kWh_100km": 15.8,
+      "realRange": {
+        "mixed_km": 524,
+        "highway_130_km": 360,
+        "urban_km": 663,
+        "winter_minus5_km": 410,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 183,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 80,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 161
+        },
+        {
+          "soc": 10,
+          "power": 175
+        },
+        {
+          "soc": 20,
+          "power": 175
+        },
+        {
+          "soc": 50,
+          "power": 124
+        },
+        {
+          "soc": 80,
+          "power": 56
+        },
+        {
+          "soc": 100,
+          "power": 11
+        }
+      ],
+      "availability": "available",
+      "notes": null,
+      "power_hp": 325,
+      "power_kW": 240,
+      "usableCapacity_kWh": 79
     }
   ],
   "warranty": {
@@ -420,7 +345,7 @@
     "idealUserProfile": "Conducteur enthousiaste cherchant une électrique compacte au caractère sportif, sans la prime de prix d'une Tesla Model 3 Performance.",
     "notIdealFor": "Famille nombreuse ayant besoin d'espace ou utilisateur souhaitant un infotainment irréprochable dès la sortie."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

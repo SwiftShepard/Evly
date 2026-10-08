@@ -111,7 +111,7 @@
   "trims": [
     {
       "name": "ë-C4 You 136 ch",
-      "price_EUR": 33850,
+      "price_EUR": 34500,
       "batteryUsed": "50 kWh",
       "equipmentHighlights": [
         "Moteur 136 ch - Batterie 50 kWh",
@@ -121,7 +121,7 @@
     },
     {
       "name": "ë-C4 Plus 136 ch",
-      "price_EUR": 34800,
+      "price_EUR": 35450,
       "batteryUsed": "50 kWh",
       "equipmentHighlights": [
         "Caméra de recul",
@@ -131,7 +131,7 @@
     },
     {
       "name": "ë-C4 Plus 156 ch",
-      "price_EUR": 35950,
+      "price_EUR": 36450,
       "batteryUsed": "54 kWh",
       "equipmentHighlights": [
         "Moteur 156 ch - Batterie 54 kWh",
@@ -141,7 +141,7 @@
     },
     {
       "name": "ë-C4 Max 156 ch",
-      "price_EUR": 38150,
+      "price_EUR": 38650,
       "batteryUsed": "54 kWh",
       "equipmentHighlights": [
         "Accès et démarrage mains libres",
@@ -151,7 +151,7 @@
     },
     {
       "name": "ë-C4 X You 136 ch",
-      "price_EUR": 34450,
+      "price_EUR": 35200,
       "batteryUsed": "50 kWh",
       "equipmentHighlights": [
         "Profil silhouette Fastback",
@@ -161,7 +161,7 @@
     },
     {
       "name": "ë-C4 X Plus 136 ch",
-      "price_EUR": 35400,
+      "price_EUR": 36150,
       "batteryUsed": "50 kWh",
       "equipmentHighlights": [
         "Caméra de recul 180°",
@@ -171,7 +171,7 @@
     },
     {
       "name": "ë-C4 X Plus 156 ch",
-      "price_EUR": 36550,
+      "price_EUR": 37150,
       "batteryUsed": "54 kWh",
       "equipmentHighlights": [
         "Moteur 156 ch - Batterie 54 kWh",
@@ -181,7 +181,7 @@
     },
     {
       "name": "ë-C4 X Max 156 ch",
-      "price_EUR": 38850,
+      "price_EUR": 39350,
       "batteryUsed": "54 kWh",
       "equipmentHighlights": [
         "Système My Citroën Drive Plus",
@@ -213,7 +213,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 33850,
+      "price_EUR": 34500,
       "monthlyLease_EUR": 129,
       "leasingSocialEligible": false,
       "wltp_km": 350,
@@ -269,7 +269,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 34800,
+      "price_EUR": 35450,
       "monthlyLease_EUR": 149,
       "leasingSocialEligible": false,
       "wltp_km": 350,
@@ -325,7 +325,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 35950,
+      "price_EUR": 36450,
       "monthlyLease_EUR": 169,
       "leasingSocialEligible": false,
       "wltp_km": 420,
@@ -353,7 +353,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 38150,
+      "price_EUR": 38650,
       "monthlyLease_EUR": 199,
       "leasingSocialEligible": false,
       "wltp_km": 420,
@@ -381,7 +381,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 34450,
+      "price_EUR": 35200,
       "monthlyLease_EUR": 139,
       "leasingSocialEligible": false,
       "wltp_km": 360,
@@ -409,7 +409,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 35400,
+      "price_EUR": 36150,
       "monthlyLease_EUR": 159,
       "leasingSocialEligible": false,
       "wltp_km": 360,
@@ -437,7 +437,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 36550,
+      "price_EUR": 37150,
       "monthlyLease_EUR": 179,
       "leasingSocialEligible": false,
       "wltp_km": 420,
@@ -493,7 +493,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 38850,
+      "price_EUR": 39350,
       "monthlyLease_EUR": 209,
       "leasingSocialEligible": false,
       "wltp_km": 420,
@@ -579,7 +579,7 @@
     "idealUserProfile": "Conducteurs recherchant le confort absolu pour les trajets quotidiens et périurbains avec un tarif contenu.",
     "notIdealFor": "Grands voyageurs autoroutiers ayant besoin de charges ultra-rapides régulières."
   },
-  "lastUpdated": "2026-06-04",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "citroen-fr",
     "automobile-propre",

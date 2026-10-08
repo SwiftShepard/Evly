@@ -22,7 +22,7 @@
   "architecture_V": 800,
   "mass_kg": 2501,
   "wltp_max_km": 563,
-  "wltp_min_km": 505,
+  "wltp_min_km": 443,
   "realRange": {
     "mixed_km": 337,
     "highway_130_km": 257,
@@ -44,7 +44,7 @@
   "chargingAC": {
     "onboardCharger_kW": 11,
     "phases": 3,
-    "time_0_100_h": 10.0
+    "time_0_100_h": 10
   },
   "plugAndCharge": false,
   "v2l": false,
@@ -144,8 +144,18 @@
   "frunkCapacity_L": null,
   "trims": [
     {
+      "name": "Air 76,1 kWh",
+      "price_EUR": 65400,
+      "batteryUsed": "76.1 kWh",
+      "equipmentHighlights": [
+        "Batterie autonomie standard 76,1 kWh",
+        "Moteur 218 ch",
+        "7 places"
+      ]
+    },
+    {
       "name": "Air",
-      "price_EUR": 73990,
+      "price_EUR": 71400,
       "batteryUsed": "99.8 kWh",
       "equipmentHighlights": [
         "7 places",
@@ -178,14 +188,66 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "kia-ev9-air",
-      "label": "EV9 Air",
+      "id": "kia-ev9-air-76",
+      "label": "EV9 Air · 76,1 kWh",
       "battery": "standard",
       "trim": "Air",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 73990,
+      "price_EUR": 65400,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 443,
+      "wltp_consumption_kWh_100km": 19.5,
+      "realRange": {
+        "mixed_km": 368,
+        "highway_130_km": 253,
+        "urban_km": 465,
+        "winter_minus5_km": 288,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 210,
+      "chargingDC_10_80_min": 24,
+      "chargingDC_kWh_30min": 70,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "Autonomie standard 76,1 kWh, 218 ch",
+      "usableCapacity_kWh": 76.1,
+      "power_hp": 218,
+      "power_kW": 160
+    },
+    {
+      "id": "kia-ev9-air",
+      "label": "EV9 Air",
+      "battery": "long-range",
+      "trim": "Air",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 71400,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 563,
@@ -390,7 +452,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev",

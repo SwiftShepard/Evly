@@ -21,8 +21,8 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1530,
-  "wltp_max_km": 403,
-  "wltp_min_km": 390,
+  "wltp_max_km": 425,
+  "wltp_min_km": 373,
   "realRange": {
     "mixed_km": 310,
     "highway_130_km": 200,
@@ -83,7 +83,7 @@
   "trims": [
     {
       "name": "Ypsilon",
-      "price_EUR": 39500,
+      "price_EUR": 35300,
       "batteryUsed": "51 kWh",
       "equipmentHighlights": [
         "403 km WLTP",
@@ -92,13 +92,23 @@
       ]
     },
     {
-      "name": "Cassina",
-      "price_EUR": 43500,
+      "name": "LX",
+      "price_EUR": 38300,
       "batteryUsed": "51 kWh",
       "equipmentHighlights": [
-        "403 km WLTP",
-        "Sellerie Poltrona Frau",
-        "Toit panoramique"
+        "Sellerie velours et accoudoir Cassina",
+        "Système audio premium",
+        "Écrans 10,25\" S.A.L.A."
+      ]
+    },
+    {
+      "name": "HF",
+      "price_EUR": 42900,
+      "batteryUsed": "51 kWh",
+      "equipmentHighlights": [
+        "Moteur 280 ch (206 kW)",
+        "Châssis et freinage spécifiques HF",
+        "Sièges sport"
       ]
     }
   ],
@@ -125,10 +135,10 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 39500,
+      "price_EUR": 35300,
       "monthlyLease_EUR": 195,
       "leasingSocialEligible": true,
-      "wltp_km": 403,
+      "wltp_km": 425,
       "wltp_consumption_kWh_100km": 15.2,
       "realRange": {
         "mixed_km": 310,
@@ -167,17 +177,17 @@
       "notes": "156 ch (115 kW), FWD"
     },
     {
-      "id": "lancia-ypsilon-cassina",
-      "label": "Ypsilon Cassina · 51 kWh",
+      "id": "lancia-ypsilon-lx",
+      "label": "Ypsilon LX · 51 kWh",
       "battery": "standard",
-      "trim": "Cassina",
+      "trim": "LX",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 43500,
+      "price_EUR": 38300,
       "monthlyLease_EUR": 179,
       "leasingSocialEligible": false,
-      "wltp_km": 390,
+      "wltp_km": 419,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
         "mixed_km": 300,
@@ -213,7 +223,58 @@
         }
       ],
       "availability": "available",
-      "notes": "156 ch (115 kW), FWD, full options Poltrona Frau"
+      "notes": "156 ch (115 kW), FWD"
+    },
+    {
+      "id": "lancia-ypsilon-hf",
+      "label": "Ypsilon HF · 280 ch",
+      "battery": "standard",
+      "trim": "HF",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 42900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 373,
+      "wltp_consumption_kWh_100km": 15.2,
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 213,
+        "urban_km": 392,
+        "winter_minus5_km": 242,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 77
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 77
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "Version sportive HF 280 ch (206 kW)",
+      "power_hp": 280,
+      "power_kW": 206
     }
   ],
   "warranty": {
@@ -253,7 +314,7 @@
     "idealUserProfile": "Amateurs de design italien cherchant une citadine electrique premium avec un interieur soigne.",
     "notIdealFor": "Familles ayant besoin d'un grand coffre ou gros rouleurs autoroutiers."
   },
-  "lastUpdated": "2026-05-20",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur"
   ],

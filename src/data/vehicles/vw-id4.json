@@ -21,7 +21,7 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 2120,
-  "wltp_max_km": 550,
+  "wltp_max_km": 569,
   "wltp_min_km": 360,
   "realRange": {
     "mixed_km": 450,
@@ -94,8 +94,8 @@
     },
     {
       "name": "Pro Life Max",
-      "price_EUR": 46990,
-      "batteryUsed": "77 kWh",
+      "price_EUR": 48590,
+      "batteryUsed": "79 kWh",
       "equipmentHighlights": [
         "Nouveau moteur AP550 286 ch",
         "Projecteurs Matrix LED",
@@ -186,10 +186,10 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 46990,
+      "price_EUR": 48590,
       "monthlyLease_EUR": 169,
       "leasingSocialEligible": false,
-      "wltp_km": 550,
+      "wltp_km": 569,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
         "mixed_km": 450,
@@ -225,7 +225,8 @@
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "usableCapacity_kWh": 79
     },
     {
       "id": "vw-id4-gtx-life-max",
@@ -314,7 +315,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

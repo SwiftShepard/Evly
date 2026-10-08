@@ -2,7 +2,7 @@
   "slug": "kia-ev5",
   "brand": "Kia",
   "model": "EV5",
-  "variant": "88 kWh",
+  "variant": "81,4 kWh",
   "bodyType": "SUV familial",
   "segment": "C",
   "productionCountry": "Corée",
@@ -16,13 +16,13 @@
   "motors": 1,
   "acceleration_0_100_s": 8.4,
   "topSpeed_kmh": 165,
-  "usableCapacity_kWh": 88,
+  "usableCapacity_kWh": 81.4,
   "grossCapacity_kWh": null,
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 2069,
   "wltp_max_km": 530,
-  "wltp_min_km": 400,
+  "wltp_min_km": 530,
   "realRange": {
     "mixed_km": 361,
     "highway_130_km": 273,
@@ -111,26 +111,8 @@
   "trims": [
     {
       "name": "Air",
-      "price_EUR": 36990,
-      "batteryUsed": "58 kWh",
-      "equipmentHighlights": [
-        "Ecran 12.3\"",
-        "Jantes 18\""
-      ]
-    },
-    {
-      "name": "Earth",
-      "price_EUR": 40990,
-      "batteryUsed": "58 kWh",
-      "equipmentHighlights": [
-        "Sellerie cuir",
-        "Siege conducteur electrique"
-      ]
-    },
-    {
-      "name": "Air",
-      "price_EUR": 42990,
-      "batteryUsed": "88 kWh",
+      "price_EUR": 44990,
+      "batteryUsed": "81.4 kWh",
       "equipmentHighlights": [
         "Batterie 88 kWh",
         "Jantes 18\""
@@ -139,7 +121,7 @@
     {
       "name": "Earth",
       "price_EUR": 46990,
-      "batteryUsed": "88 kWh",
+      "batteryUsed": "81.4 kWh",
       "equipmentHighlights": [
         "Sellerie cuir",
         "Toit ouvrant"
@@ -147,8 +129,8 @@
     },
     {
       "name": "GT-Line",
-      "price_EUR": 51990,
-      "batteryUsed": "88 kWh",
+      "price_EUR": 49990,
+      "batteryUsed": "81.4 kWh",
       "equipmentHighlights": [
         "Jantes 20\"",
         "Design sportif"
@@ -160,62 +142,6 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "kia-ev5-std-air",
-      "label": "EV5 Air",
-      "battery": "standard",
-      "trim": "Air",
-      "wheelSize_inches": 18,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 36990,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 400,
-      "wltp_consumption_kWh_100km": 15.5,
-      "realRange": {
-        "mixed_km": 310,
-        "highway_130_km": 220,
-        "urban_km": 380,
-        "winter_minus5_km": 240,
-        "confidence": "estimated"
-      },
-      "rangeTests": [],
-      "chargingDC_peak_kW": 140,
-      "chargingDC_10_80_min": 29,
-      "chargingDC_kWh_30min": 38,
-      "chargingCurve": null,
-      "availability": "available",
-      "notes": null
-    },
-    {
-      "id": "kia-ev5-std-earth",
-      "label": "EV5 Earth",
-      "battery": "standard",
-      "trim": "Earth",
-      "wheelSize_inches": 18,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 40990,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 400,
-      "wltp_consumption_kWh_100km": 15.5,
-      "realRange": {
-        "mixed_km": 310,
-        "highway_130_km": 220,
-        "urban_km": 380,
-        "winter_minus5_km": 240,
-        "confidence": "estimated"
-      },
-      "rangeTests": [],
-      "chargingDC_peak_kW": 140,
-      "chargingDC_10_80_min": 29,
-      "chargingDC_kWh_30min": 38,
-      "chargingCurve": null,
-      "availability": "available",
-      "notes": null
-    },
-    {
       "id": "kia-ev5-lr-air",
       "label": "EV5 Air",
       "battery": "long-range",
@@ -223,7 +149,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 42990,
+      "price_EUR": 44990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 530,
@@ -290,7 +216,8 @@
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "usableCapacity_kWh": 81.4
     },
     {
       "id": "kia-ev5-lr-earth",
@@ -367,7 +294,8 @@
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "usableCapacity_kWh": 81.4
     },
     {
       "id": "kia-ev5-lr-gt-line",
@@ -377,10 +305,10 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 51990,
+      "price_EUR": 49990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 510,
+      "wltp_km": 530,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
         "mixed_km": 361,
@@ -444,7 +372,8 @@
         }
       ],
       "availability": "available",
-      "notes": "Jantes 20\" reduisent l'autonomie"
+      "notes": null,
+      "usableCapacity_kWh": 81.4
     }
   ],
   "warranty": {
@@ -484,7 +413,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-18",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev",

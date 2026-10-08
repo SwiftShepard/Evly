@@ -87,7 +87,7 @@
   "trims": [
     {
       "name": "GT",
-      "price_EUR": 39300,
+      "price_EUR": 39500,
       "batteryUsed": "52 kWh",
       "equipmentHighlights": [
         "Moteur 180 ch (130 kW) / 285 Nm",
@@ -97,19 +97,18 @@
       ]
     },
     {
-      "name": "GT Premium",
-      "price_EUR": 41900,
+      "name": "GT Collection",
+      "price_EUR": 41200,
       "batteryUsed": "52 kWh",
       "equipmentHighlights": [
         "Toit noir biton de série",
-        "Sellerie en cuir Nappa premium",
         "Système audio Devialet premium à 9 haut-parleurs",
         "Volant sport et sièges chauffants"
       ]
     },
     {
       "name": "GT Performance",
-      "price_EUR": 41700,
+      "price_EUR": 42700,
       "batteryUsed": "52 kWh",
       "equipmentHighlights": [
         "Moteur 220 ch (162 kW) / 300 Nm",
@@ -119,11 +118,21 @@
       ]
     },
     {
-      "name": "GTS",
-      "price_EUR": 44700,
+      "name": "GT Performance Collection",
+      "price_EUR": 44400,
       "batteryUsed": "52 kWh",
       "equipmentHighlights": [
-        "Combinaison d'équipements GT Premium et GT Performance",
+        "Moteur 220 ch (162 kW) / 300 Nm",
+        "Équipements de la GT Collection (audio Devialet, toit biton)",
+        "Système Alpine Telemetrics embarqué"
+      ]
+    },
+    {
+      "name": "GTS",
+      "price_EUR": 45500,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "Combinaison d'équipements GT Collection et GT Performance",
         "Moteur 220 ch (162 kW) / 300 Nm",
         "Jantes 19 pouces Snowflake noires",
         "Teinte de lancement Bleu Alpine exclusive"
@@ -153,7 +162,7 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 39300,
+      "price_EUR": 39500,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 380,
@@ -199,14 +208,14 @@
       "notes": "Moteur 180 ch (130 kW), FWD, 380 km WLTP"
     },
     {
-      "id": "alpine-a290-gt-premium",
-      "label": "A290 GT Premium · 52 kWh",
+      "id": "alpine-a290-gt-collection",
+      "label": "A290 GT Collection · 52 kWh",
       "battery": "standard",
-      "trim": "GT Premium",
+      "trim": "GT Collection",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 41900,
+      "price_EUR": 41200,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 380,
@@ -259,7 +268,60 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 41700,
+      "price_EUR": 42700,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 364,
+      "wltp_consumption_kWh_100km": 16.5,
+      "realRange": {
+        "mixed_km": 310,
+        "highway_130_km": 200,
+        "urban_km": 385,
+        "winter_minus5_km": 230,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 50
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 30,
+          "power": 90
+        },
+        {
+          "soc": 50,
+          "power": 75
+        },
+        {
+          "soc": 80,
+          "power": 35
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": "Moteur 220 ch (162 kW), FWD, 364 km WLTP"
+    },
+    {
+      "id": "alpine-a290-gt-performance-collection",
+      "label": "A290 GT Performance Collection · 52 kWh",
+      "battery": "standard",
+      "trim": "GT Performance Collection",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 44400,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 364,
@@ -312,7 +374,7 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 44700,
+      "price_EUR": 45500,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 364,
@@ -396,7 +458,7 @@
     "idealUserProfile": "Conducteurs enthousiastes et urbains recherchant le plaisir de conduite d'une sportive dans un format compact et polyvalent.",
     "notIdealFor": "Familles nombreuses avec bagages ou voyageurs au long cours ayant besoin de recharges extrêmement rapides."
   },
-  "lastUpdated": "2026-05-22",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "automobile-propre"

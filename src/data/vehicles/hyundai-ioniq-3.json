@@ -17,7 +17,7 @@
   "acceleration_0_100_s": 8.8,
   "topSpeed_kmh": 160,
   "usableCapacity_kWh": 42.2,
-  "grossCapacity_kWh": 45.0,
+  "grossCapacity_kWh": 45,
   "chemistry": "LFP",
   "architecture_V": 400,
   "mass_kg": 1580,
@@ -94,7 +94,7 @@
     },
     {
       "name": "Trend",
-      "price_EUR": 32495,
+      "price_EUR": 32300,
       "batteryUsed": "42.2 kWh",
       "equipmentHighlights": [
         "Sièges avant chauffants",
@@ -104,8 +104,28 @@
       ]
     },
     {
+      "name": "Select 61 kWh",
+      "price_EUR": 33995,
+      "batteryUsed": "61 kWh",
+      "equipmentHighlights": [
+        "Batterie 61 kWh (autonomie étendue)",
+        "Écran tactile 12.3\"",
+        "Surveillance angles morts et régulateur adaptatif"
+      ]
+    },
+    {
+      "name": "Trend 61 kWh",
+      "price_EUR": 36300,
+      "batteryUsed": "61 kWh",
+      "equipmentHighlights": [
+        "Batterie 61 kWh (autonomie étendue)",
+        "Sièges avant chauffants",
+        "Jantes 17\""
+      ]
+    },
+    {
       "name": "Vision",
-      "price_EUR": 38495,
+      "price_EUR": 39800,
       "batteryUsed": "61 kWh",
       "equipmentHighlights": [
         "Pompe à chaleur",
@@ -115,7 +135,7 @@
     },
     {
       "name": "N Line",
-      "price_EUR": 40495,
+      "price_EUR": 39800,
       "batteryUsed": "61 kWh",
       "equipmentHighlights": [
         "Style sportif N Line",
@@ -125,13 +145,23 @@
       ]
     },
     {
-      "name": "Prime / N Line Evo",
+      "name": "Prime",
+      "price_EUR": 41695,
+      "batteryUsed": "61 kWh",
+      "equipmentHighlights": [
+        "Sellerie suédine et support lombaire passager",
+        "Conduite assistée sur autoroute",
+        "Jantes alliage 18\""
+      ]
+    },
+    {
+      "name": "N Line Evo",
       "price_EUR": 43595,
       "batteryUsed": "61 kWh",
       "equipmentHighlights": [
-        "Système audio premium Bose",
-        "Clé numérique & Conduite assistée autoroute",
-        "Toit vitré panoramique"
+        "Équipements N Line + système audio premium Bose",
+        "Toit vitré panoramique",
+        "Clé numérique"
       ]
     }
   ],
@@ -202,7 +232,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 32495,
+      "price_EUR": 32300,
       "monthlyLease_EUR": 229,
       "leasingSocialEligible": false,
       "wltp_km": 344,
@@ -244,6 +274,104 @@
       "notes": null
     },
     {
+      "id": "hyundai-ioniq-3-select-61",
+      "label": "Ioniq 3 Select 61 kWh",
+      "battery": "long-range",
+      "trim": "Select 61 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 33995,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 497,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": {
+        "mixed_km": 400,
+        "highway_130_km": 280,
+        "urban_km": 490,
+        "winter_minus5_km": 310,
+        "confidence": "manufacturer"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "hyundai-ioniq-3-trend-61",
+      "label": "Ioniq 3 Trend 61 kWh",
+      "battery": "long-range",
+      "trim": "Trend 61 kWh",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 36300,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 497,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": {
+        "mixed_km": 400,
+        "highway_130_km": 280,
+        "urban_km": 490,
+        "winter_minus5_km": 310,
+        "confidence": "manufacturer"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
       "id": "hyundai-ioniq-3-vision-61",
       "label": "Ioniq 3 Vision 61 kWh",
       "battery": "long-range",
@@ -251,7 +379,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 38495,
+      "price_EUR": 39800,
       "monthlyLease_EUR": 289,
       "leasingSocialEligible": false,
       "wltp_km": 497,
@@ -300,8 +428,57 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 40495,
+      "price_EUR": 39800,
       "monthlyLease_EUR": 319,
+      "leasingSocialEligible": false,
+      "wltp_km": 497,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": {
+        "mixed_km": 400,
+        "highway_130_km": 280,
+        "urban_km": 490,
+        "winter_minus5_km": 310,
+        "confidence": "manufacturer"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 130,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 40,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "hyundai-ioniq-3-prime-61",
+      "label": "Ioniq 3 Prime 61 kWh",
+      "battery": "long-range",
+      "trim": "Prime",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 41695,
+      "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 497,
       "wltp_consumption_kWh_100km": 14.5,
@@ -380,7 +557,7 @@
     "idealUserProfile": "Conducteurs à la recherche d'une berline compacte moderne, efficiente et accessible pour un usage mixte quotidien et longs trajets.",
     "notIdealFor": "Gros rouleurs autoroutiers réguliers nécessitant une recharge ultra-rapide 800V."
   },
-  "lastUpdated": "2026-09-24",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "hyundai-presse",
     "automobile-propre"

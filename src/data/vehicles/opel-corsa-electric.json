@@ -21,8 +21,8 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1530,
-  "wltp_max_km": 405,
-  "wltp_min_km": 357,
+  "wltp_max_km": 428,
+  "wltp_min_km": 355,
   "realRange": {
     "mixed_km": 246,
     "highway_130_km": 180,
@@ -115,7 +115,7 @@
   "trims": [
     {
       "name": "Edition 50 kWh",
-      "price_EUR": 33500,
+      "price_EUR": 32000,
       "batteryUsed": "50 kWh",
       "equipmentHighlights": [
         "Entrée de gamme",
@@ -124,7 +124,7 @@
     },
     {
       "name": "GS 50 kWh",
-      "price_EUR": 36500,
+      "price_EUR": 33500,
       "batteryUsed": "50 kWh",
       "equipmentHighlights": [
         "Look sportif",
@@ -173,10 +173,10 @@
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 33500,
+      "price_EUR": 32000,
       "monthlyLease_EUR": 139,
       "leasingSocialEligible": true,
-      "wltp_km": 357,
+      "wltp_km": 355,
       "wltp_consumption_kWh_100km": 14.8,
       "realRange": {
         "mixed_km": 246,
@@ -254,10 +254,10 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 36500,
+      "price_EUR": 33500,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 357,
+      "wltp_km": 355,
       "wltp_consumption_kWh_100km": 14.8,
       "realRange": {
         "mixed_km": 246,
@@ -338,7 +338,7 @@
       "price_EUR": 39500,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 405,
+      "wltp_km": 428,
       "wltp_consumption_kWh_100km": 14.6,
       "realRange": {
         "mixed_km": 320,
@@ -391,7 +391,7 @@
       "price_EUR": 41500,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 405,
+      "wltp_km": 428,
       "wltp_consumption_kWh_100km": 14.6,
       "realRange": {
         "mixed_km": 320,
@@ -471,7 +471,7 @@
     "idealUserProfile": "Foyer urbain ou périurbain cherchant une citadine électrique fiable, finition sobre allemande, look discret.",
     "notIdealFor": "Acheteur cherchant le maximum d'espace ou le look extraverti, préférer la 600e ou Avenger."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

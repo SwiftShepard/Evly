@@ -22,7 +22,7 @@
   "architecture_V": 400,
   "mass_kg": 1615,
   "wltp_max_km": 409,
-  "wltp_min_km": 409,
+  "wltp_min_km": 406,
   "realRange": {
     "mixed_km": 291,
     "highway_130_km": 211,
@@ -114,8 +114,8 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Red 54 kWh",
-      "price_EUR": 36900,
+      "name": "Pop 54 kWh",
+      "price_EUR": 36400,
       "batteryUsed": "54 kWh",
       "equipmentHighlights": [
         "Édition (RED) caritative",
@@ -123,8 +123,18 @@
       ]
     },
     {
+      "name": "Icône 54 kWh",
+      "price_EUR": 38300,
+      "batteryUsed": "54 kWh",
+      "equipmentHighlights": [
+        "Moteur 156 ch",
+        "Écran tactile 10,25\"",
+        "Climatisation automatique"
+      ]
+    },
+    {
       "name": "La Prima 54 kWh",
-      "price_EUR": 40900,
+      "price_EUR": 41300,
       "batteryUsed": "54 kWh",
       "equipmentHighlights": [
         "Sellerie premium",
@@ -148,15 +158,96 @@
   ],
   "configurations": [
     {
-      "id": "fiat-600e-red-54",
-      "label": "Red · 54 kWh",
+      "id": "fiat-600e-pop-54",
+      "label": "Pop · 54 kWh",
       "battery": "standard",
-      "trim": "Red",
+      "trim": "Pop",
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 36900,
+      "price_EUR": 36400,
       "monthlyLease_EUR": 145,
+      "leasingSocialEligible": false,
+      "wltp_km": 409,
+      "wltp_consumption_kWh_100km": 14.6,
+      "realRange": {
+        "mixed_km": 291,
+        "highway_130_km": 211,
+        "urban_km": 382,
+        "winter_minus5_km": 218,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 234
+      },
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 347,
+          "consumption_kWh_100km": 14.7,
+          "temperature_C": 15,
+          "wheelSize_inches": 18,
+          "tyreModel": "Goodyear Efficientgrip Performance 2",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Fiat 600e » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 234,
+          "consumption_kWh_100km": 21.8,
+          "temperature_C": 14,
+          "wheelSize_inches": 18,
+          "tyreModel": "Goodyear Efficientgrip Performance 2",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Fiat 600e » (été, route sèche)."
+        }
+      ],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "fiat-600e-icone-54",
+      "label": "Icône · 54 kWh",
+      "battery": "standard",
+      "trim": "Icône",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 38300,
+      "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 409,
       "wltp_consumption_kWh_100km": 14.6,
@@ -236,10 +327,10 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 40900,
+      "price_EUR": 41300,
       "monthlyLease_EUR": 145,
       "leasingSocialEligible": false,
-      "wltp_km": 409,
+      "wltp_km": 406,
       "wltp_consumption_kWh_100km": 14.6,
       "realRange": {
         "mixed_km": 291,
@@ -347,7 +438,7 @@
     "idealUserProfile": "Famille urbaine cherchant le style Fiat sur une plateforme connue et bien rodée. Bon rapport prix/équipement.",
     "notIdealFor": "Acheteurs cherchant la meilleure autonomie autoroute du segment, le 600e reste dans la moyenne."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

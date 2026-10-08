@@ -5,8 +5,8 @@
   "variant": "Single Motor Extended Range",
   "bodyType": "SUV compact",
   "segment": "B",
-  "productionCountry": "Chine",
-  "assemblyPlant": "Chengdu",
+  "productionCountry": "Belgique",
+  "assemblyPlant": "Gand",
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
   "power_kW": 200,
@@ -144,8 +144,8 @@
   "frunkCapacity_L": 0,
   "trims": [
     {
-      "name": "Core Single Motor",
-      "price_EUR": 36590,
+      "name": "Start P5 (51 kWh)",
+      "price_EUR": 39100,
       "batteryUsed": "51 kWh",
       "equipmentHighlights": [
         "Ecran 12,3 pouces Google",
@@ -153,8 +153,18 @@
       ]
     },
     {
-      "name": "Plus Single Motor Extended Range",
-      "price_EUR": 41090,
+      "name": "Start P5 Long Range (69 kWh)",
+      "price_EUR": 43300,
+      "batteryUsed": "69 kWh",
+      "equipmentHighlights": [
+        "Batterie Long Range 69 kWh",
+        "Moteur 272 ch",
+        "Régulateur adaptatif Pilot Assist"
+      ]
+    },
+    {
+      "name": "Plus P5 Long Range (69 kWh)",
+      "price_EUR": 46250,
       "batteryUsed": "69 kWh",
       "equipmentHighlights": [
         "Toit panoramique",
@@ -163,39 +173,45 @@
       ]
     },
     {
-      "name": "Plus Twin Motor",
-      "price_EUR": 45590,
-      "batteryUsed": "69 kWh",
-      "equipmentHighlights": [
-        "AWD 428 ch",
-        "0-100 en 3,6 s",
-        "Toit panoramique"
-      ]
-    },
-    {
-      "name": "Ultra Single Motor Extended Range",
-      "price_EUR": 44590,
+      "name": "Ultra P5 Long Range (69 kWh)",
+      "price_EUR": 49850,
       "batteryUsed": "69 kWh",
       "equipmentHighlights": [
         "Toit panoramique",
         "Sieges chauffants",
         "Pixel LED"
       ]
+    },
+    {
+      "name": "Ultra P8 AWD (69 kWh)",
+      "price_EUR": 54100,
+      "batteryUsed": "69 kWh",
+      "equipmentHighlights": [
+        "AWD 428 ch",
+        "0-100 en 3,6 s",
+        "Toit panoramique"
+      ]
     }
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [],
+  "availableAids": [
+    {
+      "label": "Prime CEE",
+      "amount_EUR": 6500,
+      "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
+    }
+  ],
   "configurations": [
     {
       "id": "volvo-ex30-core-sm",
-      "label": "EX30 Core · SM 51 kWh",
+      "label": "EX30 Start P5 (51 kWh)",
       "battery": "standard",
-      "trim": "Core Single Motor",
+      "trim": "Start P5 (51 kWh)",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 36590,
+      "price_EUR": 39100,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 337,
@@ -237,14 +253,14 @@
       "notes": "204 ch (150 kW), RWD, batterie LFP 51 kWh"
     },
     {
-      "id": "volvo-ex30-plus-sm-er",
-      "label": "EX30 Plus · SM ER 69 kWh",
+      "id": "volvo-ex30-start-sm-er",
+      "label": "EX30 Start P5 Long Range (69 kWh)",
       "battery": "long-range",
-      "trim": "Plus Single Motor Extended Range",
+      "trim": "Start P5 Long Range (69 kWh)",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 41090,
+      "price_EUR": 43300,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 476,
@@ -318,52 +334,52 @@
       "notes": "272 ch (200 kW), RWD"
     },
     {
-      "id": "volvo-ex30-plus-tm",
-      "label": "EX30 Plus · Twin Motor 69 kWh",
+      "id": "volvo-ex30-plus-sm-er",
+      "label": "EX30 Plus P5 Long Range (69 kWh)",
       "battery": "long-range",
-      "trim": "Plus Twin Motor",
+      "trim": "Plus P5 Long Range (69 kWh)",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 45590,
+      "price_EUR": 46250,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 400,
-      "wltp_consumption_kWh_100km": 18.8,
+      "wltp_km": 476,
+      "wltp_consumption_kWh_100km": 15.7,
       "realRange": {
-        "mixed_km": 312,
-        "highway_130_km": 240,
-        "urban_km": 393,
-        "winter_minus5_km": 234,
+        "mixed_km": 356,
+        "highway_130_km": 267,
+        "urban_km": 455,
+        "winter_minus5_km": 267,
         "confidence": "bjorn_nyland",
-        "highway_120_km": 267
+        "highway_120_km": 297
       },
       "rangeTests": [
         {
           "sourceId": "nyland",
           "testDate": null,
           "speed_kmh": 90,
-          "range_km": 357,
-          "consumption_kWh_100km": 18.3,
-          "temperature_C": 15,
+          "range_km": 414,
+          "consumption_kWh_100km": 15.8,
+          "temperature_C": 22,
           "wheelSize_inches": 20,
           "tyreModel": "Goodyear EfficientGrip Performance",
           "protocol": "nyland",
           "videoUrl": null,
-          "notes": "Essai Nyland « Volvo EX30 Twin Performance » (été, route sèche)."
+          "notes": "Essai Nyland « Volvo EX30 RWD ER » (été, route sèche)."
         },
         {
           "sourceId": "nyland",
           "testDate": null,
           "speed_kmh": 120,
-          "range_km": 267,
-          "consumption_kWh_100km": 24.5,
-          "temperature_C": 14,
+          "range_km": 297,
+          "consumption_kWh_100km": 22,
+          "temperature_C": 22,
           "wheelSize_inches": 20,
           "tyreModel": "Goodyear EfficientGrip Performance",
           "protocol": "nyland",
           "videoUrl": null,
-          "notes": "Essai Nyland « Volvo EX30 Twin Performance » (été, route sèche)."
+          "notes": "Essai Nyland « Volvo EX30 RWD ER » (été, route sèche)."
         }
       ],
       "chargingDC_peak_kW": 153,
@@ -396,17 +412,17 @@
         }
       ],
       "availability": "available",
-      "notes": "428 ch (315 kW), AWD"
+      "notes": "272 ch (200 kW), RWD"
     },
     {
       "id": "volvo-ex30-ultra-sm-er",
-      "label": "EX30 Ultra · SM ER 69 kWh",
+      "label": "EX30 Ultra P5 Long Range (69 kWh)",
       "battery": "long-range",
-      "trim": "Ultra Single Motor Extended Range",
+      "trim": "Ultra P5 Long Range (69 kWh)",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 44590,
+      "price_EUR": 49850,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 460,
@@ -478,6 +494,87 @@
       ],
       "availability": "available",
       "notes": "272 ch (200 kW), RWD, full options"
+    },
+    {
+      "id": "volvo-ex30-plus-tm",
+      "label": "EX30 Ultra P8 AWD (69 kWh)",
+      "battery": "long-range",
+      "trim": "Ultra P8 AWD (69 kWh)",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 54100,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 400,
+      "wltp_consumption_kWh_100km": 18.8,
+      "realRange": {
+        "mixed_km": 312,
+        "highway_130_km": 240,
+        "urban_km": 393,
+        "winter_minus5_km": 234,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 267
+      },
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 357,
+          "consumption_kWh_100km": 18.3,
+          "temperature_C": 15,
+          "wheelSize_inches": 20,
+          "tyreModel": "Goodyear EfficientGrip Performance",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Volvo EX30 Twin Performance » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 267,
+          "consumption_kWh_100km": 24.5,
+          "temperature_C": 14,
+          "wheelSize_inches": 20,
+          "tyreModel": "Goodyear EfficientGrip Performance",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Volvo EX30 Twin Performance » (été, route sèche)."
+        }
+      ],
+      "chargingDC_peak_kW": 153,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 45,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 110
+        },
+        {
+          "soc": 10,
+          "power": 153
+        },
+        {
+          "soc": 30,
+          "power": 140
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "428 ch (315 kW), AWD"
     }
   ],
   "warranty": {
@@ -517,7 +614,7 @@
     "idealUserProfile": "Conducteurs urbains cherchant un SUV compact premium performant et bien equipe.",
     "notIdealFor": "Familles nombreuses ou acheteurs comptant sur les aides francaises."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "la-chaine-ev",
     "nyland"

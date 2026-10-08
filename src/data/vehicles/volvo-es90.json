@@ -8,7 +8,7 @@
   "productionCountry": "Chine",
   "assemblyPlant": "Chengdu",
   "releaseYear": 2026,
-  "marketAvailability": "A venir",
+  "marketAvailability": "Disponible",
   "power_kW": 245,
   "power_hp": 328,
   "torque_Nm": 480,
@@ -114,8 +114,18 @@
   "frunkCapacity_L": 50,
   "trims": [
     {
+      "name": "Start Single Motor",
+      "price_EUR": 74400,
+      "batteryUsed": "92 kWh",
+      "equipmentHighlights": [
+        "Batterie 92 kWh, architecture 800 V",
+        "Propulsion 333 ch",
+        "Technologie de détection avancée"
+      ]
+    },
+    {
       "name": "Plus Single Motor",
-      "price_EUR": 72900,
+      "price_EUR": 80100,
       "batteryUsed": "92 kWh",
       "equipmentHighlights": [
         "Ecran tactile 14.5 pouces",
@@ -125,7 +135,7 @@
     },
     {
       "name": "Ultra Single Motor",
-      "price_EUR": 79900,
+      "price_EUR": 87100,
       "batteryUsed": "92 kWh",
       "equipmentHighlights": [
         "Affichage tete haute",
@@ -139,6 +149,59 @@
   "availableAids": [],
   "configurations": [
     {
+      "id": "volvo-es90-start-sm",
+      "label": "ES90 Start Single Motor",
+      "battery": "standard",
+      "trim": "Start Single Motor",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 74400,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 680,
+      "wltp_consumption_kWh_100km": 13.5,
+      "realRange": {
+        "mixed_km": 446,
+        "highway_130_km": 335,
+        "urban_km": 571,
+        "winter_minus5_km": 335,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 300,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 68,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 200
+        },
+        {
+          "soc": 10,
+          "power": 300
+        },
+        {
+          "soc": 30,
+          "power": 270
+        },
+        {
+          "soc": 50,
+          "power": 200
+        },
+        {
+          "soc": 80,
+          "power": 80
+        },
+        {
+          "soc": 100,
+          "power": 15
+        }
+      ],
+      "availability": "available",
+      "notes": "Berline premium 328 ch, RWD"
+    },
+    {
       "id": "volvo-es90-plus-sm",
       "label": "ES90 Plus · Single Motor",
       "battery": "standard",
@@ -146,7 +209,7 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 72900,
+      "price_EUR": 80100,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 680,
@@ -216,7 +279,7 @@
           "power": 15
         }
       ],
-      "availability": "upcoming",
+      "availability": "available",
       "notes": "Berline premium 328 ch, RWD"
     },
     {
@@ -227,7 +290,7 @@
       "wheelSize_inches": 21,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 79900,
+      "price_EUR": 87100,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 640,
@@ -297,7 +360,7 @@
           "power": 15
         }
       ],
-      "availability": "upcoming",
+      "availability": "available",
       "notes": "Berline premium 328 ch, RWD, suspension pneumatique"
     }
   ],
@@ -339,7 +402,7 @@
     "idealUserProfile": "Grands voyageurs, cadres et professionnels a la recherche d'une berline electrique statutaire de grand confort capable d'enchainer les longues distances grace au 800V.",
     "notIdealFor": "Conducteurs a la recherche d'un vehicule compact et maniable en ville ou d'un tarif abordable eligible au bonus ecologique."
   },
-  "lastUpdated": "2026-06-02",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "volvo-fr",
     "automobile-propre",

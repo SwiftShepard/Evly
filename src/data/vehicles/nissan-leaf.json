@@ -146,7 +146,7 @@
       ]
     },
     {
-      "name": "Advance 75 kWh",
+      "name": "Engage 75 kWh",
       "price_EUR": 40300,
       "batteryUsed": "75 kWh",
       "equipmentHighlights": [
@@ -156,7 +156,17 @@
       ]
     },
     {
-      "name": "N-Design 75 kWh",
+      "name": "Advance 75 kWh",
+      "price_EUR": 45100,
+      "batteryUsed": "75 kWh",
+      "equipmentHighlights": [
+        "Batterie 75 kWh",
+        "Écrans 14,3\"",
+        "ProPilot Assist"
+      ]
+    },
+    {
+      "name": "Evolve 75 kWh",
       "price_EUR": 47000,
       "batteryUsed": "75 kWh",
       "equipmentHighlights": [
@@ -236,9 +246,9 @@
     },
     {
       "id": "nissan-leaf-advance-75",
-      "label": "Leaf Advance · 75 kWh",
+      "label": "Leaf Engage 75 kWh",
       "battery": "long-range",
-      "trim": "Advance 75 kWh",
+      "trim": "Engage 75 kWh",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
@@ -316,10 +326,63 @@
       "notes": "218 ch (160 kW), FWD"
     },
     {
-      "id": "nissan-leaf-ndesign-75",
-      "label": "Leaf N-Design · 75 kWh",
+      "id": "nissan-leaf-advance-75-2026",
+      "label": "Leaf Advance 75 kWh",
       "battery": "long-range",
-      "trim": "N-Design 75 kWh",
+      "trim": "Advance 75 kWh",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 45100,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 622,
+      "wltp_consumption_kWh_100km": 14.2,
+      "realRange": {
+        "mixed_km": 438,
+        "highway_130_km": 327,
+        "urban_km": 564,
+        "winter_minus5_km": 329,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 150
+        },
+        {
+          "soc": 30,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 90
+        },
+        {
+          "soc": 80,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "218 ch (160 kW), FWD"
+    },
+    {
+      "id": "nissan-leaf-ndesign-75",
+      "label": "Leaf Evolve 75 kWh",
+      "battery": "long-range",
+      "trim": "Evolve 75 kWh",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
@@ -434,7 +497,7 @@
     "idealUserProfile": "Conducteurs cherchant une compacte electrique fiable avec grande autonomie.",
     "notIdealFor": "Acheteurs comptant sur les aides CEE ou cherchant un SUV."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "automobile-propre",

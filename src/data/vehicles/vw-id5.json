@@ -21,8 +21,8 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 2120,
-  "wltp_max_km": 560,
-  "wltp_min_km": 515,
+  "wltp_max_km": 570,
+  "wltp_min_km": 534,
   "realRange": {
     "mixed_km": 406,
     "highway_130_km": 301,
@@ -111,8 +111,8 @@
   "trims": [
     {
       "name": "Pro Life",
-      "price_EUR": 50500,
-      "batteryUsed": "77 kWh",
+      "price_EUR": 51500,
+      "batteryUsed": "79 kWh",
       "equipmentHighlights": [
         "Nouveau moteur AP550 286 ch",
         "Ligne SUV Coupé profilée",
@@ -120,8 +120,28 @@
       ]
     },
     {
+      "name": "Pro Life Max",
+      "price_EUR": 52900,
+      "batteryUsed": "79 kWh",
+      "equipmentHighlights": [
+        "Pack Max (affichage tête haute, Harman Kardon)",
+        "Batterie 79 kWh",
+        "Moteur 286 ch"
+      ]
+    },
+    {
+      "name": "Pro Style Max",
+      "price_EUR": 54900,
+      "batteryUsed": "79 kWh",
+      "equipmentHighlights": [
+        "Finition Style avec Pack Max",
+        "Projecteurs IQ.Light",
+        "Moteur 286 ch"
+      ]
+    },
+    {
       "name": "GTX Life Max",
-      "price_EUR": 60000,
+      "price_EUR": 60400,
       "batteryUsed": "77 kWh",
       "equipmentHighlights": [
         "Transmission intégrale AWD 340 ch",
@@ -142,10 +162,10 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 50500,
+      "price_EUR": 51500,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 560,
+      "wltp_km": 568,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 430,
@@ -181,7 +201,108 @@
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "usableCapacity_kWh": 79
+    },
+    {
+      "id": "vw-id5-pro-life-max",
+      "label": "ID.5 Pro Life Max",
+      "battery": "standard",
+      "trim": "Pro Life Max",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 52900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 570,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": {
+        "mixed_km": 430,
+        "highway_130_km": 320,
+        "urban_km": 510,
+        "winter_minus5_km": 290,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 135,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 48,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null,
+      "usableCapacity_kWh": 79
+    },
+    {
+      "id": "vw-id5-pro-style-max",
+      "label": "ID.5 Pro Style Max",
+      "battery": "standard",
+      "trim": "Pro Style Max",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 54900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 570,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": {
+        "mixed_km": 430,
+        "highway_130_km": 320,
+        "urban_km": 510,
+        "winter_minus5_km": 290,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 135,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 48,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null,
+      "usableCapacity_kWh": 79
     },
     {
       "id": "vw-id5-gtx",
@@ -191,10 +312,10 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 60000,
+      "price_EUR": 60400,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 515,
+      "wltp_km": 534,
       "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
         "mixed_km": 406,
@@ -298,7 +419,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

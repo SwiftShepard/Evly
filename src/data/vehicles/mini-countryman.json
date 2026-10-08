@@ -125,7 +125,7 @@
   "trims": [
     {
       "name": "Essential E",
-      "price_EUR": 44000,
+      "price_EUR": 39240,
       "batteryUsed": "65.2 kWh (E)",
       "equipmentHighlights": [
         "Ecran central circulaire tactile OLED 240mm",
@@ -136,7 +136,7 @@
     },
     {
       "name": "Classic E",
-      "price_EUR": 46800,
+      "price_EUR": 40290,
       "batteryUsed": "65.2 kWh (E)",
       "equipmentHighlights": [
         "Volant sport à 3 branches chauffant",
@@ -147,7 +147,7 @@
     },
     {
       "name": "Classic SE ALL4",
-      "price_EUR": 51300,
+      "price_EUR": 45290,
       "batteryUsed": "65.2 kWh (SE ALL4)",
       "equipmentHighlights": [
         "Transmission intégrale intelligente ALL4",
@@ -158,7 +158,7 @@
     },
     {
       "name": "Favoured SE ALL4",
-      "price_EUR": 54600,
+      "price_EUR": 46650,
       "batteryUsed": "65.2 kWh (SE ALL4)",
       "equipmentHighlights": [
         "Affichage tête haute",
@@ -192,7 +192,7 @@
       "tyreType": "summer",
       "options": [],
       "usableCapacity_kWh": 65.2,
-      "price_EUR": 44000,
+      "price_EUR": 39240,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 501,
@@ -246,7 +246,7 @@
       "tyreType": "summer",
       "options": [],
       "usableCapacity_kWh": 65.2,
-      "price_EUR": 51300,
+      "price_EUR": 45290,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 432,
@@ -359,7 +359,7 @@
     "idealUserProfile": "Familles recherchant un SUV électrique branché avec du caractère et un intérieur technologique haut de gamme.",
     "notIdealFor": "Conducteurs à la recherche d'une citadine agile et légère pour des manœuvres en ruelles étroites."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "presse",

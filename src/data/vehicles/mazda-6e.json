@@ -8,7 +8,7 @@
   "productionCountry": "Chine",
   "assemblyPlant": "Nanjing (Changan Mazda)",
   "releaseYear": 2025,
-  "marketAvailability": "À venir en Europe",
+  "marketAvailability": "Disponible",
   "power_kW": 190,
   "power_hp": 258,
   "torque_Nm": 320,
@@ -272,7 +272,7 @@
           "power": 8
         }
       ],
-      "availability": "upcoming",
+      "availability": "available",
       "notes": "Propulsion RWD de 258 ch. Version Takumi avec batterie LFP de 69 kWh."
     },
     {
@@ -354,7 +354,7 @@
           "power": 8
         }
       ],
-      "availability": "upcoming",
+      "availability": "available",
       "notes": "Propulsion RWD de 258 ch. Version haut de gamme Takumi Plus avec batterie LFP de 69 kWh."
     },
     {
@@ -408,7 +408,7 @@
           "power": 7
         }
       ],
-      "availability": "upcoming",
+      "availability": "available",
       "notes": "Propulsion RWD de 258 ch. Version Takumi avec batterie NMC de 81 kWh (charge plus lente mais autonomie accrue)."
     },
     {
@@ -462,7 +462,7 @@
           "power": 7
         }
       ],
-      "availability": "upcoming",
+      "availability": "available",
       "notes": "Propulsion RWD de 258 ch. Version haut de gamme Takumi Plus avec batterie NMC de 81 kWh (charge plus lente mais équipements exclusifs)."
     }
   ],
@@ -505,7 +505,7 @@
     "idealUserProfile": "Conducteurs recherchant une berline électrique confortable, stylée et dynamique pour de longs trajets, à un tarif raisonnable.",
     "notIdealFor": "Conducteurs urbains cherchant un véhicule facile à garer, ou acheteurs exigeant des recharges ultra-rapides en moins de 15 minutes."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "automobile-propre",

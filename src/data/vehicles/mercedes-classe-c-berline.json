@@ -8,21 +8,21 @@
   "productionCountry": "Allemagne",
   "assemblyPlant": "Bremen",
   "releaseYear": 2026,
-  "marketAvailability": "À commander",
-  "power_kW": 215,
-  "power_hp": 292,
+  "marketAvailability": "Disponible",
+  "power_kW": 360,
+  "power_hp": 489,
   "torque_Nm": 400,
-  "drivetrain": "RWD",
-  "motors": 1,
-  "acceleration_0_100_s": 5.7,
+  "drivetrain": "AWD",
+  "motors": 2,
+  "acceleration_0_100_s": 4,
   "topSpeed_kmh": 210,
-  "usableCapacity_kWh": 83,
-  "grossCapacity_kWh": 88,
+  "usableCapacity_kWh": 94.5,
+  "grossCapacity_kWh": null,
   "chemistry": "NMC",
   "architecture_V": 800,
   "mass_kg": 2050,
-  "wltp_max_km": 720,
-  "wltp_min_km": 590,
+  "wltp_max_km": 762,
+  "wltp_min_km": 682,
   "realRange": {
     "mixed_km": 550,
     "highway_130_km": 390,
@@ -35,7 +35,7 @@
   "consumption_winter_kWh_per_100km": 16.5,
   "dragCoefficient_Cx": 0.22,
   "chargingDC": {
-    "peakPower_kW": 250,
+    "peakPower_kW": 330,
     "time_10_80_min": 22,
     "kWh_added_30min": 70,
     "confidence": "estimated"
@@ -52,27 +52,27 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 100
+      "power": 132
     },
     {
       "soc": 10,
-      "power": 250
+      "power": 330
     },
     {
       "soc": 30,
-      "power": 210
+      "power": 277
     },
     {
       "soc": 50,
-      "power": 160
+      "power": 211
     },
     {
       "soc": 80,
-      "power": 65
+      "power": 86
     },
     {
       "soc": 100,
-      "power": 10
+      "power": 13
     }
   ],
   "thousandKmChallenge": null,
@@ -86,135 +86,207 @@
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
   "availableAids": [],
-  "lastUpdated": "2026-06-02",
+  "lastUpdated": "2026-10-08",
   "trims": [
     {
-      "name": "PRO C 250e Berline",
-      "price_EUR": 52900,
-      "batteryUsed": "83 kWh",
+      "name": "C 300 4MATIC",
+      "price_EUR": 62999,
+      "batteryUsed": "85 kWh",
       "equipmentHighlights": [
-        "720 km d'autonomie WLTP",
+        "682 km d'autonomie WLTP",
         "Architecture de charge 800V",
         "Écran tactile vertical MBUX"
       ]
     },
     {
-      "name": "AMG Line C 250e Berline",
-      "price_EUR": 58900,
-      "batteryUsed": "83 kWh",
+      "name": "C 400 4MATIC Avantgarde Line",
+      "price_EUR": 66399,
+      "batteryUsed": "94.5 kWh",
       "equipmentHighlights": [
         "Style extérieur sport AMG Line",
         "Jantes AMG 19 pouces",
         "Sièges Sport Similicuir Artico"
+      ]
+    },
+    {
+      "name": "C 400 4MATIC AMG Line",
+      "price_EUR": 71050,
+      "batteryUsed": "94.5 kWh",
+      "equipmentHighlights": [
+        "Pack AMG Line",
+        "489 ch, 0 à 100 km/h en 4 s",
+        "Charge DC 330 kW"
       ]
     }
   ],
   "configurations": [
     {
       "id": "mercedes-classe-c-berline-pro",
-      "label": "Classe C Berline 250e PRO",
+      "label": "C 300 4MATIC",
       "battery": "standard",
-      "trim": "PRO C 250e Berline",
+      "trim": "C 300 4MATIC",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 52900,
+      "price_EUR": 62999,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 720,
+      "wltp_km": 682,
       "wltp_consumption_kWh_100km": 12.8,
       "realRange": {
-        "mixed_km": 550,
-        "highway_130_km": 390,
-        "urban_km": 670,
-        "winter_minus5_km": 430,
+        "mixed_km": 566,
+        "highway_130_km": 389,
+        "urban_km": 716,
+        "winter_minus5_km": 443,
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 250,
+      "chargingDC_peak_kW": 320,
       "chargingDC_10_80_min": 22,
       "chargingDC_kWh_30min": 70,
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 100
+          "power": 128
         },
         {
           "soc": 10,
-          "power": 250
+          "power": 320
         },
         {
           "soc": 30,
-          "power": 210
+          "power": 269
         },
         {
           "soc": 50,
-          "power": 160
+          "power": 205
         },
         {
           "soc": 80,
-          "power": 65
+          "power": 83
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 13
         }
       ],
       "availability": "upcoming",
-      "notes": "Version d'efficience maximale, aérodynamisme optimisé."
+      "notes": "Transmission intégrale 421 ch (310 kW), 85 kWh, 800 V",
+      "usableCapacity_kWh": 85,
+      "power_hp": 421,
+      "power_kW": 310
     },
     {
       "id": "mercedes-classe-c-berline-amg",
-      "label": "Classe C Berline 250e AMG Line",
+      "label": "C 400 4MATIC Avantgarde Line",
       "battery": "standard",
-      "trim": "AMG Line C 250e Berline",
+      "trim": "C 400 4MATIC Avantgarde Line",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 58900,
+      "price_EUR": 66399,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 670,
+      "wltp_km": 762,
       "wltp_consumption_kWh_100km": 13.5,
       "realRange": {
-        "mixed_km": 520,
-        "highway_130_km": 370,
-        "urban_km": 630,
-        "winter_minus5_km": 410,
+        "mixed_km": 632,
+        "highway_130_km": 434,
+        "urban_km": 800,
+        "winter_minus5_km": 495,
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 250,
+      "chargingDC_peak_kW": 330,
       "chargingDC_10_80_min": 22,
       "chargingDC_kWh_30min": 70,
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 100
+          "power": 132
         },
         {
           "soc": 10,
-          "power": 250
+          "power": 330
         },
         {
           "soc": 30,
-          "power": 210
+          "power": 277
         },
         {
           "soc": 50,
-          "power": 160
+          "power": 211
         },
         {
           "soc": 80,
-          "power": 65
+          "power": 86
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 13
         }
       ],
       "availability": "upcoming",
-      "notes": "Look dynamique avec suspensions sport de série."
+      "notes": "Transmission intégrale 489 ch (360 kW), 94,5 kWh, 800 V",
+      "usableCapacity_kWh": 94.5,
+      "power_hp": 489,
+      "power_kW": 360
+    },
+    {
+      "id": "mercedes-classe-c-berline-400-amg",
+      "label": "C 400 4MATIC AMG Line",
+      "battery": "standard",
+      "trim": "C 400 4MATIC AMG Line",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 71050,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 762,
+      "wltp_consumption_kWh_100km": 13.5,
+      "realRange": {
+        "mixed_km": 632,
+        "highway_130_km": 434,
+        "urban_km": 800,
+        "winter_minus5_km": 495,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 330,
+      "chargingDC_10_80_min": 22,
+      "chargingDC_kWh_30min": 70,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 132
+        },
+        {
+          "soc": 10,
+          "power": 330
+        },
+        {
+          "soc": 30,
+          "power": 277
+        },
+        {
+          "soc": 50,
+          "power": 211
+        },
+        {
+          "soc": 80,
+          "power": 86
+        },
+        {
+          "soc": 100,
+          "power": 13
+        }
+      ],
+      "availability": "upcoming",
+      "notes": "Transmission intégrale 489 ch (360 kW), 94,5 kWh, 800 V",
+      "usableCapacity_kWh": 94.5,
+      "power_hp": 489,
+      "power_kW": 360
     }
   ],
   "warranty": {
@@ -244,7 +316,7 @@
   ],
   "verdict": {
     "strengths": [
-      "Autonomie confortable de plus de 700 km WLTP",
+      "Autonomie confortable de plus de 680 km WLTP (jusqu'a 762 km)",
       "Recharge 800V rapide à 250 kW en pointe"
     ],
     "weaknesses": [

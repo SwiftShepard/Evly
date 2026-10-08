@@ -21,8 +21,8 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1900,
-  "wltp_max_km": 650,
-  "wltp_min_km": 650,
+  "wltp_max_km": 612,
+  "wltp_min_km": 440,
   "realRange": {
     "mixed_km": 520,
     "highway_130_km": 390,
@@ -92,10 +92,28 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Earth",
-      "price_EUR": 43000,
+      "name": "Earth 58,3 kWh",
+      "price_EUR": 42290,
+      "batteryUsed": "58.3 kWh",
+      "equipmentHighlights": [
+        "Aérodynamisme optimisé"
+      ]
+    },
+    {
+      "name": "Earth 81,4 kWh",
+      "price_EUR": 46890,
       "batteryUsed": "81.4 kWh",
       "equipmentHighlights": [
+        "Aérodynamisme optimisé"
+      ]
+    },
+    {
+      "name": "GT-Line 81,4 kWh",
+      "price_EUR": 48690,
+      "batteryUsed": "81.4 kWh",
+      "equipmentHighlights": [
+        "Finition sportive GT-Line",
+        "Jantes 19 pouces",
         "Aérodynamisme optimisé"
       ]
     }
@@ -105,17 +123,116 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "kia-ev4-fastback-earth",
-      "label": "EV4 Fastback Earth",
+      "id": "kia-ev4-fastback-earth-58",
+      "label": "EV4 Fastback Earth · 58,3 kWh",
       "battery": "standard",
-      "trim": "Earth",
+      "trim": "Earth 58,3 kWh",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 43000,
+      "price_EUR": 42290,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 650,
+      "wltp_km": 440,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": {
+        "mixed_km": 365,
+        "highway_130_km": 251,
+        "urban_km": 462,
+        "winter_minus5_km": 286,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 128,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 57,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null,
+      "usableCapacity_kWh": 58.3
+    },
+    {
+      "id": "kia-ev4-fastback-earth",
+      "label": "EV4 Fastback Earth · 81,4 kWh",
+      "battery": "long-range",
+      "trim": "Earth 81,4 kWh",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 46890,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 612,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": {
+        "mixed_km": 520,
+        "highway_130_km": 390,
+        "urban_km": 600,
+        "winter_minus5_km": 410,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 128,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 57,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "kia-ev4-fastback-gt-line",
+      "label": "EV4 Fastback GT-Line · 81,4 kWh",
+      "battery": "long-range",
+      "trim": "GT-Line 81,4 kWh",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 48690,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 612,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 520,
@@ -191,7 +308,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev",

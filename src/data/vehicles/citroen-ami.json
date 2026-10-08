@@ -83,7 +83,7 @@
   "trims": [
     {
       "name": "Ami l'Original",
-      "price_EUR": 8190,
+      "price_EUR": 8490,
       "batteryUsed": "5.5 kWh",
       "equipmentHighlights": [
         "Format ultra compact",
@@ -114,7 +114,7 @@
       "wheelSize_inches": 14,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 8190,
+      "price_EUR": 8490,
       "monthlyLease_EUR": 69,
       "leasingSocialEligible": false,
       "wltp_km": 75,
@@ -200,7 +200,7 @@
     "idealUserProfile": "Jeunes dès 14 ans ou citadins cherchant une alternative fermée et sécurisée aux deux-roues pour des trajets exclusivement urbains.",
     "notIdealFor": "Conducteurs effectuant des trajets hors agglomération ou nécessitant d'emprunter des voies rapides."
   },
-  "lastUpdated": "2026-06-04",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "citroen-fr",
     "automobile-propre"

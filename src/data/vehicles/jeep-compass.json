@@ -21,7 +21,7 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 2110,
-  "wltp_max_km": 650,
+  "wltp_max_km": 674,
   "wltp_min_km": 500,
   "realRange": {
     "mixed_km": 515,
@@ -87,7 +87,7 @@
   "trims": [
     {
       "name": "Altitude 73 kWh",
-      "price_EUR": 41900,
+      "price_EUR": 43990,
       "batteryUsed": "73 kWh",
       "equipmentHighlights": [
         "FWD 213 ch",
@@ -96,7 +96,7 @@
     },
     {
       "name": "Summit 73 kWh",
-      "price_EUR": 45900,
+      "price_EUR": 46990,
       "batteryUsed": "73 kWh",
       "equipmentHighlights": [
         "FWD 213 ch",
@@ -105,8 +105,18 @@
       ]
     },
     {
+      "name": "Altitude 97 kWh",
+      "price_EUR": 48490,
+      "batteryUsed": "97 kWh",
+      "equipmentHighlights": [
+        "Moteur 231 ch",
+        "Autonomie jusqu'à 674 km WLTP",
+        "FWD 213 ch"
+      ]
+    },
+    {
       "name": "Summit 97 kWh",
-      "price_EUR": 49900,
+      "price_EUR": 51490,
       "batteryUsed": "97 kWh",
       "equipmentHighlights": [
         "FWD 213 ch",
@@ -138,7 +148,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 41900,
+      "price_EUR": 43990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 500,
@@ -191,7 +201,7 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 45900,
+      "price_EUR": 46990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 500,
@@ -237,6 +247,59 @@
       "notes": null
     },
     {
+      "id": "jeep-compass-altitude-97",
+      "label": "Altitude · 97 kWh",
+      "battery": "long-range",
+      "trim": "Altitude",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 48490,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 674,
+      "wltp_consumption_kWh_100km": 16.5,
+      "realRange": {
+        "mixed_km": 515,
+        "highway_130_km": 360,
+        "urban_km": 610,
+        "winter_minus5_km": 400,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 60,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 147
+        },
+        {
+          "soc": 10,
+          "power": 160
+        },
+        {
+          "soc": 20,
+          "power": 160
+        },
+        {
+          "soc": 50,
+          "power": 114
+        },
+        {
+          "soc": 80,
+          "power": 51
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
       "id": "jeep-compass-summit-97",
       "label": "Summit · 97 kWh",
       "battery": "long-range",
@@ -244,10 +307,10 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 49900,
+      "price_EUR": 51490,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 650,
+      "wltp_km": 674,
       "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
         "mixed_km": 515,
@@ -328,7 +391,7 @@
     "idealUserProfile": "Famille cherchant un SUV électrique polyvalent comme véhicule principal, éligible aux aides d'État.",
     "notIdealFor": "Acheteurs cherchant une citadine facile à garer en ville ou des performances ultra-sportives."
   },
-  "lastUpdated": "2026-05-18",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

@@ -20,9 +20,9 @@
   "grossCapacity_kWh": 58,
   "chemistry": "NMC",
   "architecture_V": 400,
-  "mass_kg": 1700,
+  "mass_kg": 1749,
   "wltp_max_km": 450,
-  "wltp_min_km": 450,
+  "wltp_min_km": 444,
   "realRange": {
     "mixed_km": 350,
     "highway_130_km": 230,
@@ -392,7 +392,7 @@
       "price_EUR": 42600,
       "monthlyLease_EUR": 200,
       "leasingSocialEligible": false,
-      "wltp_km": 450,
+      "wltp_km": 444,
       "wltp_consumption_kWh_100km": 14.7,
       "realRange": {
         "mixed_km": 350,
@@ -445,7 +445,7 @@
       "price_EUR": 44000,
       "monthlyLease_EUR": 200,
       "leasingSocialEligible": false,
-      "wltp_km": 450,
+      "wltp_km": 444,
       "wltp_consumption_kWh_100km": 14.7,
       "realRange": {
         "mixed_km": 350,
@@ -498,7 +498,7 @@
       "price_EUR": 46350,
       "monthlyLease_EUR": 200,
       "leasingSocialEligible": false,
-      "wltp_km": 450,
+      "wltp_km": 444,
       "wltp_consumption_kWh_100km": 14.7,
       "realRange": {
         "mixed_km": 350,
@@ -551,7 +551,7 @@
       "price_EUR": 47950,
       "monthlyLease_EUR": 200,
       "leasingSocialEligible": false,
-      "wltp_km": 450,
+      "wltp_km": 444,
       "wltp_consumption_kWh_100km": 14.7,
       "realRange": {
         "mixed_km": 350,
@@ -631,7 +631,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra-rapides."
   },
-  "lastUpdated": "2026-05-17",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

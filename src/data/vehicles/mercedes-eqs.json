@@ -144,8 +144,8 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Avantgarde Line EQS 450+",
-      "price_EUR": 135000,
+      "name": "Electric Art EQS 450+",
+      "price_EUR": 121600,
       "batteryUsed": "118 kWh",
       "equipmentHighlights": [
         "822 km WLTP",
@@ -155,7 +155,7 @@
     },
     {
       "name": "AMG Line EQS 450+",
-      "price_EUR": 142000,
+      "price_EUR": 126000,
       "batteryUsed": "118 kWh",
       "equipmentHighlights": [
         "790 km WLTP",
@@ -165,7 +165,7 @@
     },
     {
       "name": "AMG Line EQS 580 4MATIC",
-      "price_EUR": 167000,
+      "price_EUR": 168300,
       "batteryUsed": "118 kWh",
       "equipmentHighlights": [
         "717 km WLTP",
@@ -190,13 +190,13 @@
   "configurations": [
     {
       "id": "mercedes-eqs-450-avantgarde",
-      "label": "EQS 450+ Avantgarde Line",
+      "label": "Electric Art EQS 450+",
       "battery": "long-range",
-      "trim": "Avantgarde Line EQS 450+",
+      "trim": "Electric Art EQS 450+",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 135000,
+      "price_EUR": 121600,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 822,
@@ -278,7 +278,7 @@
       "wheelSize_inches": 21,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 142000,
+      "price_EUR": 126000,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 790,
@@ -360,7 +360,7 @@
       "wheelSize_inches": 21,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 167000,
+      "price_EUR": 168300,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 717,
@@ -548,13 +548,13 @@
       "Luxe absolu et conduite autonome niveau 3 (Drive Pilot)"
     ],
     "weaknesses": [
-      "Prix tres eleve (a partir de 109 000 euros)",
+      "Prix tres eleve (a partir de 121 600 euros)",
       "Architecture 400 V, charge DC limitee a 200 kW"
     ],
     "idealUserProfile": "Acheteurs de berlines de luxe (ex-Classe S) en transition electrique.",
     "notIdealFor": "Budget inferieur a 100 000 euros."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "automobile-propre",

@@ -91,7 +91,7 @@
   "trims": [
     {
       "name": "Luxury",
-      "price_EUR": 75600,
+      "price_EUR": 76300,
       "batteryUsed": "84 kWh",
       "equipmentHighlights": [
         "Double motorisation AWD 490 ch",
@@ -113,7 +113,7 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 75600,
+      "price_EUR": 76300,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 490,
@@ -201,7 +201,7 @@
     "idealUserProfile": "Professionnel ou famille recherchant un grand SUV de luxe discret, très performant et à recharge rapide.",
     "notIdealFor": "Conducteurs à la recherche d'une autonomie maximale de plus de 600 km ou d'un tarif abordable."
   },
-  "lastUpdated": "2026-06-05",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "genesis-fr",
     "evkx"

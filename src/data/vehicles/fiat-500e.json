@@ -21,8 +21,8 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1365,
-  "wltp_max_km": 320,
-  "wltp_min_km": 320,
+  "wltp_max_km": 331,
+  "wltp_min_km": 190,
   "realRange": {
     "mixed_km": 210,
     "highway_130_km": 153,
@@ -114,8 +114,18 @@
   "frunkCapacity_L": null,
   "trims": [
     {
+      "name": "Pop 23,8 kWh",
+      "price_EUR": 28900,
+      "batteryUsed": "23.8 kWh",
+      "equipmentHighlights": [
+        "Moteur 95 ch",
+        "Autonomie urbaine jusqu'à 190 km WLTP",
+        "Écran tactile 10,25\""
+      ]
+    },
+    {
       "name": "Pop 42 kWh",
-      "price_EUR": 27990,
+      "price_EUR": 32400,
       "batteryUsed": "42 kWh",
       "equipmentHighlights": [
         "Climatisation manuelle",
@@ -123,8 +133,8 @@
       ]
     },
     {
-      "name": "Red 42 kWh",
-      "price_EUR": 30990,
+      "name": "Icône 42 kWh",
+      "price_EUR": 34300,
       "batteryUsed": "42 kWh",
       "equipmentHighlights": [
         "Édition (RED) caritative",
@@ -133,7 +143,7 @@
     },
     {
       "name": "La Prima 42 kWh",
-      "price_EUR": 33990,
+      "price_EUR": 37300,
       "batteryUsed": "42 kWh",
       "equipmentHighlights": [
         "Toit ouvrant panoramique",
@@ -157,17 +167,73 @@
   ],
   "configurations": [
     {
-      "id": "fiat-500e-pop-42",
-      "label": "Pop · 42 kWh",
+      "id": "fiat-500e-pop-24",
+      "label": "Pop · 23,8 kWh",
       "battery": "standard",
       "trim": "Pop",
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 27990,
+      "price_EUR": 28900,
       "monthlyLease_EUR": 129,
       "leasingSocialEligible": false,
-      "wltp_km": 320,
+      "wltp_km": 190,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": {
+        "mixed_km": 158,
+        "highway_130_km": 108,
+        "urban_km": 200,
+        "winter_minus5_km": 124,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 50,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 78
+        },
+        {
+          "soc": 10,
+          "power": 85
+        },
+        {
+          "soc": 20,
+          "power": 85
+        },
+        {
+          "soc": 50,
+          "power": 60
+        },
+        {
+          "soc": 80,
+          "power": 27
+        },
+        {
+          "soc": 100,
+          "power": 5
+        }
+      ],
+      "availability": "available",
+      "notes": "Batterie 23,8 kWh, 95 ch, jusqu'à 190 km WLTP",
+      "usableCapacity_kWh": 21.3,
+      "power_hp": 95,
+      "power_kW": 70
+    },
+    {
+      "id": "fiat-500e-pop-42",
+      "label": "Pop · 42 kWh",
+      "battery": "long-range",
+      "trim": "Pop",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 32400,
+      "monthlyLease_EUR": 129,
+      "leasingSocialEligible": false,
+      "wltp_km": 331,
       "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
         "mixed_km": 210,
@@ -238,17 +304,17 @@
       "notes": null
     },
     {
-      "id": "fiat-500e-red-42",
-      "label": "Red · 42 kWh",
-      "battery": "standard",
-      "trim": "Red",
+      "id": "fiat-500e-icone-42",
+      "label": "Icône · 42 kWh",
+      "battery": "long-range",
+      "trim": "Icône",
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 30990,
+      "price_EUR": 34300,
       "monthlyLease_EUR": 129,
       "leasingSocialEligible": false,
-      "wltp_km": 320,
+      "wltp_km": 331,
       "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
         "mixed_km": 210,
@@ -321,15 +387,15 @@
     {
       "id": "fiat-500e-la-prima-42",
       "label": "La Prima · 42 kWh",
-      "battery": "standard",
+      "battery": "long-range",
       "trim": "La Prima",
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 33990,
+      "price_EUR": 37300,
       "monthlyLease_EUR": 129,
       "leasingSocialEligible": false,
-      "wltp_km": 320,
+      "wltp_km": 299,
       "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
         "mixed_km": 210,
@@ -437,7 +503,7 @@
     "idealUserProfile": "Foyer urbain ou périurbain, 2e voiture du couple, trajets quotidiens < 50 km. Le style et l'usage en font une citadine premium.",
     "notIdealFor": "Familles avec adolescents ou grand rouleur autoroutier régulier, l'autonomie et l'habitabilité ne suivent pas."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

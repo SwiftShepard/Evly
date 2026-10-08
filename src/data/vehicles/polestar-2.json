@@ -21,8 +21,8 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 2010,
-  "wltp_max_km": 654,
-  "wltp_min_km": 546,
+  "wltp_max_km": 659,
+  "wltp_min_km": 554,
   "realRange": {
     "mixed_km": 440,
     "highway_130_km": 327,
@@ -115,8 +115,8 @@
   "trims": [
     {
       "name": "Single Motor",
-      "price_EUR": 46990,
-      "batteryUsed": "69 kWh",
+      "price_EUR": 46800,
+      "batteryUsed": "70 kWh",
       "equipmentHighlights": [
         "Ecran 11 pouces Google",
         "Toit panoramique vitré"
@@ -124,11 +124,11 @@
     },
     {
       "name": "Single Motor",
-      "price_EUR": 51990,
-      "batteryUsed": "79 kWh",
+      "price_EUR": 49800,
+      "batteryUsed": "82 kWh",
       "equipmentHighlights": [
         "Ecran 11 pouces Google",
-        "654 km WLTP",
+        "659 km WLTP",
         "Charge DC 205 kW"
       ]
     },
@@ -155,10 +155,10 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 46990,
+      "price_EUR": 46800,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 546,
+      "wltp_km": 554,
       "wltp_consumption_kWh_100km": 15.1,
       "realRange": {
         "mixed_km": 400,
@@ -204,10 +204,10 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 51990,
+      "price_EUR": 49800,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 654,
+      "wltp_km": 659,
       "wltp_consumption_kWh_100km": 14.4,
       "realRange": {
         "mixed_km": 440,
@@ -387,7 +387,7 @@
   "verdict": {
     "strengths": [
       "Charge rapide 205 kW sur Long Range",
-      "Autonomie WLTP genereuse (654 km SM LR)"
+      "Autonomie WLTP genereuse (659 km SM LR)"
     ],
     "weaknesses": [
       "Assemblage en Chine, pas d'aides en France",
@@ -396,7 +396,7 @@
     "idealUserProfile": "Conducteurs cherchant une berline electrique premium avec autonomie genereuse et design scandinave.",
     "notIdealFor": "Familles cherchant un grand coffre ou acheteurs visant les aides a l'achat francaises."
   },
-  "lastUpdated": "2026-05-18",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "la-chaine-ev",
     "nyland"

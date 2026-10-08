@@ -24,11 +24,12 @@
   "wltp_max_km": 453,
   "wltp_min_km": 317,
   "realRange": {
-    "mixed_km": 390,
-    "highway_130_km": 270,
-    "urban_km": 460,
-    "winter_minus5_km": 300,
-    "confidence": "estimated"
+    "mixed_km": 343,
+    "highway_130_km": 250,
+    "urban_km": 449,
+    "winter_minus5_km": 257,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 278
   },
   "consumption_mixed_kWh_per_100km": 14.5,
   "consumption_highway_kWh_per_100km": 21,
@@ -71,8 +72,45 @@
       "power": 8
     }
   ],
-  "rangeTests": [],
-  "thousandKmChallenge": null,
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 408,
+      "consumption_kWh_100km": 14.2,
+      "temperature_C": 15,
+      "wheelSize_inches": 18,
+      "tyreModel": "Hankook iOn Evo",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Kia EV2 Long Range » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 278,
+      "consumption_kWh_100km": 20.9,
+      "temperature_C": 15,
+      "wheelSize_inches": 18,
+      "tyreModel": "Hankook iOn Evo",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Kia EV2 Long Range » (été, route sèche)."
+    }
+  ],
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 655,
+    "averageSpeed_kmh": 91.6,
+    "averageConsumption_Wh_km": 241,
+    "chargingStops": null,
+    "averageTemperature_C": 14,
+    "testDate": "2026-10",
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 4060,
   "width_mm": 1800,
   "height_mm": 1580,
@@ -324,13 +362,41 @@
       "wltp_km": 453,
       "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
-        "mixed_km": 390,
-        "highway_130_km": 270,
-        "urban_km": 460,
-        "winter_minus5_km": 300,
-        "confidence": "estimated"
+        "mixed_km": 343,
+        "highway_130_km": 250,
+        "urban_km": 449,
+        "winter_minus5_km": 257,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 278
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 408,
+          "consumption_kWh_100km": 14.2,
+          "temperature_C": 15,
+          "wheelSize_inches": 18,
+          "tyreModel": "Hankook iOn Evo",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Kia EV2 Long Range » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 278,
+          "consumption_kWh_100km": 20.9,
+          "temperature_C": 15,
+          "wheelSize_inches": 18,
+          "tyreModel": "Hankook iOn Evo",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Kia EV2 Long Range » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 118,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 43,
@@ -373,13 +439,41 @@
       "wltp_km": 453,
       "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
-        "mixed_km": 390,
-        "highway_130_km": 270,
-        "urban_km": 460,
-        "winter_minus5_km": 300,
-        "confidence": "estimated"
+        "mixed_km": 343,
+        "highway_130_km": 250,
+        "urban_km": 449,
+        "winter_minus5_km": 257,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 278
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 408,
+          "consumption_kWh_100km": 14.2,
+          "temperature_C": 15,
+          "wheelSize_inches": 18,
+          "tyreModel": "Hankook iOn Evo",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Kia EV2 Long Range » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 278,
+          "consumption_kWh_100km": 20.9,
+          "temperature_C": 15,
+          "wheelSize_inches": 18,
+          "tyreModel": "Hankook iOn Evo",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Kia EV2 Long Range » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 118,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 43,
@@ -496,9 +590,10 @@
     "idealUserProfile": "Citadins ou périurbains cherchant un petit crossover compact, bien équipé et économique pour le quotidien.",
     "notIdealFor": "Conducteurs effectuant fréquemment de longs trajets autoroutiers."
   },
-  "lastUpdated": "2026-05-30",
+  "lastUpdated": "2026-10-08",
   "sources": [
-    "la-chaine-ev"
+    "la-chaine-ev",
+    "nyland"
   ],
   "imageCredit": "Constructeur"
 }

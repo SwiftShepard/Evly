@@ -145,7 +145,7 @@
   "trims": [
     {
       "name": "Intuitive",
-      "price_EUR": 45450,
+      "price_EUR": 45800,
       "batteryUsed": "63 kWh",
       "equipmentHighlights": [
         "Compteurs numériques 12.3\"",
@@ -156,7 +156,7 @@
     },
     {
       "name": "Intuitive",
-      "price_EUR": 49450,
+      "price_EUR": 49800,
       "batteryUsed": "84 kWh",
       "equipmentHighlights": [
         "Compteurs numériques 12.3\"",
@@ -168,7 +168,7 @@
     },
     {
       "name": "Creative",
-      "price_EUR": 53050,
+      "price_EUR": 53400,
       "batteryUsed": "84 kWh",
       "equipmentHighlights": [
         "Feux Matrix LED",
@@ -179,7 +179,7 @@
     },
     {
       "name": "Executive",
-      "price_EUR": 58050,
+      "price_EUR": 58400,
       "batteryUsed": "84 kWh",
       "equipmentHighlights": [
         "Affichage tête-haute à réalité augmentée",
@@ -190,7 +190,7 @@
     },
     {
       "name": "N Line",
-      "price_EUR": 59650,
+      "price_EUR": 60000,
       "batteryUsed": "84 kWh",
       "equipmentHighlights": [
         "Design extérieur N Line sportif",
@@ -201,7 +201,7 @@
     },
     {
       "name": "N Line HTRAC AWD",
-      "price_EUR": 63450,
+      "price_EUR": 63800,
       "batteryUsed": "84 kWh",
       "equipmentHighlights": [
         "Transmission intégrale HTRAC",
@@ -223,7 +223,7 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 45450,
+      "price_EUR": 45800,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 440,
@@ -272,7 +272,7 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 49450,
+      "price_EUR": 49800,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 570,
@@ -321,7 +321,7 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 53050,
+      "price_EUR": 53400,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 570,
@@ -370,7 +370,7 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 58050,
+      "price_EUR": 58400,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 570,
@@ -419,7 +419,7 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 59650,
+      "price_EUR": 60000,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 570,
@@ -468,7 +468,7 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 63450,
+      "price_EUR": 63800,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 540,
@@ -575,7 +575,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

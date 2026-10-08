@@ -21,7 +21,7 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1847,
-  "wltp_max_km": 702,
+  "wltp_max_km": 750,
   "wltp_min_km": 528,
   "realRange": {
     "mixed_km": 433,
@@ -145,7 +145,7 @@
   "trims": [
     {
       "name": "Propulsion",
-      "price_EUR": 39990,
+      "price_EUR": 36990,
       "batteryUsed": "60 kWh LFP",
       "equipmentHighlights": [
         "Efficience record",
@@ -157,13 +157,13 @@
       "price_EUR": 44990,
       "batteryUsed": "78 kWh NMC",
       "equipmentHighlights": [
-        "Autonomie maximale (702 km WLTP)",
+        "Autonomie maximale (750 km WLTP)",
         "Audio Premium"
       ]
     },
     {
       "name": "Grande Autonomie AWD",
-      "price_EUR": 48990,
+      "price_EUR": 49990,
       "batteryUsed": "78 kWh NMC",
       "equipmentHighlights": [
         "Transmission Intégrale",
@@ -193,10 +193,10 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 39990,
+      "price_EUR": 36990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 554,
+      "wltp_km": 572,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 433,
@@ -274,7 +274,7 @@
       "price_EUR": 44990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 702,
+      "wltp_km": 750,
       "wltp_consumption_kWh_100km": 12.5,
       "realRange": {
         "mixed_km": 560,
@@ -349,10 +349,10 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 48990,
+      "price_EUR": 49990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 629,
+      "wltp_km": 660,
       "wltp_consumption_kWh_100km": 14,
       "realRange": {
         "mixed_km": 535,
@@ -534,7 +534,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev",

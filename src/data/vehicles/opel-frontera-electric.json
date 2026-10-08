@@ -2,7 +2,7 @@
   "slug": "opel-frontera-electric",
   "brand": "Opel",
   "model": "Frontera Electric",
-  "variant": "44 kWh",
+  "variant": "44 & 52 kWh",
   "bodyType": "SUV familial",
   "segment": "B",
   "productionCountry": "Espagne",
@@ -21,7 +21,7 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1530,
-  "wltp_max_km": 305,
+  "wltp_max_km": 402,
   "wltp_min_km": 305,
   "realRange": {
     "mixed_km": 235,
@@ -87,7 +87,7 @@
   "trims": [
     {
       "name": "Edition 44 kWh",
-      "price_EUR": 29000,
+      "price_EUR": 31490,
       "batteryUsed": "44 kWh",
       "equipmentHighlights": [
         "Entrée de gamme",
@@ -95,10 +95,30 @@
       ]
     },
     {
+      "name": "Edition 52 kWh",
+      "price_EUR": 32990,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "Autonomie étendue jusqu'à 402 km WLTP",
+        "Entrée de gamme",
+        "5 places"
+      ]
+    },
+    {
       "name": "GS 44 kWh",
-      "price_EUR": 31900,
+      "price_EUR": 33490,
       "batteryUsed": "44 kWh",
       "equipmentHighlights": [
+        "Look sportif",
+        "Caméra recul"
+      ]
+    },
+    {
+      "name": "GS 52 kWh",
+      "price_EUR": 34990,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "Autonomie étendue jusqu'à 402 km WLTP",
         "Look sportif",
         "Caméra recul"
       ]
@@ -127,7 +147,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 29000,
+      "price_EUR": 31490,
       "monthlyLease_EUR": 99,
       "leasingSocialEligible": true,
       "wltp_km": 305,
@@ -173,6 +193,60 @@
       "notes": null
     },
     {
+      "id": "opel-frontera-electric-edition-52",
+      "label": "Edition · 52 kWh",
+      "battery": "long-range",
+      "trim": "Edition",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 32990,
+      "monthlyLease_EUR": 99,
+      "leasingSocialEligible": true,
+      "wltp_km": 402,
+      "wltp_consumption_kWh_100km": 15.8,
+      "realRange": {
+        "mixed_km": 334,
+        "highway_130_km": 229,
+        "urban_km": 422,
+        "winter_minus5_km": 261,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": "Autonomie étendue 52 kWh",
+      "usableCapacity_kWh": 52
+    },
+    {
       "id": "opel-frontera-electric-gs-44",
       "label": "GS · 44 kWh",
       "battery": "standard",
@@ -180,7 +254,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 31900,
+      "price_EUR": 33490,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 305,
@@ -224,6 +298,60 @@
       ],
       "availability": "available",
       "notes": null
+    },
+    {
+      "id": "opel-frontera-electric-gs-52",
+      "label": "GS · 52 kWh",
+      "battery": "long-range",
+      "trim": "GS",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 34990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 402,
+      "wltp_consumption_kWh_100km": 15.8,
+      "realRange": {
+        "mixed_km": 334,
+        "highway_130_km": 229,
+        "urban_km": 422,
+        "winter_minus5_km": 261,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": "Autonomie étendue 52 kWh",
+      "usableCapacity_kWh": 52
     }
   ],
   "warranty": {
@@ -263,7 +391,7 @@
     "idealUserProfile": "Famille cherchant un SUV familial électrique au prix d'attaque le plus bas. Usage urbain et péri-urbain principal.",
     "notIdealFor": "Gros rouleur ou usage autoroutier régulier : l'autonomie 305 km WLTP est juste."
   },
-  "lastUpdated": "2026-05-18",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

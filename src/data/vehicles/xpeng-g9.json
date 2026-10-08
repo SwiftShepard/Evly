@@ -145,7 +145,7 @@
   "trims": [
     {
       "name": "79 kWh",
-      "price_EUR": 59990,
+      "price_EUR": 59900,
       "batteryUsed": "79 kWh",
       "equipmentHighlights": [
         "480 km WLTP",
@@ -186,7 +186,7 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 59990,
+      "price_EUR": 59900,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 480,
@@ -397,13 +397,13 @@
       "Grand espace interieur, coffre 660 L + frunk 71 L"
     ],
     "weaknesses": [
-      "Prix eleve (a partir de 59 990 euros)",
+      "Prix eleve (a partir de 59 900 euros)",
       "Assemblage en Chine, aucune aide francaise"
     ],
     "idealUserProfile": "Familles cherchant un grand SUV electrique premium avec la charge la plus rapide du marche.",
     "notIdealFor": "Budgets limites ou acheteurs fideles aux marques europeennes."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "automobile-propre",

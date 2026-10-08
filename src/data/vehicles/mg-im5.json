@@ -8,7 +8,7 @@
   "productionCountry": "Chine",
   "assemblyPlant": "Shanghai",
   "releaseYear": 2025,
-  "marketAvailability": "À venir en Europe",
+  "marketAvailability": "Disponible",
   "power_kW": 217,
   "power_hp": 291,
   "torque_Nm": 450,
@@ -16,13 +16,13 @@
   "motors": 1,
   "acceleration_0_100_s": 5.9,
   "topSpeed_kmh": 200,
-  "usableCapacity_kWh": 70,
-  "grossCapacity_kWh": 75,
+  "usableCapacity_kWh": 96,
+  "grossCapacity_kWh": 100,
   "chemistry": "LFP",
   "architecture_V": 800,
   "mass_kg": 1960,
   "wltp_max_km": 655,
-  "wltp_min_km": 490,
+  "wltp_min_km": 575,
   "realRange": {
     "mixed_km": 417,
     "highway_130_km": 325,
@@ -44,7 +44,7 @@
   "chargingAC": {
     "onboardCharger_kW": 11,
     "phases": 3,
-    "time_0_100_h": 7
+    "time_0_100_h": 9.5
   },
   "plugAndCharge": true,
   "v2l": true,
@@ -114,9 +114,9 @@
   "frunkCapacity_L": 50,
   "trims": [
     {
-      "name": "75 kWh",
-      "price_EUR": null,
-      "batteryUsed": "75 kWh",
+      "name": "RWD 100 kWh",
+      "price_EUR": 53990,
+      "batteryUsed": "100 kWh",
       "equipmentHighlights": [
         "Plateforme 800V de SAIC",
         "Écran de bord de 26,3 pouces",
@@ -124,8 +124,8 @@
       ]
     },
     {
-      "name": "100 kWh",
-      "price_EUR": null,
+      "name": "Performance 4WD 100 kWh",
+      "price_EUR": 59990,
       "batteryUsed": "100 kWh",
       "equipmentHighlights": [
         "Autonomie étendue WLTP 655 km",
@@ -140,22 +140,22 @@
   "configurations": [
     {
       "id": "mg-im5-standard",
-      "label": "IM5 · 75 kWh",
-      "battery": "standard",
-      "trim": "75 kWh",
+      "label": "IM5 RWD 100 kWh",
+      "battery": "long-range",
+      "trim": "RWD 100 kWh",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": null,
+      "price_EUR": 53990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 490,
+      "wltp_km": 655,
       "wltp_consumption_kWh_100km": 14.3,
       "realRange": {
-        "mixed_km": 410,
-        "highway_130_km": 300,
-        "urban_km": 490,
-        "winter_minus5_km": 320,
+        "mixed_km": 544,
+        "highway_130_km": 373,
+        "urban_km": 688,
+        "winter_minus5_km": 426,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -184,21 +184,24 @@
           "power": 8
         }
       ],
-      "availability": "upcoming",
-      "notes": "291 ch, RWD, 800V architecture"
+      "availability": "available",
+      "notes": "291 ch, RWD, 800V architecture",
+      "power_hp": 407,
+      "power_kW": 299,
+      "usableCapacity_kWh": 96
     },
     {
       "id": "mg-im5-long-range",
-      "label": "IM5 · 100 kWh",
+      "label": "IM5 Performance 4WD 100 kWh",
       "battery": "long-range",
-      "trim": "100 kWh",
+      "trim": "Performance 4WD 100 kWh",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": null,
+      "price_EUR": 59990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 655,
+      "wltp_km": 575,
       "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
         "mixed_km": 417,
@@ -261,8 +264,11 @@
           "power": 10
         }
       ],
-      "availability": "upcoming",
-      "notes": "340 ch (ou RWD haute puissance), plateforme 800V de SAIC"
+      "availability": "available",
+      "notes": "340 ch (ou RWD haute puissance), plateforme 800V de SAIC",
+      "power_hp": 751,
+      "power_kW": 552,
+      "usableCapacity_kWh": 96
     }
   ],
   "warranty": {
@@ -303,7 +309,7 @@
     "idealUserProfile": "Acheteurs à la recherche d'une berline électrique hautement technologique avec une charge ultra-rapide.",
     "notIdealFor": "Conducteurs souhaitant un réseau de concessions traditionnel très implanté."
   },
-  "lastUpdated": "2026-07-07",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "automobile-propre",

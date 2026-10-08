@@ -145,7 +145,7 @@
   "trims": [
     {
       "name": "Standard Range",
-      "price_EUR": 46990,
+      "price_EUR": 45990,
       "batteryUsed": "60.7 kWh",
       "equipmentHighlights": [
         "455 km WLTP",
@@ -156,7 +156,7 @@
     },
     {
       "name": "Long Range",
-      "price_EUR": 49600,
+      "price_EUR": 49990,
       "batteryUsed": "76.3 kWh",
       "equipmentHighlights": [
         "530 km WLTP",
@@ -166,7 +166,7 @@
     },
     {
       "name": "Performance",
-      "price_EUR": 53600,
+      "price_EUR": 53990,
       "batteryUsed": "76.3 kWh",
       "equipmentHighlights": [
         "500 km WLTP",
@@ -198,7 +198,7 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 46990,
+      "price_EUR": 45990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 455,
@@ -251,7 +251,7 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 49600,
+      "price_EUR": 49990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 530,
@@ -332,7 +332,7 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 53600,
+      "price_EUR": 53990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 500,
@@ -416,7 +416,7 @@
     "idealUserProfile": "Grands rouleurs autoroutiers et technophiles recherchant une berline spacieuse, rapide à charger et dotée d'aides à la conduite avancées.",
     "notIdealFor": "Conducteurs urbains à la recherche d'une citadine agile ou de véhicules faciles à garer."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "automobile-propre",

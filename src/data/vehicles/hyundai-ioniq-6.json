@@ -8,7 +8,7 @@
   "productionCountry": "Corée",
   "assemblyPlant": "Ulsan",
   "releaseYear": 2024,
-  "marketAvailability": "Disponible",
+  "marketAvailability": "Retirée du catalogue France (seule l'Ioniq 6 N reste proposée)",
   "power_kW": 168,
   "power_hp": 228,
   "torque_Nm": 350,
@@ -258,7 +258,7 @@
           "power": 10
         }
       ],
-      "availability": "available",
+      "availability": "discontinued",
       "notes": null
     },
     {
@@ -335,7 +335,7 @@
           "power": 10
         }
       ],
-      "availability": "available",
+      "availability": "discontinued",
       "notes": null
     },
     {
@@ -412,7 +412,7 @@
           "power": 10
         }
       ],
-      "availability": "available",
+      "availability": "discontinued",
       "notes": null
     },
     {
@@ -461,7 +461,7 @@
           "power": 10
         }
       ],
-      "availability": "available",
+      "availability": "discontinued",
       "notes": null
     }
   ],
@@ -502,7 +502,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

@@ -14,7 +14,7 @@
   "torque_Nm": 310,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.0,
+  "acceleration_0_100_s": 7,
   "topSpeed_kmh": 160,
   "usableCapacity_kWh": 60.4,
   "grossCapacity_kWh": 60.4,
@@ -135,7 +135,7 @@
   "trims": [
     {
       "name": "Comfort",
-      "price_EUR": 33990,
+      "price_EUR": 34990,
       "batteryUsed": "60.4 kWh LFP",
       "equipmentHighlights": [
         "V2L",
@@ -145,7 +145,7 @@
     },
     {
       "name": "Design",
-      "price_EUR": 35990,
+      "price_EUR": 36990,
       "batteryUsed": "60.4 kWh LFP",
       "equipmentHighlights": [
         "Toit panoramique",
@@ -166,7 +166,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 33990,
+      "price_EUR": 34990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 427,
@@ -243,7 +243,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 35990,
+      "price_EUR": 36990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 427,
@@ -350,7 +350,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev",

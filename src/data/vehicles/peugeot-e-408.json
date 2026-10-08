@@ -21,8 +21,8 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1879,
-  "wltp_max_km": 453,
-  "wltp_min_km": 453,
+  "wltp_max_km": 456,
+  "wltp_min_km": 456,
   "realRange": {
     "mixed_km": 355,
     "highway_130_km": 235,
@@ -139,7 +139,7 @@
       "price_EUR": 42700,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 453,
+      "wltp_km": 456,
       "wltp_consumption_kWh_100km": 15.4,
       "realRange": {
         "mixed_km": 355,
@@ -192,7 +192,7 @@
       "price_EUR": 45250,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 453,
+      "wltp_km": 456,
       "wltp_consumption_kWh_100km": 15.4,
       "realRange": {
         "mixed_km": 355,
@@ -245,7 +245,7 @@
       "price_EUR": 47600,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 453,
+      "wltp_km": 456,
       "wltp_consumption_kWh_100km": 15.4,
       "realRange": {
         "mixed_km": 355,
@@ -325,7 +325,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra-rapides."
   },
-  "lastUpdated": "2026-05-17",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "ev-database",

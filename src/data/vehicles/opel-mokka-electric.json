@@ -21,7 +21,7 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1598,
-  "wltp_max_km": 406,
+  "wltp_max_km": 402,
   "wltp_min_km": 338,
   "realRange": {
     "mixed_km": 242,
@@ -115,7 +115,7 @@
   "trims": [
     {
       "name": "Edition 50 kWh",
-      "price_EUR": 36600,
+      "price_EUR": 37090,
       "batteryUsed": "50 kWh",
       "equipmentHighlights": [
         "Entrée de gamme",
@@ -124,7 +124,7 @@
     },
     {
       "name": "GS 50 kWh",
-      "price_EUR": 39600,
+      "price_EUR": 39090,
       "batteryUsed": "50 kWh",
       "equipmentHighlights": [
         "Look sportif",
@@ -173,7 +173,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 36600,
+      "price_EUR": 37090,
       "monthlyLease_EUR": 189,
       "leasingSocialEligible": true,
       "wltp_km": 338,
@@ -254,7 +254,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 39600,
+      "price_EUR": 39090,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 338,
@@ -338,7 +338,7 @@
       "price_EUR": 42600,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 406,
+      "wltp_km": 402,
       "wltp_consumption_kWh_100km": 15.2,
       "realRange": {
         "mixed_km": 310,
@@ -391,7 +391,7 @@
       "price_EUR": 44900,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 406,
+      "wltp_km": 402,
       "wltp_consumption_kWh_100km": 15.2,
       "realRange": {
         "mixed_km": 310,
@@ -471,7 +471,7 @@
     "idealUserProfile": "Foyer urbain ou périurbain cherchant un mini-SUV au look affirmé. Mix urbain quotidien avec quelques sorties autoroute.",
     "notIdealFor": "Famille de 4 à l'arrière sur longs trajets, l'espace est compté."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

@@ -22,7 +22,7 @@
   "architecture_V": 400,
   "mass_kg": 2135,
   "wltp_max_km": 580,
-  "wltp_min_km": 375,
+  "wltp_min_km": 395,
   "realRange": {
     "mixed_km": 316,
     "highway_130_km": 244,
@@ -125,8 +125,8 @@
   "trims": [
     {
       "name": "e-tron",
-      "price_EUR": 45190,
-      "batteryUsed": "59 kWh",
+      "price_EUR": 45990,
+      "batteryUsed": "63 kWh",
       "equipmentHighlights": [
         "Jantes alliage 19 pouces",
         "Virtual Cockpit",
@@ -135,8 +135,8 @@
     },
     {
       "name": "e-tron performance",
-      "price_EUR": 46190,
-      "batteryUsed": "77 kWh",
+      "price_EUR": 46990,
+      "batteryUsed": "82 kWh",
       "equipmentHighlights": [
         "Autonomie WLTP jusqu'à 562 km",
         "Puissance 286 ch RWD",
@@ -145,8 +145,8 @@
     },
     {
       "name": "e-tron quattro performance",
-      "price_EUR": 59190,
-      "batteryUsed": "77 kWh",
+      "price_EUR": 59990,
+      "batteryUsed": "82 kWh",
       "equipmentHighlights": [
         "Transmission intégrale quattro AWD",
         "Puissance 340 ch",
@@ -207,10 +207,10 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 45190,
+      "price_EUR": 45990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 375,
+      "wltp_km": 398,
       "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
         "mixed_km": 290,
@@ -260,10 +260,10 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 46190,
+      "price_EUR": 46990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 562,
+      "wltp_km": 521,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
         "mixed_km": 415,
@@ -313,10 +313,10 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 59190,
+      "price_EUR": 59990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 513,
+      "wltp_km": 462,
       "wltp_consumption_kWh_100km": 17.5,
       "realRange": {
         "mixed_km": 316,
@@ -612,7 +612,7 @@
     "idealUserProfile": "Familles et conducteurs en recherche d'un SUV compact premium élégant avec un prix d'appel très compétitif ouvrant droit aux aides d'État.",
     "notIdealFor": "Gros rouleurs exigeant une vitesse de charge ultra-rapide supérieure à 200 kW."
   },
-  "lastUpdated": "2026-06-03",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "automobile-propre",

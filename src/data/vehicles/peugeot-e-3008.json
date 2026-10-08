@@ -20,9 +20,9 @@
   "grossCapacity_kWh": 98,
   "chemistry": "NMC",
   "architecture_V": 400,
-  "mass_kg": 1700,
-  "wltp_max_km": 700,
-  "wltp_min_km": 527,
+  "mass_kg": 2241,
+  "wltp_max_km": 701,
+  "wltp_min_km": 497,
   "realRange": {
     "mixed_km": 540,
     "highway_130_km": 330,
@@ -35,7 +35,7 @@
   "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.28,
   "chargingDC": {
-    "peakPower_kW": 162,
+    "peakPower_kW": 160,
     "time_10_80_min": 35,
     "kWh_added_30min": 60,
     "confidence": "tested"
@@ -199,7 +199,7 @@
       "price_EUR": 45090,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 527,
+      "wltp_km": 529,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
         "mixed_km": 410,
@@ -252,7 +252,7 @@
       "price_EUR": 46990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 527,
+      "wltp_km": 529,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
         "mixed_km": 410,
@@ -305,7 +305,7 @@
       "price_EUR": 49790,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 527,
+      "wltp_km": 529,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
         "mixed_km": 410,
@@ -358,7 +358,7 @@
       "price_EUR": 46990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 700,
+      "wltp_km": 701,
       "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
         "mixed_km": 540,
@@ -411,7 +411,7 @@
       "price_EUR": 51390,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 700,
+      "wltp_km": 701,
       "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
         "mixed_km": 540,
@@ -464,7 +464,7 @@
       "price_EUR": 54190,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 700,
+      "wltp_km": 701,
       "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
         "mixed_km": 540,
@@ -517,7 +517,7 @@
       "price_EUR": 50890,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 527,
+      "wltp_km": 497,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
         "mixed_km": 410,
@@ -570,7 +570,7 @@
       "price_EUR": 53190,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 527,
+      "wltp_km": 497,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
         "mixed_km": 410,
@@ -650,7 +650,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra-rapides."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

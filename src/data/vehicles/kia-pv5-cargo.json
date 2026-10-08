@@ -2,7 +2,7 @@
   "slug": "kia-pv5-cargo",
   "brand": "Kia",
   "model": "PV5 Cargo",
-  "variant": "81 kWh",
+  "variant": "51,5 & 71,2 kWh",
   "bodyType": "Fourgon",
   "segment": "D",
   "productionCountry": "Corée",
@@ -16,13 +16,13 @@
   "motors": 1,
   "acceleration_0_100_s": 10.6,
   "topSpeed_kmh": 135,
-  "usableCapacity_kWh": 81.4,
+  "usableCapacity_kWh": 71.2,
   "grossCapacity_kWh": 84,
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": null,
-  "wltp_max_km": 430,
-  "wltp_min_km": 430,
+  "wltp_max_km": 392,
+  "wltp_min_km": 286,
   "realRange": {
     "mixed_km": 320,
     "highway_130_km": 220,
@@ -106,9 +106,19 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Active Cargo",
-      "price_EUR": 40000,
-      "batteryUsed": "81.4 kWh",
+      "name": "Essential L1H1 51,5 kWh",
+      "price_EUR": 38520,
+      "batteryUsed": "51.5 kWh",
+      "equipmentHighlights": [
+        "Moteur 122 ch",
+        "Volume utile 4m3",
+        "Cloison de séparation tôlée"
+      ]
+    },
+    {
+      "name": "Essential L1H1 71,2 kWh",
+      "price_EUR": 42480,
+      "batteryUsed": "71.2 kWh",
       "equipmentHighlights": [
         "Volume utile 4m3",
         "Cloison de séparation tôlée",
@@ -121,17 +131,69 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "kia-pv5-cargo-active",
-      "label": "PV5 Cargo Active",
+      "id": "kia-pv5-cargo-essential-51",
+      "label": "PV5 Cargo L1H1 Essential · 51,5 kWh",
       "battery": "standard",
-      "trim": "Active Cargo",
+      "trim": "Essential L1H1 51,5 kWh",
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 40000,
+      "price_EUR": 38520,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 430,
+      "wltp_km": 286,
+      "wltp_consumption_kWh_100km": 16.5,
+      "realRange": {
+        "mixed_km": 237,
+        "highway_130_km": 163,
+        "urban_km": 300,
+        "winter_minus5_km": 186,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 128,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 128
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null,
+      "usableCapacity_kWh": 51.5,
+      "power_hp": 122,
+      "power_kW": 90
+    },
+    {
+      "id": "kia-pv5-cargo-essential-71",
+      "label": "PV5 Cargo L1H1 Essential · 71,2 kWh",
+      "battery": "long-range",
+      "trim": "Essential L1H1 71,2 kWh",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 42480,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 392,
       "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
         "mixed_km": 320,
@@ -167,7 +229,8 @@
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "usableCapacity_kWh": 71.2
     }
   ],
   "warranty": {
@@ -208,7 +271,7 @@
     "idealUserProfile": "Artisans, livreurs urbains et flottes d'entreprises cherchant un utilitaire moderne et connecté.",
     "notIdealFor": "Longues distances quotidiennes nécessitant de multiples charges rapides."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "automobile-propre",

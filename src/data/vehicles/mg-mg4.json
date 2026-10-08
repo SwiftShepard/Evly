@@ -21,14 +21,14 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1726,
-  "wltp_max_km": 450,
-  "wltp_min_km": 450,
+  "wltp_max_km": 545,
+  "wltp_min_km": 405,
   "realRange": {
-    "mixed_km": 278,
-    "highway_130_km": 203,
-    "highway_120_km": 226,
-    "urban_km": 363,
-    "winter_minus5_km": 209,
+    "mixed_km": 344,
+    "highway_130_km": 254,
+    "highway_120_km": 282,
+    "urban_km": 447,
+    "winter_minus5_km": 258,
     "confidence": "bjorn_nyland"
   },
   "consumption_mixed_kWh_per_100km": 15,
@@ -77,27 +77,27 @@
       "sourceId": "nyland",
       "testDate": null,
       "speed_kmh": 90,
-      "range_km": 330,
-      "consumption_kWh_100km": 15,
-      "temperature_C": 20,
+      "range_km": 406,
+      "consumption_kWh_100km": 15.3,
+      "temperature_C": 19,
       "wheelSize_inches": 17,
       "tyreModel": "Continental PremiumContact C",
       "protocol": "nyland",
       "videoUrl": null,
-      "notes": "Essai Nyland « MG4 51 kWh » (été, route sèche)."
+      "notes": "Essai Nyland « MG4 Long Range » (été, route sèche)."
     },
     {
       "sourceId": "nyland",
       "testDate": null,
       "speed_kmh": 120,
-      "range_km": 226,
-      "consumption_kWh_100km": 21.9,
-      "temperature_C": 20,
+      "range_km": 282,
+      "consumption_kWh_100km": 22,
+      "temperature_C": 21,
       "wheelSize_inches": 17,
       "tyreModel": "Continental PremiumContact C",
       "protocol": "nyland",
       "videoUrl": null,
-      "notes": "Essai Nyland « MG4 51 kWh » (été, route sèche)."
+      "notes": "Essai Nyland « MG4 Long Range » (été, route sèche)."
     }
   ],
   "thousandKmChallenge": {
@@ -120,17 +120,8 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Standard",
-      "price_EUR": 29990,
-      "batteryUsed": "51 kWh LFP",
-      "equipmentHighlights": [
-        "Rapport prix/prestation",
-        "Propulsion"
-      ]
-    },
-    {
-      "name": "Luxury",
-      "price_EUR": 33990,
+      "name": "Premium 64 kWh",
+      "price_EUR": 33490,
       "batteryUsed": "64 kWh NMC",
       "equipmentHighlights": [
         "Pompe à chaleur",
@@ -138,16 +129,16 @@
       ]
     },
     {
-      "name": "Autonomie Étendue",
-      "price_EUR": 39490,
+      "name": "Premium 77 kWh",
+      "price_EUR": 36990,
       "batteryUsed": "77 kWh NMC",
       "equipmentHighlights": [
-        "520 km WLTP"
+        "545 km WLTP"
       ]
     },
     {
       "name": "XPower",
-      "price_EUR": 35490,
+      "price_EUR": 38990,
       "batteryUsed": "64 kWh NMC",
       "equipmentHighlights": [
         "435 ch AWD",
@@ -160,94 +151,17 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "mg-mg4-standard",
-      "label": "MG4 Standard",
-      "battery": "standard",
-      "trim": "Standard",
-      "wheelSize_inches": 18,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 29990,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 450,
-      "wltp_consumption_kWh_100km": 15,
-      "realRange": {
-        "mixed_km": 278,
-        "highway_130_km": 203,
-        "highway_120_km": 226,
-        "urban_km": 363,
-        "winter_minus5_km": 209,
-        "confidence": "bjorn_nyland"
-      },
-      "rangeTests": [
-        {
-          "sourceId": "nyland",
-          "testDate": null,
-          "speed_kmh": 90,
-          "range_km": 330,
-          "consumption_kWh_100km": 15,
-          "temperature_C": 20,
-          "wheelSize_inches": 17,
-          "tyreModel": "Continental PremiumContact C",
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Essai Nyland « MG4 51 kWh » (été, route sèche)."
-        },
-        {
-          "sourceId": "nyland",
-          "testDate": null,
-          "speed_kmh": 120,
-          "range_km": 226,
-          "consumption_kWh_100km": 21.9,
-          "temperature_C": 20,
-          "wheelSize_inches": 17,
-          "tyreModel": "Continental PremiumContact C",
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Essai Nyland « MG4 51 kWh » (été, route sèche)."
-        }
-      ],
-      "chargingDC_peak_kW": 135,
-      "chargingDC_10_80_min": 26,
-      "chargingDC_kWh_30min": 45,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 100
-        },
-        {
-          "soc": 10,
-          "power": 130
-        },
-        {
-          "soc": 50,
-          "power": 100
-        },
-        {
-          "soc": 80,
-          "power": 50
-        },
-        {
-          "soc": 100,
-          "power": 10
-        }
-      ],
-      "availability": "available",
-      "notes": null
-    },
-    {
       "id": "mg-mg4-luxury",
-      "label": "MG4 Luxury",
+      "label": "MG4 Premium 64 kWh",
       "battery": "standard",
-      "trim": "Luxury",
+      "trim": "Premium 64 kWh",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 33990,
+      "price_EUR": 33490,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 450,
+      "wltp_km": 425,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 344,
@@ -315,16 +229,16 @@
     },
     {
       "id": "mg-mg4-autonomie-étendue",
-      "label": "MG4 Autonomie Étendue",
+      "label": "MG4 Premium 77 kWh",
       "battery": "standard",
-      "trim": "Autonomie Étendue",
+      "trim": "Premium 77 kWh",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 39490,
+      "price_EUR": 36990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 450,
+      "wltp_km": 545,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 360,
@@ -370,10 +284,10 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 35490,
+      "price_EUR": 38990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 450,
+      "wltp_km": 405,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 248,
@@ -477,7 +391,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev",

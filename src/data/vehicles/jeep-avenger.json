@@ -115,7 +115,7 @@
   "trims": [
     {
       "name": "Longitude 54 kWh",
-      "price_EUR": 36600,
+      "price_EUR": 35990,
       "batteryUsed": "54 kWh",
       "equipmentHighlights": [
         "Entrée de gamme",
@@ -124,7 +124,7 @@
     },
     {
       "name": "Altitude 54 kWh",
-      "price_EUR": 40990,
+      "price_EUR": 38290,
       "batteryUsed": "54 kWh",
       "equipmentHighlights": [
         "Pack tech : caméra 360°, hayon mains libres"
@@ -132,7 +132,7 @@
     },
     {
       "name": "Summit 54 kWh",
-      "price_EUR": 42990,
+      "price_EUR": 40590,
       "batteryUsed": "54 kWh",
       "equipmentHighlights": [
         "Cuir, toit ouvrant, JBL audio"
@@ -162,7 +162,7 @@
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 36600,
+      "price_EUR": 35990,
       "monthlyLease_EUR": 169,
       "leasingSocialEligible": true,
       "wltp_km": 400,
@@ -243,7 +243,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 40990,
+      "price_EUR": 38290,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 400,
@@ -324,7 +324,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 42990,
+      "price_EUR": 40590,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 400,
@@ -435,7 +435,7 @@
     "idealUserProfile": "Foyer urbain ou périurbain attiré par l'esthétique Jeep mais sans besoin réel de 4×4. Mix urbain/route quotidien.",
     "notIdealFor": "Vrai usage off-road ou famille de 4 sur grands trajets : préférer un SUV familial plus spacieux."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

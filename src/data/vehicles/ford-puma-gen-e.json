@@ -114,8 +114,8 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Titanium",
-      "price_EUR": 32900,
+      "name": "Gen-E",
+      "price_EUR": 34490,
       "batteryUsed": "43 kWh",
       "equipmentHighlights": [
         "376 km WLTP",
@@ -124,8 +124,8 @@
       ]
     },
     {
-      "name": "ST-Line",
-      "price_EUR": 35400,
+      "name": "Premium",
+      "price_EUR": 36490,
       "batteryUsed": "43 kWh",
       "equipmentHighlights": [
         "Design sportif",
@@ -134,8 +134,8 @@
       ]
     },
     {
-      "name": "ST-Line Vignale",
-      "price_EUR": 37900,
+      "name": "BlueCruise Edition",
+      "price_EUR": 39790,
       "batteryUsed": "43 kWh",
       "equipmentHighlights": [
         "Sellerie cuir",
@@ -161,13 +161,13 @@
   "configurations": [
     {
       "id": "ford-puma-gen-e-titanium",
-      "label": "Puma Gen-E Titanium",
+      "label": "Puma Gen-E Gen-E",
       "battery": "standard",
-      "trim": "Titanium",
+      "trim": "Gen-E",
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 32900,
+      "price_EUR": 34490,
       "monthlyLease_EUR": 139,
       "leasingSocialEligible": false,
       "wltp_km": 376,
@@ -242,13 +242,13 @@
     },
     {
       "id": "ford-puma-gen-e-stline",
-      "label": "Puma Gen-E ST-Line",
+      "label": "Puma Gen-E Premium",
       "battery": "standard",
-      "trim": "ST-Line",
+      "trim": "Premium",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 35400,
+      "price_EUR": 36490,
       "monthlyLease_EUR": 139,
       "leasingSocialEligible": false,
       "wltp_km": 365,
@@ -323,13 +323,13 @@
     },
     {
       "id": "ford-puma-gen-e-vignale",
-      "label": "Puma Gen-E ST-Line Vignale",
+      "label": "Puma Gen-E BlueCruise Edition",
       "battery": "standard",
-      "trim": "ST-Line Vignale",
+      "trim": "BlueCruise Edition",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 37900,
+      "price_EUR": 39790,
       "monthlyLease_EUR": 139,
       "leasingSocialEligible": false,
       "wltp_km": 365,
@@ -440,7 +440,7 @@
     "idealUserProfile": "Conducteurs urbains/periurbains cherchant un petit SUV pratique et eligible aux aides.",
     "notIdealFor": "Gros rouleurs necessitant plus de 400 km d'autonomie."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "automobile-propre",

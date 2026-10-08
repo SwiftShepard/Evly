@@ -2,11 +2,11 @@
   "slug": "leapmotor-b10",
   "brand": "Leapmotor",
   "model": "B10",
-  "variant": "69.9 kWh",
+  "variant": "67,1 kWh",
   "bodyType": "SUV compact",
   "segment": "C",
-  "productionCountry": "Pologne",
-  "assemblyPlant": "Ulsan",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Jinhua, Zhejiang (Chine)",
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
   "power_kW": 160,
@@ -14,15 +14,15 @@
   "torque_Nm": 240,
   "drivetrain": "RWD",
   "motors": 1,
-  "acceleration_0_100_s": 8.0,
+  "acceleration_0_100_s": 8,
   "topSpeed_kmh": 170,
-  "usableCapacity_kWh": 69.9,
+  "usableCapacity_kWh": 67.1,
   "grossCapacity_kWh": 69.9,
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1920,
-  "wltp_max_km": 420,
-  "wltp_min_km": 420,
+  "wltp_max_km": 434,
+  "wltp_min_km": 434,
   "realRange": {
     "mixed_km": 334,
     "highway_130_km": 245,
@@ -36,7 +36,7 @@
   "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.3,
   "chargingDC": {
-    "peakPower_kW": 100,
+    "peakPower_kW": 168,
     "time_10_80_min": 30,
     "kWh_added_30min": 35,
     "confidence": "estimated"
@@ -53,23 +53,23 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 77
+      "power": 129
     },
     {
       "soc": 10,
-      "power": 100
+      "power": 168
     },
     {
       "soc": 50,
-      "power": 77
+      "power": 129
     },
     {
       "soc": 80,
-      "power": 38
+      "power": 64
     },
     {
       "soc": 100,
-      "power": 8
+      "power": 13
     }
   ],
   "rangeTests": [
@@ -110,9 +110,9 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Design",
-      "price_EUR": 30000,
-      "batteryUsed": "69.9 kWh",
+      "name": "Design ProMax",
+      "price_EUR": 31400,
+      "batteryUsed": "67.1 kWh",
       "equipmentHighlights": [
         "Nouveau best-seller",
         "Technologie avancée"
@@ -121,31 +121,20 @@
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [
-    {
-      "label": "Prime CEE",
-      "amount_EUR": 6500,
-      "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
-    },
-    {
-      "label": "Majoration Batterie Européenne",
-      "amount_EUR": 2000,
-      "conditions": "Majoration pour batterie fabriquée en Europe."
-    }
-  ],
+  "availableAids": [],
   "configurations": [
     {
       "id": "leapmotor-b10-design",
-      "label": "B10 Design",
+      "label": "B10 Design ProMax · 67,1 kWh",
       "battery": "standard",
-      "trim": "Design",
+      "trim": "Design ProMax",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 30000,
+      "price_EUR": 31400,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 420,
+      "wltp_km": 434,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 334,
@@ -183,33 +172,34 @@
           "notes": "Essai Nyland « Leapmotor B10 » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 100,
+      "chargingDC_peak_kW": 168,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 77
+          "power": 129
         },
         {
           "soc": 10,
-          "power": 100
+          "power": 168
         },
         {
           "soc": 50,
-          "power": 77
+          "power": 129
         },
         {
           "soc": 80,
-          "power": 38
+          "power": 64
         },
         {
           "soc": 100,
-          "power": 8
+          "power": 13
         }
       ],
       "availability": "upcoming",
-      "notes": null
+      "notes": "218 ch, batterie LFP 67,1 kWh, 30-80 % en 19 min",
+      "usableCapacity_kWh": 67.1
     }
   ],
   "warranty": {
@@ -249,7 +239,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev",

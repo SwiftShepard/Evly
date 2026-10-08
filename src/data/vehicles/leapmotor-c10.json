@@ -2,44 +2,43 @@
   "slug": "leapmotor-c10",
   "brand": "Leapmotor",
   "model": "C10",
-  "variant": "69.9 kWh",
+  "variant": "81,9 kWh",
   "bodyType": "SUV familial",
   "segment": "D",
   "productionCountry": "Chine",
-  "assemblyPlant": "Ulsan",
+  "assemblyPlant": "Jinhua, Zhejiang (Chine)",
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
-  "power_kW": 160,
-  "power_hp": 218,
+  "power_kW": 220,
+  "power_hp": 299,
   "torque_Nm": 320,
   "drivetrain": "RWD",
   "motors": 1,
-  "acceleration_0_100_s": 7.5,
+  "acceleration_0_100_s": 6.8,
   "topSpeed_kmh": 160,
-  "usableCapacity_kWh": 69.9,
-  "grossCapacity_kWh": 69.9,
+  "usableCapacity_kWh": 81.9,
+  "grossCapacity_kWh": null,
   "chemistry": "LFP",
   "architecture_V": 400,
   "mass_kg": 1940,
-  "wltp_max_km": 420,
-  "wltp_min_km": 420,
+  "wltp_max_km": 510,
+  "wltp_min_km": 460,
   "realRange": {
-    "mixed_km": 326,
-    "highway_130_km": 242,
-    "urban_km": 420,
-    "winter_minus5_km": 245,
-    "confidence": "bjorn_nyland",
-    "highway_120_km": 269
+    "mixed_km": 423,
+    "highway_130_km": 291,
+    "urban_km": 536,
+    "winter_minus5_km": 332,
+    "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 15,
   "consumption_highway_kWh_per_100km": 21,
   "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.32,
   "chargingDC": {
-    "peakPower_kW": 84,
+    "peakPower_kW": 180,
     "time_10_80_min": 44,
     "kWh_added_30min": 33,
-    "confidence": "estimated"
+    "confidence": "manufacturer"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
@@ -53,53 +52,26 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 65
+      "power": 139
     },
     {
       "soc": 10,
-      "power": 84
+      "power": 180
     },
     {
       "soc": 50,
-      "power": 65
+      "power": 139
     },
     {
       "soc": 80,
-      "power": 32
+      "power": 69
     },
     {
       "soc": 100,
-      "power": 6
+      "power": 13
     }
   ],
-  "rangeTests": [
-    {
-      "sourceId": "nyland",
-      "testDate": null,
-      "speed_kmh": 90,
-      "range_km": 382,
-      "consumption_kWh_100km": 16.9,
-      "temperature_C": 16,
-      "wheelSize_inches": 20,
-      "tyreModel": "Dunlop eSport Maxx",
-      "protocol": "nyland",
-      "videoUrl": null,
-      "notes": "Essai Nyland « Leapmotor C10 » (été, route sèche)."
-    },
-    {
-      "sourceId": "nyland",
-      "testDate": null,
-      "speed_kmh": 120,
-      "range_km": 269,
-      "consumption_kWh_100km": 24,
-      "temperature_C": 15,
-      "wheelSize_inches": 20,
-      "tyreModel": "Dunlop eSport Maxx",
-      "protocol": "nyland",
-      "videoUrl": null,
-      "notes": "Essai Nyland « Leapmotor C10 » (été, route sèche)."
-    }
-  ],
+  "rangeTests": [],
   "thousandKmChallenge": null,
   "length_mm": 4739,
   "width_mm": 1900,
@@ -110,24 +82,23 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Style",
-      "price_EUR": 34900,
-      "batteryUsed": "69.9 kWh LFP",
+      "name": "Design ProMax",
+      "price_EUR": 39900,
+      "batteryUsed": "81.9 kWh LFP",
       "equipmentHighlights": [
-        "Jantes alliage 18\"",
-        "Tableau de bord numérique 10.25\"",
-        "Écran central 14.6\""
+        "Moteur 299 ch (propulsion)",
+        "Autonomie 510 km WLTP",
+        "Charge DC 180 kW"
       ]
     },
     {
-      "name": "Design",
-      "price_EUR": 36400,
-      "batteryUsed": "69.9 kWh LFP",
+      "name": "Design ProMax AWD",
+      "price_EUR": 41900,
+      "batteryUsed": "81.9 kWh LFP",
       "equipmentHighlights": [
-        "Jantes alliage 20\"",
-        "Hayon électrique",
-        "Vitres arrière surteintées",
-        "Éclairage d'ambiance dynamique"
+        "Transmission intégrale 571 ch",
+        "0 à 100 km/h en 5 s",
+        "Charge DC 180 kW"
       ]
     }
   ],
@@ -136,158 +107,110 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "leapmotor-c10-style",
-      "label": "C10 Style",
-      "battery": "standard",
-      "trim": "Style",
-      "wheelSize_inches": 18,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 34900,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 420,
-      "wltp_consumption_kWh_100km": 15,
-      "realRange": {
-        "mixed_km": 326,
-        "highway_130_km": 242,
-        "urban_km": 420,
-        "winter_minus5_km": 245,
-        "confidence": "bjorn_nyland",
-        "highway_120_km": 269
-      },
-      "rangeTests": [
-        {
-          "sourceId": "nyland",
-          "testDate": null,
-          "speed_kmh": 90,
-          "range_km": 382,
-          "consumption_kWh_100km": 16.9,
-          "temperature_C": 16,
-          "wheelSize_inches": 20,
-          "tyreModel": "Dunlop eSport Maxx",
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Essai Nyland « Leapmotor C10 » (été, route sèche)."
-        },
-        {
-          "sourceId": "nyland",
-          "testDate": null,
-          "speed_kmh": 120,
-          "range_km": 269,
-          "consumption_kWh_100km": 24,
-          "temperature_C": 15,
-          "wheelSize_inches": 20,
-          "tyreModel": "Dunlop eSport Maxx",
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Essai Nyland « Leapmotor C10 » (été, route sèche)."
-        }
-      ],
-      "chargingDC_peak_kW": 84,
-      "chargingDC_10_80_min": 44,
-      "chargingDC_kWh_30min": 30,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 65
-        },
-        {
-          "soc": 10,
-          "power": 84
-        },
-        {
-          "soc": 50,
-          "power": 65
-        },
-        {
-          "soc": 80,
-          "power": 32
-        },
-        {
-          "soc": 100,
-          "power": 6
-        }
-      ],
-      "availability": "available",
-      "notes": null
-    },
-    {
-      "id": "leapmotor-c10-design",
-      "label": "C10 Design",
-      "battery": "standard",
-      "trim": "Design",
+      "id": "leapmotor-c10-design-promax",
+      "label": "C10 Design ProMax",
+      "battery": "long-range",
+      "trim": "Design ProMax",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 36400,
+      "price_EUR": 39900,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 420,
+      "wltp_km": 510,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 326,
-        "highway_130_km": 242,
-        "urban_km": 420,
-        "winter_minus5_km": 245,
-        "confidence": "bjorn_nyland",
-        "highway_120_km": 269
+        "mixed_km": 423,
+        "highway_130_km": 291,
+        "urban_km": 536,
+        "winter_minus5_km": 332,
+        "confidence": "estimated"
       },
-      "rangeTests": [
-        {
-          "sourceId": "nyland",
-          "testDate": null,
-          "speed_kmh": 90,
-          "range_km": 382,
-          "consumption_kWh_100km": 16.9,
-          "temperature_C": 16,
-          "wheelSize_inches": 20,
-          "tyreModel": "Dunlop eSport Maxx",
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Essai Nyland « Leapmotor C10 » (été, route sèche)."
-        },
-        {
-          "sourceId": "nyland",
-          "testDate": null,
-          "speed_kmh": 120,
-          "range_km": 269,
-          "consumption_kWh_100km": 24,
-          "temperature_C": 15,
-          "wheelSize_inches": 20,
-          "tyreModel": "Dunlop eSport Maxx",
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Essai Nyland « Leapmotor C10 » (été, route sèche)."
-        }
-      ],
-      "chargingDC_peak_kW": 84,
-      "chargingDC_10_80_min": 44,
+      "rangeTests": [],
+      "chargingDC_peak_kW": 180,
+      "chargingDC_10_80_min": 24,
       "chargingDC_kWh_30min": 30,
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 65
+          "power": 139
         },
         {
           "soc": 10,
-          "power": 84
+          "power": 180
         },
         {
           "soc": 50,
-          "power": 65
+          "power": 139
         },
         {
           "soc": 80,
-          "power": 32
+          "power": 69
         },
         {
           "soc": 100,
-          "power": 6
+          "power": 13
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": "Millésime 2027, batterie LFP 81,9 kWh",
+      "power_hp": 299,
+      "power_kW": 220,
+      "acceleration_0_100_s": 6.8,
+      "usableCapacity_kWh": 81.9
+    },
+    {
+      "id": "leapmotor-c10-design-promax-awd",
+      "label": "C10 Design ProMax AWD",
+      "battery": "long-range",
+      "trim": "Design ProMax AWD",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 41900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 460,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": {
+        "mixed_km": 382,
+        "highway_130_km": 262,
+        "urban_km": 483,
+        "winter_minus5_km": 299,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 180,
+      "chargingDC_10_80_min": 24,
+      "chargingDC_kWh_30min": 30,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 139
+        },
+        {
+          "soc": 10,
+          "power": 180
+        },
+        {
+          "soc": 50,
+          "power": 139
+        },
+        {
+          "soc": 80,
+          "power": 69
+        },
+        {
+          "soc": 100,
+          "power": 13
+        }
+      ],
+      "availability": "available",
+      "notes": "Millésime 2027, batterie LFP 81,9 kWh",
+      "power_hp": 571,
+      "power_kW": 420,
+      "acceleration_0_100_s": 5,
+      "usableCapacity_kWh": 81.9
     }
   ],
   "warranty": {
@@ -327,7 +250,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev",

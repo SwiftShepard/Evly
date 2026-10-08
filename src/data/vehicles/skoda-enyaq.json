@@ -21,8 +21,8 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 2200,
-  "wltp_max_km": 580,
-  "wltp_min_km": 423,
+  "wltp_max_km": 583,
+  "wltp_min_km": 513,
   "realRange": {
     "mixed_km": 408,
     "highway_130_km": 314,
@@ -144,35 +144,26 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "60 (132 kW RWD) 63 kWh",
-      "price_EUR": 37200,
-      "batteryUsed": "63 kWh",
-      "equipmentHighlights": [
-        "132 kW · 180 ch · WLTP 423 km",
-        "DC 145 kW"
-      ]
-    },
-    {
-      "name": "85 (210 kW RWD) 77 kWh",
-      "price_EUR": 41700,
+      "name": "85 Element (210 kW RWD)",
+      "price_EUR": 46950,
       "batteryUsed": "77 kWh",
       "equipmentHighlights": [
-        "210 kW · 286 ch · WLTP 580 km",
+        "210 kW · 286 ch · WLTP 583 km",
         "DC 175 kW · pompe à chaleur"
       ]
     },
     {
-      "name": "85x (210 kW AWD) 77 kWh",
-      "price_EUR": 45200,
+      "name": "85x Element (210 kW AWD)",
+      "price_EUR": 49810,
       "batteryUsed": "77 kWh",
       "equipmentHighlights": [
         "AWD 210 kW · 286 ch",
-        "WLTP 553 km (réduit par AWD)"
+        "WLTP 547 km (réduit par AWD)"
       ]
     },
     {
-      "name": "vRS (250 kW AWD) 77 kWh",
-      "price_EUR": 55900,
+      "name": "RS (250 kW AWD)",
+      "price_EUR": 55580,
       "batteryUsed": "77 kWh",
       "equipmentHighlights": [
         "AWD 250 kW · 340 ch · 0-100 en 5,4 s",
@@ -196,70 +187,17 @@
   ],
   "configurations": [
     {
-      "id": "skoda-enyaq-60-132-kw-rwd--63",
-      "label": "60 (132 kW RWD) · 63 kWh",
-      "battery": "standard",
-      "trim": "60 (132 kW RWD)",
-      "wheelSize_inches": 19,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 37200,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 423,
-      "wltp_consumption_kWh_100km": 16,
-      "realRange": {
-        "mixed_km": 320,
-        "highway_130_km": 210,
-        "urban_km": 385,
-        "winter_minus5_km": 250,
-        "confidence": "estimated"
-      },
-      "rangeTests": [],
-      "chargingDC_peak_kW": 145,
-      "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 60,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 133
-        },
-        {
-          "soc": 10,
-          "power": 145
-        },
-        {
-          "soc": 20,
-          "power": 145
-        },
-        {
-          "soc": 50,
-          "power": 103
-        },
-        {
-          "soc": 80,
-          "power": 46
-        },
-        {
-          "soc": 100,
-          "power": 9
-        }
-      ],
-      "availability": "available",
-      "notes": null
-    },
-    {
       "id": "skoda-enyaq-85-210-kw-rwd--77",
-      "label": "85 (210 kW RWD) · 77 kWh",
+      "label": "Enyaq 85 Element · 77 kWh",
       "battery": "long-range",
-      "trim": "85 (210 kW RWD)",
+      "trim": "85 Element (210 kW RWD)",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 41700,
+      "price_EUR": 46950,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 580,
+      "wltp_km": 583,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
         "mixed_km": 445,
@@ -303,16 +241,16 @@
     },
     {
       "id": "skoda-enyaq-85x-210-kw-awd--77",
-      "label": "85x (210 kW AWD) · 77 kWh",
+      "label": "Enyaq 85x Element · 77 kWh",
       "battery": "long-range",
-      "trim": "85x (210 kW AWD)",
+      "trim": "85x Element (210 kW AWD)",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 45200,
+      "price_EUR": 49810,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 580,
+      "wltp_km": 547,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
         "mixed_km": 408,
@@ -384,16 +322,16 @@
     },
     {
       "id": "skoda-enyaq-vrs-250-kw-awd--77",
-      "label": "vRS (250 kW AWD) · 77 kWh",
+      "label": "Enyaq RS · 77 kWh",
       "battery": "long-range",
-      "trim": "vRS (250 kW AWD)",
+      "trim": "RS (250 kW AWD)",
       "wheelSize_inches": 21,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 55900,
+      "price_EUR": 55580,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 580,
+      "wltp_km": 513,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
         "mixed_km": 445,
@@ -468,12 +406,12 @@
     ],
     "weaknesses": [
       "Logiciel ID.Software hérité du groupe VW, historiquement perfectible",
-      "vRS dépasse largement le plafond Prime CEE VE (55 900 €)"
+      "RS dépasse largement le plafond Prime CEE VE (55 580 €)"
     ],
     "idealUserProfile": "Famille cherchant un SUV électrique polyvalent à grand coffre, avec un rapport prestations/prix solide et une fabrication européenne.",
     "notIdealFor": "Acheteur recherchant un design tranché ou un infodivertissement irréprochable."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

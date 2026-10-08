@@ -145,7 +145,7 @@
   "trims": [
     {
       "name": "Comfort",
-      "price_EUR": 41890,
+      "price_EUR": 42890,
       "batteryUsed": "71.8 kWh LFP",
       "equipmentHighlights": [
         "Toit panoramique ouvrant",
@@ -176,7 +176,7 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 41890,
+      "price_EUR": 42890,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 420,
@@ -340,7 +340,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

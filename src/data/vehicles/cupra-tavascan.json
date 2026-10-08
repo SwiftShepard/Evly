@@ -22,7 +22,7 @@
   "architecture_V": 400,
   "mass_kg": 2280,
   "wltp_max_km": 568,
-  "wltp_min_km": 568,
+  "wltp_min_km": 439,
   "realRange": {
     "mixed_km": 399,
     "highway_130_km": 305,
@@ -144,8 +144,18 @@
   "frunkCapacity_L": null,
   "trims": [
     {
+      "name": "190 (140 kW) 59 kWh",
+      "price_EUR": 44990,
+      "batteryUsed": "59 kWh",
+      "equipmentHighlights": [
+        "Nouvelle entrée de gamme 190 ch",
+        "Batterie 59 kWh",
+        "RWD 210 kW · 286 ch · WLTP 568 km"
+      ]
+    },
+    {
       "name": "Endurance RWD (210 kW) 77 kWh",
-      "price_EUR": 52900,
+      "price_EUR": 47430,
       "batteryUsed": "77 kWh",
       "equipmentHighlights": [
         "RWD 210 kW · 286 ch · WLTP 568 km",
@@ -154,7 +164,7 @@
     },
     {
       "name": "VZ AWD (250 kW) 77 kWh",
-      "price_EUR": 58500,
+      "price_EUR": 65680,
       "batteryUsed": "77 kWh",
       "equipmentHighlights": [
         "AWD 250 kW · 340 ch · 0-100 en 5,6 s",
@@ -167,6 +177,62 @@
   "availableAids": [],
   "configurations": [
     {
+      "id": "cupra-tavascan-190-140-kw--59",
+      "label": "Tavascan 190 ch · 59 kWh",
+      "battery": "standard",
+      "trim": "190 (140 kW) 59 kWh",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 44990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 439,
+      "wltp_consumption_kWh_100km": 17.2,
+      "realRange": {
+        "mixed_km": 364,
+        "highway_130_km": 250,
+        "urban_km": 461,
+        "winter_minus5_km": 285,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 135,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 70,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 124
+        },
+        {
+          "soc": 10,
+          "power": 135
+        },
+        {
+          "soc": 20,
+          "power": 135
+        },
+        {
+          "soc": 50,
+          "power": 96
+        },
+        {
+          "soc": 80,
+          "power": 43
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": null,
+      "power_hp": 190,
+      "power_kW": 140,
+      "usableCapacity_kWh": 59
+    },
+    {
       "id": "cupra-tavascan-endurance-rwd-210-kw--77",
       "label": "Endurance RWD (210 kW) · 77 kWh",
       "battery": "standard",
@@ -174,7 +240,7 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 52900,
+      "price_EUR": 47430,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 568,
@@ -227,10 +293,10 @@
       "wheelSize_inches": 21,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 58500,
+      "price_EUR": 65680,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 568,
+      "wltp_km": 477,
       "wltp_consumption_kWh_100km": 17.2,
       "realRange": {
         "mixed_km": 399,
@@ -338,7 +404,7 @@
     "idealUserProfile": "Acheteur cherchant un SUV coupé sportif et n'étant pas dépendant des aides à l'achat. Profile premium urbain/extra-urbain.",
     "notIdealFor": "Tout acheteur visant la Prime CEE VE ou le leasing social, production chinoise + prix exclus du dispositif."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

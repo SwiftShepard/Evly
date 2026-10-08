@@ -145,7 +145,7 @@
   "trims": [
     {
       "name": "Creative",
-      "price_EUR": 36850,
+      "price_EUR": 38050,
       "batteryUsed": "48 kWh",
       "equipmentHighlights": [
         "Compteurs numériques 12.3\"",
@@ -156,7 +156,7 @@
     },
     {
       "name": "Creative",
-      "price_EUR": 41250,
+      "price_EUR": 41450,
       "batteryUsed": "65 kWh",
       "equipmentHighlights": [
         "Compteurs numériques 12.3\"",
@@ -168,7 +168,7 @@
     },
     {
       "name": "Ultime Edition",
-      "price_EUR": 36850,
+      "price_EUR": 38050,
       "batteryUsed": "48 kWh",
       "equipmentHighlights": [
         "Climatisation automatique bi-zone",
@@ -179,7 +179,7 @@
     },
     {
       "name": "Ultime Edition",
-      "price_EUR": 41250,
+      "price_EUR": 41450,
       "batteryUsed": "65 kWh",
       "equipmentHighlights": [
         "Climatisation automatique bi-zone",
@@ -191,7 +191,7 @@
     },
     {
       "name": "N Line Creative",
-      "price_EUR": 42250,
+      "price_EUR": 42450,
       "batteryUsed": "65 kWh",
       "equipmentHighlights": [
         "Design extérieur N Line dynamique",
@@ -202,7 +202,7 @@
     },
     {
       "name": "N Line Executive",
-      "price_EUR": 46750,
+      "price_EUR": 46950,
       "batteryUsed": "65 kWh",
       "equipmentHighlights": [
         "Système audio Premium Bose",
@@ -235,7 +235,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 36850,
+      "price_EUR": 38050,
       "monthlyLease_EUR": 189,
       "leasingSocialEligible": true,
       "wltp_km": 377,
@@ -284,7 +284,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 36850,
+      "price_EUR": 38050,
       "monthlyLease_EUR": 95,
       "leasingSocialEligible": false,
       "wltp_km": 377,
@@ -333,7 +333,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 41250,
+      "price_EUR": 41450,
       "monthlyLease_EUR": 141,
       "leasingSocialEligible": false,
       "wltp_km": 514,
@@ -410,7 +410,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 41250,
+      "price_EUR": 41450,
       "monthlyLease_EUR": 141,
       "leasingSocialEligible": false,
       "wltp_km": 514,
@@ -487,7 +487,7 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 42250,
+      "price_EUR": 42450,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 490,
@@ -564,7 +564,7 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 46750,
+      "price_EUR": 46950,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 490,
@@ -671,7 +671,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

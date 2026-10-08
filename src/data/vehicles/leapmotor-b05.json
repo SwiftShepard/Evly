@@ -87,7 +87,7 @@
   "trims": [
     {
       "name": "Pro Life",
-      "price_EUR": 25400,
+      "price_EUR": 25900,
       "batteryUsed": "56,2 kWh",
       "equipmentHighlights": [
         "401 km WLTP",
@@ -107,7 +107,7 @@
     },
     {
       "name": "ProMax Design",
-      "price_EUR": 30400,
+      "price_EUR": 28400,
       "batteryUsed": "67,1 kWh",
       "equipmentHighlights": [
         "482 km WLTP",
@@ -129,7 +129,7 @@
       "tyreType": "summer",
       "options": [],
       "usableCapacity_kWh": 53.4,
-      "price_EUR": 25400,
+      "price_EUR": 25900,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 401,
@@ -236,8 +236,8 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "usableCapacity_kWh": 64.0,
-      "price_EUR": 30400,
+      "usableCapacity_kWh": 64,
+      "price_EUR": 28400,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 482,
@@ -320,7 +320,7 @@
     "idealUserProfile": "Future candidate idéale au leasing social européen. Dès 2027, la production espagnole ouvrira l'accès au leasing social. Idéale pour les familles cherchant un rapport prix/prestations hors normes et prêtes à anticiper la transition vers les aides maximales.",
     "notIdealFor": "Acheteurs conditionnant leur achat au leasing social : la production chinoise actuelle exclut ce dispositif. Conducteurs à très fort kilométrage autoroutier nécessitant plus de 400 km d'autonomie réelle."
   },
-  "lastUpdated": "2026-05-20",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

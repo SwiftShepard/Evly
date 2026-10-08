@@ -2,34 +2,33 @@
   "slug": "byd-atto-3",
   "brand": "BYD",
   "model": "Atto 3",
-  "variant": "60.4 kWh",
+  "variant": "Evo 74,8 kWh",
   "bodyType": "SUV compact",
   "segment": "C",
   "productionCountry": "Chine",
   "assemblyPlant": "Ulsan",
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
-  "power_kW": 150,
-  "power_hp": 204,
+  "power_kW": 230,
+  "power_hp": 313,
   "torque_Nm": 310,
-  "drivetrain": "FWD",
+  "drivetrain": "RWD",
   "motors": 1,
   "acceleration_0_100_s": 7.3,
   "topSpeed_kmh": 160,
-  "usableCapacity_kWh": 60.4,
-  "grossCapacity_kWh": 60.4,
+  "usableCapacity_kWh": 74.8,
+  "grossCapacity_kWh": 74.8,
   "chemistry": "LFP",
   "architecture_V": 400,
   "mass_kg": 1825,
-  "wltp_max_km": 420,
-  "wltp_min_km": 420,
+  "wltp_max_km": 510,
+  "wltp_min_km": 470,
   "realRange": {
-    "mixed_km": 294,
-    "highway_130_km": 223,
-    "highway_120_km": 248,
-    "urban_km": 373,
-    "winter_minus5_km": 221,
-    "confidence": "bjorn_nyland"
+    "mixed_km": 423,
+    "highway_130_km": 291,
+    "urban_km": 536,
+    "winter_minus5_km": 332,
+    "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 15,
   "consumption_highway_kWh_per_100km": 21,
@@ -96,34 +95,7 @@
       "power": 3
     }
   ],
-  "rangeTests": [
-    {
-      "sourceId": "nyland",
-      "testDate": null,
-      "speed_kmh": 90,
-      "range_km": 339,
-      "consumption_kWh_100km": 17,
-      "temperature_C": 13,
-      "wheelSize_inches": 18,
-      "tyreModel": "Continental EC6",
-      "protocol": "nyland",
-      "videoUrl": null,
-      "notes": "Essai Nyland « BYD Atto 3 60 kWh » (été, route sèche)."
-    },
-    {
-      "sourceId": "nyland",
-      "testDate": null,
-      "speed_kmh": 120,
-      "range_km": 248,
-      "consumption_kWh_100km": 23.3,
-      "temperature_C": 13,
-      "wheelSize_inches": 18,
-      "tyreModel": "Continental EC6",
-      "protocol": "nyland",
-      "videoUrl": null,
-      "notes": "Essai Nyland « BYD Atto 3 60 kWh » (été, route sèche)."
-    }
-  ],
+  "rangeTests": [],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 630,
@@ -146,7 +118,7 @@
     {
       "name": "Design",
       "price_EUR": 38990,
-      "batteryUsed": "60.4 kWh LFP",
+      "batteryUsed": "74.8 kWh LFP",
       "equipmentHighlights": [
         "Écran rotatif 15.6\"",
         "Toit panoramique"
@@ -155,7 +127,7 @@
     {
       "name": "Excellence",
       "price_EUR": 42490,
-      "batteryUsed": "60.4 kWh LFP",
+      "batteryUsed": "74.8 kWh LFP",
       "equipmentHighlights": [
         "Écran rotatif 15.6\"",
         "Système audio Rythme",
@@ -179,44 +151,16 @@
       "price_EUR": 38990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 420,
+      "wltp_km": 510,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 294,
-        "highway_130_km": 223,
-        "highway_120_km": 248,
-        "urban_km": 373,
-        "winter_minus5_km": 221,
-        "confidence": "bjorn_nyland"
+        "mixed_km": 423,
+        "highway_130_km": 291,
+        "urban_km": 536,
+        "winter_minus5_km": 332,
+        "confidence": "estimated"
       },
-      "rangeTests": [
-        {
-          "sourceId": "nyland",
-          "testDate": null,
-          "speed_kmh": 90,
-          "range_km": 339,
-          "consumption_kWh_100km": 17,
-          "temperature_C": 13,
-          "wheelSize_inches": 18,
-          "tyreModel": "Continental EC6",
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Essai Nyland « BYD Atto 3 60 kWh » (été, route sèche)."
-        },
-        {
-          "sourceId": "nyland",
-          "testDate": null,
-          "speed_kmh": 120,
-          "range_km": 248,
-          "consumption_kWh_100km": 23.3,
-          "temperature_C": 13,
-          "wheelSize_inches": 18,
-          "tyreModel": "Continental EC6",
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Essai Nyland « BYD Atto 3 60 kWh » (été, route sèche)."
-        }
-      ],
+      "rangeTests": [],
       "chargingDC_peak_kW": 88,
       "chargingDC_10_80_min": 44,
       "chargingDC_kWh_30min": 35,
@@ -243,7 +187,10 @@
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "usableCapacity_kWh": 74.8,
+      "power_hp": 313,
+      "power_kW": 230
     },
     {
       "id": "byd-atto-3-excellence",
@@ -256,44 +203,16 @@
       "price_EUR": 42490,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 420,
+      "wltp_km": 470,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 294,
-        "highway_130_km": 223,
-        "highway_120_km": 248,
-        "urban_km": 373,
-        "winter_minus5_km": 221,
-        "confidence": "bjorn_nyland"
+        "mixed_km": 390,
+        "highway_130_km": 268,
+        "urban_km": 494,
+        "winter_minus5_km": 306,
+        "confidence": "estimated"
       },
-      "rangeTests": [
-        {
-          "sourceId": "nyland",
-          "testDate": null,
-          "speed_kmh": 90,
-          "range_km": 339,
-          "consumption_kWh_100km": 17,
-          "temperature_C": 13,
-          "wheelSize_inches": 18,
-          "tyreModel": "Continental EC6",
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Essai Nyland « BYD Atto 3 60 kWh » (été, route sèche)."
-        },
-        {
-          "sourceId": "nyland",
-          "testDate": null,
-          "speed_kmh": 120,
-          "range_km": 248,
-          "consumption_kWh_100km": 23.3,
-          "temperature_C": 13,
-          "wheelSize_inches": 18,
-          "tyreModel": "Continental EC6",
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Essai Nyland « BYD Atto 3 60 kWh » (été, route sèche)."
-        }
-      ],
+      "rangeTests": [],
       "chargingDC_peak_kW": 88,
       "chargingDC_10_80_min": 44,
       "chargingDC_kWh_30min": 35,
@@ -320,7 +239,10 @@
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "usableCapacity_kWh": 74.8,
+      "power_hp": 448,
+      "power_kW": 330
     }
   ],
   "warranty": {
@@ -360,7 +282,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev",

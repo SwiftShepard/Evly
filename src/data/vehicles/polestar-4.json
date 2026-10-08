@@ -22,7 +22,7 @@
   "architecture_V": 400,
   "mass_kg": 2195,
   "wltp_max_km": 620,
-  "wltp_min_km": 545,
+  "wltp_min_km": 590,
   "realRange": {
     "mixed_km": 458,
     "highway_130_km": 357,
@@ -114,8 +114,8 @@
   "frunkCapacity_L": 15,
   "trims": [
     {
-      "name": "Single Motor",
-      "price_EUR": 59990,
+      "name": "Rear Motor",
+      "price_EUR": 61800,
       "batteryUsed": "100 kWh",
       "equipmentHighlights": [
         "Ecran 15,4 pouces Google",
@@ -125,7 +125,7 @@
     },
     {
       "name": "Dual Motor",
-      "price_EUR": 65990,
+      "price_EUR": 69800,
       "batteryUsed": "100 kWh",
       "equipmentHighlights": [
         "AWD 544 ch",
@@ -142,11 +142,11 @@
       "id": "polestar-4-lr-sm",
       "label": "Polestar 4 · LR Single Motor",
       "battery": "standard",
-      "trim": "Single Motor",
+      "trim": "Rear Motor",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 59990,
+      "price_EUR": 61800,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 620,
@@ -199,10 +199,10 @@
       "wheelSize_inches": 21,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 65990,
+      "price_EUR": 69800,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 545,
+      "wltp_km": 590,
       "wltp_consumption_kWh_100km": 20.3,
       "realRange": {
         "mixed_km": 458,
@@ -310,7 +310,7 @@
     "idealUserProfile": "Amateurs de design radical cherchant un SUV coupe electrique premium et spacieux.",
     "notIdealFor": "Ceux qui preferent une visibilite arriere traditionnelle ou un budget maitrise."
   },
-  "lastUpdated": "2026-05-18",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "la-chaine-ev",
     "nyland"

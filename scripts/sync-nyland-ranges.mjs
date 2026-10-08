@@ -43,14 +43,11 @@ const MAPPING = {
   ],
   "bmw-i5": [{ car: "BMW i5 M60", configs: ["m60"] }],
   "bmw-i7": [{ car: "BMW i7 xDrive60", configs: ["xdrive60"] }],
-  "bmw-ix": [
-    { car: "BMW iX xDrive40", configs: ["xdrive40"] },
-    { car: "BMW iX xDrive50", configs: ["xdrive50"] },
-  ],
+  // "bmw-ix" : Nyland a testé les xDrive40/50 d'avant le restylage (xDrive45/60/M70 depuis 2025)
   "bmw-ix1": [{ car: "BMW iX1 xDrive30", configs: ["xdrive30-base", "xdrive30-xline", "xdrive30-msport"] }],
   "bmw-ix2": [{ car: "BMW iX2 xDrive30", configs: ["xdrive30-base", "xdrive30-msport"] }],
   "bmw-ix3-neue-klasse": [{ car: "BMW iX3 50 xDrive", configs: ["50"] }],
-  "byd-atto-3": [{ car: "BYD Atto 3 60 kWh", configs: ["design", "excellence"] }],
+  // "byd-atto-3" : Nyland a testé l'Atto 3 60 kWh, remplacé par l'Atto 3 Evo 74,8 kWh
   "byd-dolphin": [{ car: "BYD Dolphin", configs: ["comfort", "design"] }],
   "byd-seal-u": [{ car: "BYD Seal U", configs: ["design"] }],
   "byd-seal": [{ car: "BYD Seal Performance", configs: ["excellence-awd"] }],
@@ -60,13 +57,10 @@ const MAPPING = {
     { car: "Citroen e-C4X", configs: ["x-plus-156", "x-max-156"] },
   ],
   "citroen-e-spacetourer": [{ car: "Citroen e-Spacetourer", configs: ["business-75-m", "business-75-xl"] }],
-  "cupra-born": [
-    { car: "Cupra Born 58", configs: ["58-kwh-e-boost-170-kw--58"] },
-    { car: "Cupra Born 82 kWh", configs: ["77-kwh-e-boost-170-kw--77"] },
-  ],
+  // "cupra-born" : Nyland a testé la Born d'avant le restylage 2026 (nouveaux moteurs, 59 / 79 kWh)
   "cupra-tavascan": [{ car: "Cupra Tavascan VZ Adrenaline", configs: ["vz-awd-250-kw--77"] }],
-  "fiat-500e": [{ car: "Fiat 500e", configs: ["pop-42", "red-42", "la-prima-42"] }],
-  "fiat-600e": [{ car: "Fiat 600e", configs: ["red-54", "la-prima-54"] }],
+  "fiat-500e": [{ car: "Fiat 500e", configs: ["pop-42", "icone-42", "la-prima-42"] }],
+  "fiat-600e": [{ car: "Fiat 600e", configs: ["pop-54", "icone-54", "la-prima-54"] }],
   "ford-capri": [{ car: "Ford Capri", configs: ["77", "premium-77"] }],
   "ford-explorer": [{ car: "Ford Explorer", configs: ["77", "premium-77"] }],
   "ford-mustang-mach-e": [
@@ -80,13 +74,14 @@ const MAPPING = {
   "hyundai-ioniq-9": [{ car: "Hyundai Ioniq 9 LR AWD", configs: ["executive-110", "calligraphy-110"] }],
   "hyundai-kona": [{ car: "Hyundai Kona 65 kWh MY2024", configs: ["creative-65", "ultime-65", "n-line-creative-65", "n-line-executive-65"] }],
   "jeep-avenger": [{ car: "Jeep Avenger", configs: ["longitude-54", "altitude-54", "summit-54"] }],
+  "kia-ev2": [{ car: "Kia EV2 Long Range", configs: ["air-61", "earth-61"] }],
   "kia-ev3": [{ car: "Kia EV3 Long Range FWD", configs: ["long-range-air", "long-range-earth", "long-range-gt-line"] }],
   "kia-ev4": [{ car: "Kia EV4 Long Range FWD", configs: ["lr-air-17", "lr-earth-17", "lr-gt-line-19"] }],
   "kia-ev5": [{ car: "Kia EV5 Long Range FWD", configs: ["lr-air", "lr-earth", "lr-gt-line"] }],
   "kia-ev9": [{ car: "Kia EV9 GT-Line", configs: ["gt-line"] }],
-  "kia-pv5-passenger": [{ car: "Kia PV5 Passenger", configs: ["active"] }],
+  "kia-pv5-passenger": [{ car: "Kia PV5 Passenger", configs: ["essential-71", "plus-71"] }],
   "leapmotor-b10": [{ car: "Leapmotor B10", configs: ["design"] }],
-  "leapmotor-c10": [{ car: "Leapmotor C10", configs: ["style", "design"] }],
+  // "leapmotor-c10" : Nyland a testé la C10 69,9 kWh, remplacée par la 81,9 kWh (millésime 2027)
   "mazda-6e": [{ car: "Mazda 6e Standard Range", configs: ["takumi-69", "takumi-plus-69"] }],
   "mercedes-cla": [{ car: "Mercedes CLA 350 4Matic", configs: ["350-4matic-amg"] }],
   "mercedes-classe-g": [{ car: "Mercedes G580", configs: ["580-edition-one"] }],
@@ -108,12 +103,10 @@ const MAPPING = {
   "mg-cyberster": [{ car: "MG Cyberster", configs: ["gt-awd"] }],
   "mg-im5": [{ car: "MG IM5 100 kWh AWD", configs: ["long-range"] }],
   "mg-im6": [
-    { car: "MG IM6 75 kWh RWD", configs: ["standard"] },
     { car: "MG IM6 100 kWh AWD", configs: ["long-range"] },
   ],
   "mg-marvel-r": [{ car: "MG Marvel R Performance", configs: ["performance"] }],
   "mg-mg4": [
-    { car: "MG4 51 kWh", configs: ["standard"] },
     { car: "MG4 Long Range", configs: ["luxury"] },
     { car: "MG4 XPower", configs: ["xpower"] },
   ],
@@ -163,7 +156,7 @@ const MAPPING = {
     { car: "Tesla Model Y Performance Juniper", configs: ["performance"] },
   ],
   "volvo-ex30": [
-    { car: "Volvo EX30 RWD ER", configs: ["plus-sm-er", "ultra-sm-er"] },
+    { car: "Volvo EX30 RWD ER", configs: ["start-sm-er", "plus-sm-er", "ultra-sm-er"] },
     { car: "Volvo EX30 Twin Performance", configs: ["plus-tm"] },
   ],
   "volvo-ex40": [{ car: "Volvo XC40 82 kWh AWD", configs: ["plus-tm"] }],

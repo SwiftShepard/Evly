@@ -125,7 +125,7 @@
   "trims": [
     {
       "name": "Macan Base",
-      "price_EUR": 82900,
+      "price_EUR": 84100,
       "batteryUsed": "95 kWh",
       "equipmentHighlights": [
         "360 ch RWD (propulsion)",
@@ -135,7 +135,7 @@
     },
     {
       "name": "Macan 4",
-      "price_EUR": 86439,
+      "price_EUR": 87800,
       "batteryUsed": "95 kWh",
       "equipmentHighlights": [
         "408 ch AWD (quatre roues motrices)",
@@ -145,7 +145,7 @@
     },
     {
       "name": "Macan Turbo",
-      "price_EUR": 118910,
+      "price_EUR": 122000,
       "batteryUsed": "95 kWh",
       "equipmentHighlights": [
         "639 ch AWD, 0-100 en 3,3 s",
@@ -166,7 +166,7 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 82900,
+      "price_EUR": 84100,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 641,
@@ -219,7 +219,7 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 86439,
+      "price_EUR": 87800,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 613,
@@ -300,7 +300,7 @@
       "wheelSize_inches": 21,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 118910,
+      "price_EUR": 122000,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 591,
@@ -383,7 +383,7 @@
     "idealUserProfile": "Conducteurs souhaitant un SUV familial sportif, prestigieux et capable de voyager au long cours sans contrainte de charge.",
     "notIdealFor": "Acheteurs soucieux d'efficience maximale ou de discretion, ou disposant d'un budget raisonnable."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "automobile-propre",

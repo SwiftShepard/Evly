@@ -117,7 +117,7 @@
   "trims": [
     {
       "name": "Design 57.7 kWh",
-      "price_EUR": 41900,
+      "price_EUR": 40900,
       "batteryUsed": "57.7 kWh",
       "equipmentHighlights": [
         "444 km WLTP",
@@ -136,7 +136,17 @@
       ]
     },
     {
-      "name": "Origin 73.1 kWh",
+      "name": "Performance AWD",
+      "price_EUR": 47400,
+      "batteryUsed": "73.1 kWh",
+      "equipmentHighlights": [
+        "AWD 343 ch",
+        "516 km WLTP",
+        "X-MODE tout-terrain"
+      ]
+    },
+    {
+      "name": "Lounge 73.1 kWh",
       "price_EUR": 48900,
       "batteryUsed": "73.1 kWh",
       "equipmentHighlights": [
@@ -146,13 +156,13 @@
       ]
     },
     {
-      "name": "Performance AWD",
-      "price_EUR": 47400,
+      "name": "Collection 73.1 kWh",
+      "price_EUR": 51900,
       "batteryUsed": "73.1 kWh",
       "equipmentHighlights": [
-        "AWD 343 ch",
-        "516 km WLTP",
-        "X-MODE tout-terrain"
+        "Finition haut de gamme Collection",
+        "Toit panoramique",
+        "Sellerie cuir"
       ]
     }
   ],
@@ -168,7 +178,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 41900,
+      "price_EUR": 40900,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 444,
@@ -267,59 +277,6 @@
       "notes": "224 ch (165 kW), FWD"
     },
     {
-      "id": "toyota-bz4x-origin-73",
-      "label": "bZ4X Origin · 73.1 kWh",
-      "battery": "long-range",
-      "trim": "Origin 73.1 kWh",
-      "wheelSize_inches": 20,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 48900,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 550,
-      "wltp_consumption_kWh_100km": 15,
-      "realRange": {
-        "mixed_km": 410,
-        "highway_130_km": 295,
-        "urban_km": 500,
-        "winter_minus5_km": 325,
-        "confidence": "estimated"
-      },
-      "rangeTests": [],
-      "chargingDC_peak_kW": 150,
-      "chargingDC_10_80_min": 28,
-      "chargingDC_kWh_30min": 50,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 100
-        },
-        {
-          "soc": 10,
-          "power": 150
-        },
-        {
-          "soc": 30,
-          "power": 130
-        },
-        {
-          "soc": 50,
-          "power": 90
-        },
-        {
-          "soc": 80,
-          "power": 40
-        },
-        {
-          "soc": 100,
-          "power": 8
-        }
-      ],
-      "availability": "available",
-      "notes": "224 ch (165 kW), FWD, full options"
-    },
-    {
       "id": "toyota-bz4x-performance-awd",
       "label": "bZ4X Performance AWD",
       "battery": "long-range",
@@ -371,6 +328,112 @@
       ],
       "availability": "available",
       "notes": "343 ch (252 kW), AWD, X-MODE"
+    },
+    {
+      "id": "toyota-bz4x-origin-73",
+      "label": "bZ4X Lounge 73.1 kWh",
+      "battery": "long-range",
+      "trim": "Lounge 73.1 kWh",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 48900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 550,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": {
+        "mixed_km": 410,
+        "highway_130_km": 295,
+        "urban_km": 500,
+        "winter_minus5_km": 325,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 150
+        },
+        {
+          "soc": 30,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 90
+        },
+        {
+          "soc": 80,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "224 ch (165 kW), FWD, full options"
+    },
+    {
+      "id": "toyota-bz4x-collection-73",
+      "label": "bZ4X Collection 73.1 kWh",
+      "battery": "long-range",
+      "trim": "Collection 73.1 kWh",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 51900,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 550,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": {
+        "mixed_km": 420,
+        "highway_130_km": 305,
+        "urban_km": 515,
+        "winter_minus5_km": 335,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 150
+        },
+        {
+          "soc": 30,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 90
+        },
+        {
+          "soc": 80,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "224 ch (165 kW), FWD"
     }
   ],
   "warranty": {
@@ -410,7 +473,7 @@
     "idealUserProfile": "Familles privilegiant la fiabilite et la garantie, usage mixte route/chemin.",
     "notIdealFor": "Acheteurs cherchant la charge ultra-rapide ou les aides a l'achat."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "automobile-propre",

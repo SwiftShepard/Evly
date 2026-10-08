@@ -164,6 +164,16 @@
       ]
     },
     {
+      "name": "Style (50 kWh)",
+      "price_EUR": 40500,
+      "batteryUsed": "50 kWh",
+      "equipmentHighlights": [
+        "Projecteurs Matrix LED",
+        "Accès mains libres Keyless",
+        "Sièges avant et volant chauffants"
+      ]
+    },
+    {
       "name": "Life (58 kWh)",
       "price_EUR": 40500,
       "batteryUsed": "58 kWh",
@@ -175,7 +185,7 @@
     },
     {
       "name": "Style (58 kWh)",
-      "price_EUR": 42500,
+      "price_EUR": 42700,
       "batteryUsed": "58 kWh",
       "equipmentHighlights": [
         "Projecteurs Matrix LED",
@@ -195,7 +205,7 @@
     },
     {
       "name": "Style (79 kWh)",
-      "price_EUR": 47900,
+      "price_EUR": 48100,
       "batteryUsed": "79 kWh",
       "equipmentHighlights": [
         "Projecteurs Matrix LED",
@@ -374,6 +384,55 @@
       "notes": "170 ch (125 kW)"
     },
     {
+      "id": "vw-id3-style-50",
+      "label": "ID.3 Neo Style 50 kWh",
+      "battery": "standard",
+      "trim": "Style (50 kWh)",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 40500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 417,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": {
+        "mixed_km": 305,
+        "highway_130_km": 231,
+        "urban_km": 388,
+        "winter_minus5_km": 229,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 105,
+      "chargingDC_10_80_min": 35,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 70
+        },
+        {
+          "soc": 10,
+          "power": 105
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 80,
+          "power": 45
+        },
+        {
+          "soc": 100,
+          "power": 8
+        }
+      ],
+      "availability": "available",
+      "notes": "170 ch (125 kW)"
+    },
+    {
       "id": "vw-id3-life-58",
       "label": "ID.3 Neo Life 58 kWh",
       "battery": "standard",
@@ -458,7 +517,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 42500,
+      "price_EUR": 42700,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 492,
@@ -584,7 +643,7 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 47900,
+      "price_EUR": 48100,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 629,
@@ -663,7 +722,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

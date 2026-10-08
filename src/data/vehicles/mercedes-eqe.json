@@ -145,7 +145,7 @@
   "trims": [
     {
       "name": "Executive Line EQE 300",
-      "price_EUR": 69900,
+      "price_EUR": 71400,
       "batteryUsed": "90.6 kWh",
       "equipmentHighlights": [
         "647 km WLTP",
@@ -155,7 +155,7 @@
     },
     {
       "name": "AMG Line EQE 300",
-      "price_EUR": 81000,
+      "price_EUR": 82350,
       "batteryUsed": "90.6 kWh",
       "equipmentHighlights": [
         "613 km WLTP",
@@ -164,8 +164,8 @@
       ]
     },
     {
-      "name": "Executive Line EQE 350",
-      "price_EUR": 76900,
+      "name": "Electric Art EQE 350+",
+      "price_EUR": 82750,
       "batteryUsed": "96 kWh",
       "equipmentHighlights": [
         "693 km WLTP",
@@ -174,8 +174,8 @@
       ]
     },
     {
-      "name": "AMG Line EQE 350",
-      "price_EUR": 87000,
+      "name": "AMG Line EQE 350+",
+      "price_EUR": 87100,
       "batteryUsed": "96 kWh",
       "equipmentHighlights": [
         "650 km WLTP",
@@ -216,7 +216,7 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 69900,
+      "price_EUR": 71400,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 647,
@@ -297,7 +297,7 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 81000,
+      "price_EUR": 82350,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 613,
@@ -372,13 +372,13 @@
     },
     {
       "id": "mercedes-eqe-350-executive",
-      "label": "EQE 350 Executive Line",
+      "label": "Electric Art EQE 350+",
       "battery": "standard",
-      "trim": "Executive Line EQE 350",
+      "trim": "Electric Art EQE 350+",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 76900,
+      "price_EUR": 82750,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 693,
@@ -426,13 +426,13 @@
     },
     {
       "id": "mercedes-eqe-350-amg",
-      "label": "EQE 350 AMG Line",
+      "label": "AMG Line EQE 350+",
       "battery": "standard",
-      "trim": "AMG Line EQE 350",
+      "trim": "AMG Line EQE 350+",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 87000,
+      "price_EUR": 87100,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 650,
@@ -672,13 +672,13 @@
       "AC 22 kW de serie et finition premium Mercedes"
     ],
     "weaknesses": [
-      "Prix eleve (a partir de 69 900 euros)",
+      "Prix eleve (a partir de 71 400 euros)",
       "Charge DC 170 kW correcte mais pas 800 V"
     ],
     "idealUserProfile": "Cadres et professionnels cherchant une berline electrique haut de gamme.",
     "notIdealFor": "Acheteurs a budget limite ou cherchant un SUV."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "automobile-propre",

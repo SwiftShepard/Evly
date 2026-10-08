@@ -87,7 +87,7 @@
   "trims": [
     {
       "name": "Pop 44 kWh",
-      "price_EUR": 24900,
+      "price_EUR": 23900,
       "batteryUsed": "44 kWh",
       "equipmentHighlights": [
         "Tarif d'attaque",
@@ -95,8 +95,18 @@
       ]
     },
     {
+      "name": "Icône 44 kWh",
+      "price_EUR": 25800,
+      "batteryUsed": "44 kWh",
+      "equipmentHighlights": [
+        "Écran tactile 10,25\"",
+        "Climatisation automatique",
+        "Jantes 17\""
+      ]
+    },
+    {
       "name": "La Prima 44 kWh",
-      "price_EUR": 28900,
+      "price_EUR": 28800,
       "batteryUsed": "44 kWh",
       "equipmentHighlights": [
         "Toit pano",
@@ -106,7 +116,13 @@
   ],
   "leasingSocialEligible": true,
   "leasingSocial_EUR_per_month": 95,
-  "availableAids": [],
+  "availableAids": [
+    {
+      "label": "Prime CEE",
+      "amount_EUR": 6500,
+      "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
+    }
+  ],
   "configurations": [
     {
       "id": "fiat-grande-panda-pop-44",
@@ -116,9 +132,62 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 24900,
+      "price_EUR": 23900,
       "monthlyLease_EUR": 95,
       "leasingSocialEligible": true,
+      "wltp_km": 320,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": {
+        "mixed_km": 245,
+        "highway_130_km": 155,
+        "urban_km": 300,
+        "winter_minus5_km": 190,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "fiat-grande-panda-icone-44",
+      "label": "Icône · 44 kWh",
+      "battery": "standard",
+      "trim": "Icône",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 25800,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
       "wltp_km": 320,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
@@ -169,7 +238,7 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 28900,
+      "price_EUR": 28800,
       "monthlyLease_EUR": 95,
       "leasingSocialEligible": false,
       "wltp_km": 320,
@@ -253,7 +322,7 @@
     "idealUserProfile": "Acheteur recherchant le ticket d'entrée le plus bas en VE familial compact. Idéal pour usage urbain et petite famille.",
     "notIdealFor": "Conducteurs effectuant fréquemment de longs trajets autoroutiers ou recherchant des accélérations sportives."
   },
-  "lastUpdated": "2026-05-18",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

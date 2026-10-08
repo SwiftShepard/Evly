@@ -5,12 +5,12 @@
   "variant": "37.3 kWh",
   "bodyType": "Citadine",
   "segment": "A",
-  "productionCountry": "Pologne",
-  "assemblyPlant": "Ulsan",
+  "productionCountry": "Chine",
+  "assemblyPlant": "Jinhua, Zhejiang (Chine)",
   "releaseYear": 2024,
   "marketAvailability": "Disponible",
   "power_kW": 70,
-  "power_hp": 95,
+  "power_hp": 94,
   "torque_Nm": 158,
   "drivetrain": "FWD",
   "motors": 1,
@@ -21,8 +21,8 @@
   "chemistry": "LFP",
   "architecture_V": 400,
   "mass_kg": 1125,
-  "wltp_max_km": 265,
-  "wltp_min_km": 265,
+  "wltp_max_km": 275,
+  "wltp_min_km": 275,
   "realRange": {
     "mixed_km": 200,
     "highway_130_km": 130,
@@ -35,7 +35,7 @@
   "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.35,
   "chargingDC": {
-    "peakPower_kW": 48,
+    "peakPower_kW": 45,
     "time_10_80_min": 36,
     "kWh_added_30min": 20,
     "confidence": "estimated"
@@ -56,7 +56,7 @@
     },
     {
       "soc": 10,
-      "power": 48
+      "power": 45
     },
     {
       "soc": 50,
@@ -83,7 +83,7 @@
   "trims": [
     {
       "name": "Design",
-      "price_EUR": 18900,
+      "price_EUR": 17600,
       "batteryUsed": "37.3 kWh",
       "equipmentHighlights": [
         "Format citadin compact",
@@ -94,18 +94,7 @@
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [
-    {
-      "label": "Prime CEE",
-      "amount_EUR": 6500,
-      "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
-    },
-    {
-      "label": "Majoration Batterie Européenne",
-      "amount_EUR": 2000,
-      "conditions": "Majoration pour batterie fabriquée en Europe."
-    }
-  ],
+  "availableAids": [],
   "configurations": [
     {
       "id": "leapmotor-t03-design",
@@ -115,10 +104,10 @@
       "wheelSize_inches": 15,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 18900,
+      "price_EUR": 17600,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 265,
+      "wltp_km": 275,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 200,
@@ -128,7 +117,7 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 48,
+      "chargingDC_peak_kW": 45,
       "chargingDC_10_80_min": 36,
       "chargingDC_kWh_30min": 20,
       "chargingCurve": [
@@ -138,7 +127,7 @@
         },
         {
           "soc": 10,
-          "power": 48
+          "power": 45
         },
         {
           "soc": 50,
@@ -194,7 +183,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

@@ -155,7 +155,7 @@
     },
     {
       "name": "100 kWh",
-      "price_EUR": 57990,
+      "price_EUR": 55990,
       "batteryUsed": "100 kWh",
       "equipmentHighlights": [
         "615 km WLTP",
@@ -239,7 +239,7 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 57990,
+      "price_EUR": 55990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 615,
@@ -403,7 +403,7 @@
     "idealUserProfile": "Familles cherchant un SUV electrique performant avec charge ultra-rapide et grand coffre.",
     "notIdealFor": "Acheteurs fideles aux marques etablies ou comptant sur les aides."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "automobile-propre",

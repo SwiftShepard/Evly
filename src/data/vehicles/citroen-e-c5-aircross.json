@@ -14,7 +14,7 @@
   "torque_Nm": 345,
   "drivetrain": "FWD",
   "motors": 1,
-  "acceleration_0_100_s": 8.0,
+  "acceleration_0_100_s": 8,
   "topSpeed_kmh": 170,
   "usableCapacity_kWh": 73,
   "grossCapacity_kWh": 77,
@@ -83,7 +83,7 @@
   "trims": [
     {
       "name": "You 73 kWh",
-      "price_EUR": 40290,
+      "price_EUR": 40990,
       "batteryUsed": "73 kWh",
       "equipmentHighlights": [
         "Écran central 13 pouces",
@@ -93,7 +93,7 @@
     },
     {
       "name": "Plus 73 kWh",
-      "price_EUR": 43290,
+      "price_EUR": 43990,
       "batteryUsed": "73 kWh",
       "equipmentHighlights": [
         "Navigation connectée 3D",
@@ -103,7 +103,7 @@
     },
     {
       "name": "Max 73 kWh",
-      "price_EUR": 46290,
+      "price_EUR": 46990,
       "batteryUsed": "73 kWh",
       "equipmentHighlights": [
         "Vision 360° avec caméras",
@@ -155,7 +155,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 40290,
+      "price_EUR": 40990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 520,
@@ -204,7 +204,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 43290,
+      "price_EUR": 43990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 520,
@@ -253,7 +253,7 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 46290,
+      "price_EUR": 46990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 500,
@@ -430,7 +430,7 @@
     "idealUserProfile": "Familles réalisant de fréquents et longs trajets autoroutiers, à la recherche d'un confort exceptionnel.",
     "notIdealFor": "Conducteurs citadins n'ayant pas besoin d'une telle autonomie et préférant des modèles plus maniables."
   },
-  "lastUpdated": "2026-06-04",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "citroen-fr",
     "automobile-propre"

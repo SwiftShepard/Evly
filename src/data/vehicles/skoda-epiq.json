@@ -21,8 +21,8 @@
   "chemistry": "LFP",
   "architecture_V": 400,
   "mass_kg": 1550,
-  "wltp_max_km": 430,
-  "wltp_min_km": 310,
+  "wltp_max_km": 435,
+  "wltp_min_km": 275,
   "realRange": {
     "mixed_km": 240,
     "highway_130_km": 160,
@@ -82,21 +82,31 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Epiq 40 (37 kWh · 99 kW FWD) 37 kWh",
-      "price_EUR": 25000,
+      "name": "Epiq 35 City (37 kWh FWD)",
+      "price_EUR": 26470,
       "batteryUsed": "37 kWh",
       "equipmentHighlights": [
-        "WLTP ~310 km",
+        "Moteur 116 ch",
+        "Finition City",
+        "WLTP 275 km"
+      ]
+    },
+    {
+      "name": "Epiq 40 City (37 kWh · 99 kW FWD)",
+      "price_EUR": 27670,
+      "batteryUsed": "37 kWh",
+      "equipmentHighlights": [
+        "WLTP 275 km",
         "Coffre 490 L",
         "Charge V2L"
       ]
     },
     {
-      "name": "Epiq 55 (52 kWh · 155 kW FWD) 52 kWh",
-      "price_EUR": 32000,
+      "name": "Epiq 55 City (52 kWh · 155 kW FWD)",
+      "price_EUR": 32070,
       "batteryUsed": "52 kWh",
       "equipmentHighlights": [
-        "WLTP ~430 km",
+        "WLTP 435 km",
         "Moteur 211 ch",
         "Écran 13\""
       ]
@@ -118,23 +128,74 @@
   ],
   "configurations": [
     {
-      "id": "skoda-epiq-40-37-kwh",
-      "label": "Epiq 40 · 37 kWh",
+      "id": "skoda-epiq-35-37-kwh",
+      "label": "Epiq 35 City · 37 kWh",
       "battery": "standard",
-      "trim": "Epiq 40 (37 kWh · 99 kW FWD)",
+      "trim": "Epiq 35 City (37 kWh FWD)",
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 25000,
-      "monthlyLease_EUR": 119,
+      "price_EUR": 26470,
+      "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 310,
+      "wltp_km": 275,
       "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
-        "mixed_km": 240,
-        "highway_130_km": 160,
-        "urban_km": 290,
-        "winter_minus5_km": 180,
+        "mixed_km": 228,
+        "highway_130_km": 157,
+        "urban_km": 289,
+        "winter_minus5_km": 179,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 25,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 80
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 75
+        },
+        {
+          "soc": 80,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 5
+        }
+      ],
+      "availability": "upcoming",
+      "notes": null,
+      "power_hp": 116,
+      "power_kW": 85
+    },
+    {
+      "id": "skoda-epiq-40-37-kwh",
+      "label": "Epiq 40 City · 37 kWh",
+      "battery": "standard",
+      "trim": "Epiq 40 City (37 kWh · 99 kW FWD)",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 27670,
+      "monthlyLease_EUR": 119,
+      "leasingSocialEligible": false,
+      "wltp_km": 275,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": {
+        "mixed_km": 228,
+        "highway_130_km": 157,
+        "urban_km": 289,
+        "winter_minus5_km": 179,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -168,22 +229,22 @@
     },
     {
       "id": "skoda-epiq-55-52-kwh",
-      "label": "Epiq 55 · 52 kWh",
+      "label": "Epiq 55 City · 52 kWh",
       "battery": "long-range",
-      "trim": "Epiq 55 (52 kWh · 155 kW FWD)",
+      "trim": "Epiq 55 City (52 kWh · 155 kW FWD)",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 32000,
+      "price_EUR": 32070,
       "monthlyLease_EUR": 159,
       "leasingSocialEligible": false,
-      "wltp_km": 430,
+      "wltp_km": 435,
       "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
-        "mixed_km": 320,
-        "highway_130_km": 220,
-        "urban_km": 390,
-        "winter_minus5_km": 250,
+        "mixed_km": 361,
+        "highway_130_km": 248,
+        "urban_km": 457,
+        "winter_minus5_km": 283,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -254,7 +315,7 @@
     "idealUserProfile": "Famille urbaine ou jeunes conducteurs ayant besoin de place et d'un coffre généreux pour un budget contenu.",
     "notIdealFor": "Gros rouleurs réguliers sur autoroute cherchant une recharge en moins de 15 minutes."
   },
-  "lastUpdated": "2026-06-02",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "automobile-propre",
     "largus",

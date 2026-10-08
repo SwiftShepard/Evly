@@ -117,7 +117,7 @@
   "trims": [
     {
       "name": "Taycan Base",
-      "price_EUR": 111600,
+      "price_EUR": 106500,
       "batteryUsed": "82,3 kWh",
       "equipmentHighlights": [
         "408 ch RWD",
@@ -127,7 +127,7 @@
     },
     {
       "name": "Taycan 4S",
-      "price_EUR": 125200,
+      "price_EUR": 125800,
       "batteryUsed": "97 kWh",
       "equipmentHighlights": [
         "544 ch AWD",
@@ -158,7 +158,7 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 111600,
+      "price_EUR": 106500,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 590,
@@ -211,7 +211,7 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 125200,
+      "price_EUR": 125800,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 642,
@@ -347,7 +347,7 @@
     "idealUserProfile": "Passionnes de conduite sportive cherchant la berline electrique la plus dynamique et rapide a recharger du marche.",
     "notIdealFor": "Familles nombreuses necessitant un grand volume de coffre ou budget inferieur a 110 000 euros."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "automobile-propre",

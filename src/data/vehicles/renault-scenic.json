@@ -2,7 +2,7 @@
   "slug": "renault-scenic",
   "brand": "Renault",
   "model": "Scenic E-Tech",
-  "variant": "60 & 87 kWh",
+  "variant": "67 & 87 kWh",
   "bodyType": "SUV familial",
   "segment": "C",
   "productionCountry": "France",
@@ -21,8 +21,8 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1917,
-  "wltp_max_km": 625,
-  "wltp_min_km": 420,
+  "wltp_max_km": 642,
+  "wltp_min_km": 467,
   "realRange": {
     "mixed_km": 425,
     "highway_130_km": 322,
@@ -144,27 +144,28 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Techno EV60",
-      "price_EUR": 41990,
-      "batteryUsed": "60 kWh",
+      "name": "Techno EV67",
+      "price_EUR": 39990,
+      "batteryUsed": "67 kWh",
       "equipmentHighlights": [
         "OpenR Link Google",
-        "Ecran 12 pouces"
+        "Ecran 12 pouces",
+        "Batterie LFP, charge DC 165 kW"
       ]
     },
     {
       "name": "Techno EV87",
-      "price_EUR": 44990,
+      "price_EUR": 46990,
       "batteryUsed": "87 kWh",
       "equipmentHighlights": [
         "OpenR Link Google",
         "Toit Solarbay",
-        "Grande autonomie 625 km WLTP"
+        "Grande autonomie 642 km WLTP"
       ]
     },
     {
       "name": "Esprit Alpine EV87",
-      "price_EUR": 47500,
+      "price_EUR": 49090,
       "batteryUsed": "87 kWh",
       "equipmentHighlights": [
         "Jantes 20 pouces",
@@ -174,7 +175,7 @@
     },
     {
       "name": "Iconic EV87",
-      "price_EUR": 47990,
+      "price_EUR": 52590,
       "batteryUsed": "87 kWh",
       "equipmentHighlights": [
         "Toit panoramique",
@@ -199,53 +200,54 @@
   ],
   "configurations": [
     {
-      "id": "renault-scenic-techno-ev60",
-      "label": "Scenic Techno · 60 kWh",
+      "id": "renault-scenic-techno-ev67",
+      "label": "Scenic Techno · 67 kWh",
       "battery": "standard",
-      "trim": "Techno EV60",
+      "trim": "Techno EV67",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 41990,
+      "price_EUR": 39990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 420,
+      "wltp_km": 467,
       "wltp_consumption_kWh_100km": 16.3,
       "realRange": {
-        "mixed_km": 350,
-        "highway_130_km": 240,
-        "urban_km": 430,
-        "winter_minus5_km": 275,
+        "mixed_km": 388,
+        "highway_130_km": 266,
+        "urban_km": 490,
+        "winter_minus5_km": 304,
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 130,
-      "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 42,
+      "chargingDC_peak_kW": 165,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 50,
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 95
+          "power": 120
         },
         {
           "soc": 10,
-          "power": 130
+          "power": 165
         },
         {
           "soc": 50,
-          "power": 95
+          "power": 130
         },
         {
           "soc": 80,
-          "power": 45
+          "power": 70
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 15
         }
       ],
       "availability": "available",
-      "notes": "170 ch (125 kW)"
+      "notes": "220 ch (160 kW), batterie LFP 67 kWh (millésime 2026), 15-80 % en 24 min",
+      "usableCapacity_kWh": 67
     },
     {
       "id": "renault-scenic-techno-ev87",
@@ -255,10 +257,10 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 44990,
+      "price_EUR": 46990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 625,
+      "wltp_km": 642,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 425,
@@ -332,10 +334,10 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 47500,
+      "price_EUR": 49090,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 610,
+      "wltp_km": 627,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
         "mixed_km": 425,
@@ -399,7 +401,7 @@
         }
       ],
       "availability": "available",
-      "notes": "220 ch (160 kW), jantes 20 pouces"
+      "notes": "220 ch (160 kW), jantes 20 pouces. Option du Techno grande autonomie depuis le millésime 2026 ; WLTP en 20 pouces estimée (homologation non publiée)."
     },
     {
       "id": "renault-scenic-iconic-ev87",
@@ -409,10 +411,10 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 47990,
+      "price_EUR": 52590,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 610,
+      "wltp_km": 627,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
         "mixed_km": 425,
@@ -476,7 +478,7 @@
         }
       ],
       "availability": "available",
-      "notes": "220 ch (160 kW), full options"
+      "notes": "220 ch (160 kW), full options. Option du Techno grande autonomie depuis le millésime 2026 ; WLTP en 20 pouces estimée (homologation non publiée)."
     }
   ],
   "warranty": {
@@ -516,7 +518,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev",

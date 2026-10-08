@@ -9,34 +9,33 @@
   "assemblyPlant": "Dingolfing",
   "releaseYear": 2022,
   "marketAvailability": "Disponible",
-  "power_kW": 385,
-  "power_hp": 523,
+  "power_kW": 400,
+  "power_hp": 544,
   "torque_Nm": 765,
   "drivetrain": "AWD",
   "motors": 2,
   "acceleration_0_100_s": 4.6,
   "topSpeed_kmh": 200,
-  "usableCapacity_kWh": 105.2,
+  "usableCapacity_kWh": 109.1,
   "grossCapacity_kWh": 111.5,
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 2510,
-  "wltp_max_km": 630,
-  "wltp_min_km": 419,
+  "wltp_max_km": 701,
+  "wltp_min_km": 600,
   "realRange": {
-    "mixed_km": 353,
-    "highway_130_km": 262,
-    "urban_km": 457,
-    "winter_minus5_km": 265,
-    "confidence": "bjorn_nyland",
-    "highway_120_km": 291
+    "mixed_km": 582,
+    "highway_130_km": 400,
+    "urban_km": 736,
+    "winter_minus5_km": 456,
+    "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 21,
   "consumption_highway_kWh_per_100km": 27,
   "consumption_winter_kWh_per_100km": 25,
   "dragCoefficient_Cx": 0.25,
   "chargingDC": {
-    "peakPower_kW": 200,
+    "peakPower_kW": 195,
     "time_10_80_min": 31,
     "kWh_added_30min": 65,
     "confidence": "estimated"
@@ -76,34 +75,7 @@
       "power": 10
     }
   ],
-  "rangeTests": [
-    {
-      "sourceId": "nyland",
-      "testDate": null,
-      "speed_kmh": 90,
-      "range_km": 415,
-      "consumption_kWh_100km": 17,
-      "temperature_C": 16,
-      "wheelSize_inches": 21,
-      "tyreModel": "Bridgestone Alenza",
-      "protocol": "nyland",
-      "videoUrl": null,
-      "notes": "Essai Nyland « BMW iX xDrive40 » (été, route sèche)."
-    },
-    {
-      "sourceId": "nyland",
-      "testDate": null,
-      "speed_kmh": 120,
-      "range_km": 291,
-      "consumption_kWh_100km": 24.2,
-      "temperature_C": 11,
-      "wheelSize_inches": 21,
-      "tyreModel": "Bridgestone Alenza",
-      "protocol": "nyland",
-      "videoUrl": null,
-      "notes": "Essai Nyland « BMW iX xDrive40 » (été, route sèche)."
-    }
-  ],
+  "rangeTests": [],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 610,
@@ -124,31 +96,31 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "iX xDrive40 (Base)",
-      "price_EUR": 84200,
-      "batteryUsed": "71 kWh",
+      "name": "iX xDrive45",
+      "price_EUR": 89400,
+      "batteryUsed": "100.4 kWh",
       "equipmentHighlights": [
-        "419 km WLTP",
-        "AWD 326 ch",
+        "602 km WLTP",
+        "AWD 408 ch",
         "BMW iDrive 9"
       ]
     },
     {
-      "name": "iX xDrive50 (Base)",
-      "price_EUR": 111200,
-      "batteryUsed": "105.2 kWh",
+      "name": "iX xDrive60",
+      "price_EUR": 107200,
+      "batteryUsed": "109.1 kWh",
       "equipmentHighlights": [
-        "630 km WLTP",
-        "AWD 523 ch",
+        "701 km WLTP",
+        "AWD 544 ch",
         "Charge DC 200 kW"
       ]
     },
     {
-      "name": "iX M60",
-      "price_EUR": 143050,
-      "batteryUsed": "105.2 kWh",
+      "name": "iX M70 xDrive",
+      "price_EUR": 137600,
+      "batteryUsed": "109.1 kWh",
       "equipmentHighlights": [
-        "AWD 619 ch",
+        "600 km WLTP",
         "0-100 en 3.8 s",
         "Chassis M adaptatif Professional"
       ]
@@ -159,55 +131,27 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "bmw-ix-xdrive40",
-      "label": "xDrive40 (Base) · 71 kWh",
+      "id": "bmw-ix-xdrive45",
+      "label": "iX xDrive45",
       "battery": "standard",
-      "trim": "iX xDrive40 (Base)",
+      "trim": "iX xDrive45",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 84200,
+      "price_EUR": 89400,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 419,
+      "wltp_km": 602,
       "wltp_consumption_kWh_100km": 20,
       "realRange": {
-        "mixed_km": 353,
-        "highway_130_km": 262,
-        "urban_km": 457,
-        "winter_minus5_km": 265,
-        "confidence": "bjorn_nyland",
-        "highway_120_km": 291
+        "mixed_km": 500,
+        "highway_130_km": 343,
+        "urban_km": 632,
+        "winter_minus5_km": 391,
+        "confidence": "estimated"
       },
-      "rangeTests": [
-        {
-          "sourceId": "nyland",
-          "testDate": null,
-          "speed_kmh": 90,
-          "range_km": 415,
-          "consumption_kWh_100km": 17,
-          "temperature_C": 16,
-          "wheelSize_inches": 21,
-          "tyreModel": "Bridgestone Alenza",
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Essai Nyland « BMW iX xDrive40 » (été, route sèche)."
-        },
-        {
-          "sourceId": "nyland",
-          "testDate": null,
-          "speed_kmh": 120,
-          "range_km": 291,
-          "consumption_kWh_100km": 24.2,
-          "temperature_C": 11,
-          "wheelSize_inches": 21,
-          "tyreModel": "Bridgestone Alenza",
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Essai Nyland « BMW iX xDrive40 » (été, route sèche)."
-        }
-      ],
-      "chargingDC_peak_kW": 150,
+      "rangeTests": [],
+      "chargingDC_peak_kW": 175,
       "chargingDC_10_80_min": 31,
       "chargingDC_kWh_30min": 48,
       "chargingCurve": [
@@ -237,111 +181,33 @@
         }
       ],
       "availability": "available",
-      "notes": "326 ch (240 kW), AWD xDrive"
+      "notes": "408 ch (300 kW), AWD xDrive",
+      "power_hp": 408,
+      "power_kW": 300,
+      "usableCapacity_kWh": 100.4
     },
     {
-      "id": "bmw-ix-xdrive50",
-      "label": "xDrive50 (Base) · 105.2 kWh",
+      "id": "bmw-ix-xdrive60",
+      "label": "iX xDrive60",
       "battery": "long-range",
-      "trim": "iX xDrive50 (Base)",
+      "trim": "iX xDrive60",
       "wheelSize_inches": 21,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 111200,
+      "price_EUR": 107200,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 630,
+      "wltp_km": 701,
       "wltp_consumption_kWh_100km": 19.5,
       "realRange": {
-        "mixed_km": 427,
-        "highway_130_km": 329,
-        "urban_km": 538,
-        "winter_minus5_km": 320,
-        "confidence": "bjorn_nyland",
-        "highway_120_km": 365
-      },
-      "rangeTests": [
-        {
-          "sourceId": "nyland",
-          "testDate": null,
-          "speed_kmh": 90,
-          "range_km": 489,
-          "consumption_kWh_100km": 21.7,
-          "temperature_C": 4,
-          "wheelSize_inches": 21,
-          "tyreModel": "Michelin Pilot Alpin 5",
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Essai Nyland « BMW iX xDrive50 » (hiver, route sèche)."
-        },
-        {
-          "sourceId": "nyland",
-          "testDate": null,
-          "speed_kmh": 120,
-          "range_km": 365,
-          "consumption_kWh_100km": 29.2,
-          "temperature_C": 1,
-          "wheelSize_inches": 21,
-          "tyreModel": "Michelin Pilot Alpin 5",
-          "protocol": "nyland",
-          "videoUrl": null,
-          "notes": "Essai Nyland « BMW iX xDrive50 » (hiver, route humide)."
-        }
-      ],
-      "chargingDC_peak_kW": 200,
-      "chargingDC_10_80_min": 31,
-      "chargingDC_kWh_30min": 65,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 140
-        },
-        {
-          "soc": 10,
-          "power": 200
-        },
-        {
-          "soc": 30,
-          "power": 175
-        },
-        {
-          "soc": 50,
-          "power": 125
-        },
-        {
-          "soc": 80,
-          "power": 50
-        },
-        {
-          "soc": 100,
-          "power": 10
-        }
-      ],
-      "availability": "available",
-      "notes": "523 ch (385 kW), AWD xDrive"
-    },
-    {
-      "id": "bmw-ix-m60",
-      "label": "M60 · 105.2 kWh",
-      "battery": "long-range",
-      "trim": "iX M60",
-      "wheelSize_inches": 22,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 143050,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 560,
-      "wltp_consumption_kWh_100km": 22,
-      "realRange": {
-        "mixed_km": 410,
-        "highway_130_km": 295,
-        "urban_km": 505,
-        "winter_minus5_km": 325,
+        "mixed_km": 582,
+        "highway_130_km": 400,
+        "urban_km": 736,
+        "winter_minus5_km": 456,
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 200,
+      "chargingDC_peak_kW": 195,
       "chargingDC_10_80_min": 31,
       "chargingDC_kWh_30min": 65,
       "chargingCurve": [
@@ -371,7 +237,66 @@
         }
       ],
       "availability": "available",
-      "notes": "619 ch (455 kW), AWD xDrive, M Sport"
+      "notes": "544 ch (400 kW), AWD xDrive",
+      "power_hp": 544,
+      "power_kW": 400,
+      "usableCapacity_kWh": 109.1
+    },
+    {
+      "id": "bmw-ix-m70-xdrive",
+      "label": "iX M70 xDrive",
+      "battery": "long-range",
+      "trim": "iX M70 xDrive",
+      "wheelSize_inches": 22,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 137600,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 600,
+      "wltp_consumption_kWh_100km": 22,
+      "realRange": {
+        "mixed_km": 498,
+        "highway_130_km": 342,
+        "urban_km": 630,
+        "winter_minus5_km": 390,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 195,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 200
+        },
+        {
+          "soc": 30,
+          "power": 175
+        },
+        {
+          "soc": 50,
+          "power": 125
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "659 ch (485 kW), AWD xDrive, M Performance",
+      "power_hp": 659,
+      "power_kW": 485,
+      "usableCapacity_kWh": 109.1
     }
   ],
   "warranty": {
@@ -401,17 +326,17 @@
   ],
   "verdict": {
     "strengths": [
-      "Grand SUV premium avec grande autonomie (630 km WLTP)",
+      "Grand SUV premium avec grande autonomie (jusqu'a 701 km WLTP)",
       "Assemble en Allemagne (Dingolfing), eligible prime CEE"
     ],
     "weaknesses": [
-      "Prix tres eleve (a partir de 84 200 euros)",
+      "Prix tres eleve (a partir de 89 400 euros)",
       "Consommation elevee et poids important (2 510 kg)"
     ],
     "idealUserProfile": "Familles aisees cherchant un grand SUV electrique premium.",
     "notIdealFor": "Budget limite ou sensibilite a la consommation."
   },
-  "lastUpdated": "2026-06-04",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "automobile-propre",

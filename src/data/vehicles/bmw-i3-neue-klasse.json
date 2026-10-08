@@ -8,21 +8,21 @@
   "productionCountry": "Allemagne",
   "assemblyPlant": "Munich",
   "releaseYear": 2026,
-  "marketAvailability": "Bientôt disponible",
-  "power_kW": 340,
-  "power_hp": 463,
+  "marketAvailability": "Commandes ouvertes (First Edition), livraisons depuis septembre 2026",
+  "power_kW": 345,
+  "power_hp": 469,
   "torque_Nm": 645,
   "drivetrain": "AWD",
   "motors": 2,
-  "acceleration_0_100_s": 4.5,
+  "acceleration_0_100_s": 4.7,
   "topSpeed_kmh": 210,
   "usableCapacity_kWh": 108.7,
   "grossCapacity_kWh": 113.4,
   "chemistry": "NMC",
   "architecture_V": 800,
   "mass_kg": 2100,
-  "wltp_max_km": 850,
-  "wltp_min_km": 850,
+  "wltp_max_km": 906,
+  "wltp_min_km": 906,
   "realRange": {
     "mixed_km": 660,
     "highway_130_km": 460,
@@ -116,12 +116,12 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "i3 xDrive50 Neue Klasse",
-      "price_EUR": 69000,
+      "name": "i3 50 xDrive First Edition",
+      "price_EUR": 74850,
       "batteryUsed": "108.7 kWh",
       "equipmentHighlights": [
-        "850 km WLTP",
-        "Puissance 463 ch",
+        "Jusqu'à 906 km WLTP",
+        "Puissance 469 ch",
         "BMW Panoramic Vision"
       ]
     }
@@ -132,16 +132,16 @@
   "configurations": [
     {
       "id": "bmw-i3-neue-klasse-50",
-      "label": "i3 xDrive50 · 108.7 kWh",
+      "label": "i3 50 xDrive First Edition · 108,7 kWh",
       "battery": "long-range",
-      "trim": "i3 xDrive50 Neue Klasse",
+      "trim": "i3 50 xDrive First Edition",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 69000,
+      "price_EUR": 74850,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 850,
+      "wltp_km": 906,
       "wltp_consumption_kWh_100km": 12.8,
       "realRange": {
         "mixed_km": 660,
@@ -180,7 +180,7 @@
           "power": 15
         }
       ],
-      "availability": "upcoming",
+      "availability": "available",
       "notes": "463 ch (340 kW), AWD xDrive, berline Neue Klasse"
     }
   ],
@@ -211,18 +211,18 @@
   ],
   "verdict": {
     "strengths": [
-      "Autonomie hors norme atteignant 850 km WLTP grace au profil aerodynamique",
+      "Autonomie hors norme atteignant 906 km WLTP grace au profil aerodynamique",
       "Charge ultra-rapide 800 V (pic a 400 kW, 10-80% en 21 min)",
       "Ergonomie epuree et affichage pare-brise panoramique innovant"
     ],
     "weaknesses": [
-      "Tarif de depart aux alentours de 69 000 euros",
+      "Tarif de lancement eleve (First Edition a 74 850 euros)",
       "Disponibilite reelle a partir de fin 2026"
     ],
     "idealUserProfile": "Conducteurs premium effectuant de longs trajets autoroutiers et a la recherche d'une berline ultra-technologique.",
     "notIdealFor": "Petits budgets ou acheteurs ayant un besoin immediat de livraison."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "automobile-propre",

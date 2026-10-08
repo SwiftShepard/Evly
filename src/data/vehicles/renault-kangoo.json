@@ -92,7 +92,7 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Equilibre",
+      "name": "Evolution",
       "price_EUR": 37500,
       "batteryUsed": "45 kWh",
       "equipmentHighlights": [
@@ -103,7 +103,7 @@
     },
     {
       "name": "Techno",
-      "price_EUR": 40800,
+      "price_EUR": 40500,
       "batteryUsed": "45 kWh",
       "equipmentHighlights": [
         "OpenR Link Google",
@@ -130,9 +130,9 @@
   "configurations": [
     {
       "id": "renault-kangoo-equilibre",
-      "label": "Kangoo E-Tech Equilibre",
+      "label": "Kangoo E-Tech Evolution",
       "battery": "standard",
-      "trim": "Equilibre",
+      "trim": "Evolution",
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
@@ -185,7 +185,7 @@
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 40800,
+      "price_EUR": 40500,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 285,
@@ -265,7 +265,7 @@
     "idealUserProfile": "Familles cherchant un ludospace electrique modulable pour les trajets quotidiens.",
     "notIdealFor": "Gros rouleurs autoroutiers ou ceux ayant besoin de plus de 300 km d'autonomie."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "la-chaine-ev",
     "nyland"

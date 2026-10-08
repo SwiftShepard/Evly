@@ -8,7 +8,7 @@
   "productionCountry": "Hongrie",
   "assemblyPlant": "Debrecen",
   "releaseYear": 2026,
-  "marketAvailability": "Bientôt disponible",
+  "marketAvailability": "Disponible",
   "power_kW": 340,
   "power_hp": 463,
   "torque_Nm": 645,
@@ -22,7 +22,7 @@
   "architecture_V": 800,
   "mass_kg": 2300,
   "wltp_max_km": 805,
-  "wltp_min_km": 805,
+  "wltp_min_km": 635,
   "realRange": {
     "mixed_km": 618,
     "highway_130_km": 460,
@@ -144,13 +144,33 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "iX3 xDrive50 Neue Klasse",
-      "price_EUR": 78000,
+      "name": "iX3 40",
+      "price_EUR": 64950,
+      "batteryUsed": "82.6 kWh",
+      "equipmentHighlights": [
+        "635 km WLTP",
+        "Propulsion 320 ch",
+        "Charge DC 300 kW (10-80 % en 21 min)"
+      ]
+    },
+    {
+      "name": "iX3 50 xDrive",
+      "price_EUR": 72950,
       "batteryUsed": "108.7 kWh",
       "equipmentHighlights": [
         "805 km WLTP",
         "Puissance 463 ch",
         "BMW Panoramic Vision"
+      ]
+    },
+    {
+      "name": "iX3 50 xDrive M Sport",
+      "price_EUR": 76950,
+      "batteryUsed": "108.7 kWh",
+      "equipmentHighlights": [
+        "Pack M Sport",
+        "805 km WLTP",
+        "Transmission intégrale 463 ch"
       ]
     }
   ],
@@ -159,14 +179,70 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "bmw-ix3-neue-klasse-50",
-      "label": "iX3 xDrive50 · 108.7 kWh",
-      "battery": "long-range",
-      "trim": "iX3 xDrive50 Neue Klasse",
+      "id": "bmw-ix3-neue-klasse-40",
+      "label": "iX3 40 · 82,6 kWh",
+      "battery": "standard",
+      "trim": "iX3 40",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 78000,
+      "price_EUR": 64950,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 635,
+      "wltp_consumption_kWh_100km": 14.1,
+      "realRange": {
+        "mixed_km": 527,
+        "highway_130_km": 362,
+        "urban_km": 667,
+        "winter_minus5_km": 413,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 300,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 85,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 250
+        },
+        {
+          "soc": 10,
+          "power": 400
+        },
+        {
+          "soc": 30,
+          "power": 330
+        },
+        {
+          "soc": 50,
+          "power": 250
+        },
+        {
+          "soc": 80,
+          "power": 100
+        },
+        {
+          "soc": 100,
+          "power": 15
+        }
+      ],
+      "availability": "available",
+      "notes": "Propulsion 320 ch (235 kW), batterie 82,6 kWh",
+      "usableCapacity_kWh": 82.6,
+      "power_hp": 320,
+      "power_kW": 235
+    },
+    {
+      "id": "bmw-ix3-neue-klasse-50",
+      "label": "iX3 50 xDrive · 108,7 kWh",
+      "battery": "long-range",
+      "trim": "iX3 50 xDrive",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 72950,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 805,
@@ -236,7 +312,60 @@
           "power": 15
         }
       ],
-      "availability": "upcoming",
+      "availability": "available",
+      "notes": "463 ch (340 kW), AWD xDrive, premiere Neue Klasse"
+    },
+    {
+      "id": "bmw-ix3-neue-klasse-50-m-sport",
+      "label": "iX3 50 xDrive M Sport · 108,7 kWh",
+      "battery": "long-range",
+      "trim": "iX3 50 xDrive M Sport",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 76950,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 805,
+      "wltp_consumption_kWh_100km": 14.1,
+      "realRange": {
+        "mixed_km": 618,
+        "highway_130_km": 460,
+        "urban_km": 796,
+        "winter_minus5_km": 464,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 400,
+      "chargingDC_10_80_min": 21,
+      "chargingDC_kWh_30min": 85,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 250
+        },
+        {
+          "soc": 10,
+          "power": 400
+        },
+        {
+          "soc": 30,
+          "power": 330
+        },
+        {
+          "soc": 50,
+          "power": 250
+        },
+        {
+          "soc": 80,
+          "power": 100
+        },
+        {
+          "soc": 100,
+          "power": 15
+        }
+      ],
+      "availability": "available",
       "notes": "463 ch (340 kW), AWD xDrive, premiere Neue Klasse"
     }
   ],
@@ -278,7 +407,7 @@
     "idealUserProfile": "Conducteurs technophiles et exigeants cherchant le renouveau electrique de BMW avec autonomie de pointe.",
     "notIdealFor": "Usage exclusivement urbain ou acheteurs au budget standard."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "automobile-propre",

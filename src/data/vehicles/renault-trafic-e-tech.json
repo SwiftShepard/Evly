@@ -8,21 +8,21 @@
   "productionCountry": "France",
   "assemblyPlant": "Sandouville",
   "releaseYear": 2026,
-  "marketAvailability": "A venir",
+  "marketAvailability": "Commandes à l'automne 2026, livraisons début 2027",
   "power_kW": 150,
   "power_hp": 204,
   "torque_Nm": 345,
   "drivetrain": "RWD",
   "motors": 1,
-  "acceleration_0_100_s": 9.0,
+  "acceleration_0_100_s": 9,
   "topSpeed_kmh": 150,
   "usableCapacity_kWh": 75,
-  "grossCapacity_kWh": 80,
+  "grossCapacity_kWh": 81,
   "chemistry": "NMC",
   "architecture_V": 800,
   "mass_kg": 2100,
-  "wltp_max_km": 450,
-  "wltp_min_km": 350,
+  "wltp_max_km": 470,
+  "wltp_min_km": 420,
   "realRange": {
     "mixed_km": 350,
     "highway_130_km": 240,
@@ -36,7 +36,7 @@
   "dragCoefficient_Cx": 0.33,
   "chargingDC": {
     "peakPower_kW": 150,
-    "time_10_80_min": 20,
+    "time_10_80_min": 22,
     "kWh_added_30min": 52,
     "confidence": "manufacturer"
   },
@@ -83,8 +83,8 @@
   "trims": [
     {
       "name": "Grand Confort L1 800V Autonomie Etendue",
-      "price_EUR": 49900,
-      "batteryUsed": "75 kWh",
+      "price_EUR": null,
+      "batteryUsed": "81 kWh",
       "equipmentHighlights": [
         "Volume utile 5,1 m3",
         "Plateforme SDV 800V",
@@ -93,8 +93,8 @@
     },
     {
       "name": "Grand Confort L2 800V Autonomie Etendue",
-      "price_EUR": 51900,
-      "batteryUsed": "75 kWh",
+      "price_EUR": null,
+      "batteryUsed": "81 kWh",
       "equipmentHighlights": [
         "Volume utile 5,8 m3",
         "Plateforme SDV 800V",
@@ -125,10 +125,10 @@
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 49900,
+      "price_EUR": null,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 450,
+      "wltp_km": 470,
       "wltp_consumption_kWh_100km": 16.7,
       "realRange": {
         "mixed_km": 350,
@@ -139,7 +139,7 @@
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 150,
-      "chargingDC_10_80_min": 20,
+      "chargingDC_10_80_min": 22,
       "chargingDC_kWh_30min": 52,
       "chargingCurve": [
         {
@@ -174,7 +174,7 @@
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 51900,
+      "price_EUR": null,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 420,
@@ -243,18 +243,18 @@
   ],
   "verdict": {
     "strengths": [
-      "Architecture 800V inedite avec recharge ultra-rapide de 10 a 80% en 20 minutes",
+      "Architecture 800V inedite avec recharge rapide de 15 a 80% en 22 minutes",
       "Plateforme logicielle SDV connectee et evolutive",
-      "Autonomie WLTP de 450 km tres confortable"
+      "Autonomie annoncee jusqu'a 470 km (homologation WLTP en cours)"
     ],
     "weaknesses": [
-      "Tarifs en hausse par rapport a la generation precedente",
+      "Tarifs pas encore communiqués à l'ouverture des commandes",
       "Complexite technologique accrue pour la maintenance"
     ],
     "idealUserProfile": "Professionnels, artisans et flottes a la recherche d'une grande polyvalence grace a la charge rapide 800V et une autonomie elevee.",
     "notIdealFor": "Budgets serres cherchant un utilitaire electrique basique sans besoin de recharge ultra-rapide."
   },
-  "lastUpdated": "2026-06-02",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "renault-fr",
     "automobile-propre"

@@ -8,7 +8,7 @@
   "productionCountry": "Chine",
   "assemblyPlant": "Ulsan",
   "releaseYear": 2024,
-  "marketAvailability": "Disponible",
+  "marketAvailability": "Plus commercialisé en France",
   "power_kW": 115,
   "power_hp": 156,
   "torque_Nm": 280,
@@ -190,7 +190,7 @@
           "power": 7
         }
       ],
-      "availability": "available",
+      "availability": "discontinued",
       "notes": "156 ch (115 kW), FWD"
     },
     {
@@ -239,7 +239,7 @@
           "power": 7
         }
       ],
-      "availability": "available",
+      "availability": "discontinued",
       "notes": "156 ch (115 kW), FWD, full options"
     },
     {
@@ -316,7 +316,7 @@
           "power": 7
         }
       ],
-      "availability": "available",
+      "availability": "discontinued",
       "notes": "156 ch (115 kW), FWD, full options"
     }
   ],
@@ -357,7 +357,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev",

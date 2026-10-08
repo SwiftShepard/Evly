@@ -104,7 +104,17 @@
       "notes": "Essai Nyland « Zeekr X LR RWD 2026 » (été, route sèche)."
     }
   ],
-  "thousandKmChallenge": null,
+  "thousandKmChallenge": {
+    "sourceId": "nyland",
+    "totalTime_minutes": 585,
+    "averageSpeed_kmh": 102.6,
+    "averageConsumption_Wh_km": 254,
+    "chargingStops": null,
+    "averageTemperature_C": 14,
+    "testDate": "2026-09",
+    "videoUrl": null,
+    "confidence": "tested"
+  },
   "length_mm": 4432,
   "width_mm": 1836,
   "height_mm": 1566,
@@ -401,7 +411,7 @@
     "idealUserProfile": "Conducteurs urbains cherchant un SUV compact premium sportif et bien equipe.",
     "notIdealFor": "Gros rouleurs ou acheteurs comptant sur les aides a l'achat."
   },
-  "lastUpdated": "2026-05-18",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "automobile-propre",

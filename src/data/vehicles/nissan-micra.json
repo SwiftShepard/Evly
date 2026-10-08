@@ -8,7 +8,7 @@
   "productionCountry": "France",
   "assemblyPlant": "Douai",
   "releaseYear": 2026,
-  "marketAvailability": "À venir en Europe",
+  "marketAvailability": "Disponible",
   "power_kW": 110,
   "power_hp": 150,
   "torque_Nm": 245,
@@ -110,8 +110,8 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Visia 40 kWh",
-      "price_EUR": null,
+      "name": "Engage 40 kWh",
+      "price_EUR": 28000,
       "batteryUsed": "40 kWh",
       "equipmentHighlights": [
         "OpenR Link Google intégré",
@@ -120,8 +120,8 @@
       ]
     },
     {
-      "name": "Acenta 40 kWh",
-      "price_EUR": null,
+      "name": "Advance 40 kWh",
+      "price_EUR": 30000,
       "batteryUsed": "40 kWh",
       "equipmentHighlights": [
         "Jantes alliage 16 pouces",
@@ -130,8 +130,18 @@
       ]
     },
     {
-      "name": "N-Connecta 52 kWh",
-      "price_EUR": null,
+      "name": "Advance 52 kWh",
+      "price_EUR": 33500,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "Batterie 52 kWh, 150 ch",
+        "Écran 10,1\"",
+        "Jantes 18\""
+      ]
+    },
+    {
+      "name": "Evolve 52 kWh",
+      "price_EUR": 36000,
       "batteryUsed": "52 kWh",
       "equipmentHighlights": [
         "Autonomie WLTP 419 km",
@@ -157,13 +167,13 @@
   "configurations": [
     {
       "id": "nissan-micra-visia-40",
-      "label": "Micra Visia · 40 kWh",
+      "label": "Micra Engage 40 kWh",
       "battery": "standard",
-      "trim": "Visia 40 kWh",
+      "trim": "Engage 40 kWh",
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": null,
+      "price_EUR": 28000,
       "monthlyLease_EUR": 139,
       "leasingSocialEligible": true,
       "wltp_km": 319,
@@ -180,18 +190,18 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 28,
       "chargingCurve": [],
-      "availability": "upcoming",
+      "availability": "available",
       "notes": "Version d'entrée de gamme éligible au leasing social"
     },
     {
       "id": "nissan-micra-acenta-40",
-      "label": "Micra Acenta · 40 kWh",
+      "label": "Micra Advance 40 kWh",
       "battery": "standard",
-      "trim": "Acenta 40 kWh",
+      "trim": "Advance 40 kWh",
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": null,
+      "price_EUR": 30000,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 319,
@@ -208,18 +218,46 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 28,
       "chargingCurve": [],
-      "availability": "upcoming",
+      "availability": "available",
       "notes": "Finition intermédiaire confortable"
     },
     {
-      "id": "nissan-micra-nconnecta-52",
-      "label": "Micra N-Connecta · 52 kWh",
+      "id": "nissan-micra-advance-52",
+      "label": "Micra Advance 52 kWh",
       "battery": "long-range",
-      "trim": "N-Connecta 52 kWh",
+      "trim": "Advance 52 kWh",
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": null,
+      "price_EUR": 33500,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 419,
+      "wltp_consumption_kWh_100km": 15.2,
+      "realRange": {
+        "mixed_km": 312,
+        "highway_130_km": 230,
+        "urban_km": 406,
+        "winter_minus5_km": 234,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 35,
+      "chargingCurve": [],
+      "availability": "available",
+      "notes": "Version grande autonomie"
+    },
+    {
+      "id": "nissan-micra-nconnecta-52",
+      "label": "Micra Evolve 52 kWh",
+      "battery": "long-range",
+      "trim": "Evolve 52 kWh",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 36000,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 419,
@@ -264,7 +302,7 @@
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 35,
       "chargingCurve": [],
-      "availability": "upcoming",
+      "availability": "available",
       "notes": "Version grande autonomie"
     }
   ],
@@ -306,7 +344,7 @@
     "idealUserProfile": "Conducteurs urbains et périurbains cherchant une citadine moderne, technologique et éligible au leasing social.",
     "notIdealFor": "Conducteurs ayant besoin de beaucoup d'espace à l'arrière ou d'un coffre de type familial."
   },
-  "lastUpdated": "2026-07-08",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "automobile-propre",

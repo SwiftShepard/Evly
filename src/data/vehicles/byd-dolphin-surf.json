@@ -22,7 +22,7 @@
   "architecture_V": 400,
   "mass_kg": 1450,
   "wltp_max_km": 330,
-  "wltp_min_km": 230,
+  "wltp_min_km": 300,
   "realRange": {
     "mixed_km": 250,
     "highway_130_km": 180,
@@ -106,17 +106,6 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Active",
-      "price_EUR": 19990,
-      "batteryUsed": "30 kWh LFP",
-      "equipmentHighlights": [
-        "Jusqu'à 356 km d'autonomie (WLTP urbain)",
-        "Écran d'infodivertissement rotatif de 10.1\"",
-        "Compatibilité CarPlay et Android Auto sans fil",
-        "Sellerie TEP & Rétroviseurs chauffants"
-      ]
-    },
-    {
       "name": "Boost",
       "price_EUR": 23990,
       "batteryUsed": "43.2 kWh LFP",
@@ -143,59 +132,6 @@
   "leasingSocial_EUR_per_month": null,
   "availableAids": [],
   "configurations": [
-    {
-      "id": "byd-dolphin-surf-active",
-      "label": "Dolphin Surf Active · 30 kWh",
-      "battery": "standard",
-      "trim": "Active",
-      "wheelSize_inches": 15,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 19990,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 230,
-      "wltp_consumption_kWh_100km": 13.6,
-      "realRange": {
-        "mixed_km": 180,
-        "highway_130_km": 130,
-        "urban_km": 230,
-        "winter_minus5_km": 140,
-        "confidence": "estimated"
-      },
-      "rangeTests": [],
-      "chargingDC_peak_kW": 65,
-      "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 21,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 35
-        },
-        {
-          "soc": 10,
-          "power": 65
-        },
-        {
-          "soc": 30,
-          "power": 55
-        },
-        {
-          "soc": 50,
-          "power": 45
-        },
-        {
-          "soc": 80,
-          "power": 25
-        },
-        {
-          "soc": 100,
-          "power": 5
-        }
-      ],
-      "availability": "available",
-      "notes": "Moteur 88 ch (65 kW), batterie Blade LFP 30 kWh. Idéal pour un usage urbain quotidien."
-    },
     {
       "id": "byd-dolphin-surf-boost",
       "label": "Dolphin Surf Boost · 43.2 kWh",
@@ -330,7 +266,7 @@
   ],
   "verdict": {
     "strengths": [
-      "Tarif de départ très compétitif à 19 990 €",
+      "Tarif de départ compétitif à 23 990 €",
       "Équipement technologique très complet dès l'entrée de gamme",
       "Espace intérieur optimisé malgré un gabarit sous les 4 mètres"
     ],
@@ -341,7 +277,7 @@
     "idealUserProfile": "Citadins et banlieusards cherchant une petite voiture électrique moderne, suréquipée et abordable.",
     "notIdealFor": "Gros rouleurs effectuant de fréquents et longs trajets autoroutiers en charge maximale."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "automobile-propre",

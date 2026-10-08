@@ -8,7 +8,7 @@
   "productionCountry": "Chine",
   "assemblyPlant": "Nanjing (Changan Mazda)",
   "releaseYear": 2025,
-  "marketAvailability": "À venir en Europe",
+  "marketAvailability": "Disponible",
   "power_kW": 190,
   "power_hp": 258,
   "torque_Nm": 290,
@@ -205,7 +205,7 @@
           "power": 10
         }
       ],
-      "availability": "upcoming",
+      "availability": "available",
       "notes": "Propulsion RWD de 258 ch. Finition Takumi bien équipée avec jantes 19 pouces et écran géant de 26,45 pouces."
     },
     {
@@ -258,7 +258,7 @@
           "power": 10
         }
       ],
-      "availability": "upcoming",
+      "availability": "available",
       "notes": "Propulsion RWD de 258 ch. Finition Takumi Plus avec jantes 21 pouces, sellerie bi-ton Améthyste et blanc, et rétroviseurs caméras OLED."
     }
   ],
@@ -301,7 +301,7 @@
     "idealUserProfile": "Familles recherchant un SUV électrique moderne, très technologique, avec un confort de roulement premium et un équipement ultra-complet.",
     "notIdealFor": "Conducteurs recherchant une autonomie supérieure à 500 km ou une compatibilité avec le Prime CEE français."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "automobile-propre",

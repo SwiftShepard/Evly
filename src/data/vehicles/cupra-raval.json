@@ -8,7 +8,7 @@
   "productionCountry": "Espagne",
   "assemblyPlant": "Martorell",
   "releaseYear": 2025,
-  "marketAvailability": "À venir",
+  "marketAvailability": "Disponible",
   "power_kW": 155,
   "power_hp": 211,
   "torque_Nm": 290,
@@ -21,8 +21,8 @@
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 1610,
-  "wltp_max_km": 440,
-  "wltp_min_km": 340,
+  "wltp_max_km": 413,
+  "wltp_min_km": 310,
   "realRange": {
     "mixed_km": 320,
     "highway_130_km": 220,
@@ -91,8 +91,18 @@
       ]
     },
     {
-      "name": "Avnier",
-      "price_EUR": 40460,
+      "name": "Plus",
+      "price_EUR": 30150,
+      "batteryUsed": "52 kWh",
+      "equipmentHighlights": [
+        "Moteur 136 ch",
+        "Batterie 52 kWh",
+        "Jantes alliage 17\""
+      ]
+    },
+    {
+      "name": "Endurance",
+      "price_EUR": 36100,
       "batteryUsed": "52 kWh",
       "equipmentHighlights": [
         "Grande batterie 52 kWh",
@@ -137,7 +147,7 @@
       "price_EUR": 25995,
       "monthlyLease_EUR": 119,
       "leasingSocialEligible": false,
-      "wltp_km": 340,
+      "wltp_km": 310,
       "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
         "mixed_km": 240,
@@ -172,27 +182,79 @@
           "power": 5
         }
       ],
-      "availability": "upcoming",
+      "availability": "available",
       "notes": null
     },
     {
-      "id": "cupra-raval-avnier",
-      "label": "Avnier · 52 kWh",
+      "id": "cupra-raval-plus",
+      "label": "Raval Plus · 37 kWh",
       "battery": "long-range",
-      "trim": "Avnier",
+      "trim": "Plus",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 30150,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": null,
+      "wltp_consumption_kWh_100km": 14.5,
+      "realRange": {
+        "mixed_km": 240,
+        "highway_130_km": 160,
+        "urban_km": 290,
+        "winter_minus5_km": 180,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 50,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 25,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 40
+        },
+        {
+          "soc": 10,
+          "power": 50
+        },
+        {
+          "soc": 50,
+          "power": 45
+        },
+        {
+          "soc": 80,
+          "power": 25
+        },
+        {
+          "soc": 100,
+          "power": 5
+        }
+      ],
+      "availability": "available",
+      "notes": null,
+      "power_hp": 136,
+      "power_kW": 100,
+      "usableCapacity_kWh": 52
+    },
+    {
+      "id": "cupra-raval-avnier",
+      "label": "Endurance · 52 kWh",
+      "battery": "long-range",
+      "trim": "Endurance",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 40460,
+      "price_EUR": 36100,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 440,
+      "wltp_km": 413,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 320,
-        "highway_130_km": 220,
-        "urban_km": 390,
-        "winter_minus5_km": 250,
+        "mixed_km": 343,
+        "highway_130_km": 235,
+        "urban_km": 434,
+        "winter_minus5_km": 268,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -221,8 +283,10 @@
           "power": 8
         }
       ],
-      "availability": "upcoming",
-      "notes": null
+      "availability": "available",
+      "notes": null,
+      "power_hp": 211,
+      "power_kW": 155
     },
     {
       "id": "cupra-raval-vz",
@@ -235,7 +299,7 @@
       "price_EUR": 42000,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 420,
+      "wltp_km": 379,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
         "mixed_km": 310,
@@ -270,7 +334,7 @@
           "power": 8
         }
       ],
-      "availability": "upcoming",
+      "availability": "available",
       "notes": null
     }
   ],
@@ -312,7 +376,7 @@
     "idealUserProfile": "Jeunes citadins dynamiques cherchant une citadine électrique performante et stylée.",
     "notIdealFor": "Familles nombreuses ou conducteurs privilégiant le confort feutré de suspension."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "automobile-propre",
     "largus",

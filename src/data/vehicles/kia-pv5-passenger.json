@@ -2,7 +2,7 @@
   "slug": "kia-pv5-passenger",
   "brand": "Kia",
   "model": "PV5 Passenger",
-  "variant": "81 kWh",
+  "variant": "51,5 & 71,2 kWh",
   "bodyType": "Monospace",
   "segment": "D",
   "productionCountry": "Corée",
@@ -16,13 +16,13 @@
   "motors": 1,
   "acceleration_0_100_s": 10.6,
   "topSpeed_kmh": 135,
-  "usableCapacity_kWh": 81.4,
+  "usableCapacity_kWh": 71.2,
   "grossCapacity_kWh": null,
   "chemistry": "NMC",
   "architecture_V": 400,
   "mass_kg": 2145,
-  "wltp_max_km": 450,
-  "wltp_min_km": 450,
+  "wltp_max_km": 412,
+  "wltp_min_km": 295,
   "realRange": {
     "mixed_km": 321,
     "highway_130_km": 236,
@@ -134,9 +134,28 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Active",
-      "price_EUR": 45000,
-      "batteryUsed": "81.4 kWh",
+      "name": "Essential 51,5 kWh",
+      "price_EUR": 39650,
+      "batteryUsed": "51.5 kWh",
+      "equipmentHighlights": [
+        "Moteur 122 ch",
+        "Modularité extrême",
+        "Portes coulissantes"
+      ]
+    },
+    {
+      "name": "Essential 71,2 kWh",
+      "price_EUR": 43650,
+      "batteryUsed": "71.2 kWh",
+      "equipmentHighlights": [
+        "Modularité extrême",
+        "Portes coulissantes"
+      ]
+    },
+    {
+      "name": "Plus 71,2 kWh",
+      "price_EUR": 46200,
+      "batteryUsed": "71.2 kWh",
       "equipmentHighlights": [
         "Modularité extrême",
         "Portes coulissantes"
@@ -148,17 +167,69 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "kia-pv5-passenger-active",
-      "label": "PV5 Passenger Active",
+      "id": "kia-pv5-passenger-essential-51",
+      "label": "PV5 Passenger Essential · 51,5 kWh",
       "battery": "standard",
-      "trim": "Active",
+      "trim": "Essential 51,5 kWh",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 45000,
+      "price_EUR": 39650,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 450,
+      "wltp_km": 295,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": {
+        "mixed_km": 245,
+        "highway_130_km": 168,
+        "urban_km": 310,
+        "winter_minus5_km": 192,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 128,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null,
+      "usableCapacity_kWh": 51.5,
+      "power_hp": 122,
+      "power_kW": 90
+    },
+    {
+      "id": "kia-pv5-passenger-essential-71",
+      "label": "PV5 Passenger Essential · 71,2 kWh",
+      "battery": "long-range",
+      "trim": "Essential 71,2 kWh",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 43650,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 412,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 321,
@@ -222,7 +293,86 @@
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "usableCapacity_kWh": 71.2
+    },
+    {
+      "id": "kia-pv5-passenger-plus-71",
+      "label": "PV5 Passenger Plus · 71,2 kWh",
+      "battery": "long-range",
+      "trim": "Plus 71,2 kWh",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 46200,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 412,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": {
+        "mixed_km": 321,
+        "highway_130_km": 236,
+        "urban_km": 417,
+        "winter_minus5_km": 241,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 262
+      },
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 379,
+          "consumption_kWh_100km": 17.7,
+          "temperature_C": 18,
+          "wheelSize_inches": 16,
+          "tyreModel": "Nexen N blue S",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Kia PV5 Passenger » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 262,
+          "consumption_kWh_100km": 25.6,
+          "temperature_C": 17,
+          "wheelSize_inches": 16,
+          "tyreModel": "Nexen N blue S",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Kia PV5 Passenger » (été, route sèche)."
+        }
+      ],
+      "chargingDC_peak_kW": 128,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 50,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": null,
+      "usableCapacity_kWh": 71.2
     }
   ],
   "warranty": {
@@ -262,7 +412,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev",

@@ -8,7 +8,7 @@
   "productionCountry": "Allemagne",
   "assemblyPlant": "Rastatt",
   "releaseYear": 2025,
-  "marketAvailability": "À commander",
+  "marketAvailability": "Disponible",
   "power_kW": 200,
   "power_hp": 272,
   "torque_Nm": 350,
@@ -144,8 +144,8 @@
   "frunkCapacity_L": 40,
   "trims": [
     {
-      "name": "PRO CLA 58 kWh",
-      "price_EUR": 46500,
+      "name": "Progressive Line CLA 200 (58 kWh)",
+      "price_EUR": 48050,
       "batteryUsed": "58 kWh",
       "equipmentHighlights": [
         "Autonomie 520 km WLTP",
@@ -154,8 +154,8 @@
       ]
     },
     {
-      "name": "PRO CLA 250+",
-      "price_EUR": 54500,
+      "name": "Progressive Line CLA 250+",
+      "price_EUR": 54300,
       "batteryUsed": "85 kWh",
       "equipmentHighlights": [
         "Autonomie record 792 km",
@@ -165,7 +165,7 @@
     },
     {
       "name": "AMG Line CLA 250+",
-      "price_EUR": 58500,
+      "price_EUR": 59050,
       "batteryUsed": "85 kWh",
       "equipmentHighlights": [
         "Jantes alliage AMG 20 pouces",
@@ -175,7 +175,7 @@
     },
     {
       "name": "AMG Line CLA 350 4MATIC",
-      "price_EUR": 64500,
+      "price_EUR": 68300,
       "batteryUsed": "85 kWh",
       "equipmentHighlights": [
         "Transmission AWD 374 ch",
@@ -186,28 +186,17 @@
   ],
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
-  "availableAids": [
-    {
-      "label": "Prime CEE",
-      "amount_EUR": 6500,
-      "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
-    },
-    {
-      "label": "Majoration Batterie Européenne",
-      "amount_EUR": 2000,
-      "conditions": "Majoration pour batterie fabriquée en Europe."
-    }
-  ],
+  "availableAids": [],
   "configurations": [
     {
       "id": "mercedes-cla-58-pro",
-      "label": "CLA 58 kWh PRO",
+      "label": "Progressive Line CLA 200 (58 kWh)",
       "battery": "standard",
-      "trim": "PRO CLA 58 kWh",
+      "trim": "Progressive Line CLA 200 (58 kWh)",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 46500,
+      "price_EUR": 48050,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 520,
@@ -255,13 +244,13 @@
     },
     {
       "id": "mercedes-cla-250-pro",
-      "label": "CLA 250+ 85 kWh PRO",
+      "label": "Progressive Line CLA 250+",
       "battery": "long-range",
-      "trim": "PRO CLA 250+",
+      "trim": "Progressive Line CLA 250+",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 54500,
+      "price_EUR": 54300,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 792,
@@ -315,7 +304,7 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 58500,
+      "price_EUR": 59050,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 750,
@@ -369,7 +358,7 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 64500,
+      "price_EUR": 68300,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 771,
@@ -482,7 +471,7 @@
     "idealUserProfile": "Professionnels, cadres et gros rouleurs souhaitant un coupé 4 portes haut de gamme avec une autonomie et une vitesse de recharge maximales.",
     "notIdealFor": "Familles nombreuses ayant besoin d'un grand coffre vertical ou de 7 places assises."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "automobile-propre",

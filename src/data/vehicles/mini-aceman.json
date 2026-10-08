@@ -87,7 +87,7 @@
   "trims": [
     {
       "name": "Essential E",
-      "price_EUR": 36000,
+      "price_EUR": 33600,
       "batteryUsed": "38.5 kWh (E)",
       "equipmentHighlights": [
         "Ecran central circulaire tactile OLED 240mm",
@@ -98,7 +98,7 @@
     },
     {
       "name": "Classic E",
-      "price_EUR": 38500,
+      "price_EUR": 35650,
       "batteryUsed": "38.5 kWh (E)",
       "equipmentHighlights": [
         "Volant sport à 3 branches",
@@ -109,7 +109,7 @@
     },
     {
       "name": "Classic SE",
-      "price_EUR": 42500,
+      "price_EUR": 40640,
       "batteryUsed": "49.2 kWh (SE)",
       "equipmentHighlights": [
         "Projecteurs LED adaptatifs",
@@ -120,7 +120,7 @@
     },
     {
       "name": "Favoured SE",
-      "price_EUR": 45000,
+      "price_EUR": 42230,
       "batteryUsed": "49.2 kWh (SE)",
       "equipmentHighlights": [
         "Affichage tête haute",
@@ -143,7 +143,7 @@
       "tyreType": "summer",
       "options": [],
       "usableCapacity_kWh": 38.5,
-      "price_EUR": 36000,
+      "price_EUR": 33600,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 310,
@@ -193,7 +193,7 @@
       "tyreType": "summer",
       "options": [],
       "usableCapacity_kWh": 49.2,
-      "price_EUR": 42500,
+      "price_EUR": 40640,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 406,
@@ -278,7 +278,7 @@
     "idealUserProfile": "Couples urbains à la recherche d'un SUV au format de poche pour allier style et praticité.",
     "notIdealFor": "Grands voyageurs cherchant un véhicule principal à recharge ultra-rapide."
   },
-  "lastUpdated": "2026-05-22",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
     "presse"

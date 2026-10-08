@@ -22,7 +22,7 @@
   "architecture_V": 800,
   "mass_kg": 2050,
   "wltp_max_km": 582,
-  "wltp_min_km": 582,
+  "wltp_min_km": 522,
   "realRange": {
     "mixed_km": 480,
     "highway_130_km": 400,
@@ -92,26 +92,8 @@
   "frunkCapacity_L": 52,
   "trims": [
     {
-      "name": "Standard Air",
-      "price_EUR": 47000,
-      "batteryUsed": "63 kWh",
-      "wltp_km": 428,
-      "equipmentHighlights": [
-        "Charge 800V"
-      ]
-    },
-    {
-      "name": "Air",
-      "price_EUR": 51000,
-      "batteryUsed": "84 kWh",
-      "wltp_km": 582,
-      "equipmentHighlights": [
-        "Batterie 84 kWh"
-      ]
-    },
-    {
       "name": "Earth",
-      "price_EUR": 53000,
+      "price_EUR": 49990,
       "batteryUsed": "84 kWh",
       "wltp_km": 582,
       "equipmentHighlights": [
@@ -120,8 +102,18 @@
       ]
     },
     {
-      "name": "GT-Line",
-      "price_EUR": 58000,
+      "name": "Earth AWD",
+      "price_EUR": 53990,
+      "batteryUsed": "84 kWh",
+      "equipmentHighlights": [
+        "Transmission intégrale 325 ch",
+        "Confort ++",
+        "V2L"
+      ]
+    },
+    {
+      "name": "GT-Line Premium",
+      "price_EUR": 57690,
       "batteryUsed": "84 kWh",
       "wltp_km": 546,
       "equipmentHighlights": [
@@ -135,104 +127,6 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "kia-ev6-standard-air",
-      "label": "EV6 Standard Air",
-      "battery": "standard",
-      "trim": "Standard Air",
-      "wheelSize_inches": 18,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 47000,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 582,
-      "wltp_consumption_kWh_100km": 15,
-      "realRange": {
-        "mixed_km": 480,
-        "highway_130_km": 250,
-        "urban_km": 560,
-        "winter_minus5_km": 370,
-        "confidence": "estimated"
-      },
-      "rangeTests": [],
-      "chargingDC_peak_kW": 258,
-      "chargingDC_10_80_min": 18,
-      "chargingDC_kWh_30min": 75,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 100
-        },
-        {
-          "soc": 10,
-          "power": 130
-        },
-        {
-          "soc": 50,
-          "power": 100
-        },
-        {
-          "soc": 80,
-          "power": 50
-        },
-        {
-          "soc": 100,
-          "power": 10
-        }
-      ],
-      "availability": "available",
-      "notes": null
-    },
-    {
-      "id": "kia-ev6-long-range-air",
-      "label": "EV6 Air",
-      "battery": "long-range",
-      "trim": "Air",
-      "wheelSize_inches": 18,
-      "tyreType": "summer",
-      "options": [],
-      "price_EUR": 51000,
-      "monthlyLease_EUR": null,
-      "leasingSocialEligible": false,
-      "wltp_km": 582,
-      "wltp_consumption_kWh_100km": 15,
-      "realRange": {
-        "mixed_km": 480,
-        "highway_130_km": 250,
-        "urban_km": 560,
-        "winter_minus5_km": 370,
-        "confidence": "estimated"
-      },
-      "rangeTests": [],
-      "chargingDC_peak_kW": 258,
-      "chargingDC_10_80_min": 18,
-      "chargingDC_kWh_30min": 75,
-      "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 100
-        },
-        {
-          "soc": 10,
-          "power": 130
-        },
-        {
-          "soc": 50,
-          "power": 100
-        },
-        {
-          "soc": 80,
-          "power": 50
-        },
-        {
-          "soc": 100,
-          "power": 10
-        }
-      ],
-      "availability": "available",
-      "notes": null
-    },
-    {
       "id": "kia-ev6-long-range-earth",
       "label": "EV6 Earth",
       "battery": "long-range",
@@ -240,7 +134,7 @@
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 53000,
+      "price_EUR": 49990,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 582,
@@ -282,14 +176,65 @@
       "notes": null
     },
     {
-      "id": "kia-ev6-long-range-gt-line",
-      "label": "EV6 GT-Line",
+      "id": "kia-ev6-long-range-earth-awd",
+      "label": "EV6 Earth AWD · 84 kWh",
       "battery": "long-range",
-      "trim": "GT-Line",
+      "trim": "Earth AWD",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 58000,
+      "price_EUR": 53990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 522,
+      "wltp_consumption_kWh_100km": 15,
+      "realRange": {
+        "mixed_km": 433,
+        "highway_130_km": 298,
+        "urban_km": 548,
+        "winter_minus5_km": 339,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 258,
+      "chargingDC_10_80_min": 18,
+      "chargingDC_kWh_30min": 75,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 100
+        },
+        {
+          "soc": 10,
+          "power": 130
+        },
+        {
+          "soc": 50,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 50
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "availability": "available",
+      "notes": "Transmission intégrale 325 ch",
+      "power_hp": 325,
+      "power_kW": 239
+    },
+    {
+      "id": "kia-ev6-long-range-gt-line",
+      "label": "EV6 GT-Line Premium",
+      "battery": "long-range",
+      "trim": "GT-Line Premium",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 57690,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 582,
@@ -368,7 +313,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev",

@@ -21,8 +21,8 @@
   "chemistry": "LFP",
   "architecture_V": 400,
   "mass_kg": 1420,
-  "wltp_max_km": 400,
-  "wltp_min_km": 200,
+  "wltp_max_km": 399,
+  "wltp_min_km": 205,
   "realRange": {
     "mixed_km": 218,
     "highway_130_km": 165,
@@ -111,27 +111,27 @@
   "trims": [
     {
       "name": "ë-C3 You 30 kWh",
-      "price_EUR": 19090,
+      "price_EUR": 20390,
       "batteryUsed": "30 kWh",
       "equipmentHighlights": [
-        "Autonomie urbaine 200 km WLTP",
+        "Autonomie urbaine 205 km WLTP",
         "Suspensions Advanced Comfort",
         "Climatisation"
       ]
     },
     {
       "name": "ë-C3 You 44 kWh",
-      "price_EUR": 23450,
+      "price_EUR": 23850,
       "batteryUsed": "44 kWh",
       "equipmentHighlights": [
-        "Autonomie confort 320 km WLTP",
+        "Autonomie confort 307 km WLTP",
         "Suspensions Advanced Comfort",
         "Station d'accueil smartphone"
       ]
     },
     {
       "name": "ë-C3 Plus 44 kWh",
-      "price_EUR": 25650,
+      "price_EUR": 26050,
       "batteryUsed": "44 kWh",
       "equipmentHighlights": [
         "Écran central 10.25 pouces",
@@ -141,7 +141,7 @@
     },
     {
       "name": "ë-C3 Max 44 kWh",
-      "price_EUR": 27950,
+      "price_EUR": 28350,
       "batteryUsed": "44 kWh",
       "equipmentHighlights": [
         "Sièges Citroën Advanced Comfort",
@@ -151,7 +151,7 @@
     },
     {
       "name": "ë-C3 Aircross You 44 kWh",
-      "price_EUR": 25690,
+      "price_EUR": 26090,
       "batteryUsed": "44 kWh",
       "equipmentHighlights": [
         "Format SUV compact (4.39 m)",
@@ -160,9 +160,9 @@
       ]
     },
     {
-      "name": "ë-C3 Aircross Plus 44 kWh",
-      "price_EUR": 31650,
-      "batteryUsed": "44 kWh",
+      "name": "ë-C3 Aircross Plus 54 kWh",
+      "price_EUR": 32050,
+      "batteryUsed": "54 kWh",
       "equipmentHighlights": [
         "Écran central tactile 10.25 pouces",
         "Apple CarPlay et Android Auto sans fil",
@@ -170,9 +170,9 @@
       ]
     },
     {
-      "name": "ë-C3 Aircross Max 44 kWh",
-      "price_EUR": 33750,
-      "batteryUsed": "44 kWh",
+      "name": "ë-C3 Aircross Max 54 kWh",
+      "price_EUR": 34150,
+      "batteryUsed": "54 kWh",
       "equipmentHighlights": [
         "Format SUV 7 places en option",
         "Toit bi-ton",
@@ -181,10 +181,10 @@
     },
     {
       "name": "ë-C3 Aircross You 54 kWh",
-      "price_EUR": 33050,
+      "price_EUR": 29950,
       "batteryUsed": "54 kWh",
       "equipmentHighlights": [
-        "Autonomie étendue 400 km WLTP",
+        "Autonomie étendue 399 km WLTP",
         "Suspensions Advanced Comfort",
         "Style SUV dynamique"
       ]
@@ -213,10 +213,10 @@
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 19090,
+      "price_EUR": 20390,
       "monthlyLease_EUR": 59,
       "leasingSocialEligible": false,
-      "wltp_km": 200,
+      "wltp_km": 205,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 150,
@@ -231,7 +231,7 @@
       "chargingDC_kWh_30min": 23,
       "chargingCurve": null,
       "availability": "available",
-      "notes": "Version Autonomie Urbaine (200 km)"
+      "notes": "Version Autonomie Urbaine (205 km)"
     },
     {
       "id": "citroen-e-c3-you-44",
@@ -241,10 +241,10 @@
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 23450,
+      "price_EUR": 23850,
       "monthlyLease_EUR": 94,
       "leasingSocialEligible": true,
-      "wltp_km": 320,
+      "wltp_km": 307,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 218,
@@ -297,10 +297,10 @@
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 27950,
+      "price_EUR": 28350,
       "monthlyLease_EUR": 129,
       "leasingSocialEligible": false,
-      "wltp_km": 320,
+      "wltp_km": 307,
       "wltp_consumption_kWh_100km": 15.2,
       "realRange": {
         "mixed_km": 218,
@@ -353,10 +353,10 @@
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 25690,
+      "price_EUR": 26090,
       "monthlyLease_EUR": 114,
       "leasingSocialEligible": true,
-      "wltp_km": 300,
+      "wltp_km": 309,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
         "mixed_km": 220,
@@ -374,23 +374,23 @@
       "notes": "SUV compact 5 places"
     },
     {
-      "id": "citroen-e-c3-aircross-max-44",
-      "label": "ë-C3 Aircross Max · 44 kWh",
+      "id": "citroen-e-c3-aircross-max-54",
+      "label": "ë-C3 Aircross Max · 54 kWh",
       "battery": "standard",
-      "trim": "ë-C3 Aircross Max 44 kWh",
+      "trim": "ë-C3 Aircross Max 54 kWh",
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 33750,
+      "price_EUR": 34150,
       "monthlyLease_EUR": 219,
       "leasingSocialEligible": false,
-      "wltp_km": 300,
+      "wltp_km": 399,
       "wltp_consumption_kWh_100km": 16.2,
       "realRange": {
-        "mixed_km": 218,
-        "highway_130_km": 138,
-        "urban_km": 268,
-        "winter_minus5_km": 168,
+        "mixed_km": 300,
+        "highway_130_km": 200,
+        "urban_km": 370,
+        "winter_minus5_km": 240,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -399,7 +399,7 @@
       "chargingDC_kWh_30min": 35,
       "chargingCurve": null,
       "availability": "available",
-      "notes": "SUV compact avec finition haut de gamme, option 7 places"
+      "notes": "SUV compact Autonomie Étendue, finition haut de gamme, option 7 places"
     },
     {
       "id": "citroen-e-c3-aircross-extended-54",
@@ -409,10 +409,10 @@
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 33050,
+      "price_EUR": 29950,
       "monthlyLease_EUR": 239,
       "leasingSocialEligible": false,
-      "wltp_km": 400,
+      "wltp_km": 399,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
         "mixed_km": 300,
@@ -427,7 +427,7 @@
       "chargingDC_kWh_30min": 40,
       "chargingCurve": null,
       "availability": "available",
-      "notes": "SUV compact Autonomie Étendue (~400 km)"
+      "notes": "SUV compact Autonomie Étendue (399 km)"
     }
   ],
   "warranty": {
@@ -467,7 +467,7 @@
     "idealUserProfile": "Citadins et familles recherchant un véhicule polyvalent, extrêmement confortable et financièrement très accessible.",
     "notIdealFor": "Conducteurs effectuant régulièrement de très longs trajets autoroutiers à haute vitesse."
   },
-  "lastUpdated": "2026-06-04",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "citroen-fr",
     "automobile-propre",

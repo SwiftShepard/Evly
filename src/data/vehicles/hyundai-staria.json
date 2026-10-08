@@ -82,21 +82,21 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Lounge 7 places",
-      "price_EUR": 65000,
-      "batteryUsed": "84 kWh",
-      "equipmentHighlights": [
-        "7 places individuelles VIP",
-        "Architecture 800V"
-      ]
-    },
-    {
       "name": "Lounge 9 places",
-      "price_EUR": 67000,
+      "price_EUR": 67400,
       "batteryUsed": "84 kWh",
       "equipmentHighlights": [
         "9 places",
         "Portes coulissantes électriques"
+      ]
+    },
+    {
+      "name": "Lounge 7 places",
+      "price_EUR": 74000,
+      "batteryUsed": "84 kWh",
+      "equipmentHighlights": [
+        "7 places individuelles VIP",
+        "Architecture 800V"
       ]
     }
   ],
@@ -105,14 +105,14 @@
   "availableAids": [],
   "configurations": [
     {
-      "id": "hyundai-staria-lounge-7",
-      "label": "Staria Lounge 7 places",
+      "id": "hyundai-staria-lounge-9",
+      "label": "Staria Lounge 9 places",
       "battery": "standard",
-      "trim": "Lounge 7 places",
+      "trim": "Lounge 9 places",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 65000,
+      "price_EUR": 67400,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 400,
@@ -154,14 +154,14 @@
       "notes": null
     },
     {
-      "id": "hyundai-staria-lounge-9",
-      "label": "Staria Lounge 9 places",
+      "id": "hyundai-staria-lounge-7",
+      "label": "Staria Lounge 7 places",
       "battery": "standard",
-      "trim": "Lounge 9 places",
+      "trim": "Lounge 7 places",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 67000,
+      "price_EUR": 74000,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 400,
@@ -240,7 +240,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-16",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev",

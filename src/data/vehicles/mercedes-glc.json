@@ -8,21 +8,21 @@
   "productionCountry": "Allemagne",
   "assemblyPlant": "Bremen",
   "releaseYear": 2026,
-  "marketAvailability": "À commander",
-  "power_kW": 200,
-  "power_hp": 272,
+  "marketAvailability": "Disponible",
+  "power_kW": 360,
+  "power_hp": 489,
   "torque_Nm": 380,
-  "drivetrain": "RWD",
-  "motors": 1,
+  "drivetrain": "AWD",
+  "motors": 2,
   "acceleration_0_100_s": 6.2,
   "topSpeed_kmh": 190,
-  "usableCapacity_kWh": 85,
-  "grossCapacity_kWh": 90,
+  "usableCapacity_kWh": 94,
+  "grossCapacity_kWh": null,
   "chemistry": "NMC",
   "architecture_V": 800,
   "mass_kg": 2150,
-  "wltp_max_km": 610,
-  "wltp_min_km": 510,
+  "wltp_max_km": 713,
+  "wltp_min_km": 560,
   "realRange": {
     "mixed_km": 563,
     "highway_130_km": 428,
@@ -87,22 +87,22 @@
   "leasingSocialEligible": false,
   "leasingSocial_EUR_per_month": null,
   "availableAids": [],
-  "lastUpdated": "2026-06-02",
+  "lastUpdated": "2026-10-08",
   "trims": [
     {
-      "name": "PRO GLC 250e SUV",
-      "price_EUR": 59900,
-      "batteryUsed": "85 kWh",
+      "name": "GLC 400 4MATIC Avantgarde Line",
+      "price_EUR": 71900,
+      "batteryUsed": "94 kWh",
       "equipmentHighlights": [
-        "610 km WLTP",
+        "713 km WLTP",
         "Architecture de charge 800V",
         "MBUX écran 11,9 pouces"
       ]
     },
     {
-      "name": "AMG Line GLC 250e SUV",
-      "price_EUR": 66900,
-      "batteryUsed": "85 kWh",
+      "name": "GLC 400 4MATIC AMG Line",
+      "price_EUR": 76550,
+      "batteryUsed": "94 kWh",
       "equipmentHighlights": [
         "Kit carrosserie AMG de série",
         "Jantes alliage AMG 19 pouces",
@@ -113,16 +113,16 @@
   "configurations": [
     {
       "id": "mercedes-glc-pro",
-      "label": "GLC 250e SUV PRO",
+      "label": "GLC 400 4MATIC Avantgarde Line",
       "battery": "standard",
-      "trim": "PRO GLC 250e SUV",
+      "trim": "GLC 400 4MATIC Avantgarde Line",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 59900,
+      "price_EUR": 71900,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 610,
+      "wltp_km": 713,
       "wltp_consumption_kWh_100km": 15.2,
       "realRange": {
         "mixed_km": 563,
@@ -190,17 +190,20 @@
         }
       ],
       "availability": "upcoming",
-      "notes": "SUV familial polyvalent d'efficience maximale."
+      "notes": "SUV familial polyvalent d'efficience maximale.",
+      "usableCapacity_kWh": 94,
+      "power_hp": 489,
+      "power_kW": 360
     },
     {
       "id": "mercedes-glc-amg",
-      "label": "GLC 250e SUV AMG Line",
+      "label": "GLC 400 4MATIC AMG Line",
       "battery": "standard",
-      "trim": "AMG Line GLC 250e SUV",
+      "trim": "GLC 400 4MATIC AMG Line",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 66900,
+      "price_EUR": 76550,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 560,
@@ -271,7 +274,10 @@
         }
       ],
       "availability": "upcoming",
-      "notes": "Look dynamique avec kit AMG et jantes sport."
+      "notes": "Look dynamique avec kit AMG et jantes sport.",
+      "usableCapacity_kWh": 94,
+      "power_hp": 489,
+      "power_kW": 360
     }
   ],
   "warranty": {

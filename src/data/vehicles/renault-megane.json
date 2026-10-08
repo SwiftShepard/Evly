@@ -8,7 +8,7 @@
   "productionCountry": "France",
   "assemblyPlant": "Douai",
   "releaseYear": 2024,
-  "marketAvailability": "Disponible",
+  "marketAvailability": "Remplacée par la Megane 2026 (67 kWh)",
   "power_kW": 160,
   "power_hp": 220,
   "torque_Nm": 300,
@@ -263,7 +263,7 @@
           "power": 10
         }
       ],
-      "availability": "available",
+      "availability": "discontinued",
       "notes": "220 ch (160 kW)"
     },
     {
@@ -340,7 +340,7 @@
           "power": 10
         }
       ],
-      "availability": "available",
+      "availability": "discontinued",
       "notes": "220 ch (160 kW), jantes 20 pouces diamantees"
     },
     {
@@ -417,7 +417,7 @@
           "power": 10
         }
       ],
-      "availability": "available",
+      "availability": "discontinued",
       "notes": "220 ch (160 kW), full options"
     }
   ],
@@ -458,7 +458,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

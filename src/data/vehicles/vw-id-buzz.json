@@ -145,7 +145,7 @@
   "trims": [
     {
       "name": "Pro 5 places",
-      "price_EUR": 53680,
+      "price_EUR": 58250,
       "batteryUsed": "79 kWh",
       "equipmentHighlights": [
         "Moteur 286 ch",
@@ -155,7 +155,7 @@
     },
     {
       "name": "GTX 5 places",
-      "price_EUR": 70900,
+      "price_EUR": 71350,
       "batteryUsed": "79 kWh",
       "equipmentHighlights": [
         "Transmission intégrale AWD 340 ch",
@@ -165,7 +165,7 @@
     },
     {
       "name": "Pro LWB 7 places",
-      "price_EUR": 59350,
+      "price_EUR": 60870,
       "batteryUsed": "86 kWh",
       "equipmentHighlights": [
         "Empattement long LWB (+25 cm)",
@@ -186,7 +186,7 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 53680,
+      "price_EUR": 58250,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 461,
@@ -263,7 +263,7 @@
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 70900,
+      "price_EUR": 71350,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 423,
@@ -340,7 +340,7 @@
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": 59350,
+      "price_EUR": 60870,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 469,
@@ -419,7 +419,7 @@
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."
   },
-  "lastUpdated": "2026-05-29",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
     "la-chaine-ev"

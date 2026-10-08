@@ -112,7 +112,7 @@
       ]
     },
     {
-      "name": "Sprint Speciale",
+      "name": "Sport Speciale",
       "price_EUR": 45500,
       "batteryUsed": "54 kWh",
       "equipmentHighlights": [
@@ -296,9 +296,9 @@
     },
     {
       "id": "alfa-romeo-junior-sprint-speciale",
-      "label": "Junior Sprint Speciale · 54 kWh",
+      "label": "Junior Sport Speciale · 54 kWh",
       "battery": "standard",
-      "trim": "Sprint Speciale",
+      "trim": "Sport Speciale",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
@@ -430,7 +430,7 @@
     "idealUserProfile": "Amateurs de conduite sportive cherchant un SUV compact electrique avec du caractere italien.",
     "notIdealFor": "Acheteurs cherchant le meilleur rapport prix/prestations dans le segment B SUV."
   },
-  "lastUpdated": "2026-05-20",
+  "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur"
   ],
