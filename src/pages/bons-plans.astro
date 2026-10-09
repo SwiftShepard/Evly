@@ -12,7 +12,7 @@ const vehicles = getAllVehicles();
 const comparisons = getValueComparisons(vehicles, 15);
 
 const description =
-  "🔎 Pour le prix d'une citadine ou d'un SUV électrique connu, une autre voiture fait parfois mieux : plus d'autonomie réelle, une charge plus rapide ou plus de puissance. On compare, chiffres à l'appui.";
+  "Pour le même prix qu'un modèle électrique connu, une autre voiture fait parfois mieux : plus d'autonomie réelle, recharge plus rapide ou plus de puissance.";
 
 const faqJsonLd = {
   "@context": "https://schema.org",
@@ -39,16 +39,18 @@ const faqJsonLd = {
 ---
 
 <BaseLayout
-  title="Bons Plans Voiture Électrique : Plus pour le Même Prix | Evly"
+  title="Bons plans voiture électrique : plus d'autonomie au même prix"
+  ogImage="/og/pages/bons-plans.jpg"
   description={description}
   jsonLd={faqJsonLd}
 >
   <div class="container-edit py-6 md:py-10">
     <section class="mb-12 md:mb-16">
-      <h1 class="display-1 max-w-3xl fade-rise fade-rise-delay-1">
+      <h1 class="label-eyebrow fade-rise mb-4 md:mb-5">Bons plans voiture électrique</h1>
+      <p class="display-1 max-w-3xl fade-rise fade-rise-delay-1">
         Le même budget.
         <span class="text-[var(--color-accent)]">Une meilleure voiture.</span>
-      </h1>
+      </p>
       <p class="mt-6 text-base md:text-lg text-[var(--color-text-muted)] max-w-2xl leading-relaxed fade-rise fade-rise-delay-2">
         Vous n'êtes pas obligé de vous y connaître en voitures pour ne pas vous faire avoir. En concession, on vous propose souvent la marque que vous connaissez déjà, celle que vous êtes venu voir. Elle n'est pas forcément la meilleure affaire pour votre budget. Ici, on compare des modèles de taille comparable, chiffres à l'appui : autonomie réelle, vitesse de recharge, puissance. À vous de juger si le nom sur le capot vaut la différence.
       </p>

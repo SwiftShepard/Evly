@@ -1,0 +1,45 @@
+---
+/**
+ * Fil d'Ariane visible + données structurées BreadcrumbList (même source, jamais de décalage).
+ * Le dernier élément est la page courante (sans lien).
+ */
+import { url } from "@/lib/url";
+
+interface Crumb {
+  label: string;
+  /** Chemin du site (sans base), ex. "/vehicules/" ; absent pour la page courante */
+  path?: string;
+}
+
+interface Props {
+  items: Crumb[];
+  class?: string;
+}
+
+const { items, class: className = "" } = Astro.props;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: items.map((c, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: c.label,
+    item: new URL(c.path ? url(c.path) : Astro.url.pathname, Astro.site).toString(),
+  })),
+};
+---
+
+<nav aria-label="Fil d'ariane" class:list={["font-mono text-[11px] md:text-xs text-[var(--color-text-faint)] flex items-center gap-2 flex-wrap", className]}>
+  {items.map((c, i) => (
+    <>
+      {i > 0 && <span aria-hidden="true">/</span>}
+      {c.path ? (
+        <a href={url(c.path)} class="hover:text-[var(--color-text-muted)] min-h-[32px] inline-flex items-center">{c.label}</a>
+      ) : (
+        <span class="text-[var(--color-text-muted)] inline-flex items-center min-h-[32px]" aria-current="page">{c.label}</span>
+      )}
+    </>
+  ))}
+</nav>
+<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

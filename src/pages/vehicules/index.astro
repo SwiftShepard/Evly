@@ -5,36 +5,16 @@ import Tile from "@/components/ui/Tile.astro";
 import Tag from "@/components/ui/Tag.astro";
 import BrandLogo from "@/components/ui/BrandLogo.astro";
 import VehicleImage from "@/components/ui/VehicleImage.astro";
-import { getAllVehicles } from "@/lib/vehicles";
+import { getAllVehicles, isStrictUtility } from "@/lib/vehicles";
+import { SEO_YEAR } from "@/lib/seo";
+import { CATEGORIES } from "@/data/categories";
+import { getBrands } from "@/lib/brands";
+import LinkChips from "@/components/seo/LinkChips.astro";
 import { formatPrice } from "@/lib/format";
 import { getVehicleCardSummary } from "@/lib/vehicleCard";
 import { url } from "@/lib/url";
 import FavoriteButton from "@/components/ui/FavoriteButton";
 import type { Vehicle } from "@/data/schemas";
-
-// Véhicules utilitaires stricts (fourgons et versions cargo uniquement) exclus du showroom particuliers
-const STRICT_UTILITY_SLUGS = new Set([
-  "citroen-e-jumper",
-  "citroen-e-jumpy",
-  "citroen-e-spacetourer",
-  "fiat-e-ducato",
-  "fiat-e-scudo",
-  "ford-e-transit",
-  "kia-pv5-cargo",
-  "maxus-edeliver-3",
-  "maxus-edeliver-5",
-  "maxus-edeliver-7",
-  "maxus-edeliver-9",
-  "opel-movano-e",
-  "opel-vivaro-e-life",
-  "peugeot-e-boxer",
-  "peugeot-e-expert-combi",
-  "peugeot-e-partner",
-  "peugeot-e-traveller",
-  "renault-master-e-tech",
-  "renault-trafic-e-tech",
-  "toyota-proace-max-electric",
-]);
 
 // Les 10 véhicules mixtes (ludospaces, navettes VIP) présents dans les deux showrooms
 const HYBRID_SLUGS = new Set([
@@ -50,7 +30,7 @@ const HYBRID_SLUGS = new Set([
   "toyota-proace-electric",
 ]);
 
-const vehicles = getAllVehicles().filter((v) => !STRICT_UTILITY_SLUGS.has(v.slug));
+const vehicles = getAllVehicles().filter((v) => !isStrictUtility(v));
 
 // Cartes rendues visibles au chargement ; le reste via « Voir plus »
 const PAGE_SIZE = 24;
@@ -137,8 +117,9 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
 ---
 
 <BaseLayout
-  title="Catalogue Voitures Électriques : Autonomies & Vrais Prix | Evly"
-  description={`⚡ Trouvez la meilleure voiture électrique ! Filtrez ${vehicles.length} modèles par budget réel, autonomie mesurée sur autoroute, vitesse de charge et éligibilité aux aides d'État.`}
+  title={`Voitures électriques ${SEO_YEAR} : liste, prix et autonomie réelle`}
+  description={`Liste complète des ${vehicles.length} voitures électriques vendues en France en ${SEO_YEAR} : filtrez par prix, autonomie réelle mesurée, recharge rapide, leasing social et aides.`}
+  ogImage="/og/pages/vehicules.jpg"
 >
   <div class="py-6 md:py-10">
     <div class="container-edit">
@@ -453,8 +434,8 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
           <BentoGrid>
             <Tile size="full" variant="elevated">
               <h1 class="display-1 max-w-3xl fade-rise fade-rise-delay-2">
-                Tous les véhicules
-                <span class="text-[var(--color-accent)]">· mis à jour {new Date().getFullYear()}.</span>
+                Toutes les voitures électriques
+                <span class="text-[var(--color-accent)]">· {SEO_YEAR}.</span>
               </h1>
               <p class="mt-4 text-[var(--color-text-muted)] text-sm md:text-base max-w-2xl fade-rise fade-rise-delay-3">
                 Filtrez par budget, autonomie réelle ou vitesse de charge : pas besoin de connaître les marques pour trouver la bonne voiture.
@@ -528,7 +509,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                 </div>
                 <div class="flex items-end gap-3 mb-6">
                   <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.05]">
-                    {v.model}
+                    <span class="sr-only">{v.brand} </span>{v.model}
                     <span class="block text-[var(--color-text-muted)] font-mono text-[11px] md:text-xs mt-1 font-normal tracking-normal leading-tight">{s.subtitle}</span>
                   </h2>
                   <div class="flex-1 h-14 relative min-w-[120px]">
@@ -655,6 +636,13 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
         </p>
       </div>
     </div>
+    <LinkChips
+      class="mt-10"
+      groups={[
+        { title: "Par sélection", links: CATEGORIES.map((c) => ({ label: c.label, href: url(`/voitures-electriques/${c.slug}/`) })) },
+        { title: "Par marque", links: getBrands().map((b) => ({ label: b.name, href: url(`/marques/${b.slug}/`) })) },
+      ]}
+    />
   </section>
 
   <script>

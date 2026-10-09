@@ -1,0 +1,313 @@
+---
+/**
+ * Page « sélection » : une intention de recherche générique (« SUV électrique »,
+ * « voiture électrique pas chère »…), un classement calculé depuis les fiches.
+ * Contenu et règles de sélection : src/data/categories.ts
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BentoGrid from "@/components/ui/BentoGrid.astro";
+import Tile from "@/components/ui/Tile.astro";
+import VehicleImage from "@/components/ui/VehicleImage.astro";
+import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
+import FaqList from "@/components/seo/FaqList.astro";
+import LinkChips from "@/components/seo/LinkChips.astro";
+import { CATEGORIES, type CategoryColumn, type VehicleCategory } from "@/data/categories";
+import { getAllVehicles } from "@/lib/vehicles";
+import { getBrands } from "@/lib/brands";
+import { getBodyInfo, getVehicleName, getVehicleSeoFacts } from "@/lib/seo";
+import { formatPrice } from "@/lib/format";
+import { url } from "@/lib/url";
+
+export function getStaticPaths() {
+  return CATEGORIES.map((category) => ({ params: { categorie: category.slug }, props: { category } }));
+}
+
+interface Props {
+  category: VehicleCategory;
+}
+
+const { category } = Astro.props;
+const list = category.select(getAllVehicles());
+const description = category.description(list);
+const intro = category.intro(list);
+const faq = category.faq(list);
+
+const columnLabels: Record<CategoryColumn, string> = {
+  price: "Prix dès",
+  aided: "Après aides*",
+  range: "Autonomie réelle",
+  charge: "10 → 80 %",
+  trunk: "Coffre",
+  country: "Usine",
+};
+const hasAidedColumn = category.columns.includes("aided");
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: category.h1,
+    description,
+    url: new URL(url(`/voitures-electriques/${category.slug}/`), Astro.site).toString(),
+    mainEntity: {
+      "@type": "ItemList",
+      itemListOrder: category.sortedBy === "range" ? "https://schema.org/ItemListOrderDescending" : "https://schema.org/ItemListOrderAscending",
+      numberOfItems: list.length,
+      itemListElement: list.map((v, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: getVehicleName(v),
+        url: new URL(url(`/vehicules/${v.slug}/`), Astro.site).toString(),
+      })),
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })),
+  },
+];
+
+const others = CATEGORIES.filter((c) => c.slug !== category.slug);
+---
+
+<BaseLayout
+  title={category.title}
+  description={description}
+  jsonLd={jsonLd}
+  ogImage={`/og/selections/${category.slug}.jpg`}
+  ogImageAlt={category.h1}
+>
+  <div class="container-edit pt-2 md:pt-3 fade-rise">
+    <Breadcrumbs
+      items={[
+        { label: "Accueil", path: "/" },
+        { label: "Sélections", path: "/voitures-electriques/" },
+        { label: category.label },
+      ]}
+    />
+  </div>
+
+  <div class="container-edit pt-2 pb-8 md:pt-3 md:pb-12 flex flex-col gap-10">
+    <BentoGrid>
+      <Tile size="full" variant="elevated" class="md:!p-8">
+        <span class="label-eyebrow fade-rise">{category.eyebrow} · {list.length} modèles</span>
+        <h1 class="display-2 mt-3 max-w-4xl fade-rise fade-rise-delay-1">{category.h1}</h1>
+        <div class="mt-4 flex flex-col gap-3 max-w-3xl fade-rise fade-rise-delay-2">
+          {intro.map((p) => <p class="text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed">{p}</p>)}
+        </div>
+      </Tile>
+    </BentoGrid>
+
+    <section aria-labelledby="classement-title">
+      <h2 id="classement-title" class="section-title">Le classement</h2>
+      <BentoGrid>
+        <Tile size="full" class="!px-0 md:!px-0">
+          <div class="overflow-x-auto">
+            <table class="ranking">
+              <thead>
+                <tr>
+                  <th scope="col" class="ranking-rank">#</th>
+                  <th scope="col">Modèle</th>
+                  {category.columns.map((c) => (
+                    <th scope="col" class:list={["ranking-num", c === category.sortedBy && "is-sorted"]}>{columnLabels[c]}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {list.map((v, i) => {
+                  const f = getVehicleSeoFacts(v);
+                  const cell = (c: CategoryColumn) => {
+                    switch (c) {
+                      case "price":
+                        return f.priceMin != null ? formatPrice(f.priceMin) : "NC";
+                      case "aided":
+                        return f.priceAfterAids != null ? formatPrice(f.priceAfterAids) : "Pas d'aide";
+                      case "range":
+                        return `${f.rangeBest} km`;
+                      case "charge":
+                        return f.dcMin != null ? `${f.dcMin} min` : "AC seul";
+                      case "trunk":
+                        return `${v.trunkCapacity_L} L`;
+                      case "country":
+                        return v.assemblyPlant;
+                    }
+                  };
+                  return (
+                    <tr>
+                      <td class="ranking-rank" data-numeric>{String(i + 1).padStart(2, "0")}</td>
+                      <td>
+                        <a href={url(`/vehicules/${v.slug}/`)} class="ranking-model">
+                          <span class="ranking-thumb">
+                            <VehicleImage slug={v.slug} alt="" widths={[120, 240]} sizes="96px" class="w-full h-full" />
+                          </span>
+                          <span class="flex flex-col min-w-0">
+                            <span class="ranking-name">{getVehicleName(v)}</span>
+                            <span class="ranking-sub">{getBodyInfo(v).noun}</span>
+                          </span>
+                        </a>
+                      </td>
+                      {category.columns.map((c) => (
+                        <td class:list={["ranking-num", c === category.sortedBy && "is-sorted"]} data-numeric>
+                          {cell(c)}
+                          {c === "range" && <span class="ranking-note">{f.rangeBestMeasured ? "mesurée" : "estimée"}</span>}
+                        </td>
+                      ))}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          {hasAidedColumn && (
+            <p class="ranking-footnote">
+              * Prix de la version d'entrée diminué des aides maximales (coup de pouce CEE et majoration batterie européenne), réservées aux ménages sous conditions de revenus.
+            </p>
+          )}
+        </Tile>
+      </BentoGrid>
+    </section>
+
+    <section aria-labelledby="faq-title">
+      <h2 id="faq-title" class="section-title">Questions fréquentes</h2>
+      <BentoGrid>
+        <Tile size="full">
+          <FaqList entries={faq} />
+        </Tile>
+      </BentoGrid>
+      <LinkChips
+        groups={[
+          { title: "Autres sélections", links: others.map((c) => ({ label: c.label, href: url(`/voitures-electriques/${c.slug}/`) })) },
+          { title: "Par marque", links: getBrands().map((b) => ({ label: b.name, href: url(`/marques/${b.slug}/`) })) },
+        ]}
+      />
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+    font-weight: 600;
+    letter-spacing: -0.022em;
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+  }
+
+  .ranking {
+    width: 100%;
+    min-width: 640px;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+  .ranking th {
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    color: var(--color-text-faint);
+    padding: 0 0.75rem 0.75rem;
+    border-bottom: 0.5px solid var(--color-border);
+    white-space: nowrap;
+  }
+  .ranking td {
+    padding: 0.625rem 0.75rem;
+    border-bottom: 0.5px solid var(--color-border);
+    vertical-align: middle;
+  }
+  .ranking tbody tr:last-child td {
+    border-bottom: 0;
+  }
+  .ranking tbody tr {
+    transition: background-color 0.2s ease;
+  }
+  .ranking tbody tr:hover {
+    background-color: color-mix(in srgb, var(--color-accent) 4%, transparent);
+  }
+  .ranking th:first-child,
+  .ranking td:first-child {
+    padding-left: var(--tile-padding);
+  }
+  .ranking th:last-child,
+  .ranking td:last-child {
+    padding-right: var(--tile-padding);
+  }
+  @media (min-width: 768px) {
+    .ranking th:first-child,
+    .ranking td:first-child {
+      padding-left: var(--tile-padding-lg);
+    }
+    .ranking th:last-child,
+    .ranking td:last-child {
+      padding-right: var(--tile-padding-lg);
+    }
+  }
+  .ranking-rank {
+    width: 1%;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-text-faint);
+  }
+  .ranking-num {
+    text-align: right !important;
+    font-family: var(--font-mono);
+    white-space: nowrap;
+    color: var(--color-text-muted);
+  }
+  .ranking-num.is-sorted {
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+  th.ranking-num.is-sorted {
+    color: var(--color-accent);
+  }
+  .ranking-note {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--color-text-faint);
+  }
+  .ranking-model {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 44px;
+  }
+  .ranking-thumb {
+    width: 72px;
+    height: 36px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .ranking-name {
+    font-weight: 600;
+    color: var(--color-text);
+    line-height: 1.25;
+    transition: color 0.2s ease;
+  }
+  .ranking-model:hover .ranking-name {
+    color: var(--color-accent);
+  }
+  .ranking-sub {
+    font-size: 12px;
+    color: var(--color-text-faint);
+  }
+  .ranking-footnote {
+    margin-top: 1rem;
+    padding-inline: var(--tile-padding);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--color-text-faint);
+  }
+  @media (min-width: 768px) {
+    .ranking-footnote {
+      padding-inline: var(--tile-padding-lg);
+    }
+  }
+</style>

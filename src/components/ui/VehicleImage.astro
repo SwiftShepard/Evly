@@ -1,42 +1,49 @@
 ---
 /**
  * VehicleImage, affiche l'image du véhicule si disponible dans src/assets/vehicles/.
- * Nommage : {slug}.{jpeg|jpg|png|webp|avif|svg}
+ * Nommage : {slug}.{jpeg|jpg|png|webp|avif}
+ * L'image est servie en WebP redimensionné (srcset), jamais l'original.
  * Fallback : icône EV générique (outline voiture + câble de charge).
  */
+import { getVehicleImage } from "@/lib/vehicleImageAsset";
+
 export interface Props {
   slug: string;
   alt: string;
   class?: string;
+  /** Largeurs générées (px) ; par défaut adaptées aux vignettes de cartes */
+  widths?: number[];
+  /** Largeur d'affichage pour le choix dans le srcset */
+  sizes?: string;
+  loading?: "lazy" | "eager";
+  fetchpriority?: "high" | "low" | "auto";
 }
 
-const { slug, alt, class: className = "" } = Astro.props;
+const {
+  slug,
+  alt,
+  class: className = "",
+  widths = [240, 480],
+  sizes = "200px",
+  loading = "lazy",
+  fetchpriority,
+} = Astro.props;
 
-// NOTE: Vite's import.meta.glob is resolved statically. If you add a new vehicle image in dev mode,
-// you must restart the dev server or save this file to force Vite to scan the vehicles folder again.
-// Force rescan comment update 21
-const imageModules = import.meta.glob<string>(
-  "/src/assets/vehicles/*.{jpeg,jpg,png,webp,avif,svg}",
-  { query: "?url", import: "default", eager: true }
-);
-
-let imageUrl: string | null = null;
-for (const [path, url] of Object.entries(imageModules)) {
-  const stem = path.split("/").at(-1)!.replace(/\.(jpeg|jpg|png|webp|avif|svg)$/i, "");
-  if (stem === slug) {
-    imageUrl = url;
-    break;
-  }
-}
+const image = await getVehicleImage(slug, widths);
 ---
 
-{imageUrl ? (
+{image ? (
   <img
-    src={imageUrl}
+    src={image.src}
+    srcset={image.srcset || undefined}
+    sizes={image.srcset ? sizes : undefined}
+    width={image.width}
+    height={image.height}
     alt={alt}
     class={className}
     style="object-fit: contain; object-position: center bottom;"
-    loading="lazy"
+    loading={loading}
+    fetchpriority={fetchpriority}
     decoding="async"
   />
 ) : (

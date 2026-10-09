@@ -1,0 +1,208 @@
+---
+/**
+ * Page marque : toutes les voitures et utilitaires électriques d'un constructeur.
+ * Cible « voiture électrique {marque} », « {marque} électrique », « gamme électrique {marque} ».
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BentoGrid from "@/components/ui/BentoGrid.astro";
+import Tile from "@/components/ui/Tile.astro";
+import BrandLogo from "@/components/ui/BrandLogo.astro";
+import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
+import VehicleMiniCard from "@/components/vehicle/VehicleMiniCard.astro";
+import FaqList from "@/components/seo/FaqList.astro";
+import LinkChips from "@/components/seo/LinkChips.astro";
+import { getBrands, type Brand } from "@/lib/brands";
+import { SEO_YEAR, getMarketStatus, getVehicleName, getVehicleSeoFacts, inCountry, withArticle } from "@/lib/seo";
+import { formatPrice } from "@/lib/format";
+import { url } from "@/lib/url";
+
+export function getStaticPaths() {
+  return getBrands().map((brand) => ({ params: { brand: brand.slug }, props: { brand } }));
+}
+
+interface Props {
+  brand: Brand;
+}
+
+const { brand } = Astro.props;
+const b = brand.name;
+const onSale = brand.vehicles.filter((v) => getMarketStatus(v) !== "discontinued");
+const priced = onSale.filter((v) => getVehicleSeoFacts(v).priceMin != null);
+const cheapest = [...priced].sort((x, y) => getVehicleSeoFacts(x).priceMin! - getVehicleSeoFacts(y).priceMin!)[0];
+const longest = [...onSale].sort((x, y) => getVehicleSeoFacts(y).rangeBest - getVehicleSeoFacts(x).rangeBest)[0];
+const leasing = onSale.filter((v) => getVehicleSeoFacts(v).leasingMin != null);
+const countries = [...new Set(brand.vehicles.map((v) => v.productionCountry))];
+const plural = (n: number, one: string, many: string) => `${n} ${n > 1 ? many : one}`;
+const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+const joinFr = (items: string[]) => (items.length <= 1 ? items.join("") : `${items.slice(0, -1).join(", ")} et ${items.at(-1)}`);
+
+const titleCandidates = [
+  `Voitures électriques ${b} : gamme ${SEO_YEAR}, prix et autonomie`,
+  `${b} électrique : gamme ${SEO_YEAR}, prix et autonomie réelle`,
+  `${b} électrique : gamme, prix et autonomie`,
+];
+const title = titleCandidates.find((t) => t.length <= 60) ?? titleCandidates.at(-1)!;
+
+const description =
+  brand.priceMin != null
+    ? `Toutes les ${b} électriques vendues en France : ${plural(onSale.length, "modèle", "modèles")} de ${formatPrice(brand.priceMin)} à ${formatPrice(brand.priceMax!)}. Autonomie réelle, recharge, aides et avis pour chacun.`
+    : `Les ${b} électriques comparées par Evly : autonomie réelle, recharge, prix et avis indépendant pour chaque modèle.`;
+
+// Présentation : gamme, prix, meilleure autonomie, pays de fabrication
+const leadParts: string[] = [];
+const gamme = [
+  brand.cars.length ? plural(brand.cars.filter((v) => getMarketStatus(v) !== "discontinued").length, "voiture électrique", "voitures électriques") : null,
+  brand.utilities.length ? plural(brand.utilities.length, "utilitaire électrique", "utilitaires électriques") : null,
+].filter((s): s is string => s != null && !s.startsWith("0 "));
+if (gamme.length) {
+  leadParts.push(
+    `${b} propose ${joinFr(gamme)} en France en ${SEO_YEAR}${
+      cheapest && brand.priceMin != null && brand.priceMax != null && brand.priceMax > brand.priceMin
+        ? `, de ${formatPrice(brand.priceMin)} pour ${withArticle(cheapest)} à ${formatPrice(brand.priceMax)}`
+        : ""
+    }.`,
+  );
+}
+if (longest && onSale.length > 1) {
+  const f = getVehicleSeoFacts(longest);
+  leadParts.push(`${cap(withArticle(longest))} est la plus endurante, avec ${f.rangeBest} km d'autonomie réelle ${f.rangeBestMeasured ? "mesurée" : "estimée"}.`);
+}
+leadParts.push(`${countries.length > 1 ? "Les modèles sont fabriqués" : brand.vehicles.length > 1 ? "Tous les modèles sont fabriqués" : "Le modèle est fabriqué"} ${joinFr(countries.map(inCountry))}.`);
+const discontinued = brand.vehicles.filter((v) => getMarketStatus(v) === "discontinued");
+if (discontinued.length) {
+  leadParts.push(
+    discontinued.length > 1
+      ? `${joinFr(discontinued.map((v) => getVehicleName(v)))} ne sont plus vendues neuves mais restent présentées pour référence.`
+      : `${getVehicleName(discontinued[0]!)} n'est plus vendue neuve mais reste présentée pour référence.`,
+  );
+}
+
+const faq: { question: string; answer: string }[] = [];
+if (cheapest && priced.length > 1) {
+  const f = getVehicleSeoFacts(cheapest);
+  faq.push({
+    question: `Quelle est la ${b} électrique la moins chère ?`,
+    answer: `${cap(withArticle(cheapest))} est la ${b} électrique la moins chère, à partir de ${formatPrice(f.priceMin!)}${f.priceAfterAids != null ? `, ou ${formatPrice(f.priceAfterAids)} après aides maximales` : ""}.`,
+  });
+}
+if (longest && onSale.length > 1) {
+  const f = getVehicleSeoFacts(longest);
+  faq.push({
+    question: `Quelle ${b} électrique a la plus grande autonomie ?`,
+    answer: `${cap(withArticle(longest))} offre la plus grande autonomie de la gamme : ${f.rangeBest} km réels ${f.rangeBestMeasured ? "mesurés" : "estimés"} en usage mixte, et environ ${f.rangeHighway} km sur autoroute.`,
+  });
+}
+faq.push({
+  question: `Où sont fabriquées les ${b} électriques ?`,
+  answer: countries
+    .map((c) => {
+      const models = brand.vehicles.filter((v) => v.productionCountry === c).map((v) => getVehicleName(v));
+      return `${cap(inCountry(c))} : ${joinFr(models)}.`;
+    })
+    .join(" "),
+});
+if (leasing.length) {
+  faq.push({
+    question: `Quelles ${b} électriques sont éligibles au leasing social ?`,
+    answer: `${joinFr(leasing.map((v) => `${withArticle(v)} (dès ${getVehicleSeoFacts(v).leasingMin} €/mois)`))} ${leasing.length > 1 ? "figurent" : "figure"} au barème du leasing social, sous conditions de revenus.`,
+  });
+}
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: `Voitures électriques ${b}`,
+    description,
+    url: new URL(url(`/marques/${brand.slug}/`), Astro.site).toString(),
+    about: { "@type": "Brand", name: b },
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: brand.vehicles.length,
+      itemListElement: brand.vehicles.map((v, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: getVehicleName(v),
+        url: new URL(url(`/vehicules/${v.slug}/`), Astro.site).toString(),
+      })),
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })),
+  },
+];
+
+const otherBrands = getBrands().filter((o) => o.slug !== brand.slug);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  jsonLd={jsonLd}
+  ogImage={`/og/marques/${brand.slug}.jpg`}
+  ogImageAlt={`Voitures électriques ${b}`}
+>
+  <div class="container-edit pt-2 md:pt-3 fade-rise">
+    <Breadcrumbs items={[{ label: "Accueil", path: "/" }, { label: "Marques", path: "/marques/" }, { label: b }]} />
+  </div>
+
+  <div class="container-edit pt-2 pb-8 md:pt-3 md:pb-12 flex flex-col gap-10">
+    <BentoGrid>
+      <Tile size="full" variant="elevated" class="md:!p-8">
+        <div class="flex items-center gap-3 text-[var(--color-text-muted)] fade-rise">
+          <BrandLogo brand={b} class="w-7 h-7" />
+          <span class="label-eyebrow">Marque · {plural(brand.vehicles.length, "modèle", "modèles")}</span>
+        </div>
+        <h1 class="display-2 mt-3 fade-rise fade-rise-delay-1">Voitures électriques {b}</h1>
+        <p class="mt-4 text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed max-w-3xl fade-rise fade-rise-delay-2">
+          {leadParts.join(" ")}
+        </p>
+      </Tile>
+    </BentoGrid>
+
+    {brand.cars.length > 0 && (
+      <section aria-labelledby="voitures-title">
+        <h2 id="voitures-title" class="brand-section-title">{brand.utilities.length ? `Voitures électriques ${b}` : `La gamme électrique ${b}`}</h2>
+        <BentoGrid class="mini-grid">
+          {brand.cars.map((v) => <VehicleMiniCard vehicle={v} />)}
+        </BentoGrid>
+      </section>
+    )}
+
+    {brand.utilities.length > 0 && (
+      <section aria-labelledby="utilitaires-title">
+        <h2 id="utilitaires-title" class="brand-section-title">Utilitaires électriques {b}</h2>
+        <BentoGrid class="mini-grid">
+          {brand.utilities.map((v) => <VehicleMiniCard vehicle={v} />)}
+        </BentoGrid>
+      </section>
+    )}
+
+    <section aria-labelledby="faq-title">
+      <h2 id="faq-title" class="brand-section-title">{b} électrique : vos questions</h2>
+      <BentoGrid>
+        <Tile size="full">
+          <FaqList entries={faq} />
+        </Tile>
+      </BentoGrid>
+      <LinkChips
+        groups={[
+          { title: "Autres marques", links: otherBrands.map((o) => ({ label: o.name, href: url(`/marques/${o.slug}/`) })) },
+        ]}
+      />
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .brand-section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+    font-weight: 600;
+    letter-spacing: -0.022em;
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+  }
+</style>

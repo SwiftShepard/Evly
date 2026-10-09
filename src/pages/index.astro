@@ -24,22 +24,22 @@ const latestVehicles = [...vehicles]
   })
   .slice(0, 10);
 
-const description =
-  "⚡ Comparez 150+ voitures électriques sur un outil 100% indépendant de toute publicité ou commission. Retrouvez les autonomies réelles mesurées et les vrais coûts d'usage.";
+const description = `Comparez les ${totalVehicles} voitures électriques du marché français : autonomie réelle mesurée, prix après aides et recharge. Indépendant, sans publicité ni commission.`;
 ---
 
-<BaseLayout title="Evly : Comparateur de Voitures Électriques | Vrais Prix & Autonomies Réelles" description={description}>
+<BaseLayout title="Comparateur de voitures électriques : autonomie réelle | Evly" description={description}>
   <div class="container-edit py-6 md:py-10">
     <BentoGrid class="home-bento">
 
       {/* ═════════ HERO ═════════ */}
       <Tile size="full" variant="elevated" class="hero-tile md:!p-12 lg:!p-16 overflow-hidden relative">
 
-
-        <h1 class="display-1 max-w-4xl fade-rise fade-rise-delay-1 relative z-10">
+        {/* Le H1 porte la requête visée ; le slogan reste le titre visuel */}
+        <h1 class="label-eyebrow fade-rise relative z-10 mb-4 md:mb-5">Comparateur indépendant de voitures électriques</h1>
+        <p class="display-1 max-w-4xl fade-rise fade-rise-delay-1 relative z-10">
           L'électrique, <span class="text-gradient">enfin</span>
           <span class="text-[var(--color-accent)]">clair.</span>
-        </h1>
+        </p>
 
         <p class="mt-6 md:mt-8 text-base md:text-lg text-[var(--color-text-muted)] max-w-2xl leading-relaxed fade-rise fade-rise-delay-2 relative z-10">
           Que vous soyez féru de mécanique ou que vous n'y connaissiez rien, Evly vous aide à choisir une voiture électrique et à en connaître le vrai prix, sans jargon et sans publicité. Juste des chiffres mesurés, pour ne pas payer plus cher pour moins de voiture.

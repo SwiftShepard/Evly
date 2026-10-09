@@ -9,7 +9,12 @@ import { GLOSSARY } from "@/data/glossary";
 interface Props {
   title: string;
   description: string;
+  /** Carte de partage 1200 × 630 (chemin du site), cf. src/pages/og/ */
   ogImage?: string;
+  ogImageAlt?: string;
+  ogType?: "website" | "article";
+  /** Date ISO de dernière mise à jour du contenu (fiches véhicules) */
+  modifiedTime?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   noindex?: boolean;
 }
@@ -17,15 +22,18 @@ interface Props {
 const {
   title,
   description,
-  ogImage = "/og-default.png",
+  ogImage = "/og/pages/accueil.jpg",
+  ogImageAlt,
+  ogType = "website",
+  modifiedTime,
   jsonLd,
   noindex = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const fullTitle = title.includes("Evly") || title.includes("evly")
-  ? title
-  : `${title}, Evly`;
+// Le nom du site n'est ajouté que s'il tient dans la largeur affichée par Google (~65 caractères)
+const fullTitle = /evly/i.test(title) || `${title} | Evly`.length > 65 ? title : `${title} | Evly`;
+const ogImageUrl = new URL(url(ogImage), Astro.site).toString();
 
 // Organization + WebSite : présents sur toutes les pages pour ancrer l'entité
 // Evly dans le Knowledge Graph, indépendamment du jsonLd propre à chaque page.
@@ -46,6 +54,7 @@ const siteJsonLd = [
     "@type": "WebSite",
     "@id": `${Astro.site}#website`,
     name: "Evly",
+    alternateName: ["ev·ly", "ev-ly.com"],
     url: Astro.site?.toString(),
     inLanguage: "fr-FR",
     publisher: { "@id": `${Astro.site}#organization` },
@@ -77,25 +86,33 @@ const combinedJsonLd = jsonLd
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL.toString()} />
-    {noindex && <meta name="robots" content="noindex,nofollow" />}
+    <meta
+      name="robots"
+      content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
+    />
 
     <link rel="icon" type="image/svg+xml" href={url("/favicon.svg")} />
-    <link rel="alternate" type="application/rss+xml" title="Evly" href={url("/rss.xml")} />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL.toString()} />
-    <meta property="og:image" content={new URL(ogImage, Astro.site).toString()} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt ?? title} />
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:site_name" content="Evly" />
+    {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
 
-    <!-- Twitter -->
+    <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:site" content="@evly" />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={ogImageAlt ?? title} />
 
     <script
       is:inline

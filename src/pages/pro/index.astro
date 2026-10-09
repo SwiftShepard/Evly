@@ -52,10 +52,10 @@ const utilities = vehicles
   .sort((a, b) => Math.min(...a.trims.map((t) => t.price_EUR)) - Math.min(...b.trims.map((t) => t.price_EUR)));
 
 const description =
-  "💼 Électrifiez votre flotte d'entreprise au meilleur coût ! Simulateur TCO réel, cumul d'aides fiscales 2026 (CEE, suramortissement) et audit indépendant.";
+  "Électrifier une flotte d'entreprise au meilleur coût : coût total de possession, aides et fiscalité 2026 (CEE, suramortissement), autonomie réelle des modèles.";
 ---
 
-<BaseLayout title="Evly Pro : Électrification de Flotte Auto & Calculateur TCO" description={description}>
+<BaseLayout title="Voiture électrique d'entreprise : flotte, TCO et fiscalité" description={description} ogImage="/og/pages/pro.jpg">
   <div class="container-edit py-6 md:py-10">
     <BentoGrid>
       {/* ═══════ HERO ═══════ */}
@@ -64,10 +64,11 @@ const description =
           <Tag tone="accent" mono>Beta</Tag>
         </div>
 
-        <h1 class="display-1 max-w-4xl fade-rise fade-rise-delay-1">
+        <h1 class="label-eyebrow fade-rise mb-4 md:mb-5">Électrification de flotte d'entreprise</h1>
+        <p class="display-1 max-w-4xl fade-rise fade-rise-delay-1">
           L'électrique pour vos flottes,
           <span class="text-[var(--color-accent)]">sans pari.</span>
-        </h1>
+        </p>
 
         <p class="mt-6 md:mt-8 font-display text-xl md:text-2xl lg:text-3xl font-medium tracking-[-0.01em] leading-[1.2] text-[var(--color-text-muted)] max-w-3xl fade-rise fade-rise-delay-2">
           TCO réel, aides 2026 cumulées, sélection utilitaires audités.

@@ -1,0 +1,69 @@
+---
+/**
+ * Hub des sélections : relie toutes les pages « intention » et les marques.
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BentoGrid from "@/components/ui/BentoGrid.astro";
+import Tile from "@/components/ui/Tile.astro";
+import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
+import LinkChips from "@/components/seo/LinkChips.astro";
+import { CATEGORIES } from "@/data/categories";
+import { getAllVehicles } from "@/lib/vehicles";
+import { getBrands } from "@/lib/brands";
+import { SEO_YEAR, getVehicleName } from "@/lib/seo";
+import { url } from "@/lib/url";
+
+const all = getAllVehicles();
+const selections = CATEGORIES.map((c) => ({ c, list: c.select(all) }));
+const description = `Nos sélections de voitures électriques ${SEO_YEAR} : pas chères, SUV, familiales, 7 places, plus grande autonomie, recharge rapide, made in France, prime CEE.`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Sélections de voitures électriques",
+  description,
+  url: new URL(url("/voitures-electriques/"), Astro.site).toString(),
+  hasPart: CATEGORIES.map((c) => ({
+    "@type": "CollectionPage",
+    name: c.h1,
+    url: new URL(url(`/voitures-electriques/${c.slug}/`), Astro.site).toString(),
+  })),
+};
+---
+
+<BaseLayout
+  title={`Voitures électriques ${SEO_YEAR} : sélections et classements`}
+  description={description}
+  jsonLd={jsonLd}
+  ogImage="/og/pages/selections.jpg"
+>
+  <div class="container-edit pt-2 md:pt-3 fade-rise">
+    <Breadcrumbs items={[{ label: "Accueil", path: "/" }, { label: "Sélections" }]} />
+  </div>
+
+  <div class="container-edit pt-2 pb-8 md:pt-3 md:pb-12 flex flex-col gap-8">
+    <BentoGrid>
+      <Tile size="full" variant="elevated" class="md:!p-8">
+        <span class="label-eyebrow fade-rise">{CATEGORIES.length} sélections · {all.length} modèles</span>
+        <h1 class="display-2 mt-3 fade-rise fade-rise-delay-1">Voitures électriques : nos sélections et classements</h1>
+        <p class="mt-4 text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed max-w-3xl fade-rise fade-rise-delay-2">
+          Chaque sélection part d'une question simple (la moins chère, la plus endurante, celle qui recharge le plus vite, celle qui loge sept personnes) et classe les modèles du marché français sur leurs chiffres réels, mis à jour avec nos fiches.
+        </p>
+      </Tile>
+    </BentoGrid>
+
+    <BentoGrid>
+      {selections.map(({ c, list }) => (
+        <Tile size="2x1" href={url(`/voitures-electriques/${c.slug}/`)} class="reveal">
+          <span class="label-eyebrow">{c.eyebrow} · {list.length} modèles</span>
+          <h2 class="font-display text-xl md:text-2xl font-semibold tracking-[-0.015em] leading-tight mt-2">{c.h1}</h2>
+          <p class="mt-auto pt-4 text-sm text-[var(--color-text-muted)]">
+            En tête : <span class="text-[var(--color-text)] font-medium">{list.slice(0, 3).map((v) => getVehicleName(v)).join(", ")}</span>
+          </p>
+        </Tile>
+      ))}
+    </BentoGrid>
+
+    <LinkChips groups={[{ title: "Par marque", links: getBrands().map((b) => ({ label: b.name, href: url(`/marques/${b.slug}/`) })) }]} />
+  </div>
+</BaseLayout>

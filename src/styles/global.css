@@ -225,6 +225,14 @@
     }
   }
 
+  /* Grilles de cartes compactes (alternatives, marques) : 2 colonnes dès le mobile */
+  @media (max-width: 767px) {
+    .bento-grid.mini-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.5rem;
+    }
+  }
+
   /* Landing : sections pleine largeur plus aerees verticalement */
   .bento-grid.home-bento {
     row-gap: 2.5rem;

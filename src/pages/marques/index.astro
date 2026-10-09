@@ -1,0 +1,82 @@
+---
+/**
+ * Index des marques : point d'entrée « voiture électrique par marque » et maillage vers chaque page marque.
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BentoGrid from "@/components/ui/BentoGrid.astro";
+import Tile from "@/components/ui/Tile.astro";
+import BrandLogo from "@/components/ui/BrandLogo.astro";
+import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
+import { getBrands } from "@/lib/brands";
+import { getAllVehicles } from "@/lib/vehicles";
+import { SEO_YEAR, getMarketStatus } from "@/lib/seo";
+import { formatPrice } from "@/lib/format";
+import { url } from "@/lib/url";
+
+const brands = getBrands();
+const total = getAllVehicles().length;
+const description = `Les ${brands.length} marques de voitures électriques vendues en France, de Renault à Tesla, BYD ou Volkswagen : gamme ${SEO_YEAR}, prix et autonomie réelle de chaque modèle.`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Marques de voitures électriques",
+  description,
+  url: new URL(url("/marques/"), Astro.site).toString(),
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: brands.length,
+    itemListElement: brands.map((b, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: `Voitures électriques ${b.name}`,
+      url: new URL(url(`/marques/${b.slug}/`), Astro.site).toString(),
+    })),
+  },
+};
+---
+
+<BaseLayout
+  title={`Marques de voitures électriques : les ${brands.length} constructeurs (${SEO_YEAR})`}
+  description={description}
+  jsonLd={jsonLd}
+  ogImage="/og/pages/marques.jpg"
+>
+  <div class="container-edit pt-2 md:pt-3 fade-rise">
+    <Breadcrumbs items={[{ label: "Accueil", path: "/" }, { label: "Marques" }]} />
+  </div>
+
+  <div class="container-edit pt-2 pb-8 md:pt-3 md:pb-12 flex flex-col gap-8">
+    <BentoGrid>
+      <Tile size="full" variant="elevated" class="md:!p-8">
+        <span class="label-eyebrow fade-rise">{brands.length} marques · {total} modèles</span>
+        <h1 class="display-2 mt-3 fade-rise fade-rise-delay-1">Marques de voitures électriques</h1>
+        <p class="mt-4 text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed max-w-3xl fade-rise fade-rise-delay-2">
+          Toutes les marques qui vendent des voitures ou des utilitaires 100 % électriques en France en {SEO_YEAR}. Pour chacune, la gamme complète avec les prix, l'autonomie réelle mesurée ou estimée et un avis indépendant sur chaque modèle.
+        </p>
+      </Tile>
+    </BentoGrid>
+
+    <BentoGrid class="mini-grid">
+      {brands.map((b) => {
+        const onSale = b.vehicles.filter((v) => getMarketStatus(v) !== "discontinued").length;
+        return (
+          <Tile size="1x1" href={url(`/marques/${b.slug}/`)} class="reveal">
+            <div class="flex items-center gap-3 text-[var(--color-text-muted)]">
+              <BrandLogo brand={b.name} class="w-6 h-6" />
+              <h2 class="font-display text-lg font-semibold tracking-[-0.015em] text-[var(--color-text)]">{b.name}</h2>
+            </div>
+            <div class="mt-auto pt-4 flex items-end justify-between gap-3">
+              <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)]">
+                {onSale} modèle{onSale > 1 ? "s" : ""}
+              </span>
+              {b.priceMin != null && (
+                <span class="text-sm text-[var(--color-text-muted)]">dès <span data-numeric class="font-semibold text-[var(--color-text)]">{formatPrice(b.priceMin)}</span></span>
+              )}
+            </div>
+          </Tile>
+        );
+      })}
+    </BentoGrid>
+  </div>
+</BaseLayout>

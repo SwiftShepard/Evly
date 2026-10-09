@@ -30,6 +30,13 @@ jobs:
 
       - run: npm ci
 
+      - name: Cache des images optimisées et des cartes de partage
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.astro
+          key: astro-assets-${{ hashFiles('src/assets/**', 'src/lib/og.ts', 'src/data/vehicles/**') }}
+          restore-keys: astro-assets-
+
       - run: npm run lint:typo
 
       - run: npm run build

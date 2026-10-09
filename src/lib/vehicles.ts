@@ -42,3 +42,31 @@ export function getVehicleBySlug(slug: string): Vehicle | undefined {
 export function getVehicleSlugs(): string[] {
   return vehicles.map((v) => v.slug);
 }
+
+// Véhicules utilitaires stricts (fourgons et versions cargo uniquement), absents du showroom particuliers
+const STRICT_UTILITY_SLUGS = new Set([
+  "citroen-e-jumper",
+  "citroen-e-jumpy",
+  "citroen-e-spacetourer",
+  "fiat-e-ducato",
+  "fiat-e-scudo",
+  "ford-e-transit",
+  "kia-pv5-cargo",
+  "maxus-edeliver-3",
+  "maxus-edeliver-5",
+  "maxus-edeliver-7",
+  "maxus-edeliver-9",
+  "opel-movano-e",
+  "opel-vivaro-e-life",
+  "peugeot-e-boxer",
+  "peugeot-e-expert-combi",
+  "peugeot-e-partner",
+  "peugeot-e-traveller",
+  "renault-master-e-tech",
+  "renault-trafic-e-tech",
+  "toyota-proace-max-electric",
+]);
+
+export function isStrictUtility(v: Vehicle): boolean {
+  return STRICT_UTILITY_SLUGS.has(v.slug);
+}

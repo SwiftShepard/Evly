@@ -111,8 +111,9 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
 ---
 
 <BaseLayout
-  title="Catalogue Utilitaires Électriques : Showroom Pro & Prix Nets | Evly"
-  description="⚡ Comparez et trouvez les meilleurs utilitaires électriques pour votre entreprise. Filtrez par budget, autonomie réelle et aides fiscales Pro 2026."
+  title={`Utilitaires électriques ${new Date().getFullYear()} : prix et autonomie réelle`}
+  description="Fourgonnettes, fourgons et ludospaces électriques comparés pour les professionnels : prix, autonomie réelle, charge utile, recharge et aides 2026."
+  ogImage="/og/pages/pro-vehicules.jpg"
 >
   <div class="py-6 md:py-10">
     <div class="container-edit">
@@ -283,7 +284,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
           <BentoGrid>
             <Tile size="full" variant="elevated">
               <h1 class="display-1 max-w-3xl fade-rise fade-rise-delay-2">
-                Showroom Utilitaires (Pro)
+                Utilitaires électriques
                 <span class="text-[var(--color-accent)]">· mis à jour {new Date().getFullYear()}.</span>
               </h1>
               <p class="mt-6 text-[var(--color-text-muted)] text-sm md:text-base max-w-2xl fade-rise fade-rise-delay-3">

@@ -1,0 +1,90 @@
+---
+/**
+ * Carte compacte d'un véhicule (alternatives, pages marques et sélections).
+ * Le nom complet (marque + modèle) sert de texte de lien : c'est le maillage interne.
+ * À placer dans une <BentoGrid class="mini-grid"> (2 colonnes sur mobile).
+ */
+import Tile from "@/components/ui/Tile.astro";
+import Tag from "@/components/ui/Tag.astro";
+import BrandLogo from "@/components/ui/BrandLogo.astro";
+import VehicleImage from "@/components/ui/VehicleImage.astro";
+import type { Vehicle } from "@/data/schemas";
+import { getBodyInfo, getMarketStatus, getVehicleName, getVehicleSeoFacts } from "@/lib/seo";
+import { formatPrice } from "@/lib/format";
+import { url } from "@/lib/url";
+
+interface Props {
+  vehicle: Vehicle;
+  headingLevel?: 2 | 3;
+}
+
+const { vehicle: v, headingLevel = 3 } = Astro.props;
+const Heading = headingLevel === 2 ? "h2" : "h3";
+const f = getVehicleSeoFacts(v);
+const body = getBodyInfo(v);
+const status = getMarketStatus(v);
+const statusLabel = status === "discontinued" ? "Plus vendu" : status === "upcoming" ? "À venir" : status === "preorder" ? "Précommande" : null;
+const name = getVehicleName(v);
+---
+
+<Tile size="1x1" href={url(`/vehicules/${v.slug}/`)} class="reveal mini-card">
+  <div class="flex items-center justify-between gap-2 mb-2 md:mb-3">
+    <div class="flex items-center gap-2 text-[var(--color-text-muted)] min-w-0">
+      <BrandLogo brand={v.brand} class="w-4 h-4 shrink-0" />
+      <span class="label-eyebrow !text-[var(--color-text-faint)] truncate">{body.noun}</span>
+    </div>
+    <span class="mini-card-tag">
+      {statusLabel ? <Tag tone="outline" mono>{statusLabel}</Tag> : v.leasingSocialEligible && <Tag tone="accent" mono>Leasing social</Tag>}
+    </span>
+  </div>
+  <Heading class="font-display text-base md:text-xl font-semibold tracking-[-0.015em] leading-tight">{name}</Heading>
+  <div class="h-14 md:h-20 my-2 md:my-3 flex items-end justify-center">
+    <VehicleImage slug={v.slug} alt={`${name} électrique`} class="max-w-full h-full" />
+  </div>
+  <div class="mini-card-stats mt-auto pt-3 border-t border-[var(--color-border)]">
+    <div class="flex flex-col gap-0.5 min-w-0">
+      <span class="font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--color-text-faint)] whitespace-nowrap">Autonomie réelle</span>
+      <span class="flex items-baseline gap-1">
+        <span data-numeric class="display-stat text-lg md:text-xl text-[var(--color-accent)]">{f.rangeBest}</span>
+        <span class="font-mono text-[11px] text-[var(--color-text-faint)]">km</span>
+        <span class="card-confidence ml-1" data-level={f.rangeBestMeasured ? "measured" : "estimated"}>{f.rangeBestMeasured ? "mesurée" : "estimée"}</span>
+      </span>
+    </div>
+    <div class="mini-card-price flex flex-col gap-0.5">
+      <span class="font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--color-text-faint)]">{f.priceMin != null ? "Dès" : "Prix"}</span>
+      {f.priceMin != null ? (
+        <span data-numeric class="display-stat text-lg md:text-xl">{formatPrice(f.priceMin)}</span>
+      ) : (
+        <span class="font-display text-sm text-[var(--color-text-faint)] leading-tight mt-1">Non communiqué</span>
+      )}
+    </div>
+  </div>
+</Tile>
+
+<style>
+  /* Mobile (2 colonnes étroites) : chiffres empilés, pastille masquée */
+  .mini-card-stats {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .mini-card-tag {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    .mini-card-stats {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .mini-card-price {
+      align-items: flex-end;
+      text-align: right;
+    }
+    .mini-card-tag {
+      display: inline-flex;
+    }
+  }
+  @media (max-width: 767px) {
+    :global(.mini-card.bento-tile) {
+      padding: 0.875rem;
+    }
+  }
+</style>

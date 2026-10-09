@@ -1,0 +1,51 @@
+---
+/**
+ * Page introuvable (servie par GitHub Pages pour toute URL inconnue).
+ * Non indexée ; propose les points d'entrée utiles plutôt qu'une impasse.
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BentoGrid from "@/components/ui/BentoGrid.astro";
+import Tile from "@/components/ui/Tile.astro";
+import LinkChips from "@/components/seo/LinkChips.astro";
+import { CATEGORIES } from "@/data/categories";
+import { getBrands } from "@/lib/brands";
+import { url } from "@/lib/url";
+---
+
+<BaseLayout title="Page introuvable" description="Cette page n'existe pas ou a été déplacée." noindex>
+  <div class="container-edit py-10 md:py-16 flex flex-col gap-8">
+    <BentoGrid>
+      <Tile size="full" variant="elevated" class="md:!p-10">
+        <span class="label-eyebrow">Erreur 404</span>
+        <h1 class="display-2 mt-3">Cette page n'existe pas, ou plus.</h1>
+        <p class="mt-4 text-base md:text-lg text-[var(--color-text-muted)] max-w-2xl leading-relaxed">
+          Le modèle que vous cherchez a peut-être changé d'adresse. Repartez du catalogue, d'une marque ou d'une sélection.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href={url("/vehicules/")} class="sidebar-cta-404">Voir le catalogue</a>
+          <a href={url("/")} class="font-mono text-xs text-[var(--color-accent)] hover:underline inline-flex items-center min-h-[44px]">Retour à l'accueil ↗</a>
+        </div>
+      </Tile>
+    </BentoGrid>
+    <LinkChips
+      groups={[
+        { title: "Sélections", links: CATEGORIES.map((c) => ({ label: c.label, href: url(`/voitures-electriques/${c.slug}/`) })) },
+        { title: "Marques", links: getBrands().map((b) => ({ label: b.name, href: url(`/marques/${b.slug}/`) })) },
+      ]}
+    />
+  </div>
+</BaseLayout>
+
+<style>
+  .sidebar-cta-404 {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 1.25rem;
+    border-radius: 999px;
+    background: var(--color-accent);
+    color: var(--color-accent-on);
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+</style>

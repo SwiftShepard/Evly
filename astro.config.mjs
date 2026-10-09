@@ -83,6 +83,27 @@ const adminApiPlugin = {
   },
 };
 
+/* ── Dates de mise à jour pour le sitemap (lues dans les fiches) ── */
+/** @param {string} brand */
+const toBrandSlug = (brand) =>
+  brand.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+const vehicleDates = new Map();
+const brandDates = new Map();
+for (const file of fsSync.readdirSync(vehiclesDir).filter((f) => f.endsWith('.json'))) {
+  try {
+    const data = JSON.parse(fsSync.readFileSync(path.join(vehiclesDir, file), 'utf8'));
+    if (!data.lastUpdated) continue;
+    vehicleDates.set(data.slug, data.lastUpdated);
+    const brand = toBrandSlug(data.brand);
+    if (!brandDates.has(brand) || brandDates.get(brand) < data.lastUpdated) brandDates.set(brand, data.lastUpdated);
+  } catch {
+    // Fiche invalide : le build Zod le signalera
+  }
+}
+const latestDataDate = [...vehicleDates.values()].sort().at(-1);
+// Pages dont le contenu suit directement les fiches véhicules
+const DATA_PAGES = new Set(['/', '/vehicules/', '/marques/', '/comparer/', '/bons-plans/', '/leasing-social/', '/pro/vehicules/']);
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://ev-ly.com',
@@ -100,46 +121,30 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap({
-      filter: (page) => !page.includes('/admin'),
+      filter: (page) => !/\/(admin|404)\/?$|\/simulateur\/rapport-premium\//.test(page),
       serialize(item) {
-        const urlObj = new URL(item.url);
-        const pathname = urlObj.pathname;
+        const pathname = new URL(item.url).pathname;
+        const vehicleMatch = pathname.match(/^\/vehicules\/([a-z0-9-]+)\/$/);
+        const brandMatch = pathname.match(/^\/marques\/([a-z0-9-]+)\/$/);
 
-        if (pathname === '/') {
-          item.priority = 1.0;
-          item.changefreq = 'daily';
-          item.lastmod = new Date().toISOString().split('T')[0];
-        } else if (pathname === '/vehicules/') {
-          item.priority = 0.9;
-          item.changefreq = 'daily';
-          item.lastmod = new Date().toISOString().split('T')[0];
-        } else if (pathname.startsWith('/vehicules/')) {
+        // lastmod = date réelle de la donnée ; absent plutôt qu'inventé (Google ignore les lastmod peu fiables)
+        if (vehicleMatch) {
           item.priority = 0.8;
-          item.changefreq = 'weekly';
-
-          const slugMatch = pathname.match(/^\/vehicules\/([a-z0-9-]+)\/$/);
-          if (slugMatch && slugMatch[1]) {
-            const slug = slugMatch[1];
-            const jsonPath = path.join(vehiclesDir, `${slug}.json`);
-            if (fsSync.existsSync(jsonPath)) {
-              try {
-                const data = JSON.parse(fsSync.readFileSync(jsonPath, 'utf8'));
-                if (data.lastUpdated) {
-                  item.lastmod = data.lastUpdated;
-                }
-              } catch (e) {
-                // Fallback
-              }
-            }
-          }
-        } else if (['/comparer/', '/simulateur/', '/recommandation/', '/leasing-social/', '/methodologie/', '/glossaire/', '/pro/', '/bons-plans/'].includes(pathname)) {
-          item.priority = 0.9;
-          item.changefreq = 'weekly';
-          item.lastmod = new Date().toISOString().split('T')[0];
+          item.changefreq = EnumChangefreq.WEEKLY;
+          const updated = vehicleDates.get(vehicleMatch[1]);
+          if (updated) item.lastmod = updated;
+        } else if (brandMatch) {
+          item.priority = 0.7;
+          item.changefreq = EnumChangefreq.WEEKLY;
+          const updated = brandDates.get(brandMatch[1]);
+          if (updated) item.lastmod = updated;
+        } else if (DATA_PAGES.has(pathname) || pathname.startsWith('/voitures-electriques/')) {
+          item.priority = pathname === '/' ? 1.0 : 0.9;
+          item.changefreq = EnumChangefreq.WEEKLY;
+          item.lastmod = latestDataDate;
         } else {
           item.priority = 0.6;
-          item.changefreq = 'monthly';
-          item.lastmod = new Date().toISOString().split('T')[0];
+          item.changefreq = EnumChangefreq.MONTHLY;
         }
         return item;
       }

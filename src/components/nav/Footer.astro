@@ -2,8 +2,22 @@
 import Wordmark from "@/components/ui/Wordmark.astro";
 import { url } from "@/lib/url";
 import { getAllVehicles } from "@/lib/vehicles";
+import { getCategory } from "@/data/categories";
 
 const year = new Date().getFullYear();
+
+// Sélections et marques les plus recherchées, liées depuis toutes les pages
+const FOOTER_SELECTIONS = ["pas-cheres", "suv", "citadines", "familiales", "7-places", "grande-autonomie", "fabriquees-en-france", "eligibles-prime-cee"];
+const FOOTER_BRANDS: [string, string][] = [
+  ["Renault", "renault"],
+  ["Peugeot", "peugeot"],
+  ["Tesla", "tesla"],
+  ["Volkswagen", "volkswagen"],
+  ["Kia", "kia"],
+  ["Hyundai", "hyundai"],
+  ["BYD", "byd"],
+  ["MG", "mg"],
+];
 const totalVehicles = getAllVehicles().length;
 const version = "v1.2.0";
 
@@ -26,12 +40,27 @@ const cols = [
     ],
   },
   {
+    title: "Sélections",
+    links: [
+      ...FOOTER_SELECTIONS.map((slug) => ({ href: url(`/voitures-electriques/${slug}/`), label: getCategory(slug)!.label })),
+      { href: url("/voitures-electriques/"), label: "Toutes les sélections" },
+    ],
+  },
+  {
+    title: "Marques",
+    links: [
+      ...FOOTER_BRANDS.map(([name, slug]) => ({ href: url(`/marques/${slug}/`), label: `${name} électrique` })),
+      { href: url("/marques/"), label: "Toutes les marques" },
+    ],
+  },
+  {
     title: "Méthodologie",
     links: [
       { href: url("/methodologie"), label: "Notre approche" },
       { href: url("/methodologie") + "#protocoles", label: "Protocoles de test" },
       { href: url("/methodologie") + "#sources", label: "Nos sources" },
       { href: url("/methodologie") + "#limites", label: "Limites & honnêteté" },
+      { href: url("/glossaire"), label: "Glossaire" },
     ],
   },
 ];
@@ -39,8 +68,8 @@ const cols = [
 
 <footer class="border-t border-[var(--color-border)] mt-32 reveal">
   <div class="container-edit py-16">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
-      <div class="md:col-span-5 flex flex-col gap-6">
+    <div class="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-8 gap-x-6 gap-y-10">
+      <div class="col-span-2 md:col-span-5 lg:col-span-3 flex flex-col gap-6 lg:pr-6">
         <div class="flex items-baseline gap-3">
           <Wordmark size="lg" />
         </div>
@@ -61,7 +90,7 @@ const cols = [
 
       {
         cols.map((col) => (
-          <div class="md:col-span-2 lg:col-span-2 flex flex-col gap-4">
+          <div class="col-span-1 flex flex-col gap-4">
             <span class="label-eyebrow">{col.title}</span>
             <ul class="flex flex-col gap-2">
               {col.links.map((link) => (

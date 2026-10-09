@@ -1,0 +1,25 @@
+---
+/**
+ * Questions fréquentes repliables (même rendu que la FAQ des fiches véhicules).
+ * Les données structurées FAQPage restent à la charge de la page.
+ */
+interface Props {
+  entries: { question: string; answer: string }[];
+}
+
+const { entries } = Astro.props;
+---
+
+<div class="flex flex-col -mt-2">
+  {entries.map((f) => (
+    <details class="faq-item group py-4 border-b border-[var(--color-border)] last:border-0">
+      <summary class="cursor-pointer list-none select-none flex items-start justify-between gap-4">
+        <span class="text-[var(--color-text)] text-sm md:text-base font-semibold leading-snug">{f.question}</span>
+        <svg class="w-4 h-4 mt-1 text-[var(--color-accent)] flex-shrink-0 transition-transform duration-200 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+        </svg>
+      </summary>
+      <p class="mt-3 text-sm md:text-base text-[var(--color-text-muted)] leading-relaxed max-w-3xl">{f.answer}</p>
+    </details>
+  ))}
+</div>

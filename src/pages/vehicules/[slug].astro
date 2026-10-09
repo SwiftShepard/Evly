@@ -20,6 +20,30 @@ import { formatDate, formatHours, formatLiters, formatMm, formatNm, formatNumber
 import { url } from "@/lib/url";
 import { isVehicleEligibleCEE, CEE_PRICE_CAP_EUR } from "@/lib/cee";
 import FavoriteButton from "@/components/ui/FavoriteButton";
+import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
+import VehicleMiniCard from "@/components/vehicle/VehicleMiniCard.astro";
+import FaqList from "@/components/seo/FaqList.astro";
+import LinkChips from "@/components/seo/LinkChips.astro";
+import { getVehicleImage, getVehicleImageAbsolute } from "@/lib/vehicleImageAsset";
+import { getBrandByName } from "@/lib/brands";
+import { getCategoriesFor } from "@/data/categories";
+import {
+  agree,
+  brandSlug,
+  getAlternatives,
+  getBodyInfo,
+  getMarketStatus,
+  getVehicleAliases,
+  getVehicleDescription,
+  getVehicleLead,
+  getVehicleName,
+  getVehicleSeoFacts,
+  getVehicleTitle,
+  inCountry,
+  isMasculine,
+  withArticle,
+  withDe,
+} from "@/lib/seo";
 
 export function getStaticPaths() {
   return getAllVehicles().map((vehicle) => ({
@@ -35,19 +59,12 @@ if (!vehicle) {
   return Astro.redirect("/404");
 }
 
-// NOTE: Vite's import.meta.glob is resolved statically. If you add a new vehicle image in dev mode,
-// you must restart the dev server or save this file to force Vite to scan the vehicles folder again.
-// Force rescan comment update 17
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/vehicles/*');
-const imagePath = Object.keys(images).find((path) => path.startsWith(`/src/assets/vehicles/${slug}.`));
-let VehicleImage;
-if (imagePath) {
-  VehicleImage = (await images[imagePath]()).default;
-}
+// Photo héros en WebP 560 / 1120 px (l'original peut peser plusieurs Mo)
+const heroImage = await getVehicleImage(slug, [560, 1120]);
 
-const brandSlug = vehicle.brand.toLowerCase().replace('ë', 'e');
+const logoSlug = vehicle.brand.toLowerCase().replace('ë', 'e');
 const logos = import.meta.glob<{ default: ImageMetadata }>('/src/assets/logos/*');
-const logoPath = Object.keys(logos).find((path) => path.startsWith(`/src/assets/logos/${brandSlug}.`));
+const logoPath = Object.keys(logos).find((path) => path.startsWith(`/src/assets/logos/${logoSlug}.`));
 let BrandLogo;
 if (logoPath) {
   BrandLogo = (await logos[logoPath]()).default;
@@ -132,77 +149,163 @@ const getWheelRangePenalty = (currentConfig: any, allConfigs: any[]) => {
 };
 
 
+// ═══ SEO : noms, textes et données structurées (cf. src/lib/seo.ts) ═══
+const allVehicles = getAllVehicles();
+const seoFacts = getVehicleSeoFacts(vehicle);
+const vehicleName = getVehicleName(vehicle);
+const marketStatus = getMarketStatus(vehicle);
+const pageTitle = getVehicleTitle(vehicle);
+const description = getVehicleDescription(vehicle);
+const lead = getVehicleLead(vehicle);
+const laVehicle = withArticle(vehicle);
+const LaVehicle = withArticle(vehicle, true);
+const deVehicle = withDe(vehicle);
+const pronoun = isMasculine(vehicle) ? "il" : "elle";
+const brand = getBrandByName(vehicle.brand);
+const brandPath = `/marques/${brandSlug(vehicle.brand)}/`;
+const alternatives = getAlternatives(vehicle, allVehicles, 4);
+const otherBrandModels = (brand?.vehicles ?? []).filter((v) => v.slug !== vehicle.slug);
+const relatedSelections = getCategoriesFor(vehicle, allVehicles);
+const pageUrl = new URL(url(`/vehicules/${vehicle.slug}/`), Astro.site).toString();
+const schemaImage = await getVehicleImageAbsolute(vehicle.slug, Astro.site);
+
+const driveWheel: Record<string, string> = {
+  FWD: "https://schema.org/FrontWheelDriveConfiguration",
+  RWD: "https://schema.org/RearWheelDriveConfiguration",
+  AWD: "https://schema.org/AllWheelDriveConfiguration",
+};
+const availabilityUrl: Record<string, string> = {
+  available: "https://schema.org/InStock",
+  preorder: "https://schema.org/PreOrder",
+  upcoming: "https://schema.org/PreSale",
+  discontinued: "https://schema.org/Discontinued",
+};
+const pricedVersions = [...vehicle.configurations.map((c) => c.price_EUR), ...vehicle.trims.map((t) => t.price_EUR)].filter(
+  (p): p is number => p != null,
+);
+const qv = (value: number, unitCode: string) => ({ "@type": "QuantitativeValue", value, unitCode });
+const notes = (items: string[]) => ({
+  "@type": "ItemList",
+  itemListElement: items.map((name, i) => ({ "@type": "ListItem", position: i + 1, name })),
+});
+
+// Car (sous-type de Product) : prix agrégés de la gamme + avis éditorial Evly (forces / faiblesses)
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Car",
-  name: `${vehicle.brand} ${vehicle.model} ${vehicle.variant}`,
+  "@id": `${pageUrl}#vehicule`,
+  name: vehicleName,
+  alternateName: getVehicleAliases(vehicle),
+  url: pageUrl,
+  ...(schemaImage ? { image: schemaImage } : {}),
+  description: lead,
   brand: { "@type": "Brand", name: vehicle.brand },
+  manufacturer: { "@type": "Organization", name: vehicle.brand },
   model: vehicle.model,
   vehicleConfiguration: vehicle.variant,
-  bodyType: vehicle.bodyType,
-  fuelType: "Électrique",
+  bodyType: getBodyInfo(vehicle).noun,
+  vehicleModelDate: vehicle.releaseYear.toString(),
+  countryOfAssembly: vehicle.productionCountry,
+  fuelType: "Electric",
+  emissionsCO2: 0,
+  vehicleTransmission: "Automatique (rapport unique)",
+  driveWheelConfiguration: driveWheel[vehicle.drivetrain],
   vehicleEngine: {
     "@type": "EngineSpecification",
-    enginePower: { "@type": "QuantitativeValue", value: vehicle.power_kW, unitCode: "KWT" },
-    torque: { "@type": "QuantitativeValue", value: vehicle.torque_Nm, unitCode: "NU" },
-    fuelType: "Électrique",
+    engineType: "Moteur électrique",
+    enginePower: qv(vehicle.power_kW, "KWT"),
+    torque: qv(vehicle.torque_Nm, "NU"),
   },
-  vehicleTransmission: vehicle.drivetrain,
-  driveWheelConfiguration: vehicle.drivetrain,
-  numberOfAxles: 2,
-  productionDate: vehicle.releaseYear.toString(),
-  countryOfAssembly: vehicle.productionCountry,
-  offers: vehicle.trims.map((trim) => ({
-    "@type": "Offer",
-    name: trim.name,
-    price: trim.price_EUR,
-    priceCurrency: "EUR",
-    availability: "https://schema.org/InStock",
-  })),
-};
-
-const breadcrumbJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: new URL(url("/"), Astro.site).toString() },
-    { "@type": "ListItem", position: 2, name: "Véhicules", item: new URL(url("/vehicules"), Astro.site).toString() },
-    { "@type": "ListItem", position: 3, name: `${vehicle.brand} ${vehicle.model}`, item: new URL(url(`/vehicules/${vehicle.slug}/`), Astro.site).toString() },
+  accelerationTime: qv(vehicle.acceleration_0_100_s, "SEC"),
+  speed: { "@type": "QuantitativeValue", maxValue: vehicle.topSpeed_kmh, unitCode: "KMH" },
+  cargoVolume: qv(vehicle.trunkCapacity_L, "LTR"),
+  ...(vehicle.mass_kg ? { weightTotal: qv(vehicle.mass_kg, "KGM") } : {}),
+  wheelbase: qv(vehicle.wheelbase_mm, "MMT"),
+  fuelConsumption: { "@type": "QuantitativeValue", value: vehicle.consumption_mixed_kWh_per_100km, unitText: "kWh/100 km" },
+  additionalProperty: [
+    { "@type": "PropertyValue", name: `Autonomie réelle mixte (${seoFacts.rangeBestMeasured ? "mesurée" : "estimée"})`, value: seoFacts.rangeBest, unitCode: "KMT" },
+    { "@type": "PropertyValue", name: "Autonomie WLTP", value: seoFacts.wltpMax, unitCode: "KMT" },
+    { "@type": "PropertyValue", name: "Batterie utile", value: seoFacts.batteryMax, unitText: "kWh" },
+    ...(seoFacts.dcMin != null ? [{ "@type": "PropertyValue", name: "Recharge rapide 10 → 80 %", value: seoFacts.dcMin, unitCode: "MIN" }] : []),
+    { "@type": "PropertyValue", name: "Puissance de recharge DC maximale", value: seoFacts.dcPeak, unitCode: "KWT" },
   ],
+  ...(pricedVersions.length > 0
+    ? {
+        offers: {
+          "@type": "AggregateOffer",
+          priceCurrency: "EUR",
+          lowPrice: Math.min(...pricedVersions),
+          highPrice: Math.max(...pricedVersions),
+          offerCount: seoFacts.versions,
+          availability: availabilityUrl[marketStatus],
+          url: pageUrl,
+        },
+      }
+    : {}),
+  review: {
+    "@type": "Review",
+    name: `Avis Evly sur ${laVehicle}`,
+    author: { "@type": "Organization", name: "Evly", url: Astro.site?.toString() },
+    publisher: { "@id": `${Astro.site}#organization` },
+    dateModified: vehicle.lastUpdated,
+    reviewBody: `${vehicle.verdict.idealUserProfile} ${vehicle.verdict.notIdealFor}`,
+    positiveNotes: notes(vehicle.verdict.strengths),
+    negativeNotes: notes(vehicle.verdict.weaknesses),
+  },
 };
 
 // FAQ générée depuis les données véhicule, en langage simple, pour les
-// lecteurs qui ne s'y connaissent pas et pour les featured snippets Google.
-const faqTotalAids = Math.min(8100, vehicle.availableAids.reduce((sum, a) => sum + a.amount_EUR, 0));
-const faqCheapestPrice = cheapestTrim.price_EUR;
-const faqPriceAfterAids = faqCheapestPrice != null ? Math.max(0, faqCheapestPrice - faqTotalAids) : null;
-
+// lecteurs qui ne s'y connaissent pas et pour les extraits enrichis Google.
 const faqEntries: { question: string; answer: string }[] = [
   {
-    question: `Quelle est l'autonomie réelle de la ${vehicle.brand} ${vehicle.model} ?`,
-    answer: `Dans un usage mixte (ville et route), comptez environ ${vehicle.realRange.mixed_km} km avant de devoir recharger. Sur autoroute à vitesse soutenue, l'autonomie tombe plutôt autour de ${vehicle.realRange.highway_130_km} km, et l'hiver, par temps froid, aux alentours de ${vehicle.realRange.winter_minus5_km} km. Ces chiffres viennent de tests ou d'estimations documentés, pas seulement du chiffre WLTP affiché en concession, souvent optimiste.`,
+    question: `Quelle est l'autonomie réelle ${deVehicle} ?`,
+    answer: `Dans un usage mixte (ville et route), comptez environ ${vehicle.realRange.mixed_km} km avant de devoir recharger${seoFacts.rangeBest > vehicle.realRange.mixed_km ? `, et jusqu'à ${seoFacts.rangeBest} km avec la plus grande batterie` : ""}. Sur autoroute à vitesse soutenue, l'autonomie tombe plutôt autour de ${vehicle.realRange.highway_130_km} km, et l'hiver, par temps froid, aux alentours de ${vehicle.realRange.winter_minus5_km} km. Ces chiffres viennent de tests ou d'estimations documentés, pas seulement du chiffre WLTP (${seoFacts.wltpMax} km au mieux) affiché en concession, souvent optimiste.`,
   },
   {
-    question: `Combien de temps faut-il pour recharger la ${vehicle.brand} ${vehicle.model} ?`,
-    answer: `Sur une borne rapide (recharge DC), il faut environ ${vehicle.chargingDC.time_10_80_min} minutes pour remonter de 10 à 80 % de batterie, le temps d'une pause. À la maison ou au travail sur une prise classique ou une borne murale (recharge AC), comptez plutôt ${formatHours(vehicle.chargingAC.time_0_100_h)} pour une charge complète.`,
+    question: `Combien de temps faut-il pour recharger ${laVehicle} ?`,
+    answer:
+      seoFacts.dcMin != null
+        ? `Sur une borne rapide (recharge DC), il faut environ ${seoFacts.dcMin} minutes pour remonter de 10 à 80 % de batterie, le temps d'une pause. À la maison ou au travail sur une borne murale (recharge AC de ${vehicle.chargingAC.onboardCharger_kW} kW), comptez plutôt ${formatHours(vehicle.chargingAC.time_0_100_h)} pour une charge complète.`
+        : `${LaVehicle} n'accepte pas la recharge rapide sur borne DC. Sur une prise ou une borne murale (recharge AC de ${vehicle.chargingAC.onboardCharger_kW} kW), une charge complète prend environ ${formatHours(vehicle.chargingAC.time_0_100_h)}.`,
   },
   {
-    question: `Quel est le prix de la ${vehicle.brand} ${vehicle.model} avec les aides de l'État ?`,
-    answer: faqPriceAfterAids != null && faqCheapestPrice != null && faqTotalAids > 0
-      ? `Le prix affiché part de ${formatPrice(faqCheapestPrice)}. En cumulant les aides disponibles (coup de pouce CEE et sa majoration batterie européenne, selon votre situation), il peut descendre jusqu'à ${formatPrice(faqPriceAfterAids)}. Ces aides dépendent de vos revenus et ne sont pas automatiques : il faut en faire la demande avant de signer le bon de commande.`
-      : faqCheapestPrice != null
-        ? `Le prix affiché part de ${formatPrice(faqCheapestPrice)}, hors options. Vérifiez votre éligibilité aux aides de l'État sur les fiches véhicules concernées : elles ne s'appliquent pas à tous les modèles ni à tous les foyers.`
-        : `Le tarif de ce modèle n'est pas encore communiqué par le constructeur.`,
+    question: `Quel est le prix ${deVehicle} avec les aides de l'État ?`,
+    answer:
+      seoFacts.priceMin != null && seoFacts.priceAfterAids != null
+        ? `Le prix affiché part de ${formatPrice(seoFacts.priceMin)}. En cumulant les aides disponibles (coup de pouce CEE et sa majoration batterie européenne, selon votre situation), il peut descendre jusqu'à ${formatPrice(seoFacts.priceAfterAids)}. Ces aides dépendent de vos revenus et ne sont pas automatiques : il faut en faire la demande avant de signer le bon de commande.`
+        : seoFacts.priceMin != null
+          ? `Le prix affiché part de ${formatPrice(seoFacts.priceMin)}${seoFacts.priceMax && seoFacts.priceMax > seoFacts.priceMin ? ` et monte à ${formatPrice(seoFacts.priceMax)}` : ""}, hors options. ${LaVehicle} n'ouvre pas droit au coup de pouce CEE (score environnemental, prix ou masse hors plafond) : le prix catalogue est le prix réel.`
+          : `Le tarif de ce modèle n'est pas encore communiqué par le constructeur en France.`,
+  },
+  ...(seoFacts.leasingMin != null
+    ? [
+        {
+          question: `${LaVehicle} est-${pronoun} éligible au leasing social ?`,
+          answer: `Oui, ${laVehicle} figure parmi les modèles du leasing social, à partir de ${seoFacts.leasingMin} € par mois au barème ${new Date().getFullYear()}, pour les ménages sous conditions de revenus. Les places sont limitées et le premier loyer est pris en charge.`,
+        },
+      ]
+    : []),
+  {
+    question: `Où est ${agree(vehicle, "fabriqué")} ${laVehicle} ?`,
+    answer: `${LaVehicle} est ${agree(vehicle, "fabriqué")} ${inCountry(vehicle.productionCountry)}${vehicle.productionCountry === "France" ? ", ce qui en fait l'un des modèles électriques produits sur le sol français" : ""}.`,
   },
   {
-    question: `Pour qui est faite la ${vehicle.brand} ${vehicle.model} ?`,
+    question: `Quelle est la taille du coffre ${deVehicle} ?`,
+    answer: `Le coffre ${deVehicle} offre ${vehicle.trunkCapacity_L} litres, et ${vehicle.trunkCapacityFolded_L} litres une fois la banquette rabattue${vehicle.frunkCapacity_L ? `. Un coffre avant de ${vehicle.frunkCapacity_L} litres permet de ranger les câbles de recharge` : ""}.`,
+  },
+  {
+    question: `Quelle est la garantie de la batterie ${deVehicle} ?`,
+    answer: `La batterie est garantie ${vehicle.warranty.battery_years} ans ou ${formatNumber(vehicle.warranty.battery_km)} km, avec au moins ${vehicle.warranty.battery_soh_minimum_percent} % de sa capacité d'origine. Le reste du véhicule est garanti ${vehicle.warranty.vehicle_years} ans ou ${formatNumber(vehicle.warranty.vehicle_km)} km.`,
+  },
+  {
+    question: `Pour qui est ${agree(vehicle, "fait")} ${laVehicle} ?`,
     answer: vehicle.verdict.idealUserProfile,
   },
 ];
 
 if (vehicle.verdict.notIdealFor) {
   faqEntries.push({
-    question: `Quand vaut-il mieux éviter la ${vehicle.brand} ${vehicle.model} ?`,
+    question: `Quand vaut-il mieux éviter ${laVehicle} ?`,
     answer: vehicle.verdict.notIdealFor,
   });
 }
@@ -217,9 +320,7 @@ const faqJsonLd = {
   })),
 };
 
-const pageJsonLd = [jsonLd, breadcrumbJsonLd, faqJsonLd];
-
-const description = `⚡ Fiche technique ${vehicle.brand} ${vehicle.model} ${vehicle.variant} : autonomie réelle mesurée à ${vehicle.realRange.mixed_km} km (autoroute & mixte), coût d'usage et les pièges à éviter. Verdict 100% indépendant.`;
+const pageJsonLd = [jsonLd, faqJsonLd];
 
 // Ensure we have at least one configuration to map over, fallback to a dummy one if empty to not break existing vehicles
 const configurations = vehicle.configurations.length > 0 ? vehicle.configurations : [{
@@ -394,11 +495,30 @@ const tocSections = [
   { id: "fiche-technique", label: "Fiche technique" },
   { id: "sources", label: "Tests & sources" },
   { id: "faq", label: "Questions" },
+  { id: "alternatives", label: "Alternatives" },
 ];
+
+// Un seul <h1> par page : celui de la configuration affichée par défaut
+const headingFor = (index: number): { Tag: "h1" | "p"; attrs: Record<string, string | number> } =>
+  index === 0 ? { Tag: "h1", attrs: {} } : { Tag: "p", attrs: { role: "heading", "aria-level": 1 } };
+
+// Le libellé de configuration répète souvent le modèle (« 5 E-Tech Five · 36,5 kWh ») : on ne garde que la suite
+const configSubtitle = (label: string) => {
+  const rest = label.startsWith(vehicle.model) ? label.slice(vehicle.model.length).replace(/^[\s·,-]+/, "") : label;
+  return rest || label;
+};
 
 ---
 
-<BaseLayout title={`${vehicle.brand} ${vehicle.model} : Prix, Autonomie Réelle & Verdict | Evly`} description={description} jsonLd={pageJsonLd}>
+<BaseLayout
+  title={pageTitle}
+  description={description}
+  jsonLd={pageJsonLd}
+  ogImage={`/og/vehicules/${vehicle.slug}.jpg`}
+  ogImageAlt={`${vehicleName} : autonomie réelle, prix et recharge`}
+  ogType="article"
+  modifiedTime={vehicle.lastUpdated}
+>
   <!-- Fil d'ariane -->
   <div class="container-edit pt-2 md:pt-3 fade-rise flex items-center gap-x-4 gap-y-1 flex-wrap">
     <!-- Affiché uniquement si l'on arrive depuis le catalogue (cf. script en bas de page) -->
@@ -408,13 +528,14 @@ const tocSections = [
       </svg>
       Retour à la liste
     </a>
-    <nav aria-label="Fil d'ariane" class="font-mono text-[11px] md:text-xs text-[var(--color-text-faint)] flex items-center gap-2 flex-wrap">
-      <a href={url("/")} class="hover:text-[var(--color-text-muted)] min-h-[32px] inline-flex items-center">Accueil</a>
-      <span aria-hidden="true">/</span>
-      <a href={url("/vehicules")} class="hover:text-[var(--color-text-muted)] min-h-[32px] inline-flex items-center">Véhicules</a>
-      <span aria-hidden="true">/</span>
-      <span class="text-[var(--color-text-muted)] inline-flex items-center min-h-[32px]">{vehicle.brand} {vehicle.model}</span>
-    </nav>
+    <Breadcrumbs
+      items={[
+        { label: "Accueil", path: "/" },
+        { label: "Véhicules", path: "/vehicules/" },
+        { label: vehicle.brand, path: brandPath },
+        { label: vehicleName },
+      ]}
+    />
   </div>
 
   <div class="vehicle-page pt-2 pb-8 md:pt-3 md:pb-12">
@@ -441,21 +562,31 @@ const tocSections = [
                     {cv.config.leasingSocialEligible && <Tag tone="accent" mono>Leasing social</Tag>}
                   </div>
 
-                  <div class="flex flex-col gap-2">
-                    {BrandLogo ? (
-                      <div class="h-5 md:h-6 fade-rise fade-rise-delay-1 flex items-start">
-                        <img src={typeof BrandLogo === 'string' ? BrandLogo : BrandLogo.src} alt={vehicle.brand} class="h-full w-auto object-contain brand-logo" />
-                      </div>
-                    ) : (
-                      <p class="font-mono text-xs md:text-sm text-[var(--color-text-muted)] fade-rise fade-rise-delay-1">{vehicle.brand}</p>
-                    )}
-                    <h1 class="display-1 fade-rise fade-rise-delay-1">
-                      {vehicle.model}
-                      <span class="block text-[var(--color-text-muted)] mt-1 text-[0.5em] tracking-[-0.01em] font-medium">
-                        {cv.config.label}
-                      </span>
-                    </h1>
-                  </div>
+                  {/*
+                    Un seul vrai <h1> (configuration affichée par défaut) : les autres configurations,
+                    masquées, portent un titre ARIA. Le logo est dans le titre, son alt donne la marque :
+                    le titre se lit « Renault 5 E-Tech ».
+                  */}
+                  {(() => {
+                    const { Tag: Heading, attrs: headingAttrs } = headingFor(index);
+                    return (
+                      <Heading class="flex flex-col gap-2" {...headingAttrs}>
+                        {BrandLogo ? (
+                          <span class="h-5 md:h-6 fade-rise fade-rise-delay-1 flex items-start">
+                            <img src={typeof BrandLogo === 'string' ? BrandLogo : BrandLogo.src} alt={vehicle.brand} class="h-full w-auto object-contain brand-logo" />
+                          </span>
+                        ) : (
+                          <span class="font-mono text-xs md:text-sm text-[var(--color-text-muted)] fade-rise fade-rise-delay-1">{vehicle.brand}</span>
+                        )}
+                        <span class="display-1 block fade-rise fade-rise-delay-1">
+                          {vehicle.model}
+                          <span class="block text-[var(--color-text-muted)] mt-1 text-[0.5em] tracking-[-0.01em] font-medium">
+                            {configSubtitle(cv.config.label)}
+                          </span>
+                        </span>
+                      </Heading>
+                    );
+                  })()}
 
                   <div class="flex flex-col gap-1.5 mt-1" data-hint-group>
                     <div class="stat-hint" tabindex="0" aria-describedby={`hint-range-${cv.config.id}`}>
@@ -497,13 +628,18 @@ const tocSections = [
 
                 <!-- Droite : photo + chiffres clés -->
                 <div class="lg:col-span-6 flex flex-col gap-5 min-w-0">
-                  {VehicleImage && (
+                  {heroImage && (
                     <div class="flex justify-center items-end pointer-events-none">
                       <img
-                        src={VehicleImage.src}
-                        alt={`${vehicle.brand} ${vehicle.model} ${vehicle.variant}`}
+                        src={heroImage.src}
+                        srcset={heroImage.srcset || undefined}
+                        sizes="(min-width: 1024px) 560px, 100vw"
+                        width={heroImage.width}
+                        height={heroImage.height}
+                        alt={`${vehicleName} électrique, ${configSubtitle(cv.config.label)}`}
                         loading={index === 0 ? "eager" : "lazy"}
                         fetchpriority={index === 0 ? "high" : undefined}
+                        decoding={index === 0 ? undefined : "async"}
                         class="w-full max-w-[560px] max-h-[260px] h-auto object-contain vehicle-hero-img"
                       />
                     </div>
@@ -561,6 +697,9 @@ const tocSections = [
           </div>
         ))}
       </BentoGrid>
+
+      <!-- Présentation en une phrase : ce que les chiffres ci-dessus ne disent pas (type, origine, gamme) -->
+      <p class="vehicle-lead">{lead}</p>
 
       <!-- Actions mobiles / tablette (la sidebar les porte sur grand écran) -->
       <div class="xl:hidden mt-3 flex items-center gap-2">
@@ -1067,26 +1206,42 @@ const tocSections = [
       <!-- ═══ 8. Questions fréquentes ═══ -->
       <section id="faq" class="vehicle-section" aria-labelledby="faq-title">
         <header class="vehicle-section-head">
-          <h2 id="faq-title" class="vehicle-section-title">{vehicle.brand} {vehicle.model}, en clair</h2>
+          <h2 id="faq-title" class="vehicle-section-title">{vehicleName}, en clair</h2>
           <p class="vehicle-section-sub">Les questions qu'on se pose avant d'acheter.</p>
         </header>
         <BentoGrid>
           <Tile size="full" class="reveal">
-            <div class="flex flex-col -mt-2">
-              {faqEntries.map((f) => (
-                <details class="faq-item group py-4 border-b border-[var(--color-border)] last:border-0">
-                  <summary class="cursor-pointer list-none select-none flex items-start justify-between gap-4">
-                    <span class="text-[var(--color-text)] text-sm md:text-base font-semibold leading-snug">{f.question}</span>
-                    <svg class="w-4 h-4 mt-1 text-[var(--color-accent)] flex-shrink-0 transition-transform duration-200 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                    </svg>
-                  </summary>
-                  <p class="mt-3 text-sm md:text-base text-[var(--color-text-muted)] leading-relaxed max-w-3xl">{f.answer}</p>
-                </details>
-              ))}
-            </div>
+            <FaqList entries={faqEntries} />
           </Tile>
         </BentoGrid>
+      </section>
+
+      <!-- ═══ 9. Alternatives (concurrentes, gamme de la marque, sélections) ═══ -->
+      <section id="alternatives" class="vehicle-section" aria-labelledby="alternatives-title">
+        <header class="vehicle-section-head">
+          <h2 id="alternatives-title" class="vehicle-section-title">Alternatives à {laVehicle}</h2>
+          <p class="vehicle-section-sub">Même catégorie, prix d'entrée proche.</p>
+        </header>
+        <BentoGrid class="mini-grid">
+          {alternatives.map((alt) => <VehicleMiniCard vehicle={alt} />)}
+        </BentoGrid>
+        <LinkChips
+          groups={[
+            {
+              title: `Autres ${vehicle.brand} électriques`,
+              links: otherBrandModels.length > 0
+                ? [
+                    ...otherBrandModels.map((v) => ({ label: getVehicleName(v), href: url(`/vehicules/${v.slug}/`) })),
+                    { label: `Toute la gamme ${vehicle.brand} →`, href: url(brandPath), accent: true },
+                  ]
+                : [],
+            },
+            {
+              title: `${LaVehicle} figure dans`,
+              links: relatedSelections.map((c) => ({ label: c.label, href: url(`/voitures-electriques/${c.slug}/`) })),
+            },
+          ]}
+        />
       </section>
     </div>
 
@@ -1710,6 +1865,15 @@ const tocSections = [
     line-height: 1.5;
     color: var(--color-text-muted);
     max-width: 60ch;
+  }
+
+  /* ── Présentation en une phrase, sous le bloc d'identité ── */
+  .vehicle-lead {
+    margin-top: 0.875rem;
+    max-width: 75ch;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
   }
 
   /* ── Sidebar ── */
