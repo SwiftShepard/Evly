@@ -509,6 +509,37 @@ const combinedJsonLd = jsonLd
         });
       }
 
+      // ------ Feuilles de style périmées après un déploiement ------
+      // Un onglet ouvert (ou une page préchargée) avant une mise en ligne peut référencer
+      // des fichiers CSS qui n'existent plus : la page s'afficherait sans sa mise en forme.
+      // On recharge alors une fois pour obtenir le HTML à jour.
+      // Feuille absente ou vide (en échec, Chrome attache une feuille sans règle) ; nos fichiers CSS ne sont jamais vides
+      const isUnstyled = (l: HTMLLinkElement) => {
+        try {
+          return !l.sheet || l.sheet.cssRules.length === 0;
+        } catch {
+          return false;
+        }
+      };
+      const unstyledLinks = () =>
+        [...document.querySelectorAll<HTMLLinkElement>('link[rel="stylesheet"][href*="/_astro/"]')].filter(isUnstyled);
+      // Chargement complet : au moment de « load », toutes les feuilles ont fini de charger
+      const nav = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
+      if (nav?.type !== 'reload') {
+        const checkInitial = () => { if (unstyledLinks().length) location.reload(); };
+        if (document.readyState === 'complete') checkInitial();
+        else window.addEventListener('load', checkInitial, { once: true });
+      }
+      // Navigation par transition : la feuille peut s'appliquer un instant après l'échange
+      document.addEventListener('astro:after-swap', () => {
+        const pending = unstyledLinks();
+        if (!pending.length) return;
+        let reloading = false;
+        const reload = () => { if (!reloading) { reloading = true; location.reload(); } };
+        pending.forEach((l) => l.addEventListener('error', reload, { once: true }));
+        setTimeout(() => { if (pending.some((l) => l.isConnected && isUnstyled(l))) reload(); }, 1500);
+      });
+
       // Init all
       function runAll() {
         if (!isReducedMotion()) {
