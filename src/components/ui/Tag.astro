@@ -7,13 +7,14 @@ interface Props {
   class?: string;
 }
 
-const { tone = "neutral", mono = false, class: className = "" } = Astro.props;
+// `mono` est conservé pour compatibilité : les étiquettes sont désormais en casse normale, police du texte
+const { tone = "neutral", class: className = "" } = Astro.props;
 
 const toneClasses: Record<Tone, string> = {
   neutral:
     "bg-[var(--color-bg-subtle)] text-[var(--color-text-muted)] border border-[var(--color-border)]",
   accent:
-    "bg-transparent text-[var(--color-accent)] border border-[var(--color-accent-dim)]",
+    "bg-[var(--color-surface-accent)] text-[var(--color-accent)] border border-[color-mix(in_srgb,var(--color-accent)_25%,transparent)]",
   danger:
     "bg-transparent text-[var(--color-danger)] border border-[color-mix(in_srgb,var(--color-danger)_45%,var(--color-border-strong))]",
   warning:
@@ -25,8 +26,7 @@ const toneClasses: Record<Tone, string> = {
 
 <span
   class:list={[
-    "inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] uppercase tracking-[0.14em] leading-none whitespace-nowrap rounded-none",
-    mono ? "font-mono" : "",
+    "inline-flex items-center gap-1.5 px-2.5 py-[5px] text-[12px] font-medium tracking-[-0.005em] leading-none whitespace-nowrap rounded-full",
     toneClasses[tone],
     className,
   ]}

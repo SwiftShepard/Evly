@@ -1,0 +1,217 @@
+---
+/**
+ * Graphique « haltère » : autonomie annoncée (WLTP) face à l'autonomie mesurée sur route,
+ * pour des modèles connus testés. Une ligne par modèle, triée de l'annonce la plus fidèle
+ * à la plus optimiste. Les valeurs en km apparaissent au survol ou au focus de la ligne.
+ */
+import { getVehicleBySlug } from "@/lib/vehicles";
+import { getMeasuredGap, type MeasuredGap } from "@/lib/rangeGap";
+import { formatNumber } from "@/lib/format";
+import { url } from "@/lib/url";
+
+interface Props {
+  slugs: string[];
+}
+
+const { slugs } = Astro.props;
+
+const rows = slugs
+  .map((slug) => getVehicleBySlug(slug))
+  .filter((v) => v !== undefined)
+  .map((v) => getMeasuredGap(v))
+  .filter((g): g is MeasuredGap => g !== null)
+  .sort((a, b) => a.gapPct - b.gapPct);
+
+const scaleMax = Math.ceil(Math.max(...rows.map((r) => r.wltpKm)) / 200) * 200;
+const ticks = Array.from({ length: scaleMax / 200 + 1 }, (_, i) => i * 200);
+const pct = (km: number) => (km / scaleMax) * 100;
+---
+
+<figure class="gap-chart no-glossary" style={`--tick: ${(200 / scaleMax) * 100}%`}>
+  <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px] text-[var(--color-text-muted)]">
+    <span class="inline-flex items-center gap-2"><span class="legend-dot legend-real" aria-hidden="true"></span>Mesurée sur route</span>
+    <span class="inline-flex items-center gap-2"><span class="legend-dot legend-wltp" aria-hidden="true"></span>Annoncée (WLTP)</span>
+  </div>
+
+  <ul class="gap-rows mt-5">
+    {rows.map((r) => {
+      const v = r.vehicle;
+      const name = `${v.brand} ${v.model.replace(/ & .*$/, "")}`;
+      return (
+        <li>
+          <a
+            href={url(`/vehicules/${v.slug}/`)}
+            class="gap-row"
+            aria-label={`${name}, ${r.config.label} : ${r.wltpKm} km annoncés, ${r.realKm} km mesurés sur route, soit ${Math.round(r.gapPct)} % de moins.`}
+          >
+            <span class="gap-name">{name}</span>
+            <span class="gap-track" aria-hidden="true">
+              <span class="gap-seg" style={`left: ${pct(r.realKm)}%; width: ${pct(r.wltpKm) - pct(r.realKm)}%`}></span>
+              <span class="gap-dot gap-dot-real" style={`left: ${pct(r.realKm)}%`}>
+                <span class="gap-val gap-val-left">{formatNumber(r.realKm)}</span>
+              </span>
+              <span class="gap-dot gap-dot-wltp" style={`left: ${pct(r.wltpKm)}%`}>
+                <span class="gap-val gap-val-right">{formatNumber(r.wltpKm)}</span>
+              </span>
+            </span>
+            <span class="gap-pct" aria-hidden="true">-{formatNumber(Math.round(r.gapPct))} %</span>
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+
+  <div class="gap-axis" aria-hidden="true">
+    <span></span>
+    <span class="gap-axis-track">
+      {ticks.map((t) => (
+        <span class="gap-tick" style={`left: ${pct(t)}%`}>{t === scaleMax ? `${formatNumber(t)} km` : formatNumber(t)}</span>
+      ))}
+    </span>
+    <span></span>
+  </div>
+
+  <figcaption class="mt-5 text-[13px] text-[var(--color-text-faint)] leading-relaxed">
+    Version testée la plus accessible de chaque modèle, en usage mixte. Essais Bjørn Nyland et presse VE.
+  </figcaption>
+</figure>
+
+<style>
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .legend-real { background: var(--color-accent); }
+  .legend-wltp { background: var(--color-accent-soft); }
+
+  .gap-row,
+  .gap-axis {
+    display: grid;
+    grid-template-columns: minmax(0, 11rem) minmax(0, 1fr) 3.5rem;
+    align-items: center;
+    column-gap: 1.25rem;
+  }
+  .gap-row {
+    height: 2.75rem;
+    padding-inline: 0.75rem;
+    margin-inline: -0.75rem;
+    border-radius: var(--radius-tile-sm);
+    transition: background-color 150ms var(--ease-out-expo);
+  }
+  .gap-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .gap-pct {
+    text-align: right;
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text);
+  }
+
+  /* Piste : quadrillage vertical tous les 200 km, continu d'une ligne à l'autre */
+  .gap-track {
+    position: relative;
+    height: 100%;
+    background-image: linear-gradient(to right, var(--color-border) 1px, transparent 1px);
+    background-size: var(--tick) 100%;
+    background-repeat: repeat-x;
+  }
+  .gap-seg {
+    position: absolute;
+    top: 50%;
+    height: 2px;
+    margin-top: -1px;
+    background: var(--color-accent-soft);
+    transform-origin: left center;
+  }
+  .gap-dot {
+    position: absolute;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    margin: -6px 0 0 -6px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--color-surface-elevated);
+  }
+  .gap-dot-real { background: var(--color-accent); z-index: 1; }
+  .gap-dot-wltp { background: var(--color-accent-soft); }
+
+  /* Valeurs dévoilées sur place au survol / focus de la ligne */
+  .gap-val {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 180ms var(--ease-out-expo), transform 180ms var(--ease-out-expo);
+  }
+  .gap-val-left { right: calc(100% + 8px); }
+  .gap-val-right { left: calc(100% + 8px); }
+  @media (hover: hover) {
+    .gap-row:hover { background: var(--color-bg-subtle); }
+    .gap-row:hover .gap-val { opacity: 1; }
+  }
+  .gap-row:focus-visible { background: var(--color-bg-subtle); }
+  .gap-row:focus-visible .gap-val { opacity: 1; }
+
+  .gap-axis {
+    height: 1.5rem;
+    margin-top: 0.25rem;
+  }
+  .gap-axis-track {
+    position: relative;
+    height: 100%;
+  }
+  .gap-tick {
+    position: absolute;
+    top: 0.25rem;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: var(--color-text-faint);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .gap-tick:first-child { transform: none; }
+  .gap-tick:last-child { transform: translateX(-100%); }
+
+  /* Le segment se trace à l'apparition de la section (sans effet si mouvement réduit ou sans JS) */
+  @media (prefers-reduced-motion: no-preference) {
+    :global(.reveal:not(.revealed)) .gap-seg {
+      transform: scaleX(0);
+    }
+    :global(.reveal:not(.revealed)) .gap-dot-wltp {
+      opacity: 0;
+    }
+    .gap-seg {
+      transition: transform 900ms var(--ease-out-expo) 150ms;
+    }
+    .gap-dot-wltp {
+      transition: opacity 400ms var(--ease-out-expo) 650ms;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .gap-row {
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas: "name pct" "track track";
+      height: auto;
+      row-gap: 0.375rem;
+      padding-block: 0.5rem;
+    }
+    .gap-name { grid-area: name; }
+    .gap-pct { grid-area: pct; }
+    .gap-track { grid-area: track; height: 1.25rem; }
+    .gap-axis { grid-template-columns: 0 minmax(0, 1fr) 0; column-gap: 0; }
+  }
+</style>

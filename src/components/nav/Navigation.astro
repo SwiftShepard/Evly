@@ -1,6 +1,7 @@
 ---
 import Wordmark from "@/components/ui/Wordmark.astro";
 import { url } from "@/lib/url";
+import { ChevronDown, Menu, X } from "lucide-react";
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
@@ -9,35 +10,36 @@ const navigationStructure = [
   {
     label: "Véhicules",
     items: [
-      { href: url("/vehicules"), label: "Particuliers" },
-      { href: url("/marques"), label: "Par marque" },
-      { href: url("/voitures-electriques"), label: "Sélections" },
-      { href: url("/bons-plans"), label: "Bons plans" },
-      { href: url("/pro/vehicules"), label: "Utilitaires (Pro)" },
-      { href: url("/leasing-social"), label: "Leasing Social" },
+      { href: url("/vehicules/"), label: "Particuliers", desc: "Tout le catalogue, avec filtres" },
+      { href: url("/marques/"), label: "Par marque", desc: "Les gammes électriques, marque par marque" },
+      { href: url("/voitures-electriques/"), label: "Sélections", desc: "Citadines, SUV, familiales, petits budgets" },
+      { href: url("/bons-plans/"), label: "Bons plans", desc: "Mieux équipé pour le même budget" },
+      { href: url("/pro/vehicules/"), label: "Utilitaires (Pro)", desc: "Fourgons et ludospaces électriques" },
+      { href: url("/leasing-social/"), label: "Leasing Social", desc: "Conditions et modèles éligibles" },
     ]
   },
   {
     label: "Outils",
     items: [
-      { href: url("/comparer"), label: "Comparateur" },
-      { href: url("/simulateur"), label: "Calculateur TCO" },
-      { href: url("/pro"), label: "Simulateur Pro" },
+      { href: url("/comparer/"), label: "Comparateur", desc: "Jusqu'à 4 modèles côte à côte" },
+      { href: url("/simulateur/"), label: "Calculateur TCO", desc: "Le coût réel sur plusieurs années" },
+      { href: url("/pro/"), label: "Simulateur Pro", desc: "Le coût total pour une entreprise" },
     ]
   },
   {
     label: "Ressources",
     items: [
-      { href: url("/methodologie"), label: "Méthodologie" },
-      { href: url("/glossaire"), label: "Glossaire" },
+      { href: url("/methodologie/"), label: "Méthodologie", desc: "Comment on mesure et on calcule" },
+      { href: url("/glossaire/"), label: "Glossaire", desc: "Les termes de l'électrique expliqués" },
     ]
   }
 ];
 
 function isActive(href: string): boolean {
-  const plain = href.replace(base, "") || "/";
+  const target = href.replace(/\/$/, "") || "/";
+  const plain = target.replace(base, "") || "/";
   if (plain === "/") return pathname === "/" || pathname === base;
-  return pathname === href || pathname.startsWith(href + "/");
+  return pathname === target || pathname.startsWith(target + "/");
 }
 
 function isGroupActive(group: typeof navigationStructure[0]): boolean {
@@ -46,24 +48,21 @@ function isGroupActive(group: typeof navigationStructure[0]): boolean {
 ---
 
 <header
-  class="nav-header sticky top-0 z-40 border-b border-[var(--color-border)] bg-[color-mix(in_srgb,var(--color-bg)_85%,transparent)] backdrop-blur-md"
+  class="nav-header sticky top-0 z-40 border-b border-[var(--color-border)] bg-[color-mix(in_srgb,var(--color-bg)_82%,transparent)] backdrop-blur-xl backdrop-saturate-150"
 >
-  <div class="container-edit flex items-center justify-between h-14 md:h-16">
-    <a
-      href={url("/")}
-      class="flex items-baseline gap-3 group min-h-[44px] py-2"
-    >
-      <Wordmark size="md" />
-      <span class="hidden sm:inline label-eyebrow ml-1">L'électrique mesuré</span>
+  <div class="container-edit flex items-center justify-between gap-6 h-16">
+    <a href={url("/")} class="flex items-baseline gap-3 min-h-[44px] py-2 shrink-0">
+      <Wordmark size="lg" />
+      <span class="hidden lg:inline text-[13px] text-[var(--color-text-faint)] tracking-[-0.005em]">L'électrique mesuré</span>
     </a>
 
-    <nav aria-label="Navigation principale" class="hidden md:flex items-center gap-2">
+    <nav aria-label="Navigation principale" class="hidden md:flex items-center gap-1">
       {
         navigationStructure.map((group) => (
-          <div class="nav-dropdown-group relative">
+          <div class="nav-dropdown-group">
             <button
               class:list={[
-                "nav-link px-3 py-2 text-sm tracking-tight transition-colors min-h-[40px] inline-flex items-center gap-1",
+                "nav-link h-9 px-3.5 text-[14.5px] tracking-[-0.01em] inline-flex items-center gap-1.5",
                 isGroupActive(group)
                   ? "text-[var(--color-text)] font-medium"
                   : "text-[var(--color-text-muted)] hover:text-[var(--color-text)]",
@@ -73,34 +72,18 @@ function isGroupActive(group: typeof navigationStructure[0]): boolean {
               aria-haspopup="true"
             >
               {group.label}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="12"
-                height="12"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                class="chevron opacity-60 transition-transform duration-200"
-                aria-hidden="true"
-              >
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
+              <ChevronDown size={14} strokeWidth={2} className="chevron opacity-50 transition-transform duration-200" aria-hidden="true" />
             </button>
-            <div class="nav-dropdown-menu absolute left-1/2 -translate-x-1/2 top-full mt-1 w-60 bg-[var(--color-bg-elevated)] border border-[var(--color-border)] p-1.5 rounded-[var(--radius-tile-sm)] opacity-0 pointer-events-none scale-95 origin-top transition-all duration-200 shadow-lg z-50 backdrop-blur-md">
+            <div class="nav-dropdown-menu">
               {
                 group.items.map((item) => (
                   <a
                     href={item.href}
-                    class:list={[
-                      "nav-dropdown-item block px-3 py-2.5 text-sm tracking-tight transition-colors rounded-[var(--radius-tile-sm)]",
-                      isActive(item.href)
-                        ? "bg-[var(--color-surface-accent)] text-[var(--color-accent)] font-medium"
-                        : "text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-bg-subtle)]",
-                    ]}
+                    class:list={["nav-dropdown-item", isActive(item.href) && "active"]}
                     aria-current={isActive(item.href) ? "page" : undefined}
                   >
-                    {item.label}
+                    <span class="nav-dropdown-item-title">{item.label}</span>
+                    <span class="nav-dropdown-item-desc">{item.desc}</span>
                   </a>
                 ))
               }
@@ -110,78 +93,60 @@ function isGroupActive(group: typeof navigationStructure[0]): boolean {
       }
     </nav>
 
-    <div class="flex items-center gap-3">
-      {/* Bouton CTA d'aide au choix (desktop) */}
-      <a
-        href={url("/recommandation")}
-        class="hidden md:inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full bg-[var(--color-accent)] text-[var(--color-accent-on)] text-sm font-semibold shadow-sm hover:bg-[var(--color-accent-dim)] hover:-translate-y-0.5 transition-all duration-200"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
-        </svg>
+    <div class="flex items-center gap-2">
+      <a href={url("/recommandation/")} class="btn btn-primary btn-sm hidden md:inline-flex">
         Trouver mon VE
       </a>
 
-      <details class="md:hidden relative">
+      <details class="nav-mobile md:hidden">
         <summary
-          class="list-none cursor-pointer p-2 text-[var(--color-text-muted)] hover:text-[var(--color-text)] min-h-[44px] min-w-[44px] flex items-center justify-center"
+          class="list-none cursor-pointer text-[var(--color-text)] h-11 w-11 -mr-2 flex items-center justify-center rounded-full hover:bg-[var(--color-bg-subtle)]"
           aria-label="Ouvrir le menu"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            aria-hidden="true"
-          >
-            <line x1="3" y1="7" x2="21" y2="7"></line>
-            <line x1="3" y1="17" x2="21" y2="17"></line>
-          </svg>
+          <Menu size={20} strokeWidth={1.75} className="nav-mobile-open" aria-hidden="true" />
+          <X size={20} strokeWidth={1.75} className="nav-mobile-close" aria-hidden="true" />
         </summary>
-        <div
-          class="mobile-menu absolute right-0 top-full mt-2 w-64 bg-[var(--color-bg-elevated)] border border-[var(--color-border)] p-3 rounded-[var(--radius-tile-sm)] shadow-xl z-50"
-        >
+        {/* Positionné par rapport à l'en-tête (le flou d'arrière-plan en fait le bloc conteneur) */}
+        <div class="mobile-menu absolute left-0 right-0 top-full h-[calc(100dvh-4rem)] overflow-y-auto bg-[var(--color-bg)] border-t border-[var(--color-border)] px-4 pt-5 pb-8 z-50">
           {
-            navigationStructure.map((group, groupIdx) => (
-              <div class:list={["mb-4", groupIdx === navigationStructure.length - 1 ? "mb-0" : ""]}>
-                <div class="px-3 mb-1 text-[10px] font-mono uppercase tracking-wider text-[var(--color-text-faint)]">
-                  {group.label}
-                </div>
-                {
-                  group.items.map((item) => (
-                    <a
-                      href={item.href}
-                      class:list={[
-                        "block px-3 py-2 text-sm tracking-tight transition-colors rounded-[var(--radius-tile-sm)]",
-                        isActive(item.href)
-                          ? "bg-[var(--color-surface-accent)] text-[var(--color-accent)] font-medium"
-                          : "text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-bg-subtle)]",
-                      ]}
-                      aria-current={isActive(item.href) ? "page" : undefined}
-                    >
-                      {item.label}
-                    </a>
-                  ))
-                }
+            navigationStructure.map((group) => (
+              <div class="mb-6">
+                <p class="label-eyebrow px-1 mb-1.5">{group.label}</p>
+                <ul class="flex flex-col">
+                  {group.items.map((item) => (
+                    <li>
+                      <a
+                        href={item.href}
+                        class:list={[
+                          "flex items-baseline justify-between gap-3 px-1 py-2.5 border-b border-[var(--color-border)]",
+                          isActive(item.href) ? "text-[var(--color-accent)]" : "text-[var(--color-text)]",
+                        ]}
+                        aria-current={isActive(item.href) ? "page" : undefined}
+                      >
+                        <span class="text-[17px] font-medium tracking-[-0.015em]">{item.label}</span>
+                        <span class="text-[13px] text-[var(--color-text-faint)] text-right">{item.desc}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))
           }
-          <div class="border-t border-[var(--color-border)] mt-3 pt-3">
-            <a
-              href={url("/recommandation")}
-              class="flex items-center justify-center w-full px-4 py-2.5 rounded-full bg-[var(--color-accent)] text-white text-sm font-medium hover:bg-[var(--color-accent-dim)] transition-colors text-center shadow-sm"
-            >
-              Trouver mon VE
-            </a>
-          </div>
+          <a href={url("/recommandation/")} class="btn btn-primary w-full">
+            Trouver mon VE
+          </a>
         </div>
       </details>
     </div>
   </div>
 </header>
+
+<style>
+  .nav-mobile .nav-mobile-close { display: none; }
+  .nav-mobile[open] .nav-mobile-open { display: none; }
+  .nav-mobile[open] .nav-mobile-close { display: block; }
+  .nav-mobile summary::-webkit-details-marker { display: none; }
+</style>
 
 <script>
   // Menus déroulants (ouverts au survol et au focus) : l'état ouvert/fermé est
@@ -209,7 +174,19 @@ function isGroupActive(group: typeof navigationStructure[0]): boolean {
         sync();
       });
     });
+
+    // Menu mobile plein écran : bloque le défilement de la page tant qu'il est ouvert
+    document.querySelectorAll<HTMLDetailsElement>(".nav-mobile").forEach((menu) => {
+      if (menu.dataset.ready) return;
+      menu.dataset.ready = "true";
+      menu.addEventListener("toggle", () => {
+        document.documentElement.style.overflow = menu.open ? "hidden" : "";
+      });
+    });
   }
   setupNavDropdowns();
-  document.addEventListener("astro:page-load", setupNavDropdowns);
+  document.addEventListener("astro:page-load", () => {
+    document.documentElement.style.overflow = "";
+    setupNavDropdowns();
+  });
 </script>

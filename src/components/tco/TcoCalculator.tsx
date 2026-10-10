@@ -36,7 +36,7 @@ interface Props {
 /* Constants                                                         */
 /* ---------------------------------------------------------------- */
 
-const DEFAULTS = {
+export const DEFAULTS = {
   km_per_year: 15000,
   years: 5,
   elec_home_eur_kwh: 0.21,

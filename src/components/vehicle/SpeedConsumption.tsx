@@ -93,7 +93,7 @@ export default function SpeedConsumption({
         labels: {
           color: c["--color-text-muted"] || "#9b9b95",
           font: {
-            family: "JetBrains Mono Variable",
+            family: "Geist Mono Variable",
             size: 11,
           },
           boxWidth: 10,
@@ -110,8 +110,8 @@ export default function SpeedConsumption({
         bodyColor: c["--color-text-muted"] || "#9b9b95",
         padding: 12,
         displayColors: false,
-        titleFont: { family: "JetBrains Mono Variable", size: 11, weight: 500 },
-        bodyFont: { family: "JetBrains Mono Variable", size: 12 },
+        titleFont: { family: "Geist Mono Variable", size: 11, weight: 500 },
+        bodyFont: { family: "Geist Mono Variable", size: 12 },
         callbacks: {
           title: (items) => (items[0] ? `${items[0].parsed.x} km/h` : ""),
           label: (ctx) =>
@@ -130,11 +130,11 @@ export default function SpeedConsumption({
           display: true,
           text: "Vitesse stabilisée (km/h)",
           color: c["--color-text-faint"] || "#5c5c58",
-          font: { family: "JetBrains Mono Variable", size: 10 },
+          font: { family: "Geist Mono Variable", size: 10 },
         },
         ticks: {
           color: c["--color-text-faint"] || "#5c5c58",
-          font: { family: "JetBrains Mono Variable", size: 10 },
+          font: { family: "Geist Mono Variable", size: 10 },
           stepSize: 20,
           callback: (val) => `${val}`,
         },
@@ -149,11 +149,11 @@ export default function SpeedConsumption({
           display: true,
           text: "Consommation (kWh / 100 km)",
           color: c["--color-text-faint"] || "#5c5c58",
-          font: { family: "JetBrains Mono Variable", size: 10 },
+          font: { family: "Geist Mono Variable", size: 10 },
         },
         ticks: {
           color: c["--color-text-faint"] || "#5c5c58",
-          font: { family: "JetBrains Mono Variable", size: 10 },
+          font: { family: "Geist Mono Variable", size: 10 },
           stepSize: 5,
         },
       },

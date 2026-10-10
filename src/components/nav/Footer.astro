@@ -4,6 +4,7 @@ import { url } from "@/lib/url";
 import { getAllVehicles } from "@/lib/vehicles";
 import { getCategory } from "@/data/categories";
 import { LEGAL_PAGES } from "@/data/legal";
+import { formatDate } from "@/lib/format";
 
 const year = new Date().getFullYear();
 
@@ -19,25 +20,28 @@ const FOOTER_BRANDS: [string, string][] = [
   ["BYD", "byd"],
   ["MG", "mg"],
 ];
-const totalVehicles = getAllVehicles().length;
-const version = "v1.2.0";
+const vehicles = getAllVehicles();
+const totalVehicles = vehicles.length;
+// Date de la fiche la plus récemment mise à jour : reflète l'état réel des données
+const lastDataUpdate = vehicles.reduce((latest, v) => (v.lastUpdated > latest ? v.lastUpdated : latest), "");
 
 const cols = [
   {
     title: "Véhicules",
     links: [
-      { href: url("/vehicules"), label: "Particuliers" },
-      { href: url("/pro/vehicules"), label: "Utilitaires (Pro)" },
-      { href: url("/leasing-social"), label: "Leasing Social" },
+      { href: url("/vehicules/"), label: "Particuliers" },
+      { href: url("/pro/vehicules/"), label: "Utilitaires (Pro)" },
+      { href: url("/leasing-social/"), label: "Leasing Social" },
+      { href: url("/bons-plans/"), label: "Bons plans" },
     ],
   },
   {
     title: "Outils",
     links: [
-      { href: url("/comparer"), label: "Comparateur" },
-      { href: url("/simulateur"), label: "Calculateur TCO" },
-      { href: url("/pro"), label: "Simulateur Pro" },
-      { href: url("/recommandation"), label: "Recommandation guidée" },
+      { href: url("/comparer/"), label: "Comparateur" },
+      { href: url("/simulateur/"), label: "Calculateur TCO" },
+      { href: url("/pro/"), label: "Simulateur Pro" },
+      { href: url("/recommandation/"), label: "Recommandation guidée" },
     ],
   },
   {
@@ -57,49 +61,43 @@ const cols = [
   {
     title: "Méthodologie",
     links: [
-      { href: url("/methodologie"), label: "Notre approche" },
-      { href: url("/methodologie") + "#protocoles", label: "Protocoles de test" },
-      { href: url("/methodologie") + "#sources", label: "Nos sources" },
-      { href: url("/methodologie") + "#limites", label: "Limites & honnêteté" },
-      { href: url("/glossaire"), label: "Glossaire" },
+      { href: url("/methodologie/"), label: "Notre approche" },
+      { href: url("/methodologie/") + "#protocoles", label: "Protocoles de test" },
+      { href: url("/methodologie/") + "#sources", label: "Nos sources" },
+      { href: url("/methodologie/") + "#limites", label: "Limites & honnêteté" },
+      { href: url("/glossaire/"), label: "Glossaire" },
     ],
   },
 ];
 ---
 
-<footer class="border-t border-[var(--color-border)] mt-32 reveal">
-  <div class="container-edit py-16">
-    <div class="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-8 gap-x-6 gap-y-10">
-      <div class="col-span-2 md:col-span-5 lg:col-span-3 flex flex-col gap-6 lg:pr-6">
-        <div class="flex items-baseline gap-3">
-          <Wordmark size="lg" />
-        </div>
-        <p class="font-mono text-sm text-[var(--color-accent)] tracking-tight">
-          L'électrique mesuré.
+<footer class="mt-24 md:mt-32 border-t border-[var(--color-border)] bg-[color-mix(in_srgb,var(--color-bg-subtle)_50%,var(--color-bg))]">
+  <div class="container-edit pt-14 md:pt-20 pb-10">
+    <div class="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-[minmax(0,4fr)_repeat(5,minmax(0,1.6fr))] gap-x-6 gap-y-10">
+      <div class="col-span-2 md:col-span-5 lg:col-span-1 flex flex-col gap-5 lg:pr-10">
+        <Wordmark size="lg" />
+        <p class="text-[22px] md:text-2xl font-semibold tracking-[-0.03em] leading-[1.15] text-[var(--color-text)] max-w-xs">
+          L'électrique mesuré, sans publicité ni commission.
         </p>
-        <p class="text-[var(--color-text-muted)] text-sm leading-relaxed max-w-md">
-          Evly agrège les données d'autonomie réelle et de recharge mesurées par Bjørn Nyland, EVKX, ArenaEV,
-          la presse VE française et les fiches constructeur officielles. Aucune publicité, aucun lien affilié, aucun cookie :
-          seule une mesure d'audience anonyme est utilisée.
+        <p class="text-sm text-[var(--color-text-muted)] leading-relaxed max-w-sm">
+          Autonomies et recharges mesurées par Bjørn Nyland, EVKX, ArenaEV et la presse VE française, croisées avec
+          les fiches constructeur. Aucun lien affilié, aucun cookie : seule une mesure d'audience anonyme est utilisée.
         </p>
-        <div class="flex flex-col gap-1">
-          <span class="label-eyebrow">État du projet</span>
-          <span class="text-sm text-[var(--color-text-muted)] font-mono">
-            {version} · {totalVehicles} modèles · mise à jour {year}
-          </span>
-        </div>
+        <p class="text-sm text-[var(--color-text-faint)]">
+          {totalVehicles} modèles suivis, données mises à jour le {formatDate(lastDataUpdate)}.
+        </p>
       </div>
 
       {
         cols.map((col) => (
-          <div class="col-span-1 flex flex-col gap-4">
-            <span class="label-eyebrow">{col.title}</span>
+          <div class="col-span-1 flex flex-col gap-3">
+            <p class="text-[13px] font-medium text-[var(--color-text)]">{col.title}</p>
             <ul class="flex flex-col gap-2">
               {col.links.map((link) => (
                 <li>
                   <a
                     href={link.href}
-                    class="footer-link text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors"
+                    class="footer-link text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)]"
                   >
                     {link.label}
                   </a>
@@ -111,15 +109,13 @@ const cols = [
       }
     </div>
 
-    <div
-      class="mt-16 pt-8 border-t border-[var(--color-border)] flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4"
-    >
-      <span class="label-eyebrow">© {year} Evly. L'électrique mesuré.</span>
+    <div class="mt-14 pt-6 border-t border-[var(--color-border)] flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+      <span class="text-[13px] text-[var(--color-text-faint)]">© {year} Evly</span>
       <nav aria-label="Informations légales">
         <ul class="flex flex-wrap gap-x-5 gap-y-1">
           {LEGAL_PAGES.map((p) => (
             <li>
-              <a href={url(p.path)} class="footer-link inline-block py-1 text-xs text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors">
+              <a href={url(p.path)} class="footer-link inline-block py-1 text-[13px] text-[var(--color-text-faint)] hover:text-[var(--color-text)]">
                 {p.label}
               </a>
             </li>

@@ -446,7 +446,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
               <div class="mt-6 pt-5 border-t border-[var(--color-border)] flex flex-wrap xl:flex-nowrap items-center gap-2 fade-rise fade-rise-delay-3">
                 <span id="results-count" class="results-count" aria-live="polite">{vehicles.length} modèles</span>
                 <span class="w-px h-4 bg-[var(--color-border)] mx-1" aria-hidden="true"></span>
-                <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)] mr-1">Trier</span>
+                <span class="text-[13px] text-[var(--color-text-faint)] mr-1">Trier</span>
                 <button class="sort-btn" data-sort="default" data-active="true">Défaut</button>
                 <button class="sort-btn" data-sort="price-asc">Prix ↑</button>
                 <button class="sort-btn" data-sort="price-desc">Prix ↓</button>
@@ -513,10 +513,10 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                 <div class="flex items-end gap-3 mb-6">
                   <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.05]">
                     <span class="sr-only">{v.brand} </span>{v.model}
-                    <span class="block text-[var(--color-text-muted)] font-mono text-[11px] md:text-xs mt-1 font-normal tracking-normal leading-tight">{s.subtitle}</span>
+                    <span class="block text-[var(--color-text-faint)] text-[13px] mt-1 font-normal tracking-[-0.005em] leading-tight">{s.subtitle}</span>
                   </h2>
                   <div class="flex-1 h-14 relative min-w-[120px]">
-                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-44 h-22 flex items-end justify-center">
+                    <div class="absolute bottom-0 inset-x-0 mx-auto w-44 h-22 flex items-end justify-center">
                       <VehicleImage
                         slug={v.slug}
                         alt={`${v.brand} ${v.model}`}
@@ -527,7 +527,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                 </div>
                 <div class="card-footer-grid grid grid-cols-2 gap-2 md:gap-4 mt-auto pt-5 border-t border-[var(--color-border)]">
                   <div class="flex flex-col gap-1">
-                    <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)] whitespace-nowrap">
+                    <span class="text-[12.5px] text-[var(--color-text-faint)] whitespace-nowrap">
                       <span class="range-mode-mixed">Autonomie réelle</span>
                       <span class="range-mode-highway">Autoroute 130</span>
                       <span class="range-mode-wltp">WLTP annoncée</span>
@@ -538,7 +538,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                         <span class="range-mode-highway">{v.realRange.highway_130_km}</span>
                         <span class="range-mode-wltp">{v.wltp_max_km}</span>
                       </span>
-                      <span class="font-mono text-[11px] text-[var(--color-text-faint)]">km</span>
+                      <span class="text-[13px] text-[var(--color-text-faint)]">km</span>
                     </div>
                     <span class="card-confidence" data-level={s.rangeConfidence}>
                       <span class="range-mode-mixed">{s.rangeConfidenceLabel}</span>
@@ -548,22 +548,22 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                   </div>
 
                   <div class="card-charge-col hidden flex-col gap-1">
-                    <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)] whitespace-nowrap">
+                    <span class="text-[12.5px] text-[var(--color-text-faint)] whitespace-nowrap">
                       Recharge 10 → 80 %
                     </span>
                     <div class="flex items-baseline gap-1">
                       <span data-numeric class="display-stat text-xl sm:text-2xl md:text-3xl text-[var(--color-accent)]">
                         +{Math.round(v.realRange.highway_130_km * 0.70)}
                       </span>
-                      <span class="font-mono text-[11px] text-[var(--color-text-faint)]">km</span>
+                      <span class="text-[13px] text-[var(--color-text-faint)]">km</span>
                     </div>
-                    <span class="font-mono text-[11px] text-[var(--color-text-faint)] leading-none">
+                    <span class="text-[12px] text-[var(--color-text-faint)] leading-none">
                       en {v.chargingDC.time_10_80_min} min (autoroute)
                     </span>
                   </div>
 
                   <div class="flex flex-col gap-1 text-right items-end">
-                    <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)]">
+                    <span class="text-[12.5px] text-[var(--color-text-faint)]">
                       {s.cheapestPrice !== null ? (
                         <>
                           <span class="price-mode-gross">Dès</span>
@@ -579,8 +579,8 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                         <div class="price-mode-aided flex flex-col items-end gap-0.5">
                           <span data-numeric class="display-stat text-xl sm:text-2xl md:text-3xl" style="color:var(--color-accent)">{formatPrice(s.priceAided!)}</span>
                           {s.totalAids > 0
-                            ? <span class="font-mono text-[11px] text-[var(--color-text-faint)] line-through">{formatPrice(s.cheapestPrice)}</span>
-                            : <span class="font-mono text-[11px] text-[var(--color-text-faint)]">aucune aide</span>}
+                            ? <span class="text-[12px] text-[var(--color-text-faint)] line-through">{formatPrice(s.cheapestPrice)}</span>
+                            : <span class="text-[12px] text-[var(--color-text-faint)]">aucune aide</span>}
                         </div>
                       </>
                     ) : (
@@ -1197,7 +1197,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
       align-items: center;
       gap: 5px;
       padding: 5px 10px;
-      border-radius: 6px;
+      border-radius: 999px;
       border: 1px solid var(--color-border);
       background: transparent;
       color: var(--color-text-muted);
@@ -1238,11 +1238,11 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-family: var(--font-mono, ui-monospace, monospace);
-      font-size: 0.6rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--color-text-faint);
+      font-family: var(--font-sans);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: -0.005em;
+      color: var(--color-text);
       cursor: pointer;
       list-style: none;
       user-select: none;
@@ -1270,17 +1270,15 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
       padding-top: 8px;
     }
     .filter-subgroup-label {
-      font-family: var(--font-mono, ui-monospace, monospace);
-      font-size: 0.5rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      font-family: var(--font-sans);
+      font-size: 0.6875rem;
       color: var(--color-text-faint);
       margin-bottom: 4px;
     }
 
     /* ── Reset button ───────────────────────────────────── */
     .reset-btn {
-      font-family: var(--font-mono, ui-monospace, monospace);
+      font-family: var(--font-sans);
       font-size: 0.6rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -1303,11 +1301,10 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
       overflow: hidden;
     }
     .price-toggle-btn {
-      padding: 4px 12px;
-      font-family: var(--font-mono, ui-monospace, monospace);
-      font-size: 0.65rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      padding: 5px 12px;
+      font-family: var(--font-sans);
+      font-size: 0.8125rem;
+      font-weight: 500;
       color: var(--color-text-muted);
       background: transparent;
       border: none;
@@ -1331,10 +1328,10 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
 
     /* ── Sort buttons ───────────────────────────────────── */
     .sort-btn {
-      font-family: var(--font-mono, ui-monospace, monospace);
-      font-size: 0.7rem;
-      letter-spacing: 0.05em;
-      padding: 0.3rem 0.75rem;
+      font-family: var(--font-sans);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      padding: 0.375rem 0.8rem;
       border-radius: 9999px;
       border: 1px solid var(--color-border);
       color: var(--color-text-muted);
@@ -1463,14 +1460,14 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
     aside .filter-chip {
       gap: 6px;
       padding: 6px 12px;
-      border-radius: 7px;
+      border-radius: 999px;
       font-size: 0.85rem;
     }
     aside .filter-section {
       padding: 12.5px 0;
     }
     aside .filter-section-toggle {
-      font-size: 0.75rem;
+      font-size: 0.875rem;
       padding: 3px 0;
     }
     aside .filter-chevron {
@@ -1479,7 +1476,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
       border-top: 4.5px solid currentColor;
     }
     aside .filter-subgroup-label {
-      font-size: 0.625rem;
+      font-size: 0.75rem;
       margin-bottom: 5px;
     }
     aside .reset-btn {
@@ -1574,8 +1571,9 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
 
     /* ── Compteur de résultats ──────────────────────────── */
     .results-count {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-family: var(--font-sans);
+      font-size: 0.8125rem;
+      font-weight: 600;
       color: var(--color-text);
       white-space: nowrap;
     }
@@ -1792,7 +1790,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
 
     @media (min-width: 1280px) {
       aside {
-        margin-left: calc(-1 * max(0px, min(307px, (100vw - 1280px) / 2 + 24px)));
+        margin-left: calc(-1 * max(0px, min(307px, (100vw - 1320px) / 2 + 24px)));
         transition: margin-left 0.2s ease-in-out;
       }
     }

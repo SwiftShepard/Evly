@@ -1,19 +1,39 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import BentoGrid from "@/components/ui/BentoGrid.astro";
-import Tile from "@/components/ui/Tile.astro";
 import Tag from "@/components/ui/Tag.astro";
 import VehicleImage from "@/components/ui/VehicleImage.astro";
 import BrandLogo from "@/components/ui/BrandLogo.astro";
+import RangeSpecimen from "@/components/home/RangeSpecimen.astro";
+import RangeGapChart from "@/components/home/RangeGapChart.astro";
 import { getAllVehicles } from "@/lib/vehicles";
-import { formatPrice } from "@/lib/format";
+import { formatPrice, formatNumber } from "@/lib/format";
 import { getVehicleCardSummary } from "@/lib/vehicleCard";
+import { getFleetGap } from "@/lib/rangeGap";
+import { getVehicleBySlug } from "@/lib/vehicles";
+import { DEFAULTS as TCO_DEFAULTS } from "@/components/tco/TcoCalculator";
 import { url } from "@/lib/url";
+import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, ShieldCheck, FileSearch, Calculator, Scale } from "lucide-react";
 
 const vehicles = getAllVehicles();
 const totalVehicles = vehicles.length;
 const totalTests = vehicles.reduce((sum, v) => sum + v.rangeTests.length, 0);
 const totalConfigs = vehicles.reduce((sum, v) => sum + v.configurations.length, 0);
+const fleetGap = getFleetGap(vehicles);
+
+// Loyer le plus bas parmi les versions éligibles au leasing social
+const leasingMin = Math.min(
+  ...vehicles.flatMap((v) =>
+    v.configurations
+      .filter((c) => c.leasingSocialEligible && c.monthlyLease_EUR)
+      .map((c) => c.monthlyLease_EUR as number)
+  )
+);
+
+// Coût de 100 km aux tarifs par défaut du calculateur TCO : électrique rechargé à domicile vs essence
+const tcoExample = getVehicleBySlug("renault-5")!;
+const evCost100 = tcoExample.consumption_mixed_kWh_per_100km * TCO_DEFAULTS.elec_home_eur_kwh;
+const iceCost100 = TCO_DEFAULTS.ice_conso_l_100 * TCO_DEFAULTS.essence_eur_l;
+const euros = (n: number) => `${formatNumber(n, 2)} €`;
 
 // Tri par date de dernière mise à jour / ajout (lastUpdated) décroissant, puis par marque/modèle
 const latestVehicles = [...vehicles]
@@ -24,568 +44,578 @@ const latestVehicles = [...vehicles]
   })
   .slice(0, 10);
 
+const GAP_CHART_SLUGS = [
+  "tesla-model-y", "mg-mg4", "tesla-model-3", "byd-dolphin", "volvo-ex30", "vw-id3",
+  "citroen-e-c3", "renault-5", "kia-ev3", "peugeot-e-208", "renault-scenic", "hyundai-kona",
+];
+
+const pillars = [
+  {
+    icon: ShieldCheck,
+    title: "100 % indépendant",
+    text: "Aucune marque ne nous paie pour apparaître, aucune concession ne touche de commission sur vos clics. On peut donc vous dire franchement quand un modèle n'est pas terrible.",
+  },
+  {
+    icon: FileSearch,
+    title: "Sources vérifiables",
+    text: "Chaque chiffre affiché vient d'un essai réel sur route, d'un article de presse ou d'une fiche constructeur, et on vous dit toujours lequel, avec un lien.",
+  },
+  {
+    icon: Calculator,
+    title: "Calculs expliqués",
+    text: "Comment on mesure l'autonomie, comment on calcule le coût réel sur plusieurs années, comment on estime les aides : tout est expliqué en clair, pas de boîte noire.",
+  },
+  {
+    icon: Scale,
+    title: "De votre côté",
+    text: "Si un modèle déçoit à l'usage ou qu'un constructeur cache un chiffre gênant, on l'écrit. Notre objectif, c'est que vous en ayez pour votre argent, pas de vendre une voiture.",
+  },
+];
+
 const description = `Comparez les ${totalVehicles} voitures électriques du marché français : autonomie réelle mesurée, prix après aides et recharge. Indépendant, sans publicité ni commission.`;
 ---
 
 <BaseLayout title="Comparateur de voitures électriques : autonomie réelle | Evly" description={description}>
-  <div class="container-edit py-6 md:py-10">
-    <BentoGrid class="home-bento">
 
-      {/* ═════════ HERO ═════════ */}
-      <Tile size="full" variant="elevated" class="hero-tile md:!p-12 lg:!p-16 overflow-hidden relative">
-
+  {/* ═════════ HERO ═════════ */}
+  <section class="container-edit pt-8 md:pt-14 lg:pt-20 pb-20 md:pb-28">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      <div class="lg:col-span-6 xl:col-span-6">
         {/* Le H1 porte la requête visée ; le slogan reste le titre visuel */}
-        <h1 class="label-eyebrow fade-rise relative z-10 mb-4 md:mb-5">Comparateur indépendant de voitures électriques</h1>
-        <p class="display-1 max-w-4xl fade-rise fade-rise-delay-1 relative z-10">
-          L'électrique, <span class="text-gradient">enfin</span>
-          <span class="text-[var(--color-accent)]">clair.</span>
+        <h1 class="fade-rise text-[14px] md:text-[15px] font-medium text-[var(--color-accent)] tracking-[-0.01em] mb-5">
+          Comparateur indépendant de voitures électriques
+        </h1>
+        <p class="display-1 fade-rise fade-rise-delay-1 max-w-[12ch]">
+          L'électrique, enfin <span class="text-[var(--color-accent)]">clair.</span>
         </p>
-
-        <p class="mt-6 md:mt-8 text-base md:text-lg text-[var(--color-text-muted)] max-w-2xl leading-relaxed fade-rise fade-rise-delay-2 relative z-10">
-          Que vous soyez féru de mécanique ou que vous n'y connaissiez rien, Evly vous aide à choisir une voiture électrique et à en connaître le vrai prix, sans jargon et sans publicité. Juste des chiffres mesurés, pour ne pas payer plus cher pour moins de voiture.
+        <p class="mt-6 md:mt-7 text-[17px] md:text-lg text-[var(--color-text-muted)] max-w-[44ch] leading-relaxed fade-rise fade-rise-delay-2">
+          Autonomie réelle sur route, prix après aides, coût sur la durée. Sans publicité ni commission.
         </p>
-
-        {/* CTA principal de la hero */}
-        <div class="mt-8 md:mt-10 flex flex-col sm:flex-row sm:items-center gap-3 fade-rise fade-rise-delay-3 relative z-10">
-          <a
-            href={url("/recommandation")}
-            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[var(--color-accent)] text-[var(--color-accent-on)] text-sm font-semibold shadow-lg hover:bg-[var(--color-accent-dim)] hover:-translate-y-0.5 transition-all duration-200"
-          >
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
-            </svg>
+        <div class="mt-8 md:mt-10 flex flex-col sm:flex-row gap-3 fade-rise fade-rise-delay-3">
+          <a href={url("/recommandation/")} class="btn btn-primary">
             Trouver mon VE
+            <ArrowRight size={17} strokeWidth={2} className="btn-arrow" aria-hidden="true" />
           </a>
-          <a
-            href={url("/vehicules")}
-            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-[var(--color-border-strong)] bg-[var(--color-surface-elevated)] text-[var(--color-text)] text-sm font-semibold hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200"
-          >
+          <a href={url("/vehicules/")} class="btn btn-secondary">
             Explorer le catalogue
-            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14" />
-              <path d="m12 5 7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-
-        {/* Tableau de bord des statistiques */}
-        <div class="mt-8 md:mt-10 pt-6 border-t border-[var(--color-border)] grid grid-cols-1 sm:grid-cols-3 gap-6 fade-rise fade-rise-delay-3 relative z-10">
-          <div class="flex flex-col gap-1 p-5 rounded-xl border border-[var(--color-border)] bg-[color-mix(in_srgb,var(--color-bg-subtle)_25%,transparent)] backdrop-blur-md">
-            <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Base de données</span>
-            <span class="font-display text-2xl font-bold text-[var(--color-text)] flex items-baseline gap-1">
-              <span data-numeric>{totalVehicles}</span>
-              <span class="text-xs font-normal text-[var(--color-text-muted)]">modèles</span>
-            </span>
-          </div>
-          <div class="flex flex-col gap-1 p-5 rounded-xl border border-[var(--color-border)] bg-[color-mix(in_srgb,var(--color-bg-subtle)_25%,transparent)] backdrop-blur-md">
-            <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Tests d'autonomie</span>
-            <span class="font-display text-2xl font-bold text-[var(--color-accent)] flex items-baseline gap-1">
-              <span data-numeric>{totalTests}</span>
-              <span class="text-xs font-normal text-[var(--color-text-muted)]">mesures réelles</span>
-            </span>
-          </div>
-          <div class="flex flex-col gap-1 p-5 rounded-xl border border-[var(--color-border)] bg-[color-mix(in_srgb,var(--color-bg-subtle)_25%,transparent)] backdrop-blur-md">
-            <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">Comparateur</span>
-            <span class="font-display text-2xl font-bold text-[var(--color-text)] flex items-baseline gap-1">
-              <span data-numeric>{totalConfigs}</span>
-              <span class="text-xs font-normal text-[var(--color-text-muted)]">déclinaisons</span>
-            </span>
-          </div>
-        </div>
-      </Tile>
-
-      {/* ═════════ POSITION ÉDITORIALE : POURQUOI EVLY ═════════ */}
-      <Tile size="full" variant="elevated">
-        <h2 class="display-2 max-w-3xl mb-4">
-          Pourquoi Evly.
-        </h2>
-        <p class="text-[var(--color-text-muted)] text-base md:text-lg max-w-3xl leading-relaxed mb-8">
-          Le marché est saturé de comparateurs biaisés par la publicité ou les commissions. Evly choisit la transparence absolue : données mesurées, sources tracées, zéro rémunération.
-        </p>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 pt-6 border-t border-[var(--color-border)]">
-          <div class="flex flex-col gap-2">
-            <div class="flex items-center gap-2.5">
-              <div class="w-8 h-8 rounded-lg bg-[rgba(58,92,18,0.06)] text-[var(--color-accent)] flex items-center justify-center flex-shrink-0">
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <h3 class="font-display text-lg font-semibold tracking-[-0.015em] text-[var(--color-text)]">100% Indépendant</h3>
-            </div>
-            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">
-              Aucune marque ne nous paie pour apparaître, aucune concession ne touche de commission sur vos clics. On peut donc vous dire franchement quand un modèle n'est pas terrible.
-            </p>
-          </div>
-          <div class="flex flex-col gap-2">
-            <div class="flex items-center gap-2.5">
-              <div class="w-8 h-8 rounded-lg bg-[rgba(58,92,18,0.06)] text-[var(--color-accent)] flex items-center justify-center flex-shrink-0">
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-                </svg>
-              </div>
-              <h3 class="font-display text-lg font-semibold tracking-[-0.015em] text-[var(--color-text)]">Sources vérifiables</h3>
-            </div>
-            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">
-              Chaque chiffre affiché vient d'un essai réel sur route, d'un article de presse ou d'une fiche constructeur, et on vous dit toujours lequel, avec un lien.
-            </p>
-          </div>
-          <div class="flex flex-col gap-2">
-            <div class="flex items-center gap-2.5">
-              <div class="w-8 h-8 rounded-lg bg-[rgba(58,92,18,0.06)] text-[var(--color-accent)] flex items-center justify-center flex-shrink-0">
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-              </div>
-              <h3 class="font-display text-lg font-semibold tracking-[-0.015em] text-[var(--color-text)]">Calculs expliqués</h3>
-            </div>
-            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">
-              Comment on mesure l'autonomie, comment on calcule le coût réel sur plusieurs années, comment on estime les aides : tout est expliqué en clair, pas de boîte noire.
-            </p>
-          </div>
-          <div class="flex flex-col gap-2">
-            <div class="flex items-center gap-2.5">
-              <div class="w-8 h-8 rounded-lg bg-[rgba(58,92,18,0.06)] text-[var(--color-accent)] flex items-center justify-center flex-shrink-0">
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="w-5.5 h-5.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
-                </svg>
-              </div>
-              <h3 class="font-display text-lg font-semibold tracking-[-0.015em] text-[var(--color-text)]">De votre côté</h3>
-            </div>
-            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">
-              Si un modèle déçoit à l'usage ou qu'un constructeur cache un chiffre gênant, on l'écrit. Notre objectif, c'est que vous en ayez pour votre argent, pas de vendre une voiture.
-            </p>
-          </div>
-        </div>
-      </Tile>
-
-      {/* ═════════ CHEMINS D'ENTRÉE ═════════ */}
-      <div class="col-span-full flex flex-col gap-4 !overflow-visible">
-        <div>
-          <h2 class="font-display text-3xl md:text-4xl font-semibold tracking-[-0.015em] leading-[1.1] mb-1.5">
-            Trois chemins selon ton besoin.
-          </h2>
-          <p class="text-sm text-[var(--color-text-muted)] max-w-2xl">
-            Évly est conçu pour des recherches précises, pas pour scroller au hasard. Choisis ton entrée.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <!-- Chemin A : Leasing Social -->
-          <a href={url("/leasing-social")} class="path-card group relative flex flex-col justify-between p-6 md:p-8 bg-[var(--color-surface-elevated)] border border-[var(--color-border)] rounded-[var(--radius-tile)] overflow-hidden">
-            <div class="glow-bg absolute inset-0 bg-gradient-to-br from-transparent to-[var(--glow-accent)] opacity-0 pointer-events-none"></div>
-            
-            <div class="relative z-10">
-              <div class="flex items-center justify-between mb-6">
-                <div class="icon-container w-12 h-12 rounded-xl bg-[var(--color-bg-subtle)] text-[var(--color-text-muted)] flex items-center justify-center">
-                  <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-              </div>
-              
-              <h3 class="card-title font-display text-2xl font-bold tracking-tight text-[var(--color-text)] mb-3">
-                Leasing Social
-              </h3>
-              
-              <div class="mb-5 flex flex-wrap gap-1.5">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-semibold font-mono bg-[rgba(58,92,18,0.08)] text-[var(--color-accent)] border border-[rgba(58,92,18,0.15)]">Dès 95€/mois</span>
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-semibold font-mono bg-[var(--color-bg-subtle)] text-[var(--color-text-muted)]">Sans apport</span>
-              </div>
-              
-              <ul class="space-y-2 mb-6">
-                <li class="flex items-start gap-2 text-xs text-[var(--color-text-muted)]">
-                  <svg aria-hidden="true" class="w-3.5 h-3.5 mt-0.5 text-[var(--color-accent)] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Dossier d'éligibilité complet</span>
-                </li>
-                <li class="flex items-start gap-2 text-xs text-[var(--color-text-muted)]">
-                  <svg aria-hidden="true" class="w-3.5 h-3.5 mt-0.5 text-[var(--color-accent)] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Liste des véhicules compatibles ADEME</span>
-                </li>
-              </ul>
-            </div>
-            
-            <div class="card-footer relative z-10 mt-auto pt-5 border-t border-[var(--color-border)] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[var(--color-text)]">
-              <span>Voir l'éligibilité</span>
-              <span class="arrow-wrapper inline-flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text)]">
-                <svg aria-hidden="true" class="arrow-icon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </span>
-            </div>
-          </a>
-
-          <!-- Chemin B : Comparateur -->
-          <a href={url("/comparer")} class="path-card group relative flex flex-col justify-between p-6 md:p-8 bg-[var(--color-surface-elevated)] border border-[var(--color-border)] rounded-[var(--radius-tile)] overflow-hidden">
-            <div class="glow-bg absolute inset-0 bg-gradient-to-br from-transparent to-[var(--glow-accent)] opacity-0 pointer-events-none"></div>
-            
-            <div class="relative z-10">
-              <div class="flex items-center justify-between mb-6">
-                <div class="icon-container w-12 h-12 rounded-xl bg-[var(--color-bg-subtle)] text-[var(--color-text-muted)] flex items-center justify-center">
-                  <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z" />
-                  </svg>
-                </div>
-              </div>
-              
-              <h3 class="card-title font-display text-2xl font-bold tracking-tight text-[var(--color-text)] mb-3">
-                Comparateur
-              </h3>
-              
-              <div class="mb-5 flex flex-wrap gap-1.5">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-semibold font-mono bg-[var(--color-bg-subtle)] text-[var(--color-text-muted)]">2 à 4 modèles</span>
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-semibold font-mono bg-[var(--color-bg-subtle)] text-[var(--color-text-muted)]">Fiches ajustables</span>
-              </div>
-              
-              <ul class="space-y-2 mb-6">
-                <li class="flex items-start gap-2 text-xs text-[var(--color-text-muted)]">
-                  <svg aria-hidden="true" class="w-3.5 h-3.5 mt-0.5 text-[var(--color-accent)] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Comparatif côte-à-côte direct</span>
-                </li>
-                <li class="flex items-start gap-2 text-xs text-[var(--color-text-muted)]">
-                  <svg aria-hidden="true" class="w-3.5 h-3.5 mt-0.5 text-[var(--color-accent)] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Choix batterie, finitions et jantes</span>
-                </li>
-              </ul>
-            </div>
-            
-            <div class="card-footer relative z-10 mt-auto pt-5 border-t border-[var(--color-border)] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[var(--color-text)]">
-              <span>Lancer le comparateur</span>
-              <span class="arrow-wrapper inline-flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text)]">
-                <svg aria-hidden="true" class="arrow-icon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </span>
-            </div>
-          </a>
-
-          <!-- Chemin C : Recommandation -->
-          <a href={url("/recommandation")} class="path-card group relative flex flex-col justify-between p-6 md:p-8 bg-[var(--color-surface-elevated)] border border-[var(--color-border)] rounded-[var(--radius-tile)] overflow-hidden">
-            <div class="glow-bg absolute inset-0 bg-gradient-to-br from-transparent to-[var(--glow-accent)] opacity-0 pointer-events-none"></div>
-            
-            <div class="relative z-10">
-              <div class="flex items-center justify-between mb-6">
-                <div class="icon-container w-12 h-12 rounded-xl bg-[var(--color-bg-subtle)] text-[var(--color-text-muted)] flex items-center justify-center">
-                  <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                  </svg>
-                </div>
-              </div>
-              
-              <h3 class="card-title font-display text-2xl font-bold tracking-tight text-[var(--color-text)] mb-3">
-                Reco Personnalisée
-              </h3>
-              
-              <div class="mb-5 flex flex-wrap gap-1.5">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-semibold font-mono bg-[var(--color-bg-subtle)] text-[var(--color-text-muted)]">Diagnostic rapide</span>
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-semibold font-mono bg-[var(--color-bg-subtle)] text-[var(--color-text-muted)]">3-5 suggestions</span>
-              </div>
-              
-              <ul class="space-y-2 mb-6">
-                <li class="flex items-start gap-2 text-xs text-[var(--color-text-muted)]">
-                  <svg aria-hidden="true" class="w-3.5 h-3.5 mt-0.5 text-[var(--color-accent)] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Diagnostic basé sur votre usage</span>
-                </li>
-                <li class="flex items-start gap-2 text-xs text-[var(--color-text-muted)]">
-                  <svg aria-hidden="true" class="w-3.5 h-3.5 mt-0.5 text-[var(--color-accent)] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span>Ciblage précis du VE idéal</span>
-                </li>
-              </ul>
-            </div>
-            
-            <div class="card-footer relative z-10 mt-auto pt-5 border-t border-[var(--color-border)] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[var(--color-text)]">
-              <span>Trouver mon VE</span>
-              <span class="arrow-wrapper inline-flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-bg-subtle)] text-[var(--color-text)]">
-                <svg aria-hidden="true" class="arrow-icon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </span>
-            </div>
           </a>
         </div>
       </div>
 
-      {/* ═════════ À LA UNE : DERNIERS VÉHICULES AJOUTÉS ═════════ */}
-      <div class="col-span-full flex flex-col gap-4 min-w-0">
-        <div class="flex flex-wrap items-baseline justify-between gap-3">
-          <h2 class="font-display text-3xl md:text-4xl font-semibold tracking-[-0.015em] leading-[1.1]">
-            Derniers véhicules ajoutés.
-            <span class="block text-[var(--color-accent)] text-lg md:text-xl mt-1.5 font-medium">
-              Les nouveautés et mises à jour récentes du catalogue indépendant.
-            </span>
-          </h2>
-          <a href={url("/vehicules")} class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors">Tout le showroom →</a>
-        </div>
+      <div class="lg:col-span-6 xl:col-span-6 fade-rise fade-rise-delay-2">
+        <RangeSpecimen />
+      </div>
+    </div>
+  </section>
 
-        <div class="featured-scroll-row">
-          {latestVehicles.map((v) => {
-            const card = getVehicleCardSummary(v);
-            const isNew = v.releaseYear >= 2026;
-            return (
-              <a href={url(`/vehicules/${v.slug}/`)} class="featured-card">
-                <div class="flex items-center justify-between gap-2 mb-3">
-                  <div class="flex items-center gap-1.5 text-[var(--color-text-muted)]">
-                    <BrandLogo brand={v.brand} class="w-3.5 h-3.5" />
-                    <span class="label-eyebrow">{v.brand}</span>
-                  </div>
-                  <Tag tone={isNew ? "accent" : "neutral"} mono>
-                    {isNew ? "Nouveauté" : "Mis à jour"}
-                  </Tag>
+  {/* ═════════ LA PREUVE : ANNONCE VS ROUTE ═════════ */}
+  <section class="container-edit pb-24 md:pb-32">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 reveal">
+      <div class="lg:col-span-4 flex flex-col">
+        <h2 class="display-2 max-w-[14ch]">L'autonomie annoncée n'est pas celle de la route.</h2>
+        <p class="mt-5 text-base text-[var(--color-text-muted)] leading-relaxed max-w-[42ch]">
+          Le chiffre WLTP sort d'un laboratoire. Evly met en avant l'autonomie réelle, mesurée sur route dès qu'un essai existe, et vous dit toujours d'où vient le chiffre.
+        </p>
+        <div class="mt-10 pt-8 border-t border-[var(--color-border)]">
+          <p class="text-[64px] md:text-[80px] font-semibold tracking-[-0.05em] leading-[0.9]">
+            {formatNumber(Math.round(fleetGap.medianPct))}<span class="text-[0.5em] tracking-[-0.02em] ml-1">%</span>
+          </p>
+          <p class="mt-3 text-sm text-[var(--color-text-muted)] leading-relaxed max-w-[34ch]">
+            d'écart médian entre l'annonce et la route, sur les {fleetGap.models} modèles testés par Bjørn Nyland ou la presse VE.
+          </p>
+          <a href={url("/methodologie/") + "#protocoles"} class="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-dim)]">
+            Nos protocoles de mesure
+            <ArrowRight size={15} strokeWidth={2} className="arrow-animate" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-8 rounded-[var(--radius-tile)] border border-[var(--color-border)] bg-[var(--color-surface-elevated)] shadow-[var(--shadow-sm)] p-5 md:p-8">
+        <RangeGapChart slugs={GAP_CHART_SLUGS} />
+      </div>
+    </div>
+  </section>
+
+  {/* ═════════ OUTILS ═════════ */}
+  <section class="container-edit pb-24 md:pb-32">
+    <h2 class="display-2 mb-8 md:mb-10 reveal">Choisir, comparer, chiffrer.</h2>
+
+    <div class="tools-grid reveal-stagger no-glossary">
+      {/* Recommandation : entrée principale */}
+      <a href={url("/recommandation/")} class="tool tool-reco reveal">
+        <div class="relative z-10 max-w-md">
+          <h3 class="text-[26px] md:text-[32px] font-semibold tracking-[-0.035em] leading-[1.08]">
+            Pas d'idée précise&nbsp;? On vous guide.
+          </h3>
+          <p class="mt-3 text-[15px] text-[var(--color-text-muted)] leading-relaxed max-w-[40ch]">
+            Quelques questions sur vos trajets et votre budget, puis les 3 à 5 modèles qui vous correspondent vraiment.
+          </p>
+          <span class="btn btn-primary mt-6 pointer-events-none">
+            Trouver mon VE
+            <ArrowRight size={17} strokeWidth={2} className="btn-arrow" aria-hidden="true" />
+          </span>
+        </div>
+        <div class="tool-reco-cars" aria-hidden="true">
+          <VehicleImage slug="renault-scenic" alt="" widths={[360, 720]} sizes="300px" class="car car-back-left" />
+          <VehicleImage slug="skoda-elroq" alt="" widths={[360, 720]} sizes="300px" class="car car-back-right" />
+          <VehicleImage slug="renault-5" alt="" widths={[480, 960]} sizes="380px" class="car car-front" />
+        </div>
+      </a>
+
+      {/* Comparateur */}
+      <a href={url("/comparer/")} class="tool tool-compare reveal">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <h3 class="text-xl md:text-2xl font-semibold tracking-[-0.03em] leading-tight">Comparateur</h3>
+            <p class="mt-2 text-sm text-[var(--color-text-muted)] leading-relaxed max-w-[34ch]">
+              Jusqu'à 4 modèles côte à côte, batterie, finition et jantes comprises.
+            </p>
+          </div>
+          <span class="tool-arrow"><ArrowUpRight size={18} strokeWidth={1.75} aria-hidden="true" /></span>
+        </div>
+        <div class="tool-compare-cars" aria-hidden="true">
+          <VehicleImage slug="peugeot-e-208" alt="" widths={[320, 640]} sizes="260px" class="w-full h-full" />
+          <span class="tool-compare-divider"></span>
+          <VehicleImage slug="byd-dolphin" alt="" widths={[320, 640]} sizes="260px" class="w-full h-full" />
+        </div>
+      </a>
+
+      {/* Calculateur TCO */}
+      <a href={url("/simulateur/")} class="tool tool-tco reveal">
+        <div class="flex items-start justify-between gap-4">
+          <h3 class="text-xl font-semibold tracking-[-0.03em] leading-tight">Le vrai coût, sur 1 à 10 ans</h3>
+          <span class="tool-arrow"><ArrowUpRight size={18} strokeWidth={1.75} aria-hidden="true" /></span>
+        </div>
+        <div class="mt-auto pt-6">
+          <p class="text-[13px] text-[var(--color-text-muted)]">Prix de 100 km</p>
+          <div class="tco-bars mt-2.5" style={`--ev: ${(evCost100 / iceCost100) * 100}%`}>
+            <div class="tco-bar-row">
+              <span class="tco-bar tco-bar-ev"></span>
+              <span class="tco-bar-label"><strong>{euros(evCost100)}</strong> {tcoExample.brand} {tcoExample.model.replace(/ E-Tech$/, "")}, à domicile</span>
+            </div>
+            <div class="tco-bar-row">
+              <span class="tco-bar tco-bar-ice"></span>
+              <span class="tco-bar-label"><strong>{euros(iceCost100)}</strong> Essence, {formatNumber(TCO_DEFAULTS.ice_conso_l_100, 1)}&nbsp;l/100</span>
+            </div>
+          </div>
+          <p class="mt-3 text-[11.5px] text-[var(--color-text-faint)] leading-snug">
+            À {formatNumber(TCO_DEFAULTS.elec_home_eur_kwh, 2)}&nbsp;€/kWh et {formatNumber(TCO_DEFAULTS.essence_eur_l, 2)}&nbsp;€/l, tarifs réglables dans le calculateur.
+          </p>
+        </div>
+      </a>
+
+      {/* Leasing social */}
+      <a href={url("/leasing-social/")} class="tool tool-leasing reveal">
+        <div class="flex items-start justify-between gap-4">
+          <h3 class="text-xl font-semibold tracking-[-0.03em] leading-tight">Leasing social</h3>
+          <span class="tool-arrow"><ArrowUpRight size={18} strokeWidth={1.75} aria-hidden="true" /></span>
+        </div>
+        <p class="mt-auto pt-6">
+          <span class="block text-[13px] text-[color-mix(in_srgb,var(--color-accent-on)_72%,transparent)]">Dès</span>
+          <span class="text-[40px] font-semibold tracking-[-0.045em] leading-none">{leasingMin}&nbsp;€</span>
+          <span class="text-[15px] text-[color-mix(in_srgb,var(--color-accent-on)_72%,transparent)]">/mois</span>
+        </p>
+        <p class="mt-2 text-[13px] text-[color-mix(in_srgb,var(--color-accent-on)_72%,transparent)] leading-snug">
+          Sans apport, sous conditions de revenus.
+        </p>
+      </a>
+    </div>
+  </section>
+
+  {/* ═════════ NOUVEAUTÉS ═════════ */}
+  <section class="pb-24 md:pb-32" data-carousel>
+    <div class="container-edit flex flex-wrap items-end justify-between gap-4 mb-8 md:mb-10">
+      <h2 class="display-2">Nouveautés et mises à jour</h2>
+      <div class="flex items-center gap-2">
+        <a href={url("/vehicules/")} class="btn btn-secondary btn-sm">Explorer le catalogue</a>
+        <button type="button" class="carousel-btn hidden md:inline-flex" data-carousel-prev aria-label="Modèles précédents">
+          <ChevronLeft size={18} strokeWidth={1.75} aria-hidden="true" />
+        </button>
+        <button type="button" class="carousel-btn hidden md:inline-flex" data-carousel-next aria-label="Modèles suivants">
+          <ChevronRight size={18} strokeWidth={1.75} aria-hidden="true" />
+        </button>
+      </div>
+    </div>
+
+    <ul class="latest-row no-glossary" data-carousel-track>
+      {latestVehicles.map((v) => {
+        const card = getVehicleCardSummary(v);
+        const isNew = v.releaseYear >= 2026;
+        return (
+          <li class="latest-item">
+            <a href={url(`/vehicules/${v.slug}/`)} class="latest-card">
+              <div class="latest-photo">
+                <VehicleImage slug={v.slug} alt={`${v.brand} ${v.model}`} widths={[360, 720]} sizes="300px" class="w-[88%] h-full" />
+              </div>
+              <div class="p-4 pt-3.5 flex flex-col flex-1">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="flex items-center gap-1.5 text-[13px] text-[var(--color-text-faint)] min-w-0">
+                    <BrandLogo brand={v.brand} class="w-3.5 h-3.5 shrink-0" />
+                    <span class="truncate">{v.brand}</span>
+                  </span>
+                  <Tag tone={isNew ? "accent" : "neutral"}>{isNew ? "Nouveauté" : "Mis à jour"}</Tag>
                 </div>
-                <div class="flex items-end justify-between gap-2 mb-4">
-                  <h3 class="font-display text-lg md:text-xl font-semibold tracking-[-0.015em] leading-[1.05]">
-                    {v.model}
-                    <span class="block text-[var(--color-text-muted)] font-mono text-[11px] mt-1 font-normal tracking-normal">{card.subtitle}</span>
-                  </h3>
-                  <VehicleImage slug={v.slug} alt={`${v.brand} ${v.model}`} class="w-20 h-12 flex-shrink-0" />
-                </div>
-                <div class="grid grid-cols-2 gap-3 mt-auto pt-3 border-t border-[var(--color-border)]">
-                  <div class="flex flex-col gap-0.5">
-                    <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)] whitespace-nowrap">Autonomie réelle</span>
-                    <div class="flex items-baseline gap-1">
-                      <span data-numeric class="display-stat text-xl text-[var(--color-accent)]">{v.realRange.mixed_km}</span>
-                      <span class="font-mono text-[11px] text-[var(--color-text-faint)]">km</span>
-                    </div>
-                    <span class="card-confidence" data-level={card.rangeConfidence}>{card.rangeConfidenceLabel}</span>
+                <h3 class="mt-2 text-lg font-semibold tracking-[-0.025em] leading-tight">{v.model}</h3>
+                <p class="mt-0.5 text-[13px] text-[var(--color-text-faint)]">{card.subtitle}</p>
+                <div class="mt-auto pt-4 grid grid-cols-2 gap-3">
+                  <div>
+                    <p class="text-[12px] text-[var(--color-text-faint)]">Autonomie réelle</p>
+                    <p class="mt-0.5 flex items-baseline gap-1">
+                      <span class="text-xl font-semibold tracking-[-0.03em] text-[var(--color-accent)]">{v.realRange.mixed_km}</span>
+                      <span class="text-[13px] text-[var(--color-text-faint)]">km</span>
+                    </p>
+                    <span class="card-confidence mt-1" data-level={card.rangeConfidence}>{card.rangeConfidenceLabel}</span>
                   </div>
-                  <div class="flex flex-col gap-0.5">
-                    <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)]">{card.cheapestPrice !== null ? "Dès" : "Prix"}</span>
+                  <div class="text-right">
+                    <p class="text-[12px] text-[var(--color-text-faint)]">{card.cheapestPrice !== null ? "Dès" : "Prix"}</p>
                     {card.cheapestPrice !== null ? (
-                      <span data-numeric class="display-stat text-xl">{formatPrice(card.cheapestPrice)}</span>
+                      <p class="mt-0.5 text-xl font-semibold tracking-[-0.03em]">{formatPrice(card.cheapestPrice)}</p>
                     ) : (
-                      <span class="font-display text-sm font-medium text-[var(--color-text-faint)] leading-tight">Prix non communiqué</span>
+                      <p class="mt-1 text-sm font-medium text-[var(--color-text-faint)] leading-tight">Non communiqué</p>
                     )}
                   </div>
                 </div>
-              </a>
-            );
-          })}
+              </div>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+
+  {/* ═════════ POURQUOI EVLY ═════════ */}
+  <section class="container-edit pb-24 md:pb-32">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-14">
+      <div class="lg:col-span-5">
+        <div class="lg:sticky lg:top-28 reveal">
+          <h2 class="display-2 max-w-[13ch]">Aucune marque ne nous paie.</h2>
+          <p class="mt-5 text-base text-[var(--color-text-muted)] leading-relaxed max-w-[44ch]">
+            Le marché est saturé de comparateurs financés par la publicité ou les commissions. Evly choisit la transparence : données mesurées, sources tracées, zéro rémunération.
+          </p>
+          <dl class="mt-10 grid grid-cols-3 gap-4 pt-6 border-t border-[var(--color-border)] [&>div]:flex [&>div]:flex-col [&>div]:justify-between">
+            <div>
+              <dt class="text-[13px] text-[var(--color-text-faint)]">Modèles suivis</dt>
+              <dd class="mt-1 text-3xl md:text-4xl font-semibold tracking-[-0.04em]">{totalVehicles}</dd>
+            </div>
+            <div>
+              <dt class="text-[13px] text-[var(--color-text-faint)]">Essais sur route</dt>
+              <dd class="mt-1 text-3xl md:text-4xl font-semibold tracking-[-0.04em]">{totalTests}</dd>
+            </div>
+            <div>
+              <dt class="text-[13px] text-[var(--color-text-faint)]">Versions détaillées</dt>
+              <dd class="mt-1 text-3xl md:text-4xl font-semibold tracking-[-0.04em]">{totalConfigs}</dd>
+            </div>
+          </dl>
         </div>
       </div>
 
+      <ul class="lg:col-span-7 grid sm:grid-cols-2 gap-x-10 reveal-stagger">
+        {pillars.map(({ icon: Icon, title, text }) => (
+          <li class="reveal py-7 border-t border-[var(--color-border)]">
+            <span class="inline-flex w-10 h-10 items-center justify-center rounded-full bg-[var(--color-surface-accent)] text-[var(--color-accent)]">
+              <Icon size={19} strokeWidth={1.75} aria-hidden="true" />
+            </span>
+            <h3 class="mt-4 text-lg font-semibold tracking-[-0.025em]">{title}</h3>
+            <p class="mt-2 text-[15px] text-[var(--color-text-muted)] leading-relaxed">{text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
 
-
-    </BentoGrid>
-
-    <!-- ═════════ SECTION SEO / DÉCOUVERTE ═════════ -->
-    <section class="mt-16 pt-16 border-t border-[var(--color-border)]">
-      <h2 class="font-display text-3xl md:text-4xl font-semibold tracking-[-0.015em] mb-8">
+  {/* ═════════ SECTION SEO / DÉCOUVERTE ═════════ */}
+  <section class="container-edit">
+    <div class="pt-14 border-t border-[var(--color-border)] grid lg:grid-cols-12 gap-8 lg:gap-14">
+      <h2 class="lg:col-span-4 text-2xl md:text-[28px] font-semibold tracking-[-0.03em] leading-[1.15] max-w-[22ch]">
         Le comparateur de voiture électrique qui ne travaille que pour vous.
       </h2>
-      <div class="grid md:grid-cols-2 gap-8 text-sm text-[var(--color-text-muted)] leading-relaxed">
-        <div class="flex flex-col gap-4">
-          <p>
-            <strong>Evly</strong> est un comparateur de voitures électriques indépendant, pensé pour tout le monde : que vous cherchiez votre premier véhicule électrique ou que vous en soyez à votre troisième, que vous ayez 20 ans ou 70 ans, vous n'avez pas besoin de connaître la différence entre une batterie LFP et une NMC pour trouver la bonne voiture au bon prix. C'est notre travail de traduire ces chiffres en une réponse simple : est-ce que ce modèle vous convient, et est-ce que vous le payez au juste prix ?
-          </p>
-          <p>
-            Aucun constructeur ni aucune concession ne nous rémunère. Notre base de données rassemble plus de 150 modèles, avec pour chacun l'autonomie réellement constatée sur route (souvent inférieure à l'annonce du constructeur), la vitesse de recharge, et le coût complet sur plusieurs années, pas seulement le prix affiché en vitrine.
-          </p>
-        </div>
-        <div class="flex flex-col gap-4">
-          <p>
-            Petite citadine pour la ville, SUV familial pour les vacances ou utilitaire pour le travail : nos outils filtrent et comparent objectivement le catalogue selon vos besoins réels. On intègre aussi les aides de l'État (bonus, prime à la conversion, coup de pouce CEE) et l'éligibilité au leasing social pour vous montrer le prix que vous paierez vraiment, pas le prix catalogue.
-          </p>
-          <p>
-            Vous ne savez pas par où commencer ? Répondez à quelques questions simples sur votre <a href={url("/recommandation")} class="text-[var(--color-accent)] underline underline-offset-2 hover:no-underline">quotidien avec notre outil de recommandation</a>, ou allez directement voir nos <a href={url("/bons-plans")} class="text-[var(--color-accent)] underline underline-offset-2 hover:no-underline">bons plans</a> : les cas où, pour le même budget qu'un modèle connu, une autre voiture électrique fait tout simplement mieux.
-          </p>
-        </div>
+      <div class="lg:col-span-8 grid md:grid-cols-2 gap-x-10 gap-y-4 text-[15px] text-[var(--color-text-muted)] leading-relaxed">
+        <p>
+          <strong class="text-[var(--color-text)] font-semibold">Evly</strong> est un comparateur de voitures électriques indépendant, pensé pour tout le monde : que vous cherchiez votre premier véhicule électrique ou que vous en soyez à votre troisième, que vous ayez 20 ans ou 70 ans, vous n'avez pas besoin de connaître la différence entre une batterie LFP et une NMC pour trouver la bonne voiture au bon prix. C'est notre travail de traduire ces chiffres en une réponse simple : est-ce que ce modèle vous convient, et est-ce que vous le payez au juste prix ?
+        </p>
+        <p>
+          Petite citadine pour la ville, SUV familial pour les vacances ou utilitaire pour le travail : nos outils filtrent et comparent objectivement le catalogue selon vos besoins réels. On intègre aussi les aides de l'État (bonus, prime à la conversion, coup de pouce CEE) et l'éligibilité au leasing social pour vous montrer le prix que vous paierez vraiment, pas le prix catalogue.
+        </p>
+        <p>
+          Aucun constructeur ni aucune concession ne nous rémunère. Notre base de données rassemble {totalVehicles} modèles, avec pour chacun l'autonomie réellement constatée sur route (souvent inférieure à l'annonce du constructeur), la vitesse de recharge, et le coût complet sur plusieurs années, pas seulement le prix affiché en vitrine.
+        </p>
+        <p>
+          Vous ne savez pas par où commencer ? Répondez à quelques questions simples sur votre <a href={url("/recommandation/")} class="text-[var(--color-accent)] underline underline-offset-2 hover:no-underline">quotidien avec notre outil de recommandation</a>, ou allez directement voir nos <a href={url("/bons-plans/")} class="text-[var(--color-accent)] underline underline-offset-2 hover:no-underline">bons plans</a> : les cas où, pour le même budget qu'un modèle connu, une autre voiture électrique fait tout simplement mieux.
+        </p>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 
   <style>
-    /* Path Cards visual polish & micro-interactions */
-    .path-card {
-      transition: 
-        transform 500ms cubic-bezier(0.16, 1, 0.3, 1),
-        border-color 500ms cubic-bezier(0.16, 1, 0.3, 1),
-        box-shadow 500ms cubic-bezier(0.16, 1, 0.3, 1);
+    /* ── Bento outils : 1 grande entrée + 3 tuiles (lg) ── */
+    .tools-grid {
+      display: grid;
+      gap: 0.75rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 768px) {
+      .tools-grid {
+        gap: 1rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .tool-reco { grid-column: 1 / -1; }
+      .tool-compare { grid-column: 1 / -1; }
+    }
+    @media (min-width: 1024px) {
+      .tools-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-rows: repeat(2, minmax(15rem, auto));
+      }
+      .tool-reco { grid-column: 1 / span 2; grid-row: 1 / span 2; }
+      .tool-compare { grid-column: 3 / span 2; grid-row: 1; }
+      .tool-tco { grid-column: 3; grid-row: 2; }
+      .tool-leasing { grid-column: 4; grid-row: 2; }
     }
 
-    @media (hover: hover) {
-      .path-card:hover {
-        transform: translateY(-8px) scale(1.015);
-        border-color: var(--color-accent) !important;
-        box-shadow: 
-          0 22px 40px -10px rgba(58, 92, 18, 0.12),
-          0 10px 20px -8px rgba(0, 0, 0, 0.2) !important;
-      }
-      
-      .path-card:active {
-        transform: translateY(-2px) scale(0.995);
-        transition-duration: 150ms;
-      }
-
-      .path-card:hover .icon-container {
-        transform: scale(1.12) rotate(4deg);
-        background-color: var(--color-surface-accent);
-        color: var(--color-accent);
-      }
-
-      .path-card:hover .index-tag {
-        color: var(--color-accent);
-      }
-
-      .path-card:hover .card-title {
-        color: var(--color-accent);
-      }
-
-      .path-card:hover .card-footer {
-        color: var(--color-accent);
-      }
-
-      .path-card:hover .arrow-wrapper {
-        transform: scale(1.15);
-        background-color: var(--color-accent);
-        color: var(--color-accent-on);
-      }
-
-      .path-card:hover .arrow-icon {
-        transform: translateX(3px);
-      }
-
-      .path-card:hover .glow-bg {
-        opacity: 1;
-      }
-    }
-
-    /* Transition defaults for card inner elements */
-    .path-card .icon-container {
-      transition: 
-        transform 400ms cubic-bezier(0.16, 1, 0.3, 1),
-        background-color 400ms cubic-bezier(0.16, 1, 0.3, 1),
-        color 400ms cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .path-card .index-tag,
-    .path-card .card-title,
-    .path-card .card-footer {
-      transition: color 400ms cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .path-card .arrow-wrapper {
-      transition: 
-        transform 400ms cubic-bezier(0.16, 1, 0.3, 1),
-        background-color 400ms cubic-bezier(0.16, 1, 0.3, 1),
-        color 400ms cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .path-card .arrow-icon {
-      transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .path-card .glow-bg {
-      transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    /* Carrousel horizontal des cards "à la une" */
-    .featured-scroll-row {
-      display: flex;
-      gap: 12px;
-      overflow-x: auto;
-      padding: 8px 4px 16px 4px;
-      margin: -8px -4px 0 -4px;
-      scrollbar-width: thin;
-      -webkit-overflow-scrolling: touch;
-      scroll-snap-type: x mandatory;
-    }
-    .featured-scroll-row::-webkit-scrollbar { height: 6px; }
-    .featured-scroll-row::-webkit-scrollbar-track { background: transparent; }
-    .featured-scroll-row::-webkit-scrollbar-thumb {
-      background: var(--color-border);
-      border-radius: 3px;
-    }
-    .featured-scroll-row::-webkit-scrollbar-thumb:hover { background: var(--color-border-strong); }
-
-    .featured-card {
-      flex: 0 0 auto;
-      width: 260px;
-      min-height: 180px;
-      padding: 16px;
-      background: var(--color-bg-elevated);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-tile-sm);
+    .tool {
+      position: relative;
       display: flex;
       flex-direction: column;
-      cursor: pointer;
-      text-decoration: none;
-      color: inherit;
-      transition: 
-        border-color 450ms cubic-bezier(0.16, 1, 0.3, 1),
-        transform 450ms cubic-bezier(0.16, 1, 0.3, 1),
-        box-shadow 450ms cubic-bezier(0.16, 1, 0.3, 1);
-      scroll-snap-align: start;
+      min-height: 13rem;
+      padding: 1.5rem;
+      border-radius: var(--radius-tile);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface-elevated);
+      overflow: hidden;
+      transition:
+        transform 450ms var(--ease-out-expo),
+        box-shadow 450ms var(--ease-out-expo),
+        border-color 450ms var(--ease-out-expo),
+        opacity 0.7s var(--ease-out-expo);
     }
-    
-    @media (hover: hover) {
-      .featured-card:hover {
-        border-color: var(--color-accent);
-        transform: translateY(-5px);
-        box-shadow: 
-          0 15px 30px -10px rgba(58, 92, 18, 0.08),
-          0 8px 16px -8px rgba(0, 0, 0, 0.2);
-      }
-      
-      .featured-card:active {
-        transform: translateY(-1px);
-        transition-duration: 100ms;
-      }
-      
-      .featured-card img,
-      .featured-card svg {
-        transition: transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
-      }
-      
-      .featured-card:hover img,
-      .featured-card:hover svg {
-        transform: scale(1.08) translateY(-2px);
-      }
-    }
-    
     @media (min-width: 768px) {
-      .featured-card { width: 280px; }
+      .tool { padding: 1.75rem; }
+    }
+    @media (hover: hover) {
+      .tool:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--color-border-strong);
+      }
+      .tool:active { transform: translateY(0) scale(0.995); transition-duration: 120ms; }
     }
 
-    /* Hero section styles */
-    .hero-tile {
+    .tool-arrow {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 999px;
+      border: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      transition: background-color 250ms var(--ease-out-expo), color 250ms var(--ease-out-expo), transform 300ms var(--ease-out-expo), border-color 250ms var(--ease-out-expo);
+    }
+    @media (hover: hover) {
+      .tool:hover .tool-arrow {
+        background: var(--color-text);
+        border-color: var(--color-text);
+        color: var(--color-bg-elevated);
+        transform: rotate(45deg);
+      }
+    }
+
+    /* Recommandation : fond vert tendre, voitures en perspective */
+    .tool-reco {
+      min-height: 26rem;
+      background:
+        radial-gradient(ellipse 70% 22% at 62% 96%, rgba(28, 36, 18, 0.14), transparent 70%),
+        linear-gradient(160deg, var(--color-surface-accent) 0%, color-mix(in srgb, var(--color-surface-accent) 55%, var(--color-surface-elevated)) 100%);
+      border-color: color-mix(in srgb, var(--color-accent) 18%, var(--color-border));
+    }
+    @media (min-width: 768px) {
+      .tool-reco { padding: 2.25rem; }
+    }
+    .tool-reco-cars {
       position: relative;
-      background: radial-gradient(circle at 80% 20%, rgba(58, 92, 18, 0.05) 0%, rgba(237, 245, 212, 0.35) 40%, transparent 80%), linear-gradient(135deg, #ffffff 0%, #fafbf7 100%) !important;
-      border: 1px solid var(--color-border-strong) !important;
-      box-shadow: 
-        0 20px 40px -15px rgba(58, 92, 18, 0.05),
-        0 1px 3px rgba(0, 0, 0, 0.02) !important;
+      margin-top: auto;
+      height: 11rem;
     }
-    
-    .hero-tile::before {
-      content: "";
+    .tool-reco-cars :global(.car) {
       position: absolute;
-      top: -20%;
-      right: -10%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(237, 245, 212, 0.3) 0%, rgba(58, 92, 18, 0.03) 50%, transparent 70%);
-      filter: blur(40px);
-      z-index: 0;
-      pointer-events: none;
+      bottom: 0;
+      transition: transform 700ms var(--ease-out-expo);
+    }
+    .tool-reco-cars :global(.car-front) { left: 18%; width: 62%; height: 100%; z-index: 2; }
+    .tool-reco-cars :global(.car-back-left) { left: -2%; bottom: 1.75rem; width: 44%; height: 62%; opacity: 0.9; }
+    .tool-reco-cars :global(.car-back-right) { right: -4%; bottom: 1.75rem; width: 44%; height: 62%; opacity: 0.9; }
+    @media (hover: hover) {
+      .tool-reco:hover :global(.car-front) { transform: translateX(10px); }
+      .tool-reco:hover :global(.car-back-left) { transform: translateX(-6px); }
+      .tool-reco:hover :global(.car-back-right) { transform: translateX(6px); }
+    }
+    @media (min-width: 1024px) {
+      .tool-reco-cars { height: 14rem; }
     }
 
-    .text-gradient {
-      background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dim) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 700;
+    /* Comparateur : deux modèles face à face */
+    .tool-compare-cars {
+      margin-top: auto;
+      padding-top: 1.25rem;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: end;
+      gap: 1rem;
+      height: 9rem;
+    }
+    .tool-compare-cars :global(img:first-child) { transform: scaleX(-1); }
+    .tool-compare-divider {
+      width: 1px;
+      height: 70%;
+      background: var(--color-border-strong);
+      align-self: center;
+    }
+
+    /* TCO : surface neutre teintée */
+    .tool-tco {
+      background: var(--color-bg-subtle);
+      border-color: transparent;
+    }
+
+    .tco-bars { display: flex; flex-direction: column; gap: 0.5rem; }
+    .tco-bar-row { display: flex; flex-direction: column; gap: 0.3rem; }
+    .tco-bar { display: block; height: 8px; border-radius: 0 4px 4px 0; transform-origin: left center; }
+    .tco-bar-ev { width: var(--ev); background: var(--color-accent); }
+    .tco-bar-ice { width: 100%; background: var(--color-text-faint); }
+    .tco-bar-label { font-size: 12.5px; color: var(--color-text-muted); line-height: 1.2; }
+    .tco-bar-label strong { color: var(--color-text); font-weight: 600; margin-right: 0.25rem; }
+
+    /* Leasing social : aplat vert très sombre */
+    .tool-leasing {
+      background: var(--color-ink);
+      border-color: var(--color-ink);
+      color: var(--color-accent-on);
+    }
+    .tool-leasing .tool-arrow {
+      border-color: color-mix(in srgb, var(--color-accent-on) 25%, transparent);
+      color: var(--color-accent-on);
+    }
+    @media (hover: hover) {
+      .tool-leasing:hover { border-color: var(--color-ink); }
+      .tool-leasing:hover .tool-arrow {
+        background: var(--color-accent-on);
+        border-color: var(--color-accent-on);
+        color: var(--color-ink);
+      }
+    }
+
+    /* ── Rangée défilante des nouveautés ── */
+    .latest-row {
+      display: flex;
+      gap: 0.75rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-padding-inline: max(1rem, calc((100vw - var(--container-max)) / 2 + 2.5rem));
+      padding-inline: max(1rem, calc((100vw - var(--container-max)) / 2 + 2.5rem));
+      padding-block: 0.25rem 1rem;
+      scrollbar-width: none;
+      overscroll-behavior-x: contain;
+    }
+    .latest-row::-webkit-scrollbar { display: none; }
+    @media (min-width: 768px) {
+      .latest-row {
+        gap: 1rem;
+        scroll-padding-inline: max(2rem, calc((100vw - var(--container-max)) / 2 + 2.5rem));
+        padding-inline: max(2rem, calc((100vw - var(--container-max)) / 2 + 2.5rem));
+      }
+    }
+    .latest-item {
+      flex: 0 0 auto;
+      width: 78vw;
+      max-width: 300px;
+      scroll-snap-align: start;
+      display: flex;
+    }
+    .latest-card {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      border-radius: var(--radius-tile);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface-elevated);
+      overflow: hidden;
+      transition: transform 450ms var(--ease-out-expo), box-shadow 450ms var(--ease-out-expo), border-color 450ms var(--ease-out-expo);
+    }
+    .latest-photo {
+      height: 9.5rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-top: 0.75rem;
+      background:
+        radial-gradient(ellipse 50% 14% at 50% 94%, rgba(28, 36, 18, 0.13), transparent 70%),
+        var(--color-bg-subtle);
+    }
+    .latest-photo :global(img) {
+      transition: transform 600ms var(--ease-out-expo);
+    }
+    @media (hover: hover) {
+      .latest-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--color-border-strong);
+      }
+      .latest-card:hover .latest-photo :global(img) { transform: scale(1.04); }
+    }
+
+    .carousel-btn {
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 999px;
+      border: 1px solid var(--color-border-strong);
+      background: var(--color-surface-elevated);
+      color: var(--color-text);
+      transition: border-color 200ms var(--ease-out-expo), opacity 200ms var(--ease-out-expo), transform 160ms var(--ease-out-expo);
+    }
+    .carousel-btn:active { transform: scale(0.94); }
+    .carousel-btn:disabled { opacity: 0.35; cursor: default; }
+    @media (hover: hover) {
+      .carousel-btn:not(:disabled):hover { border-color: var(--color-text); }
     }
   </style>
+
+  <script>
+    // Boutons précédent / suivant de la rangée des nouveautés (défilement natif avec accroche)
+    function setupCarousels() {
+      document.querySelectorAll<HTMLElement>("[data-carousel]").forEach((root) => {
+        if (root.dataset.ready) return;
+        root.dataset.ready = "true";
+        const track = root.querySelector<HTMLElement>("[data-carousel-track]");
+        const prev = root.querySelector<HTMLButtonElement>("[data-carousel-prev]");
+        const next = root.querySelector<HTMLButtonElement>("[data-carousel-next]");
+        if (!track || !prev || !next) return;
+        const items = track.querySelectorAll<HTMLElement>(".latest-item");
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (!first || !last) return;
+        const step = () => first.offsetWidth + 16;
+        prev.addEventListener("click", () => track.scrollBy({ left: -step() * 2, behavior: "smooth" }));
+        next.addEventListener("click", () => track.scrollBy({ left: step() * 2, behavior: "smooth" }));
+        // Bouton désactivé quand la première / dernière carte est entièrement visible
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              const atEdge = e.intersectionRatio > 0.95;
+              if (e.target === first) prev.disabled = atEdge;
+              if (e.target === last) next.disabled = atEdge;
+            }
+          },
+          { root: track, threshold: [0, 0.95, 1] }
+        );
+        io.observe(first);
+        io.observe(last);
+        document.addEventListener("astro:before-swap", () => io.disconnect(), { once: true });
+      });
+    }
+    setupCarousels();
+    document.addEventListener("astro:page-load", setupCarousels);
+  </script>
 </BaseLayout>

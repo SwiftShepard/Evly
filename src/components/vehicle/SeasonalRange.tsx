@@ -106,8 +106,8 @@ export default function SeasonalRange({
         bodyColor: c["--color-text-muted"] || "#9b9b95",
         padding: 12,
         displayColors: false,
-        titleFont: { family: "JetBrains Mono Variable", size: 11, weight: 500 },
-        bodyFont: { family: "JetBrains Mono Variable", size: 12 },
+        titleFont: { family: "Geist Mono Variable", size: 11, weight: 500 },
+        bodyFont: { family: "Geist Mono Variable", size: 12 },
         callbacks: {
           label: (ctx) => `${ctx.parsed.x} km`,
         },
@@ -121,7 +121,7 @@ export default function SeasonalRange({
         border: { display: false },
         ticks: {
           color: c["--color-text-faint"] || "#5c5c58",
-          font: { family: "JetBrains Mono Variable", size: 10 },
+          font: { family: "Geist Mono Variable", size: 10 },
           stepSize: max > 500 ? 150 : 100,
           callback: (val) => `${val} km`,
         },
@@ -131,7 +131,7 @@ export default function SeasonalRange({
         border: { color: c["--color-border"] || "#2a2a30" },
         ticks: {
           color: c["--color-text"] || "#f5f5f0",
-          font: { family: "JetBrains Mono Variable", size: 11 },
+          font: { family: "Geist Mono Variable", size: 11 },
         },
       },
     },

@@ -1,26 +1,30 @@
 @import "tailwindcss";
-@import "@fontsource-variable/inter";
-@import "@fontsource-variable/jetbrains-mono";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
 
 /* ----------------------------------------------------------------- */
-/* Tokens statiques, typo, container, easing, tuiles                 */
-/* (les couleurs sont gérées plus bas via [data-theme])               */
+/* Tokens statiques : typo, conteneur, easing, formes                 */
 /* ----------------------------------------------------------------- */
+/*
+ * Système de formes (à respecter partout) :
+ *   - éléments interactifs, puces, étiquettes : pilule (999px)
+ *   - cartes et tuiles : 16px (--radius-tile), sous-cartes : 12px
+ *   - champs de formulaire : 10px
+ */
 
 @theme {
-  /* Typographie */
-  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono Variable", ui-monospace, "SFMono-Regular",
-    monospace;
+  /* Typographie : Geist pour le texte et les chiffres, Geist Mono pour les libellés de données */
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono Variable", ui-monospace, "SFMono-Regular", monospace;
 
   /* Tracking sur-mesure */
-  --tracking-display: -0.022em;
-  --tracking-section: -0.012em;
-  --tracking-label: 0.16em;
+  --tracking-display: -0.04em;
+  --tracking-section: -0.03em;
+  --tracking-label: 0.08em;
 
   /* Conteneur */
-  --container-max: 1280px;
+  --container-max: 1320px;
 
   /* Easing */
   --ease-editorial: cubic-bezier(0.2, 0.7, 0.1, 1);
@@ -28,8 +32,9 @@
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* Tuiles (bento) */
-  --radius-tile: 20px;
-  --radius-tile-sm: 14px;
+  --radius-tile: 16px;
+  --radius-tile-sm: 12px;
+  --radius-field: 10px;
   --tile-padding: 1.25rem;
   --tile-padding-lg: 1.75rem;
   --tile-gap: 0.75rem;
@@ -37,40 +42,54 @@
 }
 
 /* ----------------------------------------------------------------- */
-/* Palette, thème clair unique, fond blanc pur                       */
+/* Palette : thème clair unique                                       */
+/* Les photos constructeur sont détourées ou sur fond blanc : un      */
+/* thème sombre les ferait apparaître dans des cadres blancs. Le fond  */
+/* de page est un blanc cassé vert-de-gris ; les photos s'y fondent    */
+/* grâce au mode de fusion « multiply » (.vehicle-photo).              */
 /* ----------------------------------------------------------------- */
 
 :root {
   color-scheme: light;
 
-  --color-bg: #ffffff;
-  --color-bg-elevated: #ffffff;
-  --color-bg-subtle: #f4f4f4;
-  --color-border: #e8e8e8;
-  --color-border-strong: #cecece;
-  --color-text: #0f0f0f;
-  --color-text-muted: #4c4c4c;
-  --color-text-faint: #6b6b6b;
+  --color-bg: #f3f4f0;
+  --color-bg-elevated: #fbfbf9;
+  --color-bg-subtle: #eaece5;
+  --color-border: #dfe2d8;
+  --color-border-strong: #c4c9ba;
+  --color-text: #151813;
+  --color-text-muted: #474c43;
+  --color-text-faint: #5f655a;
 
-  /* Surfaces tuiles, blanc pur, images fond blanc intégrées */
-  --color-surface: #ffffff;
-  --color-surface-elevated: #ffffff;
-  --color-surface-accent: #edf5d4;
+  /* Surfaces des tuiles */
+  --color-surface: #fbfbf9;
+  --color-surface-elevated: #fdfdfc;
+  --color-surface-accent: #e5eecd;
 
-  /* Accents, vert foncé, contraste suffisant sur blanc */
+  /* Accent : vert olive profond, unique sur tout le site */
   --color-accent: #3a5c12;
-  --color-accent-dim: #2d4a0e;
-  --color-accent-on: #ffffff;
-  --color-danger: #c03020;
-  --color-warning: #905207;
+  --color-accent-dim: #2b460c;
+  --color-accent-on: #f6f9ef;
+  /* Teinte claire de la même rampe (marques de graphiques, fonds) */
+  --color-accent-soft: #a3bd6a;
+  /* Encre verte très sombre pour les rares aplats foncés */
+  --color-ink: #1c2614;
 
-  /* Glow pour hover tiles */
+  --color-danger: #b42d1d;
+  --color-warning: #8a4f07;
+
+  /* Ombres teintées à la couleur du fond, jamais noires */
+  --shadow-sm: 0 1px 2px rgba(28, 36, 18, 0.05);
+  --shadow-md: 0 12px 32px -14px rgba(28, 36, 18, 0.18), 0 2px 6px -2px rgba(28, 36, 18, 0.06);
+  --shadow-lg: 0 24px 60px -24px rgba(28, 36, 18, 0.28), 0 4px 12px -4px rgba(28, 36, 18, 0.08);
+
+  /* Halo des tuiles au survol */
   --glow-accent: rgba(58, 92, 18, 0.06);
   --glow-accent-strong: rgba(58, 92, 18, 0.14);
 }
 
 /* ----------------------------------------------------------------- */
-/* Reset éditorial + transitions thème                                */
+/* Reset éditorial                                                    */
 /* ----------------------------------------------------------------- */
 
 @layer base {
@@ -78,17 +97,26 @@
     background-color: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
   }
 
   body {
     background-color: var(--color-bg);
     min-height: 100dvh;
-    line-height: 1.7;
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   ::selection {
@@ -99,13 +127,78 @@
   :focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 3px;
-    border-radius: 2px;
   }
 
   .tabular,
   [data-numeric] {
     font-variant-numeric: tabular-nums;
     font-feature-settings: "tnum";
+  }
+}
+
+/* ----------------------------------------------------------------- */
+/* Composants de base : boutons, puces, photos                        */
+/* ----------------------------------------------------------------- */
+
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    height: 2.75rem;
+    padding-inline: 1.25rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-size: 0.9375rem;
+    font-weight: 550;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    white-space: nowrap;
+    user-select: none;
+    transition:
+      background-color 200ms var(--ease-out-expo),
+      border-color 200ms var(--ease-out-expo),
+      color 200ms var(--ease-out-expo),
+      transform 160ms var(--ease-out-expo);
+  }
+  .btn:active {
+    transform: scale(0.97);
+  }
+  .btn-sm {
+    height: 2.25rem;
+    padding-inline: 1rem;
+    font-size: 0.875rem;
+  }
+  .btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-accent-on);
+  }
+  .btn-secondary {
+    background-color: var(--color-surface-elevated);
+    color: var(--color-text);
+    border-color: var(--color-border-strong);
+  }
+  @media (hover: hover) {
+    .btn-primary:hover {
+      background-color: var(--color-accent-dim);
+    }
+    .btn-secondary:hover {
+      border-color: var(--color-text);
+    }
+  }
+  .btn .btn-arrow {
+    transition: transform 250ms var(--ease-out-expo);
+  }
+  @media (hover: hover) {
+    .btn:hover .btn-arrow {
+      transform: translateX(3px);
+    }
+  }
+
+  /* Photos véhicule : le blanc de fond se fond dans la surface teintée */
+  .vehicle-photo {
+    mix-blend-mode: multiply;
   }
 }
 
@@ -138,8 +231,8 @@
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    font-family: var(--font-mono);
-    font-size: 11px;
+    font-family: var(--font-sans);
+    font-size: 12px;
     line-height: 1;
     color: var(--color-text-faint);
   }
@@ -158,21 +251,25 @@
     background: currentColor;
   }
 
+  /* Libellé de tuile ou de section : discret, en casse normale */
   .label-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: -0.003em;
+    line-height: 1.3;
+    text-transform: none;
+    color: var(--color-text-faint);
+  }
+
+  /* Libellé de donnée (au-dessus d'un chiffre) : mono capitales */
+  .label-data {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: 10.5px;
     font-weight: 500;
     letter-spacing: var(--tracking-label);
     text-transform: uppercase;
     color: var(--color-text-faint);
-  }
-
-  .hairline {
-    border-color: var(--color-border);
-  }
-
-  .hairline-strong {
-    border-color: var(--color-border-strong);
   }
 
   /* Display headlines avec tracking serré */
@@ -180,23 +277,23 @@
     font-family: var(--font-display);
     font-weight: 600;
     letter-spacing: var(--tracking-display);
-    line-height: 0.95;
-    font-size: clamp(2.5rem, 6vw + 1rem, 5.25rem);
+    line-height: 0.98;
+    font-size: clamp(2.5rem, 4.4vw + 1rem, 4.75rem);
   }
 
   .display-2 {
     font-family: var(--font-display);
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: var(--tracking-section);
-    line-height: 1.05;
-    font-size: clamp(1.75rem, 3.5vw + 1rem, 3.25rem);
+    line-height: 1.04;
+    font-size: clamp(1.875rem, 2.2vw + 1rem, 3rem);
   }
 
   .display-stat {
     font-family: var(--font-display);
     font-weight: 600;
-    letter-spacing: var(--tracking-display);
-    line-height: 0.9;
+    letter-spacing: -0.025em;
+    line-height: 0.92;
     font-variant-numeric: tabular-nums;
     font-feature-settings: "tnum";
   }
@@ -233,20 +330,9 @@
     }
   }
 
-  /* Landing : sections pleine largeur plus aerees verticalement */
-  .bento-grid.home-bento {
-    row-gap: 2.5rem;
-  }
-
-  @media (min-width: 768px) {
-    .bento-grid.home-bento {
-      row-gap: 4rem;
-    }
-  }
-
   .bento-tile {
     background-color: var(--color-surface);
-    border: 0.5px solid var(--color-border);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-tile);
     padding: var(--tile-padding);
     display: flex;
@@ -256,12 +342,12 @@
     min-width: 0;
     overflow: hidden;
     position: relative;
-    /* Transition pour les effets hover */
+    box-shadow: var(--shadow-sm);
     transition:
       background-color 350ms var(--ease-out-expo),
       border-color 350ms var(--ease-out-expo),
       box-shadow 350ms var(--ease-out-expo),
-      transform 500ms var(--ease-out-expo);
+      transform 450ms var(--ease-out-expo);
   }
 
   @media (min-width: 768px) {
@@ -313,14 +399,15 @@
   }
   .bento-tile[data-variant="accent"] {
     background-color: var(--color-surface-accent);
-    border-color: color-mix(in srgb, var(--color-accent) 35%, var(--color-border-strong));
+    border-color: color-mix(in srgb, var(--color-accent) 22%, var(--color-border));
   }
   .bento-tile[data-variant="outlined"] {
     background-color: transparent;
     border-color: var(--color-border-strong);
+    box-shadow: none;
   }
 
-  /* Hover desktop, lift + glow subtil */
+  /* Survol desktop : léger soulèvement, ombre teintée */
   @media (hover: hover) {
     a.bento-tile {
       cursor: pointer;
@@ -328,22 +415,16 @@
     a.bento-tile:hover {
       background-color: var(--color-surface-elevated);
       border-color: var(--color-border-strong);
-      transform: translateY(-3px);
-      box-shadow:
-        0 8px 32px -6px rgba(0, 0, 0, 0.10),
-        0 2px 8px -2px rgba(0, 0, 0, 0.06);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
     }
     a.bento-tile:active {
-      transform: translateY(-1px) scale(0.995);
-      transition-duration: 100ms;
+      transform: translateY(0) scale(0.995);
+      transition-duration: 120ms;
     }
-
-    /* Accent tiles keep their special border on hover */
     a.bento-tile[data-variant="accent"]:hover {
+      background-color: var(--color-surface-accent);
       border-color: color-mix(in srgb, var(--color-accent) 40%, var(--color-border-strong));
-      box-shadow:
-        0 8px 32px -6px rgba(0, 0, 0, 0.10),
-        0 2px 8px -2px rgba(0, 0, 0, 0.06);
     }
   }
 
@@ -358,16 +439,15 @@
   }
 
   /* --------------------------------------------------------------- */
-  /* Scroll Reveal System, driven by IntersectionObserver            */
+  /* Apparition au défilement (IntersectionObserver)                 */
   /* --------------------------------------------------------------- */
 
   .reveal {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(16px);
     transition:
-      opacity 0.8s var(--ease-out-expo),
-      transform 0.8s var(--ease-out-expo);
-    will-change: opacity, transform;
+      opacity 0.7s var(--ease-out-expo),
+      transform 0.7s var(--ease-out-expo);
   }
 
   .reveal.revealed {
@@ -375,24 +455,18 @@
     transform: translateY(0);
   }
 
-  /* Stagger delays for grid children */
+  /* Décalage en cascade des enfants d'une grille */
   .reveal-stagger > .reveal:nth-child(1) { transition-delay: 0ms; }
-  .reveal-stagger > .reveal:nth-child(2) { transition-delay: 60ms; }
-  .reveal-stagger > .reveal:nth-child(3) { transition-delay: 120ms; }
-  .reveal-stagger > .reveal:nth-child(4) { transition-delay: 180ms; }
-  .reveal-stagger > .reveal:nth-child(5) { transition-delay: 240ms; }
-  .reveal-stagger > .reveal:nth-child(6) { transition-delay: 300ms; }
-  .reveal-stagger > .reveal:nth-child(7) { transition-delay: 360ms; }
-  .reveal-stagger > .reveal:nth-child(8) { transition-delay: 420ms; }
-  .reveal-stagger > .reveal:nth-child(9) { transition-delay: 480ms; }
-  .reveal-stagger > .reveal:nth-child(10) { transition-delay: 540ms; }
-  .reveal-stagger > .reveal:nth-child(n+11) { transition-delay: 600ms; }
+  .reveal-stagger > .reveal:nth-child(2) { transition-delay: 50ms; }
+  .reveal-stagger > .reveal:nth-child(3) { transition-delay: 100ms; }
+  .reveal-stagger > .reveal:nth-child(4) { transition-delay: 150ms; }
+  .reveal-stagger > .reveal:nth-child(5) { transition-delay: 200ms; }
+  .reveal-stagger > .reveal:nth-child(6) { transition-delay: 250ms; }
+  .reveal-stagger > .reveal:nth-child(n+7) { transition-delay: 300ms; }
 
-  /* Reveal variants */
   .reveal-fade {
     opacity: 0;
-    transition: opacity 0.8s var(--ease-out-expo);
-    will-change: opacity;
+    transition: opacity 0.7s var(--ease-out-expo);
   }
   .reveal-fade.revealed {
     opacity: 1;
@@ -400,11 +474,10 @@
 
   .reveal-scale {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.97);
     transition:
-      opacity 0.7s var(--ease-out-expo),
-      transform 0.7s var(--ease-spring);
-    will-change: opacity, transform;
+      opacity 0.6s var(--ease-out-expo),
+      transform 0.6s var(--ease-out-expo);
   }
   .reveal-scale.revealed {
     opacity: 1;
@@ -413,11 +486,10 @@
 
   .reveal-slide-left {
     opacity: 0;
-    transform: translateX(-30px);
+    transform: translateX(-20px);
     transition:
-      opacity 0.7s var(--ease-out-expo),
-      transform 0.7s var(--ease-out-expo);
-    will-change: opacity, transform;
+      opacity 0.6s var(--ease-out-expo),
+      transform 0.6s var(--ease-out-expo);
   }
   .reveal-slide-left.revealed {
     opacity: 1;
@@ -425,13 +497,13 @@
   }
 
   /* --------------------------------------------------------------- */
-  /* Animations éditoriales, page load (kept for hero etc.)          */
+  /* Apparition au chargement (hero)                                  */
   /* --------------------------------------------------------------- */
 
   .fade-rise {
     opacity: 0;
-    transform: translateY(12px);
-    animation: fade-rise 0.9s var(--ease-editorial) forwards;
+    transform: translateY(10px);
+    animation: fade-rise 0.8s var(--ease-editorial) forwards;
   }
   .fade-rise-delay-1 {
     animation-delay: 0.05s;
@@ -454,67 +526,33 @@
   }
 
   /* --------------------------------------------------------------- */
-  /* Micro-interactions, Buttons                                     */
+  /* Micro-interactions, boutons hérités                              */
   /* --------------------------------------------------------------- */
 
   .btn-interactive {
     position: relative;
     overflow: hidden;
     transition:
-      background-color 250ms var(--ease-out-expo),
-      border-color 250ms var(--ease-out-expo),
-      color 250ms var(--ease-out-expo),
-      transform 250ms var(--ease-out-expo),
-      box-shadow 250ms var(--ease-out-expo);
+      background-color 200ms var(--ease-out-expo),
+      border-color 200ms var(--ease-out-expo),
+      color 200ms var(--ease-out-expo),
+      transform 160ms var(--ease-out-expo);
   }
 
-  @media (hover: hover) {
-    .btn-interactive:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.2);
-    }
-    .btn-interactive:active {
-      transform: translateY(0) scale(0.97);
-      transition-duration: 100ms;
-      box-shadow: none;
-    }
+  .btn-interactive:active {
+    transform: scale(0.97);
   }
 
-  /* Primary button accent glow */
   .btn-glow {
     position: relative;
   }
-  .btn-glow::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    opacity: 0;
-    box-shadow: 0 0 20px 4px var(--glow-accent-strong);
-    transition: opacity 350ms var(--ease-out-expo);
-    pointer-events: none;
-  }
-  @media (hover: hover) {
-    .btn-glow:hover::after {
-      opacity: 1;
-    }
-  }
-
-  /* --------------------------------------------------------------- */
-  /* Tag / Badge pulse on accent                                      */
-  /* --------------------------------------------------------------- */
 
   .tag-pulse {
-    animation: tag-pulse 3s ease-in-out infinite;
-  }
-
-  @keyframes tag-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
+    animation: none;
   }
 
   /* --------------------------------------------------------------- */
-  /* Navigation, scroll state + mobile menu animation                */
+  /* Navigation                                                       */
   /* --------------------------------------------------------------- */
 
   .nav-header {
@@ -524,20 +562,32 @@
       box-shadow 250ms var(--ease-out-expo);
   }
 
-  .nav-header.scrolled {
-    box-shadow: 0 1px 10px -2px rgba(0, 0, 0, 0.12);
+  /* Ombre de la barre une fois la page défilée : pilotée par le défilement, sans JavaScript */
+  @supports (animation-timeline: scroll()) {
+    .nav-header {
+      animation: nav-elevate linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 48px;
+    }
+    @keyframes nav-elevate {
+      from {
+        box-shadow: 0 0 0 rgba(28, 36, 18, 0);
+      }
+      to {
+        box-shadow: 0 8px 24px -16px rgba(28, 36, 18, 0.22);
+      }
+    }
   }
 
-  /* Mobile menu dropdown animation */
   .mobile-menu {
     transform-origin: top right;
-    animation: menu-enter 300ms var(--ease-out-expo) forwards;
+    animation: menu-enter 220ms var(--ease-out-expo) forwards;
   }
 
   @keyframes menu-enter {
     from {
       opacity: 0;
-      transform: scale(0.95) translateY(-5px);
+      transform: scale(0.97) translateY(-4px);
     }
     to {
       opacity: 1;
@@ -545,61 +595,45 @@
     }
   }
 
-  /* Nav link underline animation */
   .nav-link {
     position: relative;
-  }
-  .nav-link::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    right: 50%;
-    height: 1.5px;
-    background: var(--color-accent);
+    border-radius: 999px;
     transition:
-      left 300ms var(--ease-out-expo),
-      right 300ms var(--ease-out-expo);
-    border-radius: 1px;
+      color 150ms var(--ease-out-expo),
+      background-color 150ms var(--ease-out-expo);
   }
   @media (hover: hover) {
-    .nav-link:hover::after {
-      left: 12px;
-      right: 12px;
+    .nav-link:hover {
+      background-color: var(--color-bg-subtle);
     }
   }
-  .nav-link[aria-current="page"]::after {
-    left: 12px;
-    right: 12px;
-    background: var(--color-text);
-  }
 
-  /* Dropdown Styles */
   .nav-dropdown-group {
     position: relative;
   }
 
   .nav-dropdown-menu {
     position: absolute;
-    left: 0;
-    transform: scale(0.95) translateY(-4px);
+    left: 50%;
     top: 100%;
-    margin-top: 0.25rem;
-    width: 15rem;
-    background-color: var(--color-bg-elevated);
+    margin-top: 0.5rem;
+    width: 20rem;
+    background-color: var(--color-surface-elevated);
     border: 1px solid var(--color-border);
     padding: 0.375rem;
-    border-radius: var(--radius-tile-sm);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 16px -6px rgba(0, 0, 0, 0.05);
+    border-radius: var(--radius-tile);
+    box-shadow: var(--shadow-lg);
     opacity: 0;
     pointer-events: none;
-    transition: 
-      opacity 200ms cubic-bezier(0.16, 1, 0.3, 1),
-      transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(-50%) translateY(-4px) scale(0.98);
+    transform-origin: top center;
+    transition:
+      opacity 180ms var(--ease-out-expo),
+      transform 180ms var(--ease-out-expo);
     z-index: 50;
-    backdrop-filter: blur(12px);
   }
 
+  /* Pont invisible entre le bouton et le menu pour ne pas le perdre au survol */
   .nav-dropdown-menu::before {
     content: "";
     position: absolute;
@@ -607,14 +641,13 @@
     left: 0;
     right: 0;
     height: 12px;
-    background: transparent;
   }
 
   .nav-dropdown-group:hover .nav-dropdown-menu,
   .nav-dropdown-group:focus-within .nav-dropdown-menu {
     opacity: 1;
     pointer-events: auto;
-    transform: scale(1) translateY(0);
+    transform: translateX(-50%) translateY(0) scale(1);
   }
 
   /* Menu refermé au clavier (Échap) tant que le focus reste sur le bouton */
@@ -629,112 +662,63 @@
   }
 
   .nav-dropdown-item {
-    display: block;
-    padding: 0.5rem 0.75rem;
-    font-size: 0.875rem;
-    color: var(--color-text-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    padding: 0.625rem 0.75rem;
     border-radius: var(--radius-tile-sm);
-    transition: 
-      color 150ms var(--ease-out-expo),
-      background-color 150ms var(--ease-out-expo);
+    transition: background-color 150ms var(--ease-out-expo);
   }
-
-  .nav-dropdown-item:hover {
+  .nav-dropdown-item-title {
+    font-size: 0.875rem;
+    font-weight: 550;
     color: var(--color-text);
+    letter-spacing: -0.01em;
+  }
+  .nav-dropdown-item-desc {
+    font-size: 0.8125rem;
+    line-height: 1.35;
+    color: var(--color-text-faint);
+  }
+  .nav-dropdown-item:hover {
     background-color: var(--color-bg-subtle);
   }
-
   .nav-dropdown-item.active {
-    color: var(--color-accent);
     background-color: var(--color-surface-accent);
-    font-weight: 500;
   }
-
-  /* CTA Button "Trouver mon VE" */
-  .nav-cta-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem 1.25rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    border-radius: 9999px;
-    background-color: var(--color-accent);
-    color: var(--color-accent-on);
-    transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 2px 8px -2px rgba(58, 92, 18, 0.25);
-  }
-
-  .nav-cta-btn:hover {
-    background-color: var(--color-accent-dim);
-    color: var(--color-accent-on);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px -2px rgba(58, 92, 18, 0.35);
-  }
-
-  .nav-cta-btn:active {
-    transform: translateY(0);
+  .nav-dropdown-item.active .nav-dropdown-item-title {
+    color: var(--color-accent);
   }
 
   /* --------------------------------------------------------------- */
-  /* Footer link hover effect                                         */
+  /* Pied de page                                                     */
   /* --------------------------------------------------------------- */
 
   .footer-link {
-    position: relative;
-    transition: color 200ms var(--ease-out-expo);
-  }
-  .footer-link::after {
-    content: "";
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--color-accent);
-    transition: width 300ms var(--ease-out-expo);
-  }
-  @media (hover: hover) {
-    .footer-link:hover::after {
-      width: 100%;
-    }
+    transition: color 150ms var(--ease-out-expo);
   }
 
   /* --------------------------------------------------------------- */
-  /* Arrow animation for link tiles                                   */
+  /* Flèche des liens-tuiles                                          */
   /* --------------------------------------------------------------- */
 
   .arrow-animate {
     display: inline-block;
-    transition: transform 350ms var(--ease-out-expo);
+    transition: transform 300ms var(--ease-out-expo);
   }
   @media (hover: hover) {
     a:hover > .arrow-animate,
     a:hover .arrow-animate {
-      transform: translateX(4px);
+      transform: translateX(3px);
     }
   }
 
   /* --------------------------------------------------------------- */
-  /* Stat counter animation                                           */
-  /* --------------------------------------------------------------- */
-
-  .stat-counter {
-    display: inline-block;
-    transition: transform 400ms var(--ease-spring);
-  }
-  .stat-counter.counting {
-    transform: scale(1.05);
-  }
-
-  /* --------------------------------------------------------------- */
-  /* Table row hover animation                                        */
+  /* Survol des lignes de tableau                                     */
   /* --------------------------------------------------------------- */
 
   .row-hover {
-    transition:
-      background-color 200ms var(--ease-out-expo),
-      transform 200ms var(--ease-out-expo);
+    transition: background-color 150ms var(--ease-out-expo);
   }
   @media (hover: hover) {
     .row-hover:hover {
@@ -743,59 +727,50 @@
   }
 
   /* --------------------------------------------------------------- */
-  /* Reading progress bar                                             */
+  /* Barre de progression de lecture : pilotée par le défilement     */
+  /* (CSS scroll-driven animations, masquée si non supporté)          */
   /* --------------------------------------------------------------- */
 
   .reading-progress {
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
     height: 2px;
-    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-dim));
+    background: var(--color-accent);
     z-index: 50;
     transform-origin: left;
     transform: scaleX(0);
-    transition: transform 100ms linear;
     pointer-events: none;
   }
-
-  /* --------------------------------------------------------------- */
-  /* Smooth divider animation                                         */
-  /* --------------------------------------------------------------- */
+  @supports (animation-timeline: scroll()) {
+    .reading-progress {
+      animation: reading-progress linear both;
+      animation-timeline: scroll(root);
+    }
+    @keyframes reading-progress {
+      to {
+        transform: scaleX(1);
+      }
+    }
+  }
 
   .divider-animated {
     position: relative;
-    overflow: hidden;
-  }
-  .divider-animated::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 60px;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
-    opacity: 0.4;
-    animation: divider-shimmer 4s var(--ease-out-expo) infinite;
-  }
-
-  @keyframes divider-shimmer {
-    0% { left: -100%; }
-    100% { left: 200%; }
   }
 
   /* --------------------------------------------------------------- */
-  /* Source tooltip animation                                         */
+  /* Info-bulle des sources                                          */
   /* --------------------------------------------------------------- */
 
   .tooltip-enter {
-    animation: tooltip-pop 250ms var(--ease-spring) forwards;
+    animation: tooltip-pop 200ms var(--ease-out-expo) forwards;
   }
 
   @keyframes tooltip-pop {
     from {
       opacity: 0;
-      transform: translateX(-50%) translateY(-4px) scale(0.96);
+      transform: translateX(-50%) translateY(-4px) scale(0.97);
     }
     to {
       opacity: 1;
@@ -804,32 +779,27 @@
   }
 
   /* --------------------------------------------------------------- */
-  /* View Transitions, Astro                                         */
+  /* View Transitions (Astro)                                         */
   /* --------------------------------------------------------------- */
 
   ::view-transition-old(root) {
-    animation: page-out 250ms var(--ease-out-expo) forwards;
+    animation: page-out 180ms var(--ease-out-expo) forwards;
   }
 
   ::view-transition-new(root) {
-    animation: page-in 350ms var(--ease-out-expo) forwards;
+    animation: page-in 300ms var(--ease-out-expo) forwards;
   }
 
   @keyframes page-out {
-    from {
-      opacity: 1;
-      transform: translateY(0);
-    }
     to {
       opacity: 0;
-      transform: translateY(-8px);
     }
   }
 
   @keyframes page-in {
     from {
       opacity: 0;
-      transform: translateY(12px);
+      transform: translateY(8px);
     }
     to {
       opacity: 1;
@@ -838,7 +808,7 @@
   }
 
   /* --------------------------------------------------------------- */
-  /* Reduced motion, disable ALL animations                          */
+  /* Mobile et mouvement réduit                                       */
   /* --------------------------------------------------------------- */
 
   @media (max-width: 767px) {
@@ -873,6 +843,10 @@
       transition: none;
     }
 
+    .reading-progress {
+      display: none;
+    }
+
     *,
     *::before,
     *::after {
@@ -883,11 +857,11 @@
 }
 
 /* ----------------------------------------------------------------- */
-/* Info-bulles du Glossaire (Tooltips)                                */
+/* Info-bulles du Glossaire                                           */
 /* ----------------------------------------------------------------- */
 
 .glossary-highlight {
-  border-bottom: 1.5px dashed var(--color-accent);
+  border-bottom: 1.5px dashed color-mix(in srgb, var(--color-accent) 70%, transparent);
   cursor: help;
   position: relative;
   transition: color 0.2s ease, border-color 0.2s ease;
@@ -901,12 +875,12 @@
 #glossary-tooltip {
   position: absolute;
   z-index: 9999;
-  background-color: var(--color-surface);
+  background-color: var(--color-surface-elevated);
   border: 1px solid var(--color-border);
-  border-radius: 12px;
+  border-radius: var(--radius-tile-sm);
   padding: 14px;
   width: 280px;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-lg);
   font-family: var(--font-sans);
   font-size: 12px;
   line-height: 1.5;
@@ -922,4 +896,3 @@
   opacity: 1;
   transform: translateY(0);
 }
-

@@ -25,18 +25,22 @@ const eurFmt = new Intl.NumberFormat("fr-FR", {
   maximumFractionDigits: 0,
 });
 
+// Intl sépare les milliers par une espace fine (U+202F), quasi invisible en Geist avec un
+// interlettrage serré : on lui substitue l'espace insécable classique (U+00A0).
+const widen = (s: string) => s.replace(/ /g, " ");
+
 export function formatPrice(value: number): string {
-  return eurFmt.format(value);
+  return widen(eurFmt.format(value));
 }
 
 export function formatNumber(value: number, decimals: 0 | 1 | 2 = 0): string {
-  if (decimals === 1) return numberFmt1.format(value);
-  if (decimals === 2) return numberFmt2.format(value);
-  return numberFmt.format(value);
+  if (decimals === 1) return widen(numberFmt1.format(value));
+  if (decimals === 2) return widen(numberFmt2.format(value));
+  return widen(numberFmt.format(value));
 }
 
 export function formatKm(value: number): string {
-  return `${numberFmt.format(value)}${NBSP}km`;
+  return `${formatNumber(value)}${NBSP}km`;
 }
 
 export function formatKwh(value: number, decimals: 0 | 1 | 2 = 1): string {
@@ -48,23 +52,23 @@ export function formatKwhPer100(value: number): string {
 }
 
 export function formatKw(value: number): string {
-  return `${numberFmt.format(value)}${NBSP}kW`;
+  return `${formatNumber(value)}${NBSP}kW`;
 }
 
 export function formatHp(value: number): string {
-  return `${numberFmt.format(value)}${NBSP}ch`;
+  return `${formatNumber(value)}${NBSP}ch`;
 }
 
 export function formatNm(value: number): string {
-  return `${numberFmt.format(value)}${NBSP}Nm`;
+  return `${formatNumber(value)}${NBSP}Nm`;
 }
 
 export function formatSeconds(value: number): string {
-  return `${numberFmt1.format(value)}${NBSP}s`;
+  return `${formatNumber(value, 1)}${NBSP}s`;
 }
 
 export function formatMinutes(value: number): string {
-  return `${numberFmt.format(value)}${NBSP}min`;
+  return `${formatNumber(value)}${NBSP}min`;
 }
 
 export function formatHours(value: number): string {
@@ -76,15 +80,15 @@ export function formatHours(value: number): string {
 }
 
 export function formatMm(value: number): string {
-  return `${numberFmt.format(value)}${NBSP}mm`;
+  return `${formatNumber(value)}${NBSP}mm`;
 }
 
 export function formatLiters(value: number): string {
-  return `${numberFmt.format(value)}${NBSP}L`;
+  return `${formatNumber(value)}${NBSP}L`;
 }
 
 export function formatPercent(value: number): string {
-  return `${numberFmt.format(value)}${NBSP}%`;
+  return `${formatNumber(value)}${NBSP}%`;
 }
 
 export function formatDate(iso: string): string {
@@ -97,5 +101,5 @@ export function formatDate(iso: string): string {
 }
 
 export function formatVoltage(value: number): string {
-  return `${numberFmt.format(value)}${NBSP}V`;
+  return `${formatNumber(value)}${NBSP}V`;
 }

@@ -72,7 +72,7 @@ const combinedJsonLd = jsonLd
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#f3f4f0" />
 
     <ViewTransitions />
 
@@ -112,7 +112,7 @@ const combinedJsonLd = jsonLd
     <!-- Sans JavaScript, les blocs animés au défilement restent visibles -->
     <noscript>
       <style>
-        .reveal, .reveal-fade, .reveal-scale, .reveal-slide-left, .fade-rise { opacity: 1 !important; transform: none !important; }
+        .reveal, .reveal-fade, .reveal-scale, .reveal-slide-left, .fade-rise, .gap-seg, .gap-dot-wltp { opacity: 1 !important; transform: none !important; }
       </style>
     </noscript>
 
@@ -185,40 +185,7 @@ const combinedJsonLd = jsonLd
         elements.forEach((el) => observer.observe(el));
       }
 
-      // ------ Reading Progress Bar ------
-      function setupProgress() {
-        const bar = document.getElementById('reading-progress');
-        if (!bar) return;
-
-        let ticking = false;
-        window.addEventListener('scroll', () => {
-          if (!ticking) {
-            window.requestAnimationFrame(() => {
-              const scrollTop = window.scrollY;
-              const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-              const progress = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
-              bar.style.transform = `scaleX(${progress})`;
-              ticking = false;
-            });
-            ticking = true;
-          }
-        }, { passive: true });
-      }
-
-      // ------ Nav Scroll State ------
-      function setupNavScroll() {
-        const nav = document.querySelector('.nav-header');
-        if (!nav) return;
-
-        let scrolled = false;
-        window.addEventListener('scroll', () => {
-          const isScrolled = window.scrollY > 10;
-          if (isScrolled !== scrolled) {
-            scrolled = isScrolled;
-            nav.classList.toggle('scrolled', scrolled);
-          }
-        }, { passive: true });
-      }
+      // Barre de progression et ombre de la navigation : pilotées en CSS par le défilement (global.css)
 
       // ------ Stat counter animation ------
       function setupCounters() {
@@ -544,8 +511,6 @@ const combinedJsonLd = jsonLd
       function runAll() {
         if (!isReducedMotion()) {
           setupReveal();
-          setupProgress();
-          setupNavScroll();
           setupCounters();
         }
         initGlossary();

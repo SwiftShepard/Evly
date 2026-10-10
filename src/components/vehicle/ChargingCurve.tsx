@@ -86,8 +86,8 @@ export default function ChargingCurve({
         bodyColor: c["--color-text-muted"] || "#9b9b95",
         padding: 12,
         displayColors: false,
-        titleFont: { family: "JetBrains Mono Variable", size: 11, weight: 500 },
-        bodyFont: { family: "JetBrains Mono Variable", size: 12 },
+        titleFont: { family: "Geist Mono Variable", size: 11, weight: 500 },
+        bodyFont: { family: "Geist Mono Variable", size: 12 },
         callbacks: {
           title: (items) => `SoC ${items[0]?.label ?? ""}`,
           label: (ctx) => `${ctx.parsed.y} kW`,
@@ -100,7 +100,7 @@ export default function ChargingCurve({
         border: { color: c["--color-border"] || "#2a2a30" },
         ticks: {
           color: c["--color-text-faint"] || "#5c5c58",
-          font: { family: "JetBrains Mono Variable", size: 10 },
+          font: { family: "Geist Mono Variable", size: 10 },
           autoSkipPadding: 14,
         },
       },
@@ -111,7 +111,7 @@ export default function ChargingCurve({
         border: { display: false },
         ticks: {
           color: c["--color-text-faint"] || "#5c5c58",
-          font: { family: "JetBrains Mono Variable", size: 10 },
+          font: { family: "Geist Mono Variable", size: 10 },
           callback: (val) => `${val} kW`,
           stepSize: yMax > 100 ? 30 : 20,
         },
