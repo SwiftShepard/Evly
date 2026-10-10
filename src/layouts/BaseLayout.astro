@@ -76,11 +76,26 @@ const combinedJsonLd = jsonLd
 
     <ViewTransitions />
 
-    <!-- Privacy-friendly analytics by Plausible -->
+    <!-- Mesure d'audience Plausible : sans cookie, refusable sur /cookies/ (clé plausible_ignore) -->
     <script async src="https://plausible.io/js/pa-hRCCTbmL-wrKQizAOMhSW.js"></script>
     <script is:inline>
       window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-      plausible.init()
+      plausible.init({
+        transformRequest: function (payload) {
+          // Signal Global Privacy Control : aucun envoi
+          if (navigator.globalPrivacyControl === true) return null;
+          // Minimisation : l'URL part sans ancre ni paramètres (réglages de simulateurs, filtres), hors utm_*
+          try {
+            var u = new URL(payload.u);
+            var kept = new URLSearchParams();
+            u.searchParams.forEach(function (v, k) { if (/^utm_/.test(k)) kept.append(k, v); });
+            u.search = kept.toString();
+            u.hash = "";
+            payload.u = u.toString();
+          } catch (e) {}
+          return payload;
+        }
+      })
     </script>
 
     <title>{fullTitle}</title>
@@ -92,6 +107,14 @@ const combinedJsonLd = jsonLd
     />
 
     <link rel="icon" type="image/svg+xml" href={url("/favicon.svg")} />
+    <link rel="alternate" type="text/plain" href={url("/llms.txt")} title="Résumé du site pour les assistants IA" />
+
+    <!-- Sans JavaScript, les blocs animés au défilement restent visibles -->
+    <noscript>
+      <style>
+        .reveal, .reveal-fade, .reveal-scale, .reveal-slide-left, .fade-rise { opacity: 1 !important; transform: none !important; }
+      </style>
+    </noscript>
 
     <!-- Open Graph -->
     <meta property="og:type" content={ogType} />
@@ -519,6 +542,14 @@ const combinedJsonLd = jsonLd
             highlight.dataset.definition || "",
             highlight.dataset.slug
           );
+        }
+      });
+
+      // Échap masque la définition affichée au survol (WCAG 1.4.13)
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && tooltipEl?.classList.contains('visible')) {
+          activeHighlight = null;
+          hideTooltip();
         }
       });
 

@@ -617,6 +617,12 @@
     transform: scale(1) translateY(0);
   }
 
+  /* Menu refermé au clavier (Échap) tant que le focus reste sur le bouton */
+  .nav-dropdown-group.is-dismissed .nav-dropdown-menu {
+    opacity: 0;
+    pointer-events: none;
+  }
+
   .nav-dropdown-group:hover .chevron,
   .nav-dropdown-group:focus-within .chevron {
     transform: rotate(180deg);

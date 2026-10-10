@@ -333,7 +333,7 @@ export default function ComparisonTable({ cards, onRemove, onConfigChange, onAdd
           className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors"
           style={{ backgroundColor: "var(--color-bg-subtle)", color: "var(--color-text-muted)" }}
         >
-          <Plus size={14} />
+          <Plus aria-hidden="true" size={14} />
           Ajouter un véhicule
         </button>
       </div>
@@ -421,7 +421,7 @@ export default function ComparisonTable({ cards, onRemove, onConfigChange, onAdd
                       }}
                       aria-label={`Retirer ${card.vehicle.model}`}
                     >
-                      <X size={13} strokeWidth={1.8} />
+                      <X aria-hidden="true" size={13} strokeWidth={1.8} />
                     </button>
                   </div>
 
@@ -482,7 +482,7 @@ export default function ComparisonTable({ cards, onRemove, onConfigChange, onAdd
                   }}
                   aria-label="Ajouter un véhicule"
                 >
-                  <Plus size={14} />
+                  <Plus aria-hidden="true" size={14} />
                 </button>
               </th>
             )}
@@ -572,7 +572,7 @@ export default function ComparisonTable({ cards, onRemove, onConfigChange, onAdd
                                   className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[var(--color-surface-accent)] text-[var(--color-accent)] border border-[rgba(58,92,18,0.15)] ml-1"
                                   title={row.bestIsMax ? "Meilleur de la sélection" : "Moins cher / avantageux"}
                                 >
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                  <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                                 </span>
                               )}
                             </div>

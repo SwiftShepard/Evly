@@ -99,14 +99,16 @@ export default function CeeSimulator({ vehicle }: Props) {
           /* État non configuré : Appel à l'action sobre et léger */
           <div className="flex flex-col gap-3">
             <div className="flex flex-col gap-1">
-              <h5 className="font-display text-sm font-bold text-[var(--color-text)]">
+              <h3 className="font-display text-sm font-bold text-[var(--color-text)]">
                 Calculez vos aides personnalisées
-              </h5>
+              </h3>
               <p className="text-xs text-[var(--color-text-muted)] leading-normal">
                 Vos aides d'État varient selon vos revenus (RFR) et votre foyer.
               </p>
             </div>
             <button
+              type="button"
+              aria-haspopup="dialog"
               onClick={() => setIsModalOpen(true)}
               className="w-full py-2 px-3 text-xs font-semibold rounded-xl border border-[var(--color-border-strong)] text-[var(--color-text)] bg-[var(--color-bg-subtle)] hover:bg-neutral-100 hover:border-neutral-400 transition-all cursor-pointer text-center"
             >
@@ -144,6 +146,8 @@ export default function CeeSimulator({ vehicle }: Props) {
             <div className="flex justify-between items-center text-[10px] text-[var(--color-text-muted)] pt-3 border-t border-[var(--color-border)]">
               <span>{getCategoryLabel()}</span>
               <button
+                type="button"
+                aria-haspopup="dialog"
                 onClick={() => setIsModalOpen(true)}
                 className="text-[var(--color-accent)] font-semibold hover:underline cursor-pointer bg-transparent border-none p-0"
               >
@@ -154,7 +158,7 @@ export default function CeeSimulator({ vehicle }: Props) {
         )}
 
         {!isEligible && (
-          <div className="text-[10px] text-red-600 bg-red-50 border border-red-100 p-2 rounded-lg leading-normal">
+          <div className="text-[10px] text-red-700 bg-red-50 border border-red-100 p-2 rounded-lg leading-normal">
             ⚠️ Ce modèle n'est pas éligible au dispositif CEE 2026 (prix &gt; 47 k€, poids &ge; 2,4 t ou production hors UE).
           </div>
         )}

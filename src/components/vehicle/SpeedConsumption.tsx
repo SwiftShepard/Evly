@@ -174,9 +174,9 @@ export default function SpeedConsumption({
     <div
       className="relative h-72 md:h-80 lg:h-96 w-full"
       role="img"
-      aria-label={`Consommation du ${vehicleName} en fonction de la vitesse, agrégée depuis ${datasets.length} source(s). Légende cliquable pour filtrer.`}
+      aria-label={`Consommation du ${vehicleName} en fonction de la vitesse, agrégée depuis ${datasets.length} source(s).`}
     >
-      <Scatter data={{ datasets }} options={options} />
+      <Scatter data={{ datasets }} options={options} aria-hidden="true" />
     </div>
   );
 }

@@ -229,7 +229,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
           }}
         >
           <div className="absolute top-4 right-4 animate-pulse">
-            <Sparkles size={28} className="text-[var(--color-accent)] opacity-80" />
+            <Sparkles aria-hidden="true" size={28} className="text-[var(--color-accent)] opacity-80" />
           </div>
           <div className="flex items-center gap-3 mb-6">
             <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-text-faint)]">Diagnostic d'Achat</span>
@@ -275,7 +275,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
               className="btn-interactive btn-glow inline-flex items-center gap-2 px-6 py-3.5 bg-[var(--color-accent)] text-[var(--color-accent-on)] text-sm font-semibold tracking-tight rounded-xl shadow-lg transition-all"
             >
               Lancer le matcher
-              <ArrowRight size={15} />
+              <ArrowRight aria-hidden="true" size={15} />
             </button>
           </div>
         </div>
@@ -310,7 +310,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
               onClick={goToPrev}
               className="flex items-center gap-1.5 px-4 py-2 border border-[var(--color-border-strong)] rounded-lg text-xs font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-bg-subtle)] transition-colors"
             >
-              <ArrowLeft size={13} />
+              <ArrowLeft aria-hidden="true" size={13} />
               Retour
             </button>
 
@@ -319,7 +319,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
               className="btn-interactive inline-flex items-center gap-1.5 px-5 py-2.5 bg-[var(--color-accent)] text-[var(--color-accent-on)] text-xs font-semibold rounded-lg shadow transition-colors"
             >
               {step === 12 ? "Découvrir mes résultats" : "Suivant"}
-              <ArrowRight size={13} />
+              <ArrowRight aria-hidden="true" size={13} />
             </button>
           </div>
         </div>

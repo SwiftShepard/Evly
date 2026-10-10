@@ -1,0 +1,116 @@
+---
+import LegalPage from "@/components/legal/LegalPage.astro";
+import { PUBLISHER, mailto } from "@/data/legal";
+import { url } from "@/lib/url";
+
+const sections = [
+  { id: "objet", title: "Objet" },
+  { id: "acces", title: "Accès au site" },
+  { id: "informations", title: "Nature des informations" },
+  { id: "comparateur", title: "Fonctionnement du comparateur" },
+  { id: "liens", title: "Liens vers d'autres sites" },
+  { id: "responsabilite", title: "Responsabilité" },
+  { id: "propriete", title: "Propriété intellectuelle et données" },
+  { id: "evolution", title: "Évolution des conditions" },
+  { id: "droit", title: "Droit applicable" },
+];
+---
+
+<LegalPage
+  title="Conditions d'utilisation"
+  description="Conditions d'utilisation d'Evly : accès gratuit, valeur indicative des prix, autonomies et aides, fonctionnement et critères de classement du comparateur."
+  path="/conditions-utilisation/"
+  intro="Les règles d'utilisation d'Evly, comparateur gratuit et indépendant de voitures électriques. En naviguant sur le site, vous les acceptez."
+  sections={sections}
+>
+  <section id="objet" aria-labelledby="objet-titre">
+    <h2 id="objet-titre">Objet</h2>
+    <p>
+      Evly ({PUBLISHER.site}) informe sur les voitures et utilitaires électriques vendus en France : caractéristiques, autonomies
+      mesurées ou estimées, temps de recharge, prix et aides publiques, ainsi que des outils de comparaison, de simulation de coût
+      et de recommandation. Evly ne vend aucun véhicule, ne propose aucun financement et n'intervient dans aucune transaction.
+    </p>
+  </section>
+
+  <section id="acces" aria-labelledby="acces-titre">
+    <h2 id="acces-titre">Accès au site</h2>
+    <p>
+      Le site est accessible gratuitement, sans inscription. L'éditeur s'efforce de le maintenir disponible en permanence mais ne
+      peut le garantir : il peut être interrompu, notamment pour maintenance ou en cas de panne de l'hébergeur. Le rapport
+      détaillé du simulateur est gratuit pendant la phase bêta ; si une offre payante était créée, elle ferait l'objet de
+      conditions de vente distinctes portées à votre connaissance avant tout paiement.
+    </p>
+  </section>
+
+  <section id="informations" aria-labelledby="informations-titre">
+    <h2 id="informations-titre">Nature des informations</h2>
+    <p>
+      Les informations publiées sont fournies <strong>à titre indicatif</strong> et n'ont pas de valeur contractuelle :
+    </p>
+    <ul class="mt-3">
+      <li>les <strong>prix</strong> sont les prix publics communiqués par les constructeurs à la date de mise à jour indiquée sur chaque fiche, hors options et remises ; ils peuvent changer à tout moment ;</li>
+      <li>les <strong>autonomies et consommations</strong> dépendent de la température, de la vitesse, du chargement et de l'état de la batterie ; leur origine (mesure, constructeur, estimation) est indiquée pour chaque chiffre ;</li>
+      <li>les <strong>aides</strong> (prime CEE, leasing social, avantages fiscaux) relèvent de règles fixées par les pouvoirs publics, qui évoluent souvent. Leur montant et votre éligibilité ne sont confirmés que par l'organisme qui les verse ;</li>
+      <li>les <strong>simulations</strong> (coût total, aides, éligibilité, recommandation) sont des estimations fondées sur des hypothèses moyennes et sur les valeurs que vous saisissez. Elles ne constituent ni un conseil financier, fiscal ou juridique, ni une offre.</li>
+    </ul>
+    <p>
+      Avant tout achat ou engagement, vérifiez ces éléments auprès du constructeur, du vendeur et des sources officielles comme
+      <a href="https://www.service-public.fr/" rel="noopener noreferrer">service-public.fr</a>.
+    </p>
+  </section>
+
+  <section id="comparateur" aria-labelledby="comparateur-titre">
+    <h2 id="comparateur-titre">Fonctionnement du comparateur</h2>
+    <ul>
+      <li><strong>Aucune relation commerciale</strong> : Evly n'a aucun lien contractuel ou capitalistique avec les constructeurs, vendeurs ou sites cités, et ne perçoit aucune rémunération pour la présence, la position ou la mise en avant d'un véhicule.</li>
+      <li><strong>Classement</strong> : par défaut, le catalogue est trié par ordre alphabétique de marque puis de modèle. Les autres tris (prix, autonomie réelle, recharge, rapport kilomètres par euro) et les filtres sont choisis par vous et appliquent uniquement le critère affiché.</li>
+      <li><strong>Recommandation</strong> : le questionnaire attribue à chaque modèle un score calculé à partir de vos réponses (trajets, recharge, budget, gabarit, aides) et des données de sa fiche. Il tient aussi compte d'appréciations éditoriales d'Evly, établies par marque, sur l'ergonomie du logiciel et le comportement en recharge rapide. Ces règles sont les mêmes pour tous les véhicules et ne dépendent d'aucune relation commerciale.</li>
+      <li><strong>Exhaustivité</strong> : le catalogue couvre les modèles électriques suivis par Evly sur le marché français. Il peut ne pas inclure toutes les versions ou tous les modèles disponibles.</li>
+      <li><strong>Mise à jour</strong> : la date de dernière mise à jour figure sur chaque fiche. Les sources et protocoles sont décrits dans la <a href={url("/methodologie/")}>méthodologie</a>.</li>
+    </ul>
+  </section>
+
+  <section id="liens" aria-labelledby="liens-titre">
+    <h2 id="liens-titre">Liens vers d'autres sites</h2>
+    <p>
+      Les liens vers des sites tiers (sources d'essais, constructeurs, organismes publics, installateurs ou mandataires) sont
+      fournis à titre d'information et ne sont pas rémunérés. Evly ne contrôle pas ces sites et n'est pas responsable de leur
+      contenu ni de leurs pratiques.
+    </p>
+  </section>
+
+  <section id="responsabilite" aria-labelledby="responsabilite-titre">
+    <h2 id="responsabilite-titre">Responsabilité</h2>
+    <p>
+      L'éditeur apporte le plus grand soin à l'exactitude des informations et corrige toute erreur signalée. Dans les limites
+      prévues par la loi, il ne peut être tenu responsable d'une décision prise sur la seule base des informations ou
+      simulations du site, ni d'une indisponibilité temporaire. Pour signaler une erreur :
+      <a href={mailto("Evly : signalement d'erreur")}>{PUBLISHER.email}</a>.
+    </p>
+  </section>
+
+  <section id="propriete" aria-labelledby="propriete-titre">
+    <h2 id="propriete-titre">Propriété intellectuelle et données</h2>
+    <p>
+      Les règles de reproduction des contenus figurent dans les <a href={url("/mentions-legales/#propriete")}>mentions légales</a>.
+      Le traitement de vos données est décrit dans la <a href={url("/confidentialite/")}>politique de confidentialité</a> et la
+      <a href={url("/cookies/")}>politique cookies et traceurs</a>.
+    </p>
+  </section>
+
+  <section id="evolution" aria-labelledby="evolution-titre">
+    <h2 id="evolution-titre">Évolution des conditions</h2>
+    <p>
+      Ces conditions peuvent être modifiées pour suivre l'évolution du site ou de la réglementation. La version applicable est
+      celle en ligne au moment de votre visite ; sa date figure en haut de la page.
+    </p>
+  </section>
+
+  <section id="droit" aria-labelledby="droit-titre">
+    <h2 id="droit-titre">Droit applicable</h2>
+    <p>
+      Ces conditions sont régies par le droit français. En cas de différend, contactez d'abord l'éditeur pour rechercher une
+      solution amiable. À défaut, les juridictions françaises compétentes pourront être saisies.
+    </p>
+  </section>
+</LegalPage>

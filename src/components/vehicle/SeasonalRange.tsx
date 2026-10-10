@@ -143,7 +143,7 @@ export default function SeasonalRange({
       role="img"
       aria-label={`Autonomie réelle du ${vehicleName} par usage : urbain ${scaledUrban} km, mixte ${scaledMixed} km, hiver -5°C ${scaledWinter} km, autoroute 130 km/h ${scaledHighway} km.`}
     >
-      <Bar data={chartData} options={options} />
+      <Bar data={chartData} options={options} aria-hidden="true" />
     </div>
   );
 }

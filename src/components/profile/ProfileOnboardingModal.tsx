@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useId, useRef } from "react";
+import { url } from "@/lib/url";
 import { useUserProfile } from "@/lib/userProfile";
 import { getIncomeCeilings, type UserProfileType } from "@/lib/cee";
 import { formatPrice } from "@/lib/format";
@@ -14,6 +15,41 @@ export default function ProfileOnboardingModal({ isOpen, onClose }: Props) {
   const [profileType, setProfileType] = useState<UserProfileType>(profile.profileType);
   const [householdSize, setHouseholdSize] = useState<number>(profile.householdSize);
   const [taxIncome, setTaxIncome] = useState<number>(profile.taxIncome);
+
+  const titleId = useId();
+  const profileLabelId = useId();
+  const householdLabelId = useId();
+  const incomeLabelId = useId();
+  const dialogRef = useRef<HTMLDivElement>(null);
+
+  // Dialogue modal : focus à l'ouverture, Échap pour fermer, focus rendu à la fermeture
+  useEffect(() => {
+    if (!isOpen) return;
+    const previous = document.activeElement as HTMLElement | null;
+    dialogRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key !== "Tab" || !dialogRef.current) return;
+      const focusables = dialogRef.current.querySelectorAll<HTMLElement>(
+        "button:not([disabled]), select, input, a[href]"
+      );
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (!first || !last) return;
+      if (e.shiftKey && (document.activeElement === first || document.activeElement === dialogRef.current)) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      previous?.focus();
+    };
+  }, [isOpen, onClose]);
 
   // Sync state when profile loads or modal opens
   useEffect(() => {
@@ -43,17 +79,26 @@ export default function ProfileOnboardingModal({ isOpen, onClose }: Props) {
       <div 
         className="absolute inset-0 bg-black/40 backdrop-blur-xs transition-opacity"
         onClick={onClose}
+        aria-hidden="true"
       />
 
       {/* Modal Content */}
-      <div className="relative bg-white border border-[var(--color-border)] rounded-2xl p-6 md:p-8 max-w-md w-full shadow-2xl flex flex-col gap-6 animate-in fade-in zoom-in-95 duration-200 z-10">
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        tabIndex={-1}
+        className="relative bg-white border border-[var(--color-border)] rounded-2xl p-6 md:p-8 max-w-md w-full shadow-2xl flex flex-col gap-6 animate-in fade-in zoom-in-95 duration-200 z-10">
         
         {/* Close Button */}
         <button
+          type="button"
           onClick={onClose}
-          className="absolute top-4 right-4 p-1.5 rounded-lg text-neutral-400 hover:text-neutral-600 hover:bg-neutral-100 transition-all cursor-pointer"
+          aria-label="Fermer"
+          className="absolute top-4 right-4 p-1.5 rounded-lg text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 transition-all cursor-pointer"
         >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
@@ -62,21 +107,29 @@ export default function ProfileOnboardingModal({ isOpen, onClose }: Props) {
           <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-accent)] font-semibold">
             Profil local & privé
           </span>
-          <h3 className="font-display text-xl font-bold tracking-[-0.015em] text-[var(--color-text)]">
+          <h2 id={titleId} className="font-display text-xl font-bold tracking-[-0.015em] text-[var(--color-text)]">
             Votre profil fiscal
-          </h3>
+          </h2>
           <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
             Configurez votre situation une seule fois pour estimer automatiquement et précisément vos aides d'État (CEE / Coup de Pouce 2026) sur tout le site.
+          </p>
+          <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
+            Ces informations restent enregistrées dans votre navigateur : elles ne sont jamais envoyées à Evly ni à un tiers.{" "}
+            <a href={url("/confidentialite/#stockage-local")} className="underline underline-offset-2 hover:text-[var(--color-text)]">
+              En savoir plus
+            </a>
           </p>
         </div>
 
         {/* Profil selector */}
         <div className="flex flex-col gap-2">
-          <label className="font-mono text-[9px] uppercase tracking-[0.1em] text-[var(--color-text-faint)]">
+          <span id={profileLabelId} className="font-mono text-[9px] uppercase tracking-[0.1em] text-[var(--color-text-faint)]">
             Votre profil
-          </label>
-          <div className="grid grid-cols-2 gap-2">
+          </span>
+          <div className="grid grid-cols-2 gap-2" role="group" aria-labelledby={profileLabelId}>
             <button
+              type="button"
+              aria-pressed={profileType === "particular"}
               onClick={() => setProfileType("particular")}
               className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-all cursor-pointer ${
                 profileType === "particular"
@@ -89,7 +142,8 @@ export default function ProfileOnboardingModal({ isOpen, onClose }: Props) {
             <select
               value={profileType === "particular" ? "" : profileType}
               onChange={(e) => setProfileType(e.target.value as UserProfileType)}
-              className={`py-2 px-3 text-xs font-semibold rounded-lg border bg-[var(--color-bg-subtle)] text-[var(--color-text-muted)] cursor-pointer outline-none ${
+              aria-label="Profil professionnel"
+              className={`py-2 px-3 text-xs font-semibold rounded-lg border bg-[var(--color-bg-subtle)] text-[var(--color-text-muted)] cursor-pointer ${
                 profileType !== "particular"
                   ? "border-[var(--color-accent)] text-[var(--color-accent)] bg-[color-mix(in_srgb,var(--color-accent)_5%,transparent)]"
                   : "border-[var(--color-border)]"
@@ -109,18 +163,20 @@ export default function ProfileOnboardingModal({ isOpen, onClose }: Props) {
             {/* Nombre de personnes */}
             <div className="flex flex-col gap-2">
               <div className="flex justify-between items-baseline">
-                <label className="font-mono text-[9px] uppercase tracking-[0.1em] text-[var(--color-text-faint)]">
+                <span id={householdLabelId} className="font-mono text-[9px] uppercase tracking-[0.1em] text-[var(--color-text-faint)]">
                   Composition du foyer
-                </label>
+                </span>
                 <span className="font-mono text-xs font-bold text-[var(--color-text)]">
                   {householdSize} {householdSize > 1 ? "personnes" : "personne"}
                 </span>
               </div>
-              <div className="flex gap-1">
+              <div className="flex gap-1" role="group" aria-labelledby={householdLabelId}>
                 {[1, 2, 3, 4, 5, 6].map((num) => (
                   <button
                     key={num}
                     type="button"
+                    aria-pressed={householdSize === num}
+                    aria-label={num === 6 ? "6 personnes ou plus" : `${num} ${num > 1 ? "personnes" : "personne"}`}
                     onClick={() => setHouseholdSize(num)}
                     className={`flex-1 py-1.5 text-xs font-mono font-semibold rounded-md border transition-all cursor-pointer ${
                       householdSize === num
@@ -137,17 +193,19 @@ export default function ProfileOnboardingModal({ isOpen, onClose }: Props) {
             {/* RFR Input & Slider */}
             <div className="flex flex-col gap-2">
               <div className="flex justify-between items-baseline">
-                <label className="font-mono text-[9px] uppercase tracking-[0.1em] text-[var(--color-text-faint)]">
+                <label id={incomeLabelId} htmlFor={`${incomeLabelId}-input`} className="font-mono text-[9px] uppercase tracking-[0.1em] text-[var(--color-text-faint)]">
                   Revenu Fiscal de Référence (RFR)
                 </label>
                 <div className="flex items-center gap-1">
                   <input
+                    id={`${incomeLabelId}-input`}
                     type="number"
+                    inputMode="numeric"
                     value={taxIncome}
                     min={0}
                     step={500}
                     onChange={(e) => setTaxIncome(Math.max(0, parseInt(e.target.value) || 0))}
-                    className="w-20 text-right font-mono text-xs font-bold border-b border-[var(--color-border-strong)] focus:border-[var(--color-accent)] outline-none py-0.5"
+                    className="w-20 text-right font-mono text-xs font-bold border-b border-[var(--color-text-faint)] focus:border-[var(--color-accent)] py-0.5"
                   />
                   <span className="font-mono text-xs text-[var(--color-text-faint)]">€</span>
                 </div>
@@ -159,6 +217,8 @@ export default function ProfileOnboardingModal({ isOpen, onClose }: Props) {
                 step={1000}
                 value={taxIncome}
                 onChange={(e) => setTaxIncome(parseInt(e.target.value))}
+                aria-labelledby={incomeLabelId}
+                aria-valuetext={formatPrice(taxIncome)}
                 className="w-full accent-[var(--color-accent)] h-1.5 bg-neutral-100 rounded-lg appearance-none cursor-pointer"
               />
               <div className="flex justify-between text-[9px] text-[var(--color-text-faint)] font-mono">
@@ -178,12 +238,14 @@ export default function ProfileOnboardingModal({ isOpen, onClose }: Props) {
         {/* Action Buttons */}
         <div className="flex flex-col gap-2 mt-2">
           <button
+            type="button"
             onClick={handleSave}
             className="w-full py-2.5 px-4 rounded-xl font-semibold text-sm bg-[var(--color-accent)] text-white hover:bg-[var(--color-accent-dim)] transition-all cursor-pointer shadow-sm text-center"
           >
             Enregistrer les informations
           </button>
           <button
+            type="button"
             onClick={onClose}
             className="w-full py-2 px-4 rounded-xl font-semibold text-xs text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-all cursor-pointer text-center"
           >

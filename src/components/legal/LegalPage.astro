@@ -1,0 +1,206 @@
+---
+/**
+ * Gabarit commun des pages légales : fil d'Ariane, titre, date de mise à jour,
+ * sommaire des sections et liens vers les autres pages légales.
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
+import { url } from "@/lib/url";
+import { LEGAL_PAGES, LEGAL_UPDATED, formatLegalDate } from "@/data/legal";
+
+interface Props {
+  title: string;
+  description: string;
+  /** Chemin de la page, ex. "/confidentialite/" */
+  path: string;
+  intro: string;
+  sections: { id: string; title: string }[];
+}
+
+const { title, description, path, intro, sections } = Astro.props;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: title,
+  description,
+  url: new URL(url(path), Astro.site).toString(),
+  dateModified: LEGAL_UPDATED,
+  inLanguage: "fr-FR",
+  isPartOf: { "@id": `${Astro.site}#website` },
+};
+---
+
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+  <div class="container-edit pt-2 md:pt-3">
+    <Breadcrumbs items={[{ label: "Accueil", path: "/" }, { label: title }]} />
+  </div>
+
+  <article class="container-edit pt-6 pb-16 md:pt-10 md:pb-24 no-glossary">
+    <header class="max-w-3xl border-b border-[var(--color-border)] pb-8">
+      <p class="label-eyebrow">Informations légales</p>
+      <h1 class="display-2 mt-3">{title}</h1>
+      <p class="mt-4 text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed">{intro}</p>
+      <p class="mt-4 font-mono text-xs text-[var(--color-text-faint)]">
+        Dernière mise à jour : <time datetime={LEGAL_UPDATED}>{formatLegalDate()}</time>
+      </p>
+    </header>
+
+    <div class="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <nav aria-label="Sommaire de la page" class="lg:col-span-3 lg:sticky lg:top-24 self-start">
+        <p class="label-eyebrow mb-3">Sommaire</p>
+        <ol class="flex flex-col gap-1 text-sm">
+          {sections.map((s, i) => (
+            <li>
+              <a href={`#${s.id}`} class="inline-flex gap-2 py-1 text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:underline">
+                <span class="font-mono text-xs text-[var(--color-text-faint)] pt-0.5" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+                {s.title}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <div class="legal-prose lg:col-span-8 lg:col-start-5">
+        <slot />
+      </div>
+    </div>
+
+    <nav aria-label="Autres pages légales" class="mt-16 pt-8 border-t border-[var(--color-border)]">
+      <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+        {LEGAL_PAGES.map((p) => (
+          <li>
+            {p.path === path ? (
+              <span class="text-[var(--color-text)] font-medium" aria-current="page">{p.label}</span>
+            ) : (
+              <a href={url(p.path)} class="text-[var(--color-text-muted)] underline underline-offset-2 hover:text-[var(--color-text)]">{p.label}</a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </article>
+</BaseLayout>
+
+<style is:global>
+  .legal-prose {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    line-height: 1.75;
+    max-width: 46rem;
+  }
+  .legal-prose > section + section {
+    margin-top: 3rem;
+  }
+  .legal-prose section {
+    scroll-margin-top: 6rem;
+  }
+  .legal-prose h2 {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 600;
+    letter-spacing: var(--tracking-section);
+    line-height: 1.25;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+  .legal-prose h3 {
+    font-family: var(--font-display);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .legal-prose p + p,
+  .legal-prose p + ul,
+  .legal-prose ul + p,
+  .legal-prose p + .legal-table-wrap,
+  .legal-prose .legal-table-wrap + p {
+    margin-top: 0.875rem;
+  }
+  .legal-prose ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+  .legal-prose a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .legal-prose a:hover {
+    text-decoration: none;
+  }
+  .legal-prose strong {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+  .legal-prose code {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--color-text);
+    background: var(--color-bg-subtle);
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+    overflow-wrap: anywhere;
+  }
+  .legal-prose dl {
+    display: grid;
+    grid-template-columns: minmax(0, 11rem) minmax(0, 1fr);
+    gap: 0.5rem 1.25rem;
+  }
+  .legal-prose dt {
+    color: var(--color-text);
+    font-weight: 500;
+  }
+  .legal-prose dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+  @media (max-width: 640px) {
+    .legal-prose dl {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.125rem;
+    }
+    .legal-prose dd + dt {
+      margin-top: 0.75rem;
+    }
+  }
+  .legal-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-tile-sm);
+  }
+  .legal-prose table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    line-height: 1.55;
+  }
+  .legal-prose th,
+  .legal-prose td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.75rem 0.875rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .legal-prose tr:last-child td {
+    border-bottom: none;
+  }
+  .legal-prose th {
+    color: var(--color-text);
+    font-weight: 600;
+    background: var(--color-bg-subtle);
+  }
+  .legal-prose .legal-note {
+    margin-top: 1rem;
+    padding: 1rem 1.125rem;
+    background: var(--color-surface-accent);
+    border-radius: var(--radius-tile-sm);
+    color: var(--color-text);
+    font-size: 0.9375rem;
+  }
+</style>

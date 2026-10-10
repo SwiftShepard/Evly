@@ -1,0 +1,71 @@
+---
+import LegalPage from "@/components/legal/LegalPage.astro";
+import { PUBLISHER, mailto } from "@/data/legal";
+import { url } from "@/lib/url";
+
+const sections = [
+  { id: "engagement", title: "Engagement" },
+  { id: "mesures", title: "Ce qui est en place" },
+  { id: "limites", title: "Limites connues" },
+  { id: "agents", title: "Lecture par les outils automatiques" },
+  { id: "signaler", title: "Signaler un problème" },
+];
+---
+
+<LegalPage
+  title="Accessibilité"
+  description="Ce qu'Evly met en place pour être utilisable au clavier, avec un lecteur d'écran ou par un assistant IA, ses limites connues et comment signaler un problème."
+  path="/accessibilite/"
+  intro="Evly vise à être utilisable par tous : au clavier, avec un lecteur d'écran, en zoom fort ou par l'intermédiaire d'un assistant automatique."
+  sections={sections}
+>
+  <section id="engagement" aria-labelledby="engagement-titre">
+    <h2 id="engagement-titre">Engagement</h2>
+    <p>
+      Le site est conçu en suivant les critères des règles WCAG 2.2, niveau AA, et vérifié avec l'outil automatique axe-core.
+      Il n'a pas fait l'objet d'un audit de conformité au référentiel général d'amélioration de l'accessibilité (RGAA) :
+      aucun niveau de conformité officiel n'est donc revendiqué.
+    </p>
+  </section>
+
+  <section id="mesures" aria-labelledby="mesures-titre">
+    <h2 id="mesures-titre">Ce qui est en place</h2>
+    <ul>
+      <li>Lien d'évitement « Aller au contenu », navigation et menus utilisables au clavier, focus visible sur chaque élément interactif.</li>
+      <li>Contrastes de texte d'au moins 4,5:1 sur la palette du site.</li>
+      <li>Texte alternatif sur les images de véhicules ; logos et icônes décoratifs masqués aux lecteurs d'écran.</li>
+      <li>Graphiques accompagnés d'un résumé textuel des valeurs clés.</li>
+      <li>Champs, curseurs et interrupteurs des simulateurs nommés et annonçant leur valeur.</li>
+      <li>Animations désactivées lorsque votre système demande de réduire les mouvements.</li>
+      <li>Langue de la page déclarée, titres hiérarchisés, structure en repères (en-tête, navigation, contenu, pied de page).</li>
+    </ul>
+  </section>
+
+  <section id="limites" aria-labelledby="limites-titre">
+    <h2 id="limites-titre">Limites connues</h2>
+    <ul>
+      <li>Les définitions du glossaire affichées au survol d'un terme ne s'ouvrent pas au clavier. Elles sont toutes disponibles sur la page <a href={url("/glossaire/")}>glossaire</a>.</li>
+      <li>Dans le graphique de consommation selon la vitesse, le filtrage des sources par la légende se fait à la souris. Le résumé textuel du graphique reste disponible.</li>
+      <li>Le rapport détaillé du simulateur est généré dans le navigateur : son contenu n'est pas lisible sans JavaScript.</li>
+    </ul>
+  </section>
+
+  <section id="agents" aria-labelledby="agents-titre">
+    <h2 id="agents-titre">Lecture par les outils automatiques</h2>
+    <p>
+      Les pages sont générées en HTML statique : le contenu des fiches, du catalogue et des pages éditoriales est lisible sans
+      exécuter de JavaScript. Chaque fiche publie des données structurées schema.org, le site expose un
+      <a href="/sitemap-index.xml">plan du site</a> et un résumé destiné aux assistants IA dans
+      <a href="/llms.txt">llms.txt</a>. Les robots d'indexation sont autorisés sur l'ensemble du site.
+    </p>
+  </section>
+
+  <section id="signaler" aria-labelledby="signaler-titre">
+    <h2 id="signaler-titre">Signaler un problème</h2>
+    <p>
+      Une page ou une fonction vous est inaccessible ? Écrivez à
+      <a href={mailto("Evly : problème d'accessibilité")}>{PUBLISHER.email}</a> en indiquant la page et, si possible, votre
+      navigateur et votre aide technique. Une solution ou l'information sous une autre forme vous sera proposée.
+    </p>
+  </section>
+</LegalPage>

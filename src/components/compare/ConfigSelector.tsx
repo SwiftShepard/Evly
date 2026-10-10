@@ -111,7 +111,7 @@ export default function ConfigSelector({
           >
             Configuration
           </span>
-          <svg
+          <svg aria-hidden="true"
             width="12"
             height="12"
             viewBox="0 0 24 24"
@@ -232,7 +232,8 @@ function SegmentedControl({
         <select
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="w-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-lg py-1.5 px-2.5 text-xs font-medium text-[var(--color-text)] focus:outline-none focus:border-[var(--color-accent)] transition-all cursor-pointer"
+          aria-label={label}
+          className="w-full bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-lg py-1.5 px-2.5 text-xs font-medium text-[var(--color-text)] focus:border-[var(--color-accent)] transition-all cursor-pointer"
         >
           {options.map((opt) => (
             <option

@@ -1,0 +1,107 @@
+---
+import LegalPage from "@/components/legal/LegalPage.astro";
+import { PUBLISHER, HOST, mailto } from "@/data/legal";
+import { url } from "@/lib/url";
+
+const sections = [
+  { id: "editeur", title: "Éditeur du site" },
+  { id: "hebergement", title: "Hébergement" },
+  { id: "independance", title: "Indépendance" },
+  { id: "propriete", title: "Propriété intellectuelle" },
+  { id: "signalement", title: "Signaler une erreur ou un contenu" },
+  { id: "donnees", title: "Données personnelles" },
+  { id: "credits", title: "Crédits" },
+];
+---
+
+<LegalPage
+  title="Mentions légales"
+  description="Mentions légales d'Evly (ev-ly.com) : éditeur, directeur de la publication, hébergeur, propriété intellectuelle et contact."
+  path="/mentions-legales/"
+  intro="Informations prévues par la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique (LCEN) : qui édite Evly, qui l'héberge et comment nous contacter."
+  sections={sections}
+>
+  <section id="editeur" aria-labelledby="editeur-titre">
+    <h2 id="editeur-titre">Éditeur du site</h2>
+    <p>
+      Le site <strong>{PUBLISHER.site}</strong> (« Evly ») est édité par <strong>{PUBLISHER.name}</strong>,
+      personne physique agissant à titre non professionnel, conformément à l'article 1-1, II de la LCEN.
+    </p>
+    <dl class="mt-4">
+      <dt>Éditeur</dt>
+      <dd>{PUBLISHER.name}, {PUBLISHER.status}</dd>
+      <dt>Directeur de la publication</dt>
+      <dd>{PUBLISHER.name}</dd>
+      <dt>Contact</dt>
+      <dd><a href={mailto("Evly : contact")}>{PUBLISHER.email}</a></dd>
+    </dl>
+  </section>
+
+  <section id="hebergement" aria-labelledby="hebergement-titre">
+    <h2 id="hebergement-titre">Hébergement</h2>
+    <dl>
+      <dt>Hébergeur</dt>
+      <dd>{HOST.name} (service {HOST.service})</dd>
+      <dt>Adresse</dt>
+      <dd>{HOST.address}</dd>
+      <dt>Site</dt>
+      <dd><a href="https://github.com/contact" rel="noopener noreferrer">github.com/contact</a></dd>
+    </dl>
+  </section>
+
+  <section id="independance" aria-labelledby="independance-titre">
+    <h2 id="independance-titre">Indépendance</h2>
+    <p>
+      Evly n'affiche aucune publicité, ne contient aucun lien affilié et ne reçoit aucune rémunération des constructeurs,
+      distributeurs, mandataires ou installateurs cités. Les liens vers des sites tiers sont fournis à titre d'information,
+      sans contrepartie. Le fonctionnement du comparateur est détaillé dans les
+      <a href={url("/conditions-utilisation/#comparateur")}>conditions d'utilisation</a> et la
+      <a href={url("/methodologie/")}>méthodologie</a>.
+    </p>
+  </section>
+
+  <section id="propriete" aria-labelledby="propriete-titre">
+    <h2 id="propriete-titre">Propriété intellectuelle</h2>
+    <p>
+      Les textes, verdicts, graphiques, la mise en page et le code du site sont la propriété de l'éditeur. Toute reproduction
+      ou représentation substantielle sans autorisation est interdite (article L. 122-4 du code de la propriété intellectuelle).
+      Les courtes citations sont permises à condition d'indiquer clairement Evly comme source et de mettre un lien vers la page citée.
+    </p>
+    <p>
+      Les noms, marques, logos et visuels de véhicules restent la propriété de leurs titulaires respectifs. Ils sont reproduits
+      dans le seul but d'identifier les modèles présentés, sans que cela n'implique de partenariat. Les mesures issues de tests
+      tiers (Bjørn Nyland, EVKX, ArenaEV, presse automobile) sont attribuées à leur source sur chaque fiche.
+    </p>
+    <p>
+      Si vous êtes titulaire de droits sur un élément publié et souhaitez son retrait, écrivez à
+      <a href={mailto("Evly : demande de retrait")}>{PUBLISHER.email}</a> : la demande sera traitée dans les meilleurs délais.
+    </p>
+  </section>
+
+  <section id="signalement" aria-labelledby="signalement-titre">
+    <h2 id="signalement-titre">Signaler une erreur ou un contenu</h2>
+    <p>
+      Un prix, une autonomie ou une aide vous semble erroné ? Un contenu vous paraît illicite ? Écrivez à
+      <a href={mailto("Evly : signalement")}>{PUBLISHER.email}</a> en précisant l'adresse de la page concernée.
+      Les corrections sont appliquées dès vérification.
+    </p>
+  </section>
+
+  <section id="donnees" aria-labelledby="donnees-titre">
+    <h2 id="donnees-titre">Données personnelles</h2>
+    <p>
+      Evly ne dépose aucun cookie et ne demande aucune inscription. Le détail des données traitées et de vos droits figure dans la
+      <a href={url("/confidentialite/")}>politique de confidentialité</a> et la
+      <a href={url("/cookies/")}>politique cookies et traceurs</a>.
+    </p>
+  </section>
+
+  <section id="credits" aria-labelledby="credits-titre">
+    <h2 id="credits-titre">Crédits</h2>
+    <ul>
+      <li>Polices Inter et JetBrains Mono, sous licence SIL Open Font License, hébergées sur ce site.</li>
+      <li>Icônes Lucide, sous licence ISC.</li>
+      <li>Sources des données mesurées : voir la page <a href={url("/methodologie/#sources")}>méthodologie</a>.</li>
+    </ul>
+  </section>
+</LegalPage>

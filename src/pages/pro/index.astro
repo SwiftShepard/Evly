@@ -8,6 +8,7 @@ import VehicleImage from "@/components/ui/VehicleImage.astro";
 import { getAllVehicles } from "@/lib/vehicles";
 import { formatPrice } from "@/lib/format";
 import { url } from "@/lib/url";
+import { PUBLISHER } from "@/data/legal";
 
 const vehicles = getAllVehicles();
 
@@ -82,7 +83,7 @@ const description =
           <a href="#tco" class="btn-interactive btn-glow inline-flex items-center gap-2 px-5 py-3 bg-[var(--color-accent)] text-[var(--color-accent-on)] text-sm font-medium tracking-tight min-h-[44px] hover:bg-[var(--color-accent-dim)] transition-colors rounded-[var(--radius-tile-sm)]">
             Calculer mon TCO ↓
           </a>
-          <a href="mailto:pro@evly.fr?subject=Demande%20d%27audit%20flotte" class="btn-interactive inline-flex items-center gap-2 px-5 py-3 border border-[var(--color-border-strong)] text-[var(--color-text)] text-sm font-medium tracking-tight min-h-[44px] hover:bg-[var(--color-bg-subtle)] transition-colors rounded-[var(--radius-tile-sm)]">
+          <a href={`mailto:${PUBLISHER.email}?subject=Demande%20d%27audit%20flotte`} class="btn-interactive inline-flex items-center gap-2 px-5 py-3 border border-[var(--color-border-strong)] text-[var(--color-text)] text-sm font-medium tracking-tight min-h-[44px] hover:bg-[var(--color-bg-subtle)] transition-colors rounded-[var(--radius-tile-sm)]">
             Demander un audit
           </a>
         </div>
@@ -400,15 +401,19 @@ const description =
         </div>
 
         <div class="mt-10 pt-6 border-t border-[var(--color-border)] flex flex-col md:flex-row gap-4">
-          <a href="mailto:pro@evly.fr?subject=Acc%C3%A8s%20anticip%C3%A9%20Evly%20Pro&body=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20Evly%20Pro%20pour%20notre%20flotte%20de%20%5Bnombre%5D%20v%C3%A9hicules." class="btn-interactive btn-glow inline-flex items-center justify-center gap-2 px-5 py-3 bg-[var(--color-accent)] text-[var(--color-accent-on)] text-sm font-medium tracking-tight min-h-[44px] hover:bg-[var(--color-accent-dim)] transition-colors rounded-[var(--radius-tile-sm)]">
+          <a href={`mailto:${PUBLISHER.email}?subject=Acc%C3%A8s%20anticip%C3%A9%20Evly%20Pro&body=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20Evly%20Pro%20pour%20notre%20flotte%20de%20%5Bnombre%5D%20v%C3%A9hicules.`} class="btn-interactive btn-glow inline-flex items-center justify-center gap-2 px-5 py-3 bg-[var(--color-accent)] text-[var(--color-accent-on)] text-sm font-medium tracking-tight min-h-[44px] hover:bg-[var(--color-accent-dim)] transition-colors rounded-[var(--radius-tile-sm)]">
             Demander l'accès anticipé →
           </a>
-          <a href="mailto:pro@evly.fr?subject=Demande%20d%27audit%20flotte" class="btn-interactive inline-flex items-center justify-center gap-2 px-5 py-3 border border-[var(--color-border-strong)] text-[var(--color-text)] text-sm font-medium tracking-tight min-h-[44px] hover:bg-[var(--color-bg-subtle)] transition-colors rounded-[var(--radius-tile-sm)]">
+          <a href={`mailto:${PUBLISHER.email}?subject=Demande%20d%27audit%20flotte`} class="btn-interactive inline-flex items-center justify-center gap-2 px-5 py-3 border border-[var(--color-border-strong)] text-[var(--color-text)] text-sm font-medium tracking-tight min-h-[44px] hover:bg-[var(--color-bg-subtle)] transition-colors rounded-[var(--radius-tile-sm)]">
             Audit personnalisé (gratuit)
           </a>
         </div>
         <p class="mt-6 text-[11px] font-mono text-[var(--color-text-faint)]">
           Évly Pro est gratuit en phase beta. Modèle SaaS payant à terme (abonnement par véhicule au parc). Aucun engagement, sortie à tout moment.
+        </p>
+        <p class="mt-2 text-[11px] font-mono text-[var(--color-text-faint)]">
+          Votre adresse e-mail et votre message servent uniquement à vous répondre.
+          <a href={url("/confidentialite/")} class="underline underline-offset-2 hover:text-[var(--color-text-muted)]">Politique de confidentialité</a>
         </p>
       </Tile>
     </BentoGrid>

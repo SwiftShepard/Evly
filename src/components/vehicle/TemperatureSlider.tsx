@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useId } from "react";
 
 interface Props {
   chemistry?: string;
@@ -122,9 +122,9 @@ export default function TemperatureSlider({
 
   // Temperature color styling
   const getTempColor = (t: number) => {
-    if (t < 10) return "text-blue-500";
-    if (t <= 25) return "text-emerald-600";
-    return "text-red-500";
+    if (t < 10) return "text-blue-700";
+    if (t <= 25) return "text-emerald-700";
+    return "text-red-700";
   };
 
   const getPercentFill = () => {
@@ -132,11 +132,13 @@ export default function TemperatureSlider({
   };
 
   const percentFill = getPercentFill();
+  const labelId = useId();
+  const pacLabelId = useId();
 
   return (
     <div className={`flex flex-col gap-2.5 ${compact ? "p-1" : "py-2"}`}>
       <div className="flex justify-between items-baseline">
-        <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">
+        <span id={labelId} className="font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">
           Température météo
         </span>
         <span className={`font-mono text-xs font-semibold ${getTempColor(temp)}`}>
@@ -154,7 +156,9 @@ export default function TemperatureSlider({
           max="40"
           value={temp}
           onChange={handleTempChange}
-          className="w-full h-1 bg-[var(--color-border-strong)] rounded-lg appearance-none cursor-pointer accent-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)] transition-all"
+          aria-labelledby={labelId}
+          aria-valuetext={`${temp} °C`}
+          className="w-full h-1 bg-[var(--color-border-strong)] rounded-lg appearance-none cursor-pointer accent-[var(--color-accent)] focus:ring-1 focus:ring-[var(--color-accent)] transition-all"
           style={{
             background: `linear-gradient(to right, var(--color-accent) 0%, var(--color-accent) ${percentFill}%, var(--color-border) ${percentFill}%, var(--color-border) 100%)`,
           }}
@@ -164,16 +168,18 @@ export default function TemperatureSlider({
       {!compact && (
         <div className="flex flex-col gap-3 mt-1">
           <div className="flex items-center justify-between pt-1 border-t border-[var(--color-border)] border-dashed">
-            <span className="font-mono text-[9px] uppercase tracking-[0.08em] text-[var(--color-text-faint)]">
+            <span id={pacLabelId} className="font-mono text-[9px] uppercase tracking-[0.08em] text-[var(--color-text-faint)]">
               Pompe à chaleur (PAC)
             </span>
             <button
               type="button"
+              role="switch"
               onClick={handlePacToggle}
-              className={`relative inline-flex h-4 w-8 shrink-0 cursor-pointer rounded-full border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                pac ? "bg-[var(--color-accent)]" : "bg-[var(--color-border-strong)]"
+              className={`relative inline-flex h-4 w-8 shrink-0 cursor-pointer rounded-full border-transparent transition-colors duration-200 ease-in-out ${
+                pac ? "bg-[var(--color-accent)]" : "bg-[var(--color-text-faint)]"
               }`}
-              aria-pressed={pac}
+              aria-checked={pac}
+              aria-labelledby={pacLabelId}
             >
               <span
                 className={`pointer-events-none inline-block h-3 w-3 transform rounded-full bg-[var(--color-surface)] shadow ring-0 transition duration-200 ease-in-out mt-0.5 ${

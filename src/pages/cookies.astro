@@ -1,0 +1,199 @@
+---
+import LegalPage from "@/components/legal/LegalPage.astro";
+import { ANALYTICS, LOCAL_STORAGE_KEYS } from "@/data/legal";
+import { url } from "@/lib/url";
+
+const sections = [
+  { id: "en-bref", title: "En bref" },
+  { id: "bandeau", title: "Pourquoi aucun bandeau de consentement" },
+  { id: "audience", title: "Mesure d'audience sans cookie" },
+  { id: "stockage", title: "Stockage local du navigateur" },
+  { id: "tiers", title: "Contenus et liens tiers" },
+  { id: "vos-choix", title: "Vos choix" },
+];
+---
+
+<LegalPage
+  title="Cookies et traceurs"
+  description="Evly ne dépose aucun cookie. Liste exhaustive des traceurs et du stockage local utilisés, et réglage pour refuser la mesure d'audience."
+  path="/cookies/"
+  intro="Evly ne dépose aucun cookie sur votre appareil. Cette page liste de façon exhaustive les autres informations lues ou écrites dans votre navigateur, et vous permet de refuser la mesure d'audience."
+  sections={sections}
+>
+  <section id="en-bref" aria-labelledby="en-bref-titre">
+    <h2 id="en-bref-titre">En bref</h2>
+    <ul>
+      <li><strong>Aucun cookie</strong>, ni d'Evly ni d'un tiers.</li>
+      <li>Une mesure d'audience anonyme et sans cookie ({ANALYTICS.service}), que vous pouvez refuser ci-dessous.</li>
+      <li>Quelques réglages enregistrés dans votre navigateur, uniquement quand vous utilisez la fonction concernée.</li>
+    </ul>
+  </section>
+
+  <section id="bandeau" aria-labelledby="bandeau-titre">
+    <h2 id="bandeau-titre">Pourquoi aucun bandeau de consentement</h2>
+    <p>
+      L'article 82 de la loi Informatique et Libertés impose de recueillir votre consentement avant de lire ou d'écrire des
+      informations sur votre appareil, sauf lorsque ces opérations sont strictement nécessaires à un service que vous demandez
+      ou, selon les lignes directrices de la CNIL du 17 septembre 2020, à une mesure d'audience limitée à un usage statistique
+      anonyme pour le seul compte de l'éditeur.
+    </p>
+    <p>
+      Les seules opérations réalisées par Evly entrent dans ces deux exceptions : aucun consentement n'est donc requis, et aucun
+      bandeau ne vous est imposé. Vous restez libre de refuser la mesure d'audience.
+    </p>
+  </section>
+
+  <section id="audience" aria-labelledby="audience-titre">
+    <h2 id="audience-titre">Mesure d'audience sans cookie</h2>
+    <p>
+      Le script {ANALYTICS.service} ne dépose ni cookie ni identifiant persistant. Il produit des statistiques anonymes, utilisées
+      exclusivement par Evly, sans suivi d'un site à l'autre ni croisement avec d'autres données, et hébergées dans l'Union
+      européenne. Il lit seulement l'éventuelle préférence de refus enregistrée ci-dessous. Le détail des informations
+      transmises figure dans la <a href={url("/confidentialite/#audience")}>politique de confidentialité</a>.
+    </p>
+  </section>
+
+  <section id="stockage" aria-labelledby="stockage-titre">
+    <h2 id="stockage-titre">Stockage local du navigateur</h2>
+    <p>
+      Ces informations ne sont jamais transmises : elles servent uniquement aux fonctions que vous utilisez, et sont
+      dispensées de consentement à ce titre.
+    </p>
+    <div class="legal-table-wrap mt-4" tabindex="0" role="region" aria-label="Stockage local, tableau défilant">
+      <table>
+        <caption class="sr-only">Clés de stockage local utilisées par Evly</caption>
+        <thead>
+          <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Rôle</th>
+            <th scope="col">Durée</th>
+          </tr>
+        </thead>
+        <tbody>
+          {LOCAL_STORAGE_KEYS.map((k) => (
+            <tr>
+              <td><code>{k.key}</code><br /><span class="text-xs">{k.storage}</span></td>
+              <td>{k.purpose}</td>
+              <td>{k.duration}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="tiers" aria-labelledby="tiers-titre">
+    <h2 id="tiers-titre">Contenus et liens tiers</h2>
+    <p>
+      Evly n'intègre aucun contenu tiers susceptible de vous suivre : pas de vidéo YouTube intégrée, pas de bouton de partage, pas
+      de carte, pas de police Google. Les polices et images sont servies depuis ev-ly.com. Lorsque vous cliquez sur un lien vers un
+      autre site (source d'un essai, constructeur, installateur), c'est la politique de ce site qui s'applique.
+    </p>
+  </section>
+
+  <section id="vos-choix" aria-labelledby="vos-choix-titre">
+    <h2 id="vos-choix-titre">Vos choix</h2>
+
+    <h3>Mesure d'audience</h3>
+    <div class="legal-note" id="audience-control">
+      <p id="audience-status" aria-live="polite">
+        Le réglage s'affiche une fois la page chargée. Si JavaScript est désactivé, aucune mesure d'audience n'a lieu.
+      </p>
+      <button
+        type="button"
+        id="audience-toggle"
+        hidden
+        class="mt-3 inline-flex items-center px-4 py-2 min-h-[44px] rounded-[var(--radius-tile-sm)] bg-[var(--color-accent)] text-[var(--color-accent-on)] text-sm font-medium hover:bg-[var(--color-accent-dim)] transition-colors"
+      ></button>
+    </div>
+
+    <h3>Données enregistrées dans ce navigateur</h3>
+    <p>
+      Efface vos favoris, votre profil fiscal et la position dans le catalogue sur cet appareil. Votre choix concernant la mesure
+      d'audience est conservé.
+    </p>
+    <div class="mt-3">
+      <button
+        type="button"
+        id="local-data-clear"
+        class="inline-flex items-center px-4 py-2 min-h-[44px] rounded-[var(--radius-tile-sm)] border border-[var(--color-text-faint)] text-[var(--color-text)] text-sm font-medium hover:bg-[var(--color-bg-subtle)] transition-colors"
+      >
+        Effacer mes données locales Evly
+      </button>
+      <p id="local-data-status" class="mt-2 text-sm" aria-live="polite"></p>
+    </div>
+
+    <h3>Réglages du navigateur</h3>
+    <p>
+      Vous pouvez aussi effacer les données du site ou bloquer les scripts tiers depuis les paramètres de votre navigateur. Le signal
+      Global Privacy Control, s'il est activé dans votre navigateur, désactive automatiquement la mesure d'audience sur Evly.
+    </p>
+  </section>
+</LegalPage>
+
+<script>
+  const IGNORE_KEY = "plausible_ignore";
+  const LOCAL_KEYS = ["evly-favorites", "evly-user-profile"];
+  const SESSION_KEYS = ["evly-catalog-return"];
+
+  function readOptOut(): boolean {
+    try {
+      return localStorage.getItem(IGNORE_KEY) === "true";
+    } catch {
+      return false;
+    }
+  }
+
+  function setupPrivacyControls() {
+    const status = document.getElementById("audience-status");
+    const toggle = document.getElementById("audience-toggle") as HTMLButtonElement | null;
+    const clearBtn = document.getElementById("local-data-clear") as HTMLButtonElement | null;
+    const clearStatus = document.getElementById("local-data-status");
+    if (!status || !toggle || !clearBtn || !clearStatus) return;
+
+    const gpc = (navigator as Navigator & { globalPrivacyControl?: boolean }).globalPrivacyControl === true;
+
+    const render = () => {
+      if (gpc) {
+        status.textContent =
+          "Votre navigateur envoie le signal Global Privacy Control : la mesure d'audience est désactivée pour vous.";
+        toggle.hidden = true;
+        return;
+      }
+      const optedOut = readOptOut();
+      status.textContent = optedOut
+        ? "La mesure d'audience est désactivée pour ce navigateur, à partir de la prochaine page consultée."
+        : "La mesure d'audience anonyme est active pour ce navigateur.";
+      toggle.textContent = optedOut ? "Réactiver la mesure d'audience" : "Refuser la mesure d'audience";
+      toggle.setAttribute("aria-pressed", String(optedOut));
+      toggle.hidden = false;
+    };
+
+    toggle.onclick = () => {
+      try {
+        if (readOptOut()) localStorage.removeItem(IGNORE_KEY);
+        else localStorage.setItem(IGNORE_KEY, "true");
+      } catch {
+        status.textContent = "Le stockage local est bloqué par votre navigateur : aucune mesure d'audience ne peut être enregistrée sans lui.";
+        return;
+      }
+      render();
+    };
+
+    clearBtn.onclick = () => {
+      if (!window.confirm("Effacer vos favoris, votre profil fiscal et la position dans le catalogue sur cet appareil ?")) return;
+      try {
+        LOCAL_KEYS.forEach((k) => localStorage.removeItem(k));
+        SESSION_KEYS.forEach((k) => sessionStorage.removeItem(k));
+        clearStatus.textContent = "Vos données locales Evly ont été effacées.";
+      } catch {
+        clearStatus.textContent = "Le stockage local est inaccessible : aucune donnée n'est enregistrée par Evly dans ce navigateur.";
+      }
+    };
+
+    render();
+  }
+
+  setupPrivacyControls();
+  document.addEventListener("astro:page-load", setupPrivacyControls);
+</script>

@@ -346,8 +346,8 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
           }
-          .text-emerald-600 {
-            color: #059669 !important;
+          .text-emerald-700 {
+            color: #047857 !important;
           }
           .text-accent, .text-[var(--color-accent)] {
             color: #2563eb !important; /* Force a dark readable blue or primary accent */
@@ -374,7 +374,7 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
             onClick={() => window.print()}
             className="px-5 py-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-dim)] text-[var(--color-accent-on)] text-xs font-bold rounded-lg cursor-pointer transition-all shadow-sm flex items-center gap-1.5"
           >
-            <Printer size={14} />
+            <Printer aria-hidden="true" size={14} />
             Imprimer / Enregistrer en PDF
           </button>
         </div>
@@ -406,7 +406,7 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
             {/* Document Title */}
             <div className="py-6 relative">
               <div className="absolute top-0 right-0 opacity-10 pointer-events-none no-print">
-                <Sparkles size={120} className="text-[var(--color-accent)]" />
+                <Sparkles aria-hidden="true" size={120} className="text-[var(--color-accent)]" />
               </div>
               <span className="px-2.5 py-1 rounded-full text-[10px] font-mono border border-[var(--color-accent-dim)] text-[var(--color-accent)] bg-[color-mix(in_srgb,var(--color-accent)_6%,transparent)] uppercase font-semibold">
                 Étude de Compatibilité & TCO 2026
@@ -513,9 +513,9 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
           {/* Page 1 conversion footer */}
           <div className="no-print mt-6 bg-gradient-to-r from-[var(--color-accent-dim)] to-[var(--color-accent)] border-none rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm">
             <div className="flex flex-col gap-0.5">
-              <h4 className="text-xs font-bold text-white">Envie de concrétiser ce projet ? Mandataire Élite-Auto</h4>
-              <p className="text-[11px] text-emerald-100/90 leading-relaxed">
-                Profitez de remises négociées jusqu'à <strong>-12%</strong> sur les stocks de {vehicle.brand} en France.
+              <h4 className="text-xs font-bold text-white">Envie de concrétiser ce projet ?</h4>
+              <p className="text-[11px] text-white/90 leading-relaxed">
+                Comparez l'offre de votre concessionnaire {vehicle.brand} avec celle d'un mandataire auto, par exemple Élite-Auto. Lien non commercial : Evly ne perçoit aucune rémunération.
               </p>
             </div>
             <a
@@ -524,7 +524,7 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
               rel="noopener noreferrer"
               className="px-4 py-2 bg-white hover:bg-emerald-50 text-[var(--color-accent-dim)] text-xs font-bold rounded-lg transition-colors text-center shrink-0 shadow-sm"
             >
-              Négocier mon offre ↗
+              Voir un mandataire ↗
             </a>
           </div>
         </div>
@@ -573,8 +573,8 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
                       </tr>
                       {totalAids > 0 && (
                         <tr>
-                          <td className="py-2.5 font-medium text-emerald-600">Bonus écologique / aides 2026</td>
-                          <td className="py-2.5 text-right font-mono font-bold text-emerald-600">-{fmtPrice(totalAids)}</td>
+                          <td className="py-2.5 font-medium text-emerald-700">Bonus écologique / aides 2026</td>
+                          <td className="py-2.5 text-right font-mono font-bold text-emerald-700">-{fmtPrice(totalAids)}</td>
                           <td className="py-2.5 text-right font-mono">0 €</td>
                         </tr>
                       )}
@@ -616,7 +616,7 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
                   </h3>
                   
                   <div className="flex items-center gap-4 mt-2">
-                    <div className="text-4xl font-bold tracking-tight text-emerald-600">
+                    <div className="text-4xl font-bold tracking-tight text-emerald-700">
                       {savings >= 0 ? `-${savingsPct}%` : `+${Math.abs(savingsPct)}%`}
                     </div>
                     <div className="flex flex-col">
@@ -744,7 +744,7 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
                   <div className="flex flex-col gap-1.5">
                     <div className="flex justify-between items-center text-xs">
                       <span className="font-semibold">Printemps / Automne optimal (15°C - 20°C)</span>
-                      <span className="font-mono font-bold text-emerald-600">{baseRange} km</span>
+                      <span className="font-mono font-bold text-emerald-700">{baseRange} km</span>
                     </div>
                     <div className="w-full h-2.5 bg-[var(--color-border)] rounded-full overflow-hidden">
                       <div className="h-full bg-emerald-500 rounded-full" style={{ width: "100%" }}></div>
@@ -756,7 +756,7 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
                   <div className="flex flex-col gap-1.5">
                     <div className="flex justify-between items-center text-xs">
                       <span className="font-semibold">Autoroute à vitesse stabilisée (130 km/h)</span>
-                      <span className="font-mono font-bold text-amber-500">{highwayRange} km</span>
+                      <span className="font-mono font-bold text-amber-700">{highwayRange} km</span>
                     </div>
                     <div className="w-full h-2.5 bg-[var(--color-border)] rounded-full overflow-hidden">
                       <div className="h-full bg-amber-500 rounded-full" style={{ width: `${(highwayRange / baseRange) * 100}%` }}></div>
@@ -768,7 +768,7 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
                   <div className="flex flex-col gap-1.5">
                     <div className="flex justify-between items-center text-xs">
                       <span className="font-semibold">Hiver rigoureux (−5°C avec chauffage)</span>
-                      <span className="font-mono font-bold text-red-500">{winterRange} km</span>
+                      <span className="font-mono font-bold text-red-700">{winterRange} km</span>
                     </div>
                     <div className="w-full h-2.5 bg-[var(--color-border)] rounded-full overflow-hidden">
                       <div className="h-full bg-red-500 rounded-full" style={{ width: `${(winterRange / baseRange) * 100}%` }}></div>
@@ -817,7 +817,7 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
                 </div>
 
                 <div className="border-t border-[var(--color-border)] pt-4 text-[10px] text-[var(--color-text-faint)] leading-normal flex gap-2">
-                  <AlertTriangle size={14} className="shrink-0 text-amber-500" />
+                  <AlertTriangle aria-hidden="true" size={14} className="shrink-0 text-amber-700" />
                   <p>
                     <strong>Recommandation</strong> : Planifiez vos arrêts via le GPS embarqué du véhicule pour pré-conditionner la batterie, garantissant le maintien de la courbe de charge rapide maximale dès votre arrivée à la borne.
                   </p>
@@ -845,7 +845,7 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
                   <div className="flex flex-col items-center gap-1 z-10 bg-[var(--color-bg-subtle)] px-2">
                     <div className="w-5 h-5 rounded-full bg-[var(--color-accent)] border-4 border-white flex items-center justify-center shadow-sm"></div>
                     <span className="font-bold text-[11px] text-[var(--color-text)] mt-1">Paris</span>
-                    <span className="font-mono text-[9px] text-emerald-600 font-semibold">100% SoC</span>
+                    <span className="font-mono text-[9px] text-emerald-700 font-semibold">100% SoC</span>
                   </div>
 
                   {/* Point 2: Auxerre */}
@@ -879,7 +879,7 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
                   <div className="flex flex-col items-center gap-1 z-10 bg-[var(--color-bg-subtle)] px-2">
                     <div className="w-5 h-5 rounded-full bg-[var(--color-accent)] border-4 border-white flex items-center justify-center shadow-sm"></div>
                     <span className="font-bold text-[11px] text-[var(--color-text)] mt-1">Nice</span>
-                    <span className="font-mono text-[9px] text-emerald-600 font-semibold">~15% SoC</span>
+                    <span className="font-mono text-[9px] text-emerald-700 font-semibold">~15% SoC</span>
                   </div>
                 </div>
               </div>
@@ -949,7 +949,7 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
                         {totalAids > 0 ? "Modèle éligible (production européenne)" : "Modèle non éligible"}
                       </span>
                     </div>
-                    <span className="font-mono font-bold text-emerald-600">
+                    <span className="font-mono font-bold text-emerald-700">
                       {totalAids > 0 ? `-${fmtPrice(totalAids)}` : "0 €"}
                     </span>
                   </div>
@@ -960,7 +960,7 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
                       <span className="font-bold text-[var(--color-text)]">Exonération de taxe régionale</span>
                       <span className="text-[10px] text-[var(--color-text-muted)]">Coût de la carte grise</span>
                     </div>
-                    <span className="font-mono font-bold text-emerald-600">Gratuit (100% exonéré)</span>
+                    <span className="font-mono font-bold text-emerald-700">Gratuit (100% exonéré)</span>
                   </div>
 
                   {/* Malus CO2 */}
@@ -969,7 +969,7 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
                       <span className="font-bold text-[var(--color-text)]">Échappement au Malus Masse & CO2</span>
                       <span className="text-[10px] text-[var(--color-text-muted)]">Taxation écologique française</span>
                     </div>
-                    <span className="font-mono font-bold text-emerald-600">Exonéré (Économie ~1 500 €)</span>
+                    <span className="font-mono font-bold text-emerald-700">Exonéré (Économie ~1 500 €)</span>
                   </div>
                 </div>
               </div>
@@ -993,7 +993,7 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
                       <span>Pose par électricien certifié IRVE :</span>
                       <span className="font-semibold">550 €</span>
                     </div>
-                    <div className="flex justify-between items-center text-xs font-mono text-emerald-600">
+                    <div className="flex justify-between items-center text-xs font-mono text-emerald-700">
                       <span>Crédit d'impôt Borne 2026 :</span>
                       <span className="font-bold">-{fmtPrice(500)}</span>
                     </div>
@@ -1060,8 +1060,8 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
                 <span className="text-xs font-bold text-[var(--color-text)]">L'Équipe Technique Evly</span>
                 <span className="text-[9px] font-mono text-[var(--color-text-faint)]">Validé pour l'exercice 2026</span>
               </div>
-              <div className="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
-                <CheckCircle2 size={20} />
+              <div className="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-700">
+                <CheckCircle2 aria-hidden="true" size={20} />
               </div>
             </div>
           </div>
@@ -1092,9 +1092,9 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
       <div className="no-print max-w-5xl mx-auto px-4 md:px-8 mb-16 grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-6 flex flex-col justify-between gap-4 shadow-md">
           <div className="flex flex-col gap-1">
-            <h4 className="text-sm font-bold text-[var(--color-text)]">Installez votre borne Wallbox au meilleur tarif</h4>
+            <h4 className="text-sm font-bold text-[var(--color-text)]">Faire installer une borne à domicile</h4>
             <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
-              Simulez vos devis de travaux d'installation électrique certifiée IRVE avec notre partenaire <strong>Chargeguru</strong>.
+              Demandez des devis à des installateurs certifiés IRVE, par exemple via Chargeguru. Lien non commercial : Evly ne perçoit aucune rémunération.
             </p>
           </div>
           <a
@@ -1103,15 +1103,15 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
             rel="noopener noreferrer"
             className="w-full text-center px-4 py-3 bg-[var(--color-accent)] hover:bg-[var(--color-accent-dim)] text-[var(--color-accent-on)] text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-sm"
           >
-            Simuler mon devis borne
+            Simuler un devis borne ↗
           </a>
         </div>
 
         <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-6 flex flex-col justify-between gap-4 shadow-md">
           <div className="flex flex-col gap-1">
-            <h4 className="text-sm font-bold text-[var(--color-text)]">Achetez ce véhicule avec remise mandataire</h4>
+            <h4 className="text-sm font-bold text-[var(--color-text)]">Comparer avec une offre mandataire</h4>
             <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
-              Profitez de conditions négociées allant jusqu'à -12% sur les stocks du réseau constructeur via <strong>Élite-Auto</strong>.
+              Les mandataires auto, par exemple Élite-Auto, proposent parfois des remises sur les véhicules neufs. Comparez avec l'offre de votre concessionnaire. Lien non commercial : Evly ne perçoit aucune rémunération.
             </p>
           </div>
           <a
@@ -1120,7 +1120,7 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
             rel="noopener noreferrer"
             className="w-full text-center px-4 py-3 bg-[var(--color-accent)] hover:bg-[var(--color-accent-dim)] text-[var(--color-accent-on)] text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-sm"
           >
-            Demander une offre mandataire
+            Demander une offre mandataire ↗
           </a>
         </div>
       </div>

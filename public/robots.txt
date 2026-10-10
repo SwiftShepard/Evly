@@ -1,3 +1,5 @@
+# Tous les robots, y compris les assistants et agents IA, peuvent lire l'ensemble du site.
+# Résumé structuré pour les assistants IA : https://ev-ly.com/llms.txt
 User-agent: *
 Allow: /
 

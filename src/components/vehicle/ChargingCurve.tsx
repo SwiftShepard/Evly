@@ -119,13 +119,24 @@ export default function ChargingCurve({
     },
   };
 
+  // Texte alternatif tiré des données réelles de la courbe (pas d'allure supposée)
+  const peakPoint = curve.length
+    ? curve.reduce((best, p) => (p.power > best.power ? p : best))
+    : null;
+  const at80 = curve.find((p) => p.soc >= 80);
+  const ariaLabel = peakPoint
+    ? `Courbe de charge rapide du ${vehicleName} selon le niveau de batterie : ` +
+      `pic à ${peakPoint.power} kW vers ${peakPoint.soc} %` +
+      (at80 ? `, ${at80.power} kW à ${at80.soc} %.` : ".")
+    : `Courbe de charge rapide du ${vehicleName} : puissance maximale annoncée ${peakPower_kW} kW.`;
+
   return (
     <div
       className="relative h-60 sm:h-72 md:h-80 w-full"
       role="img"
-      aria-label={`Courbe de charge DC du ${vehicleName}, pic à ${peakPower_kW} kW à 10 % de SoC, dégradée progressivement à partir de 50 %.`}
+      aria-label={ariaLabel}
     >
-      <Line data={chartData} options={options} />
+      <Line data={chartData} options={options} aria-hidden="true" />
     </div>
   );
 }

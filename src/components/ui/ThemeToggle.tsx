@@ -79,7 +79,7 @@ export default function ThemeToggle() {
       onClick={cycle}
       aria-label={aria}
       title={`${label} (cliquer pour changer)`}
-      className="group inline-flex items-center gap-2 px-2.5 py-2 border border-[var(--color-border)] hover:border-[var(--color-border-strong)] hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] rounded-[var(--radius-tile-sm)] focus-visible:outline-none min-h-[36px] min-w-[36px] justify-center active:scale-90"
+      className="group inline-flex items-center gap-2 px-2.5 py-2 border border-[var(--color-border)] hover:border-[var(--color-border-strong)] hover:bg-[var(--color-bg-subtle)] text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] rounded-[var(--radius-tile-sm)] min-h-[36px] min-w-[36px] justify-center active:scale-90"
     >
       <span className="inline-flex transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-active:rotate-180">
         <Icon size={15} strokeWidth={1.6} aria-hidden="true" />

@@ -1,7 +1,8 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useId } from "react";
 import { CheckCircle2, XCircle, AlertTriangle, Info, Coins, MapPin, User, Briefcase, HelpCircle } from "lucide-react";
 
 export default function LeasingEligibilitySimulator() {
+  const fieldId = useId();
   // Base details
   const [rfrTotal, setRfrTotal] = useState<number>(25000);
   const [parts, setParts] = useState<number>(1.5);
@@ -50,9 +51,9 @@ export default function LeasingEligibilitySimulator() {
       }`}>
         <div className="mt-0.5">
           {isFullyEligible ? (
-            <CheckCircle2 className="w-6 h-6 text-[var(--color-accent)] animate-pulse" />
+            <CheckCircle2 aria-hidden="true" className="w-6 h-6 text-[var(--color-accent)] animate-pulse" />
           ) : (
-            <AlertTriangle className="w-6 h-6 text-[var(--color-warning)]" />
+            <AlertTriangle aria-hidden="true" className="w-6 h-6 text-[var(--color-warning)]" />
           )}
         </div>
         <div>
@@ -74,7 +75,7 @@ export default function LeasingEligibilitySimulator() {
         {/* LEFT COLUMN: FISCAL DETAILS */}
         <div className="flex flex-col gap-6">
           <div className="flex items-center gap-2 pb-2 border-b border-[var(--color-border)]">
-            <Coins className="w-4 h-4 text-[var(--color-accent)]" />
+            <Coins aria-hidden="true" className="w-4 h-4 text-[var(--color-accent)]" />
             <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-[var(--color-text)]">
               1. Situation Fiscale (Revenus)
             </h3>
@@ -83,24 +84,27 @@ export default function LeasingEligibilitySimulator() {
           {/* RFR total */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <label className="text-xs font-medium text-[var(--color-text)] flex items-center gap-1.5">
-                Revenu Fiscal de Référence (RFR) total
-                <button 
-                  type="button" 
+              <span className="text-xs font-medium text-[var(--color-text)] flex items-center gap-1.5">
+                <label htmlFor={`${fieldId}-rfr`}>Revenu Fiscal de Référence (RFR) total</label>
+                <button
+                  type="button"
                   onClick={() => setShowRfrHelp(!showRfrHelp)}
+                  aria-expanded={showRfrHelp}
+                  aria-controls={`${fieldId}-rfr-help`}
+                  aria-label="Où trouver mon revenu fiscal de référence ?"
                   className="text-[var(--color-text-faint)] hover:text-[var(--color-text)] transition-colors"
                 >
-                  <HelpCircle className="w-3.5 h-3.5" />
+                  <HelpCircle className="w-3.5 h-3.5" aria-hidden="true" />
                 </button>
-              </label>
+              </span>
               <span className="font-mono text-sm font-semibold text-[var(--color-accent)]">
                 {rfrTotal.toLocaleString()} €
               </span>
             </div>
 
             {showRfrHelp && (
-              <div className="mb-3 p-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-subtle)] text-[11px] text-[var(--color-text-muted)] leading-relaxed flex gap-2">
-                <Info className="w-4 h-4 text-[var(--color-accent)] shrink-0 mt-0.5" />
+              <div id={`${fieldId}-rfr-help`} className="mb-3 p-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-subtle)] text-[11px] text-[var(--color-text-muted)] leading-relaxed flex gap-2">
+                <Info aria-hidden="true" className="w-4 h-4 text-[var(--color-accent)] shrink-0 mt-0.5" />
                 <span>
                   Le RFR figure sur la première page de votre dernier avis d'imposition (revenus de l'année 2024 déclarés en 2025). Il s'agit du montant total avant division par les parts.
                 </span>
@@ -108,11 +112,13 @@ export default function LeasingEligibilitySimulator() {
             )}
 
             <input
+              id={`${fieldId}-rfr`}
               type="range"
               min="5000"
               max="90000"
               step="1000"
               value={rfrTotal}
+              aria-valuetext={`${rfrTotal.toLocaleString("fr-FR")} €`}
               onChange={(e) => setRfrTotal(Number(e.target.value))}
               className="w-full h-1 bg-[var(--color-border)] rounded-lg appearance-none cursor-pointer accent-[var(--color-accent)]"
             />
@@ -125,13 +131,14 @@ export default function LeasingEligibilitySimulator() {
 
           {/* Parts fiscales */}
           <div>
-            <label className="block text-xs font-medium text-[var(--color-text)] mb-2">
+            <label htmlFor={`${fieldId}-parts`} className="block text-xs font-medium text-[var(--color-text)] mb-2">
               Nombre de parts fiscales du foyer
             </label>
             <select
+              id={`${fieldId}-parts`}
               value={parts}
               onChange={(e) => setParts(Number(e.target.value))}
-              className="w-full p-2.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-subtle)] text-sm text-[var(--color-text)] focus:border-[var(--color-accent)] focus:outline-none transition-colors"
+              className="w-full p-2.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-subtle)] text-sm text-[var(--color-text)] focus:border-[var(--color-accent)] transition-colors"
             >
               <option value={1}>1 part (Célibataire)</option>
               <option value={1.5}>1.5 part (Parent isolé, 1 enfant)</option>
@@ -160,12 +167,12 @@ export default function LeasingEligibilitySimulator() {
             <div className="flex items-center gap-1">
               {isFiscallyEligible ? (
                 <>
-                  <CheckCircle2 className="w-4 h-4 text-[var(--color-accent)]" />
+                  <CheckCircle2 aria-hidden="true" className="w-4 h-4 text-[var(--color-accent)]" />
                   <span className="text-[11px] font-mono font-semibold text-[var(--color-accent)]">Éligible (≤ 16 300 €)</span>
                 </>
               ) : (
                 <>
-                  <XCircle className="w-4 h-4 text-[var(--color-warning)]" />
+                  <XCircle aria-hidden="true" className="w-4 h-4 text-[var(--color-warning)]" />
                   <span className="text-[11px] font-mono font-semibold text-[var(--color-warning)]">Seuil dépassé</span>
                 </>
               )}
@@ -176,7 +183,7 @@ export default function LeasingEligibilitySimulator() {
         {/* RIGHT COLUMN: MOBILITY & USAGE */}
         <div className="flex flex-col gap-6">
           <div className="flex items-center gap-2 pb-2 border-b border-[var(--color-border)]">
-            <MapPin className="w-4 h-4 text-[var(--color-accent)]" />
+            <MapPin aria-hidden="true" className="w-4 h-4 text-[var(--color-accent)]" />
             <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-[var(--color-text)]">
               2. Mobilité & Trajets (Gros rouleur)
             </h3>
@@ -185,7 +192,7 @@ export default function LeasingEligibilitySimulator() {
           {/* Commute distance slider */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <label className="text-xs font-medium text-[var(--color-text)]">
+              <label htmlFor={`${fieldId}-commute`} className="text-xs font-medium text-[var(--color-text)]">
                 Distance domicile-travail (aller simple)
               </label>
               <span className="font-mono text-sm font-semibold text-[var(--color-accent)]">
@@ -193,11 +200,13 @@ export default function LeasingEligibilitySimulator() {
               </span>
             </div>
             <input
+              id={`${fieldId}-commute`}
               type="range"
               min="0"
               max="50"
               step="1"
               value={commuteDistance}
+              aria-valuetext={`${commuteDistance} km`}
               onChange={(e) => setCommuteDistance(Number(e.target.value))}
               disabled={isDependentProfession}
               className="w-full h-1 bg-[var(--color-border)] rounded-lg appearance-none cursor-pointer accent-[var(--color-accent)] disabled:opacity-30"
@@ -212,7 +221,7 @@ export default function LeasingEligibilitySimulator() {
           {/* Pro mileage slider */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <label className="text-xs font-medium text-[var(--color-text)]">
+              <label htmlFor={`${fieldId}-pro-km`} className="text-xs font-medium text-[var(--color-text)]">
                 Kilométrage professionnel annuel (perso)
               </label>
               <span className="font-mono text-sm font-semibold text-[var(--color-accent)]">
@@ -220,11 +229,13 @@ export default function LeasingEligibilitySimulator() {
               </span>
             </div>
             <input
+              id={`${fieldId}-pro-km`}
               type="range"
               min="0"
               max="20000"
               step="500"
               value={proMileage}
+              aria-valuetext={`${proMileage.toLocaleString("fr-FR")} km`}
               onChange={(e) => setProMileage(Number(e.target.value))}
               disabled={isDependentProfession}
               className="w-full h-1 bg-[var(--color-border)] rounded-lg appearance-none cursor-pointer accent-[var(--color-accent)] disabled:opacity-30"
@@ -239,6 +250,7 @@ export default function LeasingEligibilitySimulator() {
           {/* Nouveauté 2026 : Dependent profession checkbox */}
           <button
             type="button"
+            aria-pressed={isDependentProfession}
             onClick={() => setIsDependentProfession(!isDependentProfession)}
             className={`flex items-start text-left p-3.5 rounded-xl border transition-all ${
               isDependentProfession 
@@ -264,7 +276,7 @@ export default function LeasingEligibilitySimulator() {
       {/* SECTION 3: OTHER CHECKS */}
       <div className="mt-8 pt-6 border-t border-[var(--color-border)]">
         <div className="flex items-center gap-2 pb-4">
-          <User className="w-4 h-4 text-[var(--color-accent)]" />
+          <User aria-hidden="true" className="w-4 h-4 text-[var(--color-accent)]" />
           <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-[var(--color-text)]">
             3. Autres Conditions obligatoires
           </h3>
@@ -274,6 +286,7 @@ export default function LeasingEligibilitySimulator() {
           {/* Adult and resident */}
           <button
             type="button"
+            aria-pressed={isAdultAndResident}
             onClick={() => setIsAdultAndResident(!isAdultAndResident)}
             className={`flex items-center text-left p-3 rounded-xl border transition-all ${
               isAdultAndResident 
@@ -292,6 +305,7 @@ export default function LeasingEligibilitySimulator() {
           {/* Has benefited in 2024 */}
           <button
             type="button"
+            aria-pressed={hasBenefitedBefore}
             onClick={() => setHasBenefitedBefore(!hasBenefitedBefore)}
             className={`flex items-center text-left p-3 rounded-xl border transition-all ${
               hasBenefitedBefore 
@@ -315,9 +329,9 @@ export default function LeasingEligibilitySimulator() {
         <div className="grid md:grid-cols-2 gap-3 text-xs">
           <div className="flex items-center gap-2">
             {isFiscallyEligible ? (
-              <CheckCircle2 className="w-4 h-4 text-[var(--color-accent)] shrink-0" />
+              <CheckCircle2 aria-hidden="true" className="w-4 h-4 text-[var(--color-accent)] shrink-0" />
             ) : (
-              <XCircle className="w-4 h-4 text-[var(--color-warning)] shrink-0" />
+              <XCircle aria-hidden="true" className="w-4 h-4 text-[var(--color-warning)] shrink-0" />
             )}
             <span className={isFiscallyEligible ? "text-[var(--color-text)]" : "text-[var(--color-text-muted)]"}>
               Revenu fiscal par part ≤ 16 300 € ({rfrPerPart.toLocaleString()} €)
@@ -326,9 +340,9 @@ export default function LeasingEligibilitySimulator() {
 
           <div className="flex items-center gap-2">
             {isGeographicallyEligible ? (
-              <CheckCircle2 className="w-4 h-4 text-[var(--color-accent)] shrink-0" />
+              <CheckCircle2 aria-hidden="true" className="w-4 h-4 text-[var(--color-accent)] shrink-0" />
             ) : (
-              <XCircle className="w-4 h-4 text-[var(--color-warning)] shrink-0" />
+              <XCircle aria-hidden="true" className="w-4 h-4 text-[var(--color-warning)] shrink-0" />
             )}
             <span className={isGeographicallyEligible ? "text-[var(--color-text)]" : "text-[var(--color-text-muted)]"}>
               {isDependentProfession 
@@ -339,9 +353,9 @@ export default function LeasingEligibilitySimulator() {
 
           <div className="flex items-center gap-2">
             {isAdultAndResident ? (
-              <CheckCircle2 className="w-4 h-4 text-[var(--color-accent)] shrink-0" />
+              <CheckCircle2 aria-hidden="true" className="w-4 h-4 text-[var(--color-accent)] shrink-0" />
             ) : (
-              <XCircle className="w-4 h-4 text-[var(--color-warning)] shrink-0" />
+              <XCircle aria-hidden="true" className="w-4 h-4 text-[var(--color-warning)] shrink-0" />
             )}
             <span className={isAdultAndResident ? "text-[var(--color-text)]" : "text-[var(--color-text-muted)]"}>
               Majeur et résidant fiscal en France
@@ -350,9 +364,9 @@ export default function LeasingEligibilitySimulator() {
 
           <div className="flex items-center gap-2">
             {!hasBenefitedBefore ? (
-              <CheckCircle2 className="w-4 h-4 text-[var(--color-accent)] shrink-0" />
+              <CheckCircle2 aria-hidden="true" className="w-4 h-4 text-[var(--color-accent)] shrink-0" />
             ) : (
-              <XCircle className="w-4 h-4 text-[var(--color-warning)] shrink-0" />
+              <XCircle aria-hidden="true" className="w-4 h-4 text-[var(--color-warning)] shrink-0" />
             )}
             <span className={!hasBenefitedBefore ? "text-[var(--color-text)]" : "text-[var(--color-text-muted)]"}>
               Aucun dossier de leasing social précédent (2024)

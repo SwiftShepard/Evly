@@ -106,7 +106,7 @@ export default function MatcherResults({
             onClick={restart}
             className="inline-flex items-center gap-1.5 px-3 py-2 border border-[var(--color-border)] rounded-lg text-xs font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface)] transition-all"
           >
-            <RotateCcw size={13} />
+            <RotateCcw aria-hidden="true" size={13} />
             Recommencer
           </button>
 
@@ -124,7 +124,7 @@ export default function MatcherResults({
       {/* Cas spécial : aucun véhicule ne correspond */}
       {top3.length === 0 ? (
         <div className="rounded-2xl p-8 border border-[var(--color-warning)] bg-[color-mix(in_srgb,var(--color-warning)_4%,transparent)] text-center flex flex-col items-center gap-3">
-          <AlertTriangle size={36} className="text-[var(--color-warning)]" />
+          <AlertTriangle aria-hidden="true" size={36} className="text-[var(--color-warning)]" />
           <h3 className="font-display text-lg font-semibold text-[var(--color-text)]">Aucun véhicule ne correspond à vos critères et à votre budget.</h3>
           <p className="text-xs text-[var(--color-text-muted)] max-w-md">
             Vos critères de budget sont peut-être trop stricts face aux prix du marché, ou le gabarit recherché est incompatible avec le rôle demandé (par exemple, un rôle de véhicule principal pour une famille exclut les citadines et les quadricycles).
@@ -166,7 +166,7 @@ export default function MatcherResults({
                   <div className="flex flex-col items-center justify-center md:w-1/4 pt-6 md:pt-0">
                     {/* Radial score ring */}
                     <div className="relative w-20 h-20 flex items-center justify-center">
-                      <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                      <svg aria-hidden="true" className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
                         <path
                           className="text-[var(--color-border)]"
                           strokeWidth="2.5"
@@ -225,13 +225,13 @@ export default function MatcherResults({
                     <div className="mt-4 flex flex-col gap-2">
                       {res.reasons.map((r, i) => (
                         <div key={i} className="flex gap-2 items-start text-xs leading-relaxed text-[var(--color-text-muted)]">
-                          <CheckCircle2 size={14} className="text-[var(--color-accent)] mt-0.5 flex-shrink-0" />
+                          <CheckCircle2 aria-hidden="true" size={14} className="text-[var(--color-accent)] mt-0.5 flex-shrink-0" />
                           <span>{r}</span>
                         </div>
                       ))}
                       {res.warnings.map((w, i) => (
                         <div key={i} className="flex gap-2 items-start text-xs leading-relaxed text-[var(--color-warning)]">
-                          <AlertTriangle size={14} className="text-[var(--color-warning)] mt-0.5 flex-shrink-0" />
+                          <AlertTriangle aria-hidden="true" size={14} className="text-[var(--color-warning)] mt-0.5 flex-shrink-0" />
                           <span>{w}</span>
                         </div>
                       ))}
@@ -326,21 +326,21 @@ export default function MatcherResults({
                         className="btn-interactive inline-flex items-center justify-between px-3 py-2 border border-[var(--color-border-strong)] rounded-lg text-xs font-semibold text-[var(--color-text)] hover:bg-[var(--color-bg-subtle)] transition-colors"
                       >
                         Fiche technique
-                        <ChevronRight size={13} />
+                        <ChevronRight aria-hidden="true" size={13} />
                       </a>
                       <a
                         href={url(`/comparer/?v=${res.vehicle.slug}:${res.bestConfig.id}:100`)}
                         className="btn-interactive inline-flex items-center justify-between px-3 py-2 border border-[var(--color-accent-dim)] rounded-lg text-xs font-semibold text-[var(--color-accent)] bg-[color-mix(in_srgb,var(--color-accent)_5%,transparent)] hover:bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] transition-colors"
                       >
                         Ajouter au comparateur
-                        <ChevronRight size={13} />
+                        <ChevronRight aria-hidden="true" size={13} />
                       </a>
                       <a
                         href={url(`/simulateur/rapport-premium/?v=${res.vehicle.slug}&config=${res.bestConfig.id}&km=${answers.mileage}`)}
-                        className="btn-interactive inline-flex items-center justify-between px-3 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-lg text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20 transition-colors"
+                        className="btn-interactive inline-flex items-center justify-between px-3 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-lg text-xs font-semibold text-emerald-700 hover:bg-emerald-500/20 transition-colors"
                       >
                         Rapport TCO détaillé ↗
-                        <ChevronRight size={13} strokeWidth={2.5} />
+                        <ChevronRight aria-hidden="true" size={13} strokeWidth={2.5} />
                       </a>
                     </div>
                   </div>
@@ -390,7 +390,7 @@ export default function MatcherResults({
                   <div key={res.vehicle.slug} className="flex flex-col">
                     <button
                       onClick={() => setExpandedOtherSlug(isExpanded ? null : res.vehicle.slug)}
-                      className="w-full text-left p-4 flex items-center justify-between text-xs gap-3 hover:bg-[var(--color-surface)] cursor-pointer transition-all focus:outline-none"
+                      className="w-full text-left p-4 flex items-center justify-between text-xs gap-3 hover:bg-[var(--color-surface)] cursor-pointer transition-all"
                     >
                       <div className="flex items-center gap-2 flex-wrap">
                         <span className="font-bold text-[var(--color-text)]">
@@ -537,13 +537,13 @@ export default function MatcherResults({
                             <div className="flex flex-col gap-2">
                               {res.reasons.map((r, i) => (
                                 <div key={i} className="flex gap-2 items-start text-xs leading-relaxed text-[var(--color-text-muted)]">
-                                  <CheckCircle2 size={13} className="text-[var(--color-accent)] mt-0.5 flex-shrink-0" />
+                                  <CheckCircle2 aria-hidden="true" size={13} className="text-[var(--color-accent)] mt-0.5 flex-shrink-0" />
                                   <span>{r}</span>
                                 </div>
                               ))}
                               {res.warnings.map((w, i) => (
                                 <div key={i} className="flex gap-2 items-start text-xs leading-relaxed text-[var(--color-warning)]">
-                                  <AlertTriangle size={13} className="text-[var(--color-warning)] mt-0.5 flex-shrink-0" />
+                                  <AlertTriangle aria-hidden="true" size={13} className="text-[var(--color-warning)] mt-0.5 flex-shrink-0" />
                                   <span>{w}</span>
                                 </div>
                               ))}

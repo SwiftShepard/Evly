@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useId } from "react";
 
 interface Props {
   initialSoh?: number;
@@ -89,10 +89,12 @@ export default function SohSlider({
   // Fill calculation for range track
   const percentFill = ((soh - 70) / 30) * 100;
 
+  const labelId = useId();
+
   return (
     <div className={`flex flex-col gap-2 ${compact ? "p-1" : "py-2"}`}>
       <div className="flex justify-between items-baseline">
-        <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">
+        <span id={labelId} className="font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">
           Santé batterie (SoH)
         </span>
         <span className="font-mono text-xs font-semibold text-[var(--color-accent)]">
@@ -110,7 +112,9 @@ export default function SohSlider({
           max="100"
           value={soh}
           onChange={handleChange}
-          className="w-full h-1 bg-[var(--color-border-strong)] rounded-lg appearance-none cursor-pointer accent-[var(--color-accent)] focus:outline-none focus:ring-1 focus:ring-[var(--color-accent)] transition-all"
+          aria-labelledby={labelId}
+          aria-valuetext={`${soh} % (${getPresetLabel(soh)})`}
+          className="w-full h-1 bg-[var(--color-border-strong)] rounded-lg appearance-none cursor-pointer accent-[var(--color-accent)] focus:ring-1 focus:ring-[var(--color-accent)] transition-all"
           style={{
             background: `linear-gradient(to right, var(--color-accent) 0%, var(--color-accent) ${percentFill}%, var(--color-border) ${percentFill}%, var(--color-border) 100%)`,
           }}

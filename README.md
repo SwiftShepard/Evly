@@ -15,7 +15,7 @@ Les comparateurs VE existants sont soit franchement publicitaires (sites constru
 - **Données mesurées** plutôt que WLTP commerciale. La WLTP surestime l'autonomie réelle de 15 à 30 %. Evly agrège les protocoles **Nyland** (90 et 120 km/h, 1000 km challenge), **EVKX** (courbes de charge), **ArenaEV** (range par tranche de vitesse) et la presse VE française.
 - **Verdict argumenté** plutôt que score sur 10. Pour qui ce véhicule est le bon choix, pour qui il ne l'est pas.
 - **Sources tracées** sur chaque chiffre : niveau de confiance (`mesuré` / `constructeur` / `estimé` / `pending`), lien vers la vidéo ou l'article original.
-- **Aucune publicité, aucun lien affilié, aucun tracking.**
+- **Aucune publicité, aucun lien affilié, aucun cookie.** Seule une mesure d'audience anonyme sans cookie (Plausible) est utilisée, refusable sur `/cookies/`.
 
 ---
 
@@ -169,8 +169,19 @@ Règles non négociables :
 
 - **JS** : zéro sur les pages purement éditoriales. Charts et calculateurs en ilots React.
 - **Fonts** : auto-hébergées, `font-display: swap`.
-- **A11y** : skip link, charts `role="img"` + `aria-label`, focus visible 2 px accent, contrastes AAA, `prefers-reduced-motion` respecté.
+- **A11y** : objectif WCAG 2.2 AA vérifié avec axe-core (0 violation sur toutes les pages), skip link, charts `role="img"` + résumé des données, focus visible 2 px accent, contrastes ≥ 4,5:1, dialogues et curseurs nommés, `prefers-reduced-motion` respecté.
+- **Agents IA** : HTML statique lisible sans JS, JSON-LD, sitemap et résumé `/llms.txt` généré au build.
 - **SEO** : sitemap auto, OG complets, JSON-LD `Vehicle` sur chaque fiche.
+
+---
+
+## Conformité légale (France)
+
+- Pages : `/mentions-legales/`, `/confidentialite/`, `/cookies/`, `/conditions-utilisation/`, `/accessibilite/`, liées depuis le pied de page.
+- Coordonnées de l'éditeur, de l'hébergeur et de Plausible centralisées dans `src/data/legal.ts` : ne jamais les recopier ailleurs.
+- Aucun bandeau cookies : aucun cookie, mesure d'audience exemptée (art. 82 loi Informatique et Libertés, lignes directrices CNIL 2020), stockage local uniquement fonctionnel. Toute nouvelle clé `localStorage` doit être ajoutée à `LOCAL_STORAGE_KEYS`.
+- Plausible n'envoie ni paramètres d'URL (hors `utm_*`) ni ancre, et respecte Global Privacy Control et le refus `plausible_ignore`.
+- Tout ajout de contenu tiers (vidéo, carte, police externe, pixel) ou d'offre payante impose de revoir ces pages, et probablement un bandeau de consentement ou des CGV.
 
 ---
 

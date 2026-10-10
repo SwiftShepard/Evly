@@ -28,7 +28,7 @@ export default function FavoriteButton({ slug, size = 18, className = "" }: Prop
       aria-label={active ? "Retirer des favoris" : "Ajouter aux favoris"}
       title={active ? "Retirer des favoris" : "Ajouter aux favoris"}
     >
-      <Star
+      <Star aria-hidden="true"
         size={size}
         fill={active ? "var(--color-accent)" : "none"}
         strokeWidth={active ? 0 : 1.5}

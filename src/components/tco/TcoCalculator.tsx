@@ -241,7 +241,7 @@ function DepreciationInsight({
   return (
     <div className="tco-depreciation-insight">
       <div className="tco-depreciation-header">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
           <circle cx="8" cy="8" r="7" />
           <path d="M8 5v3" /><circle cx="8" cy="11" r="0.5" fill="currentColor" />
         </svg>
@@ -572,6 +572,7 @@ export default function TcoCalculator({ vehicles }: Props) {
 
           <select
             className="tco-select"
+            aria-label="Véhicule électrique"
             value={selectedSlug}
             onChange={(e) => handleVehicleChange(e.target.value)}
           >
@@ -590,6 +591,8 @@ export default function TcoCalculator({ vehicles }: Props) {
                 {selectedEv.configs.map((c) => (
                   <button
                     key={c.id}
+                    type="button"
+                    aria-pressed={c.id === selectedConfigId}
                     className={`tco-config-btn ${c.id === selectedConfigId ? "active" : ""}`}
                     onClick={() => handleConfigChange(c.id)}
                   >
@@ -778,12 +781,12 @@ export default function TcoCalculator({ vehicles }: Props) {
         >
           <div className="tco-savings-icon">
             {result.savings >= 0 ? (
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
                 <polyline points="17 6 23 6 23 12" />
               </svg>
             ) : (
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="23 18 13.5 8.5 8.5 13.5 1 6" />
                 <polyline points="17 18 23 18 23 12" />
               </svg>
@@ -891,13 +894,13 @@ export default function TcoCalculator({ vehicles }: Props) {
         {/* Call to action for B2C Premium PDF report (F8) */}
         <div className="tco-premium-cta mt-6 p-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-subtle)] flex flex-col gap-3">
           <div className="flex items-start gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-600 shrink-0 dark:text-emerald-400">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-700 shrink-0">
+              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
             </div>
             <div className="flex flex-col gap-0.5">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)]">Rapport PDF détaillé</h4>
+              <h2 className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)]">Rapport PDF détaillé</h2>
               <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
                 TCO sur-mesure, météo, planificateur & aides 2026 détaillées.
               </p>
@@ -930,7 +933,7 @@ export default function TcoCalculator({ vehicles }: Props) {
         onClick={() => setShowAdvanced(!showAdvanced)}
       >
         <span>{showAdvanced ? "Masquer" : "Afficher"} les parametres avances</span>
-        <svg
+        <svg aria-hidden="true"
           width="16"
           height="16"
           viewBox="0 0 16 16"

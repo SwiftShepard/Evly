@@ -3,6 +3,7 @@ import Wordmark from "@/components/ui/Wordmark.astro";
 import { url } from "@/lib/url";
 import { getAllVehicles } from "@/lib/vehicles";
 import { getCategory } from "@/data/categories";
+import { LEGAL_PAGES } from "@/data/legal";
 
 const year = new Date().getFullYear();
 
@@ -78,7 +79,8 @@ const cols = [
         </p>
         <p class="text-[var(--color-text-muted)] text-sm leading-relaxed max-w-md">
           Evly agrège les données d'autonomie réelle et de recharge mesurées par Bjørn Nyland, EVKX, ArenaEV,
-          la presse VE française et les fiches constructeur officielles. Aucune publicité, aucun lien affilié, aucun tracking.
+          la presse VE française et les fiches constructeur officielles. Aucune publicité, aucun lien affilié, aucun cookie :
+          seule une mesure d'audience anonyme est utilisée.
         </p>
         <div class="flex flex-col gap-1">
           <span class="label-eyebrow">État du projet</span>
@@ -110,12 +112,20 @@ const cols = [
     </div>
 
     <div
-      class="mt-16 pt-8 border-t border-[var(--color-border)] flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+      class="mt-16 pt-8 border-t border-[var(--color-border)] flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4"
     >
       <span class="label-eyebrow">© {year} Evly. L'électrique mesuré.</span>
-      <span class="font-mono text-xs text-[var(--color-text-faint)]">
-        Astro · Tailwind · TypeScript · Cloudflare Pages
-      </span>
+      <nav aria-label="Informations légales">
+        <ul class="flex flex-wrap gap-x-5 gap-y-1">
+          {LEGAL_PAGES.map((p) => (
+            <li>
+              <a href={url(p.path)} class="footer-link inline-block py-1 text-xs text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors">
+                {p.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </div>
   </div>
 </footer>

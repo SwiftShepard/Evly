@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useId } from "react";
 import { X, Search, Plus } from "lucide-react";
 import type { Vehicle } from "@/data/schemas";
 
@@ -19,11 +19,16 @@ export default function VehicleSelectModal({
   const inputRef = useRef<HTMLInputElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
+  const titleId = useId();
+
   useEffect(() => {
+    const previous = document.activeElement as HTMLElement | null;
     inputRef.current?.focus();
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = "";
+      // Rend le focus au bouton qui a ouvert la fenêtre
+      previous?.focus();
     };
   }, []);
 
@@ -74,6 +79,9 @@ export default function VehicleSelectModal({
       }}
     >
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
         className="w-full max-w-xl flex flex-col rounded-2xl overflow-hidden max-h-[85vh]"
         style={{
           backgroundColor: "var(--color-bg-elevated)",
@@ -88,6 +96,7 @@ export default function VehicleSelectModal({
           style={{ borderBottom: "0.5px solid var(--color-border)" }}
         >
           <h2
+            id={titleId}
             className="text-base font-semibold tracking-tight"
             style={{ color: "var(--color-text)" }}
           >
@@ -100,7 +109,7 @@ export default function VehicleSelectModal({
             style={{ color: "var(--color-text-faint)" }}
             aria-label="Fermer"
           >
-            <X size={18} strokeWidth={1.6} />
+            <X aria-hidden="true" size={18} strokeWidth={1.6} />
           </button>
         </div>
 
@@ -113,14 +122,15 @@ export default function VehicleSelectModal({
               border: "0.5px solid var(--color-border)",
             }}
           >
-            <Search size={14} style={{ color: "var(--color-text-faint)" }} />
+            <Search aria-hidden="true" size={14} style={{ color: "var(--color-text-faint)" }} />
             <input
               ref={inputRef}
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Rechercher un véhicule…"
-              className="flex-1 bg-transparent border-none outline-none text-sm"
+              aria-label="Rechercher un véhicule"
+              className="flex-1 bg-transparent border-none text-sm"
               style={{
                 color: "var(--color-text)",
                 fontFamily: "var(--font-sans)",
@@ -132,6 +142,7 @@ export default function VehicleSelectModal({
               <button
                 key={cat}
                 type="button"
+                aria-pressed={category === cat}
                 onClick={() => setCategory(cat)}
                 className="px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors"
                 style={{
@@ -236,7 +247,7 @@ export default function VehicleSelectModal({
                         Déjà ajouté
                       </span>
                     ) : (
-                      <Plus
+                      <Plus aria-hidden="true"
                         size={16}
                         className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity"
                         style={{ color: "var(--color-accent)" }}

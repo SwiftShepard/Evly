@@ -92,7 +92,7 @@ const protocols = [
           Chaque chiffre clé porte un niveau de confiance explicite : <span class="font-mono text-[var(--color-accent)] text-sm">mesuré</span>, <span class="font-mono text-[var(--color-warning)] text-sm">constructeur</span>, <span class="font-mono text-[var(--color-text-muted)] text-sm">estimé</span>, ou <span class="font-mono text-[var(--color-text-muted)] text-sm">pending</span> quand nous attendons une vérification.
         </p>
       </div>
-      <aside class="lg:col-span-5 bg-[var(--color-bg-elevated)] p-8 md:p-10 flex flex-col gap-6 border border-[var(--color-border)] reveal-scale">
+      <div class="lg:col-span-5 bg-[var(--color-bg-elevated)] p-8 md:p-10 flex flex-col gap-6 border border-[var(--color-border)] reveal-scale">
         <span class="label-eyebrow">Trois principes éditoriaux</span>
         <ol class="flex flex-col gap-5">
           <li class="flex gap-4">
@@ -108,7 +108,7 @@ const protocols = [
             <p class="text-sm text-[var(--color-text)] leading-relaxed">Tracé, pas anonyme, chaque chiffre lié à sa source.</p>
           </li>
         </ol>
-      </aside>
+      </div>
     </div>
   </section>
 
@@ -143,7 +143,7 @@ const protocols = [
                 href={p.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="font-mono text-xs text-[var(--color-accent)] hover:underline"
+                class="inline-block py-1 font-mono text-xs text-[var(--color-accent)] hover:underline"
               >
                 Source principale ↗
               </a>
@@ -152,7 +152,7 @@ const protocols = [
                   href={p.sourceUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="font-mono text-xs text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:underline"
+                  class="inline-block py-1 font-mono text-xs text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:underline"
                 >
                   Données brutes ↗
                 </a>
@@ -174,7 +174,7 @@ const protocols = [
     />
     <div class="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8">
       <div class="lg:col-span-7 bg-[var(--color-bg-elevated)] border border-[var(--color-border)] p-8 md:p-10">
-        <pre class="font-mono text-xs md:text-sm text-[var(--color-text)] leading-relaxed overflow-x-auto whitespace-pre"><code>TCO = (Prix d'achat − Aides applicables)
+        <pre tabindex="0" aria-label="Formule du coût total de possession" class="font-mono text-xs md:text-sm text-[var(--color-text)] leading-relaxed overflow-x-auto whitespace-pre"><code>TCO = (Prix d'achat − Aides applicables)
     + (Conso mixte × km/an × Prix kWh moyen) × Durée
     + (Entretien annuel estimé) × Durée
     + (Assurance annuelle estimée) × Durée
@@ -245,7 +245,7 @@ const protocols = [
                 href={source.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="font-mono text-xs text-[var(--color-accent)] hover:underline"
+                class="inline-block py-1 font-mono text-xs text-[var(--color-accent)] hover:underline"
               >
                 {new URL(source.url).hostname.replace(/^www\./, "")} ↗
               </a>
@@ -254,7 +254,7 @@ const protocols = [
                   href={source.protocolUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="font-mono text-xs text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:underline"
+                  class="inline-block py-1 font-mono text-xs text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:underline"
                 >
                   Protocole / données brutes ↗
                 </a>
