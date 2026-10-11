@@ -1,0 +1,73 @@
+---
+/**
+ * Règle d'autonomie : hiver (olive foncé) + reste de l'autonomie réelle (olive)
+ * + kilomètres promis par le WLTP (lime hachuré), à une échelle commune.
+ * Le repère « votre semaine » (data-need, --need) est posé côté client par lib/trip.
+ * Styles dans global.css (.rail), partagés avec les règles construites en JS.
+ */
+import { formatNumber } from "@/lib/format";
+
+interface Props {
+  real: number;
+  wltp: number;
+  winter: number;
+  /** Échelle commune en km (fin de règle) */
+  scale: number;
+  size?: "sm" | "lg";
+  /** Étiquettes et graduations (grande règle) */
+  annotate?: boolean;
+  /** Fond sur lequel la règle est posée (espace entre segments) */
+  surface?: string;
+  animate?: boolean;
+  /** Remplissage au défilement (dans un bloc .reveal), décalé selon le rang `index` */
+  reveal?: boolean;
+  index?: number;
+  class?: string;
+}
+
+const { real, wltp, winter, scale, size = "sm", annotate = false, surface, animate = false, reveal = false, index = 0, class: className = "" } = Astro.props;
+
+const promise = Math.max(wltp, real);
+const ticks = Array.from({ length: Math.floor(scale / 100) + 1 }, (_, i) => i * 100);
+const flip = promise / scale > 0.78;
+const style = [
+  `--scale:${scale}`,
+  `--winter:${Math.min(winter, real)}`,
+  `--real:${real}`,
+  `--wltp:${promise}`,
+  surface ? `--rail-surface:${surface}` : "",
+  reveal ? `--i:${index}` : "",
+].filter(Boolean).join(";");
+---
+
+<div
+  class:list={["rail", className]}
+  data-size={size}
+  data-winter={winter}
+  data-real={real}
+  data-wltp={promise}
+  data-flip={flip ? "" : undefined}
+  data-animate={animate ? "" : undefined}
+  data-reveal={reveal ? "" : undefined}
+  style={style}
+>
+  {annotate && (
+    <div class="rail-labels" aria-hidden="true">
+      <p class="rail-label rail-label-real"><b><span data-rail-real>{formatNumber(real)}</span> km</b><span>sur route, en usage mixte</span></p>
+      <p class="rail-label rail-label-wltp"><b><span data-rail-wltp>{formatNumber(promise)}</span> km</b><span>annoncés (WLTP)</span></p>
+    </div>
+  )}
+  <div class="rail-bar" aria-hidden="true">
+    <span class="rail-seg rail-winter">
+      {annotate && <span class="rail-winter-label"><span data-rail-winter>{formatNumber(winter)}</span> km en hiver</span>}
+    </span>
+    <span class="rail-seg rail-real"></span>
+    <span class="rail-seg rail-promise"></span>
+    <span class="rail-need"></span>
+  </div>
+  {annotate && (
+    <div class="rail-ticks" aria-hidden="true">
+      {ticks.map((t, i) => <span class="rail-tick" style={`left:${(t / scale) * 100}%`}>{i === ticks.length - 1 ? `${t} km` : t}</span>)}
+    </div>
+  )}
+</div>

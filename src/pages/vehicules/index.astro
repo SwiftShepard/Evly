@@ -5,6 +5,8 @@ import Tile from "@/components/ui/Tile.astro";
 import Tag from "@/components/ui/Tag.astro";
 import BrandLogo from "@/components/ui/BrandLogo.astro";
 import VehicleImage from "@/components/ui/VehicleImage.astro";
+import RangeRail from "@/components/ui/RangeRail.astro";
+import { Route } from "lucide-react";
 import { getAllVehicles, isStrictUtility } from "@/lib/vehicles";
 import { SEO_YEAR } from "@/lib/seo";
 import { CATEGORIES } from "@/data/categories";
@@ -103,6 +105,7 @@ const budgetFilters = [
   { label: "< 100 k€", value: "100000" },
 ];
 const specificFilters = [
+  { label: "Tient mon trajet", value: "trajet" },
   { label: "Favoris", value: "favorites" },
   { label: "Leasing social", value: "leasing" },
   { label: "Coup de pouce CEE", value: "cee" },
@@ -110,6 +113,28 @@ const specificFilters = [
   { label: "Made in Europe", value: "eu" },
   { label: "Familiale", value: "familiale" },
 ];
+
+// « Mon trajet » : versions commercialisées [prix, autonomie hiver, libellé court] et rendu initial
+// pour le trajet par défaut (40 km/j, une semaine = 200 km), recalculé dans le navigateur.
+const RAIL_SCALE = 900;
+const DEFAULT_NEED = 200;
+const DEFAULT_DAILY = 40;
+function shortLabel(v: Vehicle, label: string) {
+  return label.replace(v.model, "").replace(/^[\s·]+/, "").trim() || label;
+}
+function versionsOf(v: Vehicle): [number | null, number, string][] {
+  return v.configurations
+    .filter((c) => c.availability !== "discontinued")
+    .map((c) => [c.price_EUR, (c.realRange ?? v.realRange).winter_minus5_km, shortLabel(v, c.label)]);
+}
+function tripBadge(versions: [number | null, number, string][], cheapest: number | null) {
+  const fitting = versions.filter((x) => x[1] >= DEFAULT_NEED && x[0] !== null).sort((a, b) => a[0]! - b[0]!);
+  const best = Math.max(...versions.map((x) => x[1]));
+  if (fitting.length === 0) return { fit: false, text: `${Math.floor(best / DEFAULT_DAILY)} jours en hiver : moins d'une semaine de votre trajet` };
+  const f = fitting[0]!;
+  if (cheapest !== null && f[0] === cheapest) return { fit: true, text: `${Math.floor(f[1] / DEFAULT_DAILY)} jours de votre trajet, même en hiver` };
+  return { fit: true, text: `Tient votre semaine dès ${formatPrice(f[0]!)} (${f[2]})` };
+}
 
 const europeanCountries = ["France", "Allemagne", "Slovaquie", "Rép. Tchèque", "Pologne", "Espagne", "Italie", "Belgique", "Suède", "Slovénie", "Hongrie", "Autriche", "Portugal"];
 function isEU(v: Vehicle) { return europeanCountries.includes(v.productionCountry); }
@@ -443,6 +468,20 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
               <p class="mt-4 text-[var(--color-text-muted)] text-sm md:text-base max-w-2xl fade-rise fade-rise-delay-3">
                 Filtrez par budget, autonomie réelle ou vitesse de charge : pas besoin de connaître les marques pour trouver la bonne voiture.
               </p>
+              <div class="trip-strip fade-rise fade-rise-delay-3 no-glossary">
+                <span class="inline-flex items-center gap-2 text-[14.5px]">
+                  <Route size={17} strokeWidth={2} className="text-[var(--color-accent)]" aria-hidden="true" />
+                  Votre trajet : <b data-trip-label>{DEFAULT_DAILY} km/j</b>
+                </span>
+                <button type="button" class="filter-chip trip-filter-chip" data-filter="specific" data-value="trajet" aria-pressed="false">Seulement ceux qui tiennent ma semaine</button>
+                <button type="button" class="trip-edit" data-trip-edit>Modifier mon trajet</button>
+                <span class="rail-legend ml-auto">
+                  <span><i class="rail-key rail-key-winter"></i>Hiver</span>
+                  <span><i class="rail-key rail-key-real"></i>Réelle</span>
+                  <span><i class="rail-key rail-key-promise"></i>Promis</span>
+                  <span><i class="rail-key rail-key-need"></i>Votre semaine</span>
+                </span>
+              </div>
               <div class="mt-6 pt-5 border-t border-[var(--color-border)] flex flex-wrap xl:flex-nowrap items-center gap-2 fade-rise fade-rise-delay-3">
                 <span id="results-count" class="results-count" aria-live="polite">{vehicles.length} modèles</span>
                 <span class="w-px h-4 bg-[var(--color-border)] mx-1" aria-hidden="true"></span>
@@ -495,37 +534,33 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
               data-charge-highway={Math.round(v.realRange.highway_130_km * 0.70)}
               data-charge-mixed={Math.round(v.realRange.mixed_km * 0.70)}
               data-charge-urban={Math.round(v.realRange.urban_km * 0.70)}
+              data-versions={JSON.stringify(versionsOf(v))}
               data-match="1"
               class="vehicle-card contents"
               style={i >= PAGE_SIZE ? "display: none" : undefined}
             >
-              <Tile size="2x1" variant="default" href={url(`/vehicules/${v.slug}/`)} ariaLabel={`Fiche ${v.brand} ${v.model}`} class="reveal">
-                <div class="flex items-center justify-between gap-3 mb-4">
+              <Tile size="2x1" variant="default" href={url(`/vehicules/${v.slug}/`)} ariaLabel={`Fiche ${v.brand} ${v.model}`} class="reveal vcard">
+                <div class="flex items-center justify-between gap-3">
                   <div class="flex items-center gap-2 text-[var(--color-text-muted)] min-w-0">
                     <BrandLogo brand={v.brand} class="w-4 h-4" />
-                    <span class="label-eyebrow !text-[var(--color-text-faint)] truncate">{v.brand} · {category}</span>
+                    <span class="label-eyebrow truncate">{v.brand} · {category}</span>
                   </div>
                   <div class="flex items-center gap-2 flex-wrap justify-end relative z-10">
-                    {isLeasing(v) && <Tag tone="accent" mono>Leasing social</Tag>}
+                    {isLeasing(v) && <Tag tone="accent">Leasing social</Tag>}
                     <FavoriteButton client:visible slug={v.slug} size={15} />
                   </div>
                 </div>
-                <div class="flex items-end gap-3 mb-6">
-                  <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-[-0.015em] leading-[1.05]">
-                    <span class="sr-only">{v.brand} </span>{v.model}
-                    <span class="block text-[var(--color-text-faint)] text-[13px] mt-1 font-normal tracking-[-0.005em] leading-tight">{s.subtitle}</span>
-                  </h2>
-                  <div class="flex-1 h-14 relative min-w-[120px]">
-                    <div class="absolute bottom-0 inset-x-0 mx-auto w-44 h-22 flex items-end justify-center">
-                      <VehicleImage
-                        slug={v.slug}
-                        alt={`${v.brand} ${v.model}`}
-                        class="w-full h-full"
-                      />
-                    </div>
+                <div class="vcard-main">
+                  <div class="min-w-0">
+                    <h2 class="vcard-model"><span class="sr-only">{v.brand} </span>{v.model}</h2>
+                    <p class="vcard-sub">{s.subtitle}</p>
+                  </div>
+                  <div class="vcard-photo stage">
+                    <VehicleImage slug={v.slug} alt={`${v.brand} ${v.model}`} widths={[240, 480]} sizes="220px" class="w-[92%] h-full" />
                   </div>
                 </div>
-                <div class="card-footer-grid grid grid-cols-2 gap-2 md:gap-4 mt-auto pt-5 border-t border-[var(--color-border)]">
+                <RangeRail real={v.realRange.mixed_km} wltp={v.wltp_max_km} winter={v.realRange.winter_minus5_km} scale={RAIL_SCALE} class="vcard-rail" />
+                <div class="card-footer-grid grid grid-cols-2 gap-2 md:gap-4 pt-4">
                   <div class="flex flex-col gap-1">
                     <span class="text-[12.5px] text-[var(--color-text-faint)] whitespace-nowrap">
                       <span class="range-mode-mixed">Autonomie réelle</span>
@@ -588,6 +623,10 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                     )}
                   </div>
                 </div>
+                {(() => {
+                  const badge = tripBadge(versionsOf(v), s.cheapestPrice);
+                  return <p class="trip-badge" data-trip-badge data-fit={badge.fit ? "1" : "0"}>{badge.text}</p>;
+                })()}
               </Tile>
             </div>
           );
@@ -649,6 +688,8 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
   </section>
 
   <script>
+    import { readTrip, onTripChange, weekNeed, paintRails, type Trip } from "@/lib/trip";
+
     const PAGE_SIZE = 24;
 
     type FilterKey = 'brand' | 'cat' | 'budget' | 'specific';
@@ -776,6 +817,39 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
         } catch { return []; }
       }
 
+      // ── Mon trajet : versions [prix, autonomie hiver, libellé] de chaque carte ──
+      const versionCache = new WeakMap<HTMLElement, [number | null, number, string][]>();
+      function versionsOf(card: HTMLElement) {
+        let list = versionCache.get(card);
+        if (!list) {
+          try { list = JSON.parse(card.dataset.versions || '[]') as [number | null, number, string][]; } catch { list = []; }
+          versionCache.set(card, list);
+        }
+        return list;
+      }
+      const nf = new Intl.NumberFormat('fr-FR');
+      const euros = (n: number) => `${nf.format(n).replace(/ /g, ' ')} €`;
+
+      function renderTripBadges(t: Trip) {
+        const need = weekNeed(t);
+        cards.forEach((card) => {
+          const badge = card.querySelector<HTMLElement>('[data-trip-badge]');
+          if (!badge) return;
+          const versions = versionsOf(card);
+          if (!versions.length) return;
+          const fitting = versions.filter((x) => x[1] >= need && x[0] !== null).sort((a, b) => a[0]! - b[0]!);
+          const best = Math.max(...versions.map((x) => x[1]));
+          const cheapest = Number(card.dataset.price) || null;
+          let text: string;
+          if (!fitting.length) text = `${Math.floor(best / t.dailyKm)} jours en hiver : moins d'une semaine de votre trajet`;
+          else if (cheapest !== null && fitting[0]![0] === cheapest) text = `${Math.floor(fitting[0]![1] / t.dailyKm)} jours de votre trajet, même en hiver`;
+          else text = `Tient votre semaine dès ${euros(fitting[0]![0]!)} (${fitting[0]![2]})`;
+          badge.textContent = text;
+          badge.dataset.fit = fitting.length ? '1' : '0';
+        });
+        paintRails(t, grid!);
+      }
+
       function cardMatches(card: HTMLElement, favSlugs: Set<string>, query: string): boolean {
         const d = card.dataset;
         const usages = (d.usage || '').split(',').filter(Boolean);
@@ -793,6 +867,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
         }
 
         for (const s of active.specific) {
+          if (s === 'trajet'      && !versionsOf(card).some((x) => x[1] >= weekNeed(readTrip()))) return false;
           if (s === 'favorites'   && !favSlugs.has(d.slug ?? '')) return false;
           if (s === 'fast-charge' && +(d.dc ?? 0) < 100) return false;
           if (s === 'eu'          && d.origin !== 'eu') return false;
@@ -1166,10 +1241,77 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
       applySort(currentSort);
       onStateChange();
       restoreFromVehiclePage();
+
+      // Mon trajet : badges et repères à jour, filtre réappliqué à chaque réglage
+      renderTripBadges(readTrip());
+      const stopTrip = onTripChange((t) => {
+        renderTripBadges(t);
+        if (active.specific.has('trajet')) onStateChange(false);
+      });
+      document.addEventListener('astro:before-swap', stopTrip, { once: true });
+      document.querySelector('[data-trip-edit]')?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.querySelector<HTMLButtonElement>('[data-trip-toggle]')?.click();
+      });
     });
   </script>
 
   <style>
+    /* ── Bande « Mon trajet » ───────────────────────────── */
+    .trip-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.6rem 1rem;
+      margin-top: 1.25rem;
+      padding: 0.75rem 0.75rem 0.75rem 1.1rem;
+      border-radius: 18px;
+      background: var(--color-surface-accent);
+    }
+    .trip-strip b { color: var(--color-accent); }
+    .trip-strip .trip-filter-chip { background: var(--color-surface-elevated); }
+    .trip-edit { font-size: 13.5px; font-weight: 600; color: var(--color-accent); text-decoration: underline; text-underline-offset: 3px; }
+    .trip-edit:hover { text-decoration: none; }
+    @media (max-width: 1279px) { .trip-strip .rail-legend { display: none; } }
+
+    /* ── Cartes véhicule ────────────────────────────────── */
+    :global(.vcard) { gap: 0; }
+    .vcard-main {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 46%;
+      align-items: end;
+      gap: 1rem;
+      margin: 0.85rem 0 1.1rem;
+    }
+    .vcard-model {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 1.6vw + 0.8rem, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1;
+    }
+    .vcard-sub { margin-top: 0.4rem; font-size: 13px; color: var(--color-text-faint); }
+    .vcard-photo { height: 6.5rem; padding-top: 0.4rem; }
+    .vcard-photo :global(img) { transition: transform 300ms var(--ease-out-expo); }
+    @media (hover: hover) and (pointer: fine) {
+      :global(a.vcard:hover) .vcard-photo :global(img) { transform: translateX(6px) scale(1.04); }
+    }
+    :global(.vcard-rail) { margin-bottom: 0.25rem; }
+    .trip-badge {
+      margin-top: 0.9rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 12px;
+      font-size: 12.5px;
+      line-height: 1.3;
+      background: var(--color-surface-accent);
+      color: var(--color-accent);
+      font-weight: 500;
+    }
+    .trip-badge[data-fit="0"] {
+      background: color-mix(in srgb, var(--color-danger) 8%, transparent);
+      color: var(--color-danger);
+    }
+
     /* ── Sticky Sidebar ─────────────────────────────────── */
     .sidebar-sticky {
       max-height: calc(100vh - 8rem);
@@ -1201,9 +1343,9 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
       border: 1px solid var(--color-border);
       background: transparent;
       color: var(--color-text-muted);
-      font-family: var(--font-mono, ui-monospace, monospace);
-      font-size: 0.68rem;
-      letter-spacing: 0.025em;
+      font-family: var(--font-sans);
+      font-size: 0.8125rem;
+      letter-spacing: -0.005em;
       cursor: pointer;
       transition: background 0.12s, border-color 0.12s, color 0.12s, transform 0.08s;
       white-space: nowrap;

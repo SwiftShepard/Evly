@@ -152,5 +152,20 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwindcss(), adminApiPlugin],
+    // Dépendances des îlots React pré-optimisées dès le démarrage du serveur de dev :
+    // sinon Vite les découvre en cours de session, invalide ses fichiers (erreur 504
+    // « Outdated Optimize Dep ») et les graphiques des fiches restent vides jusqu'au redémarrage.
+    optimizeDeps: {
+      include: [
+        'react',
+        'react-dom',
+        'react-dom/client',
+        'react/jsx-runtime',
+        'react/jsx-dev-runtime',
+        'chart.js',
+        'react-chartjs-2',
+        'lucide-react',
+      ],
+    },
   },
 });

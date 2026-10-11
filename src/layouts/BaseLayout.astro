@@ -72,7 +72,7 @@ const combinedJsonLd = jsonLd
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#f3f4f0" />
+    <meta name="theme-color" content="#eef1e7" />
 
     <ViewTransitions />
 
@@ -112,7 +112,8 @@ const combinedJsonLd = jsonLd
     <!-- Sans JavaScript, les blocs animés au défilement restent visibles -->
     <noscript>
       <style>
-        .reveal, .reveal-fade, .reveal-scale, .reveal-slide-left, .fade-rise, .gap-seg, .gap-dot-wltp { opacity: 1 !important; transform: none !important; }
+        .reveal, .reveal-fade, .reveal-scale, .reveal-slide-left, .fade-rise { opacity: 1 !important; transform: none !important; }
+        .rail .rail-bar { clip-path: none !important; }
       </style>
     </noscript>
 

@@ -1,0 +1,186 @@
+---
+/**
+ * « Les moins chères qui tiennent votre semaine » : les 8 modèles particuliers les moins chers
+ * dont une version tient 5 jours du trajet du visiteur sans recharger, même par -5 °C.
+ * Rendu au build pour le trajet par défaut, recalculé dans le navigateur à chaque réglage.
+ */
+import VehicleImage from "@/components/ui/VehicleImage.astro";
+import RangeRail from "@/components/ui/RangeRail.astro";
+import { getVehicleIndex } from "@/lib/vehicleIndex";
+import { cheapestMatches } from "@/lib/tripFit";
+import { formatPrice } from "@/lib/format";
+import { url } from "@/lib/url";
+import { ArrowRight } from "lucide-react";
+
+const DEFAULT_DAILY = 40;
+const LIMIT = 8;
+const SCALE = 700;
+const index = await getVehicleIndex();
+const matches = cheapestMatches(index, DEFAULT_DAILY * 5, LIMIT);
+---
+
+<section class="no-glossary" data-trip-matches data-index={url("/recherche.json")} data-base={url("/vehicules/")} data-scale={SCALE} data-limit={LIMIT}>
+  <div class="flex flex-wrap items-end justify-between gap-4 mb-8">
+    <div>
+      <h2 class="display-2 max-w-[18ch]">Les moins chères qui tiennent votre semaine</h2>
+      <p class="mt-3 text-[16px] text-[var(--color-text-muted)] max-w-[60ch]">
+        Pour <b class="text-[var(--color-text)]" data-trip-out>{DEFAULT_DAILY} km</b> par jour : la version la moins chère de chaque modèle qui fait cinq jours de trajet sans recharger, même en hiver.
+      </p>
+    </div>
+    <a href={url("/vehicules/") + "?options=trajet&tri=price-asc"} class="btn btn-secondary btn-sm">Toute la sélection</a>
+  </div>
+
+  <ul class="match-grid reveal-stagger" data-match-list>
+    {matches.map(({ row, cfg }) => (
+      <li class="reveal" data-key={`${row.s}:${cfg[0]}`} data-winter={cfg[1]}>
+        <a href={url(`/vehicules/${row.s}/`)} class="match-card">
+          <div class="match-photo stage">
+            <VehicleImage slug={row.s} alt={`${row.b} ${row.m}`} widths={[240, 480]} sizes="260px" class="w-[88%] h-full" />
+          </div>
+          <div class="match-body">
+            <p class="match-brand">{row.b}</p>
+            <h3 class="match-model">{row.m}</h3>
+            <p class="match-version">{cfg[4]}</p>
+            <RangeRail real={cfg[2]} wltp={cfg[3]} winter={cfg[1]} scale={SCALE} />
+            <div class="match-foot">
+              <span><b data-days>{Math.floor(cfg[1] / DEFAULT_DAILY)} jours</b> en hiver</span>
+              <span class="match-price">dès {formatPrice(cfg[0]!)}</span>
+            </div>
+          </div>
+        </a>
+      </li>
+    ))}
+  </ul>
+  <div class="match-empty" data-match-empty hidden>
+    <p class="font-display text-[22px] font-extrabold tracking-[-0.03em]">Aucun modèle ne tient cinq jours de ce trajet en hiver.</p>
+    <p class="mt-2 text-[15px] text-[var(--color-text-muted)]">Avec une recharge à domicile, une recharge tous les deux ou trois jours suffit : le catalogue complet reste ouvert.</p>
+    <a href={url("/vehicules/")} class="btn btn-secondary btn-sm mt-5">Explorer le catalogue <ArrowRight size={15} strokeWidth={2} aria-hidden="true" /></a>
+  </div>
+</section>
+
+<style is:global>
+  .match-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+  @media (min-width: 560px) { .match-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1024px) { .match-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; } }
+  .match-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0.5rem;
+    border-radius: var(--radius-tile);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    transition: transform 260ms var(--ease-out-expo), box-shadow 260ms var(--ease-out-expo), border-color 200ms ease;
+  }
+  .match-card:active { transform: scale(0.985); transition-duration: 120ms; }
+  @media (hover: hover) and (pointer: fine) {
+    .match-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--color-border-strong); }
+    .match-card:hover .match-photo img { transform: scale(1.05) translateY(-2px); }
+  }
+  .match-photo { height: 9.5rem; padding-top: 0.5rem; }
+  .match-photo img { transition: transform 600ms var(--ease-out-expo); }
+  .match-body { display: flex; flex-direction: column; flex: 1; padding: 1rem 0.75rem 0.75rem; }
+  .match-brand { font-size: 13px; color: var(--color-text-faint); }
+  .match-model { font-family: var(--font-display); font-size: 23px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
+  .match-version { margin: 0.25rem 0 0.9rem; font-size: 12.5px; color: var(--color-text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .match-body .rail { margin-top: auto; }
+  .match-foot { display: flex; align-items: baseline; justify-content: space-between; gap: 0.75rem; margin-top: 1rem; font-size: 13px; color: var(--color-text-muted); }
+  .match-foot b { color: var(--color-accent); font-weight: 700; }
+  .match-price { font-family: var(--font-display); font-size: 18px; font-weight: 800; letter-spacing: -0.03em; color: var(--color-text); white-space: nowrap; }
+  .match-empty { padding: 2rem; border-radius: var(--radius-tile); background: var(--color-surface); border: 1px dashed var(--color-border-strong); }
+</style>
+
+<script>
+  import { readTrip, onTripChange, weekNeed, paintRails, type Trip } from "@/lib/trip";
+  import { cheapestMatches, type IndexRow } from "@/lib/tripFit";
+
+  const nf = new Intl.NumberFormat("fr-FR");
+  const euros = (n: number) => `${nf.format(n).replace(/ /g, " ")} €`;
+  const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
+
+  function setupMatches() {
+    const root = document.querySelector<HTMLElement>("[data-trip-matches]");
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = "true";
+    const list = root.querySelector<HTMLUListElement>("[data-match-list]")!;
+    const empty = root.querySelector<HTMLElement>("[data-match-empty]")!;
+    const base = root.dataset.base!;
+    const scale = Number(root.dataset.scale);
+    const limit = Number(root.dataset.limit);
+    let rows: IndexRow[] | null = null;
+
+    const reduced = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const daysLabel = (winter: number, t: Trip) => { const d = Math.floor(winter / t.dailyKm); return `${d} jour${d > 1 ? "s" : ""}`; };
+
+    const card = ({ row, cfg }: ReturnType<typeof cheapestMatches>[number], t: Trip) => {
+      const [price, winter, real, wltp, label] = cfg;
+      const img = row.i ? `<img src="${row.i}"${row.i2 ? ` srcset="${row.i} 240w, ${row.i2} 480w" sizes="260px"` : ""} alt="${esc(`${row.b} ${row.m}`)}" class="vehicle-photo w-[88%] h-full" style="object-fit:contain;object-position:center bottom" loading="lazy" decoding="async" />` : "";
+      return `<li data-key="${row.s}:${price}" data-winter="${winter}"><a href="${base}${row.s}/" class="match-card">
+        <div class="match-photo stage">${img}</div>
+        <div class="match-body">
+          <p class="match-brand">${esc(row.b)}</p>
+          <h3 class="match-model">${esc(row.m)}</h3>
+          <p class="match-version">${esc(label)}</p>
+          <div class="rail" data-size="sm" data-winter="${winter}" data-real="${real}" data-wltp="${wltp}" style="--scale:${scale};--winter:${Math.min(winter, real)};--real:${real};--wltp:${wltp}"><div class="rail-bar" aria-hidden="true"><span class="rail-seg rail-winter"></span><span class="rail-seg rail-real"></span><span class="rail-seg rail-promise"></span><span class="rail-need"></span></div></div>
+          <div class="match-foot"><span><b data-days>${daysLabel(winter, t)}</b> en hiver</span><span class="match-price">dès ${euros(price!)}</span></div>
+        </div>
+      </a></li>`;
+    };
+
+    let renderId = 0;
+    const render = (t: Trip) => {
+      if (!rows) return;
+      const matches = cheapestMatches(rows, weekNeed(t), limit);
+      const key = matches.map((m) => `${m.row.s}:${m.cfg[0]}`).join("|");
+      const currentKey = [...list.children].map((li) => (li as HTMLElement).dataset.key).join("|");
+      empty.hidden = matches.length > 0;
+
+      // Même sélection : seuls les jours et les repères bougent, rien ne clignote
+      if (key === currentKey) {
+        list.querySelectorAll<HTMLElement>("li").forEach((li) => {
+          const b = li.querySelector("[data-days]");
+          if (b) b.textContent = daysLabel(Number(li.dataset.winter), t);
+        });
+        paintRails(t, list);
+        return;
+      }
+
+      // Nouvelle sélection : fondu flouté en sortie (120 ms), puis entrée en cascade (40 ms d'écart)
+      const id = ++renderId;
+      const swap = () => {
+        if (id !== renderId) return;
+        list.innerHTML = matches.map((m) => card(m, t)).join("");
+        list.hidden = matches.length === 0;
+        list.getAnimations().forEach((a) => a.cancel());
+        paintRails(t, list);
+        if (reduced()) return;
+        [...list.children].forEach((li, k) => {
+          (li as HTMLElement).animate(
+            [{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }],
+            { duration: 320, delay: k * 40, easing: "cubic-bezier(0.16, 1, 0.3, 1)", fill: "backwards" }
+          );
+        });
+      };
+      if (reduced() || !list.children.length) { swap(); return; }
+      list.animate([{ opacity: 1, filter: "blur(0)" }, { opacity: 0.3, filter: "blur(2px)" }], { duration: 120, easing: "ease-out", fill: "forwards" })
+        .finished.then(swap, swap);
+    };
+
+    const update = (t: Trip) => {
+      if (rows) { render(t); return; }
+      fetch(root.dataset.index!)
+        .then((r) => r.json())
+        .then((data: IndexRow[]) => { rows = data; render(readTrip()); })
+        .catch(() => { /* sélection initiale conservée */ });
+    };
+
+    update(readTrip());
+    onTripChange(update);
+  }
+  setupMatches();
+  document.addEventListener("astro:page-load", setupMatches);
+</script>

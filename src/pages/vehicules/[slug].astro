@@ -24,6 +24,9 @@ import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
 import VehicleMiniCard from "@/components/vehicle/VehicleMiniCard.astro";
 import FaqList from "@/components/seo/FaqList.astro";
 import LinkChips from "@/components/seo/LinkChips.astro";
+import RangeRail from "@/components/ui/RangeRail.astro";
+import { DEFAULTS as TCO_DEFAULTS } from "@/components/tco/TcoCalculator";
+import { Route } from "lucide-react";
 import { getVehicleImage, getVehicleImageAbsolute } from "@/lib/vehicleImageAsset";
 import { getBrandByName } from "@/lib/brands";
 import { getCategoriesFor } from "@/data/categories";
@@ -116,6 +119,39 @@ const confidenceLabel: Record<string, string> = {
 
 const tkc = vehicle.thousandKmChallenge;
 const tkcHasData = tkc !== null && (tkc.totalTime_minutes !== null || tkc.averageSpeed_kmh !== null || tkc.averageConsumption_Wh_km !== null || tkc.chargingStops !== null);
+
+// 1000 km challenge : situe ce modèle parmi tous les modèles mesurés.
+// Nuage de points par tranche de 10 min, un point par modèle, empilés dans leur tranche.
+const tkcField = (() => {
+  const mine = tkc?.totalTime_minutes;
+  const times = getAllVehicles()
+    .map((v) => v.thousandKmChallenge?.totalTime_minutes)
+    .filter((m): m is number => typeof m === "number")
+    .sort((a, b) => a - b);
+  if (mine == null || times.length < 10) return null;
+  const BIN = 10;
+  const first = Math.round(times[0]! / BIN);
+  const span = Math.max(1, Math.round(times[times.length - 1]! / BIN) - first);
+  const stacks = new Map<number, number>();
+  let mineTaken = false;
+  const dots = times.map((m) => {
+    const bin = Math.round(m / BIN) - first;
+    const level = stacks.get(bin) ?? 0;
+    stacks.set(bin, level + 1);
+    const isMine = !mineTaken && m === mine;
+    if (isMine) mineTaken = true;
+    return { x: bin / span, y: level, bin, isMine };
+  });
+  const rank = times.filter((m) => m < mine).length + 1;
+  return {
+    dots,
+    rows: Math.max(...stacks.values()),
+    n: times.length,
+    rankLabel: rank === 1 ? "1er" : `${rank}e`,
+    fastest: formatHours(times[0]! / 60),
+    slowest: formatHours(times[times.length - 1]! / 60),
+  };
+})();
 const totalAids = Math.min(
   8100,
   vehicle.availableAids.reduce((sum, aid) => sum + aid.amount_EUR, 0)
@@ -484,6 +520,28 @@ const configViews = configurations.map((config) => {
   };
 });
 
+// Règle d'autonomie : échelle commune à toutes les versions de la fiche (place pour l'étiquette WLTP)
+const railScale = Math.ceil((Math.max(...configViews.map((cv) => cv.wltpKm)) * 1.18) / 100) * 100;
+
+// Panneau « Pour votre trajet » : données de chaque version, consommation réelle déduite de l'autonomie mesurée
+const tripData = Object.fromEntries(
+  configViews.map((cv) => [
+    cv.config.id,
+    {
+      winter: cv.realRange.winter_minus5_km,
+      real: cv.realRange.mixed_km,
+      conso: Math.round((cv.batteryCapacity / cv.realRange.mixed_km) * 1000) / 10,
+      dcMin: cv.dcMin,
+    },
+  ])
+);
+const tripRates = {
+  home: TCO_DEFAULTS.elec_home_eur_kwh,
+  fast: TCO_DEFAULTS.elec_fast_eur_kwh,
+  fuel: TCO_DEFAULTS.essence_eur_l,
+  fuelConso: TCO_DEFAULTS.ice_conso_l_100,
+};
+
 const hasVerdict = vehicle.verdict.strengths.length > 0 || vehicle.verdict.weaknesses.length > 0;
 
 // Sommaire collant de la fiche (ordre = ordre de lecture)
@@ -692,11 +750,58 @@ const configSubtitle = (label: string) => {
                     </div>
                   </dl>
                 </div>
+
+                <!-- La règle d'autonomie : hiver, réelle, promesse WLTP, et la semaine du visiteur -->
+                <div class="lg:col-span-12 pt-2">
+                  <RangeRail real={cv.realRange.mixed_km} wltp={cv.wltpKm} winter={cv.realRange.winter_minus5_km} scale={railScale} size="lg" annotate animate={index === 0} surface="var(--color-surface-elevated)" class="hero-rail no-glossary" />
+                </div>
               </div>
             </Tile>
           </div>
         ))}
       </BentoGrid>
+
+      <!-- Pour votre trajet : jours sans recharger, recharges, énergie (lib/trip, recalculé à chaque réglage) -->
+      <section class="trip-panel no-glossary" aria-labelledby="trip-panel-title" data-trip-panel data-configs={JSON.stringify(tripData)} data-config={configurations[0]?.id} data-rates={JSON.stringify(tripRates)}>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+          <div class="lg:col-span-4">
+            <h2 id="trip-panel-title" class="font-display text-[26px] font-extrabold tracking-[-0.03em] leading-none flex items-center gap-2.5">
+              <Route size={22} strokeWidth={2} className="text-[var(--color-accent)]" aria-hidden="true" />Pour votre trajet
+            </h2>
+            <label for="trip-km-fiche" class="mt-5 flex items-baseline justify-between gap-3">
+              <span class="text-[14px] text-[var(--color-text-muted)]">Trajet quotidien, aller et retour</span>
+              <output for="trip-km-fiche" class="font-display text-[26px] font-extrabold tracking-[-0.035em] text-[var(--color-accent)] whitespace-nowrap" data-trip-out>40 km</output>
+            </label>
+            <input id="trip-km-fiche" type="range" min="10" max="200" step="5" value="40" class="trip-range mt-2" data-trip-range />
+            <label class="trip-toggle mt-4">
+              <input type="checkbox" data-trip-home checked />
+              <span class="trip-toggle-ui" aria-hidden="true"></span>
+              <span class="text-[14px]">Je peux recharger chez moi</span>
+            </label>
+          </div>
+          <dl class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-3" aria-live="polite">
+            <div class="trip-out">
+              <dt>Sans recharger</dt>
+              <dd class="trip-out-value"><span class="tabular-nums" data-o-winter>0</span><span class="trip-out-unit" data-o-winter-u>jours en hiver</span></dd>
+              <dd class="trip-out-sub" data-o-real>&nbsp;</dd>
+            </div>
+            <div class="trip-out">
+              <dt>Recharges</dt>
+              <dd class="trip-out-value"><span class="tabular-nums" data-o-charges>0</span><span class="trip-out-unit" data-o-charges-u>par semaine</span></dd>
+              <dd class="trip-out-sub" data-o-charges-sub>&nbsp;</dd>
+            </div>
+            <div class="trip-out">
+              <dt>Énergie par mois</dt>
+              <dd class="trip-out-value"><span class="tabular-nums" data-o-cost>0</span><span class="trip-out-unit">€</span></dd>
+              <dd class="trip-out-sub" data-o-cost-sub>&nbsp;</dd>
+            </div>
+          </dl>
+        </div>
+        <p class="trip-panel-foot">
+          Calcul sur 21 jours de trajet par mois, avec la consommation réelle déduite de l'autonomie mesurée. Électricité à {formatNumber(tripRates.home, 2)}&nbsp;€/kWh à domicile ou {formatNumber(tripRates.fast, 2)}&nbsp;€/kWh sur borne rapide, essence à {formatNumber(tripRates.fuel, 2)}&nbsp;€/l pour {formatNumber(tripRates.fuelConso, 1)}&nbsp;l/100&nbsp;km.
+          <a href={url(`/simulateur/?v=${vehicle.slug}`)} class="text-[var(--color-accent)] font-semibold underline underline-offset-2 hover:no-underline">Coût complet sur plusieurs années</a>
+        </p>
+      </section>
 
       <!-- Présentation en une phrase : ce que les chiffres ci-dessus ne disent pas (type, origine, gamme) -->
       <p class="vehicle-lead">{lead}</p>
@@ -803,16 +908,16 @@ const configSubtitle = (label: string) => {
         <BentoGrid>
           {configViews.map((cv, index) => (
             <div data-config-id={cv.config.id} style={{ display: index === 0 ? "contents" : "none" }} class="config-wrapper">
-              <Tile size="2x2" variant="elevated" label="Autonomie par usage" class="reveal">
+              <Tile size="full" variant="elevated" label="Autonomie par usage" class="reveal">
                 <div class="flex items-center justify-between gap-3 -mt-2 mb-3">
                   <h3 class="font-display text-base md:text-lg font-semibold tracking-[-0.01em]">{cv.isRangeMeasured ? "Quatre profils calés sur les mesures" : "Quatre profils d'usage estimés"}</h3>
                   <Tag tone="outline" mono>{confidenceLabel[cv.rangeConfidence] ?? cv.rangeConfidence}</Tag>
                 </div>
-                <SeasonalRange client:visible urban={cv.realRange.urban_km} mixed={cv.realRange.mixed_km} highway={cv.realRange.highway_130_km} winter={cv.realRange.winter_minus5_km} vehicleName={`${vehicle.brand} ${vehicle.model} ${cv.config.trim}`} />
+                <SeasonalRange client:visible urban={cv.realRange.urban_km} mixed={cv.realRange.mixed_km} highway={cv.realRange.highway_130_km} winter={cv.realRange.winter_minus5_km} wltp={cv.wltpKm} vehicleName={`${vehicle.brand} ${vehicle.model} ${cv.config.trim}`} />
               </Tile>
 
               <Tile size="1x1" label="Batterie utile" class="reveal">
-                <div class="soh-update-capacity" data-base-capacity={cv.batteryCapacity}>
+                <div class="soh-update-capacity mt-auto" data-base-capacity={cv.batteryCapacity}>
                   <TileStat value={formatNumber(cv.batteryCapacity, Number.isInteger(cv.batteryCapacity) ? 0 : 1)} unit="kWh" size="xl" hint={`${vehicle.chemistry} · ${vehicle.architecture_V} V`} />
                 </div>
               </Tile>
@@ -921,6 +1026,23 @@ const configSubtitle = (label: string) => {
                     <h3 class="font-display text-base md:text-lg font-semibold tracking-[-0.01em]">Protocole Nyland</h3>
                     <Tag tone={tkcHasData ? "accent" : "warning"} mono>{confidenceLabel[tkc.confidence] ?? tkc.confidence}</Tag>
                   </div>
+                  {tkcField && (
+                    <figure class="tkc-field" style={`--rows:${tkcField.rows}`}>
+                      <figcaption class="tkc-field-head">
+                        <span>Temps sur 1 000 km, {tkcField.n} modèles mesurés</span>
+                        <span class="tkc-rank"><i class="tkc-key" aria-hidden="true" /><b>{tkcField.rankLabel}</b> sur {tkcField.n}</span>
+                      </figcaption>
+                      <div class="tkc-dots" aria-hidden="true">
+                        {tkcField.dots.map((d) => (
+                          <i class:list={["tkc-dot", d.isMine && "is-mine"]} style={`--x:${d.x};--y:${d.y};--c:${d.bin}`} />
+                        ))}
+                      </div>
+                      <div class="tkc-axis" aria-hidden="true">
+                        <span>{tkcField.fastest}, le plus rapide</span>
+                        <span>le plus lent, {tkcField.slowest}</span>
+                      </div>
+                    </figure>
+                  )}
                   {tkcHasData ? (
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-auto">
                       <div class="flex flex-col gap-1">
@@ -971,7 +1093,7 @@ const configSubtitle = (label: string) => {
             const hasLeasing = cv.config.leasingSocialEligible && cv.config.monthlyLease_EUR;
             return (
               <div data-config-id={cv.config.id} style={{ display: index === 0 ? "contents" : "none" }} class="config-wrapper">
-                <Tile size={hasLeasing ? "2x1" : "full"} variant="accent" label="Aides cumulables*" class="reveal">
+                <Tile size={hasLeasing ? "3x1" : "full"} variant="accent" label="Aides cumulables*" class="reveal">
                   {vehicle.availableAids.length > 0 ? (
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mt-auto">
                       <ul class="md:col-span-7 flex flex-col gap-2">
@@ -1020,19 +1142,16 @@ const configSubtitle = (label: string) => {
                 </Tile>
 
                 {hasLeasing && (
-                  <Tile size="2x1" variant="accent" label="Leasing social" class="reveal">
-                    <div class="flex items-end justify-between gap-6 mt-auto">
-                      <div class="flex flex-col gap-1">
-                        <span class="font-display text-lg font-semibold tracking-[-0.01em]">Loyer plafonné</span>
-                        <p class="text-xs text-[var(--color-text-muted)] leading-relaxed max-w-sm">
-                          À partir de {cv.config.monthlyLease_EUR} €/mois (barème 2026), sous conditions de revenus. 1<sup>er</sup> loyer pris en charge.
-                        </p>
-                        <a href={url("/leasing-social")} class="font-mono text-[11px] text-[var(--color-accent)] hover:underline mt-2 self-start">Vérifier mon éligibilité ↗</a>
-                      </div>
-                      <div class="flex items-baseline gap-2 shrink-0">
+                  <Tile size="side" variant="accent" label="Leasing social" class="reveal">
+                    <div class="flex flex-col gap-3 mt-auto">
+                      <div class="flex items-baseline gap-2">
                         <span data-numeric class="display-stat text-4xl md:text-5xl text-[var(--color-accent)]">{cv.config.monthlyLease_EUR}</span>
                         <span class="font-mono text-sm text-[var(--color-text-muted)]">€/mois</span>
                       </div>
+                      <p class="text-xs text-[var(--color-text-muted)] leading-relaxed max-w-sm">
+                        <span class="font-semibold text-[var(--color-text)]">Loyer plafonné</span> (barème 2026), sous conditions de revenus. 1<sup>er</sup> loyer pris en charge.
+                      </p>
+                      <a href={url("/leasing-social")} class="font-mono text-[11px] text-[var(--color-accent)] hover:underline self-start min-h-[32px] inline-flex items-center">Vérifier mon éligibilité ↗</a>
                     </div>
                   </Tile>
                 )}
@@ -2168,6 +2287,141 @@ const configSubtitle = (label: string) => {
       margin: 1.2cm;
     }
   }
+
+  /* ── Pour votre trajet ── */
+  .trip-panel {
+    margin-top: 1rem;
+    padding: 1.5rem;
+    border-radius: var(--radius-tile);
+    background: var(--color-surface-accent);
+  }
+  @media (min-width: 768px) { .trip-panel { padding: 2rem 2.25rem; } }
+  .trip-out { padding: 1.1rem 1.15rem; border-radius: var(--radius-tile-sm); background: var(--color-surface-elevated); }
+  .trip-out dt { font-size: 13px; color: var(--color-text-faint); }
+  .trip-out-value { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 0.4rem; margin-top: 0.3rem; font-family: var(--font-display); font-size: 40px; font-weight: 800; letter-spacing: -0.045em; line-height: 1; color: var(--color-accent); }
+  .trip-out-unit { font-family: var(--font-sans); font-size: 14px; font-weight: 500; letter-spacing: -0.005em; color: var(--color-text); }
+  .trip-out-sub { margin-top: 0.3rem; font-size: 13px; color: var(--color-text-muted); line-height: 1.35; }
+  .trip-panel-foot { margin-top: 1.25rem; font-size: 12.5px; color: var(--color-text-muted); line-height: 1.5; }
+  :global(.hero-rail) { margin-top: 0.5rem; }
+
+  /* ── 1000 km challenge : ce modèle dans le nuage des modèles mesurés ── */
+  .tkc-field { margin: 0.25rem 0 1.5rem; --step: 6px; }
+  .tkc-field-head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.75rem; font-size: 12.5px; color: var(--color-text-muted); }
+  .tkc-rank { display: inline-flex; align-items: center; gap: 0.4rem; white-space: nowrap; }
+  .tkc-rank b { font-family: var(--font-display); font-size: 18px; font-weight: 800; letter-spacing: -0.03em; color: var(--color-text); }
+  .tkc-key { width: 9px; height: 9px; border-radius: 999px; background: var(--color-text); }
+  .tkc-dots {
+    position: relative;
+    height: calc(var(--rows) * var(--step));
+    margin: 0.75rem 4px 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 30%, transparent);
+    box-sizing: content-box;
+    padding-bottom: 3px;
+  }
+  .tkc-dot {
+    position: absolute;
+    left: calc(var(--x) * 100%);
+    bottom: calc(var(--y) * var(--step) + 3px);
+    width: 5px;
+    height: 5px;
+    margin-left: -2.5px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-accent) 45%, transparent);
+  }
+  .tkc-dot.is-mine {
+    z-index: 1;
+    width: 9px;
+    height: 9px;
+    margin: 0 0 -2px -4.5px;
+    background: var(--color-text);
+    box-shadow: 0 0 0 2px var(--color-surface-accent);
+  }
+  .tkc-axis { display: flex; justify-content: space-between; gap: 1rem; margin-top: 0.4rem; font-family: var(--font-mono); font-size: 11px; color: var(--color-text-faint); }
+
+  /* Les points montent tranche par tranche, de gauche à droite, à l'apparition de la tuile */
+  @keyframes tkc-dot-in {
+    from { opacity: 0; transform: translateY(6px) scale(0.6); }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    :global(.revealed) .tkc-dot {
+      animation: tkc-dot-in 420ms var(--ease-out-expo) calc(var(--c) * 22ms + var(--y) * 12ms + 200ms) backwards;
+    }
+  }
 </style>
+
+<script>
+  import { readTrip, onTripChange, paintRails, type Trip } from "@/lib/trip";
+  import { tweenNumber } from "@/lib/tween";
+
+  // Panneau « Pour votre trajet » et règles du hero : suivent le trajet, la version,
+  // la santé de la batterie et la température choisies dans la barre latérale.
+  function setupTripPanel() {
+    const panel = document.querySelector<HTMLElement>("[data-trip-panel]");
+    if (!panel || panel.dataset.ready) return;
+    panel.dataset.ready = "true";
+    const configs = JSON.parse(panel.dataset.configs || "{}") as Record<string, { winter: number; real: number; conso: number; dcMin: number }>;
+    const rates = JSON.parse(panel.dataset.rates || "{}") as { home: number; fast: number; fuel: number; fuelConso: number };
+    let configId = new URLSearchParams(location.search).get("config") || panel.dataset.config || Object.keys(configs)[0]!;
+    let soh = 1;
+    let temp = 1;
+    const nf = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 });
+    const days = (n: number) => `${n} jour${n > 1 ? "s" : ""}`;
+    const set = (sel: string, text: string) => { const el = panel.querySelector(sel); if (el) el.textContent = text; };
+
+    const render = (t: Trip = readTrip()) => {
+      const c = configs[configId] ?? Object.values(configs)[0];
+      if (!c) return;
+      const winter = c.winter * soh;
+      const real = c.real * soh * temp;
+      const num = (sel: string, n: number) => { const el = panel.querySelector<HTMLElement>(sel); if (el) tweenNumber(el, n); };
+      const dWinter = Math.floor(winter / t.dailyKm);
+      num("[data-o-winter]", dWinter);
+      set("[data-o-winter-u]", `${dWinter > 1 ? "jours" : "jour"} en hiver`);
+      set("[data-o-real]", `${days(Math.floor(real / t.dailyKm))} le reste de l'année`);
+      const week = t.dailyKm * 5;
+      const perCharge = winter * (t.homeCharging ? 0.8 : 0.7);
+      const perWeek = week / perCharge;
+      if (perWeek < 0.75) {
+        const weeks = Math.max(2, Math.round(1 / perWeek));
+        num("[data-o-charges]", weeks);
+        set("[data-o-charges-u]", "semaines entre deux");
+      } else {
+        const n = Math.ceil(perWeek);
+        num("[data-o-charges]", n);
+        set("[data-o-charges-u]", `fois par semaine`);
+      }
+      set("[data-o-charges-sub]", t.homeCharging ? "à la maison, la nuit, en hiver" : `sur borne rapide, ${c.dcMin} min de 10 à 80 %`);
+      const km = t.dailyKm * 21;
+      const cost = (km * c.conso) / 100 * (t.homeCharging ? rates.home : rates.fast);
+      const fuel = (km * rates.fuelConso) / 100 * rates.fuel;
+      num("[data-o-cost]", Math.round(cost));
+      set("[data-o-cost-sub]", `contre ${nf.format(fuel)} € en essence`);
+
+      // Règles du hero : santé et température appliquées, puis repère de la semaine
+      document.querySelectorAll<HTMLElement>(".hero-rail").forEach((rail) => {
+        const baseReal = Number(rail.dataset.baseReal ??= rail.dataset.real);
+        const baseWinter = Number(rail.dataset.baseWinter ??= rail.dataset.winter);
+        rail.style.setProperty("--real", String(Math.round(baseReal * soh * temp)));
+        rail.style.setProperty("--winter", String(Math.round(Math.min(baseWinter * soh, baseReal * soh * temp))));
+        rail.dataset.winter = String(Math.round(baseWinter * soh));
+        // Les étiquettes de la règle suivent la santé de la batterie et la température
+        const realLabel = rail.querySelector<HTMLElement>("[data-rail-real]");
+        const winterLabel = rail.querySelector<HTMLElement>("[data-rail-winter]");
+        if (realLabel) tweenNumber(realLabel, Math.round(baseReal * soh * temp));
+        if (winterLabel) tweenNumber(winterLabel, Math.round(baseWinter * soh));
+      });
+      paintRails(t);
+    };
+
+    window.addEventListener("config-changed", (e) => { configId = (e as CustomEvent).detail.configId; render(); });
+    window.addEventListener("soh-changed", (e) => { soh = (e as CustomEvent).detail.soh / 100; render(); });
+    window.addEventListener("temperature-changed", (e) => { temp = (e as CustomEvent).detail.tempMultiplier ?? 1; render(); });
+    const stop = onTripChange(render);
+    document.addEventListener("astro:before-swap", stop, { once: true });
+    render();
+  }
+  setupTripPanel();
+  document.addEventListener("astro:page-load", setupTripPanel);
+</script>
 
 </BaseLayout>

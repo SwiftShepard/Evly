@@ -62,7 +62,12 @@ const name = getVehicleName(v);
 </Tile>
 
 <style>
-  /* Mobile (2 colonnes étroites) : chiffres empilés, pastille masquée */
+  /* Chiffres empilés tant que la carte est étroite (mobile, grilles à 4 colonnes) :
+     côte à côte, « 376 km estimée » et le prix se chevauchaient. Requête de conteneur : la largeur
+     de la carte dépend de la grille, pas de l'écran. */
+  :global(.mini-card.bento-tile) {
+    container: mini-card / inline-size;
+  }
   .mini-card-stats {
     display: grid;
     gap: 0.5rem;
@@ -70,14 +75,16 @@ const name = getVehicleName(v);
   .mini-card-tag {
     display: none;
   }
-  @media (min-width: 768px) {
+  @container mini-card (min-width: 250px) {
     .mini-card-stats {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: minmax(0, 1fr) auto;
     }
     .mini-card-price {
       align-items: flex-end;
       text-align: right;
     }
+  }
+  @media (min-width: 768px) {
     .mini-card-tag {
       display: inline-flex;
     }

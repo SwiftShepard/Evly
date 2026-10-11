@@ -1,321 +1,204 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Tag from "@/components/ui/Tag.astro";
 import VehicleImage from "@/components/ui/VehicleImage.astro";
-import BrandLogo from "@/components/ui/BrandLogo.astro";
-import RangeSpecimen from "@/components/home/RangeSpecimen.astro";
-import RangeGapChart from "@/components/home/RangeGapChart.astro";
-import { getAllVehicles } from "@/lib/vehicles";
-import { formatPrice, formatNumber } from "@/lib/format";
-import { getVehicleCardSummary } from "@/lib/vehicleCard";
-import { getFleetGap } from "@/lib/rangeGap";
-import { getVehicleBySlug } from "@/lib/vehicles";
+import RangeRail from "@/components/ui/RangeRail.astro";
+import TripStudio from "@/components/home/TripStudio.astro";
+import TripMatches from "@/components/home/TripMatches.astro";
+import { getAllVehicles, getVehicleBySlug } from "@/lib/vehicles";
+import { getFleetGap, getMeasuredGap, type MeasuredGap } from "@/lib/rangeGap";
+import { formatNumber } from "@/lib/format";
 import { DEFAULTS as TCO_DEFAULTS } from "@/components/tco/TcoCalculator";
 import { url } from "@/lib/url";
-import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, ShieldCheck, FileSearch, Calculator, Scale } from "lucide-react";
+import { getContentMargins } from "@/lib/vehicleImageTrim";
+import { ArrowRight, ArrowUpRight, ShieldCheck, FileSearch, Calculator, Scale } from "lucide-react";
 
 const vehicles = getAllVehicles();
 const totalVehicles = vehicles.length;
 const totalTests = vehicles.reduce((sum, v) => sum + v.rangeTests.length, 0);
-const totalConfigs = vehicles.reduce((sum, v) => sum + v.configurations.length, 0);
 const fleetGap = getFleetGap(vehicles);
 
 // Loyer le plus bas parmi les versions éligibles au leasing social
 const leasingMin = Math.min(
   ...vehicles.flatMap((v) =>
-    v.configurations
-      .filter((c) => c.leasingSocialEligible && c.monthlyLease_EUR)
-      .map((c) => c.monthlyLease_EUR as number)
+    v.configurations.filter((c) => c.leasingSocialEligible && c.monthlyLease_EUR).map((c) => c.monthlyLease_EUR as number)
   )
 );
 
-// Coût de 100 km aux tarifs par défaut du calculateur TCO : électrique rechargé à domicile vs essence
+// Coût de 100 km aux tarifs par défaut du calculateur TCO
 const tcoExample = getVehicleBySlug("renault-5")!;
 const evCost100 = tcoExample.consumption_mixed_kWh_per_100km * TCO_DEFAULTS.elec_home_eur_kwh;
 const iceCost100 = TCO_DEFAULTS.ice_conso_l_100 * TCO_DEFAULTS.essence_eur_l;
 const euros = (n: number) => `${formatNumber(n, 2)} €`;
 
-// Tri par date de dernière mise à jour / ajout (lastUpdated) décroissant, puis par marque/modèle
-const latestVehicles = [...vehicles]
-  .sort((a, b) => {
-    const dateComp = b.lastUpdated.localeCompare(a.lastUpdated);
-    if (dateComp !== 0) return dateComp;
-    return a.brand.localeCompare(b.brand) || a.model.localeCompare(b.model);
-  })
-  .slice(0, 10);
-
-const GAP_CHART_SLUGS = [
-  "tesla-model-y", "mg-mg4", "tesla-model-3", "byd-dolphin", "volvo-ex30", "vw-id3",
-  "citroen-e-c3", "renault-5", "kia-ev3", "peugeot-e-208", "renault-scenic", "hyundai-kona",
-];
+// La preuve : modèles connus testés, du plus fidèle au plus optimiste
+const PROOF_SLUGS = ["tesla-model-y", "mg-mg4", "tesla-model-3", "byd-dolphin", "vw-id3", "citroen-e-c3", "renault-5", "kia-ev3", "peugeot-e-208", "hyundai-kona"];
+const proof = PROOF_SLUGS.map((s) => getVehicleBySlug(s))
+  .filter((v) => v !== undefined)
+  .map((v) => getMeasuredGap(v))
+  .filter((g): g is MeasuredGap => g !== null)
+  .sort((a, b) => a.gapPct - b.gapPct);
+const PROOF_SCALE = Math.ceil(Math.max(...proof.map((g) => g.wltpKm)) / 100) * 100;
 
 const pillars = [
-  {
-    icon: ShieldCheck,
-    title: "100 % indépendant",
-    text: "Aucune marque ne nous paie pour apparaître, aucune concession ne touche de commission sur vos clics. On peut donc vous dire franchement quand un modèle n'est pas terrible.",
-  },
-  {
-    icon: FileSearch,
-    title: "Sources vérifiables",
-    text: "Chaque chiffre affiché vient d'un essai réel sur route, d'un article de presse ou d'une fiche constructeur, et on vous dit toujours lequel, avec un lien.",
-  },
-  {
-    icon: Calculator,
-    title: "Calculs expliqués",
-    text: "Comment on mesure l'autonomie, comment on calcule le coût réel sur plusieurs années, comment on estime les aides : tout est expliqué en clair, pas de boîte noire.",
-  },
-  {
-    icon: Scale,
-    title: "De votre côté",
-    text: "Si un modèle déçoit à l'usage ou qu'un constructeur cache un chiffre gênant, on l'écrit. Notre objectif, c'est que vous en ayez pour votre argent, pas de vendre une voiture.",
-  },
+  { icon: ShieldCheck, title: "100 % indépendant", text: "Aucune marque ne nous paie pour apparaître, aucune concession ne touche de commission sur vos clics. On peut donc vous dire franchement quand un modèle n'est pas terrible." },
+  { icon: FileSearch, title: "Sources vérifiables", text: "Chaque chiffre affiché vient d'un essai réel sur route, d'un article de presse ou d'une fiche constructeur, et on vous dit toujours lequel, avec un lien." },
+  { icon: Calculator, title: "Calculs expliqués", text: "Comment on mesure l'autonomie, comment on calcule le coût réel sur plusieurs années, comment on estime les aides : tout est expliqué en clair, pas de boîte noire." },
+  { icon: Scale, title: "De votre côté", text: "Si un modèle déçoit à l'usage ou qu'un constructeur cache un chiffre gênant, on l'écrit. Notre objectif, c'est que vous en ayez pour votre argent, pas de vendre une voiture." },
 ];
+
+// Voitures du hero posées sur une même ligne de sol : on compense le vide transparent
+// sous les roues et l'écart gauche/droite de chaque photo
+const HERO_CARS = [
+  { slug: "renault-4", cls: "car-l", widths: [420, 840], sizes: "380px" },
+  { slug: "skoda-elroq", cls: "car-r", widths: [420, 840], sizes: "380px" },
+  { slug: "renault-5", cls: "car-c", widths: [640, 1280], sizes: "(min-width: 1024px) 620px, 92vw" },
+];
+const heroCars = await Promise.all(
+  HERO_CARS.map(async (c) => {
+    const m = await getContentMargins(c.slug);
+    const style = `--tb:${(m.bottom * 100).toFixed(2)}%;--tx:${(((m.right - m.left) / 2) * 100).toFixed(2)}%`;
+    return { ...c, style };
+  })
+);
 
 const description = `Comparez les ${totalVehicles} voitures électriques du marché français : autonomie réelle mesurée, prix après aides et recharge. Indépendant, sans publicité ni commission.`;
 ---
 
 <BaseLayout title="Comparateur de voitures électriques : autonomie réelle | Evly" description={description}>
 
-  {/* ═════════ HERO ═════════ */}
-  <section class="container-edit pt-8 md:pt-14 lg:pt-20 pb-20 md:pb-28">
-    <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-      <div class="lg:col-span-6 xl:col-span-6">
-        {/* Le H1 porte la requête visée ; le slogan reste le titre visuel */}
-        <h1 class="fade-rise text-[14px] md:text-[15px] font-medium text-[var(--color-accent)] tracking-[-0.01em] mb-5">
-          Comparateur indépendant de voitures électriques
-        </h1>
-        <p class="display-1 fade-rise fade-rise-delay-1 max-w-[12ch]">
-          L'électrique, enfin <span class="text-[var(--color-accent)]">clair.</span>
-        </p>
-        <p class="mt-6 md:mt-7 text-[17px] md:text-lg text-[var(--color-text-muted)] max-w-[44ch] leading-relaxed fade-rise fade-rise-delay-2">
-          Autonomie réelle sur route, prix après aides, coût sur la durée. Sans publicité ni commission.
-        </p>
-        <div class="mt-8 md:mt-10 flex flex-col sm:flex-row gap-3 fade-rise fade-rise-delay-3">
-          <a href={url("/recommandation/")} class="btn btn-primary">
-            Trouver mon VE
-            <ArrowRight size={17} strokeWidth={2} className="btn-arrow" aria-hidden="true" />
-          </a>
-          <a href={url("/vehicules/")} class="btn btn-secondary">
-            Explorer le catalogue
-          </a>
+  {/* ═════════ HERO : aplat olive ═════════ */}
+  <section class="container-edit pt-3">
+    <div class="hero-panel on-dark">
+      <div class="hero-grid grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 relative z-10">
+        <div class="lg:col-span-6 pt-2 md:pt-8 lg:pt-0 lg:pb-12 lg:self-center">
+          {/* Le H1 porte la requête visée ; le slogan reste le titre visuel */}
+          <h1 class="text-[14.5px] font-medium text-[var(--color-lime)] mb-6 fade-rise">Comparateur indépendant de voitures électriques</h1>
+          <p class="display-1 text-[var(--color-accent-on)] fade-rise fade-rise-delay-1 !text-[clamp(2.9rem,6.2vw,5.9rem)]">
+            L'électrique, enfin <span class="text-[var(--color-lime)]">clair.</span>
+          </p>
+          <p class="mt-7 text-[18px] text-[color-mix(in_srgb,var(--color-accent-on)_80%,transparent)] max-w-[40ch] leading-relaxed fade-rise fade-rise-delay-2">
+            On mesure l'autonomie sur route, on calcule le vrai prix, et on vous dit franchement pour qui c'est fait.
+          </p>
+          <div class="mt-9 flex flex-col sm:flex-row gap-3 fade-rise fade-rise-delay-3">
+            <a href={url("/recommandation/")} class="btn btn-lime h-[3.25rem] px-7 text-[16px]">
+              Trouver mon VE <ArrowRight size={18} strokeWidth={2.25} className="btn-arrow" aria-hidden="true" />
+            </a>
+            <a href={url("/vehicules/")} class="btn btn-ghost-light h-[3.25rem] px-7 text-[16px]">Explorer le catalogue</a>
+          </div>
         </div>
-      </div>
-
-      <div class="lg:col-span-6 xl:col-span-6 fade-rise fade-rise-delay-2">
-        <RangeSpecimen />
+        <div class="lg:col-span-6 hero-cars" aria-hidden="true">
+          <span class="podium"></span>
+          {heroCars.map((c) => (
+            <span class={`car ${c.cls}`} style={c.style}>
+              <VehicleImage slug={c.slug} alt="" widths={c.widths} sizes={c.sizes} loading={c.cls === "car-c" ? "eager" : "lazy"} fetchpriority={c.cls === "car-c" ? "high" : undefined} class="block w-full h-auto" />
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   </section>
 
-  {/* ═════════ LA PREUVE : ANNONCE VS ROUTE ═════════ */}
-  <section class="container-edit pb-24 md:pb-32">
-    <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 reveal">
-      <div class="lg:col-span-4 flex flex-col">
-        <h2 class="display-2 max-w-[14ch]">L'autonomie annoncée n'est pas celle de la route.</h2>
-        <p class="mt-5 text-base text-[var(--color-text-muted)] leading-relaxed max-w-[42ch]">
-          Le chiffre WLTP sort d'un laboratoire. Evly met en avant l'autonomie réelle, mesurée sur route dès qu'un essai existe, et vous dit toujours d'où vient le chiffre.
-        </p>
-        <div class="mt-10 pt-8 border-t border-[var(--color-border)]">
-          <p class="text-[64px] md:text-[80px] font-semibold tracking-[-0.05em] leading-[0.9]">
-            {formatNumber(Math.round(fleetGap.medianPct))}<span class="text-[0.5em] tracking-[-0.02em] ml-1">%</span>
-          </p>
-          <p class="mt-3 text-sm text-[var(--color-text-muted)] leading-relaxed max-w-[34ch]">
-            d'écart médian entre l'annonce et la route, sur les {fleetGap.models} modèles testés par Bjørn Nyland ou la presse VE.
-          </p>
-          <a href={url("/methodologie/") + "#protocoles"} class="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-dim)]">
-            Nos protocoles de mesure
-            <ArrowRight size={15} strokeWidth={2} className="arrow-animate" aria-hidden="true" />
-          </a>
-        </div>
-      </div>
+  {/* ═════════ VOTRE TRAJET ═════════ */}
+  <section class="container-edit mt-3">
+    <TripStudio />
+  </section>
 
-      <div class="lg:col-span-8 rounded-[var(--radius-tile)] border border-[var(--color-border)] bg-[var(--color-surface-elevated)] shadow-[var(--shadow-sm)] p-5 md:p-8">
-        <RangeGapChart slugs={GAP_CHART_SLUGS} />
+  {/* ═════════ CE QUI COLLE À VOTRE TRAJET ═════════ */}
+  <section class="container-edit mt-24 md:mt-32">
+    <TripMatches />
+  </section>
+
+  {/* ═════════ LA PREUVE ═════════ */}
+  <section class="container-edit mt-24 md:mt-32">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      <div class="lg:col-span-5 px-1">
+        <p class="font-display font-extrabold text-[clamp(7rem,15vw,12rem)] leading-[0.8] tracking-[-0.06em] text-[var(--color-accent)]">
+          <span data-count={Math.round(fleetGap.medianPct)}>{formatNumber(Math.round(fleetGap.medianPct))}</span><span class="text-[0.4em] align-top ml-1">%</span>
+        </p>
+        <h2 class="display-2 mt-6 max-w-[15ch]">d'autonomie en moins sur route, pour un modèle sur deux.</h2>
+        <p class="mt-5 text-[16px] text-[var(--color-text-muted)] max-w-[46ch] leading-relaxed">
+          Écart médian entre l'annonce WLTP et les essais réels, sur {fleetGap.models} modèles testés par Bjørn Nyland ou la presse VE. Evly met en avant l'autonomie réelle, et vous dit toujours d'où vient le chiffre.
+        </p>
+        <a href={url("/methodologie/") + "#protocoles"} class="mt-5 inline-flex items-center gap-1.5 text-[15px] font-semibold text-[var(--color-accent)] hover:text-[var(--color-accent-dim)]">
+          Nos protocoles de mesure <ArrowRight size={16} strokeWidth={2.25} className="arrow-animate" aria-hidden="true" />
+        </a>
+      </div>
+      <div class="lg:col-span-7 proof-card no-glossary reveal">
+        <div class="rail-legend mb-6">
+          <span><i class="rail-key rail-key-winter"></i>Hiver</span>
+          <span><i class="rail-key rail-key-real"></i>Réelle</span>
+          <span><i class="rail-key rail-key-promise"></i>Promis, jamais parcouru</span>
+          <span><i class="rail-key rail-key-need"></i>Votre semaine</span>
+        </div>
+        <ul class="flex flex-col gap-4">
+          {proof.map((g, i) => {
+            const winter = g.config.realRange?.winter_minus5_km ?? g.vehicle.realRange.winter_minus5_km;
+            return (
+              <li>
+                <a href={url(`/vehicules/${g.vehicle.slug}/`)} class="proof-row group" aria-label={`${g.vehicle.brand} ${g.vehicle.model} : ${g.realKm} km mesurés sur route pour ${g.wltpKm} km annoncés, soit ${Math.round(g.gapPct)} % de moins.`}>
+                  <span class="proof-name" aria-hidden="true">{g.vehicle.brand} {g.vehicle.model.replace(/ & .*$/, "")}</span>
+                  <span class="proof-values" aria-hidden="true"><b>{g.realKm}</b> / {g.wltpKm} km</span>
+                  <RangeRail real={g.realKm} wltp={g.wltpKm} winter={winter} scale={PROOF_SCALE} reveal index={i} class="proof-rail" />
+                  <span class="proof-gap" aria-hidden="true">-{formatNumber(Math.round(g.gapPct))}&nbsp;%</span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </div>
   </section>
 
   {/* ═════════ OUTILS ═════════ */}
-  <section class="container-edit pb-24 md:pb-32">
-    <h2 class="display-2 mb-8 md:mb-10 reveal">Choisir, comparer, chiffrer.</h2>
-
-    <div class="tools-grid reveal-stagger no-glossary">
-      {/* Recommandation : entrée principale */}
-      <a href={url("/recommandation/")} class="tool tool-reco reveal">
-        <div class="relative z-10 max-w-md">
-          <h3 class="text-[26px] md:text-[32px] font-semibold tracking-[-0.035em] leading-[1.08]">
-            Pas d'idée précise&nbsp;? On vous guide.
-          </h3>
-          <p class="mt-3 text-[15px] text-[var(--color-text-muted)] leading-relaxed max-w-[40ch]">
-            Quelques questions sur vos trajets et votre budget, puis les 3 à 5 modèles qui vous correspondent vraiment.
-          </p>
-          <span class="btn btn-primary mt-6 pointer-events-none">
-            Trouver mon VE
-            <ArrowRight size={17} strokeWidth={2} className="btn-arrow" aria-hidden="true" />
-          </span>
-        </div>
-        <div class="tool-reco-cars" aria-hidden="true">
-          <VehicleImage slug="renault-scenic" alt="" widths={[360, 720]} sizes="300px" class="car car-back-left" />
-          <VehicleImage slug="skoda-elroq" alt="" widths={[360, 720]} sizes="300px" class="car car-back-right" />
-          <VehicleImage slug="renault-5" alt="" widths={[480, 960]} sizes="380px" class="car car-front" />
-        </div>
+  <section class="container-edit mt-24 md:mt-32">
+    <h2 class="display-2 mb-8 px-1">Comparer, chiffrer, décider.</h2>
+    <div class="tools no-glossary">
+      <a href={url("/comparer/")} class="tool tool-compare on-dark">
+        <span class="tool-top"><span class="font-display text-[30px] font-extrabold tracking-[-0.03em]">Comparateur</span><ArrowUpRight size={22} strokeWidth={2} className="tool-arrow" aria-hidden="true" /></span>
+        <span class="tool-compare-desc text-[15px] max-w-[32ch]">Jusqu'à 4 modèles côte à côte, batterie, finition et jantes comprises.</span>
+        <span class="tool-cars" aria-hidden="true">
+          <VehicleImage slug="peugeot-e-208" alt="" widths={[320, 640]} sizes="240px" class="w-full h-full" />
+          <span class="vs font-display">vs</span>
+          <VehicleImage slug="citroen-e-c3" alt="" widths={[320, 640]} sizes="240px" class="w-full h-full" />
+        </span>
       </a>
-
-      {/* Comparateur */}
-      <a href={url("/comparer/")} class="tool tool-compare reveal">
-        <div class="flex items-start justify-between gap-4">
-          <div>
-            <h3 class="text-xl md:text-2xl font-semibold tracking-[-0.03em] leading-tight">Comparateur</h3>
-            <p class="mt-2 text-sm text-[var(--color-text-muted)] leading-relaxed max-w-[34ch]">
-              Jusqu'à 4 modèles côte à côte, batterie, finition et jantes comprises.
-            </p>
-          </div>
-          <span class="tool-arrow"><ArrowUpRight size={18} strokeWidth={1.75} aria-hidden="true" /></span>
-        </div>
-        <div class="tool-compare-cars" aria-hidden="true">
-          <VehicleImage slug="peugeot-e-208" alt="" widths={[320, 640]} sizes="260px" class="w-full h-full" />
-          <span class="tool-compare-divider"></span>
-          <VehicleImage slug="byd-dolphin" alt="" widths={[320, 640]} sizes="260px" class="w-full h-full" />
-        </div>
+      <a href={url("/simulateur/")} class="tool tool-tco">
+        <span class="tool-top"><span class="font-display text-[30px] font-extrabold tracking-[-0.03em]">Coût réel</span><ArrowUpRight size={22} strokeWidth={2} className="tool-arrow" aria-hidden="true" /></span>
+        <span class="mt-auto block">
+          <span class="text-[14px] text-[var(--color-text-muted)]">100 km rechargés à la maison</span>
+          <span class="mt-2 flex items-baseline gap-3"><span class="font-display text-[44px] font-extrabold tracking-[-0.04em] text-[var(--color-accent)]">{euros(evCost100)}</span><span class="text-[14px] text-[var(--color-text-muted)]">Renault 5</span></span>
+          <span class="flex items-baseline gap-3"><span class="font-display text-[28px] font-extrabold tracking-[-0.03em] text-[var(--color-text-faint)] line-through decoration-2">{euros(iceCost100)}</span><span class="text-[14px] text-[var(--color-text-muted)]">essence, {formatNumber(TCO_DEFAULTS.ice_conso_l_100, 1)}&nbsp;l/100</span></span>
+          <span class="block mt-3 text-[12px] text-[var(--color-text-faint)]">À {formatNumber(TCO_DEFAULTS.elec_home_eur_kwh, 2)}&nbsp;€/kWh et {formatNumber(TCO_DEFAULTS.essence_eur_l, 2)}&nbsp;€/l, réglables dans le calculateur.</span>
+        </span>
       </a>
-
-      {/* Calculateur TCO */}
-      <a href={url("/simulateur/")} class="tool tool-tco reveal">
-        <div class="flex items-start justify-between gap-4">
-          <h3 class="text-xl font-semibold tracking-[-0.03em] leading-tight">Le vrai coût, sur 1 à 10 ans</h3>
-          <span class="tool-arrow"><ArrowUpRight size={18} strokeWidth={1.75} aria-hidden="true" /></span>
-        </div>
-        <div class="mt-auto pt-6">
-          <p class="text-[13px] text-[var(--color-text-muted)]">Prix de 100 km</p>
-          <div class="tco-bars mt-2.5" style={`--ev: ${(evCost100 / iceCost100) * 100}%`}>
-            <div class="tco-bar-row">
-              <span class="tco-bar tco-bar-ev"></span>
-              <span class="tco-bar-label"><strong>{euros(evCost100)}</strong> {tcoExample.brand} {tcoExample.model.replace(/ E-Tech$/, "")}, à domicile</span>
-            </div>
-            <div class="tco-bar-row">
-              <span class="tco-bar tco-bar-ice"></span>
-              <span class="tco-bar-label"><strong>{euros(iceCost100)}</strong> Essence, {formatNumber(TCO_DEFAULTS.ice_conso_l_100, 1)}&nbsp;l/100</span>
-            </div>
-          </div>
-          <p class="mt-3 text-[11.5px] text-[var(--color-text-faint)] leading-snug">
-            À {formatNumber(TCO_DEFAULTS.elec_home_eur_kwh, 2)}&nbsp;€/kWh et {formatNumber(TCO_DEFAULTS.essence_eur_l, 2)}&nbsp;€/l, tarifs réglables dans le calculateur.
-          </p>
-        </div>
-      </a>
-
-      {/* Leasing social */}
-      <a href={url("/leasing-social/")} class="tool tool-leasing reveal">
-        <div class="flex items-start justify-between gap-4">
-          <h3 class="text-xl font-semibold tracking-[-0.03em] leading-tight">Leasing social</h3>
-          <span class="tool-arrow"><ArrowUpRight size={18} strokeWidth={1.75} aria-hidden="true" /></span>
-        </div>
-        <p class="mt-auto pt-6">
-          <span class="block text-[13px] text-[color-mix(in_srgb,var(--color-accent-on)_72%,transparent)]">Dès</span>
-          <span class="text-[40px] font-semibold tracking-[-0.045em] leading-none">{leasingMin}&nbsp;€</span>
-          <span class="text-[15px] text-[color-mix(in_srgb,var(--color-accent-on)_72%,transparent)]">/mois</span>
-        </p>
-        <p class="mt-2 text-[13px] text-[color-mix(in_srgb,var(--color-accent-on)_72%,transparent)] leading-snug">
-          Sans apport, sous conditions de revenus.
-        </p>
+      <a href={url("/leasing-social/")} class="tool tool-leasing">
+        <span class="tool-top"><span class="font-display text-[30px] font-extrabold tracking-[-0.03em]">Leasing social</span><ArrowUpRight size={22} strokeWidth={2} className="tool-arrow" aria-hidden="true" /></span>
+        <span class="mt-auto block">
+          <span class="text-[14px] text-[color-mix(in_srgb,var(--color-accent-on)_75%,transparent)]">Dès</span>
+          <span class="block font-display text-[64px] font-extrabold tracking-[-0.05em] leading-none text-[var(--color-lime)]">{leasingMin}&nbsp;€<span class="text-[22px] text-[var(--color-accent-on)] tracking-[-0.02em]"> /mois</span></span>
+          <span class="block mt-2 text-[14px] text-[color-mix(in_srgb,var(--color-accent-on)_75%,transparent)]">Sans apport, sous conditions de revenus.</span>
+        </span>
       </a>
     </div>
   </section>
 
-  {/* ═════════ NOUVEAUTÉS ═════════ */}
-  <section class="pb-24 md:pb-32" data-carousel>
-    <div class="container-edit flex flex-wrap items-end justify-between gap-4 mb-8 md:mb-10">
-      <h2 class="display-2">Nouveautés et mises à jour</h2>
-      <div class="flex items-center gap-2">
-        <a href={url("/vehicules/")} class="btn btn-secondary btn-sm">Explorer le catalogue</a>
-        <button type="button" class="carousel-btn hidden md:inline-flex" data-carousel-prev aria-label="Modèles précédents">
-          <ChevronLeft size={18} strokeWidth={1.75} aria-hidden="true" />
-        </button>
-        <button type="button" class="carousel-btn hidden md:inline-flex" data-carousel-next aria-label="Modèles suivants">
-          <ChevronRight size={18} strokeWidth={1.75} aria-hidden="true" />
-        </button>
+  {/* ═════════ INDÉPENDANCE ═════════ */}
+  <section class="container-edit mt-24 md:mt-32">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
+      <div class="lg:col-span-4 px-1">
+        <h2 class="display-2 max-w-[12ch]">Aucune marque ne nous paie.</h2>
+        <dl class="mt-8 grid grid-cols-2 gap-4">
+          <div><dt class="text-[13px] text-[var(--color-text-faint)]">Modèles suivis</dt><dd class="font-display text-[44px] font-extrabold tracking-[-0.04em] leading-none mt-1">{totalVehicles}</dd></div>
+          <div><dt class="text-[13px] text-[var(--color-text-faint)]">Essais sur route</dt><dd class="font-display text-[44px] font-extrabold tracking-[-0.04em] leading-none mt-1">{totalTests}</dd></div>
+        </dl>
       </div>
-    </div>
-
-    <ul class="latest-row no-glossary" data-carousel-track>
-      {latestVehicles.map((v) => {
-        const card = getVehicleCardSummary(v);
-        const isNew = v.releaseYear >= 2026;
-        return (
-          <li class="latest-item">
-            <a href={url(`/vehicules/${v.slug}/`)} class="latest-card">
-              <div class="latest-photo">
-                <VehicleImage slug={v.slug} alt={`${v.brand} ${v.model}`} widths={[360, 720]} sizes="300px" class="w-[88%] h-full" />
-              </div>
-              <div class="p-4 pt-3.5 flex flex-col flex-1">
-                <div class="flex items-center justify-between gap-2">
-                  <span class="flex items-center gap-1.5 text-[13px] text-[var(--color-text-faint)] min-w-0">
-                    <BrandLogo brand={v.brand} class="w-3.5 h-3.5 shrink-0" />
-                    <span class="truncate">{v.brand}</span>
-                  </span>
-                  <Tag tone={isNew ? "accent" : "neutral"}>{isNew ? "Nouveauté" : "Mis à jour"}</Tag>
-                </div>
-                <h3 class="mt-2 text-lg font-semibold tracking-[-0.025em] leading-tight">{v.model}</h3>
-                <p class="mt-0.5 text-[13px] text-[var(--color-text-faint)]">{card.subtitle}</p>
-                <div class="mt-auto pt-4 grid grid-cols-2 gap-3">
-                  <div>
-                    <p class="text-[12px] text-[var(--color-text-faint)]">Autonomie réelle</p>
-                    <p class="mt-0.5 flex items-baseline gap-1">
-                      <span class="text-xl font-semibold tracking-[-0.03em] text-[var(--color-accent)]">{v.realRange.mixed_km}</span>
-                      <span class="text-[13px] text-[var(--color-text-faint)]">km</span>
-                    </p>
-                    <span class="card-confidence mt-1" data-level={card.rangeConfidence}>{card.rangeConfidenceLabel}</span>
-                  </div>
-                  <div class="text-right">
-                    <p class="text-[12px] text-[var(--color-text-faint)]">{card.cheapestPrice !== null ? "Dès" : "Prix"}</p>
-                    {card.cheapestPrice !== null ? (
-                      <p class="mt-0.5 text-xl font-semibold tracking-[-0.03em]">{formatPrice(card.cheapestPrice)}</p>
-                    ) : (
-                      <p class="mt-1 text-sm font-medium text-[var(--color-text-faint)] leading-tight">Non communiqué</p>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </a>
-          </li>
-        );
-      })}
-    </ul>
-  </section>
-
-  {/* ═════════ POURQUOI EVLY ═════════ */}
-  <section class="container-edit pb-24 md:pb-32">
-    <div class="grid lg:grid-cols-12 gap-10 lg:gap-14">
-      <div class="lg:col-span-5">
-        <div class="lg:sticky lg:top-28 reveal">
-          <h2 class="display-2 max-w-[13ch]">Aucune marque ne nous paie.</h2>
-          <p class="mt-5 text-base text-[var(--color-text-muted)] leading-relaxed max-w-[44ch]">
-            Le marché est saturé de comparateurs financés par la publicité ou les commissions. Evly choisit la transparence : données mesurées, sources tracées, zéro rémunération.
-          </p>
-          <dl class="mt-10 grid grid-cols-3 gap-4 pt-6 border-t border-[var(--color-border)] [&>div]:flex [&>div]:flex-col [&>div]:justify-between">
-            <div>
-              <dt class="text-[13px] text-[var(--color-text-faint)]">Modèles suivis</dt>
-              <dd class="mt-1 text-3xl md:text-4xl font-semibold tracking-[-0.04em]">{totalVehicles}</dd>
-            </div>
-            <div>
-              <dt class="text-[13px] text-[var(--color-text-faint)]">Essais sur route</dt>
-              <dd class="mt-1 text-3xl md:text-4xl font-semibold tracking-[-0.04em]">{totalTests}</dd>
-            </div>
-            <div>
-              <dt class="text-[13px] text-[var(--color-text-faint)]">Versions détaillées</dt>
-              <dd class="mt-1 text-3xl md:text-4xl font-semibold tracking-[-0.04em]">{totalConfigs}</dd>
-            </div>
-          </dl>
-        </div>
-      </div>
-
-      <ul class="lg:col-span-7 grid sm:grid-cols-2 gap-x-10 reveal-stagger">
+      <ul class="lg:col-span-8 grid sm:grid-cols-2 gap-3">
         {pillars.map(({ icon: Icon, title, text }) => (
-          <li class="reveal py-7 border-t border-[var(--color-border)]">
-            <span class="inline-flex w-10 h-10 items-center justify-center rounded-full bg-[var(--color-surface-accent)] text-[var(--color-accent)]">
-              <Icon size={19} strokeWidth={1.75} aria-hidden="true" />
+          <li class="pillar">
+            <span class="inline-flex w-11 h-11 items-center justify-center rounded-full bg-[var(--color-surface-accent)] text-[var(--color-accent)]">
+              <Icon size={20} strokeWidth={1.75} aria-hidden="true" />
             </span>
-            <h3 class="mt-4 text-lg font-semibold tracking-[-0.025em]">{title}</h3>
+            <h3 class="mt-4 font-display text-[21px] font-extrabold tracking-[-0.025em]">{title}</h3>
             <p class="mt-2 text-[15px] text-[var(--color-text-muted)] leading-relaxed">{text}</p>
           </li>
         ))}
@@ -324,9 +207,9 @@ const description = `Comparez les ${totalVehicles} voitures électriques du marc
   </section>
 
   {/* ═════════ SECTION SEO / DÉCOUVERTE ═════════ */}
-  <section class="container-edit">
-    <div class="pt-14 border-t border-[var(--color-border)] grid lg:grid-cols-12 gap-8 lg:gap-14">
-      <h2 class="lg:col-span-4 text-2xl md:text-[28px] font-semibold tracking-[-0.03em] leading-[1.15] max-w-[22ch]">
+  <section class="container-edit mt-24 md:mt-32">
+    <div class="pt-12 border-t border-[var(--color-border)] grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14">
+      <h2 class="lg:col-span-4 font-display text-[26px] md:text-[30px] font-extrabold tracking-[-0.03em] leading-[1.08] max-w-[20ch] px-1">
         Le comparateur de voiture électrique qui ne travaille que pour vous.
       </h2>
       <div class="lg:col-span-8 grid md:grid-cols-2 gap-x-10 gap-y-4 text-[15px] text-[var(--color-text-muted)] leading-relaxed">
@@ -347,275 +230,89 @@ const description = `Comparez les ${totalVehicles} voitures électriques du marc
   </section>
 
   <style>
-    /* ── Bento outils : 1 grande entrée + 3 tuiles (lg) ── */
-    .tools-grid {
-      display: grid;
-      gap: 0.75rem;
-      grid-template-columns: 1fr;
-    }
-    @media (min-width: 768px) {
-      .tools-grid {
-        gap: 1rem;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .tool-reco { grid-column: 1 / -1; }
-      .tool-compare { grid-column: 1 / -1; }
-    }
-    @media (min-width: 1024px) {
-      .tools-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        grid-template-rows: repeat(2, minmax(15rem, auto));
-      }
-      .tool-reco { grid-column: 1 / span 2; grid-row: 1 / span 2; }
-      .tool-compare { grid-column: 3 / span 2; grid-row: 1; }
-      .tool-tco { grid-column: 3; grid-row: 2; }
-      .tool-leasing { grid-column: 4; grid-row: 2; }
-    }
-
-    .tool {
+    .hero-panel {
       position: relative;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      min-height: 13rem;
-      padding: 1.5rem;
-      border-radius: var(--radius-tile);
-      border: 1px solid var(--color-border);
-      background: var(--color-surface-elevated);
-      overflow: hidden;
-      transition:
-        transform 450ms var(--ease-out-expo),
-        box-shadow 450ms var(--ease-out-expo),
-        border-color 450ms var(--ease-out-expo),
-        opacity 0.7s var(--ease-out-expo);
-    }
-    @media (min-width: 768px) {
-      .tool { padding: 1.75rem; }
-    }
-    @media (hover: hover) {
-      .tool:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
-        border-color: var(--color-border-strong);
-      }
-      .tool:active { transform: translateY(0) scale(0.995); transition-duration: 120ms; }
-    }
-
-    .tool-arrow {
-      flex-shrink: 0;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 2.25rem;
-      height: 2.25rem;
-      border-radius: 999px;
-      border: 1px solid var(--color-border);
-      color: var(--color-text-muted);
-      transition: background-color 250ms var(--ease-out-expo), color 250ms var(--ease-out-expo), transform 300ms var(--ease-out-expo), border-color 250ms var(--ease-out-expo);
-    }
-    @media (hover: hover) {
-      .tool:hover .tool-arrow {
-        background: var(--color-text);
-        border-color: var(--color-text);
-        color: var(--color-bg-elevated);
-        transform: rotate(45deg);
-      }
-    }
-
-    /* Recommandation : fond vert tendre, voitures en perspective */
-    .tool-reco {
-      min-height: 26rem;
+      border-radius: 32px;
+      padding: 1.75rem 1.5rem 0;
       background:
-        radial-gradient(ellipse 70% 22% at 62% 96%, rgba(28, 36, 18, 0.14), transparent 70%),
-        linear-gradient(160deg, var(--color-surface-accent) 0%, color-mix(in srgb, var(--color-surface-accent) 55%, var(--color-surface-elevated)) 100%);
-      border-color: color-mix(in srgb, var(--color-accent) 18%, var(--color-border));
+        radial-gradient(ellipse 55% 60% at 80% 85%, rgba(212, 234, 127, 0.22), transparent 70%),
+        linear-gradient(150deg, var(--color-accent) 0%, var(--color-ink) 100%);
     }
-    @media (min-width: 768px) {
-      .tool-reco { padding: 2.25rem; }
+    @media (min-width: 768px) { .hero-panel { padding: 3rem 3.5rem 0; } }
+    @media (min-width: 1024px) { .hero-panel { min-height: min(74dvh, 660px); } }
+    /* La grille occupe toute la hauteur du panneau : les voitures sont ancrées en bas */
+    .hero-grid { flex: 1; }
+
+    /* Ligne de sol commune : roues de la voiture du premier plan et centre du halo */
+    .hero-cars { --ground: 1.5rem; position: relative; min-height: 15rem; align-self: end; }
+    @media (min-width: 1024px) { .hero-cars { --ground: 3rem; min-height: 30rem; align-self: stretch; } }
+    .podium {
+      position: absolute; left: 8%; right: -4%; height: 8rem; bottom: calc(var(--ground) - 4rem); border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(212, 234, 127, 0.45), rgba(212, 234, 127, 0.08) 58%, transparent 72%);
     }
-    .tool-reco-cars {
-      position: relative;
-      margin-top: auto;
-      height: 11rem;
-    }
-    .tool-reco-cars :global(.car) {
+    /* Chaque photo est décalée de son vide transparent (--tb, --tx) : la voiture visible touche le sol */
+    .hero-cars .car {
       position: absolute;
-      bottom: 0;
-      transition: transform 700ms var(--ease-out-expo);
+      display: block;
+      translate: var(--tx, 0) var(--tb, 0);
+      animation: car-rise 900ms var(--ease-out-expo) both;
     }
-    .tool-reco-cars :global(.car-front) { left: 18%; width: 62%; height: 100%; z-index: 2; }
-    .tool-reco-cars :global(.car-back-left) { left: -2%; bottom: 1.75rem; width: 44%; height: 62%; opacity: 0.9; }
-    .tool-reco-cars :global(.car-back-right) { right: -4%; bottom: 1.75rem; width: 44%; height: 62%; opacity: 0.9; }
-    @media (hover: hover) {
-      .tool-reco:hover :global(.car-front) { transform: translateX(10px); }
-      .tool-reco:hover :global(.car-back-left) { transform: translateX(-6px); }
-      .tool-reco:hover :global(.car-back-right) { transform: translateX(6px); }
-    }
-    @media (min-width: 1024px) {
-      .tool-reco-cars { height: 14rem; }
-    }
+    .hero-cars .car-c { left: 4%; width: 92%; bottom: var(--ground); z-index: 3; animation-delay: 120ms; }
+    .hero-cars .car-l { left: -12%; width: 60%; bottom: calc(var(--ground) + 4.25rem); z-index: 1; opacity: 0.9; }
+    .hero-cars .car-r { right: -14%; width: 60%; bottom: calc(var(--ground) + 3.75rem); z-index: 2; opacity: 0.9; animation-delay: 220ms; }
+    @keyframes car-rise { from { opacity: 0; transform: translateY(24px); } to { transform: none; } }
 
-    /* Comparateur : deux modèles face à face */
-    .tool-compare-cars {
-      margin-top: auto;
-      padding-top: 1.25rem;
+    .proof-card { padding: 1.5rem; border-radius: var(--radius-tile); background: var(--color-surface); border: 1px solid var(--color-border); }
+    @media (min-width: 768px) { .proof-card { padding: 2.25rem; } }
+    .proof-row {
       display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: end;
-      gap: 1rem;
-      height: 9rem;
-    }
-    .tool-compare-cars :global(img:first-child) { transform: scaleX(-1); }
-    .tool-compare-divider {
-      width: 1px;
-      height: 70%;
-      background: var(--color-border-strong);
-      align-self: center;
-    }
-
-    /* TCO : surface neutre teintée */
-    .tool-tco {
-      background: var(--color-bg-subtle);
-      border-color: transparent;
-    }
-
-    .tco-bars { display: flex; flex-direction: column; gap: 0.5rem; }
-    .tco-bar-row { display: flex; flex-direction: column; gap: 0.3rem; }
-    .tco-bar { display: block; height: 8px; border-radius: 0 4px 4px 0; transform-origin: left center; }
-    .tco-bar-ev { width: var(--ev); background: var(--color-accent); }
-    .tco-bar-ice { width: 100%; background: var(--color-text-faint); }
-    .tco-bar-label { font-size: 12.5px; color: var(--color-text-muted); line-height: 1.2; }
-    .tco-bar-label strong { color: var(--color-text); font-weight: 600; margin-right: 0.25rem; }
-
-    /* Leasing social : aplat vert très sombre */
-    .tool-leasing {
-      background: var(--color-ink);
-      border-color: var(--color-ink);
-      color: var(--color-accent-on);
-    }
-    .tool-leasing .tool-arrow {
-      border-color: color-mix(in srgb, var(--color-accent-on) 25%, transparent);
-      color: var(--color-accent-on);
-    }
-    @media (hover: hover) {
-      .tool-leasing:hover { border-color: var(--color-ink); }
-      .tool-leasing:hover .tool-arrow {
-        background: var(--color-accent-on);
-        border-color: var(--color-accent-on);
-        color: var(--color-ink);
-      }
-    }
-
-    /* ── Rangée défilante des nouveautés ── */
-    .latest-row {
-      display: flex;
-      gap: 0.75rem;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-padding-inline: max(1rem, calc((100vw - var(--container-max)) / 2 + 2.5rem));
-      padding-inline: max(1rem, calc((100vw - var(--container-max)) / 2 + 2.5rem));
-      padding-block: 0.25rem 1rem;
-      scrollbar-width: none;
-      overscroll-behavior-x: contain;
-    }
-    .latest-row::-webkit-scrollbar { display: none; }
-    @media (min-width: 768px) {
-      .latest-row {
-        gap: 1rem;
-        scroll-padding-inline: max(2rem, calc((100vw - var(--container-max)) / 2 + 2.5rem));
-        padding-inline: max(2rem, calc((100vw - var(--container-max)) / 2 + 2.5rem));
-      }
-    }
-    .latest-item {
-      flex: 0 0 auto;
-      width: 78vw;
-      max-width: 300px;
-      scroll-snap-align: start;
-      display: flex;
-    }
-    .latest-card {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      border-radius: var(--radius-tile);
-      border: 1px solid var(--color-border);
-      background: var(--color-surface-elevated);
-      overflow: hidden;
-      transition: transform 450ms var(--ease-out-expo), box-shadow 450ms var(--ease-out-expo), border-color 450ms var(--ease-out-expo);
-    }
-    .latest-photo {
-      height: 9.5rem;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding-top: 0.75rem;
-      background:
-        radial-gradient(ellipse 50% 14% at 50% 94%, rgba(28, 36, 18, 0.13), transparent 70%),
-        var(--color-bg-subtle);
-    }
-    .latest-photo :global(img) {
-      transition: transform 600ms var(--ease-out-expo);
-    }
-    @media (hover: hover) {
-      .latest-card:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
-        border-color: var(--color-border-strong);
-      }
-      .latest-card:hover .latest-photo :global(img) { transform: scale(1.04); }
-    }
-
-    .carousel-btn {
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas: "name values" "rail gap";
       align-items: center;
-      justify-content: center;
-      width: 2.25rem;
-      height: 2.25rem;
-      border-radius: 999px;
-      border: 1px solid var(--color-border-strong);
-      background: var(--color-surface-elevated);
-      color: var(--color-text);
-      transition: border-color 200ms var(--ease-out-expo), opacity 200ms var(--ease-out-expo), transform 160ms var(--ease-out-expo);
+      column-gap: 1rem;
+      row-gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      margin-inline: -0.75rem;
+      border-radius: 16px;
+      transition: background-color 200ms var(--ease-out-expo);
     }
-    .carousel-btn:active { transform: scale(0.94); }
-    .carousel-btn:disabled { opacity: 0.35; cursor: default; }
-    @media (hover: hover) {
-      .carousel-btn:not(:disabled):hover { border-color: var(--color-text); }
+    @media (hover: hover) and (pointer: fine) {
+      .proof-row:hover { background: var(--color-bg); }
+      .proof-row:hover :global(.rail) { --rail-surface: var(--color-bg); }
     }
-  </style>
+    .proof-name { grid-area: name; font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+    .proof-values { grid-area: values; font-size: 13px; color: var(--color-text-faint); text-align: right; }
+    .proof-values b { color: var(--color-text); font-weight: 700; }
+    .proof-row :global(.proof-rail) { grid-area: rail; }
+    .proof-gap { grid-area: gap; min-width: 3.5rem; text-align: right; font-family: var(--font-display); font-size: 17px; font-weight: 800; letter-spacing: -0.03em; }
 
-  <script>
-    // Boutons précédent / suivant de la rangée des nouveautés (défilement natif avec accroche)
-    function setupCarousels() {
-      document.querySelectorAll<HTMLElement>("[data-carousel]").forEach((root) => {
-        if (root.dataset.ready) return;
-        root.dataset.ready = "true";
-        const track = root.querySelector<HTMLElement>("[data-carousel-track]");
-        const prev = root.querySelector<HTMLButtonElement>("[data-carousel-prev]");
-        const next = root.querySelector<HTMLButtonElement>("[data-carousel-next]");
-        if (!track || !prev || !next) return;
-        const items = track.querySelectorAll<HTMLElement>(".latest-item");
-        const first = items[0];
-        const last = items[items.length - 1];
-        if (!first || !last) return;
-        const step = () => first.offsetWidth + 16;
-        prev.addEventListener("click", () => track.scrollBy({ left: -step() * 2, behavior: "smooth" }));
-        next.addEventListener("click", () => track.scrollBy({ left: step() * 2, behavior: "smooth" }));
-        // Bouton désactivé quand la première / dernière carte est entièrement visible
-        const io = new IntersectionObserver(
-          (entries) => {
-            for (const e of entries) {
-              const atEdge = e.intersectionRatio > 0.95;
-              if (e.target === first) prev.disabled = atEdge;
-              if (e.target === last) next.disabled = atEdge;
-            }
-          },
-          { root: track, threshold: [0, 0.95, 1] }
-        );
-        io.observe(first);
-        io.observe(last);
-        document.addEventListener("astro:before-swap", () => io.disconnect(), { once: true });
-      });
+    .tools { display: grid; gap: 0.75rem; }
+    @media (min-width: 1024px) { .tools { grid-template-columns: 1.4fr 1fr 1fr; } }
+    .tool {
+      position: relative; display: flex; flex-direction: column; gap: 0.75rem; min-height: 22rem; padding: 2rem;
+      border-radius: 28px; overflow: hidden; transition: transform 260ms var(--ease-out-expo), box-shadow 260ms var(--ease-out-expo);
     }
-    setupCarousels();
-    document.addEventListener("astro:page-load", setupCarousels);
-  </script>
+    @media (hover: hover) and (pointer: fine) {
+      .tool:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+      .tool:hover :global(.tool-arrow) { transform: rotate(45deg); }
+      .tool:hover .tool-cars :global(img) { transform: translateX(-6px) scaleX(-1); }
+      .tool:hover .tool-cars :global(img:last-child) { transform: translateX(6px); }
+    }
+    .tool:active { transform: scale(0.985); transition-duration: 120ms; }
+    .tool-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+    .tool :global(.tool-arrow) { flex-shrink: 0; transition: transform 300ms var(--ease-out-expo); }
+    .tool-compare { background: var(--color-lime); color: var(--color-ink); }
+    .tool-compare-desc { color: color-mix(in srgb, var(--color-ink) 85%, transparent); }
+    .tool-cars { margin-top: auto; display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 0.5rem; height: 9rem; }
+    .tool-cars :global(img) { transition: transform 260ms var(--ease-out-expo); }
+    .tool-cars :global(img:first-child) { transform: scaleX(-1); }
+    .vs { align-self: center; font-size: 22px; font-weight: 800; color: var(--color-accent); }
+    .tool-tco { background: var(--color-surface); border: 1px solid var(--color-border); }
+    .tool-leasing { background: var(--color-ink); color: var(--color-accent-on); }
+
+    .pillar { padding: 1.75rem; border-radius: var(--radius-tile); background: var(--color-surface); border: 1px solid var(--color-border); }
+  </style>
 </BaseLayout>

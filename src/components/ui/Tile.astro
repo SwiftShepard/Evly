@@ -1,7 +1,8 @@
 ---
 import SourceTooltip from "@/components/ui/SourceTooltip.astro";
 
-type TileSize = "1x1" | "2x1" | "2x2" | "3x1" | "full";
+/** side : colonne étroite à côté d'une tuile 3x1 sur grand écran, pleine largeur en tablette */
+type TileSize = "1x1" | "2x1" | "2x2" | "3x1" | "side" | "full";
 type TileVariant = "default" | "elevated" | "accent" | "outlined";
 
 interface Props {

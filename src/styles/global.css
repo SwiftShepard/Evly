@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@fontsource-variable/bricolage-grotesque";
 @import "@fontsource-variable/geist";
 @import "@fontsource-variable/geist-mono";
 
@@ -6,21 +7,22 @@
 /* Tokens statiques : typo, conteneur, easing, formes                 */
 /* ----------------------------------------------------------------- */
 /*
- * Système de formes (à respecter partout) :
+ * Direction « Olive plein volume » : formes rondes (à respecter partout)
  *   - éléments interactifs, puces, étiquettes : pilule (999px)
- *   - cartes et tuiles : 16px (--radius-tile), sous-cartes : 12px
- *   - champs de formulaire : 10px
+ *   - grands panneaux et tuiles : 24px (--radius-tile), sous-cartes : 16px
+ *   - champs de formulaire : 12px
  */
 
 @theme {
-  /* Typographie : Geist pour le texte et les chiffres, Geist Mono pour les libellés de données */
+  /* Typographie : Bricolage Grotesque pour les titres et les chiffres vedettes,
+     Geist pour le texte, Geist Mono pour les graduations et relevés */
   --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono Variable", ui-monospace, "SFMono-Regular", monospace;
 
   /* Tracking sur-mesure */
   --tracking-display: -0.04em;
-  --tracking-section: -0.03em;
+  --tracking-section: -0.032em;
   --tracking-label: 0.08em;
 
   /* Conteneur */
@@ -29,59 +31,60 @@
   /* Easing */
   --ease-editorial: cubic-bezier(0.2, 0.7, 0.1, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Mouvement à l'écran (morphing, déplacement) : accélère puis freine franchement */
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* Tuiles (bento) */
-  --radius-tile: 16px;
-  --radius-tile-sm: 12px;
-  --radius-field: 10px;
-  --tile-padding: 1.25rem;
-  --tile-padding-lg: 1.75rem;
+  --radius-tile: 24px;
+  --radius-tile-sm: 16px;
+  --radius-field: 12px;
+  --tile-padding: 1.375rem;
+  --tile-padding-lg: 2rem;
   --tile-gap: 0.75rem;
   --tile-gap-lg: 1rem;
 }
 
 /* ----------------------------------------------------------------- */
-/* Palette : thème clair unique                                       */
-/* Les photos constructeur sont détourées ou sur fond blanc : un      */
-/* thème sombre les ferait apparaître dans des cadres blancs. Le fond  */
-/* de page est un blanc cassé vert-de-gris ; les photos s'y fondent    */
-/* grâce au mode de fusion « multiply » (.vehicle-photo).              */
+/* Palette « Olive plein volume » : thème clair unique                */
+/* Le vert olive Evly s'assume en grands aplats, le lime l'accompagne  */
+/* (surfaces, kilomètres promis). Les photos sur fond blanc se fondent */
+/* dans les surfaces claires grâce à « multiply » (.vehicle-photo).    */
 /* ----------------------------------------------------------------- */
 
 :root {
   color-scheme: light;
 
-  --color-bg: #f3f4f0;
-  --color-bg-elevated: #fbfbf9;
-  --color-bg-subtle: #eaece5;
-  --color-border: #dfe2d8;
-  --color-border-strong: #c4c9ba;
-  --color-text: #151813;
-  --color-text-muted: #474c43;
-  --color-text-faint: #5f655a;
+  --color-bg: #eef1e7;
+  --color-bg-elevated: #fafbf6;
+  --color-bg-subtle: #e4e9d8;
+  --color-border: #d8dec9;
+  --color-border-strong: #bcc5ab;
+  --color-text: #17200f;
+  --color-text-muted: #4a5442;
+  --color-text-faint: #5d6754;
 
   /* Surfaces des tuiles */
-  --color-surface: #fbfbf9;
-  --color-surface-elevated: #fdfdfc;
-  --color-surface-accent: #e5eecd;
+  --color-surface: #fafbf6;
+  --color-surface-elevated: #fdfdfa;
+  --color-surface-accent: #e7f1c4;
 
-  /* Accent : vert olive profond, unique sur tout le site */
+  /* Olive : la couleur de marque, en texte, boutons et grands aplats */
   --color-accent: #3a5c12;
-  --color-accent-dim: #2b460c;
-  --color-accent-on: #f6f9ef;
-  /* Teinte claire de la même rampe (marques de graphiques, fonds) */
-  --color-accent-soft: #a3bd6a;
-  /* Encre verte très sombre pour les rares aplats foncés */
-  --color-ink: #1c2614;
+  --color-accent-dim: #243a0a;
+  --color-accent-on: #f2f7e6;
+  /* Lime : son complice (surfaces, kilomètres promis non parcourus) ; jamais en texte sur fond clair */
+  --color-lime: #d4ea7f;
+  --color-accent-soft: #c3dc6a;
+  --color-ink: #243a0a;
 
   --color-danger: #b42d1d;
   --color-warning: #8a4f07;
 
-  /* Ombres teintées à la couleur du fond, jamais noires */
-  --shadow-sm: 0 1px 2px rgba(28, 36, 18, 0.05);
-  --shadow-md: 0 12px 32px -14px rgba(28, 36, 18, 0.18), 0 2px 6px -2px rgba(28, 36, 18, 0.06);
-  --shadow-lg: 0 24px 60px -24px rgba(28, 36, 18, 0.28), 0 4px 12px -4px rgba(28, 36, 18, 0.08);
+  /* Ombres teintées olive, jamais noires */
+  --shadow-sm: 0 1px 2px rgba(23, 32, 15, 0.05);
+  --shadow-md: 0 24px 44px -28px rgba(23, 32, 15, 0.38);
+  --shadow-lg: 0 30px 70px -34px rgba(23, 32, 15, 0.45), 0 4px 14px -6px rgba(23, 32, 15, 0.1);
 
   /* Halo des tuiles au survol */
   --glow-accent: rgba(58, 92, 18, 0.06);
@@ -146,12 +149,12 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    height: 2.75rem;
-    padding-inline: 1.25rem;
+    height: 2.875rem;
+    padding-inline: 1.375rem;
     border-radius: 999px;
     border: 1px solid transparent;
     font-size: 0.9375rem;
-    font-weight: 550;
+    font-weight: 600;
     letter-spacing: -0.01em;
     line-height: 1;
     white-space: nowrap;
@@ -179,12 +182,26 @@
     color: var(--color-text);
     border-color: var(--color-border-strong);
   }
+  .btn-lime {
+    background-color: var(--color-lime);
+    color: var(--color-ink);
+  }
+  .btn-ghost-light {
+    border-color: color-mix(in srgb, var(--color-accent-on) 40%, transparent);
+    color: var(--color-accent-on);
+  }
   @media (hover: hover) {
     .btn-primary:hover {
       background-color: var(--color-accent-dim);
     }
     .btn-secondary:hover {
       border-color: var(--color-text);
+    }
+    .btn-lime:hover {
+      background-color: #e2f3a1;
+    }
+    .btn-ghost-light:hover {
+      border-color: var(--color-accent-on);
     }
   }
   .btn .btn-arrow {
@@ -194,6 +211,413 @@
     .btn:hover .btn-arrow {
       transform: translateX(3px);
     }
+  }
+
+  /* --------------------------------------------------------------- */
+  /* Règle d'autonomie : l'unité visuelle d'Evly                       */
+  /*   olive foncé = autonomie même en hiver (-5 °C)                    */
+  /*   olive       = le reste de l'autonomie réelle (mixte)             */
+  /*   lime hachuré = kilomètres promis (WLTP) jamais parcourus         */
+  /*   repère      = votre semaine de trajet (5 jours)                  */
+  /* Les valeurs passent en variables CSS sur .rail :                  */
+  /*   --scale, --winter, --real, --wltp et, côté client, --need        */
+  /* --------------------------------------------------------------- */
+  .rail {
+    --rail-winter: #3a5c12;
+    --rail-real: #6f9130;
+    --rail-promise: #a2bf40;
+    --rail-surface: var(--color-surface);
+    /* Fractions de l'échelle (sans unité) puis pourcentages */
+    --w: calc(var(--winter) / var(--scale));
+    --r: calc(var(--real) / var(--scale));
+    --p: calc(var(--wltp) / var(--scale));
+    --n: calc(min(var(--need, 0), var(--scale)) / var(--scale));
+    --w-pct: calc(var(--w) * 100%);
+    --r-pct: calc(var(--r) * 100%);
+    --p-pct: calc(var(--p) * 100%);
+    position: relative;
+    container-type: inline-size;
+  }
+  .rail-bar {
+    position: relative;
+    height: 8px;
+    container-type: inline-size;
+  }
+  .rail[data-size="lg"] .rail-bar {
+    height: 20px;
+  }
+  /* Chaque segment couvre toute la règle et se découpe (clip-path) :
+     les changements de valeurs glissent sans recalcul de mise en page */
+  .rail-seg {
+    position: absolute;
+    inset: 0;
+    transition: clip-path 380ms var(--ease-in-out);
+  }
+  .rail-winter {
+    background: var(--rail-winter);
+    clip-path: inset(0 calc(100% - var(--w-pct)) 0 0 round 999px 0 0 999px);
+  }
+  .rail-real {
+    background: var(--rail-real);
+    clip-path: inset(0 calc(100% - var(--r-pct)) 0 calc(var(--w-pct) + 2px));
+  }
+  .rail-promise {
+    background:
+      linear-gradient(var(--rail-promise), var(--rail-promise)) top / 100% 1px no-repeat,
+      linear-gradient(var(--rail-promise), var(--rail-promise)) bottom / 100% 1px no-repeat,
+      repeating-linear-gradient(135deg, var(--rail-promise) 0 2px, transparent 2px 6px);
+    clip-path: inset(0 calc(100% - var(--p-pct)) 0 calc(var(--r-pct) + 2px) round 0 999px 999px 0);
+  }
+  /* Valeur hiver écrite dans le segment foncé, seulement si elle y tient */
+  .rail-winter-label {
+    position: absolute;
+    left: 0.6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 1;
+    color: var(--color-accent-on);
+    white-space: nowrap;
+    display: none;
+  }
+  @container (min-width: 460px) {
+    .rail[data-size="lg"] .rail-winter-label { display: block; }
+  }
+  /* Repère « votre semaine » : positionné par translate (GPU), il glisse quand le trajet change */
+  .rail-need {
+    position: absolute;
+    top: -5px;
+    bottom: -5px;
+    left: 0;
+    width: 2px;
+    margin-left: -1px;
+    background: var(--color-text);
+    border-radius: 2px;
+    display: none;
+    translate: calc(var(--n) * 100cqw) 0;
+    transition:
+      translate 320ms var(--ease-out-expo),
+      background-color 200ms ease,
+      opacity 240ms var(--ease-out-expo),
+      scale 240ms var(--ease-out-expo);
+  }
+  .rail-need::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-bottom-color: var(--color-text);
+    border-top: 0;
+    transition: border-color 200ms ease;
+  }
+  .rail[data-need] .rail-need {
+    display: block;
+    @starting-style {
+      opacity: 0;
+      scale: 1 0.4;
+    }
+  }
+  .rail[data-fit="0"] .rail-need { background: var(--color-danger); }
+  .rail[data-fit="0"] .rail-need::after { border-bottom-color: var(--color-danger); }
+  .rail[data-size="lg"] .rail-need { top: -8px; bottom: -8px; width: 3px; margin-left: -1.5px; }
+
+  /* Graduations (grande règle) */
+  .rail-ticks {
+    position: relative;
+    height: 1.5rem;
+    margin-top: 0.75rem;
+    background: repeating-linear-gradient(to right, var(--color-border-strong) 0 1px, transparent 1px calc(100% / (var(--scale) / 25)));
+    background-size: 100% 6px;
+    background-repeat: no-repeat;
+  }
+  .rail-tick {
+    position: absolute;
+    top: 9px;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 1;
+    color: var(--color-text-faint);
+    white-space: nowrap;
+  }
+  .rail-tick:first-child { transform: none; }
+  .rail-tick:last-child { transform: translateX(-100%); }
+  /* Règle étroite : une graduation chiffrée sur deux, étiquette WLTP sur une seconde ligne */
+  @container (max-width: 520px) {
+    .rail-tick:nth-child(even):not(:last-child) { visibility: hidden; }
+    .rail .rail-labels { height: 6.25rem; }
+    .rail .rail-label.rail-label-wltp,
+    .rail[data-flip] .rail-label.rail-label-wltp { bottom: 3.6rem; }
+  }
+
+  /* Étiquettes au-dessus de la grande règle, elles aussi déplacées par translate */
+  .rail-labels {
+    position: relative;
+    height: 4.25rem;
+  }
+  .rail-label {
+    position: absolute;
+    left: 0;
+    bottom: 0.75rem;
+    white-space: nowrap;
+    line-height: 1.1;
+    transition: translate 380ms var(--ease-in-out);
+  }
+  /* Bornées aux bords de la règle : jamais de débordement, même sur mobile */
+  .rail-label-real {
+    translate: max(0px, calc(var(--r) * 100cqw - 100%)) 0;
+    text-align: right;
+    padding-right: 0.5rem;
+    border-right: 2px solid var(--rail-real);
+  }
+  .rail-label-wltp {
+    translate: min(calc(var(--p) * 100cqw), calc(100cqw - 100%)) 0;
+    padding-left: 0.5rem;
+    border-left: 2px solid var(--rail-promise);
+  }
+  .rail[data-flip] .rail-label-wltp {
+    translate: max(0px, calc(var(--p) * 100cqw - 100%)) 0;
+    padding-left: 0;
+    padding-right: 0.5rem;
+    border-left: 0;
+    border-right: 2px solid var(--rail-promise);
+    text-align: right;
+    bottom: 2.6rem;
+  }
+  .rail-label b {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+    letter-spacing: -0.035em;
+    color: var(--color-text);
+    font-variant-numeric: tabular-nums;
+  }
+  .rail-label-wltp b {
+    font-size: clamp(1.05rem, 1.6vw, 1.4rem);
+    color: var(--color-text-muted);
+  }
+  .rail-label > span {
+    font-size: 12.5px;
+    color: var(--color-text-faint);
+  }
+
+  /* Entrée de la grande règle : la jauge se remplit de gauche à droite,
+     puis les étiquettes se posent (explication : on lit la route, puis la promesse) */
+  .rail[data-animate] .rail-bar {
+    animation: rail-fill 900ms var(--ease-in-out) both;
+  }
+  .rail[data-animate] .rail-labels {
+    animation: rail-labels-in 420ms var(--ease-out-expo) 420ms both;
+  }
+  @keyframes rail-fill {
+    from { clip-path: inset(-14px 100% -14px 0); }
+    to { clip-path: inset(-14px -14px -14px 0); }
+  }
+  @keyframes rail-labels-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  /* Règles d'une liste qui apparaît au défilement : remplissage en cascade (--i = rang) */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal:not(.revealed) .rail[data-reveal] .rail-bar {
+      clip-path: inset(-14px 100% -14px 0);
+    }
+    .rail[data-reveal] .rail-bar {
+      clip-path: inset(-14px -14px -14px 0);
+      transition: clip-path 900ms var(--ease-in-out) calc(var(--i, 0) * 70ms + 150ms);
+    }
+  }
+
+  /* --------------------------------------------------------------- */
+  /* Autonomie par usage (fiche) : une règle par usage, échelle commune */
+  /*   --scale, --wltp et --need sur .usage-chart, --v et --i par ligne  */
+  /* --------------------------------------------------------------- */
+  .usage-chart {
+    --rail-winter: #3a5c12;
+    --rail-real: #6f9130;
+    --rail-promise: #a2bf40;
+    --rail-surface: var(--color-surface-elevated);
+    --label-w: 12rem;
+    --value-w: 5rem;
+    --p-pct: calc(var(--wltp) / var(--scale) * 100%);
+    --n-pct: calc(min(var(--need, 0), var(--scale)) / var(--scale) * 100%);
+    container: usage / inline-size;
+  }
+  .usage-row,
+  .usage-ticks-row {
+    display: grid;
+    grid-template-columns: var(--label-w) minmax(0, 1fr) var(--value-w);
+    grid-template-areas: "label track value";
+    align-items: center;
+    column-gap: 1rem;
+  }
+  .usage-row {
+    --v-pct: calc(var(--v) / var(--scale) * 100%);
+    padding: 0.7rem 0.75rem;
+    margin-inline: -0.75rem;
+    border-radius: var(--radius-tile-sm);
+    transition: background-color 200ms ease;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .usage-row:hover { background: var(--color-bg); --rail-surface: var(--color-bg); }
+  }
+  .usage-label { grid-area: label; display: flex; align-items: center; gap: 0.65rem; min-width: 0; }
+  .usage-icon {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    background: var(--color-surface-accent);
+    color: var(--color-accent);
+  }
+  .usage-label b { display: block; font-size: 14.5px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.15; }
+  .usage-label small { display: block; font-size: 12px; color: var(--color-text-faint); line-height: 1.25; }
+  .usage-value { grid-area: value; text-align: right; white-space: nowrap; font-size: 13px; color: var(--color-text-faint); }
+  .usage-value b {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    color: var(--color-text);
+    font-variant-numeric: tabular-nums;
+  }
+  .usage-row[data-kind="mixed"] .usage-value b { color: var(--color-accent); }
+
+  .usage-track { grid-area: track; position: relative; height: 14px; container-type: inline-size; }
+  .usage-fill,
+  .usage-promise {
+    position: absolute;
+    inset: 0;
+    clip-path: var(--clip-final);
+    /* Sans délai : les curseurs (santé, température) doivent répondre tout de suite */
+    transition: clip-path 380ms var(--ease-in-out);
+  }
+  .usage-fill {
+    --clip-final: inset(0 calc(100% - var(--v-pct)) 0 0 round 999px);
+    background: var(--rail-real);
+  }
+  .usage-row[data-short] .usage-fill {
+    --clip-final: inset(0 calc(100% - var(--v-pct)) 0 0 round 999px 0 0 999px);
+  }
+  .usage-row[data-kind="winter"] .usage-fill { background: var(--rail-winter); }
+  .usage-promise {
+    --clip-final: inset(0 calc(100% - var(--p-pct)) 0 calc(var(--v-pct) + 2px) round 0 999px 999px 0);
+    background:
+      linear-gradient(var(--rail-promise), var(--rail-promise)) top / 100% 1px no-repeat,
+      linear-gradient(var(--rail-promise), var(--rail-promise)) bottom / 100% 1px no-repeat,
+      repeating-linear-gradient(135deg, var(--rail-promise) 0 2px, transparent 2px 6px);
+  }
+  /* Repères alignés d'une ligne à l'autre : ils forment deux verticales (WLTP, votre semaine) */
+  .usage-mark {
+    position: absolute;
+    top: -6px;
+    bottom: -6px;
+    left: 0;
+    width: 2px;
+    margin-left: -1px;
+    border-radius: 2px;
+    transition: translate 320ms var(--ease-out-expo), background-color 200ms ease;
+  }
+  .usage-mark-wltp {
+    translate: calc(var(--wltp) / var(--scale) * 100cqw) 0;
+    background: repeating-linear-gradient(to bottom, var(--color-text-faint) 0 3px, transparent 3px 5px);
+  }
+  .usage-mark-need {
+    translate: calc(min(var(--need, 0), var(--scale)) / var(--scale) * 100cqw) 0;
+    background: var(--color-text);
+    display: none;
+  }
+  .usage-chart[data-need] .usage-mark-need { display: block; }
+  .usage-row[data-fit="0"] .usage-mark-need { background: var(--color-danger); }
+
+  .usage-ticks-row { margin-top: 0.35rem; }
+  .usage-ticks { grid-area: track; position: relative; height: 1.4rem; }
+  .usage-tick {
+    position: absolute;
+    top: 0.3rem;
+    translate: -50% 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-text-faint);
+    white-space: nowrap;
+  }
+  .usage-tick:first-child { translate: 0 0; }
+  .usage-tick:last-child { translate: -100% 0; }
+  .usage-legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; margin-top: 1rem; padding-top: 0.9rem; border-top: 1px solid var(--color-border); font-size: 12.5px; color: var(--color-text-muted); }
+  .usage-legend > span { display: inline-flex; align-items: center; gap: 0.5rem; }
+  .usage-key-wltp,
+  .usage-key-need { display: inline-block; width: 2px; height: 14px; border-radius: 2px; }
+  .usage-key-wltp { background: repeating-linear-gradient(to bottom, var(--color-text-faint) 0 3px, transparent 3px 5px); }
+  .usage-key-need { background: var(--color-text); }
+  .usage-legend > .usage-legend-trip { flex-basis: 100%; align-items: flex-start; }
+  .usage-legend-trip .usage-key-need { flex-shrink: 0; margin-top: 0.2em; }
+  .usage-legend-trip em { font-style: normal; font-weight: 600; color: var(--color-danger); }
+
+  /* Remplissage en cascade, une seule fois, à l'apparition de la tuile (.reveal) ou au changement de version.
+     Animation et non transition : la transition reste libre pour les curseurs. */
+  @keyframes usage-fill {
+    from { clip-path: inset(0 100% 0 0 round 999px); }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .revealed .usage-fill,
+    .revealed .usage-promise {
+      animation: usage-fill 900ms var(--ease-in-out) calc(var(--i, 0) * 80ms + 120ms) backwards;
+    }
+  }
+
+  /* Tuile étroite (la plupart des cas) : libellé et valeur sur une ligne, règle pleine largeur dessous.
+     Requête de conteneur : c'est la largeur de la tuile qui compte, pas celle de l'écran. */
+  @container usage (max-width: 640px) {
+    .usage-row,
+    .usage-ticks-row {
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas: "label value" "track track";
+      row-gap: 0.55rem;
+    }
+    .usage-ticks-row { grid-template-areas: "track track"; }
+  }
+  @container usage (max-width: 300px) {
+    .usage-tick:nth-child(even):not(:last-child) { visibility: hidden; }
+  }
+
+  /* Légende partagée */
+  .rail-legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem 1.1rem;
+    font-size: 12.5px;
+    color: var(--color-text-muted);
+  }
+  .rail-legend > span { display: inline-flex; align-items: center; gap: 0.45rem; }
+  .rail-key { display: inline-block; width: 18px; height: 8px; border-radius: 999px; }
+  .rail-key-winter { background: #3a5c12; }
+  .rail-key-real { background: #6f9130; }
+  .rail-key-promise { background: repeating-linear-gradient(135deg, #a2bf40 0 2px, transparent 2px 5px); box-shadow: inset 0 0 0 1px #a2bf40; }
+  .rail-key-need { width: 2px; height: 14px; border-radius: 2px; background: var(--color-text); }
+
+  /* Scène photo : sol clair, ombre portée douce */
+  .stage {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    border-radius: var(--radius-tile-sm);
+    background:
+      radial-gradient(ellipse 48% 13% at 50% 90%, rgba(23, 32, 15, 0.16), transparent 70%),
+      linear-gradient(to bottom, #f2f4ec, var(--color-surface-elevated));
+  }
+
+  /* Sur un aplat olive, les photos détourées se posent telles quelles */
+  .on-dark .vehicle-photo {
+    mix-blend-mode: normal;
   }
 
   /* Photos véhicule : le blanc de fond se fond dans la surface teintée */
@@ -275,24 +699,24 @@
   /* Display headlines avec tracking serré */
   .display-1 {
     font-family: var(--font-display);
-    font-weight: 600;
+    font-weight: 800;
     letter-spacing: var(--tracking-display);
-    line-height: 0.98;
+    line-height: 0.95;
     font-size: clamp(2.5rem, 4.4vw + 1rem, 4.75rem);
   }
 
   .display-2 {
     font-family: var(--font-display);
-    font-weight: 600;
+    font-weight: 800;
     letter-spacing: var(--tracking-section);
-    line-height: 1.04;
-    font-size: clamp(1.875rem, 2.2vw + 1rem, 3rem);
+    line-height: 1;
+    font-size: clamp(1.875rem, 2.2vw + 1rem, 3.1rem);
   }
 
   .display-stat {
     font-family: var(--font-display);
-    font-weight: 600;
-    letter-spacing: -0.025em;
+    font-weight: 750;
+    letter-spacing: -0.03em;
     line-height: 0.92;
     font-variant-numeric: tabular-nums;
     font-feature-settings: "tnum";
@@ -344,10 +768,10 @@
     position: relative;
     box-shadow: var(--shadow-sm);
     transition:
-      background-color 350ms var(--ease-out-expo),
-      border-color 350ms var(--ease-out-expo),
-      box-shadow 350ms var(--ease-out-expo),
-      transform 450ms var(--ease-out-expo);
+      background-color 200ms ease,
+      border-color 200ms ease,
+      box-shadow 260ms var(--ease-out-expo),
+      transform 260ms var(--ease-out-expo);
   }
 
   @media (min-width: 768px) {
@@ -390,6 +814,18 @@
     }
   }
 
+  /* Colonne étroite à côté d'une 3x1 : seule sur sa ligne en tablette (sinon trou à côté) */
+  @media (min-width: 768px) {
+    .bento-tile[data-size="side"] {
+      grid-column: span 2;
+    }
+  }
+  @media (min-width: 1024px) {
+    .bento-tile[data-size="side"] {
+      grid-column: span 1;
+    }
+  }
+
   .bento-tile[data-size="full"] {
     grid-column: 1 / -1;
   }
@@ -407,15 +843,15 @@
     box-shadow: none;
   }
 
-  /* Survol desktop : léger soulèvement, ombre teintée */
-  @media (hover: hover) {
+  /* Survol à la souris uniquement (le tactile déclenche de faux survols) : léger soulèvement, ombre teintée */
+  @media (hover: hover) and (pointer: fine) {
     a.bento-tile {
       cursor: pointer;
     }
     a.bento-tile:hover {
       background-color: var(--color-surface-elevated);
       border-color: var(--color-border-strong);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
       box-shadow: var(--shadow-md);
     }
     a.bento-tile:active {

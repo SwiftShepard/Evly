@@ -1,5 +1,4 @@
 ---
-import Wordmark from "@/components/ui/Wordmark.astro";
 import { url } from "@/lib/url";
 import { getAllVehicles } from "@/lib/vehicles";
 import { getCategory } from "@/data/categories";
@@ -71,12 +70,12 @@ const cols = [
 ];
 ---
 
-<footer class="mt-24 md:mt-32 border-t border-[var(--color-border)] bg-[color-mix(in_srgb,var(--color-bg-subtle)_50%,var(--color-bg))]">
-  <div class="container-edit pt-14 md:pt-20 pb-10">
+<footer class="mt-24 md:mt-32">
+  <div class="container-edit">
+   <div class="footer-panel">
     <div class="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-[minmax(0,4fr)_repeat(5,minmax(0,1.6fr))] gap-x-6 gap-y-10">
       <div class="col-span-2 md:col-span-5 lg:col-span-1 flex flex-col gap-5 lg:pr-10">
-        <Wordmark size="lg" />
-        <p class="text-[22px] md:text-2xl font-semibold tracking-[-0.03em] leading-[1.15] text-[var(--color-text)] max-w-xs">
+        <p class="font-display text-[26px] md:text-[30px] font-extrabold tracking-[-0.035em] leading-[1.02] text-[var(--color-text)] max-w-xs">
           L'électrique mesuré, sans publicité ni commission.
         </p>
         <p class="text-sm text-[var(--color-text-muted)] leading-relaxed max-w-sm">
@@ -91,7 +90,7 @@ const cols = [
       {
         cols.map((col) => (
           <div class="col-span-1 flex flex-col gap-3">
-            <p class="text-[13px] font-medium text-[var(--color-text)]">{col.title}</p>
+            <p class="font-display text-[15px] font-bold tracking-[-0.01em] text-[var(--color-text)]">{col.title}</p>
             <ul class="flex flex-col gap-2">
               {col.links.map((link) => (
                 <li>
@@ -109,7 +108,8 @@ const cols = [
       }
     </div>
 
-    <div class="mt-14 pt-6 border-t border-[var(--color-border)] flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+    <p class="footer-mark" aria-hidden="true">ev<span>·</span>ly</p>
+    <div class="pt-6 border-t border-[var(--color-border)] flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
       <span class="text-[13px] text-[var(--color-text-faint)]">© {year} Evly</span>
       <nav aria-label="Informations légales">
         <ul class="flex flex-wrap gap-x-5 gap-y-1">
@@ -123,5 +123,30 @@ const cols = [
         </ul>
       </nav>
     </div>
+   </div>
   </div>
 </footer>
+
+<style>
+  .footer-panel {
+    padding: 2.5rem 1.5rem 1.5rem;
+    border-radius: 32px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+  }
+  @media (min-width: 768px) {
+    .footer-panel { padding: 3.5rem 3rem 2rem; }
+  }
+  /* Signature : le mot-symbole en très grand, coupé par le bas du panneau */
+  .footer-mark {
+    margin: 3rem 0 -0.12em;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(5.5rem, 22vw, 19rem);
+    line-height: 0.8;
+    letter-spacing: -0.065em;
+    color: var(--color-accent);
+    user-select: none;
+  }
+  .footer-mark span { color: var(--color-lime); }
+</style>
