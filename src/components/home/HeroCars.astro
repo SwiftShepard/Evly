@@ -1,0 +1,185 @@
+---
+/**
+ * Carrousel du hero : les modèles de « Lu sur la règle » (TripStudio), posés sur une même
+ * ligne de sol. Les deux sont synchronisés : le hero fait avancer l'onglet de la règle,
+ * un onglet choisi fait tourner le hero.
+ * Défilement automatique piloté par la jauge du point actif (fin d'animation CSS) : en pause
+ * au survol, au focus, hors écran ; arrêté dès qu'on choisit un onglet ; absent si
+ * l'animation est réduite.
+ */
+import VehicleImage from "@/components/ui/VehicleImage.astro";
+import { getVehicleBySlug } from "@/lib/vehicles";
+import { getContentMargins } from "@/lib/vehicleImageTrim";
+import { url } from "@/lib/url";
+import { STUDIO_MODELS } from "./studioModels";
+import { ArrowUpRight } from "lucide-react";
+
+const { class: className = "" } = Astro.props;
+
+// Chaque photo est décalée de son vide transparent (--tb sous les roues, --tx à l'horizontale)
+const cars = await Promise.all(
+  STUDIO_MODELS.map(async ([slug]) => {
+    const v = getVehicleBySlug(slug);
+    const m = await getContentMargins(slug);
+    return {
+      slug,
+      name: v ? `${v.brand} ${v.model}` : slug,
+      style: `--tb:${(m.bottom * 100).toFixed(2)}%;--tx:${(((m.right - m.left) / 2) * 100).toFixed(2)}%`,
+    };
+  })
+);
+const pos = (k: number, n: number) => (k === 0 ? "c" : k === 1 ? "r" : k === n - 1 ? "l" : "h");
+---
+
+<div class={`hero-cars ${className}`} data-hero-cars aria-roledescription="carrousel" aria-label="Modèles de la règle d'autonomie">
+  <span class="podium" aria-hidden="true"></span>
+  {cars.map((c, k) => (
+    <span class="car" data-pos={pos(k, cars.length)} style={c.style} aria-hidden="true">
+      <VehicleImage slug={c.slug} alt="" widths={[640, 1280]} sizes="(min-width: 1024px) 620px, 92vw" loading={k === 0 ? "eager" : "lazy"} fetchpriority={k === 0 ? "high" : undefined} class="block w-full h-auto" />
+    </span>
+  ))}
+  <div class="hero-caption">
+    <a href={url(`/vehicules/${cars[0]!.slug}/`)} class="hero-link" data-hero-link>
+      <span data-hero-name>{cars[0]!.name}</span>
+      <ArrowUpRight size={16} strokeWidth={2.25} aria-hidden="true" />
+    </a>
+    <div class="hero-dots">
+      {cars.map((c, k) => (
+        <button type="button" class="hero-dot" data-href={url(`/vehicules/${c.slug}/`)} data-name={c.name} aria-label={`Afficher ${c.name}`} aria-current={k === 0 ? "true" : undefined}><i></i></button>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  /* Ligne de sol commune : roues de la voiture du premier plan et centre du halo */
+  .hero-cars { --ground: 3.25rem; position: relative; min-height: 17rem; align-self: end; }
+  @media (min-width: 1024px) { .hero-cars { --ground: 4rem; min-height: 30rem; align-self: stretch; } }
+  .hero-cars .podium {
+    position: absolute; left: 8%; right: -4%; height: 8rem; bottom: calc(var(--ground) - 4rem); border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(212, 234, 127, 0.45), rgba(212, 234, 127, 0.08) 58%, transparent 72%);
+  }
+
+  /* Une seule boîte (celle du premier plan) ; les places l, r, h sont des transformations,
+     et le décalage du vide transparent est appliqué avant la mise à l'échelle */
+  .hero-cars .car {
+    position: absolute; left: 4%; width: 92%; bottom: var(--ground);
+    display: block; transform-origin: 50% 100%;
+    transform: var(--pos) translate(var(--tx, 0), var(--tb, 0));
+    transition: transform 900ms var(--ease-out-expo), opacity 500ms ease, filter 500ms ease;
+    animation: car-rise 900ms var(--ease-out-expo) backwards;
+  }
+  .hero-cars .car[data-pos="c"] { --pos: translate(0, 0) scale(1); z-index: 3; animation-delay: 120ms; cursor: pointer; }
+  .hero-cars .car[data-pos="l"] { --pos: translate(-34.8%, -4.25rem) scale(0.652); z-index: 1; opacity: 0.9; filter: brightness(0.9); cursor: pointer; }
+  .hero-cars .car[data-pos="r"] { --pos: translate(37%, -3.75rem) scale(0.652); z-index: 2; opacity: 0.9; filter: brightness(0.9); cursor: pointer; animation-delay: 220ms; }
+  .hero-cars .car[data-pos="h"] { --pos: translate(0, -5.5rem) scale(0.45); z-index: 0; opacity: 0; pointer-events: none; }
+  @keyframes car-rise { from { opacity: 0; translate: 0 24px; } }
+
+  .hero-caption {
+    position: absolute; left: 0; right: 0; bottom: 0.75rem; z-index: 4;
+    display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+  }
+  .hero-link {
+    display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.35rem 0.5rem 0.35rem 0.7rem; border-radius: 999px;
+    font-size: 14.5px; font-weight: 600; color: var(--color-accent-on); white-space: nowrap;
+    transition: color 200ms ease, background-color 200ms ease;
+  }
+  .hero-link:hover { color: var(--color-lime); background: rgba(255, 255, 255, 0.07); }
+  .hero-dots { display: flex; align-items: center; }
+  /* Zone de clic de 24 px autour d'un point de 6 px */
+  .hero-dot { display: grid; place-items: center; width: 1.25rem; height: 1.5rem; transition: width 400ms var(--ease-out-expo); }
+  .hero-dot i {
+    position: relative; display: block; width: 6px; height: 6px; border-radius: 999px; overflow: hidden;
+    background: color-mix(in srgb, var(--color-accent-on) 35%, transparent);
+    transition: width 400ms var(--ease-out-expo), background-color 200ms ease;
+  }
+  .hero-dot:hover i { background: color-mix(in srgb, var(--color-accent-on) 60%, transparent); }
+  .hero-dot[aria-current="true"] { width: 2.25rem; }
+  .hero-dot[aria-current="true"] i { width: 1.5rem; }
+  /* Jauge du point actif : sa fin fait avancer le carrousel */
+  .hero-dot[aria-current="true"] i::after {
+    content: ""; position: absolute; inset: 0; border-radius: inherit; background: var(--color-lime);
+    transform-origin: left; animation: hero-fill 5200ms linear both;
+  }
+  [data-hero-cars][data-paused] .hero-dot i::after { animation-play-state: paused; }
+  /* Défilement arrêté (onglet choisi à la main) : le point actif est plein */
+  [data-hero-cars][data-stopped] .hero-dot i::after { animation: none; }
+  @keyframes hero-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-cars .car { transition: opacity 200ms ease; animation: none; }
+    .hero-dot[aria-current="true"] i::after { animation: none; }
+  }
+</style>
+
+<script>
+  import { STUDIO_EVENT, type StudioModelDetail } from "./studioModels";
+
+  function setupHero() {
+    const root = document.querySelector<HTMLElement>("[data-hero-cars]");
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = "true";
+    const cars = [...root.querySelectorAll<HTMLElement>(".car")];
+    const dots = [...root.querySelectorAll<HTMLButtonElement>(".hero-dot")];
+    const link = root.querySelector<HTMLAnchorElement>("[data-hero-link]")!;
+    const name = root.querySelector<HTMLElement>("[data-hero-name]")!;
+    const n = cars.length;
+    let active = 0;
+
+    // Pause : survol, focus clavier, règle survolée plus bas, hero hors écran
+    const pauses = new Set<string>();
+    const pause = (why: string, on: boolean) => {
+      on ? pauses.add(why) : pauses.delete(why);
+      root.toggleAttribute("data-paused", pauses.size > 0);
+    };
+
+    const show = (k: number, fromStudio = false) => {
+      active = ((k % n) + n) % n;
+      cars.forEach((car, i) => {
+        const d = (i - active + n) % n;
+        car.dataset.pos = d === 0 ? "c" : d === 1 ? "r" : d === n - 1 ? "l" : "h";
+      });
+      dots.forEach((dot, i) => (i === active ? dot.setAttribute("aria-current", "true") : dot.removeAttribute("aria-current")));
+      link.href = dots[active]!.dataset.href!;
+      name.textContent = dots[active]!.dataset.name!;
+      if (!fromStudio) {
+        document.dispatchEvent(new CustomEvent<StudioModelDetail>(STUDIO_EVENT, { detail: { index: active, source: "hero" } }));
+      }
+    };
+
+    root.addEventListener("click", (e) => {
+      const target = e.target as HTMLElement;
+      const dot = target.closest<HTMLButtonElement>(".hero-dot");
+      if (dot) { show(dots.indexOf(dot)); return; }
+      // Voiture du premier plan : la fiche ; voitures de côté : on les amène devant
+      const car = target.closest<HTMLElement>(".car");
+      if (car) car.dataset.pos === "c" ? link.click() : show(cars.indexOf(car));
+    });
+    root.addEventListener("animationend", (e) => {
+      if (e.animationName === "hero-fill") show(active + 1);
+    });
+
+    root.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") pause("hover", true); });
+    root.addEventListener("pointerleave", () => pause("hover", false));
+    root.addEventListener("focusin", () => pause("focus", true));
+    root.addEventListener("focusout", (e) => { if (!root.contains(e.relatedTarget as Node)) pause("focus", false); });
+    new IntersectionObserver(([entry]) => pause("offscreen", !entry!.isIntersecting)).observe(root);
+
+    // La règle d'autonomie juste en dessous : on ne la fait pas bouger pendant qu'on la lit
+    const studio = document.querySelector<HTMLElement>("[data-studio-models]");
+    studio?.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") pause("studio", true); });
+    studio?.addEventListener("pointerleave", () => pause("studio", false));
+
+    // Onglet choisi à la main : le hero suit et cesse de défiler
+    const onStudio = (e: Event) => {
+      if (!root.isConnected) { document.removeEventListener(STUDIO_EVENT, onStudio); return; }
+      const { index, source } = (e as CustomEvent<StudioModelDetail>).detail;
+      if (source !== "studio") return;
+      root.setAttribute("data-stopped", "");
+      if (index !== active) show(index, true);
+    };
+    document.addEventListener(STUDIO_EVENT, onStudio);
+  }
+  setupHero();
+  document.addEventListener("astro:page-load", setupHero);
+</script>

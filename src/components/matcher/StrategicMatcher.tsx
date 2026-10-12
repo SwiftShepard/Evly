@@ -14,6 +14,8 @@ export default function StrategicMatcher({ vehicles }: Props) {
   const [direction, setDirection] = useState<"next" | "prev">("next");
   const [showAllResults, setShowAllResults] = useState(false);
   const [expandedOtherSlug, setExpandedOtherSlug] = useState<string | null>(null);
+  // Résultats rouverts depuis l'URL (retour arrière depuis une fiche, lien partagé)
+  const [restored, setRestored] = useState(false);
 
   // Parse parameters on load
   useEffect(() => {
@@ -40,7 +42,9 @@ export default function StrategicMatcher({ vehicles }: Props) {
           preferEurope: searchParams.get("preferEurope") === "true",
           softwareImportance: (searchParams.get("softwareImportance") as any) || "any",
         });
+        setShowAllResults(searchParams.get("tous") === "1");
         setStep(13); // Go directly to results slide (shifted to 13)
+        setRestored(true);
       }
     }
   }, []);
@@ -100,6 +104,33 @@ export default function StrategicMatcher({ vehicles }: Props) {
       .join(",");
     return `/comparer?v=${vParam}`;
   }, [top3]);
+
+  // Les réponses vivent dans l'URL une fois les résultats affichés : un retour arrière
+  // depuis une fiche les retrouve, et le lien se partage tel quel
+  useEffect(() => {
+    if (step !== 13) return;
+    const params = new URLSearchParams();
+    for (const [key, value] of Object.entries(answers)) params.set(key, String(value));
+    if (showAllResults) params.set("tous", "1");
+    // On garde l'état d'historique du routeur (position de défilement des transitions de page)
+    window.history.replaceState(window.history.state, "", `${window.location.pathname}?${params}`);
+  }, [step, answers, showAllResults]);
+
+  // Retour arrière : les résultats n'existent qu'après hydratation, le routeur restaure donc
+  // le défilement sur une page encore courte. On mémorise la position au départ vers une
+  // autre page, puis on la rejoue une fois la liste rendue.
+  useEffect(() => {
+    if (step !== 13) return;
+    const remember = () => window.history.replaceState({ ...window.history.state, matcherY: window.scrollY }, "");
+    document.addEventListener("astro:before-preparation", remember);
+    return () => document.removeEventListener("astro:before-preparation", remember);
+  }, [step]);
+
+  useEffect(() => {
+    if (!restored) return;
+    const y = Number(window.history.state?.matcherY);
+    if (y > 0) requestAnimationFrame(() => window.scrollTo({ top: y, behavior: "instant" }));
+  }, [restored]);
 
   // Raccourcis clavier (Accessibilité AAA - 9 étapes)
   const handleKeyDown = useCallback(
@@ -193,7 +224,7 @@ export default function StrategicMatcher({ vehicles }: Props) {
     setShowAllResults(false);
     setExpandedOtherSlug(null);
     if (typeof window !== "undefined") {
-      window.history.replaceState({}, document.title, window.location.pathname);
+      window.history.replaceState(window.history.state, "", window.location.pathname);
     }
     setDirection("prev");
     setStep(0);

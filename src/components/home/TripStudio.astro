@@ -4,6 +4,7 @@
  * tiennent une semaine sans recharger et le lit sur la règle d'autonomie d'un modèle connu.
  * Une seule règle se transforme d'un modèle à l'autre (segments, étiquettes et chiffres glissent).
  * Valeurs initiales calculées au build pour le trajet par défaut ; mises à jour par lib/trip.
+ * Les onglets sont synchronisés avec le carrousel du hero (HeroCars).
  */
 import RangeRail from "@/components/ui/RangeRail.astro";
 import { getVehicleBySlug } from "@/lib/vehicles";
@@ -11,18 +12,13 @@ import { getMeasuredGap, type MeasuredGap } from "@/lib/rangeGap";
 import { getVehicleIndex } from "@/lib/vehicleIndex";
 import { countFitting } from "@/lib/tripFit";
 import { url } from "@/lib/url";
+import { STUDIO_MODELS } from "./studioModels";
 import { ArrowRight } from "lucide-react";
 
 const DEFAULT_DAILY = 40;
 const DAYS = 5;
 
-const MODELS: [string, string][] = [
-  ["renault-5", "Renault 5"],
-  ["tesla-model-y", "Model Y"],
-  ["kia-ev3", "Kia EV3"],
-  ["peugeot-e-208", "e-208"],
-];
-const specs = MODELS.map(([slug, label]) => {
+const specs = STUDIO_MODELS.map(([slug, label]) => {
   const v = getVehicleBySlug(slug);
   const gap = v ? getMeasuredGap(v) : null;
   return gap ? { ...gap, label } : null;
@@ -174,6 +170,7 @@ const days = (km: number) => Math.floor(km / DEFAULT_DAILY);
   import { readTrip, onTripChange, weekNeed, paintRails, type Trip } from "@/lib/trip";
   import { countFitting, type IndexRow } from "@/lib/tripFit";
   import { tweenNumber } from "@/lib/tween";
+  import { STUDIO_EVENT, type StudioModelDetail } from "./studioModels";
 
   type Model = { name: string; version: string; real: number; wltp: number; winter: number; href: string };
   let rows: IndexRow[] | null = null;
@@ -246,14 +243,26 @@ const days = (km: number) => Math.floor(km / DEFAULT_DAILY);
       if (focus) tabs[i]!.focus();
     };
 
+    // Choix à la main : le carrousel du hero suit
+    const pick = (i: number, focus = false) => {
+      select(i, focus);
+      document.dispatchEvent(new CustomEvent<StudioModelDetail>(STUDIO_EVENT, { detail: { index: i, source: "studio" } }));
+    };
+    const onHero = (e: Event) => {
+      const { index, source } = (e as CustomEvent<StudioModelDetail>).detail;
+      if (source === "hero" && index !== current) select(index);
+    };
+    document.addEventListener(STUDIO_EVENT, onHero);
+    document.addEventListener("astro:before-swap", () => document.removeEventListener(STUDIO_EVENT, onHero), { once: true });
+
     tabs.forEach((tab, i) => {
-      tab.addEventListener("click", () => select(i));
+      tab.addEventListener("click", () => pick(i));
       tab.addEventListener("keydown", (e) => {
         const n = tabs.length;
         const next = e.key === "ArrowRight" ? (i + 1) % n : e.key === "ArrowLeft" ? (i - 1 + n) % n : e.key === "Home" ? 0 : e.key === "End" ? n - 1 : -1;
         if (next < 0) return;
         e.preventDefault();
-        select(next, true);
+        pick(next, true);
       });
     });
     placeIndicator(true);

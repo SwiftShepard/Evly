@@ -4,12 +4,12 @@ import VehicleImage from "@/components/ui/VehicleImage.astro";
 import RangeRail from "@/components/ui/RangeRail.astro";
 import TripStudio from "@/components/home/TripStudio.astro";
 import TripMatches from "@/components/home/TripMatches.astro";
+import HeroCars from "@/components/home/HeroCars.astro";
 import { getAllVehicles, getVehicleBySlug } from "@/lib/vehicles";
 import { getFleetGap, getMeasuredGap, type MeasuredGap } from "@/lib/rangeGap";
 import { formatNumber } from "@/lib/format";
 import { DEFAULTS as TCO_DEFAULTS } from "@/components/tco/TcoCalculator";
 import { url } from "@/lib/url";
-import { getContentMargins } from "@/lib/vehicleImageTrim";
 import { ArrowRight, ArrowUpRight, ShieldCheck, FileSearch, Calculator, Scale } from "lucide-react";
 
 const vehicles = getAllVehicles();
@@ -46,21 +46,6 @@ const pillars = [
   { icon: Scale, title: "De votre côté", text: "Si un modèle déçoit à l'usage ou qu'un constructeur cache un chiffre gênant, on l'écrit. Notre objectif, c'est que vous en ayez pour votre argent, pas de vendre une voiture." },
 ];
 
-// Voitures du hero posées sur une même ligne de sol : on compense le vide transparent
-// sous les roues et l'écart gauche/droite de chaque photo
-const HERO_CARS = [
-  { slug: "renault-4", cls: "car-l", widths: [420, 840], sizes: "380px" },
-  { slug: "skoda-elroq", cls: "car-r", widths: [420, 840], sizes: "380px" },
-  { slug: "renault-5", cls: "car-c", widths: [640, 1280], sizes: "(min-width: 1024px) 620px, 92vw" },
-];
-const heroCars = await Promise.all(
-  HERO_CARS.map(async (c) => {
-    const m = await getContentMargins(c.slug);
-    const style = `--tb:${(m.bottom * 100).toFixed(2)}%;--tx:${(((m.right - m.left) / 2) * 100).toFixed(2)}%`;
-    return { ...c, style };
-  })
-);
-
 const description = `Comparez les ${totalVehicles} voitures électriques du marché français : autonomie réelle mesurée, prix après aides et recharge. Indépendant, sans publicité ni commission.`;
 ---
 
@@ -86,14 +71,7 @@ const description = `Comparez les ${totalVehicles} voitures électriques du marc
             <a href={url("/vehicules/")} class="btn btn-ghost-light h-[3.25rem] px-7 text-[16px]">Explorer le catalogue</a>
           </div>
         </div>
-        <div class="lg:col-span-6 hero-cars" aria-hidden="true">
-          <span class="podium"></span>
-          {heroCars.map((c) => (
-            <span class={`car ${c.cls}`} style={c.style}>
-              <VehicleImage slug={c.slug} alt="" widths={c.widths} sizes={c.sizes} loading={c.cls === "car-c" ? "eager" : "lazy"} fetchpriority={c.cls === "car-c" ? "high" : undefined} class="block w-full h-auto" />
-            </span>
-          ))}
-        </div>
+        <HeroCars class="lg:col-span-6" />
       </div>
     </div>
   </section>
@@ -245,25 +223,6 @@ const description = `Comparez les ${totalVehicles} voitures électriques du marc
     @media (min-width: 1024px) { .hero-panel { min-height: min(74dvh, 660px); } }
     /* La grille occupe toute la hauteur du panneau : les voitures sont ancrées en bas */
     .hero-grid { flex: 1; }
-
-    /* Ligne de sol commune : roues de la voiture du premier plan et centre du halo */
-    .hero-cars { --ground: 1.5rem; position: relative; min-height: 15rem; align-self: end; }
-    @media (min-width: 1024px) { .hero-cars { --ground: 3rem; min-height: 30rem; align-self: stretch; } }
-    .podium {
-      position: absolute; left: 8%; right: -4%; height: 8rem; bottom: calc(var(--ground) - 4rem); border-radius: 50%;
-      background: radial-gradient(ellipse at center, rgba(212, 234, 127, 0.45), rgba(212, 234, 127, 0.08) 58%, transparent 72%);
-    }
-    /* Chaque photo est décalée de son vide transparent (--tb, --tx) : la voiture visible touche le sol */
-    .hero-cars .car {
-      position: absolute;
-      display: block;
-      translate: var(--tx, 0) var(--tb, 0);
-      animation: car-rise 900ms var(--ease-out-expo) both;
-    }
-    .hero-cars .car-c { left: 4%; width: 92%; bottom: var(--ground); z-index: 3; animation-delay: 120ms; }
-    .hero-cars .car-l { left: -12%; width: 60%; bottom: calc(var(--ground) + 4.25rem); z-index: 1; opacity: 0.9; }
-    .hero-cars .car-r { right: -14%; width: 60%; bottom: calc(var(--ground) + 3.75rem); z-index: 2; opacity: 0.9; animation-delay: 220ms; }
-    @keyframes car-rise { from { opacity: 0; transform: translateY(24px); } to { transform: none; } }
 
     .proof-card { padding: 1.5rem; border-radius: var(--radius-tile); background: var(--color-surface); border: 1px solid var(--color-border); }
     @media (min-width: 768px) { .proof-card { padding: 2.25rem; } }
