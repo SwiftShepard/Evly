@@ -194,6 +194,23 @@ Règles non négociables :
 | `npm run build` | Build statique → `dist/`. |
 | `npm run preview` | Sert `dist/` localement. |
 | `npm run check` | TypeScript + Astro check. |
+| `npm run map:roads` | Régénère le graphe routier de « Ma semaine » (`public/carte/routes.bin.gz`). |
+| `npm run map:places` | Régénère les lieux du quotidien et les destinations (`public/carte/lieux/`, `destinations.json`). |
+| `npm run map:chargers` | Régénère les bornes de recharge (`public/carte/bornes/`). |
+
+### Données de la carte « Ma semaine »
+
+Tout est calculé dans le navigateur, sans serveur ni clé : les scripts Python de `scripts/map/`
+(`pip install osmium numpy`) produisent des fichiers statiques servis avec le site.
+
+1. Télécharger l'extrait OpenStreetMap France (~5 Go) dans `scratch/osm/france.osm.pbf` :
+   `https://download.geofabrik.de/europe/france-latest.osm.pbf`.
+2. Télécharger la Base nationale des IRVE (CSV consolidé, data.gouv.fr) dans `scratch/irve/irve.csv`.
+3. `npm run map:roads`, `npm run map:places`, `npm run map:chargers`.
+
+Services appelés depuis le navigateur, uniquement sur `/ma-semaine/` : Géoplateforme IGN (adresses),
+serveur Valhalla de FOSSGIS (tracés des petits trajets, 150 km au plus), OpenFreeMap (fond de carte).
+Ils sont déclarés dans la page Confidentialité.
 
 ---
 

@@ -26,7 +26,7 @@ import FaqList from "@/components/seo/FaqList.astro";
 import LinkChips from "@/components/seo/LinkChips.astro";
 import RangeRail from "@/components/ui/RangeRail.astro";
 import { DEFAULTS as TCO_DEFAULTS } from "@/components/tco/TcoCalculator";
-import { Route } from "lucide-react";
+import { ArrowRight, Map as MapIcon, Route } from "lucide-react";
 import { getVehicleImage, getVehicleImageAbsolute } from "@/lib/vehicleImageAsset";
 import { getBrandByName } from "@/lib/brands";
 import { getCategoriesFor } from "@/data/categories";
@@ -778,6 +778,14 @@ const configSubtitle = (label: string) => {
               <span class="trip-toggle-ui" aria-hidden="true"></span>
               <span class="text-[14px]">Je peux recharger chez moi</span>
             </label>
+            <a href={url(`/ma-semaine/?v=${vehicle.slug}`)} class="week-cta mt-5" data-week-cta>
+              <MapIcon size={18} strokeWidth={2} aria-hidden="true" />
+              <span class="flex-1">
+                <span class="block font-semibold leading-tight">Ma semaine en {vehicle.model}</span>
+                <span class="block text-[12.5px] opacity-80 leading-snug">Sur la carte, depuis chez vous</span>
+              </span>
+              <ArrowRight size={16} strokeWidth={2.2} aria-hidden="true" />
+            </a>
           </div>
           <dl class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-3" aria-live="polite">
             <div class="trip-out">
@@ -2302,6 +2310,20 @@ const configSubtitle = (label: string) => {
   .trip-out-unit { font-family: var(--font-sans); font-size: 14px; font-weight: 500; letter-spacing: -0.005em; color: var(--color-text); }
   .trip-out-sub { margin-top: 0.3rem; font-size: 13px; color: var(--color-text-muted); line-height: 1.35; }
   .trip-panel-foot { margin-top: 1.25rem; font-size: 12.5px; color: var(--color-text-muted); line-height: 1.5; }
+  .week-cta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-tile-sm);
+    background: var(--color-accent);
+    color: var(--color-accent-on);
+    transition: background-color 200ms var(--ease-out-expo), transform 160ms var(--ease-out-expo);
+  }
+  .week-cta:active { transform: scale(0.98); }
+  @media (hover: hover) and (pointer: fine) {
+    .week-cta:hover { background: var(--color-accent-dim); }
+  }
   :global(.hero-rail) { margin-top: 0.5rem; }
 
   /* ── 1000 km challenge : ce modèle dans le nuage des modèles mesurés ── */
@@ -2413,7 +2435,17 @@ const configSubtitle = (label: string) => {
       paintRails(t);
     };
 
-    window.addEventListener("config-changed", (e) => { configId = (e as CustomEvent).detail.configId; render(); });
+    // « Ma semaine en … » ouvre la carte sur la version choisie ici
+    const weekCta = panel.querySelector<HTMLAnchorElement>("[data-week-cta]");
+    const syncWeekCta = () => {
+      if (!weekCta) return;
+      const target = new URL(weekCta.href);
+      target.searchParams.set("config", configId);
+      weekCta.href = target.toString();
+    };
+    syncWeekCta();
+
+    window.addEventListener("config-changed", (e) => { configId = (e as CustomEvent).detail.configId; render(); syncWeekCta(); });
     window.addEventListener("soh-changed", (e) => { soh = (e as CustomEvent).detail.soh / 100; render(); });
     window.addEventListener("temperature-changed", (e) => { temp = (e as CustomEvent).detail.tempMultiplier ?? 1; render(); });
     const stop = onTripChange(render);

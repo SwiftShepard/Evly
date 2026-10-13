@@ -13,7 +13,7 @@ export const LEGAL_PAGES = [
 ] as const;
 
 /** Date de dernière mise à jour des pages légales (ISO) */
-export const LEGAL_UPDATED = "2026-10-11";
+export const LEGAL_UPDATED = "2026-10-13";
 
 export const PUBLISHER = {
   /** Éditeur personne physique à titre non professionnel (LCEN, art. 1-1, II) */
@@ -63,6 +63,13 @@ export const LOCAL_STORAGE_KEYS = [
     storage: "localStorage",
     purpose:
       "Votre trajet quotidien (kilomètres par jour) et si vous pouvez recharger chez vous, si vous les réglez : sert à estimer vos jours d'autonomie et votre coût d'énergie.",
+    duration: "Jusqu'à ce que vous effaciez les données du site.",
+  },
+  {
+    key: "evly-semaine",
+    storage: "localStorage",
+    purpose:
+      "Pour la page « Ma semaine », si vous l'utilisez : votre adresse, celle de votre travail, les lieux de votre semaine, le modèle et les réglages choisis. Sert à retrouver votre semaine à la prochaine visite.",
     duration: "Jusqu'à ce que vous effaciez les données du site.",
   },
   {

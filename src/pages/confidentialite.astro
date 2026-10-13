@@ -10,6 +10,7 @@ const sections = [
   { id: "audience", title: "Mesure d'audience" },
   { id: "contact", title: "Messages envoyés par e-mail" },
   { id: "stockage-local", title: "Données stockées dans votre navigateur" },
+  { id: "carte", title: "La carte « Ma semaine »" },
   { id: "transferts", title: "Transferts hors de l'Union européenne" },
   { id: "droits", title: "Vos droits" },
   { id: "modifications", title: "Modifications" },
@@ -35,7 +36,7 @@ const sections = [
   <section id="en-bref" aria-labelledby="en-bref-titre">
     <h2 id="en-bref-titre">Ce qu'Evly ne fait pas</h2>
     <ul>
-      <li>Aucun cookie, aucune publicité, aucun pixel de réseau social, aucune vidéo ou police chargée depuis un service tiers.</li>
+      <li>Aucun cookie, aucune publicité, aucun pixel de réseau social, aucune vidéo ou police chargée depuis un service tiers (seule la page « Ma semaine » fait appel à des services de carte, <a href="#carte">détaillés plus bas</a>).</li>
       <li>Aucun compte, aucun formulaire d'inscription, aucune newsletter.</li>
       <li>Aucune revente, location ou cession de données, aucun profilage, aucune décision automatisée vous concernant.</li>
       <li>Les simulateurs (coût total, aides, leasing social, recommandation) calculent tout dans votre navigateur : les montants saisis ne sont pas envoyés à Evly.</li>
@@ -114,7 +115,8 @@ const sections = [
       Certaines fonctions que vous activez vous-même enregistrent des informations dans le stockage local de votre navigateur :
       vos favoris, la position dans le catalogue, votre <strong>trajet quotidien</strong> (kilomètres par jour, recharge à
       domicile) si vous le réglez, et, si vous choisissez de le renseigner, votre <strong>profil fiscal</strong>
-      (type de profil, taille du foyer, revenu fiscal de référence) utilisé pour estimer vos aides.
+      (type de profil, taille du foyer, revenu fiscal de référence) utilisé pour estimer vos aides. Si vous utilisez la page
+      « Ma semaine », votre <strong>adresse</strong>, celle de votre travail et les lieux de votre semaine y sont aussi enregistrés.
     </p>
     <p>
       Ces informations restent sur votre appareil : elles ne sont <strong>jamais transmises</strong> à Evly ni à un tiers, et
@@ -122,6 +124,44 @@ const sections = [
       <a href={url("/cookies/#vos-choix")}>cookies et traceurs</a> ou les réglages de votre navigateur. La liste complète figure
       sur cette même page.
     </p>
+  </section>
+
+  <section id="carte" aria-labelledby="carte-titre">
+    <h2 id="carte-titre">La carte « Ma semaine »</h2>
+    <p>
+      La page <a href={url("/ma-semaine/")}>Ma semaine</a> calcule dans votre navigateur où un modèle vous emmène depuis chez
+      vous. Evly ne reçoit ni ne conserve votre adresse. Pour fonctionner, la page s'adresse directement, depuis votre navigateur,
+      à quatre services publics ou associatifs, et seulement quand vous l'utilisez :
+    </p>
+    <ul class="mt-3">
+      <li>
+        <strong>Géoplateforme de l'IGN</strong> (Institut national de l'information géographique et forestière, France) : reçoit
+        le texte que vous tapez dans un champ d'adresse, pour proposer les adresses correspondantes.
+      </li>
+      <li>
+        <strong>Serveur d'itinéraires de FOSSGIS e.V.</strong> (association OpenStreetMap, Allemagne) : reçoit les coordonnées
+        de votre domicile et des lieux de votre semaine, pour tracer les trajets sur la carte.
+      </li>
+      <li>
+        <strong>OpenFreeMap</strong> (fonds de carte issus d'OpenStreetMap) : reçoit les demandes des morceaux de carte
+        affichés, donc la zone que vous regardez.
+      </li>
+      <li>
+        <strong>Flux officiel des prix des carburants</strong> (data.economie.gouv.fr, ministère de l'Économie) : interrogé
+        pour la moyenne nationale du prix de l'essence ; aucune position ni aucun réglage ne lui est envoyé.
+      </li>
+    </ul>
+    <p>
+      Comme tout serveur, ces services reçoivent aussi votre adresse IP. Evly n'a aucun accès à ce qu'ils reçoivent. Les bornes
+      de recharge (Base nationale des IRVE, data.gouv.fr), les lieux (OpenStreetMap) et le réseau routier sont des fichiers
+      publics hébergés avec le site.
+    </p>
+    <dl class="mt-4">
+      <dt>Finalité</dt>
+      <dd>Localiser votre adresse, tracer vos trajets et afficher la carte, à votre demande.</dd>
+      <dt>Base légale</dt>
+      <dd>Votre demande : ces envois n'ont lieu que si vous utilisez la carte (article 6.1.f du RGPD).</dd>
+    </dl>
   </section>
 
   <section id="transferts" aria-labelledby="transferts-titre">

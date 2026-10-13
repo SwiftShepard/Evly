@@ -17,6 +17,8 @@ interface Props {
   modifiedTime?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   noindex?: boolean;
+  /** Page outil plein écran (carte « Ma semaine ») : sur ordinateur, ni défilement ni pied de page */
+  app?: boolean;
 }
 
 const {
@@ -28,6 +30,7 @@ const {
   modifiedTime,
   jsonLd,
   noindex = false,
+  app = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -144,7 +147,7 @@ const combinedJsonLd = jsonLd
       set:html={JSON.stringify(combinedJsonLd)}
     />
   </head>
-  <body class="min-h-dvh flex flex-col">
+  <body class="min-h-dvh flex flex-col" data-app={app ? "" : undefined}>
     {/* Reading progress bar */}
     <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
 

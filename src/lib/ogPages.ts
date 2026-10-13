@@ -40,6 +40,12 @@ export function getPageCards(): Record<string, PageCardData> {
       subtitle: "Conditions, loyers réels et pièges à éviter.",
       vehicles: ["renault-5", "citroen-e-c3", "fiat-grande-panda"],
     },
+    "ma-semaine": {
+      eyebrow: "Ma semaine",
+      title: "Votre semaine en électrique, sur la carte",
+      subtitle: "Travail, courses, balades : jusqu'où va la voiture depuis chez vous, même en hiver.",
+      vehicles: ["renault-5", "tesla-model-y", "kia-ev3"],
+    },
     recommandation: {
       eyebrow: "Test en 2 minutes",
       title: "Quelle voiture électrique choisir ?",

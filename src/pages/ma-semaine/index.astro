@@ -1,0 +1,33 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import "@/styles/week.css";
+import WeekPlanner from "@/components/week/WeekPlanner.tsx";
+import { getAllVehicles } from "@/lib/vehicles";
+import { getVehicleIndex } from "@/lib/vehicleIndex";
+import { weekVersions } from "@/lib/map/versions";
+import type { WeekVehicle } from "@/components/week/types";
+
+// Catalogue compact : chaque modèle avec ses versions (batterie, transmission), cf. lib/map/versions
+const index = new Map((await getVehicleIndex()).map((row) => [row.s, row]));
+const vehicles: WeekVehicle[] = getAllVehicles()
+  .map((v) => ({
+    slug: v.slug,
+    brand: v.brand,
+    model: v.model,
+    image: index.get(v.slug)?.i ?? null,
+    ...weekVersions(v),
+  }))
+  .sort((a, b) => `${a.brand} ${a.model}`.localeCompare(`${b.brand} ${b.model}`, "fr"));
+---
+
+<BaseLayout
+  title="Ma semaine en électrique : jusqu'où va la voiture depuis chez vous"
+  description="Entrez votre adresse et choisissez un modèle : travail, courses, balades, la carte déroule votre semaine, vos recharges et jusqu'où il vous emmène sans recharger, même en hiver."
+  ogImage="/og/pages/ma-semaine.jpg"
+  app
+>
+  <!-- Pleine largeur : la carte n'est pas bornée à la largeur du contenu éditorial -->
+  <div class="week-page pt-4 pb-10 md:pt-6">
+    <WeekPlanner client:only="react" vehicles={vehicles} />
+  </div>
+</BaseLayout>

@@ -1,0 +1,1079 @@
+/* ----------------------------------------------------------------- */
+/* « Ma semaine »                                                      */
+/* Ordinateur : la carte prend tout l'écran (sous le header flottant), */
+/* les réglages vivent dans un volet accroché à gauche qui se replie.  */
+/* Mobile : réglages, carte et frise, puis la suite, empilés.          */
+/* ----------------------------------------------------------------- */
+
+.week-page {
+  width: 100%;
+  padding-inline: 1rem;
+}
+@media (min-width: 768px) {
+  .week-page {
+    padding-inline: 1.5rem;
+  }
+}
+
+.week-app {
+  /* Courbe de tiroir : départ franc, arrivée très douce */
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --drawer-w: clamp(400px, 30vw, 480px);
+  --drawer-gap: 0.75rem;
+  display: grid;
+  /* minmax(0, …) : un contenu long (liste des versions) ne doit jamais élargir la colonne */
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--tile-gap);
+}
+
+.week-intro,
+.week-panel {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: var(--tile-padding);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-tile);
+}
+
+/* Mobile : le volet n'existe pas, ses deux parties encadrent la carte */
+@media (max-width: 1023px) {
+  .week-drawer,
+  .week-drawer-scroll {
+    display: contents;
+  }
+  .week-intro { order: 1; }
+  .week-stage { order: 2; }
+  .week-panel { order: 3; }
+  .week-drawer-toggle { display: none; }
+}
+
+@media (min-width: 1024px) {
+  /* La page devient une application : pas de défilement, pas de pied de page */
+  body[data-app] {
+    height: 100dvh;
+    overflow: hidden;
+  }
+  body[data-app] > footer {
+    display: none;
+  }
+  .week-page {
+    padding: 0 !important;
+  }
+  .week-app {
+    position: relative;
+    display: block;
+    height: 100dvh;
+    /* Passe sous le header flottant (4,5 rem) : la carte va jusqu'en haut de l'écran */
+    margin-top: -4.5rem;
+    overflow: hidden;
+  }
+  .week-app .week-stage {
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
+  .week-app .week-map-box {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    min-height: 0;
+    border: 0;
+    border-radius: 0;
+  }
+
+  /* Le volet : une carte flottante, qui glisse hors de l'écran une fois replié */
+  .week-drawer {
+    position: absolute;
+    z-index: 10;
+    top: 5.25rem;
+    bottom: var(--drawer-gap);
+    left: var(--drawer-gap);
+    width: var(--drawer-w);
+    transition: transform 520ms var(--ease-drawer);
+    will-change: transform;
+  }
+  .week-app[data-drawer="closed"] .week-drawer {
+    transform: translateX(calc(-100% - var(--drawer-gap)));
+  }
+  .week-drawer-scroll {
+    height: 100%;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border-strong) transparent;
+    border-radius: var(--radius-tile);
+    background: color-mix(in srgb, var(--color-surface) 96%, transparent);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(14px) saturate(130%);
+    -webkit-backdrop-filter: blur(14px) saturate(130%);
+    transition: opacity 360ms var(--ease-drawer), box-shadow 360ms var(--ease-drawer);
+  }
+  .week-app[data-drawer="closed"] .week-drawer-scroll {
+    opacity: 0;
+    box-shadow: none;
+  }
+  /* Dans le volet, intro et réglages ne font qu'une colonne, séparée d'un filet */
+  .week-drawer .week-intro,
+  .week-drawer .week-panel {
+    background: none;
+    border: 0;
+    border-radius: 0;
+    padding: 1.6rem 1.75rem;
+  }
+  .week-drawer .week-panel {
+    gap: 1.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  /* Poignée : collée au bord du volet ; volet replié, elle reste seule au bord de l'écran */
+  .week-drawer-toggle {
+    position: absolute;
+    top: 0.75rem;
+    left: calc(100% + 0.6rem);
+    display: inline-flex;
+    align-items: center;
+    height: 2.75rem;
+    padding: 0 0.8rem;
+    border-radius: 999px;
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    color: var(--color-text);
+    white-space: nowrap;
+    transition:
+      background-color 200ms var(--ease-out-expo),
+      transform 160ms var(--ease-out-expo);
+  }
+  .week-drawer-toggle:active {
+    transform: scale(0.96);
+  }
+  .week-drawer-toggle:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+  .week-drawer-icon {
+    flex-shrink: 0;
+    transition: transform 520ms var(--ease-drawer);
+  }
+  .week-app[data-drawer="closed"] .week-drawer-icon {
+    transform: scaleX(-1);
+  }
+  /* Le libellé « Réglages » ne se déplie que volet fermé */
+  .week-drawer-label {
+    display: block;
+    max-width: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+      max-width 420ms var(--ease-drawer),
+      opacity 240ms var(--ease-out-expo);
+  }
+  .week-drawer-label > span {
+    display: block;
+    padding-left: 0.5rem;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .week-app[data-drawer="closed"] .week-drawer-label {
+    max-width: 7rem;
+    opacity: 1;
+    transition:
+      max-width 420ms var(--ease-drawer) 120ms,
+      opacity 300ms var(--ease-out-expo) 200ms;
+  }
+  .week-app[data-drawer="closed"] .week-drawer-toggle {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-accent-on);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .week-app[data-drawer="open"] .week-drawer-toggle:hover {
+      background: var(--color-bg-subtle);
+    }
+    .week-app[data-drawer="closed"] .week-drawer-toggle:hover {
+      background: var(--color-accent-dim);
+    }
+  }
+
+  /* Ce qui flotte sur la carte laisse la place au volet ouvert, et le suit quand il se replie */
+  .week-app {
+    --dock: calc(var(--drawer-w) + var(--drawer-gap));
+  }
+  .week-app[data-drawer="closed"] {
+    --dock: 0px;
+  }
+}
+
+@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
+  .week-drawer,
+  .week-drawer-scroll,
+  .week-drawer-icon,
+  .week-drawer-label,
+  .week-timeline {
+    transition: none !important;
+  }
+}
+
+/* Réglages titrés, bascules sur toute la largeur, une phrase dit ce que fait le choix */
+.week-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.week-controls-hint {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--color-text-muted);
+}
+.week-work-toggle {
+  margin-top: 0.35rem;
+  font-size: 14px;
+  font-weight: 500;
+}
+.week-seg.week-seg-fill {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  align-self: stretch;
+}
+.week-seg.week-seg-fill button {
+  padding-inline: 0.5rem;
+  white-space: nowrap;
+}
+
+/* Choix de la version (batterie) sous la carte du modèle */
+.week-version {
+  position: relative;
+  flex-basis: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.15rem;
+  font-size: 12.5px;
+  color: var(--color-text-faint);
+}
+.week-version select {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  height: 2.25rem;
+  padding: 0 2rem 0 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface-elevated);
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: 600;
+  appearance: none;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+.week-version select:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+.week-version svg {
+  position: absolute;
+  right: 0.75rem;
+  pointer-events: none;
+  color: var(--color-text-muted);
+}
+
+/* Autonomie de la version choisie, en clair sous le menu */
+.week-version-facts {
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.15rem 0.35rem;
+  padding-inline: 0.15rem;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}
+.week-version-facts b {
+  font-weight: 650;
+  color: var(--color-text);
+}
+.week-version-facts .card-confidence {
+  margin-left: 0.25rem;
+}
+
+/* Titre de la liste des sorties */
+.week-outings-head h2 {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+}
+.week-outings-head p {
+  margin-top: 0.2rem;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--color-text-faint);
+}
+
+/* Carte et frise (mobile) ; sur ordinateur, voir le mode plein écran plus haut */
+.week-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.week-map-box {
+  position: relative;
+  height: 52dvh;
+  min-height: 300px;
+  border-radius: var(--radius-tile);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: #eef1e7;
+}
+
+.week-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* Champ avec liste de suggestions */
+.week-combo {
+  position: relative;
+}
+.week-combo input {
+  width: 100%;
+  height: 2.875rem;
+  padding-inline: 0.95rem;
+  border-radius: var(--radius-field);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface-elevated);
+  color: var(--color-text);
+  font-size: 16px; /* pas de zoom automatique sur iOS */
+  transition: border-color 160ms var(--ease-out-expo);
+}
+.week-combo input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+.week-combo-list {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  padding: 0.35rem;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-tile-sm);
+  box-shadow: var(--shadow-lg);
+  transform-origin: top;
+  animation: week-pop 160ms var(--ease-out-expo);
+}
+.week-combo-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.65rem;
+  border-radius: 10px;
+  font-size: 14.5px;
+  line-height: 1.3;
+  cursor: pointer;
+}
+.week-combo-list li[aria-selected="true"] {
+  background: var(--color-surface-accent);
+}
+.week-combo-list img {
+  width: 48px;
+  height: 28px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+@keyframes week-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.98) translateY(-4px);
+  }
+}
+
+/* Modèle choisi */
+.week-vehicle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.6rem 0.5rem 0.5rem;
+  border-radius: var(--radius-tile-sm);
+  background: var(--color-surface-accent);
+}
+.week-vehicle img {
+  width: 72px;
+  height: 42px;
+  object-fit: contain;
+}
+
+/* Pastille de couleur d'un modèle comparé */
+.week-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.week-vehicle + .week-vehicle {
+  margin-top: 0.4rem;
+}
+.week-field .week-combo {
+  margin-top: 0.15rem;
+}
+
+/* Les autres modèles, même semaine */
+.week-compare {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-top: -0.4rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-tile-sm);
+  background: var(--color-surface-accent);
+  font-size: 13.5px;
+}
+.week-compare li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.3rem 0;
+}
+.week-compare b {
+  font-weight: 650;
+  white-space: nowrap;
+}
+.week-compare b[data-warn] {
+  color: var(--color-danger);
+}
+
+/* Bascule segmentée (pilules) */
+.week-seg {
+  display: inline-flex;
+  padding: 4px;
+  gap: 2px;
+  border-radius: 999px;
+  background: var(--color-bg-subtle);
+  align-self: flex-start;
+}
+.week-seg button {
+  height: 2.25rem;
+  padding-inline: 1rem;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  transition:
+    background-color 200ms var(--ease-out-expo),
+    color 200ms var(--ease-out-expo);
+}
+.week-seg button[aria-checked="true"] {
+  background: var(--color-surface-elevated);
+  color: var(--color-text);
+  box-shadow: var(--shadow-sm);
+}
+
+.week-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+.week-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.week-key {
+  display: inline-block;
+  width: 18px;
+  height: 12px;
+  border-radius: 4px;
+}
+.week-key[data-season="winter"] {
+  background: color-mix(in srgb, #3a5c12 40%, transparent);
+  box-shadow: inset 0 0 0 1.5px #3a5c12;
+}
+.week-key[data-season="summer"] {
+  background: color-mix(in srgb, #6f9130 22%, transparent);
+  box-shadow: inset 0 0 0 1.5px #6f9130;
+}
+
+.week-status {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--color-text-faint);
+  min-height: 2.9em;
+}
+
+/* Repère du domicile */
+.week-home-pin {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 3px solid var(--color-accent-on);
+  box-shadow: 0 2px 8px rgba(23, 32, 15, 0.35);
+}
+
+/* Attribution MapLibre dans la palette */
+.week-map .maplibregl-ctrl-attrib {
+  font-family: var(--font-sans);
+  font-size: 11px;
+}
+.week-map .maplibregl-ctrl-group {
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+/* Plein écran : le zoom passe sous le header flottant */
+@media (min-width: 1024px) {
+  .week-map .maplibregl-ctrl-top-right {
+    top: 4.75rem;
+    right: 0.5rem;
+  }
+}
+
+/* Semaine partagée et partage */
+.week-shared {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-tile-sm);
+  background: var(--color-lime);
+  color: var(--color-ink);
+  font-size: 13.5px;
+  line-height: 1.4;
+}
+.week-share-body {
+  padding-left: 0 !important;
+}
+.week-radio {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: 13.5px;
+  line-height: 1.35;
+  cursor: pointer;
+}
+.week-radio input {
+  margin-top: 0.2rem;
+  accent-color: var(--color-accent);
+}
+
+/* Comment c'est calculé */
+.week-method {
+  border-top: 1px solid var(--color-border);
+  padding-top: 0.9rem;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+.week-method summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-text);
+  list-style-position: inside;
+}
+.week-method ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-top: 0.6rem;
+  padding-left: 1rem;
+  list-style: disc;
+}
+
+/* Onglets */
+.week-tabs {
+  display: flex;
+  gap: 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.week-tabs button {
+  position: relative;
+  padding: 0.5rem 0 0.7rem;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text-faint);
+  transition: color 200ms var(--ease-out-expo);
+}
+.week-tabs button[aria-selected="true"] {
+  color: var(--color-text);
+}
+.week-tabs button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transition: transform 260ms var(--ease-out-expo);
+}
+.week-tabs button[aria-selected="true"]::after {
+  transform: scaleX(1);
+}
+
+/* Le verdict de la semaine */
+.week-verdict {
+  padding: 1rem 1.1rem;
+  border-radius: var(--radius-tile-sm);
+  background: var(--color-accent);
+  color: var(--color-accent-on);
+}
+.week-verdict[data-warn] {
+  background: #5e2a12;
+}
+.week-verdict[data-empty] {
+  background: var(--color-surface-accent);
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+.week-verdict-big {
+  font-family: var(--font-display);
+  font-weight: 750;
+  font-size: 1.6rem;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+.week-verdict-small {
+  margin-top: 0.4rem;
+  font-size: 13.5px;
+  line-height: 1.45;
+  opacity: 0.88;
+}
+
+/* Sorties de la semaine */
+.week-outings {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.week-outing {
+  border-radius: var(--radius-tile-sm);
+  padding: 0.55rem 0.6rem;
+  transition: background-color 220ms var(--ease-out-expo);
+}
+.week-outing[data-active] {
+  background: var(--color-surface-accent);
+}
+.week-outing[data-off] .week-outing-icon {
+  opacity: 0.45;
+}
+.week-outing-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+.week-outing-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: var(--color-bg-subtle);
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+.week-outing-place {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+  margin-top: 0.1rem;
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+  text-align: left;
+}
+.week-outing-place[aria-expanded="true"] .week-chevron {
+  transform: rotate(180deg);
+}
+.week-chevron {
+  transition: transform 220ms var(--ease-out-expo);
+}
+
+/* Dépliage sur place (pas de bulle) : la hauteur suit le contenu */
+.week-unfold {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 280ms var(--ease-out-expo);
+}
+.week-unfold > div {
+  overflow: hidden;
+  min-height: 0;
+  padding-left: calc(30px + 0.65rem);
+}
+.week-unfold[data-open] {
+  grid-template-rows: 1fr;
+}
+.week-options-note {
+  padding: 0.5rem 0.55rem 0;
+  font-size: 11.5px;
+  color: var(--color-text-faint);
+}
+.week-options {
+  padding-top: 0.2rem;
+}
+.week-options button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.4rem 0.55rem;
+  border-radius: 10px;
+  font-size: 13.5px;
+  text-align: left;
+}
+.week-options button[aria-selected="true"] {
+  background: var(--color-bg-subtle);
+  font-weight: 600;
+}
+
+/* Interrupteur */
+.week-switch {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  margin-top: 4px;
+  cursor: pointer;
+}
+.week-switch input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  cursor: pointer;
+}
+.week-switch span {
+  width: 34px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--color-border-strong);
+  transition: background-color 200ms var(--ease-out-expo);
+}
+.week-switch span::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(23, 32, 15, 0.25);
+  transition: transform 220ms var(--ease-out-expo);
+}
+.week-switch input:checked + span {
+  background: var(--color-accent);
+}
+.week-switch input:checked + span::after {
+  transform: translateX(14px);
+}
+.week-switch input:focus-visible + span {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Destinations */
+.week-reach {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.week-reach li + li {
+  border-top: 1px solid var(--color-border);
+}
+.week-reach button {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  padding: 0.45rem 0.4rem;
+  border-radius: 12px;
+  text-align: left;
+  transition: background-color 200ms var(--ease-out-expo);
+}
+.week-reach button[aria-pressed="true"] {
+  background: var(--color-surface-accent);
+}
+@media (hover: hover) and (pointer: fine) {
+  .week-reach button:hover {
+    background: var(--color-bg-subtle);
+  }
+}
+
+/* Frise de la semaine : posée sur le bas de la carte (ordinateur), dessous (mobile) */
+.week-timeline {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: var(--radius-tile-sm);
+  background: color-mix(in srgb, var(--color-surface-elevated) 94%, transparent);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+}
+/* Coût et frise forment le bas de la carte ; sur mobile, ils suivent la carte */
+.week-hud {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+@media (min-width: 1024px) {
+  .week-hud {
+    position: absolute;
+    z-index: 5;
+    /* Centrés dans la partie visible de la carte, ils suivent le volet */
+    left: calc(var(--dock) + 1rem);
+    right: 1rem;
+    bottom: 1rem;
+    max-width: 960px;
+    margin-inline: auto;
+    align-items: flex-end;
+    pointer-events: none;
+    transition: left 520ms var(--ease-drawer);
+  }
+  .week-hud > * {
+    pointer-events: auto;
+  }
+  .week-hud .week-timeline {
+    align-self: stretch;
+    backdrop-filter: blur(8px);
+  }
+}
+
+/* Coût de l'énergie : électrique contre essence */
+.week-cost {
+  width: 100%;
+  padding: 0.7rem 0.9rem 0.6rem;
+  border-radius: var(--radius-tile-sm);
+  background: color-mix(in srgb, var(--color-surface-elevated) 94%, transparent);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+}
+@media (min-width: 1024px) {
+  .week-cost {
+    width: min(420px, 100%);
+    backdrop-filter: blur(8px);
+  }
+}
+.week-cost-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.week-cost-saved {
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  background: var(--color-lime);
+  color: var(--color-ink);
+  font-size: 12.5px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+.week-cost-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+.week-cost-bars > div {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.6rem;
+}
+.week-cost-bars dt {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+.week-cost-bars dd {
+  grid-column: 3;
+  grid-row: 1;
+  min-width: 4.5rem;
+  text-align: right;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+}
+/* Barre : l'échelle (scaleX) glisse sans recalcul de mise en page */
+.week-cost-bar {
+  grid-column: 2;
+  grid-row: 1;
+  height: 8px;
+  border-radius: 999px;
+  transform-origin: left;
+  transform: scaleX(max(var(--share), 0.015));
+  transition: transform 260ms var(--ease-out-expo);
+}
+.week-cost-bar[data-kind="ev"] {
+  background: var(--color-accent);
+}
+.week-cost-bar[data-kind="ice"] {
+  background: #b4532a;
+}
+.week-cost-note {
+  margin-top: 0.45rem;
+  font-size: 11px;
+  line-height: 1.35;
+  color: var(--color-text-faint);
+}
+.week-play {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: var(--color-accent-on);
+  flex-shrink: 0;
+  transition:
+    transform 160ms var(--ease-out-expo),
+    background-color 200ms var(--ease-out-expo);
+}
+.week-play:active {
+  transform: scale(0.94);
+}
+@media (hover: hover) and (pointer: fine) {
+  .week-play:hover {
+    background: var(--color-accent-dim);
+  }
+}
+.week-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.25rem;
+  flex: 1;
+}
+.week-day {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  width: 100%;
+  padding: 0.3rem 0.1rem 0.35rem;
+  border-radius: 12px;
+  transition: background-color 200ms var(--ease-out-expo);
+}
+.week-day[aria-pressed="true"] {
+  background: var(--color-surface-accent);
+}
+.week-day-name {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+/* Jauge : niveau du soir plein, niveau du matin en fantôme */
+.week-gauge {
+  position: relative;
+  width: 14px;
+  height: 46px;
+  border-radius: 999px;
+  background: var(--color-bg-subtle);
+  overflow: hidden;
+}
+.week-gauge-start,
+.week-gauge-level {
+  position: absolute;
+  inset: 0;
+  transform-origin: bottom;
+}
+.week-gauge-start {
+  background: color-mix(in srgb, #6f9130 35%, transparent);
+  transform: scaleY(var(--start));
+}
+.week-gauge-level {
+  background: #3a5c12;
+  transform: scaleY(var(--level));
+}
+.week-day[data-low] .week-gauge-level {
+  background: var(--color-danger);
+}
+.week-day-pct {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text);
+}
+.week-day-charge {
+  position: absolute;
+  top: 1.35rem;
+  right: 0.1rem;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--color-accent);
+}
+@media (max-width: 480px) {
+  .week-day-charge {
+    display: none;
+  }
+}
+
+/* Repères des lieux et voiture */
+.week-pin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--color-surface-elevated);
+  color: var(--color-accent);
+  border: 1.5px solid #9fb27a;
+  box-shadow: 0 1px 4px rgba(23, 32, 15, 0.25);
+  transition:
+    transform 200ms var(--ease-out-expo),
+    background-color 200ms var(--ease-out-expo);
+}
+.week-pin[data-active] {
+  background: var(--color-accent);
+  color: var(--color-accent-on);
+  border-color: var(--color-accent);
+  transform: scale(1.15);
+}
+.week-car {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-lime);
+  border: 3px solid var(--color-accent-dim);
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--color-lime) 45%, transparent),
+    0 2px 6px rgba(23, 32, 15, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .week-combo-list {
+    animation: none;
+  }
+  .week-unfold,
+  .week-tabs button::after {
+    transition: none;
+  }
+}

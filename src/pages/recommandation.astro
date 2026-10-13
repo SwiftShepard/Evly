@@ -1,7 +1,9 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import StrategicMatcher from "@/components/matcher/StrategicMatcher.tsx";
+import type { VehicleImages } from "@/components/matcher/MatcherResults";
 import { getAllVehicles, isStrictUtility } from "@/lib/vehicles";
+import { getVehicleImage } from "@/lib/vehicleImageAsset";
 
 const vehicles = getAllVehicles().filter(
   (v) =>
@@ -10,17 +12,26 @@ const vehicles = getAllVehicles().filter(
     v.bodyType !== "Fourgonnette" &&
     v.bodyType !== "Combi utilitaire"
 );
+
+// Photos optimisées au build pour les résultats (240 px, 480 px sur mobile et écrans denses)
+const images: VehicleImages = {};
+await Promise.all(
+  vehicles.map(async (v) => {
+    const img = await getVehicleImage(v.slug, [240, 480]);
+    if (img) images[v.slug] = { src: img.src, srcset: img.srcset };
+  })
+);
 ---
 
 <BaseLayout
   title="Quelle voiture électrique choisir ? Le test en 2 minutes"
-  description="Quelle voiture électrique choisir ? Répondez à 11 questions sur vos trajets, votre recharge et votre budget : Evly classe tout le catalogue selon vos besoins réels."
+  description="Quelle voiture électrique choisir ? Répondez à 6 questions sur vos trajets, votre recharge et votre budget : Evly classe tout le catalogue selon vos besoins réels."
   ogImage="/og/pages/recommandation.jpg"
 >
   <div class="container-edit py-6 md:py-10">
     <h1 class="label-eyebrow fade-rise mb-4">Quelle voiture électrique choisir ? Test personnalisé</h1>
     <div class="fade-rise fade-rise-delay-1">
-      <StrategicMatcher client:load vehicles={vehicles} />
+      <StrategicMatcher client:load vehicles={vehicles} images={images} />
     </div>
 
     <!-- ═════════ SECTION SEO / DÉCOUVERTE ═════════ -->
@@ -34,7 +45,7 @@ const vehicles = getAllVehicles().filter(
             Face à des dizaines de modèles électriques, difficile de savoir lequel vous correspond, encore moins lequel est un bon achat. Pas besoin de connaître le vocabulaire technique : notre outil de recommandation vous pose des questions sur votre vie de tous les jours et vous propose les modèles qui vous vont vraiment, pas ceux qu'on essaie de vous vendre.
           </p>
           <p>
-            Onze questions simples sur vos trajets habituels, la façon dont vous rechargeriez (chez vous, au travail, en borne publique), la taille de votre foyer et votre budget maximum suffisent pour passer en revue tout le catalogue de façon objective.
+            Six questions simples sur vos trajets habituels, la façon dont vous rechargeriez (chez vous, au travail, en borne publique), la taille de votre foyer et votre budget maximum suffisent pour passer en revue tout le catalogue de façon objective.
           </p>
         </div>
         <div class="flex flex-col gap-4">
