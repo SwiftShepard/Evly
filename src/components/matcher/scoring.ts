@@ -1,621 +1,362 @@
 import type { Vehicle, VehicleConfiguration } from "@/data/schemas";
-import { calculateCeeAid } from "@/lib/cee";
+import { calculateCeeAid, isEU } from "@/lib/cee";
+
+/**
+ * Matcher : réponses du visiteur, classement des modèles et lecture de l'URL.
+ *
+ * Le score est une moyenne pondérée de critères notés de 0 à 1 (budget, semaine de
+ * trajet, longs voyages, place, format, priorités) : 100 % = tous les critères
+ * demandés sont pleinement remplis. Chaque critère est affiché dans les résultats.
+ * Chaque version d'un modèle est évaluée ; on garde la mieux notée (à égalité, la
+ * moins chère).
+ */
 
 export interface MatcherAnswers {
-  usage: "urban" | "mixed" | "highway";
-  mileage: number; // km/an
-  charging: "home" | "public_slow" | "public_fast";
+  /** Trajet quotidien aller et retour (km), partagé avec « Mon trajet » */
+  dailyKm: number;
+  /** Recharge possible à domicile ou au travail */
+  homeCharging: boolean;
+  longTrips: "never" | "few" | "often";
+  /** Plus long trajet d'une traite (km) */
+  longTripKm: number;
+  household: "solo" | "family" | "large";
   role: "primary" | "secondary";
-  longTripDistance: number; // km (plus long trajet habituel/annuel)
-  household: "single_couple" | "family" | "large_family";
-  trunkNeed: "any" | "medium" | "large";
-  trunkHatchbackMandatory: boolean;
-  bodyType: "any" | "hatchback_city" | "sedan_break" | "suv_crossover" | "van_monospace";
-  chargingSpeed: "any" | "under_30";
+  body: "any" | "city" | "sedan" | "suv" | "van";
+  trunk: "any" | "medium" | "large";
+  /** Hayon obligatoire (pas de malle de berline) */
+  hatch: boolean;
   budgetType: "buy" | "lease";
   budgetMax: number;
-  leasingSocialRfr: boolean;
-  leasingSocialUsage: boolean;
-  preferEurope: boolean;
-  softwareImportance: "any" | "good_software";
+  /** Revenu fiscal de référence par part ≤ 16 300 € */
+  lowIncome: boolean;
+  /** Plus de 10 km du travail ou plus de 8 000 km pro par an */
+  commuter: boolean;
+  fastCharge: boolean;
+  europe: boolean;
+  software: boolean;
+}
+
+export const DEFAULT_ANSWERS: MatcherAnswers = {
+  dailyKm: 40,
+  homeCharging: true,
+  longTrips: "few",
+  longTripKm: 500,
+  household: "solo",
+  role: "primary",
+  body: "any",
+  trunk: "any",
+  hatch: false,
+  budgetType: "buy",
+  budgetMax: 35000,
+  lowIncome: false,
+  commuter: false,
+  fastCharge: false,
+  europe: false,
+  software: false,
+};
+
+export const BUDGET_RANGE = {
+  buy: { min: 15000, max: 100000, step: 2500, initial: 35000 },
+  lease: { min: 100, max: 1000, step: 25, initial: 300 },
+} as const;
+
+export interface Criterion {
+  label: string;
+  weight: number;
+  /** 0 à 1 */
+  fit: number;
 }
 
 export interface MatchResult {
   vehicle: Vehicle;
-  bestConfig: VehicleConfiguration | { label: string; price_EUR: number; monthlyLease_EUR: number | null; leasingSocialEligible: boolean };
+  config: VehicleConfiguration;
+  /** 0 à 100 */
   score: number;
+  criteria: Criterion[];
   reasons: string[];
   warnings: string[];
+  price: {
+    catalog: number;
+    net: number;
+    cee: number;
+    /** Loyer mensuel retenu (leasing social, loyer constructeur ou estimation) */
+    monthly: number;
+    monthlyKind: "social" | "official" | "estimate";
+  };
+  range: { winter: number; real: number; wltp: number; days: number };
 }
 
-const EUROPEAN_COUNTRIES = new Set([
-  "France", "Allemagne", "Espagne", "Italie", "Suède", "Royaume-Uni", "Portugal",
-  "Pologne", "Tchéquie", "Slovaquie", "Hongrie", "Belgique", "Autriche", "Roumanie"
+/* ------------------------------------------------------------------ */
+/* URL                                                                 */
+/* ------------------------------------------------------------------ */
+
+const PRIORITIES = [
+  ["recharge", "fastCharge"],
+  ["europe", "europe"],
+  ["logiciel", "software"],
+] as const;
+
+export function answersToParams(a: MatcherAnswers): URLSearchParams {
+  const p = new URLSearchParams();
+  p.set("trajet", String(a.dailyKm));
+  p.set("maison", a.homeCharging ? "1" : "0");
+  p.set("voyages", a.longTrips);
+  if (a.longTrips !== "never") p.set("voyage", String(a.longTripKm));
+  p.set("foyer", a.household);
+  p.set("role", a.role);
+  p.set("format", a.body);
+  p.set("coffre", a.trunk);
+  if (a.hatch) p.set("hayon", "1");
+  p.set("budget", a.budgetType === "buy" ? "achat" : "loyer");
+  p.set("max", String(a.budgetMax));
+  if (a.lowIncome) p.set("rfr", "1");
+  if (a.commuter) p.set("distance", "1");
+  const prio = PRIORITIES.filter(([, key]) => a[key]).map(([name]) => name);
+  if (prio.length) p.set("prio", prio.join(","));
+  return p;
+}
+
+const pick = <T extends string>(value: string | null, allowed: readonly T[], fallback: T): T =>
+  allowed.includes(value as T) ? (value as T) : fallback;
+const clampNum = (value: string | null, min: number, max: number, fallback: number) => {
+  const n = Number(value);
+  return Number.isFinite(n) && value !== null && value !== "" ? Math.min(max, Math.max(min, Math.round(n))) : fallback;
+};
+
+/** Réponses lues dans l'URL, ou null si l'URL n'en contient pas */
+export function paramsToAnswers(p: URLSearchParams): MatcherAnswers | null {
+  if (!p.has("trajet")) return null;
+  const budgetType = p.get("budget") === "loyer" ? "lease" : "buy";
+  const range = BUDGET_RANGE[budgetType];
+  const prio = new Set((p.get("prio") ?? "").split(","));
+  return {
+    dailyKm: clampNum(p.get("trajet"), 10, 200, DEFAULT_ANSWERS.dailyKm),
+    homeCharging: p.get("maison") !== "0",
+    longTrips: pick(p.get("voyages"), ["never", "few", "often"] as const, DEFAULT_ANSWERS.longTrips),
+    longTripKm: clampNum(p.get("voyage"), 150, 1000, DEFAULT_ANSWERS.longTripKm),
+    household: pick(p.get("foyer"), ["solo", "family", "large"] as const, DEFAULT_ANSWERS.household),
+    role: pick(p.get("role"), ["primary", "secondary"] as const, DEFAULT_ANSWERS.role),
+    body: pick(p.get("format"), ["any", "city", "sedan", "suv", "van"] as const, DEFAULT_ANSWERS.body),
+    trunk: pick(p.get("coffre"), ["any", "medium", "large"] as const, DEFAULT_ANSWERS.trunk),
+    hatch: p.get("hayon") === "1",
+    budgetType,
+    budgetMax: clampNum(p.get("max"), range.min, range.max, range.initial),
+    lowIncome: p.get("rfr") === "1",
+    commuter: p.get("distance") === "1",
+    fastCharge: prio.has("recharge"),
+    europe: prio.has("europe"),
+    software: prio.has("logiciel"),
+  };
+}
+
+/* ------------------------------------------------------------------ */
+/* Données dérivées                                                    */
+/* ------------------------------------------------------------------ */
+
+/** Famille de carrosserie à partir du libellé libre de la fiche */
+export function bodyFamily(bodyType: string): MatcherAnswers["body"] {
+  const b = bodyType.toLowerCase();
+  if (/monospace|ludospace|combi|van/.test(b)) return "van";
+  if (/suv|crossover|tout-terrain/.test(b)) return "suv";
+  if (/citadine|hatchback|compacte|quadricycle/.test(b)) return "city";
+  return "sedan";
+}
+
+/** Berlines à malle (pas de hayon) */
+const NO_HATCH = new Set([
+  "tesla-model-3", "byd-seal", "hyundai-ioniq-6", "xiaomi-su7", "bmw-i7", "mercedes-eqe",
+  "mercedes-classe-c-berline", "genesis-electrified-g80", "audi-e-tron-gt", "porsche-taycan",
 ]);
 
-const STELLANTIS_BRANDS = new Set([
-  "Peugeot", "Citroën", "Fiat", "Opel", "Jeep", "Alfa Romeo", "Lancia", "DS"
-]);
-
-function getSoftwareRating(brand: string, model: string): number {
+/**
+ * Réputation du système multimédia et du planificateur d'itinéraire (avis éditorial,
+ * sur 5). Ne compte que si le visiteur en fait une priorité.
+ */
+function softwareRating(brand: string): number {
   const b = brand.toLowerCase();
-  
-  // 5/5 : Tesla, Mercedes, BMW
-  if (b === "tesla" || b === "mercedes-benz" || b === "mercedes" || b === "bmw") {
-    return 5;
-  }
-  
-  // 4/5 : Renault, Nissan, Volvo, Polestar, Porsche, Smart, Kia, Hyundai, Xpeng, Nio, Xiaomi
-  if (
-    b === "renault" || b === "nissan" || b === "volvo" || b === "polestar" || 
-    b === "porsche" || b === "smart" || b === "kia" || b === "hyundai" || 
-    b === "xpeng" || b === "nio" || b === "xiaomi"
-  ) {
-    return 4;
-  }
-  
-  // 3.5/5 : Leapmotor, Geely
-  if (b === "leapmotor" || b === "geely") {
-    return 3.5;
-  }
-  
-  // 2/5 : Stellantis (Peugeot, Citroën, Fiat, Opel, Jeep, Lancia, Alfa Romeo, DS), Toyota, Lexus, Dacia, Maxus
-  if (
-    b === "peugeot" || b === "citroën" || b === "fiat" || b === "opel" || b === "jeep" || 
-    b === "lancia" || b === "alfa romeo" || b === "ds" || b === "toyota" || b === "lexus" || 
-    b === "dacia" || b === "maxus"
-  ) {
-    return 2;
-  }
-  
-  // 3/5 : Volkswagen, Cupra, Skoda, Audi, BYD, MG, Zeekr, Ford, Mazda
+  if (["tesla", "mercedes-benz", "mercedes", "bmw"].includes(b)) return 5;
+  if (["renault", "nissan", "volvo", "polestar", "porsche", "smart", "kia", "hyundai", "xpeng", "nio", "xiaomi"].includes(b)) return 4;
+  if (["leapmotor", "geely"].includes(b)) return 3.5;
+  if (["peugeot", "citroën", "fiat", "opel", "jeep", "lancia", "alfa romeo", "ds", "toyota", "lexus", "dacia", "maxus"].includes(b)) return 2;
   return 3;
 }
 
-function matchesBodyType(vehicleBody: string, preference: string): boolean {
-  const body = vehicleBody.toLowerCase();
-  if (preference === "hatchback_city") {
-    return body.includes("citadine") || body.includes("hatchback") || body.includes("mini");
-  }
-  if (preference === "sedan_break") {
-    return body.includes("berline") || body.includes("break") || body.includes("sedan") || body.includes("coupe");
-  }
-  if (preference === "suv_crossover") {
-    return body.includes("suv") || body.includes("crossover") || body.includes("fastback");
-  }
-  if (preference === "van_monospace") {
-    return body.includes("monospace") || body.includes("ludospace") || body.includes("van") || body.includes("utilitaire");
-  }
-  return true;
+/** Segments cohérents avec le foyer et l'usage (évite les résultats farfelus) */
+function allowedSegments(a: MatcherAnswers): Set<string> {
+  const primary = a.role === "primary";
+  if (a.household === "large") return new Set(primary ? ["C", "D", "E", "F"] : ["B", "C", "D", "E"]);
+  if (a.household === "family") return new Set(primary ? ["B", "C", "D", "E"] : ["A", "B", "C"]);
+  return new Set(a.longTrips === "often" ? ["B", "C", "D", "E"] : ["A", "B", "C", "D"]);
 }
 
-function hasHatchback(vehicle: { slug: string }): boolean {
-  const NON_HATCHBACK_SLUGS = new Set([
-    "tesla-model-3",
-    "byd-seal",
-    "hyundai-ioniq-6",
-    "xiaomi-su7",
-    "bmw-i7",
-    "mercedes-eqe",
-    "mercedes-classe-c-berline",
-    "genesis-electrified-g80",
-    "audi-e-tron-gt",
-    "porsche-taycan"
-  ]);
-  return !NON_HATCHBACK_SLUGS.has(vehicle.slug);
+/** Volume de coffre attendu (L) : choix explicite, sinon déduit du foyer */
+function trunkNeed(a: MatcherAnswers): number {
+  if (a.trunk === "large") return 450;
+  if (a.trunk === "medium") return 350;
+  if (a.role !== "primary") return 0;
+  return a.household === "large" ? 450 : a.household === "family" ? 380 : 0;
 }
 
-export function scoreVehicle(vehicle: Vehicle, answers: MatcherAnswers): MatchResult | null {
-  const isPrimary = answers.role === "primary";
-  const trunk = vehicle.trunkCapacity_L;
-  const length = vehicle.length_mm;
-  const isEU = EUROPEAN_COUNTRIES.has(vehicle.productionCountry);
+/** Arrêts de recharge et minutes passées à recharger sur le plus long trajet */
+export function tripStops(distance: number, highwayKm: number, dc10to80: number) {
+  // Départ batterie pleine jusqu'à 10 %, puis relais de 80 % à 10 %
+  const first = highwayKm * 0.9;
+  const leg = Math.max(50, highwayKm * 0.7);
+  const stops = distance <= first ? 0 : Math.ceil((distance - first) / leg);
+  return { stops, minutes: stops * dc10to80 };
+}
 
-  // Filtre hayon impératif
-  if (answers.trunkHatchbackMandatory && !hasHatchback(vehicle)) {
-    return null;
-  }
+const fmt = (n: number) => n.toLocaleString("fr-FR").replace(/ /g, " ");
+const plural = (n: number, word: string) => `${n} ${word}${n > 1 ? "s" : ""}`;
 
-  // Pré-filtre éliminatoire par segment (coeur et segments adjacents) pour éviter les résultats farfelus
-  const segment = (vehicle.segment ?? "B").split(",")[0].trim();
-  let allowedSegments: Set<string>;
+/* ------------------------------------------------------------------ */
+/* Score                                                               */
+/* ------------------------------------------------------------------ */
 
-  if (answers.household === "large_family") {
-    if (isPrimary) {
-      // Coeur D/E -> C, D, E, F (exclut citadines A, B)
-      allowedSegments = new Set(["C", "D", "E", "F"]);
-    } else {
-      // Secondaire -> B, C, D, E
-      allowedSegments = new Set(["B", "C", "D", "E"]);
-    }
-  } else if (answers.household === "family") {
-    if (isPrimary) {
-      // Coeur C -> B, C, D (exclut micro-urbains A et gros routiers/luxueux E, F)
-      allowedSegments = new Set(["B", "C", "D"]);
-    } else {
-      // Secondaire -> A, B, C (exclut routières et grands SUV D, E, F)
-      allowedSegments = new Set(["A", "B", "C"]);
-    }
-  } else {
-    // Célibataire / couple
-    if (answers.usage === "highway") {
-      // Usage autoroutier régulier -> B, C, D (exclut A et E, F)
-      allowedSegments = new Set(["B", "C", "D"]);
-    } else {
-      // Usage urbain / mixte quotidien -> A, B, C (exclut les gros routiers D, E, F)
-      allowedSegments = new Set(["A", "B", "C"]);
-    }
-  }
+interface Scored {
+  criteria: Criterion[];
+  reasons: [number, string][];
+  warnings: [number, string][];
+}
 
-  if (!allowedSegments.has(segment)) {
-    return null; // Exclu car segment incohérent avec le profil
-  }
+export function scoreVehicle(vehicle: Vehicle, a: MatcherAnswers): MatchResult | null {
+  const segment = (vehicle.segment ?? "B").split(",")[0]!.trim();
+  if (!allowedSegments(a).has(segment)) return null;
+  if (a.hatch && NO_HATCH.has(vehicle.slug)) return null;
+  if (a.role === "primary" && vehicle.bodyType === "Quadricycle") return null;
+  if (a.role === "primary" && a.household === "large" && (vehicle.length_mm < 4300 || vehicle.trunkCapacity_L < 380)) return null;
+  if (a.role === "primary" && a.household === "family" && (vehicle.length_mm < 4100 || vehicle.trunkCapacity_L < 300)) return null;
 
-  // Pré-filtre additionnel sur caractéristiques spécifiques
-  if (isPrimary) {
-    // Les quadricycles ne peuvent pas être un véhicule principal du foyer (accès autoroute impossible, vitesse limitée)
-    if (vehicle.bodyType === "Quadricycle") {
-      return null;
-    }
+  const configs = vehicle.configurations.filter((c) => c.price_EUR !== null && c.availability !== "discontinued");
+  const userSocial = a.lowIncome && a.commuter;
+  let best: MatchResult | null = null;
 
-    if (answers.household === "large_family") {
-      if (length < 4300 || trunk < 380) {
-        return null; // Trop compact comme véhicule principal d'une grande famille
-      }
-    } else if (answers.household === "family") {
-      if (length < 4150 || trunk < 320) {
-        return null; // Trop compact comme véhicule principal d'une famille
-      }
-    }
-  }
+  for (const config of configs) {
+    const s: Scored = { criteria: [], reasons: [], warnings: [] };
+    const add = (label: string, weight: number, fit: number) => s.criteria.push({ label, weight, fit: Math.max(0, Math.min(1, fit)) });
 
-  // 1. Détermination de la meilleure configuration ou du tarif de base
-  const hasConfigs = vehicle.configurations && vehicle.configurations.length > 0;
-  
-  // Si le véhicule n'a pas de configurations détaillées, on crée une configuration virtuelle basée sur ses finitions
-  const virtualConfigs = !hasConfigs
-    ? vehicle.trims.map((t, idx) => ({
-        id: `virtual-${idx}`,
-        label: t.name,
-        battery: "standard" as const,
-        trim: t.name,
-        wheelSize_inches: 18,
-        tyreType: "summer" as const,
-        options: [],
-        usableCapacity_kWh: vehicle.usableCapacity_kWh,
-        price_EUR: t.price_EUR,
-        monthlyLease_EUR: vehicle.leasingSocialEligible && vehicle.leasingSocial_EUR_per_month
-          ? vehicle.leasingSocial_EUR_per_month
-          : null,
-        leasingSocialEligible: vehicle.leasingSocialEligible,
-        wltp_km: vehicle.wltp_min_km,
-        wltp_consumption_kWh_100km: vehicle.consumption_mixed_kWh_per_100km,
-        realRange: vehicle.realRange,
-        chargingDC_peak_kW: vehicle.chargingDC.peakPower_kW,
-        chargingDC_10_80_min: vehicle.chargingDC.time_10_80_min,
-        chargingDC_kWh_30min: vehicle.chargingDC.kWh_added_30min,
-        chargingCurve: vehicle.chargingCurve,
-        availability: "available" as const,
-        notes: null,
-      }))
-    : vehicle.configurations;
+    /* Prix : prime CEE déduite (catégorie « précarité » si le revenu le permet, sinon montant minimal) */
+    const catalog = config.price_EUR!;
+    const householdSize = a.household === "large" ? 5 : a.household === "family" ? 3 : 1;
+    const { amount: cee } = calculateCeeAid({ vehicle, price: catalog, profileType: "particular", householdSize, taxIncome: a.lowIncome ? 12000 : 80000 });
+    const net = catalog - cee;
+    const social = userSocial && (config.leasingSocialEligible || vehicle.leasingSocialEligible) && vehicle.leasingSocial_EUR_per_month != null;
+    const monthlyKind = social ? "social" : config.monthlyLease_EUR ? "official" : "estimate";
+    const monthly = social ? vehicle.leasingSocial_EUR_per_month! : config.monthlyLease_EUR || Math.round(net * 0.009);
 
-  // Filtrer les configurations valides
-  const validConfigs = virtualConfigs.filter(c => c.price_EUR !== null);
-  if (validConfigs.length === 0) return null;
+    const cost = a.budgetType === "buy" ? net : monthly;
+    if (cost > a.budgetMax * 1.08) continue;
+    const overBudget = cost > a.budgetMax;
+    add("Budget", 3, overBudget ? 0.4 : 1);
+    if (overBudget) s.warnings.push([3, a.budgetType === "buy" ? `${fmt(net)} € : un peu au-dessus de votre budget` : `${fmt(monthly)} €/mois : un peu au-dessus de votre budget`]);
+    else if (social) s.reasons.push([3.5, `Leasing social à ${fmt(monthly)} €/mois`]);
 
-  const isUserLeasingSocial = answers.leasingSocialRfr && answers.leasingSocialUsage;
+    /* Semaine de trajet : la règle « tient mon trajet » du site */
+    const rr = config.realRange ?? vehicle.realRange;
+    const winter = rr.winter_minus5_km;
+    const real = rr.mixed_km;
+    const highway = rr.highway_130_km || Math.round(real * 0.7);
+    const wltp = Math.max(config.wltp_km ?? vehicle.wltp_max_km, real);
+    const days = Math.floor(winter / a.dailyKm);
+    const weekNeed = a.dailyKm * (a.homeCharging ? 5 : 7);
+    const weekFit = winter >= weekNeed ? 1 : (winter / weekNeed) ** 2;
+    add("Votre semaine de trajet", 3, weekFit);
+    if (weekFit === 1) s.reasons.push([3, `Tient ${plural(days, "jour")} de votre trajet sans recharger, même en hiver`]);
+    else s.warnings.push([3, `En hiver, recharge au bout de ${plural(days, "jour")} de trajet`]);
+    if (!a.homeCharging && real >= 450) s.reasons.push([2, "Grande autonomie : une recharge publique par semaine suffit"]);
 
-  // Trouver la configuration qui maximise le score
-  let bestConfigMatch: typeof validConfigs[0] | null = null;
-  let highestScore = -999;
-  let finalReasons: string[] = [];
-  let finalWarnings: string[] = [];
-
-  for (const config of validConfigs) {
-    let score = 50; // base score
-    const reasons: string[] = [];
-    const warnings: string[] = [];
-
-    // --- CRITÈRE 1 : BUDGET (Éliminatoire ou pénalité) ---
-    const rawPrice = config.price_EUR ?? 0;
-    
-    // Déduction des aides CEE 2026 dynamiques (coup de pouce CEE + surbonus batterie européenne)
-    const householdSize = answers.household === "large_family" ? 5 : answers.household === "family" ? 3 : 1;
-    // Si l'utilisateur est éligible au leasing social RFR (RFR/part <= 16300€), il est d'office dans la catégorie précarité.
-    // Sinon, on estime conservateur en le mettant dans la catégorie "autres".
-    const taxIncome = answers.leasingSocialRfr ? 12000 : 80000;
-
-    const { amount: totalCeeAid, isEligible: isEligibleCEE } = calculateCeeAid({
-      vehicle,
-      price: rawPrice,
-      profileType: "particular",
-      householdSize,
-      taxIncome,
-    });
-    const configPrice = rawPrice - totalCeeAid;
-    
-    // Calcul du loyer estimé ou réel
-    let monthlyLease = config.monthlyLease_EUR;
-    if (monthlyLease === null || monthlyLease === 0) {
-      // Fallback LLD approximatif (environ 0.9 % du prix d'achat net par mois)
-      monthlyLease = Math.round(configPrice * 0.009);
-    }
-    
-    // Si l'utilisateur est éligible au leasing social et que le véhicule l'est aussi
-    const isLeasingSocialApplied = isUserLeasingSocial && (config.leasingSocialEligible || vehicle.leasingSocialEligible);
-    if (isLeasingSocialApplied) {
-      monthlyLease = vehicle.leasingSocial_EUR_per_month ?? 100;
-    }
-
-    if (answers.budgetType === "buy") {
-      if (configPrice > answers.budgetMax * 1.08) {
-        continue; // Trop cher, éliminé
-      } else if (configPrice > answers.budgetMax) {
-        score -= 25;
-        const priceLabel = isEligibleCEE ? `${configPrice.toLocaleString()} € après prime CEE` : `${configPrice.toLocaleString()} €`;
-        warnings.push(`Prix (${priceLabel}) légèrement au-dessus de votre budget max`);
+    /* Longs voyages */
+    const dcPeak = config.chargingDC_peak_kW ?? vehicle.chargingDC.peakPower_kW;
+    const dcTime = config.chargingDC_10_80_min ?? vehicle.chargingDC.time_10_80_min;
+    const hasDC = dcPeak > 0 && dcTime > 0;
+    if (a.longTrips !== "never") {
+      const w = a.longTrips === "often" ? 3 : 1.5;
+      if (!hasDC) {
+        add("Longs voyages", w, 0);
+        s.warnings.push([w, "Pas de recharge rapide : inadaptée aux longs trajets"]);
       } else {
-        score += 10;
-        const priceLabel = isEligibleCEE ? `${configPrice.toLocaleString()} € après prime CEE` : `${configPrice.toLocaleString()} €`;
-        reasons.push(`Prix net (${priceLabel}) parfaitement en phase avec votre budget`);
-      }
-    } else {
-      // leasing
-      if (monthlyLease > answers.budgetMax * 1.08) {
-        continue; // Trop cher, éliminé
-      } else if (monthlyLease > answers.budgetMax) {
-        score -= 25;
-        warnings.push(`Loyer estimé (${monthlyLease} €/mois) légèrement au-dessus de votre budget`);
-      } else {
-        score += 10;
-        if (isLeasingSocialApplied) {
-          reasons.push(`Mensualité exceptionnelle de ${monthlyLease} €/mois grâce à votre éligibilité au Leasing Social`);
-        } else {
-          reasons.push(`Loyer mensuel (${monthlyLease} €/mois) dans votre budget`);
-        }
+        const { stops, minutes } = tripStops(a.longTripKm, highway, dcTime);
+        const fit = stops === 0 ? 1 : 1 - minutes / 150;
+        add("Longs voyages", w, fit);
+        const text = stops === 0
+          ? `${fmt(a.longTripKm)} km d'une traite, sans recharger`
+          : `${fmt(a.longTripKm)} km : ${plural(stops, "arrêt")}, environ ${minutes} min de recharge`;
+        if (fit >= 0.55) s.reasons.push([w * fit, text]);
+        else s.warnings.push([w, text]);
       }
     }
 
-    // --- CRITÈRE 2 : AUTONOMIE & USAGE (Max 35 points) ---
-    // On extrait l'autonomie réelle selon la configuration
-    const realRange = config.realRange ?? vehicle.realRange;
-    const highwayRange = realRange?.highway_130_km ?? Math.round(vehicle.realRange.mixed_km * 0.7);
-    const mixedRange = realRange?.mixed_km ?? vehicle.realRange.mixed_km;
-    const winterRange = realRange?.winter_minus5_km ?? vehicle.realRange.winter_minus5_km;
-
-    if (answers.usage === "highway") {
-      // Grand voyageur : importance capitale de l'autonomie sur autoroute et de la vitesse de recharge
-      if (highwayRange >= 320) {
-        score += 15;
-        reasons.push(`Excellente autonomie sur autoroute (${highwayRange} km réels)`);
-      } else if (highwayRange >= 220) {
-        score += 8;
-        reasons.push(`Autonomie autoroute correcte (${highwayRange} km réels)`);
-      } else {
-        score -= 15;
-        warnings.push(`Autonomie autoroute limitée (${highwayRange} km réels), arrêts fréquents à prévoir`);
-      }
-
-      // Vitesse de recharge
-      const dcPeak = config.chargingDC_peak_kW ?? vehicle.chargingDC.peakPower_kW;
-      const dcTime = config.chargingDC_10_80_min ?? vehicle.chargingDC.time_10_80_min;
-      const is800V = vehicle.architecture_V === 800;
-
-      if (is800V || dcTime <= 20) {
-        score += 15;
-        reasons.push("Recharge ultra-rapide (architecture 800V ou < 20 min pour 10-80%)");
-      } else if (dcPeak >= 120 && dcTime <= 32) {
-        score += 8;
-        reasons.push(`Bonne vitesse de recharge DC (${dcPeak} kW, 10-80% en ${dcTime} min)`);
-      } else if (dcTime > 35 || dcPeak < 80) {
-        score -= 10;
-        warnings.push(`Recharge rapide lente (10-80% en ${dcTime} min), trajets autoroutiers rallongés`);
-      }
-    } else if (answers.usage === "urban") {
-      // Urbain : on valorise la compacité, les batteries légères, et la consommation
-      const length = vehicle.length_mm;
-      if (length < 4200) {
-        score += 15;
-        reasons.push("Gabarit compact idéal pour la ville et le stationnement");
-      } else if (length > 4700) {
-        score -= 10;
-        warnings.push("Gabarit imposant, moins maniable en environnement urbain");
-      }
-
-      const isLfp = vehicle.chemistry === "LFP";
-      if (isLfp) {
-        score += 8;
-        reasons.push("Batterie LFP durable, idéale pour des cycles de charge réguliers à 100%");
-      }
-
-      if (answers.charging === "home") {
-        score += 5;
-        reasons.push("Recharge à domicile très économique sur ce type de petit modèle");
-      }
-    } else {
-      // Usage mixte
-      if (mixedRange >= 380) {
-        score += 15;
-        reasons.push(`Autonomie mixte très confortable (${mixedRange} km réels)`);
-      } else if (mixedRange >= 280) {
-        score += 8;
-        reasons.push(`Autonomie mixte rassurante (${mixedRange} km réels)`);
-      } else {
-        score -= 10;
-        warnings.push(`Autonomie mixte un peu juste (${mixedRange} km réels) pour les weekends`);
-      }
-    }
-
-    // Alerte hivernale si la perte est importante ou si la batterie est sensible
-    const rangeLossPct = Math.round(((mixedRange - winterRange) / mixedRange) * 100);
-    if (rangeLossPct > 35) {
-      warnings.push(`Perte d'autonomie importante en hiver (-${rangeLossPct}% par grand froid)`);
-    }
-
-    // Interaction entre mode de recharge et autonomie
-    if (answers.charging === "public_slow" || answers.charging === "public_fast") {
-      if (mixedRange < 330) {
-        score -= 15;
-        warnings.push(`Batterie compacte exigeant des recharges publiques fréquentes (2 à 3 fois par semaine)`);
-      } else if (mixedRange >= 480) {
-        score += 10;
-        reasons.push(`Grande autonomie limitant la contrainte des recharges publiques (1 fois par semaine ou moins)`);
-      }
-    }
-
-    // --- CRITÈRE 2.5 : GRAND TRAJET DE L'ANNÉE (Simulation de trajet) ---
-    const D = answers.longTripDistance || 500;
-    const hasFastCharge = (config.chargingDC_peak_kW ?? vehicle.chargingDC.peakPower_kW ?? 0) > 0;
-    
-    if (!hasFastCharge && D > 150) {
-      score -= 40;
-      warnings.push("Pas de recharge rapide DC : inadapté pour les trajets de plus de 150 km");
-    } else if (hasFastCharge) {
-      const dcTime = config.chargingDC_10_80_min ?? vehicle.chargingDC.time_10_80_min ?? 30;
-      const firstRelay = highwayRange;
-      
-      if (D <= firstRelay) {
-        score += 15;
-        reasons.push(`Grand trajet (${D} km) réalisable d'une seule traite (zéro arrêt charge)`);
-      } else {
-        const remainingD = D - firstRelay;
-        const relaySize = highwayRange * 0.7; // relais suivants de 80% à 10% SoC
-        const legSize = Math.max(50, relaySize); // évite division par 0
-        const stops = Math.ceil(remainingD / legSize);
-        const chargeTime = stops * dcTime;
-        
-        if (stops === 1) {
-          score += 15;
-          reasons.push(`Voyage efficace : 1 seul arrêt charge (${chargeTime} min) pour faire ${D} km`);
-        } else if (stops === 2) {
-          score += 8;
-          reasons.push(`Voyage correct : 2 arrêts charge (${chargeTime} min au total) sur ${D} km`);
-        } else if (stops >= 4) {
-          const penalty = 15 + (stops - 3) * 10;
-          score -= penalty;
-          warnings.push(`Grand trajet de ${D} km pénible : au moins ${stops} arrêts charge requis (${chargeTime} min)`);
-        } else {
-          // 3 stops
-          if (chargeTime > 90 && D <= 700) {
-            score -= 10;
-            warnings.push(`Trajet de ${D} km avec 3 arrêts charge et un temps d'attente important (${chargeTime} min)`);
-          } else {
-            score += 2;
-            reasons.push(`Trajet de ${D} km avec 3 arrêts charge (total : ${chargeTime} min)`);
-          }
-        }
-      }
-    }
-
-    // --- CRITÈRE 3 : COMPOSITION FOYER & COFFRE (Max 25 points) ---
+    /* Place à bord */
     const trunk = vehicle.trunkCapacity_L;
-    const length = vehicle.length_mm;
-    const isPrimary = answers.role === "primary";
-
-    if (answers.household === "large_family") {
-      if (isPrimary) {
-        if (trunk >= 480 && length >= 4400) {
-          score += 20;
-          reasons.push(`Gabarit routier généreux (${trunk} L de coffre) adapté en véhicule principal`);
-          if (trunk >= 650) {
-            score += 15;
-            reasons.push(`Volume de coffre géant (${trunk} L) idéal pour une grande famille`);
-          } else if (trunk >= 550) {
-            score += 5;
-          }
-        } else if (trunk < 380 || length < 4300) {
-          score -= 40;
-          warnings.push(`Gabarit trop compact pour être le véhicule principal d'une grande famille`);
-        } else {
-          score += 5;
-          warnings.push(`Coffre de ${trunk} L un peu restreint pour le véhicule principal d'une grande famille`);
-        }
-      } else {
-        // Véhicule secondaire
-        if (trunk >= 350) {
-          score += 20;
-          reasons.push("Volume de coffre pratique pour les trajets secondaires de la famille");
-        } else {
-          score += 10;
-        }
-      }
-    } else if (answers.household === "family") {
-      if (isPrimary) {
-        if (trunk >= 380 && length >= 4250) {
-          score += 20;
-          reasons.push(`Coffre adapté (${trunk} L) et gabarit routier en véhicule principal`);
-          if (trunk >= 600) {
-            score += 15;
-            reasons.push(`Volume de coffre exceptionnel (${trunk} L) idéal pour charger les bagages de la famille`);
-          } else if (trunk >= 500) {
-            score += 5;
-            reasons.push(`Très bon volume de coffre (${trunk} L) pour une famille`);
-          }
-        } else if (trunk < 320 || length < 4150) {
-          score -= 35;
-          warnings.push(`Format citadine / petit coffre (${trunk} L), juste pour être le véhicule principal de la famille`);
-        } else {
-          score += 5;
-          warnings.push(`Coffre de ${trunk} L un peu étroit pour le véhicule principal de la famille`);
-        }
-      } else {
-        // Véhicule secondaire
-        if (trunk >= 300) {
-          score += 20;
-          reasons.push("Idéal en second véhicule familial (agile avec coffre d'appoint)");
-        } else {
-          score += 15;
-          reasons.push("Second véhicule très compact pour les trajets courts / école");
-        }
-      }
-    } else {
-      // Célibataire / couple
-      if (length < 4350) {
-        score += 15;
-        if (trunk < 300) {
-          reasons.push("Format compact et agile, coffre suffisant pour deux personnes");
-        } else {
-          reasons.push("Gabarit compact et polyvalent, adapté pour un célibataire ou couple");
-        }
-      } else {
-        // Véhicule grand/SUV pour célibataire ou couple
-        if (answers.usage === "highway") {
-          score += 10;
-          reasons.push("Gabarit routier confortable pour les longs trajets à deux");
-        } else {
-          // Pénalité pour véhicule surdimensionné par rapport aux besoins quotidiens (urbain / mixte)
-          score -= 20;
-          warnings.push("Gabarit important et surdimensionné pour l'usage quotidien d'un célibataire/couple");
-        }
-      }
+    const need = trunkNeed(a);
+    if (need > 0) {
+      const fit = trunk >= need ? 1 : 1 - (need - trunk) / 150;
+      add("Coffre", 2.5, fit);
+      if (fit === 1) s.reasons.push([2, `Coffre de ${fmt(trunk)} L`]);
+      else s.warnings.push([2.5, `Coffre de ${fmt(trunk)} L, en dessous des ${need} L souhaités`]);
+    }
+    if (a.household === "solo" && a.longTrips !== "often" && a.dailyKm <= 60) {
+      const len = vehicle.length_mm;
+      const fit = len < 4100 ? 1 : len < 4400 ? 0.75 : len < 4700 ? 0.45 : 0.2;
+      add("Gabarit au quotidien", 1, fit);
+      if (fit === 1) s.reasons.push([1, "Gabarit compact, facile à garer"]);
+      else if (fit <= 0.45) s.warnings.push([1, `Grand gabarit (${(len / 1000).toFixed(2).replace(".", ",")} m) pour un usage surtout quotidien`]);
     }
 
-    // --- CRITÈRE 3.5 : BESOIN EXPRESS DE COFFRE ---
-    if (answers.trunkNeed === "medium") {
-      if (trunk >= 350) {
-        score += 15;
-        reasons.push(`Volume de coffre de ${trunk} L en adéquation avec votre besoin moyen (≥ 350 L)`);
-      } else {
-        score -= 25;
-        warnings.push(`Volume de coffre (${trunk} L) inférieur à votre souhait de 350 L minimum`);
-      }
-    } else if (answers.trunkNeed === "large") {
-      if (trunk >= 450) {
-        score += 25;
-        reasons.push(`Gros volume de coffre (${trunk} L) répondant parfaitement à votre besoin (≥ 450 L)`);
-        if (trunk >= 650) {
-          score += 15;
-          reasons.push(`Espace de chargement gigantesque (${trunk} L) au-delà de vos attentes`);
-        } else if (trunk >= 550) {
-          score += 5;
-        }
-      } else {
-        score -= 35;
-        warnings.push(`Volume de coffre (${trunk} L) insuffisant par rapport à votre besoin de 450 L minimum`);
-      }
+    /* Format */
+    if (a.body !== "any") {
+      const fit = bodyFamily(vehicle.bodyType) === a.body ? 1 : 0;
+      add("Format", 2, fit);
+      if (!fit) s.warnings.push([2, `Format ${vehicle.bodyType.toLowerCase()}, différent de votre choix`]);
     }
 
-    // --- CRITÈRE 4 : SENSANTIBILITÉ EUROPÉENNE (Max 20 points) ---
-    if (answers.preferEurope) {
-      if (isEU) {
-        score += 20;
-        reasons.push(`Produit en Europe (${vehicle.productionCountry}) : éligible aux aides CEE`);
-      } else {
-        score -= 15;
-        warnings.push(`Fabriqué hors Europe (${vehicle.productionCountry}) : pas d'aides CEE de l'État`);
-      }
-    } else {
-      if (isEU) {
-        score += 5;
-        reasons.push(`Assemblé en Europe (${vehicle.productionCountry})`);
-      } else {
-        warnings.push(`Pas d'aides CEE de l'État (produit en ${vehicle.productionCountry})`);
-      }
+    /* Priorités facultatives */
+    if (a.fastCharge) {
+      const fit = !hasDC ? 0 : dcTime <= 30 ? 1 : dcTime <= 40 ? 0.5 : 0;
+      add("Recharge rapide", 1.5, fit);
+      if (fit === 1) s.reasons.push([1.5, `10 à 80 % en ${dcTime} min sur borne rapide`]);
+      else s.warnings.push([1.5, hasDC ? `10 à 80 % en ${dcTime} min sur borne rapide` : "Pas de recharge rapide"]);
+    }
+    if (a.europe) {
+      const fit = isEU(vehicle.productionCountry) ? 1 : 0;
+      add("Fabrication européenne", 1.5, fit);
+      if (fit) s.reasons.push([1.5, `Fabriquée en ${vehicle.productionCountry}`]);
+      else s.warnings.push([1.5, `Fabriquée hors d'Europe (${vehicle.productionCountry})`]);
+    }
+    if (a.software) {
+      const r = softwareRating(vehicle.brand);
+      const fit = r >= 4 ? 1 : r >= 3.5 ? 0.8 : r >= 3 ? 0.6 : 0.2;
+      add("Écran et planificateur", 1.5, fit);
+      if (fit === 1) s.reasons.push([1.4, "Écran et planificateur d'itinéraire réputés fluides"]);
+      else if (fit <= 0.2) s.warnings.push([1.5, "Écran et planificateur d'itinéraire souvent jugés lents"]);
     }
 
-    // --- CRITÈRE 5 : LEASING SOCIAL (AIDE CEE) ---
-    if (isLeasingSocialApplied) {
-      score += 20;
-    }
+    const total = s.criteria.reduce((sum, c) => sum + c.weight, 0);
+    const score = Math.round((100 * s.criteria.reduce((sum, c) => sum + c.weight * c.fit, 0)) / total);
+    const byWeight = (list: [number, string][]) => [...list].sort((x, y) => y[0] - x[0]).map(([, t]) => t);
 
-    // --- CRITÈRE 6 : PRÉFÉRENCE DE SILHOUETTE (CARROSSERIE) ---
-    if (answers.bodyType !== "any") {
-      if (matchesBodyType(vehicle.bodyType, answers.bodyType)) {
-        score += 15;
-        reasons.push(`Silhouette correspondant à votre préférence (${vehicle.bodyType})`);
-      } else {
-        score -= 15;
-        warnings.push(`Silhouette (${vehicle.bodyType}) différente de votre préférence`);
-      }
-    }
-
-    // --- CRITÈRE 7 : VITESSE DE CHARGE CCS ---
-    if (answers.chargingSpeed === "under_30") {
-      const dcTime = config.chargingDC_10_80_min ?? vehicle.chargingDC.time_10_80_min;
-      const dcPeak = config.chargingDC_peak_kW ?? vehicle.chargingDC.peakPower_kW;
-
-      if (dcPeak > 0 && dcTime > 0 && dcTime <= 32) {
-        score += 15;
-        reasons.push(`Recharge rapide optimale de ${dcTime} min (10-80%)`);
-      } else {
-        score -= 25;
-        if (dcPeak === 0 || dcTime === 0 || !dcTime) {
-          warnings.push("Pas de recharge rapide DC disponible (connecteur CCS absent)");
-        } else {
-          warnings.push(`Recharge rapide supérieure à 30 min (${dcTime} min pour 10-80%)`);
-        }
-      }
-    }
-
-    // --- CRITÈRE 8 : QUALITÉ LOGICIEL ---
-    const softwareRating = getSoftwareRating(vehicle.brand, vehicle.model);
-    if (answers.softwareImportance === "good_software") {
-      if (softwareRating >= 4) {
-        score += 15;
-        reasons.push(`Logiciel et planificateur très fluides et ergonomiques (${vehicle.brand})`);
-      } else if (softwareRating <= 2) {
-        score -= 25;
-        warnings.push(`Ergonomie numérique et planificateur d'itinéraire jugés médiocres/lents`);
-      }
-    } else {
-      if (softwareRating <= 2) {
-        warnings.push(`Interface logicielle et planificateur d'itinéraire en retrait`);
-      }
-    }
-
-    // --- COMPORTEMENT RÉEL STELLANTIS (Recharge) ---
-    if (STELLANTIS_BRANDS.has(vehicle.brand)) {
-      if (answers.chargingSpeed === "under_30") {
-        score -= 10;
-        warnings.push("Recharge rapide réelle sensible aux températures (Stellantis)");
-      }
-    }
-
-    // Score final (au moins 0, sans limite supérieure de 100 pour préserver le tri)
-    const finalScore = Math.max(0, Math.round(score));
-
-    if (finalScore > highestScore) {
-      highestScore = finalScore;
-      bestConfigMatch = config;
-      finalReasons = reasons;
-      finalWarnings = warnings;
-    }
+    const result: MatchResult = {
+      vehicle,
+      config,
+      score,
+      criteria: s.criteria,
+      reasons: byWeight(s.reasons).slice(0, 3),
+      warnings: byWeight(s.warnings).slice(0, 2),
+      price: { catalog, net, cee, monthly, monthlyKind },
+      range: { winter, real, wltp, days },
+    };
+    const cheaper = best && (a.budgetType === "buy" ? net < best.price.net : monthly < best.price.monthly);
+    if (!best || score > best.score || (score === best.score && cheaper)) best = result;
   }
 
-  if (bestConfigMatch === null || highestScore < 10) {
-    return null; // Aucun match décent
-  }
+  return best;
+}
 
-  // Filtrer les raisons / warnings redondants ou vides
-  const uniqReasons = [...new Set(finalReasons)].slice(0, 4);
-  const uniqWarnings = [...new Set(finalWarnings)].slice(0, 3);
-
-  return {
-    vehicle,
-    bestConfig: bestConfigMatch,
-    score: highestScore,
-    reasons: uniqReasons,
-    warnings: uniqWarnings,
-  };
+/** Classement complet : meilleur score d'abord, puis le moins cher */
+export function rankVehicles(vehicles: Vehicle[], a: MatcherAnswers): MatchResult[] {
+  const cost = (r: MatchResult) => (a.budgetType === "buy" ? r.price.net : r.price.monthly);
+  return vehicles
+    .map((v) => scoreVehicle(v, a))
+    .filter((r): r is MatchResult => r !== null && r.score >= 40)
+    .sort((x, y) => y.score - x.score || cost(x) - cost(y));
 }

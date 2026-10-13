@@ -1,126 +1,76 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import type { Vehicle } from "@/data/schemas";
-import { scoreVehicle, type MatcherAnswers, type MatchResult } from "./scoring";
-import MatcherQuestions from "./MatcherQuestions";
-import MatcherResults from "./MatcherResults";
-import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
+import { readTrip, writeTrip } from "@/lib/trip";
+import { DEFAULT_ANSWERS, answersToParams, paramsToAnswers, rankVehicles, type MatcherAnswers } from "./scoring";
+import MatcherQuestions, { STEPS } from "./MatcherQuestions";
+import MatcherResults, { type VehicleImages } from "./MatcherResults";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import "./matcher.css";
 
 interface Props {
   vehicles: Vehicle[];
+  images: VehicleImages;
 }
 
-export default function StrategicMatcher({ vehicles }: Props) {
-  const [step, setStep] = useState<number>(0);
+const RESULTS = STEPS.length;
+
+/**
+ * Matcher : six questions centrées sur le trajet, puis le classement.
+ * Les réponses vivent dans l'URL une fois les résultats affichés (retour arrière depuis
+ * une fiche, lien partageable) ; le trajet quotidien est partagé avec « Mon trajet ».
+ */
+export default function StrategicMatcher({ vehicles, images }: Props) {
+  const [answers, setAnswers] = useState<MatcherAnswers>(DEFAULT_ANSWERS);
+  const [step, setStep] = useState(0);
   const [direction, setDirection] = useState<"next" | "prev">("next");
-  const [showAllResults, setShowAllResults] = useState(false);
-  const [expandedOtherSlug, setExpandedOtherSlug] = useState<string | null>(null);
-  // Résultats rouverts depuis l'URL (retour arrière depuis une fiche, lien partagé)
+  /** Plus haute étape atteinte : les étapes déjà vues restent cliquables */
+  const [reached, setReached] = useState(0);
+  /** Question rouverte depuis les résultats : « Voir mes résultats » remplace « Suivant » */
+  const [editing, setEditing] = useState(false);
+  const [showAll, setShowAll] = useState(false);
   const [restored, setRestored] = useState(false);
+  const topRef = useRef<HTMLDivElement>(null);
 
-  // Parse parameters on load
+  // Réponses de l'URL (retour arrière, lien partagé), sinon trajet de « Mon trajet »
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const searchParams = new URLSearchParams(window.location.search);
-
-      const usage = searchParams.get("usage");
-      if (usage) {
-        setAnswers({
-          usage: (searchParams.get("usage") as any) || "mixed",
-          mileage: parseInt(searchParams.get("mileage") || "15000", 10),
-          charging: (searchParams.get("charging") as any) || "home",
-          role: (searchParams.get("role") as any) || "primary",
-          longTripDistance: parseInt(searchParams.get("longTripDistance") || "600", 10),
-          household: (searchParams.get("household") as any) || "family",
-          trunkNeed: (searchParams.get("trunkNeed") as any) || "any",
-          trunkHatchbackMandatory: searchParams.get("trunkHatchbackMandatory") === "true",
-          bodyType: (searchParams.get("bodyType") as any) || "any",
-          chargingSpeed: (searchParams.get("chargingSpeed") as any) || "any",
-          budgetType: (searchParams.get("budgetType") as any) || "buy",
-          budgetMax: parseInt(searchParams.get("budgetMax") || "40000", 10),
-          leasingSocialRfr: searchParams.get("leasingSocialRfr") === "true",
-          leasingSocialUsage: searchParams.get("leasingSocialUsage") === "true",
-          preferEurope: searchParams.get("preferEurope") === "true",
-          softwareImportance: (searchParams.get("softwareImportance") as any) || "any",
-        });
-        setShowAllResults(searchParams.get("tous") === "1");
-        setStep(13); // Go directly to results slide (shifted to 13)
-        setRestored(true);
-      }
+    const params = new URLSearchParams(window.location.search);
+    const fromUrl = paramsToAnswers(params);
+    if (fromUrl) {
+      setAnswers(fromUrl);
+      setShowAll(params.get("tous") === "1");
+      setReached(RESULTS);
+      setStep(RESULTS);
+      setRestored(true);
+      return;
     }
+    const trip = readTrip();
+    setAnswers((prev) => ({ ...prev, dailyKm: trip.dailyKm, homeCharging: trip.homeCharging }));
   }, []);
 
-  const goToNext = useCallback(() => {
-    setDirection("next");
-    setStep((prev) => prev + 1);
-  }, []);
+  const results = useMemo(() => rankVehicles(vehicles, answers), [vehicles, answers]);
 
-  const goToPrev = useCallback(() => {
-    setDirection("prev");
-    setStep((prev) => prev - 1);
-  }, []);
-
-  // Réponses du questionnaire
-  const [answers, setAnswers] = useState<MatcherAnswers>({
-    usage: "mixed",
-    mileage: 15000,
-    charging: "home",
-    role: "primary",
-    longTripDistance: 600,
-    household: "family",
-    trunkNeed: "any",
-    trunkHatchbackMandatory: false,
-    bodyType: "any",
-    chargingSpeed: "any",
-    budgetType: "buy",
-    budgetMax: 40000,
-    leasingSocialRfr: false,
-    leasingSocialUsage: false,
-    preferEurope: true,
-    softwareImportance: "any",
-  });
-
-
-  // Résultats calculés (maintenant à l'étape 13)
-  const results = useMemo<MatchResult[]>(() => {
-    if (step < 13) return [];
-    return vehicles
-      .map((v) => scoreVehicle(v, answers))
-      .filter((r): r is MatchResult => r !== null)
-      .sort((a, b) => b.score - a.score)
-      .map((r) => ({
-        ...r,
-        score: Math.min(100, r.score),
-      }));
-  }, [step, answers, vehicles]);
-
-  const top3 = useMemo(() => results.slice(0, 3), [results]);
-  const others = useMemo(() => results.slice(3), [results]);
-
-  // Url de comparaison des 3 premiers
-  const compareUrl = useMemo(() => {
-    if (top3.length === 0) return "/comparer";
-    const vParam = top3
-      .map((r) => `${r.vehicle.slug}:${r.bestConfig.id}:100`)
-      .join(",");
-    return `/comparer?v=${vParam}`;
-  }, [top3]);
-
-  // Les réponses vivent dans l'URL une fois les résultats affichés : un retour arrière
-  // depuis une fiche les retrouve, et le lien se partage tel quel
+  // Résultats affichés : URL à jour et trajet partagé avec le reste du site
   useEffect(() => {
-    if (step !== 13) return;
-    const params = new URLSearchParams();
-    for (const [key, value] of Object.entries(answers)) params.set(key, String(value));
-    if (showAllResults) params.set("tous", "1");
+    if (step !== RESULTS) return;
+    const params = answersToParams(answers);
+    if (showAll) params.set("tous", "1");
     // On garde l'état d'historique du routeur (position de défilement des transitions de page)
     window.history.replaceState(window.history.state, "", `${window.location.pathname}?${params}`);
-  }, [step, answers, showAllResults]);
+  }, [step, answers, showAll]);
+
+  useEffect(() => {
+    if (step !== RESULTS) return;
+    const trip = readTrip();
+    if (!trip.set || trip.dailyKm !== answers.dailyKm || trip.homeCharging !== answers.homeCharging) {
+      writeTrip({ dailyKm: answers.dailyKm, homeCharging: answers.homeCharging });
+    }
+  }, [step, answers.dailyKm, answers.homeCharging]);
 
   // Retour arrière : les résultats n'existent qu'après hydratation, le routeur restaure donc
   // le défilement sur une page encore courte. On mémorise la position au départ vers une
   // autre page, puis on la rejoue une fois la liste rendue.
   useEffect(() => {
-    if (step !== 13) return;
+    if (step !== RESULTS) return;
     const remember = () => window.history.replaceState({ ...window.history.state, matcherY: window.scrollY }, "");
     document.addEventListener("astro:before-preparation", remember);
     return () => document.removeEventListener("astro:before-preparation", remember);
@@ -132,246 +82,102 @@ export default function StrategicMatcher({ vehicles }: Props) {
     if (y > 0) requestAnimationFrame(() => window.scrollTo({ top: y, behavior: "instant" }));
   }, [restored]);
 
-  // Raccourcis clavier (Accessibilité AAA - 9 étapes)
-  const handleKeyDown = useCallback(
-    (e: KeyboardEvent) => {
-      // Ignorer si on est sur un champ de saisie actif (ex: input)
-      if (document.activeElement?.tagName === "INPUT") return;
-
-      if (step > 0 && step <= 12) {
-        if (e.key === "Backspace" || e.key === "ArrowLeft") {
-          // Retour
-          goToPrev();
-        } else if (e.key === "Enter" || e.key === "ArrowRight") {
-          // Suivant
-          goToNext();
-        }
-
-        // Touches numériques pour la sélection
-        if (step === 1) {
-          if (e.key === "1") setAnswers((prev) => ({ ...prev, usage: "urban" }));
-          if (e.key === "2") setAnswers((prev) => ({ ...prev, usage: "mixed" }));
-          if (e.key === "3") setAnswers((prev) => ({ ...prev, usage: "highway" }));
-        } else if (step === 2) {
-          if (e.key === "1") setAnswers((prev) => ({ ...prev, charging: "home" }));
-          if (e.key === "2") setAnswers((prev) => ({ ...prev, charging: "public_slow" }));
-          if (e.key === "3") setAnswers((prev) => ({ ...prev, charging: "public_fast" }));
-        } else if (step === 3) {
-          if (e.key === "1") setAnswers((prev) => ({ ...prev, chargingSpeed: "any" }));
-          if (e.key === "2") setAnswers((prev) => ({ ...prev, chargingSpeed: "under_30" }));
-        } else if (step === 4) {
-          if (e.key === "1") setAnswers((prev) => ({ ...prev, role: "primary", longTripDistance: 600 }));
-          if (e.key === "2") setAnswers((prev) => ({ ...prev, role: "secondary", longTripDistance: 150 }));
-        } else if (step === 6) {
-          if (e.key === "1") setAnswers((prev) => ({ ...prev, household: "single_couple" }));
-          if (e.key === "2") setAnswers((prev) => ({ ...prev, household: "family" }));
-          if (e.key === "3") setAnswers((prev) => ({ ...prev, household: "large_family" }));
-        } else if (step === 7) {
-          if (e.key === "1") setAnswers((prev) => ({ ...prev, trunkNeed: "any" }));
-          if (e.key === "2") setAnswers((prev) => ({ ...prev, trunkNeed: "medium" }));
-          if (e.key === "3") setAnswers((prev) => ({ ...prev, trunkNeed: "large" }));
-          if (e.key === "h" || e.key === "H") {
-            setAnswers((prev) => ({ ...prev, trunkHatchbackMandatory: !prev.trunkHatchbackMandatory }));
-          }
-        } else if (step === 8) {
-          if (e.key === "1") setAnswers((prev) => ({ ...prev, bodyType: "any" }));
-          if (e.key === "2") setAnswers((prev) => ({ ...prev, bodyType: "hatchback_city" }));
-          if (e.key === "3") setAnswers((prev) => ({ ...prev, bodyType: "sedan_break" }));
-          if (e.key === "4") setAnswers((prev) => ({ ...prev, bodyType: "suv_crossover" }));
-          if (e.key === "5") setAnswers((prev) => ({ ...prev, bodyType: "van_monospace" }));
-        } else if (step === 9) {
-          if (e.key === "1") setAnswers((prev) => ({ ...prev, softwareImportance: "any" }));
-          if (e.key === "2") setAnswers((prev) => ({ ...prev, softwareImportance: "good_software" }));
-        } else if (step === 11) {
-          if (e.key === "1") setAnswers((prev) => ({ ...prev, leasingSocialRfr: !prev.leasingSocialRfr }));
-          if (e.key === "2") setAnswers((prev) => ({ ...prev, leasingSocialUsage: !prev.leasingSocialUsage }));
-        } else if (step === 12) {
-          if (e.key === "1" || e.key === " ") {
-            setAnswers((prev) => ({ ...prev, preferEurope: !prev.preferEurope }));
-          }
-        }
-      } else if (step === 0 && (e.key === "Enter" || e.key === " ")) {
-        goToNext();
-      }
-    },
-    [step, goToNext, goToPrev]
-  );
-
-  useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleKeyDown]);
-
+  const go = (target: number) => {
+    setDirection(target >= step ? "next" : "prev");
+    setStep(target);
+    setReached((r) => Math.max(r, target));
+    if (target === RESULTS) setEditing(false);
+    // Garde le haut du questionnaire en vue (utile sur mobile)
+    const top = topRef.current?.getBoundingClientRect().top ?? 0;
+    if (top < 0) topRef.current?.scrollIntoView({ block: "start" });
+  };
+  const next = () => go(editing ? RESULTS : step + 1);
+  const edit = (target: number) => { setEditing(true); go(target); };
   const restart = () => {
-    setAnswers({
-      usage: "mixed",
-      mileage: 15000,
-      charging: "home",
-      role: "primary",
-      longTripDistance: 600,
-      household: "family",
-      trunkNeed: "any",
-      trunkHatchbackMandatory: false,
-      bodyType: "any",
-      chargingSpeed: "any",
-      budgetType: "buy",
-      budgetMax: 40000,
-      leasingSocialRfr: false,
-      leasingSocialUsage: false,
-      preferEurope: true,
-      softwareImportance: "any",
-    });
-    setShowAllResults(false);
-    setExpandedOtherSlug(null);
-    if (typeof window !== "undefined") {
-      window.history.replaceState(window.history.state, "", window.location.pathname);
-    }
-    setDirection("prev");
-    setStep(0);
+    const trip = readTrip();
+    setAnswers({ ...DEFAULT_ANSWERS, dailyKm: trip.dailyKm, homeCharging: trip.homeCharging });
+    setShowAll(false);
+    setEditing(false);
+    setReached(0);
+    window.history.replaceState(window.history.state, "", window.location.pathname);
+    go(0);
   };
 
-  return (
-    <div className="w-full max-w-4xl mx-auto py-4">
-      <style>{`
-        @keyframes softFadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(4px);
-            filter: blur(1.5px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-            filter: blur(0);
-          }
-        }
-        .animate-slide-right {
-          animation: softFadeIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-        .animate-slide-left {
-          animation: softFadeIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-      `}</style>
-      {step === 0 && (
-        <div
-          className="rounded-3xl p-8 md:p-12 relative overflow-hidden transition-all duration-500 border border-[var(--color-border)] shadow-2xl"
-          style={{
-            background: "radial-gradient(circle at top right, color-mix(in srgb, var(--color-accent) 8%, transparent), transparent), var(--color-surface)",
-          }}
-        >
-          <div className="absolute top-4 right-4 animate-pulse">
-            <Sparkles aria-hidden="true" size={28} className="text-[var(--color-accent)] opacity-80" />
-          </div>
-          <div className="flex items-center gap-3 mb-6">
-            <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-text-faint)]">Diagnostic d'Achat</span>
-            <span className="h-px flex-1 bg-[var(--color-border)]"></span>
-            <span className="px-2 py-0.5 rounded-full text-[9px] font-mono border border-[var(--color-accent-dim)] text-[var(--color-accent)] bg-[color-mix(in_srgb,var(--color-accent)_5%,transparent)] uppercase">Neutre</span>
-          </div>
+  // Entrée valide l'étape (hors boutons, qui gardent leur comportement)
+  useEffect(() => {
+    if (step === RESULTS) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Enter" || e.defaultPrevented) return;
+      const el = document.activeElement;
+      if (el && el !== document.body && !(el instanceof HTMLInputElement && el.type === "range")) return;
+      e.preventDefault();
+      next();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  });
 
-          <h2 className="font-display text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1] text-[var(--color-text)]">
-            Dix questions,<br />
-            <span className="text-[var(--color-text-muted)]">votre véhicule électrique idéal.</span>
-          </h2>
-          <p className="mt-6 text-sm md:text-base text-[var(--color-text-muted)] max-w-2xl leading-relaxed">
-            Rechercher un VE via ses fiches techniques est complexe et biaisé par le marketing des marques. Evly analyse vos trajets, vos capacités de recharge, le rôle du véhicule et votre situation financière pour calculer un score de compatibilité transparent, sans commission.
-          </p>
-
-          <div className="mt-8 grid md:grid-cols-3 gap-5">
-            <div className="p-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-subtle)]">
-              <span className="text-[var(--color-accent)] text-xs font-mono font-semibold">01 · TCO & Aides CEE</span>
-              <p className="text-xs text-[var(--color-text-muted)] mt-1.5 leading-relaxed">
-                Calcul précis des mensualités incluant la Prime CEE 2026, les aides régionales et le Leasing Social.
-              </p>
-            </div>
-            <div className="p-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-subtle)]">
-              <span className="text-[var(--color-accent)] text-xs font-mono font-semibold">02 · Climat & Autonomie</span>
-              <p className="text-xs text-[var(--color-text-muted)] mt-1.5 leading-relaxed">
-                Modélisation de la baisse d'autonomie en hiver (-5°C) selon la chimie de batterie.
-              </p>
-            </div>
-            <div className="p-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-subtle)]">
-              <span className="text-[var(--color-accent)] text-xs font-mono font-semibold">03 · Filtre Souverain</span>
-              <p className="text-xs text-[var(--color-text-muted)] mt-1.5 leading-relaxed">
-                Choix éthique et aides CEE maximales via la détection de la production géographique européenne.
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-10 flex items-center justify-between flex-wrap gap-4 pt-6 border-t border-[var(--color-border)]">
-            <span className="text-xs font-mono text-[var(--color-text-faint)]">
-              Navigable au clavier (1, 2, 3 pour choisir, Entrée pour continuer)
-            </span>
-            <button
-              onClick={goToNext}
-              className="btn-interactive btn-glow inline-flex items-center gap-2 px-6 py-3.5 bg-[var(--color-accent)] text-[var(--color-accent-on)] text-sm font-semibold tracking-tight rounded-xl shadow-lg transition-all"
-            >
-              Lancer le matcher
-              <ArrowRight aria-hidden="true" size={15} />
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* ────────────────── QUESTIONNAIRE (ÉTAPES 1 à 12) ────────────────── */}
-      {step > 0 && step <= 12 && (
-        <div className="rounded-3xl p-6 md:p-8 border border-[var(--color-border)] bg-[var(--color-surface)] shadow-xl relative min-h-[460px] flex flex-col justify-between transition-all duration-300">
-
-          {/* Top Progress bar */}
-          <div>
-            <div className="flex items-center justify-between mb-4">
-              <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-text-faint)]">Question {step} sur 12</span>
-              <span className="font-mono text-xs font-semibold text-[var(--color-accent)]">{Math.round((step / 12) * 100)}%</span>
-            </div>
-            <div className="w-full h-1 bg-[var(--color-border)] rounded-full overflow-hidden">
-              <div
-                className="h-full bg-[var(--color-accent)] transition-all duration-300"
-                style={{ width: `${(step / 12) * 100}%` }}
-              ></div>
-            </div>
-          </div>
-
-          {/* QUESTION SLIDE CONTAINER */}
-          <div key={step} className={`my-8 flex-1 flex flex-col justify-center ${direction === "next" ? "animate-slide-right" : "animate-slide-left"}`}>
-            <MatcherQuestions step={step} answers={answers} setAnswers={setAnswers} />
-          </div>
-
-          {/* Navigation Footer */}
-          <div className="flex items-center justify-between pt-6 border-t border-[var(--color-border)] mt-auto">
-            <button
-              onClick={goToPrev}
-              className="flex items-center gap-1.5 px-4 py-2 border border-[var(--color-border-strong)] rounded-lg text-xs font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-bg-subtle)] transition-colors"
-            >
-              <ArrowLeft aria-hidden="true" size={13} />
-              Retour
-            </button>
-
-            <button
-              onClick={goToNext}
-              className="btn-interactive inline-flex items-center gap-1.5 px-5 py-2.5 bg-[var(--color-accent)] text-[var(--color-accent-on)] text-xs font-semibold rounded-lg shadow transition-colors"
-            >
-              {step === 12 ? "Découvrir mes résultats" : "Suivant"}
-              <ArrowRight aria-hidden="true" size={13} />
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* ────────────────── ÉTAPE 13 : RÉSULTATS ────────────────── */}
-      {step === 13 && (
+  if (step === RESULTS) {
+    return (
+      <div ref={topRef} className="mq-root">
         <MatcherResults
-          vehicleCount={vehicles.length}
-          top3={top3}
-          others={others}
+          results={results}
           answers={answers}
-          showAllResults={showAllResults}
-          setShowAllResults={setShowAllResults}
-          expandedOtherSlug={expandedOtherSlug}
-          setExpandedOtherSlug={setExpandedOtherSlug}
+          vehicleCount={vehicles.length}
+          images={images}
+          showAll={showAll}
+          setShowAll={setShowAll}
+          onEdit={edit}
           restart={restart}
-          compareUrl={compareUrl}
+          setAnswers={setAnswers}
         />
-      )}
+      </div>
+    );
+  }
 
+  const last = step === RESULTS - 1;
+  return (
+    <div ref={topRef} className="mq-root">
+      <div className="mq-shell">
+        <nav className="mq-steps" aria-label="Étapes du questionnaire">
+          <ol>
+            {STEPS.map((label, i) => (
+              <li key={label}>
+                <button
+                  type="button"
+                  className="mq-step"
+                  data-state={i === step ? "current" : i <= reached ? "done" : "todo"}
+                  aria-current={i === step ? "step" : undefined}
+                  disabled={i > reached}
+                  onClick={() => go(i)}
+                >
+                  <span className="mq-step-num" aria-hidden="true">{i + 1}</span>
+                  <span className="mq-step-label">{label}</span>
+                </button>
+              </li>
+            ))}
+          </ol>
+          <p className="mq-step-mobile">Étape {step + 1} sur {STEPS.length} · {STEPS[step]}</p>
+        </nav>
+
+        <div key={step} className="mq-body" data-dir={direction}>
+          <MatcherQuestions step={step} answers={answers} setAnswers={setAnswers} />
+        </div>
+
+        <div className="mq-foot">
+          <button type="button" className="btn btn-secondary mq-back" onClick={() => go(step - 1)} disabled={step === 0}>
+            <ArrowLeft size={16} strokeWidth={2.25} aria-hidden="true" />
+            <span>Retour</span>
+          </button>
+          <p className="mq-count" aria-live="polite">
+            <b>{results.length}</b> {results.length > 1 ? "modèles possibles" : "modèle possible"}
+          </p>
+          <button type="button" className="btn btn-primary" onClick={next}>
+            {editing || last ? "Voir mes résultats" : "Suivant"}
+            <ArrowRight size={17} strokeWidth={2.25} className="btn-arrow" aria-hidden="true" />
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
