@@ -229,6 +229,103 @@
   line-height: 1.4;
   color: var(--color-text-muted);
 }
+/* Prix du kWh : petites cases au centime, côte à côte */
+.week-prices {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  margin-top: 0.5rem;
+}
+.week-prices > .label-eyebrow {
+  flex-basis: 100%;
+}
+.week-price {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+}
+.week-price-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  height: 2.25rem;
+  padding: 0 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface-elevated);
+  color: var(--color-text);
+  font-weight: 600;
+}
+.week-price-box:focus-within {
+  border-color: var(--color-accent);
+}
+.week-price-box input {
+  width: 3.2rem;
+  border: 0;
+  outline: none;
+  background: none;
+  font: inherit;
+  font-size: 16px; /* pas de zoom automatique sur iOS */
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.week-price-fixed {
+  font-size: 13.5px;
+  color: var(--color-text-muted);
+}
+
+/* Kilométrage : semaine, année, forfait de location */
+.week-mileage {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.25rem 0.75rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: var(--radius-tile-sm);
+  background: var(--color-bg-subtle);
+}
+.week-mileage dt {
+  font-size: 11.5px;
+  color: var(--color-text-faint);
+}
+.week-mileage dd {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.week-mileage div:last-of-type dd {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+.week-mileage-note {
+  grid-column: 1 / -1;
+  margin-top: 0.15rem;
+  font-size: 11.5px;
+  color: var(--color-text-faint);
+}
+
+/* Recherche sans résultat proche */
+.week-combo-empty {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-tile-sm);
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
 .week-work-toggle {
   margin-top: 0.35rem;
   font-size: 14px;
@@ -1076,4 +1173,251 @@
   .week-tabs button::after {
     transition: none;
   }
+}
+
+
+/* ----------------------------------------------------------------- */
+/* Avant le chargement de l'outil : son titre et sa promesse          */
+/* ----------------------------------------------------------------- */
+.week-fallback {
+  max-width: 34rem;
+  padding: var(--tile-padding);
+  border-radius: var(--radius-tile);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+.week-fallback p {
+  margin-top: 0.6rem;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+@media (min-width: 1024px) {
+  .week-fallback {
+    margin: 5.25rem 0 0 0.75rem;
+    min-height: calc(100dvh - 12rem);
+  }
+}
+
+/* ----------------------------------------------------------------- */
+/* Le guide : panneau qui glisse par-dessus la carte, fermé par défaut */
+/* ----------------------------------------------------------------- */
+.week-guide-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+}
+.week-guide-sheet[data-open="true"] {
+  pointer-events: auto;
+}
+.week-guide-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(23, 32, 15, 0.3);
+  opacity: 0;
+  transition: opacity 360ms var(--ease-out-expo);
+}
+.week-guide-sheet[data-open="true"] .week-guide-backdrop {
+  opacity: 1;
+}
+.week-guide-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(780px, 100%);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--color-bg);
+  box-shadow: var(--shadow-lg);
+  /* Même courbe que le volet des réglages */
+  transform: translateX(calc(100% + 1rem));
+  transition: transform 520ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+.week-guide-sheet[data-open="true"] .week-guide-panel {
+  transform: none;
+}
+@media (min-width: 1024px) {
+  .week-guide-panel {
+    top: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    border-radius: var(--radius-tile);
+    border: 1px solid var(--color-border);
+  }
+}
+/* Page sous le guide figée pendant la lecture (mobile) */
+html.week-guide-lock,
+html.week-guide-lock body {
+  overflow: hidden;
+}
+.week-guide-bar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem 0.75rem 1.5rem;
+  background: color-mix(in srgb, var(--color-bg) 92%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+}
+.week-guide-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  transition:
+    background-color 200ms var(--ease-out-expo),
+    transform 160ms var(--ease-out-expo);
+}
+.week-guide-close:active {
+  transform: scale(0.94);
+}
+@media (hover: hover) and (pointer: fine) {
+  .week-guide-close:hover {
+    background: var(--color-bg-subtle);
+  }
+}
+.week-guide {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 1.75rem 1.5rem 3rem;
+}
+@media (min-width: 768px) {
+  .week-guide {
+    padding: 2rem 2.5rem 3.5rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .week-guide-panel,
+  .week-guide-backdrop {
+    transition: none;
+  }
+}
+.week-guide-head p:last-child,
+.week-guide section > p {
+  max-width: 68ch;
+  margin-top: 0.85rem;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+}
+.week-guide-head .display-2 {
+  margin-top: 0.4rem;
+  max-width: 22ch;
+}
+.week-guide section > h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 1vw + 1.05rem, 1.85rem);
+  font-weight: 750;
+  letter-spacing: -0.025em;
+  line-height: 1.12;
+}
+.week-guide a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.week-guide-note {
+  margin-top: 0.75rem !important;
+  font-size: 13.5px !important;
+  color: var(--color-text-faint) !important;
+}
+.week-guide-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 68ch;
+  margin-top: 0.85rem;
+  padding-left: 1.1rem;
+  list-style: disc;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+/* Tableaux de chiffres : défilent à l'horizontale sur mobile plutôt que d'écraser les colonnes */
+.week-table {
+  margin-top: 1.25rem;
+  overflow-x: auto;
+  border-radius: var(--radius-tile-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+.week-table table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.week-table caption {
+  padding: 0.85rem 1rem 0.35rem;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+.week-table th,
+.week-table td {
+  padding: 0.6rem 1rem;
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.week-table thead th {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border);
+}
+.week-table th[scope="row"],
+.week-table thead th:first-child {
+  text-align: left;
+}
+.week-table th[scope="row"] {
+  min-width: 13rem;
+  font-weight: 600;
+}
+.week-table th[scope="row"] a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+.week-table th[scope="row"] span {
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-text-faint);
+}
+.week-table tbody tr + tr {
+  border-top: 1px solid var(--color-border);
+}
+@media (hover: hover) and (pointer: fine) {
+  .week-table tbody tr:hover {
+    background: var(--color-bg-subtle);
+  }
+  .week-table th[scope="row"] a:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Lien du volet vers le guide */
+.week-guide-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-accent);
 }

@@ -21,13 +21,15 @@ interface Props {
   /** Aller simple par la route */
   km: number | null;
   active: boolean;
+  /** Point autour duquel chercher un autre lieu (domicile) */
+  near: { lat: number; lon: number } | null;
   onToggle: (on: boolean) => void;
   onPick: (place: Place | null) => void;
 }
 
 const shortKm = (km: number) => (km < 10 ? `${formatNumber(km, 1)} km` : formatKm(km));
 
-export default function OutingRow({ cat, label, when, on, place, options, km, active, onToggle, onPick }: Props) {
+export default function OutingRow({ cat, label, when, on, place, options, km, active, near, onToggle, onPick }: Props) {
   const [open, setOpen] = useState(false);
   const [custom, setCustom] = useState(false);
 
@@ -93,9 +95,11 @@ export default function OutingRow({ cat, label, when, on, place, options, km, ac
           {custom && (
             <div className="pt-1 pb-2">
               <AddressField
-                label="Adresse du lieu"
+                label={`Autre lieu : ${label.toLowerCase()}`}
+                hideLabel
+                near={near}
                 value={null}
-                placeholder="Adresse ou nom du lieu"
+                placeholder="Nom ou adresse, ex. : Fitness Park"
                 onChange={(p) => {
                   if (!p) return;
                   onPick(p);

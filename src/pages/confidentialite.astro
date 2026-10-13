@@ -131,12 +131,17 @@ const sections = [
     <p>
       La page <a href={url("/ma-semaine/")}>Ma semaine</a> calcule dans votre navigateur où un modèle vous emmène depuis chez
       vous. Evly ne reçoit ni ne conserve votre adresse. Pour fonctionner, la page s'adresse directement, depuis votre navigateur,
-      à quatre services publics ou associatifs, et seulement quand vous l'utilisez :
+      à cinq services publics ou associatifs, et seulement quand vous l'utilisez :
     </p>
     <ul class="mt-3">
       <li>
         <strong>Géoplateforme de l'IGN</strong> (Institut national de l'information géographique et forestière, France) : reçoit
         le texte que vous tapez dans un champ d'adresse, pour proposer les adresses correspondantes.
+      </li>
+      <li>
+        <strong>Photon</strong> (komoot GmbH, Allemagne, données OpenStreetMap) : reçoit aussi ce texte, pour trouver un lieu
+        par son nom (« Fitness Park », « Carrefour »), avec une position arrondie à environ un kilomètre de votre domicile
+        pour proposer d'abord les lieux proches.
       </li>
       <li>
         <strong>Serveur d'itinéraires de FOSSGIS e.V.</strong> (association OpenStreetMap, Allemagne) : reçoit les coordonnées

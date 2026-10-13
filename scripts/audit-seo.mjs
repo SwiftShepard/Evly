@@ -25,7 +25,8 @@ for (const file of pages) {
   const rel = "/" + path.relative(dist, file).split(path.sep).join("/").replace(/index\.html$/, "");
   const html = fs.readFileSync(file, "utf8");
   const noindex = /<meta name="robots" content="noindex/.test(html);
-  const h1 = (html.match(/<h1[\s>]/g) || []).length;
+  // Le contenu des <template> n'est ni affiché ni indexé (ex. : copie du repli d'un îlot client:only)
+  const h1 = (html.replace(/<template[\s\S]*?<\/template>/g, "").match(/<h1[\s>]/g) || []).length;
   const title = decode(html.match(/<title>([\s\S]*?)<\/title>/)?.[1] ?? "");
   const desc = decode(html.match(/<meta name="description" content="([^"]*)"/)?.[1] ?? "");
   const canonical = html.match(/<link rel="canonical" href="([^"]*)"/)?.[1];

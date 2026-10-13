@@ -43,6 +43,7 @@ Pour citer un chiffre : indiquez la page Evly et son niveau de confiance (« mes
 - [Catalogue des voitures électriques](${abs("/vehicules/")}): tous les modèles, filtres par prix, autonomie, recharge, coffre et aides.
 - [Comparateur](${abs("/comparer/")}): jusqu'à 4 véhicules côte à côte.
 - [Simulateur de coût total](${abs("/simulateur/")}): électrique contre thermique sur 1 à 10 ans.
+- [Ma semaine en électrique](${abs("/ma-semaine/")}): depuis une adresse, semaine type avec un modèle (travail, courses, loisirs), recharges à la maison, au travail ou sur borne publique, coût de l'énergie face à l'essence, kilométrage annuel et forfait de location (LLD, LOA), carte de l'autonomie aller-retour en été et en hiver. Calcul dans le navigateur, sur les vraies routes.
 - [Recommandation guidée](${abs("/recommandation/")}): questionnaire de choix selon l'usage.
 - [Leasing social](${abs("/leasing-social/")}): conditions et véhicules éligibles.
 - [Bons plans](${abs("/bons-plans/")}): alternatives moins chères à budget égal.

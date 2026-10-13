@@ -1,15 +1,26 @@
 ---
+import fs from "node:fs";
+import path from "node:path";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import "@/styles/week.css";
 import WeekPlanner from "@/components/week/WeekPlanner.tsx";
-import { getAllVehicles } from "@/lib/vehicles";
+import FaqList from "@/components/seo/FaqList.astro";
+import LinkChips from "@/components/seo/LinkChips.astro";
+import { getAllVehicles, getVehicleBySlug } from "@/lib/vehicles";
 import { getVehicleIndex } from "@/lib/vehicleIndex";
 import { weekVersions } from "@/lib/map/versions";
+import { rangeProfile, budgetFor } from "@/lib/map/energy";
+import { annualKm, leaseTier } from "@/lib/map/mileage";
+import { CHARGING_LOSSES, ELEC_EUR_KWH, ICE_L_100, PUBLIC_EUR_KWH, fuelPrice } from "@/lib/map/fuel";
+import { getVehicleName } from "@/lib/seo";
+import { formatKm, formatNumber } from "@/lib/format";
+import { url } from "@/lib/url";
 import type { WeekVehicle } from "@/components/week/types";
 
 // Catalogue compact : chaque modèle avec ses versions (batterie, transmission), cf. lib/map/versions
 const index = new Map((await getVehicleIndex()).map((row) => [row.s, row]));
-const vehicles: WeekVehicle[] = getAllVehicles()
+const all = getAllVehicles();
+const vehicles: WeekVehicle[] = all
   .map((v) => ({
     slug: v.slug,
     brand: v.brand,
@@ -18,16 +29,447 @@ const vehicles: WeekVehicle[] = getAllVehicles()
     ...weekVersions(v),
   }))
   .sort((a, b) => `${a.brand} ${a.model}`.localeCompare(`${b.brand} ${b.model}`, "fr"));
+
+/* ── Contenu de la page : les mêmes calculs que l'outil, sur des modèles courants ── */
+
+const POPULAR = ["renault-5", "citroen-e-c3", "peugeot-e-208", "fiat-grande-panda", "renault-4", "kia-ev3", "skoda-elroq", "tesla-model-3", "tesla-model-y", "renault-scenic"];
+const fuel = await fuelPrice();
+const fuelDate = fuel.updated ? new Date(fuel.updated).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }) : null;
+const money = new Intl.NumberFormat("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const eur = (n: number) => `${money.format(n)} €`;
+const round10 = (n: number) => Math.round(n / 10) * 10;
+
+const rows = POPULAR.flatMap((slug) => {
+  const v = getVehicleBySlug(slug);
+  if (!v) return [];
+  const { versions, defaultVersion } = weekVersions(v);
+  // Version de référence de la fiche (autonomie affichée en tête), sinon celle proposée par l'outil
+  const version =
+    versions.find((x) => x.range.mixed_km === v.realRange.mixed_km) ?? versions.find((x) => x.id === defaultVersion) ?? versions[0]!;
+  const r = version.range;
+  const summer = rangeProfile(r, "summer");
+  const winter = rangeProfile(r, "winter");
+  const ret = budgetFor("return");
+  const kwh100 = (version.charging.usableKWh / r.mixed_km) * 100;
+  return [
+    {
+      slug,
+      name: getVehicleName(v),
+      battery: version.label.split(" · ")[0],
+      measured: version.measured,
+      winterKm: r.winter_minus5_km,
+      mixedKm: r.mixed_km,
+      // Rayon aller-retour par la route (80-90 km/h) et par l'autoroute (130 km/h), 10 % de réserve
+      roadSummer: round10(ret * summer.road),
+      roadWinter: round10(ret * winter.road),
+      hwWinter: round10(ret * winter.hw),
+      // Jours de trajet sans recharger en hiver, 10 % de réserve
+      days: (daily: number) => Math.floor((0.9 * r.winter_minus5_km) / daily),
+      kwh100,
+      elec100: kwh100 * CHARGING_LOSSES * ELEC_EUR_KWH,
+      usableKWh: version.charging.usableKWh,
+    },
+  ];
+});
+const petrol100 = ICE_L_100 * fuel.eur;
+const r5 = rows.find((r) => r.slug === "renault-5") ?? rows[0]!;
+
+// Location : trajet quotidien en semaine, plus 60 km de courses et de balade le week-end
+const WEEKEND_KM = 60;
+const leaseRows = [10, 20, 30, 40, 60, 80].map((daily) => {
+  const week = daily * 5 + WEEKEND_KM;
+  const year = annualKm(week);
+  return { daily, week, year, tier: leaseTier(year) };
+});
+
+// Bornes publiques (Base nationale des IRVE), comptées dans les tuiles servies à l'outil
+let stations = 0;
+let fast = 0;
+try {
+  const dir = path.join(process.cwd(), "public/carte/bornes");
+  for (const f of fs.readdirSync(dir)) {
+    const items = JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")) as [number, number, number][];
+    stations += items.length;
+    fast += items.filter((s) => s[2] >= 50).length;
+  }
+} catch {
+  /* tuiles absentes : la phrase s'adapte */
+}
+
+// Écart moyen hiver / mixte sur les autonomies mesurées du catalogue
+const measured = all.filter((v) => ["tested", "bjorn_nyland"].includes(v.realRange.confidence));
+const winterLoss = Math.round((1 - measured.reduce((s, v) => s + v.realRange.winter_minus5_km / v.realRange.mixed_km, 0) / measured.length) * 100);
+
+const faq = [
+  {
+    question: "Combien de kilomètres peut-on faire par jour avec une voiture électrique ?",
+    answer: `Largement plus que le trajet domicile-travail moyen. Une ${r5.name} (${r5.battery}) parcourt ${formatKm(r5.winterKm)} réels en hiver : de quoi faire ${r5.days(40)} jours d'un trajet de 40 km aller-retour sans recharger, en gardant 10 % de réserve. L'outil Ma semaine fait ce calcul pour votre adresse et votre modèle, sur les vraies routes.`,
+  },
+  {
+    question: "Combien de fois faut-il recharger une voiture électrique par semaine ?",
+    answer: `Pour un trajet quotidien de 40 km, une à deux recharges par semaine suffisent avec la plupart des modèles récents, même en hiver. Avec une prise à la maison, la voiture se recharge la nuit ; sans prise, une demi-heure à une heure sur une borne rapide pendant les courses couvre souvent la semaine. Ma semaine indique les soirs ou les jours de recharge pour votre cas.`,
+  },
+  {
+    question: "Combien coûte l'électricité d'une voiture électrique pour 100 km ?",
+    answer: `À ${eur(ELEC_EUR_KWH)} le kWh à la maison, pertes de recharge comprises, une ${r5.name} dépense environ ${eur(r5.elec100)} pour 100 km, contre ${eur(petrol100)} pour une voiture essence de ${formatNumber(ICE_L_100, 1)} l/100 km au prix moyen de l'essence${fuelDate ? ` du ${fuelDate}` : ""}. Sur borne rapide publique (${eur(PUBLIC_EUR_KWH)} le kWh), l'écart se réduit nettement.`,
+  },
+  {
+    question: "Quel kilométrage annuel choisir pour une LLD ou une LOA ?",
+    answer: `Additionnez une semaine type (trajets du travail, courses, loisirs), multipliez par 52 et ajoutez vos grands trajets de vacances. Par exemple, 40 km par jour en semaine et ${WEEKEND_KM} km le week-end font ${formatKm(leaseRows[3]!.year)} par an : un forfait de ${formatNumber(leaseRows[3]!.tier ?? 0)} km par an suffit sans les vacances. Ma semaine fait ce calcul à partir de vos vrais lieux.`,
+  },
+  {
+    question: "Peut-on avoir une voiture électrique sans borne à domicile ?",
+    answer: `Oui, à condition d'avoir une borne sur son chemin. ${stations ? `La base nationale recense ${formatNumber(stations)} stations publiques en France métropolitaine, dont ${formatNumber(fast)} rapides (50 kW et plus). ` : ""}Une recharge d'appoint chaque semaine, au supermarché ou sur une borne rapide proche, suffit pour la plupart des trajets quotidiens. Ma semaine trouve la borne la plus utile près de vos courses et calcule le temps nécessaire.`,
+  },
+  {
+    question: "Recharger au travail, ça change quoi ?",
+    answer: "Beaucoup : une borne de parking de 7 kW remonte la batterie à 80 % pendant la journée de travail, souvent gratuitement ou à prix réduit. Deux jours branchés au bureau suffisent souvent pour toute la semaine, sans recharge à la maison ni sur borne publique.",
+  },
+  {
+    question: "L'autonomie d'une voiture électrique baisse-t-elle en hiver ?",
+    answer: `Oui. Sur les modèles mesurés du catalogue Evly, l'autonomie à -5 °C est en moyenne inférieure de ${winterLoss} % à l'autonomie réelle mixte : chauffage de l'habitacle et batterie froide. Ma semaine affiche toujours la saison d'hiver par défaut, pour ne pas promettre trop.`,
+  },
+  {
+    question: "Mon adresse est-elle enregistrée ?",
+    answer: "Non. Elle reste sur votre appareil : tout est calculé dans votre navigateur. Pour la localiser et tracer les petits trajets, elle passe par des services publics de cartographie (IGN, OpenStreetMap), sans compte et sans être conservée par Evly.",
+  },
+];
+
+const pageUrl = new URL(url("/ma-semaine/"), Astro.site).toString();
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "Ma semaine en électrique",
+    url: pageUrl,
+    description:
+      "Simulateur gratuit : depuis votre adresse, la semaine type avec une voiture électrique (travail, courses, loisirs), les recharges nécessaires, le coût face à l'essence, le kilométrage annuel et la carte de l'autonomie, en été comme en hiver.",
+    applicationCategory: "TravelApplication",
+    operatingSystem: "Tous, dans le navigateur",
+    inLanguage: "fr-FR",
+    isAccessibleForFree: true,
+    offers: { "@type": "Offer", price: 0, priceCurrency: "EUR" },
+    featureList: [
+      "Semaine type depuis votre adresse",
+      "Recharges à la maison, au travail ou sur borne publique",
+      "Coût de l'énergie face à l'essence",
+      "Kilométrage annuel et forfait de location (LLD, LOA)",
+      "Carte de l'autonomie aller-retour et aller simple, été et hiver",
+      `Comparaison de ${all.length} modèles et de leurs versions`,
+    ],
+    publisher: { "@id": `${Astro.site}#organization` },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Accueil", item: new URL(url("/"), Astro.site).toString() },
+      { "@type": "ListItem", position: 2, name: "Ma semaine en électrique", item: pageUrl },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })),
+  },
+];
 ---
 
 <BaseLayout
-  title="Ma semaine en électrique : jusqu'où va la voiture depuis chez vous"
-  description="Entrez votre adresse et choisissez un modèle : travail, courses, balades, la carte déroule votre semaine, vos recharges et jusqu'où il vous emmène sans recharger, même en hiver."
+  title="Simulateur voiture électrique : autonomie, recharges et coût"
+  description="Votre adresse, un modèle : la carte déroule votre semaine en électrique, les recharges, le coût face à l'essence et votre kilométrage annuel pour la LLD ou la LOA."
   ogImage="/og/pages/ma-semaine.jpg"
+  jsonLd={jsonLd}
   app
 >
-  <!-- Pleine largeur : la carte n'est pas bornée à la largeur du contenu éditorial -->
+  <!-- L'outil, en pleine largeur ; avant son chargement, son titre et sa promesse -->
   <div class="week-page pt-4 pb-10 md:pt-6">
-    <WeekPlanner client:only="react" vehicles={vehicles} />
+    <WeekPlanner client:only="react" vehicles={vehicles}>
+      <div slot="fallback" class="week-fallback">
+        <h1 class="display-2">Ma semaine en électrique</h1>
+        <p>
+          Simulateur d'autonomie, de recharge et de coût : votre vie de tous les jours avec une voiture électrique, depuis chez
+          vous, sur les vraies routes.
+        </p>
+      </div>
+    </WeekPlanner>
+  </div>
+
+  <!--
+    Le guide : ce que l'outil calcule, en chiffres, pour les modèles les plus courants.
+    Il s'ouvre par-dessus la carte (lien « Le guide » du volet, ou /ma-semaine/#guide) :
+    la carte reste en plein écran, et le texte est dans la page pour les moteurs de recherche.
+  -->
+  <div id="guide" class="week-guide-sheet" data-open="false">
+    <div class="week-guide-backdrop" data-guide-close aria-hidden="true"></div>
+    <section class="week-guide-panel" role="dialog" aria-modal="true" aria-labelledby="guide-title" inert>
+      <div class="week-guide-bar">
+        <span class="label-eyebrow">Le guide</span>
+        <button type="button" class="week-guide-close" data-guide-close aria-label="Fermer le guide et revenir à la carte">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true">
+            <path d="M18 6 6 18M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+  <article class="week-guide">
+    <header class="week-guide-head">
+      <h2 id="guide-title" class="display-2">Vivre en électrique au quotidien : les chiffres qui comptent</h2>
+      <p>
+        Autonomie réelle, nombre de recharges, coût face à l'essence, forfait kilométrique : les réponses dépendent de votre adresse,
+        de vos trajets et de votre façon de recharger. L'outil ci-dessus les calcule pour vous ; voici les ordres de grandeur pour
+        les modèles les plus vendus, avec les mêmes règles.
+      </p>
+    </header>
+
+    <section aria-labelledby="g-autonomie">
+      <h2 id="g-autonomie">Jusqu'où va une voiture électrique sans recharger ?</h2>
+      <p>
+        Une autonomie annoncée ne dit pas jusqu'où vous irez. Ce qui compte, c'est la distance par la route, retour compris, en
+        gardant une marge. Sur route à 80 ou 90 km/h, on va bien plus loin que sur autoroute à 130 km/h, et l'hiver réduit tout.
+        Les chiffres ci-dessous sont des rayons d'aller-retour, avec 10 % de batterie en réserve à l'arrivée.
+      </p>
+      <div class="week-table no-glossary">
+        <table>
+          <caption>Aller-retour sans recharger, depuis chez soi</caption>
+          <thead>
+            <tr>
+              <th scope="col">Modèle</th>
+              <th scope="col">Autonomie réelle en hiver</th>
+              <th scope="col">Sur route, en été</th>
+              <th scope="col">Sur route, en hiver</th>
+              <th scope="col">Par autoroute, en hiver</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr>
+                <th scope="row">
+                  <a href={url(`/vehicules/${r.slug}/`)}>{r.name}</a>
+                  <span>{r.battery} · {r.measured ? "mesurée" : "estimée"}</span>
+                </th>
+                <td>{formatKm(r.winterKm)}</td>
+                <td>{formatKm(r.roadSummer)}</td>
+                <td>{formatKm(r.roadWinter)}</td>
+                <td>{formatKm(r.hwWinter)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="week-guide-note">
+        Rayon par la route, en km, aller puis retour sans recharger. La carte de l'onglet « Jusqu'où ? » trace cette zone sur les vraies
+        routes autour de votre adresse et liste les villes et sites atteignables.
+      </p>
+    </section>
+
+    <section aria-labelledby="g-recharges">
+      <h2 id="g-recharges">Combien de recharges par semaine ?</h2>
+      <p>
+        Tout dépend de votre trajet quotidien et de l'endroit où vous rechargez. Avec une prise à la maison, la voiture se recharge
+        la nuit, au besoin : une à deux fois par semaine pour la plupart des trajets. Sans prise, une recharge d'appoint sur une borne
+        pendant les courses suffit souvent. Avec une borne au travail, la voiture se recharge pendant la journée, souvent pour rien.
+      </p>
+      <div class="week-table no-glossary">
+        <table>
+          <caption>Jours de trajet sans recharger, en hiver</caption>
+          <thead>
+            <tr>
+              <th scope="col">Modèle</th>
+              <th scope="col">20 km par jour</th>
+              <th scope="col">40 km par jour</th>
+              <th scope="col">60 km par jour</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr>
+                <th scope="row"><a href={url(`/vehicules/${r.slug}/`)}>{r.name}</a></th>
+                <td>{r.days(20)} jours</td>
+                <td>{r.days(40)} jours</td>
+                <td>{r.days(60)} jours</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="week-guide-note">Trajet aller et retour compris, à -5 °C, en gardant 10 % de batterie.</p>
+    </section>
+
+    <section aria-labelledby="g-cout">
+      <h2 id="g-cout">Combien coûte l'électricité face à l'essence ?</h2>
+      <p>
+        À la maison, au tarif de {eur(ELEC_EUR_KWH)} le kWh, pertes de recharge comprises, l'électricité coûte trois à quatre fois
+        moins cher que l'essence pour la même distance. En face, une voiture essence de {formatNumber(ICE_L_100, 1)} l/100 km, au prix moyen
+        national du SP95-E10{fuelDate ? ` du ${fuelDate}` : ""} : {eur(fuel.eur)} le litre, soit {eur(petrol100)} pour 100 km.
+      </p>
+      <div class="week-table no-glossary">
+        <table>
+          <caption>Coût de l'énergie pour 100 km et pour 1 000 km</caption>
+          <thead>
+            <tr>
+              <th scope="col">Modèle</th>
+              <th scope="col">Consommation réelle</th>
+              <th scope="col">Électricité, 100 km</th>
+              <th scope="col">Essence, 100 km</th>
+              <th scope="col">Économie, 1 000 km</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr>
+                <th scope="row"><a href={url(`/vehicules/${r.slug}/`)}>{r.name}</a></th>
+                <td>{formatNumber(r.kwh100, 1)} kWh/100 km</td>
+                <td>{eur(r.elec100)}</td>
+                <td>{eur(petrol100)}</td>
+                <td>{eur((petrol100 - r.elec100) * 10)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="week-guide-note">
+        Sur borne rapide publique ({eur(PUBLIC_EUR_KWH)} le kWh), l'électricité coûte un peu plus du double. Dans l'outil, vous indiquez
+        votre propre prix du kWh, à la maison et au travail, et le coût de votre semaine se calcule pendant la lecture.
+      </p>
+    </section>
+
+    <section aria-labelledby="g-location">
+      <h2 id="g-location">Quel forfait kilométrique choisir en LLD ou en LOA ?</h2>
+      <p>
+        Le loyer d'une location dépend du kilométrage annuel choisi, et chaque kilomètre en trop se paie au rendu de la voiture.
+        La méthode la plus sûre : partir d'une semaine type réelle (travail, courses, loisirs), la multiplier par 52, puis ajouter vos
+        grands trajets de vacances. C'est exactement ce que fait l'outil à partir de vos lieux.
+      </p>
+      <div class="week-table no-glossary">
+        <table>
+          <caption>Du trajet quotidien au forfait annuel</caption>
+          <thead>
+            <tr>
+              <th scope="col">Trajet quotidien, aller-retour</th>
+              <th scope="col">Par semaine</th>
+              <th scope="col">Par an</th>
+              <th scope="col">Forfait conseillé</th>
+            </tr>
+          </thead>
+          <tbody>
+            {leaseRows.map((l) => (
+              <tr>
+                <th scope="row">{formatKm(l.daily)}</th>
+                <td>{formatKm(l.week)}</td>
+                <td>{formatKm(l.year)}</td>
+                <td>{l.tier ? `${formatNumber(l.tier)} km par an` : "plus de 50 000 km par an"}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="week-guide-note">
+        Cinq jours de trajet et {formatKm(WEEKEND_KM)} de courses et de balades le week-end, sur 52 semaines, hors vacances. Pour les
+        ménages modestes, voir aussi le <a href={url("/leasing-social/")}>leasing social</a> et ses conditions de distance.
+      </p>
+    </section>
+
+    <section aria-labelledby="g-sans-prise">
+      <h2 id="g-sans-prise">Sans prise à la maison : recharger au travail ou pendant les courses</h2>
+      <p>
+        En appartement, la question n'est pas l'autonomie mais l'endroit où recharger.
+        {stations > 0 && (
+          <>
+            {" "}La base nationale des bornes recense <strong>{formatNumber(stations)} stations</strong> publiques en France métropolitaine,
+            dont <strong>{formatNumber(fast)} rapides</strong> (50 kW et plus).
+          </>
+        )}
+        {" "}Une borne rapide sur le parking du supermarché remonte la batterie à 80 % le temps des courses ; une borne au travail fait
+        la même chose pendant la journée. L'outil cherche la borne la plus utile près de vos courses et compte le temps de recharge
+        avec la puissance que votre voiture accepte vraiment.
+      </p>
+    </section>
+
+    <section aria-labelledby="g-methode">
+      <h2 id="g-methode">Comment l'outil calcule</h2>
+      <ul class="week-guide-list">
+        <li>Les distances suivent les vraies routes, depuis votre adresse : grands axes d'OpenStreetMap pour la carte, tracé exact pour les trajets de la semaine.</li>
+        <li>La consommation dépend de la route : autonomie mesurée à 130 km/h sur autoroute, autonomie mixte sur voie express, entre mixte et ville sur les routes.</li>
+        <li>L'hiver applique l'écart mesuré à -5 °C de chaque modèle. Les autonomies sont mesurées quand un essai existe, estimées sinon, et c'est toujours indiqué.</li>
+        <li>On garde 10 % de réserve à l'arrivée, et les recharges du quotidien s'arrêtent à 80 %.</li>
+      </ul>
+      <p class="week-guide-note">Détail des sources et des mesures : <a href={url("/methodologie/")}>notre méthodologie</a>.</p>
+    </section>
+
+    <section aria-labelledby="g-faq">
+      <h2 id="g-faq">Questions fréquentes</h2>
+      <FaqList entries={faq} />
+    </section>
+
+    <LinkChips
+      class="mt-12"
+      groups={[
+        {
+          title: "Les modèles du guide",
+          links: rows.map((r) => ({ label: r.name, href: url(`/vehicules/${r.slug}/`) })),
+        },
+        {
+          title: "Voir aussi",
+          links: [
+            { label: "Simulateur de coût total", href: url("/simulateur/") },
+            { label: "Comparateur", href: url("/comparer/") },
+            { label: "Quelle voiture électrique choisir ?", href: url("/recommandation/") },
+            { label: "Leasing social", href: url("/leasing-social/") },
+            { label: "Tout le catalogue", href: url("/vehicules/"), accent: true },
+          ],
+        },
+      ]}
+    />
+  </article>
+    </section>
   </div>
 </BaseLayout>
+
+<script>
+  // Panneau du guide : s'ouvre au-dessus de la carte, se ferme avec la croix, le fond ou Échap
+  function setupGuide() {
+    const sheet = document.getElementById("guide");
+    const panel = sheet?.querySelector<HTMLElement>(".week-guide-panel");
+    if (!sheet || !panel || sheet.dataset.ready) return;
+    sheet.dataset.ready = "1";
+    const ctrl = new AbortController();
+    const { signal } = ctrl;
+    let opener: HTMLElement | null = null;
+
+    const open = () => {
+      if (sheet.dataset.open === "true") return;
+      opener = document.activeElement as HTMLElement | null;
+      sheet.dataset.open = "true";
+      panel.inert = false;
+      panel.scrollTop = 0;
+      document.documentElement.classList.add("week-guide-lock");
+      panel.querySelector<HTMLElement>(".week-guide-close")?.focus({ preventScroll: true });
+    };
+    const close = () => {
+      if (sheet.dataset.open !== "true") return;
+      sheet.dataset.open = "false";
+      panel.inert = true;
+      document.documentElement.classList.remove("week-guide-lock");
+      if (location.hash === "#guide") history.replaceState(history.state, "", location.pathname + location.search);
+      opener?.focus({ preventScroll: true });
+    };
+
+    sheet.querySelectorAll("[data-guide-close]").forEach((el) => el.addEventListener("click", close, { signal }));
+    // Tout lien vers « #guide » (volet de l'outil, réponses de la FAQ) ouvre le panneau
+    document.addEventListener(
+      "click",
+      (e) => {
+        const link = (e.target as Element | null)?.closest?.('a[href$="#guide"]');
+        if (!link) return;
+        e.preventDefault();
+        open();
+      },
+      { signal }
+    );
+    document.addEventListener("keydown", (e) => e.key === "Escape" && close(), { signal });
+    document.addEventListener("astro:before-swap", () => ctrl.abort(), { once: true });
+    if (location.hash === "#guide") open();
+  }
+  setupGuide();
+  document.addEventListener("astro:page-load", setupGuide);
+</script>

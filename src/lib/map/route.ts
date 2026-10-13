@@ -41,6 +41,43 @@ function decode(str: string): [number, number][] {
   return out;
 }
 
+const departures = new Map<string, Promise<{ lat: number; lon: number }>>();
+
+/**
+ * Point de départ unique d'une adresse : le point de la route la plus proche, calculé une fois.
+ * Sans lui, le serveur accroche une adresse vague (rue entière, commune) à des tronçons
+ * différents selon la destination, et les trajets partent de deux bouts de la rue.
+ */
+export function departurePoint(home: { lat: number; lon: number }): Promise<{ lat: number; lon: number }> {
+  const key = `${home.lat.toFixed(5)},${home.lon.toFixed(5)}`;
+  let p = departures.get(key);
+  if (!p) {
+    p = fetch(ENDPOINT.replace("/route", "/locate"), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ locations: [{ lat: home.lat, lon: home.lon, radius: 120 }], costing: "auto", verbose: true }),
+    })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        type Edge = {
+          correlated_lat: number;
+          correlated_lon: number;
+          distance: number;
+          edge_info?: { names?: string[] };
+          edge?: { classification?: { classification?: string } };
+        };
+        const edges: Edge[] = [...(data?.[0]?.edges ?? [])].sort((a: Edge, b: Edge) => a.distance - b.distance);
+        // La rue nommée la plus proche plutôt qu'une voie de service (accès de parking, cour)
+        const street = edges.find((e) => e.edge_info?.names?.length && e.edge?.classification?.classification !== "service_other");
+        const best = street ?? edges[0];
+        return best ? { lat: best.correlated_lat, lon: best.correlated_lon } : home;
+      })
+      .catch(() => home);
+    departures.set(key, p);
+  }
+  return p;
+}
+
 export function roadRoute(from: { lat: number; lon: number }, to: { lat: number; lon: number }): Promise<RouteShape | null> {
   const key = [from.lat, from.lon, to.lat, to.lon].map((v) => v.toFixed(5)).join(",");
   let p = cache.get(key);

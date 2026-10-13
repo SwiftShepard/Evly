@@ -102,7 +102,7 @@ for (const file of fsSync.readdirSync(vehiclesDir).filter((f) => f.endsWith('.js
 }
 const latestDataDate = [...vehicleDates.values()].sort().at(-1);
 // Pages dont le contenu suit directement les fiches véhicules
-const DATA_PAGES = new Set(['/', '/vehicules/', '/marques/', '/comparer/', '/bons-plans/', '/leasing-social/', '/pro/vehicules/']);
+const DATA_PAGES = new Set(['/', '/vehicules/', '/marques/', '/comparer/', '/bons-plans/', '/leasing-social/', '/pro/vehicules/', '/ma-semaine/']);
 
 // https://astro.build/config
 export default defineConfig({

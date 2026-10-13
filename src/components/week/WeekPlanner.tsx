@@ -19,13 +19,14 @@ import type { Driven, Place, WeekVehicle } from "./types";
 import { budgetFor, rangeProfile, type Season } from "@/lib/map/energy";
 import { computeTrips, computeZones, loadRoads, setOrigin } from "@/lib/map/client";
 import { chargersAround, loadDestinations, placesAround, type Charger, type PoiPlace } from "@/lib/map/places";
-import { roadRoute } from "@/lib/map/route";
+import { departurePoint, roadRoute } from "@/lib/map/route";
 import { haversine } from "@/lib/map/roadGraph";
+import { annualKm, leaseTier } from "@/lib/map/mileage";
 import { DAYS, simulateWeek, type Outing, type Scenario, type WeekResult } from "@/lib/map/week";
 import { readTrip, writeTrip } from "@/lib/trip";
 import { formatKm, formatNumber } from "@/lib/format";
 import { url } from "@/lib/url";
-import { ChevronDown, PanelLeftClose } from "lucide-react";
+import { ArrowDown, ChevronDown, PanelLeftClose } from "lucide-react";
 
 interface Props {
   vehicles: WeekVehicle[];
@@ -79,6 +80,8 @@ interface Saved {
   drawer: boolean;
   /** Une borne au travail */
   workCharging: boolean;
+  /** Prix du kWh payé à la maison et au travail (€) */
+  prices: { home: number; work: number };
   places: Record<string, Place>;
   on: Record<string, boolean>;
   scenario: Scenario | null;
@@ -86,7 +89,7 @@ interface Saved {
   tab: Tab;
 }
 
-const DEFAULT_SAVED: Saved = { home: null, work: null, vehicles: [], versions: {}, drawer: true, workCharging: false, places: {}, on: {}, scenario: null, season: "winter", tab: "week" };
+const DEFAULT_SAVED: Saved = { home: null, work: null, vehicles: [], versions: {}, drawer: true, workCharging: false, prices: { home: ELEC_EUR_KWH, work: ELEC_EUR_KWH }, places: {}, on: {}, scenario: null, season: "winter", tab: "week" };
 
 function readSaved(): Saved {
   try {
@@ -324,7 +327,10 @@ export default function WeekPlanner({ vehicles }: Props) {
     const profiles = chosen.flatMap((v) => [rangeProfile(v.range, "summer"), rangeProfile(v.range, "winter")]);
     Promise.all([
       computeTrips(points, profiles, true),
-      Promise.all(points.map((p) => (haversine(home.lat, home.lon, p.lat, p.lon) < 120_000 ? roadRoute(home, p) : null))),
+      // Tous les trajets partent du même point de la route, celui du domicile
+      departurePoint(home).then((start) =>
+        Promise.all(points.map((p) => (haversine(home.lat, home.lon, p.lat, p.lon) < 120_000 ? roadRoute(start, p) : null)))
+      ),
     ]).then(([trips, routes]) => {
       if (stale) return;
       const next: Record<string, Leg> = {};
@@ -335,7 +341,11 @@ export default function WeekPlanner({ vehicles }: Props) {
         // Kilomètres du tracé précis quand on l'a, consommation au rythme des grands axes
         const km = r?.km ?? t.km;
         const scale = t.km > 0 ? km / t.km : 1;
-        next[id] = { km, used: Object.fromEntries(keys.map((key, i) => [key, (t.used[i] ?? 0) * scale])), coords: r?.coords ?? t.path };
+        // Le tracé part du repère du domicile et finit sur celui du lieu, quel que soit le point d'accroche
+        const line = r?.coords ?? t.path;
+        const place = places[id]!;
+        const coords: [number, number][] | null = line ? [[home.lon, home.lat], ...line, [place.lon, place.lat]] : null;
+        next[id] = { km, used: Object.fromEntries(keys.map((key, i) => [key, (t.used[i] ?? 0) * scale])), coords };
       });
       setLegs(next);
       // « Mon trajet » prend la vraie distance domicile-travail
@@ -436,8 +446,14 @@ export default function WeekPlanner({ vehicles }: Props) {
       if (!target || !home || !vehicle) return setFocus(null);
       setFocus({ ...target, coords: null });
       const near = haversine(home.lat, home.lon, target.place.lat, target.place.lon) < 120_000;
-      Promise.all([near ? roadRoute(home, target.place) : null, computeTrips([target.place], [rangeProfile(vehicle.range, "summer")], true)]).then(
-        ([route, [trip]]) => setFocus((f) => (f?.key === target.key ? { ...f, coords: route?.coords ?? trip?.path ?? null } : f))
+      Promise.all([
+        near ? departurePoint(home).then((start) => roadRoute(start, target.place)) : null,
+        computeTrips([target.place], [rangeProfile(vehicle.range, "summer")], true),
+      ]).then(([route, [trip]]) => {
+        const line = route?.coords ?? trip?.path ?? null;
+        const coords: [number, number][] | null = line ? [[home.lon, home.lat], ...line, [target.place.lon, target.place.lat]] : null;
+        setFocus((f) => (f?.key === target.key ? { ...f, coords } : f));
+      }
       );
     },
     [home, vehicle]
@@ -468,17 +484,18 @@ export default function WeekPlanner({ vehicles }: Props) {
   }, []);
 
   // Prix moyen du kWh de la semaine : maison et travail à 0,20 €, borne publique au tarif rapide
+  const prices = saved?.prices ?? DEFAULT_SAVED.prices;
   const eurPerKwh = useMemo(() => {
-    if (!week) return ELEC_EUR_KWH;
+    if (!week) return prices.home;
     let kwh = 0;
     let cost = 0;
     for (const d of week.days)
       for (const c of d.charges) {
         kwh += c.added;
-        cost += c.added * (c.kind === "stop" ? PUBLIC_EUR_KWH : ELEC_EUR_KWH);
+        cost += c.added * (c.kind === "stop" ? PUBLIC_EUR_KWH : c.kind === "work" ? prices.work : prices.home);
       }
-    return kwh > 0 ? cost / kwh : ELEC_EUR_KWH;
-  }, [week]);
+    return kwh > 0 ? cost / kwh : prices.home;
+  }, [week, prices.home, prices.work]);
 
   // Lecture de la semaine : la voiture fait chaque aller-retour, la jauge suit
   const stop = useCallback(() => {
@@ -624,7 +641,7 @@ export default function WeekPlanner({ vehicles }: Props) {
         <div className="week-drawer-scroll" id="week-drawer-content" inert={desktop && !drawerOpen ? true : undefined}>
       <section className="week-intro">
         <header>
-          <h1 className="display-2">Ma semaine</h1>
+          <h1 className="display-2">Ma semaine en électrique</h1>
           <p className="mt-2 text-[var(--color-text-muted)] text-[15px] leading-snug">
             Votre vie de tous les jours avec une électrique, depuis chez vous, sur les vraies routes.
           </p>
@@ -648,7 +665,7 @@ export default function WeekPlanner({ vehicles }: Props) {
         )}
 
         <div className="flex flex-col gap-3">
-          <AddressField label="Mon domicile" value={home} placeholder="Votre adresse" onChange={(p) => update({ home: p })} />
+          <AddressField label="Mon domicile" value={home} placeholder="Adresse, rue ou commune" onChange={(p) => update({ home: p })} />
           <div className="week-field">
             <span className="label-eyebrow">{chosen.length > 1 ? "Les modèles comparés" : "Le modèle"}</span>
             {chosen.map((v, i) => (
@@ -722,6 +739,7 @@ export default function WeekPlanner({ vehicles }: Props) {
         {tab === "week" ? (
           <div className="flex flex-col gap-4" role="tabpanel">
             <Verdict week={week} scenario={scenario} stopCharger={stopCharger} ready={!!vehicle && !!home} />
+            {week && <Mileage km={week.km} />}
             {chosen.length > 1 && (
               <ul className="week-compare" aria-label="Les autres modèles, même semaine">
                 {chosen.slice(1).map((v, k) => {
@@ -770,6 +788,20 @@ export default function WeekPlanner({ vehicles }: Props) {
                   )}
                 </>
               )}
+              <div className="week-prices">
+                <span className="label-eyebrow">Prix du kWh</span>
+                {scenario !== "topup" && (
+                  <PriceInput label="À la maison" value={prices.home} onChange={(home) => update({ prices: { ...prices, home } })} />
+                )}
+                {workCharging && scenario !== "nightly" && (
+                  <PriceInput label="Au travail" value={prices.work} onChange={(work) => update({ prices: { ...prices, work } })} />
+                )}
+                {scenario === "topup" && (
+                  <span className="week-price-fixed">
+                    Borne rapide <b>{formatNumber(PUBLIC_EUR_KWH, 2)}&nbsp;€</b>
+                  </span>
+                )}
+              </div>
               <span className="label-eyebrow mt-2">Saison</span>
               <div className="week-seg week-seg-fill" role="radiogroup" aria-label="Saison">
                 {(
@@ -804,10 +836,11 @@ export default function WeekPlanner({ vehicles }: Props) {
                         </div>
                         <div className="mt-1.5">
                           <AddressField
-                            label="Adresse du travail"
+                            label="Lieu de travail"
                             hideLabel
+                            near={home}
                             value={saved.work}
-                            placeholder="Adresse du travail (facultatif)"
+                            placeholder="Nom ou adresse, ex. : Hôpital Édouard-Herriot"
                             onChange={(w) => {
                               workChanged.current = !!w;
                               update({ work: w });
@@ -831,6 +864,7 @@ export default function WeekPlanner({ vehicles }: Props) {
                     on={isOn(p)}
                     place={places[p.id] ?? null}
                     options={options[p.cat] ?? []}
+                    near={home}
                     km={legs[p.id]?.km ?? null}
                     active={activeDay !== null && p.days.includes(activeDay)}
                     onToggle={(on) => update({ on: { ...saved.on, [p.id]: on } })}
@@ -909,6 +943,11 @@ export default function WeekPlanner({ vehicles }: Props) {
 
         {home && <ShareBox week={shareData} />}
 
+        <a href="#guide" className="week-guide-link">
+          Le guide : autonomie, recharges, coût, forfait LLD
+          <ArrowDown size={14} strokeWidth={2.25} aria-hidden="true" />
+        </a>
+
         <details className="week-method">
           <summary>Comment c'est calculé</summary>
           <ul>
@@ -922,7 +961,8 @@ export default function WeekPlanner({ vehicles }: Props) {
             </li>
             <li>On garde toujours 10 % de batterie en réserve. Les recharges du quotidien s'arrêtent à 80 %.</li>
             <li>
-              Coût : électricité à 0,20 €/kWh à la maison et au travail, {formatNumber(PUBLIC_EUR_KWH, 2)} €/kWh sur borne
+              Coût : électricité au prix que vous indiquez à la maison et au travail (0,20 €/kWh par défaut),{" "}
+              {formatNumber(PUBLIC_EUR_KWH, 2)} €/kWh sur borne
               publique, 10 % de pertes de recharge comprises. En face, une voiture essence de 6,5 l/100 km au prix moyen
               national du SP95-E10 du jour (flux officiel des prix carburants).
             </li>
@@ -970,6 +1010,59 @@ export default function WeekPlanner({ vehicles }: Props) {
         </button>
       </div>
     </div>
+  );
+}
+
+/** Prix du kWh en euros, saisi au centime (0 : recharge gratuite, au travail par exemple) */
+const cents = new Intl.NumberFormat("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+function PriceInput({ label, value, onChange }: { label: string; value: number; onChange: (v: number) => void }) {
+  const [text, setText] = useState(cents.format(value));
+  useEffect(() => setText(cents.format(value)), [value]);
+  const commit = () => {
+    const v = Number(text.replace(",", ".").replace(/[^\d.]/g, ""));
+    if (Number.isFinite(v) && v >= 0 && v <= 2) onChange(Math.round(v * 100) / 100);
+    else setText(cents.format(value));
+  };
+  return (
+    <label className="week-price">
+      <span>{label}</span>
+      <span className="week-price-box">
+        <input
+          type="text"
+          inputMode="decimal"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          onBlur={commit}
+          onKeyDown={(e) => e.key === "Enter" && (e.currentTarget as HTMLInputElement).blur()}
+          aria-label={`Prix du kWh ${label.toLowerCase()}, en euros`}
+        />
+        <span aria-hidden="true">€</span>
+      </span>
+    </label>
+  );
+}
+
+/** Kilomètres de la semaine, sur l'année, et le forfait de location qui les couvre */
+function Mileage({ km }: { km: number }) {
+  const year = annualKm(km);
+  const tier = leaseTier(year);
+  return (
+    <dl className="week-mileage">
+      <div>
+        <dt>Par semaine</dt>
+        <dd className="tabular">{formatKm(Math.round(km))}</dd>
+      </div>
+      <div>
+        <dt>Sur un an</dt>
+        <dd className="tabular">{formatKm(year)}</dd>
+      </div>
+      <div>
+        <dt>Location (LLD, LOA)</dt>
+        <dd className="tabular">{tier ? `forfait ${formatNumber(tier)} km/an` : "plus de 50 000 km/an"}</dd>
+      </div>
+      <p className="week-mileage-note">52 semaines comme celle-ci ; ajoutez vos grands trajets de vacances.</p>
+    </dl>
   );
 }
 

@@ -1,11 +1,13 @@
 /**
- * Champ d'adresse avec suggestions de la Base Adresse Nationale (Géoplateforme IGN).
- * L'adresse tapée part vers ce service public pour être localisée ; Evly n'en garde rien.
+ * Champ de lieu : une adresse, une commune, ou simplement le nom d'un endroit qu'on connaît
+ * (« Fitness Park », « Carrefour »). Avec un point de référence (domicile, travail), les
+ * suggestions se limitent aux alentours, du plus proche au plus loin.
+ * La saisie part vers les services de recherche publics (lib/map/search) ; Evly n'en garde rien.
  */
 import { useEffect, useId, useRef, useState } from "react";
 import type { Place } from "./types";
-
-const ENDPOINT = "https://data.geopf.fr/geocodage/search";
+import { searchPlaces, type FoundPlace } from "@/lib/map/search";
+import { formatKm, formatNumber } from "@/lib/format";
 
 interface Props {
   label: string;
@@ -13,24 +15,17 @@ interface Props {
   hideLabel?: boolean;
   value: Place | null;
   placeholder?: string;
+  /** Point autour duquel chercher (domicile, travail) */
+  near?: { lat: number; lon: number } | null;
   onChange: (place: Place | null) => void;
 }
 
-export async function geocode(q: string, signal?: AbortSignal): Promise<Place[]> {
-  const res = await fetch(`${ENDPOINT}?q=${encodeURIComponent(q)}&limit=5&autocomplete=1`, { signal });
-  if (!res.ok) return [];
-  const data = await res.json();
-  return (data.features ?? []).map((f: any) => ({
-    label: f.properties.label as string,
-    lon: f.geometry.coordinates[0] as number,
-    lat: f.geometry.coordinates[1] as number,
-  }));
-}
+const distance = (m: number) => (m < 1000 ? `${Math.round(m / 50) * 50} m` : m < 10_000 ? `${formatNumber(m / 1000, 1)} km` : formatKm(m / 1000));
 
-export default function AddressField({ label, hideLabel = false, value, placeholder, onChange }: Props) {
+export default function AddressField({ label, hideLabel = false, value, placeholder, near = null, onChange }: Props) {
   const id = useId();
   const [text, setText] = useState(value?.label ?? "");
-  const [results, setResults] = useState<Place[]>([]);
+  const [results, setResults] = useState<FoundPlace[]>([]);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
   const typed = useRef(false);
@@ -39,6 +34,7 @@ export default function AddressField({ label, hideLabel = false, value, placehol
     setText(value?.label ?? "");
   }, [value?.label]);
 
+  const nearKey = near ? `${near.lat.toFixed(2)},${near.lon.toFixed(2)}` : "";
   useEffect(() => {
     if (!typed.current || text.trim().length < 3) {
       setResults([]);
@@ -46,25 +42,25 @@ export default function AddressField({ label, hideLabel = false, value, placehol
     }
     const ctrl = new AbortController();
     const t = setTimeout(() => {
-      geocode(text, ctrl.signal)
+      searchPlaces(text, near, ctrl.signal)
         .then((r) => {
           setResults(r);
           setActive(0);
           setOpen(true);
         })
         .catch(() => {});
-    }, 220);
+    }, 260);
     return () => {
       clearTimeout(t);
       ctrl.abort();
     };
-  }, [text]);
+  }, [text, nearKey]);
 
-  const pick = (p: Place) => {
+  const pick = (p: FoundPlace) => {
     typed.current = false;
     setText(p.label);
     setOpen(false);
-    onChange(p);
+    onChange({ label: p.label, lat: p.lat, lon: p.lon });
   };
 
   return (
@@ -117,10 +113,17 @@ export default function AddressField({ label, hideLabel = false, value, placehol
                   pick(r);
                 }}
               >
-                {r.label}
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate">{r.label}</span>
+                  {r.detail && <span className="block truncate text-[12px] text-[var(--color-text-faint)]">{r.detail}</span>}
+                </span>
+                {r.d !== null && <span className="tabular shrink-0 text-[12px] text-[var(--color-text-faint)]">{distance(r.d)}</span>}
               </li>
             ))}
           </ul>
+        )}
+        {open && typed.current && text.trim().length >= 3 && !results.length && near && (
+          <p className="week-combo-empty">Rien de ce nom à moins de 80 km.</p>
         )}
       </div>
     </div>

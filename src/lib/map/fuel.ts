@@ -35,7 +35,7 @@ export function fuelPrice(): Promise<FuelPrice> {
         where: "e10_maj >= now(days=-7)",
         limit: "1",
       });
-      const res = await fetch(`${ENDPOINT}?${params}`);
+      const res = await fetch(`${ENDPOINT}?${params}`, { signal: AbortSignal.timeout(8000) });
       if (!res.ok) return fallback;
       const row = (await res.json())?.results?.[0];
       const eur = Number(row?.eur);

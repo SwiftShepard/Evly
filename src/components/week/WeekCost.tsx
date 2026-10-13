@@ -3,7 +3,7 @@
  * deux compteurs montent au fil des trajets ; sinon ils donnent le total de la semaine.
  */
 import { Fuel, Zap } from "lucide-react";
-import { formatNumber } from "@/lib/format";
+import { formatKm, formatNumber } from "@/lib/format";
 import type { FuelPrice } from "@/lib/map/fuel";
 import { ICE_L_100 } from "@/lib/map/fuel";
 
@@ -32,7 +32,9 @@ export default function WeekCost({ km, kwh, eurPerKwh, fuel, live }: Props) {
   return (
     <section className="week-cost" aria-label="Coût de l'énergie">
       <div className="week-cost-head">
-        <span className="label-eyebrow">Énergie {live ? "depuis lundi" : "de la semaine"}</span>
+        <span className="label-eyebrow">
+          Énergie {live ? "depuis lundi" : "de la semaine"} · <span className="tabular">{formatKm(Math.round(km))}</span>
+        </span>
         {saved > 0.005 && <b className="week-cost-saved tabular">{eur(saved)} de moins qu'en essence</b>}
       </div>
       <dl className="week-cost-bars">
