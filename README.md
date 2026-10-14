@@ -195,7 +195,7 @@ Règles non négociables :
 | `npm run preview` | Sert `dist/` localement. |
 | `npm run check` | TypeScript + Astro check. |
 | `npm run map:roads` | Régénère le graphe routier de « Ma semaine » (`public/carte/routes.bin.gz`). |
-| `npm run map:places` | Régénère les lieux du quotidien et les destinations (`public/carte/lieux/`, `destinations.json`). |
+| `npm run map:places` | Régénère les lieux du quotidien, les destinations et les équipements sportifs par activité (`public/carte/lieux/`, `destinations.json`, `public/carte/activites/`). |
 | `npm run map:chargers` | Régénère les bornes de recharge (`public/carte/bornes/`). |
 
 ### Données de la carte « Ma semaine »

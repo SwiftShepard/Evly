@@ -1,5 +1,5 @@
 /**
- * Graphe des grands axes français (généré par scripts/map/build-road-graph.py)
+ * Graphe routier principal français (jusqu'aux routes de desserte) (généré par scripts/map/build-road-graph.py)
  * et calcul de portée sur ce graphe, entièrement dans le navigateur.
  * Fonctions pures : utilisables dans un Web Worker comme dans les tests.
  */

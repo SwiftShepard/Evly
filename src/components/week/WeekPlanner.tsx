@@ -7,13 +7,15 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import MapView, { type MapHandle, type Pin, type RouteLine, type ZoneLayer } from "./MapView";
 import AddressField from "./AddressField";
 import VehiclePicker from "./VehiclePicker";
-import OutingRow from "./OutingRow";
+import BrickRow from "./BrickRow";
 import WeekTimeline from "./WeekTimeline";
 import WeekCost from "./WeekCost";
+import WeekMileage from "./WeekMileage";
 import { CHARGING_LOSSES, ELEC_EUR_KWH, PUBLIC_EUR_KWH, fuelPrice, type FuelPrice } from "@/lib/map/fuel";
 import ReachList from "./ReachList";
 import { CategoryIcon } from "./icons";
 import ShareBox from "./ShareBox";
+import { BRICK_KINDS, DEFAULT_BRICKS, fromLegacy, newBrick, sanitizeBricks, type Brick } from "./bricks";
 import { readShared, type SharedWeek } from "@/lib/map/share";
 import type { Driven, Place, WeekVehicle } from "./types";
 import { budgetFor, rangeProfile, type Season } from "@/lib/map/energy";
@@ -21,12 +23,11 @@ import { computeTrips, computeZones, loadRoads, setOrigin } from "@/lib/map/clie
 import { chargersAround, loadDestinations, placesAround, type Charger, type PoiPlace } from "@/lib/map/places";
 import { departurePoint, roadRoute } from "@/lib/map/route";
 import { haversine } from "@/lib/map/roadGraph";
-import { annualKm, leaseTier } from "@/lib/map/mileage";
 import { DAYS, simulateWeek, type Outing, type Scenario, type WeekResult } from "@/lib/map/week";
 import { readTrip, writeTrip } from "@/lib/trip";
 import { formatKm, formatNumber } from "@/lib/format";
 import { url } from "@/lib/url";
-import { ArrowDown, ChevronDown, PanelLeftClose } from "lucide-react";
+import { ArrowDown, ChevronDown, PanelLeftClose, Plus } from "lucide-react";
 
 interface Props {
   vehicles: WeekVehicle[];
@@ -35,27 +36,6 @@ interface Props {
 type Tab = "week" | "reach";
 type TripKind = "return" | "oneway";
 type Status = "idle" | "loading" | "ready" | "far" | "error";
-
-interface PlanItem {
-  id: string;
-  cat: string;
-  days: number[];
-  perDay: number;
-  label: string;
-  when: string;
-  on: boolean;
-}
-
-/** Semaine type proposée ; chaque sortie se désactive ou change de lieu */
-const PLAN: PlanItem[] = [
-  { id: "travail", cat: "travail", days: [0, 1, 2, 3, 4], perDay: 1, label: "Travail", when: "du lundi au vendredi", on: true },
-  { id: "ecole", cat: "ecole", days: [0, 1, 3, 4], perDay: 2, label: "École", when: "matin et soir, sauf mercredi", on: false },
-  { id: "sport", cat: "sport", days: [2], perDay: 1, label: "Sport", when: "mercredi soir", on: true },
-  { id: "restaurant", cat: "restaurant", days: [4], perDay: 1, label: "Restaurant", when: "vendredi soir", on: true },
-  { id: "courses", cat: "courses", days: [5], perDay: 1, label: "Courses", when: "samedi", on: true },
-  { id: "bricolage", cat: "bricolage", days: [5], perDay: 1, label: "Bricolage", when: "samedi", on: true },
-  { id: "balade", cat: "balade", days: [6], perDay: 1, label: "Balade", when: "dimanche", on: true },
-];
 
 /** Grandes enseignes, préférées tant qu'elles ne sont pas beaucoup plus loin (facteur de distance) */
 const BRANDS: Record<string, RegExp> = {
@@ -82,19 +62,26 @@ interface Saved {
   workCharging: boolean;
   /** Prix du kWh payé à la maison et au travail (€) */
   prices: { home: number; work: number };
+  /** Lieu choisi par brique (identifiant de brique -> lieu) */
   places: Record<string, Place>;
-  on: Record<string, boolean>;
+  /** Semaine type : briques empilées, travail en tête */
+  items: Brick[];
   scenario: Scenario | null;
   season: Season;
   tab: Tab;
 }
 
-const DEFAULT_SAVED: Saved = { home: null, work: null, vehicles: [], versions: {}, drawer: true, workCharging: false, prices: { home: ELEC_EUR_KWH, work: ELEC_EUR_KWH }, places: {}, on: {}, scenario: null, season: "winter", tab: "week" };
+const DEFAULT_SAVED: Saved = { home: null, work: null, vehicles: [], versions: {}, drawer: true, workCharging: false, prices: { home: ELEC_EUR_KWH, work: ELEC_EUR_KWH }, places: {}, items: DEFAULT_BRICKS, scenario: null, season: "winter", tab: "week" };
 
 function readSaved(): Saved {
   try {
     const raw = localStorage.getItem(STORE_KEY);
-    if (raw) return { ...DEFAULT_SAVED, ...JSON.parse(raw) };
+    if (raw) {
+      const s = JSON.parse(raw);
+      // Réglages d'avant les briques : interrupteurs d'une liste fixe
+      const items = sanitizeBricks(s.items) ?? (s.on ? fromLegacy(s.on) : DEFAULT_BRICKS);
+      return { ...DEFAULT_SAVED, ...s, items };
+    }
   } catch {
     /* stockage indisponible */
   }
@@ -157,6 +144,10 @@ export default function WeekPlanner({ vehicles }: Props) {
   const [desktop, setDesktop] = useState(false);
   const playToken = useRef(0);
   const workChanged = useRef(false);
+  /** Champ « Comparer avec un autre modèle » ouvert */
+  const [adding, setAdding] = useState(false);
+  /** Brique tout juste ajoutée : elle s'ouvre pour qu'on choisisse ses jours et son lieu */
+  const [fresh, setFresh] = useState<string | null>(null);
 
   // Réglages enregistrés, semaine partagée (#semaine=…) ou modèle demandé par la fiche (?v=slug)
   const loadOwn = useCallback(() => {
@@ -187,7 +178,7 @@ export default function WeekPlanner({ vehicles }: Props) {
         vehicles: shared.vehicle && bySlug.has(shared.vehicle) ? [shared.vehicle] : [],
         versions: shared.versions,
         places: shared.places,
-        on: shared.on,
+        items: sanitizeBricks(shared.items) ?? fromLegacy(shared.on ?? {}),
         scenario: (["nightly", "weekly", "topup"] as const).find((k) => k === shared.scenario) ?? "weekly",
         season: shared.season as Season,
         tab: shared.tab as Tab,
@@ -268,7 +259,7 @@ export default function WeekPlanner({ vehicles }: Props) {
   useEffect(() => {
     if (!home) return;
     let stale = false;
-    const cats = PLAN.filter((p) => p.cat !== "travail" && p.cat !== "balade").map((p) => p.cat);
+    const cats = BRICK_KINDS.filter((k) => k.cat !== "travail" && k.cat !== "balade").map((k) => k.cat);
     Promise.all([
       ...cats.map(async (cat) => {
         let found = await placesAround(home.lat, home.lon, [cat], 12);
@@ -302,26 +293,37 @@ export default function WeekPlanner({ vehicles }: Props) {
     };
   }, [home]);
 
-  // Lieu retenu pour chaque sortie : celui choisi, sinon le plus proche proposé
+  // Semaine type : briques empilées, travail en tête
+  const items: Brick[] = saved?.items ?? DEFAULT_BRICKS;
+  const itemsKey = JSON.stringify(items);
+
+  // Lieu retenu pour chaque brique : celui choisi, sinon le plus proche proposé qu'aucune
+  // autre brique de la même catégorie n'occupe (deux séances de sport : deux salles)
   const places = useMemo(() => {
     const out: Record<string, Place | null> = {};
-    for (const p of PLAN) {
-      if (p.id === "travail") out[p.id] = saved?.work ?? null;
+    const taken = new Set<string>();
+    const keyOf = (pl: { lat: number; lon: number }) => `${pl.lat.toFixed(5)},${pl.lon.toFixed(5)}`;
+    for (const b of items) if (saved?.places[b.id]) taken.add(keyOf(saved.places[b.id]!));
+    for (const b of items) {
+      if (b.id === "travail") out[b.id] = saved?.work ?? null;
+      else if (saved?.places[b.id]) out[b.id] = saved.places[b.id]!;
       else {
-        const first = options[p.cat]?.[0];
-        out[p.id] = saved?.places[p.id] ?? (first ? { label: first.name, lat: first.lat, lon: first.lon } : null);
+        const free = options[b.cat]?.find((o) => !taken.has(keyOf(o)));
+        if (free) taken.add(keyOf(free));
+        out[b.id] = free ? { label: free.name, lat: free.lat, lon: free.lon } : null;
       }
     }
     return out;
-  }, [saved?.places, saved?.work, options]);
-  const isOn = (p: PlanItem) => saved?.on[p.id] ?? p.on;
+  }, [saved?.places, saved?.work, options, itemsKey]);
   const placeKey = JSON.stringify(places);
+  // Recharge d'appoint : pendant les premières courses de la semaine (dernier jour coché)
+  const shopping = items.find((b) => b.cat === "courses" && b.days.length);
 
   // Trajets domicile -> lieux : batterie (grands axes, local) et tracé précis (Valhalla)
   useEffect(() => {
     if (!origin || !vehicle || !home) return;
     let stale = false;
-    const ids = PLAN.filter((p) => places[p.id]).map((p) => p.id);
+    const ids = items.filter((b) => places[b.id]).map((b) => b.id);
     const points = ids.map((id) => places[id]!);
     const keys = chosen.flatMap((v) => [`${v.key}:summer`, `${v.key}:winter`]);
     const profiles = chosen.flatMap((v) => [rangeProfile(v.range, "summer"), rangeProfile(v.range, "winter")]);
@@ -362,7 +364,7 @@ export default function WeekPlanner({ vehicles }: Props) {
   // Recharge d'appoint : une borne rapide au supermarché, sinon la borne rapide la plus proche de chez soi,
   // sinon la borne (lente) du supermarché
   useEffect(() => {
-    const shop = places.courses;
+    const shop = shopping ? places[shopping.id] : null;
     if (!home || scenario !== "topup") return;
     let stale = false;
     (async () => {
@@ -382,19 +384,19 @@ export default function WeekPlanner({ vehicles }: Props) {
   const outingsFor = useCallback(
     (v: Driven): Outing[] => {
       const list: Outing[] = [];
-      for (const p of PLAN) {
-        if (!isOn(p)) continue;
-        const used = legs[p.id]?.used[`${v.key}:${season}`];
-        if (used !== undefined && places[p.id]) list.push({ id: p.id, cat: p.cat, days: p.days, perDay: p.perDay, km: legs[p.id]!.km, used });
-        else if (p.id === "travail" && !places.travail) {
+      for (const b of items) {
+        if (!b.days.length) continue;
+        const used = legs[b.id]?.used[`${v.key}:${season}`];
+        if (used !== undefined && places[b.id]) list.push({ id: b.id, cat: b.cat, days: b.days, perDay: b.perDay, km: legs[b.id]!.km, used });
+        else if (b.id === "travail" && !places.travail) {
           // Sans adresse de travail : le trajet quotidien de « Mon trajet »
           const km = dailyKm / 2;
-          list.push({ id: p.id, cat: p.cat, days: p.days, perDay: 1, km, used: km / rangeProfile(v.range, season).road });
+          list.push({ id: b.id, cat: b.cat, days: b.days, perDay: 1, km, used: km / rangeProfile(v.range, season).road });
         }
       }
       return list;
     },
-    [legs, season, saved?.on, placeKey, dailyKm]
+    [legs, season, itemsKey, placeKey, dailyKm]
   );
   const outings: Outing[] = useMemo(() => (vehicle ? outingsFor(vehicle) : []), [vehicle, outingsFor]);
 
@@ -404,7 +406,10 @@ export default function WeekPlanner({ vehicles }: Props) {
       chosen.map((v) => {
         const list = outingsFor(v);
         if (!list.length) return null;
-        const stop = stopCharger && list.some((o) => o.id === "courses") ? { kw: stopCharger.charger.kw, day: 5, outingId: "courses" } : null;
+        const stop =
+          stopCharger && shopping && list.some((o) => o.id === shopping.id)
+            ? { kw: stopCharger.charger.kw, day: shopping.days.at(-1)!, outingId: shopping.id }
+            : null;
         return simulateWeek(list, scenario, stop, v.charging, { workCharging, workOutingId: "travail" });
       }),
     [chosen, outingsFor, scenario, stopCharger, workCharging]
@@ -461,7 +466,7 @@ export default function WeekPlanner({ vehicles }: Props) {
   useEffect(() => setFocus(null), [home, vehicle, tripKind, tab]);
 
   // Carte de la semaine : tracés et repères, le jour choisi en avant
-  const dayOutings = activeDay === null ? null : new Set(PLAN.filter((p) => p.days.includes(activeDay)).map((p) => p.id));
+  const dayOutings = activeDay === null ? null : new Set(items.filter((b) => b.days.includes(activeDay)).map((b) => b.id));
   const routes: RouteLine[] = useMemo(() => {
     if (tab !== "week") return focus?.coords ? [{ id: "focus", coords: focus.coords, active: true }] : [];
     return outings
@@ -590,12 +595,29 @@ export default function WeekPlanner({ vehicles }: Props) {
         versions: vehicle ? { [vehicle.slug]: vehicle.version.id } : {},
         workCharging,
         places: saved.places,
-        on: saved.on,
+        items,
         scenario,
         season,
         tab,
       }
     : null;
+
+  const seasonSeg = (
+    <div className="week-seg week-seg-sm" role="radiogroup" aria-label="Saison">
+      {(
+        [
+          ["winter", "Hiver"],
+          ["summer", "Été"],
+        ] as const
+      ).map(([k, l]) => (
+        <button key={k} type="button" role="radio" aria-checked={season === k} onClick={() => update({ season: k })} title={k === "winter" ? "Hiver, -5 °C" : undefined}>
+          {l}
+        </button>
+      ))}
+    </div>
+  );
+  // Dans « Jusqu'où ? » avec un seul modèle, l'été et l'hiver sont dessinés ensemble
+  const seasonShown = tab === "week" || chosen.length > 1;
 
   return (
     <div className="week-app" data-drawer={drawerOpen ? "open" : "closed"}>
@@ -612,388 +634,401 @@ export default function WeekPlanner({ vehicles }: Props) {
           className="week-map-box"
         />
         {tab === "week" && week && vehicle && (
+          // Une seule barre en bas de la carte : le verdict, puis la frise et les chiffres côte à côte
           <div className="week-hud">
-            <WeekCost
-              km={liveTotals?.km ?? week.km}
-              kwh={(liveTotals?.used ?? week.used) * vehicle.charging.usableKWh * CHARGING_LOSSES}
-              eurPerKwh={eurPerKwh}
-              fuel={fuel}
-              live={!!liveTotals}
-            />
-            <WeekTimeline
-              days={week.days}
-              active={activeDay}
-              live={live}
-              playing={playing}
-              onSelect={(d) => {
-                stop();
-                setActiveDay(d);
-              }}
-              onPlay={play}
-              onStop={stop}
-            />
+            <div className="week-bar">
+              <Verdict week={week} scenario={scenario} stopCharger={stopCharger} ready />
+              <div className="week-bar-row">
+                <WeekTimeline
+                  days={week.days}
+                  active={activeDay}
+                  live={live}
+                  playing={playing}
+                  onSelect={(d) => {
+                    stop();
+                    setActiveDay(d);
+                  }}
+                  onPlay={play}
+                  onStop={stop}
+                />
+                <WeekMileage km={liveTotals?.km ?? week.km} live={!!liveTotals} />
+                <WeekCost
+                  km={liveTotals?.km ?? week.km}
+                  kwh={(liveTotals?.used ?? week.used) * vehicle.charging.usableKWh * CHARGING_LOSSES}
+                  eurPerKwh={eurPerKwh}
+                  fuel={fuel}
+                  live={!!liveTotals}
+                />
+              </div>
+            </div>
           </div>
         )}
       </div>
 
-      {/* Volet des réglages : accroché à gauche sur ordinateur, il se replie pour laisser toute la carte */}
+      {/* Volet des réglages (ordinateur) : un seul défilement, onglets collés en haut */}
       <div className="week-drawer" ref={drawerRef}>
         <div className="week-drawer-scroll" id="week-drawer-content" inert={desktop && !drawerOpen ? true : undefined}>
-      <section className="week-intro">
-        <header>
-          <h1 className="display-2">Ma semaine en électrique</h1>
-          <p className="mt-2 text-[var(--color-text-muted)] text-[15px] leading-snug">
-            Votre vie de tous les jours avec une électrique, depuis chez vous, sur les vraies routes.
-          </p>
-        </header>
+          <section className="week-intro">
+            <h1 className="week-title">Ma semaine en électrique</h1>
 
-        {sharedView && (
-          <div className="week-shared">
-            <p>Vous regardez une semaine qu'on vous a partagée. Vos modifications ne sont pas enregistrées.</p>
-            <button
-              type="button"
-              className="btn btn-sm btn-secondary"
-              onClick={() => {
-                history.replaceState(null, "", location.pathname + location.search);
-                setSharedView(false);
-                loadOwn();
-              }}
-            >
-              Revenir à ma semaine
-            </button>
-          </div>
-        )}
-
-        <div className="flex flex-col gap-3">
-          <AddressField label="Mon domicile" value={home} placeholder="Adresse, rue ou commune" onChange={(p) => update({ home: p })} />
-          <div className="week-field">
-            <span className="label-eyebrow">{chosen.length > 1 ? "Les modèles comparés" : "Le modèle"}</span>
-            {chosen.map((v, i) => (
-              <div key={v.slug} className="week-vehicle">
-                {chosen.length > 1 && <i className="week-dot" style={{ background: COMPARE_COLORS[i] }} aria-hidden="true" />}
-                {v.image && <img src={v.image} alt="" width={72} height={42} className="vehicle-photo" />}
-                <div className="min-w-0 flex-1">
-                  <div className="text-[13px] text-[var(--color-text-faint)]">{v.brand}</div>
-                  <a href={url(`/vehicules/${v.slug}/`)} className="font-semibold leading-tight truncate block hover:underline">
-                    {v.model}
-                  </a>
-                </div>
+            {sharedView && (
+              <div className="week-shared">
+                <p>Vous regardez une semaine qu'on vous a partagée. Vos modifications ne sont pas enregistrées.</p>
                 <button
                   type="button"
                   className="btn btn-sm btn-secondary"
-                  onClick={() => update({ vehicles: saved.vehicles.filter((s) => s !== v.slug) })}
-                  aria-label={chosen.length > 1 ? `Retirer ${v.brand} ${v.model}` : undefined}
+                  onClick={() => {
+                    history.replaceState(null, "", location.pathname + location.search);
+                    setSharedView(false);
+                    loadOwn();
+                  }}
                 >
-                  {chosen.length > 1 ? "Retirer" : "Changer"}
+                  Revenir à ma semaine
                 </button>
-                {v.versions.length > 1 && (
-                  <label className="week-version">
-                    <span>Version</span>
-                    <select
-                      value={v.version.id}
-                      onChange={(e) => update({ versions: { ...saved.versions, [v.slug]: e.target.value } })}
-                      aria-label={`Version de ${v.brand} ${v.model}`}
-                    >
-                      {v.versions.map((x) => (
-                        <option key={x.id} value={x.id}>
-                          {x.label}
-                        </option>
-                      ))}
-                    </select>
-                    <ChevronDown size={15} strokeWidth={2.25} aria-hidden="true" />
-                  </label>
-                )}
-                {/* Ce que la version choisie change au calcul, en clair */}
-                <p className="week-version-facts">
-                  {v.versions.length === 1 && <span>{v.version.label} · </span>}
-                  Autonomie réelle <b>{formatKm(v.range.mixed_km)}</b>, <b>{formatKm(v.range.winter_minus5_km)}</b> en hiver
-                  {v.version.detail && <> · {v.version.detail}</>}
-                  <span className="card-confidence" data-level={v.measured ? "measured" : "estimated"}>
-                    {v.measured ? "mesurée" : "estimée"}
-                  </span>
-                </p>
               </div>
-            ))}
-            {chosen.length < MAX_COMPARED && (
-              <VehiclePicker
-                vehicles={vehicles}
-                exclude={saved.vehicles}
-                label={chosen.length ? "Comparer avec un autre modèle" : "Chercher un modèle"}
-                onPick={(v) => update({ vehicles: [...saved.vehicles, v.slug].slice(0, MAX_COMPARED) })}
-              />
-            )}
-          </div>
-        </div>
-      </section>
-
-      <aside className="week-panel">
-        <div className="week-tabs" role="tablist" aria-label="Affichage">
-          <button type="button" role="tab" aria-selected={tab === "week"} onClick={() => update({ tab: "week" })}>
-            Ma semaine
-          </button>
-          <button type="button" role="tab" aria-selected={tab === "reach"} onClick={() => { stop(); update({ tab: "reach" }); }}>
-            Jusqu'où ?
-          </button>
-        </div>
-
-        {tab === "week" ? (
-          <div className="flex flex-col gap-4" role="tabpanel">
-            <Verdict week={week} scenario={scenario} stopCharger={stopCharger} ready={!!vehicle && !!home} />
-            {week && <Mileage km={week.km} />}
-            {chosen.length > 1 && (
-              <ul className="week-compare" aria-label="Les autres modèles, même semaine">
-                {chosen.slice(1).map((v, k) => {
-                  const w = weeks[k + 1];
-                  return (
-                    <li key={v.slug}>
-                      <i className="week-dot" style={{ background: COMPARE_COLORS[k + 1] }} aria-hidden="true" />
-                      <span className="min-w-0 flex-1 truncate">{v.model}</span>
-                      <b className="tabular" data-warn={w && !w.ok ? "1" : undefined}>
-                        {w ? verdictLines(w, scenario, stopCharger).big : "…"}
-                      </b>
-                    </li>
-                  );
-                })}
-              </ul>
             )}
 
-            <div className="week-controls">
-              <span className="label-eyebrow">Recharge</span>
-              <div className="week-seg week-seg-fill" role="radiogroup" aria-label="Recharge">
-                {(
-                  [
-                    ["nightly", "Chaque soir"],
-                    ["weekly", "Au besoin"],
-                    ["topup", "Sans prise"],
-                  ] as const
-                ).map(([k, l]) => (
-                  <button key={k} type="button" role="radio" aria-checked={scenario === k} onClick={() => update({ scenario: k })}>
-                    {l}
-                  </button>
-                ))}
-              </div>
-              <p className="week-controls-hint">{SCENARIO_HINT[scenario]}</p>
-              {scenario !== "nightly" && (
-                <>
-                  <label className="trip-toggle week-work-toggle">
-                    <input type="checkbox" checked={workCharging} onChange={(e) => update({ workCharging: e.target.checked })} />
-                    <span className="trip-toggle-ui" aria-hidden="true"></span>
-                    <span>Je peux recharger au travail</span>
-                  </label>
-                  {workCharging && (
-                    <p className="week-controls-hint">
-                      Borne du parking, 7 kW : la voiture revient à 80 % pendant la journée. On la branche au bureau d'abord, le reste
-                      seulement s'il le faut.
-                    </p>
-                  )}
-                </>
-              )}
-              <div className="week-prices">
-                <span className="label-eyebrow">Prix du kWh</span>
-                {scenario !== "topup" && (
-                  <PriceInput label="À la maison" value={prices.home} onChange={(home) => update({ prices: { ...prices, home } })} />
-                )}
-                {workCharging && scenario !== "nightly" && (
-                  <PriceInput label="Au travail" value={prices.work} onChange={(work) => update({ prices: { ...prices, work } })} />
-                )}
-                {scenario === "topup" && (
-                  <span className="week-price-fixed">
-                    Borne rapide <b>{formatNumber(PUBLIC_EUR_KWH, 2)}&nbsp;€</b>
-                  </span>
-                )}
-              </div>
-              <span className="label-eyebrow mt-2">Saison</span>
-              <div className="week-seg week-seg-fill" role="radiogroup" aria-label="Saison">
-                {(
-                  [
-                    ["winter", "Hiver (-5 °C)"],
-                    ["summer", "Été"],
-                  ] as const
-                ).map(([k, l]) => (
-                  <button key={k} type="button" role="radio" aria-checked={season === k} onClick={() => update({ season: k })}>
-                    {l}
-                  </button>
-                ))}
-              </div>
-            </div>
+            <AddressField label="Mon domicile" value={home} placeholder="Adresse, rue ou commune" onChange={(p) => update({ home: p })} />
+            {(!home || status === "loading" || status === "far" || status === "error") && (
+              <p className="week-status" aria-live="polite">
+                {!home && "Votre adresse reste sur cet appareil : tout est calculé dans votre navigateur."}
+                {home && status === "loading" && "Calcul des routes depuis chez vous…"}
+                {status === "far" && "Aucune route principale à moins de 15 km de cette adresse : la carte couvre la France métropolitaine."}
+                {status === "error" && "Le réseau routier n'a pas pu être chargé. Réessayez dans un instant."}
+              </p>
+            )}
 
-            <div className="week-outings-head">
-              <h2>Votre semaine type</h2>
-              <p>Les lieux les plus proches de chez vous : touchez-en un pour le changer.</p>
-            </div>
-            <ul className="week-outings">
-              {PLAN.map((p) =>
-                p.id === "travail" ? (
-                  <li key={p.id} className="week-outing" data-active={activeDay !== null && p.days.includes(activeDay) ? "1" : undefined}>
-                    <div className="week-outing-head">
-                      <span className="week-outing-icon">
-                        <CategoryIcon cat="travail" size={15} />
+            <div className="week-field">
+              <span className="label-eyebrow">{chosen.length > 1 ? "Les modèles comparés" : "Le modèle"}</span>
+              {chosen.map((v, i) => (
+                <div key={v.slug} className="week-vehicle">
+                  {chosen.length > 1 && <i className="week-dot" style={{ background: COMPARE_COLORS[i] }} aria-hidden="true" />}
+                  {v.image && <img src={v.image} alt="" width={72} height={42} className="vehicle-photo" />}
+                  <div className="min-w-0 flex-1">
+                    <a href={url(`/vehicules/${v.slug}/`)} className="font-semibold leading-tight truncate block hover:underline">
+                      {v.brand} {v.model}
+                    </a>
+                    {/* Ce que la version choisie change au calcul, en clair */}
+                    <p className="week-version-facts">
+                      <span>
+                        <b>{formatKm(v.range.mixed_km)}</b> réels, <b>{formatKm(v.range.winter_minus5_km)}</b> en hiver
                       </span>
-                      <div className="min-w-0 flex-1">
-                        <div className="flex items-baseline gap-1.5">
-                          <span className="font-semibold text-[14.5px]">{p.label}</span>
-                          <span className="text-[12.5px] text-[var(--color-text-faint)] truncate">{p.when}</span>
-                        </div>
-                        <div className="mt-1.5">
-                          <AddressField
-                            label="Lieu de travail"
-                            hideLabel
-                            near={home}
-                            value={saved.work}
-                            placeholder="Nom ou adresse, ex. : Hôpital Édouard-Herriot"
-                            onChange={(w) => {
-                              workChanged.current = !!w;
-                              update({ work: w });
-                            }}
-                          />
-                        </div>
-                        {!places.travail && (
-                          <p className="mt-1.5 text-[12.5px] leading-snug text-[var(--color-text-faint)]">
-                            Sans adresse, on compte {formatKm(dailyKm)} par jour, d'après « Mon trajet ».
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  </li>
-                ) : (
-                  <OutingRow
-                    key={p.id}
-                    cat={p.cat}
-                    label={p.label}
-                    when={p.when}
-                    on={isOn(p)}
-                    place={places[p.id] ?? null}
-                    options={options[p.cat] ?? []}
-                    near={home}
-                    km={legs[p.id]?.km ?? null}
-                    active={activeDay !== null && p.days.includes(activeDay)}
-                    onToggle={(on) => update({ on: { ...saved.on, [p.id]: on } })}
-                    onPick={(pl) => {
-                      const next = { ...saved.places };
-                      if (pl) next[p.id] = pl;
-                      else delete next[p.id];
-                      update({ places: next });
+                      <span className="card-confidence" data-level={v.measured ? "measured" : "estimated"}>
+                        {v.measured ? "mesurée" : "estimée"}
+                      </span>
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    className="btn btn-sm btn-secondary"
+                    onClick={() => update({ vehicles: saved.vehicles.filter((s) => s !== v.slug) })}
+                    aria-label={chosen.length > 1 ? `Retirer ${v.brand} ${v.model}` : undefined}
+                  >
+                    {chosen.length > 1 ? "Retirer" : "Changer"}
+                  </button>
+                  {v.versions.length > 1 ? (
+                    <label className="week-version">
+                      <span>Version</span>
+                      <select
+                        value={v.version.id}
+                        onChange={(e) => update({ versions: { ...saved.versions, [v.slug]: e.target.value } })}
+                        aria-label={`Version de ${v.brand} ${v.model}`}
+                        title={v.version.detail ?? undefined}
+                      >
+                        {v.versions.map((x) => (
+                          <option key={x.id} value={x.id}>
+                            {x.label}
+                          </option>
+                        ))}
+                      </select>
+                      <ChevronDown size={15} strokeWidth={2.25} aria-hidden="true" />
+                    </label>
+                  ) : (
+                    <p className="week-version-single">{v.version.label}{v.version.detail && <> · {v.version.detail}</>}</p>
+                  )}
+                </div>
+              ))}
+              {chosen.length === 0 ? (
+                <VehiclePicker vehicles={vehicles} exclude={saved.vehicles} label="Chercher un modèle" onPick={(v) => update({ vehicles: [v.slug] })} />
+              ) : (
+                chosen.length < MAX_COMPARED &&
+                (adding ? (
+                  <VehiclePicker
+                    vehicles={vehicles}
+                    exclude={saved.vehicles}
+                    label="Comparer avec un autre modèle"
+                    onPick={(v) => {
+                      setAdding(false);
+                      update({ vehicles: [...saved.vehicles, v.slug].slice(0, MAX_COMPARED) });
                     }}
                   />
-                )
+                ) : (
+                  <button type="button" className="week-add" onClick={() => setAdding(true)}>
+                    <Plus size={14} strokeWidth={2.4} aria-hidden="true" />
+                    Comparer avec un autre modèle
+                  </button>
+                ))
               )}
-            </ul>
-          </div>
-        ) : (
-          <div className="flex flex-col gap-4" role="tabpanel">
-            <div className="week-seg" role="radiogroup" aria-label="Type de trajet">
-              {(
-                [
-                  ["return", "Aller-retour"],
-                  ["oneway", "Aller simple"],
-                ] as const
-              ).map(([k, l]) => (
-                <button key={k} type="button" role="radio" aria-checked={tripKind === k} onClick={() => setTripKind(k)}>
-                  {l}
-                </button>
-              ))}
             </div>
-            {chosen.length > 1 ? (
+
+          </section>
+
+          {/* Onglets et saison : collés en haut du volet pendant le défilement */}
+          <div className="week-tabbar">
+            <div className="week-tabs" role="tablist" aria-label="Affichage">
+              <button type="button" role="tab" aria-selected={tab === "week"} onClick={() => update({ tab: "week" })}>
+                Ma semaine
+              </button>
+              <button type="button" role="tab" aria-selected={tab === "reach"} onClick={() => { stop(); update({ tab: "reach" }); }}>
+                Jusqu'où ?
+              </button>
+            </div>
+            {seasonShown && seasonSeg}
+          </div>
+
+          <aside className="week-panel" role="tabpanel">
+            {tab === "week" ? (
               <>
-                <div className="week-seg" role="radiogroup" aria-label="Saison">
+                {/* Le verdict vit dans la barre de la carte ; ici, seulement ce qu'il manque */}
+                {!(week && vehicle) && <Verdict week={week} scenario={scenario} stopCharger={stopCharger} ready={!!vehicle && !!home} />}
+                {chosen.length > 1 && (
+                  <ul className="week-compare" aria-label="Les autres modèles, même semaine">
+                    {chosen.slice(1).map((v, k) => {
+                      const w = weeks[k + 1];
+                      return (
+                        <li key={v.slug}>
+                          <i className="week-dot" style={{ background: COMPARE_COLORS[k + 1] }} aria-hidden="true" />
+                          <span className="min-w-0 flex-1 truncate">{v.model}</span>
+                          <b className="tabular" data-warn={w && !w.ok ? "1" : undefined}>
+                            {w ? verdictLines(w, scenario, stopCharger).big : "…"}
+                          </b>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+
+                <section className="week-block" aria-labelledby="week-charge-title">
+                  <h2 id="week-charge-title" className="week-block-title">Recharge</h2>
+                  <div className="week-seg week-seg-fill" role="radiogroup" aria-label="Recharge">
+                    {(
+                      [
+                        ["nightly", "Chaque soir"],
+                        ["weekly", "Au besoin"],
+                        ["topup", "Sans prise"],
+                      ] as const
+                    ).map(([k, l]) => (
+                      <button key={k} type="button" role="radio" aria-checked={scenario === k} title={SCENARIO_HINT[k]} onClick={() => update({ scenario: k })}>
+                        {l}
+                      </button>
+                    ))}
+                  </div>
+                  {scenario !== "nightly" && (
+                    <label className="trip-toggle week-work-toggle">
+                      <input type="checkbox" checked={workCharging} onChange={(e) => update({ workCharging: e.target.checked })} />
+                      <span className="trip-toggle-ui" aria-hidden="true"></span>
+                      <span>Je peux recharger au travail</span>
+                    </label>
+                  )}
+                  <div className="week-prices">
+                    <span className="week-prices-label">Prix du kWh</span>
+                    {scenario !== "topup" && (
+                      <PriceInput label="Maison" value={prices.home} onChange={(home) => update({ prices: { ...prices, home } })} />
+                    )}
+                    {workCharging && scenario !== "nightly" && (
+                      <PriceInput label="Travail" value={prices.work} onChange={(work) => update({ prices: { ...prices, work } })} />
+                    )}
+                    {scenario === "topup" && (
+                      <span className="week-price-fixed">
+                        Borne rapide <b>{formatNumber(PUBLIC_EUR_KWH, 2)}&nbsp;€</b>
+                      </span>
+                    )}
+                  </div>
+                </section>
+
+                <section className="week-block" aria-labelledby="week-outings-title">
+                  <div className="week-outings-head">
+                    <h2 id="week-outings-title" className="week-block-title">Votre semaine type</h2>
+                  </div>
+                  <ul className="week-bricks">
+                    {items.map((b) => {
+                      const isWork = b.id === "travail";
+                      return (
+                        <BrickRow
+                          key={b.id}
+                          brick={b}
+                          place={places[b.id] ?? null}
+                          options={options[b.cat] ?? []}
+                          near={home}
+                          km={legs[b.id]?.km ?? null}
+                          active={activeDay !== null && b.days.includes(activeDay)}
+                          initiallyOpen={b.id === fresh || (isWork && !!home && !saved.work)}
+                          onDays={(days) => update({ items: items.map((x) => (x.id === b.id ? { ...x, days } : x)) })}
+                          onPick={(pl) => {
+                            if (isWork) {
+                              workChanged.current = !!pl;
+                              return update({ work: pl });
+                            }
+                            const next = { ...saved.places };
+                            if (pl) next[b.id] = pl;
+                            else delete next[b.id];
+                            update({ places: next });
+                          }}
+                          onRemove={
+                            isWork
+                              ? undefined
+                              : () => {
+                                  const next = { ...saved.places };
+                                  delete next[b.id];
+                                  update({ items: items.filter((x) => x.id !== b.id), places: next });
+                                }
+                          }
+                          placeField={
+                            isWork ? (
+                              <AddressField
+                                label="Lieu de travail"
+                                hideLabel
+                                inline
+                                near={home}
+                                value={saved.work}
+                                placeholder="Nom ou adresse, ex. : Hôpital Édouard-Herriot"
+                                onChange={(w) => {
+                                  workChanged.current = !!w;
+                                  update({ work: w });
+                                }}
+                              />
+                            ) : undefined
+                          }
+                          fallback={
+                            isWork && !places.travail ? (
+                              <p className="mt-1.5 text-[12.5px] leading-snug text-[var(--color-text-faint)]">
+                                Sans adresse, on compte {formatKm(dailyKm)} par jour, d'après « Mon trajet ».
+                              </p>
+                            ) : undefined
+                          }
+                        />
+                      );
+                    })}
+                  </ul>
+                  {/* Palette : on ajoute une brique, elle s'ouvre pour choisir ses jours et son lieu */}
+                  <div className="week-palette" role="group" aria-label="Ajouter à ma semaine">
+                    <span className="week-palette-label">Ajouter</span>
+                    {BRICK_KINDS.filter((k) => k.cat !== "travail").map((k) => (
+                      <button
+                        key={k.cat}
+                        type="button"
+                        className="week-palette-chip"
+                        onClick={() => {
+                          const brick = newBrick(k.cat, items);
+                          setFresh(brick.id);
+                          update({ items: [...items, brick] });
+                        }}
+                      >
+                        <CategoryIcon cat={k.cat} size={13} />
+                        {k.label}
+                        <Plus size={13} strokeWidth={2.4} aria-hidden="true" />
+                      </button>
+                    ))}
+                  </div>
+                </section>
+              </>
+            ) : (
+              <>
+                <div className="week-seg week-seg-fill" role="radiogroup" aria-label="Type de trajet">
                   {(
                     [
-                      ["winter", "Hiver (-5 °C)"],
-                      ["summer", "Été"],
+                      ["return", "Aller-retour"],
+                      ["oneway", "Aller simple"],
                     ] as const
                   ).map(([k, l]) => (
-                    <button key={k} type="button" role="radio" aria-checked={season === k} onClick={() => update({ season: k })}>
+                    <button key={k} type="button" role="radio" aria-checked={tripKind === k} onClick={() => setTripKind(k)}>
                       {l}
                     </button>
                   ))}
                 </div>
                 <div className="week-legend">
-                  {chosen.map((v, i) => (
-                    <span key={v.slug}>
-                      <i className="week-key" style={{ background: `color-mix(in srgb, ${COMPARE_COLORS[i]} 22%, transparent)`, boxShadow: `inset 0 0 0 1.5px ${COMPARE_COLORS[i]}` }} />
-                      {v.model}
-                    </span>
-                  ))}
+                  {chosen.length > 1 ? (
+                    chosen.map((v, i) => (
+                      <span key={v.slug}>
+                        <i className="week-key" style={{ background: `color-mix(in srgb, ${COMPARE_COLORS[i]} 22%, transparent)`, boxShadow: `inset 0 0 0 1.5px ${COMPARE_COLORS[i]}` }} />
+                        {v.model}
+                      </span>
+                    ))
+                  ) : (
+                    <>
+                      <span><i className="week-key" data-season="winter" /> En hiver (-5 °C)</span>
+                      <span><i className="week-key" data-season="summer" /> En été</span>
+                    </>
+                  )}
                 </div>
+                <p className="text-[13px] leading-snug text-[var(--color-text-faint)]">
+                  {tripKind === "return"
+                    ? "Là où l'on va et revient sans recharger, en gardant 10 % de batterie."
+                    : "Là où l'on arrive sans recharger, avec 10 % de batterie."}{" "}
+                  Par les vraies routes, à 130 km/h sur autoroute.
+                </p>
+                {vehicle && home && status === "ready" && (
+                  <ReachList
+                    key={`${origin}-${vehicle.key}-${tripKind}`}
+                    vehicle={vehicle}
+                    home={home}
+                    tripKind={tripKind}
+                    selected={focus?.key ?? null}
+                    onSelect={selectDestination}
+                  />
+                )}
               </>
-            ) : (
-              <div className="week-legend">
-                <span><i className="week-key" data-season="winter" /> En hiver (-5 °C)</span>
-                <span><i className="week-key" data-season="summer" /> En été</span>
-              </div>
             )}
-            <p className="text-[13px] leading-snug text-[var(--color-text-faint)]">
-              {tripKind === "return"
-                ? "Là où l'on va et revient sans recharger, en gardant 10 % de batterie."
-                : "Là où l'on arrive sans recharger, avec 10 % de batterie."}{" "}
-              Calculé sur les grands axes, à 130 km/h sur autoroute.
-            </p>
-            {vehicle && home && status === "ready" && (
-              <ReachList
-                key={`${origin}-${vehicle.key}-${tripKind}`}
-                vehicle={vehicle}
-                home={home}
-                tripKind={tripKind}
-                selected={focus?.key ?? null}
-                onSelect={selectDestination}
-              />
-            )}
-          </div>
-        )}
+          </aside>
 
-        {home && <ShareBox week={shareData} />}
-
-        <a href="#guide" className="week-guide-link">
-          Le guide : autonomie, recharges, coût, forfait LLD
-          <ArrowDown size={14} strokeWidth={2.25} aria-hidden="true" />
-        </a>
-
-        <details className="week-method">
-          <summary>Comment c'est calculé</summary>
-          <ul>
-            <li>
-              Les distances suivent les vraies routes : les grands axes d'OpenStreetMap pour les zones et les destinations, et le
-              tracé exact pour les petits trajets de la semaine.
-            </li>
-            <li>
-              La consommation dépend de la route : autonomie mesurée à 130 km/h sur autoroute, autonomie mixte sur voie express,
-              entre mixte et ville sur les routes. L'hiver applique l'écart mesuré à -5 °C de chaque modèle.
-            </li>
-            <li>On garde toujours 10 % de batterie en réserve. Les recharges du quotidien s'arrêtent à 80 %.</li>
-            <li>
-              Coût : électricité au prix que vous indiquez à la maison et au travail (0,20 €/kWh par défaut),{" "}
-              {formatNumber(PUBLIC_EUR_KWH, 2)} €/kWh sur borne
-              publique, 10 % de pertes de recharge comprises. En face, une voiture essence de 6,5 l/100 km au prix moyen
-              national du SP95-E10 du jour (flux officiel des prix carburants).
-            </li>
-            <li>
-              Recharge au travail (si vous l'indiquez) : borne de parking de 7 kW, jusqu'à 80 % pendant la journée,
-              utilisée en priorité.
-            </li>
-            <li>
-              Recharge d'appoint : la borne la plus puissante près de vos courses (Base nationale des IRVE), sinon la borne
-              rapide la plus proche, à la puissance que la voiture accepte vraiment.
-            </li>
-            <li>
-              L'autonomie de chaque modèle est celle de sa fiche, mesurée quand un essai existe, estimée sinon :{" "}
-              {vehicle ? (vehicle.measured ? `mesurée pour ${vehicle.model}.` : `estimée pour ${vehicle.model}.`) : "voir la fiche."}{" "}
-              <a href={url("/methodologie/")} className="underline">Méthodologie</a>
-            </li>
-          </ul>
-        </details>
-
-        <p className="week-status" aria-live="polite">
-          {!home && "Entrez votre adresse pour commencer."}
-          {home && status === "loading" && "Calcul des routes depuis chez vous…"}
-          {status === "far" && "Aucun grand axe à moins de 15 km de cette adresse : la carte couvre la France métropolitaine."}
-          {status === "error" && "Le réseau routier n'a pas pu être chargé. Réessayez dans un instant."}
-        </p>
-        <p className="text-[12px] leading-snug text-[var(--color-text-faint)]">
-          Votre adresse reste sur cet appareil. Pour la localiser, elle passe par le service public d'adresses (IGN) et, pour
-          tracer les petits trajets, par un serveur OpenStreetMap ; Evly n'en garde rien.{" "}
-          <a href={url("/confidentialite/")} className="underline">Confidentialité</a>
-        </p>
-      </aside>
+          {/* Pied du volet : partage, méthode et guide, chacun déplié sur place */}
+          <footer className="week-foot">
+            <div className="week-foot-row">
+              {home && <ShareBox week={shareData} />}
+              <details className="week-method">
+                <summary>Méthode</summary>
+                <ul>
+                  <li>
+                    Les distances suivent les vraies routes : le réseau d'OpenStreetMap jusqu'aux routes de desserte pour les zones et
+                    les destinations, et le tracé exact pour les petits trajets de la semaine.
+                  </li>
+                  <li>
+                    La consommation dépend de la route : autonomie mesurée à 130 km/h sur autoroute, autonomie mixte sur voie express,
+                    entre mixte et ville sur les routes. L'hiver applique l'écart mesuré à -5 °C de chaque modèle.
+                  </li>
+                  <li>On garde toujours 10 % de batterie en réserve. Les recharges du quotidien s'arrêtent à 80 %.</li>
+                  <li>
+                    Coût : électricité au prix que vous indiquez à la maison et au travail (0,20 €/kWh par défaut),{" "}
+                    {formatNumber(PUBLIC_EUR_KWH, 2)} €/kWh sur borne publique, 10 % de pertes de recharge comprises. En face, une
+                    voiture essence de 6,5 l/100 km au prix moyen national du SP95-E10 du jour (flux officiel des prix carburants).
+                    L'année compte 52 semaines comme celle-ci, sans les vacances.
+                  </li>
+                  <li>
+                    Recharge au travail (si vous l'indiquez) : borne de parking de 7 kW, jusqu'à 80 % pendant la journée,
+                    utilisée en priorité.
+                  </li>
+                  <li>
+                    Recharge d'appoint : la borne la plus puissante près de vos courses (Base nationale des IRVE), sinon la borne
+                    rapide la plus proche, à la puissance que la voiture accepte vraiment.
+                  </li>
+                  <li>
+                    L'autonomie de chaque modèle est celle de sa fiche, mesurée quand un essai existe, estimée sinon :{" "}
+                    {vehicle ? (vehicle.measured ? `mesurée pour ${vehicle.model}.` : `estimée pour ${vehicle.model}.`) : "voir la fiche."}{" "}
+                    <a href={url("/methodologie/")} className="underline">Méthodologie</a>
+                  </li>
+                  <li>
+                    Votre adresse reste sur cet appareil. Pour la localiser, elle passe par le service public d'adresses (IGN) et,
+                    pour tracer les petits trajets, par un serveur OpenStreetMap ; Evly n'en garde rien.{" "}
+                    <a href={url("/confidentialite/")} className="underline">Confidentialité</a>
+                  </li>
+                </ul>
+              </details>
+              <a href="#guide" className="week-guide-link">
+                Le guide
+                <ArrowDown size={14} strokeWidth={2.25} aria-hidden="true" />
+              </a>
+            </div>
+          </footer>
         </div>
         <button
           type="button"
@@ -1043,29 +1078,6 @@ function PriceInput({ label, value, onChange }: { label: string; value: number; 
   );
 }
 
-/** Kilomètres de la semaine, sur l'année, et le forfait de location qui les couvre */
-function Mileage({ km }: { km: number }) {
-  const year = annualKm(km);
-  const tier = leaseTier(year);
-  return (
-    <dl className="week-mileage">
-      <div>
-        <dt>Par semaine</dt>
-        <dd className="tabular">{formatKm(Math.round(km))}</dd>
-      </div>
-      <div>
-        <dt>Sur un an</dt>
-        <dd className="tabular">{formatKm(year)}</dd>
-      </div>
-      <div>
-        <dt>Location (LLD, LOA)</dt>
-        <dd className="tabular">{tier ? `forfait ${formatNumber(tier)} km/an` : "plus de 50 000 km/an"}</dd>
-      </div>
-      <p className="week-mileage-note">52 semaines comme celle-ci ; ajoutez vos grands trajets de vacances.</p>
-    </dl>
-  );
-}
-
 interface VerdictProps {
   week: WeekResult | null;
   scenario: Scenario;
@@ -1079,6 +1091,7 @@ function joinDays(days: number[], suffix = "") {
   return names.length < 2 ? (names[0] ?? "") : `${names.slice(0, -1).join(", ")} et ${names.at(-1)}`;
 }
 
+const capitalize = (t: string) => t.charAt(0).toUpperCase() + t.slice(1);
 const roundTo5 = (m: number) => Math.max(5, Math.ceil(m / 5) * 5);
 const roundMin = (m: number) => `${formatNumber(roundTo5(m))} min`;
 
@@ -1090,7 +1103,7 @@ function verdictLines(week: WeekResult, scenario: Scenario, stopCharger: Verdict
     return {
       big: "Une recharge à prévoir",
       small: stopCharger
-        ? "Sans prise à la maison, la batterie baisse de semaine en semaine : activez les courses du samedi pour recharger pendant ce temps."
+        ? "Sans prise à la maison, la batterie baisse de semaine en semaine : ajoutez des courses à votre semaine pour recharger pendant ce temps."
         : "Aucune borne près de vos courses ni de borne rapide à moins de 15 km.",
     };
   if (!week.ok)
@@ -1138,7 +1151,7 @@ function verdictLines(week: WeekResult, scenario: Scenario, stopCharger: Verdict
     big: `${formatNumber(total)} min de recharge par semaine`,
     small:
       week.stops.length === 1
-        ? `Le samedi, ${station}${stopCharger!.atShop ? ", pendant les courses" : ""} : de quoi couvrir vos ${km}. Au plus bas : ${pct(week.lowest)}.`
+        ? `${capitalize(dayName(week.stops[0]!.day))}, ${station}${stopCharger!.atShop ? ", pendant les courses" : ""} : de quoi couvrir vos ${km}. Au plus bas : ${pct(week.lowest)}.`
         : `En ${week.stops.length} passages (${week.stops.map((s) => `${dayName(s.day)} ${roundMin(s.minutes)}`).join(", ")}), ${station} : de quoi couvrir vos ${km}.`,
   };
 }

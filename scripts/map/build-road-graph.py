@@ -1,8 +1,8 @@
 """
 Graphe routier compact de la France métropolitaine pour « Ma semaine ».
 
-Lit l'extrait OpenStreetMap France (Geofabrik) et ne garde que les grands axes
-(autoroutes, voies express, nationales et départementales principales). Le
+Lit l'extrait OpenStreetMap France (Geofabrik) et garde le réseau principal
+(autoroutes, voies express, nationales, départementales et routes de desserte). Le
 navigateur calcule ensuite lui-même, sur ce graphe, jusqu'où va une voiture :
 aucun serveur ni service de calcul d'itinéraire externe.
 
@@ -35,6 +35,8 @@ HIGHWAYS = {
     "trunk": (1, 100),
     "primary": (2, 75),
     "secondary": (2, 65),
+    "tertiary": (2, 55),
+    "tertiary_link": (3, 35),
     "motorway_link": (3, 60),
     "trunk_link": (3, 50),
     "primary_link": (3, 45),

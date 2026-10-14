@@ -277,39 +277,6 @@
   color: var(--color-text-muted);
 }
 
-/* Kilométrage : semaine, année, forfait de location */
-.week-mileage {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.25rem 0.75rem;
-  padding: 0.75rem 0.9rem;
-  border-radius: var(--radius-tile-sm);
-  background: var(--color-bg-subtle);
-}
-.week-mileage dt {
-  font-size: 11.5px;
-  color: var(--color-text-faint);
-}
-.week-mileage dd {
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 750;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-}
-.week-mileage div:last-of-type dd {
-  font-family: var(--font-sans);
-  font-size: 13.5px;
-  font-weight: 650;
-  letter-spacing: 0;
-}
-.week-mileage-note {
-  grid-column: 1 / -1;
-  margin-top: 0.15rem;
-  font-size: 11.5px;
-  color: var(--color-text-faint);
-}
-
 /* Recherche sans résultat proche */
 .week-combo-empty {
   position: absolute;
@@ -957,87 +924,6 @@
   }
 }
 
-/* Coût de l'énergie : électrique contre essence */
-.week-cost {
-  width: 100%;
-  padding: 0.7rem 0.9rem 0.6rem;
-  border-radius: var(--radius-tile-sm);
-  background: color-mix(in srgb, var(--color-surface-elevated) 94%, transparent);
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-md);
-}
-@media (min-width: 1024px) {
-  .week-cost {
-    width: min(420px, 100%);
-    backdrop-filter: blur(8px);
-  }
-}
-.week-cost-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.75rem;
-}
-.week-cost-saved {
-  padding: 0.15rem 0.55rem;
-  border-radius: 999px;
-  background: var(--color-lime);
-  color: var(--color-ink);
-  font-size: 12.5px;
-  font-weight: 650;
-  white-space: nowrap;
-}
-.week-cost-bars {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  margin-top: 0.5rem;
-}
-.week-cost-bars > div {
-  display: grid;
-  grid-template-columns: 6.5rem minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 0.6rem;
-}
-.week-cost-bars dt {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-size: 13px;
-  color: var(--color-text-muted);
-}
-.week-cost-bars dd {
-  grid-column: 3;
-  grid-row: 1;
-  min-width: 4.5rem;
-  text-align: right;
-  font-family: var(--font-display);
-  font-size: 17px;
-  font-weight: 750;
-  letter-spacing: -0.02em;
-}
-/* Barre : l'échelle (scaleX) glisse sans recalcul de mise en page */
-.week-cost-bar {
-  grid-column: 2;
-  grid-row: 1;
-  height: 8px;
-  border-radius: 999px;
-  transform-origin: left;
-  transform: scaleX(max(var(--share), 0.015));
-  transition: transform 260ms var(--ease-out-expo);
-}
-.week-cost-bar[data-kind="ev"] {
-  background: var(--color-accent);
-}
-.week-cost-bar[data-kind="ice"] {
-  background: #b4532a;
-}
-.week-cost-note {
-  margin-top: 0.45rem;
-  font-size: 11px;
-  line-height: 1.35;
-  color: var(--color-text-faint);
-}
 .week-play {
   display: inline-flex;
   align-items: center;
@@ -1420,4 +1306,630 @@ html.week-guide-lock body {
   font-size: 13.5px;
   font-weight: 600;
   color: var(--color-accent);
+}
+
+/* ----------------------------------------------------------------- */
+/* Volet : un seul défilement ; onglets et saison collés en haut      */
+/* ----------------------------------------------------------------- */
+
+.week-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+.week-intro .week-status {
+  min-height: 0;
+  margin-top: -0.6rem;
+  font-size: 12.5px;
+}
+
+/* Onglets et saison sur une même ligne, filet commun */
+.week-tabbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+.week-tabbar .week-tabs {
+  border-bottom: 0;
+}
+.week-seg.week-seg-sm {
+  align-self: center;
+  padding: 3px;
+}
+.week-seg.week-seg-sm button {
+  height: 1.85rem;
+  padding-inline: 0.75rem;
+  font-size: 13px;
+}
+
+/* Blocs du contenu : titre court, réglages serrés */
+.week-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.week-block-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+}
+.week-outings-head p {
+  margin-top: 0.1rem;
+}
+.week-work-toggle small {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 12.5px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--color-text-faint);
+}
+.week-prices {
+  margin-top: 0.15rem;
+}
+.week-prices-label {
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+/* Pied : partage, méthode et guide sur une ligne ; ce qui se déplie prend toute la largeur */
+.week-foot-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.1rem;
+}
+.week-foot .week-share {
+  display: contents;
+}
+.week-foot .week-share > .week-unfold {
+  order: 10;
+  flex-basis: 100%;
+}
+.week-foot .week-method {
+  border-top: 0;
+  padding-top: 0;
+}
+.week-foot .week-method summary {
+  font-size: 13.5px;
+}
+.week-foot .week-method[open] {
+  order: 11;
+  flex-basis: 100%;
+}
+
+/* Mobile : la barre d'onglets coiffe le panneau qui suit */
+@media (max-width: 1023px) {
+  .week-tabbar {
+    order: 3;
+    margin-bottom: calc(-1 * var(--tile-gap));
+    padding: 0.4rem var(--tile-padding) 0;
+    border: 1px solid var(--color-border);
+    border-bottom-color: var(--color-border);
+    border-radius: var(--radius-tile) var(--radius-tile) 0 0;
+  }
+  .week-tabbar + .week-panel {
+    border-top: 0;
+    border-radius: 0 0 var(--radius-tile) var(--radius-tile);
+  }
+  .week-foot {
+    order: 4;
+    padding: 1rem var(--tile-padding);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-tile);
+  }
+}
+
+@media (min-width: 1024px) {
+  .week-drawer .week-intro {
+    gap: 1rem;
+    padding: 1.35rem 1.5rem 1rem;
+  }
+  /* Collée en haut du volet pendant le défilement : l'onglet actif reste visible */
+  .week-drawer .week-tabbar {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    padding: 0.25rem 1.5rem 0;
+    border-top: 1px solid var(--color-border);
+  }
+  .week-drawer .week-panel {
+    gap: 1.35rem;
+    padding: 1.1rem 1.5rem 1.4rem;
+    border-top: 0;
+  }
+  .week-foot {
+    padding: 0.9rem 1.5rem 1.1rem;
+    border-top: 1px solid var(--color-border);
+  }
+}
+
+/* Modèle choisi, compact : nom et autonomies sur deux lignes, version en dessous */
+.week-vehicle {
+  gap: 0.35rem 0.65rem;
+}
+.week-vehicle .week-version-facts {
+  flex-basis: auto;
+  padding-inline: 0;
+  font-size: 12px;
+  line-height: 1.35;
+}
+.week-version-single {
+  flex-basis: 100%;
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+}
+.week-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  align-self: flex-start;
+  padding: 0.2rem 0;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+@media (hover: hover) and (pointer: fine) {
+  .week-add:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+/* ----------------------------------------------------------------- */
+/* Semaine type en briques : on les empile, chacune avec ses jours    */
+/* et son lieu ; une palette en dessous pour en ajouter               */
+/* ----------------------------------------------------------------- */
+
+.week-bricks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.week-brick {
+  border-radius: var(--radius-tile-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-elevated);
+  padding: 0.45rem 0.45rem 0.45rem 0.55rem;
+  transition:
+    background-color 220ms var(--ease-out-expo),
+    border-color 220ms var(--ease-out-expo);
+}
+.week-brick[data-active] {
+  background: var(--color-surface-accent);
+  border-color: color-mix(in srgb, var(--color-accent) 30%, transparent);
+}
+/* Brique ajoutée : elle se pose sur la pile */
+.week-brick[data-new] {
+  animation: week-brick-in 360ms var(--ease-out-expo) both;
+}
+@keyframes week-brick-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}
+.week-brick-head {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.week-brick-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+.week-brick-title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  min-width: 0;
+  font-size: 12.5px;
+  color: var(--color-text-faint);
+}
+.week-brick-title b {
+  flex-shrink: 0;
+  font-size: 14.5px;
+  font-weight: 650;
+  color: var(--color-text);
+}
+.week-brick-place {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  min-width: 0;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+.week-brick-place .tabular {
+  color: var(--color-text-faint);
+}
+.week-chevron[data-open] {
+  transform: rotate(180deg);
+}
+.week-brick-head > .week-chevron {
+  color: var(--color-text-faint);
+}
+.week-brick-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  color: var(--color-text-faint);
+  flex-shrink: 0;
+  transition:
+    background-color 200ms var(--ease-out-expo),
+    color 200ms var(--ease-out-expo);
+}
+@media (hover: hover) and (pointer: fine) {
+  .week-brick-remove:hover {
+    background: var(--color-bg-subtle);
+    color: var(--color-danger);
+  }
+  .week-brick-main:hover .week-brick-place > .truncate {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+.week-brick-body {
+  padding-top: 0.5rem;
+}
+
+/* Jours : sept pastilles, cochées en olive */
+.week-days-pick {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.25rem;
+  max-width: 17rem;
+}
+.week-days-pick button {
+  height: 1.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border-strong);
+  font-size: 12.5px;
+  font-weight: 650;
+  color: var(--color-text-muted);
+  transition:
+    background-color 180ms var(--ease-out-expo),
+    border-color 180ms var(--ease-out-expo),
+    color 180ms var(--ease-out-expo);
+}
+.week-days-pick button[aria-pressed="true"] {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent-on);
+}
+.week-days-pick button:active {
+  transform: scale(0.94);
+}
+
+/* Palette : les briques qu'on peut ajouter */
+.week-palette {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+  padding: 0.6rem;
+  border-radius: var(--radius-tile-sm);
+  border: 1px dashed var(--color-border-strong);
+}
+.week-palette-label {
+  margin-right: 0.15rem;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--color-text-faint);
+}
+.week-palette-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  height: 2rem;
+  padding: 0 0.6rem 0 0.65rem;
+  border-radius: 999px;
+  background: var(--color-bg-subtle);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+  transition:
+    background-color 180ms var(--ease-out-expo),
+    transform 140ms var(--ease-out-expo);
+}
+.week-palette-chip > svg:first-child {
+  color: var(--color-accent);
+}
+.week-palette-chip > svg:last-child {
+  color: var(--color-text-faint);
+}
+.week-palette-chip:active {
+  transform: scale(0.96);
+}
+@media (hover: hover) and (pointer: fine) {
+  .week-palette-chip:hover {
+    background: var(--color-surface-accent);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .week-brick[data-new] {
+    animation: none;
+  }
+}
+
+/* ----------------------------------------------------------------- */
+/* Barre du bas de la carte : verdict, puis frise et chiffres sur une  */
+/* même ligne. Elle s'étale en largeur au lieu de monter sur la carte. */
+/* ----------------------------------------------------------------- */
+
+.week-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.7rem 0.9rem 0.6rem;
+  border-radius: var(--radius-tile-sm);
+  background: color-mix(in srgb, var(--color-surface-elevated) 95%, transparent);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+}
+@media (min-width: 1024px) {
+  .week-hud {
+    max-width: 1180px;
+    align-items: stretch;
+  }
+  .week-bar {
+    backdrop-filter: blur(10px);
+  }
+}
+
+/* Verdict : une ligne forte et sa précision, sans aplat */
+.week-bar .week-verdict {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.75rem;
+  row-gap: 0.1rem;
+  padding: 0 0.15rem;
+  background: none;
+  color: var(--color-text);
+}
+.week-bar .week-verdict-big {
+  font-size: 1.05rem;
+  color: var(--color-accent);
+}
+.week-bar .week-verdict[data-warn] .week-verdict-big {
+  color: #9a3412;
+}
+.week-bar .week-verdict-small {
+  flex: 1 1 20rem;
+  margin-top: 0;
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+
+.week-bar-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.1rem;
+}
+/* La frise perd son cadre dans la barre ; les jours restent serrés */
+.week-bar .week-timeline {
+  flex: 1 1 22rem;
+  min-width: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.week-bar .week-days {
+  max-width: 30rem;
+}
+
+/* Chiffres : petites grilles libellé / valeurs, séparées d'un filet */
+.week-stat {
+  display: grid;
+  align-items: baseline;
+  gap: 0.15rem 0.75rem;
+  padding-left: 1.1rem;
+  border-left: 1px solid var(--color-border);
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+}
+.week-mileage {
+  grid-template-columns: auto auto;
+}
+.week-cost {
+  grid-template-columns: auto auto auto;
+}
+.week-cost[data-live] {
+  grid-template-columns: auto auto;
+}
+.week-stat-label {
+  grid-column: 1;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--color-text-faint);
+}
+.week-mileage .week-stat-label {
+  grid-column: 1 / -1;
+}
+.week-stat-col {
+  justify-self: end;
+  font-size: 11.5px;
+  color: var(--color-text-faint);
+}
+.week-stat > b {
+  justify-self: end;
+  font-family: var(--font-display);
+  font-size: 14.5px;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+.week-stat > b.week-stat-small {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+.week-stat-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+.week-stat-key i {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+}
+.week-stat-key i[data-kind="ev"] {
+  background: var(--color-accent);
+}
+.week-stat-key i[data-kind="ice"] {
+  background: #b4532a;
+}
+.week-stat-strong {
+  font-weight: 650;
+  color: var(--color-text);
+}
+.week-stat > b.week-cost-saved {
+  padding: 0 0.4rem;
+  border-radius: 999px;
+  background: var(--color-lime);
+  color: var(--color-ink);
+}
+
+/* Mobile et cartes étroites : la frise sur toute la largeur, les chiffres dessous côte à côte */
+@media (max-width: 1023px) {
+  .week-bar .week-timeline {
+    flex-basis: 100%;
+  }
+  .week-bar .week-days {
+    max-width: none;
+  }
+  .week-stat {
+    flex: 1 1 9rem;
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+/* ----------------------------------------------------------------- */
+/* Volet allégé : moins de cadres, moins de texte d'aide              */
+/* ----------------------------------------------------------------- */
+
+.week-drawer .week-panel {
+  gap: 1.5rem;
+}
+.week-block {
+  gap: 0.6rem;
+}
+/* Briques sans cadre : une ligne par sortie, un fond seulement au survol ou le jour joué */
+.week-bricks {
+  gap: 0.1rem;
+}
+.week-brick {
+  border: 0;
+  background: none;
+  padding: 0.4rem 0.35rem;
+  border-radius: 12px;
+}
+.week-brick[data-active] {
+  border: 0;
+}
+@media (hover: hover) and (pointer: fine) {
+  .week-brick:hover {
+    background: var(--color-bg-subtle);
+  }
+  .week-brick[data-active]:hover {
+    background: var(--color-surface-accent);
+  }
+  .week-brick-remove {
+    opacity: 0;
+  }
+  .week-brick:hover .week-brick-remove,
+  .week-brick-remove:focus-visible {
+    opacity: 1;
+  }
+}
+/* Palette : de simples pastilles « + » sous la pile */
+.week-palette {
+  padding: 0.25rem 0 0;
+  border: 0;
+  margin-top: 0;
+}
+.week-palette-chip {
+  height: 1.85rem;
+  background: none;
+  border: 1px solid var(--color-border);
+  font-weight: 550;
+  color: var(--color-text-muted);
+}
+.week-palette-chip > svg:last-child {
+  display: none;
+}
+/* Prix du kWh : discrets, la case n'apparaît qu'au focus */
+.week-price-box {
+  height: 1.9rem;
+  padding: 0 0.55rem;
+  border-color: transparent;
+  background: var(--color-bg-subtle);
+}
+.week-work-toggle {
+  margin-top: 0.1rem;
+  font-size: 13.5px;
+}
+
+/* Champ de lieu dans une brique : résultats dans le flux, sous la barre (jamais coupés) */
+.week-combo[data-inline] .week-combo-list {
+  position: static;
+  margin-top: 0.3rem;
+  padding: 0;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  animation: none;
+}
+.week-combo[data-inline] .week-combo-list li {
+  padding: 0.45rem 0.55rem;
+  font-size: 13.5px;
+}
+.week-combo[data-inline] .week-combo-list li[aria-selected="true"] {
+  background: var(--color-bg-subtle);
+  font-weight: 600;
+}
+.week-combo[data-inline] .week-combo-list li[data-active] {
+  background: var(--color-surface-accent);
+}
+@media (hover: hover) and (pointer: fine) {
+  .week-combo[data-inline] .week-combo-list li:hover {
+    background: var(--color-bg-subtle);
+  }
+}
+.week-combo[data-inline] input {
+  height: 2.5rem;
+}
+.week-combo[data-inline] .week-combo-empty {
+  position: static;
+  margin-top: 0.4rem;
+  box-shadow: none;
+}
+.week-brick-body .week-combo {
+  margin-top: 0.6rem;
 }

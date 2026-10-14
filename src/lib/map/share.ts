@@ -18,7 +18,9 @@ export interface SharedWeek {
   /** Version du modèle (slug -> identifiant) */
   versions: Record<string, string>;
   places: Record<string, SharedPlace>;
-  on: Record<string, boolean>;
+  /** Briques de la semaine type (validées à la lecture) ; liens plus anciens : `on` */
+  items?: unknown;
+  on?: Record<string, boolean>;
   scenario: string | null;
   season: string;
   tab: string;
@@ -85,6 +87,7 @@ export function readShared(): SharedWeek | null {
       vehicle: typeof data.vehicle === "string" ? data.vehicle : null,
       versions: Object.fromEntries(Object.entries(data.versions ?? {}).filter(([, v]) => typeof v === "string")) as Record<string, string>,
       places: Object.fromEntries(Object.entries(data.places ?? {}).filter(([, p]) => ok(p))) as Record<string, SharedPlace>,
+      items: data.items,
       on: typeof data.on === "object" && data.on ? data.on : {},
       scenario: typeof data.scenario === "string" ? data.scenario : null,
       season: data.season === "summer" ? "summer" : "winter",

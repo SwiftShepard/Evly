@@ -3,7 +3,10 @@ Lieux de « Ma semaine », extraits de l'OpenStreetMap France (Geofabrik) :
   - lieux du quotidien (courses, boulangerie, bricolage, restaurant, école, sport…),
     découpés en tuiles de 0,2° chargées autour du domicile ;
   - destinations (villes, sites touristiques notables, c'est-à-dire décrits sur
-    Wikipédia ou Wikidata) pour les balades et la liste « où aller ».
+    Wikipédia ou Wikidata) pour les balades et la liste « où aller » ;
+  - équipements sportifs avec le sport pratiqué (terrains, gymnases, piscines, clubs),
+    en tuiles de 0,2° sous activites/ : la recherche « basket », « padel », « piscine »
+    les trouve autour du domicile sans service extérieur.
 
 Usage :
   python scripts/map/build-places.py scratch/osm/france.osm.pbf public/carte
@@ -55,6 +58,48 @@ SIGHT_KIND = {
 }
 
 
+# Équipements sportifs : type court (libellé côté navigateur)
+ACTIVITY_KIND = {
+    "pitch": "terrain", "sports_hall": "gymnase", "sports_centre": "centre", "stadium": "stade",
+    "swimming_pool": "piscine", "fitness_centre": "salle", "ice_rink": "patinoire", "golf_course": "golf",
+    "horse_riding": "equitation", "bowling_alley": "bowling", "dance": "danse", "track": "piste",
+    "climbing": "escalade", "water_park": "piscine",
+}
+# Sport implicite quand l'équipement n'en indique pas
+ACTIVITY_DEFAULT = {
+    "swimming_pool": "swimming", "water_park": "swimming", "fitness_centre": "fitness", "ice_rink": "ice_skating",
+    "golf_course": "golf", "horse_riding": "equestrian", "bowling_alley": "bowling", "dance": "dance", "climbing": "climbing",
+}
+# Équipements sans nom gardés seulement s'ils sont publics par nature (terrains, gymnases)
+UNNAMED_OK = {"pitch", "sports_hall", "sports_centre", "track", "stadium"}
+# Au plus 4 équipements sans nom d'un même sport par carré d'environ 1 km
+UNNAMED_PER_KM = 4
+
+
+def activity(tags):
+    """(type, sports « a;b », nommé) d'un équipement sportif, ou None"""
+    if tags.get("access") in ("private", "no", "customers") and tags.get("leisure") in ("swimming_pool", "pitch"):
+        return None
+    leisure = tags.get("leisure")
+    sport = tags.get("sport")
+    if tags.get("club") == "sport" and sport:
+        kind = "club"
+    elif tags.get("amenity") == "dancing_school":
+        kind, sport = "danse", sport or "dance"
+    elif leisure in ACTIVITY_KIND:
+        kind = ACTIVITY_KIND[leisure]
+        sport = sport or ACTIVITY_DEFAULT.get(leisure)
+    else:
+        return None
+    if not sport:
+        return None
+    named = bool(tags.get("name"))
+    if not named and leisure not in UNNAMED_OK:
+        return None
+    sports = ";".join(sorted({x.strip() for x in sport.split(";") if x.strip()})[:4])
+    return (kind, sports, named)
+
+
 def log(msg):
     print(f"[{time.strftime('%H:%M:%S')}] {msg}", flush=True)
 
@@ -79,11 +124,18 @@ def classify(tags):
 def main(src, dst):
     t0 = time.time()
     found = []  # (type, catégorie, notable, nom, lat, lon, population, ref du premier nœud)
-    keys = ["shop", "amenity", "leisure", "tourism", "historic", "natural", "place"]
+    activities = []  # (type, sports, nom, lat, lon, ref du premier nœud)
+    keys = ["shop", "amenity", "leisure", "tourism", "historic", "natural", "place", "club"]
     fp = osmium.FileProcessor(src, osmium.osm.NODE | osmium.osm.WAY).with_filter(osmium.filter.KeyFilter(*keys))
     for obj in fp:
         tags = obj.tags
         name = tags.get("name")
+        act = activity(tags)
+        if act:
+            if obj.is_node():
+                activities.append((*act[:2], name or "", obj.location.lat, obj.location.lon, None))
+            elif len(obj.nodes):
+                activities.append((*act[:2], name or "", None, None, obj.nodes[0].ref))
         if not name:
             continue
         c = classify(tags)
@@ -99,7 +151,7 @@ def main(src, dst):
             found.append((*c, name, None, None, pop, obj.nodes[0].ref))
     log(f"{len(found):,} lieux trouvés, positions des surfaces…")
 
-    need = {f[7] for f in found if f[7] is not None}
+    need = {f[7] for f in found if f[7] is not None} | {a[5] for a in activities if a[5] is not None}
     loc = {}
     for n in osmium.FileProcessor(src, osmium.osm.NODE).with_filter(osmium.filter.IdFilter(need)):
         loc[n.id] = (n.location.lat, n.location.lon)
@@ -131,6 +183,37 @@ def main(src, dst):
             destinations.append([cat, qlat, qlon, name, 0])
         else:
             destinations.append(["ville", qlat, qlon, name, pop])
+
+    # Équipements sportifs : doublons nœud + surface fusionnés, terrains sans nom plafonnés par km²
+    act_tiles = defaultdict(list)
+    act_seen = set()
+    act_density = defaultdict(int)
+    for kind, sports, name, lat, lon, ref in activities:
+        if lat is None:
+            if ref not in loc:
+                continue
+            lat, lon = loc[ref]
+        if not (BBOX[0] <= lon <= BBOX[2] and BBOX[1] <= lat <= BBOX[3]):
+            continue
+        key = (sports, name.lower(), round(lat, 3), round(lon, 3))
+        if key in act_seen:
+            continue
+        act_seen.add(key)
+        if not name:
+            cell = (sports.split(";")[0], round(lat, 2), round(lon, 2))
+            act_density[cell] += 1
+            if act_density[cell] > UNNAMED_PER_KM:
+                continue
+        act_tiles[(math.floor(lat / TILE), math.floor(lon / TILE))].append([round(lat * 1e4), round(lon * 1e4), name, sports, kind])
+
+    act_dir = os.path.join(dst, "activites")
+    os.makedirs(act_dir, exist_ok=True)
+    for f in os.listdir(act_dir):
+        os.remove(os.path.join(act_dir, f))
+    for (i, j), items in act_tiles.items():
+        with open(os.path.join(act_dir, f"{i}_{j}.json"), "w", encoding="utf-8") as fh:
+            json.dump(items, fh, ensure_ascii=False, separators=(",", ":"))
+    log(f"{sum(len(v) for v in act_tiles.values()):,} équipements sportifs en {len(act_tiles)} tuiles")
 
     out_dir = os.path.join(dst, "lieux")
     os.makedirs(out_dir, exist_ok=True)
