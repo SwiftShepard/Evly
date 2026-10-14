@@ -27,7 +27,7 @@
     "mixed_km": 249,
     "highway_130_km": 178,
     "urban_km": 329,
-    "winter_minus5_km": 187,
+    "winter_minus5_km": 179,
     "confidence": "bjorn_nyland",
     "highway_120_km": 198
   },
@@ -222,7 +222,7 @@
         "mixed_km": 249,
         "highway_130_km": 178,
         "urban_km": 329,
-        "winter_minus5_km": 187,
+        "winter_minus5_km": 179,
         "confidence": "bjorn_nyland",
         "highway_120_km": 198
       },
@@ -278,7 +278,7 @@
         "mixed_km": 249,
         "highway_130_km": 178,
         "urban_km": 329,
-        "winter_minus5_km": 187,
+        "winter_minus5_km": 179,
         "confidence": "bjorn_nyland",
         "highway_120_km": 198
       },
@@ -334,7 +334,7 @@
         "mixed_km": 330,
         "highway_130_km": 220,
         "urban_km": 400,
-        "winter_minus5_km": 260,
+        "winter_minus5_km": 226,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -362,7 +362,7 @@
         "mixed_km": 325,
         "highway_130_km": 215,
         "urban_km": 395,
-        "winter_minus5_km": 255,
+        "winter_minus5_km": 222,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -390,7 +390,7 @@
         "mixed_km": 290,
         "highway_130_km": 190,
         "urban_km": 350,
-        "winter_minus5_km": 230,
+        "winter_minus5_km": 198,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -418,7 +418,7 @@
         "mixed_km": 290,
         "highway_130_km": 190,
         "urban_km": 350,
-        "winter_minus5_km": 230,
+        "winter_minus5_km": 198,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -446,7 +446,7 @@
         "mixed_km": 332,
         "highway_130_km": 241,
         "urban_km": 435,
-        "winter_minus5_km": 249,
+        "winter_minus5_km": 239,
         "confidence": "bjorn_nyland",
         "highway_120_km": 268
       },
@@ -502,7 +502,7 @@
         "mixed_km": 332,
         "highway_130_km": 241,
         "urban_km": 435,
-        "winter_minus5_km": 249,
+        "winter_minus5_km": 239,
         "confidence": "bjorn_nyland",
         "highway_120_km": 268
       },

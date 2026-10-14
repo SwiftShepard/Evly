@@ -11,13 +11,14 @@
  * - Pour une config mesurée (essais à 90 ET 120 km/h d'une même session) :
  *   mixed_km = moyenne des autonomies Nyland à 90 et 120 km/h. Ce « mixte route + autoroute »
  *   reste comparable aux autonomies estimées (≈ 0,8 × WLTP), contrairement au seul 90 km/h
- *   d'été, proche du WLTP. highway_120_km = mesure à 120 km/h ; ville, 130 km/h et hiver en sont
- *   dérivés. confidence = "bjorn_nyland".
+ *   d'été, proche du WLTP. highway_120_km = mesure à 120 km/h ; ville et 130 km/h en sont
+ *   dérivés, l'hiver suit le modèle de src/lib/winter.js. confidence = "bjorn_nyland".
  * - Une config sans essai Nyland garde ses autres essais sourcés (confidence "tested"), sinon
  *   repasse en "estimated" (ou reste "manufacturer").
  */
 import fs from "node:fs";
 import path from "node:path";
+import { heatPumpOf, winterKm } from "../src/lib/winter.js";
 
 const DRY = process.argv.includes("--dry");
 const VEHICLES_DIR = "src/data/vehicles";
@@ -292,7 +293,8 @@ for (const file of fs.readdirSync(VEHICLES_DIR).filter((f) => f.endsWith(".json"
       rr.highway_120_km = t120.range_km;
       rr.highway_130_km = Math.round(t120.range_km * 0.9);
       rr.urban_km = Math.round(t90.range_km * 1.1);
-      rr.winter_minus5_km = Math.round(rr.mixed_km * 0.75);
+      // Hiver : modèle unique (chimie, pompe à chaleur), cf. src/lib/winter.js
+      rr.winter_minus5_km = winterKm(rr.mixed_km, v.chemistry, heatPumpOf(v.heatPump), true);
       rr.confidence = "bjorn_nyland";
       report.updatedConfigs++;
     } else {

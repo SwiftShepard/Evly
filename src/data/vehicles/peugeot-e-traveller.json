@@ -27,7 +27,7 @@
     "mixed_km": 270,
     "highway_130_km": 175,
     "urban_km": 335,
-    "winter_minus5_km": 215,
+    "winter_minus5_km": 185,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 22,
@@ -171,7 +171,7 @@
         "mixed_km": 175,
         "highway_130_km": 110,
         "urban_km": 220,
-        "winter_minus5_km": 140,
+        "winter_minus5_km": 120,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -224,7 +224,7 @@
         "mixed_km": 270,
         "highway_130_km": 175,
         "urban_km": 335,
-        "winter_minus5_km": 215,
+        "winter_minus5_km": 185,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -277,7 +277,7 @@
         "mixed_km": 175,
         "highway_130_km": 110,
         "urban_km": 220,
-        "winter_minus5_km": 140,
+        "winter_minus5_km": 120,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -330,7 +330,7 @@
         "mixed_km": 270,
         "highway_130_km": 175,
         "urban_km": 335,
-        "winter_minus5_km": 215,
+        "winter_minus5_km": 185,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -383,7 +383,7 @@
         "mixed_km": 175,
         "highway_130_km": 110,
         "urban_km": 220,
-        "winter_minus5_km": 140,
+        "winter_minus5_km": 120,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -436,7 +436,7 @@
         "mixed_km": 270,
         "highway_130_km": 175,
         "urban_km": 335,
-        "winter_minus5_km": 215,
+        "winter_minus5_km": 185,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -489,7 +489,7 @@
         "mixed_km": 175,
         "highway_130_km": 110,
         "urban_km": 220,
-        "winter_minus5_km": 140,
+        "winter_minus5_km": 120,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -542,7 +542,7 @@
         "mixed_km": 270,
         "highway_130_km": 175,
         "urban_km": 335,
-        "winter_minus5_km": 215,
+        "winter_minus5_km": 185,
         "confidence": "estimated"
       },
       "rangeTests": [],

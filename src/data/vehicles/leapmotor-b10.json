@@ -27,7 +27,7 @@
     "mixed_km": 334,
     "highway_130_km": 245,
     "urban_km": 436,
-    "winter_minus5_km": 251,
+    "winter_minus5_km": 240,
     "confidence": "bjorn_nyland",
     "highway_120_km": 272
   },
@@ -140,7 +140,7 @@
         "mixed_km": 334,
         "highway_130_km": 245,
         "urban_km": 436,
-        "winter_minus5_km": 251,
+        "winter_minus5_km": 240,
         "confidence": "bjorn_nyland",
         "highway_120_km": 272
       },

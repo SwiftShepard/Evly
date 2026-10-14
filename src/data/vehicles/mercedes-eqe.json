@@ -27,7 +27,7 @@
     "mixed_km": 480,
     "highway_130_km": 370,
     "urban_km": 603,
-    "winter_minus5_km": 360,
+    "winter_minus5_km": 346,
     "confidence": "bjorn_nyland",
     "highway_120_km": 411
   },
@@ -225,7 +225,7 @@
         "mixed_km": 480,
         "highway_130_km": 370,
         "urban_km": 603,
-        "winter_minus5_km": 360,
+        "winter_minus5_km": 346,
         "confidence": "bjorn_nyland",
         "highway_120_km": 411
       },
@@ -306,7 +306,7 @@
         "mixed_km": 480,
         "highway_130_km": 370,
         "urban_km": 603,
-        "winter_minus5_km": 360,
+        "winter_minus5_km": 346,
         "confidence": "bjorn_nyland",
         "highway_120_km": 411
       },
@@ -388,7 +388,7 @@
         "mixed_km": 500,
         "highway_130_km": 360,
         "urban_km": 615,
-        "winter_minus5_km": 395,
+        "winter_minus5_km": 342,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -442,7 +442,7 @@
         "mixed_km": 470,
         "highway_130_km": 340,
         "urban_km": 575,
-        "winter_minus5_km": 375,
+        "winter_minus5_km": 321,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -495,7 +495,7 @@
         "mixed_km": 421,
         "highway_130_km": 320,
         "urban_km": 536,
-        "winter_minus5_km": 316,
+        "winter_minus5_km": 303,
         "confidence": "bjorn_nyland",
         "highway_120_km": 355
       },
@@ -576,7 +576,7 @@
         "mixed_km": 419,
         "highway_130_km": 324,
         "urban_km": 526,
-        "winter_minus5_km": 314,
+        "winter_minus5_km": 302,
         "confidence": "bjorn_nyland",
         "highway_120_km": 360
       },

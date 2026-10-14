@@ -11,14 +11,16 @@ import BrickRow from "./BrickRow";
 import WeekTimeline from "./WeekTimeline";
 import WeekCost from "./WeekCost";
 import WeekMileage from "./WeekMileage";
-import { CHARGING_LOSSES, ELEC_EUR_KWH, PUBLIC_EUR_KWH, fuelPrice, type FuelPrice } from "@/lib/map/fuel";
+import WeekCompare, { type CompareRow } from "./WeekCompare";
+import { CHARGING_LOSSES, ELEC_EUR_KWH, ICE_L_100, PUBLIC_EUR_KWH, fuelPrice, type FuelPrice } from "@/lib/map/fuel";
+import { WEEKS_PER_YEAR } from "@/lib/map/mileage";
 import ReachList from "./ReachList";
 import { CategoryIcon } from "./icons";
 import ShareBox from "./ShareBox";
 import { BRICK_KINDS, DEFAULT_BRICKS, fromLegacy, newBrick, sanitizeBricks, type Brick } from "./bricks";
 import { readShared, type SharedWeek } from "@/lib/map/share";
 import type { Driven, Place, WeekVehicle } from "./types";
-import { budgetFor, rangeProfile, type Season } from "@/lib/map/energy";
+import { RESERVE, budgetFor, rangeProfile, type Season } from "@/lib/map/energy";
 import { computeTrips, computeZones, loadRoads, setOrigin } from "@/lib/map/client";
 import { chargersAround, loadDestinations, placesAround, type Charger, type PoiPlace } from "@/lib/map/places";
 import { departurePoint, roadRoute } from "@/lib/map/route";
@@ -100,6 +102,8 @@ function writeSaved(s: Saved) {
 interface Leg {
   km: number;
   used: Record<string, number>;
+  /** Kilomètres par type de route (autoroute, voie express, route), à l'échelle du tracé précis */
+  split: [number, number, number];
   coords: [number, number][] | null;
 }
 
@@ -163,7 +167,13 @@ export default function WeekPlanner({ vehicles }: Props) {
       const version = config ? bySlug.get(fromUrl)!.versions.find((x) => x.configs.includes(config)) : undefined;
       if (version) versions = { ...versions, [fromUrl]: version.id };
     }
-    const scenario = s.scenario ?? (readTrip().homeCharging ? "weekly" : "topup");
+    // Recharge annoncée par la page d'avant (matcher : ?recharge=, fiche : « Mon trajet ») : un
+    // ancien réglage enregistré ne la contredit pas
+    const recharge = params.get("recharge");
+    const atHome = recharge ? recharge === "maison" : fromUrl ? readTrip().homeCharging : null;
+    let scenario: Scenario = s.scenario ?? (readTrip().homeCharging ? "weekly" : "topup");
+    if (atHome === false) scenario = "topup";
+    else if (atHome === true && scenario === "topup") scenario = "weekly";
     setSaved({ ...s, vehicles: list.slice(0, MAX_COMPARED), versions, scenario });
   }, [bySlug]);
 
@@ -347,7 +357,13 @@ export default function WeekPlanner({ vehicles }: Props) {
         const line = r?.coords ?? t.path;
         const place = places[id]!;
         const coords: [number, number][] | null = line ? [[home.lon, home.lat], ...line, [place.lon, place.lat]] : null;
-        next[id] = { km, used: Object.fromEntries(keys.map((key, i) => [key, (t.used[i] ?? 0) * scale])), coords };
+        next[id] = {
+          km,
+          used: Object.fromEntries(keys.map((key, i) => [key, (t.used[i] ?? 0) * scale])),
+          // Répartition par type de route (repli : tout en route si le worker ne la donne pas)
+          split: (t.split ?? [0, 0, t.km]).map((x) => x * scale) as Leg["split"],
+          coords,
+        };
       });
       setLegs(next);
       // « Mon trajet » prend la vraie distance domicile-travail
@@ -415,6 +431,36 @@ export default function WeekPlanner({ vehicles }: Props) {
     [chosen, outingsFor, scenario, stopCharger, workCharging]
   );
   const week = weeks[0] ?? null;
+
+  // Semaine à sec : les modèles avec lesquels la même semaine passe, du moins cher au plus cher.
+  // Chaque modèle est simulé : consommation des trajets mise à l'échelle de son autonomie de la
+  // saison, sa propre recharge ; on garde sa version la plus juste qui suffit.
+  const alternatives = useMemo(() => {
+    if (!week || week.ok || chosen.length !== 1 || !vehicle) return [];
+    const key = season === "winter" ? "winter_minus5_km" : "mixed_km";
+    const base = vehicle.range[key];
+    // Batterie consommée par un trajet avec un autre modèle : mêmes kilomètres par type de route
+    const usedWith = (o: Outing, range: Driven["range"]) => {
+      const split = legs[o.id]?.split;
+      if (!split) return (o.used * base) / range[key];
+      const p = rangeProfile(range, season);
+      return split[0] / p.hw + split[1] / p.express + split[2] / p.road;
+    };
+    const stop =
+      stopCharger && shopping && outings.some((o) => o.id === shopping.id)
+        ? { kw: stopCharger.charger.kw, day: shopping.days.at(-1)!, outingId: shopping.id }
+        : null;
+    const passes = (range: Driven["range"], charging: Driven["charging"]) =>
+      simulateWeek(outings.map((o) => ({ ...o, used: usedWith(o, range) })), scenario, stop, charging, { workCharging, workOutingId: "travail" }).ok;
+    return vehicles
+      .filter((v) => v.slug !== vehicle.slug && !v.utility && v.price)
+      .flatMap((v) => {
+        const fit = [...v.versions].sort((x, y) => x.range[key] - y.range[key]).find((x) => x.range[key] > base && passes(x.range, x.charging));
+        return fit ? [{ v, version: fit, km: fit.range[key] }] : [];
+      })
+      .sort((x, y) => x.v.price! - y.v.price!)
+      .slice(0, 3);
+  }, [week, chosen.length, vehicle, season, vehicles, outings, legs, scenario, stopCharger, workCharging]);
 
   // Zones « Jusqu'où ? » : hiver posé sur l'été, comme la règle d'autonomie
   useEffect(() => {
@@ -490,17 +536,42 @@ export default function WeekPlanner({ vehicles }: Props) {
 
   // Prix moyen du kWh de la semaine : maison et travail à 0,20 €, borne publique au tarif rapide
   const prices = saved?.prices ?? DEFAULT_SAVED.prices;
-  const eurPerKwh = useMemo(() => {
-    if (!week) return prices.home;
-    let kwh = 0;
-    let cost = 0;
-    for (const d of week.days)
-      for (const c of d.charges) {
-        kwh += c.added;
-        cost += c.added * (c.kind === "stop" ? PUBLIC_EUR_KWH : c.kind === "work" ? prices.work : prices.home);
-      }
-    return kwh > 0 ? cost / kwh : prices.home;
-  }, [week, prices.home, prices.work]);
+  const priceOf = useCallback(
+    (w: WeekResult | null) => {
+      if (!w) return prices.home;
+      let kwh = 0;
+      let cost = 0;
+      for (const d of w.days)
+        for (const c of d.charges) {
+          kwh += c.added;
+          cost += c.added * (c.kind === "stop" ? PUBLIC_EUR_KWH : c.kind === "work" ? prices.work : prices.home);
+        }
+      return kwh > 0 ? cost / kwh : prices.home;
+    },
+    [prices.home, prices.work]
+  );
+  const eurPerKwh = useMemo(() => priceOf(week), [week, priceOf]);
+
+  // Plusieurs modèles : une ligne chacun dans la barre du bas (même semaine, mêmes prix)
+  const compareRows: CompareRow[] = useMemo(() => {
+    if (chosen.length < 2) return [];
+    return chosen.map((v, i) => {
+      const w = weeks[i] ?? null;
+      const lines = w ? verdictLines(w, scenario, stopCharger) : null;
+      const elec = w ? w.used * v.charging.usableKWh * CHARGING_LOSSES * priceOf(w) : null;
+      const petrol = w && fuel ? ((w.km * ICE_L_100) / 100) * fuel.eur : null;
+      return {
+        key: v.key,
+        name: v.model,
+        color: COMPARE_COLORS[i]!,
+        week: w,
+        verdict: lines?.big ?? "",
+        warn: !!w && (!w.ok || (scenario === "topup" && !w.stops.length && !w.workDays.length)),
+        elecYear: elec !== null ? elec * WEEKS_PER_YEAR : null,
+        savedYear: elec !== null && petrol !== null ? (petrol - elec) * WEEKS_PER_YEAR : null,
+      };
+    });
+  }, [chosen, weeks, scenario, stopCharger, priceOf, fuel]);
 
   // Lecture de la semaine : la voiture fait chaque aller-retour, la jauge suit
   const stop = useCallback(() => {
@@ -637,8 +708,59 @@ export default function WeekPlanner({ vehicles }: Props) {
           // Une seule barre en bas de la carte : le verdict, puis la frise et les chiffres côte à côte
           <div className="week-hud">
             <div className="week-bar">
-              <Verdict week={week} scenario={scenario} stopCharger={stopCharger} ready />
+              {compareRows.length === 0 && <Verdict week={week} scenario={scenario} stopCharger={stopCharger} ready />}
+              {week && !week.ok && chosen.length === 1 && (
+                <div className="week-alt">
+                  {alternatives.length > 0 && <span className="week-alt-label">Plus serein avec</span>}
+                  {/* Aucun modèle ne suffit : c'est la façon de recharger qu'il faut changer */}
+                  {alternatives.length === 0 && (
+                    <>
+                      <span className="week-alt-label">Aucun modèle ne passe cette semaine ainsi. Essayer</span>
+                      {scenario !== "nightly" && !workCharging && (
+                        <button type="button" className="week-alt-chip" onClick={() => update({ workCharging: true })}>
+                          une recharge au travail
+                        </button>
+                      )}
+                      {scenario === "topup" && (
+                        <button type="button" className="week-alt-chip" onClick={() => update({ scenario: "weekly" })}>
+                          une prise à la maison
+                        </button>
+                      )}
+                    </>
+                  )}
+                  {alternatives.map(({ v, version, km }) => (
+                    <button
+                      key={v.slug}
+                      type="button"
+                      className="week-alt-chip"
+                      onClick={() => update({ vehicles: [v.slug], versions: { ...saved.versions, [v.slug]: version.id } })}
+                      title={`Essayer la semaine en ${v.brand} ${v.model} (${version.label})`}
+                    >
+                      {v.image && <img src={v.image} alt="" width={40} height={24} className="vehicle-photo" />}
+                      <span>
+                        <b>{v.model}</b> · {formatKm(km)} {season === "winter" ? "en hiver" : "réels"}
+                      </span>
+                    </button>
+                  ))}
+                  <a href={url("/vehicules/?options=trajet")} className="week-alt-link">Tous les modèles qui tiennent mon trajet</a>
+                  <a href={url("/recommandation/")} className="week-alt-link">Trouver le bon modèle en 6 questions</a>
+                </div>
+              )}
               <div className="week-bar-row">
+                {compareRows.length > 0 ? (
+                  <WeekCompare
+                    rows={compareRows}
+                    active={activeDay}
+                    live={live}
+                    playing={playing}
+                    onSelect={(d) => {
+                      stop();
+                      setActiveDay(d);
+                    }}
+                    onPlay={play}
+                    onStop={stop}
+                  />
+                ) : (
                 <WeekTimeline
                   days={week.days}
                   active={activeDay}
@@ -651,7 +773,9 @@ export default function WeekPlanner({ vehicles }: Props) {
                   onPlay={play}
                   onStop={stop}
                 />
+                )}
                 <WeekMileage km={liveTotals?.km ?? week.km} live={!!liveTotals} />
+                {compareRows.length === 0 && (
                 <WeekCost
                   km={liveTotals?.km ?? week.km}
                   kwh={(liveTotals?.used ?? week.used) * vehicle.charging.usableKWh * CHARGING_LOSSES}
@@ -659,6 +783,7 @@ export default function WeekPlanner({ vehicles }: Props) {
                   fuel={fuel}
                   live={!!liveTotals}
                 />
+                )}
               </div>
             </div>
           </div>
@@ -791,22 +916,6 @@ export default function WeekPlanner({ vehicles }: Props) {
               <>
                 {/* Le verdict vit dans la barre de la carte ; ici, seulement ce qu'il manque */}
                 {!(week && vehicle) && <Verdict week={week} scenario={scenario} stopCharger={stopCharger} ready={!!vehicle && !!home} />}
-                {chosen.length > 1 && (
-                  <ul className="week-compare" aria-label="Les autres modèles, même semaine">
-                    {chosen.slice(1).map((v, k) => {
-                      const w = weeks[k + 1];
-                      return (
-                        <li key={v.slug}>
-                          <i className="week-dot" style={{ background: COMPARE_COLORS[k + 1] }} aria-hidden="true" />
-                          <span className="min-w-0 flex-1 truncate">{v.model}</span>
-                          <b className="tabular" data-warn={w && !w.ok ? "1" : undefined}>
-                            {w ? verdictLines(w, scenario, stopCharger).big : "…"}
-                          </b>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                )}
 
                 <section className="week-block" aria-labelledby="week-charge-title">
                   <h2 id="week-charge-title" className="week-block-title">Recharge</h2>
@@ -994,7 +1103,8 @@ export default function WeekPlanner({ vehicles }: Props) {
                   </li>
                   <li>
                     La consommation dépend de la route : autonomie mesurée à 130 km/h sur autoroute, autonomie mixte sur voie express,
-                    entre mixte et ville sur les routes. L'hiver applique l'écart mesuré à -5 °C de chaque modèle.
+                    entre mixte et ville sur les routes. L'hiver (-5 °C) est estimé selon la chimie de la batterie et la pompe à chaleur, comme partout sur Evly (
+                    <a href={url("/methodologie/#hiver")} className="underline">détail</a>).
                   </li>
                   <li>On garde toujours 10 % de batterie en réserve. Les recharges du quotidien s'arrêtent à 80 %.</li>
                   <li>

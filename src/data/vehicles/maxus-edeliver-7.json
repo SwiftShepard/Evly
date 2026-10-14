@@ -27,7 +27,7 @@
     "mixed_km": 275,
     "highway_130_km": 180,
     "urban_km": 345,
-    "winter_minus5_km": 220,
+    "winter_minus5_km": 175,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 24,
@@ -141,7 +141,7 @@
         "mixed_km": 225,
         "highway_130_km": 145,
         "urban_km": 280,
-        "winter_minus5_km": 180,
+        "winter_minus5_km": 143,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -190,7 +190,7 @@
         "mixed_km": 275,
         "highway_130_km": 180,
         "urban_km": 345,
-        "winter_minus5_km": 220,
+        "winter_minus5_km": 175,
         "confidence": "estimated"
       },
       "rangeTests": [],

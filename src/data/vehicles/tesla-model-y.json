@@ -19,6 +19,7 @@
   "usableCapacity_kWh": 57.5,
   "grossCapacity_kWh": 60,
   "chemistry": "NMC",
+  "heatPump": "standard",
   "architecture_V": 400,
   "mass_kg": 1981,
   "wltp_max_km": 600,
@@ -28,7 +29,7 @@
     "highway_130_km": 402,
     "highway_120_km": 447,
     "urban_km": 680,
-    "winter_minus5_km": 400,
+    "winter_minus5_km": 410,
     "confidence": "bjorn_nyland"
   },
   "consumption_mixed_kWh_per_100km": 15,
@@ -208,7 +209,7 @@
         "mixed_km": 350,
         "highway_130_km": 252,
         "urban_km": 420,
-        "winter_minus5_km": 220,
+        "winter_minus5_km": 256,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -259,7 +260,7 @@
         "highway_130_km": 402,
         "highway_120_km": 447,
         "urban_km": 680,
-        "winter_minus5_km": 400,
+        "winter_minus5_km": 410,
         "confidence": "bjorn_nyland"
       },
       "rangeTests": [
@@ -337,7 +338,7 @@
         "highway_130_km": 334,
         "highway_120_km": 371,
         "urban_km": 573,
-        "winter_minus5_km": 335,
+        "winter_minus5_km": 343,
         "confidence": "bjorn_nyland"
       },
       "rangeTests": [
@@ -415,7 +416,7 @@
         "highway_130_km": 318,
         "highway_120_km": 353,
         "urban_km": 518,
-        "winter_minus5_km": 309,
+        "winter_minus5_km": 317,
         "confidence": "bjorn_nyland"
       },
       "rangeTests": [

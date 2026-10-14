@@ -1933,3 +1933,163 @@ html.week-guide-lock body {
 .week-brick-body .week-combo {
   margin-top: 0.6rem;
 }
+
+/* Semaine à sec : modèles plus autonomes à essayer, et les pistes pour chercher plus loin */
+.week-alt {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.6rem;
+  padding: 0 0.15rem;
+}
+.week-alt-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--color-text-faint);
+}
+.week-alt-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 2rem;
+  padding: 0 0.7rem 0 0.35rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-elevated);
+  font-size: 13px;
+  color: var(--color-text-muted);
+  transition:
+    border-color 180ms var(--ease-out-expo),
+    transform 140ms var(--ease-out-expo);
+}
+.week-alt-chip b {
+  font-weight: 650;
+  color: var(--color-text);
+}
+.week-alt-chip img {
+  width: 40px;
+  height: 24px;
+  object-fit: contain;
+}
+.week-alt-chip:active {
+  transform: scale(0.97);
+}
+.week-alt-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+@media (hover: hover) and (pointer: fine) {
+  .week-alt-chip:hover {
+    border-color: var(--color-accent);
+  }
+  .week-alt-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+/* Comparaison de modèles dans la barre du bas : une ligne par modèle, colonnes alignées */
+.week-cmp {
+  flex: 1 1 34rem;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.week-cmp-row {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 9rem) auto minmax(8rem, 1fr) auto auto;
+  align-items: center;
+  column-gap: 0.9rem;
+  min-height: 2.1rem;
+  font-size: 13px;
+}
+.week-cmp-head {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--color-text-faint);
+}
+.week-cmp-name {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+  font-weight: 650;
+}
+.week-cmp-days {
+  display: grid;
+  grid-template-columns: repeat(7, 14px);
+  gap: 0.35rem;
+  align-items: end;
+}
+.week-cmp-days button {
+  width: 14px;
+  height: 1.4rem;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 650;
+  color: var(--color-text-muted);
+}
+.week-cmp-days button[aria-pressed="true"] {
+  background: var(--color-surface-accent);
+  color: var(--color-text);
+}
+.week-gauge.week-gauge-sm {
+  width: 14px;
+  height: 26px;
+}
+.week-gauge-sm[data-active] {
+  box-shadow: 0 0 0 2px var(--color-surface-elevated), 0 0 0 3.5px var(--color-accent);
+}
+.week-gauge-sm[data-low] .week-gauge-level {
+  background: var(--color-danger);
+}
+.week-cmp-verdict {
+  min-width: 0;
+  font-weight: 650;
+  color: var(--color-accent);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.week-cmp-verdict[data-warn] {
+  color: #9a3412;
+}
+.week-cmp-num {
+  justify-self: end;
+  text-align: right;
+  white-space: nowrap;
+}
+.week-cmp-row > b.week-cmp-num {
+  font-family: var(--font-display);
+  font-size: 14.5px;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+}
+.week-cmp-num .week-cost-saved {
+  padding: 0 0.4rem;
+  border-radius: 999px;
+  background: var(--color-lime);
+  color: var(--color-ink);
+}
+.week-play.week-play-sm {
+  width: 34px;
+  height: 34px;
+}
+@media (max-width: 640px) {
+  .week-cmp-row {
+    grid-template-columns: minmax(5rem, 1fr) auto auto;
+    row-gap: 0.15rem;
+  }
+  .week-cmp-row > :nth-child(3) {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  .week-cmp-head > :nth-child(3) {
+    display: none;
+  }
+  .week-cmp-row > :nth-child(5) {
+    display: none;
+  }
+}

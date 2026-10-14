@@ -26,6 +26,8 @@ const vehicles: WeekVehicle[] = all
     brand: v.brand,
     model: v.model,
     image: index.get(v.slug)?.i ?? null,
+    price: index.get(v.slug)?.p ?? null,
+    utility: index.get(v.slug)?.u === 1,
     ...weekVersions(v),
   }))
   .sort((a, b) => `${a.brand} ${a.model}`.localeCompare(`${b.brand} ${b.model}`, "fr"));
@@ -96,7 +98,7 @@ try {
   /* tuiles absentes : la phrase s'adapte */
 }
 
-// Écart moyen hiver / mixte sur les autonomies mesurées du catalogue
+// Écart moyen hiver / mixte des modèles à autonomie mesurée (hiver estimé par lib/winter.js)
 const measured = all.filter((v) => ["tested", "bjorn_nyland"].includes(v.realRange.confidence));
 const winterLoss = Math.round((1 - measured.reduce((s, v) => s + v.realRange.winter_minus5_km / v.realRange.mixed_km, 0) / measured.length) * 100);
 
@@ -127,7 +129,7 @@ const faq = [
   },
   {
     question: "L'autonomie d'une voiture électrique baisse-t-elle en hiver ?",
-    answer: `Oui. Sur les modèles mesurés du catalogue Evly, l'autonomie à -5 °C est en moyenne inférieure de ${winterLoss} % à l'autonomie réelle mixte : chauffage de l'habitacle et batterie froide. Ma semaine affiche toujours la saison d'hiver par défaut, pour ne pas promettre trop.`,
+    answer: `Oui. Pour les modèles dont l'autonomie est mesurée, Evly estime l'autonomie à -5 °C inférieure de ${winterLoss} % en moyenne à l'autonomie réelle mixte : chauffage de l'habitacle et batterie froide, davantage sans pompe à chaleur ou avec une batterie LFP. Ma semaine affiche toujours la saison d'hiver par défaut, pour ne pas promettre trop.`,
   },
   {
     question: "Mon adresse est-elle enregistrée ?",
@@ -390,7 +392,7 @@ const jsonLd = [
       <ul class="week-guide-list">
         <li>Les distances suivent les vraies routes, depuis votre adresse : réseau routier d'OpenStreetMap (jusqu'aux routes de desserte) pour la carte, tracé exact pour les trajets de la semaine.</li>
         <li>La consommation dépend de la route : autonomie mesurée à 130 km/h sur autoroute, autonomie mixte sur voie express, entre mixte et ville sur les routes.</li>
-        <li>L'hiver applique l'écart mesuré à -5 °C de chaque modèle. Les autonomies sont mesurées quand un essai existe, estimées sinon, et c'est toujours indiqué.</li>
+        <li>L'hiver (-5 °C) est estimé selon la chimie de la batterie et la pompe à chaleur de chaque modèle, comme partout sur Evly. Les autonomies sont mesurées quand un essai existe, estimées sinon, et c'est toujours indiqué.</li>
         <li>On garde 10 % de réserve à l'arrivée, et les recharges du quotidien s'arrêtent à 80 %.</li>
       </ul>
       <p class="week-guide-note">Détail des sources et des mesures : <a href={url("/methodologie/")}>notre méthodologie</a>.</p>

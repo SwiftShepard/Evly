@@ -3,6 +3,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import SectionHeader from "@/components/ui/SectionHeader.astro";
 import Tag from "@/components/ui/Tag.astro";
 import { allSources, type Source, type TrustLevel } from "@/data/sources";
+import { ESTIMATE_MARGIN, WINTER_C, tempFactor } from "@/lib/winter";
 
 const sources = allSources();
 
@@ -21,6 +22,15 @@ const trustTone: Record<TrustLevel, "accent" | "warning" | "danger"> = {
 const sortedSources: Source[] = [...sources].sort(
   (a, b) => trustOrder[a.trustLevel] - trustOrder[b.trustLevel]
 );
+
+// Modèle d'hiver (src/lib/winter.js) : les facteurs affichés sont ceux du calcul
+const pct = (x: number) => `${Math.round(x * 100)} %`;
+const winterRows = (["NMC", "LFP"] as const).map((chem) => ({
+  chem,
+  withHp: tempFactor(WINTER_C, chem, true),
+  withoutHp: tempFactor(WINTER_C, chem, false),
+  unknown: tempFactor(WINTER_C, chem, null),
+}));
 
 const protocols = [
   {
@@ -164,10 +174,67 @@ const protocols = [
     </div>
   </section>
 
-  <!-- Section 3, TCO -->
-  <section id="tco" class="container-edit py-20 md:py-28 border-t border-[var(--color-border)] reveal">
+  <!-- Section 3, Hiver -->
+  <section id="hiver" class="container-edit py-20 md:py-28 border-t border-[var(--color-border)] reveal">
     <SectionHeader
       number="03"
+      eyebrow="Autonomie en hiver"
+      title="L'hiver : une estimation, et on le dit"
+      description="« Tient votre trajet », le matcher et Ma semaine reposent sur l'autonomie à -5 °C. Aucune mesure publique ne la couvre pour tout le catalogue : voici exactement comment nous l'estimons."
+    />
+    <div class="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div class="lg:col-span-7 flex flex-col gap-5 text-[var(--color-text-muted)] text-base leading-relaxed">
+        <p>
+          Partout sur Evly, l'autonomie à {WINTER_C} °C est l'autonomie réelle mixte multipliée par un même facteur. Il dépend
+          de deux choses : la <span class="text-[var(--color-text)]">pompe à chaleur</span>, qui divise par deux environ
+          l'énergie du chauffage, et la <span class="text-[var(--color-text)]">chimie de la batterie</span>, les batteries LFP
+          perdant davantage au froid que les NMC.
+        </p>
+        <p>
+          Le facteur est calé sur les essais d'hiver de Bjørn Nyland, réalisés entre 1 et 3 °C avec des pneus hiver (une
+          batterie NMC y garde environ 76 % de son autonomie d'été), puis prolongé jusqu'à {WINTER_C} °C. Le curseur de
+          température de chaque fiche applique la même règle.
+        </p>
+        <p>
+          Quand la pompe à chaleur n'est pas renseignée pour un modèle (en option, ou information manquante), nous prenons
+          la moyenne des deux cas. Quand l'autonomie mixte elle-même n'est qu'estimée, l'hiver perd encore
+          {" "}{pct(1 - ESTIMATE_MARGIN)} : mieux vaut une bonne surprise qu'une panne.
+        </p>
+      </div>
+      <div class="lg:col-span-5 bg-[var(--color-bg-elevated)] border border-[var(--color-border)] p-8">
+        <span class="label-eyebrow">Part de l'autonomie mixte gardée à {WINTER_C} °C</span>
+        <table class="mt-4 w-full text-sm">
+          <thead>
+            <tr class="text-left text-[var(--color-text-faint)] text-xs">
+              <th class="py-2 font-medium">Batterie</th>
+              <th class="py-2 font-medium text-right">Avec PAC</th>
+              <th class="py-2 font-medium text-right">Sans</th>
+              <th class="py-2 font-medium text-right">Non renseignée</th>
+            </tr>
+          </thead>
+          <tbody>
+            {winterRows.map((r) => (
+              <tr class="border-t border-[var(--color-border)]">
+                <td class="py-2 font-semibold">{r.chem}</td>
+                <td class="py-2 text-right tabular-nums">{pct(r.withHp)}</td>
+                <td class="py-2 text-right tabular-nums">{pct(r.withoutHp)}</td>
+                <td class="py-2 text-right tabular-nums">{pct(r.unknown)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="mt-4 text-xs text-[var(--color-text-faint)] leading-relaxed">
+          Autonomie mixte estimée : × {String(ESTIMATE_MARGIN).replace(".", ",")} en plus. Une vraie mesure à {WINTER_C} °C,
+          quand elle existera pour un modèle, remplacera ce calcul.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4, TCO -->
+  <section id="tco" class="container-edit py-20 md:py-28 border-t border-[var(--color-border)] reveal">
+    <SectionHeader
+      number="04"
       eyebrow="Coût total de possession"
       title="Notre formule TCO, sans boîte noire"
       description="Le simulateur arrive en V3. La formule, elle, est publiée dès maintenant, un comparateur dont on cache la méthode est un comparateur qu'il ne faut pas croire."
@@ -201,10 +268,10 @@ const protocols = [
     </div>
   </section>
 
-  <!-- Section 4, Sources -->
+  <!-- Section 5, Sources -->
   <section id="sources" class="container-edit py-20 md:py-28 border-t border-[var(--color-border)] reveal">
     <SectionHeader
-      number="04"
+      number="05"
       eyebrow="Sources"
       title="Toutes les sources que nous citons"
       description="Niveau de confiance attribué par Evly à partir du sérieux méthodologique de la source. Cliquer pour rejoindre la source originale, Evly ne reproduit jamais leur contenu éditorial."
@@ -270,10 +337,10 @@ const protocols = [
     </p>
   </section>
 
-  <!-- Section 5, Limites -->
+  <!-- Section 6, Limites -->
   <section id="limites" class="container-edit py-20 md:py-28 border-t border-[var(--color-border)] reveal">
     <SectionHeader
-      number="05"
+      number="06"
       eyebrow="Limites"
       title="Ce que nous ne pouvons pas garantir"
       description="Cette section existe parce que la transparence éditoriale doit aller jusqu'au bout."
@@ -302,7 +369,7 @@ const protocols = [
 
   <!-- Contact -->
   <section id="contact" class="container-edit py-20 md:py-28 border-t border-[var(--color-border)] reveal">
-    <SectionHeader number="06" eyebrow="Contact" title="Une erreur, une remarque ?" />
+    <SectionHeader number="07" eyebrow="Contact" title="Une erreur, une remarque ?" />
     <div class="mt-12 max-w-2xl">
       <p class="text-[var(--color-text-muted)] text-base leading-relaxed">
         Evly est un projet personnel de démonstration technique et éditoriale. Toute correction factuelle, ajout de source ou suggestion de méthodologie est bienvenue via les canaux indiqués au pied de page ou directement sur le dépôt source.

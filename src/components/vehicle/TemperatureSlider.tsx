@@ -1,42 +1,24 @@
 import React, { useState, useEffect, useId } from "react";
+import { heatPumpOf, tempFactor } from "@/lib/winter";
 
 interface Props {
   chemistry?: string;
+  /** Pompe à chaleur de la fiche ; absente = non renseignée */
+  heatPump?: "standard" | "option" | "none";
   initialTemp?: number;
-  initialPac?: boolean;
   compact?: boolean;
 }
 
-export default function TemperatureSlider({
-  chemistry = "NMC",
-  initialTemp = 20,
-  initialPac = true,
-  compact = false,
-}: Props) {
+/**
+ * Curseur de température de la fiche : même modèle de froid que l'autonomie « hiver »
+ * (src/lib/winter.js). Pompe à chaleur d'après la fiche ; non renseignée, le calcul prend la
+ * moyenne des deux cas, jusqu'à ce que le visiteur dise ce qu'il a.
+ */
+export default function TemperatureSlider({ chemistry = "NMC", heatPump, initialTemp = 20, compact = false }: Props) {
   const [temp, setTemp] = useState(initialTemp);
-  const [pac, setPac] = useState(initialPac);
+  const [pac, setPac] = useState<boolean | null>(heatPumpOf(heatPump));
 
-  // Range multiplier calculation
-  const getTempMultiplier = (t: number, chem: string, hasPac: boolean) => {
-    if (t >= 20 && t <= 25) return 1.0;
-
-    if (t < 20) {
-      // Heating loss (from 20C down to -10C)
-      const maxHeatingLoss = hasPac ? 0.12 : 0.25;
-      const heatingLoss = maxHeatingLoss * ((20 - t) / 30);
-
-      // Battery chemistry efficiency loss (from 20C down to -10C)
-      const maxChemLoss = chem === "LFP" ? 0.15 : 0.08;
-      const chemLoss = maxChemLoss * ((20 - t) / 30);
-
-      return Math.max(0.4, 1.0 - heatingLoss - chemLoss);
-    } else {
-      // Air conditioning loss (from 25C up to 40C)
-      const maxAcLoss = 0.08;
-      const acLoss = maxAcLoss * ((t - 25) / 15);
-      return Math.max(0.8, 1.0 - acLoss);
-    }
-  };
+  const getTempMultiplier = (t: number, chem: string, hasPac: boolean | null) => tempFactor(t, chem, hasPac);
 
   const multiplier = getTempMultiplier(temp, chemistry, pac);
 
@@ -58,7 +40,7 @@ export default function TemperatureSlider({
         }
       }
       if (pacParam) {
-        resolvedPac = pacParam === "true";
+        resolvedPac = pacParam === "true" ? true : pacParam === "false" ? false : null;
         setPac(resolvedPac);
       }
 
@@ -91,7 +73,7 @@ export default function TemperatureSlider({
   };
 
   const handlePacToggle = () => {
-    const newVal = !pac;
+    const newVal = pac !== true;
     setPac(newVal);
     updateUrl(temp, newVal);
   };
@@ -101,7 +83,7 @@ export default function TemperatureSlider({
     updateUrl(presetTemp, pac);
   };
 
-  const updateUrl = (t: number, p: boolean) => {
+  const updateUrl = (t: number, p: boolean | null) => {
     try {
       const urlVal = new URL(window.location.href);
       if (t === 20) {
@@ -109,10 +91,10 @@ export default function TemperatureSlider({
       } else {
         urlVal.searchParams.set("temp", t.toString());
       }
-      if (p) {
+      if (p === heatPumpOf(heatPump)) {
         urlVal.searchParams.delete("pac");
       } else {
-        urlVal.searchParams.set("pac", "false");
+        urlVal.searchParams.set("pac", String(p));
       }
       window.history.replaceState(null, "", urlVal.toString());
     } catch (e) {
@@ -169,7 +151,7 @@ export default function TemperatureSlider({
         <div className="flex flex-col gap-3 mt-1">
           <div className="flex items-center justify-between pt-1 border-t border-[var(--color-border)] border-dashed">
             <span id={pacLabelId} className="font-mono text-[9px] uppercase tracking-[0.08em] text-[var(--color-text-faint)]">
-              Pompe à chaleur (PAC)
+              Pompe à chaleur (PAC){pac === null && " · non renseignée"}
             </span>
             <button
               type="button"
@@ -178,7 +160,7 @@ export default function TemperatureSlider({
               className={`relative inline-flex h-4 w-8 shrink-0 cursor-pointer rounded-full border-transparent transition-colors duration-200 ease-in-out ${
                 pac ? "bg-[var(--color-accent)]" : "bg-[var(--color-text-faint)]"
               }`}
-              aria-checked={pac}
+              aria-checked={pac === null ? "mixed" : pac}
               aria-labelledby={pacLabelId}
             >
               <span

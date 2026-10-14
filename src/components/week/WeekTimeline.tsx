@@ -34,7 +34,8 @@ export default function WeekTimeline({ days, active, live, playing, onSelect, on
         {days.map((d, i) => {
           const level = playing && active === i && live !== null ? live : d.end;
           const low = d.low < RESERVE;
-          const added = d.charges.reduce((sum, c) => sum + c.added, 0);
+          // Une voiture à sec ne reçoit jamais plus qu'une batterie pleine en une journée
+          const added = Math.min(1, d.charges.reduce((sum, c) => sum + c.added, 0));
           return (
             <li key={i}>
               <button

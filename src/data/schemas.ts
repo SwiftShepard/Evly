@@ -216,6 +216,8 @@ export const VehicleSchema = z.object({
   usableCapacity_kWh: z.number().positive(),
   grossCapacity_kWh: z.number().positive().nullable(),
   chemistry: z.enum(["NMC", "LFP", "NCM"]),
+  /** Pompe à chaleur (modèle d'hiver, lib/winter.js) : absente = non renseignée */
+  heatPump: z.enum(["standard", "option", "none"]).optional(),
   architecture_V: z.union([z.literal(400), z.literal(800)]),
   mass_kg: z.number().positive().nullable(),
 

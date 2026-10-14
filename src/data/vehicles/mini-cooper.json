@@ -27,7 +27,7 @@
     "mixed_km": 275,
     "highway_130_km": 211,
     "urban_km": 347,
-    "winter_minus5_km": 206,
+    "winter_minus5_km": 198,
     "confidence": "bjorn_nyland",
     "highway_120_km": 234
   },
@@ -210,7 +210,7 @@
         "mixed_km": 240,
         "highway_130_km": 170,
         "urban_km": 315,
-        "winter_minus5_km": 190,
+        "winter_minus5_km": 164,
         "confidence": "estimated"
       },
       "chargingDC_peak_kW": 75,
@@ -260,7 +260,7 @@
         "mixed_km": 275,
         "highway_130_km": 211,
         "urban_km": 347,
-        "winter_minus5_km": 206,
+        "winter_minus5_km": 198,
         "confidence": "bjorn_nyland",
         "highway_120_km": 234
       },

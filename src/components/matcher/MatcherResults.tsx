@@ -1,5 +1,5 @@
 import { useState, type Dispatch, type SetStateAction } from "react";
-import { AlertTriangle, ArrowRight, ArrowUpRight, Check, ChevronDown, Pencil, RotateCcw } from "lucide-react";
+import { AlertTriangle, ArrowRight, ArrowUpRight, Check, ChevronDown, Map as MapIcon, Pencil, RotateCcw } from "lucide-react";
 import Rail from "@/components/ui/Rail";
 import { url } from "@/lib/url";
 import { BUDGET_RANGE, type MatcherAnswers, type MatchResult } from "./scoring";
@@ -110,6 +110,9 @@ function Actions({ result, a, compact = false }: { result: MatchResult; a: Match
     <div className="mq-actions" data-compact={compact || undefined}>
       <a href={url(`/vehicules/${vehicle.slug}/`)} className="btn btn-primary btn-sm">
         Voir la fiche <ArrowRight size={15} strokeWidth={2.25} className="btn-arrow" aria-hidden="true" />
+      </a>
+      <a href={url(`/ma-semaine/?v=${vehicle.slug}&config=${config.id}&recharge=${a.homeCharging ? "maison" : "borne"}`)} className="btn btn-secondary btn-sm">
+        <MapIcon size={14} strokeWidth={2.25} aria-hidden="true" /> Ma semaine
       </a>
       <a href={url(`/comparer/?v=${vehicle.slug}:${config.id}:100`)} className="btn btn-secondary btn-sm">Comparer</a>
       {!compact && (
@@ -277,7 +280,7 @@ export default function MatcherResults({ results, answers: a, vehicleCount, imag
       )}
 
       <p className="mq-footnote">
-        La règle montre l'autonomie en hiver (-5 °C), l'autonomie réelle et les kilomètres annoncés ; le trait marque votre semaine de trajet.
+        La règle montre l'autonomie en hiver (-5 °C, estimée), l'autonomie réelle et les kilomètres annoncés ; le trait marque votre semaine de trajet.
         Prix après prime CEE : montant minimal, sauf si vous avez indiqué un revenu de 16 300 € ou moins par part. Montants indicatifs.{" "}
         <a href={url("/methodologie/")}>Notre méthode</a>
       </p>

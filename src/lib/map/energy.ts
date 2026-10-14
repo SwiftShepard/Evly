@@ -2,7 +2,7 @@
  * Autonomie d'un véhicule selon le type de route et la saison, à partir de son
  * autonomie réelle (fiche) : autoroute à 130, voie express ≈ mixte (90 / 120 km/h),
  * route ≈ entre mixte et urbain (80-90 km/h). L'hiver (-5 °C) applique le rapport
- * hiver / mixte de la fiche à tous les types de route.
+ * hiver / mixte de la fiche (modèle de src/lib/winter.js) à tous les types de route.
  */
 import type { RangeProfile } from "./roadGraph";
 

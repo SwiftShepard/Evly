@@ -909,7 +909,7 @@ const configSubtitle = (label: string) => {
         <div class="xl:hidden mb-4 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-4 flex flex-col gap-4">
           <SohSlider client:idle />
           <div class="border-t border-[var(--color-border)] border-dashed pt-4">
-            <TemperatureSlider client:idle chemistry={vehicle.chemistry} />
+            <TemperatureSlider client:idle chemistry={vehicle.chemistry} heatPump={vehicle.heatPump} />
           </div>
         </div>
 
@@ -1422,7 +1422,7 @@ const configSubtitle = (label: string) => {
       </div>
 
       <div class="sidebar-block">
-        <TemperatureSlider client:idle chemistry={vehicle.chemistry} />
+        <TemperatureSlider client:idle chemistry={vehicle.chemistry} heatPump={vehicle.heatPump} />
       </div>
 
       <div class="sidebar-block sidebar-actions">

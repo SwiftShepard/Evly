@@ -16,6 +16,9 @@ export interface TripResult {
   /** Kilomètres par la route (aller), part de batterie consommée par profil, tracé simplifié */
   km: number;
   used: number[];
+  /** Kilomètres sur autoroute, voie express et route (dernier kilomètre compris) : la batterie
+   * consommée par n'importe quel autre profil s'en déduit sans repasser par le worker */
+  split: [number, number, number];
   path: [number, number][] | null;
 }
 
@@ -64,7 +67,8 @@ self.onmessage = async (e: MessageEvent<WorkerRequest>) => {
         const a = bestArrival(lat, lon);
         if (!a) return null;
         const used = msg.profiles.map((p) => batteryUsed(reach!, a.node, p) + a.lastKm / p.road);
-        return { km: a.total, used, path: msg.withPath ? [...pathTo(a.node), [lon, lat]] : null };
+        const split: [number, number, number] = [reach!.hw[a.node]!, reach!.express[a.node]!, reach!.road[a.node]! + a.lastKm];
+        return { km: a.total, used, split, path: msg.withPath ? [...pathTo(a.node), [lon, lat]] : null };
       });
       self.postMessage({ id: msg.id, ok: true, trips });
     }

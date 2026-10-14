@@ -23,6 +23,10 @@ export interface WeekVehicle {
   brand: string;
   model: string;
   image: string | null;
+  /** Prix d'entrée (€), pour proposer des modèles proches quand la semaine ne passe pas */
+  price: number | null;
+  /** Utilitaire strict : jamais proposé en remplacement d'une voiture */
+  utility: boolean;
   versions: WeekVersion[];
   /** Version de la fiche, proposée par défaut */
   defaultVersion: string;
