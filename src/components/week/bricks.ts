@@ -42,8 +42,8 @@ const brickOf = (cat: string, id = cat): Brick => {
   return { id, cat, days: [...k.days], perDay: k.perDay };
 };
 
-/** Semaine proposée au premier passage */
-export const DEFAULT_BRICKS: Brick[] = ["travail", "sport", "restaurant", "courses", "bricolage", "balade"].map((c) => brickOf(c));
+/** Semaine proposée au premier passage : le travail seul, le visiteur ajoute ses sorties */
+export const DEFAULT_BRICKS: Brick[] = [brickOf("travail")];
 
 /** Nouvelle brique d'une catégorie, avec un identifiant libre */
 export function newBrick(cat: string, items: Brick[]): Brick {
