@@ -1860,11 +1860,19 @@ html.week-guide-lock body {
   .week-brick[data-active]:hover {
     background: var(--color-surface-accent);
   }
-  .week-brick-remove {
-    opacity: 0;
-  }
-  .week-brick:hover .week-brick-remove,
-  .week-brick-remove:focus-visible {
+}
+/* Retirer (brique, grand trajet) : toujours visible, discret ; rouge au survol */
+.week-brick-remove {
+  color: var(--color-text-faint);
+  opacity: 0.7;
+}
+.week-brick-remove:focus-visible {
+  opacity: 1;
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .week-brick-remove:hover {
     opacity: 1;
   }
 }
