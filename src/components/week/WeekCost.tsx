@@ -16,20 +16,22 @@ interface Props {
   eurPerKwh: number;
   fuel: FuelPrice | null;
   live: boolean;
+  /** Grands trajets de l'année, ajoutés à la colonne « an » (€) */
+  extraYear?: { elec: number; petrol: number };
 }
 
 /** Montant à deux décimales fixes (« 7,30 € »), sans décimales au-delà de 100 € */
 const money = new Intl.NumberFormat("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const eur = (n: number) => (Math.abs(n) < 100 ? `${money.format(n)} €` : `${formatNumber(Math.round(n))} €`);
 
-export default function WeekCost({ km, kwh, eurPerKwh, fuel, live }: Props) {
+export default function WeekCost({ km, kwh, eurPerKwh, fuel, live, extraYear = { elec: 0, petrol: 0 } }: Props) {
   if (!fuel) return null;
   const elec = kwh * eurPerKwh;
   const petrol = ((km * ICE_L_100) / 100) * fuel.eur;
   const saved = petrol - elec;
   const updated = fuel.updated ? new Date(fuel.updated).toLocaleDateString("fr-FR", { day: "numeric", month: "long" }) : null;
-  const year = (n: number) => n * WEEKS_PER_YEAR;
-  const basis = `${money.format(eurPerKwh)} €/kWh ; essence ${money.format(fuel.eur)} €/l${fuel.stations ? `, moyenne nationale${updated ? ` du ${updated}` : ""}` : ""}, ${formatNumber(ICE_L_100, 1)} l/100 km. Un an = 52 semaines comme celle-ci, hors vacances.`;
+  const year = (n: number, extra = 0) => n * WEEKS_PER_YEAR + extra;
+  const basis = `${money.format(eurPerKwh)} €/kWh ; essence ${money.format(fuel.eur)} €/l${fuel.stations ? `, moyenne nationale${updated ? ` du ${updated}` : ""}` : ""}, ${formatNumber(ICE_L_100, 1)} l/100 km. Un an = 52 semaines comme celle-ci${extraYear.elec > 0 ? ", plus vos grands trajets" : ", hors vacances"}.`;
 
   return (
     <section className="week-stat week-cost" data-live={live ? "1" : undefined} aria-label="Coût de l'énergie" title={basis}>
@@ -39,17 +41,17 @@ export default function WeekCost({ km, kwh, eurPerKwh, fuel, live }: Props) {
 
       <span className="week-stat-key"><i data-kind="ev" aria-hidden="true" />Électrique</span>
       <b className="tabular">{eur(elec)}</b>
-      {!live && <b className="tabular">{eur(year(elec))}</b>}
+      {!live && <b className="tabular">{eur(year(elec, extraYear.elec))}</b>}
 
       <span className="week-stat-key"><i data-kind="ice" aria-hidden="true" />Essence</span>
       <b className="tabular">{eur(petrol)}</b>
-      {!live && <b className="tabular">{eur(year(petrol))}</b>}
+      {!live && <b className="tabular">{eur(year(petrol, extraYear.petrol))}</b>}
 
       {saved > 0.005 && (
         <>
           <span className="week-stat-key week-stat-strong">Économie</span>
           <b className="tabular week-cost-saved">{eur(saved)}</b>
-          {!live && <b className="tabular week-cost-saved">{eur(year(saved))}</b>}
+          {!live && <b className="tabular week-cost-saved">{eur(year(saved, extraYear.petrol - extraYear.elec))}</b>}
         </>
       )}
     </section>

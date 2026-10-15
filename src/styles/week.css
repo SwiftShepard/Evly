@@ -2093,3 +2093,84 @@ html.week-guide-lock body {
     display: none;
   }
 }
+
+/* Grands trajets de l'année : une ligne par destination, réglages à droite */
+.week-trips {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.week-trip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.6rem;
+  padding: 0.45rem 0.35rem;
+  border-radius: 12px;
+  transition: background-color 220ms var(--ease-out-expo);
+}
+.week-trip[data-active] {
+  background: var(--color-surface-accent);
+}
+.week-trip-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 12rem;
+  min-width: 0;
+  text-align: left;
+  font-size: 14px;
+}
+.week-trip-main b {
+  font-weight: 650;
+}
+.week-trip-sub {
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+}
+.week-trip-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.week-stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  height: 1.85rem;
+  padding: 0 0.15rem;
+  border-radius: 999px;
+  background: var(--color-bg-subtle);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+.week-stepper button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  color: var(--color-text-muted);
+}
+.week-stepper button:disabled {
+  opacity: 0.35;
+}
+.week-stepper .tabular {
+  min-width: 4.6rem;
+  text-align: center;
+}
+.week-trip .week-seg-sm button {
+  padding-inline: 0.55rem;
+}
+@media (hover: hover) and (pointer: fine) {
+  .week-trip:hover {
+    background: var(--color-bg-subtle);
+  }
+  .week-trip[data-active]:hover {
+    background: var(--color-surface-accent);
+  }
+  .week-stepper button:not(:disabled):hover {
+    background: var(--color-surface-elevated);
+    color: var(--color-text);
+  }
+}

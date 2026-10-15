@@ -14,6 +14,8 @@ import WeekMileage from "./WeekMileage";
 import WeekCompare, { type CompareRow } from "./WeekCompare";
 import { CHARGING_LOSSES, ELEC_EUR_KWH, ICE_L_100, PUBLIC_EUR_KWH, fuelPrice, type FuelPrice } from "@/lib/map/fuel";
 import { WEEKS_PER_YEAR } from "@/lib/map/mileage";
+import { holidayFor, type HolidayLeg, type HolidayTrip } from "@/lib/map/holiday";
+import HolidayRow from "./HolidayRow";
 import ReachList from "./ReachList";
 import { CategoryIcon } from "./icons";
 import ShareBox from "./ShareBox";
@@ -68,12 +70,14 @@ interface Saved {
   places: Record<string, Place>;
   /** Semaine type : briques empilées, travail en tête */
   items: Brick[];
+  /** Grands trajets de l'année (vacances, famille, ski) */
+  holidays: HolidayTrip[];
   scenario: Scenario | null;
   season: Season;
   tab: Tab;
 }
 
-const DEFAULT_SAVED: Saved = { home: null, work: null, vehicles: [], versions: {}, drawer: true, workCharging: false, prices: { home: ELEC_EUR_KWH, work: ELEC_EUR_KWH }, places: {}, items: DEFAULT_BRICKS, scenario: null, season: "winter", tab: "week" };
+const DEFAULT_SAVED: Saved = { home: null, work: null, vehicles: [], versions: {}, drawer: true, workCharging: false, prices: { home: ELEC_EUR_KWH, work: ELEC_EUR_KWH }, places: {}, items: DEFAULT_BRICKS, holidays: [], scenario: null, season: "winter", tab: "week" };
 
 function readSaved(): Saved {
   try {
@@ -82,12 +86,28 @@ function readSaved(): Saved {
       const s = JSON.parse(raw);
       // Réglages d'avant les briques : interrupteurs d'une liste fixe
       const items = sanitizeBricks(s.items) ?? (s.on ? fromLegacy(s.on) : DEFAULT_BRICKS);
-      return { ...DEFAULT_SAVED, ...s, items };
+      return { ...DEFAULT_SAVED, ...s, items, holidays: sanitizeHolidays(s.holidays) };
     }
   } catch {
     /* stockage indisponible */
   }
   return DEFAULT_SAVED;
+}
+
+/** Grands trajets valides (stockage ou lien partagé) */
+function sanitizeHolidays(raw: unknown): HolidayTrip[] {
+  if (!Array.isArray(raw)) return [];
+  return raw
+    .filter((h) => h && typeof h.id === "string" && typeof h.label === "string" && Number.isFinite(h.lat) && Number.isFinite(h.lon))
+    .slice(0, 4)
+    .map((h) => ({
+      id: h.id,
+      label: h.label,
+      lat: h.lat,
+      lon: h.lon,
+      times: Math.min(24, Math.max(1, Math.round(Number(h.times) || 1))),
+      season: h.season === "winter" ? "winter" : "summer",
+    }));
 }
 
 function writeSaved(s: Saved) {
@@ -132,6 +152,9 @@ export default function WeekPlanner({ vehicles }: Props) {
   const [origin, setOriginKey] = useState(0);
   const [options, setOptions] = useState<Record<string, PoiPlace[]>>({});
   const [legs, setLegs] = useState<Record<string, Leg>>({});
+  /** Grands trajets : route depuis le domicile, et celui montré sur la carte */
+  const [holidayLegs, setHolidayLegs] = useState<Record<string, HolidayLeg>>({});
+  const [holidayFocus, setHolidayFocus] = useState<string | null>(null);
   const [stopCharger, setStopCharger] = useState<{ charger: Charger; atShop: boolean } | null>(null);
   const [zones, setZones] = useState<ZoneLayer[]>([]);
   const [tripKind, setTripKind] = useState<TripKind>("return");
@@ -189,6 +212,7 @@ export default function WeekPlanner({ vehicles }: Props) {
         versions: shared.versions,
         places: shared.places,
         items: sanitizeBricks(shared.items) ?? fromLegacy(shared.on ?? {}),
+        holidays: sanitizeHolidays(shared.holidays),
         scenario: (["nightly", "weekly", "topup"] as const).find((k) => k === shared.scenario) ?? "weekly",
         season: shared.season as Season,
         tab: shared.tab as Tab,
@@ -377,6 +401,26 @@ export default function WeekPlanner({ vehicles }: Props) {
     };
   }, [origin, chosenKey, placeKey]);
 
+  // Grands trajets : kilomètres par type de route et tracé, sur le graphe local (pas de limite de distance)
+  const holidays = saved?.holidays ?? [];
+  const holidayKey = holidays.map((h) => `${h.id}:${h.lat},${h.lon}`).join("|");
+  useEffect(() => {
+    if (!origin || !holidays.length) return;
+    let stale = false;
+    computeTrips(holidays, [{ hw: 1, express: 1, road: 1 }], true).then((trips) => {
+      if (stale) return;
+      const next: Record<string, HolidayLeg> = {};
+      holidays.forEach((h, k) => {
+        const t = trips[k];
+        if (t) next[h.id] = { km: t.km, split: t.split ?? [0, 0, t.km], coords: t.path };
+      });
+      setHolidayLegs(next);
+    });
+    return () => {
+      stale = true;
+    };
+  }, [origin, holidayKey]);
+
   // Recharge d'appoint : une borne rapide au supermarché, sinon la borne rapide la plus proche de chez soi,
   // sinon la borne (lente) du supermarché
   useEffect(() => {
@@ -515,10 +559,15 @@ export default function WeekPlanner({ vehicles }: Props) {
   const dayOutings = activeDay === null ? null : new Set(items.filter((b) => b.days.includes(activeDay)).map((b) => b.id));
   const routes: RouteLine[] = useMemo(() => {
     if (tab !== "week") return focus?.coords ? [{ id: "focus", coords: focus.coords, active: true }] : [];
-    return outings
+    const list: RouteLine[] = outings
       .filter((o) => legs[o.id]?.coords)
-      .map((o) => ({ id: o.id, coords: legs[o.id]!.coords!, active: dayOutings ? dayOutings.has(o.id) : false }));
-  }, [tab, outings, legs, activeDay, focus]);
+      .map((o) => ({ id: o.id, coords: legs[o.id]!.coords!, active: !holidayFocus && dayOutings ? dayOutings.has(o.id) : false }));
+    // Grand trajet montré : son tracé, seul en avant
+    const trip = holidayFocus ? holidayLegs[holidayFocus] : null;
+    const dest = holidays.find((h) => h.id === holidayFocus);
+    if (trip?.coords && dest && home) list.push({ id: `trajet-${dest.id}`, coords: [[home.lon, home.lat], ...trip.coords, [dest.lon, dest.lat]], active: true });
+    return list;
+  }, [tab, outings, legs, activeDay, focus, holidayFocus, holidayLegs]);
   const pins: Pin[] = useMemo(() => {
     if (tab !== "week") return focus ? [{ id: "focus", cat: "balade", lat: focus.place.lat, lon: focus.place.lon, label: focus.place.label, active: true }] : [];
     const list: Pin[] = outings
@@ -526,8 +575,14 @@ export default function WeekPlanner({ vehicles }: Props) {
       .map((o) => ({ id: o.id, cat: o.cat, lat: places[o.id]!.lat, lon: places[o.id]!.lon, label: places[o.id]!.label, active: dayOutings?.has(o.id) }));
     if (scenario === "topup" && stopCharger && !stopCharger.atShop)
       list.push({ id: "borne", cat: "borne", lat: stopCharger.charger.lat, lon: stopCharger.charger.lon, label: stopCharger.charger.name, active: activeDay === 5 });
+    // Grand trajet montré : seul repère actif, la carte cadre le domicile et la destination
+    const dest = holidays.find((h) => h.id === holidayFocus);
+    if (dest) {
+      for (const pin of list) pin.active = false;
+      list.push({ id: `trajet-${dest.id}`, cat: "balade", lat: dest.lat, lon: dest.lon, label: dest.label, active: true });
+    }
     return list;
-  }, [tab, outings, placeKey, activeDay, scenario, stopCharger, focus]);
+  }, [tab, outings, placeKey, activeDay, scenario, stopCharger, focus, holidayFocus, holidayKey]);
 
   // Prix de l'essence du jour pour comparer (moyenne nationale, aucune position envoyée)
   useEffect(() => {
@@ -552,6 +607,34 @@ export default function WeekPlanner({ vehicles }: Props) {
   );
   const eurPerKwh = useMemo(() => priceOf(week), [week, priceOf]);
 
+  // Grands trajets avec un modèle : chaque aller-retour, et le total de l'année (km, électricité, essence)
+  const holidayResults = useCallback(
+    (v: Driven) =>
+      holidays.map((h) => {
+        const leg = holidayLegs[h.id];
+        if (!leg) return { h, result: null, cost: null };
+        const result = holidayFor(leg, v.range, v.charging, h.season);
+        const cost = (result.kwhRoad * PUBLIC_EUR_KWH + (result.kwh - result.kwhRoad) * prices.home) * CHARGING_LOSSES;
+        return { h, result, cost };
+      }),
+    [holidays, holidayLegs, prices.home]
+  );
+  const holidayYear = useCallback(
+    (v: Driven) => {
+      let km = 0;
+      let elec = 0;
+      let petrol = 0;
+      for (const { h, result, cost } of holidayResults(v)) {
+        if (!result || cost === null) continue;
+        km += result.kmReturn * h.times;
+        elec += cost * h.times;
+        petrol += fuel ? ((result.kmReturn * ICE_L_100) / 100) * fuel.eur * h.times : 0;
+      }
+      return { km, elec, petrol };
+    },
+    [holidayResults, fuel]
+  );
+
   // Plusieurs modèles : une ligne chacun dans la barre du bas (même semaine, mêmes prix)
   const compareRows: CompareRow[] = useMemo(() => {
     if (chosen.length < 2) return [];
@@ -560,6 +643,7 @@ export default function WeekPlanner({ vehicles }: Props) {
       const lines = w ? verdictLines(w, scenario, stopCharger) : null;
       const elec = w ? w.used * v.charging.usableKWh * CHARGING_LOSSES * priceOf(w) : null;
       const petrol = w && fuel ? ((w.km * ICE_L_100) / 100) * fuel.eur : null;
+      const extra = holidayYear(v);
       return {
         key: v.key,
         name: v.model,
@@ -567,11 +651,11 @@ export default function WeekPlanner({ vehicles }: Props) {
         week: w,
         verdict: lines?.big ?? "",
         warn: !!w && (!w.ok || (scenario === "topup" && !w.stops.length && !w.workDays.length)),
-        elecYear: elec !== null ? elec * WEEKS_PER_YEAR : null,
-        savedYear: elec !== null && petrol !== null ? (petrol - elec) * WEEKS_PER_YEAR : null,
+        elecYear: elec !== null ? elec * WEEKS_PER_YEAR + extra.elec : null,
+        savedYear: elec !== null && petrol !== null ? (petrol - elec) * WEEKS_PER_YEAR + extra.petrol - extra.elec : null,
       };
     });
-  }, [chosen, weeks, scenario, stopCharger, priceOf, fuel]);
+  }, [chosen, weeks, scenario, stopCharger, priceOf, fuel, holidayYear]);
 
   // Lecture de la semaine : la voiture fait chaque aller-retour, la jauge suit
   const stop = useCallback(() => {
@@ -667,6 +751,7 @@ export default function WeekPlanner({ vehicles }: Props) {
         workCharging,
         places: saved.places,
         items,
+        holidays,
         scenario,
         season,
         tab,
@@ -755,6 +840,7 @@ export default function WeekPlanner({ vehicles }: Props) {
                     playing={playing}
                     onSelect={(d) => {
                       stop();
+                      setHolidayFocus(null);
                       setActiveDay(d);
                     }}
                     onPlay={play}
@@ -768,13 +854,14 @@ export default function WeekPlanner({ vehicles }: Props) {
                   playing={playing}
                   onSelect={(d) => {
                     stop();
+                    setHolidayFocus(null);
                     setActiveDay(d);
                   }}
                   onPlay={play}
                   onStop={stop}
                 />
                 )}
-                <WeekMileage km={liveTotals?.km ?? week.km} live={!!liveTotals} />
+                <WeekMileage km={liveTotals?.km ?? week.km} live={!!liveTotals} extraYearKm={holidayYear(vehicle).km} />
                 {compareRows.length === 0 && (
                 <WeekCost
                   km={liveTotals?.km ?? week.km}
@@ -782,6 +869,7 @@ export default function WeekPlanner({ vehicles }: Props) {
                   eurPerKwh={eurPerKwh}
                   fuel={fuel}
                   live={!!liveTotals}
+                  extraYear={holidayYear(vehicle)}
                 />
                 )}
               </div>
@@ -1040,6 +1128,50 @@ export default function WeekPlanner({ vehicles }: Props) {
                     ))}
                   </div>
                 </section>
+
+                <section className="week-block" aria-labelledby="week-trips-title">
+                  <h2 id="week-trips-title" className="week-block-title">Vos grands trajets de l'année</h2>
+                  {holidays.length > 0 && vehicle && (
+                    <ul className="week-trips">
+                      {holidayResults(vehicle).map(({ h, result, cost }) => (
+                        <HolidayRow
+                          key={h.id}
+                          trip={h}
+                          result={result}
+                          cost={cost}
+                          active={holidayFocus === h.id}
+                          onFocus={() => {
+                            stop();
+                            setActiveDay(null);
+                            setHolidayFocus(holidayFocus === h.id ? null : h.id);
+                          }}
+                          onTimes={(times) => update({ holidays: holidays.map((x) => (x.id === h.id ? { ...x, times } : x)) })}
+                          onSeason={(sn) => update({ holidays: holidays.map((x) => (x.id === h.id ? { ...x, season: sn } : x)) })}
+                          onRemove={() => {
+                            if (holidayFocus === h.id) setHolidayFocus(null);
+                            update({ holidays: holidays.filter((x) => x.id !== h.id) });
+                          }}
+                        />
+                      ))}
+                    </ul>
+                  )}
+                  {holidays.length < 4 && (
+                    <AddressField
+                      label="Ajouter un grand trajet"
+                      hideLabel
+                      inline
+                      near={home}
+                      value={null}
+                      placeholder="Vacances, famille, ski : une destination"
+                      onChange={(pl) => {
+                        if (!pl) return;
+                        const id = `trajet-${Date.now().toString(36)}`;
+                        update({ holidays: [...holidays, { id, label: pl.label, lat: pl.lat, lon: pl.lon, times: 1, season: "summer" }] });
+                        setHolidayFocus(id);
+                      }}
+                    />
+                  )}
+                </section>
               </>
             ) : (
               <>
@@ -1112,6 +1244,12 @@ export default function WeekPlanner({ vehicles }: Props) {
                     {formatNumber(PUBLIC_EUR_KWH, 2)} €/kWh sur borne publique, 10 % de pertes de recharge comprises. En face, une
                     voiture essence de 6,5 l/100 km au prix moyen national du SP95-E10 du jour (flux officiel des prix carburants).
                     L'année compte 52 semaines comme celle-ci, sans les vacances.
+                  </li>
+                  <li>
+                    Grands trajets : par la route depuis chez vous, départ batterie pleine (rechargée la veille, puis sur
+                    place avant le retour), arrivée avec 10 % au moins ; chaque arrêt sur borne rapide de 150 kW recharge
+                    ce qu'il faut, au plus jusqu'à 80 %, au tarif des bornes rapides. Ils s'ajoutent au kilométrage et au
+                    coût de l'année.
                   </li>
                   <li>
                     Recharge au travail (si vous l'indiquez) : borne de parking de 7 kW, jusqu'à 80 % pendant la journée,

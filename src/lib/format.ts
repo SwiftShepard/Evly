@@ -59,7 +59,9 @@ export function formatHp(value: number): string {
   return `${formatNumber(value)}${NBSP}ch`;
 }
 
-export function formatNm(value: number): string {
+/** Couple ; null = non publié par le constructeur */
+export function formatNm(value: number | null): string {
+  if (value === null) return "couple non publié";
   return `${formatNumber(value)}${NBSP}Nm`;
 }
 

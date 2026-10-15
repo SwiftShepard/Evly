@@ -6,8 +6,8 @@
   "bodyType": "SUV familial",
   "segment": "C",
   "productionCountry": "Corée",
-  "assemblyPlant": "Ulsan",
-  "releaseYear": 2024,
+  "assemblyPlant": "Gwangju",
+  "releaseYear": 2025,
   "marketAvailability": "Disponible",
   "power_kW": 160,
   "power_hp": 218,
@@ -114,7 +114,7 @@
       "price_EUR": 44990,
       "batteryUsed": "81.4 kWh",
       "equipmentHighlights": [
-        "Batterie 88 kWh",
+        "Batterie 81,4 kWh",
         "Jantes 18\""
       ]
     },

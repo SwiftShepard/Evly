@@ -204,7 +204,10 @@ const SECTIONS: SectionDef[] = [
       },
       {
         label: "Couple",
-        getValue: (c) => `${fmtN(c.config.torque_Nm ?? c.vehicle.torque_Nm)} Nm`,
+        getValue: (c) => {
+          const nm = c.config.torque_Nm ?? c.vehicle.torque_Nm;
+          return nm === null ? "Non publié" : `${fmtN(nm)} Nm`;
+        },
         numeric: (c) => c.config.torque_Nm ?? c.vehicle.torque_Nm,
         bestIsMax: true,
       },

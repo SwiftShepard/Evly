@@ -11,7 +11,7 @@
   "marketAvailability": "Disponible",
   "power_kW": 208,
   "power_hp": 283,
-  "torque_Nm": 420,
+  "torque_Nm": null,
   "drivetrain": "RWD",
   "motors": 1,
   "acceleration_0_100_s": 6.2,

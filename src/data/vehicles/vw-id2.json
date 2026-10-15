@@ -24,10 +24,10 @@
   "wltp_max_km": 453,
   "wltp_min_km": 323,
   "realRange": {
-    "mixed_km": 376,
-    "highway_130_km": 258,
-    "urban_km": 476,
-    "winter_minus5_km": 257,
+    "mixed_km": 319,
+    "highway_130_km": 240,
+    "urban_km": 408,
+    "winter_minus5_km": 218,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 15,
@@ -170,10 +170,10 @@
       "leasingSocialEligible": false,
       "wltp_km": 323,
       "realRange": {
-        "mixed_km": 268,
-        "highway_130_km": 184,
-        "urban_km": 339,
-        "winter_minus5_km": 183,
+        "mixed_km": 227,
+        "highway_130_km": 171,
+        "urban_km": 290,
+        "winter_minus5_km": 144,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -207,7 +207,8 @@
       "usableCapacity_kWh": 37,
       "power_hp": 116,
       "power_kW": 85,
-      "wltp_consumption_kWh_100km": null
+      "wltp_consumption_kWh_100km": null,
+      "chemistry": "LFP"
     },
     {
       "id": "vw-id2-life-37-116",
@@ -222,10 +223,10 @@
       "leasingSocialEligible": false,
       "wltp_km": 323,
       "realRange": {
-        "mixed_km": 268,
-        "highway_130_km": 184,
-        "urban_km": 339,
-        "winter_minus5_km": 183,
+        "mixed_km": 227,
+        "highway_130_km": 171,
+        "urban_km": 290,
+        "winter_minus5_km": 144,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -259,7 +260,8 @@
       "usableCapacity_kWh": 37,
       "power_hp": 116,
       "power_kW": 85,
-      "wltp_consumption_kWh_100km": null
+      "wltp_consumption_kWh_100km": null,
+      "chemistry": "LFP"
     },
     {
       "id": "vw-id2-life-37-135",
@@ -274,10 +276,10 @@
       "leasingSocialEligible": false,
       "wltp_km": 331,
       "realRange": {
-        "mixed_km": 275,
-        "highway_130_km": 189,
-        "urban_km": 348,
-        "winter_minus5_km": 188,
+        "mixed_km": 233,
+        "highway_130_km": 175,
+        "urban_km": 298,
+        "winter_minus5_km": 148,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -311,7 +313,8 @@
       "usableCapacity_kWh": 37,
       "power_hp": 135,
       "power_kW": 99,
-      "wltp_consumption_kWh_100km": null
+      "wltp_consumption_kWh_100km": null,
+      "chemistry": "LFP"
     },
     {
       "id": "vw-id2-style-37-135",
@@ -326,10 +329,10 @@
       "leasingSocialEligible": false,
       "wltp_km": 331,
       "realRange": {
-        "mixed_km": 275,
-        "highway_130_km": 189,
-        "urban_km": 348,
-        "winter_minus5_km": 188,
+        "mixed_km": 233,
+        "highway_130_km": 175,
+        "urban_km": 298,
+        "winter_minus5_km": 148,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -363,7 +366,8 @@
       "usableCapacity_kWh": 37,
       "power_hp": 135,
       "power_kW": 99,
-      "wltp_consumption_kWh_100km": null
+      "wltp_consumption_kWh_100km": null,
+      "chemistry": "LFP"
     },
     {
       "id": "vw-id2-life-52-211",
@@ -378,10 +382,10 @@
       "leasingSocialEligible": false,
       "wltp_km": 453,
       "realRange": {
-        "mixed_km": 376,
-        "highway_130_km": 258,
-        "urban_km": 476,
-        "winter_minus5_km": 257,
+        "mixed_km": 319,
+        "highway_130_km": 240,
+        "urban_km": 408,
+        "winter_minus5_km": 218,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -430,10 +434,10 @@
       "leasingSocialEligible": false,
       "wltp_km": 453,
       "realRange": {
-        "mixed_km": 376,
-        "highway_130_km": 258,
-        "urban_km": 476,
-        "winter_minus5_km": 257,
+        "mixed_km": 319,
+        "highway_130_km": 240,
+        "urban_km": 408,
+        "winter_minus5_km": 218,
         "confidence": "estimated"
       },
       "rangeTests": [],

@@ -229,10 +229,10 @@
       "wltp_km": 440,
       "wltp_consumption_kWh_100km": 16.7,
       "realRange": {
-        "mixed_km": 320,
-        "highway_130_km": 210,
-        "urban_km": 380,
-        "winter_minus5_km": 219,
+        "mixed_km": 313,
+        "highway_130_km": 231,
+        "urban_km": 404,
+        "winter_minus5_km": 214,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -278,10 +278,10 @@
       "wltp_km": 570,
       "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
-        "mixed_km": 410,
-        "highway_130_km": 265,
-        "urban_km": 490,
-        "winter_minus5_km": 280,
+        "mixed_km": 405,
+        "highway_130_km": 300,
+        "urban_km": 523,
+        "winter_minus5_km": 277,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -327,10 +327,10 @@
       "wltp_km": 570,
       "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
-        "mixed_km": 410,
-        "highway_130_km": 265,
-        "urban_km": 490,
-        "winter_minus5_km": 280,
+        "mixed_km": 405,
+        "highway_130_km": 300,
+        "urban_km": 523,
+        "winter_minus5_km": 277,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -376,10 +376,10 @@
       "wltp_km": 570,
       "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
-        "mixed_km": 400,
-        "highway_130_km": 255,
-        "urban_km": 480,
-        "winter_minus5_km": 274,
+        "mixed_km": 405,
+        "highway_130_km": 300,
+        "urban_km": 523,
+        "winter_minus5_km": 277,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -425,10 +425,10 @@
       "wltp_km": 570,
       "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
-        "mixed_km": 400,
-        "highway_130_km": 255,
-        "urban_km": 480,
-        "winter_minus5_km": 274,
+        "mixed_km": 405,
+        "highway_130_km": 300,
+        "urban_km": 523,
+        "winter_minus5_km": 277,
         "confidence": "estimated"
       },
       "rangeTests": [],

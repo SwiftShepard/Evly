@@ -481,7 +481,7 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
                   </div>
                   <div className="flex flex-col gap-0.5">
                     <span className="text-[9px] font-mono uppercase text-[var(--color-text-faint)]">Puissance & Couple</span>
-                    <span className="font-semibold text-[var(--color-text)]">{vehicle.power_hp} ch / {vehicle.torque_Nm} Nm</span>
+                    <span className="font-semibold text-[var(--color-text)]">{vehicle.power_hp} ch{vehicle.torque_Nm !== null && <> / {vehicle.torque_Nm} Nm</>}</span>
                   </div>
                   <div className="flex flex-col gap-0.5">
                     <span className="text-[9px] font-mono uppercase text-[var(--color-text-faint)]">Architecture & Charge DC</span>

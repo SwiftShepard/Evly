@@ -1,7 +1,8 @@
 /**
  * Recalcule l'autonomie « hiver » (-5 °C) de toutes les fiches avec le modèle unique de
  * src/lib/winter.js : autonomie mixte × facteur (chimie, pompe à chaleur), et une marge de
- * prudence quand le mixte n'est qu'estimé.
+ * prudence quand le mixte n'est qu'estimé. La chimie d'une version (« chemistry » dans sa
+ * configuration) prime sur celle du modèle.
  *
  * Usage :
  *   node scripts/apply-winter-model.mjs          # applique aux JSON
@@ -26,13 +27,18 @@ for (const file of fs.readdirSync(DIR).filter((f) => f.endsWith(".json"))) {
   const v = JSON.parse(text);
   const hp = heatPumpOf(v.heatPump);
   // Objets d'autonomie : plats, avec mixed_km, winter_minus5_km et confidence
-  const next = text.replace(/\{[^{}]*"mixed_km"[^{}]*\}/g, (block) => {
+  const next = text.replace(/\{[^{}]*"mixed_km"[^{}]*\}/g, (block, offset) => {
+    // Chimie de la version qui contient cette autonomie, si elle est précisée (sinon celle du modèle)
+    const start = text.lastIndexOf('"id": "', offset);
+    const end = text.indexOf('"id": "', offset);
+    const own = start >= 0 ? text.slice(start, end < 0 ? undefined : end).match(/"chemistry":\s*"(LFP|NMC|NCM)"/)?.[1] : undefined;
+    const chemistry = own ?? v.chemistry;
     const mixed = Number(block.match(/"mixed_km":\s*(\d+)/)?.[1]);
     const conf = block.match(/"confidence":\s*"([a-z_]+)"/)?.[1] ?? "estimated";
     const old = block.match(/"winter_minus5_km":\s*(\d+)/);
     if (!mixed || !old) return block;
     ranges++;
-    const win = Math.min(winterKm(mixed, v.chemistry, hp, isMeasured(conf)), mixed - 1);
+    const win = Math.min(winterKm(mixed, chemistry, hp, isMeasured(conf)), mixed - 1);
     deltas.push(win / Number(old[1]) - 1);
     return block.replace(/("winter_minus5_km":\s*)\d+/, `$1${win}`);
   });

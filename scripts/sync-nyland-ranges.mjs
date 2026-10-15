@@ -294,7 +294,7 @@ for (const file of fs.readdirSync(VEHICLES_DIR).filter((f) => f.endsWith(".json"
       rr.highway_130_km = Math.round(t120.range_km * 0.9);
       rr.urban_km = Math.round(t90.range_km * 1.1);
       // Hiver : modèle unique (chimie, pompe à chaleur), cf. src/lib/winter.js
-      rr.winter_minus5_km = winterKm(rr.mixed_km, v.chemistry, heatPumpOf(v.heatPump), true);
+      rr.winter_minus5_km = winterKm(rr.mixed_km, cfg.chemistry ?? v.chemistry, heatPumpOf(v.heatPump), true);
       rr.confidence = "bjorn_nyland";
       report.updatedConfigs++;
     } else {

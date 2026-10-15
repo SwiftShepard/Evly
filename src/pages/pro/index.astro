@@ -72,19 +72,19 @@ const description =
         </p>
 
         <p class="mt-6 md:mt-8 font-display text-xl md:text-2xl lg:text-3xl font-medium tracking-[-0.01em] leading-[1.2] text-[var(--color-text-muted)] max-w-3xl fade-rise fade-rise-delay-2">
-          TCO réel, aides 2026 cumulées, sélection utilitaires audités.
+          TCO réel, aides 2026 cumulées, utilitaires comparés sur les mêmes critères.
         </p>
 
         <p class="mt-8 md:mt-10 text-sm md:text-base text-[var(--color-text-muted)] max-w-2xl leading-relaxed fade-rise fade-rise-delay-3">
-          Évly Pro applique la même méthodologie indépendante que le site grand public à la décision d'électrification des flottes professionnelles. Aucun lien constructeur, aucune commission de leasing.
+          Cette page applique la même méthode indépendante que le reste d'Evly à l'électrification des flottes professionnelles. Aucun lien constructeur, aucune commission de leasing.
         </p>
 
         <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3 fade-rise fade-rise-delay-3">
           <a href="#tco" class="btn-interactive btn-glow inline-flex items-center gap-2 px-5 py-3 bg-[var(--color-accent)] text-[var(--color-accent-on)] text-sm font-medium tracking-tight min-h-[44px] hover:bg-[var(--color-accent-dim)] transition-colors rounded-[var(--radius-tile-sm)]">
             Calculer mon TCO ↓
           </a>
-          <a href={`mailto:${PUBLISHER.email}?subject=Demande%20d%27audit%20flotte`} class="btn-interactive inline-flex items-center gap-2 px-5 py-3 border border-[var(--color-border-strong)] text-[var(--color-text)] text-sm font-medium tracking-tight min-h-[44px] hover:bg-[var(--color-bg-subtle)] transition-colors rounded-[var(--radius-tile-sm)]">
-            Demander un audit
+          <a href="#utilitaires" class="btn-interactive inline-flex items-center gap-2 px-5 py-3 border border-[var(--color-border-strong)] text-[var(--color-text)] text-sm font-medium tracking-tight min-h-[44px] hover:bg-[var(--color-bg-subtle)] transition-colors rounded-[var(--radius-tile-sm)]">
+            Voir les utilitaires ↓
           </a>
         </div>
       </Tile>
@@ -231,7 +231,7 @@ const description =
           Le mille-feuille fiscal 2026.
         </h2>
         <p class="text-sm md:text-base text-[var(--color-text-muted)] max-w-3xl mb-8">
-          Ces dispositifs sont cumulables sous conditions. Un audit personnalisé permet d'optimiser le mix selon le segment (VUL, PL, VP de fonction) et la structure (TPE, ETI, grand compte).
+          Ces dispositifs sont cumulables sous conditions. Le bon mix dépend du segment (VUL, PL, VP de fonction) et de la structure (TPE, ETI, grand compte) : à valider avec votre expert-comptable.
         </p>
 
         <div class="aid-table">
@@ -299,17 +299,18 @@ const description =
 
       {/* ═══════ 04 · SÉLECTION UTILITAIRES ═══════ */}
       <Tile size="full" variant="default" label="04 · Notre sélection actuelle" class="!mt-2">
+        <div id="utilitaires" class="scroll-mt-24"></div>
         <div class="flex flex-wrap items-end justify-between gap-4 mb-2">
           <h2 class="font-display text-3xl md:text-4xl font-semibold tracking-[-0.015em] leading-[1.05]">
-            {utilities.length} utilitaires audités.
+            {utilities.length} utilitaires comparés.
             <span class="block text-[var(--color-text-muted)] text-lg md:text-xl mt-2 font-medium">
-              Ludospaces et navettes professionnelles couverts par Évly.
+              Ludospaces et navettes professionnelles couverts par Evly.
             </span>
           </h2>
-          <a href={url("/pro/vehicules")} class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-muted)] hover:text-[var(--color-text)]">Showroom Pro →</a>
+          <a href={url("/pro/vehicules/")} class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-muted)] hover:text-[var(--color-text)]">Showroom Pro →</a>
         </div>
         <p class="text-sm text-[var(--color-text-muted)] mt-4 max-w-3xl">
-          Découvrez la gamme complète de nos véhicules utilitaires électriques audités pour votre entreprise : Master / Trafic E-Tech, Peugeot e-Partner / e-Expert / e-Boxer, Stellantis vans (ë-Jumpy, ë-Jumper, ë-Berlingo Van), Mercedes eSprinter / eVito, Ford E-Transit et Maxus eDeliver.
+          Découvrez les véhicules utilitaires électriques comparés pour votre entreprise : Master / Trafic E-Tech, Peugeot e-Partner / e-Expert / e-Boxer, Stellantis vans (ë-Jumpy, ë-Jumper, ë-Berlingo Van), Mercedes eSprinter / eVito, Ford E-Transit et Maxus eDeliver.
         </p>
       </Tile>
 
@@ -357,61 +358,22 @@ const description =
         );
       })}
 
-      {/* ═══════ 05 · SAAS TEASER ═══════ */}
-      <Tile size="full" variant="elevated" label="05 · Evly Pro Dashboard" class="!mt-4">
-        <div class="flex items-center gap-3 mb-4">
-          <Tag tone="accent" mono>En construction</Tag>
-          <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">V2 · 2026</span>
-        </div>
+      {/* ═══════ 05 · CONTACT ═══════ */}
+      <Tile size="full" variant="elevated" label="05 · Une donnée manque ?" class="!mt-4">
         <h2 class="display-2 max-w-3xl mb-6">
-          Bientôt : un dashboard flotte.
+          Un utilitaire manque, un chiffre vous paraît faux ?
         </h2>
         <p class="text-[var(--color-text-muted)] text-base md:text-lg max-w-3xl leading-relaxed mb-8">
-          Évly Pro arrive en SaaS. Au-delà du calculateur ci-dessus, un espace dédié pour piloter votre transition électrique de A à Z, avec une seule promesse : <strong class="text-[var(--color-text)]">aucune commission constructeur ou loueur</strong>.
+          Evly est un projet indépendant, édité par un particulier : pas d'espace client, pas d'offre payante, pas de commission.
+          Si un modèle manque à la sélection, si une aide a changé ou si une donnée vous paraît fausse, écrivez-nous : nous
+          corrigeons et nous citons la source.
         </p>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 pt-6 border-t border-[var(--color-border)]">
-          <div class="flex flex-col gap-2">
-            <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-accent)]">01</span>
-            <h3 class="font-display text-base font-semibold">Cartographie flotte</h3>
-            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">
-              Import CSV de votre parc actuel, classement par segment, identification des candidats à l'électrification.
-            </p>
-          </div>
-          <div class="flex flex-col gap-2">
-            <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-accent)]">02</span>
-            <h3 class="font-display text-base font-semibold">ROI véhicule par véhicule</h3>
-            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">
-              TCO 5 ans détaillé par véhicule remplacé, avec breakdown énergie / fiscal / suramortissement / valeur résiduelle.
-            </p>
-          </div>
-          <div class="flex flex-col gap-2">
-            <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-accent)]">03</span>
-            <h3 class="font-display text-base font-semibold">Audit aides automatisé</h3>
-            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">
-              Optimisation du mix CEE + suramortissement + aides régionales selon votre profil. Export PDF pour expert-comptable.
-            </p>
-          </div>
-          <div class="flex flex-col gap-2">
-            <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-accent)]">04</span>
-            <h3 class="font-display text-base font-semibold">Recommandation multi-fournisseurs</h3>
-            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">
-              Comparaison constructeurs sans biais commercial. Données mises à jour mensuellement.
-            </p>
-          </div>
-        </div>
-
-        <div class="mt-10 pt-6 border-t border-[var(--color-border)] flex flex-col md:flex-row gap-4">
-          <a href={`mailto:${PUBLISHER.email}?subject=Acc%C3%A8s%20anticip%C3%A9%20Evly%20Pro&body=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%28e%29%20par%20Evly%20Pro%20pour%20notre%20flotte%20de%20%5Bnombre%5D%20v%C3%A9hicules.`} class="btn-interactive btn-glow inline-flex items-center justify-center gap-2 px-5 py-3 bg-[var(--color-accent)] text-[var(--color-accent-on)] text-sm font-medium tracking-tight min-h-[44px] hover:bg-[var(--color-accent-dim)] transition-colors rounded-[var(--radius-tile-sm)]">
-            Demander l'accès anticipé →
-          </a>
-          <a href={`mailto:${PUBLISHER.email}?subject=Demande%20d%27audit%20flotte`} class="btn-interactive inline-flex items-center justify-center gap-2 px-5 py-3 border border-[var(--color-border-strong)] text-[var(--color-text)] text-sm font-medium tracking-tight min-h-[44px] hover:bg-[var(--color-bg-subtle)] transition-colors rounded-[var(--radius-tile-sm)]">
-            Audit personnalisé (gratuit)
+        <div class="pt-6 border-t border-[var(--color-border)] flex flex-col md:flex-row gap-4">
+          <a href={`mailto:${PUBLISHER.email}?subject=Evly%20%E2%80%93%20page%20Pro`} class="btn-interactive btn-glow inline-flex items-center justify-center gap-2 px-5 py-3 bg-[var(--color-accent)] text-[var(--color-accent-on)] text-sm font-medium tracking-tight min-h-[44px] hover:bg-[var(--color-accent-dim)] transition-colors rounded-[var(--radius-tile-sm)]">
+            Écrire à Evly →
           </a>
         </div>
         <p class="mt-6 text-[11px] font-mono text-[var(--color-text-faint)]">
-          Évly Pro est gratuit en phase beta. Modèle SaaS payant à terme (abonnement par véhicule au parc). Aucun engagement, sortie à tout moment.
-        </p>
-        <p class="mt-2 text-[11px] font-mono text-[var(--color-text-faint)]">
           Votre adresse e-mail et votre message servent uniquement à vous répondre.
           <a href={url("/confidentialite/")} class="underline underline-offset-2 hover:text-[var(--color-text-muted)]">Politique de confidentialité</a>
         </p>

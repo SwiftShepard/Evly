@@ -250,7 +250,7 @@ const jsonLd = {
     "@type": "EngineSpecification",
     engineType: "Moteur électrique",
     enginePower: qv(vehicle.power_kW, "KWT"),
-    torque: qv(vehicle.torque_Nm, "NU"),
+    ...(vehicle.torque_Nm !== null ? { torque: qv(vehicle.torque_Nm, "NU") } : {}),
   },
   accelerationTime: qv(vehicle.acceleration_0_100_s, "SEC"),
   speed: { "@type": "QuantitativeValue", maxValue: vehicle.topSpeed_kmh, unitCode: "KMH" },

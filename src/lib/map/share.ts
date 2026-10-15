@@ -18,6 +18,8 @@ export interface SharedWeek {
   /** Version du modèle (slug -> identifiant) */
   versions: Record<string, string>;
   places: Record<string, SharedPlace>;
+  /** Grands trajets de l'année (validés à la lecture) */
+  holidays?: unknown;
   /** Briques de la semaine type (validées à la lecture) ; liens plus anciens : `on` */
   items?: unknown;
   on?: Record<string, boolean>;
@@ -88,6 +90,7 @@ export function readShared(): SharedWeek | null {
       versions: Object.fromEntries(Object.entries(data.versions ?? {}).filter(([, v]) => typeof v === "string")) as Record<string, string>,
       places: Object.fromEntries(Object.entries(data.places ?? {}).filter(([, p]) => ok(p))) as Record<string, SharedPlace>,
       items: data.items,
+      holidays: data.holidays,
       on: typeof data.on === "object" && data.on ? data.on : {},
       scenario: typeof data.scenario === "string" ? data.scenario : null,
       season: data.season === "summer" ? "summer" : "winter",

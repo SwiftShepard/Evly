@@ -198,10 +198,10 @@
       "wltp_km": 501,
       "wltp_consumption_kWh_100km": 15.7,
       "realRange": {
-        "mixed_km": 410,
-        "highway_130_km": 290,
-        "urban_km": 540,
-        "winter_minus5_km": 280,
+        "mixed_km": 370,
+        "highway_130_km": 277,
+        "urban_km": 476,
+        "winter_minus5_km": 253,
         "confidence": "estimated"
       },
       "chargingDC_peak_kW": 130,

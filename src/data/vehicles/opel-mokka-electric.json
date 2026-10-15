@@ -341,10 +341,10 @@
       "wltp_km": 402,
       "wltp_consumption_kWh_100km": 15.2,
       "realRange": {
-        "mixed_km": 310,
-        "highway_130_km": 200,
-        "urban_km": 370,
-        "winter_minus5_km": 212,
+        "mixed_km": 288,
+        "highway_130_km": 208,
+        "urban_km": 380,
+        "winter_minus5_km": 197,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -394,10 +394,10 @@
       "wltp_km": 402,
       "wltp_consumption_kWh_100km": 15.2,
       "realRange": {
-        "mixed_km": 310,
-        "highway_130_km": 200,
-        "urban_km": 370,
-        "winter_minus5_km": 212,
+        "mixed_km": 288,
+        "highway_130_km": 208,
+        "urban_km": 380,
+        "winter_minus5_km": 197,
         "confidence": "estimated"
       },
       "rangeTests": [],

@@ -172,10 +172,10 @@
       "wltp_km": 330,
       "wltp_consumption_kWh_100km": 17.3,
       "realRange": {
-        "mixed_km": 260,
-        "highway_130_km": 195,
-        "urban_km": 325,
-        "winter_minus5_km": 178,
+        "mixed_km": 262,
+        "highway_130_km": 202,
+        "urban_km": 331,
+        "winter_minus5_km": 179,
         "confidence": "estimated"
       },
       "rangeTests": [],

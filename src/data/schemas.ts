@@ -156,6 +156,8 @@ const VehicleConfigurationSchema = z.object({
   power_hp: z.number().int().positive().optional(),
   torque_Nm: z.number().int().positive().optional(),
   acceleration_0_100_s: z.number().positive().optional(),
+  /** Chimie de cette version quand elle diffère du reste de la gamme (37 kWh LFP / 52 kWh NMC) */
+  chemistry: z.enum(["NMC", "LFP", "NCM"]).optional(),
   topSpeed_kmh: z.number().int().positive().optional(),
 
   // Données qui dépendent de la configuration
@@ -206,7 +208,8 @@ export const VehicleSchema = z.object({
   // Motorisation (invariant across configs)
   power_kW: z.number().int().positive(),
   power_hp: z.number().int().positive(),
-  torque_Nm: z.number().int().positive(),
+  /** null : couple non publié par le constructeur (Tesla) */
+  torque_Nm: z.number().int().positive().nullable(),
   drivetrain: z.enum(["FWD", "RWD", "AWD"]),
   motors: z.number().int().min(1).max(4),
   acceleration_0_100_s: z.number().positive(),

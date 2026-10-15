@@ -42,7 +42,7 @@ const blocks: Block[] = [
         value: formatHp(vehicle.power_hp),
         hint: formatKw(vehicle.power_kW),
       },
-      { label: "Couple", value: formatNm(vehicle.torque_Nm) },
+      { label: "Couple", value: vehicle.torque_Nm === null ? "Non publié" : formatNm(vehicle.torque_Nm) },
       {
         label: "Transmission",
         value: vehicle.drivetrain,

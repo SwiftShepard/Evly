@@ -2,15 +2,15 @@
   "slug": "renault-trafic-e-tech",
   "brand": "Renault",
   "model": "Trafic E-Tech",
-  "variant": "800V",
+  "variant": "60 & 81 kWh · 800 V",
   "bodyType": "Fourgon",
   "segment": "E",
   "productionCountry": "France",
   "assemblyPlant": "Sandouville",
   "releaseYear": 2026,
-  "marketAvailability": "Commandes à l'automne 2026, livraisons début 2027",
-  "power_kW": 150,
-  "power_hp": 204,
+  "marketAvailability": "Commandes ouvertes (81 kWh), livraisons début 2027 ; 60 kWh début 2027",
+  "power_kW": 160,
+  "power_hp": 218,
   "torque_Nm": 345,
   "drivetrain": "RWD",
   "motors": 1,
@@ -22,12 +22,12 @@
   "architecture_V": 800,
   "mass_kg": 2100,
   "wltp_max_km": 470,
-  "wltp_min_km": 420,
+  "wltp_min_km": 350,
   "realRange": {
-    "mixed_km": 350,
-    "highway_130_km": 240,
-    "urban_km": 450,
-    "winter_minus5_km": 239,
+    "mixed_km": 339,
+    "highway_130_km": 255,
+    "urban_km": 433,
+    "winter_minus5_km": 232,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 21.4,
@@ -35,15 +35,15 @@
   "consumption_winter_kWh_per_100km": 26.8,
   "dragCoefficient_Cx": 0.33,
   "chargingDC": {
-    "peakPower_kW": 150,
+    "peakPower_kW": 190,
     "time_10_80_min": 22,
-    "kWh_added_30min": 52,
-    "confidence": "manufacturer"
+    "kWh_added_30min": 55,
+    "confidence": "estimated"
   },
   "chargingAC": {
-    "onboardCharger_kW": 22,
+    "onboardCharger_kW": 11,
     "phases": 3,
-    "time_0_100_h": 3.8
+    "time_0_100_h": 7.5
   },
   "plugAndCharge": true,
   "v2l": true,
@@ -52,23 +52,23 @@
   "chargingCurve": [
     {
       "soc": 0,
-      "power": 120
+      "power": 152
     },
     {
       "soc": 10,
-      "power": 150
+      "power": 190
     },
     {
       "soc": 50,
-      "power": 140
+      "power": 177
     },
     {
       "soc": 80,
-      "power": 80
+      "power": 101
     },
     {
       "soc": 100,
-      "power": 10
+      "power": 13
     }
   ],
   "rangeTests": [],
@@ -82,23 +82,53 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Grand Confort L1 800V Autonomie Etendue",
-      "price_EUR": null,
-      "batteryUsed": "81 kWh",
+      "name": "Advance L1 60 kWh",
+      "price_EUR": 49800,
+      "batteryUsed": "60 kWh",
       "equipmentHighlights": [
-        "Volume utile 5,1 m3",
-        "Plateforme SDV 800V",
-        "Ecran OpenR 12 pouces Google"
+        "Batterie LFP, 350 km WLTP",
+        "Recharge DC 160 kW",
+        "Chargeur AC 11 kW bidirectionnel"
       ]
     },
     {
-      "name": "Grand Confort L2 800V Autonomie Etendue",
-      "price_EUR": null,
+      "name": "Extra L1 60 kWh",
+      "price_EUR": 52200,
+      "batteryUsed": "60 kWh",
+      "equipmentHighlights": [
+        "Batterie LFP, 350 km WLTP",
+        "Recharge DC 160 kW",
+        "Écran OpenR 12 pouces Google"
+      ]
+    },
+    {
+      "name": "Advance L1 81 kWh",
+      "price_EUR": 56400,
+      "batteryUsed": "81 kWh",
+      "equipmentHighlights": [
+        "470 km WLTP",
+        "Recharge DC 190 kW",
+        "Volume utile 5,1 m3"
+      ]
+    },
+    {
+      "name": "Extra L1 81 kWh",
+      "price_EUR": 58800,
+      "batteryUsed": "81 kWh",
+      "equipmentHighlights": [
+        "470 km WLTP",
+        "Recharge DC 190 kW",
+        "Écran OpenR 12 pouces Google"
+      ]
+    },
+    {
+      "name": "Extra L2 81 kWh",
+      "price_EUR": 60000,
       "batteryUsed": "81 kWh",
       "equipmentHighlights": [
         "Volume utile 5,8 m3",
-        "Plateforme SDV 800V",
-        "Ecran OpenR 12 pouces Google"
+        "Recharge DC 190 kW",
+        "Écran OpenR 12 pouces Google"
       ]
     }
   ],
@@ -118,102 +148,256 @@
   ],
   "configurations": [
     {
-      "id": "renault-trafic-e-tech-l1",
-      "label": "Trafic E-Tech L1 NMC",
-      "battery": "long-range",
-      "trim": "Grand Confort L1 800V Autonomie Etendue",
+      "id": "renault-trafic-e-tech-l1-advance-60",
+      "label": "Trafic E-Tech Advance L1 · 60 kWh",
+      "battery": "standard",
+      "trim": "Advance L1 60 kWh",
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": null,
+      "price_EUR": 49800,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 350,
+      "wltp_consumption_kWh_100km": 17.1,
+      "realRange": {
+        "mixed_km": 253,
+        "highway_130_km": 190,
+        "urban_km": 323,
+        "winter_minus5_km": 161,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 20,
+      "chargingDC_kWh_30min": 45,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 128
+        },
+        {
+          "soc": 10,
+          "power": 160
+        },
+        {
+          "soc": 50,
+          "power": 149
+        },
+        {
+          "soc": 80,
+          "power": 85
+        },
+        {
+          "soc": 100,
+          "power": 11
+        }
+      ],
+      "availability": "upcoming",
+      "notes": "Prix TTC calculé depuis le tarif HT annoncé au Mondial 2026 (41 500 € HT, PTAC 3,2 t). Capacité utile estimée (60 kWh annoncés).",
+      "usableCapacity_kWh": 56,
+      "chemistry": "LFP"
+    },
+    {
+      "id": "renault-trafic-e-tech-l1-extra-60",
+      "label": "Trafic E-Tech Extra L1 · 60 kWh",
+      "battery": "standard",
+      "trim": "Extra L1 60 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 52200,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 350,
+      "wltp_consumption_kWh_100km": 17.1,
+      "realRange": {
+        "mixed_km": 253,
+        "highway_130_km": 190,
+        "urban_km": 323,
+        "winter_minus5_km": 161,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 20,
+      "chargingDC_kWh_30min": 45,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 128
+        },
+        {
+          "soc": 10,
+          "power": 160
+        },
+        {
+          "soc": 50,
+          "power": 149
+        },
+        {
+          "soc": 80,
+          "power": 85
+        },
+        {
+          "soc": 100,
+          "power": 11
+        }
+      ],
+      "availability": "upcoming",
+      "notes": "Prix TTC calculé depuis le tarif HT annoncé au Mondial 2026 (43 500 € HT, PTAC 3,2 t). Capacité utile estimée (60 kWh annoncés).",
+      "usableCapacity_kWh": 56,
+      "chemistry": "LFP"
+    },
+    {
+      "id": "renault-trafic-e-tech-l1-advance-81",
+      "label": "Trafic E-Tech Advance L1 · 81 kWh",
+      "battery": "long-range",
+      "trim": "Advance L1 81 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 56400,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
       "wltp_km": 470,
-      "wltp_consumption_kWh_100km": 16.7,
+      "wltp_consumption_kWh_100km": 17.1,
       "realRange": {
-        "mixed_km": 350,
-        "highway_130_km": 240,
-        "urban_km": 450,
-        "winter_minus5_km": 239,
+        "mixed_km": 339,
+        "highway_130_km": 255,
+        "urban_km": 433,
+        "winter_minus5_km": 232,
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 150,
+      "chargingDC_peak_kW": 190,
       "chargingDC_10_80_min": 22,
-      "chargingDC_kWh_30min": 52,
+      "chargingDC_kWh_30min": 55,
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 120
+          "power": 152
         },
         {
           "soc": 10,
-          "power": 150
+          "power": 190
         },
         {
           "soc": 50,
-          "power": 140
+          "power": 177
         },
         {
           "soc": 80,
-          "power": 80
+          "power": 101
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 13
         }
       ],
-      "availability": "upcoming",
-      "notes": "Fourgon L1, volume utile 5,1 m3."
+      "availability": "available",
+      "notes": "Prix TTC calculé depuis le tarif HT annoncé au Mondial 2026 (47 000 € HT, PTAC 3,2 t). Volume utile 5,1 m3.",
+      "usableCapacity_kWh": 75
     },
     {
-      "id": "renault-trafic-e-tech-l2",
-      "label": "Trafic E-Tech L2 NMC",
+      "id": "renault-trafic-e-tech-l1-extra-81",
+      "label": "Trafic E-Tech Extra L1 · 81 kWh",
       "battery": "long-range",
-      "trim": "Grand Confort L2 800V Autonomie Etendue",
+      "trim": "Extra L1 81 kWh",
       "wheelSize_inches": 16,
       "tyreType": "summer",
       "options": [],
-      "price_EUR": null,
+      "price_EUR": 58800,
       "monthlyLease_EUR": null,
       "leasingSocialEligible": false,
-      "wltp_km": 420,
-      "wltp_consumption_kWh_100km": 17.9,
+      "wltp_km": 470,
+      "wltp_consumption_kWh_100km": 17.1,
       "realRange": {
-        "mixed_km": 330,
-        "highway_130_km": 220,
-        "urban_km": 420,
-        "winter_minus5_km": 226,
+        "mixed_km": 339,
+        "highway_130_km": 255,
+        "urban_km": 433,
+        "winter_minus5_km": 232,
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 150,
-      "chargingDC_10_80_min": 20,
-      "chargingDC_kWh_30min": 52,
+      "chargingDC_peak_kW": 190,
+      "chargingDC_10_80_min": 22,
+      "chargingDC_kWh_30min": 55,
       "chargingCurve": [
         {
           "soc": 0,
-          "power": 120
+          "power": 152
         },
         {
           "soc": 10,
-          "power": 150
+          "power": 190
         },
         {
           "soc": 50,
-          "power": 140
+          "power": 177
         },
         {
           "soc": 80,
-          "power": 80
+          "power": 101
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 13
         }
       ],
-      "availability": "upcoming",
-      "notes": "Fourgon L2, volume utile 5,8 m3."
+      "availability": "available",
+      "notes": "Prix TTC calculé depuis le tarif HT annoncé au Mondial 2026 (49 000 € HT, PTAC 3,2 t). Volume utile 5,1 m3.",
+      "usableCapacity_kWh": 75
+    },
+    {
+      "id": "renault-trafic-e-tech-l2-extra-81",
+      "label": "Trafic E-Tech Extra L2 · 81 kWh",
+      "battery": "long-range",
+      "trim": "Extra L2 81 kWh",
+      "wheelSize_inches": 16,
+      "tyreType": "summer",
+      "options": [],
+      "price_EUR": 60000,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 470,
+      "wltp_consumption_kWh_100km": 17.1,
+      "realRange": {
+        "mixed_km": 339,
+        "highway_130_km": 255,
+        "urban_km": 433,
+        "winter_minus5_km": 232,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 190,
+      "chargingDC_10_80_min": 22,
+      "chargingDC_kWh_30min": 55,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 152
+        },
+        {
+          "soc": 10,
+          "power": 190
+        },
+        {
+          "soc": 50,
+          "power": 177
+        },
+        {
+          "soc": 80,
+          "power": 101
+        },
+        {
+          "soc": 100,
+          "power": 13
+        }
+      ],
+      "availability": "available",
+      "notes": "Prix TTC calculé depuis le tarif HT annoncé au Mondial 2026 (50 000 € HT, PTAC 3,2 t). L2 : +1 000 € HT, volume utile 5,8 m3 ; autonomie WLTP de la L2 non communiquée.",
+      "usableCapacity_kWh": 75
     }
   ],
   "warranty": {
@@ -254,7 +438,7 @@
     "idealUserProfile": "Professionnels, artisans et flottes a la recherche d'une grande polyvalence grace a la charge rapide 800V et une autonomie elevee.",
     "notIdealFor": "Budgets serres cherchant un utilitaire electrique basique sans besoin de recharge ultra-rapide."
   },
-  "lastUpdated": "2026-10-08",
+  "lastUpdated": "2026-10-15",
   "sources": [
     "renault-fr",
     "automobile-propre"
