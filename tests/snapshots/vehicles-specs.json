@@ -2104,14 +2104,17 @@
     "slug": "renault-trafic-e-tech",
     "brand": "Renault",
     "model": "Trafic E-Tech",
-    "power_kW": 150,
+    "power_kW": 160,
     "usableCapacity_kWh": 75,
-    "wltp_min_km": 420,
+    "wltp_min_km": 350,
     "wltp_max_km": 470,
-    "configurations_count": 2,
+    "configurations_count": 5,
     "configuration_ids": [
-      "renault-trafic-e-tech-l1",
-      "renault-trafic-e-tech-l2"
+      "renault-trafic-e-tech-l1-advance-60",
+      "renault-trafic-e-tech-l1-advance-81",
+      "renault-trafic-e-tech-l1-extra-60",
+      "renault-trafic-e-tech-l1-extra-81",
+      "renault-trafic-e-tech-l2-extra-81"
     ]
   },
   {
