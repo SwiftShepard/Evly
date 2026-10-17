@@ -31,61 +31,82 @@ export const CEE_WEIGHT_CAP_KG = 2_400;
 // Type de profil utilisateur
 export type UserProfileType = "particular" | "company_small" | "company_large" | "local_authority" | "rental" | "other_legal_entity";
 
-// Catégories de ménages
-export type HouseholdCategory = "precarite" | "modeste" | "autres";
+/**
+ * Catégories du coup de pouce « véhicules particuliers électriques » depuis le 1er septembre 2026
+ * (arrêté du 16 juillet 2026, fiche TRA-EQ-117) : revenu fiscal de référence par part.
+ * « gros_rouleur » : déciles 6 à 8, plus de 12 000 km par an pour le travail avec sa voiture.
+ */
+export type HouseholdCategory = "precarite" | "modeste" | "gros_rouleur" | "autres";
 
-// Brackets de revenus de base (1 à 5 personnes)
-export const HOUSEHOLD_THRESHOLDS = {
-  precarite: [24031, 35270, 42357, 49455, 56580],
-  modeste: [29253, 42933, 51564, 60208, 68877],
+/** Plafonds de revenu fiscal de référence par part (déciles 3, 5 et 8) */
+export const RFR_PART_CEILINGS = {
+  precarite: 11_250,
+  modeste: 16_880,
+  gros_rouleur: 27_310,
 };
 
-// Augmentation par personne supplémentaire au-delà de 5 personnes
-export const ADDITIONAL_PERSON_INCREASE = {
-  precarite: 7116,
-  modeste: 8663,
-};
+/** Kilométrage professionnel annuel à dépasser pour la catégorie « gros rouleur » */
+export const GROS_ROULEUR_KM = 12_000;
+/** La catégorie « gros rouleur » vaut pour les achats engagés avant cette date */
+export const GROS_ROULEUR_UNTIL = new Date("2027-01-01T00:00:00+01:00");
+export const grosRouleurOpen = (now = new Date()) => now < GROS_ROULEUR_UNTIL;
 
 /**
- * Coup de pouce « véhicules particuliers électriques » : barème indicatif 2026 publié par le
- * ministère de la Transition écologique, par catégorie de revenus. Le montant réellement versé
- * dépend du signataire de la charte CEE (constructeur, énergéticien) et du mois : on affiche
- * ce barème partout (fiche, catalogue, comparateur, matcher, simulateurs), jamais un montant de marque.
+ * La réglementation fixe un coefficient par catégorie, pas un montant : la prime dépend du prix
+ * auquel l'organisme qui la verse valorise ses certificats. Grille de référence : l'offre complète
+ * publiée pour les achats d'octobre 2026 (Renault). Coefficient plus élevé (environ +1/3) quand la
+ * voiture et sa batterie sont produites dans l'Espace économique européen.
+ * Même grille partout (fiche, catalogue, comparateur, matcher, simulateurs) ; à mettre à jour ici.
  */
-export const PRIME_AMOUNTS: Record<HouseholdCategory, number> = {
-  precarite: 5700,
-  modeste: 4700,
-  autres: 3500,
+export const PRIME_GRID: Record<"standard" | "europe", Record<HouseholdCategory, number>> = {
+  standard: { precarite: 7070, modeste: 6030, gros_rouleur: 6030, autres: 3620 },
+  europe: { precarite: 9420, modeste: 8050, gros_rouleur: 8050, autres: 4830 },
 };
+export const CEE_GRID_LABEL = "offre publiée pour les achats d'octobre 2026";
 
-/** Prime de tout ménage (« autres ménages ») : celle des prix « après aides » sans profil fiscal */
-export const CEE_BASE_EUR = PRIME_AMOUNTS.autres;
-/** Année du barème ci-dessus */
-export const CEE_SCALE_YEAR = 2026;
-/** Prime la plus haute (ménage en précarité) : celle des « jusqu'à » */
-export const CEE_MAX_EUR = PRIME_AMOUNTS.precarite;
-
-/**
- * Bonification batterie européenne : 1 200 à 2 000 € de plus pour les versions inscrites sur la
- * liste de l'ADEME (revue chaque mois, sources divergentes d'un modèle à l'autre). Signalée comme
- * possible, jamais déduite d'un prix affiché.
- */
-export const BATTERY_BONUS_EUR = { min: 1200, max: 2000 };
+/** Prime de tout ménage, voiture non produite en Europe : celle des prix « après aides » génériques */
+export const CEE_BASE_EUR = PRIME_GRID.standard.autres;
+/** Prime la plus haute (ménage en précarité), voiture non produite en Europe */
+export const CEE_MAX_EUR = PRIME_GRID.standard.precarite;
+/** Prime la plus haute, voiture et batterie produites en Europe */
+export const CEE_MAX_EUROPE_EUR = PRIME_GRID.europe.precarite;
 
 export const HOUSEHOLD_LABELS: Record<HouseholdCategory, string> = {
   precarite: "Ménage en précarité",
   modeste: "Ménage modeste",
+  gros_rouleur: "Gros rouleur",
   autres: "Autres ménages",
 };
 
-// Montants des primes pour personnes morales (Professionnels et collectivités)
-export const MORAL_PERSON_PRIME_AMOUNTS = {
-  company_large: 460, // Entreprises > 100 Véhicules
-  company_small: 460, // Par extension, même montant ou CEE de base
-  local_authority: 340, // Collectivités locales > 20 Véhicules
-  rental: 340, // Loueurs
-  other_legal_entity: 600, // Autres personnes morales (publiques, privées, associations...)
+/** Condition de revenu affichée avec chaque catégorie */
+export const HOUSEHOLD_CONDITIONS: Record<HouseholdCategory, string> = {
+  precarite: `revenu fiscal ≤ ${RFR_PART_CEILINGS.precarite.toLocaleString("fr-FR")} € par part`,
+  modeste: `revenu fiscal ≤ ${RFR_PART_CEILINGS.modeste.toLocaleString("fr-FR")} € par part`,
+  gros_rouleur: `≤ ${RFR_PART_CEILINGS.gros_rouleur.toLocaleString("fr-FR")} € par part et plus de ${GROS_ROULEUR_KM.toLocaleString("fr-FR")} km/an pour le travail, achat avant 2027`,
+  autres: "sans condition de revenu",
 };
+
+/** Personnes morales (sociétés, collectivités, loueurs, associations) : même grille de référence */
+export const MORAL_PERSON_PRIME_EUR = 600;
+
+/**
+ * Production européenne (voiture et batterie dans l'EEE) :
+ * - « confirmed » : annoncée par le constructeur pour son offre (Renault : Mégane et Scénic) ;
+ * - « possible » : signalée dans la fiche (aide « Majoration »), non confirmée, jamais déduite ;
+ * - « no » : rien de signalé.
+ */
+const EUROPE_CONFIRMED = new Set(["renault-megane", "renault-megane-2026", "renault-scenic"]);
+export type EuropeStatus = "confirmed" | "possible" | "no";
+
+export function europeStatus(vehicle: Vehicle): EuropeStatus {
+  if (EUROPE_CONFIRMED.has(vehicle.slug)) return "confirmed";
+  return vehicle.availableAids?.some((aid) => /batterie|majoration/i.test(aid.label)) ? "possible" : "no";
+}
+
+/** Prime d'une catégorie pour ce modèle (grille Europe seulement si la production est confirmée) */
+export function primeFor(vehicle: Vehicle, category: HouseholdCategory): number {
+  return PRIME_GRID[europeStatus(vehicle) === "confirmed" ? "europe" : "standard"][category];
+}
 
 /**
  * Détermine si le véhicule est éligible au dispositif CEE 2026.
@@ -108,110 +129,73 @@ export function isVehicleEligibleCEE(vehicle: Vehicle, price: number | null): bo
 }
 
 /**
- * Bonification batterie européenne signalée dans la fiche (aide « Majoration batterie »).
- * Indique seulement qu'elle est possible pour une version du modèle.
+ * Prime CEE d'une version sans profil fiscal : `base` (tout ménage), `max` (ménage en précarité),
+ * `europeMax` (précarité si la production européenne, seulement possible, se confirme).
  */
-export function hasBatteryBonus(vehicle: Vehicle): boolean {
-  return vehicle.availableAids?.some((aid) => /batterie|majoration/i.test(aid.label)) ?? false;
-}
-
-/** Prime CEE d'une version sans profil fiscal : ce que reçoit tout ménage et le plafond du barème */
-export function ceeRange(vehicle: Vehicle, price: number | null): { base: number; max: number } | null {
-  return isVehicleEligibleCEE(vehicle, price) ? { base: CEE_BASE_EUR, max: CEE_MAX_EUR } : null;
+export function ceeRange(
+  vehicle: Vehicle,
+  price: number | null
+): { base: number; max: number; europeMax: number | null } | null {
+  if (!isVehicleEligibleCEE(vehicle, price)) return null;
+  return {
+    base: primeFor(vehicle, "autres"),
+    max: primeFor(vehicle, "precarite"),
+    europeMax: europeStatus(vehicle) === "possible" ? PRIME_GRID.europe.precarite : null,
+  };
 }
 
 /**
- * Calcule les plafonds de revenus (RFR) pour une taille de ménage donnée.
+ * Catégorie du foyer d'après le revenu fiscal de référence et le nombre de parts.
  */
-export function getIncomeCeilings(householdSize: number) {
-  const sizeIndex = Math.max(1, Math.round(householdSize)) - 1;
-  
-  if (sizeIndex < 5) {
-    return {
-      precarite: HOUSEHOLD_THRESHOLDS.precarite[sizeIndex],
-      modeste: HOUSEHOLD_THRESHOLDS.modeste[sizeIndex],
-    };
-  } else {
-    const extraPeople = sizeIndex - 4;
-    return {
-      precarite: HOUSEHOLD_THRESHOLDS.precarite[4] + extraPeople * ADDITIONAL_PERSON_INCREASE.precarite,
-      modeste: HOUSEHOLD_THRESHOLDS.modeste[4] + extraPeople * ADDITIONAL_PERSON_INCREASE.modeste,
-    };
-  }
+export function getHouseholdCategory(taxIncome: number, taxParts: number, bigCommuter = false, now = new Date()): HouseholdCategory {
+  const perPart = taxIncome / Math.max(1, taxParts);
+  if (perPart <= RFR_PART_CEILINGS.precarite) return "precarite";
+  if (perPart <= RFR_PART_CEILINGS.modeste) return "modeste";
+  if (bigCommuter && perPart <= RFR_PART_CEILINGS.gros_rouleur && grosRouleurOpen(now)) return "gros_rouleur";
+  return "autres";
 }
 
 /**
- * Détermine la catégorie de revenus du foyer (Précarité, Modeste, Autres) en fonction du RFR et de la taille du ménage.
- */
-export function getHouseholdCategory(householdSize: number, taxIncome: number): HouseholdCategory {
-  const ceilings = getIncomeCeilings(householdSize);
-  if (taxIncome <= ceilings.precarite) {
-    return "precarite";
-  } else if (taxIncome <= ceilings.modeste) {
-    return "modeste";
-  } else {
-    return "autres";
-  }
-}
-
-/**
- * Calcule le montant de la prime CEE selon le profil et la version (barème indicatif, hors
- * bonification batterie). `category` force la catégorie de revenus (profil non renseigné).
+ * Calcule le montant de la prime CEE selon le profil et la version. `category` force la catégorie
+ * (profil non renseigné, réponse du matcher).
  */
 export function calculateCeeAid({
   vehicle,
   price,
   profileType,
-  householdSize = 1,
   taxIncome = 30000,
+  taxParts = 1,
+  bigCommuter = false,
   category: forcedCategory,
 }: {
   vehicle: Vehicle;
   price: number | null;
   profileType: UserProfileType;
-  householdSize?: number;
   taxIncome?: number;
+  taxParts?: number;
+  bigCommuter?: boolean;
   category?: HouseholdCategory;
 }): {
   amount: number;
   isEligible: boolean;
   category?: HouseholdCategory;
-  /** Bonification batterie européenne possible en plus (non comprise dans `amount`) */
-  batteryBonus: boolean;
+  /** Production européenne du modèle (« possible » : prime plus élevée à confirmer, non comprise) */
+  europe: EuropeStatus;
   label: string;
 } {
   const isEligible = isVehicleEligibleCEE(vehicle, price);
-  const batteryBonus = isEligible && hasBatteryBonus(vehicle);
+  const europe = europeStatus(vehicle);
 
   if (!isEligible) {
-    return { amount: 0, isEligible: false, batteryBonus, label: "Non éligible" };
+    return { amount: 0, isEligible: false, europe, label: "Non éligible" };
   }
 
   if (profileType !== "particular") {
-    // Profils professionnels / personnes morales
-    let amount = 0;
-    let label = "Prime CEE";
-    
-    if (profileType === "company_large" || profileType === "company_small") {
-      amount = MORAL_PERSON_PRIME_AMOUNTS.company_large;
-      label = "Prime CEE Entreprises";
-    } else if (profileType === "local_authority") {
-      amount = MORAL_PERSON_PRIME_AMOUNTS.local_authority;
-      label = "Prime CEE Collectivités";
-    } else if (profileType === "rental") {
-      amount = MORAL_PERSON_PRIME_AMOUNTS.rental;
-      label = "Prime CEE Loueurs";
-    } else if (profileType === "other_legal_entity") {
-      amount = MORAL_PERSON_PRIME_AMOUNTS.other_legal_entity;
-      label = "Prime CEE Personnes Morales";
-    }
-
-    return { amount, isEligible: true, batteryBonus, label };
+    return { amount: MORAL_PERSON_PRIME_EUR, isEligible: true, europe, label: "Prime CEE personne morale" };
   }
 
-  // Particulier (personne physique) : barème par catégorie de revenus
-  const category = forcedCategory ?? getHouseholdCategory(householdSize, taxIncome);
-  return { amount: PRIME_AMOUNTS[category], isEligible: true, category, batteryBonus, label: "Coup de pouce CEE" };
+  const category = forcedCategory ?? getHouseholdCategory(taxIncome, taxParts, bigCommuter);
+  return { amount: primeFor(vehicle, category), isEligible: true, category, europe, label: "Coup de pouce CEE" };
 }
 
 /**
@@ -221,9 +205,16 @@ export function calculateCeeAid({
 export function ceeForProfile(
   vehicle: Vehicle,
   price: number | null,
-  profile: { profileType: UserProfileType; householdSize: number; taxIncome: number; hasConfigured: boolean }
+  profile: { profileType: UserProfileType; taxIncome: number; taxParts: number; bigCommuter: boolean; hasConfigured: boolean }
 ) {
   return profile.hasConfigured
-    ? calculateCeeAid({ vehicle, price, profileType: profile.profileType, householdSize: profile.householdSize, taxIncome: profile.taxIncome })
+    ? calculateCeeAid({
+        vehicle,
+        price,
+        profileType: profile.profileType,
+        taxIncome: profile.taxIncome,
+        taxParts: profile.taxParts,
+        bigCommuter: profile.bigCommuter,
+      })
     : calculateCeeAid({ vehicle, price, profileType: "particular", category: "autres" });
 }

@@ -10,7 +10,7 @@ import { formatPrice } from "@/lib/format";
 import { url } from "@/lib/url";
 import FavoriteButton from "@/components/ui/FavoriteButton";
 import type { Vehicle } from "@/data/schemas";
-import { isVehicleEligibleCEE, CEE_BASE_EUR } from "@/lib/cee";
+import { isVehicleEligibleCEE, primeFor } from "@/lib/cee";
 
 // Véhicules considérés comme utilitaires / professionnels (flottes, navette VIP, ludospaces pro, vans Combi)
 const UTILITY_SLUGS = new Set([
@@ -305,7 +305,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                 <div
                   id="price-mode-toggle"
                   class="price-toggle-group"
-                  title="* Prime CEE d'un entrepreneur individuel (personne physique, barème indicatif 2026 de tout ménage). Une société ne touche qu'une prime de quelques centaines d'euros."
+                  title="* Prime CEE d'un entrepreneur individuel (personne physique, prime de tout ménage, montants indicatifs d'octobre 2026). Une société ne touche qu'environ 600 €."
                 >
                   <button class="price-toggle-btn" data-mode="gross" data-active="true">Brut</button>
                   <button class="price-toggle-btn" data-mode="aided">Après prime CEE*</button>
@@ -315,7 +315,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
 
         {vehicles.map((v) => {
           const cheapest = v.trims.reduce((a, b) => (a.price_EUR < b.price_EUR ? a : b));
-          const totalAids = isVehicleEligibleCEE(v, cheapest.price_EUR) ? CEE_BASE_EUR : 0;
+          const totalAids = isVehicleEligibleCEE(v, cheapest.price_EUR) ? primeFor(v, "autres") : 0;
           const priceAided = Math.max(0, cheapest.price_EUR - totalAids);
           const category = getCategory(v);
           

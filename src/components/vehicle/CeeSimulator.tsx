@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import type { Vehicle } from "@/data/schemas";
 import { useUserProfile } from "@/lib/userProfile";
-import { calculateCeeAid, isVehicleEligibleCEE, BATTERY_BONUS_EUR } from "@/lib/cee";
+import { calculateCeeAid, isVehicleEligibleCEE, HOUSEHOLD_LABELS, PRIME_GRID } from "@/lib/cee";
 import { formatPrice } from "@/lib/format";
 import ProfileOnboardingModal from "@/components/profile/ProfileOnboardingModal";
 
@@ -39,12 +39,13 @@ export default function CeeSimulator({ vehicle }: Props) {
   const isEligible = isVehicleEligibleCEE(vehicle, activeConfigPrice);
 
   // Calculer l'aide dynamique basée sur le profil utilisateur local
-  const { amount: ceeAmount, category, label: ceeLabel, batteryBonus } = calculateCeeAid({
+  const { amount: ceeAmount, category, label: ceeLabel, europe } = calculateCeeAid({
     vehicle,
     price: activeConfigPrice,
     profileType: profile.profileType,
-    householdSize: profile.householdSize,
+    taxParts: profile.taxParts,
     taxIncome: profile.taxIncome,
+    bigCommuter: profile.bigCommuter,
   });
 
   const finalNetPrice = activeConfigPrice !== null ? Math.max(0, activeConfigPrice - ceeAmount) : null;
@@ -66,16 +67,7 @@ export default function CeeSimulator({ vehicle }: Props) {
           return "Professionnel";
       }
     }
-    switch (category) {
-      case "precarite":
-        return "Ménage précarité";
-      case "modeste":
-        return "Ménage modeste";
-      case "autres":
-        return "Autres ménages";
-      default:
-        return "Particulier";
-    }
+    return category ? HOUSEHOLD_LABELS[category] : "Particulier";
   };
 
   return (
@@ -156,10 +148,10 @@ export default function CeeSimulator({ vehicle }: Props) {
           </div>
         )}
 
-        {profile.hasConfigured && batteryBonus && (
+        {profile.hasConfigured && profile.profileType === "particular" && category && europe === "possible" && (
           <p className="text-[10px] text-[var(--color-text-muted)] leading-normal">
-            Bonification batterie européenne possible en plus ({formatPrice(BATTERY_BONUS_EUR.min)} à {formatPrice(BATTERY_BONUS_EUR.max)}) selon
-            la version, d'après la liste ADEME revue chaque mois : à confirmer avec le vendeur.
+            Jusqu'à {formatPrice(PRIME_GRID.europe[category])} si la voiture et sa batterie de cette version sont produites
+            en Europe : à confirmer avec le vendeur.
           </p>
         )}
 

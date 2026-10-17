@@ -18,7 +18,7 @@ import { getAllVehicles, getVehicleBySlug } from "@/lib/vehicles";
 import { getSource, getSources, type TrustLevel } from "@/data/sources";
 import { formatDate, formatHours, formatLiters, formatMm, formatNm, formatNumber, formatPrice, formatSeconds } from "@/lib/format";
 import { url } from "@/lib/url";
-import { isVehicleEligibleCEE, hasBatteryBonus, CEE_PRICE_CAP_EUR, CEE_BASE_EUR, CEE_MAX_EUR, CEE_SCALE_YEAR, PRIME_AMOUNTS, HOUSEHOLD_LABELS, BATTERY_BONUS_EUR } from "@/lib/cee";
+import { isVehicleEligibleCEE, europeStatus, primeFor, grosRouleurOpen, CEE_PRICE_CAP_EUR, CEE_GRID_LABEL, PRIME_GRID, HOUSEHOLD_LABELS, HOUSEHOLD_CONDITIONS } from "@/lib/cee";
 import FavoriteButton from "@/components/ui/FavoriteButton";
 import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
 import VehicleMiniCard from "@/components/vehicle/VehicleMiniCard.astro";
@@ -154,8 +154,11 @@ const tkcField = (() => {
 })();
 // Prime CEE sans profil fiscal : celle de tout ménage ; le plafond du barème sert aux « jusqu'à »
 // (même barème partout : src/lib/cee.ts)
-const totalAids = vehicle.availableAids.length > 0 ? CEE_BASE_EUR : 0;
-const batteryBonus = hasBatteryBonus(vehicle);
+const totalAids = vehicle.availableAids.length > 0 ? primeFor(vehicle, "autres") : 0;
+const ceeMax = primeFor(vehicle, "precarite");
+// Production européenne (voiture et batterie) : confirmée = grille Europe, possible = signalée sans être déduite
+const ceeEurope = europeStatus(vehicle);
+const ceeCategories = (["autres", ...(grosRouleurOpen() ? ["gros_rouleur"] : []), "modeste", "precarite"] as const) as readonly ("autres" | "gros_rouleur" | "modeste" | "precarite")[];
 
 const cheapestTrim = vehicle.trims.reduce((a, b) => a.price_EUR < b.price_EUR ? a : b);
 
@@ -308,7 +311,7 @@ const faqEntries: { question: string; answer: string }[] = [
     question: `Quel est le prix ${deVehicle} avec les aides de l'État ?`,
     answer:
       seoFacts.priceMin != null && seoFacts.priceAfterAids != null
-        ? `Le prix affiché part de ${formatPrice(seoFacts.priceMin)}. Avec le coup de pouce CEE, il passe à ${formatPrice(seoFacts.priceAfterAids)} pour tout ménage et peut descendre jusqu'à ${formatPrice(seoFacts.priceAfterAidsMax!)} pour un ménage en précarité (barème indicatif ${CEE_SCALE_YEAR}).${batteryBonus ? " Une bonification batterie européenne peut s'y ajouter selon la version." : ""} La prime n'est pas automatique : il faut en faire la demande avant de signer le bon de commande.`
+        ? `Le prix affiché part de ${formatPrice(seoFacts.priceMin)}. Avec le coup de pouce CEE, il passe à ${formatPrice(seoFacts.priceAfterAids)} pour tout ménage et peut descendre jusqu'à ${formatPrice(seoFacts.priceAfterAidsMax!)} pour un ménage en précarité (montants indicatifs, ${CEE_GRID_LABEL}).${ceeEurope === "possible" ? " Elle est plus élevée si la voiture et sa batterie sont produites en Europe, ce qui reste à confirmer pour ce modèle." : ""} La prime n'est pas automatique : il faut en faire la demande avant de signer le bon de commande.`
         : seoFacts.priceMin != null
           ? `Le prix affiché part de ${formatPrice(seoFacts.priceMin)}${seoFacts.priceMax && seoFacts.priceMax > seoFacts.priceMin ? ` et monte à ${formatPrice(seoFacts.priceMax)}` : ""}, hors options. ${LaVehicle} n'ouvre pas droit au coup de pouce CEE (score environnemental, prix ou masse hors plafond) : le prix catalogue est le prix réel.`
           : `Le tarif de ce modèle n'est pas encore communiqué par le constructeur en France.`,
@@ -427,7 +430,7 @@ const configViews = configurations.map((config) => {
   const nyland120 = config.rangeTests.find((t: any) => t.protocol === "nyland" && t.speed_kmh === 120);
   const aidsEligible = totalAids > 0 && isVehicleEligibleCEE(vehicle, config.price_EUR);
   const priceAfterAids = config.price_EUR != null && aidsEligible ? Math.max(0, config.price_EUR - totalAids) : null;
-  const priceAfterAidsMax = config.price_EUR != null && aidsEligible ? Math.max(0, config.price_EUR - CEE_MAX_EUR) : null;
+  const priceAfterAidsMax = config.price_EUR != null && aidsEligible ? Math.max(0, config.price_EUR - ceeMax) : null;
   const realRange = config.realRange ?? vehicle.realRange;
   const rangeConfidence = realRange.confidence;
   const isRangeMeasured = rangeConfidence === "tested" || rangeConfidence === "bjorn_nyland";
@@ -1106,16 +1109,19 @@ const configSubtitle = (label: string) => {
                   {vehicle.availableAids.length > 0 ? (
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mt-auto">
                       <ul class="md:col-span-7 flex flex-col gap-2">
-                        {(["autres", "modeste", "precarite"] as const).map((cat) => (
+                        {ceeCategories.map((cat) => (
                           <li class="flex items-baseline justify-between gap-3 text-sm">
-                            <span class="text-[var(--color-text)]">{HOUSEHOLD_LABELS[cat]}</span>
-                            <span data-numeric class="font-mono text-[var(--color-accent)] whitespace-nowrap">- {formatPrice(PRIME_AMOUNTS[cat])}</span>
+                            <span class="text-[var(--color-text)]">
+                              {HOUSEHOLD_LABELS[cat]}
+                              <span class="block font-mono text-[10px] text-[var(--color-text-faint)]">{HOUSEHOLD_CONDITIONS[cat]}</span>
+                            </span>
+                            <span data-numeric class="font-mono text-[var(--color-accent)] whitespace-nowrap">- {formatPrice(primeFor(vehicle, cat))}</span>
                           </li>
                         ))}
-                        {batteryBonus && (
+                        {ceeEurope === "possible" && (
                           <li class="flex items-baseline justify-between gap-3 text-sm pt-2 border-t border-[var(--color-border)]">
-                            <span class="text-[var(--color-text-muted)]">Bonification batterie européenne, selon la version</span>
-                            <span data-numeric class="font-mono text-[var(--color-text-muted)] whitespace-nowrap">- {formatPrice(BATTERY_BONUS_EUR.min)} à {formatPrice(BATTERY_BONUS_EUR.max)}</span>
+                            <span class="text-[var(--color-text-muted)]">Si voiture et batterie sont produites en Europe (à confirmer)</span>
+                            <span data-numeric class="font-mono text-[var(--color-text-muted)] whitespace-nowrap">jusqu'à - {formatPrice(PRIME_GRID.europe.precarite)}</span>
                           </li>
                         )}
                       </ul>
@@ -1146,7 +1152,7 @@ const configSubtitle = (label: string) => {
                     </p>
                   )}
                   <p class="mt-4 font-mono text-[11px] text-[var(--color-text-faint)] leading-relaxed">
-                    * Barème indicatif {CEE_SCALE_YEAR} du coup de pouce CEE (ministère de la Transition écologique) : le montant versé dépend de l'organisme signataire et du mois. Catégorie selon le revenu fiscal de référence et la taille du foyer ; version éco-scorée ADEME, sous 47 000 € TTC hors options et 2,4 t. La bonification batterie suit la liste ADEME revue chaque mois et n'est pas déduite ici. Demande à faire avant la signature du bon de commande.
+                    * Montants indicatifs ({CEE_GRID_LABEL}). Depuis le 1er septembre 2026, la réglementation fixe un coefficient par catégorie (revenu fiscal de référence par part), pas un montant : la prime versée dépend de l'organisme qui la paie. Prime plus élevée quand la voiture et sa batterie sont produites en Europe{ceeEurope === "confirmed" ? ", ce qui est le cas ici selon le constructeur" : ""}. Version éco-scorée ADEME, sous 47 000 € TTC hors options et 2,4 t. Demande à faire avant la signature du bon de commande.
                   </p>
                 </Tile>
 

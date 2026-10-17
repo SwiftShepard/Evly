@@ -55,7 +55,7 @@ export const LOCAL_STORAGE_KEYS = [
     key: "evly-user-profile",
     storage: "localStorage",
     purpose:
-      "Profil fiscal que vous avez choisi d'enregistrer pour estimer vos aides : type de profil, taille du foyer, revenu fiscal de référence.",
+      "Profil fiscal que vous avez choisi d'enregistrer pour estimer vos aides : type de profil, nombre de parts, revenu fiscal de référence, plus de 12 000 km par an pour le travail (oui ou non).",
     duration: "Jusqu'à ce que vous le réinitialisiez ou effaciez les données du site.",
   },
   {

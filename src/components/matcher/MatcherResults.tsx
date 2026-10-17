@@ -281,7 +281,7 @@ export default function MatcherResults({ results, answers: a, vehicleCount, imag
 
       <p className="mq-footnote">
         La règle montre l'autonomie en hiver (-5 °C, estimée), l'autonomie réelle et les kilomètres annoncés ; le trait marque votre semaine de trajet.
-        Prix après prime CEE : montant minimal, sauf si vous avez indiqué un revenu de 16 300 € ou moins par part. Montants indicatifs.{" "}
+        Prix après prime CEE : prime de tout ménage, ou celle d'un ménage modeste ou d'un gros rouleur selon vos réponses. Montants indicatifs (offre publiée pour octobre 2026), variables selon l'organisme qui verse la prime.{" "}
         <a href={url("/methodologie/")}>Notre méthode</a>
       </p>
     </div>

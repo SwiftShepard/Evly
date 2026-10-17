@@ -1,6 +1,6 @@
 import type { Vehicle } from "@/data/schemas";
 import { formatNumber } from "@/lib/format";
-import { isVehicleEligibleCEE, CEE_BASE_EUR } from "@/lib/cee";
+import { isVehicleEligibleCEE, primeFor } from "@/lib/cee";
 
 export type RangeConfidenceLevel = "measured" | "manufacturer" | "estimated";
 
@@ -55,7 +55,7 @@ export function getVehicleCardSummary(v: Vehicle): VehicleCardSummary {
   const cheapestPrice = prices.length > 0 ? Math.min(...prices) : null;
   // Prime CEE de tout ménage (barème de src/lib/cee.ts) ; aucune si la version la moins chère
   // dépasse un plafond (prix, masse) : prix après aides = prix
-  const totalAids = isVehicleEligibleCEE(v, cheapestPrice) ? CEE_BASE_EUR : 0;
+  const totalAids = isVehicleEligibleCEE(v, cheapestPrice) ? primeFor(v, "autres") : 0;
   const priceAided = cheapestPrice !== null ? Math.max(0, cheapestPrice - totalAids) : null;
 
   const confidence = getRangeConfidenceInfo(v.realRange.confidence);

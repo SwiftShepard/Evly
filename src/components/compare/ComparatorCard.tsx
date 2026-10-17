@@ -412,7 +412,7 @@ export default function ComparatorCard({
                   <span
                     className="font-mono text-[10px]"
                     style={{ color: "var(--color-text-faint)" }}
-                    title={`Barème indicatif 2026 du coup de pouce CEE. ${profile.hasConfigured ? "Calculé avec votre profil fiscal." : `Prime de tout ménage ; jusqu'à ${fmtPrice(CEE_MAX_EUR)} selon vos revenus.`}`}
+                    title={`Montants indicatifs du coup de pouce CEE (offre publiée pour octobre 2026). ${profile.hasConfigured ? "Calculé avec votre profil fiscal." : `Prime de tout ménage ; jusqu'à ${fmtPrice(CEE_MAX_EUR)} selon vos revenus.`}`}
                   >
                     {profile.hasConfigured ? "Votre prime CEE" : "Prime CEE tout ménage"} : −<AnimatedNumber value={totalAids} format={fmtPrice} />
                   </span>

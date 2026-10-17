@@ -1,6 +1,6 @@
 import type { Vehicle } from "@/data/schemas";
 import { formatNumber, formatPrice } from "@/lib/format";
-import { isVehicleEligibleCEE, CEE_BASE_EUR, CEE_MAX_EUR } from "@/lib/cee";
+import { isVehicleEligibleCEE, primeFor } from "@/lib/cee";
 
 /**
  * SEO des fiches véhicules : noms recherchés, titres, descriptions et textes
@@ -272,7 +272,7 @@ export function getVehicleSeoFacts(v: Vehicle): VehicleSeoFacts {
     .map((c) => c.monthlyLease_EUR!);
   if (v.leasingSocialEligible && v.leasingSocial_EUR_per_month) leases.push(v.leasingSocial_EUR_per_month);
 
-  const aids = isVehicleEligibleCEE(v, priceMin) ? CEE_BASE_EUR : 0;
+  const aids = isVehicleEligibleCEE(v, priceMin) ? primeFor(v, "autres") : 0;
 
   return {
     name: getVehicleName(v),
@@ -290,7 +290,7 @@ export function getVehicleSeoFacts(v: Vehicle): VehicleSeoFacts {
     leasingMin: leases.length ? Math.min(...leases) : null,
     aids,
     priceAfterAids: priceMin != null && aids > 0 ? Math.max(0, priceMin - aids) : null,
-    priceAfterAidsMax: priceMin != null && aids > 0 ? Math.max(0, priceMin - CEE_MAX_EUR) : null,
+    priceAfterAidsMax: priceMin != null && aids > 0 ? Math.max(0, priceMin - primeFor(v, "precarite")) : null,
   };
 }
 

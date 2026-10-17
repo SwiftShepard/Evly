@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useId, useRef } from "react";
 import { url } from "@/lib/url";
 import { useUserProfile } from "@/lib/userProfile";
-import { getIncomeCeilings, type UserProfileType } from "@/lib/cee";
+import { getHouseholdCategory, grosRouleurOpen, HOUSEHOLD_LABELS, GROS_ROULEUR_KM, RFR_PART_CEILINGS, type UserProfileType } from "@/lib/cee";
 import { formatPrice } from "@/lib/format";
 
 interface Props {
@@ -13,12 +13,13 @@ export default function ProfileOnboardingModal({ isOpen, onClose }: Props) {
   const { profile, updateProfile } = useUserProfile();
 
   const [profileType, setProfileType] = useState<UserProfileType>(profile.profileType);
-  const [householdSize, setHouseholdSize] = useState<number>(profile.householdSize);
+  const [taxParts, setTaxParts] = useState<number>(profile.taxParts);
   const [taxIncome, setTaxIncome] = useState<number>(profile.taxIncome);
+  const [bigCommuter, setBigCommuter] = useState<boolean>(profile.bigCommuter);
 
   const titleId = useId();
   const profileLabelId = useId();
-  const householdLabelId = useId();
+  const partsLabelId = useId();
   const incomeLabelId = useId();
   const dialogRef = useRef<HTMLDivElement>(null);
 
@@ -55,8 +56,9 @@ export default function ProfileOnboardingModal({ isOpen, onClose }: Props) {
   useEffect(() => {
     if (isOpen) {
       setProfileType(profile.profileType);
-      setHouseholdSize(profile.householdSize);
+      setTaxParts(profile.taxParts);
       setTaxIncome(profile.taxIncome);
+      setBigCommuter(profile.bigCommuter);
     }
   }, [isOpen, profile]);
 
@@ -65,13 +67,17 @@ export default function ProfileOnboardingModal({ isOpen, onClose }: Props) {
   const handleSave = () => {
     updateProfile({
       profileType,
-      householdSize,
+      taxParts,
       taxIncome,
+      bigCommuter,
     });
     onClose();
   };
 
-  const ceilings = getIncomeCeilings(householdSize);
+  const perPart = Math.round(taxIncome / Math.max(1, taxParts));
+  const category = getHouseholdCategory(taxIncome, taxParts, bigCommuter);
+  const commuterOpen = grosRouleurOpen();
+  const stepParts = (d: number) => setTaxParts((p) => Math.min(10, Math.max(1, p + d)));
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -111,7 +117,7 @@ export default function ProfileOnboardingModal({ isOpen, onClose }: Props) {
             Votre profil fiscal
           </h2>
           <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
-            Configurez votre situation une seule fois pour estimer automatiquement et précisément vos aides d'État (CEE / Coup de Pouce 2026) sur tout le site.
+            Renseignez votre situation une fois pour estimer votre prime CEE (coup de pouce) sur tout le site. Montants indicatifs : la prime versée dépend de l'organisme qui la paie.
           </p>
           <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
             Ces informations restent enregistrées dans votre navigateur : elles ne sont jamais envoyées à Evly ni à un tiers.{" "}
@@ -160,33 +166,33 @@ export default function ProfileOnboardingModal({ isOpen, onClose }: Props) {
 
         {profileType === "particular" ? (
           <div className="flex flex-col gap-5 pt-1 border-t border-[var(--color-border)]">
-            {/* Nombre de personnes */}
-            <div className="flex flex-col gap-2">
-              <div className="flex justify-between items-baseline">
-                <span id={householdLabelId} className="font-mono text-[9px] uppercase tracking-[0.1em] text-[var(--color-text-faint)]">
-                  Composition du foyer
+            {/* Parts fiscales */}
+            <div className="flex justify-between items-center gap-3">
+              <span id={partsLabelId} className="font-mono text-[9px] uppercase tracking-[0.1em] text-[var(--color-text-faint)]">
+                Nombre de parts (avis d'imposition)
+              </span>
+              <div className="flex items-center gap-1" role="group" aria-labelledby={partsLabelId}>
+                <button
+                  type="button"
+                  aria-label="Une demi-part de moins"
+                  onClick={() => stepParts(-0.5)}
+                  disabled={taxParts <= 1}
+                  className="w-7 h-7 rounded-md border border-[var(--color-border)] bg-[var(--color-bg-subtle)] text-xs font-bold text-[var(--color-text-muted)] hover:border-[var(--color-border-strong)] disabled:opacity-40 cursor-pointer"
+                >
+                  −
+                </button>
+                <span className="w-10 text-center font-mono text-xs font-bold text-[var(--color-text)]" aria-live="polite">
+                  {taxParts.toLocaleString("fr-FR")}
                 </span>
-                <span className="font-mono text-xs font-bold text-[var(--color-text)]">
-                  {householdSize} {householdSize > 1 ? "personnes" : "personne"}
-                </span>
-              </div>
-              <div className="flex gap-1" role="group" aria-labelledby={householdLabelId}>
-                {[1, 2, 3, 4, 5, 6].map((num) => (
-                  <button
-                    key={num}
-                    type="button"
-                    aria-pressed={householdSize === num}
-                    aria-label={num === 6 ? "6 personnes ou plus" : `${num} ${num > 1 ? "personnes" : "personne"}`}
-                    onClick={() => setHouseholdSize(num)}
-                    className={`flex-1 py-1.5 text-xs font-mono font-semibold rounded-md border transition-all cursor-pointer ${
-                      householdSize === num
-                        ? "border-[var(--color-accent)] bg-[var(--color-accent)] text-white"
-                        : "border-[var(--color-border)] bg-[var(--color-bg-subtle)] text-[var(--color-text-muted)] hover:border-[var(--color-border-strong)]"
-                    }`}
-                  >
-                    {num === 6 ? "6+" : num}
-                  </button>
-                ))}
+                <button
+                  type="button"
+                  aria-label="Une demi-part de plus"
+                  onClick={() => stepParts(0.5)}
+                  disabled={taxParts >= 10}
+                  className="w-7 h-7 rounded-md border border-[var(--color-border)] bg-[var(--color-bg-subtle)] text-xs font-bold text-[var(--color-text-muted)] hover:border-[var(--color-border-strong)] disabled:opacity-40 cursor-pointer"
+                >
+                  +
+                </button>
               </div>
             </div>
 
@@ -194,7 +200,7 @@ export default function ProfileOnboardingModal({ isOpen, onClose }: Props) {
             <div className="flex flex-col gap-2">
               <div className="flex justify-between items-baseline">
                 <label id={incomeLabelId} htmlFor={`${incomeLabelId}-input`} className="font-mono text-[9px] uppercase tracking-[0.1em] text-[var(--color-text-faint)]">
-                  Revenu Fiscal de Référence (RFR)
+                  Revenu fiscal de référence du foyer
                 </label>
                 <div className="flex items-center gap-1">
                   <input
@@ -212,7 +218,7 @@ export default function ProfileOnboardingModal({ isOpen, onClose }: Props) {
               </div>
               <input
                 type="range"
-                min={10000}
+                min={5000}
                 max={100000}
                 step={1000}
                 value={taxIncome}
@@ -221,12 +227,26 @@ export default function ProfileOnboardingModal({ isOpen, onClose }: Props) {
                 aria-valuetext={formatPrice(taxIncome)}
                 className="w-full accent-[var(--color-accent)] h-1.5 bg-neutral-100 rounded-lg appearance-none cursor-pointer"
               />
-              <div className="flex justify-between text-[9px] text-[var(--color-text-faint)] font-mono">
-                <span>10 k€</span>
-                <span>Modeste ≤ {formatPrice(ceilings.modeste)}</span>
-                <span>100 k€</span>
-              </div>
+              <p className="text-[10px] text-[var(--color-text-muted)] leading-normal" aria-live="polite">
+                {formatPrice(perPart)} par part : <span className="font-semibold text-[var(--color-text)]">{HOUSEHOLD_LABELS[category].toLowerCase()}</span>
+                {" "}(précarité ≤ {formatPrice(RFR_PART_CEILINGS.precarite)}, modeste ≤ {formatPrice(RFR_PART_CEILINGS.modeste)} par part).
+              </p>
             </div>
+
+            {commuterOpen && (
+              <label className="flex items-start gap-2 text-xs text-[var(--color-text-muted)] leading-normal cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={bigCommuter}
+                  onChange={(e) => setBigCommuter(e.target.checked)}
+                  className="mt-0.5 accent-[var(--color-accent)]"
+                />
+                <span>
+                  Je roule plus de {GROS_ROULEUR_KM.toLocaleString("fr-FR")} km par an pour mon travail avec ma voiture personnelle
+                  (prime « gros rouleur » jusqu'à {formatPrice(RFR_PART_CEILINGS.gros_rouleur)} par part, achat avant 2027).
+                </span>
+              </label>
+            )}
           </div>
         ) : (
           <div className="p-4 bg-[var(--color-bg-subtle)] rounded-xl border border-[var(--color-border)] text-xs text-[var(--color-text-muted)] leading-relaxed">

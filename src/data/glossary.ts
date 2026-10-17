@@ -164,7 +164,7 @@ export const GLOSSARY: GlossaryEntry[] = [
     abbr: "CEE",
     category: "general",
     definition:
-      "Prime 'coup de pouce vehicules particuliers electriques', financee par les certificats d'economies d'energie. Remplace le bonus ecologique depuis le 1er juillet 2025. Trois niveaux selon le revenu fiscal de reference par part : 5 700 € (menage precaire), 4 700 € (modeste), 3 500 € (autre). Cumulable avec le surbonus batterie europeenne (1 200 a 2 000 €). Plafond maximal : 7 700 €. Conditions : VE neuf M1, prix < 47 000 €, masse < 2 400 kg, score ADEME >= 60/80. Demande avant signature du bon de commande.",
+      "Prime « coup de pouce véhicules particuliers électriques », financée par les certificats d'économies d'énergie. Remplace le bonus écologique depuis le 1er juillet 2025. Depuis le 1er septembre 2026, la réglementation fixe un coefficient par catégorie de revenu fiscal de référence par part (précarité jusqu'à 11 250 €, modeste jusqu'à 16 880 €, gros rouleur jusqu'à 27 310 € et plus de 12 000 km par an pour le travail, autres ménages), plus élevé quand la voiture et sa batterie sont produites en Europe ; le montant dépend de l'organisme qui verse la prime (en octobre 2026, par exemple, de 3 620 € à 7 070 €, ou de 4 830 € à 9 420 € pour une voiture produite en Europe). Conditions : voiture neuve, prix inférieur à 47 000 € TTC, masse sous 2,4 t, score environnemental ADEME d'au moins 60. Demande avant la signature du bon de commande.",
   },
   {
     term: "Prime a la conversion",

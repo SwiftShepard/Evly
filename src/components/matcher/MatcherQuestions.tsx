@@ -1,6 +1,7 @@
 import type { Dispatch, ReactNode, SetStateAction } from "react";
 import { Check } from "lucide-react";
 import { BUDGET_RANGE, type MatcherAnswers } from "./scoring";
+import { grosRouleurOpen } from "@/lib/cee";
 
 type SetAnswers = Dispatch<SetStateAction<MatcherAnswers>>;
 
@@ -228,6 +229,9 @@ export default function MatcherQuestions({ step, answers: a, setAnswers }: { ste
             <p className="mq-group-title">Aides sous conditions de revenus</p>
             <div className="mq-tiles" data-cols={2}>
               <CheckCard checked={a.lowIncome} onChange={set("lowIncome")} label="Mon revenu fiscal de référence par part est de 16 300 € ou moins" desc="Prime CEE plus élevée, et première condition du leasing social." />
+              {grosRouleurOpen() && !a.lowIncome && (
+                <CheckCard checked={a.bigCommuter} onChange={set("bigCommuter")} label="Je roule plus de 12 000 km par an pour mon travail avec ma voiture" desc="Et mon revenu par part est de 27 310 € ou moins : prime CEE « gros rouleur », achat engagé avant 2027." />
+              )}
               {a.budgetType === "lease" && (
                 <CheckCard checked={a.commuter} onChange={set("commuter")} label="J'habite à plus de 10 km de mon travail" desc="Ou je roule plus de 8 000 km par an pour mon travail avec ma voiture." />
               )}

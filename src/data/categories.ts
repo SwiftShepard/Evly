@@ -9,7 +9,7 @@ import {
 } from "@/lib/seo";
 import { isStrictUtility } from "@/lib/vehicles";
 import { formatPrice } from "@/lib/format";
-import { CEE_BASE_EUR, CEE_MAX_EUR, CEE_SCALE_YEAR } from "@/lib/cee";
+import { CEE_BASE_EUR, CEE_MAX_EUR, CEE_GRID_LABEL } from "@/lib/cee";
 
 /**
  * Pages « sélections » (/voitures-electriques/{slug}/) : une intention de recherche
@@ -506,13 +506,13 @@ export const CATEGORIES: VehicleCategory[] = [
       `Les ${l.length} voitures électriques éligibles à la prime CEE en ${SEO_YEAR}, classées par prix après aides : dès ${eur(aided(l[0]!))}. Conditions, montants et autonomie réelle.`,
     intro: (l) => [
       `Le coup de pouce CEE finance l'achat d'une voiture électrique neuve sous trois conditions : un score environnemental ADEME d'au moins 60/100, un prix inférieur à 47 000 € et une masse sous 2,4 tonnes. ${l.length} modèles de notre catalogue les remplissent pour au moins une de leurs versions.`,
-      `Le montant dépend de vos revenus : ${eur(CEE_BASE_EUR)} pour tout ménage, jusqu'à ${eur(CEE_MAX_EUR)} en situation de précarité (barème indicatif ${CEE_SCALE_YEAR}, variable selon l'organisme qui la verse), plus une bonification batterie européenne sur certaines versions. Le classement ci-dessous part du prix de la version d'entrée diminué de la prime de tout ménage. La demande se fait avant la signature du bon de commande.`,
+      `Le montant dépend de vos revenus par part fiscale : ${eur(CEE_BASE_EUR)} pour tout ménage, jusqu'à ${eur(CEE_MAX_EUR)} en situation de précarité, davantage quand la voiture et sa batterie sont produites en Europe (montants indicatifs, ${CEE_GRID_LABEL} ; ils varient selon l'organisme qui verse la prime). Le classement ci-dessous part du prix de la version d'entrée diminué de la prime de tout ménage. La demande se fait avant la signature du bon de commande.`,
     ],
     faq: (l) => [
       {
         question: "Quelles sont les conditions de la prime CEE pour une voiture électrique ?",
         answer:
-          "La voiture doit être neuve, 100 % électrique, avoir un score environnemental ADEME d'au moins 60/100, coûter moins de 47 000 € et peser moins de 2,4 tonnes. Le montant varie ensuite selon le revenu fiscal de référence et la taille du foyer.",
+          "La voiture doit être neuve, 100 % électrique, avoir un score environnemental ADEME d'au moins 60/100, coûter moins de 47 000 € et peser moins de 2,4 tonnes. Le montant varie ensuite selon le revenu fiscal de référence par part, le kilométrage professionnel (plus de 12 000 km par an, jusqu'à fin 2026) et le lieu de production de la voiture et de sa batterie.",
       },
       {
         question: "Quelle est la voiture électrique la moins chère après la prime CEE ?",

@@ -1,5 +1,5 @@
 import type { Vehicle, VehicleConfiguration } from "@/data/schemas";
-import { calculateCeeAid, isEU } from "@/lib/cee";
+import { calculateCeeAid, grosRouleurOpen, isEU, type HouseholdCategory } from "@/lib/cee";
 
 /**
  * Matcher : réponses du visiteur, classement des modèles et lecture de l'URL.
@@ -31,6 +31,8 @@ export interface MatcherAnswers {
   lowIncome: boolean;
   /** Plus de 10 km du travail ou plus de 8 000 km pro par an */
   commuter: boolean;
+  /** Plus de 12 000 km pro par an et revenu ≤ 27 310 € par part (prime CEE « gros rouleur ») */
+  bigCommuter: boolean;
   fastCharge: boolean;
   europe: boolean;
   software: boolean;
@@ -50,6 +52,7 @@ export const DEFAULT_ANSWERS: MatcherAnswers = {
   budgetMax: 35000,
   lowIncome: false,
   commuter: false,
+  bigCommuter: false,
   fastCharge: false,
   europe: false,
   software: false,
@@ -111,6 +114,7 @@ export function answersToParams(a: MatcherAnswers): URLSearchParams {
   p.set("max", String(a.budgetMax));
   if (a.lowIncome) p.set("rfr", "1");
   if (a.commuter) p.set("distance", "1");
+  if (a.bigCommuter) p.set("rouleur", "1");
   const prio = PRIORITIES.filter(([, key]) => a[key]).map(([name]) => name);
   if (prio.length) p.set("prio", prio.join(","));
   return p;
@@ -143,6 +147,7 @@ export function paramsToAnswers(p: URLSearchParams): MatcherAnswers | null {
     budgetMax: clampNum(p.get("max"), range.min, range.max, range.initial),
     lowIncome: p.get("rfr") === "1",
     commuter: p.get("distance") === "1",
+    bigCommuter: p.get("rouleur") === "1",
     fastCharge: prio.has("recharge"),
     europe: prio.has("europe"),
     software: prio.has("logiciel"),
@@ -229,16 +234,17 @@ export function scoreVehicle(vehicle: Vehicle, a: MatcherAnswers): MatchResult |
 
   const configs = vehicle.configurations.filter((c) => c.price_EUR !== null && c.availability !== "discontinued");
   const userSocial = a.lowIncome && a.commuter;
+  const ceeCategory: HouseholdCategory = a.lowIncome ? "modeste" : a.bigCommuter && grosRouleurOpen() ? "gros_rouleur" : "autres";
   let best: MatchResult | null = null;
 
   for (const config of configs) {
     const s: Scored = { criteria: [], reasons: [], warnings: [] };
     const add = (label: string, weight: number, fit: number) => s.criteria.push({ label, weight, fit: Math.max(0, Math.min(1, fit)) });
 
-    /* Prix : prime CEE déduite (catégorie « précarité » si le revenu le permet, sinon montant minimal) */
+    /* Prix : prime CEE déduite. ≤ 16 300 € par part = au moins « modeste » (≤ 16 880 €) ;
+       gros rouleur s'il l'a indiqué ; sinon prime de tout ménage */
     const catalog = config.price_EUR!;
-    const householdSize = a.household === "large" ? 5 : a.household === "family" ? 3 : 1;
-    const { amount: cee } = calculateCeeAid({ vehicle, price: catalog, profileType: "particular", householdSize, taxIncome: a.lowIncome ? 12000 : 80000 });
+    const { amount: cee } = calculateCeeAid({ vehicle, price: catalog, profileType: "particular", category: ceeCategory });
     const net = catalog - cee;
     const social = userSocial && (config.leasingSocialEligible || vehicle.leasingSocialEligible) && vehicle.leasingSocial_EUR_per_month != null;
     const monthlyKind = social ? "social" : config.monthlyLease_EUR ? "official" : "estimate";
