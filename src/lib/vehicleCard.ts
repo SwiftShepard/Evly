@@ -1,9 +1,6 @@
 import type { Vehicle } from "@/data/schemas";
 import { formatNumber } from "@/lib/format";
-import { isVehicleEligibleCEE } from "@/lib/cee";
-
-/** Plafond de cumul des aides affiché partout sur le site (CEE + majoration batterie UE). */
-export const MAX_TOTAL_AIDS_EUR = 8100;
+import { isVehicleEligibleCEE, CEE_BASE_EUR } from "@/lib/cee";
 
 export type RangeConfidenceLevel = "measured" | "manufacturer" | "estimated";
 
@@ -12,9 +9,9 @@ export interface VehicleCardSummary {
   subtitle: string;
   /** Prix de la finition la moins chère, null si aucun tarif communiqué */
   cheapestPrice: number | null;
-  /** Aides cumulables plafonnées */
+  /** Prime CEE de tout ménage si la version d'entrée y est éligible, sinon 0 */
   totalAids: number;
-  /** Prix après aides max., null si pas de tarif */
+  /** Prix après cette prime, null si pas de tarif */
   priceAided: number | null;
   rangeConfidence: RangeConfidenceLevel;
   /** « mesurée » | « constructeur » | « estimée » */
@@ -56,13 +53,10 @@ export function getVehicleCardSummary(v: Vehicle): VehicleCardSummary {
 
   const prices = v.trims.map((t) => t.price_EUR).filter((p): p is number => p !== null);
   const cheapestPrice = prices.length > 0 ? Math.min(...prices) : null;
-  const totalAids = Math.min(
-    MAX_TOTAL_AIDS_EUR,
-    v.availableAids.reduce((sum, a) => sum + a.amount_EUR, 0)
-  );
-  // Pas d'aide si la version la moins chère dépasse le plafond (prix, masse) : prix après aides = prix
-  const aidsApply = totalAids > 0 && isVehicleEligibleCEE(v, cheapestPrice);
-  const priceAided = cheapestPrice !== null ? Math.max(0, cheapestPrice - (aidsApply ? totalAids : 0)) : null;
+  // Prime CEE de tout ménage (barème de src/lib/cee.ts) ; aucune si la version la moins chère
+  // dépasse un plafond (prix, masse) : prix après aides = prix
+  const totalAids = isVehicleEligibleCEE(v, cheapestPrice) ? CEE_BASE_EUR : 0;
+  const priceAided = cheapestPrice !== null ? Math.max(0, cheapestPrice - totalAids) : null;
 
   const confidence = getRangeConfidenceInfo(v.realRange.confidence);
 

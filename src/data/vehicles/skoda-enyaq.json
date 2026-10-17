@@ -37,9 +37,9 @@
   "dragCoefficient_Cx": 0.257,
   "chargingDC": {
     "peakPower_kW": 175,
-    "time_10_80_min": 28,
+    "time_10_80_min": 26,
     "kWh_added_30min": 58,
-    "confidence": "estimated"
+    "confidence": "tested"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
@@ -52,48 +52,76 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 88
-    },
-    {
       "soc": 10,
       "power": 110
+    },
+    {
+      "soc": 15,
+      "power": 164
     },
     {
       "soc": 20,
       "power": 173
     },
     {
+      "soc": 23,
+      "power": 175
+    },
+    {
+      "soc": 25,
+      "power": 174
+    },
+    {
       "soc": 30,
       "power": 174
+    },
+    {
+      "soc": 35,
+      "power": 171
     },
     {
       "soc": 40,
       "power": 160
     },
     {
+      "soc": 45,
+      "power": 148
+    },
+    {
       "soc": 50,
       "power": 135
+    },
+    {
+      "soc": 55,
+      "power": 116
     },
     {
       "soc": 60,
       "power": 102
     },
     {
+      "soc": 65,
+      "power": 99
+    },
+    {
       "soc": 70,
       "power": 88
+    },
+    {
+      "soc": 75,
+      "power": 76
     },
     {
       "soc": 80,
       "power": 67
     },
     {
-      "soc": 90,
-      "power": 31
+      "soc": 85,
+      "power": 40
     },
     {
-      "soc": 100,
-      "power": 3
+      "soc": 90,
+      "power": 31
     }
   ],
   "rangeTests": [
@@ -176,7 +204,7 @@
   "availableAids": [
     {
       "label": "Prime CEE",
-      "amount_EUR": 6500,
+      "amount_EUR": 5700,
       "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
     },
     {
@@ -237,7 +265,8 @@
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "skoda-enyaq-85x-210-kw-awd--77",
@@ -289,36 +318,85 @@
         }
       ],
       "chargingDC_peak_kW": 175,
-      "chargingDC_10_80_min": 28,
-      "chargingDC_kWh_30min": 80,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 58,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 161
+          "soc": 10,
+          "power": 110
         },
         {
-          "soc": 10,
-          "power": 175
+          "soc": 15,
+          "power": 164
         },
         {
           "soc": 20,
+          "power": 173
+        },
+        {
+          "soc": 23,
           "power": 175
         },
         {
+          "soc": 25,
+          "power": 174
+        },
+        {
+          "soc": 30,
+          "power": 174
+        },
+        {
+          "soc": 35,
+          "power": 171
+        },
+        {
+          "soc": 40,
+          "power": 160
+        },
+        {
+          "soc": 45,
+          "power": 148
+        },
+        {
           "soc": 50,
-          "power": 124
+          "power": 135
+        },
+        {
+          "soc": 55,
+          "power": 116
+        },
+        {
+          "soc": 60,
+          "power": 102
+        },
+        {
+          "soc": 65,
+          "power": 99
+        },
+        {
+          "soc": 70,
+          "power": 88
+        },
+        {
+          "soc": 75,
+          "power": 76
         },
         {
           "soc": 80,
-          "power": 56
+          "power": 67
         },
         {
-          "soc": 100,
-          "power": 11
+          "soc": 85,
+          "power": 40
+        },
+        {
+          "soc": 90,
+          "power": 31
         }
       ],
       "availability": "available",
-      "notes": "Transmission intégrale 4Drive"
+      "notes": "Transmission intégrale 4Drive",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "skoda-enyaq-vrs-250-kw-awd--77",
@@ -371,7 +449,8 @@
         }
       ],
       "availability": "available",
-      "notes": "Transmission intégrale 4Drive"
+      "notes": "Transmission intégrale 4Drive",
+      "chargingDC_confidence": "estimated"
     }
   ],
   "warranty": {

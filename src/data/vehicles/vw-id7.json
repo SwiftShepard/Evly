@@ -36,9 +36,9 @@
   "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.23,
   "chargingDC": {
-    "peakPower_kW": 175,
-    "time_10_80_min": 28,
-    "kWh_added_30min": 55,
+    "peakPower_kW": 191,
+    "time_10_80_min": 25,
+    "kWh_added_30min": 60,
     "confidence": "tested"
   },
   "chargingAC": {
@@ -52,24 +52,84 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 135
-    },
-    {
       "soc": 10,
       "power": 175
     },
     {
+      "soc": 15,
+      "power": 186
+    },
+    {
+      "soc": 20,
+      "power": 188
+    },
+    {
+      "soc": 25,
+      "power": 190
+    },
+    {
+      "soc": 29,
+      "power": 191
+    },
+    {
+      "soc": 30,
+      "power": 190
+    },
+    {
+      "soc": 35,
+      "power": 185
+    },
+    {
+      "soc": 40,
+      "power": 180
+    },
+    {
+      "soc": 45,
+      "power": 165
+    },
+    {
       "soc": 50,
-      "power": 135
+      "power": 150
+    },
+    {
+      "soc": 55,
+      "power": 112
+    },
+    {
+      "soc": 60,
+      "power": 96
+    },
+    {
+      "soc": 65,
+      "power": 98
+    },
+    {
+      "soc": 70,
+      "power": 91
+    },
+    {
+      "soc": 75,
+      "power": 81
     },
     {
       "soc": 80,
-      "power": 67
+      "power": 72
+    },
+    {
+      "soc": 85,
+      "power": 63
+    },
+    {
+      "soc": 90,
+      "power": 55
+    },
+    {
+      "soc": 95,
+      "power": 44
     },
     {
       "soc": 100,
-      "power": 13
+      "power": 26
     }
   ],
   "rangeTests": [
@@ -227,7 +287,8 @@
         }
       ],
       "availability": "available",
-      "notes": "Nouvelle version d'entree de gamme (commercialisation mars 2026) : batterie nette 59 kWh (brute 63 kWh, NMC) et moteur AP310 de 150 kW / 204 ch, moins puissant que le moteur AP550 210 kW / 286 ch des versions Pro / Pro S. Autonomie reelle non encore testee independamment (Nyland/EVKX) : valeur estimee au prorata de la baisse de capacite et d'autonomie WLTP par rapport a la version Pro."
+      "notes": "Nouvelle version d'entree de gamme (commercialisation mars 2026) : batterie nette 59 kWh (brute 63 kWh, NMC) et moteur AP310 de 150 kW / 204 ch, moins puissant que le moteur AP550 210 kW / 286 ch des versions Pro / Pro S. Autonomie reelle non encore testee independamment (Nyland/EVKX) : valeur estimee au prorata de la baisse de capacite et d'autonomie WLTP par rapport a la version Pro.",
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "vw-id7-tourer-pure",
@@ -282,7 +343,8 @@
         }
       ],
       "availability": "available",
-      "notes": "Silhouette Tourer (break) de la nouvelle version Pure : batterie nette 59 kWh (brute 63 kWh, NMC), moteur AP310 150 kW / 204 ch. Autonomie reelle mixte de 370 km reprise de l'estimation EV Database (conditions mixtes, climat tempere), a confirmer par un test terrain independant."
+      "notes": "Silhouette Tourer (break) de la nouvelle version Pure : batterie nette 59 kWh (brute 63 kWh, NMC), moteur AP310 150 kW / 204 ch. Autonomie reelle mixte de 370 km reprise de l'estimation EV Database (conditions mixtes, climat tempere), a confirmer par un test terrain independant.",
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "vw-id7-pro",
@@ -333,33 +395,94 @@
           "notes": "Essai Nyland « VW ID7 Pro » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 175,
-      "chargingDC_10_80_min": 28,
-      "chargingDC_kWh_30min": 55,
+      "chargingDC_peak_kW": 191,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 60,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 175
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 186
+        },
+        {
+          "soc": 20,
+          "power": 188
+        },
+        {
+          "soc": 25,
+          "power": 190
+        },
+        {
+          "soc": 29,
+          "power": 191
+        },
+        {
+          "soc": 30,
+          "power": 190
+        },
+        {
+          "soc": 35,
+          "power": 185
+        },
+        {
+          "soc": 40,
+          "power": 180
+        },
+        {
+          "soc": 45,
+          "power": 165
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 150
+        },
+        {
+          "soc": 55,
+          "power": 112
+        },
+        {
+          "soc": 60,
+          "power": 96
+        },
+        {
+          "soc": 65,
+          "power": 98
+        },
+        {
+          "soc": 70,
+          "power": 91
+        },
+        {
+          "soc": 75,
+          "power": 81
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 72
+        },
+        {
+          "soc": 85,
+          "power": 63
+        },
+        {
+          "soc": 90,
+          "power": 55
+        },
+        {
+          "soc": 95,
+          "power": 44
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 26
         }
       ],
       "availability": "available",
-      "notes": "286 ch (210 kW)"
+      "notes": "286 ch (210 kW)",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "vw-id7-pro-s-86-kwh",
@@ -382,33 +505,90 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 200,
-      "chargingDC_10_80_min": 26,
-      "chargingDC_kWh_30min": 60,
+      "chargingDC_peak_kW": 203,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 67,
       "chargingCurve": [
         {
-          "soc": 0,
+          "soc": 10,
           "power": 110
         },
         {
-          "soc": 10,
+          "soc": 15,
           "power": 200
         },
         {
+          "soc": 20,
+          "power": 202
+        },
+        {
+          "soc": 25,
+          "power": 201
+        },
+        {
+          "soc": 30,
+          "power": 203
+        },
+        {
+          "soc": 35,
+          "power": 159
+        },
+        {
+          "soc": 40,
+          "power": 138
+        },
+        {
+          "soc": 45,
+          "power": 139
+        },
+        {
           "soc": 50,
-          "power": 110
+          "power": 138
+        },
+        {
+          "soc": 55,
+          "power": 139
+        },
+        {
+          "soc": 60,
+          "power": 132
+        },
+        {
+          "soc": 65,
+          "power": 123
+        },
+        {
+          "soc": 70,
+          "power": 112
+        },
+        {
+          "soc": 75,
+          "power": 102
         },
         {
           "soc": 80,
-          "power": 60
+          "power": 93
+        },
+        {
+          "soc": 85,
+          "power": 84
+        },
+        {
+          "soc": 90,
+          "power": 75
+        },
+        {
+          "soc": 95,
+          "power": 61
         },
         {
           "soc": 100,
-          "power": 12
+          "power": 35
         }
       ],
       "availability": "available",
-      "notes": "286 ch (210 kW), grande autonomie"
+      "notes": "286 ch (210 kW), grande autonomie",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "vw-id7-tourer",
@@ -459,33 +639,94 @@
           "notes": "Essai Nyland « VW ID7 Tourer Pro » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 175,
-      "chargingDC_10_80_min": 28,
-      "chargingDC_kWh_30min": 55,
+      "chargingDC_peak_kW": 191,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 60,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 175
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 186
+        },
+        {
+          "soc": 20,
+          "power": 188
+        },
+        {
+          "soc": 25,
+          "power": 190
+        },
+        {
+          "soc": 29,
+          "power": 191
+        },
+        {
+          "soc": 30,
+          "power": 190
+        },
+        {
+          "soc": 35,
+          "power": 185
+        },
+        {
+          "soc": 40,
+          "power": 180
+        },
+        {
+          "soc": 45,
+          "power": 165
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 150
+        },
+        {
+          "soc": 55,
+          "power": 112
+        },
+        {
+          "soc": 60,
+          "power": 96
+        },
+        {
+          "soc": 65,
+          "power": 98
+        },
+        {
+          "soc": 70,
+          "power": 91
+        },
+        {
+          "soc": 75,
+          "power": 81
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 72
+        },
+        {
+          "soc": 85,
+          "power": 63
+        },
+        {
+          "soc": 90,
+          "power": 55
+        },
+        {
+          "soc": 95,
+          "power": 44
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 26
         }
       ],
       "availability": "available",
-      "notes": "Silhouette break, coffre 605 L"
+      "notes": "Silhouette break, coffre 605 L",
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

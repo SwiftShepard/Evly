@@ -37,8 +37,8 @@
   "dragCoefficient_Cx": 0.22,
   "chargingDC": {
     "peakPower_kW": 167,
-    "time_10_80_min": 25,
-    "kWh_added_30min": 52,
+    "time_10_80_min": 19,
+    "kWh_added_30min": 59,
     "confidence": "tested"
   },
   "chargingAC": {
@@ -52,15 +52,19 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 117
-    },
-    {
       "soc": 10,
       "power": 146
     },
     {
+      "soc": 15,
+      "power": 162
+    },
+    {
       "soc": 20,
+      "power": 167
+    },
+    {
+      "soc": 25,
       "power": 167
     },
     {
@@ -68,7 +72,15 @@
       "power": 167
     },
     {
+      "soc": 35,
+      "power": 167
+    },
+    {
       "soc": 40,
+      "power": 167
+    },
+    {
+      "soc": 45,
       "power": 167
     },
     {
@@ -76,24 +88,44 @@
       "power": 167
     },
     {
+      "soc": 55,
+      "power": 167
+    },
+    {
       "soc": 60,
       "power": 167
+    },
+    {
+      "soc": 65,
+      "power": 159
     },
     {
       "soc": 70,
       "power": 131
     },
     {
+      "soc": 75,
+      "power": 113
+    },
+    {
       "soc": 80,
       "power": 103
+    },
+    {
+      "soc": 85,
+      "power": 69
     },
     {
       "soc": 90,
       "power": 66
     },
     {
+      "soc": 95,
+      "power": 40
+    },
+    {
       "soc": 100,
-      "power": 7
+      "power": 25
     }
   ],
   "rangeTests": [
@@ -243,37 +275,90 @@
           "notes": "Essai Nyland « Mazda 6e Standard Range » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 165,
-      "chargingDC_10_80_min": 25,
-      "chargingDC_kWh_30min": 52,
+      "chargingDC_peak_kW": 167,
+      "chargingDC_10_80_min": 19,
+      "chargingDC_kWh_30min": 59,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 146
         },
         {
-          "soc": 10,
-          "power": 165
+          "soc": 15,
+          "power": 162
+        },
+        {
+          "soc": 20,
+          "power": 167
+        },
+        {
+          "soc": 25,
+          "power": 167
         },
         {
           "soc": 30,
-          "power": 140
+          "power": 167
+        },
+        {
+          "soc": 35,
+          "power": 167
+        },
+        {
+          "soc": 40,
+          "power": 167
+        },
+        {
+          "soc": 45,
+          "power": 167
         },
         {
           "soc": 50,
-          "power": 110
+          "power": 167
+        },
+        {
+          "soc": 55,
+          "power": 167
+        },
+        {
+          "soc": 60,
+          "power": 167
+        },
+        {
+          "soc": 65,
+          "power": 159
+        },
+        {
+          "soc": 70,
+          "power": 131
+        },
+        {
+          "soc": 75,
+          "power": 113
         },
         {
           "soc": 80,
-          "power": 45
+          "power": 103
+        },
+        {
+          "soc": 85,
+          "power": 69
+        },
+        {
+          "soc": 90,
+          "power": 66
+        },
+        {
+          "soc": 95,
+          "power": 40
         },
         {
           "soc": 100,
-          "power": 8
+          "power": 25
         }
       ],
       "availability": "available",
-      "notes": "Propulsion RWD de 258 ch. Version Takumi avec batterie LFP de 69 kWh."
+      "notes": "Propulsion RWD de 258 ch. Version Takumi avec batterie LFP de 69 kWh.",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "mazda-6e-takumi-plus-69",
@@ -325,37 +410,90 @@
           "notes": "Essai Nyland « Mazda 6e Standard Range » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 165,
-      "chargingDC_10_80_min": 25,
-      "chargingDC_kWh_30min": 52,
+      "chargingDC_peak_kW": 167,
+      "chargingDC_10_80_min": 19,
+      "chargingDC_kWh_30min": 59,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 146
         },
         {
-          "soc": 10,
-          "power": 165
+          "soc": 15,
+          "power": 162
+        },
+        {
+          "soc": 20,
+          "power": 167
+        },
+        {
+          "soc": 25,
+          "power": 167
         },
         {
           "soc": 30,
-          "power": 140
+          "power": 167
+        },
+        {
+          "soc": 35,
+          "power": 167
+        },
+        {
+          "soc": 40,
+          "power": 167
+        },
+        {
+          "soc": 45,
+          "power": 167
         },
         {
           "soc": 50,
-          "power": 110
+          "power": 167
+        },
+        {
+          "soc": 55,
+          "power": 167
+        },
+        {
+          "soc": 60,
+          "power": 167
+        },
+        {
+          "soc": 65,
+          "power": 159
+        },
+        {
+          "soc": 70,
+          "power": 131
+        },
+        {
+          "soc": 75,
+          "power": 113
         },
         {
           "soc": 80,
-          "power": 45
+          "power": 103
+        },
+        {
+          "soc": 85,
+          "power": 69
+        },
+        {
+          "soc": 90,
+          "power": 66
+        },
+        {
+          "soc": 95,
+          "power": 40
         },
         {
           "soc": 100,
-          "power": 8
+          "power": 25
         }
       ],
       "availability": "available",
-      "notes": "Propulsion RWD de 258 ch. Version haut de gamme Takumi Plus avec batterie LFP de 69 kWh."
+      "notes": "Propulsion RWD de 258 ch. Version haut de gamme Takumi Plus avec batterie LFP de 69 kWh.",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "mazda-6e-takumi-81",
@@ -409,7 +547,8 @@
         }
       ],
       "availability": "available",
-      "notes": "Propulsion RWD de 258 ch. Version Takumi avec batterie NMC de 81 kWh (charge plus lente mais autonomie accrue)."
+      "notes": "Propulsion RWD de 258 ch. Version Takumi avec batterie NMC de 81 kWh (charge plus lente mais autonomie accrue).",
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "mazda-6e-takumi-plus-81",
@@ -463,7 +602,8 @@
         }
       ],
       "availability": "available",
-      "notes": "Propulsion RWD de 258 ch. Version haut de gamme Takumi Plus avec batterie NMC de 81 kWh (charge plus lente mais équipements exclusifs)."
+      "notes": "Propulsion RWD de 258 ch. Version haut de gamme Takumi Plus avec batterie NMC de 81 kWh (charge plus lente mais équipements exclusifs).",
+      "chargingDC_confidence": "estimated"
     }
   ],
   "warranty": {

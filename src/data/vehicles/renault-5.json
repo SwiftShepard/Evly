@@ -37,8 +37,8 @@
   "dragCoefficient_Cx": 0.29,
   "chargingDC": {
     "peakPower_kW": 100,
-    "time_10_80_min": 30,
-    "kWh_added_30min": 35,
+    "time_10_80_min": 29,
+    "kWh_added_30min": 37,
     "confidence": "tested"
   },
   "chargingAC": {
@@ -52,24 +52,76 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 77
-    },
-    {
       "soc": 10,
       "power": 100
     },
     {
+      "soc": 15,
+      "power": 100
+    },
+    {
+      "soc": 20,
+      "power": 100
+    },
+    {
+      "soc": 25,
+      "power": 99
+    },
+    {
+      "soc": 30,
+      "power": 95
+    },
+    {
+      "soc": 35,
+      "power": 91
+    },
+    {
+      "soc": 40,
+      "power": 85
+    },
+    {
+      "soc": 45,
+      "power": 80
+    },
+    {
       "soc": 50,
-      "power": 77
+      "power": 75
+    },
+    {
+      "soc": 55,
+      "power": 69
+    },
+    {
+      "soc": 60,
+      "power": 64
+    },
+    {
+      "soc": 65,
+      "power": 59
+    },
+    {
+      "soc": 70,
+      "power": 56
+    },
+    {
+      "soc": 75,
+      "power": 51
     },
     {
       "soc": 80,
-      "power": 38
+      "power": 45
     },
     {
-      "soc": 100,
-      "power": 8
+      "soc": 85,
+      "power": 32
+    },
+    {
+      "soc": 90,
+      "power": 31
+    },
+    {
+      "soc": 94,
+      "power": 22
     }
   ],
   "rangeTests": [
@@ -197,7 +249,7 @@
   "availableAids": [
     {
       "label": "Prime CEE",
-      "amount_EUR": 6500,
+      "amount_EUR": 5700,
       "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
     },
     {
@@ -257,7 +309,8 @@
       "notes": "Moteur 110 ch (81 kW), batterie LFP, livraisons fin 2026",
       "usableCapacity_kWh": 36.5,
       "power_hp": 110,
-      "power_kW": 81
+      "power_kW": 81,
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "renault-5-evolution-40",
@@ -306,7 +359,8 @@
         }
       ],
       "availability": "available",
-      "notes": "Moteur 120 ch (90 kW)"
+      "notes": "Moteur 120 ch (90 kW)",
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "renault-5-techno-40",
@@ -355,7 +409,8 @@
         }
       ],
       "availability": "available",
-      "notes": "Moteur 120 ch (90 kW)"
+      "notes": "Moteur 120 ch (90 kW)",
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "renault-5-evolution-52",
@@ -420,32 +475,85 @@
         }
       ],
       "chargingDC_peak_kW": 100,
-      "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 35,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 37,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 77
-        },
         {
           "soc": 10,
           "power": 100
         },
         {
+          "soc": 15,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 25,
+          "power": 99
+        },
+        {
+          "soc": 30,
+          "power": 95
+        },
+        {
+          "soc": 35,
+          "power": 91
+        },
+        {
+          "soc": 40,
+          "power": 85
+        },
+        {
+          "soc": 45,
+          "power": 80
+        },
+        {
           "soc": 50,
-          "power": 77
+          "power": 75
+        },
+        {
+          "soc": 55,
+          "power": 69
+        },
+        {
+          "soc": 60,
+          "power": 64
+        },
+        {
+          "soc": 65,
+          "power": 59
+        },
+        {
+          "soc": 70,
+          "power": 56
+        },
+        {
+          "soc": 75,
+          "power": 51
         },
         {
           "soc": 80,
-          "power": 38
+          "power": 45
         },
         {
-          "soc": 100,
-          "power": 8
+          "soc": 85,
+          "power": 32
+        },
+        {
+          "soc": 90,
+          "power": 31
+        },
+        {
+          "soc": 94,
+          "power": 22
         }
       ],
       "availability": "available",
-      "notes": "Moteur 150 ch (110 kW)"
+      "notes": "Moteur 150 ch (110 kW)",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "renault-5-techno-52",
@@ -510,32 +618,85 @@
         }
       ],
       "chargingDC_peak_kW": 100,
-      "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 35,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 37,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 77
-        },
         {
           "soc": 10,
           "power": 100
         },
         {
+          "soc": 15,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 25,
+          "power": 99
+        },
+        {
+          "soc": 30,
+          "power": 95
+        },
+        {
+          "soc": 35,
+          "power": 91
+        },
+        {
+          "soc": 40,
+          "power": 85
+        },
+        {
+          "soc": 45,
+          "power": 80
+        },
+        {
           "soc": 50,
-          "power": 77
+          "power": 75
+        },
+        {
+          "soc": 55,
+          "power": 69
+        },
+        {
+          "soc": 60,
+          "power": 64
+        },
+        {
+          "soc": 65,
+          "power": 59
+        },
+        {
+          "soc": 70,
+          "power": 56
+        },
+        {
+          "soc": 75,
+          "power": 51
         },
         {
           "soc": 80,
-          "power": 38
+          "power": 45
         },
         {
-          "soc": 100,
-          "power": 8
+          "soc": 85,
+          "power": 32
+        },
+        {
+          "soc": 90,
+          "power": 31
+        },
+        {
+          "soc": 94,
+          "power": 22
         }
       ],
       "availability": "available",
-      "notes": "Moteur 150 ch (110 kW)"
+      "notes": "Moteur 150 ch (110 kW)",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "renault-5-iconic-cinq-52",
@@ -600,32 +761,85 @@
         }
       ],
       "chargingDC_peak_kW": 100,
-      "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 35,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 37,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 77
-        },
         {
           "soc": 10,
           "power": 100
         },
         {
+          "soc": 15,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 25,
+          "power": 99
+        },
+        {
+          "soc": 30,
+          "power": 95
+        },
+        {
+          "soc": 35,
+          "power": 91
+        },
+        {
+          "soc": 40,
+          "power": 85
+        },
+        {
+          "soc": 45,
+          "power": 80
+        },
+        {
           "soc": 50,
-          "power": 77
+          "power": 75
+        },
+        {
+          "soc": 55,
+          "power": 69
+        },
+        {
+          "soc": 60,
+          "power": 64
+        },
+        {
+          "soc": 65,
+          "power": 59
+        },
+        {
+          "soc": 70,
+          "power": 56
+        },
+        {
+          "soc": 75,
+          "power": 51
         },
         {
           "soc": 80,
-          "power": 38
+          "power": 45
         },
         {
-          "soc": 100,
-          "power": 8
+          "soc": 85,
+          "power": 32
+        },
+        {
+          "soc": 90,
+          "power": 31
+        },
+        {
+          "soc": 94,
+          "power": 22
         }
       ],
       "availability": "available",
-      "notes": "Moteur 150 ch (110 kW)"
+      "notes": "Moteur 150 ch (110 kW)",
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

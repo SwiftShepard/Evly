@@ -1,5 +1,6 @@
 import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import { url } from "@/lib/url";
+import { CEE_PRICE_CAP_EUR } from "@/lib/cee";
 
 /* ---------------------------------------------------------------- */
 /* Types                                                             */
@@ -424,7 +425,8 @@ export default function TcoCalculator({ vehicles }: Props) {
     const totalKm = kmPerYear * years;
 
     // EV purchase
-    const evPurchaseNet = Math.max(0, activePrice - ev.aids_EUR);
+    // Pas de prime au-dessus du plafond de prix (version plus chère que celle d'entrée)
+    const evPurchaseNet = Math.max(0, activePrice - (activePrice > CEE_PRICE_CAP_EUR ? 0 : ev.aids_EUR));
     const evResidualVal = activePrice * (evResidual / 100);
     const evDepreciation = evPurchaseNet - evResidualVal;
 
@@ -610,9 +612,9 @@ export default function TcoCalculator({ vehicles }: Props) {
               <span className="tco-stat-value">{fmt(activePrice)} EUR</span>
             </div>
             <div className="tco-ev-stat">
-              <span className="tco-stat-label">Aides deduites</span>
+              <span className="tco-stat-label">Prime CEE (tout ménage)</span>
               <span className="tco-stat-value accent">
-                -{fmt(selectedEv.aids_EUR)} EUR
+                -{fmt(activePrice > CEE_PRICE_CAP_EUR ? 0 : selectedEv.aids_EUR)} EUR
               </span>
             </div>
             <div className="tco-ev-stat">

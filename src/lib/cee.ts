@@ -46,18 +46,36 @@ export const ADDITIONAL_PERSON_INCREASE = {
   modeste: 8663,
 };
 
-// Montants des primes pour particuliers (Personnes physiques)
-export const PRIME_AMOUNTS = {
-  classic: {
-    precarite: 6180,
-    modeste: 4830,
-    autres: 3620,
-  },
-  bonified: {
-    precarite: 8240,
-    modeste: 6030,
-    autres: 4830,
-  },
+/**
+ * Coup de pouce « véhicules particuliers électriques » : barème indicatif 2026 publié par le
+ * ministère de la Transition écologique, par catégorie de revenus. Le montant réellement versé
+ * dépend du signataire de la charte CEE (constructeur, énergéticien) et du mois : on affiche
+ * ce barème partout (fiche, catalogue, comparateur, matcher, simulateurs), jamais un montant de marque.
+ */
+export const PRIME_AMOUNTS: Record<HouseholdCategory, number> = {
+  precarite: 5700,
+  modeste: 4700,
+  autres: 3500,
+};
+
+/** Prime de tout ménage (« autres ménages ») : celle des prix « après aides » sans profil fiscal */
+export const CEE_BASE_EUR = PRIME_AMOUNTS.autres;
+/** Année du barème ci-dessus */
+export const CEE_SCALE_YEAR = 2026;
+/** Prime la plus haute (ménage en précarité) : celle des « jusqu'à » */
+export const CEE_MAX_EUR = PRIME_AMOUNTS.precarite;
+
+/**
+ * Bonification batterie européenne : 1 200 à 2 000 € de plus pour les versions inscrites sur la
+ * liste de l'ADEME (revue chaque mois, sources divergentes d'un modèle à l'autre). Signalée comme
+ * possible, jamais déduite d'un prix affiché.
+ */
+export const BATTERY_BONUS_EUR = { min: 1200, max: 2000 };
+
+export const HOUSEHOLD_LABELS: Record<HouseholdCategory, string> = {
+  precarite: "Ménage en précarité",
+  modeste: "Ménage modeste",
+  autres: "Autres ménages",
 };
 
 // Montants des primes pour personnes morales (Professionnels et collectivités)
@@ -90,22 +108,16 @@ export function isVehicleEligibleCEE(vehicle: Vehicle, price: number | null): bo
 }
 
 /**
- * Détermine si le véhicule bénéficie de la majoration de batterie européenne ("bonifié").
+ * Bonification batterie européenne signalée dans la fiche (aide « Majoration batterie »).
+ * Indique seulement qu'elle est possible pour une version du modèle.
  */
-export function isVehicleBatteryUE(vehicle: Vehicle): boolean {
-  // Megane E-Tech et Scenic E-Tech ont des batteries et cellules produites en zone économique européenne (Douai / France).
-  // On peut ajouter d'autres modèles connus au fur et à mesure.
-  const bonifiedSlugs = ["renault-megane", "renault-scenic"];
-  if (bonifiedSlugs.includes(vehicle.slug)) {
-    return true;
-  }
-  
-  // Alternativement, on peut analyser si le JSON possède l'aide "Majoration Batterie"
-  const hasBatteryBonus = vehicle.availableAids?.some((aid) => 
-    /batterie/i.test(aid.label) || /majoration/i.test(aid.label)
-  );
+export function hasBatteryBonus(vehicle: Vehicle): boolean {
+  return vehicle.availableAids?.some((aid) => /batterie|majoration/i.test(aid.label)) ?? false;
+}
 
-  return !!hasBatteryBonus;
+/** Prime CEE d'une version sans profil fiscal : ce que reçoit tout ménage et le plafond du barème */
+export function ceeRange(vehicle: Vehicle, price: number | null): { base: number; max: number } | null {
+  return isVehicleEligibleCEE(vehicle, price) ? { base: CEE_BASE_EUR, max: CEE_MAX_EUR } : null;
 }
 
 /**
@@ -143,7 +155,8 @@ export function getHouseholdCategory(householdSize: number, taxIncome: number): 
 }
 
 /**
- * Calcule le montant de la prime CEE dynamique selon le profil utilisateur et les caractéristiques du véhicule.
+ * Calcule le montant de la prime CEE selon le profil et la version (barème indicatif, hors
+ * bonification batterie). `category` force la catégorie de revenus (profil non renseigné).
  */
 export function calculateCeeAid({
   vehicle,
@@ -151,24 +164,27 @@ export function calculateCeeAid({
   profileType,
   householdSize = 1,
   taxIncome = 30000,
+  category: forcedCategory,
 }: {
   vehicle: Vehicle;
   price: number | null;
   profileType: UserProfileType;
   householdSize?: number;
   taxIncome?: number;
+  category?: HouseholdCategory;
 }): {
   amount: number;
   isEligible: boolean;
   category?: HouseholdCategory;
-  isBatteryUE: boolean;
+  /** Bonification batterie européenne possible en plus (non comprise dans `amount`) */
+  batteryBonus: boolean;
   label: string;
 } {
   const isEligible = isVehicleEligibleCEE(vehicle, price);
-  const isBatteryUE = isVehicleBatteryUE(vehicle);
+  const batteryBonus = isEligible && hasBatteryBonus(vehicle);
 
   if (!isEligible) {
-    return { amount: 0, isEligible: false, isBatteryUE, label: "Non éligible" };
+    return { amount: 0, isEligible: false, batteryBonus, label: "Non éligible" };
   }
 
   if (profileType !== "particular") {
@@ -190,38 +206,24 @@ export function calculateCeeAid({
       label = "Prime CEE Personnes Morales";
     }
 
-    return { amount, isEligible: true, isBatteryUE, label };
+    return { amount, isEligible: true, batteryBonus, label };
   }
 
-  // Particulier (personne physique) -> Coup de Pouce classique ou bonifié
-  const category = getHouseholdCategory(householdSize, taxIncome);
-  const mode = isBatteryUE ? "bonified" : "classic";
-  
-  // Custom aids adaptation (e.g. for Kona which has 4800 € / 1200 € instead of standard 6500 € / 2000 €)
-  const ceeAid = vehicle.availableAids?.find((aid) => aid.label === "Prime CEE");
-  const batteryAid = vehicle.availableAids?.find((aid) => /batterie/i.test(aid.label) || /majoration/i.test(aid.label));
-  const customBase = ceeAid ? ceeAid.amount_EUR : 6500;
-  const customBattery = batteryAid ? batteryAid.amount_EUR : 2000;
+  // Particulier (personne physique) : barème par catégorie de revenus
+  const category = forcedCategory ?? getHouseholdCategory(householdSize, taxIncome);
+  return { amount: PRIME_AMOUNTS[category], isEligible: true, category, batteryBonus, label: "Coup de pouce CEE" };
+}
 
-  let amount = PRIME_AMOUNTS[mode][category];
-
-  if (customBase !== 6500 || customBattery !== 2000) {
-    const baseFactor = customBase / 6500;
-    const batteryFactor = customBattery / 2000;
-    const classicAmount = PRIME_AMOUNTS.classic[category] * baseFactor;
-    const extraBattery = (PRIME_AMOUNTS.bonified[category] - PRIME_AMOUNTS.classic[category]) * batteryFactor;
-    const calculatedAmount = mode === "bonified" ? (classicAmount + extraBattery) : classicAmount;
-    const maxAllowed = customBase + (mode === "bonified" ? customBattery : 0);
-    amount = Math.round(Math.min(maxAllowed, calculatedAmount));
-  }
-
-  const label = isBatteryUE ? "Prime Coup de Pouce bonifié" : "Prime Coup de Pouce classique";
-
-  return {
-    amount,
-    isEligible: true,
-    category,
-    isBatteryUE,
-    label,
-  };
+/**
+ * Prime CEE d'une version pour le profil du visiteur : sans profil renseigné, la prime de tout
+ * ménage (même chiffre que la fiche et le catalogue).
+ */
+export function ceeForProfile(
+  vehicle: Vehicle,
+  price: number | null,
+  profile: { profileType: UserProfileType; householdSize: number; taxIncome: number; hasConfigured: boolean }
+) {
+  return profile.hasConfigured
+    ? calculateCeeAid({ vehicle, price, profileType: profile.profileType, householdSize: profile.householdSize, taxIncome: profile.taxIncome })
+    : calculateCeeAid({ vehicle, price, profileType: "particular", category: "autres" });
 }

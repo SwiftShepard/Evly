@@ -36,8 +36,8 @@
   "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.29,
   "chargingDC": {
-    "peakPower_kW": 100,
-    "time_10_80_min": 30,
+    "peakPower_kW": 107,
+    "time_10_80_min": 27,
     "kWh_added_30min": 38,
     "confidence": "tested"
   },
@@ -52,24 +52,72 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 77
+      "soc": 10,
+      "power": 102
     },
     {
-      "soc": 10,
-      "power": 100
+      "soc": 15,
+      "power": 106
+    },
+    {
+      "soc": 20,
+      "power": 107
+    },
+    {
+      "soc": 25,
+      "power": 96
+    },
+    {
+      "soc": 30,
+      "power": 84
+    },
+    {
+      "soc": 35,
+      "power": 85
+    },
+    {
+      "soc": 40,
+      "power": 86
+    },
+    {
+      "soc": 45,
+      "power": 87
     },
     {
       "soc": 50,
-      "power": 77
+      "power": 87
+    },
+    {
+      "soc": 55,
+      "power": 87
+    },
+    {
+      "soc": 60,
+      "power": 74
+    },
+    {
+      "soc": 65,
+      "power": 71
+    },
+    {
+      "soc": 70,
+      "power": 64
+    },
+    {
+      "soc": 75,
+      "power": 50
     },
     {
       "soc": 80,
-      "power": 38
+      "power": 56
     },
     {
-      "soc": 100,
-      "power": 8
+      "soc": 85,
+      "power": 46
+    },
+    {
+      "soc": 90,
+      "power": 33
     }
   ],
   "rangeTests": [
@@ -195,7 +243,7 @@
   "availableAids": [
     {
       "label": "Prime CEE",
-      "amount_EUR": 6500,
+      "amount_EUR": 5700,
       "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
     },
     {
@@ -255,11 +303,85 @@
         }
       ],
       "chargingDC_peak_kW": 100,
-      "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 32,
-      "chargingCurve": null,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 34,
+      "chargingCurve": [
+        {
+          "soc": 10,
+          "power": 99
+        },
+        {
+          "soc": 12,
+          "power": 100
+        },
+        {
+          "soc": 15,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 96
+        },
+        {
+          "soc": 25,
+          "power": 97
+        },
+        {
+          "soc": 30,
+          "power": 98
+        },
+        {
+          "soc": 35,
+          "power": 78
+        },
+        {
+          "soc": 40,
+          "power": 79
+        },
+        {
+          "soc": 45,
+          "power": 79
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 55,
+          "power": 81
+        },
+        {
+          "soc": 60,
+          "power": 64
+        },
+        {
+          "soc": 65,
+          "power": 65
+        },
+        {
+          "soc": 70,
+          "power": 56
+        },
+        {
+          "soc": 75,
+          "power": 56
+        },
+        {
+          "soc": 80,
+          "power": 29
+        },
+        {
+          "soc": 85,
+          "power": 30
+        },
+        {
+          "soc": 90,
+          "power": 30
+        }
+      ],
       "availability": "available",
-      "notes": "Version d'entrée de gamme berline"
+      "notes": "Version d'entrée de gamme berline",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "citroen-e-c4-plus-136",
@@ -311,11 +433,85 @@
         }
       ],
       "chargingDC_peak_kW": 100,
-      "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 32,
-      "chargingCurve": null,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 34,
+      "chargingCurve": [
+        {
+          "soc": 10,
+          "power": 99
+        },
+        {
+          "soc": 12,
+          "power": 100
+        },
+        {
+          "soc": 15,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 96
+        },
+        {
+          "soc": 25,
+          "power": 97
+        },
+        {
+          "soc": 30,
+          "power": 98
+        },
+        {
+          "soc": 35,
+          "power": 78
+        },
+        {
+          "soc": 40,
+          "power": 79
+        },
+        {
+          "soc": 45,
+          "power": 79
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 55,
+          "power": 81
+        },
+        {
+          "soc": 60,
+          "power": 64
+        },
+        {
+          "soc": 65,
+          "power": 65
+        },
+        {
+          "soc": 70,
+          "power": 56
+        },
+        {
+          "soc": 75,
+          "power": 56
+        },
+        {
+          "soc": 80,
+          "power": 29
+        },
+        {
+          "soc": 85,
+          "power": 30
+        },
+        {
+          "soc": 90,
+          "power": 30
+        }
+      ],
       "availability": "available",
-      "notes": "Version cœur de gamme berline 136 ch"
+      "notes": "Version cœur de gamme berline 136 ch",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "citroen-e-c4-plus-156",
@@ -338,12 +534,82 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 100,
-      "chargingDC_10_80_min": 30,
+      "chargingDC_peak_kW": 107,
+      "chargingDC_10_80_min": 27,
       "chargingDC_kWh_30min": 38,
-      "chargingCurve": null,
+      "chargingCurve": [
+        {
+          "soc": 10,
+          "power": 102
+        },
+        {
+          "soc": 15,
+          "power": 106
+        },
+        {
+          "soc": 20,
+          "power": 107
+        },
+        {
+          "soc": 25,
+          "power": 96
+        },
+        {
+          "soc": 30,
+          "power": 84
+        },
+        {
+          "soc": 35,
+          "power": 85
+        },
+        {
+          "soc": 40,
+          "power": 86
+        },
+        {
+          "soc": 45,
+          "power": 87
+        },
+        {
+          "soc": 50,
+          "power": 87
+        },
+        {
+          "soc": 55,
+          "power": 87
+        },
+        {
+          "soc": 60,
+          "power": 74
+        },
+        {
+          "soc": 65,
+          "power": 71
+        },
+        {
+          "soc": 70,
+          "power": 64
+        },
+        {
+          "soc": 75,
+          "power": 50
+        },
+        {
+          "soc": 80,
+          "power": 56
+        },
+        {
+          "soc": 85,
+          "power": 46
+        },
+        {
+          "soc": 90,
+          "power": 33
+        }
+      ],
       "availability": "available",
-      "notes": "Version cœur de gamme berline 156 ch"
+      "notes": "Version cœur de gamme berline 156 ch",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "citroen-e-c4-max-156",
@@ -366,12 +632,82 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 100,
-      "chargingDC_10_80_min": 30,
+      "chargingDC_peak_kW": 107,
+      "chargingDC_10_80_min": 27,
       "chargingDC_kWh_30min": 38,
-      "chargingCurve": null,
+      "chargingCurve": [
+        {
+          "soc": 10,
+          "power": 102
+        },
+        {
+          "soc": 15,
+          "power": 106
+        },
+        {
+          "soc": 20,
+          "power": 107
+        },
+        {
+          "soc": 25,
+          "power": 96
+        },
+        {
+          "soc": 30,
+          "power": 84
+        },
+        {
+          "soc": 35,
+          "power": 85
+        },
+        {
+          "soc": 40,
+          "power": 86
+        },
+        {
+          "soc": 45,
+          "power": 87
+        },
+        {
+          "soc": 50,
+          "power": 87
+        },
+        {
+          "soc": 55,
+          "power": 87
+        },
+        {
+          "soc": 60,
+          "power": 74
+        },
+        {
+          "soc": 65,
+          "power": 71
+        },
+        {
+          "soc": 70,
+          "power": 64
+        },
+        {
+          "soc": 75,
+          "power": 50
+        },
+        {
+          "soc": 80,
+          "power": 56
+        },
+        {
+          "soc": 85,
+          "power": 46
+        },
+        {
+          "soc": 90,
+          "power": 33
+        }
+      ],
       "availability": "available",
-      "notes": "Version haut de gamme berline 156 ch"
+      "notes": "Version haut de gamme berline 156 ch",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "citroen-e-c4-x-you-136",
@@ -395,11 +731,85 @@
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 100,
-      "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 32,
-      "chargingCurve": null,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 34,
+      "chargingCurve": [
+        {
+          "soc": 10,
+          "power": 99
+        },
+        {
+          "soc": 12,
+          "power": 100
+        },
+        {
+          "soc": 15,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 96
+        },
+        {
+          "soc": 25,
+          "power": 97
+        },
+        {
+          "soc": 30,
+          "power": 98
+        },
+        {
+          "soc": 35,
+          "power": 78
+        },
+        {
+          "soc": 40,
+          "power": 79
+        },
+        {
+          "soc": 45,
+          "power": 79
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 55,
+          "power": 81
+        },
+        {
+          "soc": 60,
+          "power": 64
+        },
+        {
+          "soc": 65,
+          "power": 65
+        },
+        {
+          "soc": 70,
+          "power": 56
+        },
+        {
+          "soc": 75,
+          "power": 56
+        },
+        {
+          "soc": 80,
+          "power": 29
+        },
+        {
+          "soc": 85,
+          "power": 30
+        },
+        {
+          "soc": 90,
+          "power": 30
+        }
+      ],
       "availability": "available",
-      "notes": "Silhouette tri-corps Fastback entrée de gamme"
+      "notes": "Silhouette tri-corps Fastback entrée de gamme",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "citroen-e-c4-x-plus-136",
@@ -423,11 +833,85 @@
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 100,
-      "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 32,
-      "chargingCurve": null,
+      "chargingDC_10_80_min": 26,
+      "chargingDC_kWh_30min": 34,
+      "chargingCurve": [
+        {
+          "soc": 10,
+          "power": 99
+        },
+        {
+          "soc": 12,
+          "power": 100
+        },
+        {
+          "soc": 15,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 96
+        },
+        {
+          "soc": 25,
+          "power": 97
+        },
+        {
+          "soc": 30,
+          "power": 98
+        },
+        {
+          "soc": 35,
+          "power": 78
+        },
+        {
+          "soc": 40,
+          "power": 79
+        },
+        {
+          "soc": 45,
+          "power": 79
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 55,
+          "power": 81
+        },
+        {
+          "soc": 60,
+          "power": 64
+        },
+        {
+          "soc": 65,
+          "power": 65
+        },
+        {
+          "soc": 70,
+          "power": 56
+        },
+        {
+          "soc": 75,
+          "power": 56
+        },
+        {
+          "soc": 80,
+          "power": 29
+        },
+        {
+          "soc": 85,
+          "power": 30
+        },
+        {
+          "soc": 90,
+          "power": 30
+        }
+      ],
       "availability": "available",
-      "notes": "Silhouette tri-corps Fastback cœur de gamme 136 ch"
+      "notes": "Silhouette tri-corps Fastback cœur de gamme 136 ch",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "citroen-e-c4-x-plus-156",
@@ -478,12 +962,82 @@
           "notes": "Essai Nyland « Citroen e-C4X » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 100,
-      "chargingDC_10_80_min": 30,
+      "chargingDC_peak_kW": 107,
+      "chargingDC_10_80_min": 27,
       "chargingDC_kWh_30min": 38,
-      "chargingCurve": null,
+      "chargingCurve": [
+        {
+          "soc": 10,
+          "power": 102
+        },
+        {
+          "soc": 15,
+          "power": 106
+        },
+        {
+          "soc": 20,
+          "power": 107
+        },
+        {
+          "soc": 25,
+          "power": 96
+        },
+        {
+          "soc": 30,
+          "power": 84
+        },
+        {
+          "soc": 35,
+          "power": 85
+        },
+        {
+          "soc": 40,
+          "power": 86
+        },
+        {
+          "soc": 45,
+          "power": 87
+        },
+        {
+          "soc": 50,
+          "power": 87
+        },
+        {
+          "soc": 55,
+          "power": 87
+        },
+        {
+          "soc": 60,
+          "power": 74
+        },
+        {
+          "soc": 65,
+          "power": 71
+        },
+        {
+          "soc": 70,
+          "power": 64
+        },
+        {
+          "soc": 75,
+          "power": 50
+        },
+        {
+          "soc": 80,
+          "power": 56
+        },
+        {
+          "soc": 85,
+          "power": 46
+        },
+        {
+          "soc": 90,
+          "power": 33
+        }
+      ],
       "availability": "available",
-      "notes": "Silhouette tri-corps Fastback cœur de gamme 156 ch"
+      "notes": "Silhouette tri-corps Fastback cœur de gamme 156 ch",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "citroen-e-c4-x-max-156",
@@ -534,12 +1088,82 @@
           "notes": "Essai Nyland « Citroen e-C4X » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 100,
-      "chargingDC_10_80_min": 30,
+      "chargingDC_peak_kW": 107,
+      "chargingDC_10_80_min": 27,
       "chargingDC_kWh_30min": 38,
-      "chargingCurve": null,
+      "chargingCurve": [
+        {
+          "soc": 10,
+          "power": 102
+        },
+        {
+          "soc": 15,
+          "power": 106
+        },
+        {
+          "soc": 20,
+          "power": 107
+        },
+        {
+          "soc": 25,
+          "power": 96
+        },
+        {
+          "soc": 30,
+          "power": 84
+        },
+        {
+          "soc": 35,
+          "power": 85
+        },
+        {
+          "soc": 40,
+          "power": 86
+        },
+        {
+          "soc": 45,
+          "power": 87
+        },
+        {
+          "soc": 50,
+          "power": 87
+        },
+        {
+          "soc": 55,
+          "power": 87
+        },
+        {
+          "soc": 60,
+          "power": 74
+        },
+        {
+          "soc": 65,
+          "power": 71
+        },
+        {
+          "soc": 70,
+          "power": 64
+        },
+        {
+          "soc": 75,
+          "power": 50
+        },
+        {
+          "soc": 80,
+          "power": 56
+        },
+        {
+          "soc": 85,
+          "power": 46
+        },
+        {
+          "soc": 90,
+          "power": 33
+        }
+      ],
       "availability": "available",
-      "notes": "Silhouette tri-corps Fastback haut de gamme"
+      "notes": "Silhouette tri-corps Fastback haut de gamme",
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

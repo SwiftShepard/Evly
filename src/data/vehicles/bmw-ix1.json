@@ -36,10 +36,10 @@
   "consumption_winter_kWh_per_100km": 21,
   "dragCoefficient_Cx": 0.26,
   "chargingDC": {
-    "peakPower_kW": 130,
-    "time_10_80_min": 29,
-    "kWh_added_30min": 40,
-    "confidence": "estimated"
+    "peakPower_kW": 127,
+    "time_10_80_min": 31,
+    "kWh_added_30min": 44,
+    "confidence": "tested"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
@@ -52,48 +52,76 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 99
-    },
-    {
       "soc": 10,
       "power": 124
+    },
+    {
+      "soc": 15,
+      "power": 126
+    },
+    {
+      "soc": 16,
+      "power": 127
     },
     {
       "soc": 20,
       "power": 126
     },
     {
+      "soc": 25,
+      "power": 124
+    },
+    {
       "soc": 30,
       "power": 119
+    },
+    {
+      "soc": 35,
+      "power": 111
     },
     {
       "soc": 40,
       "power": 104
     },
     {
+      "soc": 45,
+      "power": 97
+    },
+    {
       "soc": 50,
       "power": 89
+    },
+    {
+      "soc": 55,
+      "power": 84
     },
     {
       "soc": 60,
       "power": 75
     },
     {
+      "soc": 65,
+      "power": 68
+    },
+    {
       "soc": 70,
       "power": 62
+    },
+    {
+      "soc": 75,
+      "power": 55
     },
     {
       "soc": 80,
       "power": 38
     },
     {
-      "soc": 90,
-      "power": 41
+      "soc": 85,
+      "power": 37
     },
     {
-      "soc": 100,
-      "power": 4
+      "soc": 90,
+      "power": 41
     }
   ],
   "rangeTests": [
@@ -209,7 +237,7 @@
   "availableAids": [
     {
       "label": "Prime CEE",
-      "amount_EUR": 6500,
+      "amount_EUR": 5700,
       "conditions": "Coup de pouce CEE 2026 (éco-score ADEME validé pour l'iX1 eDrive20 et xDrive30), pour les versions sous 47 000 €, selon les revenus du foyer."
     }
   ],
@@ -235,37 +263,86 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 130,
-      "chargingDC_10_80_min": 29,
-      "chargingDC_kWh_30min": 40,
+      "chargingDC_peak_kW": 127,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 44,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 85
+          "soc": 10,
+          "power": 124
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 126
+        },
+        {
+          "soc": 16,
+          "power": 127
+        },
+        {
+          "soc": 20,
+          "power": 126
+        },
+        {
+          "soc": 25,
+          "power": 124
         },
         {
           "soc": 30,
-          "power": 115
+          "power": 119
+        },
+        {
+          "soc": 35,
+          "power": 111
+        },
+        {
+          "soc": 40,
+          "power": 104
+        },
+        {
+          "soc": 45,
+          "power": 97
         },
         {
           "soc": 50,
-          "power": 80
+          "power": 89
+        },
+        {
+          "soc": 55,
+          "power": 84
+        },
+        {
+          "soc": 60,
+          "power": 75
+        },
+        {
+          "soc": 65,
+          "power": 68
+        },
+        {
+          "soc": 70,
+          "power": 62
+        },
+        {
+          "soc": 75,
+          "power": 55
         },
         {
           "soc": 80,
-          "power": 35
+          "power": 38
         },
         {
-          "soc": 100,
-          "power": 7
+          "soc": 85,
+          "power": 37
+        },
+        {
+          "soc": 90,
+          "power": 41
         }
       ],
       "availability": "available",
-      "notes": "204 ch (150 kW), FWD, version d'acces"
+      "notes": "204 ch (150 kW), FWD, version d'acces",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "bmw-ix1-edrive20-xline",
@@ -288,37 +365,86 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 130,
-      "chargingDC_10_80_min": 29,
-      "chargingDC_kWh_30min": 40,
+      "chargingDC_peak_kW": 127,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 44,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 85
+          "soc": 10,
+          "power": 124
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 126
+        },
+        {
+          "soc": 16,
+          "power": 127
+        },
+        {
+          "soc": 20,
+          "power": 126
+        },
+        {
+          "soc": 25,
+          "power": 124
         },
         {
           "soc": 30,
-          "power": 115
+          "power": 119
+        },
+        {
+          "soc": 35,
+          "power": 111
+        },
+        {
+          "soc": 40,
+          "power": 104
+        },
+        {
+          "soc": 45,
+          "power": 97
         },
         {
           "soc": 50,
-          "power": 80
+          "power": 89
+        },
+        {
+          "soc": 55,
+          "power": 84
+        },
+        {
+          "soc": 60,
+          "power": 75
+        },
+        {
+          "soc": 65,
+          "power": 68
+        },
+        {
+          "soc": 70,
+          "power": 62
+        },
+        {
+          "soc": 75,
+          "power": 55
         },
         {
           "soc": 80,
-          "power": 35
+          "power": 38
         },
         {
-          "soc": 100,
-          "power": 7
+          "soc": 85,
+          "power": 37
+        },
+        {
+          "soc": 90,
+          "power": 41
         }
       ],
       "availability": "available",
-      "notes": "204 ch (150 kW), FWD, finition xLine"
+      "notes": "204 ch (150 kW), FWD, finition xLine",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "bmw-ix1-edrive20-msport",
@@ -341,37 +467,86 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 130,
-      "chargingDC_10_80_min": 29,
-      "chargingDC_kWh_30min": 40,
+      "chargingDC_peak_kW": 127,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 44,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 85
+          "soc": 10,
+          "power": 124
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 126
+        },
+        {
+          "soc": 16,
+          "power": 127
+        },
+        {
+          "soc": 20,
+          "power": 126
+        },
+        {
+          "soc": 25,
+          "power": 124
         },
         {
           "soc": 30,
-          "power": 115
+          "power": 119
+        },
+        {
+          "soc": 35,
+          "power": 111
+        },
+        {
+          "soc": 40,
+          "power": 104
+        },
+        {
+          "soc": 45,
+          "power": 97
         },
         {
           "soc": 50,
-          "power": 80
+          "power": 89
+        },
+        {
+          "soc": 55,
+          "power": 84
+        },
+        {
+          "soc": 60,
+          "power": 75
+        },
+        {
+          "soc": 65,
+          "power": 68
+        },
+        {
+          "soc": 70,
+          "power": 62
+        },
+        {
+          "soc": 75,
+          "power": 55
         },
         {
           "soc": 80,
-          "power": 35
+          "power": 38
         },
         {
-          "soc": 100,
-          "power": 7
+          "soc": 85,
+          "power": 37
+        },
+        {
+          "soc": 90,
+          "power": 41
         }
       ],
       "availability": "available",
-      "notes": "204 ch (150 kW), FWD, finition sport"
+      "notes": "204 ch (150 kW), FWD, finition sport",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "bmw-ix1-xdrive30-base",
@@ -422,37 +597,86 @@
           "notes": "Essai Nyland « BMW iX1 xDrive30 » (hiver, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 130,
-      "chargingDC_10_80_min": 29,
-      "chargingDC_kWh_30min": 40,
+      "chargingDC_peak_kW": 127,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 44,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 85
+          "soc": 10,
+          "power": 124
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 126
+        },
+        {
+          "soc": 16,
+          "power": 127
+        },
+        {
+          "soc": 20,
+          "power": 126
+        },
+        {
+          "soc": 25,
+          "power": 124
         },
         {
           "soc": 30,
-          "power": 115
+          "power": 119
+        },
+        {
+          "soc": 35,
+          "power": 111
+        },
+        {
+          "soc": 40,
+          "power": 104
+        },
+        {
+          "soc": 45,
+          "power": 97
         },
         {
           "soc": 50,
-          "power": 80
+          "power": 89
+        },
+        {
+          "soc": 55,
+          "power": 84
+        },
+        {
+          "soc": 60,
+          "power": 75
+        },
+        {
+          "soc": 65,
+          "power": 68
+        },
+        {
+          "soc": 70,
+          "power": 62
+        },
+        {
+          "soc": 75,
+          "power": 55
         },
         {
           "soc": 80,
-          "power": 35
+          "power": 38
         },
         {
-          "soc": 100,
-          "power": 7
+          "soc": 85,
+          "power": 37
+        },
+        {
+          "soc": 90,
+          "power": 41
         }
       ],
       "availability": "available",
-      "notes": "313 ch (230 kW), AWD xDrive, version d'acces"
+      "notes": "313 ch (230 kW), AWD xDrive, version d'acces",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "bmw-ix1-xdrive30-xline",
@@ -503,37 +727,86 @@
           "notes": "Essai Nyland « BMW iX1 xDrive30 » (hiver, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 130,
-      "chargingDC_10_80_min": 29,
-      "chargingDC_kWh_30min": 40,
+      "chargingDC_peak_kW": 127,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 44,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 85
+          "soc": 10,
+          "power": 124
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 126
+        },
+        {
+          "soc": 16,
+          "power": 127
+        },
+        {
+          "soc": 20,
+          "power": 126
+        },
+        {
+          "soc": 25,
+          "power": 124
         },
         {
           "soc": 30,
-          "power": 115
+          "power": 119
+        },
+        {
+          "soc": 35,
+          "power": 111
+        },
+        {
+          "soc": 40,
+          "power": 104
+        },
+        {
+          "soc": 45,
+          "power": 97
         },
         {
           "soc": 50,
-          "power": 80
+          "power": 89
+        },
+        {
+          "soc": 55,
+          "power": 84
+        },
+        {
+          "soc": 60,
+          "power": 75
+        },
+        {
+          "soc": 65,
+          "power": 68
+        },
+        {
+          "soc": 70,
+          "power": 62
+        },
+        {
+          "soc": 75,
+          "power": 55
         },
         {
           "soc": 80,
-          "power": 35
+          "power": 38
         },
         {
-          "soc": 100,
-          "power": 7
+          "soc": 85,
+          "power": 37
+        },
+        {
+          "soc": 90,
+          "power": 41
         }
       ],
       "availability": "available",
-      "notes": "313 ch (230 kW), AWD xDrive, finition xLine"
+      "notes": "313 ch (230 kW), AWD xDrive, finition xLine",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "bmw-ix1-xdrive30-msport",
@@ -584,37 +857,86 @@
           "notes": "Essai Nyland « BMW iX1 xDrive30 » (hiver, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 130,
-      "chargingDC_10_80_min": 29,
-      "chargingDC_kWh_30min": 40,
+      "chargingDC_peak_kW": 127,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 44,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 85
+          "soc": 10,
+          "power": 124
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 126
+        },
+        {
+          "soc": 16,
+          "power": 127
+        },
+        {
+          "soc": 20,
+          "power": 126
+        },
+        {
+          "soc": 25,
+          "power": 124
         },
         {
           "soc": 30,
-          "power": 115
+          "power": 119
+        },
+        {
+          "soc": 35,
+          "power": 111
+        },
+        {
+          "soc": 40,
+          "power": 104
+        },
+        {
+          "soc": 45,
+          "power": 97
         },
         {
           "soc": 50,
-          "power": 80
+          "power": 89
+        },
+        {
+          "soc": 55,
+          "power": 84
+        },
+        {
+          "soc": 60,
+          "power": 75
+        },
+        {
+          "soc": 65,
+          "power": 68
+        },
+        {
+          "soc": 70,
+          "power": 62
+        },
+        {
+          "soc": 75,
+          "power": 55
         },
         {
           "soc": 80,
-          "power": 35
+          "power": 38
         },
         {
-          "soc": 100,
-          "power": 7
+          "soc": 85,
+          "power": 37
+        },
+        {
+          "soc": 90,
+          "power": 41
         }
       ],
       "availability": "available",
-      "notes": "313 ch (230 kW), AWD xDrive, finition sport"
+      "notes": "313 ch (230 kW), AWD xDrive, finition sport",
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

@@ -37,9 +37,9 @@
   "dragCoefficient_Cx": 0.3,
   "chargingDC": {
     "peakPower_kW": 100,
-    "time_10_80_min": 23,
-    "kWh_added_30min": 30,
-    "confidence": "estimated"
+    "time_10_80_min": 24,
+    "kWh_added_30min": 34,
+    "confidence": "tested"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
@@ -52,28 +52,72 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 70
+      "soc": 10,
+      "power": 78
     },
     {
-      "soc": 10,
-      "power": 100
+      "soc": 15,
+      "power": 95
+    },
+    {
+      "soc": 20,
+      "power": 97
+    },
+    {
+      "soc": 25,
+      "power": 96
     },
     {
       "soc": 30,
-      "power": 90
+      "power": 98
+    },
+    {
+      "soc": 35,
+      "power": 98
+    },
+    {
+      "soc": 40,
+      "power": 100
+    },
+    {
+      "soc": 45,
+      "power": 98
     },
     {
       "soc": 50,
-      "power": 65
+      "power": 78
+    },
+    {
+      "soc": 55,
+      "power": 71
+    },
+    {
+      "soc": 60,
+      "power": 57
+    },
+    {
+      "soc": 65,
+      "power": 58
+    },
+    {
+      "soc": 70,
+      "power": 59
+    },
+    {
+      "soc": 75,
+      "power": 52
     },
     {
       "soc": 80,
-      "power": 30
+      "power": 48
     },
     {
-      "soc": 100,
-      "power": 6
+      "soc": 85,
+      "power": 46
+    },
+    {
+      "soc": 90,
+      "power": 30
     }
   ],
   "rangeTests": [
@@ -149,7 +193,7 @@
   "availableAids": [
     {
       "label": "Prime CEE",
-      "amount_EUR": 6500,
+      "amount_EUR": 5700,
       "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
     },
     {
@@ -209,36 +253,81 @@
         }
       ],
       "chargingDC_peak_kW": 100,
-      "chargingDC_10_80_min": 23,
-      "chargingDC_kWh_30min": 30,
+      "chargingDC_10_80_min": 24,
+      "chargingDC_kWh_30min": 34,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 70
+          "soc": 10,
+          "power": 78
         },
         {
-          "soc": 10,
-          "power": 100
+          "soc": 15,
+          "power": 95
+        },
+        {
+          "soc": 20,
+          "power": 97
+        },
+        {
+          "soc": 25,
+          "power": 96
         },
         {
           "soc": 30,
-          "power": 90
+          "power": 98
+        },
+        {
+          "soc": 35,
+          "power": 98
+        },
+        {
+          "soc": 40,
+          "power": 100
+        },
+        {
+          "soc": 45,
+          "power": 98
         },
         {
           "soc": 50,
-          "power": 65
+          "power": 78
+        },
+        {
+          "soc": 55,
+          "power": 71
+        },
+        {
+          "soc": 60,
+          "power": 57
+        },
+        {
+          "soc": 65,
+          "power": 58
+        },
+        {
+          "soc": 70,
+          "power": 59
+        },
+        {
+          "soc": 75,
+          "power": 52
         },
         {
           "soc": 80,
-          "power": 30
+          "power": 48
         },
         {
-          "soc": 100,
-          "power": 6
+          "soc": 85,
+          "power": 46
+        },
+        {
+          "soc": 90,
+          "power": 30
         }
       ],
       "availability": "available",
-      "notes": "168 ch (124 kW), FWD"
+      "notes": "168 ch (124 kW), FWD",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "ford-puma-gen-e-stline",
@@ -290,36 +379,81 @@
         }
       ],
       "chargingDC_peak_kW": 100,
-      "chargingDC_10_80_min": 23,
-      "chargingDC_kWh_30min": 30,
+      "chargingDC_10_80_min": 24,
+      "chargingDC_kWh_30min": 34,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 70
+          "soc": 10,
+          "power": 78
         },
         {
-          "soc": 10,
-          "power": 100
+          "soc": 15,
+          "power": 95
+        },
+        {
+          "soc": 20,
+          "power": 97
+        },
+        {
+          "soc": 25,
+          "power": 96
         },
         {
           "soc": 30,
-          "power": 90
+          "power": 98
+        },
+        {
+          "soc": 35,
+          "power": 98
+        },
+        {
+          "soc": 40,
+          "power": 100
+        },
+        {
+          "soc": 45,
+          "power": 98
         },
         {
           "soc": 50,
-          "power": 65
+          "power": 78
+        },
+        {
+          "soc": 55,
+          "power": 71
+        },
+        {
+          "soc": 60,
+          "power": 57
+        },
+        {
+          "soc": 65,
+          "power": 58
+        },
+        {
+          "soc": 70,
+          "power": 59
+        },
+        {
+          "soc": 75,
+          "power": 52
         },
         {
           "soc": 80,
-          "power": 30
+          "power": 48
         },
         {
-          "soc": 100,
-          "power": 6
+          "soc": 85,
+          "power": 46
+        },
+        {
+          "soc": 90,
+          "power": 30
         }
       ],
       "availability": "available",
-      "notes": "168 ch (124 kW), FWD, look sportif"
+      "notes": "168 ch (124 kW), FWD, look sportif",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "ford-puma-gen-e-vignale",
@@ -371,36 +505,81 @@
         }
       ],
       "chargingDC_peak_kW": 100,
-      "chargingDC_10_80_min": 23,
-      "chargingDC_kWh_30min": 30,
+      "chargingDC_10_80_min": 24,
+      "chargingDC_kWh_30min": 34,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 70
+          "soc": 10,
+          "power": 78
         },
         {
-          "soc": 10,
-          "power": 100
+          "soc": 15,
+          "power": 95
+        },
+        {
+          "soc": 20,
+          "power": 97
+        },
+        {
+          "soc": 25,
+          "power": 96
         },
         {
           "soc": 30,
-          "power": 90
+          "power": 98
+        },
+        {
+          "soc": 35,
+          "power": 98
+        },
+        {
+          "soc": 40,
+          "power": 100
+        },
+        {
+          "soc": 45,
+          "power": 98
         },
         {
           "soc": 50,
-          "power": 65
+          "power": 78
+        },
+        {
+          "soc": 55,
+          "power": 71
+        },
+        {
+          "soc": 60,
+          "power": 57
+        },
+        {
+          "soc": 65,
+          "power": 58
+        },
+        {
+          "soc": 70,
+          "power": 59
+        },
+        {
+          "soc": 75,
+          "power": 52
         },
         {
           "soc": 80,
-          "power": 30
+          "power": 48
         },
         {
-          "soc": 100,
-          "power": 6
+          "soc": 85,
+          "power": 46
+        },
+        {
+          "soc": 90,
+          "power": 30
         }
       ],
       "availability": "available",
-      "notes": "168 ch (124 kW), FWD, full options"
+      "notes": "168 ch (124 kW), FWD, full options",
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

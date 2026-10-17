@@ -186,7 +186,7 @@
   "availableAids": [
     {
       "label": "Prime CEE",
-      "amount_EUR": 6500,
+      "amount_EUR": 5700,
       "conditions": "Coup de pouce CEE 2026 réservé aux versions Propulsion et Grande Autonomie Propulsion (éco-score ADEME ≥ 60, prix < 47 000 €), selon les revenus du foyer. Transmission intégrale et Performance non éligibles. Pas de majoration batterie européenne ni de leasing social pour Tesla."
     }
   ],
@@ -239,7 +239,8 @@
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "tesla-model-y-grande-autonomie-prop",
@@ -292,32 +293,73 @@
         }
       ],
       "chargingDC_peak_kW": 250,
-      "chargingDC_10_80_min": 27,
+      "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 53,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 170
-        },
         {
           "soc": 10,
           "power": 250
         },
         {
-          "soc": 50,
-          "power": 115
+          "soc": 15,
+          "power": 243
         },
         {
-          "soc": 80,
+          "soc": 20,
+          "power": 223
+        },
+        {
+          "soc": 25,
+          "power": 196
+        },
+        {
+          "soc": 30,
+          "power": 175
+        },
+        {
+          "soc": 35,
+          "power": 156
+        },
+        {
+          "soc": 40,
+          "power": 134
+        },
+        {
+          "soc": 45,
+          "power": 116
+        },
+        {
+          "soc": 50,
+          "power": 102
+        },
+        {
+          "soc": 55,
+          "power": 93
+        },
+        {
+          "soc": 60,
+          "power": 84
+        },
+        {
+          "soc": 65,
+          "power": 77
+        },
+        {
+          "soc": 70,
+          "power": 62
+        },
+        {
+          "soc": 75,
           "power": 52
         },
         {
-          "soc": 100,
-          "power": 12
+          "soc": 80,
+          "power": 47
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "tesla-model-y-grande-autonomie-awd",
@@ -369,33 +411,82 @@
           "notes": "Essai Nyland « Tesla Model Y LR Juniper » (hiver, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 250,
-      "chargingDC_10_80_min": 27,
-      "chargingDC_kWh_30min": 53,
+      "chargingDC_peak_kW": 225,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 52,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 170
+          "soc": 10,
+          "power": 225
         },
         {
-          "soc": 10,
-          "power": 250
+          "soc": 15,
+          "power": 203
+        },
+        {
+          "soc": 20,
+          "power": 189
+        },
+        {
+          "soc": 25,
+          "power": 173
+        },
+        {
+          "soc": 30,
+          "power": 159
+        },
+        {
+          "soc": 35,
+          "power": 145
+        },
+        {
+          "soc": 40,
+          "power": 130
+        },
+        {
+          "soc": 45,
+          "power": 116
         },
         {
           "soc": 50,
-          "power": 115
+          "power": 103
+        },
+        {
+          "soc": 55,
+          "power": 92
+        },
+        {
+          "soc": 60,
+          "power": 82
+        },
+        {
+          "soc": 65,
+          "power": 76
+        },
+        {
+          "soc": 70,
+          "power": 71
+        },
+        {
+          "soc": 75,
+          "power": 61
         },
         {
           "soc": 80,
-          "power": 52
+          "power": 45
         },
         {
-          "soc": 100,
-          "power": 12
+          "soc": 85,
+          "power": 37
+        },
+        {
+          "soc": 90,
+          "power": 32
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "tesla-model-y-performance",
@@ -447,33 +538,78 @@
           "notes": "Essai Nyland « Tesla Model Y Performance Juniper » (été, route humide)."
         }
       ],
-      "chargingDC_peak_kW": 250,
-      "chargingDC_10_80_min": 27,
-      "chargingDC_kWh_30min": 53,
+      "chargingDC_peak_kW": 234,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 52,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 170
+          "soc": 10,
+          "power": 229
         },
         {
-          "soc": 10,
-          "power": 250
+          "soc": 15,
+          "power": 234
+        },
+        {
+          "soc": 20,
+          "power": 160
+        },
+        {
+          "soc": 25,
+          "power": 159
+        },
+        {
+          "soc": 30,
+          "power": 156
+        },
+        {
+          "soc": 35,
+          "power": 144
+        },
+        {
+          "soc": 40,
+          "power": 139
+        },
+        {
+          "soc": 45,
+          "power": 129
         },
         {
           "soc": 50,
-          "power": 115
+          "power": 101
+        },
+        {
+          "soc": 55,
+          "power": 91
+        },
+        {
+          "soc": 60,
+          "power": 81
+        },
+        {
+          "soc": 65,
+          "power": 76
+        },
+        {
+          "soc": 70,
+          "power": 65
+        },
+        {
+          "soc": 75,
+          "power": 54
         },
         {
           "soc": 80,
-          "power": 52
+          "power": 50
         },
         {
-          "soc": 100,
-          "power": 12
+          "soc": 82,
+          "power": 48
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

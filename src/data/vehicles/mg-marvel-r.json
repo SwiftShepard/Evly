@@ -36,9 +36,9 @@
   "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.32,
   "chargingDC": {
-    "peakPower_kW": 92,
-    "time_10_80_min": 43,
-    "kWh_added_30min": 35,
+    "peakPower_kW": 83,
+    "time_10_80_min": 41,
+    "kWh_added_30min": 38,
     "confidence": "tested"
   },
   "chargingAC": {
@@ -52,23 +52,39 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 62
-    },
-    {
       "soc": 10,
       "power": 77
+    },
+    {
+      "soc": 15,
+      "power": 80
     },
     {
       "soc": 20,
       "power": 81
     },
     {
+      "soc": 25,
+      "power": 82
+    },
+    {
       "soc": 30,
       "power": 82
     },
     {
+      "soc": 35,
+      "power": 82
+    },
+    {
+      "soc": 37,
+      "power": 83
+    },
+    {
       "soc": 40,
+      "power": 81
+    },
+    {
+      "soc": 45,
       "power": 81
     },
     {
@@ -76,24 +92,36 @@
       "power": 70
     },
     {
+      "soc": 55,
+      "power": 71
+    },
+    {
       "soc": 60,
       "power": 72
+    },
+    {
+      "soc": 65,
+      "power": 63
     },
     {
       "soc": 70,
       "power": 64
     },
     {
+      "soc": 75,
+      "power": 55
+    },
+    {
       "soc": 80,
       "power": 55
     },
     {
-      "soc": 90,
-      "power": 16
+      "soc": 85,
+      "power": 25
     },
     {
-      "soc": 100,
-      "power": 2
+      "soc": 90,
+      "power": 16
     }
   ],
   "rangeTests": [
@@ -189,33 +217,86 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 92,
-      "chargingDC_10_80_min": 43,
-      "chargingDC_kWh_30min": 35,
+      "chargingDC_peak_kW": 83,
+      "chargingDC_10_80_min": 41,
+      "chargingDC_kWh_30min": 38,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 71
+          "soc": 10,
+          "power": 77
         },
         {
-          "soc": 10,
-          "power": 92
+          "soc": 15,
+          "power": 80
+        },
+        {
+          "soc": 20,
+          "power": 81
+        },
+        {
+          "soc": 25,
+          "power": 82
+        },
+        {
+          "soc": 30,
+          "power": 82
+        },
+        {
+          "soc": 35,
+          "power": 82
+        },
+        {
+          "soc": 37,
+          "power": 83
+        },
+        {
+          "soc": 40,
+          "power": 81
+        },
+        {
+          "soc": 45,
+          "power": 81
         },
         {
           "soc": 50,
+          "power": 70
+        },
+        {
+          "soc": 55,
           "power": 71
         },
         {
-          "soc": 80,
-          "power": 35
+          "soc": 60,
+          "power": 72
         },
         {
-          "soc": 100,
-          "power": 7
+          "soc": 65,
+          "power": 63
+        },
+        {
+          "soc": 70,
+          "power": 64
+        },
+        {
+          "soc": 75,
+          "power": 55
+        },
+        {
+          "soc": 80,
+          "power": 55
+        },
+        {
+          "soc": 85,
+          "power": 25
+        },
+        {
+          "soc": 90,
+          "power": 16
         }
       ],
       "availability": "discontinued",
-      "notes": "204 ch (132 kW), FWD"
+      "notes": "204 ch (132 kW), FWD",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "mg-marvel-r-luxury",
@@ -238,33 +319,86 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 92,
-      "chargingDC_10_80_min": 43,
-      "chargingDC_kWh_30min": 35,
+      "chargingDC_peak_kW": 83,
+      "chargingDC_10_80_min": 41,
+      "chargingDC_kWh_30min": 38,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 71
+          "soc": 10,
+          "power": 77
         },
         {
-          "soc": 10,
-          "power": 92
+          "soc": 15,
+          "power": 80
+        },
+        {
+          "soc": 20,
+          "power": 81
+        },
+        {
+          "soc": 25,
+          "power": 82
+        },
+        {
+          "soc": 30,
+          "power": 82
+        },
+        {
+          "soc": 35,
+          "power": 82
+        },
+        {
+          "soc": 37,
+          "power": 83
+        },
+        {
+          "soc": 40,
+          "power": 81
+        },
+        {
+          "soc": 45,
+          "power": 81
         },
         {
           "soc": 50,
+          "power": 70
+        },
+        {
+          "soc": 55,
           "power": 71
         },
         {
-          "soc": 80,
-          "power": 35
+          "soc": 60,
+          "power": 72
         },
         {
-          "soc": 100,
-          "power": 7
+          "soc": 65,
+          "power": 63
+        },
+        {
+          "soc": 70,
+          "power": 64
+        },
+        {
+          "soc": 75,
+          "power": 55
+        },
+        {
+          "soc": 80,
+          "power": 55
+        },
+        {
+          "soc": 85,
+          "power": 25
+        },
+        {
+          "soc": 90,
+          "power": 16
         }
       ],
       "availability": "discontinued",
-      "notes": "204 ch (132 kW), FWD, full options"
+      "notes": "204 ch (132 kW), FWD, full options",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "mg-marvel-r-performance",
@@ -315,33 +449,86 @@
           "notes": "Essai Nyland « MG Marvel R Performance » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 92,
-      "chargingDC_10_80_min": 43,
-      "chargingDC_kWh_30min": 35,
+      "chargingDC_peak_kW": 83,
+      "chargingDC_10_80_min": 41,
+      "chargingDC_kWh_30min": 38,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 71
+          "soc": 10,
+          "power": 77
         },
         {
-          "soc": 10,
-          "power": 92
+          "soc": 15,
+          "power": 80
+        },
+        {
+          "soc": 20,
+          "power": 81
+        },
+        {
+          "soc": 25,
+          "power": 82
+        },
+        {
+          "soc": 30,
+          "power": 82
+        },
+        {
+          "soc": 35,
+          "power": 82
+        },
+        {
+          "soc": 37,
+          "power": 83
+        },
+        {
+          "soc": 40,
+          "power": 81
+        },
+        {
+          "soc": 45,
+          "power": 81
         },
         {
           "soc": 50,
+          "power": 70
+        },
+        {
+          "soc": 55,
           "power": 71
         },
         {
-          "soc": 80,
-          "power": 35
+          "soc": 60,
+          "power": 72
         },
         {
-          "soc": 100,
-          "power": 7
+          "soc": 65,
+          "power": 63
+        },
+        {
+          "soc": 70,
+          "power": 64
+        },
+        {
+          "soc": 75,
+          "power": 55
+        },
+        {
+          "soc": 80,
+          "power": 55
+        },
+        {
+          "soc": 85,
+          "power": 25
+        },
+        {
+          "soc": 90,
+          "power": 16
         }
       ],
       "availability": "discontinued",
-      "notes": "288 ch (212 kW), AWD tri-moteur"
+      "notes": "288 ch (212 kW), AWD tri-moteur",
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

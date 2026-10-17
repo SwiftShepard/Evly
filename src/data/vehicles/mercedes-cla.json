@@ -36,9 +36,9 @@
   "consumption_winter_kWh_per_100km": 15.5,
   "dragCoefficient_Cx": 0.23,
   "chargingDC": {
-    "peakPower_kW": 327,
-    "time_10_80_min": 22,
-    "kWh_added_30min": 78,
+    "peakPower_kW": 348,
+    "time_10_80_min": 19,
+    "kWh_added_30min": 73,
     "confidence": "tested"
   },
   "chargingAC": {
@@ -52,48 +52,84 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 94
-    },
-    {
       "soc": 10,
       "power": 117
+    },
+    {
+      "soc": 12,
+      "power": 348
+    },
+    {
+      "soc": 15,
+      "power": 337
     },
     {
       "soc": 20,
       "power": 327
     },
     {
+      "soc": 25,
+      "power": 308
+    },
+    {
       "soc": 30,
       "power": 266
+    },
+    {
+      "soc": 35,
+      "power": 249
     },
     {
       "soc": 40,
       "power": 225
     },
     {
+      "soc": 45,
+      "power": 205
+    },
+    {
       "soc": 50,
       "power": 195
+    },
+    {
+      "soc": 55,
+      "power": 185
     },
     {
       "soc": 60,
       "power": 160
     },
     {
+      "soc": 65,
+      "power": 138
+    },
+    {
       "soc": 70,
       "power": 126
+    },
+    {
+      "soc": 75,
+      "power": 119
     },
     {
       "soc": 80,
       "power": 107
     },
     {
+      "soc": 85,
+      "power": 90
+    },
+    {
       "soc": 90,
       "power": 71
     },
     {
+      "soc": 95,
+      "power": 43
+    },
+    {
       "soc": 100,
-      "power": 7
+      "power": 6
     }
   ],
   "rangeTests": [
@@ -240,7 +276,8 @@
         }
       ],
       "availability": "upcoming",
-      "notes": "Entrée de gamme, batterie LFP de 58 kWh éligible Prime CEE."
+      "notes": "Entrée de gamme, batterie LFP de 58 kWh éligible Prime CEE.",
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "mercedes-cla-250-pro",
@@ -264,37 +301,94 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 320,
-      "chargingDC_10_80_min": 22,
-      "chargingDC_kWh_30min": 78,
+      "chargingDC_peak_kW": 348,
+      "chargingDC_10_80_min": 19,
+      "chargingDC_kWh_30min": 73,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 220
+          "soc": 10,
+          "power": 117
         },
         {
-          "soc": 10,
-          "power": 320
+          "soc": 12,
+          "power": 348
+        },
+        {
+          "soc": 15,
+          "power": 337
+        },
+        {
+          "soc": 20,
+          "power": 327
+        },
+        {
+          "soc": 25,
+          "power": 308
         },
         {
           "soc": 30,
-          "power": 280
+          "power": 266
+        },
+        {
+          "soc": 35,
+          "power": 249
+        },
+        {
+          "soc": 40,
+          "power": 225
+        },
+        {
+          "soc": 45,
+          "power": 205
         },
         {
           "soc": 50,
-          "power": 200
+          "power": 195
+        },
+        {
+          "soc": 55,
+          "power": 185
+        },
+        {
+          "soc": 60,
+          "power": 160
+        },
+        {
+          "soc": 65,
+          "power": 138
+        },
+        {
+          "soc": 70,
+          "power": 126
+        },
+        {
+          "soc": 75,
+          "power": 119
         },
         {
           "soc": 80,
-          "power": 80
+          "power": 107
+        },
+        {
+          "soc": 85,
+          "power": 90
+        },
+        {
+          "soc": 90,
+          "power": 71
+        },
+        {
+          "soc": 95,
+          "power": 43
         },
         {
           "soc": 100,
-          "power": 12
+          "power": 6
         }
       ],
       "availability": "upcoming",
-      "notes": "RWD de 272 ch, grande autonomie de 792 km, batterie NMC 85 kWh."
+      "notes": "RWD de 272 ch, grande autonomie de 792 km, batterie NMC 85 kWh.",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "mercedes-cla-250-amg",
@@ -318,37 +412,94 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 320,
-      "chargingDC_10_80_min": 22,
-      "chargingDC_kWh_30min": 78,
+      "chargingDC_peak_kW": 348,
+      "chargingDC_10_80_min": 19,
+      "chargingDC_kWh_30min": 73,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 220
+          "soc": 10,
+          "power": 117
         },
         {
-          "soc": 10,
-          "power": 320
+          "soc": 12,
+          "power": 348
+        },
+        {
+          "soc": 15,
+          "power": 337
+        },
+        {
+          "soc": 20,
+          "power": 327
+        },
+        {
+          "soc": 25,
+          "power": 308
         },
         {
           "soc": 30,
-          "power": 280
+          "power": 266
+        },
+        {
+          "soc": 35,
+          "power": 249
+        },
+        {
+          "soc": 40,
+          "power": 225
+        },
+        {
+          "soc": 45,
+          "power": 205
         },
         {
           "soc": 50,
-          "power": 200
+          "power": 195
+        },
+        {
+          "soc": 55,
+          "power": 185
+        },
+        {
+          "soc": 60,
+          "power": 160
+        },
+        {
+          "soc": 65,
+          "power": 138
+        },
+        {
+          "soc": 70,
+          "power": 126
+        },
+        {
+          "soc": 75,
+          "power": 119
         },
         {
           "soc": 80,
-          "power": 80
+          "power": 107
+        },
+        {
+          "soc": 85,
+          "power": 90
+        },
+        {
+          "soc": 90,
+          "power": 71
+        },
+        {
+          "soc": 95,
+          "power": 43
         },
         {
           "soc": 100,
-          "power": 12
+          "power": 6
         }
       ],
       "availability": "upcoming",
-      "notes": "Version dynamique avec kit carrosserie AMG et jantes 20 pouces."
+      "notes": "Version dynamique avec kit carrosserie AMG et jantes 20 pouces.",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "mercedes-cla-350-4matic-amg",
@@ -400,37 +551,94 @@
           "notes": "Essai Nyland « Mercedes CLA 350 4Matic » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 320,
-      "chargingDC_10_80_min": 22,
-      "chargingDC_kWh_30min": 78,
+      "chargingDC_peak_kW": 348,
+      "chargingDC_10_80_min": 19,
+      "chargingDC_kWh_30min": 73,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 220
+          "soc": 10,
+          "power": 117
         },
         {
-          "soc": 10,
-          "power": 320
+          "soc": 12,
+          "power": 348
+        },
+        {
+          "soc": 15,
+          "power": 337
+        },
+        {
+          "soc": 20,
+          "power": 327
+        },
+        {
+          "soc": 25,
+          "power": 308
         },
         {
           "soc": 30,
-          "power": 280
+          "power": 266
+        },
+        {
+          "soc": 35,
+          "power": 249
+        },
+        {
+          "soc": 40,
+          "power": 225
+        },
+        {
+          "soc": 45,
+          "power": 205
         },
         {
           "soc": 50,
-          "power": 200
+          "power": 195
+        },
+        {
+          "soc": 55,
+          "power": 185
+        },
+        {
+          "soc": 60,
+          "power": 160
+        },
+        {
+          "soc": 65,
+          "power": 138
+        },
+        {
+          "soc": 70,
+          "power": 126
+        },
+        {
+          "soc": 75,
+          "power": 119
         },
         {
           "soc": 80,
-          "power": 80
+          "power": 107
+        },
+        {
+          "soc": 85,
+          "power": 90
+        },
+        {
+          "soc": 90,
+          "power": 71
+        },
+        {
+          "soc": 95,
+          "power": 43
         },
         {
           "soc": 100,
-          "power": 12
+          "power": 6
         }
       ],
       "availability": "upcoming",
-      "notes": "Transmission intégrale 4MATIC de 374 ch, performances de pointe."
+      "notes": "Transmission intégrale 4MATIC de 374 ch, performances de pointe.",
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

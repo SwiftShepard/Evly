@@ -37,9 +37,9 @@
   "dragCoefficient_Cx": 0.27,
   "chargingDC": {
     "peakPower_kW": 150,
-    "time_10_80_min": 38,
-    "kWh_added_30min": 55,
-    "confidence": "estimated"
+    "time_10_80_min": 44,
+    "kWh_added_30min": 46,
+    "confidence": "tested"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
@@ -52,44 +52,84 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 104
+      "soc": 10,
+      "power": 148
     },
     {
-      "soc": 10,
-      "power": 130
+      "soc": 13,
+      "power": 150
+    },
+    {
+      "soc": 15,
+      "power": 109
     },
     {
       "soc": 20,
-      "power": 112
+      "power": 105
+    },
+    {
+      "soc": 25,
+      "power": 106
     },
     {
       "soc": 30,
-      "power": 112
+      "power": 103
+    },
+    {
+      "soc": 35,
+      "power": 94
     },
     {
       "soc": 40,
-      "power": 96
+      "power": 93
     },
     {
-      "soc": 50,
+      "soc": 45,
       "power": 77
     },
     {
+      "soc": 50,
+      "power": 76
+    },
+    {
+      "soc": 55,
+      "power": 76
+    },
+    {
       "soc": 60,
+      "power": 76
+    },
+    {
+      "soc": 65,
       "power": 77
     },
     {
       "soc": 70,
-      "power": 77
+      "power": 78
+    },
+    {
+      "soc": 75,
+      "power": 72
     },
     {
       "soc": 80,
-      "power": 12
+      "power": 35
     },
     {
-      "soc": 100,
-      "power": 1
+      "soc": 85,
+      "power": 37
+    },
+    {
+      "soc": 90,
+      "power": 39
+    },
+    {
+      "soc": 95,
+      "power": 32
+    },
+    {
+      "soc": 97,
+      "power": 20
     }
   ],
   "rangeTests": [
@@ -225,7 +265,8 @@
         }
       ],
       "availability": "available",
-      "notes": "269 ch (198 kW), RWD"
+      "notes": "269 ch (198 kW), RWD",
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "ford-mustang-mach-e-er",
@@ -306,7 +347,8 @@
         }
       ],
       "availability": "available",
-      "notes": "294 ch (216 kW), RWD"
+      "notes": "294 ch (216 kW), RWD",
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "ford-mustang-mach-e-gt",
@@ -358,36 +400,93 @@
         }
       ],
       "chargingDC_peak_kW": 150,
-      "chargingDC_10_80_min": 38,
-      "chargingDC_kWh_30min": 55,
+      "chargingDC_10_80_min": 44,
+      "chargingDC_kWh_30min": 46,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 148
         },
         {
-          "soc": 10,
+          "soc": 13,
           "power": 150
         },
         {
+          "soc": 15,
+          "power": 109
+        },
+        {
+          "soc": 20,
+          "power": 105
+        },
+        {
+          "soc": 25,
+          "power": 106
+        },
+        {
           "soc": 30,
-          "power": 130
+          "power": 103
+        },
+        {
+          "soc": 35,
+          "power": 94
+        },
+        {
+          "soc": 40,
+          "power": 93
+        },
+        {
+          "soc": 45,
+          "power": 77
         },
         {
           "soc": 50,
-          "power": 90
+          "power": 76
+        },
+        {
+          "soc": 55,
+          "power": 76
+        },
+        {
+          "soc": 60,
+          "power": 76
+        },
+        {
+          "soc": 65,
+          "power": 77
+        },
+        {
+          "soc": 70,
+          "power": 78
+        },
+        {
+          "soc": 75,
+          "power": 72
         },
         {
           "soc": 80,
-          "power": 40
+          "power": 35
         },
         {
-          "soc": 100,
-          "power": 8
+          "soc": 85,
+          "power": 37
+        },
+        {
+          "soc": 90,
+          "power": 39
+        },
+        {
+          "soc": 95,
+          "power": 32
+        },
+        {
+          "soc": 97,
+          "power": 20
         }
       ],
       "availability": "available",
-      "notes": "487 ch (358 kW), AWD, MagneRide"
+      "notes": "487 ch (358 kW), AWD, MagneRide",
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

@@ -36,10 +36,10 @@
   "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.28,
   "chargingDC": {
-    "peakPower_kW": 140,
-    "time_10_80_min": 35,
-    "kWh_added_30min": 50,
-    "confidence": "estimated"
+    "peakPower_kW": 150,
+    "time_10_80_min": 29,
+    "kWh_added_30min": 58,
+    "confidence": "tested"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
@@ -52,24 +52,72 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 100
+      "soc": 10,
+      "power": 67
     },
     {
-      "soc": 10,
-      "power": 130
+      "soc": 15,
+      "power": 142
+    },
+    {
+      "soc": 20,
+      "power": 144
+    },
+    {
+      "soc": 25,
+      "power": 144
+    },
+    {
+      "soc": 30,
+      "power": 150
+    },
+    {
+      "soc": 35,
+      "power": 147
+    },
+    {
+      "soc": 40,
+      "power": 143
+    },
+    {
+      "soc": 45,
+      "power": 144
     },
     {
       "soc": 50,
-      "power": 100
+      "power": 128
+    },
+    {
+      "soc": 55,
+      "power": 118
+    },
+    {
+      "soc": 60,
+      "power": 107
+    },
+    {
+      "soc": 65,
+      "power": 97
+    },
+    {
+      "soc": 70,
+      "power": 84
+    },
+    {
+      "soc": 75,
+      "power": 85
     },
     {
       "soc": 80,
-      "power": 50
+      "power": 54
     },
     {
-      "soc": 100,
-      "power": 10
+      "soc": 85,
+      "power": 45
+    },
+    {
+      "soc": 90,
+      "power": 30
     }
   ],
   "rangeTests": [
@@ -190,34 +238,83 @@
           "notes": "Essai Nyland « Kia EV5 Long Range FWD » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 140,
-      "chargingDC_10_80_min": 35,
-      "chargingDC_kWh_30min": 50,
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 58,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 67
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 142
+        },
+        {
+          "soc": 20,
+          "power": 144
+        },
+        {
+          "soc": 25,
+          "power": 144
+        },
+        {
+          "soc": 30,
+          "power": 150
+        },
+        {
+          "soc": 35,
+          "power": 147
+        },
+        {
+          "soc": 40,
+          "power": 143
+        },
+        {
+          "soc": 45,
+          "power": 144
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 128
+        },
+        {
+          "soc": 55,
+          "power": 118
+        },
+        {
+          "soc": 60,
+          "power": 107
+        },
+        {
+          "soc": 65,
+          "power": 97
+        },
+        {
+          "soc": 70,
+          "power": 84
+        },
+        {
+          "soc": 75,
+          "power": 85
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 54
         },
         {
-          "soc": 100,
-          "power": 10
+          "soc": 85,
+          "power": 45
+        },
+        {
+          "soc": 90,
+          "power": 30
         }
       ],
       "availability": "available",
       "notes": null,
-      "usableCapacity_kWh": 81.4
+      "usableCapacity_kWh": 81.4,
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "kia-ev5-lr-earth",
@@ -268,34 +365,83 @@
           "notes": "Essai Nyland « Kia EV5 Long Range FWD » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 140,
-      "chargingDC_10_80_min": 35,
-      "chargingDC_kWh_30min": 50,
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 58,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 67
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 142
+        },
+        {
+          "soc": 20,
+          "power": 144
+        },
+        {
+          "soc": 25,
+          "power": 144
+        },
+        {
+          "soc": 30,
+          "power": 150
+        },
+        {
+          "soc": 35,
+          "power": 147
+        },
+        {
+          "soc": 40,
+          "power": 143
+        },
+        {
+          "soc": 45,
+          "power": 144
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 128
+        },
+        {
+          "soc": 55,
+          "power": 118
+        },
+        {
+          "soc": 60,
+          "power": 107
+        },
+        {
+          "soc": 65,
+          "power": 97
+        },
+        {
+          "soc": 70,
+          "power": 84
+        },
+        {
+          "soc": 75,
+          "power": 85
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 54
         },
         {
-          "soc": 100,
-          "power": 10
+          "soc": 85,
+          "power": 45
+        },
+        {
+          "soc": 90,
+          "power": 30
         }
       ],
       "availability": "available",
       "notes": null,
-      "usableCapacity_kWh": 81.4
+      "usableCapacity_kWh": 81.4,
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "kia-ev5-lr-gt-line",
@@ -346,34 +492,83 @@
           "notes": "Essai Nyland « Kia EV5 Long Range FWD » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 140,
-      "chargingDC_10_80_min": 35,
-      "chargingDC_kWh_30min": 50,
+      "chargingDC_peak_kW": 150,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 58,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 67
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 142
+        },
+        {
+          "soc": 20,
+          "power": 144
+        },
+        {
+          "soc": 25,
+          "power": 144
+        },
+        {
+          "soc": 30,
+          "power": 150
+        },
+        {
+          "soc": 35,
+          "power": 147
+        },
+        {
+          "soc": 40,
+          "power": 143
+        },
+        {
+          "soc": 45,
+          "power": 144
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 128
+        },
+        {
+          "soc": 55,
+          "power": 118
+        },
+        {
+          "soc": 60,
+          "power": 107
+        },
+        {
+          "soc": 65,
+          "power": 97
+        },
+        {
+          "soc": 70,
+          "power": 84
+        },
+        {
+          "soc": 75,
+          "power": 85
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 54
         },
         {
-          "soc": 100,
-          "power": 10
+          "soc": 85,
+          "power": 45
+        },
+        {
+          "soc": 90,
+          "power": 30
         }
       ],
       "availability": "available",
       "notes": null,
-      "usableCapacity_kWh": 81.4
+      "usableCapacity_kWh": 81.4,
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

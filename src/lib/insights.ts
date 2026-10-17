@@ -4,6 +4,8 @@
  */
 
 import type { Vehicle, VehicleConfiguration } from "@/data/schemas";
+import { ceeForProfile } from "@/lib/cee";
+import { readUserProfile } from "@/lib/userProfile";
 
 export interface ConfiguredCard {
   vehicle: Vehicle;
@@ -93,8 +95,8 @@ export function generateInsights(cards: ConfiguredCard[]): ComparisonInsight[] {
   }
 
   // --- Prix après aides ---
-  const totalAids = (c: ConfiguredCard) =>
-    c.vehicle.availableAids.reduce((sum, a) => sum + a.amount_EUR, 0);
+  // Même prime que les cartes du comparateur (profil du visiteur, sinon tout ménage)
+  const totalAids = (c: ConfiguredCard) => ceeForProfile(c.vehicle, c.config.price_EUR, readUserProfile()).amount;
   const netPrice = (c: ConfiguredCard) =>
     Math.max(0, c.config.price_EUR - totalAids(c));
 

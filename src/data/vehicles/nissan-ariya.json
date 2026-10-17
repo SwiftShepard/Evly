@@ -237,37 +237,90 @@
           "notes": "Essai Nyland « Nissan Ariya 63 kWh » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 130,
-      "chargingDC_10_80_min": 25,
-      "chargingDC_kWh_30min": 42,
+      "chargingDC_peak_kW": 116,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 45,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 90
-        },
-        {
           "soc": 10,
-          "power": 130
+          "power": 116
         },
         {
-          "soc": 30,
+          "soc": 15,
           "power": 115
         },
         {
+          "soc": 20,
+          "power": 115
+        },
+        {
+          "soc": 25,
+          "power": 116
+        },
+        {
+          "soc": 30,
+          "power": 108
+        },
+        {
+          "soc": 35,
+          "power": 104
+        },
+        {
+          "soc": 40,
+          "power": 100
+        },
+        {
+          "soc": 45,
+          "power": 96
+        },
+        {
           "soc": 50,
-          "power": 80
+          "power": 92
+        },
+        {
+          "soc": 55,
+          "power": 87
+        },
+        {
+          "soc": 60,
+          "power": 82
+        },
+        {
+          "soc": 65,
+          "power": 76
+        },
+        {
+          "soc": 70,
+          "power": 71
+        },
+        {
+          "soc": 75,
+          "power": 66
         },
         {
           "soc": 80,
-          "power": 35
+          "power": 61
+        },
+        {
+          "soc": 85,
+          "power": 55
+        },
+        {
+          "soc": 90,
+          "power": 49
+        },
+        {
+          "soc": 95,
+          "power": 42
         },
         {
           "soc": 100,
-          "power": 7
+          "power": 15
         }
       ],
       "availability": "available",
-      "notes": "218 ch (160 kW), FWD, AC 7,4 kW"
+      "notes": "218 ch (160 kW), FWD, AC 7,4 kW",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "nissan-ariya-advance-63",
@@ -318,37 +371,90 @@
           "notes": "Essai Nyland « Nissan Ariya 63 kWh » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 130,
-      "chargingDC_10_80_min": 25,
-      "chargingDC_kWh_30min": 42,
+      "chargingDC_peak_kW": 116,
+      "chargingDC_10_80_min": 29,
+      "chargingDC_kWh_30min": 45,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 90
-        },
-        {
           "soc": 10,
-          "power": 130
+          "power": 116
         },
         {
-          "soc": 30,
+          "soc": 15,
           "power": 115
         },
         {
+          "soc": 20,
+          "power": 115
+        },
+        {
+          "soc": 25,
+          "power": 116
+        },
+        {
+          "soc": 30,
+          "power": 108
+        },
+        {
+          "soc": 35,
+          "power": 104
+        },
+        {
+          "soc": 40,
+          "power": 100
+        },
+        {
+          "soc": 45,
+          "power": 96
+        },
+        {
           "soc": 50,
-          "power": 80
+          "power": 92
+        },
+        {
+          "soc": 55,
+          "power": 87
+        },
+        {
+          "soc": 60,
+          "power": 82
+        },
+        {
+          "soc": 65,
+          "power": 76
+        },
+        {
+          "soc": 70,
+          "power": 71
+        },
+        {
+          "soc": 75,
+          "power": 66
         },
         {
           "soc": 80,
-          "power": 35
+          "power": 61
+        },
+        {
+          "soc": 85,
+          "power": 55
+        },
+        {
+          "soc": 90,
+          "power": 49
+        },
+        {
+          "soc": 95,
+          "power": 42
         },
         {
           "soc": 100,
-          "power": 7
+          "power": 15
         }
       ],
       "availability": "available",
-      "notes": "218 ch (160 kW), FWD, jantes 20 pouces"
+      "notes": "218 ch (160 kW), FWD, jantes 20 pouces",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "nissan-ariya-evolve-87",
@@ -399,37 +505,94 @@
           "notes": "Essai Nyland « Nissan Ariya 87 kWh FWD » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 130,
-      "chargingDC_10_80_min": 35,
+      "chargingDC_peak_kW": 116,
+      "chargingDC_10_80_min": 34,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 90
+          "soc": 10,
+          "power": 115
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 13,
+          "power": 116
+        },
+        {
+          "soc": 15,
+          "power": 115
+        },
+        {
+          "soc": 20,
+          "power": 115
+        },
+        {
+          "soc": 25,
+          "power": 115
         },
         {
           "soc": 30,
           "power": 115
         },
         {
+          "soc": 35,
+          "power": 115
+        },
+        {
+          "soc": 40,
+          "power": 115
+        },
+        {
+          "soc": 45,
+          "power": 115
+        },
+        {
           "soc": 50,
-          "power": 80
+          "power": 115
+        },
+        {
+          "soc": 55,
+          "power": 110
+        },
+        {
+          "soc": 60,
+          "power": 104
+        },
+        {
+          "soc": 65,
+          "power": 97
+        },
+        {
+          "soc": 70,
+          "power": 91
+        },
+        {
+          "soc": 75,
+          "power": 87
         },
         {
           "soc": 80,
-          "power": 35
+          "power": 81
         },
         {
-          "soc": 100,
-          "power": 8
+          "soc": 85,
+          "power": 74
+        },
+        {
+          "soc": 90,
+          "power": 66
+        },
+        {
+          "soc": 95,
+          "power": 55
+        },
+        {
+          "soc": 99,
+          "power": 23
         }
       ],
       "availability": "available",
-      "notes": "242 ch (178 kW), FWD, AC 22 kW de serie"
+      "notes": "242 ch (178 kW), FWD, AC 22 kW de serie",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "nissan-ariya-nismo-87",
@@ -452,37 +615,94 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 130,
-      "chargingDC_10_80_min": 35,
+      "chargingDC_peak_kW": 116,
+      "chargingDC_10_80_min": 34,
       "chargingDC_kWh_30min": 55,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 90
+          "soc": 10,
+          "power": 115
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 13,
+          "power": 116
+        },
+        {
+          "soc": 15,
+          "power": 115
+        },
+        {
+          "soc": 20,
+          "power": 115
+        },
+        {
+          "soc": 25,
+          "power": 115
         },
         {
           "soc": 30,
           "power": 115
         },
         {
+          "soc": 35,
+          "power": 115
+        },
+        {
+          "soc": 40,
+          "power": 115
+        },
+        {
+          "soc": 45,
+          "power": 115
+        },
+        {
           "soc": 50,
-          "power": 80
+          "power": 115
+        },
+        {
+          "soc": 55,
+          "power": 110
+        },
+        {
+          "soc": 60,
+          "power": 104
+        },
+        {
+          "soc": 65,
+          "power": 97
+        },
+        {
+          "soc": 70,
+          "power": 91
+        },
+        {
+          "soc": 75,
+          "power": 87
         },
         {
           "soc": 80,
-          "power": 35
+          "power": 81
         },
         {
-          "soc": 100,
-          "power": 8
+          "soc": 85,
+          "power": 74
+        },
+        {
+          "soc": 90,
+          "power": 66
+        },
+        {
+          "soc": 95,
+          "power": 55
+        },
+        {
+          "soc": 99,
+          "power": 23
         }
       ],
       "availability": "available",
-      "notes": "435 ch (320 kW), AWD e-4ORCE"
+      "notes": "435 ch (320 kW), AWD e-4ORCE",
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

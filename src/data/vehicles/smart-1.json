@@ -36,10 +36,10 @@
   "consumption_winter_kWh_per_100km": 22,
   "dragCoefficient_Cx": 0.29,
   "chargingDC": {
-    "peakPower_kW": 150,
-    "time_10_80_min": 30,
-    "kWh_added_30min": 42,
-    "confidence": "estimated"
+    "peakPower_kW": 156,
+    "time_10_80_min": 27,
+    "kWh_added_30min": 46,
+    "confidence": "tested"
   },
   "chargingAC": {
     "onboardCharger_kW": 22,
@@ -52,28 +52,76 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 110
+      "soc": 10,
+      "power": 151
     },
     {
-      "soc": 10,
-      "power": 150
+      "soc": 15,
+      "power": 154
+    },
+    {
+      "soc": 18,
+      "power": 156
+    },
+    {
+      "soc": 20,
+      "power": 156
+    },
+    {
+      "soc": 25,
+      "power": 141
     },
     {
       "soc": 30,
-      "power": 130
+      "power": 142
+    },
+    {
+      "soc": 35,
+      "power": 128
+    },
+    {
+      "soc": 40,
+      "power": 128
+    },
+    {
+      "soc": 45,
+      "power": 114
     },
     {
       "soc": 50,
-      "power": 90
+      "power": 100
+    },
+    {
+      "soc": 55,
+      "power": 86
+    },
+    {
+      "soc": 60,
+      "power": 72
+    },
+    {
+      "soc": 65,
+      "power": 73
+    },
+    {
+      "soc": 70,
+      "power": 66
+    },
+    {
+      "soc": 75,
+      "power": 60
     },
     {
       "soc": 80,
-      "power": 40
+      "power": 61
     },
     {
-      "soc": 100,
-      "power": 8
+      "soc": 85,
+      "power": 38
+    },
+    {
+      "soc": 90,
+      "power": 25
     }
   ],
   "rangeTests": [
@@ -204,7 +252,8 @@
         }
       ],
       "availability": "available",
-      "notes": "272 ch (200 kW), RWD, batterie 49 kWh"
+      "notes": "272 ch (200 kW), RWD, batterie 49 kWh",
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "smart-1-pro-plus-66",
@@ -227,37 +276,86 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 150,
-      "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 42,
+      "chargingDC_peak_kW": 156,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 46,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 110
+          "soc": 10,
+          "power": 151
         },
         {
-          "soc": 10,
-          "power": 150
+          "soc": 15,
+          "power": 154
+        },
+        {
+          "soc": 18,
+          "power": 156
+        },
+        {
+          "soc": 20,
+          "power": 156
+        },
+        {
+          "soc": 25,
+          "power": 141
         },
         {
           "soc": 30,
-          "power": 130
+          "power": 142
+        },
+        {
+          "soc": 35,
+          "power": 128
+        },
+        {
+          "soc": 40,
+          "power": 128
+        },
+        {
+          "soc": 45,
+          "power": 114
         },
         {
           "soc": 50,
-          "power": 90
+          "power": 100
+        },
+        {
+          "soc": 55,
+          "power": 86
+        },
+        {
+          "soc": 60,
+          "power": 72
+        },
+        {
+          "soc": 65,
+          "power": 73
+        },
+        {
+          "soc": 70,
+          "power": 66
+        },
+        {
+          "soc": 75,
+          "power": 60
         },
         {
           "soc": 80,
-          "power": 40
+          "power": 61
         },
         {
-          "soc": 100,
-          "power": 8
+          "soc": 85,
+          "power": 38
+        },
+        {
+          "soc": 90,
+          "power": 25
         }
       ],
       "availability": "available",
-      "notes": "272 ch (200 kW), RWD"
+      "notes": "272 ch (200 kW), RWD",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "smart-1-premium-66",
@@ -280,37 +378,86 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 150,
-      "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 42,
+      "chargingDC_peak_kW": 156,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 46,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 110
+          "soc": 10,
+          "power": 151
         },
         {
-          "soc": 10,
-          "power": 150
+          "soc": 15,
+          "power": 154
+        },
+        {
+          "soc": 18,
+          "power": 156
+        },
+        {
+          "soc": 20,
+          "power": 156
+        },
+        {
+          "soc": 25,
+          "power": 141
         },
         {
           "soc": 30,
-          "power": 130
+          "power": 142
+        },
+        {
+          "soc": 35,
+          "power": 128
+        },
+        {
+          "soc": 40,
+          "power": 128
+        },
+        {
+          "soc": 45,
+          "power": 114
         },
         {
           "soc": 50,
-          "power": 90
+          "power": 100
+        },
+        {
+          "soc": 55,
+          "power": 86
+        },
+        {
+          "soc": 60,
+          "power": 72
+        },
+        {
+          "soc": 65,
+          "power": 73
+        },
+        {
+          "soc": 70,
+          "power": 66
+        },
+        {
+          "soc": 75,
+          "power": 60
         },
         {
           "soc": 80,
-          "power": 40
+          "power": 61
         },
         {
-          "soc": 100,
-          "power": 8
+          "soc": 85,
+          "power": 38
+        },
+        {
+          "soc": 90,
+          "power": 25
         }
       ],
       "availability": "available",
-      "notes": "272 ch (200 kW), RWD, full options"
+      "notes": "272 ch (200 kW), RWD, full options",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "smart-1-brabus-66",
@@ -361,37 +508,86 @@
           "notes": "Essai Nyland « Smart #1 Brabus » (hiver, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 150,
-      "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 42,
+      "chargingDC_peak_kW": 156,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 46,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 110
+          "soc": 10,
+          "power": 151
         },
         {
-          "soc": 10,
-          "power": 150
+          "soc": 15,
+          "power": 154
+        },
+        {
+          "soc": 18,
+          "power": 156
+        },
+        {
+          "soc": 20,
+          "power": 156
+        },
+        {
+          "soc": 25,
+          "power": 141
         },
         {
           "soc": 30,
-          "power": 130
+          "power": 142
+        },
+        {
+          "soc": 35,
+          "power": 128
+        },
+        {
+          "soc": 40,
+          "power": 128
+        },
+        {
+          "soc": 45,
+          "power": 114
         },
         {
           "soc": 50,
-          "power": 90
+          "power": 100
+        },
+        {
+          "soc": 55,
+          "power": 86
+        },
+        {
+          "soc": 60,
+          "power": 72
+        },
+        {
+          "soc": 65,
+          "power": 73
+        },
+        {
+          "soc": 70,
+          "power": 66
+        },
+        {
+          "soc": 75,
+          "power": 60
         },
         {
           "soc": 80,
-          "power": 40
+          "power": 61
         },
         {
-          "soc": 100,
-          "power": 8
+          "soc": 85,
+          "power": 38
+        },
+        {
+          "soc": 90,
+          "power": 25
         }
       ],
       "availability": "available",
-      "notes": "428 ch (315 kW), AWD"
+      "notes": "428 ch (315 kW), AWD",
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

@@ -10,9 +10,40 @@ interface Props {
 }
 
 /**
- * Sélecteur de configuration compact : batterie → finition → jantes.
- * Les options indisponibles sont désactivées.
+ * Sélecteur de configuration compact, en deux temps : batterie, puis finition (seulement celles
+ * qui existent avec cette batterie), puis jantes. La batterie se lit dans la capacité de la
+ * version, sinon dans son nom (« Evolution 40 kWh ») : une même finition déclinée en deux
+ * batteries n'apparaît plus deux fois sous le même nom.
  */
+const KWH = /\s*[·-]?\s*(\d+(?:[.,]\d+)?)\s*kWh/i;
+
+/** Batterie de la version : celle de son nom (ce que lit l'acheteur), sinon sa capacité utile */
+function batteryOf(c: VehicleConfiguration): string {
+  const m = `${c.trim} ${c.label}`.match(KWH);
+  if (m) return m[1]!.replace(",", ".");
+  return c.usableCapacity_kWh ? String(c.usableCapacity_kWh) : c.battery;
+}
+
+/** Nom de la finition, sans la batterie (« Evolution 40 kWh » -> « Evolution », « City (59 kWh · 140 kW) » -> « City (140 kW) ») */
+function finishOf(c: VehicleConfiguration): string {
+  return (
+    c.trim
+      .replace(KWH, " ")
+      .replace(/\s+EV\d+$/i, "")
+      .replace(/\(\s*[·,-]?\s*/g, "(")
+      .replace(/\s*[·,-]?\s*\)/g, ")")
+      .replace(/\(\)/g, "")
+      .replace(/\s{2,}/g, " ")
+      .trim() || c.trim
+  );
+}
+
+const batteryLabel = (key: string) => {
+  const n = Number(key);
+  if (!Number.isFinite(n)) return key === "long-range" ? "Grande Autonomie" : "Standard";
+  return `${String(Math.round(n * 10) / 10).replace(".", ",")} kWh`;
+};
+
 export default function ConfigSelector({
   vehicle,
   activeConfigId,
@@ -21,81 +52,54 @@ export default function ConfigSelector({
   onToggleCollapse,
 }: Props) {
   const configs = vehicle.configurations;
-
   const activeConfig = configs.find((c) => c.id === activeConfigId) ?? configs[0]!;
 
-  const allTrims = useMemo(
-    () => [...new Set(configs.map((c) => c.trim))],
-    [configs]
-  );
-  const hasMultipleTrims = allTrims.length > 1;
-
-  const activeTrim = activeConfig.trim;
-
-  // Batteries available for the active trim
-  const batteriesForActiveTrim = useMemo(
-    () => [...new Set(configs.filter((c) => c.trim === activeTrim).map((c) => c.battery))],
-    [configs, activeTrim]
-  );
-  const activeBattery = activeConfig.battery;
-
-  // All batteries
+  // Batteries, de la plus petite à la plus grande
   const batteries = useMemo(
-    () => [...new Set(configs.map((c) => c.battery))],
+    () =>
+      [...new Set(configs.map(batteryOf))].sort((a, b) => (Number(a) || 0) - (Number(b) || 0) || a.localeCompare(b)),
     [configs]
   );
+  const activeBattery = batteryOf(activeConfig);
 
-  // Wheel sizes for active trim + battery
-  const wheelsForActiveTrimBattery = useMemo(
-    () => [...new Set(
-      configs
-        .filter((c) => c.trim === activeTrim && c.battery === activeBattery)
-        .map((c) => c.wheelSize_inches)
-    )].sort((a, b) => a - b),
-    [configs, activeTrim, activeBattery]
+  // Finitions qui existent avec la batterie choisie, dans l'ordre de la gamme
+  const finishesForBattery = useMemo(
+    () => [...new Set(configs.filter((c) => batteryOf(c) === activeBattery).map(finishOf))],
+    [configs, activeBattery]
+  );
+  const activeFinish = finishOf(activeConfig);
+
+  const wheelsForActive = useMemo(
+    () =>
+      [...new Set(configs.filter((c) => batteryOf(c) === activeBattery && finishOf(c) === activeFinish).map((c) => c.wheelSize_inches))].sort(
+        (a, b) => a - b
+      ),
+    [configs, activeBattery, activeFinish]
   );
   const activeWheels = activeConfig.wheelSize_inches;
 
-  // Handle trim / version change
-  const handleTrimChange = (newTrim: string) => {
-    let cfg = configs.find((c) => c.trim === newTrim && c.battery === activeBattery && c.wheelSize_inches === activeWheels);
-    if (!cfg) cfg = configs.find((c) => c.trim === newTrim && c.battery === activeBattery);
-    if (!cfg) cfg = configs.find((c) => c.trim === newTrim);
+  // Nouvelle batterie : on garde la finition si elle existe, sinon la première de cette batterie
+  const handleBatteryChange = (b: string) => {
+    const same = configs.filter((c) => batteryOf(c) === b);
+    const cfg =
+      same.find((c) => finishOf(c) === activeFinish && c.wheelSize_inches === activeWheels) ??
+      same.find((c) => finishOf(c) === activeFinish) ??
+      same[0];
     if (cfg) onConfigChange(cfg.id);
   };
 
-  // Handle battery change
-  const handleBatteryChange = (newBattery: string) => {
-    let cfg = configs.find((c) => c.trim === activeTrim && c.battery === newBattery && c.wheelSize_inches === activeWheels);
-    if (!cfg) cfg = configs.find((c) => c.trim === activeTrim && c.battery === newBattery);
-    if (!cfg) cfg = configs.find((c) => c.battery === newBattery);
+  const handleFinishChange = (f: string) => {
+    const same = configs.filter((c) => batteryOf(c) === activeBattery && finishOf(c) === f);
+    const cfg = same.find((c) => c.wheelSize_inches === activeWheels) ?? same[0];
     if (cfg) onConfigChange(cfg.id);
   };
 
-  // Handle wheels change
-  const handleWheelsChange = (newWheels: number) => {
-    const cfg = configs.find((c) => c.trim === activeTrim && c.battery === activeBattery && c.wheelSize_inches === newWheels);
+  const handleWheelsChange = (w: number) => {
+    const cfg = configs.find((c) => batteryOf(c) === activeBattery && finishOf(c) === activeFinish && c.wheelSize_inches === w);
     if (cfg) onConfigChange(cfg.id);
   };
 
-  const trimDisplayLabel = (trim: string) =>
-    trim
-      .replace(/\s+(?:EV)?\d+\s*kWh$/i, "")
-      .replace(/\s+EV\d+$/i, "")
-      .trim() || trim;
-
-  const batteryLabels = useMemo(() => {
-    const result: Record<string, string> = {};
-    for (const battery of batteries) {
-      const cfg = configs.find((c) => c.battery === battery);
-      if (cfg && cfg.usableCapacity_kWh) {
-        result[battery] = `${Math.round(cfg.usableCapacity_kWh)} kWh`;
-      } else {
-        result[battery] = battery === "long-range" ? "Grande Autonomie" : "Standard";
-      }
-    }
-    return result;
-  }, [batteries, configs]);
+  const priced = (match: (c: VehicleConfiguration) => boolean) => configs.some((c) => match(c) && c.price_EUR !== null);
 
   return (
     <div className="flex flex-col gap-2">
@@ -139,49 +143,39 @@ export default function ConfigSelector({
         }}
       >
         <div className="flex flex-col gap-3 pb-3">
-          {/* Version / Finition (Primary control when multiple trims exist) */}
-          {hasMultipleTrims && (
-            <SegmentedControl
-              label="Version / Finition"
-              options={allTrims.map((t) => {
-                const cfg = configs.find((c) => c.trim === t);
-                const priced = cfg ? cfg.price_EUR !== null : false;
-                return {
-                  value: t,
-                  label: trimDisplayLabel(t),
-                  disabled: false,
-                  tooltip: !priced ? "Tarif à venir" : undefined,
-                };
-              })}
-              value={activeTrim}
-              onChange={handleTrimChange}
-            />
-          )}
-
-          {/* Battery - show if batteries > 1 and not already distinguished by trims */}
-          {(!hasMultipleTrims ? batteries.length > 1 : batteriesForActiveTrim.length > 1) && (
+          {batteries.length > 1 && (
             <SegmentedControl
               label="Batterie"
-              options={(hasMultipleTrims ? batteriesForActiveTrim : batteries).map((b) => {
-                const cfg = configs.find((c) => c.battery === b && c.trim === activeTrim) ?? configs.find((c) => c.battery === b);
-                const priced = cfg ? cfg.price_EUR !== null : false;
-                return {
-                  value: b,
-                  label: batteryLabels[b] ?? b,
-                  disabled: false,
-                  tooltip: !priced ? "Tarif à venir" : undefined,
-                };
-              })}
+              options={batteries.map((b) => ({
+                value: b,
+                label: batteryLabel(b),
+                disabled: false,
+                tooltip: priced((c) => batteryOf(c) === b) ? undefined : "Tarif à venir",
+              }))}
               value={activeBattery}
               onChange={handleBatteryChange}
             />
           )}
 
+          {finishesForBattery.length > 1 && (
+            <SegmentedControl
+              label={batteries.length > 1 ? "Finition avec cette batterie" : "Finition"}
+              options={finishesForBattery.map((f) => ({
+                value: f,
+                label: f,
+                disabled: false,
+                tooltip: priced((c) => batteryOf(c) === activeBattery && finishOf(c) === f) ? undefined : "Tarif à venir",
+              }))}
+              value={activeFinish}
+              onChange={handleFinishChange}
+            />
+          )}
+
           {/* Wheels */}
-          {wheelsForActiveTrimBattery.length > 1 && (
+          {wheelsForActive.length > 1 && (
             <SegmentedControl
               label="Jantes"
-              options={wheelsForActiveTrimBattery.map((w) => ({
+              options={wheelsForActive.map((w) => ({
                 value: String(w),
                 label: `${w}"`,
                 disabled: false,

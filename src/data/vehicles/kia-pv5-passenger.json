@@ -36,10 +36,10 @@
   "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.28,
   "chargingDC": {
-    "peakPower_kW": 128,
+    "peakPower_kW": 126,
     "time_10_80_min": 31,
     "kWh_added_30min": 50,
-    "confidence": "estimated"
+    "confidence": "tested"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
@@ -52,15 +52,19 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 32
-    },
-    {
       "soc": 10,
       "power": 40
     },
     {
+      "soc": 15,
+      "power": 120
+    },
+    {
       "soc": 20,
+      "power": 122
+    },
+    {
+      "soc": 25,
       "power": 122
     },
     {
@@ -68,32 +72,56 @@
       "power": 123
     },
     {
+      "soc": 35,
+      "power": 124
+    },
+    {
       "soc": 40,
       "power": 125
+    },
+    {
+      "soc": 42,
+      "power": 126
+    },
+    {
+      "soc": 45,
+      "power": 115
     },
     {
       "soc": 50,
       "power": 115
     },
     {
+      "soc": 55,
+      "power": 116
+    },
+    {
       "soc": 60,
       "power": 95
+    },
+    {
+      "soc": 65,
+      "power": 78
     },
     {
       "soc": 70,
       "power": 79
     },
     {
+      "soc": 75,
+      "power": 80
+    },
+    {
       "soc": 80,
+      "power": 27
+    },
+    {
+      "soc": 85,
       "power": 27
     },
     {
       "soc": 90,
       "power": 27
-    },
-    {
-      "soc": 100,
-      "power": 3
     }
   ],
   "rangeTests": [
@@ -216,7 +244,8 @@
       "notes": null,
       "usableCapacity_kWh": 51.5,
       "power_hp": 122,
-      "power_kW": 90
+      "power_kW": 90,
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "kia-pv5-passenger-essential-71",
@@ -267,34 +296,87 @@
           "notes": "Essai Nyland « Kia PV5 Passenger » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 128,
+      "chargingDC_peak_kW": 126,
       "chargingDC_10_80_min": 31,
       "chargingDC_kWh_30min": 50,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 40
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 120
+        },
+        {
+          "soc": 20,
+          "power": 122
+        },
+        {
+          "soc": 25,
+          "power": 122
+        },
+        {
+          "soc": 30,
+          "power": 123
+        },
+        {
+          "soc": 35,
+          "power": 124
+        },
+        {
+          "soc": 40,
+          "power": 125
+        },
+        {
+          "soc": 42,
+          "power": 126
+        },
+        {
+          "soc": 45,
+          "power": 115
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 115
+        },
+        {
+          "soc": 55,
+          "power": 116
+        },
+        {
+          "soc": 60,
+          "power": 95
+        },
+        {
+          "soc": 65,
+          "power": 78
+        },
+        {
+          "soc": 70,
+          "power": 79
+        },
+        {
+          "soc": 75,
+          "power": 80
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 27
         },
         {
-          "soc": 100,
-          "power": 10
+          "soc": 85,
+          "power": 27
+        },
+        {
+          "soc": 90,
+          "power": 27
         }
       ],
       "availability": "available",
       "notes": null,
-      "usableCapacity_kWh": 71.2
+      "usableCapacity_kWh": 71.2,
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "kia-pv5-passenger-plus-71",
@@ -345,34 +427,87 @@
           "notes": "Essai Nyland « Kia PV5 Passenger » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 128,
+      "chargingDC_peak_kW": 126,
       "chargingDC_10_80_min": 31,
       "chargingDC_kWh_30min": 50,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 40
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 120
+        },
+        {
+          "soc": 20,
+          "power": 122
+        },
+        {
+          "soc": 25,
+          "power": 122
+        },
+        {
+          "soc": 30,
+          "power": 123
+        },
+        {
+          "soc": 35,
+          "power": 124
+        },
+        {
+          "soc": 40,
+          "power": 125
+        },
+        {
+          "soc": 42,
+          "power": 126
+        },
+        {
+          "soc": 45,
+          "power": 115
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 115
+        },
+        {
+          "soc": 55,
+          "power": 116
+        },
+        {
+          "soc": 60,
+          "power": 95
+        },
+        {
+          "soc": 65,
+          "power": 78
+        },
+        {
+          "soc": 70,
+          "power": 79
+        },
+        {
+          "soc": 75,
+          "power": 80
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 27
         },
         {
-          "soc": 100,
-          "power": 10
+          "soc": 85,
+          "power": 27
+        },
+        {
+          "soc": 90,
+          "power": 27
         }
       ],
       "availability": "available",
       "notes": null,
-      "usableCapacity_kWh": 71.2
+      "usableCapacity_kWh": 71.2,
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

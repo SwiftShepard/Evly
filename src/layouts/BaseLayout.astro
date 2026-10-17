@@ -76,6 +76,47 @@ const combinedJsonLd = jsonLd
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#eef1e7" />
+    <!-- Apparitions au défilement : contenu visible par défaut. La page ne cache un bloc avant son
+         animation que si le navigateur sait l'animer et que le visiteur n'a pas demandé moins de
+         mouvement ; l'observateur tourne ici, sans attendre les scripts de la page (K9). -->
+    <script is:inline>
+      (function () {
+        if (window.__evlyReveal) return;
+        window.__evlyReveal = true;
+        var root = document.documentElement;
+        if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        var sel = ".reveal, .reveal-fade, .reveal-scale, .reveal-slide-left";
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            e.target.classList.add("revealed");
+            io.unobserve(e.target);
+          });
+        }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
+        var ran = false;
+        function run() {
+          ran = true;
+          root.classList.add("reveal-on");
+          document.querySelectorAll(sel).forEach(function (el) {
+            if (!el.classList.contains("revealed")) io.observe(el);
+          });
+        }
+        root.classList.add("reveal-on");
+        // Filet : si l'observateur n'a pas démarré, tout reste visible plutôt que vide
+        setTimeout(function () { if (!ran) root.classList.remove("reveal-on"); }, 2500);
+        // Dès la fin de l'analyse du HTML, avant les scripts de la page (que DOMContentLoaded attendrait)
+        if (document.readyState === "loading") {
+          document.addEventListener("readystatechange", function once() {
+            if (document.readyState === "loading") return;
+            document.removeEventListener("readystatechange", once);
+            run();
+          });
+        } else run();
+        // Navigation par transition : la nouvelle page remplace les attributs de <html>
+        document.addEventListener("astro:after-swap", function () { root.classList.add("reveal-on"); });
+        document.addEventListener("astro:page-load", run);
+      })();
+    </script>
 
     <ViewTransitions />
 
@@ -112,11 +153,10 @@ const combinedJsonLd = jsonLd
     <link rel="icon" type="image/svg+xml" href={url("/favicon.svg")} />
     <link rel="alternate" type="text/plain" href={url("/llms.txt")} title="Résumé du site pour les assistants IA" />
 
-    <!-- Sans JavaScript, les blocs animés au défilement restent visibles -->
+    <!-- Sans JavaScript, l'apparition du haut de page (fade-rise) reste visible -->
     <noscript>
       <style>
-        .reveal, .reveal-fade, .reveal-scale, .reveal-slide-left, .fade-rise { opacity: 1 !important; transform: none !important; }
-        .rail .rail-bar { clip-path: none !important; }
+        .fade-rise { opacity: 1 !important; transform: none !important; animation: none !important; }
       </style>
     </noscript>
 
@@ -169,25 +209,7 @@ const combinedJsonLd = jsonLd
       // Reduced motion check
       const isReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // ------ Scroll Reveal via IntersectionObserver ------
-      function setupReveal() {
-        const elements = document.querySelectorAll('.reveal, .reveal-fade, .reveal-scale, .reveal-slide-left');
-        if (!elements.length) return;
-
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('revealed');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, {
-          threshold: 0.08,
-          rootMargin: '0px 0px -40px 0px'
-        });
-
-        elements.forEach((el) => observer.observe(el));
-      }
+      // Apparitions au défilement : script en ligne dans <head> (contenu visible par défaut, K9)
 
       // Barre de progression et ombre de la navigation : pilotées en CSS par le défilement (global.css)
 
@@ -514,7 +536,6 @@ const combinedJsonLd = jsonLd
       // Init all
       function runAll() {
         if (!isReducedMotion()) {
-          setupReveal();
           setupCounters();
         }
         initGlossary();

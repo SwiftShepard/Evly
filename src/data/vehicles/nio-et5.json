@@ -36,10 +36,10 @@
   "consumption_winter_kWh_per_100km": 24,
   "dragCoefficient_Cx": 0.24,
   "chargingDC": {
-    "peakPower_kW": 140,
-    "time_10_80_min": 30,
-    "kWh_added_30min": 48,
-    "confidence": "estimated"
+    "peakPower_kW": 147,
+    "time_10_80_min": 27,
+    "kWh_added_30min": 52,
+    "confidence": "tested"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
@@ -52,48 +52,84 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 98
-    },
-    {
       "soc": 10,
-      "power": 122
-    },
-    {
-      "soc": 20,
-      "power": 123
-    },
-    {
-      "soc": 30,
-      "power": 108
-    },
-    {
-      "soc": 40,
-      "power": 93
-    },
-    {
-      "soc": 50,
-      "power": 86
-    },
-    {
-      "soc": 60,
       "power": 88
     },
     {
+      "soc": 15,
+      "power": 136
+    },
+    {
+      "soc": 20,
+      "power": 146
+    },
+    {
+      "soc": 23,
+      "power": 147
+    },
+    {
+      "soc": 25,
+      "power": 146
+    },
+    {
+      "soc": 30,
+      "power": 146
+    },
+    {
+      "soc": 35,
+      "power": 144
+    },
+    {
+      "soc": 40,
+      "power": 142
+    },
+    {
+      "soc": 45,
+      "power": 141
+    },
+    {
+      "soc": 50,
+      "power": 134
+    },
+    {
+      "soc": 55,
+      "power": 120
+    },
+    {
+      "soc": 60,
+      "power": 103
+    },
+    {
+      "soc": 65,
+      "power": 83
+    },
+    {
       "soc": 70,
-      "power": 86
+      "power": 70
+    },
+    {
+      "soc": 75,
+      "power": 63
     },
     {
       "soc": 80,
-      "power": 77
+      "power": 56
+    },
+    {
+      "soc": 85,
+      "power": 42
     },
     {
       "soc": 90,
-      "power": 61
+      "power": 28
+    },
+    {
+      "soc": 95,
+      "power": 23
     },
     {
       "soc": 100,
-      "power": 6
+      "power": 8
     }
   ],
   "rangeTests": [
@@ -189,29 +225,85 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 140,
-      "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 48,
+      "chargingDC_peak_kW": 147,
+      "chargingDC_10_80_min": 27,
+      "chargingDC_kWh_30min": 52,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 88
         },
         {
-          "soc": 10,
-          "power": 140
+          "soc": 15,
+          "power": 136
+        },
+        {
+          "soc": 20,
+          "power": 146
+        },
+        {
+          "soc": 23,
+          "power": 147
+        },
+        {
+          "soc": 25,
+          "power": 146
         },
         {
           "soc": 30,
-          "power": 125
+          "power": 146
+        },
+        {
+          "soc": 35,
+          "power": 144
+        },
+        {
+          "soc": 40,
+          "power": 142
+        },
+        {
+          "soc": 45,
+          "power": 141
         },
         {
           "soc": 50,
-          "power": 90
+          "power": 134
+        },
+        {
+          "soc": 55,
+          "power": 120
+        },
+        {
+          "soc": 60,
+          "power": 103
+        },
+        {
+          "soc": 65,
+          "power": 83
+        },
+        {
+          "soc": 70,
+          "power": 70
+        },
+        {
+          "soc": 75,
+          "power": 63
         },
         {
           "soc": 80,
-          "power": 40
+          "power": 56
+        },
+        {
+          "soc": 85,
+          "power": 42
+        },
+        {
+          "soc": 90,
+          "power": 28
+        },
+        {
+          "soc": 95,
+          "power": 23
         },
         {
           "soc": 100,
@@ -219,7 +311,8 @@
         }
       ],
       "availability": "upcoming",
-      "notes": "490 ch (360 kW), AWD. Prix avec abonnement batterie (BaaS). Achat batterie : +12 000 euros"
+      "notes": "490 ch (360 kW), AWD. Prix avec abonnement batterie (BaaS). Achat batterie : +12 000 euros",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "nio-et5-100",
@@ -270,37 +363,86 @@
           "notes": "Essai Nyland « Nio ET5 100 kWh » (hiver, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 140,
-      "chargingDC_10_80_min": 35,
-      "chargingDC_kWh_30min": 55,
+      "chargingDC_peak_kW": 127,
+      "chargingDC_10_80_min": 39,
+      "chargingDC_kWh_30min": 50,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 122
         },
         {
-          "soc": 10,
-          "power": 140
+          "soc": 15,
+          "power": 126
+        },
+        {
+          "soc": 17,
+          "power": 127
+        },
+        {
+          "soc": 20,
+          "power": 123
+        },
+        {
+          "soc": 25,
+          "power": 114
         },
         {
           "soc": 30,
-          "power": 125
+          "power": 108
+        },
+        {
+          "soc": 35,
+          "power": 101
+        },
+        {
+          "soc": 40,
+          "power": 93
+        },
+        {
+          "soc": 45,
+          "power": 89
         },
         {
           "soc": 50,
-          "power": 90
+          "power": 86
+        },
+        {
+          "soc": 55,
+          "power": 88
+        },
+        {
+          "soc": 60,
+          "power": 88
+        },
+        {
+          "soc": 65,
+          "power": 87
+        },
+        {
+          "soc": 70,
+          "power": 86
+        },
+        {
+          "soc": 75,
+          "power": 83
         },
         {
           "soc": 80,
-          "power": 40
+          "power": 77
         },
         {
-          "soc": 100,
-          "power": 8
+          "soc": 85,
+          "power": 70
+        },
+        {
+          "soc": 90,
+          "power": 61
         }
       ],
       "availability": "upcoming",
-      "notes": "490 ch (360 kW), AWD. Prix avec abonnement batterie (BaaS). Achat batterie : +21 000 euros"
+      "notes": "490 ch (360 kW), AWD. Prix avec abonnement batterie (BaaS). Achat batterie : +21 000 euros",
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

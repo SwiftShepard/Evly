@@ -34,7 +34,7 @@ const faq = category.faq(list);
 
 const columnLabels: Record<CategoryColumn, string> = {
   price: "Prix dès",
-  aided: "Après aides*",
+  aided: "Après prime CEE*",
   range: "Autonomie réelle",
   charge: "10 → 80 %",
   trunk: "Coffre",
@@ -161,7 +161,7 @@ const others = CATEGORIES.filter((c) => c.slug !== category.slug);
           </div>
           {hasAidedColumn && (
             <p class="ranking-footnote">
-              * Prix de la version d'entrée diminué des aides maximales (coup de pouce CEE et majoration batterie européenne), réservées aux ménages sous conditions de revenus.
+              * Prix de la version d'entrée diminué de la prime CEE versée à tout ménage (barème indicatif 2026) ; elle monte avec des revenus plus modestes, et une bonification batterie européenne s'ajoute sur certaines versions.
             </p>
           )}
         </Tile>

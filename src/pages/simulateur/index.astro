@@ -3,6 +3,7 @@ import { url } from "@/lib/url";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import TcoCalculator from "@/components/tco/TcoCalculator";
 import { getAllVehicles } from "@/lib/vehicles";
+import { isVehicleEligibleCEE, CEE_BASE_EUR } from "@/lib/cee";
 
 const vehicles = getAllVehicles();
 
@@ -13,7 +14,8 @@ const summaries = vehicles
     const cheapest = validTrims.reduce((a, b) =>
       a.price_EUR! < b.price_EUR! ? a : b
     );
-    const aids = v.availableAids.reduce((sum, a) => sum + a.amount_EUR, 0);
+    // Prime CEE de tout ménage (barème de src/lib/cee.ts), même chiffre que la fiche
+    const aids = isVehicleEligibleCEE(v, cheapest.price_EUR) ? CEE_BASE_EUR : 0;
     return {
       slug: v.slug,
       brand: v.brand,

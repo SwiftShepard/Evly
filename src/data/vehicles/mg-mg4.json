@@ -36,9 +36,9 @@
   "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.28,
   "chargingDC": {
-    "peakPower_kW": 135,
-    "time_10_80_min": 26,
-    "kWh_added_30min": 45,
+    "peakPower_kW": 139,
+    "time_10_80_min": 25,
+    "kWh_added_30min": 47,
     "confidence": "tested"
   },
   "chargingAC": {
@@ -52,24 +52,80 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 100
+      "soc": 10,
+      "power": 108
     },
     {
-      "soc": 10,
-      "power": 130
+      "soc": 15,
+      "power": 132
+    },
+    {
+      "soc": 20,
+      "power": 134
+    },
+    {
+      "soc": 25,
+      "power": 134
+    },
+    {
+      "soc": 30,
+      "power": 135
+    },
+    {
+      "soc": 35,
+      "power": 135
+    },
+    {
+      "soc": 40,
+      "power": 137
+    },
+    {
+      "soc": 45,
+      "power": 137
     },
     {
       "soc": 50,
-      "power": 100
+      "power": 138
+    },
+    {
+      "soc": 53,
+      "power": 139
+    },
+    {
+      "soc": 55,
+      "power": 131
+    },
+    {
+      "soc": 60,
+      "power": 99
+    },
+    {
+      "soc": 65,
+      "power": 70
+    },
+    {
+      "soc": 70,
+      "power": 64
+    },
+    {
+      "soc": 75,
+      "power": 61
     },
     {
       "soc": 80,
-      "power": 50
+      "power": 55
     },
     {
-      "soc": 100,
-      "power": 10
+      "soc": 85,
+      "power": 46
+    },
+    {
+      "soc": 90,
+      "power": 26
+    },
+    {
+      "soc": 95,
+      "power": 9
     }
   ],
   "rangeTests": [
@@ -199,33 +255,90 @@
           "notes": "Essai Nyland « MG4 Long Range » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 135,
-      "chargingDC_10_80_min": 26,
-      "chargingDC_kWh_30min": 45,
+      "chargingDC_peak_kW": 139,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 47,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 108
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 132
+        },
+        {
+          "soc": 20,
+          "power": 134
+        },
+        {
+          "soc": 25,
+          "power": 134
+        },
+        {
+          "soc": 30,
+          "power": 135
+        },
+        {
+          "soc": 35,
+          "power": 135
+        },
+        {
+          "soc": 40,
+          "power": 137
+        },
+        {
+          "soc": 45,
+          "power": 137
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 138
+        },
+        {
+          "soc": 53,
+          "power": 139
+        },
+        {
+          "soc": 55,
+          "power": 131
+        },
+        {
+          "soc": 60,
+          "power": 99
+        },
+        {
+          "soc": 65,
+          "power": 70
+        },
+        {
+          "soc": 70,
+          "power": 64
+        },
+        {
+          "soc": 75,
+          "power": 61
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 55
         },
         {
-          "soc": 100,
-          "power": 10
+          "soc": 85,
+          "power": 46
+        },
+        {
+          "soc": 90,
+          "power": 26
+        },
+        {
+          "soc": 95,
+          "power": 9
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "mg-mg4-autonomie-étendue",
@@ -274,7 +387,8 @@
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "mg-mg4-xpower",
@@ -325,33 +439,90 @@
           "notes": "Essai Nyland « MG4 XPower » (hiver, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 135,
-      "chargingDC_10_80_min": 26,
-      "chargingDC_kWh_30min": 45,
+      "chargingDC_peak_kW": 139,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 47,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 108
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 132
+        },
+        {
+          "soc": 20,
+          "power": 134
+        },
+        {
+          "soc": 25,
+          "power": 134
+        },
+        {
+          "soc": 30,
+          "power": 135
+        },
+        {
+          "soc": 35,
+          "power": 135
+        },
+        {
+          "soc": 40,
+          "power": 137
+        },
+        {
+          "soc": 45,
+          "power": 137
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 138
+        },
+        {
+          "soc": 53,
+          "power": 139
+        },
+        {
+          "soc": 55,
+          "power": 131
+        },
+        {
+          "soc": 60,
+          "power": 99
+        },
+        {
+          "soc": 65,
+          "power": 70
+        },
+        {
+          "soc": 70,
+          "power": 64
+        },
+        {
+          "soc": 75,
+          "power": 61
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 55
         },
         {
-          "soc": 100,
-          "power": 10
+          "soc": 85,
+          "power": 46
+        },
+        {
+          "soc": 90,
+          "power": 26
+        },
+        {
+          "soc": 95,
+          "power": 9
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

@@ -36,9 +36,9 @@
   "consumption_winter_kWh_per_100km": 17.5,
   "dragCoefficient_Cx": 0.21,
   "chargingDC": {
-    "peakPower_kW": 240,
+    "peakPower_kW": 231,
     "time_10_80_min": 18,
-    "kWh_added_30min": 65,
+    "kWh_added_30min": 57,
     "confidence": "tested"
   },
   "chargingAC": {
@@ -52,48 +52,80 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 111
-    },
-    {
       "soc": 10,
       "power": 139
+    },
+    {
+      "soc": 15,
+      "power": 221
     },
     {
       "soc": 20,
       "power": 223
     },
     {
+      "soc": 25,
+      "power": 225
+    },
+    {
       "soc": 30,
       "power": 226
+    },
+    {
+      "soc": 35,
+      "power": 228
     },
     {
       "soc": 40,
       "power": 229
     },
     {
+      "soc": 45,
+      "power": 231
+    },
+    {
       "soc": 50,
       "power": 184
+    },
+    {
+      "soc": 55,
+      "power": 186
     },
     {
       "soc": 60,
       "power": 178
     },
     {
+      "soc": 65,
+      "power": 115
+    },
+    {
       "soc": 70,
       "power": 115
+    },
+    {
+      "soc": 75,
+      "power": 116
     },
     {
       "soc": 80,
       "power": 118
     },
     {
+      "soc": 85,
+      "power": 113
+    },
+    {
       "soc": 90,
       "power": 43
     },
     {
+      "soc": 95,
+      "power": 30
+    },
+    {
       "soc": 100,
-      "power": 4
+      "power": 8
     }
   ],
   "rangeTests": [
@@ -233,33 +265,90 @@
           "notes": "Essai Nyland « Hyundai Ioniq 6 RWD » (hiver, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 240,
+      "chargingDC_peak_kW": 231,
       "chargingDC_10_80_min": 18,
-      "chargingDC_kWh_30min": 65,
+      "chargingDC_kWh_30min": 57,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 139
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 221
+        },
+        {
+          "soc": 20,
+          "power": 223
+        },
+        {
+          "soc": 25,
+          "power": 225
+        },
+        {
+          "soc": 30,
+          "power": 226
+        },
+        {
+          "soc": 35,
+          "power": 228
+        },
+        {
+          "soc": 40,
+          "power": 229
+        },
+        {
+          "soc": 45,
+          "power": 231
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 184
+        },
+        {
+          "soc": 55,
+          "power": 186
+        },
+        {
+          "soc": 60,
+          "power": 178
+        },
+        {
+          "soc": 65,
+          "power": 115
+        },
+        {
+          "soc": 70,
+          "power": 115
+        },
+        {
+          "soc": 75,
+          "power": 116
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 118
+        },
+        {
+          "soc": 85,
+          "power": 113
+        },
+        {
+          "soc": 90,
+          "power": 43
+        },
+        {
+          "soc": 95,
+          "power": 30
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 8
         }
       ],
       "availability": "discontinued",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "hyundai-ioniq-6-creative-77",
@@ -310,33 +399,90 @@
           "notes": "Essai Nyland « Hyundai Ioniq 6 RWD » (hiver, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 240,
+      "chargingDC_peak_kW": 231,
       "chargingDC_10_80_min": 18,
-      "chargingDC_kWh_30min": 65,
+      "chargingDC_kWh_30min": 57,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 139
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 221
+        },
+        {
+          "soc": 20,
+          "power": 223
+        },
+        {
+          "soc": 25,
+          "power": 225
+        },
+        {
+          "soc": 30,
+          "power": 226
+        },
+        {
+          "soc": 35,
+          "power": 228
+        },
+        {
+          "soc": 40,
+          "power": 229
+        },
+        {
+          "soc": 45,
+          "power": 231
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 184
+        },
+        {
+          "soc": 55,
+          "power": 186
+        },
+        {
+          "soc": 60,
+          "power": 178
+        },
+        {
+          "soc": 65,
+          "power": 115
+        },
+        {
+          "soc": 70,
+          "power": 115
+        },
+        {
+          "soc": 75,
+          "power": 116
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 118
+        },
+        {
+          "soc": 85,
+          "power": 113
+        },
+        {
+          "soc": 90,
+          "power": 43
+        },
+        {
+          "soc": 95,
+          "power": 30
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 8
         }
       ],
       "availability": "discontinued",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "hyundai-ioniq-6-executive-77",
@@ -387,33 +533,90 @@
           "notes": "Essai Nyland « Hyundai Ioniq 6 RWD » (hiver, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 240,
+      "chargingDC_peak_kW": 231,
       "chargingDC_10_80_min": 18,
-      "chargingDC_kWh_30min": 65,
+      "chargingDC_kWh_30min": 57,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 139
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 221
+        },
+        {
+          "soc": 20,
+          "power": 223
+        },
+        {
+          "soc": 25,
+          "power": 225
+        },
+        {
+          "soc": 30,
+          "power": 226
+        },
+        {
+          "soc": 35,
+          "power": 228
+        },
+        {
+          "soc": 40,
+          "power": 229
+        },
+        {
+          "soc": 45,
+          "power": 231
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 184
+        },
+        {
+          "soc": 55,
+          "power": 186
+        },
+        {
+          "soc": 60,
+          "power": 178
+        },
+        {
+          "soc": 65,
+          "power": 115
+        },
+        {
+          "soc": 70,
+          "power": 115
+        },
+        {
+          "soc": 75,
+          "power": 116
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 118
+        },
+        {
+          "soc": 85,
+          "power": 113
+        },
+        {
+          "soc": 90,
+          "power": 43
+        },
+        {
+          "soc": 95,
+          "power": 30
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 8
         }
       ],
       "availability": "discontinued",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "hyundai-ioniq-6-executive-awd-77",
@@ -436,33 +639,90 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 240,
+      "chargingDC_peak_kW": 231,
       "chargingDC_10_80_min": 18,
-      "chargingDC_kWh_30min": 65,
+      "chargingDC_kWh_30min": 57,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 139
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 221
+        },
+        {
+          "soc": 20,
+          "power": 223
+        },
+        {
+          "soc": 25,
+          "power": 225
+        },
+        {
+          "soc": 30,
+          "power": 226
+        },
+        {
+          "soc": 35,
+          "power": 228
+        },
+        {
+          "soc": 40,
+          "power": 229
+        },
+        {
+          "soc": 45,
+          "power": 231
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 184
+        },
+        {
+          "soc": 55,
+          "power": 186
+        },
+        {
+          "soc": 60,
+          "power": 178
+        },
+        {
+          "soc": 65,
+          "power": 115
+        },
+        {
+          "soc": 70,
+          "power": 115
+        },
+        {
+          "soc": 75,
+          "power": 116
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 118
+        },
+        {
+          "soc": 85,
+          "power": 113
+        },
+        {
+          "soc": 90,
+          "power": 43
+        },
+        {
+          "soc": 95,
+          "power": 30
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 8
         }
       ],
       "availability": "discontinued",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

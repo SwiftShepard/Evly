@@ -12,7 +12,7 @@
     "check": "astro check",
     "lint:typo": "node scripts/check-emdash.mjs",
     "test:e2e": "playwright test",
-    "sync:nyland": "node scripts/download-nyland.mjs && node scripts/sync-nyland-ranges.mjs",
+    "sync:nyland": "node scripts/download-nyland.mjs && node scripts/sync-nyland-ranges.mjs && node scripts/sync-nyland-charging.mjs",
     "audit:data": "node scripts/audit-vehicles.mjs",
     "audit:seo": "node scripts/audit-seo.mjs",
     "map:roads": "python scripts/map/build-road-graph.py scratch/osm/france.osm.pbf public/carte/routes.bin.gz",

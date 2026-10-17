@@ -36,9 +36,9 @@
   "consumption_winter_kWh_per_100km": 23,
   "dragCoefficient_Cx": 0.2,
   "chargingDC": {
-    "peakPower_kW": 205,
+    "peakPower_kW": 207,
     "time_10_80_min": 31,
-    "kWh_added_30min": 65,
+    "kWh_added_30min": 81,
     "confidence": "tested"
   },
   "chargingAC": {
@@ -52,48 +52,76 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 158
-    },
-    {
       "soc": 10,
       "power": 198
+    },
+    {
+      "soc": 15,
+      "power": 202
     },
     {
       "soc": 20,
       "power": 204
     },
     {
+      "soc": 25,
+      "power": 206
+    },
+    {
+      "soc": 26,
+      "power": 207
+    },
+    {
       "soc": 30,
       "power": 205
+    },
+    {
+      "soc": 35,
+      "power": 186
     },
     {
       "soc": 40,
       "power": 178
     },
     {
+      "soc": 45,
+      "power": 171
+    },
+    {
       "soc": 50,
       "power": 162
+    },
+    {
+      "soc": 55,
+      "power": 153
     },
     {
       "soc": 60,
       "power": 144
     },
     {
+      "soc": 65,
+      "power": 135
+    },
+    {
       "soc": 70,
       "power": 126
+    },
+    {
+      "soc": 75,
+      "power": 118
     },
     {
       "soc": 80,
       "power": 105
     },
     {
-      "soc": 90,
-      "power": 57
+      "soc": 85,
+      "power": 82
     },
     {
-      "soc": 100,
-      "power": 6
+      "soc": 90,
+      "power": 57
     }
   ],
   "rangeTests": [
@@ -238,37 +266,86 @@
           "notes": "Essai Nyland « Mercedes EQS 450+ » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 200,
+      "chargingDC_peak_kW": 207,
       "chargingDC_10_80_min": 31,
-      "chargingDC_kWh_30min": 65,
+      "chargingDC_kWh_30min": 81,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 140
+          "soc": 10,
+          "power": 198
         },
         {
-          "soc": 10,
-          "power": 200
+          "soc": 15,
+          "power": 202
+        },
+        {
+          "soc": 20,
+          "power": 204
+        },
+        {
+          "soc": 25,
+          "power": 206
+        },
+        {
+          "soc": 26,
+          "power": 207
         },
         {
           "soc": 30,
-          "power": 180
+          "power": 205
+        },
+        {
+          "soc": 35,
+          "power": 186
+        },
+        {
+          "soc": 40,
+          "power": 178
+        },
+        {
+          "soc": 45,
+          "power": 171
         },
         {
           "soc": 50,
-          "power": 130
+          "power": 162
+        },
+        {
+          "soc": 55,
+          "power": 153
+        },
+        {
+          "soc": 60,
+          "power": 144
+        },
+        {
+          "soc": 65,
+          "power": 135
+        },
+        {
+          "soc": 70,
+          "power": 126
+        },
+        {
+          "soc": 75,
+          "power": 118
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 105
         },
         {
-          "soc": 100,
-          "power": 10
+          "soc": 85,
+          "power": 82
+        },
+        {
+          "soc": 90,
+          "power": 57
         }
       ],
       "availability": "available",
-      "notes": "360 ch (265 kW), RWD, AC 22 kW, nouvelle batterie 118 kWh"
+      "notes": "360 ch (265 kW), RWD, AC 22 kW, nouvelle batterie 118 kWh",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "mercedes-eqs-450-amg",
@@ -320,37 +397,86 @@
           "notes": "Essai Nyland « Mercedes EQS 450+ » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 200,
+      "chargingDC_peak_kW": 207,
       "chargingDC_10_80_min": 31,
-      "chargingDC_kWh_30min": 65,
+      "chargingDC_kWh_30min": 81,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 140
+          "soc": 10,
+          "power": 198
         },
         {
-          "soc": 10,
-          "power": 200
+          "soc": 15,
+          "power": 202
+        },
+        {
+          "soc": 20,
+          "power": 204
+        },
+        {
+          "soc": 25,
+          "power": 206
+        },
+        {
+          "soc": 26,
+          "power": 207
         },
         {
           "soc": 30,
-          "power": 180
+          "power": 205
+        },
+        {
+          "soc": 35,
+          "power": 186
+        },
+        {
+          "soc": 40,
+          "power": 178
+        },
+        {
+          "soc": 45,
+          "power": 171
         },
         {
           "soc": 50,
-          "power": 130
+          "power": 162
+        },
+        {
+          "soc": 55,
+          "power": 153
+        },
+        {
+          "soc": 60,
+          "power": 144
+        },
+        {
+          "soc": 65,
+          "power": 135
+        },
+        {
+          "soc": 70,
+          "power": 126
+        },
+        {
+          "soc": 75,
+          "power": 118
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 105
         },
         {
-          "soc": 100,
-          "power": 10
+          "soc": 85,
+          "power": 82
+        },
+        {
+          "soc": 90,
+          "power": 57
         }
       ],
       "availability": "available",
-      "notes": "360 ch (265 kW), RWD, AC 22 kW, finition dynamique AMG Line, nouvelle batterie 118 kWh"
+      "notes": "360 ch (265 kW), RWD, AC 22 kW, finition dynamique AMG Line, nouvelle batterie 118 kWh",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "mercedes-eqs-580-amg",
@@ -402,37 +528,86 @@
           "notes": "Essai Nyland « Mercedes EQS 580 4Matic » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 200,
+      "chargingDC_peak_kW": 207,
       "chargingDC_10_80_min": 31,
-      "chargingDC_kWh_30min": 65,
+      "chargingDC_kWh_30min": 81,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 140
+          "soc": 10,
+          "power": 198
         },
         {
-          "soc": 10,
-          "power": 200
+          "soc": 15,
+          "power": 202
+        },
+        {
+          "soc": 20,
+          "power": 204
+        },
+        {
+          "soc": 25,
+          "power": 206
+        },
+        {
+          "soc": 26,
+          "power": 207
         },
         {
           "soc": 30,
-          "power": 180
+          "power": 205
+        },
+        {
+          "soc": 35,
+          "power": 186
+        },
+        {
+          "soc": 40,
+          "power": 178
+        },
+        {
+          "soc": 45,
+          "power": 171
         },
         {
           "soc": 50,
-          "power": 130
+          "power": 162
+        },
+        {
+          "soc": 55,
+          "power": 153
+        },
+        {
+          "soc": 60,
+          "power": 144
+        },
+        {
+          "soc": 65,
+          "power": 135
+        },
+        {
+          "soc": 70,
+          "power": 126
+        },
+        {
+          "soc": 75,
+          "power": 118
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 105
         },
         {
-          "soc": 100,
-          "power": 10
+          "soc": 85,
+          "power": 82
+        },
+        {
+          "soc": 90,
+          "power": 57
         }
       ],
       "availability": "available",
-      "notes": "523 ch (385 kW), AWD 4MATIC, essieu AR directeur 10 degrés, nouvelle batterie 118 kWh"
+      "notes": "523 ch (385 kW), AWD 4MATIC, essieu AR directeur 10 degrés, nouvelle batterie 118 kWh",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "mercedes-eqs-amg-53",
@@ -484,37 +659,86 @@
           "notes": "Essai Nyland « Mercedes EQS 53 4Matic+ » (hiver, route humide)."
         }
       ],
-      "chargingDC_peak_kW": 200,
+      "chargingDC_peak_kW": 207,
       "chargingDC_10_80_min": 31,
-      "chargingDC_kWh_30min": 65,
+      "chargingDC_kWh_30min": 81,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 140
+          "soc": 10,
+          "power": 198
         },
         {
-          "soc": 10,
-          "power": 200
+          "soc": 15,
+          "power": 202
+        },
+        {
+          "soc": 20,
+          "power": 204
+        },
+        {
+          "soc": 25,
+          "power": 206
+        },
+        {
+          "soc": 26,
+          "power": 207
         },
         {
           "soc": 30,
-          "power": 180
+          "power": 205
+        },
+        {
+          "soc": 35,
+          "power": 186
+        },
+        {
+          "soc": 40,
+          "power": 178
+        },
+        {
+          "soc": 45,
+          "power": 171
         },
         {
           "soc": 50,
-          "power": 130
+          "power": 162
+        },
+        {
+          "soc": 55,
+          "power": 153
+        },
+        {
+          "soc": 60,
+          "power": 144
+        },
+        {
+          "soc": 65,
+          "power": 135
+        },
+        {
+          "soc": 70,
+          "power": 126
+        },
+        {
+          "soc": 75,
+          "power": 118
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 105
         },
         {
-          "soc": 100,
-          "power": 10
+          "soc": 85,
+          "power": 82
+        },
+        {
+          "soc": 90,
+          "power": 57
         }
       ],
       "availability": "available",
-      "notes": "658 ch (484 kW), AWD 4MATIC+, AMG, nouvelle batterie 118 kWh"
+      "notes": "658 ch (484 kW), AWD 4MATIC+, AMG, nouvelle batterie 118 kWh",
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

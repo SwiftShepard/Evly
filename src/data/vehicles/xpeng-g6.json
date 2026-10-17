@@ -229,7 +229,8 @@
         }
       ],
       "availability": "available",
-      "notes": "255 ch (188 kW), RWD, LFP 68.5 kWh"
+      "notes": "255 ch (188 kW), RWD, LFP 68.5 kWh",
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "xpeng-g6-long-range",
@@ -252,37 +253,94 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 400,
-      "chargingDC_10_80_min": 12,
-      "chargingDC_kWh_30min": 70,
+      "chargingDC_peak_kW": 416,
+      "chargingDC_10_80_min": 11,
+      "chargingDC_kWh_30min": 73,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 250
+          "soc": 10,
+          "power": 125
         },
         {
-          "soc": 10,
-          "power": 400
+          "soc": 14,
+          "power": 416
+        },
+        {
+          "soc": 15,
+          "power": 388
+        },
+        {
+          "soc": 20,
+          "power": 360
+        },
+        {
+          "soc": 25,
+          "power": 367
         },
         {
           "soc": 30,
-          "power": 380
+          "power": 367
+        },
+        {
+          "soc": 35,
+          "power": 326
+        },
+        {
+          "soc": 40,
+          "power": 330
+        },
+        {
+          "soc": 45,
+          "power": 309
         },
         {
           "soc": 50,
-          "power": 280
+          "power": 291
+        },
+        {
+          "soc": 55,
+          "power": 295
+        },
+        {
+          "soc": 60,
+          "power": 272
+        },
+        {
+          "soc": 65,
+          "power": 278
+        },
+        {
+          "soc": 70,
+          "power": 262
+        },
+        {
+          "soc": 75,
+          "power": 220
         },
         {
           "soc": 80,
-          "power": 80
+          "power": 192
+        },
+        {
+          "soc": 85,
+          "power": 140
+        },
+        {
+          "soc": 90,
+          "power": 126
+        },
+        {
+          "soc": 95,
+          "power": 84
         },
         {
           "soc": 100,
-          "power": 12
+          "power": 27
         }
       ],
       "availability": "available",
-      "notes": "295 ch (218 kW), RWD"
+      "notes": "295 ch (218 kW), RWD",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "xpeng-g6-performance",
@@ -333,37 +391,94 @@
           "notes": "Essai Nyland « Xpeng G6 Performance 2025 » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 400,
-      "chargingDC_10_80_min": 12,
-      "chargingDC_kWh_30min": 70,
+      "chargingDC_peak_kW": 416,
+      "chargingDC_10_80_min": 11,
+      "chargingDC_kWh_30min": 73,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 250
+          "soc": 10,
+          "power": 125
         },
         {
-          "soc": 10,
-          "power": 400
+          "soc": 14,
+          "power": 416
+        },
+        {
+          "soc": 15,
+          "power": 388
+        },
+        {
+          "soc": 20,
+          "power": 360
+        },
+        {
+          "soc": 25,
+          "power": 367
         },
         {
           "soc": 30,
-          "power": 380
+          "power": 367
+        },
+        {
+          "soc": 35,
+          "power": 326
+        },
+        {
+          "soc": 40,
+          "power": 330
+        },
+        {
+          "soc": 45,
+          "power": 309
         },
         {
           "soc": 50,
-          "power": 280
+          "power": 291
+        },
+        {
+          "soc": 55,
+          "power": 295
+        },
+        {
+          "soc": 60,
+          "power": 272
+        },
+        {
+          "soc": 65,
+          "power": 278
+        },
+        {
+          "soc": 70,
+          "power": 262
+        },
+        {
+          "soc": 75,
+          "power": 220
         },
         {
           "soc": 80,
-          "power": 80
+          "power": 192
+        },
+        {
+          "soc": 85,
+          "power": 140
+        },
+        {
+          "soc": 90,
+          "power": 126
+        },
+        {
+          "soc": 95,
+          "power": 84
         },
         {
           "soc": 100,
-          "power": 12
+          "power": 27
         }
       ],
       "availability": "available",
-      "notes": "485 ch (357 kW), AWD, suspension pneumatique"
+      "notes": "485 ch (357 kW), AWD, suspension pneumatique",
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

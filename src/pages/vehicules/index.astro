@@ -496,10 +496,10 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                 <div
                   id="price-mode-toggle"
                   class="price-toggle-group"
-                  title="* Montants maximaux (ménage précaire + majoration batterie européenne). Coup de pouce CEE 2026, sous conditions de revenus et d'éligibilité ADEME."
+                  title="* Prime CEE de tout ménage (barème indicatif 2026), jusqu'à 5 700 € selon vos revenus. Version éco-scorée ADEME, sous 47 000 € et 2,4 t."
                 >
                   <button class="price-toggle-btn" data-mode="gross" data-active="true">Brut</button>
-                  <button class="price-toggle-btn" data-mode="aided">Après aides max.*</button>
+                  <button class="price-toggle-btn" data-mode="aided">Après prime CEE*</button>
                 </div>
               </div>
             </Tile>
@@ -602,7 +602,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                       {s.cheapestPrice !== null ? (
                         <>
                           <span class="price-mode-gross">Dès</span>
-                          <span class="price-mode-aided">Après aides*</span>
+                          <span class="price-mode-aided">Après prime CEE*</span>
                         </>
                       ) : "Prix"}
                     </span>
@@ -668,7 +668,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
       <div class="flex flex-col gap-3">
         <h3 class="font-display text-base font-semibold text-[var(--color-text)]">2. Comparez le prix après aides, pas le prix catalogue</h3>
         <p>
-          Selon vos revenus, les aides de l'État peuvent faire baisser le prix de plusieurs milliers d'euros. Basculez l'affichage sur "Après aides" pour voir ce que chaque voiture électrique vous coûterait vraiment, primes et bonus déduits, plutôt que le prix affiché en concession.
+          Selon vos revenus, les aides de l'État peuvent faire baisser le prix de plusieurs milliers d'euros. Basculez l'affichage sur « Après prime CEE » pour voir chaque prix diminué de la prime versée à tout ménage, plutôt que le prix affiché en concession ; votre fiche calcule ensuite la prime selon vos revenus.
         </p>
       </div>
       <div class="flex flex-col gap-3">

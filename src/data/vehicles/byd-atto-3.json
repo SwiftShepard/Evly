@@ -35,9 +35,9 @@
   "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.29,
   "chargingDC": {
-    "peakPower_kW": 88,
-    "time_10_80_min": 44,
-    "kWh_added_30min": 35,
+    "peakPower_kW": 146,
+    "time_10_80_min": 25,
+    "kWh_added_30min": 57,
     "confidence": "tested"
   },
   "chargingAC": {
@@ -51,48 +51,84 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 69
+      "soc": 10,
+      "power": 130
     },
     {
-      "soc": 10,
-      "power": 86
+      "soc": 15,
+      "power": 135
     },
     {
       "soc": 20,
-      "power": 87
+      "power": 138
+    },
+    {
+      "soc": 25,
+      "power": 143
     },
     {
       "soc": 30,
-      "power": 80
+      "power": 143
+    },
+    {
+      "soc": 31,
+      "power": 146
+    },
+    {
+      "soc": 35,
+      "power": 145
     },
     {
       "soc": 40,
-      "power": 51
+      "power": 139
+    },
+    {
+      "soc": 45,
+      "power": 139
     },
     {
       "soc": 50,
-      "power": 58
+      "power": 138
+    },
+    {
+      "soc": 55,
+      "power": 139
     },
     {
       "soc": 60,
-      "power": 58
+      "power": 136
+    },
+    {
+      "soc": 65,
+      "power": 125
     },
     {
       "soc": 70,
-      "power": 59
+      "power": 116
+    },
+    {
+      "soc": 75,
+      "power": 82
     },
     {
       "soc": 80,
-      "power": 52
+      "power": 73
+    },
+    {
+      "soc": 85,
+      "power": 40
     },
     {
       "soc": 90,
-      "power": 33
+      "power": 35
+    },
+    {
+      "soc": 95,
+      "power": 29
     },
     {
       "soc": 100,
-      "power": 3
+      "power": 12
     }
   ],
   "rangeTests": [],
@@ -161,36 +197,97 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 88,
-      "chargingDC_10_80_min": 44,
-      "chargingDC_kWh_30min": 35,
+      "chargingDC_peak_kW": 146,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 57,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 68
+          "soc": 10,
+          "power": 130
         },
         {
-          "soc": 10,
-          "power": 88
+          "soc": 15,
+          "power": 135
+        },
+        {
+          "soc": 20,
+          "power": 138
+        },
+        {
+          "soc": 25,
+          "power": 143
+        },
+        {
+          "soc": 30,
+          "power": 143
+        },
+        {
+          "soc": 31,
+          "power": 146
+        },
+        {
+          "soc": 35,
+          "power": 145
+        },
+        {
+          "soc": 40,
+          "power": 139
+        },
+        {
+          "soc": 45,
+          "power": 139
         },
         {
           "soc": 50,
-          "power": 68
+          "power": 138
+        },
+        {
+          "soc": 55,
+          "power": 139
+        },
+        {
+          "soc": 60,
+          "power": 136
+        },
+        {
+          "soc": 65,
+          "power": 125
+        },
+        {
+          "soc": 70,
+          "power": 116
+        },
+        {
+          "soc": 75,
+          "power": 82
         },
         {
           "soc": 80,
-          "power": 34
+          "power": 73
+        },
+        {
+          "soc": 85,
+          "power": 40
+        },
+        {
+          "soc": 90,
+          "power": 35
+        },
+        {
+          "soc": 95,
+          "power": 29
         },
         {
           "soc": 100,
-          "power": 7
+          "power": 12
         }
       ],
       "availability": "available",
       "notes": null,
       "usableCapacity_kWh": 74.8,
       "power_hp": 313,
-      "power_kW": 230
+      "power_kW": 230,
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "byd-atto-3-excellence",
@@ -213,36 +310,97 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 88,
-      "chargingDC_10_80_min": 44,
-      "chargingDC_kWh_30min": 35,
+      "chargingDC_peak_kW": 146,
+      "chargingDC_10_80_min": 25,
+      "chargingDC_kWh_30min": 57,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 68
+          "soc": 10,
+          "power": 130
         },
         {
-          "soc": 10,
-          "power": 88
+          "soc": 15,
+          "power": 135
+        },
+        {
+          "soc": 20,
+          "power": 138
+        },
+        {
+          "soc": 25,
+          "power": 143
+        },
+        {
+          "soc": 30,
+          "power": 143
+        },
+        {
+          "soc": 31,
+          "power": 146
+        },
+        {
+          "soc": 35,
+          "power": 145
+        },
+        {
+          "soc": 40,
+          "power": 139
+        },
+        {
+          "soc": 45,
+          "power": 139
         },
         {
           "soc": 50,
-          "power": 68
+          "power": 138
+        },
+        {
+          "soc": 55,
+          "power": 139
+        },
+        {
+          "soc": 60,
+          "power": 136
+        },
+        {
+          "soc": 65,
+          "power": 125
+        },
+        {
+          "soc": 70,
+          "power": 116
+        },
+        {
+          "soc": 75,
+          "power": 82
         },
         {
           "soc": 80,
-          "power": 34
+          "power": 73
+        },
+        {
+          "soc": 85,
+          "power": 40
+        },
+        {
+          "soc": 90,
+          "power": 35
+        },
+        {
+          "soc": 95,
+          "power": 29
         },
         {
           "soc": 100,
-          "power": 7
+          "power": 12
         }
       ],
       "availability": "available",
       "notes": null,
       "usableCapacity_kWh": 74.8,
       "power_hp": 448,
-      "power_kW": 330
+      "power_kW": 330,
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

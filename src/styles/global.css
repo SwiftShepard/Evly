@@ -424,7 +424,7 @@
 
   /* Règles d'une liste qui apparaît au défilement : remplissage en cascade (--i = rang) */
   @media (prefers-reduced-motion: no-preference) {
-    .reveal:not(.revealed) .rail[data-reveal] .rail-bar {
+    .reveal-on .reveal:not(.revealed) .rail[data-reveal] .rail-bar {
       clip-path: inset(-14px 100% -14px 0);
     }
     .rail[data-reveal] .rail-bar {
@@ -876,9 +876,12 @@
 
   /* --------------------------------------------------------------- */
   /* Apparition au défilement (IntersectionObserver)                 */
+  /* Visible par défaut : un bloc n'est caché avant son animation     */
+  /* que sous html.reveal-on, posé par le script en ligne du <head>   */
+  /* (navigateur capable, mouvement non réduit), cf. BaseLayout.      */
   /* --------------------------------------------------------------- */
 
-  .reveal {
+  .reveal-on .reveal {
     opacity: 0;
     transform: translateY(16px);
     transition:
@@ -886,7 +889,7 @@
       transform 0.7s var(--ease-out-expo);
   }
 
-  .reveal.revealed {
+  .reveal-on .reveal.revealed {
     opacity: 1;
     transform: translateY(0);
   }
@@ -900,34 +903,34 @@
   .reveal-stagger > .reveal:nth-child(6) { transition-delay: 250ms; }
   .reveal-stagger > .reveal:nth-child(n+7) { transition-delay: 300ms; }
 
-  .reveal-fade {
+  .reveal-on .reveal-fade {
     opacity: 0;
     transition: opacity 0.7s var(--ease-out-expo);
   }
-  .reveal-fade.revealed {
+  .reveal-on .reveal-fade.revealed {
     opacity: 1;
   }
 
-  .reveal-scale {
+  .reveal-on .reveal-scale {
     opacity: 0;
     transform: scale(0.97);
     transition:
       opacity 0.6s var(--ease-out-expo),
       transform 0.6s var(--ease-out-expo);
   }
-  .reveal-scale.revealed {
+  .reveal-on .reveal-scale.revealed {
     opacity: 1;
     transform: scale(1);
   }
 
-  .reveal-slide-left {
+  .reveal-on .reveal-slide-left {
     opacity: 0;
     transform: translateX(-20px);
     transition:
       opacity 0.6s var(--ease-out-expo),
       transform 0.6s var(--ease-out-expo);
   }
-  .reveal-slide-left.revealed {
+  .reveal-on .reveal-slide-left.revealed {
     opacity: 1;
     transform: translateX(0);
   }

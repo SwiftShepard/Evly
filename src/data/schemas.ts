@@ -181,6 +181,9 @@ const VehicleConfigurationSchema = z.object({
   chargingDC_10_80_min: z.number().int().nonnegative().nullable(),
   chargingDC_kWh_30min: z.number().int().nonnegative().nullable(),
   chargingCurve: z.array(ChargingCurvePointSchema).nullable(),
+  // Origine des valeurs de recharge de cette version (« tested » : courbe relevée par Nyland) ;
+  // absente, la confiance du modèle s'applique
+  chargingDC_confidence: ConfidenceSchema.optional(),
 
   // Métadonnées
   availability: z.enum(["available", "discontinued", "upcoming"]).default("available"),

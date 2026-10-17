@@ -170,7 +170,8 @@
       "chargingDC_kWh_30min": 30,
       "chargingCurve": null,
       "availability": "available",
-      "notes": "Taille M, 50 kWh standard"
+      "notes": "Taille M, 50 kWh standard",
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "citroen-e-spacetourer-business-75-m",
@@ -221,12 +222,82 @@
           "notes": "Essai Nyland « Citroen e-Spacetourer » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 100,
-      "chargingDC_10_80_min": 45,
+      "chargingDC_peak_kW": 98,
+      "chargingDC_10_80_min": 37,
       "chargingDC_kWh_30min": 40,
-      "chargingCurve": null,
+      "chargingCurve": [
+        {
+          "soc": 10,
+          "power": 98
+        },
+        {
+          "soc": 15,
+          "power": 98
+        },
+        {
+          "soc": 20,
+          "power": 98
+        },
+        {
+          "soc": 25,
+          "power": 93
+        },
+        {
+          "soc": 30,
+          "power": 94
+        },
+        {
+          "soc": 35,
+          "power": 75
+        },
+        {
+          "soc": 40,
+          "power": 76
+        },
+        {
+          "soc": 45,
+          "power": 76
+        },
+        {
+          "soc": 50,
+          "power": 77
+        },
+        {
+          "soc": 55,
+          "power": 67
+        },
+        {
+          "soc": 60,
+          "power": 68
+        },
+        {
+          "soc": 65,
+          "power": 69
+        },
+        {
+          "soc": 70,
+          "power": 69
+        },
+        {
+          "soc": 75,
+          "power": 70
+        },
+        {
+          "soc": 80,
+          "power": 71
+        },
+        {
+          "soc": 85,
+          "power": 42
+        },
+        {
+          "soc": 90,
+          "power": 42
+        }
+      ],
       "availability": "available",
-      "notes": "Taille M, grande autonomie"
+      "notes": "Taille M, grande autonomie",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "citroen-e-spacetourer-business-75-xl",
@@ -277,12 +348,82 @@
           "notes": "Essai Nyland « Citroen e-Spacetourer » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 100,
-      "chargingDC_10_80_min": 45,
+      "chargingDC_peak_kW": 98,
+      "chargingDC_10_80_min": 37,
       "chargingDC_kWh_30min": 40,
-      "chargingCurve": null,
+      "chargingCurve": [
+        {
+          "soc": 10,
+          "power": 98
+        },
+        {
+          "soc": 15,
+          "power": 98
+        },
+        {
+          "soc": 20,
+          "power": 98
+        },
+        {
+          "soc": 25,
+          "power": 93
+        },
+        {
+          "soc": 30,
+          "power": 94
+        },
+        {
+          "soc": 35,
+          "power": 75
+        },
+        {
+          "soc": 40,
+          "power": 76
+        },
+        {
+          "soc": 45,
+          "power": 76
+        },
+        {
+          "soc": 50,
+          "power": 77
+        },
+        {
+          "soc": 55,
+          "power": 67
+        },
+        {
+          "soc": 60,
+          "power": 68
+        },
+        {
+          "soc": 65,
+          "power": 69
+        },
+        {
+          "soc": 70,
+          "power": 69
+        },
+        {
+          "soc": 75,
+          "power": 70
+        },
+        {
+          "soc": 80,
+          "power": 71
+        },
+        {
+          "soc": 85,
+          "power": 42
+        },
+        {
+          "soc": 90,
+          "power": 42
+        }
+      ],
       "availability": "available",
-      "notes": "Taille XL 9 places, grande autonomie"
+      "notes": "Taille XL 9 places, grande autonomie",
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

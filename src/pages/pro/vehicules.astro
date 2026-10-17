@@ -10,6 +10,7 @@ import { formatPrice } from "@/lib/format";
 import { url } from "@/lib/url";
 import FavoriteButton from "@/components/ui/FavoriteButton";
 import type { Vehicle } from "@/data/schemas";
+import { isVehicleEligibleCEE, CEE_BASE_EUR } from "@/lib/cee";
 
 // Véhicules considérés comme utilitaires / professionnels (flottes, navette VIP, ludospaces pro, vans Combi)
 const UTILITY_SLUGS = new Set([
@@ -304,20 +305,17 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                 <div
                   id="price-mode-toggle"
                   class="price-toggle-group"
-                  title="* Montants maximaux (menage precaire + surbonus batterie UE). Coup de pouce CEE 2026, sous conditions de revenus et d'eligibilite ADEME."
+                  title="* Prime CEE d'un entrepreneur individuel (personne physique, barème indicatif 2026 de tout ménage). Une société ne touche qu'une prime de quelques centaines d'euros."
                 >
                   <button class="price-toggle-btn" data-mode="gross" data-active="true">Brut</button>
-                  <button class="price-toggle-btn" data-mode="aided">Après aides max.*</button>
+                  <button class="price-toggle-btn" data-mode="aided">Après prime CEE*</button>
                 </div>
               </div>
             </Tile>
 
         {vehicles.map((v) => {
           const cheapest = v.trims.reduce((a, b) => (a.price_EUR < b.price_EUR ? a : b));
-          const totalAids = Math.min(
-            8100,
-            v.availableAids.reduce((s, a) => s + a.amount_EUR, 0)
-          );
+          const totalAids = isVehicleEligibleCEE(v, cheapest.price_EUR) ? CEE_BASE_EUR : 0;
           const priceAided = Math.max(0, cheapest.price_EUR - totalAids);
           const category = getCategory(v);
           
@@ -387,7 +385,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                   <div class="flex flex-col gap-1 text-right items-end">
                     <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-text-faint)]">
                       <span class="price-mode-gross">Dès</span>
-                      <span class="price-mode-aided">Après aides max.*</span>
+                      <span class="price-mode-aided">Après prime CEE*</span>
                     </span>
                     <div class="price-mode-gross flex items-baseline justify-end gap-1">
                       <span data-numeric class="display-stat text-2xl md:text-3xl">{formatPrice(cheapest.price_EUR)}</span>

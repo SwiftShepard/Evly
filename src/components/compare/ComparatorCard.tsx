@@ -6,7 +6,7 @@ import ChargingSparkline from "./ChargingSparkline";
 import AnimatedNumber from "@/components/ui/AnimatedNumber";
 import SohSlider from "@/components/vehicle/SohSlider";
 import { url } from "@/lib/url";
-import { calculateCeeAid } from "@/lib/cee";
+import { ceeForProfile, CEE_MAX_EUR } from "@/lib/cee";
 import { useUserProfile } from "@/lib/userProfile";
 import { X } from "lucide-react";
 import { getLocalVehicleImageUrl } from "@/lib/vehicleImages";
@@ -47,16 +47,8 @@ export default function ComparatorCard({
   const [configCollapsed, setConfigCollapsed] = useState(isMobile);
   const [detailsExpanded, setDetailsExpanded] = useState(!isMobile);
 
-  // Total aids (estimation personnalisée ou aides max)
-  const totalAids = useMemo(() => {
-    return calculateCeeAid({
-      vehicle,
-      price: config.price_EUR,
-      profileType: profile.hasConfigured ? profile.profileType : "particular",
-      householdSize: profile.hasConfigured ? profile.householdSize : 1,
-      taxIncome: profile.hasConfigured ? profile.taxIncome : 10000, // force "precarite" pour afficher l'aide max par défaut
-    }).amount;
-  }, [vehicle, config.price_EUR, profile]);
+  // Prime CEE : profil du visiteur, sinon prime de tout ménage (même chiffre que la fiche)
+  const totalAids = useMemo(() => ceeForProfile(vehicle, config.price_EUR, profile).amount, [vehicle, config.price_EUR, profile]);
   const netPrice = config.price_EUR !== null ? Math.max(0, config.price_EUR - totalAids) : 0;
 
   // Autonomie réelle : même valeur que la fiche (moyenne des mesures Nyland 90/120 km/h, sinon estimation)
@@ -417,15 +409,19 @@ export default function ComparatorCard({
               </div>
               {totalAids > 0 && (
                 <>
-                  <span className="font-mono text-[10px]" style={{ color: "var(--color-text-faint)" }}>
-                    CEE max.* : −<AnimatedNumber value={totalAids} format={fmtPrice} />
+                  <span
+                    className="font-mono text-[10px]"
+                    style={{ color: "var(--color-text-faint)" }}
+                    title={`Barème indicatif 2026 du coup de pouce CEE. ${profile.hasConfigured ? "Calculé avec votre profil fiscal." : `Prime de tout ménage ; jusqu'à ${fmtPrice(CEE_MAX_EUR)} selon vos revenus.`}`}
+                  >
+                    {profile.hasConfigured ? "Votre prime CEE" : "Prime CEE tout ménage"} : −<AnimatedNumber value={totalAids} format={fmtPrice} />
                   </span>
                   <div className="flex items-baseline gap-2">
                     <span className="text-lg font-semibold tabular-nums" style={{ color: bestMetrics?.netPrice ? "var(--color-accent)" : "var(--color-text)" }}>
                       <AnimatedNumber value={netPrice} format={fmtPrice} />
                     </span>
                     <span className="font-mono text-[10px]" style={{ color: "var(--color-text-faint)" }}>
-                      apres coup de pouce CEE max.*
+                      après prime CEE
                     </span>
                     {bestMetrics?.netPrice && (
                       <span

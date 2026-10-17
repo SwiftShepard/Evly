@@ -9,7 +9,7 @@ import {
 } from "@/lib/seo";
 import { isStrictUtility } from "@/lib/vehicles";
 import { formatPrice } from "@/lib/format";
-import { MAX_TOTAL_AIDS_EUR } from "@/lib/vehicleCard";
+import { CEE_BASE_EUR, CEE_MAX_EUR, CEE_SCALE_YEAR } from "@/lib/cee";
 
 /**
  * Pages « sélections » (/voitures-electriques/{slug}/) : une intention de recherche
@@ -129,7 +129,7 @@ export const CATEGORIES: VehicleCategory[] = [
       `Les ${l.length} voitures électriques neuves à moins de 30 000 € en France, dès ${eur(price(l[0]!))}. Prix après aides, autonomie réelle et recharge comparés.`,
     intro: (l) => [
       `Rouler en électrique ne demande plus un budget de berline premium : ${l.length} voitures électriques neuves sont vendues moins de 30 000 € en France en ${SEO_YEAR}, à commencer par ${withArticle(l[0]!)} à ${eur(price(l[0]!))}. Citadines, petits SUV et compactes : la liste ci-dessous est classée du prix catalogue le plus bas au plus élevé.`,
-      `Le prix affiché n'est qu'un point de départ. Selon vos revenus, le coup de pouce CEE peut retirer jusqu'à ${eur(MAX_TOTAL_AIDS_EUR)} sur les modèles éligibles, et le leasing social ouvre certaines citadines à moins de 150 € par mois. À l'inverse, sur une petite batterie, l'écart entre l'autonomie WLTP et l'autonomie réelle se ressent vite : c'est cette dernière que nous affichons.`,
+      `Le prix affiché n'est qu'un point de départ. Sur les modèles éligibles, le coup de pouce CEE retire ${eur(CEE_BASE_EUR)} pour tout ménage et jusqu'à ${eur(CEE_MAX_EUR)} selon vos revenus, et le leasing social ouvre certaines citadines à moins de 150 € par mois. À l'inverse, sur une petite batterie, l'écart entre l'autonomie WLTP et l'autonomie réelle se ressent vite : c'est cette dernière que nous affichons.`,
     ],
     faq: (l) => {
       const cheapest = l[0]!;
@@ -149,8 +149,8 @@ export const CATEGORIES: VehicleCategory[] = [
           question: "Peut-on acheter une voiture électrique neuve à moins de 20 000 € ?",
           answer:
             under20.length > 0
-              ? `Oui : ${under20.length} modèle${under20.length > 1 ? "s sont vendus" : " est vendu"} moins de 20 000 € au prix catalogue (${listNames(under20, 3)}). Après aides maximales, ${under20Aided.length} modèles passent sous ce seuil.`
-              : `Pas au prix catalogue, mais après aides maximales ${under20Aided.length} modèles passent sous les 20 000 €.`,
+              ? `Oui : ${under20.length} modèle${under20.length > 1 ? "s sont vendus" : " est vendu"} moins de 20 000 € au prix catalogue (${listNames(under20, 3)}). Avec la prime CEE de tout ménage, ${under20Aided.length} modèles passent sous ce seuil.`
+              : `Pas au prix catalogue, mais avec la prime CEE de tout ménage ${under20Aided.length} modèles passent sous les 20 000 €.`,
         },
       ];
     },
@@ -506,17 +506,17 @@ export const CATEGORIES: VehicleCategory[] = [
       `Les ${l.length} voitures électriques éligibles à la prime CEE en ${SEO_YEAR}, classées par prix après aides : dès ${eur(aided(l[0]!))}. Conditions, montants et autonomie réelle.`,
     intro: (l) => [
       `Le coup de pouce CEE finance l'achat d'une voiture électrique neuve sous trois conditions : un score environnemental ADEME d'au moins 60/100, un prix inférieur à 47 000 € et une masse sous 2,4 tonnes. ${l.length} modèles de notre catalogue les remplissent pour au moins une de leurs versions.`,
-      `Le montant dépend de vos revenus : jusqu'à ${eur(MAX_TOTAL_AIDS_EUR)} cumulés pour les ménages les plus modestes, majoration batterie européenne comprise. Le classement ci-dessous part du prix de la version d'entrée diminué de l'aide maximale. La demande se fait avant la signature du bon de commande.`,
+      `Le montant dépend de vos revenus : ${eur(CEE_BASE_EUR)} pour tout ménage, jusqu'à ${eur(CEE_MAX_EUR)} en situation de précarité (barème indicatif ${CEE_SCALE_YEAR}, variable selon l'organisme qui la verse), plus une bonification batterie européenne sur certaines versions. Le classement ci-dessous part du prix de la version d'entrée diminué de la prime de tout ménage. La demande se fait avant la signature du bon de commande.`,
     ],
     faq: (l) => [
       {
         question: "Quelles sont les conditions de la prime CEE pour une voiture électrique ?",
         answer:
-          "La voiture doit être neuve, 100 % électrique, avoir un score environnemental ADEME d'au moins 60/100, coûter moins de 47 000 € et peser moins de 2,4 tonnes. Le montant varie ensuite selon le revenu fiscal de référence par part du foyer.",
+          "La voiture doit être neuve, 100 % électrique, avoir un score environnemental ADEME d'au moins 60/100, coûter moins de 47 000 € et peser moins de 2,4 tonnes. Le montant varie ensuite selon le revenu fiscal de référence et la taille du foyer.",
       },
       {
         question: "Quelle est la voiture électrique la moins chère après la prime CEE ?",
-        answer: `${cap(withArticle(l[0]!))} est la moins chère après aides maximales : ${eur(aided(l[0]!))} au lieu de ${eur(price(l[0]!))}.`,
+        answer: `${cap(withArticle(l[0]!))} est la moins chère avec la prime de tout ménage : ${eur(aided(l[0]!))} au lieu de ${eur(price(l[0]!))}.`,
       },
       {
         question: "Comment obtenir la prime CEE ?",

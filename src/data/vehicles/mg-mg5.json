@@ -36,9 +36,9 @@
   "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.29,
   "chargingDC": {
-    "peakPower_kW": 87,
-    "time_10_80_min": 40,
-    "kWh_added_30min": 35,
+    "peakPower_kW": 93,
+    "time_10_80_min": 31,
+    "kWh_added_30min": 39,
     "confidence": "tested"
   },
   "chargingAC": {
@@ -52,24 +52,72 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 67
+      "soc": 10,
+      "power": 84
     },
     {
-      "soc": 10,
-      "power": 87
+      "soc": 15,
+      "power": 90
+    },
+    {
+      "soc": 20,
+      "power": 90
+    },
+    {
+      "soc": 25,
+      "power": 89
+    },
+    {
+      "soc": 30,
+      "power": 92
+    },
+    {
+      "soc": 35,
+      "power": 93
+    },
+    {
+      "soc": 40,
+      "power": 93
+    },
+    {
+      "soc": 45,
+      "power": 88
     },
     {
       "soc": 50,
+      "power": 82
+    },
+    {
+      "soc": 55,
+      "power": 77
+    },
+    {
+      "soc": 60,
+      "power": 69
+    },
+    {
+      "soc": 65,
       "power": 67
     },
     {
-      "soc": 80,
-      "power": 33
+      "soc": 70,
+      "power": 61
     },
     {
-      "soc": 100,
-      "power": 7
+      "soc": 75,
+      "power": 57
+    },
+    {
+      "soc": 80,
+      "power": 51
+    },
+    {
+      "soc": 85,
+      "power": 36
+    },
+    {
+      "soc": 90,
+      "power": 21
     }
   ],
   "rangeTests": [
@@ -191,7 +239,8 @@
         }
       ],
       "availability": "discontinued",
-      "notes": "156 ch (115 kW), FWD"
+      "notes": "156 ch (115 kW), FWD",
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "mg-mg5-luxury-50",
@@ -240,7 +289,8 @@
         }
       ],
       "availability": "discontinued",
-      "notes": "156 ch (115 kW), FWD, full options"
+      "notes": "156 ch (115 kW), FWD, full options",
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "mg-mg5-luxury-61",
@@ -291,33 +341,82 @@
           "notes": "Essai Nyland « MG5 » (hiver, route humide)."
         }
       ],
-      "chargingDC_peak_kW": 87,
-      "chargingDC_10_80_min": 40,
-      "chargingDC_kWh_30min": 35,
+      "chargingDC_peak_kW": 93,
+      "chargingDC_10_80_min": 31,
+      "chargingDC_kWh_30min": 39,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 67
+          "soc": 10,
+          "power": 84
         },
         {
-          "soc": 10,
-          "power": 87
+          "soc": 15,
+          "power": 90
+        },
+        {
+          "soc": 20,
+          "power": 90
+        },
+        {
+          "soc": 25,
+          "power": 89
+        },
+        {
+          "soc": 30,
+          "power": 92
+        },
+        {
+          "soc": 35,
+          "power": 93
+        },
+        {
+          "soc": 40,
+          "power": 93
+        },
+        {
+          "soc": 45,
+          "power": 88
         },
         {
           "soc": 50,
+          "power": 82
+        },
+        {
+          "soc": 55,
+          "power": 77
+        },
+        {
+          "soc": 60,
+          "power": 69
+        },
+        {
+          "soc": 65,
           "power": 67
         },
         {
-          "soc": 80,
-          "power": 33
+          "soc": 70,
+          "power": 61
         },
         {
-          "soc": 100,
-          "power": 7
+          "soc": 75,
+          "power": 57
+        },
+        {
+          "soc": 80,
+          "power": 51
+        },
+        {
+          "soc": 85,
+          "power": 36
+        },
+        {
+          "soc": 90,
+          "power": 21
         }
       ],
       "availability": "discontinued",
-      "notes": "156 ch (115 kW), FWD, full options"
+      "notes": "156 ch (115 kW), FWD, full options",
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

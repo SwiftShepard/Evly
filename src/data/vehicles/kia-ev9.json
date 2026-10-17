@@ -36,9 +36,9 @@
   "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.28,
   "chargingDC": {
-    "peakPower_kW": 210,
+    "peakPower_kW": 208,
     "time_10_80_min": 24,
-    "kWh_added_30min": 70,
+    "kWh_added_30min": 75,
     "confidence": "tested"
   },
   "chargingAC": {
@@ -52,23 +52,35 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 58
-    },
-    {
       "soc": 10,
       "power": 72
+    },
+    {
+      "soc": 15,
+      "power": 191
     },
     {
       "soc": 20,
       "power": 194
     },
     {
+      "soc": 25,
+      "power": 197
+    },
+    {
       "soc": 30,
       "power": 197
     },
     {
+      "soc": 35,
+      "power": 199
+    },
+    {
       "soc": 40,
+      "power": 201
+    },
+    {
+      "soc": 45,
       "power": 201
     },
     {
@@ -76,24 +88,44 @@
       "power": 205
     },
     {
+      "soc": 55,
+      "power": 208
+    },
+    {
       "soc": 60,
       "power": 193
+    },
+    {
+      "soc": 65,
+      "power": 182
     },
     {
       "soc": 70,
       "power": 165
     },
     {
+      "soc": 75,
+      "power": 130
+    },
+    {
       "soc": 80,
       "power": 74
+    },
+    {
+      "soc": 85,
+      "power": 38
     },
     {
       "soc": 90,
       "power": 38
     },
     {
+      "soc": 95,
+      "power": 35
+    },
+    {
       "soc": 100,
-      "power": 4
+      "power": 14
     }
   ],
   "rangeTests": [
@@ -237,7 +269,8 @@
       "notes": "Autonomie standard 76,1 kWh, 218 ch",
       "usableCapacity_kWh": 76.1,
       "power_hp": 218,
-      "power_kW": 160
+      "power_kW": 160,
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "kia-ev9-air",
@@ -260,33 +293,90 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 210,
+      "chargingDC_peak_kW": 208,
       "chargingDC_10_80_min": 24,
-      "chargingDC_kWh_30min": 70,
+      "chargingDC_kWh_30min": 75,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 72
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 191
+        },
+        {
+          "soc": 20,
+          "power": 194
+        },
+        {
+          "soc": 25,
+          "power": 197
+        },
+        {
+          "soc": 30,
+          "power": 197
+        },
+        {
+          "soc": 35,
+          "power": 199
+        },
+        {
+          "soc": 40,
+          "power": 201
+        },
+        {
+          "soc": 45,
+          "power": 201
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 205
+        },
+        {
+          "soc": 55,
+          "power": 208
+        },
+        {
+          "soc": 60,
+          "power": 193
+        },
+        {
+          "soc": 65,
+          "power": 182
+        },
+        {
+          "soc": 70,
+          "power": 165
+        },
+        {
+          "soc": 75,
+          "power": 130
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 74
+        },
+        {
+          "soc": 85,
+          "power": 38
+        },
+        {
+          "soc": 90,
+          "power": 38
+        },
+        {
+          "soc": 95,
+          "power": 35
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 14
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "kia-ev9-earth",
@@ -309,33 +399,90 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 210,
+      "chargingDC_peak_kW": 208,
       "chargingDC_10_80_min": 24,
-      "chargingDC_kWh_30min": 70,
+      "chargingDC_kWh_30min": 75,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 72
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 191
+        },
+        {
+          "soc": 20,
+          "power": 194
+        },
+        {
+          "soc": 25,
+          "power": 197
+        },
+        {
+          "soc": 30,
+          "power": 197
+        },
+        {
+          "soc": 35,
+          "power": 199
+        },
+        {
+          "soc": 40,
+          "power": 201
+        },
+        {
+          "soc": 45,
+          "power": 201
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 205
+        },
+        {
+          "soc": 55,
+          "power": 208
+        },
+        {
+          "soc": 60,
+          "power": 193
+        },
+        {
+          "soc": 65,
+          "power": 182
+        },
+        {
+          "soc": 70,
+          "power": 165
+        },
+        {
+          "soc": 75,
+          "power": 130
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 74
+        },
+        {
+          "soc": 85,
+          "power": 38
+        },
+        {
+          "soc": 90,
+          "power": 38
+        },
+        {
+          "soc": 95,
+          "power": 35
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 14
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "kia-ev9-gt-line",
@@ -386,33 +533,90 @@
           "notes": "Essai Nyland « Kia EV9 GT-Line » (hiver, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 210,
+      "chargingDC_peak_kW": 208,
       "chargingDC_10_80_min": 24,
-      "chargingDC_kWh_30min": 70,
+      "chargingDC_kWh_30min": 75,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 72
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 191
+        },
+        {
+          "soc": 20,
+          "power": 194
+        },
+        {
+          "soc": 25,
+          "power": 197
+        },
+        {
+          "soc": 30,
+          "power": 197
+        },
+        {
+          "soc": 35,
+          "power": 199
+        },
+        {
+          "soc": 40,
+          "power": 201
+        },
+        {
+          "soc": 45,
+          "power": 201
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 205
+        },
+        {
+          "soc": 55,
+          "power": 208
+        },
+        {
+          "soc": 60,
+          "power": 193
+        },
+        {
+          "soc": 65,
+          "power": 182
+        },
+        {
+          "soc": 70,
+          "power": 165
+        },
+        {
+          "soc": 75,
+          "power": 130
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 74
+        },
+        {
+          "soc": 85,
+          "power": 38
+        },
+        {
+          "soc": 90,
+          "power": 38
+        },
+        {
+          "soc": 95,
+          "power": 35
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 14
         }
       ],
       "availability": "available",
-      "notes": "Jantes 21\" reduisent l'autonomie WLTP"
+      "notes": "Jantes 21\" reduisent l'autonomie WLTP",
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

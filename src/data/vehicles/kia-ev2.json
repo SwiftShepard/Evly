@@ -36,10 +36,10 @@
   "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.28,
   "chargingDC": {
-    "peakPower_kW": 118,
+    "peakPower_kW": 111,
     "time_10_80_min": 30,
     "kWh_added_30min": 43,
-    "confidence": "manufacturer"
+    "confidence": "tested"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
@@ -52,24 +52,76 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 80
+      "soc": 10,
+      "power": 58
     },
     {
-      "soc": 10,
-      "power": 118
+      "soc": 15,
+      "power": 106
+    },
+    {
+      "soc": 20,
+      "power": 108
+    },
+    {
+      "soc": 25,
+      "power": 109
+    },
+    {
+      "soc": 30,
+      "power": 110
+    },
+    {
+      "soc": 34,
+      "power": 111
+    },
+    {
+      "soc": 35,
+      "power": 111
+    },
+    {
+      "soc": 40,
+      "power": 101
+    },
+    {
+      "soc": 45,
+      "power": 96
     },
     {
       "soc": 50,
-      "power": 80
+      "power": 90
+    },
+    {
+      "soc": 55,
+      "power": 84
+    },
+    {
+      "soc": 60,
+      "power": 85
+    },
+    {
+      "soc": 65,
+      "power": 79
+    },
+    {
+      "soc": 70,
+      "power": 72
+    },
+    {
+      "soc": 75,
+      "power": 58
     },
     {
       "soc": 80,
-      "power": 40
+      "power": 43
     },
     {
-      "soc": 100,
-      "power": 8
+      "soc": 85,
+      "power": 43
+    },
+    {
+      "soc": 90,
+      "power": 33
     }
   ],
   "rangeTests": [
@@ -191,7 +243,7 @@
   "availableAids": [
     {
       "label": "Prime CEE",
-      "amount_EUR": 6500,
+      "amount_EUR": 5700,
       "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
     },
     {
@@ -248,7 +300,8 @@
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "manufacturer"
     },
     {
       "id": "kia-ev2-air-42",
@@ -297,7 +350,8 @@
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "manufacturer"
     },
     {
       "id": "kia-ev2-earth-42",
@@ -346,7 +400,8 @@
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "manufacturer"
     },
     {
       "id": "kia-ev2-air-61",
@@ -397,33 +452,86 @@
           "notes": "Essai Nyland « Kia EV2 Long Range » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 118,
+      "chargingDC_peak_kW": 111,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 43,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 80
+          "soc": 10,
+          "power": 58
         },
         {
-          "soc": 10,
-          "power": 118
+          "soc": 15,
+          "power": 106
+        },
+        {
+          "soc": 20,
+          "power": 108
+        },
+        {
+          "soc": 25,
+          "power": 109
+        },
+        {
+          "soc": 30,
+          "power": 110
+        },
+        {
+          "soc": 34,
+          "power": 111
+        },
+        {
+          "soc": 35,
+          "power": 111
+        },
+        {
+          "soc": 40,
+          "power": 101
+        },
+        {
+          "soc": 45,
+          "power": 96
         },
         {
           "soc": 50,
-          "power": 80
+          "power": 90
+        },
+        {
+          "soc": 55,
+          "power": 84
+        },
+        {
+          "soc": 60,
+          "power": 85
+        },
+        {
+          "soc": 65,
+          "power": 79
+        },
+        {
+          "soc": 70,
+          "power": 72
+        },
+        {
+          "soc": 75,
+          "power": 58
         },
         {
           "soc": 80,
-          "power": 40
+          "power": 43
         },
         {
-          "soc": 100,
-          "power": 8
+          "soc": 85,
+          "power": 43
+        },
+        {
+          "soc": 90,
+          "power": 33
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "kia-ev2-earth-61",
@@ -474,33 +582,86 @@
           "notes": "Essai Nyland « Kia EV2 Long Range » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 118,
+      "chargingDC_peak_kW": 111,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 43,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 80
+          "soc": 10,
+          "power": 58
         },
         {
-          "soc": 10,
-          "power": 118
+          "soc": 15,
+          "power": 106
+        },
+        {
+          "soc": 20,
+          "power": 108
+        },
+        {
+          "soc": 25,
+          "power": 109
+        },
+        {
+          "soc": 30,
+          "power": 110
+        },
+        {
+          "soc": 34,
+          "power": 111
+        },
+        {
+          "soc": 35,
+          "power": 111
+        },
+        {
+          "soc": 40,
+          "power": 101
+        },
+        {
+          "soc": 45,
+          "power": 96
         },
         {
           "soc": 50,
-          "power": 80
+          "power": 90
+        },
+        {
+          "soc": 55,
+          "power": 84
+        },
+        {
+          "soc": 60,
+          "power": 85
+        },
+        {
+          "soc": 65,
+          "power": 79
+        },
+        {
+          "soc": 70,
+          "power": 72
+        },
+        {
+          "soc": 75,
+          "power": 58
         },
         {
           "soc": 80,
-          "power": 40
+          "power": 43
         },
         {
-          "soc": 100,
-          "power": 8
+          "soc": 85,
+          "power": 43
+        },
+        {
+          "soc": 90,
+          "power": 33
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "kia-ev2-gt-line-61",
@@ -523,33 +684,86 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 118,
+      "chargingDC_peak_kW": 111,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 43,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 80
+          "soc": 10,
+          "power": 58
         },
         {
-          "soc": 10,
-          "power": 118
+          "soc": 15,
+          "power": 106
+        },
+        {
+          "soc": 20,
+          "power": 108
+        },
+        {
+          "soc": 25,
+          "power": 109
+        },
+        {
+          "soc": 30,
+          "power": 110
+        },
+        {
+          "soc": 34,
+          "power": 111
+        },
+        {
+          "soc": 35,
+          "power": 111
+        },
+        {
+          "soc": 40,
+          "power": 101
+        },
+        {
+          "soc": 45,
+          "power": 96
         },
         {
           "soc": 50,
-          "power": 80
+          "power": 90
+        },
+        {
+          "soc": 55,
+          "power": 84
+        },
+        {
+          "soc": 60,
+          "power": 85
+        },
+        {
+          "soc": 65,
+          "power": 79
+        },
+        {
+          "soc": 70,
+          "power": 72
+        },
+        {
+          "soc": 75,
+          "power": 58
         },
         {
           "soc": 80,
-          "power": 40
+          "power": 43
         },
         {
-          "soc": 100,
-          "power": 8
+          "soc": 85,
+          "power": 43
+        },
+        {
+          "soc": 90,
+          "power": 33
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

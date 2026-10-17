@@ -213,7 +213,7 @@
   "availableAids": [
     {
       "label": "Prime CEE",
-      "amount_EUR": 6500,
+      "amount_EUR": 5700,
       "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
     },
     {
@@ -272,37 +272,86 @@
           "notes": "Essai Nyland « Peugeot e-5008 » (hiver, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 160,
+      "chargingDC_peak_kW": 164,
       "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 50,
+      "chargingDC_kWh_30min": 51,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 147
+          "soc": 10,
+          "power": 148
         },
         {
-          "soc": 10,
-          "power": 160
+          "soc": 15,
+          "power": 162
+        },
+        {
+          "soc": 16,
+          "power": 164
         },
         {
           "soc": 20,
-          "power": 160
+          "power": 162
+        },
+        {
+          "soc": 25,
+          "power": 159
+        },
+        {
+          "soc": 30,
+          "power": 135
+        },
+        {
+          "soc": 35,
+          "power": 135
+        },
+        {
+          "soc": 40,
+          "power": 136
+        },
+        {
+          "soc": 45,
+          "power": 122
         },
         {
           "soc": 50,
-          "power": 114
+          "power": 109
+        },
+        {
+          "soc": 55,
+          "power": 83
+        },
+        {
+          "soc": 60,
+          "power": 74
+        },
+        {
+          "soc": 65,
+          "power": 74
+        },
+        {
+          "soc": 70,
+          "power": 75
+        },
+        {
+          "soc": 75,
+          "power": 64
         },
         {
           "soc": 80,
           "power": 51
         },
         {
-          "soc": 100,
-          "power": 10
+          "soc": 85,
+          "power": 27
+        },
+        {
+          "soc": 90,
+          "power": 24
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "peugeot-e-5008-gt-210-ch-73",
@@ -353,37 +402,86 @@
           "notes": "Essai Nyland « Peugeot e-5008 » (hiver, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 160,
+      "chargingDC_peak_kW": 164,
       "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 50,
+      "chargingDC_kWh_30min": 51,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 147
+          "soc": 10,
+          "power": 148
         },
         {
-          "soc": 10,
-          "power": 160
+          "soc": 15,
+          "power": 162
+        },
+        {
+          "soc": 16,
+          "power": 164
         },
         {
           "soc": 20,
-          "power": 160
+          "power": 162
+        },
+        {
+          "soc": 25,
+          "power": 159
+        },
+        {
+          "soc": 30,
+          "power": 135
+        },
+        {
+          "soc": 35,
+          "power": 135
+        },
+        {
+          "soc": 40,
+          "power": 136
+        },
+        {
+          "soc": 45,
+          "power": 122
         },
         {
           "soc": 50,
-          "power": 114
+          "power": 109
+        },
+        {
+          "soc": 55,
+          "power": 83
+        },
+        {
+          "soc": 60,
+          "power": 74
+        },
+        {
+          "soc": 65,
+          "power": 74
+        },
+        {
+          "soc": 70,
+          "power": 75
+        },
+        {
+          "soc": 75,
+          "power": 64
         },
         {
           "soc": 80,
           "power": 51
         },
         {
-          "soc": 100,
-          "power": 10
+          "soc": 85,
+          "power": 27
+        },
+        {
+          "soc": 90,
+          "power": 24
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "peugeot-e-5008-gt-exclusive-210-ch-73",
@@ -434,37 +532,86 @@
           "notes": "Essai Nyland « Peugeot e-5008 » (hiver, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 160,
+      "chargingDC_peak_kW": 164,
       "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 50,
+      "chargingDC_kWh_30min": 51,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 147
+          "soc": 10,
+          "power": 148
         },
         {
-          "soc": 10,
-          "power": 160
+          "soc": 15,
+          "power": 162
+        },
+        {
+          "soc": 16,
+          "power": 164
         },
         {
           "soc": 20,
-          "power": 160
+          "power": 162
+        },
+        {
+          "soc": 25,
+          "power": 159
+        },
+        {
+          "soc": 30,
+          "power": 135
+        },
+        {
+          "soc": 35,
+          "power": 135
+        },
+        {
+          "soc": 40,
+          "power": 136
+        },
+        {
+          "soc": 45,
+          "power": 122
         },
         {
           "soc": 50,
-          "power": 114
+          "power": 109
+        },
+        {
+          "soc": 55,
+          "power": 83
+        },
+        {
+          "soc": 60,
+          "power": 74
+        },
+        {
+          "soc": 65,
+          "power": 74
+        },
+        {
+          "soc": 70,
+          "power": 75
+        },
+        {
+          "soc": 75,
+          "power": 64
         },
         {
           "soc": 80,
           "power": 51
         },
         {
-          "soc": 100,
-          "power": 10
+          "soc": 85,
+          "power": 27
+        },
+        {
+          "soc": 90,
+          "power": 24
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "peugeot-e-5008-allure-230-ch-ga-97",
@@ -517,7 +664,8 @@
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "peugeot-e-5008-gt-230-ch-ga-97",
@@ -570,7 +718,8 @@
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "peugeot-e-5008-gt-exclusive-230-ch-ga-97",
@@ -623,7 +772,8 @@
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "peugeot-e-5008-gt-325-ch-awd-73",
@@ -646,37 +796,86 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 160,
+      "chargingDC_peak_kW": 164,
       "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 50,
+      "chargingDC_kWh_30min": 51,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 147
+          "soc": 10,
+          "power": 148
         },
         {
-          "soc": 10,
-          "power": 160
+          "soc": 15,
+          "power": 162
+        },
+        {
+          "soc": 16,
+          "power": 164
         },
         {
           "soc": 20,
-          "power": 160
+          "power": 162
+        },
+        {
+          "soc": 25,
+          "power": 159
+        },
+        {
+          "soc": 30,
+          "power": 135
+        },
+        {
+          "soc": 35,
+          "power": 135
+        },
+        {
+          "soc": 40,
+          "power": 136
+        },
+        {
+          "soc": 45,
+          "power": 122
         },
         {
           "soc": 50,
-          "power": 114
+          "power": 109
+        },
+        {
+          "soc": 55,
+          "power": 83
+        },
+        {
+          "soc": 60,
+          "power": 74
+        },
+        {
+          "soc": 65,
+          "power": 74
+        },
+        {
+          "soc": 70,
+          "power": 75
+        },
+        {
+          "soc": 75,
+          "power": 64
         },
         {
           "soc": 80,
           "power": 51
         },
         {
-          "soc": 100,
-          "power": 10
+          "soc": 85,
+          "power": 27
+        },
+        {
+          "soc": 90,
+          "power": 24
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "peugeot-e-5008-gt-exclusive-325-ch-awd-73",
@@ -699,37 +898,86 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 160,
+      "chargingDC_peak_kW": 164,
       "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 50,
+      "chargingDC_kWh_30min": 51,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 147
+          "soc": 10,
+          "power": 148
         },
         {
-          "soc": 10,
-          "power": 160
+          "soc": 15,
+          "power": 162
+        },
+        {
+          "soc": 16,
+          "power": 164
         },
         {
           "soc": 20,
-          "power": 160
+          "power": 162
+        },
+        {
+          "soc": 25,
+          "power": 159
+        },
+        {
+          "soc": 30,
+          "power": 135
+        },
+        {
+          "soc": 35,
+          "power": 135
+        },
+        {
+          "soc": 40,
+          "power": 136
+        },
+        {
+          "soc": 45,
+          "power": 122
         },
         {
           "soc": 50,
-          "power": 114
+          "power": 109
+        },
+        {
+          "soc": 55,
+          "power": 83
+        },
+        {
+          "soc": 60,
+          "power": 74
+        },
+        {
+          "soc": 65,
+          "power": 74
+        },
+        {
+          "soc": 70,
+          "power": 75
+        },
+        {
+          "soc": 75,
+          "power": 64
         },
         {
           "soc": 80,
           "power": 51
         },
         {
-          "soc": 100,
-          "power": 10
+          "soc": 85,
+          "power": 27
+        },
+        {
+          "soc": 90,
+          "power": 24
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

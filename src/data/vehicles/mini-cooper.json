@@ -36,10 +36,10 @@
   "consumption_winter_kWh_per_100km": 18.2,
   "dragCoefficient_Cx": 0.28,
   "chargingDC": {
-    "peakPower_kW": 95,
-    "time_10_80_min": 30,
-    "kWh_added_30min": 33,
-    "confidence": "manufacturer"
+    "peakPower_kW": 100,
+    "time_10_80_min": 28,
+    "kWh_added_30min": 36,
+    "confidence": "tested"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
@@ -52,11 +52,15 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 64
+      "soc": 10,
+      "power": 80
     },
     {
-      "soc": 10,
+      "soc": 13,
+      "power": 100
+    },
+    {
+      "soc": 15,
       "power": 80
     },
     {
@@ -64,11 +68,23 @@
       "power": 80
     },
     {
+      "soc": 25,
+      "power": 78
+    },
+    {
       "soc": 30,
       "power": 79
     },
     {
+      "soc": 35,
+      "power": 77
+    },
+    {
       "soc": 40,
+      "power": 78
+    },
+    {
+      "soc": 45,
       "power": 78
     },
     {
@@ -76,24 +92,36 @@
       "power": 68
     },
     {
+      "soc": 55,
+      "power": 68
+    },
+    {
       "soc": 60,
       "power": 68
+    },
+    {
+      "soc": 65,
+      "power": 69
     },
     {
       "soc": 70,
       "power": 70
     },
     {
+      "soc": 75,
+      "power": 67
+    },
+    {
       "soc": 80,
       "power": 48
     },
     {
-      "soc": 90,
-      "power": 20
+      "soc": 85,
+      "power": 40
     },
     {
-      "soc": 100,
-      "power": 2
+      "soc": 90,
+      "power": 20
     }
   ],
   "rangeTests": [
@@ -240,7 +268,8 @@
       ],
       "availability": "available",
       "notes": "Version d'entrée de gamme de 184 ch avec petite batterie",
-      "rangeTests": []
+      "rangeTests": [],
+      "chargingDC_confidence": "manufacturer"
     },
     {
       "id": "mini-cooper-se-classic",
@@ -264,33 +293,81 @@
         "confidence": "bjorn_nyland",
         "highway_120_km": 234
       },
-      "chargingDC_peak_kW": 95,
-      "chargingDC_10_80_min": 30,
-      "chargingDC_kWh_30min": 33,
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 28,
+      "chargingDC_kWh_30min": 36,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 45
+          "soc": 10,
+          "power": 80
         },
         {
-          "soc": 10,
-          "power": 95
+          "soc": 13,
+          "power": 100
+        },
+        {
+          "soc": 15,
+          "power": 80
+        },
+        {
+          "soc": 20,
+          "power": 80
+        },
+        {
+          "soc": 25,
+          "power": 78
+        },
+        {
+          "soc": 30,
+          "power": 79
+        },
+        {
+          "soc": 35,
+          "power": 77
         },
         {
           "soc": 40,
-          "power": 85
+          "power": 78
+        },
+        {
+          "soc": 45,
+          "power": 78
+        },
+        {
+          "soc": 50,
+          "power": 68
+        },
+        {
+          "soc": 55,
+          "power": 68
         },
         {
           "soc": 60,
-          "power": 65
+          "power": 68
+        },
+        {
+          "soc": 65,
+          "power": 69
+        },
+        {
+          "soc": 70,
+          "power": 70
+        },
+        {
+          "soc": 75,
+          "power": 67
         },
         {
           "soc": 80,
-          "power": 35
+          "power": 48
         },
         {
-          "soc": 100,
-          "power": 5
+          "soc": 85,
+          "power": 40
+        },
+        {
+          "soc": 90,
+          "power": 20
         }
       ],
       "availability": "available",
@@ -322,7 +399,8 @@
           "videoUrl": null,
           "notes": "Essai Nyland « 2024 Mini Cooper SE » (hiver, route sèche)."
         }
-      ]
+      ],
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

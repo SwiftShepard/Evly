@@ -100,15 +100,12 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
     const evInsTotal = evInsurance * years;
     const iceInsTotal = iceInsurance * years;
 
-    // CEE aids
-    const householdSize = 3; // default family
-    const taxIncome = 30000; // default medium
+    // Prime CEE de tout ménage (barème de src/lib/cee.ts), même chiffre que la fiche
     const { amount: aidsAmount } = calculateCeeAid({
       vehicle,
       price: evPrice,
       profileType: "particular",
-      householdSize,
-      taxIncome,
+      category: "autres",
     });
     const totalAids = aidsAmount;
 
@@ -944,9 +941,9 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
                   {/* Bonus écologique */}
                   <div className="bg-[var(--color-bg-subtle)] border border-[var(--color-border)] rounded-xl p-4 flex justify-between items-center text-xs">
                     <div className="flex flex-col gap-0.5">
-                      <span className="font-bold text-[var(--color-text)]">Bonus Écologique État 2026</span>
+                      <span className="font-bold text-[var(--color-text)]">Coup de pouce CEE 2026</span>
                       <span className="text-[10px] text-[var(--color-text-muted)]">
-                        {totalAids > 0 ? "Modèle éligible (production européenne)" : "Modèle non éligible"}
+                        {totalAids > 0 ? "Prime de tout ménage (barème indicatif)" : "Version non éligible"}
                       </span>
                     </div>
                     <span className="font-mono font-bold text-emerald-700">

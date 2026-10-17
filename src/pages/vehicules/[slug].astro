@@ -18,7 +18,7 @@ import { getAllVehicles, getVehicleBySlug } from "@/lib/vehicles";
 import { getSource, getSources, type TrustLevel } from "@/data/sources";
 import { formatDate, formatHours, formatLiters, formatMm, formatNm, formatNumber, formatPrice, formatSeconds } from "@/lib/format";
 import { url } from "@/lib/url";
-import { isVehicleEligibleCEE, CEE_PRICE_CAP_EUR } from "@/lib/cee";
+import { isVehicleEligibleCEE, hasBatteryBonus, CEE_PRICE_CAP_EUR, CEE_BASE_EUR, CEE_MAX_EUR, CEE_SCALE_YEAR, PRIME_AMOUNTS, HOUSEHOLD_LABELS, BATTERY_BONUS_EUR } from "@/lib/cee";
 import FavoriteButton from "@/components/ui/FavoriteButton";
 import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
 import VehicleMiniCard from "@/components/vehicle/VehicleMiniCard.astro";
@@ -152,10 +152,10 @@ const tkcField = (() => {
     slowest: formatHours(times[times.length - 1]! / 60),
   };
 })();
-const totalAids = Math.min(
-  8100,
-  vehicle.availableAids.reduce((sum, aid) => sum + aid.amount_EUR, 0)
-);
+// Prime CEE sans profil fiscal : celle de tout ménage ; le plafond du barème sert aux « jusqu'à »
+// (même barème partout : src/lib/cee.ts)
+const totalAids = vehicle.availableAids.length > 0 ? CEE_BASE_EUR : 0;
+const batteryBonus = hasBatteryBonus(vehicle);
 
 const cheapestTrim = vehicle.trims.reduce((a, b) => a.price_EUR < b.price_EUR ? a : b);
 
@@ -308,7 +308,7 @@ const faqEntries: { question: string; answer: string }[] = [
     question: `Quel est le prix ${deVehicle} avec les aides de l'État ?`,
     answer:
       seoFacts.priceMin != null && seoFacts.priceAfterAids != null
-        ? `Le prix affiché part de ${formatPrice(seoFacts.priceMin)}. En cumulant les aides disponibles (coup de pouce CEE et sa majoration batterie européenne, selon votre situation), il peut descendre jusqu'à ${formatPrice(seoFacts.priceAfterAids)}. Ces aides dépendent de vos revenus et ne sont pas automatiques : il faut en faire la demande avant de signer le bon de commande.`
+        ? `Le prix affiché part de ${formatPrice(seoFacts.priceMin)}. Avec le coup de pouce CEE, il passe à ${formatPrice(seoFacts.priceAfterAids)} pour tout ménage et peut descendre jusqu'à ${formatPrice(seoFacts.priceAfterAidsMax!)} pour un ménage en précarité (barème indicatif ${CEE_SCALE_YEAR}).${batteryBonus ? " Une bonification batterie européenne peut s'y ajouter selon la version." : ""} La prime n'est pas automatique : il faut en faire la demande avant de signer le bon de commande.`
         : seoFacts.priceMin != null
           ? `Le prix affiché part de ${formatPrice(seoFacts.priceMin)}${seoFacts.priceMax && seoFacts.priceMax > seoFacts.priceMin ? ` et monte à ${formatPrice(seoFacts.priceMax)}` : ""}, hors options. ${LaVehicle} n'ouvre pas droit au coup de pouce CEE (score environnemental, prix ou masse hors plafond) : le prix catalogue est le prix réel.`
           : `Le tarif de ce modèle n'est pas encore communiqué par le constructeur en France.`,
@@ -382,9 +382,6 @@ const configurations = vehicle.configurations.length > 0 ? vehicle.configuration
   notes: null
 } as any];
 
-// Somme brute des aides listées ; l'affichage est plafonné à `totalAids` (8 100 €)
-const totalAidsRaw = vehicle.availableAids.reduce((sum, aid) => sum + aid.amount_EUR, 0);
-const aidsCapped = totalAidsRaw > totalAids;
 
 const drivetrainLabels: Record<string, string> = {
   FWD: "Traction",
@@ -430,6 +427,7 @@ const configViews = configurations.map((config) => {
   const nyland120 = config.rangeTests.find((t: any) => t.protocol === "nyland" && t.speed_kmh === 120);
   const aidsEligible = totalAids > 0 && isVehicleEligibleCEE(vehicle, config.price_EUR);
   const priceAfterAids = config.price_EUR != null && aidsEligible ? Math.max(0, config.price_EUR - totalAids) : null;
+  const priceAfterAidsMax = config.price_EUR != null && aidsEligible ? Math.max(0, config.price_EUR - CEE_MAX_EUR) : null;
   const realRange = config.realRange ?? vehicle.realRange;
   const rangeConfidence = realRange.confidence;
   const isRangeMeasured = rangeConfidence === "tested" || rangeConfidence === "bjorn_nyland";
@@ -446,6 +444,7 @@ const configViews = configurations.map((config) => {
   const dcMin = config.chargingDC_10_80_min ?? vehicle.chargingDC.time_10_80_min;
   const dcPeak = config.chargingDC_peak_kW ?? vehicle.chargingDC.peakPower_kW;
   const dcKwh30 = config.chargingDC_kWh_30min ?? vehicle.chargingDC.kWh_added_30min;
+  const dcConfidence = config.chargingDC_confidence ?? vehicle.chargingDC.confidence;
   const consoMixed = config.wltp_consumption_kWh_100km ?? vehicle.consumption_mixed_kWh_per_100km;
   const rangeTests = config.rangeTests.length > 0 ? config.rangeTests : vehicle.rangeTests;
 
@@ -503,6 +502,7 @@ const configViews = configurations.map((config) => {
     batteryCapacity,
     nyland120,
     priceAfterAids,
+    priceAfterAidsMax,
     aidsEligible,
     realRange,
     rangeConfidence,
@@ -514,6 +514,7 @@ const configViews = configurations.map((config) => {
     dcMin,
     dcPeak,
     dcKwh30,
+    dcConfidence,
     consoMixed,
     rangeTests,
     specGroups,
@@ -714,8 +715,8 @@ const configSubtitle = (label: string) => {
                         {cv.config.price_EUR != null ? formatPrice(cv.config.price_EUR) : "NC"}
                       </dd>
                       <dd class="stat-hint-detail" id={`hint-prix-${cv.config.id}`}><span>
-                        {cv.priceAfterAids != null && totalAids > 0
-                          ? `Hors options. Dès ${formatPrice(cv.priceAfterAids)} après ${formatPrice(totalAids)} d'aides max.`
+                        {cv.priceAfterAids != null && cv.priceAfterAidsMax != null
+                          ? `Hors options. ${formatPrice(cv.priceAfterAids)} avec la prime CEE de tout ménage, jusqu'à ${formatPrice(cv.priceAfterAidsMax)} selon vos revenus.`
                           : "Hors options, avant aides."}
                       </span></dd>
                     </div>
@@ -967,7 +968,7 @@ const configSubtitle = (label: string) => {
         <BentoGrid>
           {configViews.map((cv, index) => (
             <div data-config-id={cv.config.id} style={{ display: index === 0 ? "contents" : "none" }} class="config-wrapper">
-              <Tile size={tkc ? "2x1" : "full"} variant="elevated" label="Recharge DC & AC" source={vehicle.chargingDC.confidence === "tested" ? "nyland" : undefined} class="reveal">
+              <Tile size={tkc ? "2x1" : "full"} variant="elevated" label="Recharge DC & AC" source={cv.dcConfidence === "tested" ? "nyland" : undefined} class="reveal">
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 my-auto">
                   <div class="flex flex-col gap-1">
                     <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)]">10 → 80 % DC</span>
@@ -1016,7 +1017,7 @@ const configSubtitle = (label: string) => {
                       </svg>
                       Voir la courbe de puissance détaillée (kW / SoC)
                     </span>
-                    <Tag tone="outline" mono>{confidenceLabel[vehicle.chargingDC.confidence] ?? vehicle.chargingDC.confidence}</Tag>
+                    <Tag tone="outline" mono>{confidenceLabel[cv.dcConfidence] ?? cv.dcConfidence}</Tag>
                   </summary>
                   <div class="pt-4">
                     {(cv.config.chargingCurve ?? vehicle.chargingCurve) ? (
@@ -1101,29 +1102,29 @@ const configSubtitle = (label: string) => {
             const hasLeasing = cv.config.leasingSocialEligible && cv.config.monthlyLease_EUR;
             return (
               <div data-config-id={cv.config.id} style={{ display: index === 0 ? "contents" : "none" }} class="config-wrapper">
-                <Tile size={hasLeasing ? "3x1" : "full"} variant="accent" label="Aides cumulables*" class="reveal">
+                <Tile size={hasLeasing ? "3x1" : "full"} variant="accent" label="Prime CEE*" class="reveal">
                   {vehicle.availableAids.length > 0 ? (
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mt-auto">
                       <ul class="md:col-span-7 flex flex-col gap-2">
-                        {vehicle.availableAids.map((aid) => (
+                        {(["autres", "modeste", "precarite"] as const).map((cat) => (
                           <li class="flex items-baseline justify-between gap-3 text-sm">
-                            <span class="text-[var(--color-text)]">{aid.label}</span>
-                            <span data-numeric class="font-mono text-[var(--color-accent)] whitespace-nowrap">- {formatPrice(aid.amount_EUR)}</span>
+                            <span class="text-[var(--color-text)]">{HOUSEHOLD_LABELS[cat]}</span>
+                            <span data-numeric class="font-mono text-[var(--color-accent)] whitespace-nowrap">- {formatPrice(PRIME_AMOUNTS[cat])}</span>
                           </li>
                         ))}
-                        {aidsCapped && (
+                        {batteryBonus && (
                           <li class="flex items-baseline justify-between gap-3 text-sm pt-2 border-t border-[var(--color-border)]">
-                            <span class="text-[var(--color-text-muted)]">Plafond de cumul</span>
-                            <span data-numeric class="font-mono text-[var(--color-text)] whitespace-nowrap">{formatPrice(totalAids)}</span>
+                            <span class="text-[var(--color-text-muted)]">Bonification batterie européenne, selon la version</span>
+                            <span data-numeric class="font-mono text-[var(--color-text-muted)] whitespace-nowrap">- {formatPrice(BATTERY_BONUS_EUR.min)} à {formatPrice(BATTERY_BONUS_EUR.max)}</span>
                           </li>
                         )}
                       </ul>
                       <div class="md:col-span-5 md:border-l md:border-[var(--color-border)] md:pl-6 flex flex-col gap-1">
-                        <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)]">Prix net potentiel*</span>
+                        <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-faint)]">Prix net, tout ménage*</span>
                         {cv.priceAfterAids != null ? (
                           <>
                             <span data-numeric class="display-stat text-3xl md:text-4xl">{formatPrice(cv.priceAfterAids)}</span>
-                            <span class="font-mono text-[11px] text-[var(--color-text-faint)]">au lieu de {formatPrice(cv.config.price_EUR!)}, après {formatPrice(totalAids)} d'aides max.</span>
+                            <span class="font-mono text-[11px] text-[var(--color-text-faint)]">au lieu de {formatPrice(cv.config.price_EUR!)} ; jusqu'à {formatPrice(cv.priceAfterAidsMax!)} pour un ménage en précarité.</span>
                           </>
                         ) : cv.config.price_EUR != null && !cv.aidsEligible ? (
                           <>
@@ -1145,7 +1146,7 @@ const configSubtitle = (label: string) => {
                     </p>
                   )}
                   <p class="mt-4 font-mono text-[11px] text-[var(--color-text-faint)] leading-relaxed">
-                    * Montants maximaux (ménage précaire + majoration batterie européenne). Coup de pouce CEE 2026 sous conditions de revenus (RFR/part), d'éligibilité ADEME et de prix du véhicule (&lt; 47 000 €). Demande à effectuer avant signature du bon de commande.
+                    * Barème indicatif {CEE_SCALE_YEAR} du coup de pouce CEE (ministère de la Transition écologique) : le montant versé dépend de l'organisme signataire et du mois. Catégorie selon le revenu fiscal de référence et la taille du foyer ; version éco-scorée ADEME, sous 47 000 € TTC hors options et 2,4 t. La bonification batterie suit la liste ADEME revue chaque mois et n'est pas déduite ici. Demande à faire avant la signature du bon de commande.
                   </p>
                 </Tile>
 

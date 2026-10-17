@@ -1,7 +1,6 @@
 import type { Vehicle } from "@/data/schemas";
 import { formatNumber, formatPrice } from "@/lib/format";
-import { isVehicleEligibleCEE } from "@/lib/cee";
-import { MAX_TOTAL_AIDS_EUR } from "@/lib/vehicleCard";
+import { isVehicleEligibleCEE, CEE_BASE_EUR, CEE_MAX_EUR } from "@/lib/cee";
 
 /**
  * SEO des fiches véhicules : noms recherchés, titres, descriptions et textes
@@ -232,9 +231,12 @@ export interface VehicleSeoFacts {
   batteryMin: number;
   batteryMax: number;
   leasingMin: number | null;
-  /** Aides cumulables max. si la version d'entrée y est éligible, sinon 0 */
+  /** Prime CEE de tout ménage si la version d'entrée y est éligible, sinon 0 */
   aids: number;
+  /** Prix d'entrée après cette prime */
   priceAfterAids: number | null;
+  /** Prix d'entrée après la prime la plus haute du barème (ménage en précarité) */
+  priceAfterAidsMax: number | null;
 }
 
 const parseKwh = (s: string | undefined | null): number | null => {
@@ -270,8 +272,7 @@ export function getVehicleSeoFacts(v: Vehicle): VehicleSeoFacts {
     .map((c) => c.monthlyLease_EUR!);
   if (v.leasingSocialEligible && v.leasingSocial_EUR_per_month) leases.push(v.leasingSocial_EUR_per_month);
 
-  const rawAids = Math.min(MAX_TOTAL_AIDS_EUR, v.availableAids.reduce((s, a) => s + a.amount_EUR, 0));
-  const aids = rawAids > 0 && isVehicleEligibleCEE(v, priceMin) ? rawAids : 0;
+  const aids = isVehicleEligibleCEE(v, priceMin) ? CEE_BASE_EUR : 0;
 
   return {
     name: getVehicleName(v),
@@ -289,6 +290,7 @@ export function getVehicleSeoFacts(v: Vehicle): VehicleSeoFacts {
     leasingMin: leases.length ? Math.min(...leases) : null,
     aids,
     priceAfterAids: priceMin != null && aids > 0 ? Math.max(0, priceMin - aids) : null,
+    priceAfterAidsMax: priceMin != null && aids > 0 ? Math.max(0, priceMin - CEE_MAX_EUR) : null,
   };
 }
 
@@ -337,7 +339,7 @@ export function getVehicleDescription(v: Vehicle): string {
         : `dès ${formatPrice(f.priceMin)}`;
   const charge = f.dcMin != null ? `10-80 % en ${f.dcMin} min` : null;
   const leasing = f.leasingMin != null ? `leasing social dès ${f.leasingMin} €/mois` : null;
-  const aided = f.priceAfterAids != null ? `${formatPrice(f.priceAfterAids)} après aides` : null;
+  const aided = f.priceAfterAids != null ? `${formatPrice(f.priceAfterAids)} après prime CEE` : null;
 
   const head = `${f.name}${elec} : `;
   const facts = [price, range, charge].filter(Boolean).join(", ");

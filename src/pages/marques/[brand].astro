@@ -82,7 +82,7 @@ if (cheapest && priced.length > 1) {
   const f = getVehicleSeoFacts(cheapest);
   faq.push({
     question: `Quelle est la ${b} électrique la moins chère ?`,
-    answer: `${cap(withArticle(cheapest))} est la ${b} électrique la moins chère, à partir de ${formatPrice(f.priceMin!)}${f.priceAfterAids != null ? `, ou ${formatPrice(f.priceAfterAids)} après aides maximales` : ""}.`,
+    answer: `${cap(withArticle(cheapest))} est la ${b} électrique la moins chère, à partir de ${formatPrice(f.priceMin!)}${f.priceAfterAids != null ? `, ou ${formatPrice(f.priceAfterAids)} avec la prime CEE de tout ménage` : ""}.`,
   });
 }
 if (longest && onSale.length > 1) {

@@ -36,10 +36,10 @@
   "consumption_winter_kWh_per_100km": 34,
   "dragCoefficient_Cx": 0.44,
   "chargingDC": {
-    "peakPower_kW": 200,
-    "time_10_80_min": 32,
-    "kWh_added_30min": 65,
-    "confidence": "estimated"
+    "peakPower_kW": 206,
+    "time_10_80_min": 30,
+    "kWh_added_30min": 81,
+    "confidence": "tested"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
@@ -52,28 +52,84 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 120
+      "soc": 10,
+      "power": 165
     },
     {
-      "soc": 10,
-      "power": 200
+      "soc": 15,
+      "power": 197
+    },
+    {
+      "soc": 20,
+      "power": 192
+    },
+    {
+      "soc": 25,
+      "power": 196
     },
     {
       "soc": 30,
-      "power": 180
+      "power": 200
+    },
+    {
+      "soc": 35,
+      "power": 204
+    },
+    {
+      "soc": 39,
+      "power": 206
+    },
+    {
+      "soc": 40,
+      "power": 200
+    },
+    {
+      "soc": 45,
+      "power": 185
     },
     {
       "soc": 50,
-      "power": 130
+      "power": 187
+    },
+    {
+      "soc": 55,
+      "power": 172
+    },
+    {
+      "soc": 60,
+      "power": 141
+    },
+    {
+      "soc": 65,
+      "power": 143
+    },
+    {
+      "soc": 70,
+      "power": 102
+    },
+    {
+      "soc": 75,
+      "power": 103
     },
     {
       "soc": 80,
-      "power": 50
+      "power": 97
+    },
+    {
+      "soc": 85,
+      "power": 54
+    },
+    {
+      "soc": 90,
+      "power": 54
+    },
+    {
+      "soc": 95,
+      "power": 37
     },
     {
       "soc": 100,
-      "power": 10
+      "power": 17
     }
   ],
   "thousandKmChallenge": null,
@@ -150,37 +206,94 @@
           "notes": "Essai Nyland « Mercedes G580 » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 200,
-      "chargingDC_10_80_min": 32,
-      "chargingDC_kWh_30min": 65,
+      "chargingDC_peak_kW": 206,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 81,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 120
+          "soc": 10,
+          "power": 165
         },
         {
-          "soc": 10,
-          "power": 200
+          "soc": 15,
+          "power": 197
+        },
+        {
+          "soc": 20,
+          "power": 192
+        },
+        {
+          "soc": 25,
+          "power": 196
         },
         {
           "soc": 30,
-          "power": 180
+          "power": 200
+        },
+        {
+          "soc": 35,
+          "power": 204
+        },
+        {
+          "soc": 39,
+          "power": 206
+        },
+        {
+          "soc": 40,
+          "power": 200
+        },
+        {
+          "soc": 45,
+          "power": 185
         },
         {
           "soc": 50,
-          "power": 130
+          "power": 187
+        },
+        {
+          "soc": 55,
+          "power": 172
+        },
+        {
+          "soc": 60,
+          "power": 141
+        },
+        {
+          "soc": 65,
+          "power": 143
+        },
+        {
+          "soc": 70,
+          "power": 102
+        },
+        {
+          "soc": 75,
+          "power": 103
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 97
+        },
+        {
+          "soc": 85,
+          "power": 54
+        },
+        {
+          "soc": 90,
+          "power": 54
+        },
+        {
+          "soc": 95,
+          "power": 37
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 17
         }
       ],
       "availability": "available",
-      "notes": "Version de lancement haut de gamme, capacités off-road ultimes."
+      "notes": "Version de lancement haut de gamme, capacités off-road ultimes.",
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

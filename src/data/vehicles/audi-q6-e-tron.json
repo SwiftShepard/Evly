@@ -36,9 +36,9 @@
   "consumption_winter_kWh_per_100km": 22,
   "dragCoefficient_Cx": 0.28,
   "chargingDC": {
-    "peakPower_kW": 270,
-    "time_10_80_min": 21,
-    "kWh_added_30min": 75,
+    "peakPower_kW": 288,
+    "time_10_80_min": 20,
+    "kWh_added_30min": 77,
     "confidence": "tested"
   },
   "chargingAC": {
@@ -52,48 +52,80 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 216
-    },
-    {
       "soc": 10,
       "power": 270
     },
     {
+      "soc": 15,
+      "power": 280
+    },
+    {
       "soc": 20,
-      "power": 270
+      "power": 282
+    },
+    {
+      "soc": 25,
+      "power": 285
     },
     {
       "soc": 30,
-      "power": 270
+      "power": 286
+    },
+    {
+      "soc": 32,
+      "power": 288
+    },
+    {
+      "soc": 35,
+      "power": 263
     },
     {
       "soc": 40,
       "power": 212
     },
     {
+      "soc": 45,
+      "power": 202
+    },
+    {
       "soc": 50,
       "power": 199
+    },
+    {
+      "soc": 55,
+      "power": 187
     },
     {
       "soc": 60,
       "power": 172
     },
     {
+      "soc": 65,
+      "power": 169
+    },
+    {
       "soc": 70,
       "power": 154
+    },
+    {
+      "soc": 75,
+      "power": 134
     },
     {
       "soc": 80,
       "power": 120
     },
     {
+      "soc": 85,
+      "power": 63
+    },
+    {
       "soc": 90,
       "power": 41
     },
     {
-      "soc": 100,
-      "power": 4
+      "soc": 95,
+      "power": 23
     }
   ],
   "rangeTests": [
@@ -299,7 +331,8 @@
         }
       ],
       "availability": "available",
-      "notes": "306 ch (225 kW), RWD, SUV standard"
+      "notes": "306 ch (225 kW), RWD, SUV standard",
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "audi-q6-performance-sline",
@@ -352,7 +385,8 @@
         }
       ],
       "availability": "available",
-      "notes": "306 ch (225 kW), RWD, SUV finition sport"
+      "notes": "306 ch (225 kW), RWD, SUV finition sport",
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "audi-q6-quattro-design",
@@ -403,37 +437,90 @@
           "notes": "Essai Nyland « 2026 Audi Q6 e-tron Quattro » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 270,
-      "chargingDC_10_80_min": 21,
-      "chargingDC_kWh_30min": 75,
+      "chargingDC_peak_kW": 288,
+      "chargingDC_10_80_min": 20,
+      "chargingDC_kWh_30min": 77,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 180
-        },
         {
           "soc": 10,
           "power": 270
         },
         {
+          "soc": 15,
+          "power": 280
+        },
+        {
+          "soc": 20,
+          "power": 282
+        },
+        {
+          "soc": 25,
+          "power": 285
+        },
+        {
           "soc": 30,
-          "power": 240
+          "power": 286
+        },
+        {
+          "soc": 32,
+          "power": 288
+        },
+        {
+          "soc": 35,
+          "power": 263
+        },
+        {
+          "soc": 40,
+          "power": 212
+        },
+        {
+          "soc": 45,
+          "power": 202
         },
         {
           "soc": 50,
-          "power": 175
+          "power": 199
+        },
+        {
+          "soc": 55,
+          "power": 187
+        },
+        {
+          "soc": 60,
+          "power": 172
+        },
+        {
+          "soc": 65,
+          "power": 169
+        },
+        {
+          "soc": 70,
+          "power": 154
+        },
+        {
+          "soc": 75,
+          "power": 134
         },
         {
           "soc": 80,
-          "power": 60
+          "power": 120
         },
         {
-          "soc": 100,
-          "power": 10
+          "soc": 85,
+          "power": 63
+        },
+        {
+          "soc": 90,
+          "power": 41
+        },
+        {
+          "soc": 95,
+          "power": 23
         }
       ],
       "availability": "available",
-      "notes": "387 ch (285 kW) - 428 ch boost, AWD quattro, SUV"
+      "notes": "387 ch (285 kW) - 428 ch boost, AWD quattro, SUV",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "audi-q6-quattro-sline",
@@ -484,37 +571,90 @@
           "notes": "Essai Nyland « 2026 Audi Q6 e-tron Quattro » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 270,
-      "chargingDC_10_80_min": 21,
-      "chargingDC_kWh_30min": 75,
+      "chargingDC_peak_kW": 288,
+      "chargingDC_10_80_min": 20,
+      "chargingDC_kWh_30min": 77,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 180
-        },
         {
           "soc": 10,
           "power": 270
         },
         {
+          "soc": 15,
+          "power": 280
+        },
+        {
+          "soc": 20,
+          "power": 282
+        },
+        {
+          "soc": 25,
+          "power": 285
+        },
+        {
           "soc": 30,
-          "power": 240
+          "power": 286
+        },
+        {
+          "soc": 32,
+          "power": 288
+        },
+        {
+          "soc": 35,
+          "power": 263
+        },
+        {
+          "soc": 40,
+          "power": 212
+        },
+        {
+          "soc": 45,
+          "power": 202
         },
         {
           "soc": 50,
-          "power": 175
+          "power": 199
+        },
+        {
+          "soc": 55,
+          "power": 187
+        },
+        {
+          "soc": 60,
+          "power": 172
+        },
+        {
+          "soc": 65,
+          "power": 169
+        },
+        {
+          "soc": 70,
+          "power": 154
+        },
+        {
+          "soc": 75,
+          "power": 134
         },
         {
           "soc": 80,
-          "power": 60
+          "power": 120
         },
         {
-          "soc": 100,
-          "power": 10
+          "soc": 85,
+          "power": 63
+        },
+        {
+          "soc": 90,
+          "power": 41
+        },
+        {
+          "soc": 95,
+          "power": 23
         }
       ],
       "availability": "available",
-      "notes": "387 ch (285 kW) - 428 ch boost, AWD quattro, SUV sport"
+      "notes": "387 ch (285 kW) - 428 ch boost, AWD quattro, SUV sport",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "audi-sq6-e-tron",
@@ -565,37 +705,90 @@
           "notes": "Essai Nyland « Audi SQ6 e-tron » (hiver, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 270,
-      "chargingDC_10_80_min": 21,
-      "chargingDC_kWh_30min": 75,
+      "chargingDC_peak_kW": 288,
+      "chargingDC_10_80_min": 20,
+      "chargingDC_kWh_30min": 77,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 180
-        },
         {
           "soc": 10,
           "power": 270
         },
         {
+          "soc": 15,
+          "power": 280
+        },
+        {
+          "soc": 20,
+          "power": 282
+        },
+        {
+          "soc": 25,
+          "power": 285
+        },
+        {
           "soc": 30,
-          "power": 240
+          "power": 286
+        },
+        {
+          "soc": 32,
+          "power": 288
+        },
+        {
+          "soc": 35,
+          "power": 263
+        },
+        {
+          "soc": 40,
+          "power": 212
+        },
+        {
+          "soc": 45,
+          "power": 202
         },
         {
           "soc": 50,
-          "power": 175
+          "power": 199
+        },
+        {
+          "soc": 55,
+          "power": 187
+        },
+        {
+          "soc": 60,
+          "power": 172
+        },
+        {
+          "soc": 65,
+          "power": 169
+        },
+        {
+          "soc": 70,
+          "power": 154
+        },
+        {
+          "soc": 75,
+          "power": 134
         },
         {
           "soc": 80,
-          "power": 60
+          "power": 120
         },
         {
-          "soc": 100,
-          "power": 10
+          "soc": 85,
+          "power": 63
+        },
+        {
+          "soc": 90,
+          "power": 41
+        },
+        {
+          "soc": 95,
+          "power": 23
         }
       ],
       "availability": "available",
-      "notes": "490 ch (360 kW) - 517 ch boost, AWD quattro, SUV sport extreme"
+      "notes": "490 ch (360 kW) - 517 ch boost, AWD quattro, SUV sport extreme",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "audi-q6-sportback-perf-design",
@@ -648,7 +841,8 @@
         }
       ],
       "availability": "available",
-      "notes": "306 ch (225 kW), RWD, coupé Sportback"
+      "notes": "306 ch (225 kW), RWD, coupé Sportback",
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "audi-q6-sportback-perf-sline",
@@ -701,7 +895,8 @@
         }
       ],
       "availability": "available",
-      "notes": "306 ch (225 kW), RWD, coupé Sportback sport"
+      "notes": "306 ch (225 kW), RWD, coupé Sportback sport",
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "audi-q6-sportback-quattro-design",
@@ -752,37 +947,90 @@
           "notes": "Essai Nyland « Audi Q6 e-tron Sportback Quattro » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 270,
-      "chargingDC_10_80_min": 21,
-      "chargingDC_kWh_30min": 75,
+      "chargingDC_peak_kW": 288,
+      "chargingDC_10_80_min": 20,
+      "chargingDC_kWh_30min": 77,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 180
-        },
         {
           "soc": 10,
           "power": 270
         },
         {
+          "soc": 15,
+          "power": 280
+        },
+        {
+          "soc": 20,
+          "power": 282
+        },
+        {
+          "soc": 25,
+          "power": 285
+        },
+        {
           "soc": 30,
-          "power": 240
+          "power": 286
+        },
+        {
+          "soc": 32,
+          "power": 288
+        },
+        {
+          "soc": 35,
+          "power": 263
+        },
+        {
+          "soc": 40,
+          "power": 212
+        },
+        {
+          "soc": 45,
+          "power": 202
         },
         {
           "soc": 50,
-          "power": 175
+          "power": 199
+        },
+        {
+          "soc": 55,
+          "power": 187
+        },
+        {
+          "soc": 60,
+          "power": 172
+        },
+        {
+          "soc": 65,
+          "power": 169
+        },
+        {
+          "soc": 70,
+          "power": 154
+        },
+        {
+          "soc": 75,
+          "power": 134
         },
         {
           "soc": 80,
-          "power": 60
+          "power": 120
         },
         {
-          "soc": 100,
-          "power": 10
+          "soc": 85,
+          "power": 63
+        },
+        {
+          "soc": 90,
+          "power": 41
+        },
+        {
+          "soc": 95,
+          "power": 23
         }
       ],
       "availability": "available",
-      "notes": "387 ch (285 kW) - 428 ch boost, AWD quattro, coupé Sportback"
+      "notes": "387 ch (285 kW) - 428 ch boost, AWD quattro, coupé Sportback",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "audi-q6-sportback-quattro-sline",
@@ -833,37 +1081,90 @@
           "notes": "Essai Nyland « Audi Q6 e-tron Sportback Quattro » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 270,
-      "chargingDC_10_80_min": 21,
-      "chargingDC_kWh_30min": 75,
+      "chargingDC_peak_kW": 288,
+      "chargingDC_10_80_min": 20,
+      "chargingDC_kWh_30min": 77,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 180
-        },
         {
           "soc": 10,
           "power": 270
         },
         {
+          "soc": 15,
+          "power": 280
+        },
+        {
+          "soc": 20,
+          "power": 282
+        },
+        {
+          "soc": 25,
+          "power": 285
+        },
+        {
           "soc": 30,
-          "power": 240
+          "power": 286
+        },
+        {
+          "soc": 32,
+          "power": 288
+        },
+        {
+          "soc": 35,
+          "power": 263
+        },
+        {
+          "soc": 40,
+          "power": 212
+        },
+        {
+          "soc": 45,
+          "power": 202
         },
         {
           "soc": 50,
-          "power": 175
+          "power": 199
+        },
+        {
+          "soc": 55,
+          "power": 187
+        },
+        {
+          "soc": 60,
+          "power": 172
+        },
+        {
+          "soc": 65,
+          "power": 169
+        },
+        {
+          "soc": 70,
+          "power": 154
+        },
+        {
+          "soc": 75,
+          "power": 134
         },
         {
           "soc": 80,
-          "power": 60
+          "power": 120
         },
         {
-          "soc": 100,
-          "power": 10
+          "soc": 85,
+          "power": 63
+        },
+        {
+          "soc": 90,
+          "power": 41
+        },
+        {
+          "soc": 95,
+          "power": 23
         }
       ],
       "availability": "available",
-      "notes": "387 ch (285 kW) - 428 ch boost, AWD quattro, coupé Sportback sport"
+      "notes": "387 ch (285 kW) - 428 ch boost, AWD quattro, coupé Sportback sport",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "audi-sq6-sportback-e-tron",
@@ -886,37 +1187,90 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 270,
-      "chargingDC_10_80_min": 21,
-      "chargingDC_kWh_30min": 75,
+      "chargingDC_peak_kW": 288,
+      "chargingDC_10_80_min": 20,
+      "chargingDC_kWh_30min": 77,
       "chargingCurve": [
-        {
-          "soc": 0,
-          "power": 180
-        },
         {
           "soc": 10,
           "power": 270
         },
         {
+          "soc": 15,
+          "power": 280
+        },
+        {
+          "soc": 20,
+          "power": 282
+        },
+        {
+          "soc": 25,
+          "power": 285
+        },
+        {
           "soc": 30,
-          "power": 240
+          "power": 286
+        },
+        {
+          "soc": 32,
+          "power": 288
+        },
+        {
+          "soc": 35,
+          "power": 263
+        },
+        {
+          "soc": 40,
+          "power": 212
+        },
+        {
+          "soc": 45,
+          "power": 202
         },
         {
           "soc": 50,
-          "power": 175
+          "power": 199
+        },
+        {
+          "soc": 55,
+          "power": 187
+        },
+        {
+          "soc": 60,
+          "power": 172
+        },
+        {
+          "soc": 65,
+          "power": 169
+        },
+        {
+          "soc": 70,
+          "power": 154
+        },
+        {
+          "soc": 75,
+          "power": 134
         },
         {
           "soc": 80,
-          "power": 60
+          "power": 120
         },
         {
-          "soc": 100,
-          "power": 10
+          "soc": 85,
+          "power": 63
+        },
+        {
+          "soc": 90,
+          "power": 41
+        },
+        {
+          "soc": 95,
+          "power": 23
         }
       ],
       "availability": "available",
-      "notes": "490 ch (360 kW) - 517 ch boost, AWD quattro, coupé Sportback sport extreme"
+      "notes": "490 ch (360 kW) - 517 ch boost, AWD quattro, coupé Sportback sport extreme",
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

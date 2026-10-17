@@ -169,9 +169,9 @@
   "leasingSocial_EUR_per_month": null,
   "availableAids": [
     {
-      "label": "Prime CEE (Coup de pouce)",
-      "amount_EUR": 6000,
-      "conditions": "Aide basée sur le dispositif CEE (Coup de pouce) pouvant atteindre 6 000 € selon conditions de ressources du foyer pour l'achat d'un véhicule électrique éligible."
+      "label": "Prime CEE",
+      "amount_EUR": 5700,
+      "conditions": "Coup de pouce CEE 2026, selon les revenus du foyer, pour les versions sous 47 000 €."
     }
   ],
   "configurations": [

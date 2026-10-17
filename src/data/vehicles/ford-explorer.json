@@ -37,9 +37,9 @@
   "dragCoefficient_Cx": 0.28,
   "chargingDC": {
     "peakPower_kW": 185,
-    "time_10_80_min": 26,
-    "kWh_added_30min": 55,
-    "confidence": "estimated"
+    "time_10_80_min": 23,
+    "kWh_added_30min": 63,
+    "confidence": "tested"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
@@ -52,48 +52,84 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 142
-    },
-    {
       "soc": 10,
       "power": 177
+    },
+    {
+      "soc": 15,
+      "power": 180
     },
     {
       "soc": 20,
       "power": 182
     },
     {
+      "soc": 25,
+      "power": 183
+    },
+    {
       "soc": 30,
       "power": 184
+    },
+    {
+      "soc": 31,
+      "power": 185
+    },
+    {
+      "soc": 35,
+      "power": 183
     },
     {
       "soc": 40,
       "power": 173
     },
     {
+      "soc": 45,
+      "power": 158
+    },
+    {
       "soc": 50,
       "power": 145
+    },
+    {
+      "soc": 55,
+      "power": 133
     },
     {
       "soc": 60,
       "power": 123
     },
     {
+      "soc": 65,
+      "power": 114
+    },
+    {
       "soc": 70,
       "power": 102
+    },
+    {
+      "soc": 75,
+      "power": 94
     },
     {
       "soc": 80,
       "power": 86
     },
     {
+      "soc": 85,
+      "power": 77
+    },
+    {
       "soc": 90,
       "power": 69
     },
     {
+      "soc": 95,
+      "power": 55
+    },
+    {
       "soc": 100,
-      "power": 7
+      "power": 29
     }
   ],
   "rangeTests": [
@@ -189,7 +225,7 @@
   "availableAids": [
     {
       "label": "Prime CEE",
-      "amount_EUR": 6500,
+      "amount_EUR": 5700,
       "conditions": "Socle de base de la Prime CEE 2026 pour véhicule éligible à l'éco-score ADEME."
     },
     {
@@ -250,7 +286,8 @@
         }
       ],
       "availability": "available",
-      "notes": "170 ch (125 kW), RWD"
+      "notes": "170 ch (125 kW), RWD",
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "ford-explorer-77",
@@ -302,36 +339,93 @@
         }
       ],
       "chargingDC_peak_kW": 185,
-      "chargingDC_10_80_min": 26,
-      "chargingDC_kWh_30min": 55,
+      "chargingDC_10_80_min": 23,
+      "chargingDC_kWh_30min": 63,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 120
+          "soc": 10,
+          "power": 177
         },
         {
-          "soc": 10,
-          "power": 185
+          "soc": 15,
+          "power": 180
+        },
+        {
+          "soc": 20,
+          "power": 182
+        },
+        {
+          "soc": 25,
+          "power": 183
         },
         {
           "soc": 30,
-          "power": 160
+          "power": 184
+        },
+        {
+          "soc": 31,
+          "power": 185
+        },
+        {
+          "soc": 35,
+          "power": 183
+        },
+        {
+          "soc": 40,
+          "power": 173
+        },
+        {
+          "soc": 45,
+          "power": 158
         },
         {
           "soc": 50,
-          "power": 110
+          "power": 145
+        },
+        {
+          "soc": 55,
+          "power": 133
+        },
+        {
+          "soc": 60,
+          "power": 123
+        },
+        {
+          "soc": 65,
+          "power": 114
+        },
+        {
+          "soc": 70,
+          "power": 102
+        },
+        {
+          "soc": 75,
+          "power": 94
         },
         {
           "soc": 80,
-          "power": 45
+          "power": 86
+        },
+        {
+          "soc": 85,
+          "power": 77
+        },
+        {
+          "soc": 90,
+          "power": 69
+        },
+        {
+          "soc": 95,
+          "power": 55
         },
         {
           "soc": 100,
-          "power": 8
+          "power": 29
         }
       ],
       "availability": "available",
-      "notes": "286 ch (210 kW), RWD"
+      "notes": "286 ch (210 kW), RWD",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "ford-explorer-premium-77",
@@ -383,36 +477,93 @@
         }
       ],
       "chargingDC_peak_kW": 185,
-      "chargingDC_10_80_min": 26,
-      "chargingDC_kWh_30min": 55,
+      "chargingDC_10_80_min": 23,
+      "chargingDC_kWh_30min": 63,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 120
+          "soc": 10,
+          "power": 177
         },
         {
-          "soc": 10,
-          "power": 185
+          "soc": 15,
+          "power": 180
+        },
+        {
+          "soc": 20,
+          "power": 182
+        },
+        {
+          "soc": 25,
+          "power": 183
         },
         {
           "soc": 30,
-          "power": 160
+          "power": 184
+        },
+        {
+          "soc": 31,
+          "power": 185
+        },
+        {
+          "soc": 35,
+          "power": 183
+        },
+        {
+          "soc": 40,
+          "power": 173
+        },
+        {
+          "soc": 45,
+          "power": 158
         },
         {
           "soc": 50,
-          "power": 110
+          "power": 145
+        },
+        {
+          "soc": 55,
+          "power": 133
+        },
+        {
+          "soc": 60,
+          "power": 123
+        },
+        {
+          "soc": 65,
+          "power": 114
+        },
+        {
+          "soc": 70,
+          "power": 102
+        },
+        {
+          "soc": 75,
+          "power": 94
         },
         {
           "soc": 80,
-          "power": 45
+          "power": 86
+        },
+        {
+          "soc": 85,
+          "power": 77
+        },
+        {
+          "soc": 90,
+          "power": 69
+        },
+        {
+          "soc": 95,
+          "power": 55
         },
         {
           "soc": 100,
-          "power": 8
+          "power": 29
         }
       ],
       "availability": "available",
-      "notes": "286 ch (210 kW), RWD, full options"
+      "notes": "286 ch (210 kW), RWD, full options",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "ford-explorer-awd-77",
@@ -436,36 +587,93 @@
       },
       "rangeTests": [],
       "chargingDC_peak_kW": 185,
-      "chargingDC_10_80_min": 26,
-      "chargingDC_kWh_30min": 55,
+      "chargingDC_10_80_min": 23,
+      "chargingDC_kWh_30min": 63,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 120
+          "soc": 10,
+          "power": 177
         },
         {
-          "soc": 10,
-          "power": 185
+          "soc": 15,
+          "power": 180
+        },
+        {
+          "soc": 20,
+          "power": 182
+        },
+        {
+          "soc": 25,
+          "power": 183
         },
         {
           "soc": 30,
-          "power": 160
+          "power": 184
+        },
+        {
+          "soc": 31,
+          "power": 185
+        },
+        {
+          "soc": 35,
+          "power": 183
+        },
+        {
+          "soc": 40,
+          "power": 173
+        },
+        {
+          "soc": 45,
+          "power": 158
         },
         {
           "soc": 50,
-          "power": 110
+          "power": 145
+        },
+        {
+          "soc": 55,
+          "power": 133
+        },
+        {
+          "soc": 60,
+          "power": 123
+        },
+        {
+          "soc": 65,
+          "power": 114
+        },
+        {
+          "soc": 70,
+          "power": 102
+        },
+        {
+          "soc": 75,
+          "power": 94
         },
         {
           "soc": 80,
-          "power": 45
+          "power": 86
+        },
+        {
+          "soc": 85,
+          "power": 77
+        },
+        {
+          "soc": 90,
+          "power": 69
+        },
+        {
+          "soc": 95,
+          "power": 55
         },
         {
           "soc": 100,
-          "power": 8
+          "power": 29
         }
       ],
       "availability": "available",
-      "notes": "340 ch (250 kW), AWD bi-moteur"
+      "notes": "340 ch (250 kW), AWD bi-moteur",
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

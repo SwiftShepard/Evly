@@ -36,10 +36,10 @@
   "consumption_winter_kWh_per_100km": 22.9,
   "dragCoefficient_Cx": 0.24,
   "chargingDC": {
-    "peakPower_kW": 300,
-    "time_10_80_min": 15,
-    "kWh_added_30min": 60,
-    "confidence": "estimated"
+    "peakPower_kW": 339,
+    "time_10_80_min": 16,
+    "kWh_added_30min": 85,
+    "confidence": "tested"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
@@ -52,28 +52,84 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 180
+      "soc": 10,
+      "power": 187
     },
     {
-      "soc": 10,
-      "power": 300
+      "soc": 15,
+      "power": 331
+    },
+    {
+      "soc": 20,
+      "power": 338
+    },
+    {
+      "soc": 21,
+      "power": 339
+    },
+    {
+      "soc": 25,
+      "power": 332
     },
     {
       "soc": 30,
-      "power": 260
+      "power": 318
+    },
+    {
+      "soc": 35,
+      "power": 307
+    },
+    {
+      "soc": 40,
+      "power": 289
+    },
+    {
+      "soc": 45,
+      "power": 269
     },
     {
       "soc": 50,
+      "power": 248
+    },
+    {
+      "soc": 55,
+      "power": 237
+    },
+    {
+      "soc": 60,
+      "power": 224
+    },
+    {
+      "soc": 65,
+      "power": 212
+    },
+    {
+      "soc": 70,
       "power": 200
     },
     {
+      "soc": 75,
+      "power": 172
+    },
+    {
       "soc": 80,
-      "power": 65
+      "power": 158
+    },
+    {
+      "soc": 85,
+      "power": 139
+    },
+    {
+      "soc": 90,
+      "power": 92
+    },
+    {
+      "soc": 95,
+      "power": 48
     },
     {
       "soc": 100,
-      "power": 10
+      "power": 13
     }
   ],
   "rangeTests": [
@@ -188,7 +244,8 @@
       "notes": "340 ch, RWD, SUV Coupé 800V",
       "power_hp": 407,
       "power_kW": 299,
-      "usableCapacity_kWh": 96
+      "usableCapacity_kWh": 96,
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "mg-im6-long-range",
@@ -239,36 +296,97 @@
           "notes": "Essai Nyland « MG IM6 100 kWh AWD » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 300,
-      "chargingDC_10_80_min": 15,
-      "chargingDC_kWh_30min": 78,
+      "chargingDC_peak_kW": 339,
+      "chargingDC_10_80_min": 16,
+      "chargingDC_kWh_30min": 85,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 180
+          "soc": 10,
+          "power": 187
         },
         {
-          "soc": 10,
-          "power": 300
+          "soc": 15,
+          "power": 331
+        },
+        {
+          "soc": 20,
+          "power": 338
+        },
+        {
+          "soc": 21,
+          "power": 339
+        },
+        {
+          "soc": 25,
+          "power": 332
+        },
+        {
+          "soc": 30,
+          "power": 318
+        },
+        {
+          "soc": 35,
+          "power": 307
+        },
+        {
+          "soc": 40,
+          "power": 289
+        },
+        {
+          "soc": 45,
+          "power": 269
         },
         {
           "soc": 50,
+          "power": 248
+        },
+        {
+          "soc": 55,
+          "power": 237
+        },
+        {
+          "soc": 60,
+          "power": 224
+        },
+        {
+          "soc": 65,
+          "power": 212
+        },
+        {
+          "soc": 70,
           "power": 200
         },
         {
+          "soc": 75,
+          "power": 172
+        },
+        {
           "soc": 80,
-          "power": 65
+          "power": 158
+        },
+        {
+          "soc": 85,
+          "power": 139
+        },
+        {
+          "soc": 90,
+          "power": 92
+        },
+        {
+          "soc": 95,
+          "power": 48
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 13
         }
       ],
       "availability": "available",
       "notes": "340 ch RWD, plateforme 800V, autonomie 590 km",
       "power_hp": 751,
       "power_kW": 552,
-      "usableCapacity_kWh": 96
+      "usableCapacity_kWh": 96,
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

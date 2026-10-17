@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import type { Vehicle } from "@/data/schemas";
 import { useUserProfile } from "@/lib/userProfile";
-import { calculateCeeAid, isVehicleEligibleCEE, isVehicleBatteryUE } from "@/lib/cee";
+import { calculateCeeAid, isVehicleEligibleCEE, BATTERY_BONUS_EUR } from "@/lib/cee";
 import { formatPrice } from "@/lib/format";
 import ProfileOnboardingModal from "@/components/profile/ProfileOnboardingModal";
 
@@ -37,10 +37,9 @@ export default function CeeSimulator({ vehicle }: Props) {
   }, [vehicle]);
 
   const isEligible = isVehicleEligibleCEE(vehicle, activeConfigPrice);
-  const isBatteryUE = isVehicleBatteryUE(vehicle);
 
   // Calculer l'aide dynamique basée sur le profil utilisateur local
-  const { amount: ceeAmount, category, label: ceeLabel } = calculateCeeAid({
+  const { amount: ceeAmount, category, label: ceeLabel, batteryBonus } = calculateCeeAid({
     vehicle,
     price: activeConfigPrice,
     profileType: profile.profileType,
@@ -157,9 +156,16 @@ export default function CeeSimulator({ vehicle }: Props) {
           </div>
         )}
 
+        {profile.hasConfigured && batteryBonus && (
+          <p className="text-[10px] text-[var(--color-text-muted)] leading-normal">
+            Bonification batterie européenne possible en plus ({formatPrice(BATTERY_BONUS_EUR.min)} à {formatPrice(BATTERY_BONUS_EUR.max)}) selon
+            la version, d'après la liste ADEME revue chaque mois : à confirmer avec le vendeur.
+          </p>
+        )}
+
         {!isEligible && (
           <div className="text-[10px] text-red-700 bg-red-50 border border-red-100 p-2 rounded-lg leading-normal">
-            ⚠️ Ce modèle n'est pas éligible au dispositif CEE 2026 (prix &gt; 47 k€, poids &ge; 2,4 t ou production hors UE).
+            ⚠️ Cette version n'est pas éligible au coup de pouce CEE 2026 (prix &gt; 47 000 €, masse &ge; 2,4 t ou éco-score insuffisant).
           </div>
         )}
       </div>

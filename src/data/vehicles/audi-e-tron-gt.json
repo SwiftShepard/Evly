@@ -36,10 +36,10 @@
   "consumption_winter_kWh_per_100km": 23,
   "dragCoefficient_Cx": 0.24,
   "chargingDC": {
-    "peakPower_kW": 320,
-    "time_10_80_min": 18,
-    "kWh_added_30min": 70,
-    "confidence": "estimated"
+    "peakPower_kW": 319,
+    "time_10_80_min": 16,
+    "kWh_added_30min": 81,
+    "confidence": "tested"
   },
   "chargingAC": {
     "onboardCharger_kW": 22,
@@ -52,48 +52,80 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 194
+      "soc": 10,
+      "power": 111
     },
     {
-      "soc": 10,
-      "power": 320
+      "soc": 15,
+      "power": 297
     },
     {
       "soc": 20,
-      "power": 320
+      "power": 302
+    },
+    {
+      "soc": 25,
+      "power": 308
     },
     {
       "soc": 30,
-      "power": 280
+      "power": 309
+    },
+    {
+      "soc": 35,
+      "power": 311
     },
     {
       "soc": 40,
-      "power": 245
+      "power": 315
+    },
+    {
+      "soc": 41,
+      "power": 319
+    },
+    {
+      "soc": 45,
+      "power": 317
     },
     {
       "soc": 50,
-      "power": 200
+      "power": 310
+    },
+    {
+      "soc": 55,
+      "power": 305
     },
     {
       "soc": 60,
-      "power": 190
+      "power": 301
+    },
+    {
+      "soc": 65,
+      "power": 207
     },
     {
       "soc": 70,
-      "power": 163
+      "power": 210
+    },
+    {
+      "soc": 75,
+      "power": 202
     },
     {
       "soc": 80,
-      "power": 90
+      "power": 91
+    },
+    {
+      "soc": 85,
+      "power": 86
     },
     {
       "soc": 90,
-      "power": 54
+      "power": 62
     },
     {
-      "soc": 100,
-      "power": 5
+      "soc": 94,
+      "power": 41
     }
   ],
   "rangeTests": [
@@ -209,37 +241,90 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 320,
-      "chargingDC_10_80_min": 18,
-      "chargingDC_kWh_30min": 70,
+      "chargingDC_peak_kW": 319,
+      "chargingDC_10_80_min": 16,
+      "chargingDC_kWh_30min": 81,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 200
+          "soc": 10,
+          "power": 111
         },
         {
-          "soc": 10,
-          "power": 320
+          "soc": 15,
+          "power": 297
+        },
+        {
+          "soc": 20,
+          "power": 302
+        },
+        {
+          "soc": 25,
+          "power": 308
         },
         {
           "soc": 30,
-          "power": 280
+          "power": 309
+        },
+        {
+          "soc": 35,
+          "power": 311
+        },
+        {
+          "soc": 40,
+          "power": 315
+        },
+        {
+          "soc": 41,
+          "power": 319
+        },
+        {
+          "soc": 45,
+          "power": 317
         },
         {
           "soc": 50,
-          "power": 200
+          "power": 310
+        },
+        {
+          "soc": 55,
+          "power": 305
+        },
+        {
+          "soc": 60,
+          "power": 301
+        },
+        {
+          "soc": 65,
+          "power": 207
+        },
+        {
+          "soc": 70,
+          "power": 210
+        },
+        {
+          "soc": 75,
+          "power": 202
         },
         {
           "soc": 80,
-          "power": 70
+          "power": 91
         },
         {
-          "soc": 100,
-          "power": 12
+          "soc": 85,
+          "power": 86
+        },
+        {
+          "soc": 90,
+          "power": 62
+        },
+        {
+          "soc": 94,
+          "power": 41
         }
       ],
       "availability": "available",
-      "notes": "503 ch (370 kW), AWD, 625 Nm"
+      "notes": "503 ch (370 kW), AWD, 625 Nm",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "audi-s-etron-gt",
@@ -262,37 +347,90 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 320,
-      "chargingDC_10_80_min": 18,
-      "chargingDC_kWh_30min": 70,
+      "chargingDC_peak_kW": 319,
+      "chargingDC_10_80_min": 16,
+      "chargingDC_kWh_30min": 81,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 200
+          "soc": 10,
+          "power": 111
         },
         {
-          "soc": 10,
-          "power": 320
+          "soc": 15,
+          "power": 297
+        },
+        {
+          "soc": 20,
+          "power": 302
+        },
+        {
+          "soc": 25,
+          "power": 308
         },
         {
           "soc": 30,
-          "power": 280
+          "power": 309
+        },
+        {
+          "soc": 35,
+          "power": 311
+        },
+        {
+          "soc": 40,
+          "power": 315
+        },
+        {
+          "soc": 41,
+          "power": 319
+        },
+        {
+          "soc": 45,
+          "power": 317
         },
         {
           "soc": 50,
-          "power": 200
+          "power": 310
+        },
+        {
+          "soc": 55,
+          "power": 305
+        },
+        {
+          "soc": 60,
+          "power": 301
+        },
+        {
+          "soc": 65,
+          "power": 207
+        },
+        {
+          "soc": 70,
+          "power": 210
+        },
+        {
+          "soc": 75,
+          "power": 202
         },
         {
           "soc": 80,
-          "power": 70
+          "power": 91
         },
         {
-          "soc": 100,
-          "power": 12
+          "soc": 85,
+          "power": 86
+        },
+        {
+          "soc": 90,
+          "power": 62
+        },
+        {
+          "soc": 94,
+          "power": 41
         }
       ],
       "availability": "available",
-      "notes": "679 ch (500 kW), AWD, 740 Nm"
+      "notes": "679 ch (500 kW), AWD, 740 Nm",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "audi-rs-etron-gt",
@@ -343,37 +481,90 @@
           "notes": "Essai Nyland « 2024 Audi RS e-tron GT » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 320,
-      "chargingDC_10_80_min": 18,
-      "chargingDC_kWh_30min": 70,
+      "chargingDC_peak_kW": 319,
+      "chargingDC_10_80_min": 16,
+      "chargingDC_kWh_30min": 81,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 200
+          "soc": 10,
+          "power": 111
         },
         {
-          "soc": 10,
-          "power": 320
+          "soc": 15,
+          "power": 297
+        },
+        {
+          "soc": 20,
+          "power": 302
+        },
+        {
+          "soc": 25,
+          "power": 308
         },
         {
           "soc": 30,
-          "power": 280
+          "power": 309
+        },
+        {
+          "soc": 35,
+          "power": 311
+        },
+        {
+          "soc": 40,
+          "power": 315
+        },
+        {
+          "soc": 41,
+          "power": 319
+        },
+        {
+          "soc": 45,
+          "power": 317
         },
         {
           "soc": 50,
-          "power": 200
+          "power": 310
+        },
+        {
+          "soc": 55,
+          "power": 305
+        },
+        {
+          "soc": 60,
+          "power": 301
+        },
+        {
+          "soc": 65,
+          "power": 207
+        },
+        {
+          "soc": 70,
+          "power": 210
+        },
+        {
+          "soc": 75,
+          "power": 202
         },
         {
           "soc": 80,
-          "power": 70
+          "power": 91
         },
         {
-          "soc": 100,
-          "power": 12
+          "soc": 85,
+          "power": 86
+        },
+        {
+          "soc": 90,
+          "power": 62
+        },
+        {
+          "soc": 94,
+          "power": 41
         }
       ],
       "availability": "available",
-      "notes": "856 ch (630 kW), AWD, 895 Nm"
+      "notes": "856 ch (630 kW), AWD, 895 Nm",
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "audi-rs-etron-gt-perf",
@@ -396,37 +587,90 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 320,
-      "chargingDC_10_80_min": 18,
-      "chargingDC_kWh_30min": 70,
+      "chargingDC_peak_kW": 319,
+      "chargingDC_10_80_min": 16,
+      "chargingDC_kWh_30min": 81,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 200
+          "soc": 10,
+          "power": 111
         },
         {
-          "soc": 10,
-          "power": 320
+          "soc": 15,
+          "power": 297
+        },
+        {
+          "soc": 20,
+          "power": 302
+        },
+        {
+          "soc": 25,
+          "power": 308
         },
         {
           "soc": 30,
-          "power": 280
+          "power": 309
+        },
+        {
+          "soc": 35,
+          "power": 311
+        },
+        {
+          "soc": 40,
+          "power": 315
+        },
+        {
+          "soc": 41,
+          "power": 319
+        },
+        {
+          "soc": 45,
+          "power": 317
         },
         {
           "soc": 50,
-          "power": 200
+          "power": 310
+        },
+        {
+          "soc": 55,
+          "power": 305
+        },
+        {
+          "soc": 60,
+          "power": 301
+        },
+        {
+          "soc": 65,
+          "power": 207
+        },
+        {
+          "soc": 70,
+          "power": 210
+        },
+        {
+          "soc": 75,
+          "power": 202
         },
         {
           "soc": 80,
-          "power": 70
+          "power": 91
         },
         {
-          "soc": 100,
-          "power": 12
+          "soc": 85,
+          "power": 86
+        },
+        {
+          "soc": 90,
+          "power": 62
+        },
+        {
+          "soc": 94,
+          "power": 41
         }
       ],
       "availability": "available",
-      "notes": "925 ch (680 kW), AWD, 1 027 Nm"
+      "notes": "925 ch (680 kW), AWD, 1 027 Nm",
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

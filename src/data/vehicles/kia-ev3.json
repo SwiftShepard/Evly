@@ -36,9 +36,9 @@
   "consumption_winter_kWh_per_100km": 19.5,
   "dragCoefficient_Cx": 0.26,
   "chargingDC": {
-    "peakPower_kW": 128,
+    "peakPower_kW": 125,
     "time_10_80_min": 31,
-    "kWh_added_30min": 57,
+    "kWh_added_30min": 56,
     "confidence": "tested"
   },
   "chargingAC": {
@@ -52,48 +52,84 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 92
-    },
-    {
       "soc": 10,
       "power": 115
+    },
+    {
+      "soc": 15,
+      "power": 117
     },
     {
       "soc": 20,
       "power": 119
     },
     {
+      "soc": 25,
+      "power": 120
+    },
+    {
       "soc": 30,
       "power": 120
+    },
+    {
+      "soc": 35,
+      "power": 121
     },
     {
       "soc": 40,
       "power": 122
     },
     {
+      "soc": 45,
+      "power": 124
+    },
+    {
+      "soc": 48,
+      "power": 125
+    },
+    {
       "soc": 50,
       "power": 121
+    },
+    {
+      "soc": 55,
+      "power": 123
     },
     {
       "soc": 60,
       "power": 124
     },
     {
+      "soc": 65,
+      "power": 113
+    },
+    {
       "soc": 70,
       "power": 114
+    },
+    {
+      "soc": 75,
+      "power": 74
     },
     {
       "soc": 80,
       "power": 43
     },
     {
+      "soc": 85,
+      "power": 31
+    },
+    {
       "soc": 90,
       "power": 31
     },
     {
+      "soc": 95,
+      "power": 20
+    },
+    {
       "soc": 100,
-      "power": 3
+      "power": 2
     }
   ],
   "rangeTests": [
@@ -225,7 +261,8 @@
       "chargingDC_kWh_30min": 41,
       "chargingCurve": null,
       "availability": "available",
-      "notes": "Batterie Standard Range 58.3 kWh."
+      "notes": "Batterie Standard Range 58.3 kWh.",
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "kia-ev3-standard-range-earth",
@@ -253,7 +290,8 @@
       "chargingDC_kWh_30min": 41,
       "chargingCurve": null,
       "availability": "available",
-      "notes": "Batterie Standard Range 58.3 kWh, finition Earth."
+      "notes": "Batterie Standard Range 58.3 kWh, finition Earth.",
+      "chargingDC_confidence": "estimated"
     },
     {
       "id": "kia-ev3-long-range-air",
@@ -304,33 +342,94 @@
           "notes": "Essai Nyland « Kia EV3 Long Range FWD » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 128,
+      "chargingDC_peak_kW": 125,
       "chargingDC_10_80_min": 31,
-      "chargingDC_kWh_30min": 57,
+      "chargingDC_kWh_30min": 56,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 115
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 117
+        },
+        {
+          "soc": 20,
+          "power": 119
+        },
+        {
+          "soc": 25,
+          "power": 120
+        },
+        {
+          "soc": 30,
+          "power": 120
+        },
+        {
+          "soc": 35,
+          "power": 121
+        },
+        {
+          "soc": 40,
+          "power": 122
+        },
+        {
+          "soc": 45,
+          "power": 124
+        },
+        {
+          "soc": 48,
+          "power": 125
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 121
+        },
+        {
+          "soc": 55,
+          "power": 123
+        },
+        {
+          "soc": 60,
+          "power": 124
+        },
+        {
+          "soc": 65,
+          "power": 113
+        },
+        {
+          "soc": 70,
+          "power": 114
+        },
+        {
+          "soc": 75,
+          "power": 74
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 43
+        },
+        {
+          "soc": 85,
+          "power": 31
+        },
+        {
+          "soc": 90,
+          "power": 31
+        },
+        {
+          "soc": 95,
+          "power": 20
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 2
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "kia-ev3-long-range-earth",
@@ -381,33 +480,94 @@
           "notes": "Essai Nyland « Kia EV3 Long Range FWD » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 128,
+      "chargingDC_peak_kW": 125,
       "chargingDC_10_80_min": 31,
-      "chargingDC_kWh_30min": 57,
+      "chargingDC_kWh_30min": 56,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 115
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 117
+        },
+        {
+          "soc": 20,
+          "power": 119
+        },
+        {
+          "soc": 25,
+          "power": 120
+        },
+        {
+          "soc": 30,
+          "power": 120
+        },
+        {
+          "soc": 35,
+          "power": 121
+        },
+        {
+          "soc": 40,
+          "power": 122
+        },
+        {
+          "soc": 45,
+          "power": 124
+        },
+        {
+          "soc": 48,
+          "power": 125
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 121
+        },
+        {
+          "soc": 55,
+          "power": 123
+        },
+        {
+          "soc": 60,
+          "power": 124
+        },
+        {
+          "soc": 65,
+          "power": 113
+        },
+        {
+          "soc": 70,
+          "power": 114
+        },
+        {
+          "soc": 75,
+          "power": 74
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 43
+        },
+        {
+          "soc": 85,
+          "power": 31
+        },
+        {
+          "soc": 90,
+          "power": 31
+        },
+        {
+          "soc": 95,
+          "power": 20
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 2
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "kia-ev3-long-range-gt-line",
@@ -458,33 +618,94 @@
           "notes": "Essai Nyland « Kia EV3 Long Range FWD » (été, route sèche)."
         }
       ],
-      "chargingDC_peak_kW": 128,
+      "chargingDC_peak_kW": 125,
       "chargingDC_10_80_min": 31,
-      "chargingDC_kWh_30min": 57,
+      "chargingDC_kWh_30min": 56,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 100
+          "soc": 10,
+          "power": 115
         },
         {
-          "soc": 10,
-          "power": 130
+          "soc": 15,
+          "power": 117
+        },
+        {
+          "soc": 20,
+          "power": 119
+        },
+        {
+          "soc": 25,
+          "power": 120
+        },
+        {
+          "soc": 30,
+          "power": 120
+        },
+        {
+          "soc": 35,
+          "power": 121
+        },
+        {
+          "soc": 40,
+          "power": 122
+        },
+        {
+          "soc": 45,
+          "power": 124
+        },
+        {
+          "soc": 48,
+          "power": 125
         },
         {
           "soc": 50,
-          "power": 100
+          "power": 121
+        },
+        {
+          "soc": 55,
+          "power": 123
+        },
+        {
+          "soc": 60,
+          "power": 124
+        },
+        {
+          "soc": 65,
+          "power": 113
+        },
+        {
+          "soc": 70,
+          "power": 114
+        },
+        {
+          "soc": 75,
+          "power": 74
         },
         {
           "soc": 80,
-          "power": 50
+          "power": 43
+        },
+        {
+          "soc": 85,
+          "power": 31
+        },
+        {
+          "soc": 90,
+          "power": 31
+        },
+        {
+          "soc": 95,
+          "power": 20
         },
         {
           "soc": 100,
-          "power": 10
+          "power": 2
         }
       ],
       "availability": "available",
-      "notes": null
+      "notes": null,
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {
