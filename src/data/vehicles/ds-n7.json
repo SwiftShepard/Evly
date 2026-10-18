@@ -1,0 +1,1153 @@
+{
+  "slug": "ds-n7",
+  "brand": "DS",
+  "model": "N°7",
+  "variant": "E-Tense 73,7 / 97,2 kWh · FWD/AWD",
+  "bodyType": "SUV familial",
+  "segment": "D",
+  "productionCountry": "Italie",
+  "assemblyPlant": "Melfi",
+  "releaseYear": 2026,
+  "marketAvailability": "Disponible",
+  "power_kW": 180,
+  "power_hp": 245,
+  "torque_Nm": 343,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 7.8,
+  "topSpeed_kmh": 190,
+  "usableCapacity_kWh": 97.2,
+  "grossCapacity_kWh": 104,
+  "chemistry": "NMC",
+  "heatPump": "option",
+  "architecture_V": 400,
+  "mass_kg": 2138,
+  "wltp_max_km": 741,
+  "wltp_min_km": 504,
+  "realRange": {
+    "mixed_km": 537,
+    "highway_130_km": 403,
+    "urban_km": 686,
+    "winter_minus5_km": 367,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 16.1,
+  "consumption_highway_kWh_per_100km": 24.1,
+  "consumption_winter_kWh_per_100km": 26.5,
+  "dragCoefficient_Cx": 0.28,
+  "chargingDC": {
+    "peakPower_kW": 160,
+    "time_10_80_min": 32,
+    "kWh_added_30min": 65,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 10.5
+  },
+  "plugAndCharge": true,
+  "v2l": true,
+  "v2g": false,
+  "v2l_option_EUR": 0,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 140
+    },
+    {
+      "soc": 10,
+      "power": 150
+    },
+    {
+      "soc": 20,
+      "power": 160
+    },
+    {
+      "soc": 30,
+      "power": 158
+    },
+    {
+      "soc": 40,
+      "power": 150
+    },
+    {
+      "soc": 50,
+      "power": 140
+    },
+    {
+      "soc": 60,
+      "power": 120
+    },
+    {
+      "soc": 70,
+      "power": 100
+    },
+    {
+      "soc": 80,
+      "power": 75
+    },
+    {
+      "soc": 90,
+      "power": 40
+    },
+    {
+      "soc": 100,
+      "power": 10
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4660,
+  "width_mm": 1900,
+  "height_mm": 1630,
+  "wheelbase_mm": 2790,
+  "trunkCapacity_L": 560,
+  "trunkCapacityFolded_L": 1570,
+  "frunkCapacity_L": 0,
+  "trims": [
+    {
+      "name": "N°7 230 ch 73.7 kWh",
+      "price_EUR": 46990,
+      "batteryUsed": "73.7 kWh",
+      "equipmentHighlights": [
+        "Écran tactile 16\" HD, CarPlay et Android Auto sans fil",
+        "Jantes 19\" Borealis Aero",
+        "Chargeur 7,4 kW (11 kW et pompe à chaleur en pack)"
+      ]
+    },
+    {
+      "name": "N°7 245 ch 97.2 kWh",
+      "price_EUR": 50610,
+      "batteryUsed": "97.2 kWh",
+      "equipmentHighlights": [
+        "Écran tactile 16\" HD, CarPlay et Android Auto sans fil",
+        "Jantes 19\" Borealis Aero",
+        "Chargeur 7,4 kW (11 kW et pompe à chaleur en pack)"
+      ]
+    },
+    {
+      "name": "Pallas 230 ch 73.7 kWh",
+      "price_EUR": 58420,
+      "batteryUsed": "73.7 kWh",
+      "equipmentHighlights": [
+        "DS Iris System avec navigation 3D connectée",
+        "Hayon motorisé et sièges avant chauffants",
+        "Chargeur 11 kW et pompe à chaleur de série"
+      ]
+    },
+    {
+      "name": "Pallas 245 ch 97.2 kWh",
+      "price_EUR": 62040,
+      "batteryUsed": "97.2 kWh",
+      "equipmentHighlights": [
+        "DS Iris System avec navigation 3D connectée",
+        "Hayon motorisé et sièges avant chauffants",
+        "Chargeur 11 kW et pompe à chaleur de série"
+      ]
+    },
+    {
+      "name": "Étoile 230 ch 73.7 kWh",
+      "price_EUR": 64200,
+      "batteryUsed": "73.7 kWh",
+      "equipmentHighlights": [
+        "Suspension pilotée DS Active Scan Suspension",
+        "DS Drive Assist 2.0 et vision 360",
+        "Sièges Confort avec DS Neck Warmer, jantes 20\""
+      ]
+    },
+    {
+      "name": "Étoile 245 ch 97.2 kWh",
+      "price_EUR": 67820,
+      "batteryUsed": "97.2 kWh",
+      "equipmentHighlights": [
+        "Suspension pilotée DS Active Scan Suspension",
+        "DS Drive Assist 2.0 et vision 360",
+        "Sièges Confort avec DS Neck Warmer, jantes 20\""
+      ]
+    },
+    {
+      "name": "Étoile AWD 350 ch 97.2 kWh",
+      "price_EUR": 71520,
+      "batteryUsed": "97.2 kWh",
+      "equipmentHighlights": [
+        "Transmission intégrale 350 ch, 0 à 100 km/h en 5,4 s",
+        "Suspension pilotée DS Active Scan Suspension",
+        "DS Drive Assist 2.0 et vision 360"
+      ]
+    },
+    {
+      "name": "La Première 230 ch 73.7 kWh",
+      "price_EUR": 70200,
+      "batteryUsed": "73.7 kWh",
+      "equipmentHighlights": [
+        "Sièges Lounge et Hi-Fi Focal Electra 3D",
+        "DS Night Vision et affichage tête haute étendu",
+        "Cuir Nappa Noir Byzantin, jantes 21\""
+      ]
+    },
+    {
+      "name": "La Première 245 ch 97.2 kWh",
+      "price_EUR": 73820,
+      "batteryUsed": "97.2 kWh",
+      "equipmentHighlights": [
+        "Sièges Lounge et Hi-Fi Focal Electra 3D",
+        "DS Night Vision et affichage tête haute étendu",
+        "Cuir Nappa Noir Byzantin, jantes 21\""
+      ]
+    },
+    {
+      "name": "La Première AWD 350 ch 97.2 kWh",
+      "price_EUR": 77520,
+      "batteryUsed": "97.2 kWh",
+      "equipmentHighlights": [
+        "Transmission intégrale 350 ch, 0 à 100 km/h en 5,4 s",
+        "Sièges Lounge et Hi-Fi Focal Electra 3D",
+        "DS Night Vision et affichage tête haute étendu"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE",
+      "amount_EUR": 4830,
+      "conditions": "Coup de pouce CEE (règles du 1er septembre 2026), grille « produite en Europe » : voiture assemblée à Melfi (Italie), batterie fabriquée en France, prime affichée par DS. Montant selon le revenu fiscal du foyer, pour la version N°7 230 ch, seule sous le plafond de 47 000 €."
+    }
+  ],
+  "configurations": [
+    {
+      "id": "ds-n7-n7-73",
+      "label": "N°7 230 ch · 73,7 kWh · 19\"",
+      "battery": "standard",
+      "trim": "N°7",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "power_kW": 169,
+      "power_hp": 230,
+      "torque_Nm": 343,
+      "acceleration_0_100_s": 7.7,
+      "usableCapacity_kWh": 73.7,
+      "price_EUR": 46990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 544,
+      "wltp_consumption_kWh_100km": 15.9,
+      "realRange": {
+        "mixed_km": 394,
+        "highway_130_km": 296,
+        "urban_km": 504,
+        "winter_minus5_km": 269,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 51,
+      "chargingCurve": [
+        {
+          "soc": 10,
+          "power": 148
+        },
+        {
+          "soc": 15,
+          "power": 162
+        },
+        {
+          "soc": 16,
+          "power": 164
+        },
+        {
+          "soc": 20,
+          "power": 162
+        },
+        {
+          "soc": 25,
+          "power": 159
+        },
+        {
+          "soc": 30,
+          "power": 135
+        },
+        {
+          "soc": 35,
+          "power": 135
+        },
+        {
+          "soc": 40,
+          "power": 136
+        },
+        {
+          "soc": 45,
+          "power": 122
+        },
+        {
+          "soc": 50,
+          "power": 109
+        },
+        {
+          "soc": 55,
+          "power": 83
+        },
+        {
+          "soc": 60,
+          "power": 74
+        },
+        {
+          "soc": 65,
+          "power": 74
+        },
+        {
+          "soc": 70,
+          "power": 75
+        },
+        {
+          "soc": 75,
+          "power": 64
+        },
+        {
+          "soc": 80,
+          "power": 51
+        },
+        {
+          "soc": 85,
+          "power": 27
+        },
+        {
+          "soc": 90,
+          "power": 24
+        }
+      ],
+      "chargingDC_confidence": "estimated",
+      "availability": "available",
+      "notes": "Chargeur embarqué 7,4 kW ; chargeur 11 kW et pompe à chaleur en pack."
+    },
+    {
+      "id": "ds-n7-pallas-73",
+      "label": "Pallas 230 ch · 73,7 kWh · 19\"",
+      "battery": "standard",
+      "trim": "Pallas",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "power_kW": 169,
+      "power_hp": 230,
+      "torque_Nm": 343,
+      "acceleration_0_100_s": 7.7,
+      "usableCapacity_kWh": 73.7,
+      "price_EUR": 58420,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 540,
+      "wltp_consumption_kWh_100km": 16.0,
+      "realRange": {
+        "mixed_km": 392,
+        "highway_130_km": 294,
+        "urban_km": 501,
+        "winter_minus5_km": 268,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 51,
+      "chargingCurve": [
+        {
+          "soc": 10,
+          "power": 148
+        },
+        {
+          "soc": 15,
+          "power": 162
+        },
+        {
+          "soc": 16,
+          "power": 164
+        },
+        {
+          "soc": 20,
+          "power": 162
+        },
+        {
+          "soc": 25,
+          "power": 159
+        },
+        {
+          "soc": 30,
+          "power": 135
+        },
+        {
+          "soc": 35,
+          "power": 135
+        },
+        {
+          "soc": 40,
+          "power": 136
+        },
+        {
+          "soc": 45,
+          "power": 122
+        },
+        {
+          "soc": 50,
+          "power": 109
+        },
+        {
+          "soc": 55,
+          "power": 83
+        },
+        {
+          "soc": 60,
+          "power": 74
+        },
+        {
+          "soc": 65,
+          "power": 74
+        },
+        {
+          "soc": 70,
+          "power": 75
+        },
+        {
+          "soc": 75,
+          "power": 64
+        },
+        {
+          "soc": 80,
+          "power": 51
+        },
+        {
+          "soc": 85,
+          "power": 27
+        },
+        {
+          "soc": 90,
+          "power": 24
+        }
+      ],
+      "chargingDC_confidence": "estimated",
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "ds-n7-etoile-73",
+      "label": "Étoile 230 ch · 73,7 kWh · 20\"",
+      "battery": "standard",
+      "trim": "Étoile",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "power_kW": 169,
+      "power_hp": 230,
+      "torque_Nm": 343,
+      "acceleration_0_100_s": 7.7,
+      "usableCapacity_kWh": 73.7,
+      "price_EUR": 64200,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 520,
+      "wltp_consumption_kWh_100km": 16.7,
+      "realRange": {
+        "mixed_km": 377,
+        "highway_130_km": 283,
+        "urban_km": 482,
+        "winter_minus5_km": 258,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 51,
+      "chargingCurve": [
+        {
+          "soc": 10,
+          "power": 148
+        },
+        {
+          "soc": 15,
+          "power": 162
+        },
+        {
+          "soc": 16,
+          "power": 164
+        },
+        {
+          "soc": 20,
+          "power": 162
+        },
+        {
+          "soc": 25,
+          "power": 159
+        },
+        {
+          "soc": 30,
+          "power": 135
+        },
+        {
+          "soc": 35,
+          "power": 135
+        },
+        {
+          "soc": 40,
+          "power": 136
+        },
+        {
+          "soc": 45,
+          "power": 122
+        },
+        {
+          "soc": 50,
+          "power": 109
+        },
+        {
+          "soc": 55,
+          "power": 83
+        },
+        {
+          "soc": 60,
+          "power": 74
+        },
+        {
+          "soc": 65,
+          "power": 74
+        },
+        {
+          "soc": 70,
+          "power": 75
+        },
+        {
+          "soc": 75,
+          "power": 64
+        },
+        {
+          "soc": 80,
+          "power": 51
+        },
+        {
+          "soc": 85,
+          "power": 27
+        },
+        {
+          "soc": 90,
+          "power": 24
+        }
+      ],
+      "chargingDC_confidence": "estimated",
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "ds-n7-la-premiere-73",
+      "label": "La Première 230 ch · 73,7 kWh · 21\"",
+      "battery": "standard",
+      "trim": "La Première",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "power_kW": 169,
+      "power_hp": 230,
+      "torque_Nm": 343,
+      "acceleration_0_100_s": 7.7,
+      "usableCapacity_kWh": 73.7,
+      "price_EUR": 70200,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 504,
+      "wltp_consumption_kWh_100km": 17.3,
+      "realRange": {
+        "mixed_km": 365,
+        "highway_130_km": 274,
+        "urban_km": 467,
+        "winter_minus5_km": 250,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 51,
+      "chargingCurve": [
+        {
+          "soc": 10,
+          "power": 148
+        },
+        {
+          "soc": 15,
+          "power": 162
+        },
+        {
+          "soc": 16,
+          "power": 164
+        },
+        {
+          "soc": 20,
+          "power": 162
+        },
+        {
+          "soc": 25,
+          "power": 159
+        },
+        {
+          "soc": 30,
+          "power": 135
+        },
+        {
+          "soc": 35,
+          "power": 135
+        },
+        {
+          "soc": 40,
+          "power": 136
+        },
+        {
+          "soc": 45,
+          "power": 122
+        },
+        {
+          "soc": 50,
+          "power": 109
+        },
+        {
+          "soc": 55,
+          "power": 83
+        },
+        {
+          "soc": 60,
+          "power": 74
+        },
+        {
+          "soc": 65,
+          "power": 74
+        },
+        {
+          "soc": 70,
+          "power": 75
+        },
+        {
+          "soc": 75,
+          "power": 64
+        },
+        {
+          "soc": 80,
+          "power": 51
+        },
+        {
+          "soc": 85,
+          "power": 27
+        },
+        {
+          "soc": 90,
+          "power": 24
+        }
+      ],
+      "chargingDC_confidence": "estimated",
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "ds-n7-n7-97",
+      "label": "N°7 245 ch · 97,2 kWh · 19\"",
+      "battery": "long-range",
+      "trim": "N°7",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "usableCapacity_kWh": 97.2,
+      "price_EUR": 50610,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 741,
+      "wltp_consumption_kWh_100km": 16.1,
+      "realRange": {
+        "mixed_km": 537,
+        "highway_130_km": 403,
+        "urban_km": 686,
+        "winter_minus5_km": 367,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 150
+        },
+        {
+          "soc": 20,
+          "power": 160
+        },
+        {
+          "soc": 30,
+          "power": 158
+        },
+        {
+          "soc": 40,
+          "power": 150
+        },
+        {
+          "soc": 50,
+          "power": 140
+        },
+        {
+          "soc": 60,
+          "power": 120
+        },
+        {
+          "soc": 70,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 75
+        },
+        {
+          "soc": 90,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "chargingDC_confidence": "estimated",
+      "availability": "available",
+      "notes": "Chargeur embarqué 7,4 kW ; chargeur 11 kW et pompe à chaleur en pack."
+    },
+    {
+      "id": "ds-n7-pallas-97",
+      "label": "Pallas 245 ch · 97,2 kWh · 19\"",
+      "battery": "long-range",
+      "trim": "Pallas",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "usableCapacity_kWh": 97.2,
+      "price_EUR": 62040,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 736,
+      "wltp_consumption_kWh_100km": 16.3,
+      "realRange": {
+        "mixed_km": 534,
+        "highway_130_km": 401,
+        "urban_km": 683,
+        "winter_minus5_km": 365,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 150
+        },
+        {
+          "soc": 20,
+          "power": 160
+        },
+        {
+          "soc": 30,
+          "power": 158
+        },
+        {
+          "soc": 40,
+          "power": 150
+        },
+        {
+          "soc": 50,
+          "power": 140
+        },
+        {
+          "soc": 60,
+          "power": 120
+        },
+        {
+          "soc": 70,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 75
+        },
+        {
+          "soc": 90,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "chargingDC_confidence": "estimated",
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "ds-n7-etoile-97",
+      "label": "Étoile 245 ch · 97,2 kWh · 20\"",
+      "battery": "long-range",
+      "trim": "Étoile",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "usableCapacity_kWh": 97.2,
+      "price_EUR": 67820,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 707,
+      "wltp_consumption_kWh_100km": 17.0,
+      "realRange": {
+        "mixed_km": 513,
+        "highway_130_km": 385,
+        "urban_km": 656,
+        "winter_minus5_km": 351,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 150
+        },
+        {
+          "soc": 20,
+          "power": 160
+        },
+        {
+          "soc": 30,
+          "power": 158
+        },
+        {
+          "soc": 40,
+          "power": 150
+        },
+        {
+          "soc": 50,
+          "power": 140
+        },
+        {
+          "soc": 60,
+          "power": 120
+        },
+        {
+          "soc": 70,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 75
+        },
+        {
+          "soc": 90,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "chargingDC_confidence": "estimated",
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "ds-n7-la-premiere-97",
+      "label": "La Première 245 ch · 97,2 kWh · 21\"",
+      "battery": "long-range",
+      "trim": "La Première",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "usableCapacity_kWh": 97.2,
+      "price_EUR": 73820,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 686,
+      "wltp_consumption_kWh_100km": 17.5,
+      "realRange": {
+        "mixed_km": 497,
+        "highway_130_km": 373,
+        "urban_km": 635,
+        "winter_minus5_km": 340,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 150
+        },
+        {
+          "soc": 20,
+          "power": 160
+        },
+        {
+          "soc": 30,
+          "power": 158
+        },
+        {
+          "soc": 40,
+          "power": 150
+        },
+        {
+          "soc": 50,
+          "power": 140
+        },
+        {
+          "soc": 60,
+          "power": 120
+        },
+        {
+          "soc": 70,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 75
+        },
+        {
+          "soc": 90,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "chargingDC_confidence": "estimated",
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "ds-n7-etoile-awd-97",
+      "label": "Étoile AWD 350 ch · 97,2 kWh · 20\"",
+      "battery": "long-range",
+      "trim": "Étoile AWD",
+      "wheelSize_inches": 20,
+      "tyreType": "summer",
+      "options": [],
+      "power_kW": 257,
+      "power_hp": 350,
+      "torque_Nm": 509,
+      "acceleration_0_100_s": 5.4,
+      "usableCapacity_kWh": 97.2,
+      "price_EUR": 71520,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 656,
+      "wltp_consumption_kWh_100km": 17.6,
+      "realRange": {
+        "mixed_km": 476,
+        "highway_130_km": 358,
+        "urban_km": 608,
+        "winter_minus5_km": 326,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 150
+        },
+        {
+          "soc": 20,
+          "power": 160
+        },
+        {
+          "soc": 30,
+          "power": 158
+        },
+        {
+          "soc": 40,
+          "power": 150
+        },
+        {
+          "soc": 50,
+          "power": 140
+        },
+        {
+          "soc": 60,
+          "power": 120
+        },
+        {
+          "soc": 70,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 75
+        },
+        {
+          "soc": 90,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "chargingDC_confidence": "estimated",
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "ds-n7-la-premiere-awd-97",
+      "label": "La Première AWD 350 ch · 97,2 kWh · 21\"",
+      "battery": "long-range",
+      "trim": "La Première AWD",
+      "wheelSize_inches": 21,
+      "tyreType": "summer",
+      "options": [],
+      "power_kW": 257,
+      "power_hp": 350,
+      "torque_Nm": 509,
+      "acceleration_0_100_s": 5.4,
+      "usableCapacity_kWh": 97.2,
+      "price_EUR": 77520,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 638,
+      "wltp_consumption_kWh_100km": 18.2,
+      "realRange": {
+        "mixed_km": 463,
+        "highway_130_km": 348,
+        "urban_km": 592,
+        "winter_minus5_km": 317,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 160,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 65,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 140
+        },
+        {
+          "soc": 10,
+          "power": 150
+        },
+        {
+          "soc": 20,
+          "power": 160
+        },
+        {
+          "soc": 30,
+          "power": 158
+        },
+        {
+          "soc": 40,
+          "power": 150
+        },
+        {
+          "soc": 50,
+          "power": 140
+        },
+        {
+          "soc": 60,
+          "power": 120
+        },
+        {
+          "soc": 70,
+          "power": 100
+        },
+        {
+          "soc": 80,
+          "power": 75
+        },
+        {
+          "soc": 90,
+          "power": 40
+        },
+        {
+          "soc": 100,
+          "power": 10
+        }
+      ],
+      "chargingDC_confidence": "estimated",
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 8,
+    "vehicle_km": 160000,
+    "vehicle_condition": "si entretien dans le réseau DS (2 ans sinon)",
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "technologie",
+      "label": "Écran tactile 16\" et plafonnier tactile I-Dome"
+    },
+    {
+      "category": "securite",
+      "label": "DS Night Vision à caméra infrarouge (La Première)"
+    },
+    {
+      "category": "confort",
+      "label": "Sièges Lounge avec DS Neck Warmer (La Première)"
+    },
+    {
+      "category": "design",
+      "label": "Signature lumineuse DS Lightblade et calandre 3D en polycarbonate"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Jusqu'à 741 km WLTP avec la batterie de 97,2 kWh",
+      "Version d'entrée sous le plafond de la prime CEE, grille « produite en Europe »",
+      "Plug & Charge et V2L de série"
+    ],
+    "weaknesses": [
+      "Plus de 11 000 € d'écart entre la version N°7 et la finition Pallas",
+      "Recharge rapide plafonnée à 160 kW (architecture 400 V)",
+      "Chargeur 7,4 kW et pompe à chaleur en pack sur la version N°7"
+    ],
+    "idealUserProfile": "Famille qui roule beaucoup et veut un SUV confortable capable de longues étapes entre deux recharges.",
+    "notIdealFor": "Budget serré au-delà de la version d'entrée, ou conducteurs qui veulent les recharges les plus rapides du marché."
+  },
+  "lastUpdated": "2026-10-18",
+  "sources": [
+    "ds-fr",
+    "ev-database"
+  ],
+  "imageCredit": "Constructeur"
+}

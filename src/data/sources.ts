@@ -192,6 +192,16 @@ export const SOURCES: Record<string, Source> = {
     protocolUrl: null,
     trustLevel: "medium",
   },
+  "ds-fr": {
+    id: "ds-fr",
+    name: "DS Automobiles France (tarifs et caractéristiques)",
+    type: "manufacturer",
+    url: "https://www.dsautomobiles.fr/outils/demandez-une-brochure.html",
+    description:
+      "Grilles « Tarifs & caractéristiques techniques » officielles (octobre 2026 pour N°4, N°7 et N°8, juin 2026 pour la DS 3) : prix, masses, temps de recharge. Autonomie et consommation WLTP de chaque version relevées dans le configurateur DS Store. À recouper avec les mesures terrain pour l'autonomie réelle.",
+    protocolUrl: null,
+    trustLevel: "medium",
+  },
   "dacia-presse": {
     id: "dacia-presse",
     name: "Dacia (espace presse)",

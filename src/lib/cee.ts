@@ -91,11 +91,12 @@ export const MORAL_PERSON_PRIME_EUR = 600;
 
 /**
  * Production européenne (voiture et batterie dans l'EEE) :
- * - « confirmed » : annoncée par le constructeur pour son offre (Renault : Mégane et Scénic) ;
+ * - « confirmed » : annoncée par le constructeur pour son offre (Renault : Mégane et Scénic ;
+ *   DS : N°7, assemblé à Melfi avec une batterie française, prime de 4 800 € affichée en octobre 2026) ;
  * - « possible » : signalée dans la fiche (aide « Majoration »), non confirmée, jamais déduite ;
  * - « no » : rien de signalé.
  */
-const EUROPE_CONFIRMED = new Set(["renault-megane", "renault-megane-2026", "renault-scenic"]);
+const EUROPE_CONFIRMED = new Set(["renault-megane", "renault-megane-2026", "renault-scenic", "ds-n7"]);
 export type EuropeStatus = "confirmed" | "possible" | "no";
 
 export function europeStatus(vehicle: Vehicle): EuropeStatus {

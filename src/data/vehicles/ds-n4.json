@@ -1,0 +1,337 @@
+{
+  "slug": "ds-n4",
+  "brand": "DS",
+  "model": "N°4",
+  "variant": "E-Tense 58 kWh",
+  "bodyType": "Berline compacte",
+  "segment": "C",
+  "productionCountry": "Allemagne",
+  "assemblyPlant": "Rüsselsheim",
+  "releaseYear": 2025,
+  "marketAvailability": "Disponible",
+  "power_kW": 157,
+  "power_hp": 213,
+  "torque_Nm": 343,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 7.1,
+  "topSpeed_kmh": 160,
+  "usableCapacity_kWh": 58.3,
+  "grossCapacity_kWh": 61,
+  "chemistry": "NMC",
+  "heatPump": "option",
+  "architecture_V": 400,
+  "mass_kg": 1867,
+  "wltp_max_km": 450,
+  "wltp_min_km": 448,
+  "realRange": {
+    "mixed_km": 317,
+    "highway_130_km": 238,
+    "urban_km": 405,
+    "winter_minus5_km": 217,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 15.0,
+  "consumption_highway_kWh_per_100km": 24.5,
+  "consumption_winter_kWh_per_100km": 26.9,
+  "dragCoefficient_Cx": 0.28,
+  "chargingDC": {
+    "peakPower_kW": 120,
+    "time_10_80_min": 32,
+    "kWh_added_30min": 39,
+    "confidence": "estimated"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 11,
+    "phases": 3,
+    "time_0_100_h": 6
+  },
+  "plugAndCharge": true,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 85
+    },
+    {
+      "soc": 10,
+      "power": 105
+    },
+    {
+      "soc": 20,
+      "power": 118
+    },
+    {
+      "soc": 30,
+      "power": 110
+    },
+    {
+      "soc": 40,
+      "power": 96
+    },
+    {
+      "soc": 50,
+      "power": 80
+    },
+    {
+      "soc": 60,
+      "power": 66
+    },
+    {
+      "soc": 70,
+      "power": 52
+    },
+    {
+      "soc": 80,
+      "power": 38
+    },
+    {
+      "soc": 90,
+      "power": 20
+    },
+    {
+      "soc": 100,
+      "power": 5
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4400,
+  "width_mm": 1866,
+  "height_mm": 1470,
+  "wheelbase_mm": 2675,
+  "trunkCapacity_L": 390,
+  "trunkCapacityFolded_L": 1190,
+  "frunkCapacity_L": 0,
+  "trims": [
+    {
+      "name": "Pallas",
+      "price_EUR": 46990,
+      "batteryUsed": "58.3 kWh",
+      "equipmentHighlights": [
+        "Jantes alliage 19\" Lausanne",
+        "Combiné numérique 10\" et écran tactile 10\" HD",
+        "Régulateur adaptatif Stop & Go"
+      ]
+    },
+    {
+      "name": "Étoile",
+      "price_EUR": 51790,
+      "batteryUsed": "58.3 kWh",
+      "equipmentHighlights": [
+        "Projecteurs DS Matrix LED Vision",
+        "Intérieur Alcantara noir et sièges électriques",
+        "DS Iris System, chargeur sans fil et jantes 19\" Zurich"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE",
+      "amount_EUR": 3620,
+      "conditions": "Coup de pouce CEE (règles du 1er septembre 2026) : montant selon le revenu fiscal du foyer, pour la finition Pallas, seule sous le plafond de 47 000 €."
+    }
+  ],
+  "configurations": [
+    {
+      "id": "ds-n4-pallas",
+      "label": "Pallas · 58,3 kWh · 19\"",
+      "battery": "standard",
+      "trim": "Pallas",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "usableCapacity_kWh": 58.3,
+      "price_EUR": 46990,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 450,
+      "wltp_consumption_kWh_100km": 15.0,
+      "realRange": {
+        "mixed_km": 317,
+        "highway_130_km": 238,
+        "urban_km": 405,
+        "winter_minus5_km": 217,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 120,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 39,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 85
+        },
+        {
+          "soc": 10,
+          "power": 105
+        },
+        {
+          "soc": 20,
+          "power": 118
+        },
+        {
+          "soc": 30,
+          "power": 110
+        },
+        {
+          "soc": 40,
+          "power": 96
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 60,
+          "power": 66
+        },
+        {
+          "soc": 70,
+          "power": 52
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 90,
+          "power": 20
+        },
+        {
+          "soc": 100,
+          "power": 5
+        }
+      ],
+      "chargingDC_confidence": "estimated",
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "ds-n4-etoile",
+      "label": "Étoile · 58,3 kWh · 19\"",
+      "battery": "standard",
+      "trim": "Étoile",
+      "wheelSize_inches": 19,
+      "tyreType": "summer",
+      "options": [],
+      "usableCapacity_kWh": 58.3,
+      "price_EUR": 51790,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 448,
+      "wltp_consumption_kWh_100km": 15.1,
+      "realRange": {
+        "mixed_km": 315,
+        "highway_130_km": 237,
+        "urban_km": 403,
+        "winter_minus5_km": 215,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 120,
+      "chargingDC_10_80_min": 32,
+      "chargingDC_kWh_30min": 39,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 85
+        },
+        {
+          "soc": 10,
+          "power": 105
+        },
+        {
+          "soc": 20,
+          "power": 118
+        },
+        {
+          "soc": 30,
+          "power": 110
+        },
+        {
+          "soc": 40,
+          "power": 96
+        },
+        {
+          "soc": 50,
+          "power": 80
+        },
+        {
+          "soc": 60,
+          "power": 66
+        },
+        {
+          "soc": 70,
+          "power": 52
+        },
+        {
+          "soc": 80,
+          "power": 38
+        },
+        {
+          "soc": 90,
+          "power": 20
+        },
+        {
+          "soc": 100,
+          "power": 5
+        }
+      ],
+      "chargingDC_confidence": "estimated",
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 8,
+    "vehicle_km": 160000,
+    "vehicle_condition": "si entretien dans le réseau DS (2 ans sinon)",
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "design",
+      "label": "Projecteurs DS Matrix LED Vision et feux arrière à effet 3D (Étoile)"
+    },
+    {
+      "category": "securite",
+      "label": "DS Drive Assist 2.0 avec changement de voie semi-automatique (en pack)"
+    },
+    {
+      "category": "technologie",
+      "label": "Affichage tête haute étendu DS Extended Head Up Display (en pack sur Étoile)"
+    },
+    {
+      "category": "confort",
+      "label": "Vitrages latéraux feuilletés acoustiques à l'avant et à l'arrière (Étoile)"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Compacte au style marqué et bien finie",
+      "Plug & Charge et chargeur 11 kW de série",
+      "Finition Pallas sous le plafond de la prime CEE"
+    ],
+    "weaknesses": [
+      "Batterie de 58 kWh modeste pour le prix",
+      "Coffre réduit à 390 L en électrique",
+      "Pompe à chaleur en option (700 €)"
+    ],
+    "idealUserProfile": "Conducteur qui cherche une compacte élégante pour le quotidien et des trajets régionaux, sans besoin de SUV.",
+    "notIdealFor": "Grands voyageurs ou familles qui chargent le coffre : autonomie et volume restent ceux d'une compacte."
+  },
+  "lastUpdated": "2026-10-18",
+  "sources": [
+    "ds-fr",
+    "ev-database"
+  ],
+  "imageCredit": "Constructeur"
+}

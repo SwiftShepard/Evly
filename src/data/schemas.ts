@@ -273,6 +273,8 @@ export const VehicleSchema = z.object({
   warranty: z.object({
     vehicle_years: z.number().int().positive(),
     vehicle_km: z.number().int().positive(),
+    // Condition de cette durée quand elle en a une (ex. DS : « si entretien dans le réseau DS (2 ans sinon) »)
+    vehicle_condition: z.string().min(1).optional(),
     battery_years: z.number().int().positive(),
     battery_km: z.number().int().positive(),
     battery_soh_minimum_percent: z.number().int().min(50).max(100),

@@ -554,6 +554,77 @@
     ]
   },
   {
+    "slug": "ds-3",
+    "brand": "DS",
+    "model": "3",
+    "power_kW": 115,
+    "usableCapacity_kWh": 50.8,
+    "wltp_min_km": 395,
+    "wltp_max_km": 397,
+    "configurations_count": 4,
+    "configuration_ids": [
+      "ds-3-etoile",
+      "ds-3-maison-sarah-lavoine",
+      "ds-3-pallas",
+      "ds-3-performance-line"
+    ]
+  },
+  {
+    "slug": "ds-n4",
+    "brand": "DS",
+    "model": "N°4",
+    "power_kW": 157,
+    "usableCapacity_kWh": 58.3,
+    "wltp_min_km": 448,
+    "wltp_max_km": 450,
+    "configurations_count": 2,
+    "configuration_ids": [
+      "ds-n4-etoile",
+      "ds-n4-pallas"
+    ]
+  },
+  {
+    "slug": "ds-n7",
+    "brand": "DS",
+    "model": "N°7",
+    "power_kW": 180,
+    "usableCapacity_kWh": 97.2,
+    "wltp_min_km": 504,
+    "wltp_max_km": 741,
+    "configurations_count": 10,
+    "configuration_ids": [
+      "ds-n7-etoile-73",
+      "ds-n7-etoile-97",
+      "ds-n7-etoile-awd-97",
+      "ds-n7-la-premiere-73",
+      "ds-n7-la-premiere-97",
+      "ds-n7-la-premiere-awd-97",
+      "ds-n7-n7-73",
+      "ds-n7-n7-97",
+      "ds-n7-pallas-73",
+      "ds-n7-pallas-97"
+    ]
+  },
+  {
+    "slug": "ds-n8",
+    "brand": "DS",
+    "model": "N°8",
+    "power_kW": 180,
+    "usableCapacity_kWh": 97.2,
+    "wltp_min_km": 532,
+    "wltp_max_km": 758,
+    "configurations_count": 7,
+    "configuration_ids": [
+      "ds-n8-etoile-73",
+      "ds-n8-etoile-97",
+      "ds-n8-etoile-awd-97",
+      "ds-n8-n8-73",
+      "ds-n8-n8-97",
+      "ds-n8-pallas-73",
+      "ds-n8-pallas-97"
+    ]
+  },
+  {
     "slug": "fiat-500e",
     "brand": "Fiat",
     "model": "500e",

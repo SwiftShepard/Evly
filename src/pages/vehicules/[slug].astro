@@ -334,7 +334,7 @@ const faqEntries: { question: string; answer: string }[] = [
   },
   {
     question: `Quelle est la garantie de la batterie ${deVehicle} ?`,
-    answer: `La batterie est garantie ${vehicle.warranty.battery_years} ans ou ${formatNumber(vehicle.warranty.battery_km)} km, avec au moins ${vehicle.warranty.battery_soh_minimum_percent} % de sa capacité d'origine. Le reste du véhicule est garanti ${vehicle.warranty.vehicle_years} ans ou ${formatNumber(vehicle.warranty.vehicle_km)} km.`,
+    answer: `La batterie est garantie ${vehicle.warranty.battery_years} ans ou ${formatNumber(vehicle.warranty.battery_km)} km, avec au moins ${vehicle.warranty.battery_soh_minimum_percent} % de sa capacité d'origine. Le reste du véhicule est garanti ${vehicle.warranty.vehicle_years} ans ou ${formatNumber(vehicle.warranty.vehicle_km)} km${vehicle.warranty.vehicle_condition ? `, ${vehicle.warranty.vehicle_condition}` : ""}.`,
   },
   {
     question: `Pour qui est ${agree(vehicle, "fait")} ${laVehicle} ?`,
@@ -490,7 +490,7 @@ const configViews = configurations.map((config) => {
         ["Coffre", formatLiters(vehicle.trunkCapacity_L)],
         ["Coffre rabattu", formatLiters(vehicle.trunkCapacityFolded_L)],
         ...(vehicle.frunkCapacity_L ? [["Coffre avant", formatLiters(vehicle.frunkCapacity_L)] as [string, string]] : []),
-        ["Garantie véhicule", `${vehicle.warranty.vehicle_years} ans / ${formatNumber(vehicle.warranty.vehicle_km)} km`],
+        ["Garantie véhicule", `${vehicle.warranty.vehicle_years} ans / ${formatNumber(vehicle.warranty.vehicle_km)} km${vehicle.warranty.vehicle_condition ? `, ${vehicle.warranty.vehicle_condition}` : ""}`],
         ["Garantie batterie", `${vehicle.warranty.battery_years} ans / ${formatNumber(vehicle.warranty.battery_km)} km · ${vehicle.warranty.battery_soh_minimum_percent} % SoH`],
         ["Production", `${vehicle.assemblyPlant}, ${vehicle.productionCountry}`],
         ["Disponibilité", `${vehicle.marketAvailability} (${vehicle.releaseYear})`],

@@ -1,0 +1,407 @@
+{
+  "slug": "ds-3",
+  "brand": "DS",
+  "model": "3",
+  "variant": "E-Tense 54 kWh",
+  "bodyType": "SUV urbain",
+  "segment": "B",
+  "productionCountry": "France",
+  "assemblyPlant": "Poissy",
+  "releaseYear": 2023,
+  "marketAvailability": "Disponible",
+  "power_kW": 115,
+  "power_hp": 156,
+  "torque_Nm": 260,
+  "drivetrain": "FWD",
+  "motors": 1,
+  "acceleration_0_100_s": 9.0,
+  "topSpeed_kmh": 150,
+  "usableCapacity_kWh": 50.8,
+  "grossCapacity_kWh": 54,
+  "chemistry": "NMC",
+  "heatPump": "standard",
+  "architecture_V": 400,
+  "mass_kg": 1550,
+  "wltp_max_km": 397,
+  "wltp_min_km": 395,
+  "realRange": {
+    "mixed_km": 288,
+    "highway_130_km": 216,
+    "urban_km": 368,
+    "winter_minus5_km": 211,
+    "confidence": "estimated"
+  },
+  "consumption_mixed_kWh_per_100km": 15.6,
+  "consumption_highway_kWh_per_100km": 23.5,
+  "consumption_winter_kWh_per_100km": 24.1,
+  "dragCoefficient_Cx": 0.32,
+  "chargingDC": {
+    "peakPower_kW": 100,
+    "time_10_80_min": 30,
+    "kWh_added_30min": 36,
+    "confidence": "manufacturer"
+  },
+  "chargingAC": {
+    "onboardCharger_kW": 7.4,
+    "phases": 1,
+    "time_0_100_h": 7.5
+  },
+  "plugAndCharge": false,
+  "v2l": false,
+  "v2g": false,
+  "v2l_option_EUR": null,
+  "chargingCurve": [
+    {
+      "soc": 0,
+      "power": 92
+    },
+    {
+      "soc": 10,
+      "power": 100
+    },
+    {
+      "soc": 20,
+      "power": 100
+    },
+    {
+      "soc": 50,
+      "power": 71
+    },
+    {
+      "soc": 80,
+      "power": 32
+    },
+    {
+      "soc": 100,
+      "power": 6
+    }
+  ],
+  "rangeTests": [],
+  "thousandKmChallenge": null,
+  "length_mm": 4118,
+  "width_mm": 1791,
+  "height_mm": 1534,
+  "wheelbase_mm": 2558,
+  "trunkCapacity_L": 350,
+  "trunkCapacityFolded_L": 1050,
+  "frunkCapacity_L": 0,
+  "trims": [
+    {
+      "name": "Pallas",
+      "price_EUR": 43250,
+      "batteryUsed": "50.8 kWh",
+      "equipmentHighlights": [
+        "Jantes alliage 17\" Dublin",
+        "Écran tactile 10,3\" et MirrorScreen sans fil",
+        "Projecteurs LED et pompe à chaleur"
+      ]
+    },
+    {
+      "name": "Performance Line",
+      "price_EUR": 43950,
+      "batteryUsed": "50.8 kWh",
+      "equipmentHighlights": [
+        "Intérieur Alcantara noir et sièges avant chauffants",
+        "Jantes 17\" Oslo et détails dorés satinés",
+        "Vision 360 et surveillance d'angles morts"
+      ]
+    },
+    {
+      "name": "Maison Sarah Lavoine",
+      "price_EUR": 44550,
+      "batteryUsed": "50.8 kWh",
+      "equipmentHighlights": [
+        "Personnalisation Maison Sarah Lavoine",
+        "Jantes alliage 18\" Sao Paulo",
+        "Accès mains libres, chargeur sans fil et sièges chauffants"
+      ]
+    },
+    {
+      "name": "Étoile",
+      "price_EUR": 46400,
+      "batteryUsed": "50.8 kWh",
+      "equipmentHighlights": [
+        "DS Iris System avec navigation 3D connectée",
+        "Chargeur embarqué triphasé 11 kW",
+        "Jantes 18\" Nice, vision 360 et sièges avant chauffants"
+      ]
+    }
+  ],
+  "leasingSocialEligible": false,
+  "leasingSocial_EUR_per_month": null,
+  "availableAids": [
+    {
+      "label": "Prime CEE",
+      "amount_EUR": 3620,
+      "conditions": "Coup de pouce CEE (règles du 1er septembre 2026) : montant selon le revenu fiscal du foyer. Toutes les versions sont sous le plafond de 47 000 €."
+    }
+  ],
+  "configurations": [
+    {
+      "id": "ds-3-pallas",
+      "label": "Pallas · 50,8 kWh · 17\"",
+      "battery": "standard",
+      "trim": "Pallas",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "usableCapacity_kWh": 50.8,
+      "price_EUR": 43250,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 397,
+      "wltp_consumption_kWh_100km": 15.6,
+      "realRange": {
+        "mixed_km": 288,
+        "highway_130_km": 216,
+        "urban_km": 368,
+        "winter_minus5_km": 211,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 36,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "chargingDC_confidence": "manufacturer",
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "ds-3-performance-line",
+      "label": "Performance Line · 50,8 kWh · 17\"",
+      "battery": "standard",
+      "trim": "Performance Line",
+      "wheelSize_inches": 17,
+      "tyreType": "summer",
+      "options": [],
+      "usableCapacity_kWh": 50.8,
+      "price_EUR": 43950,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 397,
+      "wltp_consumption_kWh_100km": 15.6,
+      "realRange": {
+        "mixed_km": 288,
+        "highway_130_km": 216,
+        "urban_km": 368,
+        "winter_minus5_km": 211,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 36,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "chargingDC_confidence": "manufacturer",
+      "availability": "available",
+      "notes": "WLTP repris de la Pallas (mêmes jantes 17\") : version absente du configurateur DS Store."
+    },
+    {
+      "id": "ds-3-maison-sarah-lavoine",
+      "label": "Maison Sarah Lavoine · 50,8 kWh · 18\"",
+      "battery": "standard",
+      "trim": "Maison Sarah Lavoine",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "usableCapacity_kWh": 50.8,
+      "price_EUR": 44550,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 396,
+      "wltp_consumption_kWh_100km": 15.6,
+      "realRange": {
+        "mixed_km": 287,
+        "highway_130_km": 216,
+        "urban_km": 367,
+        "winter_minus5_km": 210,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 36,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "chargingDC_confidence": "manufacturer",
+      "availability": "available",
+      "notes": null
+    },
+    {
+      "id": "ds-3-etoile",
+      "label": "Étoile · 50,8 kWh · 18\"",
+      "battery": "standard",
+      "trim": "Étoile",
+      "wheelSize_inches": 18,
+      "tyreType": "summer",
+      "options": [],
+      "usableCapacity_kWh": 50.8,
+      "price_EUR": 46400,
+      "monthlyLease_EUR": null,
+      "leasingSocialEligible": false,
+      "wltp_km": 395,
+      "wltp_consumption_kWh_100km": 15.7,
+      "realRange": {
+        "mixed_km": 286,
+        "highway_130_km": 215,
+        "urban_km": 366,
+        "winter_minus5_km": 209,
+        "confidence": "estimated"
+      },
+      "rangeTests": [],
+      "chargingDC_peak_kW": 100,
+      "chargingDC_10_80_min": 30,
+      "chargingDC_kWh_30min": 36,
+      "chargingCurve": [
+        {
+          "soc": 0,
+          "power": 92
+        },
+        {
+          "soc": 10,
+          "power": 100
+        },
+        {
+          "soc": 20,
+          "power": 100
+        },
+        {
+          "soc": 50,
+          "power": 71
+        },
+        {
+          "soc": 80,
+          "power": 32
+        },
+        {
+          "soc": 100,
+          "power": 6
+        }
+      ],
+      "chargingDC_confidence": "manufacturer",
+      "availability": "available",
+      "notes": null
+    }
+  ],
+  "warranty": {
+    "vehicle_years": 8,
+    "vehicle_km": 160000,
+    "vehicle_condition": "si entretien dans le réseau DS (2 ans sinon)",
+    "battery_years": 8,
+    "battery_km": 160000,
+    "battery_soh_minimum_percent": 70
+  },
+  "keyFeatures": [
+    {
+      "category": "confort",
+      "label": "Pompe à chaleur de série sur toutes les finitions"
+    },
+    {
+      "category": "technologie",
+      "label": "DS Iris System avec navigation 3D connectée (Étoile)"
+    },
+    {
+      "category": "securite",
+      "label": "Vision 360 et surveillance d'angles morts (selon finition)"
+    },
+    {
+      "category": "design",
+      "label": "Collection Maison Sarah Lavoine avec badge de capot dédié"
+    }
+  ],
+  "verdict": {
+    "strengths": [
+      "Pompe à chaleur de série",
+      "Présentation intérieure soignée pour un petit SUV",
+      "Prime CEE possible sur toutes les versions"
+    ],
+    "weaknesses": [
+      "Recharge rapide limitée à 100 kW",
+      "Chargeur 7,4 kW monophasé de série (11 kW en option, sauf sur Étoile)",
+      "Coffre de 350 L"
+    ],
+    "idealUserProfile": "Citadin ou périurbain qui veut un petit SUV électrique mieux fini que ses cousins Peugeot e-2008 et Opel Mokka.",
+    "notIdealFor": "Gros rouleurs sur autoroute, ou familles qui ont besoin de place à l'arrière et dans le coffre."
+  },
+  "lastUpdated": "2026-10-18",
+  "sources": [
+    "ds-fr",
+    "ev-database"
+  ],
+  "imageCredit": "Constructeur"
+}
