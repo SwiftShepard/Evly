@@ -1,0 +1,28 @@
+---
+/**
+ * Badge de confiance d'un chiffre (mesurée · constructeur · estimée), le même partout :
+ * pastille pleine olive = mesurée sur route, demi-pastille ambre = constructeur,
+ * cercle pointillé = estimée. La provenance est dans l'infobulle native et pour les lecteurs d'écran.
+ * Jumeau React : Confidence.tsx ; chaîne HTML : confidenceHTML() (lib/confidence).
+ * Le contenu passé en slot remplace le libellé (cartes du catalogue : un libellé par mode d'autonomie).
+ */
+import { confidenceOf, infoOfLevel, type ConfidenceLevel, type ConfidenceSubject } from "@/lib/confidence";
+
+interface Props {
+  /** Code de confiance des fiches (« bjorn_nyland », « tested », « manufacturer », « estimated », « pending ») */
+  code?: string | null;
+  /** Niveau déjà calculé, quand le code d'origine n'est plus connu (index compact) */
+  level?: ConfidenceLevel;
+  subject?: ConfidenceSubject;
+  label?: string;
+  class?: string;
+}
+
+const { code, level, subject = "range", label, class: className } = Astro.props;
+const info = code === undefined && level ? infoOfLevel(level, subject) : confidenceOf(code, subject);
+const hasSlot = Astro.slots.has("default");
+---
+
+<span class:list={["conf", className]} data-level={info.level} title={info.source}>
+  <i aria-hidden="true"></i>{hasSlot ? <slot /> : (label ?? info.label)}<span class="sr-only"> : {info.source}</span>
+</span>

@@ -24,10 +24,10 @@
   "wltp_max_km": 420,
   "wltp_min_km": 370,
   "realRange": {
-    "mixed_km": 303,
-    "highway_130_km": 228,
-    "urban_km": 387,
-    "winter_minus5_km": 207,
+    "mixed_km": 305,
+    "highway_130_km": 229,
+    "urban_km": 390,
+    "winter_minus5_km": 209,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 28,
@@ -106,7 +106,7 @@
       "equipmentHighlights": [
         "Volume utile 13 m3",
         "Empattement long",
-        "Camera de recul"
+        "Caméra de recul"
       ]
     }
   ],
@@ -128,10 +128,10 @@
       "wltp_km": 420,
       "wltp_consumption_kWh_100km": 27,
       "realRange": {
-        "mixed_km": 303,
-        "highway_130_km": 228,
-        "urban_km": 387,
-        "winter_minus5_km": 207,
+        "mixed_km": 305,
+        "highway_130_km": 229,
+        "urban_km": 390,
+        "winter_minus5_km": 209,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -161,7 +161,7 @@
         }
       ],
       "availability": "available",
-      "notes": "Grand fourgon L2H2, plateforme partagee Ducato/Boxer/Jumper."
+      "notes": "Grand fourgon L2H2, plateforme partagée Ducato/Boxer/Jumper."
     },
     {
       "id": "toyota-proace-max-electric-l3h2",
@@ -177,10 +177,10 @@
       "wltp_km": 370,
       "wltp_consumption_kWh_100km": 30,
       "realRange": {
-        "mixed_km": 267,
-        "highway_130_km": 201,
-        "urban_km": 341,
-        "winter_minus5_km": 183,
+        "mixed_km": 269,
+        "highway_130_km": 202,
+        "urban_km": 344,
+        "winter_minus5_km": 184,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -227,28 +227,28 @@
     },
     {
       "category": "technologie",
-      "label": "Toyota Safety Sense complet de serie"
+      "label": "Toyota Safety Sense complet de série"
     },
     {
       "category": "securite",
-      "label": "Freinage automatique d'urgence et regulateur adaptatif"
+      "label": "Freinage automatique d'urgence et régulateur adaptatif"
     },
     {
       "category": "design",
-      "label": "Volumes utiles de 11,5 a 17 m3 selon configuration"
+      "label": "Volumes utiles de 11,5 à 17 m3 selon configuration"
     }
   ],
   "verdict": {
     "strengths": [
-      "Garantie Toyota et reseau SAV dense, reference en fiabilite",
-      "Autonomie 420 km WLTP, nouvelle generation 110 kWh"
+      "Garantie Toyota et réseau SAV dense, référence en fiabilité",
+      "Autonomie 420 km WLTP, nouvelle génération 110 kWh"
     ],
     "weaknesses": [
-      "Prix superieur aux cousins Stellantis (Boxer, Jumper, Ducato)",
-      "Consommation elevee sur autoroute charge"
+      "Prix supérieur aux cousins Stellantis (Boxer, Jumper, Ducato)",
+      "Consommation élevée sur autoroute charge"
     ],
-    "idealUserProfile": "Flottes Toyota cherchant un grand fourgon electrique avec le support apres-vente Toyota Professional.",
-    "notIdealFor": "Budget serre : les equivalents Stellantis (Boxer, Jumper, Ducato) offrent les memes specs a prix inferieur."
+    "idealUserProfile": "Flottes Toyota cherchant un grand fourgon électrique avec le support après-vente Toyota Professional.",
+    "notIdealFor": "Budget serré : les équivalents Stellantis (Boxer, Jumper, Ducato) offrent les mêmes specs à prix inférieur."
   },
   "lastUpdated": "2026-05-21",
   "sources": [

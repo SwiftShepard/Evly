@@ -2,7 +2,7 @@
   "slug": "bmw-ix3-neue-klasse",
   "brand": "BMW",
   "model": "iX3 Neue Klasse",
-  "variant": "108.7 kWh",
+  "variant": "108,7 kWh",
   "bodyType": "SUV",
   "segment": "D",
   "productionCountry": "Hongrie",
@@ -182,7 +182,7 @@
     {
       "name": "iX3 40",
       "price_EUR": 64950,
-      "batteryUsed": "82.6 kWh",
+      "batteryUsed": "82,6 kWh",
       "equipmentHighlights": [
         "635 km WLTP",
         "Propulsion 320 ch",
@@ -192,7 +192,7 @@
     {
       "name": "iX3 50 xDrive",
       "price_EUR": 72950,
-      "batteryUsed": "108.7 kWh",
+      "batteryUsed": "108,7 kWh",
       "equipmentHighlights": [
         "805 km WLTP",
         "Puissance 463 ch",
@@ -202,7 +202,7 @@
     {
       "name": "iX3 50 xDrive M Sport",
       "price_EUR": 76950,
-      "batteryUsed": "108.7 kWh",
+      "batteryUsed": "108,7 kWh",
       "equipmentHighlights": [
         "Pack M Sport",
         "805 km WLTP",
@@ -406,7 +406,7 @@
         }
       ],
       "availability": "available",
-      "notes": "463 ch (340 kW), AWD xDrive, premiere Neue Klasse",
+      "notes": "463 ch (340 kW), AWD xDrive, première Neue Klasse",
       "chargingDC_confidence": "tested"
     },
     {
@@ -516,7 +516,7 @@
         }
       ],
       "availability": "available",
-      "notes": "463 ch (340 kW), AWD xDrive, premiere Neue Klasse",
+      "notes": "463 ch (340 kW), AWD xDrive, première Neue Klasse",
       "chargingDC_confidence": "tested"
     }
   ],
@@ -530,7 +530,7 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "Design Neue Klasse epure et calandre verticale retro-eclairee tridimensionnelle"
+      "label": "Design Neue Klasse épuré et calandre verticale rétro-éclairée tridimensionnelle"
     },
     {
       "category": "technologie",
@@ -542,20 +542,20 @@
     },
     {
       "category": "confort",
-      "label": "Charge bidirectionnelle (V2L et V2H) de serie et habitacle d'un volume inedit"
+      "label": "Charge bidirectionnelle (V2L et V2H) de série et habitacle d'un volume inédit"
     }
   ],
   "verdict": {
     "strengths": [
-      "Vitesse de recharge ultra-rapide (pic a 400 kW, 10-80% en 21 min) en 800 V",
-      "Autonomie impressionnante atteignant 805 km WLTP grace aux nouvelles cellules cylindriques",
-      "Interface utilisateur revolutionnaire avec affichage panoramique de pare-brise"
+      "Vitesse de recharge ultra-rapide (pic à 400 kW, 10-80 % en 21 min) en 800 V",
+      "Autonomie impressionnante atteignant 805 km WLTP grâce aux nouvelles cellules cylindriques",
+      "Interface utilisateur révolutionnaire avec affichage panoramique de pare-brise"
     ],
     "weaknesses": [
       "Tarifs premium et aides CEE nulles en France pour cette gamme",
       "Rareté de bornes de recharge capables de delivrer 400 kW réels"
     ],
-    "idealUserProfile": "Conducteurs technophiles et exigeants cherchant le renouveau electrique de BMW avec autonomie de pointe.",
+    "idealUserProfile": "Conducteurs technophiles et exigeants cherchant le renouveau électrique de BMW avec autonomie de pointe.",
     "notIdealFor": "Usage exclusivement urbain ou acheteurs au budget standard."
   },
   "lastUpdated": "2026-10-08",

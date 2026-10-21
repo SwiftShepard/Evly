@@ -3,7 +3,7 @@
   "brand": "Volvo",
   "model": "EC40",
   "variant": "Single Motor Extended Range",
-  "bodyType": "SUV Coupe",
+  "bodyType": "SUV Coupé",
   "segment": "C",
   "productionCountry": "Belgique",
   "assemblyPlant": "Gand",
@@ -24,10 +24,10 @@
   "wltp_max_km": 582,
   "wltp_min_km": 432,
   "realRange": {
-    "mixed_km": 422,
-    "highway_130_km": 317,
-    "urban_km": 539,
-    "winter_minus5_km": 289,
+    "mixed_km": 424,
+    "highway_130_km": 318,
+    "urban_km": 543,
+    "winter_minus5_km": 290,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 17.5,
@@ -90,9 +90,9 @@
       "price_EUR": 53450,
       "batteryUsed": "82 kWh",
       "equipmentHighlights": [
-        "Ecran 9 pouces Google",
+        "Écran 9 pouces Google",
         "582 km WLTP",
-        "Toit coupe"
+        "Toit coupé"
       ]
     },
     {
@@ -101,8 +101,8 @@
       "batteryUsed": "82 kWh",
       "equipmentHighlights": [
         "Pixel LED",
-        "Sieges cuir ventiles",
-        "Camera 360"
+        "Sièges cuir ventilés",
+        "Caméra 360"
       ]
     },
     {
@@ -134,10 +134,10 @@
       "wltp_km": 582,
       "wltp_consumption_kWh_100km": 15.9,
       "realRange": {
-        "mixed_km": 422,
-        "highway_130_km": 317,
-        "urban_km": 539,
-        "winter_minus5_km": 289,
+        "mixed_km": 424,
+        "highway_130_km": 318,
+        "urban_km": 543,
+        "winter_minus5_km": 290,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -187,10 +187,10 @@
       "wltp_km": 560,
       "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
-        "mixed_km": 406,
-        "highway_130_km": 305,
-        "urban_km": 519,
-        "winter_minus5_km": 278,
+        "mixed_km": 408,
+        "highway_130_km": 306,
+        "urban_km": 522,
+        "winter_minus5_km": 279,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -240,10 +240,10 @@
       "wltp_km": 432,
       "wltp_consumption_kWh_100km": 21.3,
       "realRange": {
-        "mixed_km": 313,
-        "highway_130_km": 235,
-        "urban_km": 400,
-        "winter_minus5_km": 214,
+        "mixed_km": 315,
+        "highway_130_km": 236,
+        "urban_km": 403,
+        "winter_minus5_km": 215,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -290,11 +290,11 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "Silhouette coupe sportive et aerodynamique"
+      "label": "Silhouette coupé sportive et aérodynamique"
     },
     {
       "category": "technologie",
-      "label": "Google integre et systeme Pixel LED"
+      "label": "Google intégré et système Pixel LED"
     },
     {
       "category": "securite",
@@ -302,20 +302,20 @@
     },
     {
       "category": "confort",
-      "label": "Interieur premium Nordico et cuir"
+      "label": "Intérieur premium Nordico et cuir"
     }
   ],
   "verdict": {
     "strengths": [
-      "Assemble en Belgique (Gand), production europeenne",
-      "Meilleur Cx que l'EX40, autonomie legerement superieure"
+      "Assemblé en Belgique (Gand), production européenne",
+      "Meilleur Cx que l'EX40, autonomie légèrement supérieure"
     ],
     "weaknesses": [
       "Coffre plus petit que l'EX40 (413 L vs 452 L)",
-      "Accessibilite arriere reduite par la ligne de toit"
+      "Accessibilité arrière réduite par la ligne de toit"
     ],
-    "idealUserProfile": "Conducteurs premium preferant un style coupe sportif a un SUV classique.",
-    "notIdealFor": "Familles privilegiant l'espace arriere ou un coffre genereux."
+    "idealUserProfile": "Conducteurs premium préférant un style coupé sportif à un SUV classique.",
+    "notIdealFor": "Familles privilégiant l'espace arrière ou un coffre généreux."
   },
   "lastUpdated": "2026-10-08",
   "sources": [

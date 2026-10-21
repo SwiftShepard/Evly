@@ -2,7 +2,7 @@
   "slug": "geely-e5",
   "brand": "Geely",
   "model": "E5",
-  "variant": "60.2 kWh",
+  "variant": "60,2 kWh",
   "bodyType": "SUV",
   "segment": "C",
   "productionCountry": "Chine",
@@ -84,9 +84,9 @@
     {
       "name": "Pro",
       "price_EUR": 37990,
-      "batteryUsed": "60.2 kWh",
+      "batteryUsed": "60,2 kWh",
       "equipmentHighlights": [
-        "Écran central tactile 15.4\" 2.5K",
+        "Écran central tactile 15,4\" 2.5K",
         "Système audio Flyme Sound 16 haut-parleurs",
         "Garantie constructeur 8 ans / 200 000 km",
         "Toit panoramique vitré"
@@ -95,9 +95,9 @@
     {
       "name": "Max",
       "price_EUR": 40990,
-      "batteryUsed": "68.4 kWh",
+      "batteryUsed": "68,4 kWh",
       "equipmentHighlights": [
-        "Batterie haute capacité 68.4 kWh (475 km)",
+        "Batterie haute capacité 68,4 kWh (475 km)",
         "Affichage tête haute HUD",
         "Sièges avant chauffants, ventilés et massants"
       ]
@@ -109,7 +109,7 @@
   "configurations": [
     {
       "id": "geely-e5-pro-60",
-      "label": "Geely E5 Pro 60.2 kWh",
+      "label": "Geely E5 Pro 60,2 kWh",
       "battery": "standard",
       "trim": "Pro",
       "wheelSize_inches": 18,
@@ -158,7 +158,7 @@
     },
     {
       "id": "geely-e5-max-68",
-      "label": "Geely E5 Max 68.4 kWh",
+      "label": "Geely E5 Max 68,4 kWh",
       "battery": "long-range",
       "trim": "Max",
       "wheelSize_inches": 19,
@@ -228,13 +228,13 @@
     },
     {
       "category": "design",
-      "label": "Design aérodynamique soigné (Cx 0.269) et signature LED épurée"
+      "label": "Design aérodynamique soigné (Cx 0,269) et signature LED épurée"
     }
   ],
   "verdict": {
     "strengths": [
       "Rapport prix/prestations très agressif sous la barre des 38 000 €",
-      "Recharge rapide DC impressionnante (30% à 80% en 20 minutes)",
+      "Recharge rapide DC impressionnante (30 % à 80 % en 20 minutes)",
       "Garantie constructeur de 8 ans ou 200 000 km très rassurante"
     ],
     "weaknesses": [

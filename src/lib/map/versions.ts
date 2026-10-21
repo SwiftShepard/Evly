@@ -5,7 +5,7 @@
  */
 import type { Vehicle } from "@/data/schemas";
 import type { WeekVersion } from "@/components/week/types";
-import { getRangeConfidenceInfo } from "@/lib/vehicleCard";
+import { isMeasured } from "@/lib/confidence";
 import { formatNumber } from "@/lib/format";
 
 type Config = Vehicle["configurations"][number];
@@ -45,6 +45,12 @@ function batteryOf(v: Vehicle, c: Config): number {
   return v.usableCapacity_kWh;
 }
 
+/** Courbe de charge compacte, triée ; absente si moins de deux relevés */
+function curveOf(points: { soc: number; power: number }[] | null | undefined): [number, number][] | undefined {
+  if (!points || points.length < 2) return undefined;
+  return [...points].sort((a, b) => a.soc - b.soc).map((p) => [p.soc, p.power]);
+}
+
 export function weekVersions(v: Vehicle): { versions: WeekVersion[]; defaultVersion: string } {
   const configs = v.configurations.filter((c) => c.availability !== "discontinued");
   if (!configs.length) {
@@ -54,13 +60,14 @@ export function weekVersions(v: Vehicle): { versions: WeekVersion[]; defaultVers
       label: `${formatNumber(v.usableCapacity_kWh, Number.isInteger(v.usableCapacity_kWh) ? 0 : 1)} kWh`,
       detail: "",
       configs: [],
-      measured: getRangeConfidenceInfo(rr.confidence).level === "measured",
+      measured: isMeasured(rr.confidence),
       range: { mixed_km: rr.mixed_km, highway_130_km: rr.highway_130_km, urban_km: rr.urban_km, winter_minus5_km: rr.winter_minus5_km },
       charging: {
         usableKWh: v.usableCapacity_kWh,
         acKW: v.chargingAC.onboardCharger_kW,
         dc30KWh: v.chargingDC.kWh_added_30min,
         dcPeakKW: v.chargingDC.peakPower_kW,
+        curve: v.chargingDC.peakPower_kW > 0 ? curveOf(v.chargingCurve) : undefined,
       },
     };
     return { versions: [only], defaultVersion: only.id };
@@ -90,7 +97,7 @@ export function weekVersions(v: Vehicle): { versions: WeekVersion[]; defaultVers
     }
     for (const cluster of clusters) {
       // Autonomie de référence : une mesure si la version en a une, sinon la plus prudente
-      const measured = cluster.find((c) => getRangeConfidenceInfo((c.realRange ?? v.realRange).confidence).level === "measured");
+      const measured = cluster.find((c) => isMeasured((c.realRange ?? v.realRange).confidence));
       const ref =
         measured ?? [...cluster].sort((a, b) => (a.realRange ?? v.realRange).mixed_km - (b.realRange ?? v.realRange).mixed_km)[0]!;
       const rr = ref.realRange ?? v.realRange;
@@ -107,6 +114,8 @@ export function weekVersions(v: Vehicle): { versions: WeekVersion[]; defaultVers
           acKW: v.chargingAC.onboardCharger_kW,
           dc30KWh: ref.chargingDC_kWh_30min ?? v.chargingDC.kWh_added_30min,
           dcPeakKW: ref.chargingDC_peak_kW ?? v.chargingDC.peakPower_kW,
+          // Version sans charge rapide (Spring d'entrée) : pas de courbe, pas d'arrêt sur borne rapide
+          curve: (ref.chargingDC_peak_kW ?? v.chargingDC.peakPower_kW) > 0 ? curveOf(ref.chargingCurve ?? v.chargingCurve) : undefined,
         },
       });
     }

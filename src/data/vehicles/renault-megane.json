@@ -177,7 +177,7 @@
       "batteryUsed": "60 kWh",
       "equipmentHighlights": [
         "OpenR Link Google",
-        "Ecran 12 pouces",
+        "Écran 12 pouces",
         "Chargeur AC 22 kW"
       ]
     },
@@ -186,9 +186,9 @@
       "price_EUR": 41500,
       "batteryUsed": "60 kWh",
       "equipmentHighlights": [
-        "Jantes 20 pouces diamantees",
+        "Jantes 20 pouces diamantées",
         "Volant Alpine",
-        "Sieges sport"
+        "Sièges sport"
       ]
     },
     {
@@ -197,7 +197,7 @@
       "batteryUsed": "60 kWh",
       "equipmentHighlights": [
         "Toit panoramique",
-        "Sieges chauffants",
+        "Sièges chauffants",
         "Conduite semi-autonome"
       ]
     }
@@ -474,7 +474,7 @@
         }
       ],
       "availability": "discontinued",
-      "notes": "220 ch (160 kW), jantes 20 pouces diamantees",
+      "notes": "220 ch (160 kW), jantes 20 pouces diamantées",
       "chargingDC_confidence": "tested"
     },
     {

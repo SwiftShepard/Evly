@@ -163,7 +163,7 @@
       "batteryUsed": "43 kWh",
       "equipmentHighlights": [
         "376 km WLTP",
-        "Ecran 12 pouces",
+        "Écran 12 pouces",
         "MegaBox 80 L"
       ]
     },
@@ -173,8 +173,8 @@
       "batteryUsed": "43 kWh",
       "equipmentHighlights": [
         "Design sportif",
-        "Sieges chauffants",
-        "Camera de recul"
+        "Sièges chauffants",
+        "Caméra de recul"
       ]
     },
     {
@@ -596,7 +596,7 @@
     },
     {
       "category": "technologie",
-      "label": "Ecran 12 pouces et V2L de serie"
+      "label": "Écran 12 pouces et V2L de série"
     },
     {
       "category": "securite",
@@ -604,20 +604,20 @@
     },
     {
       "category": "confort",
-      "label": "Coffre genereux 523 L avec MegaBox 80 L integre"
+      "label": "Coffre généreux 523 L avec MegaBox 80 L intégré"
     }
   ],
   "verdict": {
     "strengths": [
-      "Assemble en Roumanie (UE), eligible prime CEE (pouvant atteindre 8 100 € sous conditions de revenus)",
+      "Assemblé en Roumanie (UE), éligible prime CEE (pouvant atteindre 8 100 € sous conditions de revenus)",
       "Coffre record du segment B (523 L) avec MegaBox et V2L"
     ],
     "weaknesses": [
-      "Batterie unique 43 kWh, autonomie limitee (376 km WLTP)",
+      "Batterie unique 43 kWh, autonomie limitée (376 km WLTP)",
       "Charge DC 100 kW modeste"
     ],
-    "idealUserProfile": "Conducteurs urbains/periurbains cherchant un petit SUV pratique et eligible aux aides.",
-    "notIdealFor": "Gros rouleurs necessitant plus de 400 km d'autonomie."
+    "idealUserProfile": "Conducteurs urbains/périurbains cherchant un petit SUV pratique et éligible aux aides.",
+    "notIdealFor": "Gros rouleurs nécessitant plus de 400 km d'autonomie."
   },
   "lastUpdated": "2026-10-08",
   "sources": [

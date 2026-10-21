@@ -24,10 +24,10 @@
   "wltp_max_km": 607,
   "wltp_min_km": 458,
   "realRange": {
-    "mixed_km": 440,
-    "highway_130_km": 331,
-    "urban_km": 562,
-    "winter_minus5_km": 301,
+    "mixed_km": 442,
+    "highway_130_km": 332,
+    "urban_km": 566,
+    "winter_minus5_km": 302,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 15,
@@ -75,7 +75,36 @@
       "power": 8
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "largus",
+      "testDate": "2026-06",
+      "speed_kmh": null,
+      "range_km": 486,
+      "consumption_kWh_100km": 14.8,
+      "temperature_C": null,
+      "wheelSize_inches": 18,
+      "tyreModel": "235/60 R18",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.largus.fr/actualite-automobile/essai-toyota-c-hr-electrique-2026-quelle-est-lautonomie-reelle-de-la-version-77-kwh-2199510.html",
+      "notes": "Essai L'argus (Design 77 kWh), boucle routière de 141 km par 17 à 20 °C ; autonomie calculée sur les 72 kWh utiles."
+    },
+    {
+      "sourceId": "largus",
+      "testDate": "2026-06",
+      "speed_kmh": 130,
+      "range_km": 334,
+      "consumption_kWh_100km": 21.5,
+      "temperature_C": null,
+      "wheelSize_inches": 18,
+      "tyreModel": "235/60 R18",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.largus.fr/actualite-automobile/essai-toyota-c-hr-electrique-2026-quelle-est-lautonomie-reelle-de-la-version-77-kwh-2199510.html",
+      "notes": "Essai L'argus (Design 77 kWh), autoroute à 130 km/h réels par 22 à 24 °C."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4524,
   "width_mm": 1850,
@@ -91,7 +120,7 @@
       "batteryUsed": "58 kWh",
       "equipmentHighlights": [
         "458 km WLTP",
-        "Ecran multimédia 14 pouces",
+        "Écran multimédia 14 pouces",
         "Pompe à chaleur"
       ]
     },
@@ -134,10 +163,10 @@
       "wltp_km": 458,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 332,
-        "highway_130_km": 249,
-        "urban_km": 424,
-        "winter_minus5_km": 227,
+        "mixed_km": 334,
+        "highway_130_km": 251,
+        "urban_km": 428,
+        "winter_minus5_km": 228,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -187,13 +216,42 @@
       "wltp_km": 607,
       "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
-        "mixed_km": 440,
-        "highway_130_km": 331,
-        "urban_km": 562,
-        "winter_minus5_km": 301,
+        "mixed_km": 442,
+        "highway_130_km": 332,
+        "urban_km": 566,
+        "winter_minus5_km": 302,
         "confidence": "estimated"
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "largus",
+          "testDate": "2026-06",
+          "speed_kmh": null,
+          "range_km": 486,
+          "consumption_kWh_100km": 14.8,
+          "temperature_C": null,
+          "wheelSize_inches": 18,
+          "tyreModel": "235/60 R18",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.largus.fr/actualite-automobile/essai-toyota-c-hr-electrique-2026-quelle-est-lautonomie-reelle-de-la-version-77-kwh-2199510.html",
+          "notes": "Essai L'argus (Design 77 kWh), boucle routière de 141 km par 17 à 20 °C ; autonomie calculée sur les 72 kWh utiles."
+        },
+        {
+          "sourceId": "largus",
+          "testDate": "2026-06",
+          "speed_kmh": 130,
+          "range_km": 334,
+          "consumption_kWh_100km": 21.5,
+          "temperature_C": null,
+          "wheelSize_inches": 18,
+          "tyreModel": "235/60 R18",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.largus.fr/actualite-automobile/essai-toyota-c-hr-electrique-2026-quelle-est-lautonomie-reelle-de-la-version-77-kwh-2199510.html",
+          "notes": "Essai L'argus (Design 77 kWh), autoroute à 130 km/h réels par 22 à 24 °C."
+        }
+      ],
       "chargingDC_peak_kW": 150,
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 54,
@@ -240,9 +298,9 @@
       "wltp_km": 507,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
-        "mixed_km": 368,
-        "highway_130_km": 276,
-        "urban_km": 470,
+        "mixed_km": 369,
+        "highway_130_km": 277,
+        "urban_km": 472,
         "winter_minus5_km": 252,
         "confidence": "estimated"
       },
@@ -290,7 +348,7 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "SUV au look de coupé acéré et moderne 100% électrique"
+      "label": "SUV au look de coupé acéré et moderne 100 % électrique"
     },
     {
       "category": "technologie",
@@ -322,7 +380,8 @@
   "lastUpdated": "2026-10-08",
   "sources": [
     "constructeur",
-    "automobile-propre"
+    "automobile-propre",
+    "largus"
   ],
   "imageCredit": "Constructeur"
 }

@@ -1,11 +1,13 @@
 /**
  * Un grand trajet de l'année : destination, allers-retours par an, saison, et ce que ça donne
  * avec le modèle choisi (arrêts de recharge à l'aller, minutes, coût d'un aller-retour).
- * Toucher la ligne montre le trajet sur la carte.
+ * Toucher la ligne montre le trajet sur la carte et déplie sur place le détail de l'aller :
+ * vitesse sur autoroute, arrêts posés sur les bornes du tracé, heure de route et de recharge.
  */
 import { Minus, Plus, Snowflake, Sun, X } from "lucide-react";
 import type { HolidayResult, HolidayTrip } from "@/lib/map/holiday";
 import type { Season } from "@/lib/map/energy";
+import { HW_SPEEDS, type HwSpeed } from "@/lib/map/roadtrip";
 import { formatKm, formatNumber } from "@/lib/format";
 
 interface Props {
@@ -17,6 +19,7 @@ interface Props {
   onFocus: () => void;
   onTimes: (times: number) => void;
   onSeason: (season: Season) => void;
+  onSpeed: (speed: HwSpeed) => void;
   onRemove: () => void;
 }
 
@@ -24,12 +27,15 @@ const duration = (min: number) => {
   const m = Math.max(5, Math.ceil(min / 5) * 5);
   return m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${String(m % 60).padStart(2, "0")}`;
 };
+const pct = (x: number) => `${Math.round(x * 100)} %`;
 
-export default function HolidayRow({ trip, result, cost, active, onFocus, onTimes, onSeason, onRemove }: Props) {
+export default function HolidayRow({ trip, result, cost, active, onFocus, onTimes, onSeason, onSpeed, onRemove }: Props) {
   const name = trip.label.split(",")[0];
+  const plan = result?.plan ?? null;
+  const speed = trip.speed ?? 130;
   return (
     <li className="week-trip" data-active={active ? "1" : undefined}>
-      <button type="button" className="week-trip-main" aria-pressed={active} onClick={onFocus}>
+      <button type="button" className="week-trip-main" aria-pressed={active} aria-expanded={active} onClick={onFocus}>
         <b className="truncate">{name}</b>
         <span className="week-trip-sub">
           {result ? (
@@ -66,6 +72,53 @@ export default function HolidayRow({ trip, result, cost, active, onFocus, onTime
         <button type="button" className="week-brick-remove" onClick={onRemove} aria-label={`Retirer le trajet vers ${name}`}>
           <X size={15} strokeWidth={2.25} aria-hidden="true" />
         </button>
+      </div>
+
+      {/* Détail de l'aller, déplié sur place quand le trajet est montré sur la carte */}
+      <div className="week-trip-plan" data-open={active && plan ? "1" : undefined} aria-hidden={!(active && plan)}>
+        <div className="week-trip-plan-inner">
+          {plan && (
+            <>
+              <div className="week-trip-plan-head">
+                <span className="week-seg week-seg-sm" role="radiogroup" aria-label="Vitesse sur autoroute">
+                  {HW_SPEEDS.map((s) => (
+                    <button key={s} type="button" role="radio" aria-checked={speed === s} tabIndex={active ? 0 : -1} onClick={() => onSpeed(s)}>
+                      {s}
+                    </button>
+                  ))}
+                </span>
+                <span>km/h sur autoroute</span>
+              </div>
+              {plan.gapKm !== null ? (
+                <p className="week-trip-plan-gap">
+                  Aucune borne rapide repérée à portée après le km {plan.gapKm} : à cette vitesse, ce trajet demande un arrêt hors des
+                  grands axes.
+                </p>
+              ) : (
+                <ol className="week-trip-stops">
+                  {plan.stops.map((s, k) => (
+                    <li key={k}>
+                      <span className="week-trip-stop-km">km {s.km}</span>
+                      <span className="week-trip-stop-name">
+                        <b>{s.name}</b> {s.kw} kW
+                      </span>
+                      <span className="week-trip-stop-charge">
+                        {pct(s.arrive)} → {pct(s.leave)}, <b>{duration(s.minutes)}</b>
+                      </span>
+                    </li>
+                  ))}
+                  <li className="week-trip-stop-end">
+                    <span className="week-trip-stop-km">arrivée</span>
+                    <span className="week-trip-stop-name">
+                      {duration(plan.driveMinutes)} de route{plan.stops.length > 0 && <>, {duration(plan.chargeMinutes)} de recharge</>}
+                    </span>
+                    <span className="week-trip-stop-charge">{pct(plan.arrive)}</span>
+                  </li>
+                </ol>
+              )}
+            </>
+          )}
+        </div>
       </div>
     </li>
   );

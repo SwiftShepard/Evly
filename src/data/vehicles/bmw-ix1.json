@@ -2,7 +2,7 @@
   "slug": "bmw-ix1",
   "brand": "BMW",
   "model": "iX1",
-  "variant": "64.7 kWh",
+  "variant": "64,7 kWh",
   "bodyType": "SUV",
   "segment": "C",
   "productionCountry": "Allemagne",
@@ -174,7 +174,7 @@
     {
       "name": "iX1 eDrive20 (Base)",
       "price_EUR": 46900,
-      "batteryUsed": "64.7 kWh",
+      "batteryUsed": "64,7 kWh",
       "equipmentHighlights": [
         "475 km WLTP",
         "204 ch RWD",
@@ -184,51 +184,51 @@
     {
       "name": "iX1 eDrive20 xLine",
       "price_EUR": 49790,
-      "batteryUsed": "64.7 kWh",
+      "batteryUsed": "64,7 kWh",
       "equipmentHighlights": [
         "Style baroudeur xLine",
-        "Jantes 18 pouces aero",
+        "Jantes 18 pouces aéro",
         "Sellerie similicuir Veganza"
       ]
     },
     {
       "name": "iX1 eDrive20 M Sport",
       "price_EUR": 51040,
-      "batteryUsed": "64.7 kWh",
+      "batteryUsed": "64,7 kWh",
       "equipmentHighlights": [
-        "Pack aerodynamique M",
+        "Pack aérodynamique M",
         "Suspensions adaptatives M",
-        "Sieges Sport avant"
+        "Sièges Sport avant"
       ]
     },
     {
       "name": "iX1 xDrive30 (Base)",
       "price_EUR": 57300,
-      "batteryUsed": "64.7 kWh",
+      "batteryUsed": "64,7 kWh",
       "equipmentHighlights": [
         "466 km WLTP",
         "313 ch AWD xDrive",
-        "0-100 km/h en 5.6 s"
+        "0-100 km/h en 5,6 s"
       ]
     },
     {
       "name": "iX1 xDrive30 xLine",
       "price_EUR": 59900,
-      "batteryUsed": "64.7 kWh",
+      "batteryUsed": "64,7 kWh",
       "equipmentHighlights": [
         "Style baroudeur xLine",
-        "Jantes 18 pouces aero",
+        "Jantes 18 pouces aéro",
         "Projecteurs LED adaptatifs"
       ]
     },
     {
       "name": "iX1 xDrive30 M Sport",
       "price_EUR": 60950,
-      "batteryUsed": "64.7 kWh",
+      "batteryUsed": "64,7 kWh",
       "equipmentHighlights": [
-        "Pack aerodynamique M",
+        "Pack aérodynamique M",
         "Suspensions adaptatives M",
-        "Sieges Sport et inserts alu M"
+        "Sièges Sport et inserts alu M"
       ]
     }
   ],
@@ -244,7 +244,7 @@
   "configurations": [
     {
       "id": "bmw-ix1-edrive20-base",
-      "label": "eDrive20 (Base) · 64.7 kWh",
+      "label": "eDrive20 (Base) · 64,7 kWh",
       "battery": "standard",
       "trim": "iX1 eDrive20 (Base)",
       "wheelSize_inches": 17,
@@ -341,12 +341,12 @@
         }
       ],
       "availability": "available",
-      "notes": "204 ch (150 kW), FWD, version d'acces",
+      "notes": "204 ch (150 kW), FWD, version d'accès",
       "chargingDC_confidence": "tested"
     },
     {
       "id": "bmw-ix1-edrive20-xline",
-      "label": "eDrive20 xLine · 64.7 kWh",
+      "label": "eDrive20 xLine · 64,7 kWh",
       "battery": "standard",
       "trim": "iX1 eDrive20 xLine",
       "wheelSize_inches": 18,
@@ -448,7 +448,7 @@
     },
     {
       "id": "bmw-ix1-edrive20-msport",
-      "label": "eDrive20 M Sport · 64.7 kWh",
+      "label": "eDrive20 M Sport · 64,7 kWh",
       "battery": "standard",
       "trim": "iX1 eDrive20 M Sport",
       "wheelSize_inches": 18,
@@ -550,7 +550,7 @@
     },
     {
       "id": "bmw-ix1-xdrive30-base",
-      "label": "xDrive30 (Base) · 64.7 kWh",
+      "label": "xDrive30 (Base) · 64,7 kWh",
       "battery": "standard",
       "trim": "iX1 xDrive30 (Base)",
       "wheelSize_inches": 18,
@@ -675,12 +675,12 @@
         }
       ],
       "availability": "available",
-      "notes": "313 ch (230 kW), AWD xDrive, version d'acces",
+      "notes": "313 ch (230 kW), AWD xDrive, version d'accès",
       "chargingDC_confidence": "tested"
     },
     {
       "id": "bmw-ix1-xdrive30-xline",
-      "label": "xDrive30 xLine · 64.7 kWh",
+      "label": "xDrive30 xLine · 64,7 kWh",
       "battery": "standard",
       "trim": "iX1 xDrive30 xLine",
       "wheelSize_inches": 18,
@@ -810,7 +810,7 @@
     },
     {
       "id": "bmw-ix1-xdrive30-msport",
-      "label": "xDrive30 M Sport · 64.7 kWh",
+      "label": "xDrive30 M Sport · 64,7 kWh",
       "battery": "standard",
       "trim": "iX1 xDrive30 M Sport",
       "wheelSize_inches": 19,
@@ -953,7 +953,7 @@
     },
     {
       "category": "technologie",
-      "label": "BMW iDrive 9 et ecran courbe 10,7 pouces"
+      "label": "BMW iDrive 9 et écran courbe 10,7 pouces"
     },
     {
       "category": "securite",
@@ -961,16 +961,16 @@
     },
     {
       "category": "confort",
-      "label": "Coffre genereux (490 L) et modularite"
+      "label": "Coffre généreux (490 L) et modularité"
     }
   ],
   "verdict": {
     "strengths": [
-      "Assemble en Allemagne, eligible prime CEE",
-      "Dynamique de conduite BMW et AWD de serie (xDrive30)"
+      "Assemblé en Allemagne, éligible prime CEE",
+      "Dynamique de conduite BMW et AWD de série (xDrive30)"
     ],
     "weaknesses": [
-      "Charge DC limitee a 130 kW",
+      "Charge DC limitée à 130 kW",
       "Autonomie modeste (475 km WLTP max)"
     ],
     "idealUserProfile": "Conducteurs cherchant un SUV compact premium dynamique.",

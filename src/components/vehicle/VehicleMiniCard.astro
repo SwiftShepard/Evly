@@ -8,6 +8,7 @@ import Tile from "@/components/ui/Tile.astro";
 import Tag from "@/components/ui/Tag.astro";
 import BrandLogo from "@/components/ui/BrandLogo.astro";
 import VehicleImage from "@/components/ui/VehicleImage.astro";
+import Confidence from "@/components/ui/Confidence.astro";
 import type { Vehicle } from "@/data/schemas";
 import { getBodyInfo, getMarketStatus, getVehicleName, getVehicleSeoFacts } from "@/lib/seo";
 import { formatPrice } from "@/lib/format";
@@ -47,7 +48,7 @@ const name = getVehicleName(v);
       <span class="flex items-baseline gap-1">
         <span data-numeric class="display-stat text-lg md:text-xl text-[var(--color-accent)]">{f.rangeBest}</span>
         <span class="font-mono text-[11px] text-[var(--color-text-faint)]">km</span>
-        <span class="card-confidence ml-1" data-level={f.rangeBestMeasured ? "measured" : "estimated"}>{f.rangeBestMeasured ? "mesurée" : "estimée"}</span>
+        <Confidence code={f.rangeBestConfidence} class="ml-1" />
       </span>
     </div>
     <div class="mini-card-price flex flex-col gap-0.5">

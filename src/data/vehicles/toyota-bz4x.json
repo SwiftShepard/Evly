@@ -2,7 +2,7 @@
   "slug": "toyota-bz4x",
   "brand": "Toyota",
   "model": "bZ4X",
-  "variant": "73.1 kWh",
+  "variant": "73,1 kWh",
   "bodyType": "SUV",
   "segment": "D",
   "productionCountry": "Japon",
@@ -24,10 +24,10 @@
   "wltp_max_km": 569,
   "wltp_min_km": 444,
   "realRange": {
-    "mixed_km": 413,
-    "highway_130_km": 310,
-    "urban_km": 528,
-    "winter_minus5_km": 282,
+    "mixed_km": 415,
+    "highway_130_km": 311,
+    "urban_km": 531,
+    "winter_minus5_km": 284,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 17,
@@ -116,29 +116,29 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Design 57.7 kWh",
+      "name": "Design 57,7 kWh",
       "price_EUR": 40900,
-      "batteryUsed": "57.7 kWh",
+      "batteryUsed": "57,7 kWh",
       "equipmentHighlights": [
         "444 km WLTP",
-        "Ecran 14 pouces",
-        "Sieges chauffants"
+        "Écran 14 pouces",
+        "Sièges chauffants"
       ]
     },
     {
-      "name": "Design 73.1 kWh",
+      "name": "Design 73,1 kWh",
       "price_EUR": 44900,
-      "batteryUsed": "73.1 kWh",
+      "batteryUsed": "73,1 kWh",
       "equipmentHighlights": [
         "569 km WLTP",
-        "Hayon motorise",
+        "Hayon motorisé",
         "Charge smartphone induction"
       ]
     },
     {
       "name": "Performance AWD",
       "price_EUR": 47400,
-      "batteryUsed": "73.1 kWh",
+      "batteryUsed": "73,1 kWh",
       "equipmentHighlights": [
         "AWD 343 ch",
         "516 km WLTP",
@@ -146,9 +146,9 @@
       ]
     },
     {
-      "name": "Lounge 73.1 kWh",
+      "name": "Lounge 73,1 kWh",
       "price_EUR": 48900,
-      "batteryUsed": "73.1 kWh",
+      "batteryUsed": "73,1 kWh",
       "equipmentHighlights": [
         "569 km WLTP",
         "Toit panoramique",
@@ -156,9 +156,9 @@
       ]
     },
     {
-      "name": "Collection 73.1 kWh",
+      "name": "Collection 73,1 kWh",
       "price_EUR": 51900,
-      "batteryUsed": "73.1 kWh",
+      "batteryUsed": "73,1 kWh",
       "equipmentHighlights": [
         "Finition haut de gamme Collection",
         "Toit panoramique",
@@ -172,9 +172,9 @@
   "configurations": [
     {
       "id": "toyota-bz4x-design-57",
-      "label": "bZ4X Design · 57.7 kWh",
+      "label": "bZ4X Design · 57,7 kWh",
       "battery": "standard",
-      "trim": "Design 57.7 kWh",
+      "trim": "Design 57,7 kWh",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
@@ -184,10 +184,10 @@
       "wltp_km": 444,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 322,
-        "highway_130_km": 242,
-        "urban_km": 412,
-        "winter_minus5_km": 220,
+        "mixed_km": 324,
+        "highway_130_km": 243,
+        "urban_km": 415,
+        "winter_minus5_km": 222,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -225,9 +225,9 @@
     },
     {
       "id": "toyota-bz4x-design-73",
-      "label": "bZ4X Design · 73.1 kWh",
+      "label": "bZ4X Design · 73,1 kWh",
       "battery": "long-range",
-      "trim": "Design 73.1 kWh",
+      "trim": "Design 73,1 kWh",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
@@ -237,10 +237,10 @@
       "wltp_km": 569,
       "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
-        "mixed_km": 413,
-        "highway_130_km": 310,
-        "urban_km": 528,
-        "winter_minus5_km": 282,
+        "mixed_km": 415,
+        "highway_130_km": 311,
+        "urban_km": 531,
+        "winter_minus5_km": 284,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -290,10 +290,10 @@
       "wltp_km": 516,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
-        "mixed_km": 374,
-        "highway_130_km": 281,
-        "urban_km": 478,
-        "winter_minus5_km": 256,
+        "mixed_km": 376,
+        "highway_130_km": 282,
+        "urban_km": 481,
+        "winter_minus5_km": 257,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -331,9 +331,9 @@
     },
     {
       "id": "toyota-bz4x-origin-73",
-      "label": "bZ4X Lounge 73.1 kWh",
+      "label": "bZ4X Lounge 73,1 kWh",
       "battery": "long-range",
-      "trim": "Lounge 73.1 kWh",
+      "trim": "Lounge 73,1 kWh",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
@@ -343,10 +343,10 @@
       "wltp_km": 550,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 399,
-        "highway_130_km": 300,
-        "urban_km": 510,
-        "winter_minus5_km": 273,
+        "mixed_km": 401,
+        "highway_130_km": 301,
+        "urban_km": 513,
+        "winter_minus5_km": 274,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -384,9 +384,9 @@
     },
     {
       "id": "toyota-bz4x-collection-73",
-      "label": "bZ4X Collection 73.1 kWh",
+      "label": "bZ4X Collection 73,1 kWh",
       "battery": "long-range",
-      "trim": "Collection 73.1 kWh",
+      "trim": "Collection 73,1 kWh",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
@@ -396,10 +396,10 @@
       "wltp_km": 550,
       "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
-        "mixed_km": 399,
-        "highway_130_km": 300,
-        "urban_km": 510,
-        "winter_minus5_km": 273,
+        "mixed_km": 401,
+        "highway_130_km": 301,
+        "urban_km": 513,
+        "winter_minus5_km": 274,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -450,7 +450,7 @@
     },
     {
       "category": "technologie",
-      "label": "Ecran 14 pouces et Toyota Safety Sense 3.0"
+      "label": "Écran 14 pouces et Toyota Safety Sense 3.0"
     },
     {
       "category": "securite",
@@ -458,20 +458,20 @@
     },
     {
       "category": "confort",
-      "label": "Garantie 10 ans vehicule et fiabilite Toyota"
+      "label": "Garantie 10 ans véhicule et fiabilité Toyota"
     }
   ],
   "verdict": {
     "strengths": [
-      "Garantie 10 ans vehicule, fiabilite legendaire Toyota",
+      "Garantie 10 ans véhicule, fiabilité légendaire Toyota",
       "Bonne autonomie (569 km WLTP) et version AWD tout-terrain"
     ],
     "weaknesses": [
       "Assemblage Japon, aucune aide CEE",
-      "Charge DC limitee a 150 kW"
+      "Charge DC limitée à 150 kW"
     ],
-    "idealUserProfile": "Familles privilegiant la fiabilite et la garantie, usage mixte route/chemin.",
-    "notIdealFor": "Acheteurs cherchant la charge ultra-rapide ou les aides a l'achat."
+    "idealUserProfile": "Familles privilégiant la fiabilité et la garantie, usage mixte route/chemin.",
+    "notIdealFor": "Acheteurs cherchant la charge ultra-rapide ou les aides à l'achat."
   },
   "lastUpdated": "2026-10-08",
   "sources": [

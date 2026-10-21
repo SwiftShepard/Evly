@@ -1,8 +1,7 @@
 import type { Vehicle } from "@/data/schemas";
 import { formatNumber } from "@/lib/format";
 import { isVehicleEligibleCEE, primeFor } from "@/lib/cee";
-
-export type RangeConfidenceLevel = "measured" | "manufacturer" | "estimated";
+import { confidenceOf, type ConfidenceLevel } from "@/lib/confidence";
 
 export interface VehicleCardSummary {
   /** Sous-titre homogène : « 40 · 52 kWh · 5 finitions » */
@@ -13,25 +12,11 @@ export interface VehicleCardSummary {
   totalAids: number;
   /** Prix après cette prime, null si pas de tarif */
   priceAided: number | null;
-  rangeConfidence: RangeConfidenceLevel;
+  rangeConfidence: ConfidenceLevel;
   /** « mesurée » | « constructeur » | « estimée » */
   rangeConfidenceLabel: string;
   /** Libellé pour l'autonomie autoroute (130 km/h), dérivée de l'essai à 120 km/h si Nyland */
   highwayConfidenceLabel: string;
-}
-
-/**
- * Niveau et libellé court d'une autonomie selon sa provenance.
- * « bjorn_nyland » : autonomie mixte = moyenne des essais Nyland à 90 et 120 km/h.
- */
-export function getRangeConfidenceInfo(confidence: string | null | undefined): {
-  level: RangeConfidenceLevel;
-  label: string;
-} {
-  if (confidence === "bjorn_nyland") return { level: "measured", label: "mesurée" };
-  if (confidence === "tested") return { level: "measured", label: "mesurée" };
-  if (confidence === "manufacturer") return { level: "manufacturer", label: "constructeur" };
-  return { level: "estimated", label: "estimée" };
 }
 
 function parseKwh(label: string): number | null {
@@ -58,7 +43,7 @@ export function getVehicleCardSummary(v: Vehicle): VehicleCardSummary {
   const totalAids = isVehicleEligibleCEE(v, cheapestPrice) ? primeFor(v, "autres") : 0;
   const priceAided = cheapestPrice !== null ? Math.max(0, cheapestPrice - totalAids) : null;
 
-  const confidence = getRangeConfidenceInfo(v.realRange.confidence);
+  const confidence = confidenceOf(v.realRange.confidence);
 
   return {
     subtitle,

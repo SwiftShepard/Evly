@@ -24,9 +24,9 @@
   "wltp_max_km": 310,
   "wltp_min_km": 275,
   "realRange": {
-    "mixed_km": 224,
-    "highway_130_km": 168,
-    "urban_km": 286,
+    "mixed_km": 225,
+    "highway_130_km": 169,
+    "urban_km": 288,
     "winter_minus5_km": 143,
     "confidence": "estimated"
   },
@@ -88,7 +88,7 @@
       "equipmentHighlights": [
         "Volume utile 3,7 m3",
         "Charge utile 830 kg",
-        "Ecran multimedia 10 pouces"
+        "Écran multimédia 10 pouces"
       ]
     },
     {
@@ -98,7 +98,7 @@
       "equipmentHighlights": [
         "Volume utile 4,8 m3",
         "Empattement long",
-        "Camera de recul"
+        "Caméra de recul"
       ]
     }
   ],
@@ -120,9 +120,9 @@
       "wltp_km": 310,
       "wltp_consumption_kWh_100km": 18,
       "realRange": {
-        "mixed_km": 224,
-        "highway_130_km": 168,
-        "urban_km": 286,
+        "mixed_km": 225,
+        "highway_130_km": 169,
+        "urban_km": 288,
         "winter_minus5_km": 143,
         "confidence": "estimated"
       },
@@ -169,10 +169,10 @@
       "wltp_km": 275,
       "wltp_consumption_kWh_100km": 20,
       "realRange": {
-        "mixed_km": 198,
-        "highway_130_km": 149,
-        "urban_km": 253,
-        "winter_minus5_km": 126,
+        "mixed_km": 200,
+        "highway_130_km": 150,
+        "urban_km": 256,
+        "winter_minus5_km": 127,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -215,11 +215,11 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "Poste de conduite ergonomique avec ecran 10 pouces"
+      "label": "Poste de conduite ergonomique avec écran 10 pouces"
     },
     {
       "category": "technologie",
-      "label": "Batterie LFP plus durable, optimisee pour la charge quotidienne"
+      "label": "Batterie LFP plus durable, optimisée pour la charge quotidienne"
     },
     {
       "category": "securite",
@@ -227,20 +227,20 @@
     },
     {
       "category": "design",
-      "label": "Charge utile 830 kg competitive dans le segment"
+      "label": "Charge utile 830 kg compétitive dans le segment"
     }
   ],
   "verdict": {
     "strengths": [
-      "Prix d'entree tres agressif (< 30 000 EUR), le plus competitif du segment",
+      "Prix d'entrée très agressif (< 30 000 EUR), le plus compétitif du segment",
       "Batterie LFP durable, garantie batterie 8 ans / 200 000 km"
     ],
     "weaknesses": [
-      "Reseau SAV Maxus encore limite en France",
-      "Charge DC limitee a 80 kW"
+      "Réseau SAV Maxus encore limité en France",
+      "Charge DC limitée à 80 kW"
     ],
-    "idealUserProfile": "TPE et artisans avec budget serre, tournees urbaines courtes. Ideal pour un premier fourgon electrique.",
-    "notIdealFor": "Professionnels dependant d'un reseau SAV dense ou roulant au-dela de 200 km par jour."
+    "idealUserProfile": "TPE et artisans avec budget serré, tournées urbaines courtes. Idéal pour un premier fourgon électrique.",
+    "notIdealFor": "Professionnels dépendant d'un réseau SAV dense ou roulant au-delà de 200 km par jour."
   },
   "lastUpdated": "2026-05-21",
   "sources": [

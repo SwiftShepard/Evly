@@ -25,10 +25,11 @@
   "wltp_min_km": 470,
   "realRange": {
     "mixed_km": 370,
-    "highway_130_km": 278,
-    "urban_km": 473,
-    "winter_minus5_km": 236,
-    "confidence": "estimated"
+    "highway_130_km": 277,
+    "urban_km": 475,
+    "winter_minus5_km": 248,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 308
   },
   "consumption_mixed_kWh_per_100km": 15,
   "consumption_highway_kWh_per_100km": 21,
@@ -131,7 +132,34 @@
       "power": 12
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 432,
+      "consumption_kWh_100km": 16.9,
+      "temperature_C": 16,
+      "wheelSize_inches": 18,
+      "tyreModel": "Continental EcoContact 7",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « BYD Atto 3 Evo AWD » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 308,
+      "consumption_kWh_100km": 23.7,
+      "temperature_C": 14,
+      "wheelSize_inches": 18,
+      "tyreModel": "Continental EcoContact 7",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « BYD Atto 3 Evo AWD » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 630,
@@ -154,18 +182,18 @@
     {
       "name": "Design",
       "price_EUR": 38990,
-      "batteryUsed": "74.8 kWh LFP",
+      "batteryUsed": "74,8 kWh LFP",
       "equipmentHighlights": [
-        "Écran rotatif 15.6\"",
+        "Écran rotatif 15,6\"",
         "Toit panoramique"
       ]
     },
     {
       "name": "Excellence",
       "price_EUR": 42490,
-      "batteryUsed": "74.8 kWh LFP",
+      "batteryUsed": "74,8 kWh LFP",
       "equipmentHighlights": [
-        "Écran rotatif 15.6\"",
+        "Écran rotatif 15,6\"",
         "Système audio Rythme",
         "Hayon électrique",
         "Purificateur d'air PM2.5"
@@ -190,10 +218,10 @@
       "wltp_km": 510,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 370,
-        "highway_130_km": 278,
-        "urban_km": 473,
-        "winter_minus5_km": 236,
+        "mixed_km": 401,
+        "highway_130_km": 300,
+        "urban_km": 515,
+        "winter_minus5_km": 255,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -303,13 +331,41 @@
       "wltp_km": 470,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 341,
-        "highway_130_km": 256,
-        "urban_km": 436,
-        "winter_minus5_km": 217,
-        "confidence": "estimated"
+        "mixed_km": 370,
+        "highway_130_km": 277,
+        "urban_km": 475,
+        "winter_minus5_km": 248,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 308
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 432,
+          "consumption_kWh_100km": 16.9,
+          "temperature_C": 16,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental EcoContact 7",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BYD Atto 3 Evo AWD » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 308,
+          "consumption_kWh_100km": 23.7,
+          "temperature_C": 14,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental EcoContact 7",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « BYD Atto 3 Evo AWD » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 146,
       "chargingDC_10_80_min": 25,
       "chargingDC_kWh_30min": 57,

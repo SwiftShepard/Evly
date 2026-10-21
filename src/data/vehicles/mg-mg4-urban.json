@@ -24,11 +24,11 @@
   "wltp_max_km": 416,
   "wltp_min_km": 325,
   "realRange": {
-    "mixed_km": 293,
-    "highway_130_km": 220,
-    "urban_km": 374,
-    "winter_minus5_km": 186,
-    "confidence": "estimated"
+    "mixed_km": 333,
+    "highway_130_km": 245,
+    "urban_km": 435,
+    "winter_minus5_km": 223,
+    "confidence": "tested"
   },
   "consumption_mixed_kWh_per_100km": 13,
   "consumption_highway_kWh_per_100km": 18,
@@ -71,7 +71,64 @@
       "power": 7
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2026-09",
+      "speed_kmh": null,
+      "range_km": 392,
+      "consumption_kWh_100km": 13.4,
+      "temperature_C": 14,
+      "wheelSize_inches": 17,
+      "tyreModel": "Maxxis Waltz MS1 205/50 R17",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-mg-4-urban-54-kwh-les-consommations-et-autonomies-mesurees-avec-quelques-records-battus/",
+      "notes": "Supertest Automobile Propre (54 kWh), parcours mixte. Autonomie calculée sur les 52,6 kWh utiles mesurés."
+    },
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2026-09",
+      "speed_kmh": 90,
+      "range_km": 395,
+      "consumption_kWh_100km": 13.3,
+      "temperature_C": null,
+      "wheelSize_inches": 17,
+      "tyreModel": "Maxxis Waltz MS1 205/50 R17",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-mg-4-urban-54-kwh-les-consommations-et-autonomies-mesurees-avec-quelques-records-battus/",
+      "notes": "Supertest Automobile Propre (54 kWh), vitesse stabilisée. Autonomie calculée sur les 52,6 kWh utiles mesurés."
+    },
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2026-09",
+      "speed_kmh": 110,
+      "range_km": 304,
+      "consumption_kWh_100km": 17.3,
+      "temperature_C": null,
+      "wheelSize_inches": 17,
+      "tyreModel": "Maxxis Waltz MS1 205/50 R17",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-mg-4-urban-54-kwh-les-consommations-et-autonomies-mesurees-avec-quelques-records-battus/",
+      "notes": "Supertest Automobile Propre (54 kWh), vitesse stabilisée. Autonomie calculée sur les 52,6 kWh utiles mesurés."
+    },
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2026-09",
+      "speed_kmh": 130,
+      "range_km": 245,
+      "consumption_kWh_100km": 21.5,
+      "temperature_C": null,
+      "wheelSize_inches": 17,
+      "tyreModel": "Maxxis Waltz MS1 205/50 R17",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-mg-4-urban-54-kwh-les-consommations-et-autonomies-mesurees-avec-quelques-records-battus/",
+      "notes": "Supertest Automobile Propre (54 kWh), vitesse stabilisée. Autonomie calculée sur les 52,6 kWh utiles mesurés."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4395,
   "width_mm": 1842,
@@ -128,10 +185,10 @@
       "wltp_km": 325,
       "wltp_consumption_kWh_100km": 13.2,
       "realRange": {
-        "mixed_km": 229,
-        "highway_130_km": 172,
-        "urban_km": 293,
-        "winter_minus5_km": 146,
+        "mixed_km": 260,
+        "highway_130_km": 191,
+        "urban_km": 340,
+        "winter_minus5_km": 165,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -177,13 +234,70 @@
       "wltp_km": 416,
       "wltp_consumption_kWh_100km": 13,
       "realRange": {
-        "mixed_km": 293,
-        "highway_130_km": 220,
-        "urban_km": 374,
-        "winter_minus5_km": 186,
-        "confidence": "estimated"
+        "mixed_km": 333,
+        "highway_130_km": 245,
+        "urban_km": 435,
+        "winter_minus5_km": 223,
+        "confidence": "tested"
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-09",
+          "speed_kmh": null,
+          "range_km": 392,
+          "consumption_kWh_100km": 13.4,
+          "temperature_C": 14,
+          "wheelSize_inches": 17,
+          "tyreModel": "Maxxis Waltz MS1 205/50 R17",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-mg-4-urban-54-kwh-les-consommations-et-autonomies-mesurees-avec-quelques-records-battus/",
+          "notes": "Supertest Automobile Propre (54 kWh), parcours mixte. Autonomie calculée sur les 52,6 kWh utiles mesurés."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-09",
+          "speed_kmh": 90,
+          "range_km": 395,
+          "consumption_kWh_100km": 13.3,
+          "temperature_C": null,
+          "wheelSize_inches": 17,
+          "tyreModel": "Maxxis Waltz MS1 205/50 R17",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-mg-4-urban-54-kwh-les-consommations-et-autonomies-mesurees-avec-quelques-records-battus/",
+          "notes": "Supertest Automobile Propre (54 kWh), vitesse stabilisée. Autonomie calculée sur les 52,6 kWh utiles mesurés."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-09",
+          "speed_kmh": 110,
+          "range_km": 304,
+          "consumption_kWh_100km": 17.3,
+          "temperature_C": null,
+          "wheelSize_inches": 17,
+          "tyreModel": "Maxxis Waltz MS1 205/50 R17",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-mg-4-urban-54-kwh-les-consommations-et-autonomies-mesurees-avec-quelques-records-battus/",
+          "notes": "Supertest Automobile Propre (54 kWh), vitesse stabilisée. Autonomie calculée sur les 52,6 kWh utiles mesurés."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-09",
+          "speed_kmh": 130,
+          "range_km": 245,
+          "consumption_kWh_100km": 21.5,
+          "temperature_C": null,
+          "wheelSize_inches": 17,
+          "tyreModel": "Maxxis Waltz MS1 205/50 R17",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-mg-4-urban-54-kwh-les-consommations-et-autonomies-mesurees-avec-quelques-records-battus/",
+          "notes": "Supertest Automobile Propre (54 kWh), vitesse stabilisée. Autonomie calculée sur les 52,6 kWh utiles mesurés."
+        }
+      ],
       "chargingDC_peak_kW": 87,
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 35,
@@ -226,13 +340,70 @@
       "wltp_km": 416,
       "wltp_consumption_kWh_100km": 13,
       "realRange": {
-        "mixed_km": 293,
-        "highway_130_km": 220,
-        "urban_km": 374,
-        "winter_minus5_km": 186,
-        "confidence": "estimated"
+        "mixed_km": 333,
+        "highway_130_km": 245,
+        "urban_km": 435,
+        "winter_minus5_km": 223,
+        "confidence": "tested"
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-09",
+          "speed_kmh": null,
+          "range_km": 392,
+          "consumption_kWh_100km": 13.4,
+          "temperature_C": 14,
+          "wheelSize_inches": 17,
+          "tyreModel": "Maxxis Waltz MS1 205/50 R17",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-mg-4-urban-54-kwh-les-consommations-et-autonomies-mesurees-avec-quelques-records-battus/",
+          "notes": "Supertest Automobile Propre (54 kWh), parcours mixte. Autonomie calculée sur les 52,6 kWh utiles mesurés."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-09",
+          "speed_kmh": 90,
+          "range_km": 395,
+          "consumption_kWh_100km": 13.3,
+          "temperature_C": null,
+          "wheelSize_inches": 17,
+          "tyreModel": "Maxxis Waltz MS1 205/50 R17",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-mg-4-urban-54-kwh-les-consommations-et-autonomies-mesurees-avec-quelques-records-battus/",
+          "notes": "Supertest Automobile Propre (54 kWh), vitesse stabilisée. Autonomie calculée sur les 52,6 kWh utiles mesurés."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-09",
+          "speed_kmh": 110,
+          "range_km": 304,
+          "consumption_kWh_100km": 17.3,
+          "temperature_C": null,
+          "wheelSize_inches": 17,
+          "tyreModel": "Maxxis Waltz MS1 205/50 R17",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-mg-4-urban-54-kwh-les-consommations-et-autonomies-mesurees-avec-quelques-records-battus/",
+          "notes": "Supertest Automobile Propre (54 kWh), vitesse stabilisée. Autonomie calculée sur les 52,6 kWh utiles mesurés."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-09",
+          "speed_kmh": 130,
+          "range_km": 245,
+          "consumption_kWh_100km": 21.5,
+          "temperature_C": null,
+          "wheelSize_inches": 17,
+          "tyreModel": "Maxxis Waltz MS1 205/50 R17",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-mg-4-urban-54-kwh-les-consommations-et-autonomies-mesurees-avec-quelques-records-battus/",
+          "notes": "Supertest Automobile Propre (54 kWh), vitesse stabilisée. Autonomie calculée sur les 52,6 kWh utiles mesurés."
+        }
+      ],
       "chargingDC_peak_kW": 87,
       "chargingDC_10_80_min": 28,
       "chargingDC_kWh_30min": 35,
@@ -284,13 +455,13 @@
     },
     {
       "category": "design",
-      "label": "Volume de coffre arrière 480L"
+      "label": "Volume de coffre arrière 480 L"
     }
   ],
   "verdict": {
     "strengths": [
       "Excellent rapport habitabilité/prix",
-      "Coffre très généreux de 480L",
+      "Coffre très généreux de 480 L",
       "Pompe à chaleur de série sur toutes les versions"
     ],
     "weaknesses": [

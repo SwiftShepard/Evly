@@ -2,7 +2,7 @@
   "slug": "bmw-i4",
   "brand": "BMW",
   "model": "i4",
-  "variant": "83.9 kWh",
+  "variant": "83,9 kWh",
   "bodyType": "Berline",
   "segment": "D",
   "productionCountry": "Allemagne",
@@ -186,15 +186,15 @@
       "price_EUR": 61650,
       "batteryUsed": "67 kWh",
       "equipmentHighlights": [
-        "Pack aerodynamique M",
+        "Pack aérodynamique M",
         "Sellerie Alcantara/Sensatec",
-        "Jantes 18 pouces aero M"
+        "Jantes 18 pouces aéro M"
       ]
     },
     {
       "name": "i4 eDrive40 (Base)",
       "price_EUR": 63950,
-      "batteryUsed": "83.9 kWh",
+      "batteryUsed": "83,9 kWh",
       "equipmentHighlights": [
         "590 km WLTP",
         "340 ch RWD",
@@ -204,41 +204,41 @@
     {
       "name": "i4 eDrive40 M Sport",
       "price_EUR": 68050,
-      "batteryUsed": "83.9 kWh",
+      "batteryUsed": "83,9 kWh",
       "equipmentHighlights": [
         "Pack M Sport dynamique",
-        "Jantes 18 pouces aero M",
-        "Chassis sport et sieges sport"
+        "Jantes 18 pouces aéro M",
+        "Châssis sport et sièges sport"
       ]
     },
     {
       "name": "i4 xDrive40 (Base)",
       "price_EUR": 67450,
-      "batteryUsed": "83.9 kWh",
+      "batteryUsed": "83,9 kWh",
       "equipmentHighlights": [
         "540 km WLTP",
         "401 ch AWD xDrive",
-        "0-100 km/h en 5.1 s"
+        "0-100 km/h en 5,1 s"
       ]
     },
     {
       "name": "i4 xDrive40 M Sport",
       "price_EUR": 71550,
-      "batteryUsed": "83.9 kWh",
+      "batteryUsed": "83,9 kWh",
       "equipmentHighlights": [
         "Pack M Sport dynamique",
-        "Transmission integrale xDrive",
+        "Transmission intégrale xDrive",
         "Volant M gaine cuir"
       ]
     },
     {
       "name": "i4 M50 xDrive (M Sport)",
       "price_EUR": 78600,
-      "batteryUsed": "83.9 kWh",
+      "batteryUsed": "83,9 kWh",
       "equipmentHighlights": [
         "AWD M Performance 544 ch",
-        "0-100 en 3.9 s",
-        "Chassis M adaptatif"
+        "0-100 en 3,9 s",
+        "Châssis M adaptatif"
       ]
     }
   ],
@@ -297,7 +297,7 @@
         }
       ],
       "availability": "available",
-      "notes": "286 ch (210 kW), RWD, version d'acces",
+      "notes": "286 ch (210 kW), RWD, version d'accès",
       "chargingDC_confidence": "estimated"
     },
     {
@@ -356,7 +356,7 @@
     },
     {
       "id": "bmw-i4-edrive40-base",
-      "label": "eDrive40 (Base) · 83.9 kWh",
+      "label": "eDrive40 (Base) · 83,9 kWh",
       "battery": "long-range",
       "trim": "i4 eDrive40 (Base)",
       "wheelSize_inches": 18,
@@ -486,7 +486,7 @@
     },
     {
       "id": "bmw-i4-edrive40-msport",
-      "label": "eDrive40 M Sport · 83.9 kWh",
+      "label": "eDrive40 M Sport · 83,9 kWh",
       "battery": "long-range",
       "trim": "i4 eDrive40 M Sport",
       "wheelSize_inches": 18,
@@ -616,7 +616,7 @@
     },
     {
       "id": "bmw-i4-xdrive40-base",
-      "label": "xDrive40 (Base) · 83.9 kWh",
+      "label": "xDrive40 (Base) · 83,9 kWh",
       "battery": "long-range",
       "trim": "i4 xDrive40 (Base)",
       "wheelSize_inches": 18,
@@ -718,7 +718,7 @@
     },
     {
       "id": "bmw-i4-xdrive40-msport",
-      "label": "xDrive40 M Sport · 83.9 kWh",
+      "label": "xDrive40 M Sport · 83,9 kWh",
       "battery": "long-range",
       "trim": "i4 xDrive40 M Sport",
       "wheelSize_inches": 18,
@@ -820,7 +820,7 @@
     },
     {
       "id": "bmw-i4-m50-msport",
-      "label": "M50 xDrive · 83.9 kWh",
+      "label": "M50 xDrive · 83,9 kWh",
       "battery": "long-range",
       "trim": "i4 M50 xDrive (M Sport)",
       "wheelSize_inches": 19,
@@ -959,11 +959,11 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "Gran Coupe electrique au design sportif BMW"
+      "label": "Gran Coupé électrique au design sportif BMW"
     },
     {
       "category": "technologie",
-      "label": "BMW iDrive 9 et ecran courbe 14,9 pouces"
+      "label": "BMW iDrive 9 et écran courbe 14,9 pouces"
     },
     {
       "category": "securite",
@@ -971,19 +971,19 @@
     },
     {
       "category": "confort",
-      "label": "Grande autonomie (590 km WLTP) et coffre genereux (470 L)"
+      "label": "Grande autonomie (590 km WLTP) et coffre généreux (470 L)"
     }
   ],
   "verdict": {
     "strengths": [
-      "Dynamique de conduite exceptionnelle et version M50 tres performante",
-      "Assemble a Munich, eligible prime CEE"
+      "Dynamique de conduite exceptionnelle et version M50 très performante",
+      "Assemblé à Munich, éligible prime CEE"
     ],
     "weaknesses": [
       "Architecture 400 V, pas de 800 V",
-      "AC limite a 11 kW"
+      "AC limité à 11 kW"
     ],
-    "idealUserProfile": "Conducteurs cherchant une berline electrique sportive et dynamique.",
+    "idealUserProfile": "Conducteurs cherchant une berline électrique sportive et dynamique.",
     "notIdealFor": "Acheteurs cherchant la charge 800 V ultra-rapide."
   },
   "lastUpdated": "2026-06-04",

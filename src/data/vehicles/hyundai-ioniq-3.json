@@ -2,7 +2,7 @@
   "slug": "hyundai-ioniq-3",
   "brand": "Hyundai",
   "model": "Ioniq 3",
-  "variant": "42.2 kWh",
+  "variant": "42,2 kWh",
   "bodyType": "Berline compacte",
   "segment": "C",
   "productionCountry": "Rép. Tchèque",
@@ -84,9 +84,9 @@
     {
       "name": "Select",
       "price_EUR": 29995,
-      "batteryUsed": "42.2 kWh",
+      "batteryUsed": "42,2 kWh",
       "equipmentHighlights": [
-        "Écran tactile 12.3\"",
+        "Écran tactile 12,3\"",
         "Surveillance angles morts et régulateur adaptatif",
         "Climatisation automatique bi-zone",
         "Jantes alliage 16\""
@@ -95,7 +95,7 @@
     {
       "name": "Trend",
       "price_EUR": 32300,
-      "batteryUsed": "42.2 kWh",
+      "batteryUsed": "42,2 kWh",
       "equipmentHighlights": [
         "Sièges avant chauffants",
         "Jantes 17\"",
@@ -109,7 +109,7 @@
       "batteryUsed": "61 kWh",
       "equipmentHighlights": [
         "Batterie 61 kWh (autonomie étendue)",
-        "Écran tactile 12.3\"",
+        "Écran tactile 12,3\"",
         "Surveillance angles morts et régulateur adaptatif"
       ]
     },
@@ -177,7 +177,7 @@
   "configurations": [
     {
       "id": "hyundai-ioniq-3-select-42",
-      "label": "Ioniq 3 Select 42.2 kWh",
+      "label": "Ioniq 3 Select 42,2 kWh",
       "battery": "standard",
       "trim": "Select",
       "wheelSize_inches": 16,
@@ -226,7 +226,7 @@
     },
     {
       "id": "hyundai-ioniq-3-trend-42",
-      "label": "Ioniq 3 Trend 42.2 kWh",
+      "label": "Ioniq 3 Trend 42,2 kWh",
       "battery": "standard",
       "trim": "Trend",
       "wheelSize_inches": 17,
@@ -533,7 +533,7 @@
     },
     {
       "category": "technologie",
-      "label": "Plateforme E-GMP 400V avec préconditionnement de batterie"
+      "label": "Plateforme E-GMP 400 V avec préconditionnement de batterie"
     },
     {
       "category": "securite",
@@ -555,7 +555,7 @@
       "Habitabilité arrière moyenne par rapport au Kona"
     ],
     "idealUserProfile": "Conducteurs à la recherche d'une berline compacte moderne, efficiente et accessible pour un usage mixte quotidien et longs trajets.",
-    "notIdealFor": "Gros rouleurs autoroutiers réguliers nécessitant une recharge ultra-rapide 800V."
+    "notIdealFor": "Gros rouleurs autoroutiers réguliers nécessitant une recharge ultra-rapide 800 V."
   },
   "lastUpdated": "2026-10-08",
   "sources": [

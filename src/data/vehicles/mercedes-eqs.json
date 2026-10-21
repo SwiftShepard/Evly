@@ -772,11 +772,11 @@
       "Luxe absolu et conduite autonome niveau 3 (Drive Pilot)"
     ],
     "weaknesses": [
-      "Prix tres eleve (a partir de 121 600 euros)",
-      "Architecture 400 V, charge DC limitee a 200 kW"
+      "Prix très élevé (à partir de 121 600 euros)",
+      "Architecture 400 V, charge DC limitée à 200 kW"
     ],
-    "idealUserProfile": "Acheteurs de berlines de luxe (ex-Classe S) en transition electrique.",
-    "notIdealFor": "Budget inferieur a 100 000 euros."
+    "idealUserProfile": "Acheteurs de berlines de luxe (ex-Classe S) en transition électrique.",
+    "notIdealFor": "Budget inférieur à 100 000 euros."
   },
   "lastUpdated": "2026-10-08",
   "sources": [

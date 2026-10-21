@@ -24,10 +24,10 @@
   "wltp_max_km": 370,
   "wltp_min_km": 295,
   "realRange": {
-    "mixed_km": 267,
-    "highway_130_km": 201,
-    "urban_km": 341,
-    "winter_minus5_km": 170,
+    "mixed_km": 269,
+    "highway_130_km": 202,
+    "urban_km": 344,
+    "winter_minus5_km": 171,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 24,
@@ -96,7 +96,7 @@
       "equipmentHighlights": [
         "Volume utile 5,8 m3",
         "Charge utile 1100 kg",
-        "Ecran multimedia 12 pouces"
+        "Écran multimédia 12 pouces"
       ]
     },
     {
@@ -105,8 +105,8 @@
       "batteryUsed": "88 kWh",
       "equipmentHighlights": [
         "Grande autonomie 370 km WLTP",
-        "V2L prise 230V",
-        "Camera 360 degres"
+        "V2L prise 230 V",
+        "Caméra 360 degrés"
       ]
     },
     {
@@ -138,9 +138,9 @@
       "wltp_km": 295,
       "wltp_consumption_kWh_100km": 23,
       "realRange": {
-        "mixed_km": 213,
-        "highway_130_km": 160,
-        "urban_km": 272,
+        "mixed_km": 214,
+        "highway_130_km": 161,
+        "urban_km": 274,
         "winter_minus5_km": 136,
         "confidence": "estimated"
       },
@@ -187,10 +187,10 @@
       "wltp_km": 370,
       "wltp_consumption_kWh_100km": 24,
       "realRange": {
-        "mixed_km": 267,
-        "highway_130_km": 201,
-        "urban_km": 341,
-        "winter_minus5_km": 170,
+        "mixed_km": 269,
+        "highway_130_km": 202,
+        "urban_km": 344,
+        "winter_minus5_km": 171,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -220,7 +220,7 @@
         }
       ],
       "availability": "available",
-      "notes": "Fourgon L1, grande autonomie 88 kWh, V2L de serie."
+      "notes": "Fourgon L1, grande autonomie 88 kWh, V2L de série."
     }
   ],
   "warranty": {
@@ -233,32 +233,32 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "Cabine spacieuse avec ecran 12 pouces et camera 360"
+      "label": "Cabine spacieuse avec écran 12 pouces et caméra 360"
     },
     {
       "category": "technologie",
-      "label": "V2L prise 230V pour alimenter outils et equipements"
+      "label": "V2L prise 230 V pour alimenter outils et équipements"
     },
     {
       "category": "securite",
-      "label": "Freinage automatique d'urgence et detection pietons"
+      "label": "Freinage automatique d'urgence et détection piétons"
     },
     {
       "category": "design",
-      "label": "Charge utile 1100 kg, competitive face aux europeens"
+      "label": "Charge utile 1100 kg, compétitive face aux européens"
     }
   ],
   "verdict": {
     "strengths": [
-      "Rapport prix/prestations imbattable : 40 000 EUR pour un fourgon moyen electrique",
-      "V2L de serie en 88 kWh, pratique pour les chantiers"
+      "Rapport prix/prestations imbattable : 40 000 EUR pour un fourgon moyen électrique",
+      "V2L de série en 88 kWh, pratique pour les chantiers"
     ],
     "weaknesses": [
-      "Reseau SAV Maxus encore limite en France (< 100 points)",
-      "Valeur residuelle incertaine pour une marque encore peu connue"
+      "Réseau SAV Maxus encore limité en France (< 100 points)",
+      "Valeur résiduelle incertaine pour une marque encore peu connue"
     ],
-    "idealUserProfile": "PME et artisans cherchant un fourgon electrique au meilleur prix, avec tournees urbaines et periurbaines.",
-    "notIdealFor": "Flottes entreprise exigeant un reseau SAV dense ou une valeur residuelle elevee pour le leasing."
+    "idealUserProfile": "PME et artisans cherchant un fourgon électrique au meilleur prix, avec tournées urbaines et périurbaines.",
+    "notIdealFor": "Flottes entreprise exigeant un réseau SAV dense ou une valeur résiduelle élevée pour le leasing."
   },
   "lastUpdated": "2026-05-21",
   "sources": [

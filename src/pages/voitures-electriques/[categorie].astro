@@ -8,6 +8,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import BentoGrid from "@/components/ui/BentoGrid.astro";
 import Tile from "@/components/ui/Tile.astro";
 import VehicleImage from "@/components/ui/VehicleImage.astro";
+import Confidence from "@/components/ui/Confidence.astro";
 import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
 import FaqList from "@/components/seo/FaqList.astro";
 import LinkChips from "@/components/seo/LinkChips.astro";
@@ -150,7 +151,7 @@ const others = CATEGORIES.filter((c) => c.slug !== category.slug);
                       {category.columns.map((c) => (
                         <td class:list={["ranking-num", c === category.sortedBy && "is-sorted"]} data-numeric>
                           {cell(c)}
-                          {c === "range" && <span class="ranking-note">{f.rangeBestMeasured ? "mesurée" : "estimée"}</span>}
+                          {c === "range" && <Confidence code={f.rangeBestConfidence} class="ranking-note" />}
                         </td>
                       ))}
                     </tr>
@@ -264,11 +265,11 @@ const others = CATEGORIES.filter((c) => c.slug !== category.slug);
   th.ranking-num.is-sorted {
     color: var(--color-accent);
   }
-  .ranking-note {
-    display: block;
-    font-size: 10px;
-    font-weight: 400;
-    color: var(--color-text-faint);
+  .ranking-num :global(.ranking-note) {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 3px;
+    font-size: 11px;
   }
   .ranking-model {
     display: flex;

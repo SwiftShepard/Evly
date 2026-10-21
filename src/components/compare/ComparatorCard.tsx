@@ -1,9 +1,9 @@
 import { useState, useMemo } from "react";
-import { getRangeConfidenceInfo } from "@/lib/vehicleCard";
 import type { Vehicle, VehicleConfiguration } from "@/data/schemas";
 import ConfigSelector from "./ConfigSelector";
 import ChargingSparkline from "./ChargingSparkline";
 import AnimatedNumber from "@/components/ui/AnimatedNumber";
+import Confidence from "@/components/ui/Confidence";
 import SohSlider from "@/components/vehicle/SohSlider";
 import { url } from "@/lib/url";
 import { ceeForProfile, CEE_MAX_EUR } from "@/lib/cee";
@@ -294,16 +294,9 @@ export default function ComparatorCard({
             </span>
           )}
         </div>
-        {config.realRange && (
-          <span
-            className="font-mono text-[10px] leading-relaxed mt-1"
-            style={{ color: "var(--color-text-faint)" }}
-          >
-            {config.realRange.confidence === "bjorn_nyland"
-              ? "Mesurée · moyenne 90 / 120 km/h (Nyland)"
-              : `Autonomie ${getRangeConfidenceInfo(config.realRange.confidence).label}`}
-          </span>
-        )}
+        <span className="mt-1.5">
+          <Confidence code={(config.realRange ?? vehicle.realRange).confidence} />
+        </span>
       </DataBlock>
 
       {/* WLTP */}

@@ -166,7 +166,7 @@
       "price_EUR": 46800,
       "batteryUsed": "70 kWh",
       "equipmentHighlights": [
-        "Ecran 11 pouces Google",
+        "Écran 11 pouces Google",
         "Toit panoramique vitré"
       ]
     },
@@ -175,7 +175,7 @@
       "price_EUR": 49800,
       "batteryUsed": "82 kWh",
       "equipmentHighlights": [
-        "Ecran 11 pouces Google",
+        "Écran 11 pouces Google",
         "659 km WLTP",
         "Charge DC 205 kW"
       ]
@@ -520,7 +520,7 @@
     },
     {
       "category": "technologie",
-      "label": "Google integre (Maps, Assistant, Play)"
+      "label": "Google intégré (Maps, Assistant, Play)"
     },
     {
       "category": "securite",
@@ -528,20 +528,20 @@
     },
     {
       "category": "confort",
-      "label": "Interieur vegan avec materiaux recycles"
+      "label": "Intérieur vegan avec matériaux recyclés"
     }
   ],
   "verdict": {
     "strengths": [
       "Charge rapide 205 kW sur Long Range",
-      "Autonomie WLTP genereuse (659 km SM LR)"
+      "Autonomie WLTP généreuse (659 km SM LR)"
     ],
     "weaknesses": [
       "Assemblage en Chine, pas d'aides en France",
       "Coffre modeste pour une berline (405 L)"
     ],
-    "idealUserProfile": "Conducteurs cherchant une berline electrique premium avec autonomie genereuse et design scandinave.",
-    "notIdealFor": "Familles cherchant un grand coffre ou acheteurs visant les aides a l'achat francaises."
+    "idealUserProfile": "Conducteurs cherchant une berline électrique premium avec autonomie généreuse et design scandinave.",
+    "notIdealFor": "Familles cherchant un grand coffre ou acheteurs visant les aides à l'achat françaises."
   },
   "lastUpdated": "2026-10-08",
   "sources": [

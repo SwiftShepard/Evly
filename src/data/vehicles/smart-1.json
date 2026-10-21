@@ -166,7 +166,7 @@
       "price_EUR": 30490,
       "batteryUsed": "49 kWh",
       "equipmentHighlights": [
-        "Ecran 12,8 pouces",
+        "Écran 12,8 pouces",
         "Climatisation auto"
       ]
     },
@@ -186,8 +186,8 @@
       "batteryUsed": "66 kWh",
       "equipmentHighlights": [
         "Beats Audio",
-        "Sieges chauffants",
-        "Camera 360"
+        "Sièges chauffants",
+        "Caméra 360"
       ]
     },
     {
@@ -604,7 +604,7 @@
     },
     {
       "category": "technologie",
-      "label": "Ecran 12,8 pouces et charge AC 22 kW"
+      "label": "Écran 12,8 pouces et charge AC 22 kW"
     },
     {
       "category": "securite",
@@ -617,15 +617,15 @@
   ],
   "verdict": {
     "strengths": [
-      "Chargeur AC 22 kW de serie, V2L disponible",
+      "Chargeur AC 22 kW de série, V2L disponible",
       "Version Brabus 428 ch AWD ludique"
     ],
     "weaknesses": [
-      "Assemblage en Chine, aucune aide francaise",
+      "Assemblage en Chine, aucune aide française",
       "Coffre modeste (313 L)"
     ],
-    "idealUserProfile": "Conducteurs urbains cherchant un SUV compact electrique moderne avec recharge rapide AC.",
-    "notIdealFor": "Familles ayant besoin d'espace ou acheteurs comptant sur les aides francaises."
+    "idealUserProfile": "Conducteurs urbains cherchant un SUV compact électrique moderne avec recharge rapide AC.",
+    "notIdealFor": "Familles ayant besoin d'espace ou acheteurs comptant sur les aides françaises."
   },
   "lastUpdated": "2026-05-19",
   "sources": [

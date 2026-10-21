@@ -146,18 +146,18 @@
     {
       "name": "Standard Range",
       "price_EUR": 45990,
-      "batteryUsed": "60.7 kWh",
+      "batteryUsed": "60,7 kWh",
       "equipmentHighlights": [
         "455 km WLTP",
         "Architecture 800 V",
-        "Charge 5C ultra-rapide (10-80% en 12 min)",
+        "Charge 5C ultra-rapide (10-80 % en 12 min)",
         "Système de conduite autonome XNGP sans LiDAR"
       ]
     },
     {
       "name": "Long Range",
       "price_EUR": 49990,
-      "batteryUsed": "76.3 kWh",
+      "batteryUsed": "76,3 kWh",
       "equipmentHighlights": [
         "530 km WLTP",
         "Toit panoramique en verre",
@@ -167,11 +167,11 @@
     {
       "name": "Performance",
       "price_EUR": 53990,
-      "batteryUsed": "76.3 kWh",
+      "batteryUsed": "76,3 kWh",
       "equipmentHighlights": [
         "500 km WLTP",
         "Transmission intégrale AWD (370 kW / 503 ch)",
-        "Accélération 0-100 km/h en 4.3 s"
+        "Accélération 0-100 km/h en 4,3 s"
       ]
     }
   ],
@@ -192,7 +192,7 @@
   "configurations": [
     {
       "id": "xpeng-p7-plus-standard",
-      "label": "· 60.7 kWh",
+      "label": "· 60,7 kWh",
       "battery": "standard",
       "trim": "Standard Range",
       "wheelSize_inches": 19,
@@ -241,12 +241,12 @@
         }
       ],
       "availability": "available",
-      "notes": "245 ch (180 kW), RWD, LFP 60.7 kWh",
+      "notes": "245 ch (180 kW), RWD, LFP 60,7 kWh",
       "chargingDC_confidence": "manufacturer"
     },
     {
       "id": "xpeng-p7-plus-long-range",
-      "label": "· 76.3 kWh",
+      "label": "· 76,3 kWh",
       "battery": "long-range",
       "trim": "Long Range",
       "wheelSize_inches": 20,
@@ -379,12 +379,12 @@
         }
       ],
       "availability": "available",
-      "notes": "313 ch (230 kW), RWD, LFP 76.3 kWh",
+      "notes": "313 ch (230 kW), RWD, LFP 76,3 kWh",
       "chargingDC_confidence": "tested"
     },
     {
       "id": "xpeng-p7-plus-performance",
-      "label": "Performance · 76.3 kWh",
+      "label": "Performance · 76,3 kWh",
       "battery": "long-range",
       "trim": "Performance",
       "wheelSize_inches": 20,
@@ -489,7 +489,7 @@
         }
       ],
       "availability": "available",
-      "notes": "503 ch (370 kW), AWD, LFP 76.3 kWh, double motorisation",
+      "notes": "503 ch (370 kW), AWD, LFP 76,3 kWh, double motorisation",
       "chargingDC_confidence": "tested"
     }
   ],
@@ -503,7 +503,7 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "Ligne de coupé fastback au Cx aérodynamique record de 0.206"
+      "label": "Ligne de coupé fastback au Cx aérodynamique record de 0,206"
     },
     {
       "category": "technologie",

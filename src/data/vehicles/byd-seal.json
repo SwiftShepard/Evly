@@ -178,7 +178,7 @@
     {
       "name": "Design RWD",
       "price_EUR": 46990,
-      "batteryUsed": "82.5 kWh LFP",
+      "batteryUsed": "82,5 kWh LFP",
       "equipmentHighlights": [
         "Cell-to-Body",
         "313 ch"
@@ -187,7 +187,7 @@
     {
       "name": "Excellence AWD",
       "price_EUR": 49990,
-      "batteryUsed": "82.5 kWh LFP",
+      "batteryUsed": "82,5 kWh LFP",
       "equipmentHighlights": [
         "530 ch",
         "Amortisseurs semi actifs"
@@ -435,7 +435,7 @@
         }
       ],
       "availability": "available",
-      "notes": "530 ch (390 kW), AWD, 0-100 km/h en 3.8s",
+      "notes": "530 ch (390 kW), AWD, 0-100 km/h en 3,8 s",
       "chargingDC_confidence": "tested"
     }
   ],

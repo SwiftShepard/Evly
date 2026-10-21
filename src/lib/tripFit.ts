@@ -5,8 +5,8 @@
  * couvre 5 jours de trajet sans recharger.
  */
 
-/** Version compacte : [prix, autonomie hiver, autonomie réelle mixte, WLTP, libellé] */
-export type IndexConfig = [price: number | null, winter: number, real: number, wltp: number, label: string];
+/** Version compacte : [prix, autonomie hiver, autonomie réelle mixte, WLTP, libellé, confiance (lib/confidence, LEVEL_CODE)] */
+export type IndexConfig = [price: number | null, winter: number, real: number, wltp: number, label: string, conf: 0 | 1 | 2];
 
 export interface IndexRow {
   /** slug, marque, modèle */
@@ -20,8 +20,8 @@ export interface IndexRow {
   r: number;
   w: number;
   h: number;
-  /** 1 = autonomie mesurée */
-  c: 0 | 1;
+  /** Confiance de l'autonomie de la fiche : 1 mesurée, 2 constructeur, 0 estimée (lib/confidence) */
+  c: 0 | 1 | 2;
   /** Photo 240 px et 480 px */
   i: string | null;
   i2: string | null;

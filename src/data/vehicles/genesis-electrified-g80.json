@@ -92,7 +92,7 @@
     {
       "name": "Luxury",
       "price_EUR": 81500,
-      "batteryUsed": "95.4 kWh",
+      "batteryUsed": "95,4 kWh",
       "equipmentHighlights": [
         "Double motorisation AWD 370 ch",
         "Empattement allongé (+13 cm)",
@@ -107,7 +107,7 @@
   "configurations": [
     {
       "id": "genesis-electrified-g80-luxury-awd",
-      "label": "Luxury AWD · 95.4 kWh · 19\"",
+      "label": "Luxury AWD · 95,4 kWh · 19\"",
       "battery": "standard",
       "trim": "Luxury",
       "wheelSize_inches": 19,

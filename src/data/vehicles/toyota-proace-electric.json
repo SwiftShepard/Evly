@@ -24,10 +24,10 @@
   "wltp_max_km": 350,
   "wltp_min_km": 230,
   "realRange": {
-    "mixed_km": 253,
-    "highway_130_km": 190,
-    "urban_km": 323,
-    "winter_minus5_km": 173,
+    "mixed_km": 254,
+    "highway_130_km": 191,
+    "urban_km": 325,
+    "winter_minus5_km": 174,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 22,
@@ -88,7 +88,7 @@
       "equipmentHighlights": [
         "Volume utile 5,3 m3",
         "Charge utile 1000 kg",
-        "Ecran tactile 8 pouces"
+        "Écran tactile 8 pouces"
       ]
     },
     {
@@ -98,7 +98,7 @@
       "equipmentHighlights": [
         "Grande autonomie 350 km WLTP",
         "Volume utile 5,3 m3",
-        "Camera de recul"
+        "Caméra de recul"
       ]
     },
     {
@@ -141,9 +141,9 @@
       "wltp_km": 230,
       "wltp_consumption_kWh_100km": 21.5,
       "realRange": {
-        "mixed_km": 166,
+        "mixed_km": 167,
         "highway_130_km": 125,
-        "urban_km": 212,
+        "urban_km": 214,
         "winter_minus5_km": 114,
         "confidence": "estimated"
       },
@@ -174,7 +174,7 @@
         }
       ],
       "availability": "available",
-      "notes": "Fourgon M, plateforme partagee Expert/Jumpy/Vivaro."
+      "notes": "Fourgon M, plateforme partagée Expert/Jumpy/Vivaro."
     },
     {
       "id": "toyota-proace-electric-m-75",
@@ -190,10 +190,10 @@
       "wltp_km": 350,
       "wltp_consumption_kWh_100km": 22,
       "realRange": {
-        "mixed_km": 253,
-        "highway_130_km": 190,
-        "urban_km": 323,
-        "winter_minus5_km": 173,
+        "mixed_km": 254,
+        "highway_130_km": 191,
+        "urban_km": 325,
+        "winter_minus5_km": 174,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -236,11 +236,11 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "Cabine confortable avec siege conducteur ajustable"
+      "label": "Cabine confortable avec siège conducteur ajustable"
     },
     {
       "category": "technologie",
-      "label": "Toyota Safety Sense avec pre-collision et detection pietons"
+      "label": "Toyota Safety Sense avec pré-collision et détection piétons"
     },
     {
       "category": "securite",
@@ -248,20 +248,20 @@
     },
     {
       "category": "design",
-      "label": "Porte laterale coulissante, charge utile 1000 kg"
+      "label": "Porte latérale coulissante, charge utile 1000 kg"
     }
   ],
   "verdict": {
     "strengths": [
-      "Garantie Toyota et reseau SAV dense en France",
-      "Plateforme PSA eprouvee, fiabilite validee par le terrain"
+      "Garantie Toyota et réseau SAV dense en France",
+      "Plateforme PSA éprouvée, fiabilité validée par le terrain"
     ],
     "weaknesses": [
-      "Prix legerement superieur aux cousins PSA (Expert, Jumpy)",
-      "Charge DC limitee a 100 kW"
+      "Prix légèrement supérieur aux cousins PSA (Expert, Jumpy)",
+      "Charge DC limitée à 100 kW"
     ],
-    "idealUserProfile": "Professionnels fideles a Toyota cherchant un fourgon electrique avec le reseau SAV et la garantie Toyota.",
-    "notIdealFor": "Budget serre : les equivalents PSA (Expert, Jumpy) offrent les memes specs a prix inferieur."
+    "idealUserProfile": "Professionnels fidèles à Toyota cherchant un fourgon électrique avec le réseau SAV et la garantie Toyota.",
+    "notIdealFor": "Budget serré : les équivalents PSA (Expert, Jumpy) offrent les mêmes specs à prix inférieur."
   },
   "lastUpdated": "2026-05-21",
   "sources": [

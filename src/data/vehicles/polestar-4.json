@@ -3,7 +3,7 @@
   "brand": "Polestar",
   "model": "4",
   "variant": "Long Range Single Motor",
-  "bodyType": "SUV Coupe",
+  "bodyType": "SUV Coupé",
   "segment": "D",
   "productionCountry": "Chine",
   "assemblyPlant": "Hangzhou Bay",
@@ -170,7 +170,7 @@
       "price_EUR": 61800,
       "batteryUsed": "100 kWh",
       "equipmentHighlights": [
-        "Ecran 15,4 pouces Google",
+        "Écran 15,4 pouces Google",
         "620 km WLTP",
         "Toit panoramique"
       ]
@@ -441,11 +441,11 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "Design SUV coupe sans lunette arriere"
+      "label": "Design SUV coupé sans lunette arrière"
     },
     {
       "category": "technologie",
-      "label": "Ecran 15,4 pouces Google et retroviseur camera"
+      "label": "Écran 15,4 pouces Google et rétroviseur caméra"
     },
     {
       "category": "securite",
@@ -453,20 +453,20 @@
     },
     {
       "category": "confort",
-      "label": "Habitacle spacieux et materiaux premium recycles"
+      "label": "Habitacle spacieux et matériaux premium recyclés"
     }
   ],
   "verdict": {
     "strengths": [
-      "Grand coffre pour un SUV coupe (526 L)",
+      "Grand coffre pour un SUV coupé (526 L)",
       "Grosse batterie 100 kWh, Cx bas (0,268)"
     ],
     "weaknesses": [
-      "Pas de lunette arriere (camera uniquement)",
-      "Assemblage hors Europe, aucune aide francaise"
+      "Pas de lunette arrière (caméra uniquement)",
+      "Assemblage hors Europe, aucune aide française"
     ],
-    "idealUserProfile": "Amateurs de design radical cherchant un SUV coupe electrique premium et spacieux.",
-    "notIdealFor": "Ceux qui preferent une visibilite arriere traditionnelle ou un budget maitrise."
+    "idealUserProfile": "Amateurs de design radical cherchant un SUV coupé électrique premium et spacieux.",
+    "notIdealFor": "Ceux qui préfèrent une visibilité arrière traditionnelle ou un budget maîtrisé."
   },
   "lastUpdated": "2026-10-08",
   "sources": [

@@ -14,7 +14,8 @@ import WeekMileage from "./WeekMileage";
 import WeekCompare, { type CompareRow } from "./WeekCompare";
 import { CHARGING_LOSSES, ELEC_EUR_KWH, ICE_L_100, PUBLIC_EUR_KWH, fuelPrice, type FuelPrice } from "@/lib/map/fuel";
 import { WEEKS_PER_YEAR } from "@/lib/map/mileage";
-import { holidayFor, type HolidayLeg, type HolidayTrip } from "@/lib/map/holiday";
+import { holidayFor, type HolidayLeg, type HolidayResult, type HolidayTrip } from "@/lib/map/holiday";
+import { HW_SPEEDS, chargersOnRoute, planRoadTrip, type HwSpeed, type RouteCharger } from "@/lib/map/roadtrip";
 import HolidayRow from "./HolidayRow";
 import ReachList from "./ReachList";
 import { CategoryIcon } from "./icons";
@@ -24,13 +25,14 @@ import { readShared, type SharedWeek } from "@/lib/map/share";
 import type { Driven, Place, WeekVehicle } from "./types";
 import { RESERVE, budgetFor, rangeProfile, type Season } from "@/lib/map/energy";
 import { computeTrips, computeZones, loadRoads, setOrigin } from "@/lib/map/client";
-import { chargersAround, loadDestinations, placesAround, type Charger, type PoiPlace } from "@/lib/map/places";
+import { chargersAlong, chargersAround, loadDestinations, placesAround, type Charger, type PoiPlace } from "@/lib/map/places";
 import { departurePoint, roadRoute } from "@/lib/map/route";
 import { haversine } from "@/lib/map/roadGraph";
 import { DAYS, simulateWeek, type Outing, type Scenario, type WeekResult } from "@/lib/map/week";
 import { readTrip, writeTrip } from "@/lib/trip";
 import { formatKm, formatNumber } from "@/lib/format";
 import { url } from "@/lib/url";
+import Confidence from "@/components/ui/Confidence";
 import { ArrowDown, ChevronDown, PanelLeftClose, Plus } from "lucide-react";
 
 interface Props {
@@ -107,6 +109,7 @@ function sanitizeHolidays(raw: unknown): HolidayTrip[] {
       lon: h.lon,
       times: Math.min(24, Math.max(1, Math.round(Number(h.times) || 1))),
       season: h.season === "winter" ? "winter" : "summer",
+      speed: (HW_SPEEDS as number[]).includes(h.speed) ? (h.speed as HwSpeed) : 130,
     }));
 }
 
@@ -155,6 +158,8 @@ export default function WeekPlanner({ vehicles }: Props) {
   /** Grands trajets : route depuis le domicile, et celui montré sur la carte */
   const [holidayLegs, setHolidayLegs] = useState<Record<string, HolidayLeg>>({});
   const [holidayFocus, setHolidayFocus] = useState<string | null>(null);
+  // Bornes rapides le long de chaque grand trajet (planificateur)
+  const [holidayChargers, setHolidayChargers] = useState<Record<string, RouteCharger[]>>({});
   const [stopCharger, setStopCharger] = useState<{ charger: Charger; atShop: boolean } | null>(null);
   const [zones, setZones] = useState<ZoneLayer[]>([]);
   const [tripKind, setTripKind] = useState<TripKind>("return");
@@ -412,9 +417,22 @@ export default function WeekPlanner({ vehicles }: Props) {
       const next: Record<string, HolidayLeg> = {};
       holidays.forEach((h, k) => {
         const t = trips[k];
-        if (t) next[h.id] = { km: t.km, split: t.split ?? [0, 0, t.km], coords: t.path };
+        if (t) next[h.id] = { km: t.km, split: t.split ?? [0, 0, t.km], coords: t.path, cum: t.cum };
       });
       setHolidayLegs(next);
+      // Puis les bornes rapides du tracé, tuile par tuile (fichiers statiques)
+      Promise.all(
+        Object.entries(next).map(async ([id, leg]) => {
+          if (!leg.coords || !leg.cum) return [id, null] as const;
+          const all = await chargersAlong(leg.coords);
+          return [id, chargersOnRoute({ coords: leg.coords, cum: leg.cum }, all)] as const;
+        })
+      ).then((list) => {
+        if (stale) return;
+        const found: Record<string, RouteCharger[]> = {};
+        for (const [id, c] of list) if (c) found[id] = c;
+        setHolidayChargers(found);
+      });
     });
     return () => {
       stale = true;
@@ -568,6 +586,14 @@ export default function WeekPlanner({ vehicles }: Props) {
     if (trip?.coords && dest && home) list.push({ id: `trajet-${dest.id}`, coords: [[home.lon, home.lat], ...trip.coords, [dest.lon, dest.lat]], active: true });
     return list;
   }, [tab, outings, legs, activeDay, focus, holidayFocus, holidayLegs]);
+  // Arrêts du grand trajet montré, avec le premier modèle choisi (repères sur la carte)
+  const focusPlan = useMemo(() => {
+    const h = holidays.find((x) => x.id === holidayFocus);
+    const leg = h ? holidayLegs[h.id] : null;
+    const chargers = h ? holidayChargers[h.id] : null;
+    if (!h || !leg?.coords || !leg.cum || !chargers || !vehicle || vehicle.charging.dcPeakKW <= 0) return null;
+    return planRoadTrip({ coords: leg.coords, cum: leg.cum }, chargers, vehicle.range, vehicle.charging, h.season, h.speed ?? 130);
+  }, [holidayFocus, holidayKey, holidays, holidayLegs, holidayChargers, vehicle]);
   const pins: Pin[] = useMemo(() => {
     if (tab !== "week") return focus ? [{ id: "focus", cat: "balade", lat: focus.place.lat, lon: focus.place.lon, label: focus.place.label, active: true }] : [];
     const list: Pin[] = outings
@@ -575,14 +601,16 @@ export default function WeekPlanner({ vehicles }: Props) {
       .map((o) => ({ id: o.id, cat: o.cat, lat: places[o.id]!.lat, lon: places[o.id]!.lon, label: places[o.id]!.label, active: dayOutings?.has(o.id) }));
     if (scenario === "topup" && stopCharger && !stopCharger.atShop)
       list.push({ id: "borne", cat: "borne", lat: stopCharger.charger.lat, lon: stopCharger.charger.lon, label: stopCharger.charger.name, active: activeDay === 5 });
-    // Grand trajet montré : seul repère actif, la carte cadre le domicile et la destination
+    // Grand trajet montré : seul repère actif, la carte cadre le domicile et la destination ; ses arrêts de recharge
     const dest = holidays.find((h) => h.id === holidayFocus);
     if (dest) {
       for (const pin of list) pin.active = false;
       list.push({ id: `trajet-${dest.id}`, cat: "balade", lat: dest.lat, lon: dest.lon, label: dest.label, active: true });
+      for (const [k, s] of (focusPlan?.stops ?? []).entries())
+        list.push({ id: `arret-${k}`, cat: "borne", lat: s.lat, lon: s.lon, label: `Arrêt ${k + 1} : ${s.name}, ${s.kw} kW`, active: true });
     }
     return list;
-  }, [tab, outings, placeKey, activeDay, scenario, stopCharger, focus, holidayFocus, holidayKey]);
+  }, [tab, outings, placeKey, activeDay, scenario, stopCharger, focus, holidayFocus, holidayKey, focusPlan]);
 
   // Prix de l'essence du jour pour comparer (moyenne nationale, aucune position envoyée)
   useEffect(() => {
@@ -613,11 +641,20 @@ export default function WeekPlanner({ vehicles }: Props) {
       holidays.map((h) => {
         const leg = holidayLegs[h.id];
         if (!leg) return { h, result: null, cost: null };
-        const result = holidayFor(leg, v.range, v.charging, h.season);
+        // Arrêts sur les bornes du tracé quand on les connaît, sinon l'estimation (borne type de 150 kW)
+        const chargers = holidayChargers[h.id];
+        let result: HolidayResult;
+        if (leg.coords && leg.cum && chargers && v.charging.dcPeakKW > 0) {
+          const plan = planRoadTrip({ coords: leg.coords, cum: leg.cum }, chargers, v.range, v.charging, h.season, h.speed ?? 130);
+          // Tronçon sans borne rapide à portée : chiffres de l'estimation, le détail dit où ça coince
+          result = plan.gapKm === null
+            ? { kmReturn: 2 * leg.km, stops: plan.stops.length, minutes: plan.chargeMinutes, kwh: 2 * plan.kwh, kwhRoad: 2 * plan.kwhRoad, plan }
+            : { ...holidayFor(leg, v.range, v.charging, h.season), plan };
+        } else result = holidayFor(leg, v.range, v.charging, h.season);
         const cost = (result.kwhRoad * PUBLIC_EUR_KWH + (result.kwh - result.kwhRoad) * prices.home) * CHARGING_LOSSES;
         return { h, result, cost };
       }),
-    [holidays, holidayLegs, prices.home]
+    [holidays, holidayLegs, holidayChargers, prices.home]
   );
   const holidayYear = useCallback(
     (v: Driven) => {
@@ -926,9 +963,7 @@ export default function WeekPlanner({ vehicles }: Props) {
                       <span>
                         <b>{formatKm(v.range.mixed_km)}</b> réels, <b>{formatKm(v.range.winter_minus5_km)}</b> en hiver
                       </span>
-                      <span className="card-confidence" data-level={v.measured ? "measured" : "estimated"}>
-                        {v.measured ? "mesurée" : "estimée"}
-                      </span>
+                      <Confidence level={v.measured ? "measured" : "estimated"} />
                     </p>
                   </div>
                   <button
@@ -1147,6 +1182,7 @@ export default function WeekPlanner({ vehicles }: Props) {
                           }}
                           onTimes={(times) => update({ holidays: holidays.map((x) => (x.id === h.id ? { ...x, times } : x)) })}
                           onSeason={(sn) => update({ holidays: holidays.map((x) => (x.id === h.id ? { ...x, season: sn } : x)) })}
+                          onSpeed={(sp) => update({ holidays: holidays.map((x) => (x.id === h.id ? { ...x, speed: sp } : x)) })}
                           onRemove={() => {
                             if (holidayFocus === h.id) setHolidayFocus(null);
                             update({ holidays: holidays.filter((x) => x.id !== h.id) });
@@ -1247,9 +1283,12 @@ export default function WeekPlanner({ vehicles }: Props) {
                   </li>
                   <li>
                     Grands trajets : par la route depuis chez vous, départ batterie pleine (rechargée la veille, puis sur
-                    place avant le retour), arrivée avec 10 % au moins ; chaque arrêt sur borne rapide de 150 kW recharge
-                    ce qu'il faut, au plus jusqu'à 80 %, au tarif des bornes rapides. Ils s'ajoutent au kilométrage et au
-                    coût de l'année.
+                    place avant le retour), jamais moins de 10 % à une borne ou à l'arrivée. Les arrêts sont posés sur les
+                    bornes rapides (50 kW et plus) à moins de 2 km du tracé, la plus puissante quand elle est à portée ; on y
+                    recharge ce qu'il faut, jusqu'à 80 % (90 % si cela évite un arrêt), au tarif des bornes rapides. Le temps
+                    de chaque arrêt suit la courbe de charge de la version, plafonnée par la borne ; la consommation sur
+                    autoroute suit la vitesse choisie, calée sur l'autonomie mixte et à 130 km/h de la fiche. Ils s'ajoutent
+                    au kilométrage et au coût de l'année.
                   </li>
                   <li>
                     Recharge au travail (si vous l'indiquez) : borne de parking de 7 kW, jusqu'à 80 % pendant la journée,

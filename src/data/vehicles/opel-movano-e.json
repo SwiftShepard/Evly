@@ -24,10 +24,10 @@
   "wltp_max_km": 420,
   "wltp_min_km": 370,
   "realRange": {
-    "mixed_km": 303,
-    "highway_130_km": 228,
-    "urban_km": 387,
-    "winter_minus5_km": 207,
+    "mixed_km": 305,
+    "highway_130_km": 229,
+    "urban_km": 390,
+    "winter_minus5_km": 209,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 28,
@@ -96,7 +96,7 @@
       "equipmentHighlights": [
         "Volume utile 11,5 m3",
         "Charge DC 150 kW",
-        "Ecran multimedia 8 pouces"
+        "Écran multimédia 8 pouces"
       ]
     },
     {
@@ -106,7 +106,7 @@
       "equipmentHighlights": [
         "Volume utile 13 m3",
         "Empattement long",
-        "Camera de recul"
+        "Caméra de recul"
       ]
     }
   ],
@@ -128,10 +128,10 @@
       "wltp_km": 420,
       "wltp_consumption_kWh_100km": 27,
       "realRange": {
-        "mixed_km": 303,
-        "highway_130_km": 228,
-        "urban_km": 387,
-        "winter_minus5_km": 207,
+        "mixed_km": 305,
+        "highway_130_km": 229,
+        "urban_km": 390,
+        "winter_minus5_km": 209,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -161,7 +161,7 @@
         }
       ],
       "availability": "available",
-      "notes": "Grand fourgon L2H2, plateforme partagee Boxer/Jumper/Ducato."
+      "notes": "Grand fourgon L2H2, plateforme partagée Boxer/Jumper/Ducato."
     },
     {
       "id": "opel-movano-e-l3h2",
@@ -177,10 +177,10 @@
       "wltp_km": 370,
       "wltp_consumption_kWh_100km": 30,
       "realRange": {
-        "mixed_km": 267,
-        "highway_130_km": 201,
-        "urban_km": 341,
-        "winter_minus5_km": 183,
+        "mixed_km": 269,
+        "highway_130_km": 202,
+        "urban_km": 344,
+        "winter_minus5_km": 184,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -227,7 +227,7 @@
     },
     {
       "category": "technologie",
-      "label": "Charge rapide 150 kW, completement en 42 min (10-80%)"
+      "label": "Charge rapide 150 kW : 10 à 80 % en 42 min"
     },
     {
       "category": "securite",
@@ -235,20 +235,20 @@
     },
     {
       "category": "design",
-      "label": "Volumes utiles de 11,5 a 17 m3 selon configuration"
+      "label": "Volumes utiles de 11,5 à 17 m3 selon configuration"
     }
   ],
   "verdict": {
     "strengths": [
-      "Plateforme partagee Stellantis, reseau SAV Opel dense en Europe",
-      "Autonomie 420 km WLTP, nouvelle generation 110 kWh"
+      "Plateforme partagée Stellantis, réseau SAV Opel dense en Europe",
+      "Autonomie 420 km WLTP, nouvelle génération 110 kWh"
     ],
     "weaknesses": [
       "Prix proche des concurrents Boxer/Jumper, peu d'avantage distinctif",
-      "Consommation elevee sur autoroute charge"
+      "Consommation élevée sur autoroute charge"
     ],
-    "idealUserProfile": "Flottes d'entreprise fideles a Opel, artisans avec besoin de grand volume et acces ZFE.",
-    "notIdealFor": "Professionnels sans infrastructure de recharge au depot ou avec longs trajets autoroutiers quotidiens."
+    "idealUserProfile": "Flottes d'entreprise fidèles à Opel, artisans avec besoin de grand volume et accès ZFE.",
+    "notIdealFor": "Professionnels sans infrastructure de recharge au dépôt ou avec longs trajets autoroutiers quotidiens."
   },
   "lastUpdated": "2026-05-21",
   "sources": [

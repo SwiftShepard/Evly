@@ -3,7 +3,7 @@
   "brand": "Ford",
   "model": "Capri",
   "variant": "77 kWh",
-  "bodyType": "SUV Coupe",
+  "bodyType": "SUV Coupé",
   "segment": "D",
   "productionCountry": "Allemagne",
   "assemblyPlant": "Cologne",
@@ -149,7 +149,7 @@
       "batteryUsed": "52 kWh",
       "equipmentHighlights": [
         "395 km WLTP",
-        "Ecran 14,6 pouces",
+        "Écran 14,6 pouces",
         "Ford BlueCruise"
       ]
     },
@@ -478,11 +478,11 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "SUV Coupe sportif au design neo-retro"
+      "label": "SUV Coupé sportif au design néo-rétro"
     },
     {
       "category": "technologie",
-      "label": "Ecran 14,6 pouces et Ford BlueCruise"
+      "label": "Écran 14,6 pouces et Ford BlueCruise"
     },
     {
       "category": "securite",
@@ -495,15 +495,15 @@
   ],
   "verdict": {
     "strengths": [
-      "Assemble en Allemagne, eligible prime CEE (pouvant atteindre 8 100 € sous conditions de revenus)",
-      "Coffre record (572 L) et autonomie genereuse (627 km WLTP)"
+      "Assemblé en Allemagne, éligible prime CEE (pouvant atteindre 8 100 € sous conditions de revenus)",
+      "Coffre record (572 L) et autonomie généreuse (627 km WLTP)"
     ],
     "weaknesses": [
       "Charge DC 185 kW correcte mais pas ultra-rapide",
       "Versions Premium/AWD au-dessus du seuil CEE"
     ],
-    "idealUserProfile": "Conducteurs cherchant un SUV coupe elegant avec grand coffre, eligible aux aides.",
-    "notIdealFor": "Acheteurs cherchant la charge ultra-rapide ou un SUV sureleve."
+    "idealUserProfile": "Conducteurs cherchant un SUV coupé élégant avec grand coffre, éligible aux aides.",
+    "notIdealFor": "Acheteurs cherchant la charge ultra-rapide ou un SUV surélevé."
   },
   "lastUpdated": "2026-05-29",
   "sources": [

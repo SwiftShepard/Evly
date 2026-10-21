@@ -25,9 +25,9 @@
   "wltp_max_km": 397,
   "wltp_min_km": 395,
   "realRange": {
-    "mixed_km": 288,
-    "highway_130_km": 216,
-    "urban_km": 368,
+    "mixed_km": 289,
+    "highway_130_km": 217,
+    "urban_km": 370,
     "winter_minus5_km": 211,
     "confidence": "estimated"
   },
@@ -89,7 +89,7 @@
     {
       "name": "Pallas",
       "price_EUR": 43250,
-      "batteryUsed": "50.8 kWh",
+      "batteryUsed": "50,8 kWh",
       "equipmentHighlights": [
         "Jantes alliage 17\" Dublin",
         "Écran tactile 10,3\" et MirrorScreen sans fil",
@@ -99,7 +99,7 @@
     {
       "name": "Performance Line",
       "price_EUR": 43950,
-      "batteryUsed": "50.8 kWh",
+      "batteryUsed": "50,8 kWh",
       "equipmentHighlights": [
         "Intérieur Alcantara noir et sièges avant chauffants",
         "Jantes 17\" Oslo et détails dorés satinés",
@@ -109,7 +109,7 @@
     {
       "name": "Maison Sarah Lavoine",
       "price_EUR": 44550,
-      "batteryUsed": "50.8 kWh",
+      "batteryUsed": "50,8 kWh",
       "equipmentHighlights": [
         "Personnalisation Maison Sarah Lavoine",
         "Jantes alliage 18\" Sao Paulo",
@@ -119,7 +119,7 @@
     {
       "name": "Étoile",
       "price_EUR": 46400,
-      "batteryUsed": "50.8 kWh",
+      "batteryUsed": "50,8 kWh",
       "equipmentHighlights": [
         "DS Iris System avec navigation 3D connectée",
         "Chargeur embarqué triphasé 11 kW",
@@ -152,9 +152,9 @@
       "wltp_km": 397,
       "wltp_consumption_kWh_100km": 15.6,
       "realRange": {
-        "mixed_km": 288,
-        "highway_130_km": 216,
-        "urban_km": 368,
+        "mixed_km": 289,
+        "highway_130_km": 217,
+        "urban_km": 370,
         "winter_minus5_km": 211,
         "confidence": "estimated"
       },
@@ -207,9 +207,9 @@
       "wltp_km": 397,
       "wltp_consumption_kWh_100km": 15.6,
       "realRange": {
-        "mixed_km": 288,
-        "highway_130_km": 216,
-        "urban_km": 368,
+        "mixed_km": 289,
+        "highway_130_km": 217,
+        "urban_km": 370,
         "winter_minus5_km": 211,
         "confidence": "estimated"
       },
@@ -262,10 +262,10 @@
       "wltp_km": 396,
       "wltp_consumption_kWh_100km": 15.6,
       "realRange": {
-        "mixed_km": 287,
-        "highway_130_km": 216,
-        "urban_km": 367,
-        "winter_minus5_km": 210,
+        "mixed_km": 289,
+        "highway_130_km": 217,
+        "urban_km": 370,
+        "winter_minus5_km": 211,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -317,10 +317,10 @@
       "wltp_km": 395,
       "wltp_consumption_kWh_100km": 15.7,
       "realRange": {
-        "mixed_km": 286,
-        "highway_130_km": 215,
-        "urban_km": 366,
-        "winter_minus5_km": 209,
+        "mixed_km": 288,
+        "highway_130_km": 216,
+        "urban_km": 369,
+        "winter_minus5_km": 211,
         "confidence": "estimated"
       },
       "rangeTests": [],

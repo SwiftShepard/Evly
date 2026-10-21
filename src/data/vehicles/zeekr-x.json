@@ -129,7 +129,7 @@
       "batteryUsed": "49 kWh",
       "equipmentHighlights": [
         "330 km WLTP",
-        "Ecran 14,6 pouces",
+        "Écran 14,6 pouces",
         "Toit panoramique"
       ]
     },
@@ -140,7 +140,7 @@
       "equipmentHighlights": [
         "405 km WLTP",
         "Audio Harman Kardon",
-        "Sieges chauffants"
+        "Sièges chauffants"
       ]
     },
     {
@@ -388,28 +388,28 @@
     },
     {
       "category": "technologie",
-      "label": "Ecran 14,6 pouces et audio Harman Kardon"
+      "label": "Écran 14,6 pouces et audio Harman Kardon"
     },
     {
       "category": "securite",
-      "label": "Freinage automatique et aide a la conduite avancee"
+      "label": "Freinage automatique et aide à la conduite avancée"
     },
     {
       "category": "confort",
-      "label": "V2L, toit panoramique, sieges chauffants"
+      "label": "V2L, toit panoramique, sièges chauffants"
     }
   ],
   "verdict": {
     "strengths": [
-      "Version Privilege AWD 496 ch tres performante",
-      "Equipement premium de serie (Harman Kardon, toit pano)"
+      "Version Privilege AWD 496 ch très performante",
+      "Équipement premium de série (Harman Kardon, toit pano)"
     ],
     "weaknesses": [
-      "Assemblage en Chine, aucune aide francaise",
-      "Charge DC limitee a 150 kW (pas de 800 V)"
+      "Assemblage en Chine, aucune aide française",
+      "Charge DC limitée à 150 kW (pas de 800 V)"
     ],
-    "idealUserProfile": "Conducteurs urbains cherchant un SUV compact premium sportif et bien equipe.",
-    "notIdealFor": "Gros rouleurs ou acheteurs comptant sur les aides a l'achat."
+    "idealUserProfile": "Conducteurs urbains cherchant un SUV compact premium sportif et bien équipé.",
+    "notIdealFor": "Gros rouleurs ou acheteurs comptant sur les aides à l'achat."
   },
   "lastUpdated": "2026-10-08",
   "sources": [

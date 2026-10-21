@@ -158,23 +158,23 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "Comfort 50.3 kWh",
+      "name": "Comfort 50,3 kWh",
       "price_EUR": 30490,
-      "batteryUsed": "50.3 kWh",
+      "batteryUsed": "50,3 kWh",
       "equipmentHighlights": [
         "320 km WLTP",
-        "Ecran 10,25 pouces",
+        "Écran 10,25 pouces",
         "Coffre 479 L"
       ]
     },
     {
-      "name": "Luxury 50.3 kWh",
+      "name": "Luxury 50,3 kWh",
       "price_EUR": 32490,
-      "batteryUsed": "50.3 kWh",
+      "batteryUsed": "50,3 kWh",
       "equipmentHighlights": [
         "320 km WLTP",
-        "Camera de recul",
-        "Sieges chauffants"
+        "Caméra de recul",
+        "Sièges chauffants"
       ]
     },
     {
@@ -183,8 +183,8 @@
       "batteryUsed": "61 kWh",
       "equipmentHighlights": [
         "400 km WLTP",
-        "Camera de recul",
-        "Sieges chauffants"
+        "Caméra de recul",
+        "Sièges chauffants"
       ]
     }
   ],
@@ -194,9 +194,9 @@
   "configurations": [
     {
       "id": "mg-mg5-comfort-50",
-      "label": "MG5 Comfort · 50.3 kWh",
+      "label": "MG5 Comfort · 50,3 kWh",
       "battery": "standard",
-      "trim": "Comfort 50.3 kWh",
+      "trim": "Comfort 50,3 kWh",
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],
@@ -244,9 +244,9 @@
     },
     {
       "id": "mg-mg5-luxury-50",
-      "label": "MG5 Luxury · 50.3 kWh",
+      "label": "MG5 Luxury · 50,3 kWh",
       "battery": "standard",
-      "trim": "Luxury 50.3 kWh",
+      "trim": "Luxury 50,3 kWh",
       "wheelSize_inches": 17,
       "tyreType": "summer",
       "options": [],

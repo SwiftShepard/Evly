@@ -2,8 +2,8 @@
   "slug": "bmw-ix2",
   "brand": "BMW",
   "model": "iX2",
-  "variant": "64.7 kWh",
-  "bodyType": "SUV Coupe",
+  "variant": "64,7 kWh",
+  "bodyType": "SUV Coupé",
   "segment": "C",
   "productionCountry": "Allemagne",
   "assemblyPlant": "Regensburg",
@@ -126,7 +126,7 @@
     {
       "name": "iX2 eDrive20 (Base)",
       "price_EUR": 46990,
-      "batteryUsed": "64.7 kWh",
+      "batteryUsed": "64,7 kWh",
       "equipmentHighlights": [
         "449 km WLTP",
         "204 ch FWD",
@@ -136,31 +136,31 @@
     {
       "name": "iX2 eDrive20 M Sport",
       "price_EUR": 51040,
-      "batteryUsed": "64.7 kWh",
+      "batteryUsed": "64,7 kWh",
       "equipmentHighlights": [
-        "Pack aerodynamique M",
+        "Pack aérodynamique M",
         "Suspensions adaptatives M",
-        "Sieges Sport et inserts alu M"
+        "Sièges Sport et inserts alu M"
       ]
     },
     {
       "name": "iX2 xDrive30 (Base)",
       "price_EUR": 59300,
-      "batteryUsed": "64.7 kWh",
+      "batteryUsed": "64,7 kWh",
       "equipmentHighlights": [
         "AWD 313 ch",
         "417 km WLTP",
-        "xDrive transmission integrale"
+        "xDrive transmission intégrale"
       ]
     },
     {
       "name": "iX2 xDrive30 M Sport",
       "price_EUR": 63350,
-      "batteryUsed": "64.7 kWh",
+      "batteryUsed": "64,7 kWh",
       "equipmentHighlights": [
-        "Pack aerodynamique M sport",
+        "Pack aérodynamique M sport",
         "Suspensions adaptatives M",
-        "Sieges Sport et Projecteurs LED"
+        "Sièges Sport et Projecteurs LED"
       ]
     }
   ],
@@ -176,7 +176,7 @@
   "configurations": [
     {
       "id": "bmw-ix2-edrive20-base",
-      "label": "eDrive20 (Base) · 64.7 kWh",
+      "label": "eDrive20 (Base) · 64,7 kWh",
       "battery": "standard",
       "trim": "iX2 eDrive20 (Base)",
       "wheelSize_inches": 18,
@@ -225,11 +225,11 @@
         }
       ],
       "availability": "available",
-      "notes": "204 ch (150 kW), FWD, version d'acces"
+      "notes": "204 ch (150 kW), FWD, version d'accès"
     },
     {
       "id": "bmw-ix2-edrive20-msport",
-      "label": "eDrive20 M Sport · 64.7 kWh",
+      "label": "eDrive20 M Sport · 64,7 kWh",
       "battery": "standard",
       "trim": "iX2 eDrive20 M Sport",
       "wheelSize_inches": 18,
@@ -282,7 +282,7 @@
     },
     {
       "id": "bmw-ix2-xdrive30-base",
-      "label": "xDrive30 (Base) · 64.7 kWh",
+      "label": "xDrive30 (Base) · 64,7 kWh",
       "battery": "standard",
       "trim": "iX2 xDrive30 (Base)",
       "wheelSize_inches": 19,
@@ -359,11 +359,11 @@
         }
       ],
       "availability": "available",
-      "notes": "313 ch (230 kW), AWD xDrive, version d'acces"
+      "notes": "313 ch (230 kW), AWD xDrive, version d'accès"
     },
     {
       "id": "bmw-ix2-xdrive30-msport",
-      "label": "xDrive30 M Sport · 64.7 kWh",
+      "label": "xDrive30 M Sport · 64,7 kWh",
       "battery": "standard",
       "trim": "iX2 xDrive30 M Sport",
       "wheelSize_inches": 19,
@@ -453,11 +453,11 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "SUV Coupe compact au design sportif BMW"
+      "label": "SUV Coupé compact au design sportif BMW"
     },
     {
       "category": "technologie",
-      "label": "BMW iDrive 9 et ecran courbe 10,7 pouces"
+      "label": "BMW iDrive 9 et écran courbe 10,7 pouces"
     },
     {
       "category": "securite",
@@ -465,19 +465,19 @@
     },
     {
       "category": "confort",
-      "label": "Coffre genereux (525 L) et ligne de toit coupe"
+      "label": "Coffre généreux (525 L) et ligne de toit coupé"
     }
   ],
   "verdict": {
     "strengths": [
-      "Design SUV Coupe sportif et dynamique de conduite BMW",
-      "Assemble en Allemagne, eligible prime CEE"
+      "Design SUV Coupé sportif et dynamique de conduite BMW",
+      "Assemblé en Allemagne, éligible prime CEE"
     ],
     "weaknesses": [
-      "Charge DC limitee a 130 kW",
+      "Charge DC limitée à 130 kW",
       "Autonomie modeste (449 km WLTP max)"
     ],
-    "idealUserProfile": "Conducteurs cherchant un SUV coupe premium compact et dynamique.",
+    "idealUserProfile": "Conducteurs cherchant un SUV coupé premium compact et dynamique.",
     "notIdealFor": "Gros rouleurs ou familles nombreuses."
   },
   "lastUpdated": "2026-06-04",

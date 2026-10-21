@@ -2,7 +2,7 @@
   "slug": "audi-a6-e-tron",
   "brand": "Audi",
   "model": "A6 e-tron",
-  "variant": "94.9 kWh",
+  "variant": "94,9 kWh",
   "bodyType": "Berline",
   "segment": "E",
   "productionCountry": "Allemagne",
@@ -146,7 +146,7 @@
     {
       "name": "Design e-tron",
       "price_EUR": 64950,
-      "batteryUsed": "75.8 kWh",
+      "batteryUsed": "75,8 kWh",
       "equipmentHighlights": [
         "Projecteurs LED",
         "Climatisation automatique 2 zones",
@@ -156,27 +156,27 @@
     {
       "name": "Design e-tron performance",
       "price_EUR": 74700,
-      "batteryUsed": "94.9 kWh",
+      "batteryUsed": "94,9 kWh",
       "equipmentHighlights": [
         "Autonomie WLTP maximale 756 km",
-        "Architecture 800V",
+        "Architecture 800 V",
         "Recharge DC 270 kW"
       ]
     },
     {
       "name": "Design e-tron quattro",
       "price_EUR": 81850,
-      "batteryUsed": "94.9 kWh",
+      "batteryUsed": "94,9 kWh",
       "equipmentHighlights": [
         "Transmission intégrale quattro AWD",
         "Puissance 428 ch",
-        "0 à 100 km/h en 4.5 s"
+        "0 à 100 km/h en 4,5 s"
       ]
     },
     {
       "name": "S line e-tron",
       "price_EUR": 71500,
-      "batteryUsed": "75.8 kWh",
+      "batteryUsed": "75,8 kWh",
       "equipmentHighlights": [
         "Ligne extérieure S line sportive",
         "Châssis sport",
@@ -186,17 +186,17 @@
     {
       "name": "S line e-tron performance",
       "price_EUR": 81250,
-      "batteryUsed": "94.9 kWh",
+      "batteryUsed": "94,9 kWh",
       "equipmentHighlights": [
         "Style S line athlétique",
         "Autonomie WLTP optimisée",
-        "Recharge ultra-rapide 800V"
+        "Recharge ultra-rapide 800 V"
       ]
     },
     {
       "name": "S line e-tron quattro",
       "price_EUR": 88450,
-      "batteryUsed": "94.9 kWh",
+      "batteryUsed": "94,9 kWh",
       "equipmentHighlights": [
         "quattro AWD avec châssis sport S line",
         "Puissance de pointe 428 ch",
@@ -210,7 +210,7 @@
   "configurations": [
     {
       "id": "audi-a6-etron-design-base",
-      "label": "Design · 75.8 kWh",
+      "label": "Design · 75,8 kWh",
       "battery": "standard",
       "trim": "Design e-tron",
       "wheelSize_inches": 19,
@@ -263,7 +263,7 @@
     },
     {
       "id": "audi-a6-etron-design-perf",
-      "label": "Design Performance · 94.9 kWh",
+      "label": "Design Performance · 94,9 kWh",
       "battery": "long-range",
       "trim": "Design e-tron performance",
       "wheelSize_inches": 19,
@@ -316,7 +316,7 @@
     },
     {
       "id": "audi-a6-etron-design-quattro",
-      "label": "Design quattro · 94.9 kWh",
+      "label": "Design quattro · 94,9 kWh",
       "battery": "long-range",
       "trim": "Design e-tron quattro",
       "wheelSize_inches": 20,
@@ -397,7 +397,7 @@
     },
     {
       "id": "audi-a6-etron-sline-base",
-      "label": "S line · 75.8 kWh",
+      "label": "S line · 75,8 kWh",
       "battery": "standard",
       "trim": "S line e-tron",
       "wheelSize_inches": 20,
@@ -450,7 +450,7 @@
     },
     {
       "id": "audi-a6-etron-sline-perf",
-      "label": "S line Performance · 94.9 kWh",
+      "label": "S line Performance · 94,9 kWh",
       "battery": "long-range",
       "trim": "S line e-tron performance",
       "wheelSize_inches": 20,
@@ -503,7 +503,7 @@
     },
     {
       "id": "audi-a6-etron-sline-quattro",
-      "label": "S line quattro · 94.9 kWh",
+      "label": "S line quattro · 94,9 kWh",
       "battery": "long-range",
       "trim": "S line e-tron quattro",
       "wheelSize_inches": 20,
@@ -593,7 +593,7 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "Berline Sportback profilée (Cx 0.21) avec frunk de 27 L"
+      "label": "Berline Sportback profilée (Cx 0,21) avec frunk de 27 L"
     },
     {
       "category": "technologie",
@@ -612,7 +612,7 @@
     "strengths": [
       "Autonomie WLTP exceptionnelle jusqu'à 756 km en version performance",
       "Recharge ultra-rapide grâce à l'architecture 800 V",
-      "Aérodynamisme soigné avec un Cx de seulement 0.21"
+      "Aérodynamisme soigné avec un Cx de seulement 0,21"
     ],
     "weaknesses": [
       "Tarifs élitistes débutant à plus de 66 500 euros",

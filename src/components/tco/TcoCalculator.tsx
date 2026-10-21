@@ -1,6 +1,7 @@
 import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import { url } from "@/lib/url";
 import { CEE_PRICE_CAP_EUR } from "@/lib/cee";
+import { formatNumber } from "@/lib/format";
 
 /* ---------------------------------------------------------------- */
 /* Types                                                             */
@@ -840,7 +841,7 @@ export default function TcoCalculator({ vehicles }: Props) {
                 }}
               />
             </div>
-            <span className="tco-perkm-val">{(result.evPerKm * 100).toFixed(1)} ct/km</span>
+            <span className="tco-perkm-val">{formatNumber(result.evPerKm * 100, 1)}&nbsp;ct/km</span>
           </div>
           <div className="tco-perkm-item ice">
             <span className="tco-perkm-label">Therm.</span>
@@ -852,7 +853,7 @@ export default function TcoCalculator({ vehicles }: Props) {
                 }}
               />
             </div>
-            <span className="tco-perkm-val">{(result.icePerKm * 100).toFixed(1)} ct/km</span>
+            <span className="tco-perkm-val">{formatNumber(result.icePerKm * 100, 1)}&nbsp;ct/km</span>
           </div>
         </div>
 

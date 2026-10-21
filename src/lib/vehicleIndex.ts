@@ -2,6 +2,7 @@ import { getAllVehicles, isStrictUtility } from "@/lib/vehicles";
 import { getVehicleCardSummary } from "@/lib/vehicleCard";
 import { getVehicleImage } from "@/lib/vehicleImageAsset";
 import type { IndexConfig, IndexRow } from "@/lib/tripFit";
+import { confidenceLevel, LEVEL_CODE } from "@/lib/confidence";
 
 /**
  * Index compact des modèles (build uniquement) : servi par /recherche.json et
@@ -21,7 +22,7 @@ export function getVehicleIndex(): Promise<IndexRow[]> {
           const rr = c.realRange ?? v.realRange;
           // Libellé sans le nom du modèle (« Evolution · 52 kWh » plutôt que « 5 E-Tech Evolution · 52 kWh »)
           const label = c.label.replace(v.model, "").replace(/^[\s·]+/, "").trim() || c.label;
-          return [c.price_EUR, rr.winter_minus5_km, rr.mixed_km, Math.max(c.wltp_km ?? v.wltp_max_km, rr.mixed_km), label];
+          return [c.price_EUR, rr.winter_minus5_km, rr.mixed_km, Math.max(c.wltp_km ?? v.wltp_max_km, rr.mixed_km), label, LEVEL_CODE[confidenceLevel(rr.confidence)]];
         });
       return {
         s: v.slug,
@@ -32,7 +33,7 @@ export function getVehicleIndex(): Promise<IndexRow[]> {
         r: v.realRange.mixed_km,
         w: Math.max(v.wltp_max_km, v.realRange.mixed_km),
         h: v.realRange.winter_minus5_km,
-        c: card.rangeConfidence === "measured" ? 1 : 0,
+        c: LEVEL_CODE[card.rangeConfidence],
         i: img?.src ?? null,
         i2: large,
         v: versions,

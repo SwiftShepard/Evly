@@ -174,7 +174,7 @@
     {
       "name": "Light",
       "price_EUR": 26670,
-      "batteryUsed": "42.2 kWh",
+      "batteryUsed": "42,2 kWh",
       "equipmentHighlights": [
         "Compteurs numériques",
         "Climatisation automatique",
@@ -185,7 +185,7 @@
     {
       "name": "Air",
       "price_EUR": 28820,
-      "batteryUsed": "42.2 kWh",
+      "batteryUsed": "42,2 kWh",
       "equipmentHighlights": [
         "Compteurs numériques",
         "Climatisation automatique",
@@ -196,7 +196,7 @@
     {
       "name": "Earth",
       "price_EUR": 31320,
-      "batteryUsed": "42.2 kWh",
+      "batteryUsed": "42,2 kWh",
       "equipmentHighlights": [
         "Compteurs numériques",
         "Double écran panoramique",
@@ -255,7 +255,7 @@
   "configurations": [
     {
       "id": "kia-ev2-light-42",
-      "label": "EV2 Light 42.2 kWh",
+      "label": "EV2 Light 42,2 kWh",
       "battery": "standard",
       "trim": "Light",
       "wheelSize_inches": 17,
@@ -305,7 +305,7 @@
     },
     {
       "id": "kia-ev2-air-42",
-      "label": "EV2 Air 42.2 kWh",
+      "label": "EV2 Air 42,2 kWh",
       "battery": "standard",
       "trim": "Air",
       "wheelSize_inches": 18,
@@ -355,7 +355,7 @@
     },
     {
       "id": "kia-ev2-earth-42",
-      "label": "EV2 Earth 42.2 kWh",
+      "label": "EV2 Earth 42,2 kWh",
       "battery": "standard",
       "trim": "Earth",
       "wheelSize_inches": 18,

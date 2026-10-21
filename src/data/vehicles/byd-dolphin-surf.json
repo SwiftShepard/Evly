@@ -24,10 +24,10 @@
   "wltp_max_km": 330,
   "wltp_min_km": 300,
   "realRange": {
-    "mixed_km": 232,
-    "highway_130_km": 174,
-    "urban_km": 297,
-    "winter_minus5_km": 148,
+    "mixed_km": 235,
+    "highway_130_km": 176,
+    "urban_km": 301,
+    "winter_minus5_km": 150,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 14,
@@ -108,18 +108,18 @@
     {
       "name": "Boost",
       "price_EUR": 23990,
-      "batteryUsed": "43.2 kWh LFP",
+      "batteryUsed": "43,2 kWh LFP",
       "equipmentHighlights": [
         "Jusqu'à 507 km d'autonomie (WLTP urbain)",
         "Jantes alliage 16\" & Essuie-glaces auto",
-        "Recharge rapide DC 30-80% en 22 minutes",
+        "Recharge rapide DC 30-80 % en 22 minutes",
         "Sièges avant réglables électriquement"
       ]
     },
     {
       "name": "Comfort",
       "price_EUR": 25990,
-      "batteryUsed": "43.2 kWh LFP",
+      "batteryUsed": "43,2 kWh LFP",
       "equipmentHighlights": [
         "Moteur puissant de 156 ch (115 kW)",
         "Caméras à vision panoramique 360°",
@@ -134,7 +134,7 @@
   "configurations": [
     {
       "id": "byd-dolphin-surf-boost",
-      "label": "Dolphin Surf Boost · 43.2 kWh",
+      "label": "Dolphin Surf Boost · 43,2 kWh",
       "battery": "long-range",
       "trim": "Boost",
       "wheelSize_inches": 16,
@@ -146,10 +146,10 @@
       "wltp_km": 330,
       "wltp_consumption_kWh_100km": 13.9,
       "realRange": {
-        "mixed_km": 232,
-        "highway_130_km": 174,
-        "urban_km": 297,
-        "winter_minus5_km": 148,
+        "mixed_km": 235,
+        "highway_130_km": 176,
+        "urban_km": 301,
+        "winter_minus5_km": 150,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -183,11 +183,11 @@
         }
       ],
       "availability": "available",
-      "notes": "Moteur 88 ch (65 kW), batterie Blade LFP 43.2 kWh. Autonomie accrue et recharge rapide 30-80% en 22 min."
+      "notes": "Moteur 88 ch (65 kW), batterie Blade LFP 43,2 kWh. Autonomie accrue et recharge rapide 30-80 % en 22 min."
     },
     {
       "id": "byd-dolphin-surf-comfort",
-      "label": "Dolphin Surf Comfort · 43.2 kWh",
+      "label": "Dolphin Surf Comfort · 43,2 kWh",
       "battery": "long-range",
       "trim": "Comfort",
       "wheelSize_inches": 16,
@@ -199,10 +199,10 @@
       "wltp_km": 300,
       "wltp_consumption_kWh_100km": 14.4,
       "realRange": {
-        "mixed_km": 211,
-        "highway_130_km": 158,
-        "urban_km": 270,
-        "winter_minus5_km": 134,
+        "mixed_km": 213,
+        "highway_130_km": 160,
+        "urban_km": 273,
+        "winter_minus5_km": 136,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -236,7 +236,7 @@
         }
       ],
       "availability": "available",
-      "notes": "Moteur puissant de 156 ch (115 kW), batterie Blade LFP 43.2 kWh. Finition premium haut de gamme."
+      "notes": "Moteur puissant de 156 ch (115 kW), batterie Blade LFP 43,2 kWh. Finition premium haut de gamme."
     }
   ],
   "warranty": {

@@ -8,6 +8,7 @@
  * ne recharge que ce qu'il faut, au plus jusqu'à 80 %.
  */
 import { RESERVE, rangeProfile, type RangeSource, type Season } from "./energy";
+import type { HwSpeed, RoadPlan } from "./roadtrip";
 import { chargeMinutes, type VehicleCharging } from "./week";
 
 /** Borne rapide type des grands axes (kW) */
@@ -23,6 +24,8 @@ export interface HolidayTrip {
   /** Allers-retours par an */
   times: number;
   season: Season;
+  /** Vitesse sur autoroute (planificateur), 130 km/h par défaut */
+  speed?: HwSpeed;
 }
 
 /** Trajet aller par la route : kilomètres et répartition autoroute / voie express / route */
@@ -30,6 +33,8 @@ export interface HolidayLeg {
   km: number;
   split: [number, number, number];
   coords: [number, number][] | null;
+  /** Kilomètres cumulés par type de route à chaque point du tracé */
+  cum: [number, number, number][] | null;
 }
 
 export interface HolidayResult {
@@ -41,6 +46,8 @@ export interface HolidayResult {
   /** Énergie d'un aller-retour : totale (kWh batterie) et part rechargée sur borne rapide */
   kwh: number;
   kwhRoad: number;
+  /** Arrêts posés sur les bornes du tracé (planificateur), quand le tracé et les bornes sont connus */
+  plan?: RoadPlan;
 }
 
 /** Un aller-retour avec un modèle */

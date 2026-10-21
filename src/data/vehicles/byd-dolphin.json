@@ -164,7 +164,7 @@
     {
       "name": "Comfort",
       "price_EUR": 34990,
-      "batteryUsed": "60.4 kWh LFP",
+      "batteryUsed": "60,4 kWh LFP",
       "equipmentHighlights": [
         "V2L",
         "Sièges chauffants",
@@ -174,7 +174,7 @@
     {
       "name": "Design",
       "price_EUR": 36990,
-      "batteryUsed": "60.4 kWh LFP",
+      "batteryUsed": "60,4 kWh LFP",
       "equipmentHighlights": [
         "Toit panoramique",
         "Chargeur smartphone par induction",

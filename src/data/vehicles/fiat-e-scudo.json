@@ -24,10 +24,10 @@
   "wltp_max_km": 350,
   "wltp_min_km": 230,
   "realRange": {
-    "mixed_km": 253,
-    "highway_130_km": 190,
-    "urban_km": 323,
-    "winter_minus5_km": 173,
+    "mixed_km": 254,
+    "highway_130_km": 191,
+    "urban_km": 325,
+    "winter_minus5_km": 174,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 22,
@@ -88,7 +88,7 @@
       "equipmentHighlights": [
         "Volume utile 5,3 m3",
         "Charge utile 1000 kg",
-        "Ecran Uconnect 8 pouces"
+        "Écran Uconnect 8 pouces"
       ]
     },
     {
@@ -131,9 +131,9 @@
       "wltp_km": 230,
       "wltp_consumption_kWh_100km": 21.5,
       "realRange": {
-        "mixed_km": 166,
+        "mixed_km": 167,
         "highway_130_km": 125,
-        "urban_km": 212,
+        "urban_km": 214,
         "winter_minus5_km": 114,
         "confidence": "estimated"
       },
@@ -164,7 +164,7 @@
         }
       ],
       "availability": "available",
-      "notes": "Fourgon M 50 kWh, plateforme partagee Expert/Jumpy."
+      "notes": "Fourgon M 50 kWh, plateforme partagée Expert/Jumpy."
     },
     {
       "id": "fiat-e-scudo-m-75",
@@ -180,10 +180,10 @@
       "wltp_km": 350,
       "wltp_consumption_kWh_100km": 22,
       "realRange": {
-        "mixed_km": 253,
-        "highway_130_km": 190,
-        "urban_km": 323,
-        "winter_minus5_km": 173,
+        "mixed_km": 254,
+        "highway_130_km": 191,
+        "urban_km": 325,
+        "winter_minus5_km": 174,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -226,11 +226,11 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "Cabine confortable avec siege conducteur reglable"
+      "label": "Cabine confortable avec siège conducteur réglable"
     },
     {
       "category": "technologie",
-      "label": "Ecran Uconnect 8 pouces avec connectivite smartphone"
+      "label": "Écran Uconnect 8 pouces avec connectivité smartphone"
     },
     {
       "category": "securite",
@@ -238,20 +238,20 @@
     },
     {
       "category": "design",
-      "label": "Porte laterale coulissante et charge utile 1000 kg"
+      "label": "Porte latérale coulissante et charge utile 1000 kg"
     }
   ],
   "verdict": {
     "strengths": [
-      "Production francaise (Hordain), eligible Prime CEE VE",
-      "Plateforme eprouvee PSA, fiabilite et pieces partagees"
+      "Production française (Hordain), éligible Prime CEE VE",
+      "Plateforme éprouvée PSA, fiabilité et pièces partagées"
     ],
     "weaknesses": [
-      "Garantie vehicule 4 ans seulement (vs 5 chez PSA)",
-      "Charge DC limitee a 100 kW"
+      "Garantie véhicule 4 ans seulement (vs 5 chez PSA)",
+      "Charge DC limitée à 100 kW"
     ],
-    "idealUserProfile": "Artisans et livreurs urbains cherchant un fourgon moyen electrique avec reseau SAV Fiat Pro.",
-    "notIdealFor": "Professionnels comparant avec l'Expert ou le Jumpy : meme plateforme, garantie vehicule inferieure."
+    "idealUserProfile": "Artisans et livreurs urbains cherchant un fourgon moyen électrique avec réseau SAV Fiat Pro.",
+    "notIdealFor": "Professionnels comparant avec l'Expert ou le Jumpy : même plateforme, garantie véhicule inférieure."
   },
   "lastUpdated": "2026-05-21",
   "sources": [

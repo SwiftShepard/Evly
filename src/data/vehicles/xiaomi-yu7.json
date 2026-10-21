@@ -24,10 +24,10 @@
   "wltp_max_km": 530,
   "wltp_min_km": 480,
   "realRange": {
-    "mixed_km": 348,
-    "highway_130_km": 261,
-    "urban_km": 445,
-    "winter_minus5_km": 222,
+    "mixed_km": 350,
+    "highway_130_km": 263,
+    "urban_km": 448,
+    "winter_minus5_km": 223,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 17.5,
@@ -90,16 +90,16 @@
       "price_EUR": null,
       "batteryUsed": "73 kWh LFP",
       "equipmentHighlights": [
-        "Plateforme 800V (architecture 752V)",
+        "Plateforme 800 V (architecture 752 V)",
         "Volume de coffre géant (678 L)",
         "Frunk électrique 141 L",
         "Écosystème HyperOS intégré"
       ]
     },
     {
-      "name": "GT 101.7 kWh",
+      "name": "GT 101,7 kWh",
       "price_EUR": null,
-      "batteryUsed": "101.7 kWh NMC",
+      "batteryUsed": "101,7 kWh NMC",
       "equipmentHighlights": [
         "AWD 1004 ch (738 kW)",
         "0-100 km/h en 2,92 s, Vmax 300 km/h",
@@ -127,10 +127,10 @@
       "wltp_km": 480,
       "wltp_consumption_kWh_100km": 15.2,
       "realRange": {
-        "mixed_km": 348,
-        "highway_130_km": 261,
-        "urban_km": 445,
-        "winter_minus5_km": 222,
+        "mixed_km": 350,
+        "highway_130_km": 263,
+        "urban_km": 448,
+        "winter_minus5_km": 223,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -168,9 +168,9 @@
     },
     {
       "id": "xiaomi-yu7-gt",
-      "label": "YU7 GT · 101.7 kWh",
+      "label": "YU7 GT · 101,7 kWh",
       "battery": "long-range",
-      "trim": "GT 101.7 kWh",
+      "trim": "GT 101,7 kWh",
       "wheelSize_inches": 21,
       "tyreType": "summer",
       "options": [],
@@ -180,10 +180,10 @@
       "wltp_km": 530,
       "wltp_consumption_kWh_100km": 19.2,
       "realRange": {
-        "mixed_km": 384,
-        "highway_130_km": 288,
-        "urban_km": 491,
-        "winter_minus5_km": 244,
+        "mixed_km": 386,
+        "highway_130_km": 290,
+        "urban_km": 494,
+        "winter_minus5_km": 246,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -234,7 +234,7 @@
     },
     {
       "category": "technologie",
-      "label": "Architecture 800V, écosystème Xiaomi HyperOS"
+      "label": "Architecture 800 V, écosystème Xiaomi HyperOS"
     },
     {
       "category": "securite",
@@ -248,8 +248,8 @@
   "verdict": {
     "strengths": [
       "Performances hallucinantes sur la version GT (1004 ch)",
-      "Espace de chargement exceptionnel (coffre de 678L + frunk de 141L)",
-      "Architecture de charge ultra-rapide 800V (plateforme 752V/897V)"
+      "Espace de chargement exceptionnel (coffre de 678 L + frunk de 141 L)",
+      "Architecture de charge ultra-rapide 800 V (plateforme 752 V/897 V)"
     ],
     "weaknesses": [
       "Gabarit imposant de 5 mètres peu adapté aux parkings européens",

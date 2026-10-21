@@ -187,9 +187,9 @@
     {
       "name": "Five 36,5 kWh",
       "price_EUR": 24990,
-      "batteryUsed": "36.5 kWh",
+      "batteryUsed": "36,5 kWh",
       "equipmentHighlights": [
-        "Ecran 7 pouces",
+        "Écran 7 pouces",
         "Climatisation manuelle",
         "Charge DC 80 kW"
       ]
@@ -199,7 +199,7 @@
       "price_EUR": 28490,
       "batteryUsed": "40 kWh",
       "equipmentHighlights": [
-        "Ecran 10 pouces",
+        "Écran 10 pouces",
         "Charge DC 80 kW"
       ]
     },
@@ -208,9 +208,9 @@
       "price_EUR": 30490,
       "batteryUsed": "40 kWh",
       "equipmentHighlights": [
-        "Ecran 10 pouces",
+        "Écran 10 pouces",
         "Charge DC 80 kW",
-        "Freinage regeneratif One-Pedal"
+        "Freinage régénératif One-Pedal"
       ]
     },
     {
@@ -218,7 +218,7 @@
       "price_EUR": 31990,
       "batteryUsed": "52 kWh",
       "equipmentHighlights": [
-        "Ecran 10 pouces",
+        "Écran 10 pouces",
         "Charge DC 100 kW",
         "Jantes alliage 18 pouces"
       ]
@@ -228,7 +228,7 @@
       "price_EUR": 33990,
       "batteryUsed": "52 kWh",
       "equipmentHighlights": [
-        "Ecran 10 pouces",
+        "Écran 10 pouces",
         "V2L",
         "Jantes alliage 18 pouces"
       ]
@@ -238,7 +238,7 @@
       "price_EUR": 35490,
       "batteryUsed": "52 kWh",
       "equipmentHighlights": [
-        "Sieges chauffants",
+        "Sièges chauffants",
         "Conduite semi autonome",
         "Toit vitré"
       ]
@@ -864,13 +864,13 @@
   ],
   "verdict": {
     "strengths": [
-      "Gamme large de 24 990 a 35 490 euros",
+      "Gamme large de 24 990 à 35 490 euros",
       "Bon compromis prix/autonomie sur la 52 kWh",
-      "V2L et V2G de serie"
+      "V2L et V2G de série"
     ],
     "weaknesses": [
       "Vitesse de charge rapide en retrait (100 kW max)",
-      "Autonomie limitee sur la 40 kWh pour longs trajets"
+      "Autonomie limitée sur la 40 kWh pour longs trajets"
     ],
     "idealUserProfile": "Urbains et périurbains cherchant une citadine électrique polyvalente au quotidien.",
     "notIdealFor": "Gros rouleurs autoroutiers nécessitant des temps de charge ultra rapides."

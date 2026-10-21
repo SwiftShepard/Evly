@@ -6,6 +6,7 @@ import Tag from "@/components/ui/Tag.astro";
 import BrandLogo from "@/components/ui/BrandLogo.astro";
 import VehicleImage from "@/components/ui/VehicleImage.astro";
 import RangeRail from "@/components/ui/RangeRail.astro";
+import Confidence from "@/components/ui/Confidence.astro";
 import { Route } from "lucide-react";
 import { getAllVehicles, isStrictUtility } from "@/lib/vehicles";
 import { SEO_YEAR } from "@/lib/seo";
@@ -107,6 +108,7 @@ const budgetFilters = [
 const specificFilters = [
   { label: "Tient mon trajet", value: "trajet" },
   { label: "Favoris", value: "favorites" },
+  { label: "Autonomie mesurée", value: "measured" },
   { label: "Leasing social", value: "leasing" },
   { label: "Coup de pouce CEE", value: "cee" },
   { label: "Recharge rapide", value: "fast-charge" },
@@ -530,6 +532,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
               data-ratio={s.cheapestPrice ? Math.round(v.realRange.mixed_km / s.cheapestPrice * 10000) : 0}
               data-origin={isEU(v) ? "eu" : "other"}
               data-cee={hasCEE(v) ? "1" : "0"}
+              data-measured={s.rangeConfidence === "measured" ? "1" : "0"}
               data-trunk={v.trunkCapacity_L}
               data-charge-highway={Math.round(v.realRange.highway_130_km * 0.70)}
               data-charge-mixed={Math.round(v.realRange.mixed_km * 0.70)}
@@ -575,11 +578,11 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                       </span>
                       <span class="text-[13px] text-[var(--color-text-faint)]">km</span>
                     </div>
-                    <span class="card-confidence" data-level={s.rangeConfidence}>
+                    <Confidence code={v.realRange.confidence}>
                       <span class="range-mode-mixed">{s.rangeConfidenceLabel}</span>
                       <span class="range-mode-highway">{s.highwayConfidenceLabel}</span>
                       <span class="range-mode-wltp">cycle d'homologation</span>
-                    </span>
+                    </Confidence>
                   </div>
 
                   <div class="card-charge-col hidden flex-col gap-1">
@@ -872,6 +875,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
           if (s === 'fast-charge' && +(d.dc ?? 0) < 100) return false;
           if (s === 'eu'          && d.origin !== 'eu') return false;
           if (s === 'cee'         && d.cee !== '1') return false;
+          if (s === 'measured'    && d.measured !== '1') return false;
           if (s === 'leasing'     && !usages.includes('Leasing social')) return false;
           if (s === 'familiale'   && !usages.includes('Familiale')) return false;
         }
@@ -1649,11 +1653,12 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
     }
 
     /* ── Mode WLTP : la pastille de confiance devient neutre ── */
-    body[data-range-mode="wltp"] .card-confidence {
+    body[data-range-mode="wltp"] :global(.vcard .conf) {
       color: var(--color-text-faint);
     }
-    body[data-range-mode="wltp"] .card-confidence::before {
+    body[data-range-mode="wltp"] :global(.vcard .conf > i) {
       background: transparent;
+      border-style: solid;
     }
 
     /* ── Carte consultée, mise en évidence au retour depuis sa fiche ── */

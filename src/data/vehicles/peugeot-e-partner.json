@@ -24,10 +24,10 @@
   "wltp_max_km": 330,
   "wltp_min_km": 275,
   "realRange": {
-    "mixed_km": 238,
-    "highway_130_km": 179,
-    "urban_km": 304,
-    "winter_minus5_km": 163,
+    "mixed_km": 240,
+    "highway_130_km": 180,
+    "urban_km": 307,
+    "winter_minus5_km": 164,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 18,
@@ -88,7 +88,7 @@
       "equipmentHighlights": [
         "Volume utile 3,3 m3",
         "Charge utile 800 kg",
-        "Ecran tactile 8 pouces"
+        "Écran tactile 8 pouces"
       ]
     },
     {
@@ -96,9 +96,9 @@
       "price_EUR": 36800,
       "batteryUsed": "50 kWh",
       "equipmentHighlights": [
-        "Ecran 10 pouces",
-        "Camera de recul",
-        "Sieges chauffants"
+        "Écran 10 pouces",
+        "Caméra de recul",
+        "Sièges chauffants"
       ]
     },
     {
@@ -141,10 +141,10 @@
       "wltp_km": 330,
       "wltp_consumption_kWh_100km": 17.5,
       "realRange": {
-        "mixed_km": 238,
-        "highway_130_km": 179,
-        "urban_km": 304,
-        "winter_minus5_km": 163,
+        "mixed_km": 240,
+        "highway_130_km": 180,
+        "urban_km": 307,
+        "winter_minus5_km": 164,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -190,10 +190,10 @@
       "wltp_km": 275,
       "wltp_consumption_kWh_100km": 19,
       "realRange": {
-        "mixed_km": 198,
-        "highway_130_km": 149,
-        "urban_km": 253,
-        "winter_minus5_km": 135,
+        "mixed_km": 200,
+        "highway_130_km": 150,
+        "urban_km": 256,
+        "winter_minus5_km": 137,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -240,7 +240,7 @@
     },
     {
       "category": "technologie",
-      "label": "Charge DC 100 kW pour complements rapides en tournee"
+      "label": "Charge DC 100 kW pour compléments rapides en tournée"
     },
     {
       "category": "securite",
@@ -253,15 +253,15 @@
   ],
   "verdict": {
     "strengths": [
-      "Gabarit compact ideal pour livraisons en centre-ville et ZFE",
-      "Charge utile de 800 kg, equivalent thermique"
+      "Gabarit compact idéal pour livraisons en centre-ville et ZFE",
+      "Charge utile de 800 kg, équivalent thermique"
     ],
     "weaknesses": [
-      "Autonomie reelle limitee sur autoroute (155 km a 130 km/h)",
+      "Autonomie réelle limitée sur autoroute (155 km à 130 km/h)",
       "Charge AC 11 kW seulement, pas de 22 kW en option"
     ],
-    "idealUserProfile": "Artisans et livreurs urbains avec tournees courtes quotidiennes et recharge nocturne au depot.",
-    "notIdealFor": "Professionnels avec missions depassant 200 km par jour ou necessite de recharge rapide frequente."
+    "idealUserProfile": "Artisans et livreurs urbains avec tournées courtes quotidiennes et recharge nocturne au dépôt.",
+    "notIdealFor": "Professionnels avec missions dépassant 200 km par jour ou nécessité de recharge rapide fréquente."
   },
   "lastUpdated": "2026-05-21",
   "sources": [

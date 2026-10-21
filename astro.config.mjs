@@ -126,9 +126,16 @@ export default defineConfig({
         const pathname = new URL(item.url).pathname;
         const vehicleMatch = pathname.match(/^\/vehicules\/([a-z0-9-]+)\/$/);
         const brandMatch = pathname.match(/^\/marques\/([a-z0-9-]+)\/$/);
+        const duelMatch = pathname.match(/^\/comparer\/([a-z0-9-]+)-vs-([a-z0-9-]+)\/$/);
 
         // lastmod = date réelle de la donnée ; absent plutôt qu'inventé (Google ignore les lastmod peu fiables)
-        if (vehicleMatch) {
+        if (duelMatch) {
+          // Duel « X vs Y » : la plus récente des deux fiches
+          item.priority = 0.7;
+          item.changefreq = EnumChangefreq.WEEKLY;
+          const updated = [vehicleDates.get(duelMatch[1]), vehicleDates.get(duelMatch[2])].filter(Boolean).sort().at(-1);
+          if (updated) item.lastmod = updated;
+        } else if (vehicleMatch) {
           item.priority = 0.8;
           item.changefreq = EnumChangefreq.WEEKLY;
           const updated = vehicleDates.get(vehicleMatch[1]);
@@ -154,7 +161,7 @@ export default defineConfig({
     plugins: [tailwindcss(), adminApiPlugin],
     // Dépendances des îlots React pré-optimisées dès le démarrage du serveur de dev :
     // sinon Vite les découvre en cours de session, invalide ses fichiers (erreur 504
-    // « Outdated Optimize Dep ») et les graphiques des fiches restent vides jusqu'au redémarrage.
+    // « Outdated Optimize Dep ») et les îlots des fiches restent vides jusqu'au redémarrage.
     optimizeDeps: {
       include: [
         'react',
@@ -162,8 +169,6 @@ export default defineConfig({
         'react-dom/client',
         'react/jsx-runtime',
         'react/jsx-dev-runtime',
-        'chart.js',
-        'react-chartjs-2',
         'lucide-react',
       ],
     },

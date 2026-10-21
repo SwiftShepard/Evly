@@ -146,7 +146,7 @@
     {
       "name": "Executive Line EQE 300",
       "price_EUR": 71400,
-      "batteryUsed": "90.6 kWh",
+      "batteryUsed": "90,6 kWh",
       "equipmentHighlights": [
         "647 km WLTP",
         "Écran MBUX 12,8 pouces",
@@ -156,7 +156,7 @@
     {
       "name": "AMG Line EQE 300",
       "price_EUR": 82350,
-      "batteryUsed": "90.6 kWh",
+      "batteryUsed": "90,6 kWh",
       "equipmentHighlights": [
         "613 km WLTP",
         "Kit carrosserie AMG",
@@ -186,7 +186,7 @@
     {
       "name": "AMG EQE 43 4MATIC",
       "price_EUR": 96900,
-      "batteryUsed": "90.6 kWh",
+      "batteryUsed": "90,6 kWh",
       "equipmentHighlights": [
         "AWD 476 ch",
         "0-100 en 4,2 s",
@@ -196,7 +196,7 @@
     {
       "name": "AMG EQE 53 4MATIC+",
       "price_EUR": 125000,
-      "batteryUsed": "90.6 kWh",
+      "batteryUsed": "90,6 kWh",
       "equipmentHighlights": [
         "AWD 625 ch",
         "0-100 en 3,5 s",
@@ -655,7 +655,7 @@
     },
     {
       "category": "technologie",
-      "label": "MBUX Hyperscreen et AC 22 kW de serie"
+      "label": "MBUX Hyperscreen et AC 22 kW de série"
     },
     {
       "category": "securite",
@@ -669,14 +669,14 @@
   "verdict": {
     "strengths": [
       "Cx exceptionnel (0,22) et grande autonomie (647 km WLTP)",
-      "AC 22 kW de serie et finition premium Mercedes"
+      "AC 22 kW de série et finition premium Mercedes"
     ],
     "weaknesses": [
-      "Prix eleve (a partir de 71 400 euros)",
+      "Prix élevé (à partir de 71 400 euros)",
       "Charge DC 170 kW correcte mais pas 800 V"
     ],
-    "idealUserProfile": "Cadres et professionnels cherchant une berline electrique haut de gamme.",
-    "notIdealFor": "Acheteurs a budget limite ou cherchant un SUV."
+    "idealUserProfile": "Cadres et professionnels cherchant une berline électrique haut de gamme.",
+    "notIdealFor": "Acheteurs à budget limité ou cherchant un SUV."
   },
   "lastUpdated": "2026-10-08",
   "sources": [

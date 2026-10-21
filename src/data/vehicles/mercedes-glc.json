@@ -151,7 +151,7 @@
       "batteryUsed": "94 kWh",
       "equipmentHighlights": [
         "713 km WLTP",
-        "Architecture de charge 800V",
+        "Architecture de charge 800 V",
         "MBUX écran 11,9 pouces"
       ]
     },
@@ -464,7 +464,7 @@
     },
     {
       "category": "technologie",
-      "label": "Charge ultra-rapide 800V 250 kW et écran central vertical"
+      "label": "Charge ultra-rapide 800 V 250 kW et écran central vertical"
     },
     {
       "category": "securite",
@@ -477,7 +477,7 @@
   ],
   "verdict": {
     "strengths": [
-      "Autonomie réelle confortable et charge ultra-rapide 800V",
+      "Autonomie réelle confortable et charge ultra-rapide 800 V",
       "Volume de coffre pratique et polyvalence de SUV familial"
     ],
     "weaknesses": [

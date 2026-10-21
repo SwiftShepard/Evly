@@ -1,0 +1,358 @@
+---
+/**
+ * Duel « X vs Y » (roadmap E10) : deux modèles face à face, page statique par paire de
+ * src/data/duels.ts, contenu calculé par src/lib/duel.ts. Les deux règles d'autonomie à la même
+ * échelle, puis ce que chacune donne pour le trajet du visiteur (« Mon trajet », recalculé dans le
+ * navigateur), le tableau des critères et un verdict court. Le comparateur interactif prend la suite.
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BentoGrid from "@/components/ui/BentoGrid.astro";
+import Tile from "@/components/ui/Tile.astro";
+import VehicleImage from "@/components/ui/VehicleImage.astro";
+import RangeRail from "@/components/ui/RangeRail.astro";
+import Confidence from "@/components/ui/Confidence.astro";
+import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
+import FaqList from "@/components/seo/FaqList.astro";
+import LinkChips from "@/components/seo/LinkChips.astro";
+import { DUELS, duelSlug } from "@/data/duels";
+import { getAllDuels, type Duel, type DuelSide } from "@/lib/duel";
+import { getVehicleName } from "@/lib/seo";
+import { getVehicleBySlug } from "@/lib/vehicles";
+import { formatPrice } from "@/lib/format";
+import { url } from "@/lib/url";
+import { ArrowRight, Check } from "lucide-react";
+
+export function getStaticPaths() {
+  return getAllDuels().map((duel) => ({ params: { duel: duel.slug }, props: { duel } }));
+}
+
+interface Props {
+  duel: Duel;
+}
+
+const { duel } = Astro.props;
+const { a: A, b: B } = duel;
+const title = `${A.name} ou ${B.name} : autonomie réelle, prix, recharge`;
+const description = `${A.name} contre ${B.name} : autonomie réelle mesurée ou estimée, prix après prime CEE, recharge 10 → 80 %, coffre. ${duel.verdict[0] ?? ""}`.slice(0, 300);
+const pageUrl = url(`/comparer/${duel.slug}/`);
+const compareHref = url(`/comparer/?v=${A.v.slug}:${A.best.id},${B.v.slug}:${B.best.id}`);
+
+// Trajet par défaut au rendu (40 km/j), recalculé dans le navigateur avec « Mon trajet »
+const DEFAULT_DAILY = 40;
+const tripLine = (s: DuelSide, daily: number) => {
+  const need = daily * 5;
+  const fitting = s.versions.filter((x) => x[0] !== null && x[1] >= need).sort((x, y) => x[0]! - y[0]!)[0];
+  const days = Math.floor(s.winterBest / daily);
+  return fitting
+    ? { fit: true, days, text: `Tient votre semaine dès ${formatPrice(fitting[0]!)} (${fitting[2]})` }
+    : { fit: false, days, text: `Moins d'une semaine de trajet en hiver, quelle que soit la version` };
+};
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: title,
+    description,
+    url: new URL(pageUrl, Astro.site).toString(),
+    dateModified: duel.lastUpdated,
+    about: [A, B].map((s) => ({ "@type": "Car", name: s.name, url: new URL(url(`/vehicules/${s.v.slug}/`), Astro.site).toString() })),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: duel.faq.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })),
+  },
+];
+
+// Maillage : autres duels de ces deux modèles, puis les plus demandés
+const related = DUELS.filter(([x, y]) => duelSlug(x, y) !== duel.slug && [x, y].some((s) => s === A.v.slug || s === B.v.slug));
+const relatedSlugs = new Set(related.map(([x, y]) => duelSlug(x, y)));
+const duelLink = ([x, y]: [string, string]) => {
+  const vx = getVehicleBySlug(x);
+  const vy = getVehicleBySlug(y);
+  return { label: `${vx ? getVehicleName(vx) : x} vs ${vy ? getVehicleName(vy) : y}`, href: url(`/comparer/${duelSlug(x, y)}/`) };
+};
+const sides = [
+  { key: "a" as const, s: A },
+  { key: "b" as const, s: B },
+];
+const hasAided = duel.rows.some((r) => r.key === "aided" && (r.a.includes("€") || r.b.includes("€")));
+---
+
+<BaseLayout title={title} description={description} jsonLd={jsonLd} ogImage={`/og/duels/${duel.slug}.jpg`} ogImageAlt={`${A.name} ou ${B.name}`} modifiedTime={duel.lastUpdated}>
+  <div class="container-edit pt-2 md:pt-3 fade-rise">
+    <Breadcrumbs items={[{ label: "Accueil", path: "/" }, { label: "Comparateur", path: "/comparer/" }, { label: `${A.name} vs ${B.name}` }]} />
+  </div>
+
+  <div class="container-edit pt-2 pb-8 md:pt-3 md:pb-12 flex flex-col gap-10">
+    <BentoGrid>
+      <Tile size="full" variant="elevated" class="md:!p-8">
+        <span class="label-eyebrow fade-rise">Duel · données des fiches au {new Date(duel.lastUpdated).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })}</span>
+        <h1 class="display-2 mt-3 max-w-4xl fade-rise fade-rise-delay-1">{A.name} ou {B.name}&nbsp;?</h1>
+
+        <div class="duel-faces mt-8 fade-rise fade-rise-delay-2">
+          {sides.map(({ s }) => (
+            <a href={url(`/vehicules/${s.v.slug}/`)} class="duel-face">
+              <span class="duel-photo stage">
+                <VehicleImage slug={s.v.slug} alt={`${s.name} électrique`} widths={[320, 640]} sizes="(min-width: 768px) 420px, 45vw" class="w-[90%] h-full" />
+              </span>
+              <span class="duel-name"><span class="duel-brand">{s.v.brand}</span> {s.v.model}</span>
+              <span class="duel-price">
+                {s.facts.priceMin != null ? <>dès <b>{formatPrice(s.facts.priceMin)}</b></> : "Prix non communiqué"}
+              </span>
+            </a>
+          ))}
+          <span class="duel-vs" aria-hidden="true">vs</span>
+        </div>
+
+        <div class="duel-rails no-glossary">
+          {sides.map(({ s }, i) => (
+            <div class="duel-rail">
+              <p class="duel-rail-head">
+                <b>{s.name}</b> <span>{s.best.label}</span> <Confidence code={s.best.confidence} />
+              </p>
+              <RangeRail real={s.best.real} wltp={s.best.wltp} winter={s.best.winter} scale={duel.scale} size="lg" annotate animate={i === 0} surface="var(--color-surface-elevated)" />
+            </div>
+          ))}
+          <div class="rail-legend mt-2">
+            <span><i class="rail-key rail-key-winter"></i>Même en hiver (-5&nbsp;°C)</span>
+            <span><i class="rail-key rail-key-real"></i>Autonomie réelle</span>
+            <span><i class="rail-key rail-key-promise"></i>Promis par le WLTP, jamais parcouru</span>
+            <span><i class="rail-key rail-key-need"></i>Votre semaine de trajet</span>
+          </div>
+        </div>
+      </Tile>
+    </BentoGrid>
+
+    <section aria-labelledby="trajet-title" class="duel-trip no-glossary" data-duel-trip data-versions={JSON.stringify({ a: A.versions, b: B.versions, wa: A.winterBest, wb: B.winterBest })}>
+      <div class="duel-trip-head">
+        <h2 id="trajet-title" class="section-title !mb-0">Pour votre trajet</h2>
+        <label for="duel-trip-km" class="duel-trip-control">
+          <span>Trajet quotidien, aller et retour</span>
+          <output for="duel-trip-km" class="duel-trip-km" data-trip-out>{DEFAULT_DAILY} km</output>
+        </label>
+        <input id="duel-trip-km" type="range" min="10" max="200" step="5" value={DEFAULT_DAILY} class="trip-range" data-trip-range />
+      </div>
+      <div class="duel-trip-grid" aria-live="polite">
+        {sides.map(({ key, s }) => {
+          const line = tripLine(s, DEFAULT_DAILY);
+          return (
+            <div class="duel-trip-card" data-side={key} data-fit={line.fit ? "1" : "0"}>
+              <p class="duel-trip-name">{s.name}</p>
+              <p class="duel-trip-days"><b data-days>{line.days}</b> <span data-days-u>{line.days > 1 ? "jours" : "jour"}</span> de trajet sans recharger, même par -5&nbsp;°C</p>
+              <p class="duel-trip-verdict" data-verdict>{line.text}</p>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+
+    <section aria-labelledby="comparatif-title">
+      <h2 id="comparatif-title" class="section-title">Le comparatif</h2>
+      <BentoGrid>
+        <Tile size="full" class="!px-0 md:!px-0">
+          <div class="overflow-x-auto">
+            <table class="duel-table">
+              <thead>
+                <tr>
+                  <th scope="col"><span class="sr-only">Critère</span></th>
+                  <th scope="col">{A.name}</th>
+                  <th scope="col">{B.name}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {duel.rows.map((r) => (
+                  <tr>
+                    <th scope="row">{r.label}</th>
+                    {(["a", "b"] as const).map((k) => (
+                      <td class:list={[r.winner === k && "is-better"]} data-numeric>
+                        <span class="duel-cell">
+                          {r.winner === k && <Check size={15} strokeWidth={2.5} aria-label="avantage" />}
+                          {k === "a" ? r.a : r.b}
+                        </span>
+                        {(k === "a" ? r.confA : r.confB) && <Confidence code={k === "a" ? r.confA : r.confB} class="duel-conf" />}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p class="duel-footnote">
+            Chiffres de gamme : prix de la version d'entrée, autonomie et recharge de la meilleure version.
+            {hasAided && " * Prime CEE versée à tout ménage (montants indicatifs, offre publiée pour octobre 2026) ; elle monte avec des revenus plus modestes."}
+          </p>
+        </Tile>
+      </BentoGrid>
+    </section>
+
+    <section aria-labelledby="verdict-title">
+      <h2 id="verdict-title" class="section-title">Notre lecture</h2>
+      <BentoGrid>
+        <Tile size="full" variant="accent" class="md:!p-8">
+          <div class="flex flex-col gap-3 max-w-3xl">
+            {duel.verdict.map((p) => <p class="text-base md:text-lg leading-relaxed">{p}</p>)}
+          </div>
+          {(duel.pick.a.length > 0 || duel.pick.b.length > 0) && (
+            <ul class="duel-pick">
+              {sides.map(({ key, s }) =>
+                duel.pick[key].length > 0 && (
+                  <li>
+                    <span>Plutôt {s.name}</span> pour {duel.pick[key].join(", ").replace(/, ([^,]*)$/, " et $1")}
+                  </li>
+                )
+              )}
+            </ul>
+          )}
+          <div class="flex flex-wrap gap-2 mt-7">
+            <a href={compareHref} class="btn btn-primary">Comparer version par version <ArrowRight size={17} strokeWidth={2} className="btn-arrow" aria-hidden="true" /></a>
+            {sides.map(({ s }) => <a href={url(`/vehicules/${s.v.slug}/`)} class="btn btn-secondary">Fiche {s.name}</a>)}
+          </div>
+        </Tile>
+      </BentoGrid>
+    </section>
+
+    <section aria-labelledby="faq-title">
+      <h2 id="faq-title" class="section-title">Questions fréquentes</h2>
+      <BentoGrid>
+        <Tile size="full">
+          <FaqList entries={duel.faq} />
+        </Tile>
+      </BentoGrid>
+      <LinkChips
+        groups={[
+          { title: "Autres duels", links: related.slice(0, 10).map(duelLink) },
+          { title: "Les plus comparées", links: DUELS.filter(([x, y]) => duelSlug(x, y) !== duel.slug && !relatedSlugs.has(duelSlug(x, y))).slice(0, 8).map(duelLink) },
+        ]}
+      />
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+    font-weight: 600;
+    letter-spacing: -0.022em;
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Face à face : deux photos, le « vs » posé entre elles */
+  .duel-faces {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .duel-face {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 0;
+    padding: 0.5rem 0.5rem 1rem;
+    border-radius: var(--radius-tile-sm);
+    transition: background-color 200ms ease;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .duel-face:hover { background: var(--color-bg); }
+  }
+  .duel-photo { height: clamp(7rem, 18vw, 12rem); border-radius: var(--radius-tile-sm); }
+  .duel-name { margin-top: 0.4rem; font-family: var(--font-display); font-size: clamp(1.15rem, 2.4vw, 1.6rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+  .duel-brand { display: block; font-family: var(--font-sans); font-size: 12.5px; font-weight: 500; letter-spacing: 0; color: var(--color-text-faint); }
+  .duel-price { font-size: 14px; color: var(--color-text-muted); }
+  .duel-price b { font-family: var(--font-display); font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em; color: var(--color-text); }
+  .duel-vs {
+    position: absolute;
+    left: 50%;
+    top: clamp(3.5rem, 9vw, 6rem);
+    translate: -50% -50%;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 999px;
+    background: var(--color-accent);
+    color: var(--color-accent-on);
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: -0.02em;
+    box-shadow: 0 0 0 5px var(--color-surface-elevated);
+  }
+
+  .duel-rails { display: flex; flex-direction: column; gap: 1.75rem; margin-top: 2rem; padding-top: 1.75rem; border-top: 1px solid var(--color-border); }
+  .duel-rail-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 0.6rem; font-size: 14px; color: var(--color-text-faint); margin-bottom: 0.25rem; }
+  .duel-rail-head b { font-size: 15px; font-weight: 650; color: var(--color-text); }
+
+  /* Trajet */
+  .duel-trip { padding: 1.5rem; border-radius: var(--radius-tile); background: var(--color-surface-accent); }
+  @media (min-width: 1024px) { .duel-trip { padding: 2rem 2.25rem; } }
+  .duel-trip-head { display: grid; gap: 0.75rem 2rem; align-items: end; }
+  @media (min-width: 768px) { .duel-trip-head { grid-template-columns: 1fr minmax(16rem, 22rem); } .duel-trip-head .trip-range { grid-column: 2; } }
+  .duel-trip-control { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; font-size: 14px; color: var(--color-text-muted); }
+  .duel-trip-km { font-family: var(--font-display); font-size: 26px; font-weight: 800; letter-spacing: -0.035em; color: var(--color-accent); white-space: nowrap; }
+  .duel-trip-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin-top: 1.5rem; }
+  @media (min-width: 640px) { .duel-trip-grid { grid-template-columns: 1fr 1fr; } }
+  .duel-trip-card { padding: 1.1rem 1.25rem; border-radius: var(--radius-tile-sm); background: var(--color-surface-elevated); }
+  .duel-trip-name { font-size: 13px; font-weight: 600; color: var(--color-text-muted); }
+  .duel-trip-days { margin-top: 0.35rem; font-size: 14px; color: var(--color-text-muted); line-height: 1.35; }
+  .duel-trip-days b { font-family: var(--font-display); font-size: 2.25rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1; color: var(--color-accent); font-variant-numeric: tabular-nums; }
+  .duel-trip-card[data-fit="0"] .duel-trip-days b { color: var(--color-danger); }
+  .duel-trip-verdict { margin-top: 0.6rem; font-size: 13.5px; font-weight: 600; color: var(--color-accent-dim); }
+  .duel-trip-card[data-fit="0"] .duel-trip-verdict { color: var(--color-danger); }
+
+  /* Tableau */
+  .duel-table { width: 100%; min-width: 520px; border-collapse: collapse; font-size: 14.5px; }
+  .duel-table th, .duel-table td { padding: 0.8rem 1.25rem; border-bottom: 1px solid var(--color-border); text-align: left; vertical-align: top; }
+  @media (min-width: 768px) { .duel-table th, .duel-table td { padding-inline: 2rem; } }
+  .duel-table thead th { font-family: var(--font-display); font-weight: 700; font-size: 15px; letter-spacing: -0.015em; color: var(--color-text); }
+  .duel-table tbody th { font-weight: 500; color: var(--color-text-muted); width: 36%; }
+  .duel-table tbody tr:last-child th, .duel-table tbody tr:last-child td { border-bottom: 0; }
+  .duel-table td { color: var(--color-text); font-variant-numeric: tabular-nums; }
+  .duel-cell { display: inline-flex; align-items: center; gap: 0.35rem; }
+  .duel-table td.is-better { color: var(--color-accent); font-weight: 650; }
+  .duel-table :global(.duel-conf) { display: flex; margin-top: 0.3rem; width: fit-content; }
+  .duel-footnote { padding: 1rem 1.25rem 0; font-size: 12.5px; color: var(--color-text-faint); max-width: 75ch; }
+  @media (min-width: 768px) { .duel-footnote { padding-inline: 2rem; } }
+
+  .duel-pick { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+  .duel-pick li { padding: 0.45rem 0.9rem; border-radius: 999px; background: var(--color-surface-elevated); font-size: 14px; color: var(--color-text-muted); }
+  .duel-pick li span { font-weight: 650; color: var(--color-text); }
+</style>
+
+<script>
+  import { readTrip, onTripChange, weekNeed, type Trip } from "@/lib/trip";
+
+  // « Pour votre trajet » : jours en hiver et version la moins chère qui tient la semaine, selon « Mon trajet »
+  function setupDuelTrip() {
+    const root = document.querySelector<HTMLElement>("[data-duel-trip]");
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = "true";
+    type Version = [number | null, number, string];
+    const data = JSON.parse(root.dataset.versions || "{}") as { a: Version[]; b: Version[]; wa: number; wb: number };
+    const nf = new Intl.NumberFormat("fr-FR");
+    const euros = (n: number) => `${nf.format(n).replace(/ /g, " ")} €`;
+    const render = (t: Trip) => {
+      const need = weekNeed(t);
+      for (const key of ["a", "b"] as const) {
+        const card = root.querySelector<HTMLElement>(`[data-side="${key}"]`);
+        if (!card) continue;
+        const days = Math.floor((key === "a" ? data.wa : data.wb) / t.dailyKm);
+        const fitting = data[key].filter((x) => x[0] !== null && x[1] >= need).sort((x, y) => x[0]! - y[0]!)[0];
+        card.dataset.fit = fitting ? "1" : "0";
+        card.querySelector("[data-days]")!.textContent = String(days);
+        card.querySelector("[data-days-u]")!.textContent = days > 1 ? "jours" : "jour";
+        card.querySelector("[data-verdict]")!.textContent = fitting
+          ? `Tient votre semaine dès ${euros(fitting[0]!)} (${fitting[2]})`
+          : "Moins d'une semaine de trajet en hiver, quelle que soit la version";
+      }
+    };
+    render(readTrip());
+    onTripChange(render);
+  }
+  setupDuelTrip();
+  document.addEventListener("astro:page-load", setupDuelTrip);
+</script>

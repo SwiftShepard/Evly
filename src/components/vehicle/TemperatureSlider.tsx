@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useId } from "react";
 import { heatPumpOf, tempFactor } from "@/lib/winter";
+import { formatNumber } from "@/lib/format";
 
 interface Props {
   chemistry?: string;
@@ -126,7 +127,7 @@ export default function TemperatureSlider({ chemistry = "NMC", heatPump, initial
         <span className={`font-mono text-xs font-semibold ${getTempColor(temp)}`}>
           {temp > 0 ? `+${temp}` : temp}°C{" "}
           <span className="text-[var(--color-text-faint)] font-normal text-[9px] ml-1">
-            (x{(multiplier).toFixed(2)})
+            (×{formatNumber(multiplier, 2)})
           </span>
         </span>
       </div>

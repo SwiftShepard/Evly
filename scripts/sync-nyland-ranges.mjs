@@ -15,10 +15,17 @@
  *   dérivés, l'hiver suit le modèle de src/lib/winter.js. confidence = "bjorn_nyland".
  * - Une config sans essai Nyland garde ses autres essais sourcés (confidence "tested"), sinon
  *   repasse en "estimated" (ou reste "manufacturer").
+ * - Essais presse (scripts/press-tests.mjs) : sans essai Nyland, une version dont l'essai donne
+ *   90 et 120 km/h (ou 110 + 130) en tire son autonomie par la même règle (confidence "tested") ;
+ *   les autres essais presse sont joints, l'autonomie reste estimée.
+ * - winterOnly : Nyland n'a roulé la version qu'en hiver. Les essais sont joints (tableau des
+ *   tests de la fiche) mais l'autonomie reste estimée : un mixte tiré d'un essai par 0 °C
+ *   compterait l'hiver deux fois (le modèle d'hiver s'applique ensuite).
  */
 import fs from "node:fs";
 import path from "node:path";
 import { heatPumpOf, winterKm } from "../src/lib/winter.js";
+import { PRESS_TESTS, PRESS_URLS, deriveRange } from "./press-tests.mjs";
 
 const DRY = process.argv.includes("--dry");
 const VEHICLES_DIR = "src/data/vehicles";
@@ -48,7 +55,8 @@ const MAPPING = {
   "bmw-ix1": [{ car: "BMW iX1 xDrive30", configs: ["xdrive30-base", "xdrive30-xline", "xdrive30-msport"] }],
   "bmw-ix2": [{ car: "BMW iX2 xDrive30", configs: ["xdrive30-base", "xdrive30-msport"] }],
   "bmw-ix3-neue-klasse": [{ car: "BMW iX3 50 xDrive", configs: ["50"] }],
-  // "byd-atto-3" : Nyland a testé l'Atto 3 60 kWh, remplacé par l'Atto 3 Evo 74,8 kWh
+  // Atto 3 60 kWh d'avant 2025 non repris : seule l'Evo 74,8 kWh est au catalogue
+  "byd-atto-3": [{ car: "BYD Atto 3 Evo AWD", configs: ["excellence"] }],
   "byd-dolphin": [{ car: "BYD Dolphin", configs: ["comfort", "design"] }],
   "byd-seal-u": [{ car: "BYD Seal U", configs: ["design"] }],
   "byd-seal": [{ car: "BYD Seal Performance", configs: ["excellence-awd"] }],
@@ -79,6 +87,8 @@ const MAPPING = {
   "kia-ev3": [{ car: "Kia EV3 Long Range FWD", configs: ["long-range-air", "long-range-earth", "long-range-gt-line"] }],
   "kia-ev4": [{ car: "Kia EV4 Long Range FWD", configs: ["lr-air-17", "lr-earth-17", "lr-gt-line-19"] }],
   "kia-ev5": [{ car: "Kia EV5 Long Range FWD", configs: ["lr-air", "lr-earth", "lr-gt-line"] }],
+  // EV6 restylée 84 kWh : Nyland ne l'a roulée qu'en hiver (0 °C)
+  "kia-ev6": [{ car: "Kia EV6 AWD facelift", configs: ["long-range-earth-awd"], winterOnly: true }],
   "kia-ev9": [{ car: "Kia EV9 GT-Line", configs: ["gt-line"] }],
   "kia-pv5-passenger": [{ car: "Kia PV5 Passenger", configs: ["essential-71", "plus-71"] }],
   "leapmotor-b10": [{ car: "Leapmotor B10", configs: ["design"] }],
@@ -99,7 +109,8 @@ const MAPPING = {
   ],
   "mercedes-eqs-suv": [{ car: "Mercedes EQS 580 4Matic SUV", configs: ["580-amg"] }],
   "mercedes-eqv": [{ car: "Mercedes EQV 300", configs: ["tourer-pro", "tourer-avantgarde"] }],
-  // "mercedes-glb" : Nyland a testé le nouveau GLB (88,6 kWh), pas la génération de la fiche (70,5 kWh)
+  // Nouveau GLB (85 kWh utiles, 88,6 kWh relevés par Nyland), celui de la fiche depuis octobre 2026
+  "mercedes-glb": [{ car: "Mercedes GLB 350 4Matic", configs: ["350-progressive", "350-amg"] }],
   "mercedes-glc": [{ car: "Mercedes GLC 400", configs: ["pro", "amg"] }],
   "mg-cyberster": [{ car: "MG Cyberster", configs: ["gt-awd"] }],
   "mg-im5": [{ car: "MG IM5 100 kWh AWD", configs: ["long-range"] }],
@@ -250,10 +261,13 @@ function toTest(row, car) {
 }
 
 const isNyland = (t) => t.sourceId === "nyland" || t.protocol === "nyland";
+// Essai de la table presse : réécrit à chaque passage depuis scripts/press-tests.mjs
+const isPress = (t) => !!t.url && PRESS_URLS.has(t.url);
+const isManaged = (t) => isNyland(t) || isPress(t);
 const isMeasuredOther = (t) => !isNyland(t) && t.protocol !== "wltp" && t.protocol !== "manufacturer" && t.protocol !== "epa";
 
 /* ── Application aux fiches ────────────────────────────────── */
-const report = { updatedConfigs: 0, measuredVehicles: [], downgraded: [], missingCars: [], missingConfigs: [] };
+const report = { updatedConfigs: 0, pressConfigs: 0, measuredVehicles: [], downgraded: [], missingCars: [], missingConfigs: [] };
 
 for (const file of fs.readdirSync(VEHICLES_DIR).filter((f) => f.endsWith(".json"))) {
   const filePath = path.join(VEHICLES_DIR, file);
@@ -261,9 +275,10 @@ for (const file of fs.readdirSync(VEHICLES_DIR).filter((f) => f.endsWith(".json"
   const before = JSON.stringify(v);
   const mapping = MAPPING[v.slug] ?? [];
 
-  // Suffixe d'id → essais Nyland (90 / 120)
+  // Suffixe d'id → essais Nyland (90 / 120) ; winterOnly : essais joints sans recalcul
   const testsByConfig = new Map();
-  for (const { car, configs } of mapping) {
+  const winterByConfig = new Map();
+  for (const { car, configs, winterOnly } of mapping) {
     const rows = rowsByCar.get(car);
     if (!rows) { report.missingCars.push(`${v.slug}: ${car}`); continue; }
     const session = pickSession(rows);
@@ -275,17 +290,32 @@ for (const file of fs.readdirSync(VEHICLES_DIR).filter((f) => f.endsWith(".json"
         .filter((c) => c.id === suffix || c.id.endsWith(`-${suffix}`))
         .sort((a, b) => a.id.length - b.id.length)[0];
       if (!cfg) { report.missingConfigs.push(`${v.slug}: ${suffix}`); continue; }
-      testsByConfig.set(cfg.id, tests);
+      (winterOnly ? winterByConfig : testsByConfig).set(cfg.id, tests);
+    }
+  }
+
+  // Essais presse : id de config → { tests, derive, capacity }
+  const pressByConfig = new Map();
+  for (const entry of PRESS_TESTS[v.slug] ?? []) {
+    for (const suffix of entry.configs) {
+      const cfg = v.configurations
+        .filter((c) => c.id === suffix || c.id.endsWith(`-${suffix}`))
+        .sort((a, b) => a.id.length - b.id.length)[0];
+      if (!cfg) { report.missingConfigs.push(`${v.slug}: ${suffix} (presse)`); continue; }
+      pressByConfig.set(cfg.id, entry);
     }
   }
 
   const priorConfidence = v.realRange.confidence;
   for (const cfg of v.configurations) {
-    const others = (cfg.rangeTests ?? []).filter((t) => !isNyland(t));
+    const others = (cfg.rangeTests ?? []).filter((t) => !isManaged(t));
     const nyTests = testsByConfig.get(cfg.id);
+    const press = pressByConfig.get(cfg.id);
+    const pressTests = press?.tests ?? [];
+    const pressRange = press?.derive ? deriveRange(pressTests, press.capacity ?? cfg.usableCapacity_kWh ?? v.usableCapacity_kWh) : null;
     cfg.realRange = cfg.realRange ?? { ...v.realRange };
     if (nyTests?.length) {
-      cfg.rangeTests = [...nyTests, ...others];
+      cfg.rangeTests = [...nyTests, ...pressTests, ...others];
       const t90 = nyTests.find((t) => t.speed_kmh === 90);
       const t120 = nyTests.find((t) => t.speed_kmh === 120);
       const rr = cfg.realRange;
@@ -297,8 +327,16 @@ for (const file of fs.readdirSync(VEHICLES_DIR).filter((f) => f.endsWith(".json"
       rr.winter_minus5_km = winterKm(rr.mixed_km, cfg.chemistry ?? v.chemistry, heatPumpOf(v.heatPump), true);
       rr.confidence = "bjorn_nyland";
       report.updatedConfigs++;
+    } else if (pressRange) {
+      cfg.rangeTests = [...pressTests, ...others];
+      const rr = cfg.realRange;
+      Object.assign(rr, pressRange);
+      delete rr.highway_120_km;
+      rr.winter_minus5_km = winterKm(rr.mixed_km, cfg.chemistry ?? v.chemistry, heatPumpOf(v.heatPump), true);
+      rr.confidence = "tested";
+      report.pressConfigs++;
     } else {
-      cfg.rangeTests = others;
+      cfg.rangeTests = [...(winterByConfig.get(cfg.id) ?? []), ...pressTests, ...others];
       delete cfg.realRange.highway_120_km;
       if (others.some(isMeasuredOther)) cfg.realRange.confidence = "tested";
       else if (cfg.realRange.confidence !== "manufacturer") cfg.realRange.confidence = "estimated";
@@ -309,14 +347,18 @@ for (const file of fs.readdirSync(VEHICLES_DIR).filter((f) => f.endsWith(".json"
   const measured = v.configurations
     .filter((c) => c.realRange?.confidence === "bjorn_nyland" || c.realRange?.confidence === "tested")
     .sort((a, b) => (a.price_EUR ?? Infinity) - (b.price_EUR ?? Infinity));
-  const vehicleOthers = (v.rangeTests ?? []).filter((t) => !isNyland(t));
+  const vehicleOthers = (v.rangeTests ?? []).filter((t) => !isManaged(t));
   if (measured.length) {
     const ref = measured[0];
     v.realRange = { ...ref.realRange };
-    v.rangeTests = [...(ref.rangeTests ?? []).filter(isNyland), ...vehicleOthers];
+    v.rangeTests = [...(ref.rangeTests ?? []).filter(isManaged), ...vehicleOthers];
     report.measuredVehicles.push(v.slug);
   } else {
-    v.rangeTests = vehicleOthers;
+    // Essais joints (hiver, presse) : ceux de la version la moins chère qui en a
+    const attachedRef = v.configurations
+      .filter((c) => (c.rangeTests ?? []).some(isManaged))
+      .sort((a, b) => (a.price_EUR ?? Infinity) - (b.price_EUR ?? Infinity))[0];
+    v.rangeTests = [...(attachedRef ? attachedRef.rangeTests.filter(isManaged) : []), ...vehicleOthers];
     delete v.realRange.highway_120_km;
     if (vehicleOthers.some(isMeasuredOther)) v.realRange.confidence = "tested";
     else if (v.realRange.confidence !== "manufacturer") v.realRange.confidence = "estimated";
@@ -326,8 +368,11 @@ for (const file of fs.readdirSync(VEHICLES_DIR).filter((f) => f.endsWith(".json"
   }
 
   if (JSON.stringify(v) !== before && !DRY) {
-    if (v.sources && measured.some((c) => c.realRange.confidence === "bjorn_nyland") && !v.sources.includes("nyland")) {
+    if (v.sources && (measured.some((c) => c.realRange.confidence === "bjorn_nyland") || winterByConfig.size > 0) && !v.sources.includes("nyland")) {
       v.sources.push("nyland");
+    }
+    for (const id of new Set([...pressByConfig.values()].flatMap((e) => e.tests.map((x) => x.sourceId)))) {
+      if (v.sources && !v.sources.includes(id)) v.sources.push(id);
     }
     fs.writeFileSync(filePath, JSON.stringify(v, null, 2) + "\n", "utf8");
   }
@@ -336,6 +381,7 @@ for (const file of fs.readdirSync(VEHICLES_DIR).filter((f) => f.endsWith(".json"
 console.log(JSON.stringify({
   dry: DRY,
   configsMesurees: report.updatedConfigs,
+  configsMesureesPresse: report.pressConfigs,
   vehiculesMesures: report.measuredVehicles.length,
   retrogradesEnEstimee: report.downgraded,
   voituresNylandIntrouvables: report.missingCars,

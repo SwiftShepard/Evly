@@ -297,28 +297,28 @@
     },
     {
       "category": "technologie",
-      "label": "Battery Swap et LiDAR Innovusion integre"
+      "label": "Battery Swap et LiDAR Innovusion intégré"
     },
     {
       "category": "securite",
-      "label": "NIO Pilot conduite autonome avancee"
+      "label": "NIO Pilot conduite autonome avancée"
     },
     {
       "category": "confort",
-      "label": "Audio Dolby Atmos 7.1.4 et sieges massants"
+      "label": "Audio Dolby Atmos 7.1.4 et sièges massants"
     }
   ],
   "verdict": {
     "strengths": [
-      "Cx record de 0,208, meilleur aerodynamisme du marche",
-      "Battery Swap : echange en 3 min, alternative a la charge rapide"
+      "Cx record de 0,208, meilleur aérodynamisme du marché",
+      "Battery Swap : échange en 3 min, alternative à la charge rapide"
     ],
     "weaknesses": [
       "Pas encore disponible en France",
-      "Charge DC limitee a 140 kW (compense par le Battery Swap)"
+      "Charge DC limitée à 140 kW (compensée par le Battery Swap)"
     ],
-    "idealUserProfile": "Amateurs de berlines premium sportives, interesses par le Battery Swap Nio.",
-    "notIdealFor": "Acheteurs en France ou cherchant un vehicule avec SAV local etabli."
+    "idealUserProfile": "Amateurs de berlines premium sportives, intéressés par le Battery Swap Nio.",
+    "notIdealFor": "Acheteurs en France ou cherchant un véhicule avec SAV local établi."
   },
   "lastUpdated": "2026-05-29",
   "sources": [

@@ -24,10 +24,10 @@
   "wltp_max_km": 420,
   "wltp_min_km": 340,
   "realRange": {
-    "mixed_km": 303,
-    "highway_130_km": 228,
-    "urban_km": 387,
-    "winter_minus5_km": 207,
+    "mixed_km": 305,
+    "highway_130_km": 229,
+    "urban_km": 390,
+    "winter_minus5_km": 209,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 28,
@@ -96,7 +96,7 @@
       "equipmentHighlights": [
         "Volume utile 11,5 m3",
         "Charge DC 150 kW",
-        "Ecran tactile 10 pouces"
+        "Écran tactile 10 pouces"
       ]
     },
     {
@@ -105,7 +105,7 @@
       "batteryUsed": "110 kWh",
       "equipmentHighlights": [
         "Volume utile 15 m3",
-        "Camera 180 degres",
+        "Caméra 180 degrés",
         "Charge AC 22 kW"
       ]
     }
@@ -128,10 +128,10 @@
       "wltp_km": 420,
       "wltp_consumption_kWh_100km": 27,
       "realRange": {
-        "mixed_km": 303,
-        "highway_130_km": 228,
-        "urban_km": 387,
-        "winter_minus5_km": 207,
+        "mixed_km": 305,
+        "highway_130_km": 229,
+        "urban_km": 390,
+        "winter_minus5_km": 209,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -181,10 +181,10 @@
       "wltp_km": 340,
       "wltp_consumption_kWh_100km": 30,
       "realRange": {
-        "mixed_km": 245,
-        "highway_130_km": 184,
-        "urban_km": 313,
-        "winter_minus5_km": 168,
+        "mixed_km": 247,
+        "highway_130_km": 185,
+        "urban_km": 316,
+        "winter_minus5_km": 169,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -231,32 +231,32 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "Cabine spacieuse avec rangements optimises pour artisans"
+      "label": "Cabine spacieuse avec rangements optimisés pour artisans"
     },
     {
       "category": "technologie",
-      "label": "Charge rapide 150 kW pour complements en 42 min (10-80%)"
+      "label": "Charge rapide 150 kW pour compléments en 42 min (10-80 %)"
     },
     {
       "category": "securite",
-      "label": "Freinage automatique d'urgence et detection pietons"
+      "label": "Freinage automatique d'urgence et détection piétons"
     },
     {
       "category": "design",
-      "label": "Volumes utiles de 11,5 a 17 m3 selon configuration L/H"
+      "label": "Volumes utiles de 11,5 à 17 m3 selon configuration L/H"
     }
   ],
   "verdict": {
     "strengths": [
-      "Autonomie 420 km WLTP, nouvelle generation entierement revue",
-      "Charge rapide 150 kW, competitive face au Master E-Tech"
+      "Autonomie 420 km WLTP, nouvelle génération entièrement revue",
+      "Charge rapide 150 kW, compétitive face au Master E-Tech"
     ],
     "weaknesses": [
-      "Consommation elevee sur autoroute charge (> 35 kWh/100 km)",
-      "Prix eleve malgre les aides (> 56 000 EUR)"
+      "Consommation élevée sur autoroute charge (> 35 kWh/100 km)",
+      "Prix élevé malgré les aides (> 56 000 EUR)"
     ],
-    "idealUserProfile": "Artisans, demenageurs et logisticiens urbains cherchant un grand volume electrique avec bonne autonomie.",
-    "notIdealFor": "Tres longs trajets autoroutiers quotidiens avec chargement lourd. Le Master E-Tech offre une meilleure autonomie."
+    "idealUserProfile": "Artisans, déménageurs et logisticiens urbains cherchant un grand volume électrique avec bonne autonomie.",
+    "notIdealFor": "Très longs trajets autoroutiers quotidiens avec chargement lourd. Le Master E-Tech offre une meilleure autonomie."
   },
   "lastUpdated": "2026-05-21",
   "sources": [

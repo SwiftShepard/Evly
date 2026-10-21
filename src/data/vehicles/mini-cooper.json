@@ -174,9 +174,9 @@
     {
       "name": "Essential E",
       "price_EUR": 30700,
-      "batteryUsed": "36.6 kWh (E)",
+      "batteryUsed": "36,6 kWh (E)",
       "equipmentHighlights": [
-        "Ecran OLED central circulaire 240mm",
+        "Écran OLED central circulaire 240 mm",
         "Climatisation automatique bi-zone",
         "Caméra de recul et radars de recul",
         "Jantes alliage 16 pouces"
@@ -185,7 +185,7 @@
     {
       "name": "Classic E",
       "price_EUR": 32620,
-      "batteryUsed": "36.6 kWh (E)",
+      "batteryUsed": "36,6 kWh (E)",
       "equipmentHighlights": [
         "Volant sport à 3 branches",
         "Sièges sport en simili-cuir/tissu",
@@ -196,7 +196,7 @@
     {
       "name": "Classic SE",
       "price_EUR": 37610,
-      "batteryUsed": "49.2 kWh (SE)",
+      "batteryUsed": "49,2 kWh (SE)",
       "equipmentHighlights": [
         "Projecteurs LED adaptatifs",
         "Toit contrasté et coques de rétroviseurs",
@@ -207,7 +207,7 @@
     {
       "name": "Favoured SE",
       "price_EUR": 39330,
-      "batteryUsed": "49.2 kWh (SE)",
+      "batteryUsed": "49,2 kWh (SE)",
       "equipmentHighlights": [
         "Sièges John Cooper Works sportifs",
         "Ciel de pavillon anthracite",

@@ -182,16 +182,16 @@
     {
       "name": "Creative",
       "price_EUR": 70450,
-      "batteryUsed": "110.3 kWh",
+      "batteryUsed": "110,3 kWh",
       "equipmentHighlights": [
         "7 places",
-        "Écrans incurvés 12.3\""
+        "Écrans incurvés 12,3\""
       ]
     },
     {
       "name": "Executive",
       "price_EUR": 82050,
-      "batteryUsed": "110.3 kWh",
+      "batteryUsed": "110,3 kWh",
       "equipmentHighlights": [
         "HTRAC AWD",
         "Aide au stationnement à distance"
@@ -200,7 +200,7 @@
     {
       "name": "Calligraphy",
       "price_EUR": 87450,
-      "batteryUsed": "110.3 kWh",
+      "batteryUsed": "110,3 kWh",
       "equipmentHighlights": [
         "HTRAC Performance 428 ch",
         "Configuration 6 places premium"

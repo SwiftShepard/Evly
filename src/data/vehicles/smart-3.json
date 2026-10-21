@@ -3,7 +3,7 @@
   "brand": "Smart",
   "model": "#3",
   "variant": "Pro+ 66 kWh",
-  "bodyType": "SUV Coupe",
+  "bodyType": "SUV Coupé",
   "segment": "C",
   "productionCountry": "Chine",
   "assemblyPlant": "Xi'an",
@@ -118,7 +118,7 @@
       "price_EUR": 37490,
       "batteryUsed": "66 kWh",
       "equipmentHighlights": [
-        "Ecran 12,8 pouces",
+        "Écran 12,8 pouces",
         "455 km WLTP",
         "Charge AC 22 kW"
       ]
@@ -129,7 +129,7 @@
       "batteryUsed": "66 kWh",
       "equipmentHighlights": [
         "Beats Audio",
-        "Sieges chauffants ventiles",
+        "Sièges chauffants ventilés",
         "Toit panoramique"
       ]
     },
@@ -346,11 +346,11 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "Silhouette SUV coupe sportive et aerodynamique"
+      "label": "Silhouette SUV coupé sportive et aérodynamique"
     },
     {
       "category": "technologie",
-      "label": "Ecran 12,8 pouces et charge AC 22 kW de serie"
+      "label": "Écran 12,8 pouces et charge AC 22 kW de série"
     },
     {
       "category": "securite",
@@ -358,19 +358,19 @@
     },
     {
       "category": "confort",
-      "label": "Coffre plus genereux que le #1 (370 L)"
+      "label": "Coffre plus généreux que le #1 (370 L)"
     }
   ],
   "verdict": {
     "strengths": [
-      "Meilleur Cx que le #1 (0,27), autonomie superieure",
-      "Chargeur AC 22 kW de serie, V2L disponible"
+      "Meilleur Cx que le #1 (0,27), autonomie supérieure",
+      "Chargeur AC 22 kW de série, V2L disponible"
     ],
     "weaknesses": [
-      "Assemblage en Chine, aucune aide francaise",
-      "Visibilite arriere limitee par la ligne coupe"
+      "Assemblage en Chine, aucune aide française",
+      "Visibilité arrière limitée par la ligne coupé"
     ],
-    "idealUserProfile": "Conducteurs cherchant un SUV coupe electrique sportif avec bon equipement de serie.",
+    "idealUserProfile": "Conducteurs cherchant un SUV coupé électrique sportif avec bon équipement de série.",
     "notIdealFor": "Familles cherchant un maximum d'espace ou acheteurs sensibles aux aides."
   },
   "lastUpdated": "2026-05-19",

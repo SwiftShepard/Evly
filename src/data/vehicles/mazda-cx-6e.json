@@ -24,10 +24,10 @@
   "wltp_max_km": 484,
   "wltp_min_km": 484,
   "realRange": {
-    "mixed_km": 351,
-    "highway_130_km": 264,
-    "urban_km": 449,
-    "winter_minus5_km": 223,
+    "mixed_km": 353,
+    "highway_130_km": 265,
+    "urban_km": 452,
+    "winter_minus5_km": 225,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 19,
@@ -169,10 +169,10 @@
       "wltp_km": 484,
       "wltp_consumption_kWh_100km": 19,
       "realRange": {
-        "mixed_km": 351,
-        "highway_130_km": 264,
-        "urban_km": 449,
-        "winter_minus5_km": 223,
+        "mixed_km": 353,
+        "highway_130_km": 265,
+        "urban_km": 452,
+        "winter_minus5_km": 225,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -222,10 +222,10 @@
       "wltp_km": 484,
       "wltp_consumption_kWh_100km": 19,
       "realRange": {
-        "mixed_km": 351,
-        "highway_130_km": 264,
-        "urban_km": 449,
-        "winter_minus5_km": 223,
+        "mixed_km": 353,
+        "highway_130_km": 265,
+        "urban_km": 452,
+        "winter_minus5_km": 225,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -296,7 +296,7 @@
     "weaknesses": [
       "Poids et aérodynamique de SUV limitant l'autonomie WLTP à 484 km",
       "Pas de Prime CEE en France en raison de la production en Chine",
-      "Puissance de charge DC correcte mais pas au niveau des plateformes 800V"
+      "Puissance de charge DC correcte mais pas au niveau des plateformes 800 V"
     ],
     "idealUserProfile": "Familles recherchant un SUV électrique moderne, très technologique, avec un confort de roulement premium et un équipement ultra-complet.",
     "notIdealFor": "Conducteurs recherchant une autonomie supérieure à 500 km ou une compatibilité avec le Prime CEE français."

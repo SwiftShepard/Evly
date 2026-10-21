@@ -150,7 +150,7 @@
       "equipmentHighlights": [
         "639 ch AWD, 0-100 en 3,3 s",
         "591 km WLTP",
-        "Chassis sport Porsche Active Suspension Management (PASM)"
+        "Châssis sport Porsche Active Suspension Management (PASM)"
       ]
     }
   ],
@@ -290,7 +290,7 @@
         }
       ],
       "availability": "available",
-      "notes": "408 ch (300 kW), AWD, suspension pneumatique de serie"
+      "notes": "408 ch (300 kW), AWD, suspension pneumatique de série"
     },
     {
       "id": "porsche-macan-turbo",
@@ -356,7 +356,7 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "Allure de SUV Coupe dynamique avec ligne de toit fuyante"
+      "label": "Allure de SUV Coupé dynamique avec ligne de toit fuyante"
     },
     {
       "category": "technologie",
@@ -368,20 +368,20 @@
     },
     {
       "category": "securite",
-      "label": "Projecteurs Matrix LED et transmission integrale adaptative"
+      "label": "Projecteurs Matrix LED et transmission intégrale adaptative"
     }
   ],
   "verdict": {
     "strengths": [
-      "Performances de premier ordre et comportement d'une agilite bluffante",
-      "Architecture 800 V offrant des temps de recharge records pour la categorie"
+      "Performances de premier ordre et comportement d'une agilité bluffante",
+      "Architecture 800 V offrant des temps de recharge records pour la catégorie"
     ],
     "weaknesses": [
-      "Poids depassant les 2,4 tonnes nuisant a l'efficience pure",
-      "Facture finale tres salee une fois passe par la case des options"
+      "Poids dépassant les 2,4 tonnes nuisant à l'efficience pure",
+      "Facture finale très salée une fois passé par la case des options"
     ],
     "idealUserProfile": "Conducteurs souhaitant un SUV familial sportif, prestigieux et capable de voyager au long cours sans contrainte de charge.",
-    "notIdealFor": "Acheteurs soucieux d'efficience maximale ou de discretion, ou disposant d'un budget raisonnable."
+    "notIdealFor": "Acheteurs soucieux d'efficience maximale ou de discrétion, ou disposant d'un budget raisonnable."
   },
   "lastUpdated": "2026-10-08",
   "sources": [

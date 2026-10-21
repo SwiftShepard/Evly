@@ -24,10 +24,10 @@
   "wltp_max_km": 330,
   "wltp_min_km": 330,
   "realRange": {
-    "mixed_km": 238,
-    "highway_130_km": 179,
-    "urban_km": 304,
-    "winter_minus5_km": 163,
+    "mixed_km": 240,
+    "highway_130_km": 180,
+    "urban_km": 307,
+    "winter_minus5_km": 164,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 17,
@@ -88,7 +88,7 @@
       "equipmentHighlights": [
         "330 km WLTP",
         "Portes coulissantes",
-        "Ecran tactile 10 pouces"
+        "Écran tactile 10 pouces"
       ]
     },
     {
@@ -97,7 +97,7 @@
       "batteryUsed": "50 kWh",
       "equipmentHighlights": [
         "330 km WLTP",
-        "Camera de recul",
+        "Caméra de recul",
         "Jantes alliage 16 pouces"
       ]
     },
@@ -108,7 +108,7 @@
       "equipmentHighlights": [
         "330 km WLTP",
         "Toit panoramique",
-        "Sieges chauffants"
+        "Sièges chauffants"
       ]
     }
   ],
@@ -141,10 +141,10 @@
       "wltp_km": 330,
       "wltp_consumption_kWh_100km": 17,
       "realRange": {
-        "mixed_km": 238,
-        "highway_130_km": 179,
-        "urban_km": 304,
-        "winter_minus5_km": 163,
+        "mixed_km": 240,
+        "highway_130_km": 180,
+        "urban_km": 307,
+        "winter_minus5_km": 164,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -190,10 +190,10 @@
       "wltp_km": 330,
       "wltp_consumption_kWh_100km": 17,
       "realRange": {
-        "mixed_km": 238,
-        "highway_130_km": 179,
-        "urban_km": 304,
-        "winter_minus5_km": 163,
+        "mixed_km": 240,
+        "highway_130_km": 180,
+        "urban_km": 307,
+        "winter_minus5_km": 164,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -239,10 +239,10 @@
       "wltp_km": 330,
       "wltp_consumption_kWh_100km": 17,
       "realRange": {
-        "mixed_km": 238,
-        "highway_130_km": 179,
-        "urban_km": 304,
-        "winter_minus5_km": 163,
+        "mixed_km": 240,
+        "highway_130_km": 180,
+        "urban_km": 307,
+        "winter_minus5_km": 164,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -285,11 +285,11 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "Portes coulissantes, habitabilite de reference"
+      "label": "Portes coulissantes, habitabilité de référence"
     },
     {
       "category": "technologie",
-      "label": "Toyota Safety Sense de serie"
+      "label": "Toyota Safety Sense de série"
     },
     {
       "category": "securite",
@@ -297,19 +297,19 @@
     },
     {
       "category": "design",
-      "label": "Ludospace compact, version L jusqu'a 7 places"
+      "label": "Ludospace compact, version L jusqu'à 7 places"
     }
   ],
   "verdict": {
     "strengths": [
-      "Habitabilite et modularite de ludospace, portes coulissantes",
-      "Garantie Toyota, fiabilite reconnue"
+      "Habitabilité et modularité de ludospace, portes coulissantes",
+      "Garantie Toyota, fiabilité reconnue"
     ],
     "weaknesses": [
-      "Charge DC limitee a 100 kW",
+      "Charge DC limitée à 100 kW",
       "Autonomie modeste sur autoroute"
     ],
-    "idealUserProfile": "Familles cherchant un vehicule spacieux avec portes coulissantes et eligible au leasing social.",
+    "idealUserProfile": "Familles cherchant un véhicule spacieux avec portes coulissantes et éligible au leasing social.",
     "notIdealFor": "Gros rouleurs autoroutiers ou amateurs de conduite sportive."
   },
   "lastUpdated": "2026-05-20",

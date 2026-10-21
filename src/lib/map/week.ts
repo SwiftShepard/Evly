@@ -40,6 +40,8 @@ export interface VehicleCharging {
   /** Énergie ajoutée en 30 min sur borne rapide, depuis 10 % (kWh) */
   dc30KWh: number;
   dcPeakKW: number;
+  /** Courbe de charge rapide de la version : [niveau de batterie %, kW] (planificateur de grand trajet) */
+  curve?: [number, number][];
 }
 
 export interface DayResult {

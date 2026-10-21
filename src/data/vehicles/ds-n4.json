@@ -25,10 +25,10 @@
   "wltp_max_km": 450,
   "wltp_min_km": 448,
   "realRange": {
-    "mixed_km": 317,
-    "highway_130_km": 238,
-    "urban_km": 405,
-    "winter_minus5_km": 217,
+    "mixed_km": 320,
+    "highway_130_km": 240,
+    "urban_km": 410,
+    "winter_minus5_km": 219,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 15.0,
@@ -109,7 +109,7 @@
     {
       "name": "Pallas",
       "price_EUR": 46990,
-      "batteryUsed": "58.3 kWh",
+      "batteryUsed": "58,3 kWh",
       "equipmentHighlights": [
         "Jantes alliage 19\" Lausanne",
         "Combiné numérique 10\" et écran tactile 10\" HD",
@@ -119,7 +119,7 @@
     {
       "name": "Étoile",
       "price_EUR": 51790,
-      "batteryUsed": "58.3 kWh",
+      "batteryUsed": "58,3 kWh",
       "equipmentHighlights": [
         "Projecteurs DS Matrix LED Vision",
         "Intérieur Alcantara noir et sièges électriques",
@@ -152,10 +152,10 @@
       "wltp_km": 450,
       "wltp_consumption_kWh_100km": 15.0,
       "realRange": {
-        "mixed_km": 317,
-        "highway_130_km": 238,
-        "urban_km": 405,
-        "winter_minus5_km": 217,
+        "mixed_km": 320,
+        "highway_130_km": 240,
+        "urban_km": 410,
+        "winter_minus5_km": 219,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -227,10 +227,10 @@
       "wltp_km": 448,
       "wltp_consumption_kWh_100km": 15.1,
       "realRange": {
-        "mixed_km": 315,
-        "highway_130_km": 237,
-        "urban_km": 403,
-        "winter_minus5_km": 215,
+        "mixed_km": 319,
+        "highway_130_km": 239,
+        "urban_km": 408,
+        "winter_minus5_km": 218,
         "confidence": "estimated"
       },
       "rangeTests": [],

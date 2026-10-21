@@ -2,7 +2,7 @@
   "slug": "xpeng-g9",
   "brand": "Xpeng",
   "model": "G9",
-  "variant": "93.1 kWh",
+  "variant": "93,1 kWh",
   "bodyType": "Grand SUV",
   "segment": "E",
   "productionCountry": "Chine",
@@ -154,23 +154,23 @@
       ]
     },
     {
-      "name": "93.1 kWh",
+      "name": "93,1 kWh",
       "price_EUR": 63990,
-      "batteryUsed": "93.1 kWh",
+      "batteryUsed": "93,1 kWh",
       "equipmentHighlights": [
         "585 km WLTP",
-        "Ecran 15,6 pouces",
+        "Écran 15,6 pouces",
         "Charge 5C"
       ]
     },
     {
-      "name": "Performance 93.1 kWh",
+      "name": "Performance 93,1 kWh",
       "price_EUR": 73990,
-      "batteryUsed": "93.1 kWh",
+      "batteryUsed": "93,1 kWh",
       "equipmentHighlights": [
         "AWD 575 ch",
         "0-100 en 3,9 s",
-        "Charge jusqu'a 525 kW"
+        "Charge jusqu'à 525 kW"
       ]
     }
   ],
@@ -234,9 +234,9 @@
     },
     {
       "id": "xpeng-g9-long-range",
-      "label": "G9 · 93.1 kWh",
+      "label": "G9 · 93,1 kWh",
       "battery": "long-range",
-      "trim": "93.1 kWh",
+      "trim": "93,1 kWh",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
@@ -340,9 +340,9 @@
     },
     {
       "id": "xpeng-g9-performance",
-      "label": "G9 Performance · 93.1 kWh",
+      "label": "G9 Performance · 93,1 kWh",
       "battery": "long-range",
-      "trim": "Performance 93.1 kWh",
+      "trim": "Performance 93,1 kWh",
       "wheelSize_inches": 21,
       "tyreType": "summer",
       "options": [],
@@ -483,11 +483,11 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "Grand SUV premium aux proportions genereuses"
+      "label": "Grand SUV premium aux proportions généreuses"
     },
     {
       "category": "technologie",
-      "label": "Architecture 800 V, charge 5C jusqu'a 525 kW"
+      "label": "Architecture 800 V, charge 5C jusqu'à 525 kW"
     },
     {
       "category": "securite",
@@ -500,15 +500,15 @@
   ],
   "verdict": {
     "strengths": [
-      "Charge 5C record (10-80 % en 12 min, jusqu'a 525 kW)",
-      "Grand espace interieur, coffre 660 L + frunk 71 L"
+      "Charge 5C record (10-80 % en 12 min, jusqu'à 525 kW)",
+      "Grand espace intérieur, coffre 660 L + frunk 71 L"
     ],
     "weaknesses": [
-      "Prix eleve (a partir de 59 900 euros)",
-      "Assemblage en Chine, aucune aide francaise"
+      "Prix élevé (à partir de 59 900 euros)",
+      "Assemblage en Chine, aucune aide française"
     ],
-    "idealUserProfile": "Familles cherchant un grand SUV electrique premium avec la charge la plus rapide du marche.",
-    "notIdealFor": "Budgets limites ou acheteurs fideles aux marques europeennes."
+    "idealUserProfile": "Familles cherchant un grand SUV électrique premium avec la charge la plus rapide du marché.",
+    "notIdealFor": "Budgets limités ou acheteurs fidèles aux marques européennes."
   },
   "lastUpdated": "2026-10-08",
   "sources": [

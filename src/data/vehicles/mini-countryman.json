@@ -126,9 +126,9 @@
     {
       "name": "Essential E",
       "price_EUR": 39240,
-      "batteryUsed": "65.2 kWh (E)",
+      "batteryUsed": "65,2 kWh (E)",
       "equipmentHighlights": [
-        "Ecran central circulaire tactile OLED 240mm",
+        "Écran central circulaire tactile OLED 240 mm",
         "Climatisation automatique bi-zone",
         "Régulateur de vitesse adaptatif",
         "Jantes alliage 17 pouces"
@@ -137,7 +137,7 @@
     {
       "name": "Classic E",
       "price_EUR": 40290,
-      "batteryUsed": "65.2 kWh (E)",
+      "batteryUsed": "65,2 kWh (E)",
       "equipmentHighlights": [
         "Volant sport à 3 branches chauffant",
         "Sièges sport en similicuir/tissu",
@@ -148,7 +148,7 @@
     {
       "name": "Classic SE ALL4",
       "price_EUR": 45290,
-      "batteryUsed": "65.2 kWh (SE ALL4)",
+      "batteryUsed": "65,2 kWh (SE ALL4)",
       "equipmentHighlights": [
         "Transmission intégrale intelligente ALL4",
         "Projecteurs LED adaptatifs",
@@ -159,7 +159,7 @@
     {
       "name": "Favoured SE ALL4",
       "price_EUR": 46650,
-      "batteryUsed": "65.2 kWh (SE ALL4)",
+      "batteryUsed": "65,2 kWh (SE ALL4)",
       "equipmentHighlights": [
         "Affichage tête haute",
         "Sièges sport John Cooper Works à mémoire",

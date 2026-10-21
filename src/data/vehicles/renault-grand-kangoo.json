@@ -24,10 +24,10 @@
   "wltp_max_km": 265,
   "wltp_min_km": 265,
   "realRange": {
-    "mixed_km": 191,
-    "highway_130_km": 143,
-    "urban_km": 244,
-    "winter_minus5_km": 131,
+    "mixed_km": 193,
+    "highway_130_km": 145,
+    "urban_km": 247,
+    "winter_minus5_km": 132,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 19.5,
@@ -137,10 +137,10 @@
       "wltp_km": 265,
       "wltp_consumption_kWh_100km": 19.5,
       "realRange": {
-        "mixed_km": 191,
-        "highway_130_km": 143,
-        "urban_km": 244,
-        "winter_minus5_km": 131,
+        "mixed_km": 193,
+        "highway_130_km": 145,
+        "urban_km": 247,
+        "winter_minus5_km": 132,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -186,10 +186,10 @@
       "wltp_km": 265,
       "wltp_consumption_kWh_100km": 19.5,
       "realRange": {
-        "mixed_km": 191,
-        "highway_130_km": 143,
-        "urban_km": 244,
-        "winter_minus5_km": 131,
+        "mixed_km": 193,
+        "highway_130_km": 145,
+        "urban_km": 247,
+        "winter_minus5_km": 132,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -232,11 +232,11 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "7 places modulables avec sieges amovibles"
+      "label": "7 places modulables avec sièges amovibles"
     },
     {
       "category": "technologie",
-      "label": "OpenR Link avec Google integre"
+      "label": "OpenR Link avec Google intégré"
     },
     {
       "category": "securite",
@@ -244,22 +244,22 @@
     },
     {
       "category": "design",
-      "label": "Portes laterales coulissantes, empattement long"
+      "label": "Portes latérales coulissantes, empattement long"
     }
   ],
   "verdict": {
     "strengths": [
-      "Seul ludospace electrique 7 places du marche",
-      "Modularite exceptionnelle (sieges amovibles)",
-      "Charge AC 22 kW de serie"
+      "Seul ludospace électrique 7 places du marché",
+      "Modularité exceptionnelle (sièges amovibles)",
+      "Charge AC 22 kW de série"
     ],
     "weaknesses": [
-      "Autonomie limitee pour un vehicule familial (265 km WLTP)",
-      "Charge DC plafonnee a 80 kW",
-      "Masse elevee impactant la consommation"
+      "Autonomie limitée pour un véhicule familial (265 km WLTP)",
+      "Charge DC plafonnée à 80 kW",
+      "Masse élevée impactant la consommation"
     ],
-    "idealUserProfile": "Grandes familles cherchant un vehicule 7 places electrique pour les trajets quotidiens.",
-    "notIdealFor": "Gros rouleurs autoroutiers ou departs en vacances longue distance frequents."
+    "idealUserProfile": "Grandes familles cherchant un véhicule 7 places électrique pour les trajets quotidiens.",
+    "notIdealFor": "Gros rouleurs autoroutiers ou départs en vacances longue distance fréquents."
   },
   "lastUpdated": "2026-10-08",
   "sources": [

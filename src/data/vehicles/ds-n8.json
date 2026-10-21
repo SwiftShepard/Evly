@@ -25,11 +25,11 @@
   "wltp_max_km": 758,
   "wltp_min_km": 532,
   "realRange": {
-    "mixed_km": 550,
-    "highway_130_km": 413,
-    "urban_km": 703,
-    "winter_minus5_km": 376,
-    "confidence": "estimated"
+    "mixed_km": 572,
+    "highway_130_km": 421,
+    "urban_km": 741,
+    "winter_minus5_km": 412,
+    "confidence": "tested"
   },
   "consumption_mixed_kWh_per_100km": 15.7,
   "consumption_highway_kWh_per_100km": 23.5,
@@ -96,7 +96,64 @@
       "power": 10
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2025-11",
+      "speed_kmh": null,
+      "range_km": 604,
+      "consumption_kWh_100km": 16.1,
+      "temperature_C": 14,
+      "wheelSize_inches": 19,
+      "tyreModel": "Goodyear Eagle F1 Asymmetric 6 235/55 R19",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-ds-numero-8-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+      "notes": "Supertest Automobile Propre (FWD Long Range 97,2 kWh), parcours mixte. Autonomies publiées sur 97,2 kWh annoncés ; capacité mesurée 91 kWh, retenue pour la fiche."
+    },
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2025-11",
+      "speed_kmh": 90,
+      "range_km": 720,
+      "consumption_kWh_100km": 13.5,
+      "temperature_C": null,
+      "wheelSize_inches": 19,
+      "tyreModel": "Goodyear Eagle F1 Asymmetric 6 235/55 R19",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-ds-numero-8-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+      "notes": "Supertest Automobile Propre (FWD Long Range 97,2 kWh), vitesse stabilisée. Autonomies publiées sur 97,2 kWh annoncés ; capacité mesurée 91 kWh, retenue pour la fiche."
+    },
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2025-11",
+      "speed_kmh": 110,
+      "range_km": 565,
+      "consumption_kWh_100km": 17.2,
+      "temperature_C": null,
+      "wheelSize_inches": 19,
+      "tyreModel": "Goodyear Eagle F1 Asymmetric 6 235/55 R19",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-ds-numero-8-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+      "notes": "Supertest Automobile Propre (FWD Long Range 97,2 kWh), vitesse stabilisée. Autonomies publiées sur 97,2 kWh annoncés ; capacité mesurée 91 kWh, retenue pour la fiche."
+    },
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2025-11",
+      "speed_kmh": 130,
+      "range_km": 450,
+      "consumption_kWh_100km": 21.6,
+      "temperature_C": null,
+      "wheelSize_inches": 19,
+      "tyreModel": "Goodyear Eagle F1 Asymmetric 6 235/55 R19",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-ds-numero-8-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+      "notes": "Supertest Automobile Propre (FWD Long Range 97,2 kWh), vitesse stabilisée. Autonomies publiées sur 97,2 kWh annoncés ; capacité mesurée 91 kWh, retenue pour la fiche."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4820,
   "width_mm": 1900,
@@ -107,9 +164,9 @@
   "frunkCapacity_L": 0,
   "trims": [
     {
-      "name": "N°8 230 ch 73.7 kWh",
+      "name": "N°8 230 ch 73,7 kWh",
       "price_EUR": 46990,
-      "batteryUsed": "73.7 kWh",
+      "batteryUsed": "73,7 kWh",
       "equipmentHighlights": [
         "Écran tactile 16\" HD, CarPlay et Android Auto sans fil",
         "Jantes 19\" Borealis Aero",
@@ -117,9 +174,9 @@
       ]
     },
     {
-      "name": "N°8 245 ch 97.2 kWh",
+      "name": "N°8 245 ch 97,2 kWh",
       "price_EUR": 50610,
-      "batteryUsed": "97.2 kWh",
+      "batteryUsed": "97,2 kWh",
       "equipmentHighlights": [
         "Écran tactile 16\" HD, CarPlay et Android Auto sans fil",
         "Jantes 19\" Borealis Aero",
@@ -127,9 +184,9 @@
       ]
     },
     {
-      "name": "Pallas 230 ch 73.7 kWh",
+      "name": "Pallas 230 ch 73,7 kWh",
       "price_EUR": 60920,
-      "batteryUsed": "73.7 kWh",
+      "batteryUsed": "73,7 kWh",
       "equipmentHighlights": [
         "Sièges avant électriques et chauffants",
         "Hayon motorisé et chargeur sans fil ventilé",
@@ -137,9 +194,9 @@
       ]
     },
     {
-      "name": "Pallas 245 ch 97.2 kWh",
+      "name": "Pallas 245 ch 97,2 kWh",
       "price_EUR": 64540,
-      "batteryUsed": "97.2 kWh",
+      "batteryUsed": "97,2 kWh",
       "equipmentHighlights": [
         "Sièges avant électriques et chauffants",
         "Hayon motorisé et chargeur sans fil ventilé",
@@ -147,9 +204,9 @@
       ]
     },
     {
-      "name": "Étoile 230 ch 73.7 kWh",
+      "name": "Étoile 230 ch 73,7 kWh",
       "price_EUR": 66700,
-      "batteryUsed": "73.7 kWh",
+      "batteryUsed": "73,7 kWh",
       "equipmentHighlights": [
         "Suspension pilotée DS Active Scan Suspension",
         "DS Drive Assist 2.0 et affichage tête haute étendu",
@@ -157,9 +214,9 @@
       ]
     },
     {
-      "name": "Étoile 245 ch 97.2 kWh",
+      "name": "Étoile 245 ch 97,2 kWh",
       "price_EUR": 70320,
-      "batteryUsed": "97.2 kWh",
+      "batteryUsed": "97,2 kWh",
       "equipmentHighlights": [
         "Suspension pilotée DS Active Scan Suspension",
         "DS Drive Assist 2.0 et affichage tête haute étendu",
@@ -167,9 +224,9 @@
       ]
     },
     {
-      "name": "Étoile AWD 350 ch 97.2 kWh",
+      "name": "Étoile AWD 350 ch 97,2 kWh",
       "price_EUR": 74020,
-      "batteryUsed": "97.2 kWh",
+      "batteryUsed": "97,2 kWh",
       "equipmentHighlights": [
         "Transmission intégrale 350 ch, 0 à 100 km/h en 5,4 s",
         "Suspension pilotée DS Active Scan Suspension",
@@ -206,10 +263,10 @@
       "wltp_km": 557,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 404,
-        "highway_130_km": 303,
-        "urban_km": 516,
-        "winter_minus5_km": 276,
+        "mixed_km": 421,
+        "highway_130_km": 310,
+        "urban_km": 545,
+        "winter_minus5_km": 288,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -313,10 +370,10 @@
       "wltp_km": 556,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 403,
-        "highway_130_km": 303,
-        "urban_km": 515,
-        "winter_minus5_km": 276,
+        "mixed_km": 420,
+        "highway_130_km": 309,
+        "urban_km": 544,
+        "winter_minus5_km": 287,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -420,10 +477,10 @@
       "wltp_km": 532,
       "wltp_consumption_kWh_100km": 16.3,
       "realRange": {
-        "mixed_km": 386,
-        "highway_130_km": 290,
-        "urban_km": 493,
-        "winter_minus5_km": 264,
+        "mixed_km": 402,
+        "highway_130_km": 296,
+        "urban_km": 521,
+        "winter_minus5_km": 275,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -523,13 +580,70 @@
       "wltp_km": 758,
       "wltp_consumption_kWh_100km": 15.7,
       "realRange": {
-        "mixed_km": 550,
-        "highway_130_km": 413,
-        "urban_km": 703,
-        "winter_minus5_km": 376,
-        "confidence": "estimated"
+        "mixed_km": 572,
+        "highway_130_km": 421,
+        "urban_km": 741,
+        "winter_minus5_km": 412,
+        "confidence": "tested"
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2025-11",
+          "speed_kmh": null,
+          "range_km": 604,
+          "consumption_kWh_100km": 16.1,
+          "temperature_C": 14,
+          "wheelSize_inches": 19,
+          "tyreModel": "Goodyear Eagle F1 Asymmetric 6 235/55 R19",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-ds-numero-8-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (FWD Long Range 97,2 kWh), parcours mixte. Autonomies publiées sur 97,2 kWh annoncés ; capacité mesurée 91 kWh, retenue pour la fiche."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2025-11",
+          "speed_kmh": 90,
+          "range_km": 720,
+          "consumption_kWh_100km": 13.5,
+          "temperature_C": null,
+          "wheelSize_inches": 19,
+          "tyreModel": "Goodyear Eagle F1 Asymmetric 6 235/55 R19",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-ds-numero-8-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (FWD Long Range 97,2 kWh), vitesse stabilisée. Autonomies publiées sur 97,2 kWh annoncés ; capacité mesurée 91 kWh, retenue pour la fiche."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2025-11",
+          "speed_kmh": 110,
+          "range_km": 565,
+          "consumption_kWh_100km": 17.2,
+          "temperature_C": null,
+          "wheelSize_inches": 19,
+          "tyreModel": "Goodyear Eagle F1 Asymmetric 6 235/55 R19",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-ds-numero-8-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (FWD Long Range 97,2 kWh), vitesse stabilisée. Autonomies publiées sur 97,2 kWh annoncés ; capacité mesurée 91 kWh, retenue pour la fiche."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2025-11",
+          "speed_kmh": 130,
+          "range_km": 450,
+          "consumption_kWh_100km": 21.6,
+          "temperature_C": null,
+          "wheelSize_inches": 19,
+          "tyreModel": "Goodyear Eagle F1 Asymmetric 6 235/55 R19",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-ds-numero-8-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (FWD Long Range 97,2 kWh), vitesse stabilisée. Autonomies publiées sur 97,2 kWh annoncés ; capacité mesurée 91 kWh, retenue pour la fiche."
+        }
+      ],
       "chargingDC_peak_kW": 160,
       "chargingDC_10_80_min": 32,
       "chargingDC_kWh_30min": 65,
@@ -598,13 +712,70 @@
       "wltp_km": 757,
       "wltp_consumption_kWh_100km": 15.7,
       "realRange": {
-        "mixed_km": 549,
-        "highway_130_km": 412,
-        "urban_km": 702,
-        "winter_minus5_km": 376,
-        "confidence": "estimated"
+        "mixed_km": 572,
+        "highway_130_km": 421,
+        "urban_km": 741,
+        "winter_minus5_km": 412,
+        "confidence": "tested"
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2025-11",
+          "speed_kmh": null,
+          "range_km": 604,
+          "consumption_kWh_100km": 16.1,
+          "temperature_C": 14,
+          "wheelSize_inches": 19,
+          "tyreModel": "Goodyear Eagle F1 Asymmetric 6 235/55 R19",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-ds-numero-8-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (FWD Long Range 97,2 kWh), parcours mixte. Autonomies publiées sur 97,2 kWh annoncés ; capacité mesurée 91 kWh, retenue pour la fiche."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2025-11",
+          "speed_kmh": 90,
+          "range_km": 720,
+          "consumption_kWh_100km": 13.5,
+          "temperature_C": null,
+          "wheelSize_inches": 19,
+          "tyreModel": "Goodyear Eagle F1 Asymmetric 6 235/55 R19",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-ds-numero-8-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (FWD Long Range 97,2 kWh), vitesse stabilisée. Autonomies publiées sur 97,2 kWh annoncés ; capacité mesurée 91 kWh, retenue pour la fiche."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2025-11",
+          "speed_kmh": 110,
+          "range_km": 565,
+          "consumption_kWh_100km": 17.2,
+          "temperature_C": null,
+          "wheelSize_inches": 19,
+          "tyreModel": "Goodyear Eagle F1 Asymmetric 6 235/55 R19",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-ds-numero-8-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (FWD Long Range 97,2 kWh), vitesse stabilisée. Autonomies publiées sur 97,2 kWh annoncés ; capacité mesurée 91 kWh, retenue pour la fiche."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2025-11",
+          "speed_kmh": 130,
+          "range_km": 450,
+          "consumption_kWh_100km": 21.6,
+          "temperature_C": null,
+          "wheelSize_inches": 19,
+          "tyreModel": "Goodyear Eagle F1 Asymmetric 6 235/55 R19",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-ds-numero-8-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (FWD Long Range 97,2 kWh), vitesse stabilisée. Autonomies publiées sur 97,2 kWh annoncés ; capacité mesurée 91 kWh, retenue pour la fiche."
+        }
+      ],
       "chargingDC_peak_kW": 160,
       "chargingDC_10_80_min": 32,
       "chargingDC_kWh_30min": 65,
@@ -673,13 +844,70 @@
       "wltp_km": 723,
       "wltp_consumption_kWh_100km": 16.6,
       "realRange": {
-        "mixed_km": 524,
-        "highway_130_km": 394,
-        "urban_km": 670,
-        "winter_minus5_km": 358,
-        "confidence": "estimated"
+        "mixed_km": 572,
+        "highway_130_km": 421,
+        "urban_km": 741,
+        "winter_minus5_km": 412,
+        "confidence": "tested"
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2025-11",
+          "speed_kmh": null,
+          "range_km": 604,
+          "consumption_kWh_100km": 16.1,
+          "temperature_C": 14,
+          "wheelSize_inches": 19,
+          "tyreModel": "Goodyear Eagle F1 Asymmetric 6 235/55 R19",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-ds-numero-8-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (FWD Long Range 97,2 kWh), parcours mixte. Autonomies publiées sur 97,2 kWh annoncés ; capacité mesurée 91 kWh, retenue pour la fiche."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2025-11",
+          "speed_kmh": 90,
+          "range_km": 720,
+          "consumption_kWh_100km": 13.5,
+          "temperature_C": null,
+          "wheelSize_inches": 19,
+          "tyreModel": "Goodyear Eagle F1 Asymmetric 6 235/55 R19",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-ds-numero-8-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (FWD Long Range 97,2 kWh), vitesse stabilisée. Autonomies publiées sur 97,2 kWh annoncés ; capacité mesurée 91 kWh, retenue pour la fiche."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2025-11",
+          "speed_kmh": 110,
+          "range_km": 565,
+          "consumption_kWh_100km": 17.2,
+          "temperature_C": null,
+          "wheelSize_inches": 19,
+          "tyreModel": "Goodyear Eagle F1 Asymmetric 6 235/55 R19",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-ds-numero-8-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (FWD Long Range 97,2 kWh), vitesse stabilisée. Autonomies publiées sur 97,2 kWh annoncés ; capacité mesurée 91 kWh, retenue pour la fiche."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2025-11",
+          "speed_kmh": 130,
+          "range_km": 450,
+          "consumption_kWh_100km": 21.6,
+          "temperature_C": null,
+          "wheelSize_inches": 19,
+          "tyreModel": "Goodyear Eagle F1 Asymmetric 6 235/55 R19",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-ds-numero-8-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (FWD Long Range 97,2 kWh), vitesse stabilisée. Autonomies publiées sur 97,2 kWh annoncés ; capacité mesurée 91 kWh, retenue pour la fiche."
+        }
+      ],
       "chargingDC_peak_kW": 160,
       "chargingDC_10_80_min": 32,
       "chargingDC_kWh_30min": 65,
@@ -752,10 +980,10 @@
       "wltp_km": 664,
       "wltp_consumption_kWh_100km": 17.4,
       "realRange": {
-        "mixed_km": 481,
-        "highway_130_km": 361,
-        "urban_km": 615,
-        "winter_minus5_km": 329,
+        "mixed_km": 502,
+        "highway_130_km": 369,
+        "urban_km": 650,
+        "winter_minus5_km": 343,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -856,7 +1084,8 @@
   "lastUpdated": "2026-10-18",
   "sources": [
     "ds-fr",
-    "ev-database"
+    "ev-database",
+    "automobile-propre"
   ],
   "imageCredit": "Constructeur"
 }

@@ -85,6 +85,21 @@ export async function chargersAround(lat: number, lon: number, radiusKm = 5): Pr
   return out.sort((a, b) => a.d - b.d);
 }
 
+/** Bornes des tuiles que traverse un tracé ([lon, lat]), marge de 3 km comprise (planificateur de grand trajet) */
+export async function chargersAlong(coords: [number, number][]): Promise<Charger[]> {
+  const keys = new Set<string>();
+  const pad = 0.03;
+  for (const [lon, lat] of coords)
+    for (const dl of [-pad, pad])
+      for (const dn of [-pad, pad]) keys.add(`${Math.floor((lat + dl) / CHARGER_TILE)}_${Math.floor((lon + dn) / CHARGER_TILE)}`);
+  const tiles = await Promise.all([...keys].map((t) => tile(`/carte/bornes/${t}.json`)));
+  const out: Charger[] = [];
+  for (const items of tiles)
+    for (const [la, lo, kw, points, name, open] of items as [number, number, number, number, string, number][])
+      out.push({ lat: la / 1e4, lon: lo / 1e4, kw, points, name, open: open === 1, d: 0 });
+  return out;
+}
+
 export interface Destination {
   kind: string;
   name: string;

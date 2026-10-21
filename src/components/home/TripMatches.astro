@@ -6,6 +6,8 @@
  */
 import VehicleImage from "@/components/ui/VehicleImage.astro";
 import RangeRail from "@/components/ui/RangeRail.astro";
+import Confidence from "@/components/ui/Confidence.astro";
+import { levelFromCode } from "@/lib/confidence";
 import { getVehicleIndex } from "@/lib/vehicleIndex";
 import { cheapestMatches } from "@/lib/tripFit";
 import { formatPrice } from "@/lib/format";
@@ -43,7 +45,7 @@ const matches = cheapestMatches(index, DEFAULT_DAILY * 5, LIMIT);
             <p class="match-version">{cfg[4]}</p>
             <RangeRail real={cfg[2]} wltp={cfg[3]} winter={cfg[1]} scale={SCALE} />
             <div class="match-foot">
-              <span><b data-days>{Math.floor(cfg[1] / DEFAULT_DAILY)} jours</b> en hiver</span>
+              <span><b data-days>{Math.floor(cfg[1] / DEFAULT_DAILY)} jours</b> en hiver <Confidence level={levelFromCode(cfg[5])} /></span>
               <span class="match-price">dès {formatPrice(cfg[0]!)}</span>
             </div>
           </div>
@@ -97,6 +99,7 @@ const matches = cheapestMatches(index, DEFAULT_DAILY * 5, LIMIT);
 <script>
   import { readTrip, onTripChange, weekNeed, paintRails, type Trip } from "@/lib/trip";
   import { cheapestMatches, type IndexRow } from "@/lib/tripFit";
+  import { confidenceHTML, levelFromCode } from "@/lib/confidence";
 
   const nf = new Intl.NumberFormat("fr-FR");
   const euros = (n: number) => `${nf.format(n).replace(/ /g, " ")} €`;
@@ -117,7 +120,7 @@ const matches = cheapestMatches(index, DEFAULT_DAILY * 5, LIMIT);
     const daysLabel = (winter: number, t: Trip) => { const d = Math.floor(winter / t.dailyKm); return `${d} jour${d > 1 ? "s" : ""}`; };
 
     const card = ({ row, cfg }: ReturnType<typeof cheapestMatches>[number], t: Trip) => {
-      const [price, winter, real, wltp, label] = cfg;
+      const [price, winter, real, wltp, label, conf] = cfg;
       const img = row.i ? `<img src="${row.i}"${row.i2 ? ` srcset="${row.i} 240w, ${row.i2} 480w" sizes="260px"` : ""} alt="${esc(`${row.b} ${row.m}`)}" class="vehicle-photo w-[88%] h-full" style="object-fit:contain;object-position:center bottom" loading="lazy" decoding="async" />` : "";
       return `<li data-key="${row.s}:${price}" data-winter="${winter}"><a href="${base}${row.s}/" class="match-card">
         <div class="match-photo stage">${img}</div>
@@ -126,7 +129,7 @@ const matches = cheapestMatches(index, DEFAULT_DAILY * 5, LIMIT);
           <h3 class="match-model">${esc(row.m)}</h3>
           <p class="match-version">${esc(label)}</p>
           <div class="rail" data-size="sm" data-winter="${winter}" data-real="${real}" data-wltp="${wltp}" style="--scale:${scale};--winter:${Math.min(winter, real)};--real:${real};--wltp:${wltp}"><div class="rail-bar" aria-hidden="true"><span class="rail-seg rail-winter"></span><span class="rail-seg rail-real"></span><span class="rail-seg rail-promise"></span><span class="rail-need"></span></div></div>
-          <div class="match-foot"><span><b data-days>${daysLabel(winter, t)}</b> en hiver</span><span class="match-price">dès ${euros(price!)}</span></div>
+          <div class="match-foot"><span><b data-days>${daysLabel(winter, t)}</b> en hiver ${confidenceHTML(levelFromCode(conf))}</span><span class="match-price">dès ${euros(price!)}</span></div>
         </div>
       </a></li>`;
     };

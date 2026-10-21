@@ -24,10 +24,10 @@
   "wltp_max_km": 335,
   "wltp_min_km": 310,
   "realRange": {
-    "mixed_km": 242,
+    "mixed_km": 243,
     "highway_130_km": 182,
-    "urban_km": 309,
-    "winter_minus5_km": 154,
+    "urban_km": 311,
+    "winter_minus5_km": 155,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 19.1,
@@ -88,7 +88,7 @@
       "equipmentHighlights": [
         "Volume utile 6,6 m3",
         "Charge utile 1200 kg",
-        "Ecran tactile central 12,3 pouces"
+        "Écran tactile central 12,3 pouces"
       ]
     },
     {
@@ -97,7 +97,7 @@
       "batteryUsed": "64 kWh",
       "equipmentHighlights": [
         "Volume utile 7,7 m3",
-        "Hauteur surelevee 2,18 m",
+        "Hauteur surélevée 2,18 m",
         "Aide au stationnement 360"
       ]
     }
@@ -120,10 +120,10 @@
       "wltp_km": 335,
       "wltp_consumption_kWh_100km": 19.1,
       "realRange": {
-        "mixed_km": 242,
+        "mixed_km": 243,
         "highway_130_km": 182,
-        "urban_km": 309,
-        "winter_minus5_km": 154,
+        "urban_km": 311,
+        "winter_minus5_km": 155,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -169,9 +169,9 @@
       "wltp_km": 310,
       "wltp_consumption_kWh_100km": 20.6,
       "realRange": {
-        "mixed_km": 224,
-        "highway_130_km": 168,
-        "urban_km": 286,
+        "mixed_km": 225,
+        "highway_130_km": 169,
+        "urban_km": 288,
         "winter_minus5_km": 143,
         "confidence": "estimated"
       },
@@ -215,32 +215,32 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "Poste de conduite moderne avec grand ecran tactile de 12,3 pouces"
+      "label": "Poste de conduite moderne avec grand écran tactile de 12,3 pouces"
     },
     {
       "category": "technologie",
-      "label": "Batterie LFP securisee avec gestion thermique active"
+      "label": "Batterie LFP sécurisée avec gestion thermique active"
     },
     {
       "category": "securite",
-      "label": "Pack complet d'aides a la conduite (ADAS) de serie"
+      "label": "Pack complet d'aides à la conduite (ADAS) de série"
     },
     {
       "category": "design",
-      "label": "Volume de chargement optimise avec design a parois droites"
+      "label": "Volume de chargement optimisé avec design à parois droites"
     }
   ],
   "verdict": {
     "strengths": [
-      "Volume utile exceptionnel (jusqu'a 7,7 m3)",
-      "Rapport prix/equipement commercial tres agressif"
+      "Volume utile exceptionnel (jusqu'à 7,7 m3)",
+      "Rapport prix/équipement commercial très agressif"
     ],
     "weaknesses": [
-      "Reseau commercial Maxus encore en developpement",
-      "Vitesse de charge rapide limitee a 80 kW"
+      "Réseau commercial Maxus encore en développement",
+      "Vitesse de charge rapide limitée à 80 kW"
     ],
-    "idealUserProfile": "Artisans et services de livraison urbains a la recherche d'un excellent rapport volume/prix.",
-    "notIdealFor": "Longs trajets autoroutiers repetes en raison de l'autonomie et de la recharge limitee."
+    "idealUserProfile": "Artisans et services de livraison urbains à la recherche d'un excellent rapport volume/prix.",
+    "notIdealFor": "Longs trajets autoroutiers répétés en raison de l'autonomie et de la recharge limitée."
   },
   "lastUpdated": "2026-05-22",
   "sources": [

@@ -25,10 +25,10 @@
   "wltp_max_km": 741,
   "wltp_min_km": 504,
   "realRange": {
-    "mixed_km": 537,
-    "highway_130_km": 403,
-    "urban_km": 686,
-    "winter_minus5_km": 367,
+    "mixed_km": 540,
+    "highway_130_km": 405,
+    "urban_km": 691,
+    "winter_minus5_km": 369,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 16.1,
@@ -107,9 +107,9 @@
   "frunkCapacity_L": 0,
   "trims": [
     {
-      "name": "N°7 230 ch 73.7 kWh",
+      "name": "N°7 230 ch 73,7 kWh",
       "price_EUR": 46990,
-      "batteryUsed": "73.7 kWh",
+      "batteryUsed": "73,7 kWh",
       "equipmentHighlights": [
         "Écran tactile 16\" HD, CarPlay et Android Auto sans fil",
         "Jantes 19\" Borealis Aero",
@@ -117,9 +117,9 @@
       ]
     },
     {
-      "name": "N°7 245 ch 97.2 kWh",
+      "name": "N°7 245 ch 97,2 kWh",
       "price_EUR": 50610,
-      "batteryUsed": "97.2 kWh",
+      "batteryUsed": "97,2 kWh",
       "equipmentHighlights": [
         "Écran tactile 16\" HD, CarPlay et Android Auto sans fil",
         "Jantes 19\" Borealis Aero",
@@ -127,9 +127,9 @@
       ]
     },
     {
-      "name": "Pallas 230 ch 73.7 kWh",
+      "name": "Pallas 230 ch 73,7 kWh",
       "price_EUR": 58420,
-      "batteryUsed": "73.7 kWh",
+      "batteryUsed": "73,7 kWh",
       "equipmentHighlights": [
         "DS Iris System avec navigation 3D connectée",
         "Hayon motorisé et sièges avant chauffants",
@@ -137,9 +137,9 @@
       ]
     },
     {
-      "name": "Pallas 245 ch 97.2 kWh",
+      "name": "Pallas 245 ch 97,2 kWh",
       "price_EUR": 62040,
-      "batteryUsed": "97.2 kWh",
+      "batteryUsed": "97,2 kWh",
       "equipmentHighlights": [
         "DS Iris System avec navigation 3D connectée",
         "Hayon motorisé et sièges avant chauffants",
@@ -147,9 +147,9 @@
       ]
     },
     {
-      "name": "Étoile 230 ch 73.7 kWh",
+      "name": "Étoile 230 ch 73,7 kWh",
       "price_EUR": 64200,
-      "batteryUsed": "73.7 kWh",
+      "batteryUsed": "73,7 kWh",
       "equipmentHighlights": [
         "Suspension pilotée DS Active Scan Suspension",
         "DS Drive Assist 2.0 et vision 360",
@@ -157,9 +157,9 @@
       ]
     },
     {
-      "name": "Étoile 245 ch 97.2 kWh",
+      "name": "Étoile 245 ch 97,2 kWh",
       "price_EUR": 67820,
-      "batteryUsed": "97.2 kWh",
+      "batteryUsed": "97,2 kWh",
       "equipmentHighlights": [
         "Suspension pilotée DS Active Scan Suspension",
         "DS Drive Assist 2.0 et vision 360",
@@ -167,9 +167,9 @@
       ]
     },
     {
-      "name": "Étoile AWD 350 ch 97.2 kWh",
+      "name": "Étoile AWD 350 ch 97,2 kWh",
       "price_EUR": 71520,
-      "batteryUsed": "97.2 kWh",
+      "batteryUsed": "97,2 kWh",
       "equipmentHighlights": [
         "Transmission intégrale 350 ch, 0 à 100 km/h en 5,4 s",
         "Suspension pilotée DS Active Scan Suspension",
@@ -177,9 +177,9 @@
       ]
     },
     {
-      "name": "La Première 230 ch 73.7 kWh",
+      "name": "La Première 230 ch 73,7 kWh",
       "price_EUR": 70200,
-      "batteryUsed": "73.7 kWh",
+      "batteryUsed": "73,7 kWh",
       "equipmentHighlights": [
         "Sièges Lounge et Hi-Fi Focal Electra 3D",
         "DS Night Vision et affichage tête haute étendu",
@@ -187,9 +187,9 @@
       ]
     },
     {
-      "name": "La Première 245 ch 97.2 kWh",
+      "name": "La Première 245 ch 97,2 kWh",
       "price_EUR": 73820,
-      "batteryUsed": "97.2 kWh",
+      "batteryUsed": "97,2 kWh",
       "equipmentHighlights": [
         "Sièges Lounge et Hi-Fi Focal Electra 3D",
         "DS Night Vision et affichage tête haute étendu",
@@ -197,9 +197,9 @@
       ]
     },
     {
-      "name": "La Première AWD 350 ch 97.2 kWh",
+      "name": "La Première AWD 350 ch 97,2 kWh",
       "price_EUR": 77520,
-      "batteryUsed": "97.2 kWh",
+      "batteryUsed": "97,2 kWh",
       "equipmentHighlights": [
         "Transmission intégrale 350 ch, 0 à 100 km/h en 5,4 s",
         "Sièges Lounge et Hi-Fi Focal Electra 3D",
@@ -236,10 +236,10 @@
       "wltp_km": 544,
       "wltp_consumption_kWh_100km": 15.9,
       "realRange": {
-        "mixed_km": 394,
-        "highway_130_km": 296,
-        "urban_km": 504,
-        "winter_minus5_km": 269,
+        "mixed_km": 396,
+        "highway_130_km": 297,
+        "urban_km": 507,
+        "winter_minus5_km": 271,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -343,10 +343,10 @@
       "wltp_km": 540,
       "wltp_consumption_kWh_100km": 16.0,
       "realRange": {
-        "mixed_km": 392,
-        "highway_130_km": 294,
-        "urban_km": 501,
-        "winter_minus5_km": 268,
+        "mixed_km": 393,
+        "highway_130_km": 295,
+        "urban_km": 503,
+        "winter_minus5_km": 269,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -450,10 +450,10 @@
       "wltp_km": 520,
       "wltp_consumption_kWh_100km": 16.7,
       "realRange": {
-        "mixed_km": 377,
-        "highway_130_km": 283,
-        "urban_km": 482,
-        "winter_minus5_km": 258,
+        "mixed_km": 379,
+        "highway_130_km": 284,
+        "urban_km": 485,
+        "winter_minus5_km": 259,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -557,10 +557,10 @@
       "wltp_km": 504,
       "wltp_consumption_kWh_100km": 17.3,
       "realRange": {
-        "mixed_km": 365,
-        "highway_130_km": 274,
-        "urban_km": 467,
-        "winter_minus5_km": 250,
+        "mixed_km": 367,
+        "highway_130_km": 275,
+        "urban_km": 470,
+        "winter_minus5_km": 251,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -660,10 +660,10 @@
       "wltp_km": 741,
       "wltp_consumption_kWh_100km": 16.1,
       "realRange": {
-        "mixed_km": 537,
-        "highway_130_km": 403,
-        "urban_km": 686,
-        "winter_minus5_km": 367,
+        "mixed_km": 540,
+        "highway_130_km": 405,
+        "urban_km": 691,
+        "winter_minus5_km": 369,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -735,10 +735,10 @@
       "wltp_km": 736,
       "wltp_consumption_kWh_100km": 16.3,
       "realRange": {
-        "mixed_km": 534,
-        "highway_130_km": 401,
-        "urban_km": 683,
-        "winter_minus5_km": 365,
+        "mixed_km": 536,
+        "highway_130_km": 402,
+        "urban_km": 686,
+        "winter_minus5_km": 367,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -810,10 +810,10 @@
       "wltp_km": 707,
       "wltp_consumption_kWh_100km": 17.0,
       "realRange": {
-        "mixed_km": 513,
-        "highway_130_km": 385,
-        "urban_km": 656,
-        "winter_minus5_km": 351,
+        "mixed_km": 515,
+        "highway_130_km": 386,
+        "urban_km": 659,
+        "winter_minus5_km": 352,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -885,10 +885,10 @@
       "wltp_km": 686,
       "wltp_consumption_kWh_100km": 17.5,
       "realRange": {
-        "mixed_km": 497,
-        "highway_130_km": 373,
-        "urban_km": 635,
-        "winter_minus5_km": 340,
+        "mixed_km": 500,
+        "highway_130_km": 375,
+        "urban_km": 640,
+        "winter_minus5_km": 342,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -964,10 +964,10 @@
       "wltp_km": 656,
       "wltp_consumption_kWh_100km": 17.6,
       "realRange": {
-        "mixed_km": 476,
-        "highway_130_km": 358,
-        "urban_km": 608,
-        "winter_minus5_km": 326,
+        "mixed_km": 478,
+        "highway_130_km": 359,
+        "urban_km": 612,
+        "winter_minus5_km": 327,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -1043,10 +1043,10 @@
       "wltp_km": 638,
       "wltp_consumption_kWh_100km": 18.2,
       "realRange": {
-        "mixed_km": 463,
-        "highway_130_km": 348,
-        "urban_km": 592,
-        "winter_minus5_km": 317,
+        "mixed_km": 465,
+        "highway_130_km": 349,
+        "urban_km": 595,
+        "winter_minus5_km": 318,
         "confidence": "estimated"
       },
       "rangeTests": [],

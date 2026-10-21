@@ -186,7 +186,7 @@
       "equipmentHighlights": [
         "480 km WLTP",
         "Architecture 800 V",
-        "Ecran 16 pouces"
+        "Écran 16 pouces"
       ]
     },
     {
@@ -527,32 +527,32 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "SUV familial au design moderne et aerodynamique"
+      "label": "SUV familial au design moderne et aérodynamique"
     },
     {
       "category": "technologie",
-      "label": "Architecture 800 V et charge jusqu'a 480 kW"
+      "label": "Architecture 800 V et charge jusqu'à 480 kW"
     },
     {
       "category": "securite",
-      "label": "Freinage automatique et aide a la conduite avancee"
+      "label": "Freinage automatique et aide à la conduite avancée"
     },
     {
       "category": "confort",
-      "label": "Frunk 42 L, coffre 539 L extensible a 1 800 L, V2L"
+      "label": "Frunk 42 L, coffre 539 L extensible à 1 800 L, V2L"
     }
   ],
   "verdict": {
     "strengths": [
       "Charge ultra-rapide 480 kW (10-80 % en 16 min)",
-      "Coffre genereux 539 L / 1 800 L et frunk 42 L"
+      "Coffre généreux 539 L / 1 800 L et frunk 42 L"
     ],
     "weaknesses": [
-      "Assemblage en Chine, aucune aide francaise",
+      "Assemblage en Chine, aucune aide française",
       "Marque Zeekr encore peu connue en France"
     ],
-    "idealUserProfile": "Familles cherchant un SUV electrique performant avec charge ultra-rapide et grand coffre.",
-    "notIdealFor": "Acheteurs fideles aux marques etablies ou comptant sur les aides."
+    "idealUserProfile": "Familles cherchant un SUV électrique performant avec charge ultra-rapide et grand coffre.",
+    "notIdealFor": "Acheteurs fidèles aux marques établies ou comptant sur les aides."
   },
   "lastUpdated": "2026-10-08",
   "sources": [

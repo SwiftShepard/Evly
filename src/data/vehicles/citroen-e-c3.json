@@ -186,7 +186,7 @@
       "price_EUR": 26050,
       "batteryUsed": "44 kWh",
       "equipmentHighlights": [
-        "Écran central 10.25 pouces",
+        "Écran central 10,25 pouces",
         "Jantes alliage 17 pouces",
         "Rétroviseurs électriques"
       ]
@@ -206,7 +206,7 @@
       "price_EUR": 26090,
       "batteryUsed": "44 kWh",
       "equipmentHighlights": [
-        "Format SUV compact (4.39 m)",
+        "Format SUV compact (4,39 m)",
         "Suspensions Advanced Comfort",
         "Radars de recul"
       ]
@@ -216,7 +216,7 @@
       "price_EUR": 32050,
       "batteryUsed": "54 kWh",
       "equipmentHighlights": [
-        "Écran central tactile 10.25 pouces",
+        "Écran central tactile 10,25 pouces",
         "Apple CarPlay et Android Auto sans fil",
         "Climatisation automatique"
       ]
@@ -648,7 +648,7 @@
     },
     {
       "category": "technologie",
-      "label": "Système multimédia tactile 10.25'' ou station d'accueil smartphone"
+      "label": "Système multimédia tactile 10,25'' ou station d'accueil smartphone"
     },
     {
       "category": "securite",

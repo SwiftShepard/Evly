@@ -24,11 +24,11 @@
   "wltp_max_km": 555,
   "wltp_min_km": 515,
   "realRange": {
-    "mixed_km": 402,
-    "highway_130_km": 302,
-    "urban_km": 514,
-    "winter_minus5_km": 275,
-    "confidence": "estimated"
+    "mixed_km": 416,
+    "highway_130_km": 320,
+    "urban_km": 526,
+    "winter_minus5_km": 300,
+    "confidence": "tested"
   },
   "consumption_mixed_kWh_per_100km": 17.5,
   "consumption_highway_kWh_per_100km": 24.5,
@@ -75,7 +75,64 @@
       "power": 10
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2026-02",
+      "speed_kmh": null,
+      "range_km": 438,
+      "consumption_kWh_100km": 20.3,
+      "temperature_C": 12,
+      "wheelSize_inches": 20,
+      "tyreModel": "Michelin Pilot Sport EV 245/45 R20",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-alpine-a390-gt-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+      "notes": "Supertest Automobile Propre (GT), parcours mixte."
+    },
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2026-02",
+      "speed_kmh": 90,
+      "range_km": 480,
+      "consumption_kWh_100km": 18.6,
+      "temperature_C": null,
+      "wheelSize_inches": 20,
+      "tyreModel": "Michelin Pilot Sport EV 245/45 R20",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-alpine-a390-gt-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+      "notes": "Supertest Automobile Propre (GT), vitesse stabilisée."
+    },
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2026-02",
+      "speed_kmh": 110,
+      "range_km": null,
+      "consumption_kWh_100km": 22.5,
+      "temperature_C": null,
+      "wheelSize_inches": 20,
+      "tyreModel": "Michelin Pilot Sport EV 245/45 R20",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-alpine-a390-gt-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+      "notes": "Supertest Automobile Propre (GT), vitesse stabilisée."
+    },
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2026-02",
+      "speed_kmh": 130,
+      "range_km": 320,
+      "consumption_kWh_100km": 27.8,
+      "temperature_C": null,
+      "wheelSize_inches": 20,
+      "tyreModel": "Michelin Pilot Sport EV 245/45 R20",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-alpine-a390-gt-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+      "notes": "Supertest Automobile Propre (GT), vitesse stabilisée."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4615,
   "width_mm": 1885,
@@ -92,7 +149,7 @@
       "equipmentHighlights": [
         "Moteur double 400 ch (295 kW) AWD",
         "Autonomie 555 km WLTP",
-        "Charge DC 150 kW (15-80% en 29 min)",
+        "Charge DC 150 kW (15-80 % en 29 min)",
         "Jantes alliage 20 pouces",
         "Intérieur cockpit dynamique avec affichage tête haute"
       ]
@@ -104,7 +161,7 @@
       "equipmentHighlights": [
         "Moteur triple 470 ch (345 kW) AWD",
         "Autonomie 515 km WLTP",
-        "Charge DC 190 kW (15-80% en 25 min)",
+        "Charge DC 190 kW (15-80 % en 25 min)",
         "Vectorisation active du couple (Active Torque Vectoring)",
         "Jantes alliage 21 pouces",
         "Sièges sport baquets en Alcantara"
@@ -129,13 +186,70 @@
       "wltp_km": 555,
       "wltp_consumption_kWh_100km": 17.5,
       "realRange": {
-        "mixed_km": 402,
-        "highway_130_km": 302,
-        "urban_km": 514,
-        "winter_minus5_km": 275,
-        "confidence": "estimated"
+        "mixed_km": 416,
+        "highway_130_km": 320,
+        "urban_km": 526,
+        "winter_minus5_km": 300,
+        "confidence": "tested"
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-02",
+          "speed_kmh": null,
+          "range_km": 438,
+          "consumption_kWh_100km": 20.3,
+          "temperature_C": 12,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin Pilot Sport EV 245/45 R20",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-alpine-a390-gt-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (GT), parcours mixte."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-02",
+          "speed_kmh": 90,
+          "range_km": 480,
+          "consumption_kWh_100km": 18.6,
+          "temperature_C": null,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin Pilot Sport EV 245/45 R20",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-alpine-a390-gt-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (GT), vitesse stabilisée."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-02",
+          "speed_kmh": 110,
+          "range_km": null,
+          "consumption_kWh_100km": 22.5,
+          "temperature_C": null,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin Pilot Sport EV 245/45 R20",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-alpine-a390-gt-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (GT), vitesse stabilisée."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-02",
+          "speed_kmh": 130,
+          "range_km": 320,
+          "consumption_kWh_100km": 27.8,
+          "temperature_C": null,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin Pilot Sport EV 245/45 R20",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-alpine-a390-gt-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (GT), vitesse stabilisée."
+        }
+      ],
       "chargingDC_peak_kW": 150,
       "chargingDC_10_80_min": 29,
       "chargingDC_kWh_30min": 60,
@@ -182,10 +296,10 @@
       "wltp_km": 515,
       "wltp_consumption_kWh_100km": 18.2,
       "realRange": {
-        "mixed_km": 373,
-        "highway_130_km": 280,
-        "urban_km": 477,
-        "winter_minus5_km": 255,
+        "mixed_km": 386,
+        "highway_130_km": 297,
+        "urban_km": 488,
+        "winter_minus5_km": 264,
         "confidence": "estimated"
       },
       "rangeTests": [],

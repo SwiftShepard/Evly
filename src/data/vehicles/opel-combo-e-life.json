@@ -24,10 +24,10 @@
   "wltp_max_km": 330,
   "wltp_min_km": 280,
   "realRange": {
-    "mixed_km": 238,
-    "highway_130_km": 179,
-    "urban_km": 304,
-    "winter_minus5_km": 163,
+    "mixed_km": 240,
+    "highway_130_km": 180,
+    "urban_km": 307,
+    "winter_minus5_km": 164,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 18,
@@ -87,7 +87,7 @@
       "batteryUsed": "50 kWh",
       "equipmentHighlights": [
         "Portes coulissantes",
-        "Ecran 8 pouces",
+        "Écran 8 pouces",
         "Charge AC 11 kW"
       ]
     },
@@ -96,9 +96,9 @@
       "price_EUR": 38900,
       "batteryUsed": "50 kWh",
       "equipmentHighlights": [
-        "Camera de recul",
-        "Ecran 10 pouces",
-        "Sieges chauffants"
+        "Caméra de recul",
+        "Écran 10 pouces",
+        "Sièges chauffants"
       ]
     },
     {
@@ -107,8 +107,8 @@
       "batteryUsed": "50 kWh",
       "equipmentHighlights": [
         "Empattement long 7 places",
-        "Banquette 3e rangee",
-        "Camera 180 degres"
+        "Banquette 3e rangée",
+        "Caméra 180 degrés"
       ]
     }
   ],
@@ -141,10 +141,10 @@
       "wltp_km": 330,
       "wltp_consumption_kWh_100km": 17.5,
       "realRange": {
-        "mixed_km": 238,
-        "highway_130_km": 179,
-        "urban_km": 304,
-        "winter_minus5_km": 163,
+        "mixed_km": 240,
+        "highway_130_km": 180,
+        "urban_km": 307,
+        "winter_minus5_km": 164,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -174,7 +174,7 @@
         }
       ],
       "availability": "available",
-      "notes": "Ludospace 5 places, plateforme partagee Berlingo/Rifter."
+      "notes": "Ludospace 5 places, plateforme partagée Berlingo/Rifter."
     },
     {
       "id": "opel-combo-e-life-elegance-xl",
@@ -190,10 +190,10 @@
       "wltp_km": 280,
       "wltp_consumption_kWh_100km": 19,
       "realRange": {
-        "mixed_km": 202,
+        "mixed_km": 203,
         "highway_130_km": 152,
-        "urban_km": 258,
-        "winter_minus5_km": 138,
+        "urban_km": 260,
+        "winter_minus5_km": 139,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -236,11 +236,11 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "Portes laterales coulissantes, acces facile"
+      "label": "Portes latérales coulissantes, accès facile"
     },
     {
       "category": "technologie",
-      "label": "Ecran multimedia Pure Panel avec navigation integree"
+      "label": "Écran multimédia Pure Panel avec navigation intégrée"
     },
     {
       "category": "securite",
@@ -253,15 +253,15 @@
   ],
   "verdict": {
     "strengths": [
-      "Plateforme eprouvee PSA, fiabilite et reseau de SAV dense",
-      "Volume de coffre genereux (850 L) et version XL 7 places"
+      "Plateforme éprouvée PSA, fiabilité et réseau de SAV dense",
+      "Volume de coffre généreux (850 L) et version XL 7 places"
     ],
     "weaknesses": [
-      "Charge DC limitee a 100 kW",
-      "Autonomie modeste pour un usage autoroutier (155 km a 130)"
+      "Charge DC limitée à 100 kW",
+      "Autonomie modeste pour un usage autoroutier (155 km à 130)"
     ],
-    "idealUserProfile": "Familles cherchant un ludospace electrique pratique au quotidien avec portes coulissantes.",
-    "notIdealFor": "Gros rouleurs autoroutiers ou ceux cherchant un vehicule premium. Le Combo-e Life reste un utilitaire amenage."
+    "idealUserProfile": "Familles cherchant un ludospace électrique pratique au quotidien avec portes coulissantes.",
+    "notIdealFor": "Gros rouleurs autoroutiers ou ceux cherchant un véhicule premium. Le Combo-e Life reste un utilitaire aménagé."
   },
   "lastUpdated": "2026-05-21",
   "sources": [

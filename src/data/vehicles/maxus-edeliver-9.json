@@ -24,10 +24,10 @@
   "wltp_max_km": 340,
   "wltp_min_km": 240,
   "realRange": {
-    "mixed_km": 245,
-    "highway_130_km": 184,
-    "urban_km": 313,
-    "winter_minus5_km": 156,
+    "mixed_km": 247,
+    "highway_130_km": 185,
+    "urban_km": 316,
+    "winter_minus5_km": 157,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 29,
@@ -96,7 +96,7 @@
       "equipmentHighlights": [
         "Volume utile 10,2 m3",
         "Charge utile 1200 kg",
-        "Ecran multimedia 10 pouces"
+        "Écran multimédia 10 pouces"
       ]
     },
     {
@@ -106,7 +106,7 @@
       "equipmentHighlights": [
         "Grande autonomie 340 km WLTP",
         "Volume utile 10,2 m3",
-        "Camera de recul"
+        "Caméra de recul"
       ]
     },
     {
@@ -138,10 +138,10 @@
       "wltp_km": 240,
       "wltp_consumption_kWh_100km": 28,
       "realRange": {
-        "mixed_km": 173,
-        "highway_130_km": 130,
-        "urban_km": 221,
-        "winter_minus5_km": 110,
+        "mixed_km": 174,
+        "highway_130_km": 131,
+        "urban_km": 223,
+        "winter_minus5_km": 111,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -187,10 +187,10 @@
       "wltp_km": 340,
       "wltp_consumption_kWh_100km": 29,
       "realRange": {
-        "mixed_km": 245,
-        "highway_130_km": 184,
-        "urban_km": 313,
-        "winter_minus5_km": 156,
+        "mixed_km": 247,
+        "highway_130_km": 185,
+        "urban_km": 316,
+        "winter_minus5_km": 157,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -236,10 +236,10 @@
       "wltp_km": 290,
       "wltp_consumption_kWh_100km": 32,
       "realRange": {
-        "mixed_km": 209,
-        "highway_130_km": 157,
-        "urban_km": 267,
-        "winter_minus5_km": 133,
+        "mixed_km": 211,
+        "highway_130_km": 158,
+        "urban_km": 270,
+        "winter_minus5_km": 134,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -282,11 +282,11 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "Cabine spacieuse avec ecran multimedia 10 pouces"
+      "label": "Cabine spacieuse avec écran multimédia 10 pouces"
     },
     {
       "category": "technologie",
-      "label": "Batterie LFP durable, optimisee pour cycles de charge quotidiens"
+      "label": "Batterie LFP durable, optimisée pour cycles de charge quotidiens"
     },
     {
       "category": "securite",
@@ -294,20 +294,20 @@
     },
     {
       "category": "design",
-      "label": "Volume utile jusqu'a 12,8 m3, charge utile 1200 kg"
+      "label": "Volume utile jusqu'à 12,8 m3, charge utile 1200 kg"
     }
   ],
   "verdict": {
     "strengths": [
-      "Prix agressif : 10 000 a 15 000 EUR de moins que les europeens a volume equivalent",
-      "Charge utile 1200 kg et volume 12,8 m3, competitive face aux Master/Boxer"
+      "Prix agressif : 10 000 à 15 000 EUR de moins que les européens à volume équivalent",
+      "Charge utile 1200 kg et volume 12,8 m3, compétitive face aux Master/Boxer"
     ],
     "weaknesses": [
-      "Charge DC tres limitee a 80 kW, penalisante pour les grands trajets",
-      "Autonomie reelle inferieure aux Stellantis 110 kWh et au Master E-Tech"
+      "Charge DC très limitée à 80 kW, pénalisante pour les grands trajets",
+      "Autonomie réelle inférieure aux Stellantis 110 kWh et au Master E-Tech"
     ],
-    "idealUserProfile": "Petites entreprises et artisans avec budget serre, usage urbain et periurbain, recharge nocturne au depot.",
-    "notIdealFor": "Flottes exigeant autonomie longue ou recharge rapide. Le Master E-Tech et les Stellantis 110 kWh sont superieurs en prestations."
+    "idealUserProfile": "Petites entreprises et artisans avec budget serré, usage urbain et périurbain, recharge nocturne au dépôt.",
+    "notIdealFor": "Flottes exigeant autonomie longue ou recharge rapide. Le Master E-Tech et les Stellantis 110 kWh sont supérieurs en prestations."
   },
   "lastUpdated": "2026-05-21",
   "sources": [

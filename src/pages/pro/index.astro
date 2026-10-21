@@ -567,7 +567,7 @@ const description =
           } else if (breakeven === 0) {
             breakevenEl.textContent = "immédiat";
           } else {
-            breakevenEl.textContent = breakeven.toFixed(1);
+            breakevenEl.textContent = breakeven.toFixed(1).replace(".", ",");
           }
         }
       }

@@ -182,7 +182,7 @@
       "equipmentHighlights": [
         "436 km WLTP",
         "ProPILOT Assist",
-        "Ecran 12,3 pouces"
+        "Écran 12,3 pouces"
       ]
     },
     {
@@ -192,7 +192,7 @@
       "equipmentHighlights": [
         "622 km WLTP",
         "Charge DC 150 kW",
-        "Camera 360"
+        "Caméra 360"
       ]
     },
     {
@@ -670,11 +670,11 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "Compacte electrique nouvelle generation au design moderne"
+      "label": "Compacte électrique nouvelle génération au design moderne"
     },
     {
       "category": "technologie",
-      "label": "Ecran 12,3 pouces et ProPILOT Assist"
+      "label": "Écran 12,3 pouces et ProPILOT Assist"
     },
     {
       "category": "securite",
@@ -682,19 +682,19 @@
     },
     {
       "category": "confort",
-      "label": "Coffre genereux (437 L) et habitacle spacieux"
+      "label": "Coffre généreux (437 L) et habitacle spacieux"
     }
   ],
   "verdict": {
     "strengths": [
       "Autonomie record pour le segment (622 km WLTP en 75 kWh)",
-      "Prix d'entree raisonnable (35 300 euros en 52 kWh)"
+      "Prix d'entrée raisonnable (35 300 euros en 52 kWh)"
     ],
     "weaknesses": [
       "Assemblage Royaume-Uni, aucune aide CEE",
       "Charge DC 150 kW correcte mais pas de 800 V"
     ],
-    "idealUserProfile": "Conducteurs cherchant une compacte electrique fiable avec grande autonomie.",
+    "idealUserProfile": "Conducteurs cherchant une compacte électrique fiable avec grande autonomie.",
     "notIdealFor": "Acheteurs comptant sur les aides CEE ou cherchant un SUV."
   },
   "lastUpdated": "2026-10-08",

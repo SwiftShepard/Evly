@@ -24,10 +24,10 @@
   "wltp_max_km": 350,
   "wltp_min_km": 230,
   "realRange": {
-    "mixed_km": 253,
-    "highway_130_km": 190,
-    "urban_km": 323,
-    "winter_minus5_km": 173,
+    "mixed_km": 254,
+    "highway_130_km": 191,
+    "urban_km": 325,
+    "winter_minus5_km": 174,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 22,
@@ -87,7 +87,7 @@
       "batteryUsed": "50 kWh",
       "equipmentHighlights": [
         "9 places",
-        "Ecran multimedia 8 pouces",
+        "Écran multimédia 8 pouces",
         "Charge AC 11 kW"
       ]
     },
@@ -97,8 +97,8 @@
       "batteryUsed": "75 kWh",
       "equipmentHighlights": [
         "9 places · grande autonomie",
-        "Camera de recul",
-        "Sieges chauffants"
+        "Caméra de recul",
+        "Sièges chauffants"
       ]
     },
     {
@@ -107,8 +107,8 @@
       "batteryUsed": "75 kWh",
       "equipmentHighlights": [
         "9 places · empattement long",
-        "Volume de coffre majore",
-        "Ecran 10 pouces"
+        "Volume de coffre majoré",
+        "Écran 10 pouces"
       ]
     }
   ],
@@ -130,9 +130,9 @@
       "wltp_km": 230,
       "wltp_consumption_kWh_100km": 21.5,
       "realRange": {
-        "mixed_km": 166,
+        "mixed_km": 167,
         "highway_130_km": 125,
-        "urban_km": 212,
+        "urban_km": 214,
         "winter_minus5_km": 114,
         "confidence": "estimated"
       },
@@ -179,10 +179,10 @@
       "wltp_km": 350,
       "wltp_consumption_kWh_100km": 22,
       "realRange": {
-        "mixed_km": 253,
-        "highway_130_km": 190,
-        "urban_km": 323,
-        "winter_minus5_km": 173,
+        "mixed_km": 254,
+        "highway_130_km": 191,
+        "urban_km": 325,
+        "winter_minus5_km": 174,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -225,32 +225,32 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "9 places avec portes laterales coulissantes"
+      "label": "9 places avec portes latérales coulissantes"
     },
     {
       "category": "technologie",
-      "label": "Pure Panel multimedia avec navigation integree"
+      "label": "Pure Panel multimédia avec navigation intégrée"
     },
     {
       "category": "securite",
-      "label": "Freinage automatique d'urgence et detection pietons"
+      "label": "Freinage automatique d'urgence et détection piétons"
     },
     {
       "category": "design",
-      "label": "Empattement M ou L, modularite interieure"
+      "label": "Empattement M ou L, modularité intérieure"
     }
   ],
   "verdict": {
     "strengths": [
-      "9 places dans un gabarit maitrise, navette electrique ideale",
-      "Plateforme PSA eprouvee, production francaise (Hordain)"
+      "9 places dans un gabarit maîtrisé, navette électrique idéale",
+      "Plateforme PSA éprouvée, production française (Hordain)"
     ],
     "weaknesses": [
-      "Autonomie reelle modeste sur autoroute (170 km en 75 kWh)",
+      "Autonomie réelle modeste sur autoroute (170 km en 75 kWh)",
       "Finition utilitaire, concurrence premium du VW ID. Buzz"
     ],
-    "idealUserProfile": "Navettes professionnelles, taxis grands formats et familles nombreuses cherchant un vehicule electrique spacieux.",
-    "notIdealFor": "Familles cherchant un monospace premium. Le VW ID. Buzz offre une meilleure finition et une experience plus moderne."
+    "idealUserProfile": "Navettes professionnelles, taxis grands formats et familles nombreuses cherchant un véhicule électrique spacieux.",
+    "notIdealFor": "Familles cherchant un monospace premium. Le VW ID. Buzz offre une meilleure finition et une expérience plus moderne."
   },
   "lastUpdated": "2026-05-21",
   "sources": [

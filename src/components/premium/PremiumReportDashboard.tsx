@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo } from "react";
 import type { Vehicle } from "@/data/schemas";
 import { calculateCeeAid } from "@/lib/cee";
 import { url } from "@/lib/url";
+import { formatNumber } from "@/lib/format";
 import { ArrowLeft, Printer, RotateCcw, AlertTriangle, Sparkles, CheckCircle2 } from "lucide-react";
 
 interface Props {
@@ -633,11 +634,11 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
                   <div className="grid grid-cols-2 gap-4 mt-2 border-t border-[var(--color-border)] pt-3">
                     <div className="flex flex-col">
                       <span className="text-[9px] font-mono text-[var(--color-text-faint)] uppercase">Électrique (VE)</span>
-                      <span className="text-sm font-bold font-mono text-[var(--color-accent)]">{(evTotal / totalKm).toFixed(2)} € / km</span>
+                      <span className="text-sm font-bold font-mono text-[var(--color-accent)]">{formatNumber(evTotal / totalKm, 2)}&nbsp;€/km</span>
                     </div>
                     <div className="flex flex-col">
                       <span className="text-[9px] font-mono text-[var(--color-text-faint)] uppercase">Thermique</span>
-                      <span className="text-sm font-semibold font-mono text-[var(--color-text-muted)]">{(iceTotal / totalKm).toFixed(2)} € / km</span>
+                      <span className="text-sm font-semibold font-mono text-[var(--color-text-muted)]">{formatNumber(iceTotal / totalKm, 2)}&nbsp;€/km</span>
                     </div>
                   </div>
                 </div>
@@ -746,7 +747,7 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
                     <div className="w-full h-2.5 bg-[var(--color-border)] rounded-full overflow-hidden">
                       <div className="h-full bg-emerald-500 rounded-full" style={{ width: "100%" }}></div>
                     </div>
-                    <span className="text-[9px] text-[var(--color-text-faint)]">Consommation optimale de {(config.wltp_consumption_kWh_100km || vehicle.consumption_mixed_kWh_per_100km || 16).toFixed(1)} kWh/100km</span>
+                    <span className="text-[9px] text-[var(--color-text-faint)]">Consommation optimale de {formatNumber(config.wltp_consumption_kWh_100km || vehicle.consumption_mixed_kWh_per_100km || 16, 1)}&nbsp;kWh/100&nbsp;km</span>
                   </div>
 
                   {/* Autoroute 130 km/h */}

@@ -1,6 +1,7 @@
 import type { Vehicle } from "@/data/schemas";
 import { formatNumber, formatPrice } from "@/lib/format";
 import { isVehicleEligibleCEE, primeFor } from "@/lib/cee";
+import { isMeasured } from "@/lib/confidence";
 
 /**
  * SEO des fiches véhicules : noms recherchés, titres, descriptions et textes
@@ -223,6 +224,8 @@ export interface VehicleSeoFacts {
   /** Meilleure autonomie réelle mixte de la gamme */
   rangeBest: number;
   rangeBestMeasured: boolean;
+  /** Code de confiance de cette autonomie (badge Confidence) */
+  rangeBestConfidence: string;
   rangeHighway: number;
   wltpMax: number;
   /** Recharge DC 10 → 80 % la plus rapide de la gamme (null si pas de charge rapide) */
@@ -243,8 +246,6 @@ const parseKwh = (s: string | undefined | null): number | null => {
   const m = s?.match(/(\d+(?:[.,]\d+)?)\s*kWh/i);
   return m?.[1] ? parseFloat(m[1].replace(",", ".")) : null;
 };
-
-const isMeasured = (c: string) => c === "tested" || c === "bjorn_nyland";
 
 export function getVehicleSeoFacts(v: Vehicle): VehicleSeoFacts {
   const prices = [...v.trims.map((t) => t.price_EUR), ...v.configurations.map((c) => c.price_EUR)].filter(
@@ -281,6 +282,7 @@ export function getVehicleSeoFacts(v: Vehicle): VehicleSeoFacts {
     versions: Math.max(v.configurations.length, new Set(v.trims.map((t) => t.name)).size),
     rangeBest: best.mixed_km,
     rangeBestMeasured: isMeasured(best.confidence),
+    rangeBestConfidence: best.confidence,
     rangeHighway: best.highway_130_km,
     wltpMax: Math.max(v.wltp_max_km, ...v.configurations.map((c) => c.wltp_km ?? 0)),
     dcMin: dcTimes.length ? Math.min(...dcTimes) : null,

@@ -24,10 +24,10 @@
   "wltp_max_km": 285,
   "wltp_min_km": 285,
   "realRange": {
-    "mixed_km": 206,
+    "mixed_km": 207,
     "highway_130_km": 155,
-    "urban_km": 263,
-    "winter_minus5_km": 141,
+    "urban_km": 265,
+    "winter_minus5_km": 142,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 18.5,
@@ -97,7 +97,7 @@
       "batteryUsed": "45 kWh",
       "equipmentHighlights": [
         "Portes coulissantes",
-        "Ecran 8 pouces",
+        "Écran 8 pouces",
         "Charge AC 11 kW"
       ]
     },
@@ -108,8 +108,8 @@
       "equipmentHighlights": [
         "OpenR Link Google",
         "Charge AC 22 kW",
-        "Camera 360 degres",
-        "Sieges chauffants"
+        "Caméra 360 degrés",
+        "Sièges chauffants"
       ]
     }
   ],
@@ -137,10 +137,10 @@
       "wltp_km": 285,
       "wltp_consumption_kWh_100km": 18,
       "realRange": {
-        "mixed_km": 206,
+        "mixed_km": 207,
         "highway_130_km": 155,
-        "urban_km": 263,
-        "winter_minus5_km": 141,
+        "urban_km": 265,
+        "winter_minus5_km": 142,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -186,10 +186,10 @@
       "wltp_km": 285,
       "wltp_consumption_kWh_100km": 18,
       "realRange": {
-        "mixed_km": 206,
+        "mixed_km": 207,
         "highway_130_km": 155,
-        "urban_km": 263,
-        "winter_minus5_km": 141,
+        "urban_km": 265,
+        "winter_minus5_km": 142,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -232,11 +232,11 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "Portes laterales coulissantes, acces facile"
+      "label": "Portes latérales coulissantes, accès facile"
     },
     {
       "category": "technologie",
-      "label": "OpenR Link avec Google integre (Techno)"
+      "label": "OpenR Link avec Google intégré (Techno)"
     },
     {
       "category": "securite",
@@ -244,7 +244,7 @@
     },
     {
       "category": "design",
-      "label": "Modularite interieure et volume de coffre genereux"
+      "label": "Modularité intérieure et volume de coffre généreux"
     }
   ],
   "verdict": {
@@ -254,10 +254,10 @@
       "Charge AC 22 kW sur Techno"
     ],
     "weaknesses": [
-      "Autonomie limitee pour un vehicule familial (285 km WLTP)",
-      "Charge DC plafonnee a 80 kW"
+      "Autonomie limitée pour un véhicule familial (285 km WLTP)",
+      "Charge DC plafonnée à 80 kW"
     ],
-    "idealUserProfile": "Familles cherchant un ludospace electrique modulable pour les trajets quotidiens.",
+    "idealUserProfile": "Familles cherchant un ludospace électrique modulable pour les trajets quotidiens.",
     "notIdealFor": "Gros rouleurs autoroutiers ou ceux ayant besoin de plus de 300 km d'autonomie."
   },
   "lastUpdated": "2026-10-08",

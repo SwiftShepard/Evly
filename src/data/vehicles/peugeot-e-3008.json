@@ -24,10 +24,10 @@
   "wltp_max_km": 701,
   "wltp_min_km": 497,
   "realRange": {
-    "mixed_km": 508,
-    "highway_130_km": 382,
-    "urban_km": 649,
-    "winter_minus5_km": 347,
+    "mixed_km": 511,
+    "highway_130_km": 383,
+    "urban_km": 654,
+    "winter_minus5_km": 350,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 16.5,
@@ -95,7 +95,50 @@
       "power": 2
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2024-04",
+      "speed_kmh": null,
+      "range_km": 420,
+      "consumption_kWh_100km": 17.4,
+      "temperature_C": 14,
+      "wheelSize_inches": 20,
+      "tyreModel": "Michelin e.Primacy 235/50 R20",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/essai-peugeot-e-3008-les-consommations-et-autonomies-mesurees-de-notre-supertest",
+      "notes": "Supertest Automobile Propre (GT 73 kWh), parcours mixte."
+    },
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2024-04",
+      "speed_kmh": 110,
+      "range_km": 372,
+      "consumption_kWh_100km": 19.6,
+      "temperature_C": null,
+      "wheelSize_inches": 20,
+      "tyreModel": "Michelin e.Primacy 235/50 R20",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/essai-peugeot-e-3008-les-consommations-et-autonomies-mesurees-de-notre-supertest",
+      "notes": "Supertest Automobile Propre (GT 73 kWh), vitesse stabilisée."
+    },
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2024-04",
+      "speed_kmh": 130,
+      "range_km": 300,
+      "consumption_kWh_100km": 24.4,
+      "temperature_C": null,
+      "wheelSize_inches": 20,
+      "tyreModel": "Michelin e.Primacy 235/50 R20",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/essai-peugeot-e-3008-les-consommations-et-autonomies-mesurees-de-notre-supertest",
+      "notes": "Supertest Automobile Propre (GT 73 kWh), vitesse stabilisée."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4542,
   "width_mm": 1895,
@@ -202,13 +245,56 @@
       "wltp_km": 529,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
-        "mixed_km": 384,
-        "highway_130_km": 288,
-        "urban_km": 491,
+        "mixed_km": 385,
+        "highway_130_km": 289,
+        "urban_km": 493,
         "winter_minus5_km": 263,
         "confidence": "estimated"
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2024-04",
+          "speed_kmh": null,
+          "range_km": 420,
+          "consumption_kWh_100km": 17.4,
+          "temperature_C": 14,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin e.Primacy 235/50 R20",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/essai-peugeot-e-3008-les-consommations-et-autonomies-mesurees-de-notre-supertest",
+          "notes": "Supertest Automobile Propre (GT 73 kWh), parcours mixte."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2024-04",
+          "speed_kmh": 110,
+          "range_km": 372,
+          "consumption_kWh_100km": 19.6,
+          "temperature_C": null,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin e.Primacy 235/50 R20",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/essai-peugeot-e-3008-les-consommations-et-autonomies-mesurees-de-notre-supertest",
+          "notes": "Supertest Automobile Propre (GT 73 kWh), vitesse stabilisée."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2024-04",
+          "speed_kmh": 130,
+          "range_km": 300,
+          "consumption_kWh_100km": 24.4,
+          "temperature_C": null,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin e.Primacy 235/50 R20",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/essai-peugeot-e-3008-les-consommations-et-autonomies-mesurees-de-notre-supertest",
+          "notes": "Supertest Automobile Propre (GT 73 kWh), vitesse stabilisée."
+        }
+      ],
       "chargingDC_peak_kW": 160,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 50,
@@ -255,13 +341,56 @@
       "wltp_km": 529,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
-        "mixed_km": 384,
-        "highway_130_km": 288,
-        "urban_km": 491,
+        "mixed_km": 385,
+        "highway_130_km": 289,
+        "urban_km": 493,
         "winter_minus5_km": 263,
         "confidence": "estimated"
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2024-04",
+          "speed_kmh": null,
+          "range_km": 420,
+          "consumption_kWh_100km": 17.4,
+          "temperature_C": 14,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin e.Primacy 235/50 R20",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/essai-peugeot-e-3008-les-consommations-et-autonomies-mesurees-de-notre-supertest",
+          "notes": "Supertest Automobile Propre (GT 73 kWh), parcours mixte."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2024-04",
+          "speed_kmh": 110,
+          "range_km": 372,
+          "consumption_kWh_100km": 19.6,
+          "temperature_C": null,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin e.Primacy 235/50 R20",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/essai-peugeot-e-3008-les-consommations-et-autonomies-mesurees-de-notre-supertest",
+          "notes": "Supertest Automobile Propre (GT 73 kWh), vitesse stabilisée."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2024-04",
+          "speed_kmh": 130,
+          "range_km": 300,
+          "consumption_kWh_100km": 24.4,
+          "temperature_C": null,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin e.Primacy 235/50 R20",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/essai-peugeot-e-3008-les-consommations-et-autonomies-mesurees-de-notre-supertest",
+          "notes": "Supertest Automobile Propre (GT 73 kWh), vitesse stabilisée."
+        }
+      ],
       "chargingDC_peak_kW": 160,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 50,
@@ -308,13 +437,56 @@
       "wltp_km": 529,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
-        "mixed_km": 384,
-        "highway_130_km": 288,
-        "urban_km": 491,
+        "mixed_km": 385,
+        "highway_130_km": 289,
+        "urban_km": 493,
         "winter_minus5_km": 263,
         "confidence": "estimated"
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2024-04",
+          "speed_kmh": null,
+          "range_km": 420,
+          "consumption_kWh_100km": 17.4,
+          "temperature_C": 14,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin e.Primacy 235/50 R20",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/essai-peugeot-e-3008-les-consommations-et-autonomies-mesurees-de-notre-supertest",
+          "notes": "Supertest Automobile Propre (GT 73 kWh), parcours mixte."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2024-04",
+          "speed_kmh": 110,
+          "range_km": 372,
+          "consumption_kWh_100km": 19.6,
+          "temperature_C": null,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin e.Primacy 235/50 R20",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/essai-peugeot-e-3008-les-consommations-et-autonomies-mesurees-de-notre-supertest",
+          "notes": "Supertest Automobile Propre (GT 73 kWh), vitesse stabilisée."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2024-04",
+          "speed_kmh": 130,
+          "range_km": 300,
+          "consumption_kWh_100km": 24.4,
+          "temperature_C": null,
+          "wheelSize_inches": 20,
+          "tyreModel": "Michelin e.Primacy 235/50 R20",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/essai-peugeot-e-3008-les-consommations-et-autonomies-mesurees-de-notre-supertest",
+          "notes": "Supertest Automobile Propre (GT 73 kWh), vitesse stabilisée."
+        }
+      ],
       "chargingDC_peak_kW": 160,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 50,
@@ -361,10 +533,10 @@
       "wltp_km": 701,
       "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
-        "mixed_km": 508,
-        "highway_130_km": 382,
-        "urban_km": 649,
-        "winter_minus5_km": 347,
+        "mixed_km": 511,
+        "highway_130_km": 383,
+        "urban_km": 654,
+        "winter_minus5_km": 350,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -414,10 +586,10 @@
       "wltp_km": 701,
       "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
-        "mixed_km": 508,
-        "highway_130_km": 382,
-        "urban_km": 649,
-        "winter_minus5_km": 347,
+        "mixed_km": 511,
+        "highway_130_km": 383,
+        "urban_km": 654,
+        "winter_minus5_km": 350,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -467,10 +639,10 @@
       "wltp_km": 701,
       "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
-        "mixed_km": 508,
-        "highway_130_km": 382,
-        "urban_km": 649,
-        "winter_minus5_km": 347,
+        "mixed_km": 511,
+        "highway_130_km": 383,
+        "urban_km": 654,
+        "winter_minus5_km": 350,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -520,10 +692,10 @@
       "wltp_km": 497,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
-        "mixed_km": 360,
-        "highway_130_km": 270,
-        "urban_km": 460,
-        "winter_minus5_km": 246,
+        "mixed_km": 362,
+        "highway_130_km": 272,
+        "urban_km": 463,
+        "winter_minus5_km": 248,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -573,10 +745,10 @@
       "wltp_km": 497,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
-        "mixed_km": 360,
-        "highway_130_km": 270,
-        "urban_km": 460,
-        "winter_minus5_km": 246,
+        "mixed_km": 362,
+        "highway_130_km": 272,
+        "urban_km": 463,
+        "winter_minus5_km": 248,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -653,7 +825,8 @@
   "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
-    "la-chaine-ev"
+    "la-chaine-ev",
+    "automobile-propre"
   ],
   "imageCredit": "Constructeur"
 }

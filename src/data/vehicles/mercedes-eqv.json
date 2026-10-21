@@ -474,14 +474,14 @@
   ],
   "verdict": {
     "strengths": [
-      "Espace interieur geant et modulaire",
+      "Espace intérieur géant et modulaire",
       "Finition et standing premium"
     ],
     "weaknesses": [
-      "Consommation importante a haute vitesse",
-      "Plateforme thermique adaptee"
+      "Consommation importante à haute vitesse",
+      "Plateforme thermique adaptée"
     ],
-    "idealUserProfile": "Chauffeurs VIP, navettes d'hotel haut de gamme et familles nombreuses.",
+    "idealUserProfile": "Chauffeurs VIP, navettes d'hôtel haut de gamme et familles nombreuses.",
     "notIdealFor": "Navetteurs longue distance pressés ou petits budgets."
   },
   "lastUpdated": "2026-06-02",

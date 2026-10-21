@@ -6,6 +6,7 @@ import "@/styles/week.css";
 import WeekPlanner from "@/components/week/WeekPlanner.tsx";
 import FaqList from "@/components/seo/FaqList.astro";
 import LinkChips from "@/components/seo/LinkChips.astro";
+import Confidence from "@/components/ui/Confidence.astro";
 import { getAllVehicles, getVehicleBySlug } from "@/lib/vehicles";
 import { getVehicleIndex } from "@/lib/vehicleIndex";
 import { weekVersions } from "@/lib/map/versions";
@@ -247,7 +248,7 @@ const jsonLd = [
               <tr>
                 <th scope="row">
                   <a href={url(`/vehicules/${r.slug}/`)}>{r.name}</a>
-                  <span>{r.battery} · {r.measured ? "mesurée" : "estimée"}</span>
+                  <span>{r.battery} · <Confidence level={r.measured ? "measured" : "estimated"} /></span>
                 </th>
                 <td>{formatKm(r.winterKm)}</td>
                 <td>{formatKm(r.roadSummer)}</td>

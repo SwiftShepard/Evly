@@ -24,10 +24,10 @@
   "wltp_max_km": 482,
   "wltp_min_km": 401,
   "realRange": {
-    "mixed_km": 291,
+    "mixed_km": 292,
     "highway_130_km": 219,
-    "urban_km": 372,
-    "winter_minus5_km": 185,
+    "urban_km": 374,
+    "winter_minus5_km": 186,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 15.8,
@@ -102,7 +102,7 @@
       "equipmentHighlights": [
         "401 km WLTP",
         "Charge DC 140 kW, 10-80 % en 20 min",
-        "Sellerie cuir/tissu, ecran 14,6 pouces"
+        "Sellerie cuir/tissu, écran 14,6 pouces"
       ]
     },
     {
@@ -112,7 +112,7 @@
       "equipmentHighlights": [
         "482 km WLTP",
         "Charge DC 168 kW, 10-80 % en 22 min",
-        "Sellerie cuir/tissu, ecran 14,6 pouces"
+        "Sellerie cuir/tissu, écran 14,6 pouces"
       ]
     }
   ],
@@ -135,10 +135,10 @@
       "wltp_km": 401,
       "wltp_consumption_kWh_100km": 15.8,
       "realRange": {
-        "mixed_km": 291,
+        "mixed_km": 292,
         "highway_130_km": 219,
-        "urban_km": 372,
-        "winter_minus5_km": 185,
+        "urban_km": 374,
+        "winter_minus5_km": 186,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -189,10 +189,10 @@
       "wltp_km": 401,
       "wltp_consumption_kWh_100km": 15.8,
       "realRange": {
-        "mixed_km": 291,
+        "mixed_km": 292,
         "highway_130_km": 219,
-        "urban_km": 372,
-        "winter_minus5_km": 185,
+        "urban_km": 374,
+        "winter_minus5_km": 186,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -243,10 +243,10 @@
       "wltp_km": 482,
       "wltp_consumption_kWh_100km": 15.9,
       "realRange": {
-        "mixed_km": 349,
-        "highway_130_km": 262,
-        "urban_km": 446,
-        "winter_minus5_km": 222,
+        "mixed_km": 351,
+        "highway_130_km": 263,
+        "urban_km": 449,
+        "winter_minus5_km": 223,
         "confidence": "estimated"
       },
       "rangeTests": [],

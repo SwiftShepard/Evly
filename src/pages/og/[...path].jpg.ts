@@ -4,13 +4,14 @@ import { getPageCards } from "@/lib/ogPages";
 import { getAllVehicles } from "@/lib/vehicles";
 import { getBrands } from "@/lib/brands";
 import { CATEGORIES } from "@/data/categories";
+import { getAllDuels } from "@/lib/duel";
 import { getVehicleSeoFacts } from "@/lib/seo";
 import { formatPrice } from "@/lib/format";
 
 /**
  * Cartes de partage (Open Graph) générées au build :
  *   /og/vehicules/{slug}.jpg, /og/marques/{marque}.jpg,
- *   /og/selections/{slug}.jpg, /og/pages/{clé}.jpg
+ *   /og/selections/{slug}.jpg, /og/duels/{a}-vs-{b}.jpg, /og/pages/{clé}.jpg
  */
 
 type Card = { kind: "vehicle"; data: VehicleCardData } | { kind: "page"; data: PageCardData };
@@ -67,6 +68,21 @@ export const getStaticPaths = (() => {
       props: {
         kind: "page",
         data: { eyebrow: c.eyebrow, title: c.h1, subtitle: undefined, vehicles: list.slice(0, 3).map((v) => v.slug) },
+      },
+    });
+  }
+
+  for (const d of getAllDuels()) {
+    paths.push({
+      params: { path: `duels/${d.slug}` },
+      props: {
+        kind: "page",
+        data: {
+          eyebrow: "Duel",
+          title: `${d.a.name} ou ${d.b.name} ?`,
+          subtitle: `${d.a.facts.rangeBest} km contre ${d.b.facts.rangeBest} km d'autonomie réelle. Prix, recharge et coffre.`,
+          vehicles: [d.a.v.slug, d.b.v.slug],
+        },
       },
     });
   }

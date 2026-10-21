@@ -24,10 +24,10 @@
   "wltp_max_km": 413,
   "wltp_min_km": 310,
   "realRange": {
-    "mixed_km": 291,
-    "highway_130_km": 219,
-    "urban_km": 372,
-    "winter_minus5_km": 199,
+    "mixed_km": 294,
+    "highway_130_km": 221,
+    "urban_km": 376,
+    "winter_minus5_km": 201,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 15,
@@ -107,7 +107,7 @@
       "equipmentHighlights": [
         "Grande batterie 52 kWh",
         "Projecteurs LED",
-        "Écran central tactile 12.9\""
+        "Écran central tactile 12,9\""
       ]
     },
     {
@@ -150,10 +150,10 @@
       "wltp_km": 310,
       "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
-        "mixed_km": 218,
-        "highway_130_km": 164,
-        "urban_km": 279,
-        "winter_minus5_km": 149,
+        "mixed_km": 221,
+        "highway_130_km": 166,
+        "urban_km": 283,
+        "winter_minus5_km": 151,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -199,10 +199,10 @@
       "wltp_km": null,
       "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
-        "mixed_km": 291,
-        "highway_130_km": 219,
-        "urban_km": 372,
-        "winter_minus5_km": 199,
+        "mixed_km": 294,
+        "highway_130_km": 221,
+        "urban_km": 376,
+        "winter_minus5_km": 201,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -251,10 +251,10 @@
       "wltp_km": 413,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 291,
-        "highway_130_km": 219,
-        "urban_km": 372,
-        "winter_minus5_km": 199,
+        "mixed_km": 294,
+        "highway_130_km": 221,
+        "urban_km": 376,
+        "winter_minus5_km": 201,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -302,10 +302,10 @@
       "wltp_km": 379,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 267,
-        "highway_130_km": 201,
-        "urban_km": 341,
-        "winter_minus5_km": 183,
+        "mixed_km": 270,
+        "highway_130_km": 203,
+        "urban_km": 346,
+        "winter_minus5_km": 185,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -352,7 +352,7 @@
     },
     {
       "category": "technologie",
-      "label": "Plateforme MEB Entry avec écran tactile de 12.9 pouces"
+      "label": "Plateforme MEB Entry avec écran tactile de 12,9 pouces"
     },
     {
       "category": "confort",

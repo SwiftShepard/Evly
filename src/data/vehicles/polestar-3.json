@@ -185,7 +185,7 @@
       "batteryUsed": "111 kWh",
       "equipmentHighlights": [
         "AWD 489 ch",
-        "Ecran 14,5 pouces Google",
+        "Écran 14,5 pouces Google",
         "Toit panoramique"
       ]
     },
@@ -548,11 +548,11 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "Design SUV aerodynamique scandinave"
+      "label": "Design SUV aérodynamique scandinave"
     },
     {
       "category": "technologie",
-      "label": "Ecran 14,5 pouces Google et affichage tete haute"
+      "label": "Écran 14,5 pouces Google et affichage tête haute"
     },
     {
       "category": "securite",
@@ -565,15 +565,15 @@
   ],
   "verdict": {
     "strengths": [
-      "Grosse batterie 111 kWh, autonomie genereuse",
-      "Charge rapide 250 kW, LiDAR de serie"
+      "Grosse batterie 111 kWh, autonomie généreuse",
+      "Charge rapide 250 kW, LiDAR de série"
     ],
     "weaknesses": [
-      "Prix eleve (79 800 euros minimum)",
-      "Assemblage hors Europe, aucune aide francaise"
+      "Prix élevé (79 800 euros minimum)",
+      "Assemblage hors Europe, aucune aide française"
     ],
-    "idealUserProfile": "Acheteurs premium cherchant un grand SUV electrique performant avec technologie avancee.",
-    "notIdealFor": "Budgets moderes ou conducteurs cherchant a beneficier des aides francaises."
+    "idealUserProfile": "Acheteurs premium cherchant un grand SUV électrique performant avec technologie avancée.",
+    "notIdealFor": "Budgets modérés ou conducteurs cherchant à bénéficier des aides françaises."
   },
   "lastUpdated": "2026-10-08",
   "sources": [

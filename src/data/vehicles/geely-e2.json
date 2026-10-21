@@ -2,7 +2,7 @@
   "slug": "geely-e2",
   "brand": "Geely",
   "model": "E2",
-  "variant": "35.3 kWh",
+  "variant": "35,3 kWh",
   "bodyType": "Citadine",
   "segment": "B",
   "productionCountry": "Chine",
@@ -84,10 +84,10 @@
     {
       "name": "Standard",
       "price_EUR": 20990,
-      "batteryUsed": "35.3 kWh",
+      "batteryUsed": "35,3 kWh",
       "equipmentHighlights": [
         "Frunk sous le capot avant de 70 L",
-        "Écran central tactile 10.1\"",
+        "Écran central tactile 10,1\"",
         "Garantie 8 ans / 200 000 km",
         "Radars de recul"
       ]
@@ -95,10 +95,10 @@
     {
       "name": "Comfort",
       "price_EUR": 22990,
-      "batteryUsed": "47.1 kWh",
+      "batteryUsed": "47,1 kWh",
       "equipmentHighlights": [
         "Moteur 116 ch plus tonique",
-        "Batterie 47.1 kWh (autonomie 345 km)",
+        "Batterie 47,1 kWh (autonomie 345 km)",
         "Caméra de recul & démarrage sans clé"
       ]
     }
@@ -109,7 +109,7 @@
   "configurations": [
     {
       "id": "geely-e2-standard-35",
-      "label": "Geely E2 Standard 35.3 kWh",
+      "label": "Geely E2 Standard 35,3 kWh",
       "battery": "standard",
       "trim": "Standard",
       "wheelSize_inches": 16,
@@ -158,7 +158,7 @@
     },
     {
       "id": "geely-e2-comfort-47",
-      "label": "Geely E2 Comfort 47.1 kWh",
+      "label": "Geely E2 Comfort 47,1 kWh",
       "battery": "long-range",
       "trim": "Comfort",
       "wheelSize_inches": 16,
@@ -228,7 +228,7 @@
     },
     {
       "category": "design",
-      "label": "Format citadin compact de 4.14 m idéal pour le stationnement urbain"
+      "label": "Format citadin compact de 4,14 m idéal pour le stationnement urbain"
     }
   ],
   "verdict": {
@@ -242,7 +242,7 @@
       "Absence de bonus écologique en France"
     ],
     "idealUserProfile": "Conducteurs urbains et périurbains souhaitant une citadine électrique polyvalente, pratique avec son frunk et garantie très longtemps.",
-    "notIdealFor": "Conducteurs à la recherche d'une sportive ou de capacités de charge ultra-rapide 800V."
+    "notIdealFor": "Conducteurs à la recherche d'une sportive ou de capacités de charge ultra-rapide 800 V."
   },
   "lastUpdated": "2026-09-24",
   "sources": [

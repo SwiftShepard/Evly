@@ -24,10 +24,10 @@
   "wltp_max_km": 470,
   "wltp_min_km": 350,
   "realRange": {
-    "mixed_km": 339,
-    "highway_130_km": 255,
-    "urban_km": 433,
-    "winter_minus5_km": 232,
+    "mixed_km": 341,
+    "highway_130_km": 256,
+    "urban_km": 437,
+    "winter_minus5_km": 233,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 21.4,
@@ -161,10 +161,10 @@
       "wltp_km": 350,
       "wltp_consumption_kWh_100km": 17.1,
       "realRange": {
-        "mixed_km": 253,
-        "highway_130_km": 190,
-        "urban_km": 323,
-        "winter_minus5_km": 161,
+        "mixed_km": 254,
+        "highway_130_km": 191,
+        "urban_km": 325,
+        "winter_minus5_km": 162,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -212,10 +212,10 @@
       "wltp_km": 350,
       "wltp_consumption_kWh_100km": 17.1,
       "realRange": {
-        "mixed_km": 253,
-        "highway_130_km": 190,
-        "urban_km": 323,
-        "winter_minus5_km": 161,
+        "mixed_km": 254,
+        "highway_130_km": 191,
+        "urban_km": 325,
+        "winter_minus5_km": 162,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -263,10 +263,10 @@
       "wltp_km": 470,
       "wltp_consumption_kWh_100km": 17.1,
       "realRange": {
-        "mixed_km": 339,
-        "highway_130_km": 255,
-        "urban_km": 433,
-        "winter_minus5_km": 232,
+        "mixed_km": 341,
+        "highway_130_km": 256,
+        "urban_km": 437,
+        "winter_minus5_km": 233,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -313,10 +313,10 @@
       "wltp_km": 470,
       "wltp_consumption_kWh_100km": 17.1,
       "realRange": {
-        "mixed_km": 339,
-        "highway_130_km": 255,
-        "urban_km": 433,
-        "winter_minus5_km": 232,
+        "mixed_km": 341,
+        "highway_130_km": 256,
+        "urban_km": 437,
+        "winter_minus5_km": 233,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -363,10 +363,10 @@
       "wltp_km": 470,
       "wltp_consumption_kWh_100km": 17.1,
       "realRange": {
-        "mixed_km": 339,
-        "highway_130_km": 255,
-        "urban_km": 433,
-        "winter_minus5_km": 232,
+        "mixed_km": 341,
+        "highway_130_km": 256,
+        "urban_km": 437,
+        "winter_minus5_km": 233,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -410,33 +410,33 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "Hauteur de 1.90 m optimisant l'accès aux parkings sous-terrains"
+      "label": "Hauteur de 1,90 m optimisant l'accès aux parkings sous-terrains"
     },
     {
       "category": "technologie",
-      "label": "Architecture 800V et SDV avec mises à jour à distance (OTA)"
+      "label": "Architecture 800 V et SDV avec mises à jour à distance (OTA)"
     },
     {
       "category": "securite",
-      "label": "Diamètre de braquage ultra-court de 10.3 m"
+      "label": "Diamètre de braquage ultra-court de 10,3 m"
     },
     {
       "category": "design",
-      "label": "Volume utile optimisé de 5.1 à 5.8 m3"
+      "label": "Volume utile optimisé de 5,1 à 5,8 m3"
     }
   ],
   "verdict": {
     "strengths": [
-      "Architecture 800V inedite avec recharge rapide de 15 a 80% en 22 minutes",
-      "Plateforme logicielle SDV connectee et evolutive",
-      "Autonomie annoncee jusqu'a 470 km (homologation WLTP en cours)"
+      "Architecture 800 V inédite avec recharge rapide de 15 à 80 % en 22 minutes",
+      "Plateforme logicielle SDV connectée et évolutive",
+      "Autonomie annoncée jusqu'à 470 km (homologation WLTP en cours)"
     ],
     "weaknesses": [
       "Tarifs pas encore communiqués à l'ouverture des commandes",
-      "Complexite technologique accrue pour la maintenance"
+      "Complexité technologique accrue pour la maintenance"
     ],
-    "idealUserProfile": "Professionnels, artisans et flottes a la recherche d'une grande polyvalence grace a la charge rapide 800V et une autonomie elevee.",
-    "notIdealFor": "Budgets serres cherchant un utilitaire electrique basique sans besoin de recharge ultra-rapide."
+    "idealUserProfile": "Professionnels, artisans et flottes à la recherche d'une grande polyvalence grâce à la charge rapide 800 V et une autonomie élevée.",
+    "notIdealFor": "Budgets serrés cherchant un utilitaire électrique basique sans besoin de recharge ultra-rapide."
   },
   "lastUpdated": "2026-10-15",
   "sources": [

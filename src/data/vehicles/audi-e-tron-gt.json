@@ -182,7 +182,7 @@
       "equipmentHighlights": [
         "503 ch AWD",
         "616 km WLTP",
-        "0-100 km/h en 4.2 s"
+        "0-100 km/h en 4,2 s"
       ]
     },
     {
@@ -201,8 +201,8 @@
       "batteryUsed": "97 kWh",
       "equipmentHighlights": [
         "856 ch AWD",
-        "0-100 en 2.8 s",
-        "Chassis sport RS"
+        "0-100 en 2,8 s",
+        "Châssis sport RS"
       ]
     },
     {
@@ -211,7 +211,7 @@
       "batteryUsed": "97 kWh",
       "equipmentHighlights": [
         "925 ch AWD",
-        "0-100 en 2.5 s",
+        "0-100 en 2,5 s",
         "Couple 1 027 Nm"
       ]
     }
@@ -691,24 +691,24 @@
     },
     {
       "category": "securite",
-      "label": "Freinage carbone-ceramique en option"
+      "label": "Freinage carbone-céramique en option"
     },
     {
       "category": "confort",
-      "label": "Frunk 81 L, chassis pneumatique et Plug & Charge"
+      "label": "Frunk 81 L, châssis pneumatique et Plug & Charge"
     }
   ],
   "verdict": {
     "strengths": [
-      "Performances extremes (jusqu'a 925 ch) et charge 800 V ultra-rapide",
-      "Assemble a la main en Allemagne (Neckarsulm)"
+      "Performances extrêmes (jusqu'à 925 ch) et charge 800 V ultra-rapide",
+      "Assemblé à la main en Allemagne (Neckarsulm)"
     ],
     "weaknesses": [
-      "Prix tres eleve",
-      "Consommation elevee et autonomie reelle limitee sur autoroute"
+      "Prix très élevé",
+      "Consommation élevée et autonomie réelle limitée sur autoroute"
     ],
-    "idealUserProfile": "Passionnes de GT electriques cherchant performance et prestige.",
-    "notIdealFor": "Usage quotidien familial ou budget inferieur a 100 000 euros."
+    "idealUserProfile": "Passionnés de GT électriques cherchant performance et prestige.",
+    "notIdealFor": "Usage quotidien familial ou budget inférieur à 100 000 euros."
   },
   "lastUpdated": "2026-10-08",
   "sources": [

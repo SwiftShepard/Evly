@@ -356,6 +356,7 @@ function isGroupActive(group: (typeof navigationStructure)[0]): boolean {
   .search-hit-meta { text-align: right; font-size: 13px; color: var(--color-text-muted); white-space: nowrap; }
   .search-hit-meta b { display: block; font-family: var(--font-display); font-size: 18px; font-weight: 800; letter-spacing: -0.03em; color: var(--color-text); }
   .search-hit-days { font-size: 12px; color: var(--color-accent); }
+  .search-hit-meta .conf { margin-left: 0.3rem; vertical-align: 0.15em; }
   .search-hit-days[data-fit="0"] { color: var(--color-danger); }
 
   /* Réglage du trajet (navigation, accueil, fiches) */
@@ -418,6 +419,7 @@ function isGroupActive(group: (typeof navigationStructure)[0]): boolean {
 <script>
   import { readTrip, writeTrip, onTripChange, paintRails, daysOf, fitsTrip, type Trip } from "@/lib/trip";
   import { pulse } from "@/lib/tween";
+  import { confidenceHTML, levelFromCode } from "@/lib/confidence";
 
   // ── Menus déroulants : état annoncé, Échap referme et rend le focus ──
   function setupNavDropdowns() {
@@ -569,7 +571,7 @@ function isGroupActive(group: (typeof navigationStructure)[0]): boolean {
         return `<li role="none"><a role="option" class="search-hit" href="${base}${v.s}/" aria-selected="${k === 0}">
           <span class="search-hit-img">${v.i ? `<img src="${v.i}" alt="" loading="lazy" />` : ""}</span>
           <span class="min-w-0"><span class="search-hit-name"><span class="search-hit-brand">${esc(v.b)}</span> ${esc(v.m)}</span>${railHTML(v)}</span>
-          <span class="search-hit-meta"><b>${v.r} km</b>${price(v.p)}<span class="search-hit-days" data-fit="${fit ? 1 : 0}"> · ${days} j en hiver</span></span>
+          <span class="search-hit-meta"><b>${v.r} km ${confidenceHTML(levelFromCode(v.c))}</b>${price(v.p)}<span class="search-hit-days" data-fit="${fit ? 1 : 0}"> · ${days} j en hiver</span></span>
         </a></li>`;
       }).join("");
       paintRails(trip, list);

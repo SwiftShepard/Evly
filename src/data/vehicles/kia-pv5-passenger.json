@@ -164,7 +164,7 @@
     {
       "name": "Essential 51,5 kWh",
       "price_EUR": 39650,
-      "batteryUsed": "51.5 kWh",
+      "batteryUsed": "51,5 kWh",
       "equipmentHighlights": [
         "Moteur 122 ch",
         "Modularité extrême",
@@ -174,7 +174,7 @@
     {
       "name": "Essential 71,2 kWh",
       "price_EUR": 43650,
-      "batteryUsed": "71.2 kWh",
+      "batteryUsed": "71,2 kWh",
       "equipmentHighlights": [
         "Modularité extrême",
         "Portes coulissantes"
@@ -183,7 +183,7 @@
     {
       "name": "Plus 71,2 kWh",
       "price_EUR": 46200,
-      "batteryUsed": "71.2 kWh",
+      "batteryUsed": "71,2 kWh",
       "equipmentHighlights": [
         "Modularité extrême",
         "Portes coulissantes"

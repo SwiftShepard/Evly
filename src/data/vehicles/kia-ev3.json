@@ -182,17 +182,17 @@
     {
       "name": "Air",
       "price_EUR": 36490,
-      "batteryUsed": "58.3 kWh",
+      "batteryUsed": "58,3 kWh",
       "wltp_km": 436,
       "equipmentHighlights": [
-        "Ecran panoramique",
+        "Écran panoramique",
         "Jantes 17\""
       ]
     },
     {
       "name": "Earth",
       "price_EUR": 39090,
-      "batteryUsed": "58.3 kWh",
+      "batteryUsed": "58,3 kWh",
       "wltp_km": 436,
       "equipmentHighlights": [
         "Sièges avant chauffants",
@@ -203,27 +203,27 @@
     {
       "name": "Air",
       "price_EUR": 41490,
-      "batteryUsed": "81.4 kWh",
+      "batteryUsed": "81,4 kWh",
       "wltp_km": 605,
       "equipmentHighlights": [
-        "Batterie 81.4 kWh",
+        "Batterie 81,4 kWh",
         "Jantes 17\""
       ]
     },
     {
       "name": "Earth",
       "price_EUR": 43790,
-      "batteryUsed": "81.4 kWh",
+      "batteryUsed": "81,4 kWh",
       "wltp_km": 605,
       "equipmentHighlights": [
         "Confort ++",
-        "Double écran 12.3\""
+        "Double écran 12,3\""
       ]
     },
     {
       "name": "GT-Line",
       "price_EUR": 46790,
-      "batteryUsed": "81.4 kWh",
+      "batteryUsed": "81,4 kWh",
       "wltp_km": 580,
       "equipmentHighlights": [
         "Jantes 19\"",
@@ -261,7 +261,7 @@
       "chargingDC_kWh_30min": 41,
       "chargingCurve": null,
       "availability": "available",
-      "notes": "Batterie Standard Range 58.3 kWh.",
+      "notes": "Batterie Standard Range 58,3 kWh.",
       "chargingDC_confidence": "estimated"
     },
     {
@@ -290,7 +290,7 @@
       "chargingDC_kWh_30min": 41,
       "chargingCurve": null,
       "availability": "available",
-      "notes": "Batterie Standard Range 58.3 kWh, finition Earth.",
+      "notes": "Batterie Standard Range 58,3 kWh, finition Earth.",
       "chargingDC_confidence": "estimated"
     },
     {

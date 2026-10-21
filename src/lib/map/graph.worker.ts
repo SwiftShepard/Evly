@@ -20,6 +20,8 @@ export interface TripResult {
    * consommée par n'importe quel autre profil s'en déduit sans repasser par le worker */
   split: [number, number, number];
   path: [number, number][] | null;
+  /** Kilomètres cumulés [autoroute, voie express, route] à chaque point du tracé (planificateur de grand trajet) */
+  cum: [number, number, number][] | null;
 }
 
 let graph: RoadGraph | null = null;
@@ -42,6 +44,14 @@ function pathTo(node: number): [number, number][] {
   const g = graph!;
   const out: [number, number][] = [];
   for (let v = node; v >= 0; v = reach!.prev[v]!) out.push([g.lon[v]! / 1e5, g.lat[v]! / 1e5]);
+  return out.reverse();
+}
+
+/** Kilomètres cumulés par type de route le long du même tracé */
+function cumTo(node: number): [number, number, number][] {
+  const r = reach!;
+  const out: [number, number, number][] = [];
+  for (let v = node; v >= 0; v = r.prev[v]!) out.push([r.hw[v]!, r.express[v]!, r.road[v]!]);
   return out.reverse();
 }
 
@@ -68,7 +78,13 @@ self.onmessage = async (e: MessageEvent<WorkerRequest>) => {
         if (!a) return null;
         const used = msg.profiles.map((p) => batteryUsed(reach!, a.node, p) + a.lastKm / p.road);
         const split: [number, number, number] = [reach!.hw[a.node]!, reach!.express[a.node]!, reach!.road[a.node]! + a.lastKm];
-        return { km: a.total, used, split, path: msg.withPath ? [...pathTo(a.node), [lon, lat]] : null };
+        return {
+          km: a.total,
+          used,
+          split,
+          path: msg.withPath ? [...pathTo(a.node), [lon, lat]] : null,
+          cum: msg.withPath ? [...cumTo(a.node), split] : null,
+        };
       });
       self.postMessage({ id: msg.id, ok: true, trips });
     }

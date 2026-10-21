@@ -24,10 +24,10 @@
   "wltp_max_km": 569,
   "wltp_min_km": 360,
   "realRange": {
-    "mixed_km": 413,
-    "highway_130_km": 310,
-    "urban_km": 528,
-    "winter_minus5_km": 282,
+    "mixed_km": 415,
+    "highway_130_km": 311,
+    "urban_km": 531,
+    "winter_minus5_km": 284,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 16,
@@ -87,7 +87,7 @@
       "batteryUsed": "52 kWh",
       "equipmentHighlights": [
         "Moteur 170 ch",
-        "Écran central 12.9\"",
+        "Écran central 12,9\"",
         "Projecteurs LED",
         "Radars de stationnement AV/AR"
       ]
@@ -143,9 +143,9 @@
       "wltp_km": 360,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 261,
-        "highway_130_km": 196,
-        "urban_km": 334,
+        "mixed_km": 262,
+        "highway_130_km": 197,
+        "urban_km": 335,
         "winter_minus5_km": 179,
         "confidence": "estimated"
       },
@@ -192,10 +192,10 @@
       "wltp_km": 569,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
-        "mixed_km": 413,
-        "highway_130_km": 310,
-        "urban_km": 528,
-        "winter_minus5_km": 282,
+        "mixed_km": 415,
+        "highway_130_km": 311,
+        "urban_km": 531,
+        "winter_minus5_km": 284,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -242,10 +242,10 @@
       "wltp_km": 515,
       "wltp_consumption_kWh_100km": 17,
       "realRange": {
-        "mixed_km": 373,
-        "highway_130_km": 280,
-        "urban_km": 477,
-        "winter_minus5_km": 255,
+        "mixed_km": 375,
+        "highway_130_km": 281,
+        "urban_km": 480,
+        "winter_minus5_km": 257,
         "confidence": "estimated"
       },
       "rangeTests": [],

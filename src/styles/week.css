@@ -363,7 +363,7 @@
   font-weight: 650;
   color: var(--color-text);
 }
-.week-version-facts .card-confidence {
+.week-version-facts .conf {
   margin-left: 0.25rem;
 }
 
@@ -2180,5 +2180,87 @@ html.week-guide-lock body {
   .week-stepper button:not(:disabled):hover {
     background: var(--color-surface-elevated);
     color: var(--color-text);
+  }
+}
+
+/* Détail d'un grand trajet (planificateur) : déplié sur place quand la ligne est montrée,
+   hauteur animée par la grille (0fr -> 1fr), sans bulle */
+.week-trip-plan {
+  flex-basis: 100%;
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 320ms var(--ease-out-expo),
+    opacity 200ms ease;
+}
+.week-trip-plan[data-open] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.week-trip-plan-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+.week-trip-plan-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 0.45rem;
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+}
+.week-trip-plan-head .week-seg-sm button {
+  padding-inline: 0.6rem;
+  font-variant-numeric: tabular-nums;
+}
+.week-trip-plan-gap {
+  margin-top: 0.5rem;
+  font-size: 12.5px;
+  color: var(--color-danger);
+}
+.week-trip-stops {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+  padding-left: 0.2rem;
+  border-left: 2px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
+}
+.week-trip-stops li {
+  display: grid;
+  grid-template-columns: 3.6rem minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.25rem 0 0.25rem 0.55rem;
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+}
+.week-trip-stop-km {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-faint);
+  white-space: nowrap;
+}
+.week-trip-stop-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.week-trip-stop-name b,
+.week-trip-stop-charge b {
+  font-weight: 650;
+  color: var(--color-text);
+}
+.week-trip-stop-charge {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.week-trip-stop-end {
+  color: var(--color-text);
+}
+@media (prefers-reduced-motion: reduce) {
+  .week-trip-plan {
+    transition: none;
   }
 }

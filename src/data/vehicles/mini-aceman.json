@@ -24,10 +24,10 @@
   "wltp_max_km": 406,
   "wltp_min_km": 310,
   "realRange": {
-    "mixed_km": 294,
-    "highway_130_km": 221,
-    "urban_km": 376,
-    "winter_minus5_km": 201,
+    "mixed_km": 296,
+    "highway_130_km": 222,
+    "urban_km": 379,
+    "winter_minus5_km": 202,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 14.7,
@@ -88,9 +88,9 @@
     {
       "name": "Essential E",
       "price_EUR": 33600,
-      "batteryUsed": "38.5 kWh (E)",
+      "batteryUsed": "38,5 kWh (E)",
       "equipmentHighlights": [
-        "Ecran central circulaire tactile OLED 240mm",
+        "Écran central circulaire tactile OLED 240 mm",
         "Climatisation automatique bi-zone",
         "Aide au stationnement actif",
         "Jantes alliage 17 pouces"
@@ -99,7 +99,7 @@
     {
       "name": "Classic E",
       "price_EUR": 35650,
-      "batteryUsed": "38.5 kWh (E)",
+      "batteryUsed": "38,5 kWh (E)",
       "equipmentHighlights": [
         "Volant sport à 3 branches",
         "Sièges sport en similicuir/tissu",
@@ -110,7 +110,7 @@
     {
       "name": "Classic SE",
       "price_EUR": 40640,
-      "batteryUsed": "49.2 kWh (SE)",
+      "batteryUsed": "49,2 kWh (SE)",
       "equipmentHighlights": [
         "Projecteurs LED adaptatifs",
         "Sièges avant chauffants",
@@ -121,7 +121,7 @@
     {
       "name": "Favoured SE",
       "price_EUR": 42230,
-      "batteryUsed": "49.2 kWh (SE)",
+      "batteryUsed": "49,2 kWh (SE)",
       "equipmentHighlights": [
         "Affichage tête haute",
         "Sièges sport John Cooper Works",
@@ -149,10 +149,10 @@
       "wltp_km": 310,
       "wltp_consumption_kWh_100km": 14.9,
       "realRange": {
-        "mixed_km": 225,
-        "highway_130_km": 169,
-        "urban_km": 288,
-        "winter_minus5_km": 154,
+        "mixed_km": 226,
+        "highway_130_km": 170,
+        "urban_km": 289,
+        "winter_minus5_km": 155,
         "confidence": "estimated"
       },
       "chargingDC_peak_kW": 75,
@@ -199,10 +199,10 @@
       "wltp_km": 406,
       "wltp_consumption_kWh_100km": 14.7,
       "realRange": {
-        "mixed_km": 294,
-        "highway_130_km": 221,
-        "urban_km": 376,
-        "winter_minus5_km": 201,
+        "mixed_km": 296,
+        "highway_130_km": 222,
+        "urban_km": 379,
+        "winter_minus5_km": 202,
         "confidence": "estimated"
       },
       "chargingDC_peak_kW": 95,

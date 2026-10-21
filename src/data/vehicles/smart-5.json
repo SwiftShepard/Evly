@@ -118,7 +118,7 @@
       "price_EUR": 44990,
       "batteryUsed": "100 kWh",
       "equipmentHighlights": [
-        "Ecran 13 pouces",
+        "Écran 13 pouces",
         "740 km WLTP",
         "Architecture 800 V"
       ]
@@ -129,7 +129,7 @@
       "batteryUsed": "100 kWh",
       "equipmentHighlights": [
         "Beats Audio",
-        "Sieges chauffants ventiles",
+        "Sièges chauffants ventilés",
         "Toit panoramique"
       ]
     },
@@ -346,7 +346,7 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "SUV familial au design moderne et aerodynamique"
+      "label": "SUV familial au design moderne et aérodynamique"
     },
     {
       "category": "technologie",
@@ -367,11 +367,11 @@
       "Autonomie exceptionnelle (740 km WLTP)"
     ],
     "weaknesses": [
-      "Assemblage en Chine, aucune aide francaise",
-      "Marque Smart encore meconnue sur le segment SUV familial"
+      "Assemblage en Chine, aucune aide française",
+      "Marque Smart encore méconnue sur le segment SUV familial"
     ],
-    "idealUserProfile": "Gros rouleurs cherchant un SUV familial electrique avec charge ultra-rapide et grande autonomie.",
-    "notIdealFor": "Acheteurs fideles aux marques etablies ou comptant sur les aides a l'achat."
+    "idealUserProfile": "Gros rouleurs cherchant un SUV familial électrique avec charge ultra-rapide et grande autonomie.",
+    "notIdealFor": "Acheteurs fidèles aux marques établies ou comptant sur les aides à l'achat."
   },
   "lastUpdated": "2026-05-19",
   "sources": [

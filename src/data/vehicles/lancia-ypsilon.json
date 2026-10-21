@@ -24,10 +24,10 @@
   "wltp_max_km": 425,
   "wltp_min_km": 373,
   "realRange": {
-    "mixed_km": 299,
-    "highway_130_km": 225,
-    "urban_km": 382,
-    "winter_minus5_km": 205,
+    "mixed_km": 302,
+    "highway_130_km": 227,
+    "urban_km": 387,
+    "winter_minus5_km": 207,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 15.2,
@@ -87,7 +87,7 @@
       "batteryUsed": "51 kWh",
       "equipmentHighlights": [
         "403 km WLTP",
-        "Ecran 10,25 pouces",
+        "Écran 10,25 pouces",
         "SALA (conduite semi-autonome niveau 2)"
       ]
     },
@@ -141,10 +141,10 @@
       "wltp_km": 425,
       "wltp_consumption_kWh_100km": 15.2,
       "realRange": {
-        "mixed_km": 299,
-        "highway_130_km": 225,
-        "urban_km": 382,
-        "winter_minus5_km": 205,
+        "mixed_km": 302,
+        "highway_130_km": 227,
+        "urban_km": 387,
+        "winter_minus5_km": 207,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -190,10 +190,10 @@
       "wltp_km": 419,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 295,
-        "highway_130_km": 222,
-        "urban_km": 377,
-        "winter_minus5_km": 202,
+        "mixed_km": 298,
+        "highway_130_km": 224,
+        "urban_km": 382,
+        "winter_minus5_km": 204,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -239,10 +239,10 @@
       "wltp_km": 373,
       "wltp_consumption_kWh_100km": 15.2,
       "realRange": {
-        "mixed_km": 263,
-        "highway_130_km": 198,
-        "urban_km": 336,
-        "winter_minus5_km": 180,
+        "mixed_km": 265,
+        "highway_130_km": 199,
+        "urban_km": 339,
+        "winter_minus5_km": 181,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -287,11 +287,11 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "Sellerie Poltrona Frau (Cassina), interieur premium italien"
+      "label": "Sellerie Poltrona Frau (Cassina), intérieur premium italien"
     },
     {
       "category": "technologie",
-      "label": "SALA : conduite semi-autonome niveau 2 de serie"
+      "label": "SALA : conduite semi-autonome niveau 2 de série"
     },
     {
       "category": "securite",
@@ -299,19 +299,19 @@
     },
     {
       "category": "design",
-      "label": "Design neo-retro italien, calandra Lancia iconique"
+      "label": "Design néo-rétro italien, calandra Lancia iconique"
     }
   ],
   "verdict": {
     "strengths": [
       "Design et finition premium pour le segment B",
-      "Plateforme Stellantis eprouvee, bonne autonomie WLTP"
+      "Plateforme Stellantis éprouvée, bonne autonomie WLTP"
     ],
     "weaknesses": [
-      "Charge DC limitee a 100 kW",
+      "Charge DC limitée à 100 kW",
       "Coffre compact (305 L)"
     ],
-    "idealUserProfile": "Amateurs de design italien cherchant une citadine electrique premium avec un interieur soigne.",
+    "idealUserProfile": "Amateurs de design italien cherchant une citadine électrique premium avec un intérieur soigné.",
     "notIdealFor": "Familles ayant besoin d'un grand coffre ou gros rouleurs autoroutiers."
   },
   "lastUpdated": "2026-10-08",

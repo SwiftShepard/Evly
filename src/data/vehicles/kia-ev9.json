@@ -2,7 +2,7 @@
   "slug": "kia-ev9",
   "brand": "Kia",
   "model": "EV9",
-  "variant": "99.8 kWh",
+  "variant": "99,8 kWh",
   "bodyType": "SUV 7 places",
   "segment": "E",
   "productionCountry": "Corée",
@@ -178,7 +178,7 @@
     {
       "name": "Air 76,1 kWh",
       "price_EUR": 65400,
-      "batteryUsed": "76.1 kWh",
+      "batteryUsed": "76,1 kWh",
       "equipmentHighlights": [
         "Batterie autonomie standard 76,1 kWh",
         "Moteur 218 ch",
@@ -188,26 +188,26 @@
     {
       "name": "Air",
       "price_EUR": 71400,
-      "batteryUsed": "99.8 kWh",
+      "batteryUsed": "99,8 kWh",
       "equipmentHighlights": [
         "7 places",
-        "Ecran double 12.3\""
+        "Écran double 12,3\""
       ]
     },
     {
       "name": "Earth",
       "price_EUR": 79990,
-      "batteryUsed": "99.8 kWh",
+      "batteryUsed": "99,8 kWh",
       "equipmentHighlights": [
         "7 places",
-        "Sieges ventiles",
+        "Sièges ventilés",
         "Toit ouvrant"
       ]
     },
     {
       "name": "GT-Line",
       "price_EUR": 85990,
-      "batteryUsed": "99.8 kWh",
+      "batteryUsed": "99,8 kWh",
       "equipmentHighlights": [
         "7 places",
         "Jantes 21\"",
@@ -615,7 +615,7 @@
         }
       ],
       "availability": "available",
-      "notes": "Jantes 21\" reduisent l'autonomie WLTP",
+      "notes": "Jantes 21\" réduisent l'autonomie WLTP",
       "chargingDC_confidence": "tested"
     }
   ],

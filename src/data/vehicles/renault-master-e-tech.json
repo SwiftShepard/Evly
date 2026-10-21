@@ -24,10 +24,10 @@
   "wltp_max_km": 460,
   "wltp_min_km": 410,
   "realRange": {
-    "mixed_km": 332,
-    "highway_130_km": 249,
-    "urban_km": 424,
-    "winter_minus5_km": 227,
+    "mixed_km": 334,
+    "highway_130_km": 251,
+    "urban_km": 428,
+    "winter_minus5_km": 228,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 25.5,
@@ -106,7 +106,7 @@
       "equipmentHighlights": [
         "Volume utile 10,8 m3",
         "Charge DC 130 kW",
-        "OpenR Link multimedia"
+        "OpenR Link multimédia"
       ]
     },
     {
@@ -115,7 +115,7 @@
       "batteryUsed": "87 kWh",
       "equipmentHighlights": [
         "Volume utile 13 m3",
-        "Camera de recul",
+        "Caméra de recul",
         "Charge AC 22 kW"
       ]
     }
@@ -138,10 +138,10 @@
       "wltp_km": 460,
       "wltp_consumption_kWh_100km": 25,
       "realRange": {
-        "mixed_km": 332,
-        "highway_130_km": 249,
-        "urban_km": 424,
-        "winter_minus5_km": 227,
+        "mixed_km": 334,
+        "highway_130_km": 251,
+        "urban_km": 428,
+        "winter_minus5_km": 228,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -191,10 +191,10 @@
       "wltp_km": 410,
       "wltp_consumption_kWh_100km": 27,
       "realRange": {
-        "mixed_km": 296,
-        "highway_130_km": 222,
-        "urban_km": 378,
-        "winter_minus5_km": 202,
+        "mixed_km": 298,
+        "highway_130_km": 224,
+        "urban_km": 382,
+        "winter_minus5_km": 204,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -241,11 +241,11 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "Poste de conduite sureleve, visibilite panoramique"
+      "label": "Poste de conduite surélevé, visibilité panoramique"
     },
     {
       "category": "technologie",
-      "label": "OpenR Link avec Google integre et navigation connectee"
+      "label": "OpenR Link avec Google intégré et navigation connectée"
     },
     {
       "category": "securite",
@@ -253,21 +253,21 @@
     },
     {
       "category": "design",
-      "label": "Volumes utiles de 10,8 a 22 m3 selon configuration"
+      "label": "Volumes utiles de 10,8 à 22 m3 selon configuration"
     }
   ],
   "verdict": {
     "strengths": [
       "Autonomie record pour un grand fourgon (460 km WLTP)",
       "Charge rapide 130 kW, la plus rapide du segment",
-      "Production francaise (Batilly) avec eligibilite Prime CEE VE"
+      "Production française (Batilly) avec éligibilité Prime CEE VE"
     ],
     "weaknesses": [
-      "Prix d'achat eleve malgre les aides",
+      "Prix d'achat élevé malgré les aides",
       "Consommation autoroute importante due au gabarit"
     ],
-    "idealUserProfile": "Artisans, livreurs urbains et periurbains, flottes d'entreprise recherchant un grand volume avec la meilleure autonomie electrique du marche.",
-    "notIdealFor": "Tres longs trajets autoroutiers charges : l'autonomie reelle tombe sous 250 km a 130 km/h a pleine charge."
+    "idealUserProfile": "Artisans, livreurs urbains et périurbains, flottes d'entreprise recherchant un grand volume avec la meilleure autonomie électrique du marché.",
+    "notIdealFor": "Très longs trajets autoroutiers chargés : l'autonomie réelle tombe sous 250 km à 130 km/h à pleine charge."
   },
   "lastUpdated": "2026-05-29",
   "sources": [

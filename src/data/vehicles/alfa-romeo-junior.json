@@ -24,10 +24,10 @@
   "wltp_max_km": 410,
   "wltp_min_km": 400,
   "realRange": {
-    "mixed_km": 297,
-    "highway_130_km": 223,
-    "urban_km": 380,
-    "winter_minus5_km": 203,
+    "mixed_km": 299,
+    "highway_130_km": 224,
+    "urban_km": 383,
+    "winter_minus5_km": 205,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 15.5,
@@ -87,7 +87,7 @@
       "batteryUsed": "54 kWh",
       "equipmentHighlights": [
         "410 km WLTP",
-        "Ecran 10,25 pouces",
+        "Écran 10,25 pouces",
         "Jantes 18 pouces"
       ]
     },
@@ -161,10 +161,10 @@
       "wltp_km": 410,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 297,
-        "highway_130_km": 223,
-        "urban_km": 380,
-        "winter_minus5_km": 203,
+        "mixed_km": 299,
+        "highway_130_km": 224,
+        "urban_km": 383,
+        "winter_minus5_km": 205,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -210,10 +210,10 @@
       "wltp_km": 410,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 297,
-        "highway_130_km": 223,
-        "urban_km": 380,
-        "winter_minus5_km": 203,
+        "mixed_km": 299,
+        "highway_130_km": 224,
+        "urban_km": 383,
+        "winter_minus5_km": 205,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -259,10 +259,10 @@
       "wltp_km": 410,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 297,
-        "highway_130_km": 223,
-        "urban_km": 380,
-        "winter_minus5_km": 203,
+        "mixed_km": 299,
+        "highway_130_km": 224,
+        "urban_km": 383,
+        "winter_minus5_km": 205,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -308,10 +308,10 @@
       "wltp_km": 410,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 297,
-        "highway_130_km": 223,
-        "urban_km": 380,
-        "winter_minus5_km": 203,
+        "mixed_km": 299,
+        "highway_130_km": 224,
+        "urban_km": 383,
+        "winter_minus5_km": 205,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -357,10 +357,10 @@
       "wltp_km": 400,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
-        "mixed_km": 290,
+        "mixed_km": 291,
         "highway_130_km": 218,
-        "urban_km": 371,
-        "winter_minus5_km": 198,
+        "urban_km": 373,
+        "winter_minus5_km": 199,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -403,11 +403,11 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "Sieges sport Sabelt (Veloce), interieur premium"
+      "label": "Sièges sport Sabelt (Veloce), intérieur premium"
     },
     {
       "category": "technologie",
-      "label": "Ecran 10,25 pouces, instrumentation digitale"
+      "label": "Écran 10,25 pouces, instrumentation digitale"
     },
     {
       "category": "securite",
@@ -420,14 +420,14 @@
   ],
   "verdict": {
     "strengths": [
-      "Chassis et tenue de route sportive, ADN Alfa Romeo",
-      "Version Veloce AWD 280 ch pour les passionnes"
+      "Châssis et tenue de route sportive, ADN Alfa Romeo",
+      "Version Veloce AWD 280 ch pour les passionnés"
     ],
     "weaknesses": [
-      "Charge DC limitee a 100 kW",
-      "Prix eleve face a la concurrence Stellantis (Peugeot e-2008, Jeep Avenger)"
+      "Charge DC limitée à 100 kW",
+      "Prix élevé face à la concurrence Stellantis (Peugeot e-2008, Jeep Avenger)"
     ],
-    "idealUserProfile": "Amateurs de conduite sportive cherchant un SUV compact electrique avec du caractere italien.",
+    "idealUserProfile": "Amateurs de conduite sportive cherchant un SUV compact électrique avec du caractère italien.",
     "notIdealFor": "Acheteurs cherchant le meilleur rapport prix/prestations dans le segment B SUV."
   },
   "lastUpdated": "2026-10-08",

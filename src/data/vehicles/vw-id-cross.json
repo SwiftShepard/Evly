@@ -24,10 +24,10 @@
   "wltp_max_km": 427,
   "wltp_min_km": 316,
   "realRange": {
-    "mixed_km": 310,
+    "mixed_km": 311,
     "highway_130_km": 233,
-    "urban_km": 396,
-    "winter_minus5_km": 212,
+    "urban_km": 398,
+    "winter_minus5_km": 213,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 15.8,
@@ -162,9 +162,9 @@
       "wltp_km": 316,
       "wltp_consumption_kWh_100km": 11.7,
       "realRange": {
-        "mixed_km": 229,
-        "highway_130_km": 172,
-        "urban_km": 293,
+        "mixed_km": 230,
+        "highway_130_km": 173,
+        "urban_km": 294,
         "winter_minus5_km": 157,
         "confidence": "estimated"
       },
@@ -212,10 +212,10 @@
       "wltp_km": 427,
       "wltp_consumption_kWh_100km": 12.2,
       "realRange": {
-        "mixed_km": 310,
+        "mixed_km": 311,
         "highway_130_km": 233,
-        "urban_km": 396,
-        "winter_minus5_km": 212,
+        "urban_km": 398,
+        "winter_minus5_km": 213,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -262,10 +262,10 @@
       "wltp_km": 427,
       "wltp_consumption_kWh_100km": 12.2,
       "realRange": {
-        "mixed_km": 310,
+        "mixed_km": 311,
         "highway_130_km": 233,
-        "urban_km": 396,
-        "winter_minus5_km": 212,
+        "urban_km": 398,
+        "winter_minus5_km": 213,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -312,10 +312,10 @@
       "wltp_km": 427,
       "wltp_consumption_kWh_100km": 12.2,
       "realRange": {
-        "mixed_km": 310,
+        "mixed_km": 311,
         "highway_130_km": 233,
-        "urban_km": 396,
-        "winter_minus5_km": 212,
+        "urban_km": 398,
+        "winter_minus5_km": 213,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -362,10 +362,10 @@
       "wltp_km": 427,
       "wltp_consumption_kWh_100km": 12.2,
       "realRange": {
-        "mixed_km": 310,
+        "mixed_km": 311,
         "highway_130_km": 233,
-        "urban_km": 396,
-        "winter_minus5_km": 212,
+        "urban_km": 398,
+        "winter_minus5_km": 213,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -434,7 +434,7 @@
     ],
     "weaknesses": [
       "Autonomie modeste sur la version d'entrée 116 ch / 37 kWh LFP",
-      "Recharge DC plafonnée à 90-105 kW, en retrait face à la concurrence en 800V"
+      "Recharge DC plafonnée à 90-105 kW, en retrait face à la concurrence en 800 V"
     ],
     "idealUserProfile": "Citadin ou famille urbaine cherchant un SUV compact électrique abordable pour un usage quotidien et occasionnellement routier.",
     "notIdealFor": "Gros rouleurs autoroutiers réguliers qui privilégieront un modèle à charge plus rapide et à l'autonomie supérieure."

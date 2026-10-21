@@ -2,7 +2,7 @@
   "slug": "audi-s6-e-tron",
   "brand": "Audi",
   "model": "S6 e-tron",
-  "variant": "94.9 kWh",
+  "variant": "94,9 kWh",
   "bodyType": "Berline",
   "segment": "E",
   "productionCountry": "Allemagne",
@@ -116,7 +116,7 @@
     {
       "name": "S6 Sportback e-tron",
       "price_EUR": 105020,
-      "batteryUsed": "94.9 kWh",
+      "batteryUsed": "94,9 kWh",
       "equipmentHighlights": [
         "Suspension pneumatique adaptative S",
         "Projecteurs Matrix LED",
@@ -126,7 +126,7 @@
     {
       "name": "S6 Avant e-tron",
       "price_EUR": 107020,
-      "batteryUsed": "94.9 kWh",
+      "batteryUsed": "94,9 kWh",
       "equipmentHighlights": [
         "Silhouette break Avant exclusive",
         "Volume de coffre modulable jusqu'à 1420 L",
@@ -140,7 +140,7 @@
   "configurations": [
     {
       "id": "audi-s6-etron-sportback",
-      "label": "Sportback · 94.9 kWh",
+      "label": "Sportback · 94,9 kWh",
       "battery": "long-range",
       "trim": "S6 Sportback e-tron",
       "wheelSize_inches": 20,
@@ -193,7 +193,7 @@
     },
     {
       "id": "audi-s6-etron-avant",
-      "label": "Avant · 94.9 kWh",
+      "label": "Avant · 94,9 kWh",
       "battery": "long-range",
       "trim": "S6 Avant e-tron",
       "wheelSize_inches": 20,
@@ -291,7 +291,7 @@
     },
     {
       "category": "technologie",
-      "label": "Architecture 800V PPE permettant de récupérer 10 à 80 % d'énergie en 21 min"
+      "label": "Architecture 800 V PPE permettant de récupérer 10 à 80 % d'énergie en 21 min"
     },
     {
       "category": "confort",
@@ -301,7 +301,7 @@
   "verdict": {
     "strengths": [
       "Performances de premier ordre (0-100 km/h en 3,9 s)",
-      "Recharge ultra-rapide 800V jusqu'à 270 kW de puissance de crête",
+      "Recharge ultra-rapide 800 V jusqu'à 270 kW de puissance de crête",
       "Excellent compromis entre sportivité et habitabilité (notamment en Avant)"
     ],
     "weaknesses": [

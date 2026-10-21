@@ -174,7 +174,7 @@
       "price_EUR": 56990,
       "batteryUsed": "100 kWh",
       "equipmentHighlights": [
-        "Plateforme 800V de SAIC",
+        "Plateforme 800 V de SAIC",
         "Volume de coffre familial de 646 L",
         "Conduite autonome avancée avec LiDAR"
       ]
@@ -241,7 +241,7 @@
         }
       ],
       "availability": "available",
-      "notes": "340 ch, RWD, SUV Coupé 800V",
+      "notes": "340 ch, RWD, SUV Coupé 800 V",
       "power_hp": 407,
       "power_kW": 299,
       "usableCapacity_kWh": 96,
@@ -382,7 +382,7 @@
         }
       ],
       "availability": "available",
-      "notes": "340 ch RWD, plateforme 800V, autonomie 590 km",
+      "notes": "340 ch RWD, plateforme 800 V, autonomie 590 km",
       "power_hp": 751,
       "power_kW": 552,
       "usableCapacity_kWh": 96,
@@ -403,7 +403,7 @@
     },
     {
       "category": "technologie",
-      "label": "Plateforme de charge ultra-rapide 800V"
+      "label": "Plateforme de charge ultra-rapide 800 V"
     },
     {
       "category": "confort",
@@ -416,7 +416,7 @@
   ],
   "verdict": {
     "strengths": [
-      "Vitesse de recharge de référence (10-80% en 15 min)",
+      "Vitesse de recharge de référence (10-80 % en 15 min)",
       "Excellent volume de coffre avec hayon",
       "Technologies de cockpit très haut de gamme"
     ],

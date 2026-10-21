@@ -9,6 +9,7 @@ import {
   MapPin,
   Mountain,
   Pill,
+  PlugZap,
   School,
   ShoppingCart,
   Store,
@@ -37,6 +38,7 @@ const ICONS: Record<string, LucideIcon> = {
   nature: Trees,
   parc: Trees,
   plage: Trees,
+  borne: PlugZap,
 };
 
 export function CategoryIcon({ cat, size = 16 }: { cat: string; size?: number }) {

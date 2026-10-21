@@ -2,8 +2,8 @@
   "slug": "xpeng-g6",
   "brand": "Xpeng",
   "model": "G6",
-  "variant": "80.8 kWh",
-  "bodyType": "SUV Coupe",
+  "variant": "80,8 kWh",
+  "bodyType": "SUV Coupé",
   "segment": "D",
   "productionCountry": "Chine",
   "assemblyPlant": "Zhaoqing",
@@ -144,9 +144,9 @@
   "frunkCapacity_L": null,
   "trims": [
     {
-      "name": "68.5 kWh",
+      "name": "68,5 kWh",
       "price_EUR": 42990,
-      "batteryUsed": "68.5 kWh",
+      "batteryUsed": "68,5 kWh",
       "equipmentHighlights": [
         "435 km WLTP",
         "Architecture 800 V",
@@ -154,19 +154,19 @@
       ]
     },
     {
-      "name": "80.8 kWh",
+      "name": "80,8 kWh",
       "price_EUR": 46990,
-      "batteryUsed": "80.8 kWh",
+      "batteryUsed": "80,8 kWh",
       "equipmentHighlights": [
         "525 km WLTP",
-        "Ecran 14,96 pouces",
+        "Écran 14,96 pouces",
         "Toit panoramique"
       ]
     },
     {
-      "name": "Performance 80.8 kWh",
+      "name": "Performance 80,8 kWh",
       "price_EUR": 50990,
-      "batteryUsed": "80.8 kWh",
+      "batteryUsed": "80,8 kWh",
       "equipmentHighlights": [
         "AWD 485 ch",
         "0-100 en 3,9 s",
@@ -180,9 +180,9 @@
   "configurations": [
     {
       "id": "xpeng-g6-standard",
-      "label": "G6 Standard · 68.5 kWh",
+      "label": "G6 Standard · 68,5 kWh",
       "battery": "standard",
-      "trim": "68.5 kWh",
+      "trim": "68,5 kWh",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
@@ -229,14 +229,14 @@
         }
       ],
       "availability": "available",
-      "notes": "255 ch (188 kW), RWD, LFP 68.5 kWh",
+      "notes": "255 ch (188 kW), RWD, LFP 68,5 kWh",
       "chargingDC_confidence": "estimated"
     },
     {
       "id": "xpeng-g6-long-range",
-      "label": "G6 · 80.8 kWh",
+      "label": "G6 · 80,8 kWh",
       "battery": "long-range",
-      "trim": "80.8 kWh",
+      "trim": "80,8 kWh",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
@@ -344,9 +344,9 @@
     },
     {
       "id": "xpeng-g6-performance",
-      "label": "G6 Performance · 80.8 kWh",
+      "label": "G6 Performance · 80,8 kWh",
       "battery": "long-range",
-      "trim": "Performance 80.8 kWh",
+      "trim": "Performance 80,8 kWh",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
@@ -491,7 +491,7 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "SUV coupe sportif au Cx exceptionnel de 0,25"
+      "label": "SUV coupé sportif au Cx exceptionnel de 0,25"
     },
     {
       "category": "technologie",
@@ -499,24 +499,24 @@
     },
     {
       "category": "securite",
-      "label": "XNGP conduite semi-autonome avancee"
+      "label": "XNGP conduite semi-autonome avancée"
     },
     {
       "category": "confort",
-      "label": "Ecran 14,96 pouces et toit panoramique"
+      "label": "Écran 14,96 pouces et toit panoramique"
     }
   ],
   "verdict": {
     "strengths": [
-      "Charge 5C ultra-rapide (10-80 % en 12 min), reference du marche",
-      "Cx de 0,25 et autonomie genereuse pour le segment"
+      "Charge 5C ultra-rapide (10-80 % en 12 min), référence du marché",
+      "Cx de 0,25 et autonomie généreuse pour le segment"
     ],
     "weaknesses": [
-      "Assemblage en Chine, aucune aide francaise",
-      "Reseau apres-vente encore limite en France"
+      "Assemblage en Chine, aucune aide française",
+      "Réseau après-vente encore limité en France"
     ],
-    "idealUserProfile": "Conducteurs technophiles cherchant le SUV coupe le plus rapide a charger du marche.",
-    "notIdealFor": "Acheteurs comptant sur les aides ou privilegiant un reseau SAV etendu."
+    "idealUserProfile": "Conducteurs technophiles cherchant le SUV coupé le plus rapide à charger du marché.",
+    "notIdealFor": "Acheteurs comptant sur les aides ou privilégiant un réseau SAV étendu."
   },
   "lastUpdated": "2026-10-08",
   "sources": [

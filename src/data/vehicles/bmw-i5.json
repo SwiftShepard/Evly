@@ -2,7 +2,7 @@
   "slug": "bmw-i5",
   "brand": "BMW",
   "model": "i5",
-  "variant": "81.2 kWh",
+  "variant": "81,2 kWh",
   "bodyType": "Berline",
   "segment": "E",
   "productionCountry": "Allemagne",
@@ -182,7 +182,7 @@
     {
       "name": "i5 eDrive40 (Base)",
       "price_EUR": 76200,
-      "batteryUsed": "81.2 kWh",
+      "batteryUsed": "81,2 kWh",
       "equipmentHighlights": [
         "582 km WLTP",
         "340 ch RWD",
@@ -192,27 +192,27 @@
     {
       "name": "i5 eDrive40 M Sport",
       "price_EUR": 80250,
-      "batteryUsed": "81.2 kWh",
+      "batteryUsed": "81,2 kWh",
       "equipmentHighlights": [
         "Pack M Sport dynamique",
-        "Jantes 19 pouces aero M",
+        "Jantes 19 pouces aéro M",
         "Volant M gaine cuir et inserts alu"
       ]
     },
     {
       "name": "i5 xDrive40 (Base)",
       "price_EUR": 81600,
-      "batteryUsed": "81.2 kWh",
+      "batteryUsed": "81,2 kWh",
       "equipmentHighlights": [
         "AWD 340 ch",
         "536 km WLTP",
-        "Transmission integrale xDrive"
+        "Transmission intégrale xDrive"
       ]
     },
     {
       "name": "i5 xDrive40 M Sport",
       "price_EUR": 85650,
-      "batteryUsed": "81.2 kWh",
+      "batteryUsed": "81,2 kWh",
       "equipmentHighlights": [
         "Pack M Sport dynamique",
         "Suspensions adaptatives",
@@ -222,11 +222,11 @@
     {
       "name": "i5 M60 xDrive (M Sport)",
       "price_EUR": 107500,
-      "batteryUsed": "81.2 kWh",
+      "batteryUsed": "81,2 kWh",
       "equipmentHighlights": [
         "AWD 601 ch",
-        "0-100 en 3.8 s",
-        "Chassis M adaptatif Professional"
+        "0-100 en 3,8 s",
+        "Châssis M adaptatif Professional"
       ]
     }
   ],
@@ -236,7 +236,7 @@
   "configurations": [
     {
       "id": "bmw-i5-edrive40-base",
-      "label": "eDrive40 (Base) · 81.2 kWh",
+      "label": "eDrive40 (Base) · 81,2 kWh",
       "battery": "standard",
       "trim": "i5 eDrive40 (Base)",
       "wheelSize_inches": 19,
@@ -341,12 +341,12 @@
         }
       ],
       "availability": "available",
-      "notes": "340 ch (250 kW), RWD, version d'acces",
+      "notes": "340 ch (250 kW), RWD, version d'accès",
       "chargingDC_confidence": "tested"
     },
     {
       "id": "bmw-i5-edrive40-msport",
-      "label": "eDrive40 M Sport · 81.2 kWh",
+      "label": "eDrive40 M Sport · 81,2 kWh",
       "battery": "standard",
       "trim": "i5 eDrive40 M Sport",
       "wheelSize_inches": 19,
@@ -456,7 +456,7 @@
     },
     {
       "id": "bmw-i5-xdrive40-base",
-      "label": "xDrive40 (Base) · 81.2 kWh",
+      "label": "xDrive40 (Base) · 81,2 kWh",
       "battery": "standard",
       "trim": "i5 xDrive40 (Base)",
       "wheelSize_inches": 19,
@@ -561,12 +561,12 @@
         }
       ],
       "availability": "available",
-      "notes": "340 ch (250 kW), AWD xDrive, version d'acces",
+      "notes": "340 ch (250 kW), AWD xDrive, version d'accès",
       "chargingDC_confidence": "tested"
     },
     {
       "id": "bmw-i5-xdrive40-msport",
-      "label": "xDrive40 M Sport · 81.2 kWh",
+      "label": "xDrive40 M Sport · 81,2 kWh",
       "battery": "standard",
       "trim": "i5 xDrive40 M Sport",
       "wheelSize_inches": 19,
@@ -676,7 +676,7 @@
     },
     {
       "id": "bmw-i5-m60",
-      "label": "M60 xDrive · 81.2 kWh",
+      "label": "M60 xDrive · 81,2 kWh",
       "battery": "standard",
       "trim": "i5 M60 xDrive (M Sport)",
       "wheelSize_inches": 20,
@@ -840,15 +840,15 @@
   ],
   "verdict": {
     "strengths": [
-      "Dynamique de conduite reference et confort premium Serie 5",
-      "Assemble en Allemagne (Dingolfing), eligible prime CEE"
+      "Dynamique de conduite référence et confort premium Série 5",
+      "Assemblé en Allemagne (Dingolfing), éligible prime CEE"
     ],
     "weaknesses": [
-      "Prix eleve",
+      "Prix élevé",
       "Architecture 400 V, pas de 800 V"
     ],
-    "idealUserProfile": "Cadres et professionnels cherchant une berline electrique premium et dynamique.",
-    "notIdealFor": "Budget limite ou besoin de charge 800 V ultra-rapide."
+    "idealUserProfile": "Cadres et professionnels cherchant une berline électrique premium et dynamique.",
+    "notIdealFor": "Budget limité ou besoin de charge 800 V ultra-rapide."
   },
   "lastUpdated": "2026-06-04",
   "sources": [

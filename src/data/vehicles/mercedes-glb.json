@@ -2,7 +2,7 @@
   "slug": "mercedes-glb",
   "brand": "Mercedes",
   "model": "GLB",
-  "variant": "70.5 kWh · FWD/AWD",
+  "variant": "58 / 85 kWh · FWD/AWD",
   "bodyType": "SUV",
   "segment": "C",
   "productionCountry": "Hongrie",
@@ -24,11 +24,12 @@
   "wltp_max_km": 631,
   "wltp_min_km": 430,
   "realRange": {
-    "mixed_km": 365,
-    "highway_130_km": 265,
-    "urban_km": 450,
-    "winter_minus5_km": 250,
-    "confidence": "estimated"
+    "mixed_km": 512,
+    "highway_130_km": 382,
+    "urban_km": 659,
+    "winter_minus5_km": 369,
+    "confidence": "bjorn_nyland",
+    "highway_120_km": 424
   },
   "consumption_mixed_kWh_per_100km": 18.5,
   "consumption_highway_kWh_per_100km": 24,
@@ -75,7 +76,34 @@
       "power": 19
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 90,
+      "range_km": 599,
+      "consumption_kWh_100km": 14.8,
+      "temperature_C": 18,
+      "wheelSize_inches": 19,
+      "tyreModel": "Michelin Primacy 5 Energy",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Mercedes GLB 350 4Matic » (été, route sèche)."
+    },
+    {
+      "sourceId": "nyland",
+      "testDate": null,
+      "speed_kmh": 120,
+      "range_km": 424,
+      "consumption_kWh_100km": 20.9,
+      "temperature_C": 18,
+      "wheelSize_inches": 19,
+      "tyreModel": "Michelin Primacy 5 Energy",
+      "protocol": "nyland",
+      "videoUrl": null,
+      "notes": "Essai Nyland « Mercedes GLB 350 4Matic » (été, route sèche)."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 665,
@@ -185,10 +213,10 @@
       "wltp_km": 430,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
-        "mixed_km": 312,
-        "highway_130_km": 234,
-        "urban_km": 399,
-        "winter_minus5_km": 213,
+        "mixed_km": 359,
+        "highway_130_km": 268,
+        "urban_km": 462,
+        "winter_minus5_km": 246,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -241,10 +269,10 @@
       "wltp_km": 631,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
-        "mixed_km": 457,
-        "highway_130_km": 343,
-        "urban_km": 584,
-        "winter_minus5_km": 313,
+        "mixed_km": 526,
+        "highway_130_km": 392,
+        "urban_km": 677,
+        "winter_minus5_km": 360,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -297,10 +325,10 @@
       "wltp_km": 631,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
-        "mixed_km": 457,
-        "highway_130_km": 343,
-        "urban_km": 584,
-        "winter_minus5_km": 313,
+        "mixed_km": 526,
+        "highway_130_km": 392,
+        "urban_km": 677,
+        "winter_minus5_km": 360,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -353,10 +381,10 @@
       "wltp_km": 631,
       "wltp_consumption_kWh_100km": 16.8,
       "realRange": {
-        "mixed_km": 457,
-        "highway_130_km": 343,
-        "urban_km": 584,
-        "winter_minus5_km": 313,
+        "mixed_km": 526,
+        "highway_130_km": 392,
+        "urban_km": 677,
+        "winter_minus5_km": 360,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -409,13 +437,41 @@
       "wltp_km": 614,
       "wltp_consumption_kWh_100km": 18.5,
       "realRange": {
-        "mixed_km": 445,
-        "highway_130_km": 334,
-        "urban_km": 569,
-        "winter_minus5_km": 304,
-        "confidence": "estimated"
+        "mixed_km": 512,
+        "highway_130_km": 382,
+        "urban_km": 659,
+        "winter_minus5_km": 369,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 424
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 599,
+          "consumption_kWh_100km": 14.8,
+          "temperature_C": 18,
+          "wheelSize_inches": 19,
+          "tyreModel": "Michelin Primacy 5 Energy",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes GLB 350 4Matic » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 424,
+          "consumption_kWh_100km": 20.9,
+          "temperature_C": 18,
+          "wheelSize_inches": 19,
+          "tyreModel": "Michelin Primacy 5 Energy",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes GLB 350 4Matic » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 320,
       "chargingDC_10_80_min": 32,
       "chargingDC_kWh_30min": 42,
@@ -465,13 +521,41 @@
       "wltp_km": 614,
       "wltp_consumption_kWh_100km": 18.5,
       "realRange": {
-        "mixed_km": 445,
-        "highway_130_km": 334,
-        "urban_km": 569,
-        "winter_minus5_km": 304,
-        "confidence": "estimated"
+        "mixed_km": 512,
+        "highway_130_km": 382,
+        "urban_km": 659,
+        "winter_minus5_km": 369,
+        "confidence": "bjorn_nyland",
+        "highway_120_km": 424
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 90,
+          "range_km": 599,
+          "consumption_kWh_100km": 14.8,
+          "temperature_C": 18,
+          "wheelSize_inches": 19,
+          "tyreModel": "Michelin Primacy 5 Energy",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes GLB 350 4Matic » (été, route sèche)."
+        },
+        {
+          "sourceId": "nyland",
+          "testDate": null,
+          "speed_kmh": 120,
+          "range_km": 424,
+          "consumption_kWh_100km": 20.9,
+          "temperature_C": 18,
+          "wheelSize_inches": 19,
+          "tyreModel": "Michelin Primacy 5 Energy",
+          "protocol": "nyland",
+          "videoUrl": null,
+          "notes": "Essai Nyland « Mercedes GLB 350 4Matic » (été, route sèche)."
+        }
+      ],
       "chargingDC_peak_kW": 320,
       "chargingDC_10_80_min": 32,
       "chargingDC_kWh_30min": 42,
@@ -522,7 +606,7 @@
     },
     {
       "category": "technologie",
-      "label": "MBUX avec ecran 10,25 pouces et navigation EV"
+      "label": "MBUX avec écran 10,25 pouces et navigation EV"
     },
     {
       "category": "securite",
@@ -530,20 +614,20 @@
     },
     {
       "category": "confort",
-      "label": "Coffre genereux (495 L) et modularite 7 places"
+      "label": "Coffre généreux (495 L) et modularité 7 places"
     }
   ],
   "verdict": {
     "strengths": [
       "Seul SUV compact premium avec option 7 places",
-      "Assemble en Hongrie (UE), eligible prime CEE"
+      "Assemblé en Hongrie (UE), éligible prime CEE"
     ],
     "weaknesses": [
-      "Charge DC limitee a 100 kW",
-      "Consommation plus elevee que l'EQA (poids superieur)"
+      "Charge DC limitée à 100 kW",
+      "Consommation plus élevée que l'EQA (poids supérieur)"
     ],
-    "idealUserProfile": "Familles cherchant un SUV premium 7 places electrique.",
-    "notIdealFor": "Gros rouleurs frequents en charge rapide."
+    "idealUserProfile": "Familles cherchant un SUV premium 7 places électrique.",
+    "notIdealFor": "Gros rouleurs fréquents en charge rapide."
   },
   "lastUpdated": "2026-10-08",
   "sources": [

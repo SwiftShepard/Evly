@@ -24,10 +24,10 @@
   "wltp_max_km": 680,
   "wltp_min_km": 500,
   "realRange": {
-    "mixed_km": 377,
-    "highway_130_km": 283,
-    "urban_km": 482,
-    "winter_minus5_km": 258,
+    "mixed_km": 379,
+    "highway_130_km": 284,
+    "urban_km": 485,
+    "winter_minus5_km": 259,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 15,
@@ -71,7 +71,36 @@
       "power": 10
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "largus",
+      "testDate": "2025-10",
+      "speed_kmh": null,
+      "range_km": 403,
+      "consumption_kWh_100km": 18.1,
+      "temperature_C": 11,
+      "wheelSize_inches": 19,
+      "tyreModel": null,
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.largus.fr/actualite-automobile/essai-citroen-e-c5-aircross-2025-le-test-verite-sur-son-autonomie-electrique-30043734.html",
+      "notes": "Essai L'argus (Max 73 kWh), boucle routière de 141 km ; autonomie calculée sur les 73 kWh utiles."
+    },
+    {
+      "sourceId": "largus",
+      "testDate": "2025-10",
+      "speed_kmh": 130,
+      "range_km": 295,
+      "consumption_kWh_100km": 24.7,
+      "temperature_C": null,
+      "wheelSize_inches": 19,
+      "tyreModel": null,
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.largus.fr/actualite-automobile/essai-citroen-e-c5-aircross-2025-le-test-verite-sur-son-autonomie-electrique-30043734.html",
+      "notes": "Essai L'argus (Max 73 kWh), autoroute à 130 km/h réels."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4500,
   "width_mm": 1860,
@@ -161,10 +190,10 @@
       "wltp_km": 520,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 377,
-        "highway_130_km": 283,
-        "urban_km": 482,
-        "winter_minus5_km": 258,
+        "mixed_km": 379,
+        "highway_130_km": 284,
+        "urban_km": 485,
+        "winter_minus5_km": 259,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -194,7 +223,7 @@
         }
       ],
       "availability": "available",
-      "notes": "210 ch (157 kW), FWD, batterie 73.7 kWh utilisable"
+      "notes": "210 ch (157 kW), FWD, batterie 73,7 kWh utilisable"
     },
     {
       "id": "citroen-e-c5-aircross-plus-73",
@@ -210,10 +239,10 @@
       "wltp_km": 520,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 377,
-        "highway_130_km": 283,
-        "urban_km": 482,
-        "winter_minus5_km": 258,
+        "mixed_km": 379,
+        "highway_130_km": 284,
+        "urban_km": 485,
+        "winter_minus5_km": 259,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -243,7 +272,7 @@
         }
       ],
       "availability": "available",
-      "notes": "210 ch (157 kW), FWD, batterie 73.7 kWh utilisable"
+      "notes": "210 ch (157 kW), FWD, batterie 73,7 kWh utilisable"
     },
     {
       "id": "citroen-e-c5-aircross-max-73",
@@ -259,13 +288,42 @@
       "wltp_km": 500,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 363,
+        "mixed_km": 364,
         "highway_130_km": 273,
-        "urban_km": 464,
-        "winter_minus5_km": 248,
+        "urban_km": 466,
+        "winter_minus5_km": 249,
         "confidence": "estimated"
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "largus",
+          "testDate": "2025-10",
+          "speed_kmh": null,
+          "range_km": 403,
+          "consumption_kWh_100km": 18.1,
+          "temperature_C": 11,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.largus.fr/actualite-automobile/essai-citroen-e-c5-aircross-2025-le-test-verite-sur-son-autonomie-electrique-30043734.html",
+          "notes": "Essai L'argus (Max 73 kWh), boucle routière de 141 km ; autonomie calculée sur les 73 kWh utiles."
+        },
+        {
+          "sourceId": "largus",
+          "testDate": "2025-10",
+          "speed_kmh": 130,
+          "range_km": 295,
+          "consumption_kWh_100km": 24.7,
+          "temperature_C": null,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.largus.fr/actualite-automobile/essai-citroen-e-c5-aircross-2025-le-test-verite-sur-son-autonomie-electrique-30043734.html",
+          "notes": "Essai L'argus (Max 73 kWh), autoroute à 130 km/h réels."
+        }
+      ],
       "chargingDC_peak_kW": 160,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 50,
@@ -308,10 +366,10 @@
       "wltp_km": 680,
       "wltp_consumption_kWh_100km": 14.5,
       "realRange": {
-        "mixed_km": 493,
-        "highway_130_km": 370,
-        "urban_km": 630,
-        "winter_minus5_km": 337,
+        "mixed_km": 495,
+        "highway_130_km": 371,
+        "urban_km": 634,
+        "winter_minus5_km": 339,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -357,13 +415,42 @@
       "wltp_km": 680,
       "wltp_consumption_kWh_100km": 14.8,
       "realRange": {
-        "mixed_km": 493,
-        "highway_130_km": 370,
-        "urban_km": 630,
-        "winter_minus5_km": 337,
+        "mixed_km": 495,
+        "highway_130_km": 371,
+        "urban_km": 634,
+        "winter_minus5_km": 339,
         "confidence": "estimated"
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "largus",
+          "testDate": "2025-10",
+          "speed_kmh": null,
+          "range_km": 564,
+          "consumption_kWh_100km": 17.2,
+          "temperature_C": 22,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.largus.fr/actualite-automobile/essai-citroen-e-c5-aircross-2025-le-test-verite-sur-son-autonomie-electrique-30043734.html",
+          "notes": "Essai L'argus (Max 97 kWh), boucle routière de 141 km ; autonomie calculée sur les 97,2 kWh utiles."
+        },
+        {
+          "sourceId": "largus",
+          "testDate": "2025-10",
+          "speed_kmh": 130,
+          "range_km": 437,
+          "consumption_kWh_100km": 22.2,
+          "temperature_C": null,
+          "wheelSize_inches": 19,
+          "tyreModel": null,
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.largus.fr/actualite-automobile/essai-citroen-e-c5-aircross-2025-le-test-verite-sur-son-autonomie-electrique-30043734.html",
+          "notes": "Essai L'argus (Max 97 kWh), autoroute à 130 km/h réels."
+        }
+      ],
       "chargingDC_peak_kW": 160,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 60,
@@ -433,7 +520,8 @@
   "lastUpdated": "2026-10-08",
   "sources": [
     "citroen-fr",
-    "automobile-propre"
+    "automobile-propre",
+    "largus"
   ],
   "imageCredit": "Constructeur"
 }

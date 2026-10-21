@@ -24,10 +24,10 @@
   "wltp_max_km": 701,
   "wltp_min_km": 600,
   "realRange": {
-    "mixed_km": 508,
-    "highway_130_km": 382,
-    "urban_km": 649,
-    "winter_minus5_km": 347,
+    "mixed_km": 511,
+    "highway_130_km": 383,
+    "urban_km": 654,
+    "winter_minus5_km": 350,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 21,
@@ -98,7 +98,7 @@
     {
       "name": "iX xDrive45",
       "price_EUR": 89400,
-      "batteryUsed": "100.4 kWh",
+      "batteryUsed": "100,4 kWh",
       "equipmentHighlights": [
         "602 km WLTP",
         "AWD 408 ch",
@@ -108,7 +108,7 @@
     {
       "name": "iX xDrive60",
       "price_EUR": 107200,
-      "batteryUsed": "109.1 kWh",
+      "batteryUsed": "109,1 kWh",
       "equipmentHighlights": [
         "701 km WLTP",
         "AWD 544 ch",
@@ -118,11 +118,11 @@
     {
       "name": "iX M70 xDrive",
       "price_EUR": 137600,
-      "batteryUsed": "109.1 kWh",
+      "batteryUsed": "109,1 kWh",
       "equipmentHighlights": [
         "600 km WLTP",
-        "0-100 en 3.8 s",
-        "Chassis M adaptatif Professional"
+        "0-100 en 3,8 s",
+        "Châssis M adaptatif Professional"
       ]
     }
   ],
@@ -144,10 +144,10 @@
       "wltp_km": 602,
       "wltp_consumption_kWh_100km": 20,
       "realRange": {
-        "mixed_km": 436,
-        "highway_130_km": 328,
-        "urban_km": 557,
-        "winter_minus5_km": 298,
+        "mixed_km": 439,
+        "highway_130_km": 329,
+        "urban_km": 562,
+        "winter_minus5_km": 300,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -200,10 +200,10 @@
       "wltp_km": 701,
       "wltp_consumption_kWh_100km": 19.5,
       "realRange": {
-        "mixed_km": 508,
-        "highway_130_km": 382,
-        "urban_km": 649,
-        "winter_minus5_km": 347,
+        "mixed_km": 511,
+        "highway_130_km": 383,
+        "urban_km": 654,
+        "winter_minus5_km": 350,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -256,10 +256,10 @@
       "wltp_km": 600,
       "wltp_consumption_kWh_100km": 22,
       "realRange": {
-        "mixed_km": 435,
-        "highway_130_km": 327,
-        "urban_km": 556,
-        "winter_minus5_km": 298,
+        "mixed_km": 437,
+        "highway_130_km": 328,
+        "urban_km": 559,
+        "winter_minus5_km": 299,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -309,32 +309,32 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "Grand SUV au design futuriste et materiaux durables"
+      "label": "Grand SUV au design futuriste et matériaux durables"
     },
     {
       "category": "technologie",
-      "label": "BMW iDrive 9, ecran courbe et BMW Digital Key Plus"
+      "label": "BMW iDrive 9, écran courbe et BMW Digital Key Plus"
     },
     {
       "category": "securite",
-      "label": "Conduite semi-autonome et parking automatique a distance"
+      "label": "Conduite semi-autonome et parking automatique à distance"
     },
     {
       "category": "confort",
-      "label": "Coffre immense (500-1750 L) et insonorisation de reference"
+      "label": "Coffre immense (500-1750 L) et insonorisation de référence"
     }
   ],
   "verdict": {
     "strengths": [
-      "Grand SUV premium avec grande autonomie (jusqu'a 701 km WLTP)",
-      "Assemble en Allemagne (Dingolfing), eligible prime CEE"
+      "Grand SUV premium avec grande autonomie (jusqu'à 701 km WLTP)",
+      "Assemblé en Allemagne (Dingolfing), éligible prime CEE"
     ],
     "weaknesses": [
-      "Prix tres eleve (a partir de 89 400 euros)",
-      "Consommation elevee et poids important (2 510 kg)"
+      "Prix très élevé (à partir de 89 400 euros)",
+      "Consommation élevée et poids important (2 510 kg)"
     ],
-    "idealUserProfile": "Familles aisees cherchant un grand SUV electrique premium.",
-    "notIdealFor": "Budget limite ou sensibilite a la consommation."
+    "idealUserProfile": "Familles aisées cherchant un grand SUV électrique premium.",
+    "notIdealFor": "Budget limité ou sensibilité à la consommation."
   },
   "lastUpdated": "2026-10-08",
   "sources": [

@@ -24,10 +24,10 @@
   "wltp_max_km": 510,
   "wltp_min_km": 460,
   "realRange": {
-    "mixed_km": 370,
-    "highway_130_km": 278,
-    "urban_km": 473,
-    "winter_minus5_km": 236,
+    "mixed_km": 372,
+    "highway_130_km": 279,
+    "urban_km": 476,
+    "winter_minus5_km": 237,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 15,
@@ -84,7 +84,7 @@
     {
       "name": "Design ProMax",
       "price_EUR": 39900,
-      "batteryUsed": "81.9 kWh LFP",
+      "batteryUsed": "81,9 kWh LFP",
       "equipmentHighlights": [
         "Moteur 299 ch (propulsion)",
         "Autonomie 510 km WLTP",
@@ -94,7 +94,7 @@
     {
       "name": "Design ProMax AWD",
       "price_EUR": 41900,
-      "batteryUsed": "81.9 kWh LFP",
+      "batteryUsed": "81,9 kWh LFP",
       "equipmentHighlights": [
         "Transmission intégrale 571 ch",
         "0 à 100 km/h en 5 s",
@@ -120,10 +120,10 @@
       "wltp_km": 510,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 370,
-        "highway_130_km": 278,
-        "urban_km": 473,
-        "winter_minus5_km": 236,
+        "mixed_km": 372,
+        "highway_130_km": 279,
+        "urban_km": 476,
+        "winter_minus5_km": 237,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -173,9 +173,9 @@
       "wltp_km": 460,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 334,
+        "mixed_km": 335,
         "highway_130_km": 251,
-        "urban_km": 427,
+        "urban_km": 429,
         "winter_minus5_km": 213,
         "confidence": "estimated"
       },

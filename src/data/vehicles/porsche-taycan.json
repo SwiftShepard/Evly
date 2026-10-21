@@ -25,8 +25,8 @@
   "wltp_min_km": 590,
   "realRange": {
     "mixed_km": 447,
-    "highway_130_km": 336,
-    "urban_km": 571,
+    "highway_130_km": 335,
+    "urban_km": 572,
     "winter_minus5_km": 306,
     "confidence": "estimated"
   },
@@ -142,7 +142,7 @@
       "equipmentHighlights": [
         "884 ch AWD, 0-100 en 2,7 s",
         "630 km WLTP",
-        "Freins PSCB, roues arriere directrices"
+        "Freins PSCB, roues arrière directrices"
       ]
     }
   ],
@@ -165,8 +165,8 @@
       "wltp_consumption_kWh_100km": 16.7,
       "realRange": {
         "mixed_km": 447,
-        "highway_130_km": 336,
-        "urban_km": 571,
+        "highway_130_km": 335,
+        "urban_km": 572,
         "winter_minus5_km": 306,
         "confidence": "estimated"
       },
@@ -201,7 +201,7 @@
         }
       ],
       "availability": "available",
-      "notes": "408 ch (300 kW), RWD, autonomie de reference"
+      "notes": "408 ch (300 kW), RWD, autonomie de référence"
     },
     {
       "id": "porsche-taycan-4s",
@@ -219,7 +219,7 @@
       "realRange": {
         "mixed_km": 486,
         "highway_130_km": 365,
-        "urban_km": 621,
+        "urban_km": 622,
         "winter_minus5_km": 332,
         "confidence": "estimated"
       },
@@ -272,7 +272,7 @@
       "realRange": {
         "mixed_km": 477,
         "highway_130_km": 358,
-        "urban_km": 610,
+        "urban_km": 611,
         "winter_minus5_km": 326,
         "confidence": "estimated"
       },
@@ -307,7 +307,7 @@
         }
       ],
       "availability": "available",
-      "notes": "884 ch (650 kW), AWD, 0-100 km/h en 2,7s, performances extremes"
+      "notes": "884 ch (650 kW), AWD, 0-100 km/h en 2,7 s, performances extrêmes"
     }
   ],
   "warranty": {
@@ -328,7 +328,7 @@
     },
     {
       "category": "confort",
-      "label": "Suspension active Porsche Active Ride d'une efficacite totale"
+      "label": "Suspension active Porsche Active Ride d'une efficacité totale"
     },
     {
       "category": "securite",
@@ -341,11 +341,11 @@
       "Comportement routier et dynamique digne d'une vraie Porsche 911"
     ],
     "weaknesses": [
-      "Tarif elitiste et politique d'options Porsche onereuse",
-      "Habitabilite arriere et coffre reduits par rapport a d'autres grandes berlines"
+      "Tarif élitiste et politique d'options Porsche onéreuse",
+      "Habitabilité arrière et coffre réduits par rapport à d'autres grandes berlines"
     ],
-    "idealUserProfile": "Passionnes de conduite sportive cherchant la berline electrique la plus dynamique et rapide a recharger du marche.",
-    "notIdealFor": "Familles nombreuses necessitant un grand volume de coffre ou budget inferieur a 110 000 euros."
+    "idealUserProfile": "Passionnés de conduite sportive cherchant la berline électrique la plus dynamique et rapide à recharger du marché.",
+    "notIdealFor": "Familles nombreuses nécessitant un grand volume de coffre ou budget inférieur à 110 000 euros."
   },
   "lastUpdated": "2026-10-08",
   "sources": [

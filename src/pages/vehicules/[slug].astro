@@ -8,6 +8,7 @@ import TileStat from "@/components/ui/TileStat.astro";
 import Tag from "@/components/ui/Tag.astro";
 import SourceTooltip from "@/components/ui/SourceTooltip.astro";
 import MethodologyBadge from "@/components/ui/MethodologyBadge.astro";
+import Confidence from "@/components/ui/Confidence.astro";
 import ChargingCurve from "@/components/vehicle/ChargingCurve.tsx";
 import SeasonalRange from "@/components/vehicle/SeasonalRange.tsx";
 import VehicleConfigSelector from "@/components/vehicle/VehicleConfigSelector.tsx";
@@ -24,6 +25,7 @@ import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
 import VehicleMiniCard from "@/components/vehicle/VehicleMiniCard.astro";
 import FaqList from "@/components/seo/FaqList.astro";
 import LinkChips from "@/components/seo/LinkChips.astro";
+import { duelsOf, duelSlug } from "@/data/duels";
 import RangeRail from "@/components/ui/RangeRail.astro";
 import { DEFAULTS as TCO_DEFAULTS } from "@/components/tco/TcoCalculator";
 import { ArrowRight, Map as MapIcon, Route } from "lucide-react";
@@ -107,14 +109,6 @@ const trustTone: Record<TrustLevel, "accent" | "warning" | "danger"> = {
   high: "accent",
   medium: "warning",
   low: "danger",
-};
-
-const confidenceLabel: Record<string, string> = {
-  tested: "Mesurée",
-  bjorn_nyland: "Mesurée (Nyland)",
-  manufacturer: "Constructeur",
-  estimated: "Estimée",
-  pending: "En attente",
 };
 
 const tkc = vehicle.thousandKmChallenge;
@@ -203,6 +197,11 @@ const pronoun = isMasculine(vehicle) ? "il" : "elle";
 const brand = getBrandByName(vehicle.brand);
 const brandPath = `/marques/${brandSlug(vehicle.brand)}/`;
 const alternatives = getAlternatives(vehicle, allVehicles, 4);
+// Duels « X vs Y » où figure ce modèle (pages /comparer/x-vs-y/)
+const duelLinks = duelsOf(vehicle.slug).map(([a, b]) => {
+  const other = allVehicles.find((v) => v.slug === (a === vehicle.slug ? b : a));
+  return { label: `${getVehicleName(vehicle)} vs ${other ? getVehicleName(other) : b}`, href: url(`/comparer/${duelSlug(a, b)}/`) };
+});
 const otherBrandModels = (brand?.vehicles ?? []).filter((v) => v.slug !== vehicle.slug);
 const relatedSelections = getCategoriesFor(vehicle, allVehicles);
 const pageUrl = new URL(url(`/vehicules/${vehicle.slug}/`), Astro.site).toString();
@@ -401,13 +400,13 @@ const configViews = configurations.map((config) => {
 
   let batteryCapacity = config.usableCapacity_kWh;
   if (batteryCapacity == null) {
-    const labelMatch = config.label?.match(/(\d+(?:\.\d+)?)\s*kWh/);
+    const labelMatch = config.label?.match(/(\d+(?:[.,]\d+)?)\s*kWh/);
     if (labelMatch) {
-      batteryCapacity = parseFloat(labelMatch[1]);
+      batteryCapacity = parseFloat(labelMatch[1].replace(",", "."));
     } else {
-      const trimMatch = config.trim?.match(/(\d+(?:\.\d+)?)\s*kWh/);
+      const trimMatch = config.trim?.match(/(\d+(?:[.,]\d+)?)\s*kWh/);
       if (trimMatch) {
-        batteryCapacity = parseFloat(trimMatch[1]);
+        batteryCapacity = parseFloat(trimMatch[1].replace(",", "."));
       } else {
         const parseKwh = (s: string) => {
           const m = s.match(/(\d+(?:[.,]\d+)?)/);
@@ -434,13 +433,8 @@ const configViews = configurations.map((config) => {
   const realRange = config.realRange ?? vehicle.realRange;
   const rangeConfidence = realRange.confidence;
   const isRangeMeasured = rangeConfidence === "tested" || rangeConfidence === "bjorn_nyland";
-  const heroRangeLabel = rangeConfidence === "bjorn_nyland"
-    ? "Autonomie réelle mixte, mesurée par Bjørn Nyland"
-    : isRangeMeasured
-      ? "Autonomie réelle mixte mesurée"
-      : rangeConfidence === "manufacturer"
-        ? "Autonomie mixte, donnée constructeur"
-        : "Autonomie réelle mixte estimée";
+  // Le niveau de confiance est dit par le badge à côté (Confidence), pas dans le libellé
+  const heroRangeLabel = rangeConfidence === "manufacturer" ? "Autonomie mixte annoncée" : "Autonomie réelle mixte";
   const wltpKm = config.wltp_km ?? vehicle.wltp_max_km;
   const wltpGapPct = Math.round((1 - realRange.mixed_km / wltpKm) * 100);
   const winterLossPct = Math.round((1 - realRange.winter_minus5_km / realRange.mixed_km) * 100);
@@ -654,6 +648,7 @@ const configSubtitle = (label: string) => {
                     <div class="stat-hint" tabindex="0" aria-describedby={`hint-range-${cv.config.id}`}>
                       <div class="flex items-center gap-2">
                         <span class="label-eyebrow inline-flex items-center gap-1.5">{cv.heroRangeLabel}<svg class="stat-hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path stroke-linecap="round" d="M12 11v5M12 8h.01" /></svg></span>
+                        <Confidence code={cv.rangeConfidence} />
                         {cv.nyland90 && <SourceTooltip sourceId="nyland" date={cv.nyland90.testDate ?? undefined} />}
                       </div>
                       <div class="flex items-baseline gap-3 mt-1.5">
@@ -810,7 +805,7 @@ const configSubtitle = (label: string) => {
           </dl>
         </div>
         <p class="trip-panel-foot">
-          Calcul sur 21 jours de trajet par mois, avec la consommation réelle déduite de l'autonomie mesurée. Électricité à {formatNumber(tripRates.home, 2)}&nbsp;€/kWh à domicile ou {formatNumber(tripRates.fast, 2)}&nbsp;€/kWh sur borne rapide, essence à {formatNumber(tripRates.fuel, 2)}&nbsp;€/l pour {formatNumber(tripRates.fuelConso, 1)}&nbsp;l/100&nbsp;km.
+          Calcul sur 21 jours de trajet par mois, avec la consommation réelle déduite de l'autonomie de la version (mesurée ou estimée, comme l'indique son badge). Électricité à {formatNumber(tripRates.home, 2)}&nbsp;€/kWh à domicile ou {formatNumber(tripRates.fast, 2)}&nbsp;€/kWh sur borne rapide, essence à {formatNumber(tripRates.fuel, 2)}&nbsp;€/l pour {formatNumber(tripRates.fuelConso, 1)}&nbsp;l/100&nbsp;km.
           <a href={url(`/simulateur/?v=${vehicle.slug}`)} class="text-[var(--color-accent)] font-semibold underline underline-offset-2 hover:no-underline">Coût complet sur plusieurs années</a>
         </p>
       </section>
@@ -923,7 +918,7 @@ const configSubtitle = (label: string) => {
               <Tile size="full" variant="elevated" label="Autonomie par usage" class="reveal">
                 <div class="flex items-center justify-between gap-3 -mt-2 mb-3">
                   <h3 class="font-display text-base md:text-lg font-semibold tracking-[-0.01em]">{cv.isRangeMeasured ? "Quatre profils calés sur les mesures" : "Quatre profils d'usage estimés"}</h3>
-                  <Tag tone="outline" mono>{confidenceLabel[cv.rangeConfidence] ?? cv.rangeConfidence}</Tag>
+                  <Confidence code={cv.rangeConfidence} />
                 </div>
                 <SeasonalRange client:visible urban={cv.realRange.urban_km} mixed={cv.realRange.mixed_km} highway={cv.realRange.highway_130_km} winter={cv.realRange.winter_minus5_km} wltp={cv.wltpKm} vehicleName={`${vehicle.brand} ${vehicle.model} ${cv.config.trim}`} />
               </Tile>
@@ -1020,11 +1015,11 @@ const configSubtitle = (label: string) => {
                       </svg>
                       Voir la courbe de puissance détaillée (kW / SoC)
                     </span>
-                    <Tag tone="outline" mono>{confidenceLabel[cv.dcConfidence] ?? cv.dcConfidence}</Tag>
+                    <Confidence code={cv.dcConfidence} subject="charge" />
                   </summary>
                   <div class="pt-4">
-                    {(cv.config.chargingCurve ?? vehicle.chargingCurve) ? (
-                      <ChargingCurve client:visible curve={cv.config.chargingCurve ?? vehicle.chargingCurve!} peakPower_kW={cv.dcPeak} vehicleName={`${vehicle.brand} ${vehicle.model}`} />
+                    {(cv.config.chargingCurve ?? vehicle.chargingCurve).length >= 2 ? (
+                      <ChargingCurve client:visible curve={cv.config.chargingCurve ?? vehicle.chargingCurve} peakPower_kW={cv.dcPeak} time_10_80_min={cv.dcMin} vehicleName={`${vehicle.brand} ${vehicle.model}`} />
                     ) : (
                       <p class="text-[var(--color-text-faint)] font-mono text-xs mt-2">Données non mesurées.</p>
                     )}
@@ -1036,7 +1031,7 @@ const configSubtitle = (label: string) => {
                 <Tile size="2x1" variant={tkcHasData ? "accent" : "outlined"} label="1000 km challenge" source={tkc.sourceId} sourceDate={tkc.testDate ?? undefined} class="reveal">
                   <div class="flex items-center justify-between gap-3 -mt-2 mb-3">
                     <h3 class="font-display text-base md:text-lg font-semibold tracking-[-0.01em]">Protocole Nyland</h3>
-                    <Tag tone={tkcHasData ? "accent" : "warning"} mono>{confidenceLabel[tkc.confidence] ?? tkc.confidence}</Tag>
+                    <Confidence code={tkc.confidence} subject="challenge" />
                   </div>
                   {tkcField && (
                     <figure class="tkc-field" style={`--rows:${tkcField.rows}`}>
@@ -1284,6 +1279,7 @@ const configSubtitle = (label: string) => {
                                 <span class="text-[var(--color-text)]">{sourceLabels[test.sourceId] ?? test.sourceId}</span>
                                 <SourceTooltip sourceId={test.sourceId} date={test.testDate ?? undefined} />
                                 {test.videoUrl && <a href={test.videoUrl} target="_blank" rel="noopener noreferrer" class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-accent)] hover:underline">vidéo ↗</a>}
+                                {test.url && <a href={test.url} target="_blank" rel="noopener noreferrer" class="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-accent)] hover:underline">article ↗</a>}
                               </div>
                             </td>
                             <td class="py-3 px-2 text-right font-mono tabular text-[var(--color-text-muted)] whitespace-nowrap">{test.speed_kmh ? `${test.speed_kmh} km/h` : "n/c"}</td>
@@ -1374,6 +1370,7 @@ const configSubtitle = (label: string) => {
               title: `${LaVehicle} figure dans`,
               links: relatedSelections.map((c) => ({ label: c.label, href: url(`/voitures-electriques/${c.slug}/`) })),
             },
+            { title: "Face à face", links: duelLinks },
           ]}
         />
       </section>

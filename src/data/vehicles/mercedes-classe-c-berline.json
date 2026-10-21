@@ -94,14 +94,14 @@
       "batteryUsed": "85 kWh",
       "equipmentHighlights": [
         "682 km d'autonomie WLTP",
-        "Architecture de charge 800V",
+        "Architecture de charge 800 V",
         "Écran tactile vertical MBUX"
       ]
     },
     {
       "name": "C 400 4MATIC Avantgarde Line",
       "price_EUR": 66399,
-      "batteryUsed": "94.5 kWh",
+      "batteryUsed": "94,5 kWh",
       "equipmentHighlights": [
         "Style extérieur sport AMG Line",
         "Jantes AMG 19 pouces",
@@ -111,7 +111,7 @@
     {
       "name": "C 400 4MATIC AMG Line",
       "price_EUR": 71050,
-      "batteryUsed": "94.5 kWh",
+      "batteryUsed": "94,5 kWh",
       "equipmentHighlights": [
         "Pack AMG Line",
         "489 ch, 0 à 100 km/h en 4 s",
@@ -135,8 +135,8 @@
       "wltp_consumption_kWh_100km": 12.8,
       "realRange": {
         "mixed_km": 516,
-        "highway_130_km": 388,
-        "urban_km": 659,
+        "highway_130_km": 387,
+        "urban_km": 661,
         "winter_minus5_km": 353,
         "confidence": "estimated"
       },
@@ -192,7 +192,7 @@
       "realRange": {
         "mixed_km": 577,
         "highway_130_km": 433,
-        "urban_km": 737,
+        "urban_km": 739,
         "winter_minus5_km": 395,
         "confidence": "estimated"
       },
@@ -248,7 +248,7 @@
       "realRange": {
         "mixed_km": 577,
         "highway_130_km": 433,
-        "urban_km": 737,
+        "urban_km": 739,
         "winter_minus5_km": 395,
         "confidence": "estimated"
       },
@@ -316,8 +316,8 @@
   ],
   "verdict": {
     "strengths": [
-      "Autonomie confortable de plus de 680 km WLTP (jusqu'a 762 km)",
-      "Recharge 800V rapide à 250 kW en pointe"
+      "Autonomie confortable de plus de 680 km WLTP (jusqu'à 762 km)",
+      "Recharge 800 V rapide à 250 kW en pointe"
     ],
     "weaknesses": [
       "Volume de coffre réduit par rapport au GLC thermique",

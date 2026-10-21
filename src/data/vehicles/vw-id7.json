@@ -184,7 +184,7 @@
       "price_EUR": 54700,
       "batteryUsed": "59 kWh",
       "equipmentHighlights": [
-        "Nouveau point d'entree accessible de la gamme ID.7",
+        "Nouveau point d'entrée accessible de la gamme ID.7",
         "Moteur AP310 150 kW (204 ch)",
         "Phares Matrix LED IQ.Light"
       ]
@@ -287,7 +287,7 @@
         }
       ],
       "availability": "available",
-      "notes": "Nouvelle version d'entree de gamme (commercialisation mars 2026) : batterie nette 59 kWh (brute 63 kWh, NMC) et moteur AP310 de 150 kW / 204 ch, moins puissant que le moteur AP550 210 kW / 286 ch des versions Pro / Pro S. Autonomie reelle non encore testee independamment (Nyland/EVKX) : valeur estimee au prorata de la baisse de capacite et d'autonomie WLTP par rapport a la version Pro.",
+      "notes": "Nouvelle version d'entrée de gamme (commercialisation mars 2026) : batterie nette 59 kWh (brute 63 kWh, NMC) et moteur AP310 de 150 kW / 204 ch, moins puissant que le moteur AP550 210 kW / 286 ch des versions Pro / Pro S. Autonomie réelle non encore testée indépendamment (Nyland/EVKX) : valeur estimée au prorata de la baisse de capacité et d'autonomie WLTP par rapport à la version Pro.",
       "chargingDC_confidence": "estimated"
     },
     {
@@ -343,7 +343,7 @@
         }
       ],
       "availability": "available",
-      "notes": "Silhouette Tourer (break) de la nouvelle version Pure : batterie nette 59 kWh (brute 63 kWh, NMC), moteur AP310 150 kW / 204 ch. Autonomie reelle mixte de 370 km reprise de l'estimation EV Database (conditions mixtes, climat tempere), a confirmer par un test terrain independant.",
+      "notes": "Silhouette Tourer (break) de la nouvelle version Pure : batterie nette 59 kWh (brute 63 kWh, NMC), moteur AP310 150 kW / 204 ch. Autonomie réelle mixte de 370 km reprise de l'estimation EV Database (conditions mixtes, climat tempéré), à confirmer par un test terrain indépendant.",
       "chargingDC_confidence": "estimated"
     },
     {

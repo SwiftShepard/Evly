@@ -149,7 +149,7 @@
       "batteryUsed": "63 kWh",
       "equipmentHighlights": [
         "404 km WLTP",
-        "Ecran 12,3 pouces",
+        "Écran 12,3 pouces",
         "ProPILOT Assist"
       ]
     },
@@ -160,7 +160,7 @@
       "equipmentHighlights": [
         "Jantes 20 pouces",
         "Sellerie premium",
-        "Camera 360"
+        "Caméra 360"
       ]
     },
     {
@@ -170,7 +170,7 @@
       "equipmentHighlights": [
         "536 km WLTP",
         "AC 22 kW",
-        "Cuir matelasse"
+        "Cuir matelassé"
       ]
     },
     {
@@ -591,7 +591,7 @@
         }
       ],
       "availability": "available",
-      "notes": "242 ch (178 kW), FWD, AC 22 kW de serie",
+      "notes": "242 ch (178 kW), FWD, AC 22 kW de série",
       "chargingDC_confidence": "tested"
     },
     {
@@ -715,32 +715,32 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "SUV familial au design japonais epure et futuriste"
+      "label": "SUV familial au design japonais épuré et futuriste"
     },
     {
       "category": "technologie",
-      "label": "ProPILOT Assist et ecran 12,3 pouces"
+      "label": "ProPILOT Assist et écran 12,3 pouces"
     },
     {
       "category": "securite",
-      "label": "e-4ORCE transmission integrale intelligente (NISMO)"
+      "label": "e-4ORCE transmission intégrale intelligente (NISMO)"
     },
     {
       "category": "confort",
-      "label": "AC 22 kW (Evolve+), interieur lounge spacieux"
+      "label": "AC 22 kW (Evolve+), intérieur lounge spacieux"
     }
   ],
   "verdict": {
     "strengths": [
-      "Prix d'entree competitif (33 300 euros en Engage)",
+      "Prix d'entrée compétitif (33 300 euros en Engage)",
       "Bonne autonomie 87 kWh (536 km WLTP) et version NISMO sportive"
     ],
     "weaknesses": [
-      "Charge DC limitee a 130 kW, en retrait face a la concurrence",
+      "Charge DC limitée à 130 kW, en retrait face à la concurrence",
       "Assemblage Japon, aucune aide CEE"
     ],
-    "idealUserProfile": "Familles cherchant un SUV electrique spacieux et bien equipe a prix contenu.",
-    "notIdealFor": "Gros rouleurs necessitant une charge ultra-rapide."
+    "idealUserProfile": "Familles cherchant un SUV électrique spacieux et bien équipé à prix contenu.",
+    "notIdealFor": "Gros rouleurs nécessitant une charge ultra-rapide."
   },
   "lastUpdated": "2026-05-29",
   "sources": [

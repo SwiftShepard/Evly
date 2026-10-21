@@ -24,10 +24,10 @@
   "wltp_max_km": 501,
   "wltp_min_km": 480,
   "realRange": {
-    "mixed_km": 353,
-    "highway_130_km": 265,
-    "urban_km": 451,
-    "winter_minus5_km": 241,
+    "mixed_km": 356,
+    "highway_130_km": 267,
+    "urban_km": 456,
+    "winter_minus5_km": 244,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 15.4,
@@ -111,7 +111,7 @@
       "batteryUsed": "67 kWh",
       "equipmentHighlights": [
         "OpenR Link Google",
-        "Ecran 12 pouces",
+        "Écran 12 pouces",
         "Chargeur AC 22 kW"
       ]
     },
@@ -120,9 +120,9 @@
       "price_EUR": 40500,
       "batteryUsed": "67 kWh",
       "equipmentHighlights": [
-        "Jantes 20 pouces diamantees",
+        "Jantes 20 pouces diamantées",
         "Volant Alpine",
-        "Sieges sport"
+        "Sièges sport"
       ]
     }
   ],
@@ -155,10 +155,10 @@
       "wltp_km": 501,
       "wltp_consumption_kWh_100km": 15.4,
       "realRange": {
-        "mixed_km": 353,
-        "highway_130_km": 265,
-        "urban_km": 451,
-        "winter_minus5_km": 241,
+        "mixed_km": 356,
+        "highway_130_km": 267,
+        "urban_km": 456,
+        "winter_minus5_km": 244,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -228,10 +228,10 @@
       "wltp_km": 480,
       "wltp_consumption_kWh_100km": 16,
       "realRange": {
-        "mixed_km": 338,
-        "highway_130_km": 254,
-        "urban_km": 432,
-        "winter_minus5_km": 231,
+        "mixed_km": 341,
+        "highway_130_km": 256,
+        "urban_km": 437,
+        "winter_minus5_km": 233,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -285,7 +285,7 @@
         }
       ],
       "availability": "available",
-      "notes": "220 ch (160 kW), jantes 20 pouces diamantees"
+      "notes": "220 ch (160 kW), jantes 20 pouces diamantées"
     }
   ],
   "warranty": {
@@ -316,16 +316,16 @@
   "verdict": {
     "strengths": [
       "Autonomie WLTP portée à 501 km avec la nouvelle batterie de 67 kWh",
-      "Vitesse de charge améliorée (10-80% en 24 minutes, pic à 165 kW)",
+      "Vitesse de charge améliorée (10-80 % en 24 minutes, pic à 165 kW)",
       "Bon compromis prix/autonomie",
       "Confort de suspension"
     ],
     "weaknesses": [
       "Infodivertissement perfectible",
-      "Courbe de charge après 80% très lente"
+      "Courbe de charge après 80 % très lente"
     ],
     "idealUserProfile": "Famille cherchant un véhicule principal polyvalent et confortable au quotidien.",
-    "notIdealFor": "Gros rouleurs autoroutiers pressés après 80% de charge."
+    "notIdealFor": "Gros rouleurs autoroutiers pressés après 80 % de charge."
   },
   "lastUpdated": "2026-10-08",
   "sources": [

@@ -2,7 +2,7 @@
   "slug": "leapmotor-t03",
   "brand": "Leapmotor",
   "model": "T03",
-  "variant": "37.3 kWh",
+  "variant": "37,3 kWh",
   "bodyType": "Citadine",
   "segment": "A",
   "productionCountry": "Chine",
@@ -24,10 +24,10 @@
   "wltp_max_km": 275,
   "wltp_min_km": 275,
   "realRange": {
-    "mixed_km": 194,
-    "highway_130_km": 146,
-    "urban_km": 248,
-    "winter_minus5_km": 123,
+    "mixed_km": 196,
+    "highway_130_km": 147,
+    "urban_km": 251,
+    "winter_minus5_km": 125,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 15,
@@ -71,7 +71,50 @@
       "power": 4
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2023-10",
+      "speed_kmh": null,
+      "range_km": 240,
+      "consumption_kWh_100km": 15.4,
+      "temperature_C": 18,
+      "wheelSize_inches": 15,
+      "tyreModel": "Nexen N'Blue Eco 165/65 R15",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/essai-leapmotor-t03-les-consommations-et-autonomies-mesurees-de-notre-supertest/",
+      "notes": "Supertest Automobile Propre (T03), parcours mixte."
+    },
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2023-10",
+      "speed_kmh": 110,
+      "range_km": 208,
+      "consumption_kWh_100km": 17.8,
+      "temperature_C": null,
+      "wheelSize_inches": 15,
+      "tyreModel": "Nexen N'Blue Eco 165/65 R15",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/essai-leapmotor-t03-les-consommations-et-autonomies-mesurees-de-notre-supertest/",
+      "notes": "Supertest Automobile Propre (T03), vitesse stabilisée."
+    },
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2023-10",
+      "speed_kmh": 130,
+      "range_km": 157,
+      "consumption_kWh_100km": 23.6,
+      "temperature_C": null,
+      "wheelSize_inches": 15,
+      "tyreModel": "Nexen N'Blue Eco 165/65 R15",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/essai-leapmotor-t03-les-consommations-et-autonomies-mesurees-de-notre-supertest/",
+      "notes": "Supertest Automobile Propre (T03), vitesse stabilisée."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 3620,
   "width_mm": 1652,
@@ -84,11 +127,11 @@
     {
       "name": "Design",
       "price_EUR": 17600,
-      "batteryUsed": "37.3 kWh",
+      "batteryUsed": "37,3 kWh",
       "equipmentHighlights": [
         "Format citadin compact",
         "Réseau Stellantis",
-        "Écran tactile 10.1\""
+        "Écran tactile 10,1\""
       ]
     }
   ],
@@ -110,13 +153,56 @@
       "wltp_km": 275,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 194,
-        "highway_130_km": 146,
-        "urban_km": 248,
-        "winter_minus5_km": 123,
+        "mixed_km": 196,
+        "highway_130_km": 147,
+        "urban_km": 251,
+        "winter_minus5_km": 125,
         "confidence": "estimated"
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2023-10",
+          "speed_kmh": null,
+          "range_km": 240,
+          "consumption_kWh_100km": 15.4,
+          "temperature_C": 18,
+          "wheelSize_inches": 15,
+          "tyreModel": "Nexen N'Blue Eco 165/65 R15",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/essai-leapmotor-t03-les-consommations-et-autonomies-mesurees-de-notre-supertest/",
+          "notes": "Supertest Automobile Propre (T03), parcours mixte."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2023-10",
+          "speed_kmh": 110,
+          "range_km": 208,
+          "consumption_kWh_100km": 17.8,
+          "temperature_C": null,
+          "wheelSize_inches": 15,
+          "tyreModel": "Nexen N'Blue Eco 165/65 R15",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/essai-leapmotor-t03-les-consommations-et-autonomies-mesurees-de-notre-supertest/",
+          "notes": "Supertest Automobile Propre (T03), vitesse stabilisée."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2023-10",
+          "speed_kmh": 130,
+          "range_km": 157,
+          "consumption_kWh_100km": 23.6,
+          "temperature_C": null,
+          "wheelSize_inches": 15,
+          "tyreModel": "Nexen N'Blue Eco 165/65 R15",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/essai-leapmotor-t03-les-consommations-et-autonomies-mesurees-de-notre-supertest/",
+          "notes": "Supertest Automobile Propre (T03), vitesse stabilisée."
+        }
+      ],
       "chargingDC_peak_kW": 45,
       "chargingDC_10_80_min": 36,
       "chargingDC_kWh_30min": 20,
@@ -186,7 +272,8 @@
   "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
-    "la-chaine-ev"
+    "la-chaine-ev",
+    "automobile-propre"
   ],
   "imageCredit": "Constructeur"
 }

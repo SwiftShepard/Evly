@@ -24,10 +24,10 @@
   "wltp_max_km": 520,
   "wltp_min_km": 440,
   "realRange": {
-    "mixed_km": 377,
-    "highway_130_km": 283,
-    "urban_km": 482,
-    "winter_minus5_km": 240,
+    "mixed_km": 379,
+    "highway_130_km": 284,
+    "urban_km": 485,
+    "winter_minus5_km": 241,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 16.0,
@@ -84,7 +84,7 @@
     {
       "name": "RWD Standard Range",
       "price_EUR": 34990,
-      "batteryUsed": "58.3 kWh",
+      "batteryUsed": "58,3 kWh",
       "equipmentHighlights": [
         "Pompe à chaleur de série",
         "Sièges avant chauffants et ventilés",
@@ -94,7 +94,7 @@
     {
       "name": "RWD Long Range",
       "price_EUR": 37990,
-      "batteryUsed": "71.2 kWh",
+      "batteryUsed": "71,2 kWh",
       "equipmentHighlights": [
         "Autonomie maximale de 520 km WLTP",
         "Jantes alliage 18 pouces aérodynamiques",
@@ -104,7 +104,7 @@
     {
       "name": "RWD Long Range Ultra",
       "price_EUR": 42990,
-      "batteryUsed": "71.2 kWh",
+      "batteryUsed": "71,2 kWh",
       "equipmentHighlights": [
         "Jantes alliage 20 pouces",
         "Sellerie premium et confort amélioré",
@@ -114,7 +114,7 @@
     {
       "name": "AWD Performance Ultra",
       "price_EUR": 46990,
-      "batteryUsed": "71.2 kWh",
+      "batteryUsed": "71,2 kWh",
       "equipmentHighlights": [
         "Transmission intégrale (Dual Motor 285 kW)",
         "0 à 100 km/h en 4,5 secondes",
@@ -128,7 +128,7 @@
   "configurations": [
     {
       "id": "xpeng-l03-rwd-standard-range",
-      "label": "L03 RWD Standard Range · 58.3 kWh",
+      "label": "L03 RWD Standard Range · 58,3 kWh",
       "battery": "standard",
       "trim": "RWD Standard Range",
       "wheelSize_inches": 18,
@@ -140,9 +140,9 @@
       "wltp_km": 445,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 323,
+        "mixed_km": 324,
         "highway_130_km": 243,
-        "urban_km": 413,
+        "urban_km": 415,
         "winter_minus5_km": 206,
         "confidence": "estimated"
       },
@@ -156,7 +156,7 @@
     },
     {
       "id": "xpeng-l03-rwd-long-range",
-      "label": "L03 RWD Long Range · 71.2 kWh",
+      "label": "L03 RWD Long Range · 71,2 kWh",
       "battery": "long-range",
       "trim": "RWD Long Range",
       "wheelSize_inches": 18,
@@ -168,10 +168,10 @@
       "wltp_km": 520,
       "wltp_consumption_kWh_100km": 16.0,
       "realRange": {
-        "mixed_km": 377,
-        "highway_130_km": 283,
-        "urban_km": 482,
-        "winter_minus5_km": 240,
+        "mixed_km": 379,
+        "highway_130_km": 284,
+        "urban_km": 485,
+        "winter_minus5_km": 241,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -184,7 +184,7 @@
     },
     {
       "id": "xpeng-l03-rwd-long-range-ultra",
-      "label": "L03 RWD Long Range Ultra · 71.2 kWh",
+      "label": "L03 RWD Long Range Ultra · 71,2 kWh",
       "battery": "long-range",
       "trim": "RWD Long Range Ultra",
       "wheelSize_inches": 20,
@@ -196,10 +196,10 @@
       "wltp_km": 480,
       "wltp_consumption_kWh_100km": 16.8,
       "realRange": {
-        "mixed_km": 348,
-        "highway_130_km": 261,
-        "urban_km": 445,
-        "winter_minus5_km": 222,
+        "mixed_km": 350,
+        "highway_130_km": 263,
+        "urban_km": 448,
+        "winter_minus5_km": 223,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -212,7 +212,7 @@
     },
     {
       "id": "xpeng-l03-awd-performance-ultra",
-      "label": "L03 AWD Performance Ultra · 71.2 kWh",
+      "label": "L03 AWD Performance Ultra · 71,2 kWh",
       "battery": "long-range",
       "trim": "AWD Performance Ultra",
       "wheelSize_inches": 20,
@@ -224,10 +224,10 @@
       "wltp_km": 440,
       "wltp_consumption_kWh_100km": 17.2,
       "realRange": {
-        "mixed_km": 319,
-        "highway_130_km": 240,
-        "urban_km": 408,
-        "winter_minus5_km": 203,
+        "mixed_km": 321,
+        "highway_130_km": 241,
+        "urban_km": 411,
+        "winter_minus5_km": 204,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -267,7 +267,7 @@
   "verdict": {
     "strengths": [
       "Excellent rapport prix/équipements par rapport au Model Y",
-      "Vitesse de charge DC de référence (10-80% en 20 min)",
+      "Vitesse de charge DC de référence (10-80 % en 20 min)",
       "Équipement de confort de série très complet (pompe à chaleur, sièges ventilés)"
     ],
     "weaknesses": [

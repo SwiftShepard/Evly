@@ -2,7 +2,7 @@
   "slug": "dacia-spring",
   "brand": "Dacia",
   "model": "Spring",
-  "variant": "27.5 kWh",
+  "variant": "27,5 kWh",
   "bodyType": "Citadine",
   "segment": "A",
   "productionCountry": "Slovénie",
@@ -24,10 +24,10 @@
   "wltp_max_km": 250,
   "wltp_min_km": 250,
   "realRange": {
-    "mixed_km": 176,
-    "highway_130_km": 132,
-    "urban_km": 225,
-    "winter_minus5_km": 112,
+    "mixed_km": 178,
+    "highway_130_km": 134,
+    "urban_km": 228,
+    "winter_minus5_km": 113,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 12.8,
@@ -84,7 +84,7 @@
     {
       "name": "Expression",
       "price_EUR": 17900,
-      "batteryUsed": "27.5 kWh",
+      "batteryUsed": "27,5 kWh",
       "equipmentHighlights": [
         "Instrumentation numérique 7\"",
         "Jantes acier 15\"",
@@ -94,7 +94,7 @@
     {
       "name": "Journey",
       "price_EUR": 19400,
-      "batteryUsed": "27.5 kWh",
+      "batteryUsed": "27,5 kWh",
       "equipmentHighlights": [
         "Écran tactile 10,1\"",
         "Jantes 16\"",
@@ -126,10 +126,10 @@
       "wltp_km": 250,
       "wltp_consumption_kWh_100km": 12.9,
       "realRange": {
-        "mixed_km": 176,
-        "highway_130_km": 132,
-        "urban_km": 225,
-        "winter_minus5_km": 112,
+        "mixed_km": 178,
+        "highway_130_km": 134,
+        "urban_km": 228,
+        "winter_minus5_km": 113,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -154,10 +154,10 @@
       "wltp_km": 250,
       "wltp_consumption_kWh_100km": 12.7,
       "realRange": {
-        "mixed_km": 176,
-        "highway_130_km": 132,
-        "urban_km": 225,
-        "winter_minus5_km": 112,
+        "mixed_km": 178,
+        "highway_130_km": 134,
+        "urban_km": 228,
+        "winter_minus5_km": 113,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -225,7 +225,7 @@
       "Recharge rapide DC (50 kW) en option et réservée à la finition Journey",
       "Performances autoroutières limitées (130 km/h maxi)"
     ],
-    "idealUserProfile": "Automobilistes cherchant une citadine 100% électrique neuve très accessible, éligible aux aides et peu coûteuse en énergie pour le quotidien.",
+    "idealUserProfile": "Automobilistes cherchant une citadine 100 % électrique neuve très accessible, éligible aux aides et peu coûteuse en énergie pour le quotidien.",
     "notIdealFor": "Conducteurs effectuant de fréquents trajets autoroutiers ou recherchant une recharge très rapide."
   },
   "lastUpdated": "2026-10-08",

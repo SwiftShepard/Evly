@@ -130,7 +130,7 @@
       "equipmentHighlights": [
         "Bowers & Wilkins 25 HP",
         "Toit panoramique",
-        "Sieges ventiles massants"
+        "Sièges ventilés massants"
       ]
     },
     {
@@ -139,8 +139,8 @@
       "batteryUsed": "111 kWh",
       "equipmentHighlights": [
         "Cuir Nappa",
-        "Affichage tete haute",
-        "Aide conduite avancee"
+        "Affichage tête haute",
+        "Aide conduite avancée"
       ]
     }
   ],
@@ -297,11 +297,11 @@
     },
     {
       "category": "technologie",
-      "label": "LiDAR Luminar de serie et ecran 14,5 pouces"
+      "label": "LiDAR Luminar de série et écran 14,5 pouces"
     },
     {
       "category": "securite",
-      "label": "Detection pietons, cyclistes et grands animaux"
+      "label": "Détection piétons, cyclistes et grands animaux"
     },
     {
       "category": "confort",
@@ -310,15 +310,15 @@
   ],
   "verdict": {
     "strengths": [
-      "LiDAR de serie, V2L et V2G integres",
+      "LiDAR de série, V2L et V2G intégrés",
       "Grande batterie 111 kWh et charge 250 kW"
     ],
     "weaknesses": [
-      "Prix tres eleve (101 500 euros minimum)",
+      "Prix très élevé (101 500 euros minimum)",
       "Assemblage USA, aucune aide en France"
     ],
-    "idealUserProfile": "Familles aisees cherchant un grand SUV electrique 7 places ultra-securise et technologique.",
-    "notIdealFor": "Budgets limites ou conducteurs cherchant un vehicule compact maniable en ville."
+    "idealUserProfile": "Familles aisées cherchant un grand SUV électrique 7 places ultra-sécurisé et technologique.",
+    "notIdealFor": "Budgets limités ou conducteurs cherchant un véhicule compact maniable en ville."
   },
   "lastUpdated": "2026-10-08",
   "sources": [

@@ -2,7 +2,7 @@
   "slug": "kia-ev4-fastback",
   "brand": "Kia",
   "model": "EV4 Fastback",
-  "variant": "81.4 kWh",
+  "variant": "81,4 kWh",
   "bodyType": "Berline Fastback",
   "segment": "C",
   "productionCountry": "Corée",
@@ -25,8 +25,8 @@
   "wltp_min_km": 440,
   "realRange": {
     "mixed_km": 463,
-    "highway_130_km": 348,
-    "urban_km": 592,
+    "highway_130_km": 347,
+    "urban_km": 593,
     "winter_minus5_km": 317,
     "confidence": "estimated"
   },
@@ -94,7 +94,7 @@
     {
       "name": "Earth 58,3 kWh",
       "price_EUR": 42290,
-      "batteryUsed": "58.3 kWh",
+      "batteryUsed": "58,3 kWh",
       "equipmentHighlights": [
         "Aérodynamisme optimisé"
       ]
@@ -102,7 +102,7 @@
     {
       "name": "Earth 81,4 kWh",
       "price_EUR": 46890,
-      "batteryUsed": "81.4 kWh",
+      "batteryUsed": "81,4 kWh",
       "equipmentHighlights": [
         "Aérodynamisme optimisé"
       ]
@@ -110,7 +110,7 @@
     {
       "name": "GT-Line 81,4 kWh",
       "price_EUR": 48690,
-      "batteryUsed": "81.4 kWh",
+      "batteryUsed": "81,4 kWh",
       "equipmentHighlights": [
         "Finition sportive GT-Line",
         "Jantes 19 pouces",
@@ -187,8 +187,8 @@
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 463,
-        "highway_130_km": 348,
-        "urban_km": 592,
+        "highway_130_km": 347,
+        "urban_km": 593,
         "winter_minus5_km": 317,
         "confidence": "estimated"
       },
@@ -236,8 +236,8 @@
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
         "mixed_km": 463,
-        "highway_130_km": 348,
-        "urban_km": 592,
+        "highway_130_km": 347,
+        "urban_km": 593,
         "winter_minus5_km": 317,
         "confidence": "estimated"
       },

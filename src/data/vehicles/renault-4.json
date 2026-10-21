@@ -24,11 +24,11 @@
   "wltp_max_km": 409,
   "wltp_min_km": 308,
   "realRange": {
-    "mixed_km": 297,
-    "highway_130_km": 223,
-    "urban_km": 380,
-    "winter_minus5_km": 203,
-    "confidence": "estimated"
+    "mixed_km": 298,
+    "highway_130_km": 216,
+    "urban_km": 389,
+    "winter_minus5_km": 215,
+    "confidence": "tested"
   },
   "consumption_mixed_kWh_per_100km": 15.5,
   "consumption_highway_kWh_per_100km": 22,
@@ -71,7 +71,64 @@
       "power": 8
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2026-03",
+      "speed_kmh": null,
+      "range_km": 319,
+      "consumption_kWh_100km": 16.3,
+      "temperature_C": 14,
+      "wheelSize_inches": 18,
+      "tyreModel": "Michelin e.Primacy 195/60 R18",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-renault-4-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+      "notes": "Supertest Automobile Propre (Techno 52 kWh), parcours mixte."
+    },
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2026-03",
+      "speed_kmh": 90,
+      "range_km": 354,
+      "consumption_kWh_100km": 14.7,
+      "temperature_C": null,
+      "wheelSize_inches": 18,
+      "tyreModel": "Michelin e.Primacy 195/60 R18",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-renault-4-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+      "notes": "Supertest Automobile Propre (Techno 52 kWh), vitesse stabilisée."
+    },
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2026-03",
+      "speed_kmh": 110,
+      "range_km": 274,
+      "consumption_kWh_100km": 19,
+      "temperature_C": null,
+      "wheelSize_inches": 18,
+      "tyreModel": "Michelin e.Primacy 195/60 R18",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-renault-4-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+      "notes": "Supertest Automobile Propre (Techno 52 kWh), vitesse stabilisée."
+    },
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2026-03",
+      "speed_kmh": 130,
+      "range_km": 216,
+      "consumption_kWh_100km": 24.1,
+      "temperature_C": null,
+      "wheelSize_inches": 18,
+      "tyreModel": "Michelin e.Primacy 195/60 R18",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-renault-4-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+      "notes": "Supertest Automobile Propre (Techno 52 kWh), vitesse stabilisée."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 610,
@@ -96,7 +153,7 @@
       "price_EUR": 29990,
       "batteryUsed": "40 kWh",
       "equipmentHighlights": [
-        "Ecran 10 pouces",
+        "Écran 10 pouces",
         "Barres de toit"
       ]
     },
@@ -105,7 +162,7 @@
       "price_EUR": 33490,
       "batteryUsed": "52 kWh",
       "equipmentHighlights": [
-        "Ecran 10 pouces",
+        "Écran 10 pouces",
         "Barres de toit"
       ]
     },
@@ -124,7 +181,7 @@
       "price_EUR": 37490,
       "batteryUsed": "52 kWh",
       "equipmentHighlights": [
-        "Sieges chauffants",
+        "Sièges chauffants",
         "Toit vitré panoramique",
         "Conduite semi-autonome"
       ]
@@ -154,9 +211,9 @@
       "wltp_km": 308,
       "wltp_consumption_kWh_100km": 15,
       "realRange": {
-        "mixed_km": 223,
-        "highway_130_km": 168,
-        "urban_km": 285,
+        "mixed_km": 224,
+        "highway_130_km": 162,
+        "urban_km": 292,
         "winter_minus5_km": 153,
         "confidence": "estimated"
       },
@@ -203,13 +260,70 @@
       "wltp_km": 409,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 297,
-        "highway_130_km": 223,
-        "urban_km": 380,
-        "winter_minus5_km": 203,
-        "confidence": "estimated"
+        "mixed_km": 298,
+        "highway_130_km": 216,
+        "urban_km": 389,
+        "winter_minus5_km": 215,
+        "confidence": "tested"
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-03",
+          "speed_kmh": null,
+          "range_km": 319,
+          "consumption_kWh_100km": 16.3,
+          "temperature_C": 14,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin e.Primacy 195/60 R18",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-renault-4-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (Techno 52 kWh), parcours mixte."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-03",
+          "speed_kmh": 90,
+          "range_km": 354,
+          "consumption_kWh_100km": 14.7,
+          "temperature_C": null,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin e.Primacy 195/60 R18",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-renault-4-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (Techno 52 kWh), vitesse stabilisée."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-03",
+          "speed_kmh": 110,
+          "range_km": 274,
+          "consumption_kWh_100km": 19,
+          "temperature_C": null,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin e.Primacy 195/60 R18",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-renault-4-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (Techno 52 kWh), vitesse stabilisée."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-03",
+          "speed_kmh": 130,
+          "range_km": 216,
+          "consumption_kWh_100km": 24.1,
+          "temperature_C": null,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin e.Primacy 195/60 R18",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-renault-4-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (Techno 52 kWh), vitesse stabilisée."
+        }
+      ],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 35,
@@ -252,13 +366,70 @@
       "wltp_km": 409,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 297,
-        "highway_130_km": 223,
-        "urban_km": 380,
-        "winter_minus5_km": 203,
-        "confidence": "estimated"
+        "mixed_km": 298,
+        "highway_130_km": 216,
+        "urban_km": 389,
+        "winter_minus5_km": 215,
+        "confidence": "tested"
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-03",
+          "speed_kmh": null,
+          "range_km": 319,
+          "consumption_kWh_100km": 16.3,
+          "temperature_C": 14,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin e.Primacy 195/60 R18",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-renault-4-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (Techno 52 kWh), parcours mixte."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-03",
+          "speed_kmh": 90,
+          "range_km": 354,
+          "consumption_kWh_100km": 14.7,
+          "temperature_C": null,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin e.Primacy 195/60 R18",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-renault-4-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (Techno 52 kWh), vitesse stabilisée."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-03",
+          "speed_kmh": 110,
+          "range_km": 274,
+          "consumption_kWh_100km": 19,
+          "temperature_C": null,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin e.Primacy 195/60 R18",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-renault-4-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (Techno 52 kWh), vitesse stabilisée."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-03",
+          "speed_kmh": 130,
+          "range_km": 216,
+          "consumption_kWh_100km": 24.1,
+          "temperature_C": null,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin e.Primacy 195/60 R18",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-renault-4-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (Techno 52 kWh), vitesse stabilisée."
+        }
+      ],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 35,
@@ -301,13 +472,70 @@
       "wltp_km": 409,
       "wltp_consumption_kWh_100km": 15.5,
       "realRange": {
-        "mixed_km": 297,
-        "highway_130_km": 223,
-        "urban_km": 380,
-        "winter_minus5_km": 203,
-        "confidence": "estimated"
+        "mixed_km": 298,
+        "highway_130_km": 216,
+        "urban_km": 389,
+        "winter_minus5_km": 215,
+        "confidence": "tested"
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-03",
+          "speed_kmh": null,
+          "range_km": 319,
+          "consumption_kWh_100km": 16.3,
+          "temperature_C": 14,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin e.Primacy 195/60 R18",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-renault-4-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (Techno 52 kWh), parcours mixte."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-03",
+          "speed_kmh": 90,
+          "range_km": 354,
+          "consumption_kWh_100km": 14.7,
+          "temperature_C": null,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin e.Primacy 195/60 R18",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-renault-4-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (Techno 52 kWh), vitesse stabilisée."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-03",
+          "speed_kmh": 110,
+          "range_km": 274,
+          "consumption_kWh_100km": 19,
+          "temperature_C": null,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin e.Primacy 195/60 R18",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-renault-4-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (Techno 52 kWh), vitesse stabilisée."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-03",
+          "speed_kmh": 130,
+          "range_km": 216,
+          "consumption_kWh_100km": 24.1,
+          "temperature_C": null,
+          "wheelSize_inches": 18,
+          "tyreModel": "Michelin e.Primacy 195/60 R18",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-renault-4-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (Techno 52 kWh), vitesse stabilisée."
+        }
+      ],
       "chargingDC_peak_kW": 100,
       "chargingDC_10_80_min": 30,
       "chargingDC_kWh_30min": 35,
@@ -365,11 +593,11 @@
   "verdict": {
     "strengths": [
       "Polyvalence SUV compact surélevé",
-      "V2L et V2G de serie sur 52 kWh",
+      "V2L et V2G de série sur 52 kWh",
       "Gamme accessible des 29 990 euros"
     ],
     "weaknesses": [
-      "Autonomie limitee sur la 40 kWh",
+      "Autonomie limitée sur la 40 kWh",
       "Pas de version AWD"
     ],
     "idealUserProfile": "Périurbains cherchant un crossover électrique compact avec garde au sol surélevée.",
@@ -378,7 +606,8 @@
   "lastUpdated": "2026-10-08",
   "sources": [
     "nyland",
-    "la-chaine-ev"
+    "la-chaine-ev",
+    "automobile-propre"
   ],
   "imageCredit": "Constructeur"
 }

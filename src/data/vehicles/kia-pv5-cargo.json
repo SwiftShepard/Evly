@@ -24,10 +24,10 @@
   "wltp_max_km": 392,
   "wltp_min_km": 286,
   "realRange": {
-    "mixed_km": 283,
-    "highway_130_km": 213,
-    "urban_km": 362,
-    "winter_minus5_km": 194,
+    "mixed_km": 285,
+    "highway_130_km": 214,
+    "urban_km": 365,
+    "winter_minus5_km": 195,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 15,
@@ -123,7 +123,64 @@
       "power": 27
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2026-06",
+      "speed_kmh": null,
+      "range_km": 345,
+      "consumption_kWh_100km": 19.7,
+      "temperature_C": 15,
+      "wheelSize_inches": 16,
+      "tyreModel": "Nexen N Blue S 215/65 R16",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-kia-pv5-cargo-les-autonomies-et-temps-de-recharge-mesures-de-notre-essai/",
+      "notes": "Supertest Automobile Propre (L2H1 71,2 kWh), parcours mixte."
+    },
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2026-06",
+      "speed_kmh": 90,
+      "range_km": null,
+      "consumption_kWh_100km": 17.2,
+      "temperature_C": null,
+      "wheelSize_inches": 16,
+      "tyreModel": "Nexen N Blue S 215/65 R16",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-kia-pv5-cargo-les-autonomies-et-temps-de-recharge-mesures-de-notre-essai/",
+      "notes": "Supertest Automobile Propre (L2H1 71,2 kWh), vitesse stabilisée."
+    },
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2026-06",
+      "speed_kmh": 110,
+      "range_km": null,
+      "consumption_kWh_100km": 22.6,
+      "temperature_C": null,
+      "wheelSize_inches": 16,
+      "tyreModel": "Nexen N Blue S 215/65 R16",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-kia-pv5-cargo-les-autonomies-et-temps-de-recharge-mesures-de-notre-essai/",
+      "notes": "Supertest Automobile Propre (L2H1 71,2 kWh), vitesse stabilisée."
+    },
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2026-06",
+      "speed_kmh": 130,
+      "range_km": null,
+      "consumption_kWh_100km": 28.8,
+      "temperature_C": null,
+      "wheelSize_inches": 16,
+      "tyreModel": "Nexen N Blue S 215/65 R16",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-kia-pv5-cargo-les-autonomies-et-temps-de-recharge-mesures-de-notre-essai/",
+      "notes": "Supertest Automobile Propre (L2H1 71,2 kWh), vitesse stabilisée."
+    }
+  ],
   "thousandKmChallenge": null,
   "length_mm": 4695,
   "width_mm": 1895,
@@ -136,19 +193,19 @@
     {
       "name": "Essential L1H1 51,5 kWh",
       "price_EUR": 38520,
-      "batteryUsed": "51.5 kWh",
+      "batteryUsed": "51,5 kWh",
       "equipmentHighlights": [
         "Moteur 122 ch",
-        "Volume utile 4m3",
+        "Volume utile 4 m3",
         "Cloison de séparation tôlée"
       ]
     },
     {
       "name": "Essential L1H1 71,2 kWh",
       "price_EUR": 42480,
-      "batteryUsed": "71.2 kWh",
+      "batteryUsed": "71,2 kWh",
       "equipmentHighlights": [
-        "Volume utile 4m3",
+        "Volume utile 4 m3",
         "Cloison de séparation tôlée",
         "Portes arrière battantes 180°"
       ]
@@ -172,10 +229,10 @@
       "wltp_km": 286,
       "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
-        "mixed_km": 206,
-        "highway_130_km": 155,
-        "urban_km": 263,
-        "winter_minus5_km": 141,
+        "mixed_km": 208,
+        "highway_130_km": 156,
+        "urban_km": 266,
+        "winter_minus5_km": 142,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -225,13 +282,70 @@
       "wltp_km": 392,
       "wltp_consumption_kWh_100km": 16.5,
       "realRange": {
-        "mixed_km": 283,
-        "highway_130_km": 213,
-        "urban_km": 362,
-        "winter_minus5_km": 194,
+        "mixed_km": 285,
+        "highway_130_km": 214,
+        "urban_km": 365,
+        "winter_minus5_km": 195,
         "confidence": "estimated"
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-06",
+          "speed_kmh": null,
+          "range_km": 345,
+          "consumption_kWh_100km": 19.7,
+          "temperature_C": 15,
+          "wheelSize_inches": 16,
+          "tyreModel": "Nexen N Blue S 215/65 R16",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-kia-pv5-cargo-les-autonomies-et-temps-de-recharge-mesures-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (L2H1 71,2 kWh), parcours mixte."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-06",
+          "speed_kmh": 90,
+          "range_km": null,
+          "consumption_kWh_100km": 17.2,
+          "temperature_C": null,
+          "wheelSize_inches": 16,
+          "tyreModel": "Nexen N Blue S 215/65 R16",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-kia-pv5-cargo-les-autonomies-et-temps-de-recharge-mesures-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (L2H1 71,2 kWh), vitesse stabilisée."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-06",
+          "speed_kmh": 110,
+          "range_km": null,
+          "consumption_kWh_100km": 22.6,
+          "temperature_C": null,
+          "wheelSize_inches": 16,
+          "tyreModel": "Nexen N Blue S 215/65 R16",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-kia-pv5-cargo-les-autonomies-et-temps-de-recharge-mesures-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (L2H1 71,2 kWh), vitesse stabilisée."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-06",
+          "speed_kmh": 130,
+          "range_km": null,
+          "consumption_kWh_100km": 28.8,
+          "temperature_C": null,
+          "wheelSize_inches": 16,
+          "tyreModel": "Nexen N Blue S 215/65 R16",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-kia-pv5-cargo-les-autonomies-et-temps-de-recharge-mesures-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (L2H1 71,2 kWh), vitesse stabilisée."
+        }
+      ],
       "chargingDC_peak_kW": 126,
       "chargingDC_10_80_min": 31,
       "chargingDC_kWh_30min": 50,
@@ -342,7 +456,7 @@
   ],
   "verdict": {
     "strengths": [
-      "Volume utile généreux (4m3)",
+      "Volume utile généreux (4 m3)",
       "Hauteur de chargement optimisée",
       "Connectivité V2L pour outils pros"
     ],

@@ -118,7 +118,7 @@
       "price_EUR": 53990,
       "batteryUsed": "100 kWh",
       "equipmentHighlights": [
-        "Plateforme 800V de SAIC",
+        "Plateforme 800 V de SAIC",
         "Écran de bord de 26,3 pouces",
         "Conduite autonome avancée avec LiDAR"
       ]
@@ -185,7 +185,7 @@
         }
       ],
       "availability": "available",
-      "notes": "291 ch, RWD, 800V architecture",
+      "notes": "291 ch, RWD, 800 V architecture",
       "power_hp": 407,
       "power_kW": 299,
       "usableCapacity_kWh": 96
@@ -265,7 +265,7 @@
         }
       ],
       "availability": "available",
-      "notes": "340 ch (ou RWD haute puissance), plateforme 800V de SAIC",
+      "notes": "340 ch (ou RWD haute puissance), plateforme 800 V de SAIC",
       "power_hp": 751,
       "power_kW": 552,
       "usableCapacity_kWh": 96
@@ -285,7 +285,7 @@
     },
     {
       "category": "technologie",
-      "label": "Plateforme ultra-rapide 800V de SAIC"
+      "label": "Plateforme ultra-rapide 800 V de SAIC"
     },
     {
       "category": "confort",
@@ -298,7 +298,7 @@
   ],
   "verdict": {
     "strengths": [
-      "Vitesse de recharge ultra-rapide (10-80% en 15 min)",
+      "Vitesse de recharge ultra-rapide (10-80 % en 15 min)",
       "Technologie de châssis numérique agile avec roues arrière directrices",
       "Excellent rapport technologie/prestations théorique"
     ],

@@ -160,7 +160,7 @@
     {
       "name": "Air",
       "price_EUR": 44990,
-      "batteryUsed": "81.4 kWh",
+      "batteryUsed": "81,4 kWh",
       "equipmentHighlights": [
         "Batterie 81,4 kWh",
         "Jantes 18\""
@@ -169,7 +169,7 @@
     {
       "name": "Earth",
       "price_EUR": 46990,
-      "batteryUsed": "81.4 kWh",
+      "batteryUsed": "81,4 kWh",
       "equipmentHighlights": [
         "Sellerie cuir",
         "Toit ouvrant"
@@ -178,7 +178,7 @@
     {
       "name": "GT-Line",
       "price_EUR": 49990,
-      "batteryUsed": "81.4 kWh",
+      "batteryUsed": "81,4 kWh",
       "equipmentHighlights": [
         "Jantes 20\"",
         "Design sportif"

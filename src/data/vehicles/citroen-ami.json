@@ -2,7 +2,7 @@
   "slug": "citroen-ami",
   "brand": "Citroën",
   "model": "Ami",
-  "variant": "5.5 kWh",
+  "variant": "5,5 kWh",
   "bodyType": "Quadricycle",
   "segment": "A",
   "productionCountry": "Maroc",
@@ -84,7 +84,7 @@
     {
       "name": "Ami l'Original",
       "price_EUR": 8490,
-      "batteryUsed": "5.5 kWh",
+      "batteryUsed": "5,5 kWh",
       "equipmentHighlights": [
         "Format ultra compact",
         "Sans permis dès 14 ans",
@@ -94,7 +94,7 @@
     {
       "name": "My Ami Peps",
       "price_EUR": 8990,
-      "batteryUsed": "5.5 kWh",
+      "batteryUsed": "5,5 kWh",
       "equipmentHighlights": [
         "Style dynamique et coloré",
         "Support smartphone",

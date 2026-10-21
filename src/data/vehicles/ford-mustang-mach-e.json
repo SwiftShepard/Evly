@@ -2,7 +2,7 @@
   "slug": "ford-mustang-mach-e",
   "brand": "Ford",
   "model": "Mustang Mach-E",
-  "variant": "98.7 kWh",
+  "variant": "98,7 kWh",
   "bodyType": "SUV",
   "segment": "D",
   "productionCountry": "Mexique",
@@ -180,19 +180,19 @@
   "frunkCapacity_L": 81,
   "trims": [
     {
-      "name": "75.7 kWh",
+      "name": "75,7 kWh",
       "price_EUR": 47490,
-      "batteryUsed": "75.7 kWh",
+      "batteryUsed": "75,7 kWh",
       "equipmentHighlights": [
         "440 km WLTP",
-        "Ecran 15,5 pouces",
+        "Écran 15,5 pouces",
         "Ford BlueCruise"
       ]
     },
     {
-      "name": "Extended Range 98.7 kWh",
+      "name": "Extended Range 98,7 kWh",
       "price_EUR": 53990,
-      "batteryUsed": "98.7 kWh",
+      "batteryUsed": "98,7 kWh",
       "equipmentHighlights": [
         "600 km WLTP",
         "Charge DC 150 kW",
@@ -200,13 +200,13 @@
       ]
     },
     {
-      "name": "GT 98.7 kWh",
+      "name": "GT 98,7 kWh",
       "price_EUR": 73990,
-      "batteryUsed": "98.7 kWh",
+      "batteryUsed": "98,7 kWh",
       "equipmentHighlights": [
         "AWD 487 ch",
         "0-100 en 3,7 s",
-        "Chassis sport MagneRide"
+        "Châssis sport MagneRide"
       ]
     }
   ],
@@ -216,9 +216,9 @@
   "configurations": [
     {
       "id": "ford-mustang-mach-e-sr",
-      "label": "Mustang Mach-E · 75.7 kWh",
+      "label": "Mustang Mach-E · 75,7 kWh",
       "battery": "standard",
-      "trim": "75.7 kWh",
+      "trim": "75,7 kWh",
       "wheelSize_inches": 18,
       "tyreType": "summer",
       "options": [],
@@ -270,9 +270,9 @@
     },
     {
       "id": "ford-mustang-mach-e-er",
-      "label": "Mustang Mach-E · 98.7 kWh",
+      "label": "Mustang Mach-E · 98,7 kWh",
       "battery": "long-range",
-      "trim": "Extended Range 98.7 kWh",
+      "trim": "Extended Range 98,7 kWh",
       "wheelSize_inches": 19,
       "tyreType": "summer",
       "options": [],
@@ -352,9 +352,9 @@
     },
     {
       "id": "ford-mustang-mach-e-gt",
-      "label": "Mustang Mach-E GT · 98.7 kWh",
+      "label": "Mustang Mach-E GT · 98,7 kWh",
       "battery": "long-range",
-      "trim": "GT 98.7 kWh",
+      "trim": "GT 98,7 kWh",
       "wheelSize_inches": 20,
       "tyreType": "summer",
       "options": [],
@@ -503,7 +503,7 @@
     },
     {
       "category": "technologie",
-      "label": "Ecran 15,5 pouces et Ford BlueCruise"
+      "label": "Écran 15,5 pouces et Ford BlueCruise"
     },
     {
       "category": "securite",
@@ -516,14 +516,14 @@
   ],
   "verdict": {
     "strengths": [
-      "Design Mustang iconique et version GT tres performante (487 ch)",
-      "Grande batterie 98.7 kWh et bonne autonomie (600 km WLTP)"
+      "Design Mustang iconique et version GT très performante (487 ch)",
+      "Grande batterie 98,7 kWh et bonne autonomie (600 km WLTP)"
     ],
     "weaknesses": [
       "Assemblage Mexique, aucune aide CEE",
-      "Charge DC limitee a 150 kW, en retrait face a la concurrence"
+      "Charge DC limitée à 150 kW, en retrait face à la concurrence"
     ],
-    "idealUserProfile": "Conducteurs cherchant un SUV electrique sportif et charismatique.",
+    "idealUserProfile": "Conducteurs cherchant un SUV électrique sportif et charismatique.",
     "notIdealFor": "Acheteurs comptant sur les aides CEE ou cherchant la charge ultra-rapide."
   },
   "lastUpdated": "2026-05-29",

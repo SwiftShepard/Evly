@@ -24,10 +24,10 @@
   "wltp_max_km": 420,
   "wltp_min_km": 340,
   "realRange": {
-    "mixed_km": 303,
-    "highway_130_km": 228,
-    "urban_km": 387,
-    "winter_minus5_km": 207,
+    "mixed_km": 305,
+    "highway_130_km": 229,
+    "urban_km": 390,
+    "winter_minus5_km": 209,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 28,
@@ -96,7 +96,7 @@
       "equipmentHighlights": [
         "Volume utile 11,5 m3",
         "Charge DC 150 kW",
-        "Ecran Uconnect 10 pouces"
+        "Écran Uconnect 10 pouces"
       ]
     },
     {
@@ -106,7 +106,7 @@
       "equipmentHighlights": [
         "Volume utile 13 m3",
         "Charge utile 1500 kg",
-        "Camera de recul"
+        "Caméra de recul"
       ]
     },
     {
@@ -138,10 +138,10 @@
       "wltp_km": 420,
       "wltp_consumption_kWh_100km": 27,
       "realRange": {
-        "mixed_km": 303,
-        "highway_130_km": 228,
-        "urban_km": 387,
-        "winter_minus5_km": 207,
+        "mixed_km": 305,
+        "highway_130_km": 229,
+        "urban_km": 390,
+        "winter_minus5_km": 209,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -171,7 +171,7 @@
         }
       ],
       "availability": "available",
-      "notes": "Fourgon L2H2, reference du segment en Europe."
+      "notes": "Fourgon L2H2, référence du segment en Europe."
     },
     {
       "id": "fiat-e-ducato-l4h3",
@@ -187,10 +187,10 @@
       "wltp_km": 340,
       "wltp_consumption_kWh_100km": 32,
       "realRange": {
-        "mixed_km": 245,
-        "highway_130_km": 184,
-        "urban_km": 313,
-        "winter_minus5_km": 168,
+        "mixed_km": 247,
+        "highway_130_km": 185,
+        "urban_km": 316,
+        "winter_minus5_km": 169,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -233,32 +233,32 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "Cabine spacieuse avec siege passager double"
+      "label": "Cabine spacieuse avec siège passager double"
     },
     {
       "category": "technologie",
-      "label": "Ecran Uconnect 10 pouces avec navigation et services connectes"
+      "label": "Écran Uconnect 10 pouces avec navigation et services connectés"
     },
     {
       "category": "securite",
-      "label": "Freinage automatique d'urgence et regulateur adaptatif"
+      "label": "Freinage automatique d'urgence et régulateur adaptatif"
     },
     {
       "category": "design",
-      "label": "Base de nombreux amenagements (camping-car, ambulance, food truck)"
+      "label": "Base de nombreux aménagements (camping-car, ambulance, food truck)"
     }
   ],
   "verdict": {
     "strengths": [
-      "Reference europeenne du grand fourgon, base d'amenagement la plus repandue",
-      "Volume utile jusqu'a 17 m3, charge utile 1,5 t"
+      "Référence européenne du grand fourgon, base d'aménagement la plus répandue",
+      "Volume utile jusqu'à 17 m3, charge utile 1,5 t"
     ],
     "weaknesses": [
-      "Garantie vehicule limitee a 4 ans (vs 5 chez Renault/PSA)",
-      "Consommation elevee sur autoroute charge (> 35 kWh/100 km)"
+      "Garantie véhicule limitée à 4 ans (vs 5 chez Renault/PSA)",
+      "Consommation élevée sur autoroute charge (> 35 kWh/100 km)"
     ],
-    "idealUserProfile": "Amenageurs (camping-cars, food trucks), logisticiens urbains et artisans avec gros besoins de volume.",
-    "notIdealFor": "Professionnels roulant principalement sur autoroute ou sans acces a une borne de recharge au depot."
+    "idealUserProfile": "Aménageurs (camping-cars, food trucks), logisticiens urbains et artisans avec gros besoins de volume.",
+    "notIdealFor": "Professionnels roulant principalement sur autoroute ou sans accès à une borne de recharge au dépôt."
   },
   "lastUpdated": "2026-05-21",
   "sources": [

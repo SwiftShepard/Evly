@@ -24,10 +24,10 @@
   "wltp_max_km": 370,
   "wltp_min_km": 280,
   "realRange": {
-    "mixed_km": 267,
-    "highway_130_km": 201,
-    "urban_km": 341,
-    "winter_minus5_km": 183,
+    "mixed_km": 269,
+    "highway_130_km": 202,
+    "urban_km": 344,
+    "winter_minus5_km": 184,
     "confidence": "estimated"
   },
   "consumption_mixed_kWh_per_100km": 27,
@@ -96,7 +96,7 @@
       "equipmentHighlights": [
         "Volume utile 11,3 m3",
         "Prise Pro Power Onboard 2,3 kW",
-        "SYNC 4 multimedia"
+        "SYNC 4 multimédia"
       ]
     },
     {
@@ -106,7 +106,7 @@
       "equipmentHighlights": [
         "Volume utile 13 m3",
         "Empattement long",
-        "Camera de recul"
+        "Caméra de recul"
       ]
     },
     {
@@ -116,7 +116,7 @@
       "equipmentHighlights": [
         "Volume utile 15,1 m3",
         "Grand volume",
-        "Prise 230V de serie"
+        "Prise 230 V de série"
       ]
     }
   ],
@@ -138,10 +138,10 @@
       "wltp_km": 370,
       "wltp_consumption_kWh_100km": 26,
       "realRange": {
-        "mixed_km": 267,
-        "highway_130_km": 201,
-        "urban_km": 341,
-        "winter_minus5_km": 183,
+        "mixed_km": 269,
+        "highway_130_km": 202,
+        "urban_km": 344,
+        "winter_minus5_km": 184,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -171,7 +171,7 @@
         }
       ],
       "availability": "available",
-      "notes": "Propulsion arriere, Pro Power Onboard 2,3 kW pour outils electriques."
+      "notes": "Propulsion arrière, Pro Power Onboard 2,3 kW pour outils électriques."
     },
     {
       "id": "ford-e-transit-l3h3",
@@ -187,10 +187,10 @@
       "wltp_km": 280,
       "wltp_consumption_kWh_100km": 30,
       "realRange": {
-        "mixed_km": 202,
+        "mixed_km": 203,
         "highway_130_km": 152,
-        "urban_km": 258,
-        "winter_minus5_km": 138,
+        "urban_km": 260,
+        "winter_minus5_km": 139,
         "confidence": "estimated"
       },
       "rangeTests": [],
@@ -233,32 +233,32 @@
   "keyFeatures": [
     {
       "category": "confort",
-      "label": "SYNC 4 avec ecran 12 pouces et Apple CarPlay/Android Auto"
+      "label": "SYNC 4 avec écran 12 pouces et Apple CarPlay/Android Auto"
     },
     {
       "category": "technologie",
-      "label": "Pro Power Onboard : prise 230V 2,3 kW pour outils electriques"
+      "label": "Pro Power Onboard : prise 230 V 2,3 kW pour outils électriques"
     },
     {
       "category": "securite",
-      "label": "Pre-Collision Assist et regulateur adaptatif de serie"
+      "label": "Pre-Collision Assist et régulateur adaptatif de série"
     },
     {
       "category": "design",
-      "label": "Propulsion arriere, rayon de braquage reduit en ville"
+      "label": "Propulsion arrière, rayon de braquage réduit en ville"
     }
   ],
   "verdict": {
     "strengths": [
-      "Pro Power Onboard unique sur le segment : prise 230V pour alimenter des outils sur chantier",
-      "Propulsion arriere avec rayon de braquage optimise pour la ville"
+      "Pro Power Onboard unique sur le segment : prise 230 V pour alimenter des outils sur chantier",
+      "Propulsion arrière avec rayon de braquage optimisé pour la ville"
     ],
     "weaknesses": [
-      "Vitesse max bridee a 120 km/h, penalisante sur autoroute",
-      "Autonomie inferieure aux nouveaux Stellantis 110 kWh (370 vs 420 km WLTP)"
+      "Vitesse max bridée à 120 km/h, pénalisante sur autoroute",
+      "Autonomie inférieure aux nouveaux Stellantis 110 kWh (370 vs 420 km WLTP)"
     ],
-    "idealUserProfile": "Artisans et chantiers avec besoin de prise 230V embarquee. Livraison urbaine avec manoeuvres frequentes.",
-    "notIdealFor": "Longs trajets autoroutiers : vitesse max 120 km/h et autonomie modeste. Preferer le Master E-Tech."
+    "idealUserProfile": "Artisans et chantiers avec besoin de prise 230 V embarquée. Livraison urbaine avec manœuvres fréquentes.",
+    "notIdealFor": "Longs trajets autoroutiers : vitesse max 120 km/h et autonomie modeste. Préférer le Master E-Tech."
   },
   "lastUpdated": "2026-05-21",
   "sources": [

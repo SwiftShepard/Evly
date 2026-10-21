@@ -128,7 +128,7 @@
       "price_EUR": 53450,
       "batteryUsed": "82 kWh",
       "equipmentHighlights": [
-        "Ecran 9 pouces Google",
+        "Écran 9 pouces Google",
         "573 km WLTP",
         "Charge DC 200 kW"
       ]
@@ -139,7 +139,7 @@
       "batteryUsed": "82 kWh",
       "equipmentHighlights": [
         "Pixel LED",
-        "Sieges cuir ventiles",
+        "Sièges cuir ventilés",
         "Aide au stationnement auto"
       ]
     },
@@ -422,7 +422,7 @@
     },
     {
       "category": "technologie",
-      "label": "Google integre et Harman Kardon (option)"
+      "label": "Google intégré et Harman Kardon (option)"
     },
     {
       "category": "securite",
@@ -430,20 +430,20 @@
     },
     {
       "category": "confort",
-      "label": "Interieur premium materiaux naturels"
+      "label": "Intérieur premium matériaux naturels"
     }
   ],
   "verdict": {
     "strengths": [
-      "Assemble en Belgique, eligible CEE (pouvant atteindre 8 100 € sous conditions de revenus)",
+      "Assemblé en Belgique, éligible CEE (pouvant atteindre 8 100 € sous conditions de revenus)",
       "Bonne autonomie (573 km WLTP) et charge rapide 200 kW"
     ],
     "weaknesses": [
-      "Prix eleve pour un SUV compact",
-      "Pas de frunk malgre la plateforme dediee"
+      "Prix élevé pour un SUV compact",
+      "Pas de frunk malgré la plateforme dédiée"
     ],
-    "idealUserProfile": "Conducteurs premium cherchant un SUV electrique assemble en Europe avec aides francaises.",
-    "notIdealFor": "Budgets moderes ou acheteurs cherchant le meilleur rapport taille/prix."
+    "idealUserProfile": "Conducteurs premium cherchant un SUV électrique assemblé en Europe avec aides françaises.",
+    "notIdealFor": "Budgets modérés ou acheteurs cherchant le meilleur rapport taille/prix."
   },
   "lastUpdated": "2026-10-08",
   "sources": [

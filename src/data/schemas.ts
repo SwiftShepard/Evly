@@ -119,6 +119,8 @@ const RangeTestSchema = z.object({
   tyreModel: z.string().nullable(),
   protocol: ProtocolSchema,
   videoUrl: z.string().url().nullable(),
+  /** Article qui publie la mesure (essais presse, scripts/press-tests.mjs) */
+  url: z.string().url().optional(),
   notes: z.string().nullable(),
 });
 

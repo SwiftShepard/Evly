@@ -150,7 +150,7 @@
       "equipmentHighlights": [
         "AWD 544 ch",
         "0-100 en 3,8 s",
-        "Freins carbone-ceramique"
+        "Freins carbone-céramique"
       ]
     }
   ],
@@ -343,7 +343,7 @@
         }
       ],
       "availability": "available",
-      "notes": "544 ch (400 kW), AWD, freins carbone-ceramique"
+      "notes": "544 ch (400 kW), AWD, freins carbone-céramique"
     }
   ],
   "warranty": {
@@ -360,11 +360,11 @@
     },
     {
       "category": "technologie",
-      "label": "Architecture 800 V et AC 22 kW de serie"
+      "label": "Architecture 800 V et AC 22 kW de série"
     },
     {
       "category": "securite",
-      "label": "Freinage automatique et aide a la conduite avancee"
+      "label": "Freinage automatique et aide à la conduite avancée"
     },
     {
       "category": "confort",
@@ -373,14 +373,14 @@
   ],
   "verdict": {
     "strengths": [
-      "Format shooting brake unique sur le marche EV",
-      "Grande autonomie (620 km WLTP) et AC 22 kW de serie"
+      "Format shooting brake unique sur le marché EV",
+      "Grande autonomie (620 km WLTP) et AC 22 kW de série"
     ],
     "weaknesses": [
-      "Assemblage en Chine, aucune aide francaise",
-      "Charge DC limitee a 200 kW malgre l'architecture 800 V"
+      "Assemblage en Chine, aucune aide française",
+      "Charge DC limitée à 200 kW malgré l'architecture 800 V"
     ],
-    "idealUserProfile": "Conducteurs cherchant un GT electrique original avec grande autonomie et habitabilite.",
+    "idealUserProfile": "Conducteurs cherchant un GT électrique original avec grande autonomie et habitabilité.",
     "notIdealFor": "Acheteurs cherchant un SUV classique ou une charge ultra-rapide."
   },
   "lastUpdated": "2026-05-29",

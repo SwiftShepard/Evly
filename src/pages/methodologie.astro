@@ -39,6 +39,18 @@ const calib = calibrate(getAllVehicles());
 const ratio = (x: number) => String(Math.round(x * 100) / 100).replace(".", ",");
 const estimateRows = (["city", "suv", "sedan", "van"] as const).map((f) => ({ label: FAMILY_LABEL[f], ...calib.byFamily[f] }));
 
+// Couverture des mesures (roadmap A16) : calculée à chaque build, affichée telle quelle
+const allVehicles = getAllVehicles();
+const measuredCodes = new Set(["bjorn_nyland", "tested"]);
+const allVersions = allVehicles.flatMap((v) => v.configurations.map((c) => c.realRange ?? v.realRange));
+const coverage = {
+  models: allVehicles.length,
+  tested: allVehicles.filter((v) => v.rangeTests.length > 0).length,
+  versions: allVersions.length,
+  measuredVersions: allVersions.filter((r) => measuredCodes.has(r.confidence)).length,
+};
+const coveragePct = Math.round((coverage.tested / coverage.models) * 100);
+
 const protocols = [
   {
     id: "nyland",
@@ -65,8 +77,8 @@ const protocols = [
   {
     id: "fr-press",
     name: "Essais presse française",
-    body: "Caradisiac, Automobile Propre, L'Argus, Actua Auto. Protocoles variables d'un titre à l'autre : parcours routier mixte, supertest autoroutier (Lyon-Marseille ou similaire), essai hivernal. Automobile Propre est la source la plus rigoureuse côté FR avec ses « supertests » documentés. Caradisiac et L'Argus sont moins méthodiques mais restent utiles pour les essais de prise en main.",
-    link: "https://www.automobile-propre.com/supertest-vehicule-electrique/",
+    body: "Automobile Propre, L'Argus, Caradisiac, ArenaEV. Quand un essai donne des vitesses stabilisées à 90 et 120 km/h (ou 110 et 130 km/h, la consommation à 120 km/h étant alors la moyenne des deux), l'autonomie de la version en est tirée exactement comme pour Nyland : moyenne des autonomies à 90 et 120 km/h, 130 km/h mesuré. Les « supertests » d'Automobile Propre le permettent. Les autres essais (boucle routière, autoroute seule, autre carrosserie) sont affichés sur la fiche avec le lien de l'article, et l'autonomie de la version reste estimée.",
+    link: "https://www.automobile-propre.com/supertests/",
     sourceUrl: null,
   },
 ];
@@ -191,6 +203,16 @@ const protocols = [
     />
     <div class="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8">
       <div class="lg:col-span-7 flex flex-col gap-5 text-[var(--color-text-muted)] text-base leading-relaxed">
+        <div id="couverture" class="flex flex-col gap-3">
+          <p>
+            <span class="text-[var(--color-text)]">Couverture des mesures.</span> Aujourd'hui, {coverage.tested} modèles sur
+            {coverage.models} ({coveragePct}&nbsp;%) ont au moins un essai sourcé, et {coverage.measuredVersions} versions sur
+            {coverage.versions} ont une autonomie mesurée sur route. Toutes les autres sont estimées, et le badge de la fiche le dit.
+          </p>
+          <div class="h-2 rounded-full bg-[var(--color-bg-subtle)] overflow-hidden" role="img" aria-label={`${coveragePct} % des modèles ont au moins un essai sourcé`}>
+            <div class="h-full rounded-full bg-[#6f9130]" style={`width:${coveragePct}%`}></div>
+          </div>
+        </div>
         <p>
           <span class="text-[var(--color-text)]">Autonomie réelle d'une version non essayée.</span> Si une autre version du même
           modèle a été mesurée, nous reprenons la part du WLTP qu'elle tient vraiment. Sinon, nous prenons la part que tiennent,

@@ -2,7 +2,7 @@
   "slug": "renault-twingo",
   "brand": "Renault",
   "model": "Twingo E-Tech",
-  "variant": "27.4 kWh",
+  "variant": "27,4 kWh",
   "bodyType": "Citadine",
   "segment": "A",
   "productionCountry": "Slovénie",
@@ -24,11 +24,11 @@
   "wltp_max_km": 263,
   "wltp_min_km": 250,
   "realRange": {
-    "mixed_km": 185,
-    "highway_130_km": 139,
-    "urban_km": 236,
-    "winter_minus5_km": 118,
-    "confidence": "estimated"
+    "mixed_km": 186,
+    "highway_130_km": 133,
+    "urban_km": 246,
+    "winter_minus5_km": 125,
+    "confidence": "tested"
   },
   "consumption_mixed_kWh_per_100km": 13,
   "consumption_highway_kWh_per_100km": 19,
@@ -71,7 +71,64 @@
       "power": 5
     }
   ],
-  "rangeTests": [],
+  "rangeTests": [
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2026-05",
+      "speed_kmh": null,
+      "range_km": 204,
+      "consumption_kWh_100km": 13.5,
+      "temperature_C": 15,
+      "wheelSize_inches": 18,
+      "tyreModel": "Continental EcoContact 7 205/45 R18",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-renault-twingo-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+      "notes": "Supertest Automobile Propre (jantes 18 pouces en option), parcours mixte. Autonomie calculée sur les 27,5 kWh utiles."
+    },
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2026-05",
+      "speed_kmh": 90,
+      "range_km": 224,
+      "consumption_kWh_100km": 12.3,
+      "temperature_C": null,
+      "wheelSize_inches": 18,
+      "tyreModel": "Continental EcoContact 7 205/45 R18",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-renault-twingo-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+      "notes": "Supertest Automobile Propre (jantes 18 pouces en option), vitesse stabilisée. Autonomie calculée sur les 27,5 kWh utiles."
+    },
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2026-05",
+      "speed_kmh": 110,
+      "range_km": 169,
+      "consumption_kWh_100km": 16.3,
+      "temperature_C": null,
+      "wheelSize_inches": 18,
+      "tyreModel": "Continental EcoContact 7 205/45 R18",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-renault-twingo-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+      "notes": "Supertest Automobile Propre (jantes 18 pouces en option), vitesse stabilisée. Autonomie calculée sur les 27,5 kWh utiles."
+    },
+    {
+      "sourceId": "automobile-propre",
+      "testDate": "2026-05",
+      "speed_kmh": 130,
+      "range_km": 133,
+      "consumption_kWh_100km": 20.6,
+      "temperature_C": null,
+      "wheelSize_inches": 18,
+      "tyreModel": "Continental EcoContact 7 205/45 R18",
+      "protocol": "tested-other",
+      "videoUrl": null,
+      "url": "https://www.automobile-propre.com/articles/supertest-renault-twingo-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+      "notes": "Supertest Automobile Propre (jantes 18 pouces en option), vitesse stabilisée. Autonomie calculée sur les 27,5 kWh utiles."
+    }
+  ],
   "thousandKmChallenge": {
     "sourceId": "nyland",
     "totalTime_minutes": 610,
@@ -94,9 +151,9 @@
     {
       "name": "Evolution",
       "price_EUR": 19490,
-      "batteryUsed": "27.4 kWh",
+      "batteryUsed": "27,4 kWh",
       "equipmentHighlights": [
-        "Ecran 7 pouces",
+        "Écran 7 pouces",
         "Climatisation manuelle",
         "Jantes 15 pouces"
       ]
@@ -104,10 +161,10 @@
     {
       "name": "Techno",
       "price_EUR": 21090,
-      "batteryUsed": "27.4 kWh",
+      "batteryUsed": "27,4 kWh",
       "equipmentHighlights": [
         "OpenR Link Google",
-        "Ecran 10 pouces",
+        "Écran 10 pouces",
         "Chargeur AC 11 kW tri",
         "Jantes alliage 16 pouces"
       ]
@@ -137,19 +194,76 @@
       "wltp_km": 263,
       "wltp_consumption_kWh_100km": 12.6,
       "realRange": {
-        "mixed_km": 185,
-        "highway_130_km": 139,
-        "urban_km": 236,
-        "winter_minus5_km": 118,
-        "confidence": "estimated"
+        "mixed_km": 186,
+        "highway_130_km": 133,
+        "urban_km": 246,
+        "winter_minus5_km": 125,
+        "confidence": "tested"
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-05",
+          "speed_kmh": null,
+          "range_km": 204,
+          "consumption_kWh_100km": 13.5,
+          "temperature_C": 15,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental EcoContact 7 205/45 R18",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-renault-twingo-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (jantes 18 pouces en option), parcours mixte. Autonomie calculée sur les 27,5 kWh utiles."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-05",
+          "speed_kmh": 90,
+          "range_km": 224,
+          "consumption_kWh_100km": 12.3,
+          "temperature_C": null,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental EcoContact 7 205/45 R18",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-renault-twingo-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (jantes 18 pouces en option), vitesse stabilisée. Autonomie calculée sur les 27,5 kWh utiles."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-05",
+          "speed_kmh": 110,
+          "range_km": 169,
+          "consumption_kWh_100km": 16.3,
+          "temperature_C": null,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental EcoContact 7 205/45 R18",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-renault-twingo-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (jantes 18 pouces en option), vitesse stabilisée. Autonomie calculée sur les 27,5 kWh utiles."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-05",
+          "speed_kmh": 130,
+          "range_km": 133,
+          "consumption_kWh_100km": 20.6,
+          "temperature_C": null,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental EcoContact 7 205/45 R18",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-renault-twingo-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (jantes 18 pouces en option), vitesse stabilisée. Autonomie calculée sur les 27,5 kWh utiles."
+        }
+      ],
       "chargingDC_peak_kW": null,
       "chargingDC_10_80_min": null,
       "chargingDC_kWh_30min": null,
       "chargingCurve": null,
       "availability": "available",
-      "notes": "82 ch (60 kW). Charge DC non disponible de serie (option Pack Advanced Charge ~490 euros, 50 kW). AC 7,4 kW mono."
+      "notes": "82 ch (60 kW). Charge DC non disponible de série (option Pack Advanced Charge ~490 euros, 50 kW). AC 7,4 kW mono."
     },
     {
       "id": "renault-twingo-techno",
@@ -165,19 +279,76 @@
       "wltp_km": 250,
       "wltp_consumption_kWh_100km": 13.2,
       "realRange": {
-        "mixed_km": 176,
-        "highway_130_km": 132,
-        "urban_km": 225,
-        "winter_minus5_km": 112,
-        "confidence": "estimated"
+        "mixed_km": 186,
+        "highway_130_km": 133,
+        "urban_km": 246,
+        "winter_minus5_km": 125,
+        "confidence": "tested"
       },
-      "rangeTests": [],
+      "rangeTests": [
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-05",
+          "speed_kmh": null,
+          "range_km": 204,
+          "consumption_kWh_100km": 13.5,
+          "temperature_C": 15,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental EcoContact 7 205/45 R18",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-renault-twingo-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (jantes 18 pouces en option), parcours mixte. Autonomie calculée sur les 27,5 kWh utiles."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-05",
+          "speed_kmh": 90,
+          "range_km": 224,
+          "consumption_kWh_100km": 12.3,
+          "temperature_C": null,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental EcoContact 7 205/45 R18",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-renault-twingo-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (jantes 18 pouces en option), vitesse stabilisée. Autonomie calculée sur les 27,5 kWh utiles."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-05",
+          "speed_kmh": 110,
+          "range_km": 169,
+          "consumption_kWh_100km": 16.3,
+          "temperature_C": null,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental EcoContact 7 205/45 R18",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-renault-twingo-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (jantes 18 pouces en option), vitesse stabilisée. Autonomie calculée sur les 27,5 kWh utiles."
+        },
+        {
+          "sourceId": "automobile-propre",
+          "testDate": "2026-05",
+          "speed_kmh": 130,
+          "range_km": 133,
+          "consumption_kWh_100km": 20.6,
+          "temperature_C": null,
+          "wheelSize_inches": 18,
+          "tyreModel": "Continental EcoContact 7 205/45 R18",
+          "protocol": "tested-other",
+          "videoUrl": null,
+          "url": "https://www.automobile-propre.com/articles/supertest-renault-twingo-e-tech-les-consommations-et-autonomies-mesurees-de-notre-essai/",
+          "notes": "Supertest Automobile Propre (jantes 18 pouces en option), vitesse stabilisée. Autonomie calculée sur les 27,5 kWh utiles."
+        }
+      ],
       "chargingDC_peak_kW": null,
       "chargingDC_10_80_min": null,
       "chargingDC_kWh_30min": null,
       "chargingCurve": null,
       "availability": "available",
-      "notes": "82 ch (60 kW). Charge DC non disponible de serie (option Pack Advanced Charge ~490 euros, 50 kW). AC 11 kW tri."
+      "notes": "82 ch (60 kW). Charge DC non disponible de série (option Pack Advanced Charge ~490 euros, 50 kW). AC 11 kW tri."
     }
   ],
   "warranty": {
@@ -190,15 +361,15 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "Design neo-retro compact et moderne"
+      "label": "Design néo-rétro compact et moderne"
     },
     {
       "category": "confort",
-      "label": "Rayon de braquage reduit, ideal en ville"
+      "label": "Rayon de braquage réduit, idéal en ville"
     },
     {
       "category": "technologie",
-      "label": "OpenR Link avec Google integre (Techno)"
+      "label": "OpenR Link avec Google intégré (Techno)"
     },
     {
       "category": "securite",
@@ -207,21 +378,22 @@
   ],
   "verdict": {
     "strengths": [
-      "Prix d'entree tres competitif a 19 490 euros",
-      "Batterie LFP durable et adaptee a l'usage urbain",
-      "Legere et efficiente (13 kWh/100 km)"
+      "Prix d'entrée très compétitif à 19 490 euros",
+      "Batterie LFP durable et adaptée à l'usage urbain",
+      "Légère et efficiente (13 kWh/100 km)"
     ],
     "weaknesses": [
       "Charge DC en option seulement (50 kW)",
-      "Autonomie limitee pour les longs trajets (263 km WLTP)"
+      "Autonomie limitée pour les longs trajets (263 km WLTP)"
     ],
-    "idealUserProfile": "Urbains cherchant une citadine electrique abordable pour les trajets quotidiens.",
-    "notIdealFor": "Gros rouleurs ou familles ayant besoin d'espace et d'autonomie autoroutiere."
+    "idealUserProfile": "Urbains cherchant une citadine électrique abordable pour les trajets quotidiens.",
+    "notIdealFor": "Gros rouleurs ou familles ayant besoin d'espace et d'autonomie autoroutière."
   },
   "lastUpdated": "2026-10-08",
   "sources": [
     "la-chaine-ev",
-    "nyland"
+    "nyland",
+    "automobile-propre"
   ],
   "imageCredit": "Constructeur"
 }

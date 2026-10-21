@@ -236,7 +236,7 @@
       "equipmentHighlights": [
         "quattro AWD en silhouette Sportback",
         "Puissance 340 ch",
-        "0-100 km/h en 5.4 s"
+        "0-100 km/h en 5,4 s"
       ]
     }
   ],
@@ -776,11 +776,11 @@
   "verdict": {
     "strengths": [
       "Fabriqué en Europe, éligible à la prime CEE 2026 en entrée de gamme (prix sous 47k€)",
-      "Très bon profil aérodynamique (Cx 0.28 en SUV, 0.26 en Sportback) maximisant l'efficience",
+      "Très bon profil aérodynamique (Cx 0,28 en SUV, 0,26 en Sportback) maximisant l'efficience",
       "Modularité et confort de suspension fidèles aux standards de la marque"
     ],
     "weaknesses": [
-      "Pas d'architecture 800V sur cette gamme (limité à 400V)",
+      "Pas d'architecture 800 V sur cette gamme (limité à 400 V)",
       "Boutons tactiles au volant parfois capricieux à l'usage"
     ],
     "idealUserProfile": "Familles et conducteurs en recherche d'un SUV compact premium élégant avec un prix d'appel très compétitif ouvrant droit aux aides d'État.",

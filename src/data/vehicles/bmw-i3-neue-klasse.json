@@ -2,7 +2,7 @@
   "slug": "bmw-i3-neue-klasse",
   "brand": "BMW",
   "model": "i3 Neue Klasse",
-  "variant": "108.7 kWh",
+  "variant": "108,7 kWh",
   "bodyType": "Berline",
   "segment": "D",
   "productionCountry": "Allemagne",
@@ -26,7 +26,7 @@
   "realRange": {
     "mixed_km": 686,
     "highway_130_km": 515,
-    "urban_km": 877,
+    "urban_km": 878,
     "winter_minus5_km": 469,
     "confidence": "estimated"
   },
@@ -118,7 +118,7 @@
     {
       "name": "i3 50 xDrive First Edition",
       "price_EUR": 74850,
-      "batteryUsed": "108.7 kWh",
+      "batteryUsed": "108,7 kWh",
       "equipmentHighlights": [
         "Jusqu'à 906 km WLTP",
         "Puissance 469 ch",
@@ -146,7 +146,7 @@
       "realRange": {
         "mixed_km": 686,
         "highway_130_km": 515,
-        "urban_km": 877,
+        "urban_km": 878,
         "winter_minus5_km": 469,
         "confidence": "estimated"
       },
@@ -194,11 +194,11 @@
   "keyFeatures": [
     {
       "category": "design",
-      "label": "Silhouette berline dynamique Neue Klasse avec profil epure et calandre expressive"
+      "label": "Silhouette berline dynamique Neue Klasse avec profil épuré et calandre expressive"
     },
     {
       "category": "technologie",
-      "label": "BMW Panoramic Vision projetant les informations cles au bas du pare-brise"
+      "label": "BMW Panoramic Vision projetant les informations clés au bas du pare-brise"
     },
     {
       "category": "securite",
@@ -206,21 +206,21 @@
     },
     {
       "category": "confort",
-      "label": "Recharge bidirectionnelle integree et habitacle eco-concu haut de gamme"
+      "label": "Recharge bidirectionnelle intégrée et habitacle éco-conçu haut de gamme"
     }
   ],
   "verdict": {
     "strengths": [
-      "Autonomie hors norme atteignant 906 km WLTP grace au profil aerodynamique",
-      "Charge ultra-rapide 800 V (pic a 400 kW, 10-80% en 21 min)",
-      "Ergonomie epuree et affichage pare-brise panoramique innovant"
+      "Autonomie hors norme atteignant 906 km WLTP grâce au profil aérodynamique",
+      "Charge ultra-rapide 800 V (pic à 400 kW, 10-80 % en 21 min)",
+      "Ergonomie épurée et affichage pare-brise panoramique innovant"
     ],
     "weaknesses": [
-      "Tarif de lancement eleve (First Edition a 74 850 euros)",
-      "Disponibilite reelle a partir de fin 2026"
+      "Tarif de lancement élevé (First Edition à 74 850 euros)",
+      "Disponibilité réelle à partir de fin 2026"
     ],
-    "idealUserProfile": "Conducteurs premium effectuant de longs trajets autoroutiers et a la recherche d'une berline ultra-technologique.",
-    "notIdealFor": "Petits budgets ou acheteurs ayant un besoin immediat de livraison."
+    "idealUserProfile": "Conducteurs premium effectuant de longs trajets autoroutiers et à la recherche d'une berline ultra-technologique.",
+    "notIdealFor": "Petits budgets ou acheteurs ayant un besoin immédiat de livraison."
   },
   "lastUpdated": "2026-10-08",
   "sources": [

@@ -3,9 +3,17 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import BentoGrid from "@/components/ui/BentoGrid.astro";
 import Tile from "@/components/ui/Tile.astro";
 import ComparatorView from "@/components/compare/ComparatorView.tsx";
+import LinkChips from "@/components/seo/LinkChips.astro";
 import { getAllVehicles } from "@/lib/vehicles";
+import { getVehicleName } from "@/lib/seo";
+import { DUELS, duelSlug } from "@/data/duels";
+import { url } from "@/lib/url";
 
 const vehicles = getAllVehicles();
+
+// Duels « X vs Y » : pages statiques pré-remplies (/comparer/x-vs-y/)
+const nameOf = (slug: string) => { const v = vehicles.find((x) => x.slug === slug); return v ? getVehicleName(v) : slug; };
+const duelLinks = DUELS.map(([a, b]) => ({ label: `${nameOf(a)} vs ${nameOf(b)}`, href: url(`/comparer/${duelSlug(a, b)}/`) }));
 
 // Serialize vehicles data for the React island
 const vehiclesData = vehicles.map((v) => ({
@@ -113,6 +121,7 @@ const vehiclesData = vehicles.map((v) => ({
         </p>
       </div>
     </div>
+    <LinkChips class="mt-10" groups={[{ title: "Les duels les plus demandés", links: duelLinks }]} />
   </section>
 </BaseLayout>
 
