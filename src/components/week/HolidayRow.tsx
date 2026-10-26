@@ -9,6 +9,8 @@ import type { HolidayResult, HolidayTrip } from "@/lib/map/holiday";
 import type { Season } from "@/lib/map/energy";
 import { HW_SPEEDS, type HwSpeed } from "@/lib/map/roadtrip";
 import { formatKm, formatNumber } from "@/lib/format";
+import { drawTripCard, type TripCard } from "@/lib/shareCard";
+import ShareImage from "@/components/ui/ShareImage";
 
 interface Props {
   trip: HolidayTrip;
@@ -21,6 +23,8 @@ interface Props {
   onSeason: (season: Season) => void;
   onSpeed: (speed: HwSpeed) => void;
   onRemove: () => void;
+  /** Image du trajet à partager (sans adresse), quand le trajet est calculé */
+  card?: TripCard | null;
 }
 
 const duration = (min: number) => {
@@ -29,7 +33,7 @@ const duration = (min: number) => {
 };
 const pct = (x: number) => `${Math.round(x * 100)} %`;
 
-export default function HolidayRow({ trip, result, cost, active, onFocus, onTimes, onSeason, onSpeed, onRemove }: Props) {
+export default function HolidayRow({ trip, result, cost, active, onFocus, onTimes, onSeason, onSpeed, onRemove, card }: Props) {
   const name = trip.label.split(",")[0];
   const plan = result?.plan ?? null;
   const speed = trip.speed ?? 130;
@@ -115,6 +119,19 @@ export default function HolidayRow({ trip, result, cost, active, onFocus, onTime
                     <span className="week-trip-stop-charge">{pct(plan.arrive)}</span>
                   </li>
                 </ol>
+              )}
+              {card && active && (
+                <ShareImage
+                  className="mt-3"
+                  label="Image de ce trajet"
+                  draw={() => drawTripCard(card)}
+                  version={JSON.stringify(card)}
+                  fileName={`trajet-${(name ?? "trajet").toLowerCase().normalize("NFD").replace(/[^a-z0-9]+/g, "-")}-evly.png`}
+                  shareTitle={`${card.from ? `${card.from} → ` : ""}${card.to} en électrique`}
+                  shareText={`${card.from ? `${card.from} → ` : "Vers "}${card.to} en ${card.vehicle} : ${card.stopCount ? `${card.stopCount} ${card.stopCount > 1 ? "arrêts" : "arrêt"} de recharge` : "sans arrêt"}.`}
+                  shareUrl={`${location.origin}${location.pathname}`}
+                  note="Seule la commune de départ figure sur l'image. Elle est créée sur votre appareil."
+                />
               )}
             </>
           )}

@@ -1,0 +1,69 @@
+name: Veille Nyland
+
+# Chaque lundi : télécharge les tableaux publics de Bjørn Nyland, applique les synchronisations
+# (autonomies, estimations recalées, courbes de recharge) et ouvre une pull request à relire
+# quand une fiche change ou qu'un nouvel essai est apparu. Rien n'est publié sans fusion.
+on:
+  schedule:
+    - cron: "17 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+concurrency:
+  group: nyland
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Tableaux Nyland du jour
+        run: node scripts/download-nyland.mjs
+
+      - name: Autonomies, estimations et courbes de recharge
+        run: |
+          node scripts/sync-nyland-ranges.mjs
+          node scripts/apply-range-estimates.mjs > /dev/null
+          node scripts/sync-nyland-charging.mjs > /dev/null
+
+      - name: Rapport de la veille
+        run: node scripts/nyland-watch.mjs --update > scratch/nyland-report.md
+
+      - name: Garde-fous du build
+        run: |
+          npm run lint:typo
+          node scripts/check-vehicle-snapshots.mjs
+
+      - name: Pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -z "$(git status --porcelain -- src/data/vehicles scripts/nyland-seen.json)" ]; then
+            echo "Rien de neuf cette semaine."
+            exit 0
+          fi
+          day=$(date -u +%Y-%m-%d)
+          branch="donnees/nyland-$day"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add src/data/vehicles scripts/nyland-seen.json
+          git commit -m "données : veille Nyland du $day"
+          git push --force -u origin "$branch"
+          gh pr create --base main --head "$branch" --title "Données : veille Nyland du $day" --body-file scratch/nyland-report.md \
+            || gh pr edit "$branch" --body-file scratch/nyland-report.md

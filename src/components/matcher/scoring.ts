@@ -120,6 +120,18 @@ export function answersToParams(a: MatcherAnswers): URLSearchParams {
   return p;
 }
 
+/**
+ * Lien « question » : seulement ce qui s'écarte des réponses par défaut, pour un lien court qu'on
+ * lit et qu'on écrit à la main (« ?trajet=80&max=30000 ») ; il ouvre directement les résultats.
+ */
+export function questionParams(a: MatcherAnswers): URLSearchParams {
+  const all = answersToParams(a);
+  const defaults = answersToParams({ ...DEFAULT_ANSWERS, budgetType: a.budgetType, budgetMax: BUDGET_RANGE[a.budgetType].initial });
+  const p = new URLSearchParams();
+  for (const [key, value] of all) if (key === "trajet" || defaults.get(key) !== value) p.set(key, value);
+  return p;
+}
+
 const pick = <T extends string>(value: string | null, allowed: readonly T[], fallback: T): T =>
   allowed.includes(value as T) ? (value as T) : fallback;
 const clampNum = (value: string | null, min: number, max: number, fallback: number) => {

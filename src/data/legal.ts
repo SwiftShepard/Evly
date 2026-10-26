@@ -13,7 +13,7 @@ export const LEGAL_PAGES = [
 ] as const;
 
 /** Date de dernière mise à jour des pages légales (ISO) */
-export const LEGAL_UPDATED = "2026-10-13";
+export const LEGAL_UPDATED = "2026-10-26";
 
 export const PUBLISHER = {
   /** Éditeur personne physique à titre non professionnel (LCEN, art. 1-1, II) */

@@ -42,14 +42,25 @@ Pour citer un chiffre : indiquez la page Evly et son niveau de confiance (« mes
 
 - [Catalogue des voitures électriques](${abs("/vehicules/")}): tous les modèles, filtres par prix, autonomie, recharge, coffre et aides.
 - [Comparateur](${abs("/comparer/")}): jusqu'à 4 véhicules côte à côte.
-- [Simulateur de coût total](${abs("/simulateur/")}): électrique contre thermique sur 1 à 10 ans.
+- [Électrique ou thermique : coût réel](${abs("/simulateur/")}): coût total sur 1 à 10 ans, en particulier ou pour une société, avec la consommation réelle de la version.
 - [Ma semaine en électrique](${abs("/ma-semaine/")}): depuis une adresse, semaine type avec un modèle (travail, courses, loisirs), recharges à la maison, au travail ou sur borne publique, coût de l'énergie face à l'essence, kilométrage annuel et forfait de location (LLD, LOA), carte de l'autonomie aller-retour en été et en hiver. Calcul dans le navigateur, sur les vraies routes.
 - [Recommandation guidée](${abs("/recommandation/")}): questionnaire de choix selon l'usage.
+- [Duels](${abs("/comparer/duels/")}): deux modèles face à face (autonomie réelle, prix après aides, recharge, coffre), dont les paires [à prix égal](${abs("/bons-plans/")}).
+- [Observatoire de l'autonomie réelle](${abs("/observatoire/")}): écart entre l'annonce WLTP et l'autonomie mesurée, par marque et par modèle ; données ouvertes CC BY 4.0 en [CSV](${abs("/donnees/autonomie-reelle.csv")}) et [JSON](${abs("/donnees/autonomie-reelle.json")}).
+- [Nouveautés des données](${abs("/nouveautes/")}): nouveaux modèles, autonomies mesurées, prix ([RSS](${abs("/nouveautes/rss.xml")})).
+- [Aides 2026](${abs("/aides/")}): barème de la prime CEE selon les revenus, leasing social, cas des sociétés.
 - [Leasing social](${abs("/leasing-social/")}): conditions et véhicules éligibles.
-- [Bons plans](${abs("/bons-plans/")}): alternatives moins chères à budget égal.
-- [Utilitaires électriques](${abs("/pro/vehicules/")}) et [offre flottes](${abs("/pro/")}).
+- [Utilitaires électriques](${abs("/pro/vehicules/")}) et [voiture électrique d'entreprise](${abs("/pro/")}).
 - [Méthodologie](${abs("/methodologie/")}): sources, protocoles de test et limites.
 - [Glossaire](${abs("/glossaire/")}): vocabulaire de la voiture électrique.
+
+## Liens qui répondent à une question
+
+Ces liens ouvrent directement la réponse ; on peut les composer pour répondre à une question précise.
+
+- Quelle voiture pour un trajet et un budget : ${abs("/recommandation/")}?trajet=80&max=30000 (trajet quotidien aller-retour en km, budget d'achat en €). Options : maison=0 (sans prise à domicile), budget=loyer&max=300 (loyer mensuel), format=city|sedan|suv|van, foyer=family|large.
+- Un modèle sur un trajet réel : ${abs("/ma-semaine/")}?v=renault-5&domicile=Amiens&travail=Abbeville (communes ou adresses ; slug de la fiche). Options : vers=Lyon (grand trajet, arrêts de recharge sur les bornes du tracé), recharge=borne (sans prise à domicile), saison=ete (hiver par défaut), v=slug1,slug2 (jusqu'à 3 modèles).
+- Deux modèles face à face : ${abs("/comparer/")}slug1-vs-slug2/ pour les duels publiés (liste sur la page Duels), sinon ${abs("/comparer/")}?v=slug1,slug2.
 
 ## Sélections
 

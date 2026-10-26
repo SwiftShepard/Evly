@@ -1,6 +1,7 @@
 import type { Vehicle } from "@/data/schemas";
-import { DUELS, duelSlug } from "@/data/duels";
-import { getVehicleBySlug } from "@/lib/vehicles";
+import { DUEL_GROUPS, duelSlug } from "@/data/duels";
+import { getAllVehicles, getVehicleBySlug } from "@/lib/vehicles";
+import { getValueComparisons, type ValueComparison } from "@/lib/valueComparisons";
 import { getVehicleName, getVehicleSeoFacts, isMasculine, withArticle, withDe, type VehicleSeoFacts } from "@/lib/seo";
 import { confidenceLevel, isMeasured } from "@/lib/confidence";
 import { formatKm, formatNumber, formatPrice } from "@/lib/format";
@@ -237,6 +238,50 @@ function confidenceWord(code: string): string {
   return level === "measured" ? "mesurée sur route" : level === "manufacturer" ? "chiffre constructeur" : "estimée";
 }
 
+/** Paires « à prix égal » (ex-bons plans) : le modèle connu d'abord, l'alternative ensuite */
+let valueCache: ValueComparison[] | null = null;
+export function getValuePairs(): ValueComparison[] {
+  valueCache ??= getValueComparisons(getAllVehicles(), 15);
+  return valueCache;
+}
+
+export interface DuelGroup {
+  label: string;
+  pairs: [string, string][];
+}
+
+/**
+ * Toutes les paires qui ont une page : la liste tenue à la main (data/duels.ts), puis les paires
+ * « à prix égal » absentes de celle-ci (dans un sens comme dans l'autre).
+ */
+let groupsCache: DuelGroup[] | null = null;
+export function getDuelGroups(): DuelGroup[] {
+  if (groupsCache) return groupsCache;
+  const key = (a: string, b: string) => [a, b].sort().join("|");
+  const seen = new Set(DUEL_GROUPS.flatMap((g) => g.pairs.map(([a, b]) => key(a, b))));
+  const value: [string, string][] = [];
+  for (const c of getValuePairs()) {
+    const k = key(c.reference.slug, c.alternative.slug);
+    if (seen.has(k)) continue;
+    seen.add(k);
+    value.push([c.reference.slug, c.alternative.slug]);
+  }
+  groupsCache = [...DUEL_GROUPS, ...(value.length ? [{ label: "À prix égal", pairs: value }] : [])];
+  return groupsCache;
+}
+
+export const duelPairs = (): [string, string][] => getDuelGroups().flatMap((g) => g.pairs);
+
+/** Duel d'une paire dans un sens ou dans l'autre, tel que publié (null si la paire n'a pas de page) */
+export function duelPairOf(a: string, b: string): [string, string] | null {
+  return duelPairs().find(([x, y]) => (x === a && y === b) || (x === b && y === a)) ?? null;
+}
+
+/** Duels où figure un modèle (maillage depuis sa fiche et entre duels) */
+export const duelsOf = (slug: string) => duelPairs().filter(([a, b]) => a === slug || b === slug);
+
+let duelsCache: Duel[] | null = null;
 export function getAllDuels(): Duel[] {
-  return DUELS.map(([a, b]) => getDuel(a, b)).filter((d): d is Duel => d !== null);
+  duelsCache ??= duelPairs().map(([a, b]) => getDuel(a, b)).filter((d): d is Duel => d !== null);
+  return duelsCache;
 }

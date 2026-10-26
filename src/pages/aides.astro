@@ -1,0 +1,258 @@
+---
+/**
+ * Aides 2026 : prime CEE (barème de src/lib/cee.ts, le même que partout sur le site), leasing
+ * social et cas des sociétés, avec un estimateur qui retient le profil fiscal pour tout le site.
+ * Rien n'est écrit en dur ici : montants, plafonds et seuils viennent de lib/cee.
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BentoGrid from "@/components/ui/BentoGrid.astro";
+import Tile from "@/components/ui/Tile.astro";
+import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
+import FaqList from "@/components/seo/FaqList.astro";
+import VehicleMiniCard from "@/components/vehicle/VehicleMiniCard.astro";
+import AidsEstimator from "@/components/aids/AidsEstimator.tsx";
+import {
+  CEE_GRID_LABEL,
+  CEE_PRICE_CAP_EUR,
+  CEE_WEIGHT_CAP_KG,
+  GROS_ROULEUR_KM,
+  HOUSEHOLD_CONDITIONS,
+  HOUSEHOLD_LABELS,
+  MORAL_PERSON_PRIME_EUR,
+  PRIME_GRID,
+  RFR_PART_CEILINGS,
+  type HouseholdCategory,
+} from "@/lib/cee";
+import { getAllVehicles, isStrictUtility } from "@/lib/vehicles";
+import { getVehicleSeoFacts } from "@/lib/seo";
+import { formatPrice } from "@/lib/format";
+import { url } from "@/lib/url";
+import { ArrowRight } from "lucide-react";
+
+const CATEGORIES: HouseholdCategory[] = ["precarite", "modeste", "gros_rouleur", "autres"];
+const eur = (n: number) => formatPrice(n);
+
+// Les voitures les moins chères une fois la prime de tout ménage déduite
+const cheapest = getAllVehicles()
+  .filter((v) => !isStrictUtility(v))
+  .map((v) => ({ v, f: getVehicleSeoFacts(v) }))
+  .filter(({ f }) => f.priceAfterAids != null)
+  .sort((a, b) => a.f.priceAfterAids! - b.f.priceAfterAids!)
+  .slice(0, 8);
+const eligibleCount = getAllVehicles().filter((v) => !isStrictUtility(v) && getVehicleSeoFacts(v).priceAfterAids != null).length;
+
+const faq = [
+  {
+    question: "Quel est le montant de la prime CEE pour une voiture électrique en 2026 ?",
+    answer: `Il dépend du revenu fiscal de référence par part du foyer : ${eur(PRIME_GRID.standard.precarite)} pour un ménage en précarité, ${eur(PRIME_GRID.standard.modeste)} pour un ménage modeste, ${eur(PRIME_GRID.standard.autres)} sans condition de revenu (${CEE_GRID_LABEL}). Quand la voiture et sa batterie sont produites en Europe, la prime monte jusqu'à ${eur(PRIME_GRID.europe.precarite)}.`,
+  },
+  {
+    question: "Quelles voitures électriques ouvrent droit à la prime CEE ?",
+    answer: `Une voiture neuve de moins de ${eur(CEE_PRICE_CAP_EUR)} et de moins de ${(CEE_WEIGHT_CAP_KG / 1000).toLocaleString("fr-FR")} tonnes, dont l'éco-score ADEME est suffisant. Sur Evly, ${eligibleCount} modèles particuliers ont au moins une version éligible ; le filtre « Coup de pouce CEE » du catalogue les montre.`,
+  },
+  {
+    question: "Peut-on cumuler la prime CEE et le leasing social ?",
+    answer: `Le leasing social est réservé aux revenus jusqu'à ${eur(RFR_PART_CEILINGS.modeste)} par part, avec une condition de trajet ; les loyers vont de 94 à 200 € par mois sans apport. Les conditions de cumul se vérifient au cas par cas auprès du distributeur : la page Leasing social détaille le dispositif et propose un test d'éligibilité.`,
+  },
+  {
+    question: "Une entreprise touche-t-elle la prime CEE ?",
+    answer: `Une personne morale (société, collectivité, loueur, association) touche une prime d'environ ${eur(MORAL_PERSON_PRIME_EUR)} sur la grille de référence. Un entrepreneur individuel achète en personne physique : c'est la prime des ménages qui s'applique.`,
+  },
+  {
+    question: "Qu'est-ce que la catégorie « gros rouleur » ?",
+    answer: `Les foyers jusqu'à ${eur(RFR_PART_CEILINGS.gros_rouleur)} par part qui roulent plus de ${GROS_ROULEUR_KM.toLocaleString("fr-FR")} km par an pour le travail avec leur voiture touchent la prime d'un ménage modeste, pour un achat engagé avant 2027.`,
+  },
+];
+
+const description = `Aides 2026 pour une voiture électrique : prime CEE jusqu'à ${eur(PRIME_GRID.standard.precarite)} (${eur(PRIME_GRID.europe.precarite)} produite en Europe) selon vos revenus, leasing social dès 94 €/mois, cas des sociétés. Calculez la vôtre.`;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })),
+};
+---
+
+<BaseLayout title="Aides voiture électrique 2026 : prime CEE et leasing social" description={description} jsonLd={jsonLd} ogImage="/og/pages/aides.jpg">
+  <div class="container-edit pt-2 md:pt-3 fade-rise">
+    <Breadcrumbs items={[{ label: "Accueil", path: "/" }, { label: "Aides 2026" }]} />
+  </div>
+
+  <div class="container-edit pt-2 pb-8 md:pt-3 md:pb-12 flex flex-col gap-10">
+    <BentoGrid>
+      <Tile size="full" variant="elevated" class="md:!p-8">
+        <span class="label-eyebrow fade-rise">Aides · {CEE_GRID_LABEL}</span>
+        <h1 class="display-2 mt-3 max-w-4xl fade-rise fade-rise-delay-1">Ce que vous touchez pour passer à l'électrique.</h1>
+        <p class="mt-4 max-w-3xl text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed fade-rise fade-rise-delay-2">
+          Deux aides pour les particuliers : la prime CEE, qui dépend de vos revenus et de l'origine de la voiture, et le leasing
+          social pour les revenus modestes. Les mêmes montants servent à tous les prix « après aides » du site.
+        </p>
+        <dl class="aids-facts fade-rise fade-rise-delay-2">
+          <div><dt>Prime CEE</dt><dd>jusqu'à <b>{eur(PRIME_GRID.standard.precarite)}</b></dd><dd>{eur(PRIME_GRID.europe.precarite)} produite en Europe</dd></div>
+          <div><dt>Leasing social</dt><dd>dès <b>94 €</b>/mois</dd><dd>sans apport</dd></div>
+          <div><dt>Société</dt><dd><b>{eur(MORAL_PERSON_PRIME_EUR)}</b></dd><dd>prime CEE d'une personne morale</dd></div>
+        </dl>
+      </Tile>
+    </BentoGrid>
+
+    <section aria-labelledby="calcul-title">
+      <h2 id="calcul-title" class="section-title">Votre prime</h2>
+      <BentoGrid>
+        <Tile size="full" class="md:!p-7">
+          <AidsEstimator client:visible />
+        </Tile>
+      </BentoGrid>
+    </section>
+
+    <section aria-labelledby="bareme-title">
+      <h2 id="bareme-title" class="section-title">Le barème de la prime CEE</h2>
+      <BentoGrid>
+        <Tile size="full" class="!px-0 md:!px-0">
+          <div class="overflow-x-auto">
+            <table class="aids-table">
+              <thead>
+                <tr><th scope="col">Foyer</th><th scope="col">Condition</th><th scope="col">Prime</th><th scope="col">Produite en Europe</th></tr>
+              </thead>
+              <tbody>
+                {CATEGORIES.map((c) => (
+                  <tr>
+                    <th scope="row">{HOUSEHOLD_LABELS[c]}</th>
+                    <td>{HOUSEHOLD_CONDITIONS[c]}</td>
+                    <td data-numeric><b>{eur(PRIME_GRID.standard[c])}</b></td>
+                    <td data-numeric>{eur(PRIME_GRID.europe[c])}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <ul class="aids-notes">
+            <li>
+              La voiture : neuve, moins de {eur(CEE_PRICE_CAP_EUR)} et moins de {(CEE_WEIGHT_CAP_KG / 1000).toLocaleString("fr-FR")}&nbsp;tonnes,
+              avec un éco-score ADEME suffisant. Le plafond de prix vaut pour la version achetée : une finition plus chère peut en sortir.
+            </li>
+            <li>
+              La réglementation fixe un coefficient par catégorie, pas un montant : la prime dépend de l'organisme qui la verse.
+              Les montants ci-dessus sont ceux de l'{CEE_GRID_LABEL}, la grille de référence d'Evly.
+            </li>
+            <li>
+              « Produite en Europe » : voiture et batterie produites dans l'Espace économique européen. Evly ne compte la prime
+              majorée que lorsque le constructeur l'annonce pour son offre.
+            </li>
+          </ul>
+        </Tile>
+      </BentoGrid>
+    </section>
+
+    <section aria-labelledby="leasing-title">
+      <h2 id="leasing-title" class="section-title">Le leasing social</h2>
+      <BentoGrid>
+        <Tile size="full" variant="accent" class="md:!p-8">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            <div class="lg:col-span-7 flex flex-col gap-3 text-base leading-relaxed">
+              <p>
+                Une location de trois ans minimum, sans apport, de 94 à 200 € par mois avec 15 000 km par an inclus, réservée aux
+                revenus jusqu'à {eur(RFR_PART_CEILINGS.modeste)} par part qui font au moins 10 km pour aller travailler (ou plus de
+                8 000 km par an pour leur métier).
+              </p>
+              <p class="text-[var(--color-text-muted)]">La liste des modèles engagés, les pièges à éviter et le test d'éligibilité sont sur la page dédiée.</p>
+            </div>
+            <div class="lg:col-span-5 flex flex-wrap gap-2 lg:justify-end">
+              <a href={url("/leasing-social/")} class="btn btn-primary">Leasing social : modèles et test <ArrowRight size={16} strokeWidth={2} className="btn-arrow" aria-hidden="true" /></a>
+            </div>
+          </div>
+        </Tile>
+      </BentoGrid>
+    </section>
+
+    <section aria-labelledby="modeles-title">
+      <div class="flex flex-wrap items-baseline justify-between gap-3 mb-3">
+        <h2 id="modeles-title" class="section-title !mb-0">Les moins chères, prime déduite</h2>
+        <a href={url("/voitures-electriques/eligibles-prime-cee/")} class="aids-more">Les {eligibleCount} modèles éligibles <ArrowRight size={14} strokeWidth={2.2} aria-hidden="true" /></a>
+      </div>
+      <p class="aids-lead">Prix de la version d'entrée moins la prime de tout ménage ({eur(PRIME_GRID.standard.autres)}) ; plus bas encore selon vos revenus.</p>
+      <BentoGrid class="mini-grid">
+        {cheapest.map(({ v }) => <VehicleMiniCard vehicle={v} headingLevel={3} />)}
+      </BentoGrid>
+    </section>
+
+    <section aria-labelledby="pro-title">
+      <h2 id="pro-title" class="section-title">Pour une entreprise</h2>
+      <BentoGrid>
+        <Tile size="full" class="md:!p-7">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <p class="max-w-3xl text-base leading-relaxed text-[var(--color-text-muted)]">
+              Une société touche {eur(MORAL_PERSON_PRIME_EUR)} de prime CEE, mais d'autres dispositifs comptent : exonération de TVS,
+              TVA récupérable sur l'électricité, suramortissement des utilitaires lourds. La page Entreprises les détaille, avec le
+              calcul du coût réel en mode entreprise.
+            </p>
+            <a href={url("/pro/")} class="btn btn-secondary">Aides et coût pour une entreprise <ArrowRight size={16} strokeWidth={2} className="btn-arrow" aria-hidden="true" /></a>
+          </div>
+        </Tile>
+      </BentoGrid>
+    </section>
+
+    <section aria-labelledby="faq-title">
+      <h2 id="faq-title" class="section-title">Questions fréquentes</h2>
+      <BentoGrid>
+        <Tile size="full">
+          <FaqList entries={faq} />
+        </Tile>
+      </BentoGrid>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+    font-weight: 600;
+    letter-spacing: -0.022em;
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+  }
+  .aids-facts { display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 0.6rem; margin-top: 1.75rem; }
+  @media (min-width: 640px) { .aids-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .aids-facts > div { padding: 1rem 1.1rem; border-radius: var(--radius-tile-sm); background: var(--color-surface-accent); }
+  .aids-facts dt { font-size: 12.5px; font-weight: 600; color: var(--color-accent-dim); }
+  .aids-facts dd { font-size: 13.5px; color: var(--color-text-muted); }
+  .aids-facts dd b { font-family: var(--font-display); font-size: 1.7rem; font-weight: 800; letter-spacing: -0.035em; color: var(--color-text); font-variant-numeric: tabular-nums; }
+  .aids-table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 14.5px; }
+  .aids-table th, .aids-table td { padding: 0.8rem 1.25rem; border-bottom: 1px solid var(--color-border); text-align: left; vertical-align: top; }
+  @media (min-width: 768px) { .aids-table th, .aids-table td { padding-inline: 2rem; } }
+  .aids-table thead th { font-size: 12.5px; font-weight: 600; color: var(--color-text-faint); }
+  .aids-table tbody th { font-weight: 600; }
+  .aids-table td { color: var(--color-text-muted); }
+  .aids-table td b { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; color: var(--color-accent); }
+  .aids-notes { display: flex; flex-direction: column; gap: 0.5rem; padding: 1.1rem 1.25rem 0; font-size: 13.5px; color: var(--color-text-muted); max-width: 85ch; list-style: disc; margin-left: 1.25rem; }
+  @media (min-width: 768px) { .aids-notes { padding-inline: 2rem; } }
+  .aids-more { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 14px; font-weight: 600; color: var(--color-accent); }
+  .aids-lead { margin: -0.25rem 0 0.9rem; font-size: 14.5px; color: var(--color-text-muted); }
+
+  /* Estimateur (îlot AidsEstimator) */
+  :global(.aids-est) { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+  @media (min-width: 900px) { :global(.aids-est) { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2.5rem; } }
+  :global(.aids-est-form) { display: flex; flex-direction: column; gap: 1.1rem; }
+  :global(.aids-seg) { display: inline-flex; align-self: flex-start; padding: 3px; border-radius: 999px; background: var(--color-bg-subtle); }
+  :global(.aids-seg button) { padding: 0.45rem 0.95rem; border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--color-text-muted); transition: background-color 200ms var(--ease-out-expo), color 200ms ease; }
+  :global(.aids-seg button[aria-checked="true"]) { background: var(--color-surface-elevated); color: var(--color-text); box-shadow: var(--shadow-sm); }
+  :global(.aids-field) { display: flex; flex-direction: column; gap: 0.35rem; font-size: 14px; font-weight: 600; }
+  :global(.aids-field small) { font-size: 12.5px; font-weight: 400; color: var(--color-text-faint); }
+  :global(.aids-input) { display: flex; align-items: center; gap: 0.5rem; max-width: 16rem; padding: 0 0.9rem; height: 2.75rem; border-radius: var(--radius-field); border: 1px solid var(--color-border-strong); background: var(--color-surface-elevated); }
+  :global(.aids-input:focus-within) { border-color: var(--color-accent); }
+  :global(.aids-input input) { flex: 1; min-width: 0; background: transparent; font-size: 16px; font-variant-numeric: tabular-nums; outline: none; }
+  :global(.aids-input b) { color: var(--color-text-faint); font-weight: 500; }
+  :global(.aids-stepper) { display: inline-flex; align-items: center; align-self: flex-start; gap: 0.25rem; height: 2.5rem; padding: 0 0.25rem; border-radius: 999px; background: var(--color-bg-subtle); }
+  :global(.aids-stepper button) { width: 2rem; height: 2rem; border-radius: 999px; font-size: 17px; color: var(--color-text-muted); }
+  :global(.aids-stepper button:disabled) { opacity: 0.35; }
+  :global(.aids-stepper b) { min-width: 2.5rem; text-align: center; font-size: 15px; }
+  :global(.aids-check) { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 14px; cursor: pointer; }
+  :global(.aids-check input) { margin-top: 0.2rem; width: 1rem; height: 1rem; accent-color: var(--color-accent); }
+  :global(.aids-est-result) { padding: 1.25rem 1.4rem; border-radius: var(--radius-tile-sm); background: var(--color-surface-accent); }
+  :global(.aids-est-label) { font-size: 13.5px; font-weight: 600; color: var(--color-accent-dim); }
+  :global(.aids-est-amount) { margin-top: 0.25rem; font-family: var(--font-display); font-size: clamp(2.6rem, 5vw, 3.6rem); font-weight: 800; letter-spacing: -0.045em; line-height: 1; font-variant-numeric: tabular-nums; }
+  :global(.aids-est-note) { margin-top: 0.4rem; font-size: 14px; color: var(--color-text-muted); }
+  :global(.aids-est-leasing) { margin-top: 0.9rem; padding-top: 0.8rem; border-top: 1px solid color-mix(in srgb, var(--color-accent) 22%, transparent); font-size: 14px; color: var(--color-text-muted); }
+  :global(.aids-est-leasing.is-ok) { color: var(--color-accent-dim); font-weight: 600; }
+  :global(.aids-est-actions) { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.1rem; }
+  :global(.aids-est-foot) { margin-top: 0.6rem; font-size: 12px; color: var(--color-text-faint); }
+</style>

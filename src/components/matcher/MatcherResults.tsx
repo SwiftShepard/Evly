@@ -1,8 +1,8 @@
 import { useState, type Dispatch, type SetStateAction } from "react";
-import { AlertTriangle, ArrowRight, ArrowUpRight, Check, ChevronDown, Map as MapIcon, Pencil, RotateCcw } from "lucide-react";
+import { AlertTriangle, ArrowRight, ArrowUpRight, Check, ChevronDown, Link as LinkIcon, Map as MapIcon, Pencil, RotateCcw } from "lucide-react";
 import Rail from "@/components/ui/Rail";
 import { url } from "@/lib/url";
-import { BUDGET_RANGE, type MatcherAnswers, type MatchResult } from "./scoring";
+import { BUDGET_RANGE, questionParams, type MatcherAnswers, type MatchResult } from "./scoring";
 import { STEPS } from "./MatcherQuestions";
 
 /** Photos optimisées au build : slug → src (240 px) et srcset */
@@ -39,6 +39,37 @@ function summary(a: MatcherAnswers): string[] {
     a.budgetType === "buy" ? `Jusqu'à ${fmt(a.budgetMax)} €` : `Jusqu'à ${fmt(a.budgetMax)} €/mois`,
     prio ? `Priorités : ${prio}` : "Aucune priorité en plus",
   ];
+}
+
+/** La question en une phrase : texte du partage (« Quelle électrique pour 80 km par jour… ») */
+function questionText(a: MatcherAnswers): string {
+  const budget = a.budgetType === "buy" ? `${fmt(a.budgetMax)} € maximum` : `${fmt(a.budgetMax)} € par mois maximum`;
+  return `Quelle voiture électrique pour ${a.dailyKm} km par jour, ${budget}${a.homeCharging ? "" : ", sans prise à la maison"} ?`;
+}
+
+/** Copie (ou partage, sur téléphone) le lien court de la question : il rouvre ces résultats */
+function QuestionLink({ a }: { a: MatcherAnswers }) {
+  const [copied, setCopied] = useState(false);
+  const copy = async () => {
+    const link = `${location.origin}${location.pathname}?${questionParams(a)}`;
+    try {
+      if (navigator.share && matchMedia("(pointer: coarse)").matches) {
+        await navigator.share({ title: questionText(a), text: questionText(a), url: link });
+        return;
+      }
+      await navigator.clipboard.writeText(link);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2200);
+    } catch {
+      /* partage annulé ou presse-papiers refusé */
+    }
+  };
+  return (
+    <button type="button" className="btn btn-secondary btn-sm" onClick={copy}>
+      {copied ? <Check size={14} strokeWidth={2.4} aria-hidden="true" /> : <LinkIcon size={14} strokeWidth={2.25} aria-hidden="true" />}
+      {copied ? "Lien copié" : "Lien de la question"}
+    </button>
+  );
 }
 
 function Photo({ slug, alt, images, sizes }: { slug: string; alt: string; images: VehicleImages; sizes: string }) {
@@ -207,6 +238,8 @@ export default function MatcherResults({ results, answers: a, vehicleCount, imag
   const shown = others.slice(0, limit);
   const scale = Math.ceil(Math.max(400, ...results.slice(0, TOP + limit).map((r) => r.range.wltp)) / 100) * 100;
   const compareUrl = url(`/comparer/?v=${top.map((r) => `${r.vehicle.slug}:${r.config.id}:100`).join(",")}`);
+  // Les meilleurs choix passent à Ma semaine : la même semaine, sur la carte, pour les trois
+  const weekUrl = url(`/ma-semaine/?v=${top.map((r) => r.vehicle.slug).join(",")}&config=${top.map((r) => r.config.id).join(",")}&recharge=${a.homeCharging ? "maison" : "borne"}`);
 
   const raiseBudget = () => {
     const range = BUDGET_RANGE[a.budgetType];
@@ -225,7 +258,13 @@ export default function MatcherResults({ results, answers: a, vehicleCount, imag
           </p>
         </div>
         <div className="mq-results-actions">
-          {top.length >= 2 && <a href={compareUrl} className="btn btn-primary btn-sm">Comparer ces {top.length}</a>}
+          {top.length > 0 && (
+            <a href={weekUrl} className="btn btn-primary btn-sm">
+              {top.length > 1 ? `Voir ces ${top.length} sur ma semaine` : "Voir sur ma semaine"}
+            </a>
+          )}
+          {top.length >= 2 && <a href={compareUrl} className="btn btn-secondary btn-sm">Comparer ces {top.length}</a>}
+          <QuestionLink a={a} />
           <button type="button" className="btn btn-secondary btn-sm" onClick={restart}>
             <RotateCcw size={14} strokeWidth={2.25} aria-hidden="true" /> Recommencer
           </button>

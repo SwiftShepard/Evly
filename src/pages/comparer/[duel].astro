@@ -14,8 +14,11 @@ import Confidence from "@/components/ui/Confidence.astro";
 import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
 import FaqList from "@/components/seo/FaqList.astro";
 import LinkChips from "@/components/seo/LinkChips.astro";
+import DuelShare from "@/components/compare/DuelShare.tsx";
+import type { DuelCard } from "@/lib/shareCard";
+import { getVehicleImage } from "@/lib/vehicleImageAsset";
 import { DUELS, duelSlug } from "@/data/duels";
-import { getAllDuels, type Duel, type DuelSide } from "@/lib/duel";
+import { duelPairs, getAllDuels, type Duel, type DuelSide } from "@/lib/duel";
 import { getVehicleName } from "@/lib/seo";
 import { getVehicleBySlug } from "@/lib/vehicles";
 import { formatPrice } from "@/lib/format";
@@ -66,7 +69,7 @@ const jsonLd = [
 ];
 
 // Maillage : autres duels de ces deux modèles, puis les plus demandés
-const related = DUELS.filter(([x, y]) => duelSlug(x, y) !== duel.slug && [x, y].some((s) => s === A.v.slug || s === B.v.slug));
+const related = duelPairs().filter(([x, y]) => duelSlug(x, y) !== duel.slug && [x, y].some((s) => s === A.v.slug || s === B.v.slug));
 const relatedSlugs = new Set(related.map(([x, y]) => duelSlug(x, y)));
 const duelLink = ([x, y]: [string, string]) => {
   const vx = getVehicleBySlug(x);
@@ -78,11 +81,31 @@ const sides = [
   { key: "b" as const, s: B },
 ];
 const hasAided = duel.rows.some((r) => r.key === "aided" && (r.a.includes("€") || r.b.includes("€")));
+
+// Image à partager : quatre critères, prix après prime quand l'un des deux y a droit
+const [imgA, imgB] = await Promise.all([getVehicleImage(A.v.slug, [480]), getVehicleImage(B.v.slug, [480])]);
+const SHARE_LABELS: Record<string, string> = {
+  range: "Autonomie réelle",
+  winter: "En hiver, par -5 °C",
+  aided: "Prix après prime CEE",
+  price: "Prix d'entrée",
+  charge: "Recharge 10 → 80 %",
+};
+const shareKeys = ["range", "winter", hasAided ? "aided" : "price", "charge"];
+const shareCard: DuelCard = {
+  a: { name: A.name, image: imgA?.src ?? null },
+  b: { name: B.name, image: imgB?.src ?? null },
+  rows: shareKeys
+    .map((k) => duel.rows.find((r) => r.key === k))
+    .filter((r) => r !== undefined)
+    .map((r) => ({ label: SHARE_LABELS[r.key] ?? r.label, a: r.a, b: r.b, winner: r.winner })),
+  path: `ev-ly.com/comparer/${duel.slug}`,
+};
 ---
 
 <BaseLayout title={title} description={description} jsonLd={jsonLd} ogImage={`/og/duels/${duel.slug}.jpg`} ogImageAlt={`${A.name} ou ${B.name}`} modifiedTime={duel.lastUpdated}>
   <div class="container-edit pt-2 md:pt-3 fade-rise">
-    <Breadcrumbs items={[{ label: "Accueil", path: "/" }, { label: "Comparateur", path: "/comparer/" }, { label: `${A.name} vs ${B.name}` }]} />
+    <Breadcrumbs items={[{ label: "Accueil", path: "/" }, { label: "Comparateur", path: "/comparer/" }, { label: "Duels", path: "/comparer/duels/" }, { label: `${A.name} vs ${B.name}` }]} />
   </div>
 
   <div class="container-edit pt-2 pb-8 md:pt-3 md:pb-12 flex flex-col gap-10">
@@ -121,6 +144,9 @@ const hasAided = duel.rows.some((r) => r.key === "aided" && (r.a.includes("€")
             <span><i class="rail-key rail-key-promise"></i>Promis par le WLTP, jamais parcouru</span>
             <span><i class="rail-key rail-key-need"></i>Votre semaine de trajet</span>
           </div>
+        </div>
+        <div class="mt-6">
+          <DuelShare client:visible card={shareCard} url={new URL(pageUrl, Astro.site).toString()} />
         </div>
       </Tile>
     </BentoGrid>
@@ -223,7 +249,13 @@ const hasAided = duel.rows.some((r) => r.key === "aided" && (r.a.includes("€")
       <LinkChips
         groups={[
           { title: "Autres duels", links: related.slice(0, 10).map(duelLink) },
-          { title: "Les plus comparées", links: DUELS.filter(([x, y]) => duelSlug(x, y) !== duel.slug && !relatedSlugs.has(duelSlug(x, y))).slice(0, 8).map(duelLink) },
+          {
+            title: "Les plus comparées",
+            links: [
+              ...DUELS.filter(([x, y]) => duelSlug(x, y) !== duel.slug && !relatedSlugs.has(duelSlug(x, y))).slice(0, 8).map(duelLink),
+              { label: "Tous les duels →", href: url("/comparer/duels/"), accent: true },
+            ],
+          },
         ]}
       />
     </section>

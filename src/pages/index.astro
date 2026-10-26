@@ -10,6 +10,7 @@ import { getFleetGap, getMeasuredGap, type MeasuredGap } from "@/lib/rangeGap";
 import { formatNumber } from "@/lib/format";
 import { DEFAULTS as TCO_DEFAULTS } from "@/components/tco/TcoCalculator";
 import { url } from "@/lib/url";
+import { CEE_MAX_EUR } from "@/lib/cee";
 import { ArrowRight, ArrowUpRight, ShieldCheck, FileSearch, Calculator, Scale } from "lucide-react";
 
 const vehicles = getAllVehicles();
@@ -97,8 +98,8 @@ const description = `Comparez les ${totalVehicles} voitures électriques du marc
         <p class="mt-5 text-[16px] text-[var(--color-text-muted)] max-w-[46ch] leading-relaxed">
           Écart médian entre l'annonce WLTP et les essais réels, sur {fleetGap.models} modèles testés par Bjørn Nyland ou la presse VE. Evly met en avant l'autonomie réelle, et vous dit toujours d'où vient le chiffre.
         </p>
-        <a href={url("/methodologie/") + "#protocoles"} class="mt-5 inline-flex items-center gap-1.5 text-[15px] font-semibold text-[var(--color-accent)] hover:text-[var(--color-accent-dim)]">
-          Nos protocoles de mesure <ArrowRight size={16} strokeWidth={2.25} className="arrow-animate" aria-hidden="true" />
+        <a href={url("/observatoire/")} class="mt-5 inline-flex items-center gap-1.5 text-[15px] font-semibold text-[var(--color-accent)] hover:text-[var(--color-accent-dim)]">
+          L'observatoire, marque par marque <ArrowRight size={16} strokeWidth={2.25} className="arrow-animate" aria-hidden="true" />
         </a>
       </div>
       <div class="lg:col-span-7 proof-card no-glossary reveal">
@@ -149,12 +150,12 @@ const description = `Comparez les ${totalVehicles} voitures électriques du marc
           <span class="block mt-3 text-[12px] text-[var(--color-text-faint)]">À {formatNumber(TCO_DEFAULTS.elec_home_eur_kwh, 2)}&nbsp;€/kWh et {formatNumber(TCO_DEFAULTS.essence_eur_l, 2)}&nbsp;€/l, réglables dans le calculateur.</span>
         </span>
       </a>
-      <a href={url("/leasing-social/")} class="tool tool-leasing">
-        <span class="tool-top"><span class="font-display text-[30px] font-extrabold tracking-[-0.03em]">Leasing social</span><ArrowUpRight size={22} strokeWidth={2} className="tool-arrow" aria-hidden="true" /></span>
+      <a href={url("/aides/")} class="tool tool-leasing">
+        <span class="tool-top"><span class="font-display text-[30px] font-extrabold tracking-[-0.03em]">Aides 2026</span><ArrowUpRight size={22} strokeWidth={2} className="tool-arrow" aria-hidden="true" /></span>
         <span class="mt-auto block">
-          <span class="text-[14px] text-[color-mix(in_srgb,var(--color-accent-on)_75%,transparent)]">Dès</span>
-          <span class="block font-display text-[64px] font-extrabold tracking-[-0.05em] leading-none text-[var(--color-lime)]">{leasingMin}&nbsp;€<span class="text-[22px] text-[var(--color-accent-on)] tracking-[-0.02em]"> /mois</span></span>
-          <span class="block mt-2 text-[14px] text-[color-mix(in_srgb,var(--color-accent-on)_75%,transparent)]">Sans apport, sous conditions de revenus.</span>
+          <span class="text-[14px] text-[color-mix(in_srgb,var(--color-accent-on)_75%,transparent)]">Prime CEE jusqu'à</span>
+          <span class="block font-display text-[56px] font-extrabold tracking-[-0.05em] leading-none text-[var(--color-lime)]">{formatNumber(CEE_MAX_EUR)}&nbsp;€</span>
+          <span class="block mt-2 text-[14px] text-[color-mix(in_srgb,var(--color-accent-on)_75%,transparent)]">Et le leasing social dès {leasingMin}&nbsp;€/mois, sans apport, selon vos revenus.</span>
         </span>
       </a>
     </div>
@@ -201,7 +202,7 @@ const description = `Comparez les ${totalVehicles} voitures électriques du marc
           Aucun constructeur ni aucune concession ne nous rémunère. Notre base de données rassemble {totalVehicles} modèles, avec pour chacun l'autonomie réellement constatée sur route (souvent inférieure à l'annonce du constructeur), la vitesse de recharge, et le coût complet sur plusieurs années, pas seulement le prix affiché en vitrine.
         </p>
         <p>
-          Vous ne savez pas par où commencer ? Répondez à quelques questions simples sur votre <a href={url("/recommandation/")} class="text-[var(--color-accent)] underline underline-offset-2 hover:no-underline">quotidien avec notre outil de recommandation</a>, ou allez directement voir nos <a href={url("/bons-plans/")} class="text-[var(--color-accent)] underline underline-offset-2 hover:no-underline">bons plans</a> : les cas où, pour le même budget qu'un modèle connu, une autre voiture électrique fait tout simplement mieux.
+          Vous ne savez pas par où commencer ? Répondez à quelques questions simples sur votre <a href={url("/recommandation/")} class="text-[var(--color-accent)] underline underline-offset-2 hover:no-underline">quotidien avec notre outil de recommandation</a>, ou allez directement voir nos <a href={url("/bons-plans/")} class="text-[var(--color-accent)] underline underline-offset-2 hover:no-underline">duels à prix égal</a> : les cas où, pour le même budget qu'un modèle connu, une autre voiture électrique fait tout simplement mieux.
         </p>
       </div>
     </div>

@@ -2,6 +2,7 @@ import type { PageCardData } from "@/lib/og";
 import { getAllVehicles } from "@/lib/vehicles";
 import { getBrands } from "@/lib/brands";
 import { SEO_YEAR } from "@/lib/seo";
+import { getFleetGap } from "@/lib/rangeGap";
 
 /**
  * Cartes de partage des pages éditoriales et outils, servies sous /og/pages/{clé}.jpg.
@@ -10,6 +11,9 @@ import { SEO_YEAR } from "@/lib/seo";
 export function getPageCards(): Record<string, PageCardData> {
   const total = getAllVehicles().length;
   const brandCount = getBrands().length;
+  const fleet = getFleetGap(getAllVehicles());
+  const gapPct = Math.round(fleet.medianPct);
+  const gapModels = fleet.models;
   return {
     accueil: {
       eyebrow: "Comparateur indépendant",
@@ -62,14 +66,35 @@ export function getPageCards(): Record<string, PageCardData> {
       subtitle: "Sources, protocoles et limites, en toute transparence.",
     },
     "bons-plans": {
-      eyebrow: "Bons plans",
+      eyebrow: "À prix égal",
       title: "Le même budget, une meilleure voiture électrique",
       subtitle: "Les alternatives qui offrent plus d'autonomie pour le même prix.",
     },
+    duels: {
+      eyebrow: "Duels",
+      title: "Deux voitures électriques face à face",
+      subtitle: "Autonomie réelle, prix après aides, recharge et coffre, sur les mêmes mesures.",
+      vehicles: ["renault-5", "citroen-e-c3"],
+    },
+    observatoire: {
+      eyebrow: "Observatoire",
+      title: `L'autonomie réelle : -${gapPct} % sous l'annonce`,
+      subtitle: `Écart médian sur ${gapModels} modèles mesurés sur route. Par marque, par modèle, données ouvertes.`,
+    },
+    nouveautes: {
+      eyebrow: "Nouveautés des données",
+      title: "Ce qui change dans les fiches",
+      subtitle: "Nouveaux modèles, autonomies mesurées sur route, courbes de recharge et prix.",
+    },
+    aides: {
+      eyebrow: "Aides 2026",
+      title: "Prime CEE et leasing social : ce que vous touchez",
+      subtitle: "Le barème selon vos revenus, les modèles éligibles et le cas des sociétés.",
+    },
     pro: {
-      eyebrow: "Evly Pro",
-      title: "Électrifier une flotte d'entreprise, sans pari",
-      subtitle: "Coût total, fiscalité et autonomie réelle des véhicules de société.",
+      eyebrow: "Entreprises",
+      title: "Voiture électrique d'entreprise : aides et coût réel",
+      subtitle: "Prime CEE, TVS, TVA sur l'électricité et coût total en mode entreprise.",
     },
     "pro-vehicules": {
       eyebrow: "Utilitaires",

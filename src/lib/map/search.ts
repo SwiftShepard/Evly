@@ -182,3 +182,9 @@ export async function searchPlaces(q: string, near: { lat: number; lon: number }
   if (isPureActivity(q)) return [...exactNear, ...fresh].sort((a, b) => (a.d ?? 0) - (b.d ?? 0)).slice(0, 8);
   return [...exactNear, ...fresh.slice(0, 6), ...rest].slice(0, 8);
 }
+
+/** Une commune ou une adresse tapée dans un lien (« ?domicile=Amiens ») : le premier résultat de l'IGN */
+export async function geocode(q: string): Promise<FoundPlace | null> {
+  const found = await ign(q, null).catch(() => [] as FoundPlace[]);
+  return found[0] ?? null;
+}

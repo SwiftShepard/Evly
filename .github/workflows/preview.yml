@@ -20,6 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Historique complet : la page /nouveautes/ et son flux RSS se lisent dans git
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:

@@ -6,6 +6,7 @@ import { allSources, type Source, type TrustLevel } from "@/data/sources";
 import { ESTIMATE_MARGIN, WINTER_C, tempFactor } from "@/lib/winter";
 import { calibrate, FAMILY_LABEL } from "@/lib/rangeEstimate";
 import { getAllVehicles } from "@/lib/vehicles";
+import { url } from "@/lib/url";
 
 const sources = allSources();
 
@@ -208,6 +209,8 @@ const protocols = [
             <span class="text-[var(--color-text)]">Couverture des mesures.</span> Aujourd'hui, {coverage.tested} modèles sur
             {coverage.models} ({coveragePct}&nbsp;%) ont au moins un essai sourcé, et {coverage.measuredVersions} versions sur
             {coverage.versions} ont une autonomie mesurée sur route. Toutes les autres sont estimées, et le badge de la fiche le dit.
+            Le détail, marque par marque, et les données en libre accès sont dans l'<a href={url("/observatoire/")} class="underline underline-offset-2 text-[var(--color-accent)]">observatoire de l'autonomie</a> ;
+            chaque nouvelle mesure apparaît dans les <a href={url("/nouveautes/")} class="underline underline-offset-2 text-[var(--color-accent)]">nouveautés des données</a>.
           </p>
           <div class="h-2 rounded-full bg-[var(--color-bg-subtle)] overflow-hidden" role="img" aria-label={`${coveragePct} % des modèles ont au moins un essai sourcé`}>
             <div class="h-full rounded-full bg-[#6f9130]" style={`width:${coveragePct}%`}></div>

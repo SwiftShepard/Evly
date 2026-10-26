@@ -34,7 +34,7 @@ const kwhIn = (text: string | null | undefined) => {
  * Capacité de la batterie d'une configuration : la sienne, sinon celle écrite dans son nom,
  * sinon celle des finitions du même nom (petite batterie pour « standard », grande sinon).
  */
-function batteryOf(v: Vehicle, c: Config): number {
+export function batteryOf(v: Vehicle, c: Config): number {
   if (c.usableCapacity_kWh) return c.usableCapacity_kWh;
   const inLabel = kwhIn(c.label);
   if (inLabel) return inLabel;

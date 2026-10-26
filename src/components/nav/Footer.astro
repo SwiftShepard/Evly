@@ -26,21 +26,24 @@ const lastDataUpdate = vehicles.reduce((latest, v) => (v.lastUpdated > latest ? 
 
 const cols = [
   {
-    title: "Véhicules",
+    title: "Choisir",
     links: [
-      { href: url("/vehicules/"), label: "Particuliers" },
-      { href: url("/pro/vehicules/"), label: "Utilitaires (Pro)" },
-      { href: url("/leasing-social/"), label: "Leasing Social" },
-      { href: url("/bons-plans/"), label: "Bons plans" },
+      { href: url("/recommandation/"), label: "Trouver mon VE" },
+      { href: url("/vehicules/"), label: "Tout le catalogue" },
+      { href: url("/ma-semaine/"), label: "Ma semaine" },
+      { href: url("/pro/vehicules/"), label: "Utilitaires" },
     ],
   },
   {
-    title: "Outils",
+    title: "Comparer, aides",
     links: [
       { href: url("/comparer/"), label: "Comparateur" },
-      { href: url("/simulateur/"), label: "Calculateur TCO" },
-      { href: url("/pro/"), label: "Simulateur Pro" },
-      { href: url("/recommandation/"), label: "Recommandation guidée" },
+      { href: url("/comparer/duels/"), label: "Duels" },
+      { href: url("/bons-plans/"), label: "À prix égal" },
+      { href: url("/simulateur/"), label: "Électrique ou thermique" },
+      { href: url("/aides/"), label: "Aides 2026" },
+      { href: url("/leasing-social/"), label: "Leasing social" },
+      { href: url("/pro/"), label: "Entreprises" },
     ],
   },
   {
@@ -58,12 +61,13 @@ const cols = [
     ],
   },
   {
-    title: "Méthodologie",
+    title: "Nos mesures",
     links: [
-      { href: url("/methodologie/"), label: "Notre approche" },
-      { href: url("/methodologie/") + "#protocoles", label: "Protocoles de test" },
+      { href: url("/methodologie/"), label: "Comment on mesure" },
+      { href: url("/observatoire/"), label: "Observatoire de l'autonomie" },
+      { href: url("/observatoire/") + "#donnees", label: "Données ouvertes" },
+      { href: url("/nouveautes/"), label: "Nouveautés des données" },
       { href: url("/methodologie/") + "#sources", label: "Nos sources" },
-      { href: url("/methodologie/") + "#limites", label: "Limites & honnêteté" },
       { href: url("/glossaire/"), label: "Glossaire" },
     ],
   },

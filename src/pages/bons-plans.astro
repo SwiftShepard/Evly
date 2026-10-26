@@ -3,13 +3,14 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Tag from "@/components/ui/Tag.astro";
 import BrandLogo from "@/components/ui/BrandLogo.astro";
 import VehicleImage from "@/components/ui/VehicleImage.astro";
-import { getAllVehicles } from "@/lib/vehicles";
-import { getValueComparisons } from "@/lib/valueComparisons";
+import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
+import { duelPairOf, getValuePairs } from "@/lib/duel";
+import { duelSlug } from "@/data/duels";
 import { formatPrice } from "@/lib/format";
 import { url } from "@/lib/url";
 
-const vehicles = getAllVehicles();
-const comparisons = getValueComparisons(vehicles, 15);
+// Mêmes paires que la rubrique « À prix égal » des duels : chacune a sa page /comparer/x-vs-y/
+const comparisons = getValuePairs();
 
 const description =
   "Pour le même prix qu'un modèle électrique connu, une autre voiture fait parfois mieux : plus d'autonomie réelle, recharge plus rapide ou plus de puissance.";
@@ -44,9 +45,12 @@ const faqJsonLd = {
   description={description}
   jsonLd={faqJsonLd}
 >
-  <div class="container-edit py-6 md:py-10">
+  <div class="container-edit pt-2 md:pt-3 fade-rise">
+    <Breadcrumbs items={[{ label: "Accueil", path: "/" }, { label: "Comparateur", path: "/comparer/" }, { label: "Duels", path: "/comparer/duels/" }, { label: "À prix égal" }]} />
+  </div>
+  <div class="container-edit py-4 md:py-6">
     <section class="mb-12 md:mb-16">
-      <h1 class="label-eyebrow fade-rise mb-4 md:mb-5">Bons plans voiture électrique</h1>
+      <h1 class="label-eyebrow fade-rise mb-4 md:mb-5">À prix égal · bons plans voiture électrique</h1>
       <p class="display-1 max-w-3xl fade-rise fade-rise-delay-1">
         Le même budget.
         <span class="text-[var(--color-accent)]">Une meilleure voiture.</span>
@@ -58,9 +62,8 @@ const faqJsonLd = {
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
       {comparisons.map((c) => {
-        const refConfigId = c.reference.configurations[0]?.id;
-        const altConfigId = c.alternative.configurations[0]?.id;
-        const compareHref = `${url("/comparer")}/?v=${c.reference.slug}${refConfigId ? `:${refConfigId}` : ""},${c.alternative.slug}${altConfigId ? `:${altConfigId}` : ""}`;
+        const pair = duelPairOf(c.reference.slug, c.alternative.slug);
+        const duelHref = pair ? url(`/comparer/${duelSlug(pair[0], pair[1])}/`) : url("/comparer/duels/");
         return (
           <div class="value-card reveal">
             <div class="value-card-pair">
@@ -109,7 +112,7 @@ const faqJsonLd = {
               <Tag tone="accent" mono>{c.headline}</Tag>
               <div class="flex items-center gap-3">
                 <a href={url(`/vehicules/${c.alternative.slug}/`)} class="value-link">Voir la fiche →</a>
-                <a href={compareHref} class="value-link value-link-strong">Comparer côte à côte →</a>
+                <a href={duelHref} class="value-link value-link-strong">Voir le duel →</a>
               </div>
             </div>
           </div>

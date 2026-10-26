@@ -9,6 +9,10 @@ import { getAllVehicles } from "@/lib/vehicles";
 import { formatPrice } from "@/lib/format";
 import { url } from "@/lib/url";
 import { PUBLISHER } from "@/data/legal";
+import TcoCalculator from "@/components/tco/TcoCalculator";
+import { getTcoVehicles } from "@/lib/tcoVehicles";
+import { MORAL_PERSON_PRIME_EUR } from "@/lib/cee";
+import "@/styles/tco.css";
 
 const vehicles = getAllVehicles();
 
@@ -52,11 +56,14 @@ const utilities = vehicles
   .filter((v) => UTILITY_SLUGS.has(v.slug))
   .sort((a, b) => Math.min(...a.trims.map((t) => t.price_EUR)) - Math.min(...b.trims.map((t) => t.price_EUR)));
 
+// Le calculateur de coût du site, ouvert en mode société (un seul calcul, cf. lib/tcoVehicles)
+const tcoVehicles = getTcoVehicles();
+
 const description =
-  "Électrifier une flotte d'entreprise au meilleur coût : coût total de possession, aides et fiscalité 2026 (CEE, suramortissement), autonomie réelle des modèles.";
+  "Voiture électrique d'entreprise : aides et fiscalité 2026 (prime CEE, taxes, TVA sur l'électricité, suramortissement), coût total en mode société et autonomie réelle des utilitaires.";
 ---
 
-<BaseLayout title="Voiture électrique d'entreprise : flotte, TCO et fiscalité" description={description} ogImage="/og/pages/pro.jpg">
+<BaseLayout title="Voiture électrique d'entreprise : aides, fiscalité et coût réel" description={description} ogImage="/og/pages/pro.jpg">
   <div class="container-edit py-6 md:py-10">
     <BentoGrid>
       {/* ═══════ HERO ═══════ */}
@@ -81,7 +88,7 @@ const description =
 
         <div class="mt-10 md:mt-12 flex flex-wrap items-center gap-3 fade-rise fade-rise-delay-3">
           <a href="#tco" class="btn-interactive btn-glow inline-flex items-center gap-2 px-5 py-3 bg-[var(--color-accent)] text-[var(--color-accent-on)] text-sm font-medium tracking-tight min-h-[44px] hover:bg-[var(--color-accent-dim)] transition-colors rounded-[var(--radius-tile-sm)]">
-            Calculer mon TCO ↓
+            Calculer le coût réel ↓
           </a>
           <a href="#utilitaires" class="btn-interactive inline-flex items-center gap-2 px-5 py-3 border border-[var(--color-border-strong)] text-[var(--color-text)] text-sm font-medium tracking-tight min-h-[44px] hover:bg-[var(--color-bg-subtle)] transition-colors rounded-[var(--radius-tile-sm)]">
             Voir les utilitaires ↓
@@ -99,7 +106,7 @@ const description =
             <span class="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--color-accent)]">A · Fiscal</span>
             <h3 class="font-display text-lg font-semibold tracking-[-0.01em]">Empilement d'aides 2026</h3>
             <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">
-              Coup de pouce CEE, suramortissement 40-60 %, exoneration TVS, TVA 100 % recuperable sur l'electricite, credit d'impot bornes, cumulables.
+              Prime CEE, suramortissement des utilitaires lourds, exonération des taxes annuelles, TVA 100 % récupérable sur l'électricité, crédit d'impôt bornes, cumulables.
             </p>
           </div>
           <div class="flex flex-col gap-2">
@@ -119,110 +126,18 @@ const description =
         </div>
       </Tile>
 
-      {/* ═══════ 02 · CALCULATEUR TCO ═══════ */}
-      <Tile size="full" variant="elevated" label="02 · Calculateur TCO" class="!mt-2">
+      {/* ═══════ 02 · COÛT RÉEL ═══════ */}
+      <Tile size="full" variant="elevated" label="02 · Coût réel" class="!mt-2">
         <div id="tco" class="scroll-mt-24"></div>
         <h2 class="font-display text-3xl md:text-4xl font-semibold tracking-[-0.015em] leading-[1.1] mb-3">
-          Calculateur TCO, ICE vs EV.
+          Électrique ou thermique, en mode société.
         </h2>
         <p class="text-sm md:text-base text-[var(--color-text-muted)] max-w-3xl mb-8">
-          Comparaison sur la durée de détention. Méthodologie simple : prix d'achat (− aides) + consommation × prix énergie × km. Hors entretien, assurance, valeur résiduelle.
+          Le même calcul que pour un particulier, avec la prime CEE d'une personne morale, les taxes annuelles du thermique et la TVA
+          récupérable sur l'énergie. Achat, aides, énergie réelle, entretien, assurance et décote compris.
+          <a href={url("/simulateur/?profil=entreprise")} class="text-[var(--color-accent)] font-semibold underline underline-offset-2 hover:no-underline">Ouvrir en pleine page</a>
         </p>
-
-        <div class="grid md:grid-cols-2 gap-8 md:gap-10">
-          {/* INPUTS */}
-          <div class="flex flex-col gap-4">
-            <span class="label-eyebrow">Vos hypothèses</span>
-
-            <div class="grid grid-cols-2 gap-3">
-              <label class="tco-field">
-                <span>Km/an</span>
-                <input id="tco-km" type="number" value="25000" min="1000" step="1000" />
-              </label>
-              <label class="tco-field">
-                <span>Durée (ans)</span>
-                <input id="tco-years" type="number" value="5" min="1" max="15" step="1" />
-              </label>
-            </div>
-
-            <div class="tco-block">
-              <span class="tco-block-label">Véhicule électrique</span>
-              <div class="grid grid-cols-2 gap-3 mt-2">
-                <label class="tco-field">
-                  <span>Prix neuf (€)</span>
-                  <input id="tco-ev-price" type="number" value="42000" min="0" step="500" />
-                </label>
-                <label class="tco-field">
-                  <span>Aides cumulées (€)</span>
-                  <input id="tco-ev-aids" type="number" value="5500" min="0" step="100" />
-                </label>
-                <label class="tco-field">
-                  <span>Conso (kWh/100 km)</span>
-                  <input id="tco-ev-conso" type="number" value="20" min="5" max="40" step="0.5" />
-                </label>
-                <label class="tco-field">
-                  <span>Prix élec (€/kWh)</span>
-                  <input id="tco-ev-energy" type="number" value="0.20" min="0.05" max="0.60" step="0.01" />
-                </label>
-              </div>
-            </div>
-
-            <div class="tco-block">
-              <span class="tco-block-label">Équivalent diesel / essence</span>
-              <div class="grid grid-cols-2 gap-3 mt-2">
-                <label class="tco-field">
-                  <span>Prix neuf (€)</span>
-                  <input id="tco-ice-price" type="number" value="36000" min="0" step="500" />
-                </label>
-                <label class="tco-field">
-                  <span>Aides (€)</span>
-                  <input id="tco-ice-aids" type="number" value="0" min="0" step="100" />
-                </label>
-                <label class="tco-field">
-                  <span>Conso (L/100 km)</span>
-                  <input id="tco-ice-conso" type="number" value="7.0" min="2" max="20" step="0.1" />
-                </label>
-                <label class="tco-field">
-                  <span>Prix carburant (€/L)</span>
-                  <input id="tco-ice-energy" type="number" value="1.75" min="0.5" max="3" step="0.01" />
-                </label>
-              </div>
-            </div>
-          </div>
-
-          {/* RESULTS */}
-          <div class="flex flex-col gap-4">
-            <span class="label-eyebrow">Résultat sur la période</span>
-
-            <div class="tco-result-block tco-result-ev">
-              <span class="tco-result-label">Coût total VE</span>
-              <p data-numeric id="tco-out-ev-total" class="display-stat text-3xl md:text-4xl text-[var(--color-accent)]">0 €</p>
-              <p class="text-xs text-[var(--color-text-muted)] mt-2">
-                Achat net <span id="tco-out-ev-net">0</span> € + énergie <span id="tco-out-ev-energy">0</span> €
-              </p>
-            </div>
-
-            <div class="tco-result-block tco-result-ice">
-              <span class="tco-result-label">Coût total ICE</span>
-              <p data-numeric id="tco-out-ice-total" class="display-stat text-3xl md:text-4xl text-[var(--color-text-muted)]">0 €</p>
-              <p class="text-xs text-[var(--color-text-muted)] mt-2">
-                Achat net <span id="tco-out-ice-net">0</span> € + carburant <span id="tco-out-ice-energy">0</span> €
-              </p>
-            </div>
-
-            <div id="tco-savings-block" class="tco-result-block tco-result-savings">
-              <span class="tco-result-label">Écart EV vs ICE</span>
-              <p data-numeric id="tco-out-savings" class="display-stat text-3xl md:text-4xl">0 €</p>
-              <p id="tco-out-savings-detail" class="text-xs text-[var(--color-text-muted)] mt-2">
-                Soit <span id="tco-out-savings-pct">0</span> sur la période · point d'équilibre à <span id="tco-out-breakeven">0</span> an(s)
-              </p>
-            </div>
-
-            <p class="text-[11px] font-mono text-[var(--color-text-faint)] leading-relaxed">
-              Calcul indicatif hors maintenance, assurance, valeur résiduelle, TVS. Les VE bénéficient en plus d'une exonération TVS, d'une TVA 100 % récupérable sur l'électricité et du suramortissement pour les utilitaires &gt; 2,6 t, gains supplémentaires non modélisés ici.
-            </p>
-          </div>
-        </div>
+        <TcoCalculator client:visible vehicles={tcoVehicles} initialMode="entreprise" />
       </Tile>
 
       {/* ═══════ 03 · AIDES 2026 ═══════ */}
@@ -242,8 +157,8 @@ const description =
           </div>
 
           <div class="aid-row">
-            <div class="aid-name"><strong>Coup de pouce CEE Pro</strong></div>
-            <div>Variable selon operateur CEE · bareme pro distinct du particulier</div>
+            <div class="aid-name"><strong>Prime CEE</strong></div>
+            <div>Environ {formatPrice(MORAL_PERSON_PRIME_EUR)} pour une personne morale sur la grille de référence · <a href={url("/aides/")} class="underline underline-offset-2">barème complet</a></div>
             <div>VE &lt; 47 k€ · &lt; 2,4 t · score ADEME &ge; 60/80 · personnes morales</div>
           </div>
 
@@ -382,76 +297,6 @@ const description =
   </div>
 
   <style>
-    /* ── Calculateur TCO ───────────────────────────────────── */
-    .tco-field {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .tco-field span {
-      font-family: var(--font-mono, ui-monospace, monospace);
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--color-text-faint);
-    }
-    .tco-field input {
-      padding: 8px 10px;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-tile-sm);
-      background: var(--color-bg);
-      color: var(--color-text);
-      font-family: var(--font-mono, ui-monospace, monospace);
-      font-size: 14px;
-      transition: border-color 0.15s;
-    }
-    .tco-field input:focus {
-      outline: none;
-      border-color: var(--color-accent);
-    }
-    .tco-block {
-      padding: 14px;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-tile-sm);
-      background: var(--color-bg-subtle);
-    }
-    .tco-block-label {
-      font-family: var(--font-mono, ui-monospace, monospace);
-      font-size: 10px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--color-text);
-    }
-
-    .tco-result-block {
-      padding: 16px 18px;
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-tile-sm);
-      background: var(--color-bg-subtle);
-    }
-    .tco-result-label {
-      font-family: var(--font-mono, ui-monospace, monospace);
-      font-size: 10px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--color-text-faint);
-      display: block;
-      margin-bottom: 6px;
-    }
-    .tco-result-ev {
-      border-left: 2px solid var(--color-accent);
-    }
-    .tco-result-savings {
-      background: color-mix(in srgb, var(--color-accent) 6%, transparent);
-      border-color: var(--color-accent-dim);
-    }
-    .tco-result-savings.negative {
-      background: color-mix(in srgb, var(--color-warning) 6%, transparent);
-      border-color: color-mix(in srgb, var(--color-warning) 45%, var(--color-border-strong));
-    }
-    .tco-result-savings #tco-out-savings { color: var(--color-accent); }
-    .tco-result-savings.negative #tco-out-savings { color: var(--color-warning); }
-
     /* ── Tableau aides ─────────────────────────────────────── */
     .aid-table {
       display: flex;
@@ -493,94 +338,4 @@ const description =
     }
   </style>
 
-  <script>
-    document.addEventListener('astro:page-load', () => {
-      // Calculateur TCO, JS vanilla, recalcul à chaque input
-      const $ = (id) => document.getElementById(id);
-      const fmt = (n) => new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(Math.round(n));
-      const inputs = [
-        "tco-km", "tco-years",
-        "tco-ev-price", "tco-ev-aids", "tco-ev-conso", "tco-ev-energy",
-        "tco-ice-price", "tco-ice-aids", "tco-ice-conso", "tco-ice-energy",
-      ];
-
-      function calc() {
-        const km = +$("tco-km").value || 0;
-        const years = +$("tco-years").value || 1;
-        const evPrice = +$("tco-ev-price").value || 0;
-        const evAids = +$("tco-ev-aids").value || 0;
-        const evConso = +$("tco-ev-conso").value || 0;
-        const evEnergy = +$("tco-ev-energy").value || 0;
-        const icePrice = +$("tco-ice-price").value || 0;
-        const iceAids = +$("tco-ice-aids").value || 0;
-        const iceConso = +$("tco-ice-conso").value || 0;
-        const iceEnergy = +$("tco-ice-energy").value || 0;
-
-        const evNet = Math.max(0, evPrice - evAids);
-        const iceNet = Math.max(0, icePrice - iceAids);
-        const evEnergyCost = (km * years * evConso / 100) * evEnergy;
-        const iceEnergyCost = (km * years * iceConso / 100) * iceEnergy;
-        const evTotal = evNet + evEnergyCost;
-        const iceTotal = iceNet + iceEnergyCost;
-        const savings = iceTotal - evTotal;
-        const savingsPct = iceTotal > 0 ? (savings / iceTotal) * 100 : 0;
-        // Breakeven : (evNet - iceNet) / (iceEnergyAnnual - evEnergyAnnual)
-        const evEnergyAnnual = (km * evConso / 100) * evEnergy;
-        const iceEnergyAnnual = (km * iceConso / 100) * iceEnergy;
-        const overPrice = evNet - iceNet;
-        const energySavingsAnnual = iceEnergyAnnual - evEnergyAnnual;
-        let breakeven = null;
-        if (energySavingsAnnual > 0 && overPrice > 0) {
-          breakeven = overPrice / energySavingsAnnual;
-        } else if (overPrice <= 0) {
-          breakeven = 0;
-        }
-
-        const evNetEl = $("tco-out-ev-net");
-        const evEnergyEl = $("tco-out-ev-energy");
-        const evTotalEl = $("tco-out-ev-total");
-        const iceNetEl = $("tco-out-ice-net");
-        const iceEnergyEl = $("tco-out-ice-energy");
-        const iceTotalEl = $("tco-out-ice-total");
-
-        if (evNetEl) evNetEl.textContent = fmt(evNet);
-        if (evEnergyEl) evEnergyEl.textContent = fmt(evEnergyCost);
-        if (evTotalEl) evTotalEl.textContent = fmt(evTotal) + " €";
-        if (iceNetEl) iceNetEl.textContent = fmt(iceNet);
-        if (iceEnergyEl) iceEnergyEl.textContent = fmt(iceEnergyCost);
-        if (iceTotalEl) iceTotalEl.textContent = fmt(iceTotal) + " €";
-
-        const savingsEl = $("tco-out-savings");
-        const savingsBlock = $("tco-savings-block");
-        const sign = savings >= 0 ? "− " : "+ ";
-
-        if (savingsEl) savingsEl.textContent = sign + fmt(Math.abs(savings)) + " €";
-        if (savingsBlock) savingsBlock.classList.toggle("negative", savings < 0);
-
-        const savingsPctEl = $("tco-out-savings-pct");
-        if (savingsPctEl) savingsPctEl.textContent = (savings >= 0 ? "−" : "+") + fmt(Math.abs(savingsPct)) + " %";
-        
-        const breakevenEl = $("tco-out-breakeven");
-        if (breakevenEl) {
-          if (breakeven === null) {
-            breakevenEl.textContent = "n/c";
-          } else if (breakeven === 0) {
-            breakevenEl.textContent = "immédiat";
-          } else {
-            breakevenEl.textContent = breakeven.toFixed(1).replace(".", ",");
-          }
-        }
-      }
-
-      inputs.forEach((id) => {
-        const el = $(id);
-        if (el) el.addEventListener("input", calc);
-      });
-      
-      // Only calc if elements exist on page
-      if ($("tco-km")) {
-        calc();
-      }
-    });
-  </script>
 </BaseLayout>

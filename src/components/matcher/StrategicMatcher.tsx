@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 import type { Vehicle } from "@/data/schemas";
 import { readTrip, writeTrip } from "@/lib/trip";
-import { DEFAULT_ANSWERS, answersToParams, paramsToAnswers, rankVehicles, type MatcherAnswers } from "./scoring";
+import { DEFAULT_ANSWERS, paramsToAnswers, questionParams, rankVehicles, type MatcherAnswers } from "./scoring";
 import MatcherQuestions, { STEPS } from "./MatcherQuestions";
 import MatcherResults, { type VehicleImages } from "./MatcherResults";
 import { ArrowLeft, ArrowRight } from "lucide-react";
@@ -30,12 +30,15 @@ export default function StrategicMatcher({ vehicles, images }: Props) {
   const [showAll, setShowAll] = useState(false);
   const [restored, setRestored] = useState(false);
   const topRef = useRef<HTMLDivElement>(null);
+  /** Réponses d'un lien (question partagée) : tant qu'on n'y touche pas, « Mon trajet » reste le sien */
+  const fromLink = useRef<string | null>(null);
 
   // Réponses de l'URL (retour arrière, lien partagé), sinon trajet de « Mon trajet »
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const fromUrl = paramsToAnswers(params);
     if (fromUrl) {
+      fromLink.current = JSON.stringify(fromUrl);
       setAnswers(fromUrl);
       setShowAll(params.get("tous") === "1");
       setReached(RESULTS);
@@ -52,14 +55,14 @@ export default function StrategicMatcher({ vehicles, images }: Props) {
   // Résultats affichés : URL à jour et trajet partagé avec le reste du site
   useEffect(() => {
     if (step !== RESULTS) return;
-    const params = answersToParams(answers);
+    const params = questionParams(answers);
     if (showAll) params.set("tous", "1");
     // On garde l'état d'historique du routeur (position de défilement des transitions de page)
     window.history.replaceState(window.history.state, "", `${window.location.pathname}?${params}`);
   }, [step, answers, showAll]);
 
   useEffect(() => {
-    if (step !== RESULTS) return;
+    if (step !== RESULTS || fromLink.current === JSON.stringify(answers)) return;
     const trip = readTrip();
     if (!trip.set || trip.dailyKm !== answers.dailyKm || trip.homeCharging !== answers.homeCharging) {
       writeTrip({ dailyKm: answers.dailyKm, homeCharging: answers.homeCharging });

@@ -1,0 +1,521 @@
+---
+/**
+ * Observatoire de l'autonomie réelle : écart à l'annonce par marque et par modèle, autoroute,
+ * hiver, couverture des mesures, et données ouvertes (CC BY 4.0). Tout vient de lib/observatory,
+ * recalculé à chaque build : une nouvelle mesure sur une fiche change l'observatoire.
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BentoGrid from "@/components/ui/BentoGrid.astro";
+import Tile from "@/components/ui/Tile.astro";
+import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
+import RangeRail from "@/components/ui/RangeRail.astro";
+import FaqList from "@/components/seo/FaqList.astro";
+import {
+  BRAND_MIN_MODELS,
+  CITATION,
+  DATA_FIELDS,
+  DATA_LICENSE,
+  getBrandGaps,
+  getMeasuredModels,
+  getObservatoryFacts,
+} from "@/lib/observatory";
+import { getDataUpdates, itemText } from "@/lib/dataHistory";
+import { getVehicleBySlug } from "@/lib/vehicles";
+import { getVehicleName } from "@/lib/seo";
+import { formatKm, formatNumber } from "@/lib/format";
+import { url } from "@/lib/url";
+import { ArrowRight, ChevronDown, Download } from "lucide-react";
+
+const facts = getObservatoryFacts();
+const brands = getBrandGaps();
+const models = getMeasuredModels();
+const pct = (x: number) => `${formatNumber(Math.round(x))} %`;
+const signed = (x: number) => (Math.round(x) <= 0 ? `+${formatNumber(Math.abs(Math.round(x)))} %` : `-${formatNumber(Math.round(x))} %`);
+
+const BRAND_SCALE = Math.ceil(Math.max(...brands.map((b) => b.medianPct), 1) / 10) * 10;
+const TOP = 10;
+const faithful = models.slice(0, TOP);
+const optimistic = [...models].reverse().slice(0, TOP);
+const RAIL_SCALE = Math.ceil(Math.max(...models.map((m) => m.wltpKm)) / 100) * 100;
+
+const highway = [...models].filter((m) => m.row.highway130).sort((a, b) => b.row.highway130! - a.row.highway130!).slice(0, TOP);
+const winter = [...models].filter((m) => m.row.winter).sort((a, b) => b.row.winter! - a.row.winter!).slice(0, TOP);
+const HW_SCALE = Math.ceil(Math.max(...highway.map((m) => m.row.mixed)) / 100) * 100;
+const WINTER_SCALE = Math.ceil(Math.max(...winter.map((m) => m.row.mixed)) / 100) * 100;
+
+// Dernières versions passées d'estimée à mesurée (historique des fiches)
+const recent = getDataUpdates()
+  .flatMap((u) => u.vehicles.flatMap((v) => v.items.filter((i) => i.kind === "measured").slice(0, 1).map((it) => ({ u, v, it }))))
+  .slice(0, 6)
+  .map(({ u, v, it }) => {
+    const current = getVehicleBySlug(v.slug);
+    return { date: u.date, name: current ? getVehicleName(current) : v.name, href: current ? url(`/vehicules/${v.slug}/`) : null, text: itemText(it) };
+  });
+const dateFmt = new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "long", timeZone: "Europe/Paris" });
+const lastUpdate = getDataUpdates()[0]?.date;
+const updatedLabel = lastUpdate ? new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "long", year: "numeric", timeZone: "Europe/Paris" }).format(new Date(lastUpdate)) : null;
+
+const coverage = [
+  { key: "measured", label: "Mesurée sur route", n: facts.byLevel.measured },
+  { key: "manufacturer", label: "Annoncée par le constructeur", n: facts.byLevel.manufacturer },
+  { key: "estimated", label: "Estimée par Evly", n: facts.byLevel.estimated },
+] as const;
+
+const best = models[0];
+const worst = models.at(-1);
+const faq = [
+  {
+    question: "Quelle est la différence moyenne entre l'autonomie WLTP et l'autonomie réelle ?",
+    answer: `Sur les ${facts.measuredModels} modèles mesurés sur route par Bjørn Nyland ou la presse, l'autonomie réelle (moyenne d'un trajet à 90 et à 120 km/h) est inférieure de ${pct(facts.medianGapPct)} à l'annonce WLTP, en valeur médiane. À 130 km/h, on perd encore ${pct(facts.highwayLossPct)} par rapport à ce mixte ; par -5 °C, environ ${pct(facts.winterLossPct)}.`,
+  },
+  {
+    question: "Quelle voiture électrique respecte le mieux son autonomie annoncée ?",
+    answer: best && worst
+      ? `Parmi les modèles mesurés, ${getVehicleName(best.vehicle)} est la plus proche de son annonce (${formatKm(best.realKm)} pour ${formatKm(best.wltpKm)} WLTP, soit ${signed(best.gapPct)}). ${getVehicleName(worst.vehicle)} en est la plus loin (${formatKm(worst.realKm)} pour ${formatKm(worst.wltpKm)}, ${signed(worst.gapPct)}).`
+      : "Le classement se remplit à mesure que les modèles sont essayés.",
+  },
+  {
+    question: "Peut-on réutiliser ces chiffres ?",
+    answer: `Oui : les données sont publiées sous licence ${DATA_LICENSE.name}, en CSV et en JSON. Il suffit de citer la source : « ${CITATION} ». Les relevés d'origine restent à leurs auteurs, chaque ligne renvoie à l'essai.`,
+  },
+];
+
+const description = `Autonomie réelle des voitures électriques : ${pct(facts.medianGapPct)} sous l'annonce WLTP en médiane, sur ${facts.measuredModels} modèles mesurés sur route. Classement par marque et par modèle, autoroute, hiver, données ouvertes en CSV.`;
+const site = Astro.site;
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    name: "Autonomie réelle des voitures électriques vendues en France",
+    description: `Une ligne par version (${facts.versions} versions, ${facts.measuredVersions} mesurées sur route) : autonomie WLTP, autonomie réelle mixte, à 130 km/h, en ville et par -5 °C, écart à l'annonce et niveau de confiance de chaque chiffre.`,
+    url: new URL(url("/observatoire/"), site).toString(),
+    license: DATA_LICENSE.url,
+    isAccessibleForFree: true,
+    inLanguage: "fr-FR",
+    creator: { "@id": `${site}#organization` },
+    keywords: ["voiture électrique", "autonomie réelle", "WLTP", "essais sur route", "France"],
+    spatialCoverage: "France",
+    variableMeasured: DATA_FIELDS.map((f) => f.label),
+    ...(lastUpdate ? { dateModified: lastUpdate } : {}),
+    distribution: [
+      { "@type": "DataDownload", encodingFormat: "text/csv", contentUrl: new URL(url("/donnees/autonomie-reelle.csv"), site).toString() },
+      { "@type": "DataDownload", encodingFormat: "application/json", contentUrl: new URL(url("/donnees/autonomie-reelle.json"), site).toString() },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })),
+  },
+];
+---
+
+<BaseLayout title="Observatoire de l'autonomie réelle des voitures électriques" description={description} jsonLd={jsonLd} ogImage="/og/pages/observatoire.jpg">
+  <div class="container-edit pt-2 md:pt-3 fade-rise">
+    <Breadcrumbs items={[{ label: "Accueil", path: "/" }, { label: "Nos mesures", path: "/methodologie/" }, { label: "Observatoire de l'autonomie" }]} />
+  </div>
+
+  <div class="container-edit pt-2 pb-8 md:pt-3 md:pb-12 flex flex-col gap-10">
+    <BentoGrid>
+      <Tile size="full" variant="elevated" class="md:!p-8">
+        <span class="label-eyebrow fade-rise">Observatoire{updatedLabel && <> · données du {updatedLabel}</>}</span>
+        <h1 class="display-2 mt-3 max-w-4xl fade-rise fade-rise-delay-1">L'autonomie réelle, mesurée sur route.</h1>
+        <p class="mt-4 max-w-3xl text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed fade-rise fade-rise-delay-2">
+          Ce que les voitures électriques font vraiment, comparé à ce qu'elles annoncent : {facts.measuredModels} modèles essayés
+          sur route par Bjørn Nyland ou la presse, les mêmes règles de calcul pour tous, recalculées à chaque nouvel essai.
+          Chiffres libres de réutilisation, source citée.
+        </p>
+        <dl class="obs-facts fade-rise fade-rise-delay-2">
+          <div><dt>Sous l'annonce WLTP</dt><dd><b>-{pct(facts.medianGapPct)}</b></dd><dd>écart médian, {facts.measuredModels} modèles mesurés</dd></div>
+          <div><dt>À 130 km/h</dt><dd><b>-{pct(facts.highwayLossPct)}</b></dd><dd>de plus par rapport au mixte</dd></div>
+          <div><dt>Par -5 °C</dt><dd><b>-{pct(facts.winterLossPct)}</b></dd><dd>par rapport au mixte, estimé</dd></div>
+        </dl>
+        <div class="mt-6 flex flex-wrap gap-2 fade-rise fade-rise-delay-2">
+          <a href={url("/donnees/autonomie-reelle.csv")} class="btn btn-primary btn-sm" download>
+            <Download size={15} strokeWidth={2.2} aria-hidden="true" /> Données (CSV)
+          </a>
+          <a href={url("/donnees/autonomie-reelle.json")} class="btn btn-secondary btn-sm">JSON</a>
+          <a href="#donnees" class="btn btn-secondary btn-sm">Licence et citation</a>
+        </div>
+      </Tile>
+    </BentoGrid>
+
+    {/* ═════════ PAR MARQUE ═════════ */}
+    <section aria-labelledby="marques-title">
+      <div class="obs-head">
+        <h2 id="marques-title" class="section-title">Qui annonce le plus large ?</h2>
+        <a href={url("/donnees/ecart-wltp-par-marque.svg")} class="obs-more" download>
+          Graphique (SVG) <Download size={14} strokeWidth={2.2} aria-hidden="true" />
+        </a>
+      </div>
+      <p class="obs-lead">
+        Écart médian entre l'annonce WLTP et l'autonomie mesurée, pour chaque marque d'au moins {BRAND_MIN_MODELS} modèles essayés.
+        Touchez une marque pour voir ses modèles.
+      </p>
+      <BentoGrid>
+        <Tile size="full" class="md:!p-7">
+          <ol class="obs-brands no-glossary" style={`--scale:${BRAND_SCALE};--median:${facts.medianGapPct}`}>
+            {brands.map((b) => (
+              <li class="obs-brand">
+                <button type="button" class="obs-brand-head" aria-expanded="false" data-obs-toggle>
+                  <span class="obs-brand-name">{b.brand}</span>
+                  <span class="obs-bar" aria-hidden="true"><i style={`--v:${Math.max(0, b.medianPct)}`} /></span>
+                  <span class="obs-brand-gap tabular">-{pct(b.medianPct)}</span>
+                  <span class="obs-brand-n">{b.models.length} modèles</span>
+                  <ChevronDown size={15} strokeWidth={2.25} className="obs-chevron" aria-hidden="true" />
+                </button>
+                <div class="obs-reveal">
+                  <div>
+                    <ul class="obs-brand-models">
+                      {b.models.map((m) => (
+                        <li>
+                          <a href={url(`/vehicules/${m.vehicle.slug}/?config=${m.config.id}`)}>{getVehicleName(m.vehicle)}</a>
+                          <span>{m.config.label}</span>
+                          <span class="tabular">{formatKm(m.realKm)} pour {formatKm(m.wltpKm)}</span>
+                          <b class="tabular">{signed(m.gapPct)}</b>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <p class="obs-note">
+            Ligne repère : {pct(facts.medianGapPct)}, la médiane de tous les modèles mesurés. Une marque sous la ligne annonce plus
+            juste que la moyenne.
+          </p>
+        </Tile>
+      </BentoGrid>
+    </section>
+
+    {/* ═════════ PAR MODÈLE ═════════ */}
+    <section aria-labelledby="modeles-title">
+      <h2 id="modeles-title" class="section-title">Modèle par modèle</h2>
+      <p class="obs-lead">
+        Une version par modèle : la plus accessible parmi celles qui ont été essayées. La règle montre l'hiver, l'autonomie
+        réelle et, hachurés, les kilomètres promis jamais parcourus.
+      </p>
+      <div class="rail-legend obs-legend">
+        <span><i class="rail-key rail-key-winter"></i>Hiver</span>
+        <span><i class="rail-key rail-key-real"></i>Réelle</span>
+        <span><i class="rail-key rail-key-promise"></i>Promis, jamais parcouru</span>
+        <span><i class="rail-key rail-key-need"></i>Votre semaine</span>
+      </div>
+      <BentoGrid>
+        {[
+          { title: "Les plus fidèles à l'annonce", list: faithful },
+          { title: "Les plus loin de l'annonce", list: optimistic },
+        ].map((col) => (
+          <Tile size="2x1" class="md:!p-7">
+            <h3 class="obs-col-title">{col.title}</h3>
+            <ol class="obs-rows">
+              {col.list.map((m, i) => (
+                <li>
+                  <a href={url(`/vehicules/${m.vehicle.slug}/?config=${m.config.id}`)} class="obs-row" aria-label={`${getVehicleName(m.vehicle)} : ${m.realKm} km mesurés pour ${m.wltpKm} km annoncés (${signed(m.gapPct)}).`}>
+                    <span class="obs-row-name" aria-hidden="true">{getVehicleName(m.vehicle)}</span>
+                    <span class="obs-row-values" aria-hidden="true"><b>{m.realKm}</b> / {m.wltpKm} km</span>
+                    <RangeRail real={m.realKm} wltp={m.wltpKm} winter={m.row.winter ?? m.realKm} scale={RAIL_SCALE} reveal index={i} class="obs-row-rail" />
+                    <span class="obs-row-gap" aria-hidden="true">{signed(m.gapPct)}</span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </Tile>
+        ))}
+      </BentoGrid>
+      <div class="obs-all">
+          <button type="button" class="obs-all-toggle" aria-expanded="false" data-obs-toggle>
+            <span>Les {models.length} modèles mesurés</span>
+            <ChevronDown size={18} strokeWidth={2.25} className="obs-chevron" aria-hidden="true" />
+          </button>
+          <div class="obs-reveal">
+            <div>
+              <div class="overflow-x-auto">
+                <table class="obs-table">
+                  <thead>
+                    <tr><th scope="col">Modèle</th><th scope="col">Version essayée</th><th scope="col">WLTP</th><th scope="col">Réelle</th><th scope="col">Écart</th><th scope="col">Essai</th></tr>
+                  </thead>
+                  <tbody>
+                    {models.map((m) => (
+                      <tr>
+                        <th scope="row"><a href={url(`/vehicules/${m.vehicle.slug}/?config=${m.config.id}`)}>{getVehicleName(m.vehicle)}</a></th>
+                        <td>{m.config.label}</td>
+                        <td data-numeric>{formatKm(m.wltpKm)}</td>
+                        <td data-numeric><b>{formatKm(m.realKm)}</b></td>
+                        <td data-numeric>{signed(m.gapPct)}</td>
+                        <td>{m.row.testUrl ? <a href={m.row.testUrl} rel="noopener" target="_blank">{m.row.source} ↗</a> : m.row.source}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+      </div>
+    </section>
+
+    {/* ═════════ AUTOROUTE ET HIVER ═════════ */}
+    <section aria-labelledby="conditions-title">
+      <h2 id="conditions-title" class="section-title">Sur autoroute et en hiver</h2>
+      <p class="obs-lead">
+        Les dix modèles mesurés qui vont le plus loin à 130 km/h, et par -5 °C. L'autoroute vient de l'essai à 120 km/h. L'hiver
+        est toujours estimé, par le <a href={url("/methodologie/#hiver")}>modèle d'hiver d'Evly</a> appliqué à la mesure (chimie
+        de la batterie, pompe à chaleur).
+      </p>
+      <BentoGrid>
+        {[
+          { title: "À 130 km/h", list: highway, km: (m: (typeof models)[number]) => m.row.highway130!, scale: HW_SCALE, unit: "à 130 km/h" },
+          { title: "Par -5 °C, estimée", list: winter, km: (m: (typeof models)[number]) => m.row.winter!, scale: WINTER_SCALE, unit: "par -5 °C" },
+        ].map((col) => (
+          <Tile size="2x1" class="md:!p-7">
+            <h3 class="obs-col-title">{col.title}</h3>
+            <ol class="obs-km" style={`--scale:${col.scale}`}>
+              {col.list.map((m) => (
+                <li>
+                  <a href={url(`/vehicules/${m.vehicle.slug}/?config=${m.config.id}`)} class="obs-km-row">
+                    <span class="obs-km-name">{getVehicleName(m.vehicle)}</span>
+                    <span class="obs-km-value tabular"><b>{formatKm(col.km(m))}</b></span>
+                    <span class="obs-km-bar" aria-hidden="true"><i style={`--v:${col.km(m)};--m:${m.row.mixed}`} /></span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+            <p class="obs-note">Barre claire : l'autonomie mixte du même modèle.</p>
+          </Tile>
+        ))}
+      </BentoGrid>
+    </section>
+
+    {/* ═════════ COUVERTURE ═════════ */}
+    <section aria-labelledby="couverture-title">
+      <h2 id="couverture-title" class="section-title">Ce qui reste à mesurer</h2>
+      <BentoGrid>
+        <Tile size="2x1" class="md:!p-7">
+          <p class="obs-cover-lead">
+            <b>{facts.byLevel.measured}</b> modèles sur {facts.models} au catalogue ont une autonomie mesurée sur route, et
+            {" "}{facts.measuredVersions} versions sur {facts.versions}. Les autres sont estimées d'après les essais de versions
+            proches, et le site le dit à chaque chiffre.
+          </p>
+          <div class="obs-cover" role="img" aria-label={coverage.map((c) => `${c.label} : ${c.n} modèles`).join(", ")}>
+            {coverage.map((c) => <i data-level={c.key} style={`flex-grow:${c.n}`} />)}
+          </div>
+          <ul class="obs-cover-keys">
+            {coverage.map((c) => <li><i data-level={c.key} aria-hidden="true" />{c.label} <b class="tabular">{c.n}</b></li>)}
+          </ul>
+        </Tile>
+        <Tile size="2x1" class="md:!p-7">
+          <h3 class="obs-col-title">Dernières mesures</h3>
+          <ul class="obs-recent">
+            {recent.map((r) => (
+              <li>
+                <time datetime={r.date}>{dateFmt.format(new Date(r.date))}</time>
+                <span>{r.href ? <a href={r.href}>{r.name}</a> : r.name} · {r.text}</span>
+              </li>
+            ))}
+          </ul>
+          <a href={url("/nouveautes/")} class="obs-more mt-4">Toutes les nouveautés des données <ArrowRight size={14} strokeWidth={2.2} aria-hidden="true" /></a>
+        </Tile>
+      </BentoGrid>
+    </section>
+
+    {/* ═════════ DONNÉES OUVERTES ═════════ */}
+    <section id="donnees" aria-labelledby="donnees-title">
+      <h2 id="donnees-title" class="section-title">Données ouvertes</h2>
+      <BentoGrid>
+        <Tile size="full" class="md:!p-7">
+          <div class="obs-data no-glossary">
+            <div>
+              <p>
+                Toutes les versions du catalogue ({facts.versions}), une ligne chacune : autonomie annoncée, autonomie réelle
+                (mixte, 130 km/h, ville, -5 °C), écart à l'annonce, niveau de confiance, essai d'origine et prix. Mis à jour à
+                chaque publication du site.
+              </p>
+              <p class="mt-3">
+                Licence <a href={DATA_LICENSE.url} rel="license noopener" target="_blank">{DATA_LICENSE.name}</a> : reprise libre,
+                y compris commerciale, en citant la source.
+              </p>
+              <p class="obs-cite no-glossary"><span>À citer</span>{CITATION}</p>
+              <p class="obs-note">
+                Seuls les chiffres calculés par Evly sont publiés : les relevés bruts des essayeurs restent chez eux, chaque ligne
+                renvoie à l'essai. Une erreur ? <a href={url("/mentions-legales/#signalement")}>Écrivez-nous</a>, nous corrigeons et
+                citons la source.
+              </p>
+            </div>
+            <div class="obs-downloads">
+              <a href={url("/donnees/autonomie-reelle.csv")} class="btn btn-primary btn-sm" download>
+                <Download size={15} strokeWidth={2.2} aria-hidden="true" /> CSV pour tableur
+              </a>
+              <a href={url("/donnees/autonomie-reelle.json")} class="btn btn-secondary btn-sm">JSON</a>
+              <a href={url("/donnees/ecart-wltp-par-marque.svg")} class="btn btn-secondary btn-sm" download>Graphique des marques (SVG)</a>
+              <p class="obs-note">CSV : point-virgule, virgule décimale, UTF-8. JSON : nombres décimaux à point.</p>
+            </div>
+          </div>
+          <button type="button" class="obs-fields-toggle" aria-expanded="false" data-obs-toggle>
+            Les {DATA_FIELDS.length} colonnes <ChevronDown size={15} strokeWidth={2.25} className="obs-chevron" aria-hidden="true" />
+          </button>
+          <div class="obs-reveal">
+            <div>
+              <dl class="obs-fields">
+                {DATA_FIELDS.map((f) => <div><dt><code>{f.key}</code></dt><dd>{f.label}</dd></div>)}
+              </dl>
+            </div>
+          </div>
+        </Tile>
+      </BentoGrid>
+    </section>
+
+    <section aria-labelledby="faq-title">
+      <h2 id="faq-title" class="section-title">Questions fréquentes</h2>
+      <FaqList entries={faq} />
+    </section>
+  </div>
+</BaseLayout>
+
+<script>
+  function setup() {
+    document.querySelectorAll<HTMLButtonElement>("[data-obs-toggle]").forEach((btn) => {
+      if (btn.dataset.ready) return;
+      btn.dataset.ready = "1";
+      btn.addEventListener("click", () => {
+        const open = btn.getAttribute("aria-expanded") !== "true";
+        btn.setAttribute("aria-expanded", String(open));
+        (btn.nextElementSibling as HTMLElement | null)?.toggleAttribute("data-open", open);
+      });
+    });
+  }
+  setup();
+  document.addEventListener("astro:page-load", setup);
+</script>
+
+<style>
+  .section-title { font-family: var(--font-display); font-size: clamp(1.375rem, 2.2vw, 1.75rem); font-weight: 600; letter-spacing: -0.022em; line-height: 1.15; }
+  section > .section-title { margin-bottom: 0.5rem; }
+  .obs-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem 1rem; margin-bottom: 0.5rem; }
+  .obs-lead { margin: 0 0 0.9rem; max-width: 75ch; font-size: 14.5px; color: var(--color-text-muted); }
+  .obs-lead a, .obs-note a, .obs-data a:not(.btn) { color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }
+  .obs-more { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 14px; font-weight: 600; color: var(--color-accent); }
+  .obs-note { margin-top: 0.9rem; font-size: 12.5px; color: var(--color-text-faint); }
+  .obs-col-title { margin-bottom: 1rem; font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+
+  .obs-facts { display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 0.6rem; margin-top: 1.75rem; }
+  @media (min-width: 640px) { .obs-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .obs-facts > div { padding: 1rem 1.1rem; border-radius: var(--radius-tile-sm); background: var(--color-surface-accent); }
+  .obs-facts dt { font-size: 12.5px; font-weight: 600; color: var(--color-accent-dim); }
+  .obs-facts dd { font-size: 13.5px; color: var(--color-text-muted); }
+  .obs-facts dd b { font-family: var(--font-display); font-size: 2rem; font-weight: 800; letter-spacing: -0.04em; color: var(--color-text); font-variant-numeric: tabular-nums; }
+
+  /* Marques : barre de l'écart médian, repère de la médiane générale */
+  .obs-brands { display: flex; flex-direction: column; }
+  .obs-brand { border-bottom: 1px solid var(--color-border); }
+  .obs-brand:last-child { border-bottom: 0; }
+  .obs-brand-head {
+    display: grid;
+    grid-template-columns: minmax(0, 7.5rem) minmax(0, 1fr) 3.5rem auto;
+    grid-template-areas: "name bar gap chev" "n bar gap chev";
+    align-items: center;
+    column-gap: 0.9rem;
+    width: 100%;
+    padding: 0.55rem 0;
+    text-align: left;
+  }
+  @media (min-width: 768px) { .obs-brand-head { grid-template-columns: 9rem minmax(0, 1fr) 4rem 6rem auto; grid-template-areas: "name bar gap n chev"; } }
+  .obs-brand-name { grid-area: name; font-weight: 650; font-size: 15px; }
+  .obs-brand-n { grid-area: n; font-size: 12.5px; color: var(--color-text-faint); }
+  .obs-brand-gap { grid-area: gap; text-align: right; font-family: var(--font-display); font-size: 17px; font-weight: 800; letter-spacing: -0.03em; }
+  .obs-brand-head :global(.obs-chevron) { grid-area: chev; color: var(--color-text-faint); transition: transform 260ms var(--ease-out-expo); }
+  [aria-expanded="true"] > :global(.obs-chevron) { transform: rotate(180deg); }
+  .obs-bar { grid-area: bar; position: relative; height: 12px; border-radius: 999px; background: var(--color-bg-subtle); overflow: hidden; }
+  .obs-bar::after { content: ""; position: absolute; top: 0; bottom: 0; left: calc(var(--median) / var(--scale) * 100%); width: 2px; margin-left: -1px; background: var(--color-text); opacity: 0.55; z-index: 1; }
+  .obs-bar i { position: absolute; inset: 0 auto 0 0; width: calc(var(--v) / var(--scale) * 100%); border-radius: 999px; background: var(--color-accent); }
+  @media (hover: hover) and (pointer: fine) { .obs-brand-head:hover .obs-brand-name { color: var(--color-accent); } }
+  .obs-brand-models { display: flex; flex-direction: column; gap: 0.35rem; padding: 0.1rem 0 0.9rem; font-size: 14px; }
+  .obs-brand-models li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0 1rem; }
+  @media (min-width: 768px) { .obs-brand-models li { grid-template-columns: 12rem minmax(0, 1fr) 11rem 3.5rem; } }
+  .obs-brand-models a { font-weight: 600; }
+  .obs-brand-models a:hover { color: var(--color-accent); }
+  .obs-brand-models span { color: var(--color-text-muted); }
+  .obs-brand-models b { text-align: right; font-weight: 700; }
+
+  .obs-reveal { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 320ms var(--ease-out-expo); }
+  .obs-reveal > div { overflow: hidden; min-height: 0; }
+  .obs-reveal[data-open] { grid-template-rows: 1fr; }
+
+  /* Modèles : la règle de l'accueil */
+  .obs-rows { display: flex; flex-direction: column; gap: 0.75rem; }
+  .obs-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "name values" "rail gap";
+    align-items: center;
+    gap: 0.45rem 1rem;
+    padding: 0.45rem 0.75rem;
+    margin-inline: -0.75rem;
+    border-radius: 16px;
+    transition: background-color 200ms var(--ease-out-expo);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .obs-row:hover { background: var(--color-bg); }
+    .obs-row:hover :global(.rail) { --rail-surface: var(--color-bg); }
+  }
+  .obs-row-name { grid-area: name; font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+  .obs-row-values { grid-area: values; font-size: 13px; color: var(--color-text-faint); text-align: right; }
+  .obs-row-values b { color: var(--color-text); font-weight: 700; }
+  .obs-row :global(.obs-row-rail) { grid-area: rail; }
+  .obs-row-gap { grid-area: gap; min-width: 3.5rem; text-align: right; font-family: var(--font-display); font-size: 17px; font-weight: 800; letter-spacing: -0.03em; }
+
+  .obs-legend { margin-bottom: 0.9rem; }
+  .obs-all { margin-top: var(--tile-gap-lg); border-radius: var(--radius-tile); background: var(--color-surface); border: 1px solid var(--color-border); overflow: hidden; }
+  .obs-all-toggle, .obs-fields-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0.9rem 1.25rem; font-size: 15px; font-weight: 650; }
+  @media (min-width: 768px) { .obs-all-toggle { padding-inline: 2rem; } }
+  .obs-fields-toggle { justify-content: flex-start; gap: 0.35rem; margin-top: 1.25rem; padding: 0; font-size: 14px; color: var(--color-accent); }
+  .obs-table { width: 100%; min-width: 720px; border-collapse: collapse; font-size: 14px; }
+  .obs-table th, .obs-table td { padding: 0.6rem 1.25rem; border-top: 1px solid var(--color-border); text-align: left; vertical-align: top; }
+  @media (min-width: 768px) { .obs-table th, .obs-table td { padding-inline: 2rem; } }
+  .obs-table thead th { font-size: 12.5px; font-weight: 600; color: var(--color-text-faint); }
+  .obs-table tbody th { font-weight: 600; }
+  .obs-table tbody th a:hover, .obs-table td a:hover { color: var(--color-accent); }
+  .obs-table td { color: var(--color-text-muted); }
+  .obs-table td b { color: var(--color-text); }
+
+  /* Autoroute et hiver : barre en km, le mixte en clair derrière */
+  .obs-km { display: flex; flex-direction: column; gap: 0.6rem; }
+  .obs-km-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.3rem 1rem; }
+  .obs-km-name { font-size: 14.5px; font-weight: 600; }
+  .obs-km-row:hover .obs-km-name { color: var(--color-accent); }
+  .obs-km-value { font-size: 14px; }
+  .obs-km-bar { grid-column: 1 / -1; position: relative; height: 10px; border-radius: 999px; background: var(--color-bg-subtle); overflow: hidden; }
+  .obs-km-bar i { position: absolute; inset: 0 auto 0 0; width: calc(var(--m) / var(--scale) * 100%); border-radius: 999px; background: var(--color-lime); }
+  .obs-km-bar i::after { content: ""; position: absolute; inset: 0 auto 0 0; width: calc(var(--v) / var(--m) * 100%); border-radius: 999px; background: var(--color-accent); }
+
+  /* Couverture */
+  .obs-cover-lead { font-size: 15px; color: var(--color-text-muted); }
+  .obs-cover-lead b { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; color: var(--color-text); }
+  .obs-cover { display: flex; gap: 3px; height: 14px; margin-top: 1.1rem; border-radius: 999px; overflow: hidden; }
+  .obs-cover i { display: block; min-width: 4px; }
+  [data-level="measured"] { background: var(--color-accent); }
+  [data-level="manufacturer"] { background: var(--color-accent-soft); }
+  [data-level="estimated"] { background: var(--color-border-strong); }
+  .obs-cover-keys { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-top: 0.75rem; font-size: 13px; color: var(--color-text-muted); }
+  .obs-cover-keys li { display: inline-flex; align-items: center; gap: 0.4rem; }
+  .obs-cover-keys i { width: 10px; height: 10px; border-radius: 999px; }
+  .obs-cover-keys b { color: var(--color-text); }
+  .obs-recent { display: flex; flex-direction: column; gap: 0.55rem; font-size: 14px; }
+  .obs-recent li { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 0.75rem; }
+  .obs-recent time { color: var(--color-text-faint); font-variant-numeric: tabular-nums; }
+  .obs-recent a { font-weight: 600; }
+  .obs-recent a:hover { color: var(--color-accent); }
+
+  /* Données ouvertes */
+  .obs-data { display: grid; gap: 1.5rem; font-size: 15px; color: var(--color-text-muted); }
+  @media (min-width: 900px) { .obs-data { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 2.5rem; } }
+  .obs-cite { display: flex; flex-direction: column; gap: 0.2rem; margin-top: 1rem; padding: 0.8rem 1rem; border-radius: var(--radius-tile-sm); background: var(--color-surface-accent); font-weight: 600; color: var(--color-text); }
+  .obs-cite span { font-size: 12px; font-weight: 600; color: var(--color-accent-dim); }
+  .obs-downloads { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 0.5rem; }
+  .obs-downloads .obs-note { flex-basis: 100%; margin-top: 0.4rem; }
+  .obs-fields { display: grid; gap: 0.35rem 1.5rem; padding-top: 0.9rem; font-size: 13.5px; }
+  @media (min-width: 768px) { .obs-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .obs-fields > div { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 0.75rem; }
+  .obs-fields code { font-family: var(--font-mono); font-size: 12.5px; color: var(--color-accent-dim); }
+  .obs-fields dd { color: var(--color-text-muted); }
+</style>

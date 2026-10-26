@@ -1508,3 +1508,57 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ----------------------------------------------------------------- */
+/* Image à partager (ShareImage.tsx) : aperçu déplié sur place          */
+/* ----------------------------------------------------------------- */
+
+.share-img-reveal {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 320ms var(--ease-out-expo);
+}
+.share-img-reveal > div {
+  overflow: hidden;
+  min-height: 0;
+}
+.share-img-reveal[data-open] {
+  grid-template-rows: 1fr;
+}
+.share-img-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding-top: 0.75rem;
+}
+.share-img-preview {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  max-width: 22rem;
+  aspect-ratio: 1;
+  border-radius: var(--radius-tile-sm);
+  background: var(--color-bg-subtle);
+  overflow: hidden;
+  font-size: 13px;
+  color: var(--color-text-faint);
+  transition: opacity 200ms ease;
+}
+.share-img-preview[data-busy] {
+  opacity: 0.6;
+}
+.share-img-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.share-img-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.share-img-note {
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--color-text-faint);
+}

@@ -1,48 +1,59 @@
 ---
 import Wordmark from "@/components/ui/Wordmark.astro";
 import { url } from "@/lib/url";
-import { ChevronDown, Menu, X, Search, Route, ArrowRight } from "lucide-react";
+import { ChevronDown, Menu, X, Search, Route, ArrowRight, Map as MapIcon, Star } from "lucide-react";
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 
+// Menus rangés par question de l'acheteur : quelle voiture, laquelle des deux, quelles aides.
+// Ma semaine (l'outil phare) et Trouver mon VE ont leur bouton à droite ; « Nos mesures » réunit la
+// méthode, l'observatoire et le journal des données.
 const navigationStructure = [
   {
-    label: "Véhicules",
+    label: "Choisir",
     items: [
-      { href: url("/vehicules/"), label: "Particuliers", desc: "Tout le catalogue, avec filtres" },
+      { href: url("/recommandation/"), label: "Trouver mon VE", desc: "Six questions, tout le catalogue classé pour vous" },
+      { href: url("/vehicules/"), label: "Tout le catalogue", desc: "Filtres, autonomie mesurée, tient ma semaine" },
+      { href: url("/voitures-electriques/"), label: "Par usage", desc: "Citadines, SUV, familiales, petits budgets" },
       { href: url("/marques/"), label: "Par marque", desc: "Les gammes électriques, marque par marque" },
-      { href: url("/voitures-electriques/"), label: "Sélections", desc: "Citadines, SUV, familiales, petits budgets" },
-      { href: url("/bons-plans/"), label: "Bons plans", desc: "Mieux équipé pour le même budget" },
-      { href: url("/pro/vehicules/"), label: "Utilitaires (Pro)", desc: "Fourgons et ludospaces électriques" },
-      { href: url("/leasing-social/"), label: "Leasing Social", desc: "Conditions et modèles éligibles" },
+      { href: url("/pro/vehicules/"), label: "Utilitaires", desc: "Fourgons et ludospaces électriques" },
     ],
   },
   {
-    label: "Outils",
+    label: "Comparer",
     items: [
-      { href: url("/ma-semaine/"), label: "Ma semaine", desc: "Votre quotidien et vos escapades, sur la carte" },
-      { href: url("/comparer/"), label: "Comparateur", desc: "Jusqu'à 4 modèles côte à côte" },
-      { href: url("/simulateur/"), label: "Calculateur TCO", desc: "Le coût réel sur plusieurs années" },
-      { href: url("/pro/"), label: "Simulateur Pro", desc: "Le coût total pour une entreprise" },
+      { href: url("/comparer/"), label: "Comparateur", desc: "Jusqu'à 4 modèles, version par version" },
+      { href: url("/comparer/duels/"), label: "Duels", desc: "Les face-à-face les plus demandés" },
+      { href: url("/bons-plans/"), label: "À prix égal", desc: "Mieux, pour le même budget" },
+      { href: url("/simulateur/"), label: "Électrique ou thermique", desc: "Le coût réel sur plusieurs années" },
     ],
   },
   {
-    label: "Ressources",
+    label: "Aides",
     items: [
-      { href: url("/methodologie/"), label: "Méthodologie", desc: "Comment on mesure et on calcule" },
-      { href: url("/glossaire/"), label: "Glossaire", desc: "Les termes de l'électrique expliqués" },
+      { href: url("/aides/"), label: "Aides 2026", desc: "Prime CEE et leasing social : ce que vous touchez" },
+      { href: url("/leasing-social/"), label: "Leasing social", desc: "Modèles éligibles, test en 2 minutes" },
+      { href: url("/pro/"), label: "Entreprises", desc: "Aides pro, fiscalité et coût d'une flotte" },
+    ],
+  },
+  {
+    label: "Nos mesures",
+    items: [
+      { href: url("/methodologie/"), label: "Comment on mesure", desc: "D'où vient chaque chiffre, essais et estimations" },
+      { href: url("/observatoire/"), label: "Observatoire de l'autonomie", desc: "Annonce contre réalité, marque par marque" },
+      { href: url("/nouveautes/"), label: "Nouveautés des données", desc: "Nouveaux modèles, mesures et prix" },
     ],
   },
 ];
 
 // Accès rapides proposés par la recherche quand rien n'est encore tapé
 const quickLinks = [
-  { href: url("/vehicules/"), label: "Tout le catalogue" },
   { href: url("/recommandation/"), label: "Trouver mon VE en quelques questions" },
-  { href: url("/comparer/"), label: "Comparer des modèles" },
-  { href: url("/simulateur/"), label: "Calculer le coût réel" },
-  { href: url("/leasing-social/"), label: "Leasing social" },
+  { href: url("/vehicules/"), label: "Tout le catalogue" },
+  { href: url("/ma-semaine/"), label: "Ma semaine sur la carte" },
+  { href: url("/comparer/duels/"), label: "Les duels les plus demandés" },
+  { href: url("/aides/"), label: "Aides 2026" },
 ];
 
 function isActive(href: string): boolean {
@@ -66,16 +77,16 @@ function isGroupActive(group: (typeof navigationStructure)[0]): boolean {
 
       <button type="button" class="search-trigger hidden lg:flex" data-search-open aria-haspopup="dialog">
         <Search size={16} strokeWidth={2} aria-hidden="true" />
-        <span class="flex-1 text-left">Rechercher un modèle</span>
+        <span class="flex-1 text-left whitespace-nowrap overflow-hidden text-ellipsis"><span class="xl:hidden 2xl:inline">Rechercher un modèle</span><span class="hidden xl:inline 2xl:hidden">Rechercher</span></span>
         <kbd>/</kbd>
       </button>
 
-      <nav aria-label="Navigation principale" class="hidden xl:flex items-center gap-0.5">
+      <nav aria-label="Navigation principale" class="hidden xl:flex items-center gap-0.5 shrink-0">
         {navigationStructure.map((group) => (
           <div class="nav-dropdown-group">
             <button
               class:list={[
-                "nav-link h-10 px-3.5 text-[14.5px] tracking-[-0.01em] inline-flex items-center gap-1.5",
+                "nav-link h-10 px-3 2xl:px-3.5 text-[14.5px] tracking-[-0.01em] inline-flex items-center gap-1.5 whitespace-nowrap",
                 isGroupActive(group) ? "text-[var(--color-text)] font-semibold" : "text-[var(--color-text-muted)] hover:text-[var(--color-text)]",
               ]}
               type="button"
@@ -97,7 +108,8 @@ function isGroupActive(group: (typeof navigationStructure)[0]): boolean {
         ))}
       </nav>
 
-      <div class="flex items-center gap-1.5 ml-auto xl:ml-0">
+      {/* Calé à droite : le réglage qui personnalise tout le site, puis les deux outils phares */}
+      <div class="flex items-center gap-1.5 ml-auto shrink-0">
         <button type="button" class="nav-icon-btn inline-flex lg:hidden" data-search-open aria-label="Rechercher un modèle" aria-haspopup="dialog">
           <Search size={19} strokeWidth={2} aria-hidden="true" />
         </button>
@@ -130,6 +142,15 @@ function isGroupActive(group: (typeof navigationStructure)[0]): boolean {
           </div>
         </div>
 
+        {/* Vos favoris, dès qu'il y en a : le catalogue filtré sur eux */}
+        <a href={url("/vehicules/") + "?options=favorites"} class="nav-fav" data-nav-favorites hidden aria-label="Mes modèles favoris">
+          <Star size={17} strokeWidth={2} aria-hidden="true" />
+          <span class="nav-fav-count" data-nav-favorites-count>0</span>
+        </a>
+
+        <a href={url("/ma-semaine/")} class:list={["btn btn-secondary btn-sm hidden lg:inline-flex nav-week", isActive(url("/ma-semaine/")) && "is-active"]} aria-current={isActive(url("/ma-semaine/")) ? "page" : undefined}>
+          <MapIcon size={16} strokeWidth={2} aria-hidden="true" />Ma semaine
+        </a>
         <a href={url("/recommandation/")} class="btn btn-primary btn-sm hidden md:inline-flex">Trouver mon VE</a>
 
         <button type="button" class="nav-icon-btn inline-flex xl:hidden" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
@@ -162,7 +183,10 @@ function isGroupActive(group: (typeof navigationStructure)[0]): boolean {
           </ul>
         </div>
       ))}
-      <a href={url("/recommandation/")} class="btn btn-primary w-full">Trouver mon VE</a>
+      <div class="grid grid-cols-2 gap-2">
+        <a href={url("/ma-semaine/")} class="btn btn-secondary w-full"><MapIcon size={17} strokeWidth={2} aria-hidden="true" />Ma semaine</a>
+        <a href={url("/recommandation/")} class="btn btn-primary w-full">Trouver mon VE</a>
+      </div>
     </div>
   </div>
 
@@ -212,6 +236,7 @@ function isGroupActive(group: (typeof navigationStructure)[0]): boolean {
     align-items: center;
     gap: 0.6rem;
     width: 15.5rem;
+    min-width: 0;
     height: 2.5rem;
     padding: 0 0.5rem 0 0.95rem;
     border-radius: 999px;
@@ -220,6 +245,10 @@ function isGroupActive(group: (typeof navigationStructure)[0]): boolean {
     color: var(--color-text-faint);
     font-size: 14px;
     transition: border-color 200ms var(--ease-out-expo), color 200ms var(--ease-out-expo);
+  }
+  /* Menus affichés mais écran encore étroit : recherche courte (« Rechercher ») */
+  @media (min-width: 1280px) and (max-width: 1535px) {
+    .search-trigger { width: 11rem; }
   }
   .search-trigger:hover { border-color: var(--color-border-strong); color: var(--color-text-muted); }
   kbd {
@@ -242,6 +271,41 @@ function isGroupActive(group: (typeof navigationStructure)[0]): boolean {
     transition: background-color 150ms var(--ease-out-expo);
   }
   .nav-icon-btn:hover { background: var(--color-bg-subtle); }
+
+  /* Favoris : étoile et compteur, seulement quand il y en a */
+  .nav-fav {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 999px;
+    color: var(--color-text-muted);
+    transition: background-color 150ms var(--ease-out-expo), color 150ms var(--ease-out-expo);
+  }
+  .nav-fav[hidden] { display: none; }
+  .nav-fav-count {
+    position: absolute;
+    top: 3px;
+    right: 1px;
+    min-width: 17px;
+    height: 17px;
+    padding: 0 4px;
+    border-radius: 999px;
+    background: var(--color-accent);
+    color: var(--color-accent-on);
+    font-size: 10.5px;
+    font-weight: 700;
+    line-height: 17px;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .nav-fav:hover { background: var(--color-bg-subtle); color: var(--color-text); }
+  }
+  .nav-week { gap: 0.4rem; }
+  .nav-week.is-active { border-color: var(--color-accent); color: var(--color-accent); }
   .menu-close-icon { display: none; }
   [data-menu-toggle][aria-expanded="true"] .menu-open-icon { display: none; }
   [data-menu-toggle][aria-expanded="true"] .menu-close-icon { display: block; }
@@ -620,7 +684,34 @@ function isGroupActive(group: (typeof navigationStructure)[0]): boolean {
     });
   }
 
+  // Favoris (étoile des cartes et fiches, stockés sur l'appareil) : compteur dans le header
+  let favoritesReady = false;
+  function renderFavorites(slugs?: string[]) {
+    let list = slugs;
+    if (!list) {
+      try {
+        list = JSON.parse(localStorage.getItem("evly-favorites") || "[]") as string[];
+      } catch {
+        list = [];
+      }
+    }
+    const link = document.querySelector<HTMLElement>("[data-nav-favorites]");
+    if (!link) return;
+    link.hidden = list.length === 0;
+    const count = link.querySelector("[data-nav-favorites-count]");
+    if (count) count.textContent = String(list.length);
+    link.setAttribute("aria-label", `Mes modèles favoris (${list.length})`);
+  }
+  function setupFavorites() {
+    renderFavorites();
+    if (favoritesReady) return;
+    favoritesReady = true;
+    window.addEventListener("favorites-changed", (e) => renderFavorites((e as CustomEvent<string[]>).detail));
+    window.addEventListener("storage", (e) => { if (e.key === "evly-favorites") renderFavorites(); });
+  }
+
   function init() {
+    setupFavorites();
     setupNavDropdowns();
     setupMobileMenu();
     setupTripControl();

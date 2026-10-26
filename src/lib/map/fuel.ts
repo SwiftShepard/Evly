@@ -3,7 +3,7 @@
  * mises à jour dans la semaine (flux officiel prix-carburants, data.economie.gouv.fr).
  * Aucune position n'est envoyée. Sans réponse, on garde la valeur par défaut du simulateur.
  */
-import { DEFAULTS } from "@/components/tco/TcoCalculator";
+import { COST_DEFAULTS as DEFAULTS, CHARGING_LOSSES as LOSSES } from "@/lib/costDefaults";
 
 const ENDPOINT = "https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets/prix-des-carburants-en-france-flux-instantane-v2/records";
 
@@ -22,7 +22,7 @@ export const ICE_L_100 = DEFAULTS.ice_conso_l_100;
 export const ELEC_EUR_KWH = 0.2;
 export const PUBLIC_EUR_KWH = DEFAULTS.elec_fast_eur_kwh;
 /** Pertes de recharge : l'énergie prise au réseau dépasse celle qui entre dans la batterie */
-export const CHARGING_LOSSES = 1.1;
+export const CHARGING_LOSSES = LOSSES;
 
 let pending: Promise<FuelPrice> | null = null;
 

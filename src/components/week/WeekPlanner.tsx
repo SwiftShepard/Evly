@@ -21,7 +21,9 @@ import ReachList from "./ReachList";
 import { CategoryIcon } from "./icons";
 import ShareBox from "./ShareBox";
 import { BRICK_KINDS, DEFAULT_BRICKS, fromLegacy, newBrick, sanitizeBricks, type Brick } from "./bricks";
-import { readShared, type SharedWeek } from "@/lib/map/share";
+import { communeOf, readQuestion, readShared, type SharedWeek } from "@/lib/map/share";
+import { geocode } from "@/lib/map/search";
+import type { TripCard, WeekCard } from "@/lib/shareCard";
 import type { Driven, Place, WeekVehicle } from "./types";
 import { RESERVE, budgetFor, rangeProfile, type Season } from "@/lib/map/energy";
 import { computeTrips, computeZones, loadRoads, setOrigin } from "@/lib/map/client";
@@ -188,12 +190,16 @@ export default function WeekPlanner({ vehicles }: Props) {
     const fromUrl = params.get("v");
     let list = s.vehicles.filter((slug) => bySlug.has(slug));
     let versions = s.versions;
-    if (fromUrl && bySlug.has(fromUrl)) {
-      list = [fromUrl];
-      // Version choisie sur la fiche (?config=…)
-      const config = params.get("config");
-      const version = config ? bySlug.get(fromUrl)!.versions.find((x) => x.configs.includes(config)) : undefined;
-      if (version) versions = { ...versions, [fromUrl]: version.id };
+    // Un modèle (fiche) ou jusqu'à trois (questionnaire : ?v=a,b,c&config=x,y,z), versions alignées
+    const asked = (fromUrl ?? "").split(",").filter((slug) => bySlug.has(slug)).slice(0, MAX_COMPARED);
+    if (asked.length) {
+      list = asked;
+      const configs = (params.get("config") ?? "").split(",");
+      asked.forEach((slug, k) => {
+        const config = configs[k];
+        const version = config ? bySlug.get(slug)!.versions.find((x) => x.configs.includes(config)) : undefined;
+        if (version) versions = { ...versions, [slug]: version.id };
+      });
     }
     // Recharge annoncée par la page d'avant (matcher : ?recharge=, fiche : « Mon trajet ») : un
     // ancien réglage enregistré ne la contredit pas
@@ -207,6 +213,41 @@ export default function WeekPlanner({ vehicles }: Props) {
 
   useEffect(() => {
     const shared = readShared();
+    const question = shared ? null : readQuestion();
+    if (question) {
+      // Lien « question » (?domicile=Amiens&travail=Abbeville&v=renault-5) : les communes sont
+      // géocodées, puis la semaine s'affiche comme une semaine partagée, sans écraser la sienne
+      let stale = false;
+      Promise.all([geocode(question.home), question.work ? geocode(question.work) : null, question.to ? geocode(question.to) : null]).then(
+        ([home, work, to]) => {
+          if (stale) return;
+          if (!home) return loadOwn();
+          const vehicles = question.vehicles.filter((slug) => bySlug.has(slug)).slice(0, MAX_COMPARED);
+          const versions: Record<string, string> = {};
+          vehicles.forEach((slug, k) => {
+            const config = question.configs[k];
+            const version = config ? bySlug.get(slug)!.versions.find((x) => x.id === config || x.configs.includes(config)) : undefined;
+            if (version) versions[slug] = version.id;
+          });
+          const place = (f: { label: string; lat: number; lon: number }) => ({ label: f.label, lat: f.lat, lon: f.lon });
+          setSharedView(true);
+          setSaved({
+            ...DEFAULT_SAVED,
+            home: place(home),
+            work: work ? place(work) : null,
+            vehicles,
+            versions,
+            holidays: to ? [{ id: "trajet-lien", ...place(to), times: 1, season: question.season ?? "summer" }] : [],
+            scenario: question.recharge === "borne" ? "topup" : "weekly",
+            season: question.season ?? "winter",
+          });
+        }
+      );
+      loadRoads(url(ROUTES_URL)).catch(() => setStatus("error"));
+      return () => {
+        stale = true;
+      };
+    }
     if (shared) {
       setSharedView(true);
       setSaved({
@@ -795,6 +836,47 @@ export default function WeekPlanner({ vehicles }: Props) {
       }
     : null;
 
+  // Image de la semaine (ShareBox) : le verdict, la frise et le coût, jamais l'adresse
+  const weekCard: WeekCard | null =
+    week && vehicle
+      ? {
+          verdict: verdictLines(week, scenario, stopCharger).big,
+          vehicle: `${vehicle.brand} ${vehicle.model} ${vehicle.version.label}`,
+          season,
+          days: week.days.map((d, i) => ({
+            name: DAYS[i]!.slice(0, 3),
+            start: d.start,
+            end: d.end,
+            added: d.charges.reduce((sum, c) => sum + c.added, 0),
+            low: d.low < RESERVE,
+          })),
+          km: week.km,
+          lowest: week.lowest,
+          elecYear: week.used * vehicle.charging.usableKWh * CHARGING_LOSSES * eurPerKwh * WEEKS_PER_YEAR + holidayYear(vehicle).elec,
+          petrolYear: fuel ? ((week.km * ICE_L_100) / 100) * fuel.eur * WEEKS_PER_YEAR + holidayYear(vehicle).petrol : null,
+          compare: compareRows.length ? compareRows.map((r) => ({ name: r.name, verdict: r.verdict, elecYear: r.elecYear })) : undefined,
+        }
+      : null;
+  // Image d'un grand trajet : au plus la commune de départ
+  const from = home ? communeOf(home.label) : null;
+  const tripCard = (h: HolidayTrip, result: HolidayResult | null): TripCard | null => {
+    if (!vehicle || !result || result.plan?.gapKm != null) return null;
+    const plan = result.plan;
+    return {
+      from,
+      to: h.label.split(",")[0]!,
+      vehicle: `${vehicle.brand} ${vehicle.model} ${vehicle.version.label}`,
+      season: h.season,
+      speed: h.speed ?? 130,
+      km: result.kmReturn / 2,
+      driveMinutes: plan?.driveMinutes ?? null,
+      chargeMinutes: plan?.chargeMinutes ?? result.minutes,
+      arrive: plan?.arrive ?? null,
+      stopCount: plan ? plan.stops.length : result.stops,
+      stops: (plan?.stops ?? []).map((s) => ({ km: s.km, name: s.name, kw: s.kw, minutes: s.minutes })),
+    };
+  };
+
   const seasonSeg = (
     <div className="week-seg week-seg-sm" role="radiogroup" aria-label="Saison">
       {(
@@ -928,7 +1010,8 @@ export default function WeekPlanner({ vehicles }: Props) {
                   type="button"
                   className="btn btn-sm btn-secondary"
                   onClick={() => {
-                    history.replaceState(null, "", location.pathname + location.search);
+                    // Ni la semaine du lien ni sa question : la sienne
+                    history.replaceState(null, "", location.pathname);
                     setSharedView(false);
                     loadOwn();
                   }}
@@ -1174,6 +1257,7 @@ export default function WeekPlanner({ vehicles }: Props) {
                           trip={h}
                           result={result}
                           cost={cost}
+                          card={tripCard(h, result)}
                           active={holidayFocus === h.id}
                           onFocus={() => {
                             stop();
@@ -1261,7 +1345,25 @@ export default function WeekPlanner({ vehicles }: Props) {
           {/* Pied du volet : partage, méthode et guide, chacun déplié sur place */}
           <footer className="week-foot">
             <div className="week-foot-row">
-              {home && <ShareBox week={shareData} />}
+              {home && (
+                <ShareBox
+                  week={shareData}
+                  card={weekCard}
+                  question={
+                    communeOf(home.label)
+                      ? {
+                          home: communeOf(home.label)!,
+                          work: saved.work ? communeOf(saved.work.label) : null,
+                          to: holidays[0] ? holidays[0].label.split(",")[0]! : null,
+                          vehicles: chosen.map((v) => v.slug),
+                          configs: chosen.map((v) => v.version.id),
+                          recharge: scenario === "topup" ? "borne" : "maison",
+                          season,
+                        }
+                      : null
+                  }
+                />
+              )}
               <details className="week-method">
                 <summary>Méthode</summary>
                 <ul>

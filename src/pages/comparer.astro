@@ -13,7 +13,10 @@ const vehicles = getAllVehicles();
 
 // Duels « X vs Y » : pages statiques pré-remplies (/comparer/x-vs-y/)
 const nameOf = (slug: string) => { const v = vehicles.find((x) => x.slug === slug); return v ? getVehicleName(v) : slug; };
-const duelLinks = DUELS.map(([a, b]) => ({ label: `${nameOf(a)} vs ${nameOf(b)}`, href: url(`/comparer/${duelSlug(a, b)}/`) }));
+const duelLinks = [
+  ...DUELS.slice(0, 16).map(([a, b]) => ({ label: `${nameOf(a)} vs ${nameOf(b)}`, href: url(`/comparer/${duelSlug(a, b)}/`) })),
+  { label: "Tous les duels →", href: url("/comparer/duels/"), accent: true },
+];
 
 // Serialize vehicles data for the React island
 const vehiclesData = vehicles.map((v) => ({

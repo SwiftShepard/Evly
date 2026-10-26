@@ -1,0 +1,801 @@
+/*
+ * Calculateur de coût réel (components/tco/TcoCalculator) : partagé par /simulateur/ et /pro/.
+ */
+/* ── Layout : stacked → side-by-side ─────────────────── */
+.tco-calc {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+@media (min-width: 1024px) {
+  .tco-calc {
+    grid-template-columns: 3fr 2fr;
+    align-items: start;
+  }
+  .tco-inputs-area,
+  .tco-advanced-toggle,
+  .tco-advanced-grid {
+    grid-column: 1;
+  }
+  .tco-results-col {
+    grid-column: 2;
+    grid-row: 1 / 20;
+  }
+}
+
+/* Inputs area : stacked on mobile, 2-col sub-grid on md+ */
+.tco-inputs-area {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+@media (min-width: 768px) {
+  .tco-inputs-area {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.tco-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.tco-results-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+@media (min-width: 1024px) {
+  .tco-results-col {
+    position: sticky;
+    top: 1.5rem;
+  }
+}
+
+/* ── Sections ────────────────────────────────────────── */
+.tco-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-tile-sm);
+  background: var(--color-bg);
+}
+
+.tco-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.tco-section-number {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+}
+
+.tco-section-title {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+/* ── Vehicle select ──────────────────────────────────── */
+.tco-select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-tile-sm);
+  background: var(--color-bg-subtle);
+  color: var(--color-text);
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.tco-select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+/* ── Config selector ────────────────────────────────── */
+.tco-config-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.tco-config-label {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+.tco-config-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tco-config-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-tile-sm);
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: left;
+}
+.tco-config-btn:hover {
+  border-color: var(--color-text-faint);
+  background: var(--color-bg-subtle);
+}
+.tco-config-btn.active {
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 6%, var(--color-bg));
+  color: var(--color-text);
+}
+.tco-config-btn-name {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.tco-config-btn-price {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 11px;
+  color: var(--color-text-faint);
+}
+.tco-config-btn.active .tco-config-btn-price {
+  color: var(--color-accent);
+}
+
+.tco-ev-summary {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+@media (min-width: 640px) {
+  .tco-ev-summary {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.tco-ev-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--color-bg-subtle);
+}
+.tco-stat-label {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+.tco-stat-value {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+.tco-stat-value.accent {
+  color: var(--color-accent);
+}
+
+/* ── Slider fields ───────────────────────────────────── */
+.tco-slider-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tco-slider-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+.tco-slider-val {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+.tco-slider-val.accent {
+  color: var(--color-accent);
+}
+
+.tco-slider-field input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+.tco-slider-field input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 2px solid var(--color-bg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+.tco-slider-field input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 2px solid var(--color-bg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+/* ── Number fields ───────────────────────────────────── */
+.tco-number-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.tco-number-label {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+.tco-number-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-tile-sm);
+  background: var(--color-bg);
+  transition: border-color 0.15s;
+}
+.tco-number-wrap:focus-within {
+  border-color: var(--color-accent);
+}
+.tco-number-wrap input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-text);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 14px;
+  outline: none;
+}
+.tco-number-unit {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 11px;
+  color: var(--color-text-faint);
+  white-space: nowrap;
+}
+
+/* ── Layout helpers ──────────────────────────────────── */
+.tco-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.tco-subsection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-bg-subtle);
+}
+.tco-sub-label {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* ── Fuel toggle ─────────────────────────────────────── */
+.tco-fuel-toggle {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-tile-sm);
+  overflow: hidden;
+}
+.tco-fuel-toggle button {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.tco-fuel-toggle button:first-child {
+  border-right: 1px solid var(--color-border);
+}
+.tco-fuel-toggle button.active {
+  background: var(--color-bg-subtle);
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* ── Advanced toggle ─────────────────────────────────── */
+.tco-advanced-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 10px;
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-tile-sm);
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.tco-advanced-toggle:hover {
+  background: var(--color-bg-subtle);
+  color: var(--color-text);
+}
+
+/* ── Advanced sub-grid ────────────────────────────────── */
+.tco-advanced-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+@media (min-width: 768px) {
+  .tco-advanced-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.tco-hint {
+  font-size: 12px;
+  color: var(--color-text-faint);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ══════════════════════════════════════════════════════ */
+/* Results                                               */
+/* ══════════════════════════════════════════════════════ */
+
+.tco-results {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  border: 1px solid var(--color-accent-dim);
+  border-radius: var(--radius-tile);
+  background: color-mix(in srgb, var(--color-accent) 3%, var(--color-bg));
+}
+
+.tco-results-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* ── Savings hero ────────────────────────────────────── */
+.tco-savings-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 1.5rem;
+  border-radius: var(--radius-tile-sm);
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--color-accent) 12%, transparent),
+    color-mix(in srgb, var(--color-accent) 4%, transparent));
+  border: 1px solid color-mix(in srgb, var(--color-accent) 30%, var(--color-border));
+  box-shadow: 0 2px 12px color-mix(in srgb, var(--color-accent) 8%, transparent);
+}
+.tco-savings-hero.negative {
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--color-warning) 12%, transparent),
+    color-mix(in srgb, var(--color-warning) 4%, transparent));
+  border-color: color-mix(in srgb, var(--color-warning) 30%, var(--color-border));
+  box-shadow: 0 2px 12px color-mix(in srgb, var(--color-warning) 8%, transparent);
+}
+.tco-savings-icon {
+  color: var(--color-accent);
+  line-height: 0;
+  margin-bottom: 2px;
+}
+.tco-savings-hero.negative .tco-savings-icon {
+  color: var(--color-warning);
+}
+.tco-savings-label {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+.tco-savings-amount {
+  font-family: var(--font-display, system-ui);
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-accent);
+  line-height: 1.1;
+}
+.tco-savings-hero.negative .tco-savings-amount {
+  color: var(--color-warning);
+}
+.tco-savings-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+.tco-savings-pct {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+.tco-savings-sep {
+  color: var(--color-text-faint);
+  font-size: 10px;
+}
+.tco-savings-monthly {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+.tco-breakeven {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 12px;
+  color: var(--color-text-faint);
+}
+
+/* ── Cost per km comparison ──────────────────────────── */
+.tco-perkm-compare {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-tile-sm);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+}
+.tco-perkm-item {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+.tco-perkm-label {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.tco-perkm-bar-wrap {
+  height: 8px;
+  background: var(--color-bg-subtle);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.tco-perkm-bar {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tco-perkm-item.ev .tco-perkm-bar {
+  background: var(--color-accent);
+}
+.tco-perkm-item.ice .tco-perkm-bar {
+  background: var(--color-text-faint);
+}
+.tco-perkm-val {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text);
+  white-space: nowrap;
+  min-width: 5.5rem;
+  text-align: right;
+}
+
+/* ── Total cards ─────────────────────────────────────── */
+.tco-totals-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+.tco-total-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 1rem;
+  border-radius: var(--radius-tile-sm);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  transition: box-shadow 0.2s;
+}
+.tco-total-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.tco-total-card.ev {
+  border-left: 3px solid var(--color-accent);
+}
+.tco-total-card.ice {
+  border-left: 3px solid var(--color-text-faint);
+}
+.tco-total-label {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+.tco-total-amount {
+  font-family: var(--font-display, system-ui);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--color-text);
+}
+.tco-total-monthly {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+/* ── Breakdown bars ──────────────────────────────────── */
+.tco-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.tco-breakdown-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.tco-legend {
+  display: flex;
+  gap: 1rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.tco-legend-ev {
+  color: var(--color-accent);
+}
+.tco-legend-ev::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--color-accent);
+  margin-right: 4px;
+  vertical-align: middle;
+}
+.tco-legend-ice {
+  color: var(--color-text-muted);
+}
+.tco-legend-ice::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--color-text-faint);
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+.tco-bar-row {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 0.5rem;
+  align-items: center;
+}
+.tco-bar-label {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 11px;
+  color: var(--color-text-muted);
+  text-align: right;
+}
+.tco-bar-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.tco-bar-track {
+  position: relative;
+  height: 20px;
+  background: var(--color-bg);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.tco-bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tco-bar-fill.ev {
+  background: var(--color-accent);
+  opacity: 0.8;
+}
+.tco-bar-fill.ice {
+  background: var(--color-text-faint);
+  opacity: 0.35;
+}
+.tco-bar-amount {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 10px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+/* ── Disclaimer ──────────────────────────────────────── */
+.tco-disclaimer {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 11px;
+  color: var(--color-text-faint);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Depreciation insight panel ─────────────────────── */
+.tco-depreciation-insight {
+  margin-top: 4px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.tco-depreciation-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--color-bg-subtle);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+.tco-depreciation-title {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.tco-depreciation-body {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.tco-depreciation-body p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+.tco-depreciation-body strong {
+  color: var(--color-text);
+}
+.tco-depreciation-values {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.tco-depreciation-val {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--color-bg-subtle);
+}
+.tco-depreciation-val.ev {
+  border-left: 3px solid var(--color-accent);
+}
+.tco-depreciation-val.ice {
+  border-left: 3px solid var(--color-text-faint);
+}
+.tco-depreciation-val-label {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+.tco-depreciation-val-pct {
+  font-family: var(--font-display, system-ui);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1;
+}
+.tco-depreciation-val.ev .tco-depreciation-val-pct {
+  color: var(--color-accent);
+}
+.tco-depreciation-val-hint {
+  font-size: 11px;
+  color: var(--color-text-faint);
+}
+.tco-depreciation-footer {
+  font-size: 12px !important;
+  font-style: italic;
+  color: var(--color-text-faint) !important;
+}
+
+/* ── Particulier ou société ──────────────────────────── */
+.tco-mode {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.9rem;
+  grid-column: 1;
+}
+.tco-mode-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+.tco-mode-seg {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 999px;
+  background: var(--color-bg-subtle);
+}
+.tco-mode-seg button {
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  transition: background-color 200ms var(--ease-out-expo), color 200ms ease;
+}
+.tco-mode-seg button[aria-checked="true"] {
+  background: var(--color-surface-elevated);
+  color: var(--color-text);
+  box-shadow: var(--shadow-sm);
+}
+.tco-mode-hint {
+  flex-basis: 100%;
+  font-size: 12.5px;
+  color: var(--color-text-faint);
+}

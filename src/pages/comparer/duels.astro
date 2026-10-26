@@ -1,0 +1,157 @@
+---
+/**
+ * Tous les duels « X vs Y », rangés par catégorie, plus les paires « à prix égal » (ex-bons plans).
+ * Chaque carte dit en une ligne qui va le plus loin et qui coûte le moins (lib/duel).
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BentoGrid from "@/components/ui/BentoGrid.astro";
+import Tile from "@/components/ui/Tile.astro";
+import VehicleImage from "@/components/ui/VehicleImage.astro";
+import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
+import { getAllDuels, getDuelGroups, type Duel } from "@/lib/duel";
+import { duelSlug } from "@/data/duels";
+import { url } from "@/lib/url";
+import { ArrowRight } from "lucide-react";
+
+const duels = new Map(getAllDuels().map((d) => [d.slug, d]));
+const groups = getDuelGroups()
+  .map((g) => ({ ...g, duels: g.pairs.map(([a, b]) => duels.get(duelSlug(a, b))).filter((d): d is Duel => !!d) }))
+  .filter((g) => g.duels.length > 0);
+const total = groups.reduce((n, g) => n + g.duels.length, 0);
+
+/** Une ligne par carte : qui va le plus loin, qui coûte le moins */
+function summary(d: Duel) {
+  const winner = (key: string) => {
+    const w = d.rows.find((r) => r.key === key)?.winner;
+    return w === "a" ? d.a.name : w === "b" ? d.b.name : null;
+  };
+  const range = winner("range");
+  const price = winner("aided") ?? winner("price");
+  if (range && range === price) return `${range} : plus loin et moins cher`;
+  return [range ? `Plus loin : ${range}` : "Autonomie au coude-à-coude", price ? `moins cher : ${price}` : null].filter(Boolean).join(" · ");
+}
+
+const description = `${total} duels de voitures électriques : deux modèles face à face sur l'autonomie réelle, le prix après prime CEE, la recharge et le coffre, chiffres tirés des fiches et confiance de chaque mesure affichée.`;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Duels de voitures électriques",
+  description,
+  url: new URL(url("/comparer/duels/"), Astro.site).toString(),
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: total,
+    itemListElement: groups.flatMap((g) => g.duels).map((d, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: `${d.a.name} vs ${d.b.name}`,
+      url: new URL(url(`/comparer/${d.slug}/`), Astro.site).toString(),
+    })),
+  },
+};
+---
+
+<BaseLayout title="Duels de voitures électriques : les face-à-face les plus demandés" description={description} jsonLd={jsonLd} ogImage="/og/pages/duels.jpg">
+  <div class="container-edit pt-2 md:pt-3 fade-rise">
+    <Breadcrumbs items={[{ label: "Accueil", path: "/" }, { label: "Comparateur", path: "/comparer/" }, { label: "Duels" }]} />
+  </div>
+
+  <div class="container-edit pt-2 pb-8 md:pt-3 md:pb-12 flex flex-col gap-10">
+    <BentoGrid>
+      <Tile size="full" variant="elevated" class="md:!p-8">
+        <span class="label-eyebrow fade-rise">Comparer · {total} duels</span>
+        <h1 class="display-2 mt-3 max-w-4xl fade-rise fade-rise-delay-1">Deux modèles face à face, sur les mêmes mesures.</h1>
+        <p class="mt-4 max-w-3xl text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed fade-rise fade-rise-delay-2">
+          Autonomie réelle (mesurée ou estimée, et c'est dit), prix après prime CEE, recharge rapide, coffre, et ce que chacun donne
+          pour votre trajet. Tout est calculé depuis les fiches : un chiffre qui change sur une fiche change aussi le duel.
+        </p>
+        <a href={url("/comparer/")} class="btn btn-secondary btn-sm mt-6 self-start fade-rise fade-rise-delay-2">
+          Composer le vôtre, jusqu'à 4 modèles <ArrowRight size={15} strokeWidth={2} className="btn-arrow" aria-hidden="true" />
+        </a>
+      </Tile>
+    </BentoGrid>
+
+    {groups.map((g) => (
+      <section aria-labelledby={`g-${g.label}`}>
+        <div class="duels-head">
+          <h2 id={`g-${g.label}`} class="section-title">{g.label}</h2>
+          {g.label === "À prix égal" && (
+            <a href={url("/bons-plans/")} class="duels-more">Les écarts en détail <ArrowRight size={14} strokeWidth={2.2} aria-hidden="true" /></a>
+          )}
+        </div>
+        {g.label === "À prix égal" && (
+          <p class="duels-lead">Un modèle connu, et une autre voiture de même gabarit, au même prix ou moins, qui fait mieux sur un point qui compte.</p>
+        )}
+        <ul class="duels-grid">
+          {g.duels.map((d) => (
+            <li>
+              <a href={url(`/comparer/${d.slug}/`)} class="duel-card">
+                <span class="duel-card-photos stage" aria-hidden="true">
+                  <VehicleImage slug={d.a.v.slug} alt="" widths={[160, 320]} sizes="140px" class="w-[46%] h-full" />
+                  <span class="duel-card-vs">vs</span>
+                  <VehicleImage slug={d.b.v.slug} alt="" widths={[160, 320]} sizes="140px" class="w-[46%] h-full" />
+                </span>
+                <span class="duel-card-name">{d.a.name} <span>vs</span> {d.b.name}</span>
+                <span class="duel-card-sum">{summary(d)}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+    font-weight: 600;
+    letter-spacing: -0.022em;
+    line-height: 1.15;
+  }
+  .duels-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem 1rem; margin-bottom: 0.75rem; }
+  .duels-more { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 14px; font-weight: 600; color: var(--color-accent); }
+  .duels-lead { margin: -0.25rem 0 0.9rem; max-width: 70ch; font-size: 14.5px; color: var(--color-text-muted); }
+  .duels-grid { display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 0.75rem; }
+  @media (min-width: 560px) { .duels-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1024px) { .duels-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (min-width: 1280px) { .duels-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .duel-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    height: 100%;
+    padding: 0.5rem 0.5rem 0.9rem;
+    border-radius: var(--radius-tile);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    transition: border-color 200ms ease, box-shadow 260ms var(--ease-out-expo), transform 260ms var(--ease-out-expo);
+  }
+  .duel-card:active { transform: scale(0.985); transition-duration: 120ms; }
+  @media (hover: hover) and (pointer: fine) {
+    .duel-card:hover { border-color: var(--color-border-strong); box-shadow: var(--shadow-md); }
+  }
+  .duel-card-photos {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 5.5rem;
+    padding: 0.4rem 0.5rem 0.2rem;
+    border-radius: var(--radius-tile-sm);
+  }
+  .duel-card-vs {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--color-text-faint);
+  }
+  .duel-card-name { padding: 0.35rem 0.5rem 0; font-size: 15px; font-weight: 650; letter-spacing: -0.01em; line-height: 1.25; }
+  .duel-card-name span { font-weight: 400; color: var(--color-text-faint); }
+  .duel-card-sum { padding: 0 0.5rem; font-size: 12.5px; color: var(--color-text-muted); }
+</style>

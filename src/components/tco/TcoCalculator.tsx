@@ -2,6 +2,7 @@ import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import { url } from "@/lib/url";
 import { CEE_PRICE_CAP_EUR } from "@/lib/cee";
 import { formatNumber } from "@/lib/format";
+import { CHARGING_LOSSES, COST_DEFAULTS } from "@/lib/costDefaults";
 
 /* ---------------------------------------------------------------- */
 /* Types                                                             */
@@ -17,53 +18,45 @@ interface ConfigSummary {
   realRange_mixed_km: number;
 }
 
-interface VehicleSummary {
+export interface TcoVehicleSummary {
   slug: string;
   brand: string;
   model: string;
   variant: string;
   segment: string;
   price_EUR: number;
+  /** Prime CEE de tout ménage, et d'une personne morale (mode entreprise) */
   aids_EUR: number;
+  aidsPro_EUR: number;
   consumption_kWh_100km: number;
   realRange_mixed_km: number;
   configs: ConfigSummary[];
 }
 
+type Mode = "particulier" | "entreprise";
+
 interface Props {
-  vehicles: VehicleSummary[];
+  vehicles: TcoVehicleSummary[];
+  /** Mode de départ (la page Entreprises ouvre en mode entreprise) ; ?profil=entreprise le force */
+  initialMode?: Mode;
 }
+
+/** TVA récupérable par une société assujettie : 100 % sur l'électricité, 80 % sur le carburant */
+const VAT = 0.2;
+const ELEC_HT = 1 / (1 + VAT);
+const FUEL_HT = 1 - 0.8 * (VAT / (1 + VAT));
+const KM_DEFAULT: Record<Mode, number> = { particulier: 15000, entreprise: 25000 };
 
 /* ---------------------------------------------------------------- */
 /* Constants                                                         */
 /* ---------------------------------------------------------------- */
 
-export const DEFAULTS = {
-  km_per_year: 15000,
-  years: 5,
-  elec_home_eur_kwh: 0.21,
-  elec_fast_eur_kwh: 0.45,
-  fast_charge_pct: 20,
-  diesel_eur_l: 1.72,
-  essence_eur_l: 1.78,
-  ice_conso_l_100: 6.5,
-  ice_price: 30000,
-  ice_maintenance_eur_yr: 1100,
-  ev_maintenance_eur_yr: 450,
-  insurance_ev_eur_yr: 650,
-  insurance_ice_eur_yr: 600,
-  ev_residual_pct: 55,
-  ice_residual_pct: 45,
-  tvs_ice_eur_yr: 0,
-};
+/** Hypothèses par défaut (lib/costDefaults), réexportées pour les pages qui les citent */
+export const DEFAULTS = COST_DEFAULTS;
 
-const fmt = (n: number) =>
-  new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(
-    Math.round(n)
-  );
+const fmt = (n: number) => formatNumber(Math.round(n));
 
-const fmtPct = (n: number) =>
-  new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 1 }).format(n);
+const fmtPct = (n: number) => formatNumber(n, 1);
 
 /* ---------------------------------------------------------------- */
 /* Animated number hook                                              */
@@ -96,7 +89,7 @@ function useAnimatedNumber(target: number, duration = 400): number {
   return display;
 }
 
-function AnimatedAmount({ value, suffix = "EUR", className }: { value: number; suffix?: string; className?: string }) {
+function AnimatedAmount({ value, suffix = "€", className }: { value: number; suffix?: string; className?: string }) {
   const animated = useAnimatedNumber(value);
   return <span className={className}>{fmt(animated)} {suffix}</span>;
 }
@@ -216,11 +209,11 @@ function BarRow({
       <div className="tco-bar-bars">
         <div className="tco-bar-track">
           <div className="tco-bar-fill ev" style={{ width: `${evW}%` }} />
-          <span className="tco-bar-amount">{fmt(ev)} EUR</span>
+          <span className="tco-bar-amount">{fmt(ev)} €</span>
         </div>
         <div className="tco-bar-track">
           <div className="tco-bar-fill ice" style={{ width: `${iceW}%` }} />
-          <span className="tco-bar-amount">{fmt(ice)} EUR</span>
+          <span className="tco-bar-amount">{fmt(ice)} €</span>
         </div>
       </div>
     </div>
@@ -247,42 +240,42 @@ function DepreciationInsight({
           <circle cx="8" cy="8" r="7" />
           <path d="M8 5v3" /><circle cx="8" cy="11" r="0.5" fill="currentColor" />
         </svg>
-        <span className="tco-depreciation-title">Pourquoi le VE se deprecie moins</span>
+        <span className="tco-depreciation-title">Pourquoi le VE se déprécie moins</span>
       </div>
 
       <div className="tco-depreciation-body">
         <p>
-          Les prejuges sur le vehicule electrique (durabilite de la batterie,
-          risque d'incendie, cout reel) se deconstruisent progressivement a mesure
-          que les retours d'experience s'accumulent. Les batteries modernes
-          conservent 80 a 90 % de leur capacite apres 200 000 km, les risques
-          d'incendie sont statistiquement inferieurs aux thermiques, et le cout
-          d'entretien est 2 a 3 fois moindre.
+          Les préjugés sur le véhicule électrique (durabilité de la batterie,
+          risque d'incendie, coût réel) se déconstruisent progressivement à mesure
+          que les retours d'expérience s'accumulent. Les batteries modernes
+          conservent 80 à 90 % de leur capacité après 200 000 km, les risques
+          d'incendie sont statistiquement inférieurs aux thermiques, et le coût
+          d'entretien est 2 à 3 fois moindre.
         </p>
         <p>
-          <strong>L'interdiction de vente de vehicules thermiques neufs en UE
-          a partir de 2035</strong> accelerera mecaniquement la depreciation
-          des thermiques : un marche de revente qui se retrecit, des couts de
-          carburant croissants, et des ZFE (zones a faibles emissions) qui
-          restreignent leur usage dans les centres urbains. A l'inverse,
-          un VE achete aujourd'hui conservera sa pertinence sur le long terme.
+          <strong>L'interdiction de vente de véhicules thermiques neufs dans l'UE
+          à partir de 2035</strong> accélérera mécaniquement la dépréciation
+          des thermiques : un marché de revente qui se rétrécit, des coûts de
+          carburant croissants, et des ZFE (zones à faibles émissions) qui
+          restreignent leur usage dans les centres urbains. À l'inverse,
+          un VE acheté aujourd'hui conservera sa pertinence sur le long terme.
         </p>
         <div className="tco-depreciation-values">
           <div className="tco-depreciation-val ev">
-            <span className="tco-depreciation-val-label">VE apres {years} ans</span>
+            <span className="tco-depreciation-val-label">VE après {years} ans</span>
             <span className="tco-depreciation-val-pct">{evResidual} %</span>
-            <span className="tco-depreciation-val-hint">du prix neuf conserve</span>
+            <span className="tco-depreciation-val-hint">du prix neuf conservé</span>
           </div>
           <div className="tco-depreciation-val ice">
-            <span className="tco-depreciation-val-label">Thermique apres {years} ans</span>
+            <span className="tco-depreciation-val-label">Thermique après {years} ans</span>
             <span className="tco-depreciation-val-pct">{iceResidual} %</span>
-            <span className="tco-depreciation-val-hint">du prix neuf conserve</span>
+            <span className="tco-depreciation-val-hint">du prix neuf conservé</span>
           </div>
         </div>
         <p className="tco-depreciation-footer">
           La tendance s'inversera : avec des batteries plus durables, un entretien
-          negligeable, une securite accrue et une demande croissante, la valeur
-          residuelle des VE depassera celle des thermiques bien avant 2035.
+          négligeable, une sécurité accrue et une demande croissante, la valeur
+          résiduelle des VE dépassera celle des thermiques bien avant 2035.
         </p>
       </div>
     </div>
@@ -293,7 +286,10 @@ function DepreciationInsight({
 /* Main component                                                    */
 /* ---------------------------------------------------------------- */
 
-export default function TcoCalculator({ vehicles }: Props) {
+export default function TcoCalculator({ vehicles, initialMode = "particulier" }: Props) {
+  // Particulier ou société : prime CEE, taxes du thermique, TVA récupérable sur l'énergie
+  const [mode, setMode] = useState<Mode>(initialMode);
+  const pro = mode === "entreprise";
   // Selected EV
   const [selectedSlug, setSelectedSlug] = useState(vehicles[0]?.slug ?? "");
   const selectedEv = vehicles.find((v) => v.slug === selectedSlug);
@@ -301,6 +297,10 @@ export default function TcoCalculator({ vehicles }: Props) {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
+      if (params.get("profil") === "entreprise") {
+        setMode("entreprise");
+        setKmPerYear(KM_DEFAULT.entreprise);
+      }
       const vParam = params.get("v");
       if (vParam) {
         const found = vehicles.find((v) => v.slug === vParam);
@@ -328,8 +328,11 @@ export default function TcoCalculator({ vehicles }: Props) {
   const activeConso = selectedConfig?.consumption_kWh_100km ?? selectedEv?.consumption_kWh_100km ?? 16;
   const activeRange = selectedConfig?.realRange_mixed_km ?? selectedEv?.realRange_mixed_km ?? 300;
 
+  // Prime de la version selon le mode (aucune au-dessus du plafond de prix)
+  const aidsFor = (ev: TcoVehicleSummary) => (activePrice > CEE_PRICE_CAP_EUR ? 0 : pro ? ev.aidsPro_EUR : ev.aids_EUR);
+
   // Usage params
-  const [kmPerYear, setKmPerYear] = useState(DEFAULTS.km_per_year);
+  const [kmPerYear, setKmPerYear] = useState(KM_DEFAULT[initialMode]);
   const [years, setYears] = useState(DEFAULTS.years);
 
   // EV energy
@@ -409,6 +412,15 @@ export default function TcoCalculator({ vehicles }: Props) {
     []
   );
 
+  // Changer de mode remet le kilométrage type du mode, sauf s'il a été réglé à la main
+  const handleMode = useCallback(
+    (m: Mode) => {
+      setMode(m);
+      setKmPerYear((km) => (km === KM_DEFAULT[mode] ? KM_DEFAULT[m] : km));
+    },
+    [mode]
+  );
+
   const handleFuelType = useCallback(
     (ft: "diesel" | "essence") => {
       setFuelType(ft);
@@ -427,13 +439,16 @@ export default function TcoCalculator({ vehicles }: Props) {
 
     // EV purchase
     // Pas de prime au-dessus du plafond de prix (version plus chère que celle d'entrée)
-    const evPurchaseNet = Math.max(0, activePrice - (activePrice > CEE_PRICE_CAP_EUR ? 0 : ev.aids_EUR));
+    const evPurchaseNet = Math.max(0, activePrice - aidsFor(ev));
     const evResidualVal = activePrice * (evResidual / 100);
     const evDepreciation = evPurchaseNet - evResidualVal;
 
     // EV energy
+    // Prix de l'énergie consommée, pertes de recharge comprises (comme Ma semaine) ;
+    // une société récupère la TVA de l'électricité et 80 % de celle du carburant
     const avgElecPrice =
-      elecHome * (1 - fastPct / 100) + elecFast * (fastPct / 100);
+      (elecHome * (1 - fastPct / 100) + elecFast * (fastPct / 100)) * CHARGING_LOSSES * (pro ? ELEC_HT : 1);
+    const fuelCost = fuelPrice * (pro ? FUEL_HT : 1);
     const evEnergyCost = (totalKm * evConso) / 100 * avgElecPrice;
 
     // EV maintenance + insurance
@@ -448,12 +463,12 @@ export default function TcoCalculator({ vehicles }: Props) {
     const iceDepreciation = icePrice - iceResidualVal;
 
     // ICE energy
-    const iceEnergyCost = (totalKm * iceConso) / 100 * fuelPrice;
+    const iceEnergyCost = (totalKm * iceConso) / 100 * fuelCost;
 
     // ICE maintenance + insurance + TVS
     const iceMaintenanceCost = iceMaint * years;
     const iceInsuranceCost = iceInsurance * years;
-    const iceTvsCost = tvsIce * years;
+    const iceTvsCost = pro ? tvsIce * years : 0;
 
     const iceTotal =
       iceDepreciation +
@@ -492,10 +507,10 @@ export default function TcoCalculator({ vehicles }: Props) {
     const evVarAnnual =
       (kmPerYear * evConso / 100) * avgElecPrice + evMaint + evInsurance;
     const iceVarAnnual =
-      (kmPerYear * iceConso / 100) * fuelPrice +
+      (kmPerYear * iceConso / 100) * fuelCost +
       iceMaint +
       iceInsurance +
-      tvsIce;
+      (pro ? tvsIce : 0);
     const annualDiff = iceVarAnnual - evVarAnnual;
     const fixedOvercost = evFixedAnnual - iceFixedAnnual;
     let breakeven: number | null = null;
@@ -551,16 +566,30 @@ export default function TcoCalculator({ vehicles }: Props) {
     evResidual,
     iceResidual,
     tvsIce,
+    pro,
   ]);
 
   if (!selectedEv || !result) {
-    return <p>Aucun vehicule disponible.</p>;
+    return <p>Aucun véhicule disponible.</p>;
   }
 
   const hasConfigs = selectedEv.configs.length > 1;
 
   return (
-    <div className="tco-calc no-glossary">
+    <div className="tco-calc no-glossary" data-mode={mode}>
+      {/* ── Particulier ou société ─────────────────────── */}
+      <div className="tco-mode">
+        <span className="tco-mode-label" id="tco-mode-label">Vous achetez</span>
+        <span className="tco-mode-seg" role="radiogroup" aria-labelledby="tco-mode-label">
+          <button type="button" role="radio" aria-checked={!pro} onClick={() => handleMode("particulier")}>En particulier</button>
+          <button type="button" role="radio" aria-checked={pro} onClick={() => handleMode("entreprise")}>Pour une société</button>
+        </span>
+        <span className="tco-mode-hint">
+          {pro
+            ? "Prime CEE d'une personne morale, taxes du thermique, TVA récupérable sur l'énergie."
+            : "Prime CEE de tout ménage ; la vôtre peut être plus élevée selon vos revenus."}
+        </span>
+      </div>
       {/* ══════════════════════════════════════════════════ */}
       {/* LEFT AREA : inputs (2-col sub-grid on desktop)    */}
       {/* ══════════════════════════════════════════════════ */}
@@ -570,7 +599,7 @@ export default function TcoCalculator({ vehicles }: Props) {
         <div className="tco-section">
           <div className="tco-section-header">
             <span className="tco-section-number">01</span>
-            <span className="tco-section-title">Vehicule electrique</span>
+            <span className="tco-section-title">Véhicule électrique</span>
           </div>
 
           <select
@@ -581,7 +610,7 @@ export default function TcoCalculator({ vehicles }: Props) {
           >
             {vehicles.map((v) => (
               <option key={v.slug} value={v.slug}>
-                {v.brand} {v.model} {v.variant} -- des {fmt(v.price_EUR)} EUR
+                {v.brand} {v.model}, dès {fmt(v.price_EUR)} €
               </option>
             ))}
           </select>
@@ -600,7 +629,7 @@ export default function TcoCalculator({ vehicles }: Props) {
                     onClick={() => handleConfigChange(c.id)}
                   >
                     <span className="tco-config-btn-name">{c.label}</span>
-                    <span className="tco-config-btn-price">{fmt(c.price_EUR)} EUR</span>
+                    <span className="tco-config-btn-price">{fmt(c.price_EUR)} €</span>
                   </button>
                 ))}
               </div>
@@ -610,22 +639,22 @@ export default function TcoCalculator({ vehicles }: Props) {
           <div className="tco-ev-summary">
             <div className="tco-ev-stat">
               <span className="tco-stat-label">Prix catalogue</span>
-              <span className="tco-stat-value">{fmt(activePrice)} EUR</span>
+              <span className="tco-stat-value">{fmt(activePrice)} €</span>
             </div>
             <div className="tco-ev-stat">
-              <span className="tco-stat-label">Prime CEE (tout ménage)</span>
+              <span className="tco-stat-label">{pro ? "Prime CEE (société)" : "Prime CEE (tout ménage)"}</span>
               <span className="tco-stat-value accent">
-                -{fmt(activePrice > CEE_PRICE_CAP_EUR ? 0 : selectedEv.aids_EUR)} EUR
+                -{fmt(aidsFor(selectedEv))} €
               </span>
             </div>
             <div className="tco-ev-stat">
-              <span className="tco-stat-label">Autonomie mixte</span>
+              <span className="tco-stat-label">Autonomie réelle</span>
               <span className="tco-stat-value">
                 {fmt(activeRange)} km
               </span>
             </div>
             <div className="tco-ev-stat">
-              <span className="tco-stat-label">Conso mixte</span>
+              <span className="tco-stat-label">Conso réelle</span>
               <span className="tco-stat-value">
                 {fmtPct(evConso)} kWh/100 km
               </span>
@@ -641,7 +670,7 @@ export default function TcoCalculator({ vehicles }: Props) {
           </div>
 
           <SliderField
-            label="Kilometres par an"
+            label="Kilomètres par an"
             unit="km/an"
             value={kmPerYear}
             min={3000}
@@ -651,7 +680,7 @@ export default function TcoCalculator({ vehicles }: Props) {
             accent
           />
           <SliderField
-            label="Duree de detention"
+            label="Durée de détention"
             unit="ans"
             value={years}
             min={1}
@@ -660,25 +689,48 @@ export default function TcoCalculator({ vehicles }: Props) {
             onChange={setYears}
           />
         </div>
+
+        {/* ── Taxes du thermique (société) ───────────────── */}
+        {pro && (
+          <div className="tco-section">
+            <div className="tco-section-header">
+              <span className="tco-section-number">02b</span>
+              <span className="tco-section-title">Taxes annuelles du thermique</span>
+            </div>
+            <NumberField
+              label="Taxes CO2 et polluants (ex-TVS)"
+              unit="€/an"
+              value={tvsIce}
+              min={0}
+              max={5000}
+              step={50}
+              onChange={setTvsIce}
+            />
+            <p className="tco-hint">
+              Taxes annuelles d'une voiture de tourisme de société : reprenez celles du thermique comparé. Le VE en est exonéré ; un
+              utilitaire n'y est pas soumis.
+            </p>
+          </div>
+        )}
       </div>
 
       {/* ══════════════════════════════════════════════════ */}
-      {/* COL 2 : Energie + Avance                          */}
+      {/* COL 2 : Énergie + avancé                          */}
       {/* ══════════════════════════════════════════════════ */}
       <div className="tco-col tco-col-params">
         {/* ── Energy ──────────────────────────────────────── */}
         <div className="tco-section">
           <div className="tco-section-header">
             <span className="tco-section-number">03</span>
-            <span className="tco-section-title">Energie</span>
+            <span className="tco-section-title">Énergie</span>
           </div>
 
           <div className="tco-subsection">
-            <span className="tco-sub-label">Electricite (VE)</span>
+            <span className="tco-sub-label">Électricité (VE)</span>
             <div className="tco-row-2">
               <NumberField
                 label="Tarif domicile"
-                unit="EUR/kWh"
+                unit="€/kWh"
                 value={elecHome}
                 min={0.05}
                 max={0.60}
@@ -687,7 +739,7 @@ export default function TcoCalculator({ vehicles }: Props) {
               />
               <NumberField
                 label="Tarif rapide"
-                unit="EUR/kWh"
+                unit="€/kWh"
                 value={elecFast}
                 min={0.10}
                 max={1.0}
@@ -734,7 +786,7 @@ export default function TcoCalculator({ vehicles }: Props) {
             <div className="tco-row-2">
               <NumberField
                 label={`Prix ${fuelType}`}
-                unit="EUR/L"
+                unit="€/L"
                 value={fuelPrice}
                 min={0.5}
                 max={3.0}
@@ -753,7 +805,7 @@ export default function TcoCalculator({ vehicles }: Props) {
             </div>
             <NumberField
               label="Prix thermique neuf"
-              unit="EUR"
+              unit="€"
               value={icePrice}
               min={10000}
               max={80000}
@@ -774,7 +826,7 @@ export default function TcoCalculator({ vehicles }: Props) {
         <div className="tco-results-header">
           <span className="tco-section-number">R</span>
           <span className="tco-section-title">
-            Resultat sur {years} ans / {fmt(result.totalKm)} km
+            Résultat sur {years} ans, {fmt(result.totalKm)} km
           </span>
         </div>
 
@@ -797,8 +849,8 @@ export default function TcoCalculator({ vehicles }: Props) {
           </div>
           <span className="tco-savings-label">
             {result.savings >= 0
-              ? "Economie avec le VE"
-              : "Surcout du VE"}
+              ? "Économie avec le VE"
+              : "Surcoût du VE"}
           </span>
           <AnimatedAmount
             value={Math.abs(result.savings)}
@@ -810,20 +862,22 @@ export default function TcoCalculator({ vehicles }: Props) {
             </span>
             <span className="tco-savings-sep">·</span>
             <span className="tco-savings-monthly">
-              {fmt(Math.abs(result.savings) / (years * 12))} EUR/mois
+              {fmt(Math.abs(result.savings) / (years * 12))} €/mois
             </span>
             {result.breakeven !== null && result.breakeven > 0 && (
               <>
                 <span className="tco-savings-sep">·</span>
                 <span className="tco-breakeven">
-                  rentable en {fmtPct(result.breakeven)} an{result.breakeven >= 2 ? "s" : ""}
+                  {result.breakeven < 1
+                    ? "rentable dès la 1re année"
+                    : `rentable en ${fmtPct(result.breakeven)} an${result.breakeven >= 2 ? "s" : ""}`}
                 </span>
               </>
             )}
             {result.breakeven === 0 && (
               <>
                 <span className="tco-savings-sep">·</span>
-                <span className="tco-breakeven">immediat</span>
+                <span className="tco-breakeven">immédiat</span>
               </>
             )}
           </div>
@@ -860,17 +914,17 @@ export default function TcoCalculator({ vehicles }: Props) {
         {/* Side-by-side totals */}
         <div className="tco-totals-row">
           <div className="tco-total-card ev">
-            <span className="tco-total-label">Cout total VE</span>
+            <span className="tco-total-label">Coût total VE</span>
             <AnimatedAmount value={result.evTotal} className="tco-total-amount" />
             <span className="tco-total-monthly">
-              {fmt(result.evTotal / (years * 12))} EUR/mois
+              {fmt(result.evTotal / (years * 12))} €/mois
             </span>
           </div>
           <div className="tco-total-card ice">
-            <span className="tco-total-label">Cout total thermique</span>
+            <span className="tco-total-label">Coût total thermique</span>
             <AnimatedAmount value={result.iceTotal} className="tco-total-amount" />
             <span className="tco-total-monthly">
-              {fmt(result.iceTotal / (years * 12))} EUR/mois
+              {fmt(result.iceTotal / (years * 12))} €/mois
             </span>
           </div>
         </div>
@@ -878,19 +932,19 @@ export default function TcoCalculator({ vehicles }: Props) {
         {/* Bar chart breakdown */}
         <div className="tco-breakdown">
           <div className="tco-breakdown-header">
-            <span className="tco-section-title">Decomposition</span>
+            <span className="tco-section-title">Décomposition</span>
             <div className="tco-legend">
               <span className="tco-legend-ev">VE</span>
               <span className="tco-legend-ice">Thermique</span>
             </div>
           </div>
 
-          <BarRow label="Decote" ev={result.evBreakdown.depreciation} ice={result.iceBreakdown.depreciation} maxVal={result.maxBar} />
-          <BarRow label="Energie" ev={result.evBreakdown.energy} ice={result.iceBreakdown.energy} maxVal={result.maxBar} />
+          <BarRow label="Décote" ev={result.evBreakdown.depreciation} ice={result.iceBreakdown.depreciation} maxVal={result.maxBar} />
+          <BarRow label="Énergie" ev={result.evBreakdown.energy} ice={result.iceBreakdown.energy} maxVal={result.maxBar} />
           <BarRow label="Entretien" ev={result.evBreakdown.maintenance} ice={result.iceBreakdown.maintenance} maxVal={result.maxBar} />
           <BarRow label="Assurance" ev={result.evBreakdown.insurance} ice={result.iceBreakdown.insurance} maxVal={result.maxBar} />
           {result.iceBreakdown.tvs > 0 && (
-            <BarRow label="TVS" ev={0} ice={result.iceBreakdown.tvs} maxVal={result.maxBar} />
+            <BarRow label="Taxes" ev={0} ice={result.iceBreakdown.tvs} maxVal={result.maxBar} />
           )}
         </div>
 
@@ -923,9 +977,9 @@ export default function TcoCalculator({ vehicles }: Props) {
         </div>
 
         <p className="tco-disclaimer">
-          Calcul indicatif. Moyennes marche France 2025.
-          Electricite a {fmtPct(result.avgElecPrice * 100)} ct/kWh
-          ({100 - fastPct} % domicile / {fastPct} % rapide).
+          Calcul indicatif, moyennes du marché français. Consommation réelle de la version (autonomie de la fiche), électricité à{" "}
+          {fmtPct(result.avgElecPrice * 100)} ct par kWh consommé ({100 - fastPct} % à domicile, {fastPct} % sur borne rapide, 10 % de
+          pertes de recharge comprises){pro ? ", hors TVA récupérable (100 % sur l'électricité, 80 % sur le carburant)" : ""}.
         </p>
       </div>
       </div>
@@ -935,7 +989,7 @@ export default function TcoCalculator({ vehicles }: Props) {
         className="tco-advanced-toggle"
         onClick={() => setShowAdvanced(!showAdvanced)}
       >
-        <span>{showAdvanced ? "Masquer" : "Afficher"} les parametres avances</span>
+        <span>{showAdvanced ? "Masquer" : "Afficher"} les paramètres avancés</span>
         <svg aria-hidden="true"
           width="16"
           height="16"
@@ -963,7 +1017,7 @@ export default function TcoCalculator({ vehicles }: Props) {
             <div className="tco-row-2">
               <NumberField
                 label="Entretien VE"
-                unit="EUR/an"
+                unit="€/an"
                 value={evMaint}
                 min={0}
                 max={3000}
@@ -972,7 +1026,7 @@ export default function TcoCalculator({ vehicles }: Props) {
               />
               <NumberField
                 label="Entretien thermique"
-                unit="EUR/an"
+                unit="€/an"
                 value={iceMaint}
                 min={0}
                 max={3000}
@@ -991,7 +1045,7 @@ export default function TcoCalculator({ vehicles }: Props) {
             <div className="tco-row-2">
               <NumberField
                 label="Assurance VE"
-                unit="EUR/an"
+                unit="€/an"
                 value={evInsurance}
                 min={0}
                 max={3000}
@@ -1000,7 +1054,7 @@ export default function TcoCalculator({ vehicles }: Props) {
               />
               <NumberField
                 label="Assurance thermique"
-                unit="EUR/an"
+                unit="€/an"
                 value={iceInsurance}
                 min={0}
                 max={3000}
@@ -1014,10 +1068,10 @@ export default function TcoCalculator({ vehicles }: Props) {
           <div className="tco-section">
             <div className="tco-section-header">
               <span className="tco-section-number">06</span>
-              <span className="tco-section-title">Valeur residuelle (decote)</span>
+              <span className="tco-section-title">Valeur résiduelle (décote)</span>
             </div>
             <SliderField
-              label={`VE apres ${years} ans`}
+              label={`VE après ${years} ans`}
               unit="% du prix neuf"
               value={evResidual}
               min={10}
@@ -1026,7 +1080,7 @@ export default function TcoCalculator({ vehicles }: Props) {
               onChange={setEvResidual}
             />
             <SliderField
-              label={`Thermique apres ${years} ans`}
+              label={`Thermique après ${years} ans`}
               unit="% du prix neuf"
               value={iceResidual}
               min={10}
@@ -1041,25 +1095,6 @@ export default function TcoCalculator({ vehicles }: Props) {
             />
           </div>
 
-          {/* ── TVS (pro only) ─────────────────────────── */}
-          <div className="tco-section">
-            <div className="tco-section-header">
-              <span className="tco-section-number">07</span>
-              <span className="tco-section-title">TVS (vehicule de societe)</span>
-            </div>
-            <NumberField
-              label="TVS annuelle thermique"
-              unit="EUR/an"
-              value={tvsIce}
-              min={0}
-              max={5000}
-              step={50}
-              onChange={setTvsIce}
-            />
-            <p className="tco-hint">
-              VE exonere a 100 %. Mettez 0 si vehicule particulier.
-            </p>
-          </div>
         </div>
       )}
     </div>
