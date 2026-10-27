@@ -2204,11 +2204,16 @@ html.week-guide-lock body {
 }
 .week-trip-plan-head {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
   padding-top: 0.45rem;
   font-size: 12.5px;
   color: var(--color-text-muted);
+}
+/* Température du trajet : poussée à droite de la vitesse */
+.week-trip-plan-head .week-stepper {
+  margin-left: auto;
 }
 .week-trip-plan-head .week-seg-sm button {
   padding-inline: 0.6rem;

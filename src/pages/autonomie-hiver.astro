@@ -1,0 +1,292 @@
+---
+/**
+ * Autonomie en hiver (roadmap M6) : tout le catalogue classé par -5 °C, et un curseur de
+ * température qui recalcule et reclasse la liste dans le navigateur avec le même modèle de froid
+ * que les fiches (lib/winter). Le HTML porte le classement à -5 °C (lisible sans JavaScript).
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BentoGrid from "@/components/ui/BentoGrid.astro";
+import Tile from "@/components/ui/Tile.astro";
+import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
+import Confidence from "@/components/ui/Confidence.astro";
+import FaqList from "@/components/seo/FaqList.astro";
+import LinkChips from "@/components/seo/LinkChips.astro";
+import { getWinterRanking } from "@/lib/winterRanking";
+import { ESTIMATE_MARGIN, WINTER_C, tempFactor } from "@/lib/winter";
+import { TRIP_AXES } from "@/data/trips";
+import { tripTitle } from "@/lib/roadTrips";
+import { formatKm, formatNumber, formatPrice } from "@/lib/format";
+import { url } from "@/lib/url";
+import { ArrowRight } from "lucide-react";
+
+const rows = getWinterRanking();
+const SHOWN = 20;
+const median = (xs: number[]) => {
+  const s = [...xs].sort((a, b) => a - b);
+  return s.length ? s[Math.floor(s.length / 2)]! : 0;
+};
+const pct = (x: number) => `${formatNumber(Math.round(x))} %`;
+const medianLoss = median(rows.map((r) => r.lossPct));
+const over300 = rows.filter((r) => r.winter >= 300).length;
+const over400 = rows.filter((r) => r.winter >= 400).length;
+const best = rows[0];
+const lossOf = (chem: string, hp: boolean | null) => (1 - tempFactor(WINTER_C, chem, hp)) * 100;
+const cheapestOver300 = [...rows].filter((r) => r.winter >= 300 && r.price).sort((a, b) => a.price! - b.price!)[0];
+
+// Données du curseur : [mixte, chimie, pompe à chaleur 1 / 0 / -1, mesurée 1 / 0], dans l'ordre du classement
+const data = rows.map((r) => [r.mixed, r.chemistry === "LFP" ? 1 : 0, r.heatPump === true ? 1 : r.heatPump === false ? 0 : -1, r.measured ? 1 : 0]);
+
+const faq = [
+  {
+    question: "Combien d'autonomie perd une voiture électrique en hiver ?",
+    answer: `Par -5 °C, la perte médiane est de ${pct(medianLoss)} par rapport à l'autonomie réelle d'été, sur les ${rows.length} modèles du catalogue. Elle vient du chauffage de l'habitacle (environ ${pct(lossOf("NMC", true) - 13)} avec une pompe à chaleur, ${pct(lossOf("NMC", false) - 13)} sans) et de la batterie froide (13 % en chimie NMC, 18 % en LFP).`,
+  },
+  {
+    question: "Quelle voiture électrique a la meilleure autonomie en hiver ?",
+    answer: best
+      ? `${best.name} (${best.version}) tient ${formatKm(best.winter)} par -5 °C, la plus grande autonomie d'hiver du catalogue. ${over300} modèles dépassent 300 km${cheapestOver300 ? `, le moins cher étant ${cheapestOver300.name} dès ${formatPrice(cheapestOver300.price!)}` : ""}.`
+      : "",
+  },
+  {
+    question: "La pompe à chaleur change-t-elle vraiment l'autonomie en hiver ?",
+    answer: `Oui : elle divise environ par deux l'énergie du chauffage. Par -5 °C, une voiture NMC perd ${pct(lossOf("NMC", true))} avec une pompe à chaleur et ${pct(lossOf("NMC", false))} sans, selon le modèle de froid d'Evly calé sur les essais d'hiver de Bjørn Nyland.`,
+  },
+  {
+    question: "Une batterie LFP est-elle moins bonne en hiver ?",
+    answer: `Elle perd un peu plus au froid (18 % contre 13 % pour une NMC par -5 °C, chauffage à part) et recharge plus lentement tant qu'elle n'est pas chaude. En échange, elle coûte moins cher et accepte d'être chargée à 100 % au quotidien.`,
+  },
+];
+
+const description = `Autonomie des voitures électriques en hiver : ${rows.length} modèles classés par -5 °C, perte médiane de ${pct(medianLoss)}. ${over300} modèles dépassent 300 km. Choisissez la température, la liste se recalcule.`;
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Autonomie des voitures électriques par -5 °C",
+    numberOfItems: rows.length,
+    itemListElement: rows.slice(0, 20).map((r, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: `${r.name} : ${r.winter} km par -5 °C`,
+      url: new URL(url(`/vehicules/${r.vehicle.slug}/`), Astro.site).toString(),
+    })),
+  },
+];
+const skiTrips = TRIP_AXES.filter((a) => a.group === "ski");
+---
+
+<BaseLayout title="Autonomie des voitures électriques en hiver : le classement par -5 °C" description={description} jsonLd={jsonLd} ogImage="/og/pages/hiver.jpg">
+  <div class="container-edit pt-2 md:pt-3 fade-rise">
+    <Breadcrumbs items={[{ label: "Accueil", path: "/" }, { label: "Nos mesures", path: "/methodologie/" }, { label: "Autonomie en hiver" }]} />
+  </div>
+
+  <div class="hv container-edit pt-2 pb-8 md:pt-3 md:pb-12 flex flex-col gap-10">
+    <BentoGrid>
+      <Tile size="full" variant="elevated" class="md:!p-8">
+        <span class="label-eyebrow fade-rise">Hiver · {rows.length} modèles</span>
+        <h1 class="display-2 mt-3 max-w-4xl fade-rise fade-rise-delay-1">L'autonomie en hiver, modèle par modèle.</h1>
+        <p class="mt-4 max-w-3xl text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed fade-rise fade-rise-delay-2">
+          Ce qu'il reste de l'autonomie réelle quand il gèle : chauffage de l'habitacle et batterie froide, selon la chimie et la
+          pompe à chaleur. Le même calcul que sur les fiches et dans Ma semaine ; choisissez la température, la liste se reclasse.
+        </p>
+        <dl class="hv-facts fade-rise fade-rise-delay-2">
+          <div><dt>Par -5 °C</dt><dd><b>-{pct(medianLoss)}</b></dd><dd>perte médiane par rapport à l'été</dd></div>
+          <div><dt>Plus de 300 km</dt><dd><b>{over300}</b> modèles</dd><dd>{over400} au-delà de 400 km</dd></div>
+          {best && <div><dt>La plus endurante</dt><dd><b>{formatKm(best.winter)}</b></dd><dd>{best.name}</dd></div>}
+        </dl>
+      </Tile>
+    </BentoGrid>
+
+    <section aria-labelledby="classement-title" class="no-glossary">
+      <h2 id="classement-title" class="hv-title">Le classement</h2>
+      <div class="hv-control">
+        <label for="hv-temp">Température extérieure</label>
+        <input id="hv-temp" type="range" min="-15" max="25" step="1" value={WINTER_C} class="trip-range" data-hv-temp />
+        <output for="hv-temp" class="hv-temp-out tabular" data-hv-out>{WINTER_C} °C</output>
+      </div>
+      <p class="hv-lead">
+        Autonomie réelle à cette température, sur route et autoroute mêlées, chaque modèle dans sa version la plus endurante.
+      </p>
+      <div class="hv-panel" data-hv-list data-margin={ESTIMATE_MARGIN}>
+        <div class="hv-cols" aria-hidden="true"><span>Modèle</span><span>Autonomie</span><span>Perte</span></div>
+        <ol class="hv-rows" data-hv-rows>
+          {rows.map((r, i) => (
+            <li class="hv-row" data-i={i} style={`order:${i}`} data-rest={i >= SHOWN ? "1" : undefined}>
+              <span class="hv-rank tabular" data-hv-rank>{i + 1}</span>
+              <a href={url(`/vehicules/${r.vehicle.slug}/?config=${r.configId}`)} class="hv-name">
+                <b>{r.name}</b>
+                <span>{r.version}{r.price ? ` · dès ${formatPrice(r.price)}` : ""}</span>
+              </a>
+              <span class="hv-km tabular"><b data-hv-km>{formatNumber(r.winter)}</b> km</span>
+              <span class="hv-loss tabular" data-hv-loss>-{pct(r.lossPct)}</span>
+              <span class="hv-bar" aria-hidden="true"><i data-hv-bar style={`--v:${r.winter};--m:${r.mixed}`} /></span>
+              <span class="hv-meta"><Confidence code={r.measured ? "tested" : "estimated"} /> {r.chemistry}{r.heatPump === true ? " · pompe à chaleur" : ""}</span>
+            </li>
+          ))}
+          {rows.length > SHOWN && (
+            <li class="hv-more-item" style={`order:${SHOWN - 1}`}>
+              <button type="button" class="hv-more" aria-expanded="false" data-hv-more>Les {rows.length - SHOWN} autres modèles</button>
+            </li>
+          )}
+        </ol>
+      </div>
+      <p class="hv-note">
+        Barre claire : l'autonomie réelle d'été du même modèle. Mesurée : le mixte vient d'un essai sur route (Bjørn Nyland ou
+        presse) et seul le froid est calculé ; estimée : le mixte aussi est estimé, avec une marge de prudence de
+        {formatNumber((1 - ESTIMATE_MARGIN) * 100)} %.
+      </p>
+    </section>
+
+    <section aria-labelledby="pourquoi-title">
+      <h2 id="pourquoi-title" class="hv-title">Pourquoi l'autonomie baisse au froid</h2>
+      <BentoGrid>
+        <Tile size="2x1" class="md:!p-7">
+          <h3 class="hv-sub">Le chauffage</h3>
+          <p class="hv-text">
+            Une voiture électrique n'a pas de moteur chaud à récupérer : chauffer l'habitacle prend de l'énergie à la batterie.
+            Par -5 °C, c'est environ {pct(lossOf("NMC", false) - 13)} de l'autonomie sans pompe à chaleur, moitié moins avec.
+            Préchauffer la voiture branchée, avant de partir, ne coûte rien à la batterie.
+          </p>
+        </Tile>
+        <Tile size="2x1" class="md:!p-7">
+          <h3 class="hv-sub">La batterie froide</h3>
+          <p class="hv-text">
+            Une batterie froide rend moins d'énergie et accepte moins de puissance à la borne : 13 % de perte par -5 °C en chimie
+            NMC, 18 % en LFP. Sur un grand trajet, la première recharge est plus lente si la batterie n'a pas été préchauffée.
+          </p>
+        </Tile>
+      </BentoGrid>
+      <p class="hv-note mt-3">
+        Le détail du calcul, et pourquoi l'hiver reste une estimation : <a href={url("/methodologie/#hiver")}>notre méthode</a>. Les
+        essais d'hiver publiés (Bjørn Nyland, entre 1 et 3 °C) servent de calage.
+      </p>
+    </section>
+
+    <section aria-labelledby="faq-title">
+      <h2 id="faq-title" class="hv-title">Questions fréquentes</h2>
+      <FaqList entries={faq} />
+    </section>
+
+    <LinkChips
+      groups={[
+        { title: "Vers les stations de ski", links: skiTrips.map((a) => ({ label: tripTitle(a), href: url(`/trajets/${a.slug}/`) })) },
+        {
+          title: "Aller plus loin",
+          links: [
+            { label: "Ma semaine en hiver, sur la carte", href: url("/ma-semaine/") },
+            { label: "Observatoire de l'autonomie", href: url("/observatoire/") },
+            { label: "Tous les grands trajets →", href: url("/trajets/"), accent: true },
+          ],
+        },
+      ]}
+    />
+  </div>
+</BaseLayout>
+
+<script define:vars={{ data }}>
+  // Même modèle de froid que src/lib/winter.js (dupliqué ici : script sans module)
+  const HEATING = { hp: 0.1, none: 0.2 };
+  const BATTERY = { LFP: 0.18, NMC: 0.13 };
+  const factor = (t, lfp, hp) => {
+    if (t >= 20 && t <= 25) return 1;
+    if (t > 25) return Math.max(0.8, 1 - 0.08 * ((t - 25) / 15));
+    const heating = hp === 1 ? HEATING.hp : hp === 0 ? HEATING.none : (HEATING.hp + HEATING.none) / 2;
+    const battery = lfp ? BATTERY.LFP : BATTERY.NMC;
+    return Math.max(0.4, 1 - (heating + battery) * ((20 - t) / 25));
+  };
+  const nf = new Intl.NumberFormat("fr-FR");
+  function setup() {
+    const list = document.querySelector("[data-hv-list]");
+    const input = document.querySelector("[data-hv-temp]");
+    if (!list || !input || input.dataset.ready) return;
+    input.dataset.ready = "1";
+    const margin = Number(list.dataset.margin);
+    const rows = [...list.querySelectorAll(".hv-row")];
+    const out = document.querySelector("[data-hv-out]");
+    const more = list.querySelector(".hv-more-item");
+    const render = () => {
+      const t = Number(input.value);
+      input.style.setProperty("--fill", `${((t + 15) / 40) * 100}%`);
+      out.textContent = `${t > 0 ? "+" : ""}${t} °C`;
+      const km = data.map(([mixed, lfp, hp, measured]) => Math.round(mixed * factor(t, lfp, hp) * (measured || t >= 20 ? 1 : margin)));
+      const order = km.map((k, i) => [k, i]).sort((a, b) => b[0] - a[0]);
+      order.forEach(([k, i], rank) => {
+        const row = rows[i];
+        row.style.order = String(rank);
+        row.dataset.rest = rank >= 20 ? "1" : "";
+        if (!row.dataset.rest) delete row.dataset.rest;
+        row.querySelector("[data-hv-rank]").textContent = String(rank + 1);
+        row.querySelector("[data-hv-km]").textContent = nf.format(k);
+        const loss = Math.round((1 - k / data[i][0]) * 100);
+        row.querySelector("[data-hv-loss]").textContent = loss === 0 ? "0 %" : `${loss > 0 ? "-" : "+"}${nf.format(Math.abs(loss))} %`;
+        row.querySelector("[data-hv-bar]").style.setProperty("--v", String(k));
+      });
+    };
+    input.addEventListener("input", render);
+    render();
+    const btn = list.querySelector("[data-hv-more]");
+    btn?.addEventListener("click", () => {
+      const open = btn.getAttribute("aria-expanded") !== "true";
+      btn.setAttribute("aria-expanded", String(open));
+      list.querySelector("[data-hv-rows]").toggleAttribute("data-all", open);
+      if (more) more.style.order = open ? "9999" : "19";
+    });
+  }
+  setup();
+  document.addEventListener("astro:page-load", setup);
+</script>
+
+<style is:global>
+  /* Global, préfixé .hv : pas d'attribut de portée sur les lignes du classement */
+  .hv .hv-title { font-family: var(--font-display); font-size: clamp(1.375rem, 2.2vw, 1.75rem); font-weight: 600; letter-spacing: -0.022em; line-height: 1.15; margin-bottom: 0.6rem; }
+  .hv-lead { margin: 0 0 0.9rem; max-width: 75ch; font-size: 14.5px; color: var(--color-text-muted); }
+  .hv-note { margin-top: 0.9rem; max-width: 85ch; font-size: 12.5px; color: var(--color-text-faint); }
+  .hv-note a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }
+  .hv-sub { font-size: 16px; font-weight: 700; margin-bottom: 0.4rem; }
+  .hv-text { font-size: 14.5px; color: var(--color-text-muted); }
+
+  .hv-facts { display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 0.6rem; margin-top: 1.75rem; }
+  @media (min-width: 640px) { .hv-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .hv-facts > div { padding: 1rem 1.1rem; border-radius: var(--radius-tile-sm); background: var(--color-surface-accent); }
+  .hv-facts dt { font-size: 12.5px; font-weight: 600; color: var(--color-accent-dim); }
+  .hv-facts dd { font-size: 13.5px; color: var(--color-text-muted); }
+  .hv-facts dd b { font-family: var(--font-display); font-size: 2rem; font-weight: 800; letter-spacing: -0.04em; color: var(--color-text); font-variant-numeric: tabular-nums; }
+
+  .hv-control { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 0.4rem 1rem; max-width: 36rem; margin: 0.4rem 0 0.6rem; }
+  .hv-control label { grid-column: 1 / -1; font-size: 13.5px; font-weight: 600; }
+  .hv-temp-out { min-width: 5rem; text-align: right; font-family: var(--font-display); font-size: 26px; font-weight: 800; letter-spacing: -0.03em; color: var(--color-accent); }
+
+  .hv-panel { border-radius: var(--radius-tile); background: var(--color-surface); border: 1px solid var(--color-border); padding: 0.4rem 1.25rem 0.75rem; }
+  @media (min-width: 768px) { .hv-panel { padding-inline: 2rem; } }
+  .hv-cols, .hv-row { display: grid; grid-template-columns: 2rem minmax(0, 1fr) auto; align-items: center; gap: 0.2rem 0.9rem; }
+  @media (min-width: 768px) { .hv-cols, .hv-row { grid-template-columns: 2rem minmax(0, 1.3fr) 6rem 4rem minmax(0, 1fr); } }
+  .hv-cols { display: none; padding: 0.6rem 0; font-size: 12.5px; font-weight: 600; color: var(--color-text-faint); }
+  @media (min-width: 768px) { .hv-cols { display: grid; } .hv-cols span:first-child { grid-column: 2; } }
+  .hv-rows { display: flex; flex-direction: column; }
+  .hv-row { padding: 0.65rem 0; border-top: 1px solid var(--color-border); }
+  .hv-rows:not([data-all]) .hv-row[data-rest] { display: none; }
+  .hv-rank { font-size: 13px; color: var(--color-text-faint); }
+  .hv-name { display: flex; flex-direction: column; min-width: 0; }
+  .hv-name b { font-size: 15px; font-weight: 650; letter-spacing: -0.01em; }
+  .hv-name span { font-size: 12.5px; color: var(--color-text-faint); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  @media (hover: hover) and (pointer: fine) { .hv-name:hover b { color: var(--color-accent); } }
+  .hv-km { font-size: 14px; color: var(--color-text-muted); }
+  .hv-km b { font-family: var(--font-display); font-size: 18px; font-weight: 800; letter-spacing: -0.02em; color: var(--color-text); }
+  .hv-loss { display: none; font-size: 13.5px; color: var(--color-text-muted); }
+  .hv-bar { grid-column: 2 / -1; position: relative; height: 8px; border-radius: 999px; background: var(--color-bg-subtle); overflow: hidden; }
+  .hv-bar i { position: absolute; inset: 0 auto 0 0; width: calc(var(--m) / 800 * 100%); border-radius: 999px; background: var(--color-lime); }
+  .hv-bar i::after { content: ""; position: absolute; inset: 0 auto 0 0; width: calc(min(var(--v), var(--m)) / var(--m) * 100%); border-radius: 999px; background: var(--color-accent); }
+  .hv-meta { grid-column: 2 / -1; font-size: 12px; color: var(--color-text-faint); }
+  @media (min-width: 768px) {
+    .hv-loss { display: block; }
+    .hv-bar { grid-column: auto; }
+    .hv-meta { grid-column: 2 / -1; }
+  }
+  .hv-more-item { border-top: 1px solid var(--color-border); }
+  .hv-more { padding: 0.8rem 0 0.3rem; font-size: 14px; font-weight: 600; color: var(--color-accent); }
+</style>

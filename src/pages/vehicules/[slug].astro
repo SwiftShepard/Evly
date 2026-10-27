@@ -28,6 +28,9 @@ import LinkChips from "@/components/seo/LinkChips.astro";
 import { duelSlug } from "@/data/duels";
 import { duelsOf } from "@/lib/duel";
 import { duration, getTripResults, stopsText, tripTitle } from "@/lib/roadTrips";
+import { winterRankOf } from "@/lib/winterRanking";
+import { chargeCosts, eur, eurKwh, realConsumption, tariffDate } from "@/lib/chargingCost";
+import { batteryOf } from "@/lib/map/versions";
 import RangeRail from "@/components/ui/RangeRail.astro";
 import { DEFAULTS as TCO_DEFAULTS } from "@/components/tco/TcoCalculator";
 import { ArrowRight, Map as MapIcon, Route } from "lucide-react";
@@ -215,6 +218,10 @@ const tripLinks = (await getTripResults())
       : [];
   });
 if (tripLinks.length) tripLinks.push({ label: "Tous les grands trajets →", href: url("/trajets/"), accent: true } as (typeof tripLinks)[number]);
+const winterRank = winterRankOf(vehicle.slug);
+const winterLinks = winterRank
+  ? [{ label: `Autonomie en hiver : ${winterRank.rank}${winterRank.rank === 1 ? "re" : "e"} sur ${winterRank.of} par -5 °C`, href: url("/autonomie-hiver/") }]
+  : [];
 const otherBrandModels = (brand?.vehicles ?? []).filter((v) => v.slug !== vehicle.slug);
 const relatedSelections = getCategoriesFor(vehicle, allVehicles);
 const pageUrl = new URL(url(`/vehicules/${vehicle.slug}/`), Astro.site).toString();
@@ -319,6 +326,16 @@ const faqEntries: { question: string; answer: string }[] = [
         ? `Sur une borne rapide (recharge DC), il faut environ ${seoFacts.dcMin} minutes pour remonter de 10 à 80 % de batterie, le temps d'une pause. À la maison ou au travail sur une borne murale (recharge AC de ${vehicle.chargingAC.onboardCharger_kW} kW), comptez plutôt ${formatHours(vehicle.chargingAC.time_0_100_h)} pour une charge complète.`
         : `${LaVehicle} n'accepte pas la recharge rapide sur borne DC. Sur une prise ou une borne murale (recharge AC de ${vehicle.chargingAC.onboardCharger_kW} kW), une charge complète prend environ ${formatHours(vehicle.chargingAC.time_0_100_h)}.`,
   },
+  (() => {
+    // Avant configViews : la version affichée par défaut, lue directement
+    const first = vehicle.configurations[0];
+    const battery = first ? batteryOf(vehicle, first) : vehicle.usableCapacity_kWh;
+    const [hc, base, , fast] = chargeCosts(battery, (first?.realRange ?? vehicle.realRange).mixed_km);
+    return {
+      question: `Combien coûte une recharge ${deVehicle} ?`,
+      answer: `À la maison, remonter sa batterie de ${formatNumber(battery, Number.isInteger(battery) ? 0 : 1)} kWh de 10 à 100 % coûte environ ${eur(hc!.charge)} en heures creuses (${eur(base!.charge)} au tarif de base), soit ${eur(hc!.per100)} aux 100 km.${seoFacts.dcMin != null ? ` Sur borne rapide, de 10 à 80 %, comptez ${eur(fast!.charge)} selon le réseau et l'abonnement.` : ""} Tarif réglementé d'EDF au ${tariffDate()}, pertes de recharge comprises.`,
+    };
+  })(),
   {
     question: `Quel est le prix ${deVehicle} avec les aides de l'État ?`,
     answer:
@@ -1090,6 +1107,34 @@ const configSubtitle = (label: string) => {
                   )}
                 </Tile>
               )}
+
+              <Tile size="full" label="Combien coûte une recharge" class="reveal">
+                <div class="overflow-x-auto -mx-1">
+                  <table class="cost-table">
+                    <thead>
+                      <tr><th scope="col">Où et quand</th><th scope="col">Une recharge</th><th scope="col">Aux 100 km</th><th scope="col">Prix du kWh</th></tr>
+                    </thead>
+                    <tbody>
+                      {chargeCosts(cv.batteryCapacity, cv.realRange.mixed_km)
+                        .filter((row) => row.label !== "Borne rapide" || cv.dcPeak > 0)
+                        .map((row) => (
+                          <tr>
+                            <th scope="row">{row.label}</th>
+                            <td data-numeric><b>{eur(row.charge)}</b> <span>{row.window}</span></td>
+                            <td data-numeric>{eur(row.per100)}</td>
+                            <td data-numeric>{eurKwh(row.price)}</td>
+                          </tr>
+                        ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p class="cost-note">
+                  Batterie de {formatNumber(cv.batteryCapacity, Number.isInteger(cv.batteryCapacity) ? 0 : 1)}&nbsp;kWh, consommation réelle de
+                  {" "}{formatNumber(realConsumption(cv.batteryCapacity, cv.realRange.mixed_km), 1)}&nbsp;kWh/100&nbsp;km,
+                  10&nbsp;% de pertes de recharge comprises. Tarif réglementé d'EDF au {tariffDate()} ; borne rapide selon le réseau et l'abonnement.
+                  <a href={url("/recharge-a-domicile/")}>Recharger chez soi : le guide</a>
+                </p>
+              </Tile>
             </div>
           ))}
         </BentoGrid>
@@ -1385,6 +1430,7 @@ const configSubtitle = (label: string) => {
             },
             { title: "Face à face", links: duelLinks },
             { title: "Ses grands trajets, l'été", links: tripLinks },
+            { title: "Au froid", links: winterLinks },
           ]}
         />
       </section>
@@ -2387,6 +2433,16 @@ const configSubtitle = (label: string) => {
       animation: tkc-dot-in 420ms var(--ease-out-expo) calc(var(--c) * 22ms + var(--y) * 12ms + 200ms) backwards;
     }
   }
+  /* Coût d'une recharge (tuile de la section Recharge) */
+  .cost-table { width: 100%; min-width: 520px; border-collapse: collapse; font-size: 14px; }
+  .cost-table th, .cost-table td { padding: 0.55rem 0.25rem; border-bottom: 1px solid var(--color-border); text-align: left; vertical-align: baseline; }
+  .cost-table thead th { font-size: 12px; font-weight: 600; color: var(--color-text-faint); }
+  .cost-table tbody th { font-weight: 600; }
+  .cost-table td { color: var(--color-text-muted); }
+  .cost-table td b { font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; color: var(--color-text); }
+  .cost-table td span { margin-left: 0.25rem; font-size: 12px; color: var(--color-text-faint); }
+  .cost-note { margin-top: 0.8rem; font-size: 12.5px; line-height: 1.5; color: var(--color-text-faint); }
+  .cost-note a { margin-left: 0.25rem; font-weight: 600; color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }
 </style>
 
 <script>

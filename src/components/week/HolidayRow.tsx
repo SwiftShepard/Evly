@@ -22,6 +22,8 @@ interface Props {
   onTimes: (times: number) => void;
   onSeason: (season: Season) => void;
   onSpeed: (speed: HwSpeed) => void;
+  /** Température au choix (°C), par pas de 5 */
+  onTemp: (temp: number) => void;
   onRemove: () => void;
   /** Image du trajet à partager (sans adresse), quand le trajet est calculé */
   card?: TripCard | null;
@@ -33,10 +35,11 @@ const duration = (min: number) => {
 };
 const pct = (x: number) => `${Math.round(x * 100)} %`;
 
-export default function HolidayRow({ trip, result, cost, active, onFocus, onTimes, onSeason, onSpeed, onRemove, card }: Props) {
+export default function HolidayRow({ trip, result, cost, active, onFocus, onTimes, onSeason, onSpeed, onTemp, onRemove, card }: Props) {
   const name = trip.label.split(",")[0];
   const plan = result?.plan ?? null;
   const speed = trip.speed ?? 130;
+  const temp = trip.temp ?? (trip.season === "summer" ? 20 : -5);
   return (
     <li className="week-trip" data-active={active ? "1" : undefined}>
       <button type="button" className="week-trip-main" aria-pressed={active} aria-expanded={active} onClick={onFocus}>
@@ -92,6 +95,15 @@ export default function HolidayRow({ trip, result, cost, active, onFocus, onTime
                   ))}
                 </span>
                 <span>km/h sur autoroute</span>
+                <span className="week-stepper" role="group" aria-label={`Température du trajet vers ${name}`}>
+                  <button type="button" tabIndex={active ? 0 : -1} onClick={() => onTemp(Math.max(-15, temp - 5))} disabled={temp <= -15} aria-label="5 °C de moins">
+                    <Minus size={13} strokeWidth={2.4} aria-hidden="true" />
+                  </button>
+                  <span className="tabular">{temp > 0 ? "+" : ""}{temp} °C</span>
+                  <button type="button" tabIndex={active ? 0 : -1} onClick={() => onTemp(Math.min(35, temp + 5))} disabled={temp >= 35} aria-label="5 °C de plus">
+                    <Plus size={13} strokeWidth={2.4} aria-hidden="true" />
+                  </button>
+                </span>
               </div>
               {plan.gapKm !== null ? (
                 <p className="week-trip-plan-gap">

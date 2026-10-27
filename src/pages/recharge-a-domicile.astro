@@ -1,0 +1,243 @@
+---
+/**
+ * Recharger chez soi (roadmap E11) : ce que coûte une recharge selon l'option du compteur
+ * (base, heures creuses, Tempo), modèle par modèle, et ce qu'il faut installer. Prix datés dans
+ * data/electricity.ts, calculs de lib/chargingCost (les mêmes que la tuile des fiches).
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BentoGrid from "@/components/ui/BentoGrid.astro";
+import Tile from "@/components/ui/Tile.astro";
+import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
+import FaqList from "@/components/seo/FaqList.astro";
+import { FAST_EUR_KWH, TARIF_BLEU } from "@/data/electricity";
+import { chargeCosts, eur, eurKwh, realConsumption, tariffDate } from "@/lib/chargingCost";
+import { CHARGING_LOSSES } from "@/lib/costDefaults";
+import { batteryOf } from "@/lib/map/versions";
+import { getAllVehicles, getVehicleBySlug, isStrictUtility } from "@/lib/vehicles";
+import { getMarketStatus, getVehicleName } from "@/lib/seo";
+import { formatNumber } from "@/lib/format";
+import { url } from "@/lib/url";
+import { ArrowRight } from "lucide-react";
+
+// Les modèles qu'on cherche le plus, dans la version affichée par défaut sur leur fiche
+const POPULAR = [
+  "renault-5", "peugeot-e-208", "tesla-model-y", "tesla-model-3", "renault-twingo", "citroen-e-c3", "dacia-spring", "mg-mg4",
+  "kia-ev3", "renault-4", "renault-scenic", "peugeot-e-2008", "vw-id3", "skoda-elroq", "fiat-grande-panda", "hyundai-inster",
+];
+const rows = POPULAR.map((slug) => getVehicleBySlug(slug))
+  .filter((v) => v !== undefined)
+  .map((v) => {
+    const c = v.configurations[0]!;
+    const battery = batteryOf(v, c);
+    const mixed = (c.realRange ?? v.realRange).mixed_km;
+    const [hc, base, , fast] = chargeCosts(battery, mixed);
+    return { v, c, battery, hc: hc!, base: base!, fast: fast!, dc: (c.chargingDC_peak_kW ?? v.chargingDC.peakPower_kW) > 0 };
+  });
+
+// Le catalogue entier : consommation réelle médiane, pour les ordres de grandeur
+const median = (xs: number[]) => [...xs].sort((a, b) => a - b)[Math.floor(xs.length / 2)] ?? 0;
+const cars = getAllVehicles().filter((v) => !isStrictUtility(v) && getMarketStatus(v) !== "discontinued");
+// Batterie et autonomie de la même version (celle de la fiche par défaut) : le niveau modèle les mêle parfois
+const conso = median(
+  cars.map((v) => {
+    const c = v.configurations[0];
+    return c ? realConsumption(batteryOf(v, c), (c.realRange ?? v.realRange).mixed_km) : realConsumption(v.usableCapacity_kWh, v.realRange.mixed_km);
+  })
+);
+const per100 = (price: number) => conso * CHARGING_LOSSES * price;
+const KM_YEAR = 15_000;
+const year = (price: number) => (KM_YEAR / 100) * per100(price);
+
+// Puissance de charge et kilomètres récupérés par heure, à la consommation médiane
+const kmPerHour = (kw: number) => Math.round((kw / CHARGING_LOSSES / conso) * 100);
+const SOCKETS = [
+  { label: "Prise domestique", kw: 2.3, note: "Une prise classique en bon état, sur un circuit dédié : pour dépanner ou pour de petits trajets." },
+  { label: "Prise renforcée", kw: 3.7, note: "Prévue pour tenir la charge des heures durant : une nuit suffit pour la plupart des trajets du quotidien." },
+  { label: "Borne murale (wallbox)", kw: 7.4, note: "Monophasée, le cas le plus courant : une batterie moyenne se remplit en une nuit. Pilotable aux heures creuses." },
+  { label: "Borne triphasée", kw: 11, note: "Seulement avec un compteur triphasé et une voiture qui accepte 11 kW en courant alternatif." },
+];
+
+const date = tariffDate();
+const r5 = rows.find((r) => r.v.slug === "renault-5");
+const faq = [
+  {
+    question: "Combien coûte une recharge de voiture électrique à la maison ?",
+    answer: `Au tarif réglementé d'EDF au ${date}, comptez environ ${eur(per100(TARIF_BLEU.hc))} aux 100 km en heures creuses et ${eur(per100(TARIF_BLEU.base))} au tarif de base, pour une consommation réelle de ${formatNumber(conso, 1)} kWh/100 km (la médiane du catalogue), pertes de recharge comprises.${r5 ? ` Une ${getVehicleName(r5.v)} de ${formatNumber(r5.battery, Number.isInteger(r5.battery) ? 0 : 1)} kWh se recharge de 10 à 100 % pour ${eur(r5.hc.charge)} en heures creuses.` : ""} Chaque fiche Evly donne le coût de sa batterie.`,
+  },
+  {
+    question: "Heures creuses ou Tempo pour recharger une voiture électrique ?",
+    answer: `Les heures creuses (${eurKwh(TARIF_BLEU.hc)}) conviennent à presque tout le monde : il suffit de programmer la charge la nuit. Tempo descend à ${eurKwh(TARIF_BLEU.tempo.blueHc)} en heures creuses des ${TARIF_BLEU.tempoDays.blue} jours bleus, mais monte à ${eurKwh(TARIF_BLEU.tempo.redHp)} en heures pleines des ${TARIF_BLEU.tempoDays.red} jours rouges d'hiver : intéressant si l'on peut décaler la recharge et le chauffage ces jours-là.`,
+  },
+  {
+    question: "Faut-il installer une borne pour recharger à la maison ?",
+    answer: `Non : une prise renforcée de ${formatNumber(3.7, 1)} kW récupère environ ${kmPerHour(3.7)} km par heure, assez pour la plupart des trajets quotidiens en une nuit. Une borne murale de ${formatNumber(7.4, 1)} kW double ce rythme (environ ${kmPerHour(7.4)} km par heure). Au-delà de 3,7 kW, l'installation doit être faite par un électricien qualifié IRVE.`,
+  },
+  {
+    question: "Le crédit d'impôt pour une borne de recharge existe-t-il encore ?",
+    answer: "Non pour les dépenses payées depuis le 1er janvier 2026 : le crédit d'impôt (75 % du coût, au plus 500 € par borne) n'a pas été reconduit. Une borne payée en 2025 se déclare encore avec les revenus de 2025. En copropriété, le programme Advenir finance toujours une partie des installations.",
+  },
+];
+
+const description = `Recharger sa voiture électrique chez soi : ${eur(per100(TARIF_BLEU.hc))} aux 100 km en heures creuses au tarif d'EDF du ${date}. Coût d'une recharge modèle par modèle, heures creuses ou Tempo, prise renforcée ou borne.`;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })),
+};
+---
+
+<BaseLayout title="Recharger sa voiture électrique à la maison : coût, tarifs et installation" description={description} jsonLd={jsonLd} ogImage="/og/pages/recharge.jpg">
+  <div class="container-edit pt-2 md:pt-3 fade-rise">
+    <Breadcrumbs items={[{ label: "Accueil", path: "/" }, { label: "Aides", path: "/aides/" }, { label: "Recharger chez soi" }]} />
+  </div>
+
+  <div class="rc container-edit pt-2 pb-8 md:pt-3 md:pb-12 flex flex-col gap-10">
+    <BentoGrid>
+      <Tile size="full" variant="elevated" class="md:!p-8">
+        <span class="label-eyebrow fade-rise">Recharge · tarifs d'EDF au {date}</span>
+        <h1 class="display-2 mt-3 max-w-4xl fade-rise fade-rise-delay-1">Recharger chez soi : ce que ça coûte, ce qu'il faut installer.</h1>
+        <p class="mt-4 max-w-3xl text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed fade-rise fade-rise-delay-2">
+          À la maison, la nuit, l'électricité coûte deux à quatre fois moins cher que sur une borne rapide. Ce que coûte une
+          recharge selon l'option de votre compteur, pour les modèles les plus courants, et ce qu'il faut pour brancher la voiture.
+        </p>
+        <dl class="rc-facts fade-rise fade-rise-delay-2">
+          <div><dt>Aux 100 km, heures creuses</dt><dd><b>{eur(per100(TARIF_BLEU.hc))}</b></dd><dd>{eur(per100(TARIF_BLEU.base))} au tarif de base</dd></div>
+          <div><dt>Sur {formatNumber(KM_YEAR)} km par an</dt><dd><b>{eur(year(TARIF_BLEU.hc))}</b></dd><dd>d'électricité, en heures creuses</dd></div>
+          <div><dt>Sur borne rapide</dt><dd><b>{eur([per100(FAST_EUR_KWH[0]), per100(FAST_EUR_KWH[1])])}</b></dd><dd>aux 100 km, selon le réseau</dd></div>
+        </dl>
+      </Tile>
+    </BentoGrid>
+
+    <section aria-labelledby="modeles-title" class="no-glossary">
+      <h2 id="modeles-title" class="rc-title">Ce que coûte une recharge, modèle par modèle</h2>
+      <p class="rc-lead">Dans la version affichée par défaut sur la fiche, consommation réelle et 10 % de pertes de recharge comprises.</p>
+      <BentoGrid>
+        <Tile size="full" class="!px-0 md:!px-0 !py-2">
+          <div class="overflow-x-auto">
+            <table class="rc-table">
+              <thead>
+                <tr><th scope="col">Modèle</th><th scope="col">Heures creuses, 10 → 100 %</th><th scope="col">Tarif de base</th><th scope="col">Aux 100 km, heures creuses</th><th scope="col">Borne rapide, 10 → 80 %</th></tr>
+              </thead>
+              <tbody>
+                {rows.map((r) => (
+                  <tr>
+                    <th scope="row">
+                      <a href={url(`/vehicules/${r.v.slug}/?config=${r.c.id}`)}>{getVehicleName(r.v)}</a>
+                      <span>{formatNumber(r.battery, Number.isInteger(r.battery) ? 0 : 1)} kWh</span>
+                    </th>
+                    <td data-numeric><b>{eur(r.hc.charge)}</b></td>
+                    <td data-numeric>{eur(r.base.charge)}</td>
+                    <td data-numeric>{eur(r.hc.per100)}</td>
+                    <td data-numeric>{r.dc ? eur(r.fast.charge) : "pas de charge rapide"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Tile>
+      </BentoGrid>
+      <p class="rc-note">Chaque fiche donne ce calcul pour toutes ses versions, dans la section Recharge.</p>
+    </section>
+
+    <section aria-labelledby="options-title">
+      <h2 id="options-title" class="rc-title">Quelle option sur son compteur</h2>
+      <BentoGrid>
+        <Tile size="1x1" class="md:!p-7">
+          <h3 class="rc-sub">Base</h3>
+          <p class="rc-price tabular">{eurKwh(TARIF_BLEU.base)}</p>
+          <p class="rc-text">Le même prix à toute heure. Simple, mais la voiture paie plein tarif : {eur(year(TARIF_BLEU.base))} par an pour {formatNumber(KM_YEAR)} km.</p>
+        </Tile>
+        <Tile size="1x1" class="md:!p-7">
+          <h3 class="rc-sub">Heures creuses</h3>
+          <p class="rc-price tabular">{eurKwh(TARIF_BLEU.hc)}</p>
+          <p class="rc-text">Huit heures par jour, la nuit le plus souvent ({eurKwh(TARIF_BLEU.hp)} le reste du temps). Programmer la charge suffit : {eur(year(TARIF_BLEU.hc))} par an.</p>
+        </Tile>
+        <Tile size="2x1" class="md:!p-7">
+          <h3 class="rc-sub">Tempo</h3>
+          <p class="rc-price tabular">dès {eurKwh(TARIF_BLEU.tempo.blueHc)}</p>
+          <p class="rc-text">
+            Trois couleurs de jours : {TARIF_BLEU.tempoDays.blue} jours bleus ({eurKwh(TARIF_BLEU.tempo.blueHc)} en heures creuses),
+            {" "}{TARIF_BLEU.tempoDays.white} jours blancs ({eurKwh(TARIF_BLEU.tempo.whiteHc)}) et {TARIF_BLEU.tempoDays.red} jours rouges
+            entre novembre et mars, où les heures pleines montent à {eurKwh(TARIF_BLEU.tempo.redHp)}. En rechargeant la nuit et en
+            évitant les jours rouges, environ {eur(year(TARIF_BLEU.tempo.blueHc))} par an ; à réserver à ceux qui peuvent aussi
+            décaler le chauffage.
+          </p>
+        </Tile>
+      </BentoGrid>
+      <p class="rc-note">
+        Prix TTC du kWh du tarif Bleu réglementé d'EDF au {date} (compteur de 6 kVA), hors abonnement, qui diffère selon l'option.
+        <a href={TARIF_BLEU.sourceUrl} rel="noopener" target="_blank">Grille d'EDF ↗</a>
+      </p>
+    </section>
+
+    <section aria-labelledby="installer-title">
+      <h2 id="installer-title" class="rc-title">Prise renforcée ou borne murale</h2>
+      <p class="rc-lead">Kilomètres récupérés par heure de charge, pour une voiture qui consomme {formatNumber(conso, 1)} kWh/100 km.</p>
+      <BentoGrid>
+        {SOCKETS.map((s) => (
+          <Tile size="1x1" class="md:!p-7">
+            <h3 class="rc-sub">{s.label}</h3>
+            <p class="rc-price tabular">{formatNumber(s.kw, 1)} kW · {kmPerHour(s.kw)} km/h</p>
+            <p class="rc-text">{s.note}</p>
+          </Tile>
+        ))}
+      </BentoGrid>
+      <ul class="rc-list">
+        <li>Au-delà de 3,7 kW, l'installation doit être faite par un électricien qualifié IRVE (obligation réglementaire).</li>
+        <li>Une prise renforcée coûte en général quelques centaines d'euros posée, une borne murale plutôt 1 000 à 2 000 €, selon le tableau électrique et la distance au garage.</li>
+        <li>Le crédit d'impôt de 75 % (500 € au plus par borne) a pris fin avec les dépenses de 2025 : il n'a pas été reconduit en 2026.</li>
+        <li>En copropriété, chacun a droit à une prise à ses frais sur sa place (la copropriété ne peut s'y opposer que pour un motif sérieux et légitime), et le programme Advenir finance une partie des installations.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="sans-title">
+      <h2 id="sans-title" class="rc-title">Sans prise à la maison</h2>
+      <BentoGrid>
+        <Tile size="full" class="md:!p-7">
+          <p class="rc-text">
+            La voiture électrique reste possible : une borne au travail, une borne lente près de chez soi pendant les courses, ou une
+            recharge rapide d'une demi-heure par semaine. Ma semaine calcule ces trois cas sur votre trajet réel, avec les bornes
+            publiques autour de chez vous, et ce que coûte l'énergie face à l'essence.
+          </p>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <a href={url("/ma-semaine/?recharge=borne")} class="btn btn-primary btn-sm">Ma semaine sans prise <ArrowRight size={15} strokeWidth={2} className="btn-arrow" aria-hidden="true" /></a>
+            <a href={url("/simulateur/")} class="btn btn-secondary btn-sm">Électrique ou thermique : le coût réel</a>
+          </div>
+        </Tile>
+      </BentoGrid>
+    </section>
+
+    <section aria-labelledby="faq-title">
+      <h2 id="faq-title" class="rc-title">Questions fréquentes</h2>
+      <FaqList entries={faq} />
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .rc-title { font-family: var(--font-display); font-size: clamp(1.375rem, 2.2vw, 1.75rem); font-weight: 600; letter-spacing: -0.022em; line-height: 1.15; margin-bottom: 0.6rem; }
+  .rc-lead { margin: 0 0 0.9rem; max-width: 75ch; font-size: 14.5px; color: var(--color-text-muted); }
+  .rc-note { margin-top: 0.8rem; max-width: 85ch; font-size: 12.5px; color: var(--color-text-faint); }
+  .rc-note a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }
+  .rc-sub { font-size: 16px; font-weight: 700; }
+  .rc-price { margin: 0.2rem 0 0.5rem; font-family: var(--font-display); font-size: 1.35rem; font-weight: 800; letter-spacing: -0.02em; color: var(--color-accent); }
+  .rc-text { font-size: 14px; color: var(--color-text-muted); }
+  .rc-list { display: flex; flex-direction: column; gap: 0.45rem; max-width: 85ch; margin: 1rem 0 0 1.25rem; list-style: disc; font-size: 14px; color: var(--color-text-muted); }
+
+  .rc-facts { display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 0.6rem; margin-top: 1.75rem; }
+  @media (min-width: 640px) { .rc-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .rc-facts > div { padding: 1rem 1.1rem; border-radius: var(--radius-tile-sm); background: var(--color-surface-accent); }
+  .rc-facts dt { font-size: 12.5px; font-weight: 600; color: var(--color-accent-dim); }
+  .rc-facts dd { font-size: 13.5px; color: var(--color-text-muted); }
+  .rc-facts dd b { font-family: var(--font-display); font-size: 2rem; font-weight: 800; letter-spacing: -0.04em; color: var(--color-text); font-variant-numeric: tabular-nums; }
+
+  .rc-table { width: 100%; min-width: 720px; border-collapse: collapse; font-size: 14px; }
+  .rc-table th, .rc-table td { padding: 0.65rem 1.25rem; border-bottom: 1px solid var(--color-border); text-align: left; vertical-align: baseline; }
+  @media (min-width: 768px) { .rc-table th, .rc-table td { padding-inline: 2rem; } }
+  .rc-table thead th { font-size: 12.5px; font-weight: 600; color: var(--color-text-faint); }
+  .rc-table tbody th { font-weight: 600; }
+  .rc-table tbody th a:hover { color: var(--color-accent); }
+  .rc-table tbody th span { display: block; font-size: 12px; font-weight: 400; color: var(--color-text-faint); }
+  .rc-table td { color: var(--color-text-muted); }
+  .rc-table td b { font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: var(--color-text); }
+</style>

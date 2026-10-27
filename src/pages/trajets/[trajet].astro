@@ -117,7 +117,7 @@ const jsonLd = {
         <span class="label-eyebrow fade-rise">Grand trajet · {TRIP_GROUPS[axis.group]}</span>
         <h1 class="display-2 mt-3 max-w-4xl fade-rise fade-rise-delay-1">{name} en voiture électrique</h1>
         <p class="mt-4 max-w-3xl text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed fade-rise fade-rise-delay-2">
-          {formatKm(Math.round(result.km))} par la route, {duration(result.driveMin)} de conduite à 130 km/h tenus, sans bouchon. Voici les {rows.length} modèles
+          {formatKm(Math.round(result.km))} par la route, {duration(result.driveMin)} de conduite sans bouchon ni pause. Voici les {rows.length} modèles
           du catalogue sur ce même trajet : où ils s'arrêtent (de vraies bornes rapides le long du tracé), combien de temps, et
           avec quelle batterie ils arrivent, l'été comme l'hiver.
         </p>
@@ -254,7 +254,10 @@ const jsonLd = {
     <section aria-labelledby="methode-title">
       <h2 id="methode-title" class="section-title">Comment c'est calculé</h2>
       <ul class="tr-method">
-        <li>Itinéraire le plus rapide sur le réseau routier d'OpenStreetMap, 130 km/h sur autoroute, d'un centre-ville à l'autre.</li>
+        <li>
+          Itinéraire le plus rapide sur le réseau routier d'OpenStreetMap, d'un centre-ville à l'autre. Consommation à 130 km/h sur
+          autoroute ; temps de conduite à la moyenne réellement tenue (limitations à 110, péages, traversées de ville), sans bouchon.
+        </li>
         <li>
           Départ batterie pleine, jamais moins de 10 % à une borne ou à l'arrivée. Chaque arrêt recharge ce qu'il faut, jusqu'à 80 %
           (90 % si cela évite un arrêt de plus), sur une borne de 50 kW et plus à moins de 2 km du tracé (base nationale IRVE),

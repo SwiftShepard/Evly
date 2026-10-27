@@ -320,6 +320,8 @@ export interface TripCard {
   to: string;
   vehicle: string;
   season: "summer" | "winter";
+  /** Température choisie (°C), à la place de la saison */
+  temp?: number;
   speed: number;
   /** Aller : km, minutes de route et de recharge, batterie à l'arrivée (0 à 1) */
   km: number;
@@ -343,7 +345,7 @@ export function drawTripCard(d: TripCard): Promise<Blob> {
     const bottom = heading(
       ctx,
       title,
-      `${d.vehicle}, ${d.season === "winter" ? "en hiver (-5 °C)" : "en été"}, ${d.speed} km/h sur autoroute`,
+      `${d.vehicle}, ${d.temp !== undefined ? `par ${d.temp} °C` : d.season === "winter" ? "en hiver (-5 °C)" : "en été"}, ${d.speed} km/h sur autoroute`,
       title.length > 22 ? 68 : 80
     );
 

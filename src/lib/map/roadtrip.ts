@@ -7,7 +7,7 @@
  * d'un arrêt ou à destination, arrêts jusqu'à 80 % (au-delà la charge ralentit trop ; 90 % si cela
  * évite un arrêt de plus) et seulement ce qu'il faut pour finir. Bornes de 50 kW et plus à moins de 2 km du tracé.
  */
-import { RESERVE, type RangeSource, type Season } from "./energy";
+import { RESERVE, climateRatio, type Climate, type RangeSource } from "./energy";
 import { CLASS_SPEED, type RangeProfile } from "./roadGraph";
 import { chargePower, type VehicleCharging } from "./week";
 
@@ -19,6 +19,15 @@ const STOP_TARGET = 0.8;
 const STOP_STRETCH = 0.9;
 /** Marge gardée en repartant d'un arrêt vers la destination */
 const MARGIN = 0.05;
+/**
+ * Vitesse moyenne réellement tenue, pour le temps de conduite (la consommation, elle, suit la
+ * vitesse choisie) : sur autoroute, limitations à 110, péages et dépassements ramènent la moyenne
+ * à 85 % de la vitesse de croisière ; voie express à 82 % de 110 km/h ; routes et traversées de
+ * ville à 50 km/h. Calé sur les temps habituels des grands axes (Paris → Lyon ≈ 4 h 30).
+ */
+const HW_AVG = 0.85;
+const EXPRESS_AVG = 0.82;
+const ROAD_AVG_KMH = 50;
 /** Bornes retenues : puissance minimale (kW) et écart au tracé (m) */
 export const MIN_STATION_KW = 50;
 export const CORRIDOR_M = 2_000;
@@ -28,8 +37,8 @@ export const CORRIDOR_M = 2_000;
  * a + b·v², calée sur l'autonomie mixte de la fiche (≈ 105 km/h, moyenne des essais à 90 et
  * 120 km/h) et celle à 130 km/h : à 130 km/h on retrouve exactement l'autonomie autoroute de la fiche.
  */
-export function speedProfile(r: RangeSource, usableKWh: number, season: Season, speed: HwSpeed): RangeProfile {
-  const k = season === "winter" ? r.winter_minus5_km / r.mixed_km : 1;
+export function speedProfile(r: RangeSource, usableKWh: number, season: Climate, speed: HwSpeed): RangeProfile {
+  const k = climateRatio(r, season);
   const hw130 = r.highway_130_km || r.mixed_km * 0.75;
   const cMix = usableKWh / r.mixed_km;
   const c130 = usableKWh / hw130;
@@ -157,7 +166,7 @@ export function planRoadTrip(
   chargers: RouteCharger[],
   range: RangeSource,
   charging: VehicleCharging,
-  season: Season,
+  season: Climate,
   speed: HwSpeed
 ): RoadPlan {
   const p = speedProfile(range, charging.usableKWh, season, speed);
@@ -165,7 +174,7 @@ export function planRoadTrip(
   const kmAt = route.cum.map(([hw, ex, rd]) => hw + ex + rd);
   const last = used.length - 1;
   const [hwKm, exKm, rdKm] = route.cum[last]!;
-  const driveMinutes = (hwKm / speed + exKm / Math.min(speed, CLASS_SPEED[1]!) + rdKm / CLASS_SPEED[2]!) * 60;
+  const driveMinutes = (hwKm / (speed * HW_AVG) + exKm / (Math.min(speed, CLASS_SPEED[1]!) * EXPRESS_AVG) + rdKm / ROAD_AVG_KMH) * 60;
 
   // Une borne par point du tracé au plus : la plus puissante
   const byPoint = new Map<number, RouteCharger>();

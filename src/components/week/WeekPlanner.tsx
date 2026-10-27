@@ -14,7 +14,7 @@ import WeekMileage from "./WeekMileage";
 import WeekCompare, { type CompareRow } from "./WeekCompare";
 import { CHARGING_LOSSES, ELEC_EUR_KWH, ICE_L_100, PUBLIC_EUR_KWH, fuelPrice, type FuelPrice } from "@/lib/map/fuel";
 import { WEEKS_PER_YEAR } from "@/lib/map/mileage";
-import { holidayFor, type HolidayLeg, type HolidayResult, type HolidayTrip } from "@/lib/map/holiday";
+import { climateOf, holidayFor, type HolidayLeg, type HolidayResult, type HolidayTrip } from "@/lib/map/holiday";
 import { HW_SPEEDS, chargersOnRoute, planRoadTrip, type HwSpeed, type RouteCharger } from "@/lib/map/roadtrip";
 import HolidayRow from "./HolidayRow";
 import ReachList from "./ReachList";
@@ -111,6 +111,7 @@ function sanitizeHolidays(raw: unknown): HolidayTrip[] {
       lon: h.lon,
       times: Math.min(24, Math.max(1, Math.round(Number(h.times) || 1))),
       season: h.season === "winter" ? "winter" : "summer",
+      ...(Number.isFinite(h.temp) && h.temp >= -20 && h.temp <= 35 ? { temp: Math.round(h.temp) } : {}),
       speed: (HW_SPEEDS as number[]).includes(h.speed) ? (h.speed as HwSpeed) : 130,
     }));
 }
@@ -633,7 +634,7 @@ export default function WeekPlanner({ vehicles }: Props) {
     const leg = h ? holidayLegs[h.id] : null;
     const chargers = h ? holidayChargers[h.id] : null;
     if (!h || !leg?.coords || !leg.cum || !chargers || !vehicle || vehicle.charging.dcPeakKW <= 0) return null;
-    return planRoadTrip({ coords: leg.coords, cum: leg.cum }, chargers, vehicle.range, vehicle.charging, h.season, h.speed ?? 130);
+    return planRoadTrip({ coords: leg.coords, cum: leg.cum }, chargers, vehicle.range, vehicle.charging, climateOf(h), h.speed ?? 130);
   }, [holidayFocus, holidayKey, holidays, holidayLegs, holidayChargers, vehicle]);
   const pins: Pin[] = useMemo(() => {
     if (tab !== "week") return focus ? [{ id: "focus", cat: "balade", lat: focus.place.lat, lon: focus.place.lon, label: focus.place.label, active: true }] : [];
@@ -686,12 +687,12 @@ export default function WeekPlanner({ vehicles }: Props) {
         const chargers = holidayChargers[h.id];
         let result: HolidayResult;
         if (leg.coords && leg.cum && chargers && v.charging.dcPeakKW > 0) {
-          const plan = planRoadTrip({ coords: leg.coords, cum: leg.cum }, chargers, v.range, v.charging, h.season, h.speed ?? 130);
+          const plan = planRoadTrip({ coords: leg.coords, cum: leg.cum }, chargers, v.range, v.charging, climateOf(h), h.speed ?? 130);
           // Tronçon sans borne rapide à portée : chiffres de l'estimation, le détail dit où ça coince
           result = plan.gapKm === null
             ? { kmReturn: 2 * leg.km, stops: plan.stops.length, minutes: plan.chargeMinutes, kwh: 2 * plan.kwh, kwhRoad: 2 * plan.kwhRoad, plan }
-            : { ...holidayFor(leg, v.range, v.charging, h.season), plan };
-        } else result = holidayFor(leg, v.range, v.charging, h.season);
+            : { ...holidayFor(leg, v.range, v.charging, climateOf(h)), plan };
+        } else result = holidayFor(leg, v.range, v.charging, climateOf(h));
         const cost = (result.kwhRoad * PUBLIC_EUR_KWH + (result.kwh - result.kwhRoad) * prices.home) * CHARGING_LOSSES;
         return { h, result, cost };
       }),
@@ -867,6 +868,7 @@ export default function WeekPlanner({ vehicles }: Props) {
       to: h.label.split(",")[0]!,
       vehicle: `${vehicle.brand} ${vehicle.model} ${vehicle.version.label}`,
       season: h.season,
+      temp: h.temp,
       speed: h.speed ?? 130,
       km: result.kmReturn / 2,
       driveMinutes: plan?.driveMinutes ?? null,
@@ -1265,7 +1267,8 @@ export default function WeekPlanner({ vehicles }: Props) {
                             setHolidayFocus(holidayFocus === h.id ? null : h.id);
                           }}
                           onTimes={(times) => update({ holidays: holidays.map((x) => (x.id === h.id ? { ...x, times } : x)) })}
-                          onSeason={(sn) => update({ holidays: holidays.map((x) => (x.id === h.id ? { ...x, season: sn } : x)) })}
+                          onSeason={(sn) => update({ holidays: holidays.map((x) => (x.id === h.id ? { ...x, season: sn, temp: undefined } : x)) })}
+                          onTemp={(t) => update({ holidays: holidays.map((x) => (x.id === h.id ? { ...x, temp: t, season: t >= 10 ? "summer" : "winter" } : x)) })}
                           onSpeed={(sp) => update({ holidays: holidays.map((x) => (x.id === h.id ? { ...x, speed: sp } : x)) })}
                           onRemove={() => {
                             if (holidayFocus === h.id) setHolidayFocus(null);

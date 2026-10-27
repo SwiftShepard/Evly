@@ -7,7 +7,7 @@
  * place avant le retour), on arrive avec 10 % au moins, chaque arrêt sur borne rapide (150 kW)
  * ne recharge que ce qu'il faut, au plus jusqu'à 80 %.
  */
-import { RESERVE, rangeProfile, type RangeSource, type Season } from "./energy";
+import { RESERVE, rangeProfile, type Climate, type RangeSource, type Season } from "./energy";
 import type { HwSpeed, RoadPlan } from "./roadtrip";
 import { chargeMinutes, type VehicleCharging } from "./week";
 
@@ -24,6 +24,8 @@ export interface HolidayTrip {
   /** Allers-retours par an */
   times: number;
   season: Season;
+  /** Température choisie (°C) : remplace la saison pour le calcul quand elle est donnée */
+  temp?: number;
   /** Vitesse sur autoroute (planificateur), 130 km/h par défaut */
   speed?: HwSpeed;
 }
@@ -51,7 +53,10 @@ export interface HolidayResult {
 }
 
 /** Un aller-retour avec un modèle */
-export function holidayFor(leg: HolidayLeg, range: RangeSource, charging: VehicleCharging, season: Season): HolidayResult {
+/** Saison ou température d'un grand trajet, telle que les calculs la prennent */
+export const climateOf = (h: HolidayTrip): Climate => h.temp ?? h.season;
+
+export function holidayFor(leg: HolidayLeg, range: RangeSource, charging: VehicleCharging, season: Climate): HolidayResult {
   const p = rangeProfile(range, season);
   const used = leg.split[0] / p.hw + leg.split[1] / p.express + leg.split[2] / p.road;
   // Ce que la batterie pleine ne couvre pas, réserve gardée à l'arrivée

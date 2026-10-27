@@ -76,6 +76,18 @@ export function getPageCards(): Record<string, PageCardData> {
       subtitle: "Autonomie réelle, prix après aides, recharge et coffre, sur les mêmes mesures.",
       vehicles: ["renault-5", "citroen-e-c3"],
     },
+    recharge: {
+      eyebrow: "Recharger chez soi",
+      title: "Ce que coûte une recharge à la maison",
+      subtitle: "Heures creuses, Tempo, borne rapide : modèle par modèle, aux tarifs d'EDF en vigueur.",
+      vehicles: ["renault-5", "tesla-model-y", "peugeot-e-208"],
+    },
+    hiver: {
+      eyebrow: "Autonomie en hiver",
+      title: "Ce qu'il reste de l'autonomie quand il gèle",
+      subtitle: "Tout le catalogue classé par -5 °C, et à la température de votre choix.",
+      vehicles: ["tesla-model-y", "kia-ev3", "renault-5"],
+    },
     trajets: {
       eyebrow: "Grands trajets",
       title: "Combien d'arrêts pour Paris → Lyon, le ski, les vacances ?",

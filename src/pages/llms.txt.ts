@@ -54,6 +54,8 @@ Pour citer un chiffre : indiquez la page Evly et son niveau de confiance (« mes
 - [Recommandation guidée](${abs("/recommandation/")}): questionnaire de choix selon l'usage.
 - [Duels](${abs("/comparer/duels/")}): deux modèles face à face (autonomie réelle, prix après aides, recharge, coffre), dont les paires [à prix égal](${abs("/bons-plans/")}).
 - [Observatoire de l'autonomie réelle](${abs("/observatoire/")}): écart entre l'annonce WLTP et l'autonomie mesurée, par marque et par modèle ; données ouvertes CC BY 4.0 en [CSV](${abs("/donnees/autonomie-reelle.csv")}) et [JSON](${abs("/donnees/autonomie-reelle.json")}).
+- [Recharger chez soi](${abs("/recharge-a-domicile/")}): coût d'une recharge et aux 100 km selon l'option du compteur (base, heures creuses, Tempo) au tarif réglementé d'EDF en vigueur, et sur borne rapide ; prise renforcée ou borne. Chaque fiche donne ce coût pour ses versions.
+- [Autonomie en hiver](${abs("/autonomie-hiver/")}): tout le catalogue classé par -5 °C (modèle de froid d'Evly appliqué à l'autonomie réelle, chimie et pompe à chaleur comprises), recalculable à toute température.
 - [Nouveautés des données](${abs("/nouveautes/")}): nouveaux modèles, autonomies mesurées, prix ([RSS](${abs("/nouveautes/rss.xml")})).
 - [Aides 2026](${abs("/aides/")}): barème de la prime CEE selon les revenus, leasing social, cas des sociétés.
 - [Leasing social](${abs("/leasing-social/")}): conditions et véhicules éligibles.
