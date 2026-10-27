@@ -1,0 +1,397 @@
+---
+/**
+ * Un grand trajet, tout le catalogue classé (roadmap M5) : arrêts posés sur les bornes rapides
+ * réelles du tracé, minutes de charge sur la courbe de chaque version, été et hiver, 130 km/h.
+ * Calculé au build par lib/roadTrips ; chaque ligne se déplie sur ses arrêts.
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BentoGrid from "@/components/ui/BentoGrid.astro";
+import Tile from "@/components/ui/Tile.astro";
+import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
+import Confidence from "@/components/ui/Confidence.astro";
+import FaqList from "@/components/seo/FaqList.astro";
+import LinkChips from "@/components/seo/LinkChips.astro";
+import { TRIP_AXES, TRIP_GROUPS } from "@/data/trips";
+import { duration, getTripResults, stopsText, tripTitle, type TripResult, type TripRow } from "@/lib/roadTrips";
+import { formatKm, formatNumber, formatPrice } from "@/lib/format";
+import { url } from "@/lib/url";
+import { ArrowRight, Snowflake, Sun } from "lucide-react";
+
+export async function getStaticPaths() {
+  const results = await getTripResults();
+  return results.map((result) => ({ params: { trajet: result.axis.slug }, props: { result } }));
+}
+
+interface Props {
+  result: TripResult;
+}
+
+const { result } = Astro.props;
+const { axis, rows } = result;
+const name = tripTitle(axis);
+const SHOWN = 15;
+const pct = (x: number) => `${Math.round(Math.max(0, x) * 100)} %`;
+const median = (xs: number[]) => {
+  const s = [...xs].sort((a, b) => a - b);
+  return s.length ? s[Math.floor(s.length / 2)]! : 0;
+};
+
+const noStop = rows.filter((r) => r.summer.stops === 0);
+const noStopWinter = rows.filter((r) => r.winter?.stops === 0);
+const fastest = rows[0];
+const fastestWinter = [...rows].filter((r) => r.winter).sort((a, b) => a.winter!.totalMin - b.winter!.totalMin)[0];
+const medianStops = median(rows.map((r) => r.summer.stops));
+const medianStopsWinter = median(rows.filter((r) => r.winter).map((r) => r.winter!.stops));
+const medianCharge = median(rows.filter((r) => r.summer.stops > 0).map((r) => r.summer.chargeMin));
+
+// Rang de chaque modèle par -5 °C (ceux qui ne passent pas, en dernier)
+const winterRank = new Map(
+  [...rows].sort((a, b) => (a.winter?.totalMin ?? Infinity) - (b.winter?.totalMin ?? Infinity)).map((r, i) => [r.vehicle.slug, i])
+);
+const versionText = (r: TripRow) => {
+  const parts = [...new Set(r.version.split(" · "))].join(" · ");
+  return r.price ? `${parts} · dès ${formatPrice(r.price)}` : parts;
+};
+
+// Bornes où s'arrêtent le plus de modèles l'été (même station à 3 km près)
+const stations = new Map<string, { name: string; kw: number; km: number; n: number }>();
+for (const r of rows)
+  for (const s of r.summer.list) {
+    const key = `${s.name}|${Math.round(s.km / 3)}`;
+    const cur = stations.get(key) ?? { name: s.name, kw: s.kw, km: s.km, n: 0 };
+    cur.n++;
+    cur.kw = Math.max(cur.kw, s.kw);
+    stations.set(key, cur);
+  }
+const topStations = [...stations.values()].sort((a, b) => b.n - a.n).slice(0, 5);
+
+const weekLink = (r: TripRow | null) => {
+  const p = new URLSearchParams();
+  if (r) {
+    p.set("v", r.vehicle.slug);
+    p.set("config", r.configId);
+  }
+  p.set("domicile", axis.from.name);
+  p.set("vers", axis.to.name);
+  p.set("saison", "ete");
+  return url(`/ma-semaine/?${p}`);
+};
+
+const sameFrom = TRIP_AXES.filter((a) => a.slug !== axis.slug && a.from.name === axis.from.name);
+const sameGroup = TRIP_AXES.filter((a) => a.slug !== axis.slug && a.group === axis.group && a.from.name !== axis.from.name);
+const list = (xs: TripRow[], n = 4) => xs.slice(0, n).map((r) => r.name).join(", ");
+
+const faq = [
+  {
+    question: `Combien d'arrêts pour faire ${axis.from.name}-${axis.to.name} en voiture électrique ?`,
+    answer: `${formatKm(Math.round(result.km))} par la route : à 130 km/h l'été, ${noStop.length ? `${noStop.length} modèles le font sans arrêt (${list(noStop)}) et` : "aucun modèle ne le fait sans arrêt ;"} la moitié des ${rows.length} modèles calculés s'arrête ${medianStops === 0 ? "pas du tout" : `${medianStops} fois au plus`}. Par -5 °C, la médiane passe à ${stopsText(medianStopsWinter)}.`,
+  },
+  {
+    question: `Combien de temps faut-il pour faire ${axis.from.name}-${axis.to.name} en électrique ?`,
+    answer: `${duration(result.driveMin)} de route à 130 km/h, plus le temps des arrêts : ${medianCharge ? `${duration(medianCharge)} de recharge en médiane pour les modèles qui s'arrêtent` : "aucun arrêt pour la plupart des modèles"}. ${fastest ? `Le plus rapide, ${fastest.name}, arrive en ${duration(fastest.summer.totalMin)} (${stopsText(fastest.summer.stops)}).` : ""}`,
+  },
+  {
+    question: `Quelle voiture électrique pour faire ${axis.from.name}-${axis.to.name} en hiver ?`,
+    answer: fastestWinter
+      ? `Par -5 °C, ${fastestWinter.name} est la plus rapide : ${duration(fastestWinter.winter!.totalMin)} au total, ${stopsText(fastestWinter.winter!.stops)}. ${noStopWinter.length ? `${noStopWinter.length} modèles passent encore sans s'arrêter (${list(noStopWinter, 3)}).` : "Aucun modèle ne passe sans s'arrêter."}`
+      : "Aucun modèle ne fait ce trajet par -5 °C sans s'écarter des grands axes.",
+  },
+];
+
+const description = `${name} en voiture électrique : ${formatKm(Math.round(result.km))}, ${duration(result.driveMin)} de route. ${noStop.length} modèles sans arrêt l'été, ${rows.length} modèles classés avec leurs arrêts sur les vraies bornes, été et hiver.`;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })),
+};
+---
+
+<BaseLayout title={`${name} en voiture électrique : arrêts et temps de trajet`} description={description} jsonLd={jsonLd} ogImage={`/og/trajets/${axis.slug}.jpg`}>
+  <div class="container-edit pt-2 md:pt-3 fade-rise">
+    <Breadcrumbs items={[{ label: "Accueil", path: "/" }, { label: "Grands trajets", path: "/trajets/" }, { label: name }]} />
+  </div>
+
+  <div class="trp container-edit pt-2 pb-8 md:pt-3 md:pb-12 flex flex-col gap-10">
+    <BentoGrid>
+      <Tile size="full" variant="elevated" class="md:!p-8">
+        <span class="label-eyebrow fade-rise">Grand trajet · {TRIP_GROUPS[axis.group]}</span>
+        <h1 class="display-2 mt-3 max-w-4xl fade-rise fade-rise-delay-1">{name} en voiture électrique</h1>
+        <p class="mt-4 max-w-3xl text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed fade-rise fade-rise-delay-2">
+          {formatKm(Math.round(result.km))} par la route, {duration(result.driveMin)} de conduite à 130 km/h tenus, sans bouchon. Voici les {rows.length} modèles
+          du catalogue sur ce même trajet : où ils s'arrêtent (de vraies bornes rapides le long du tracé), combien de temps, et
+          avec quelle batterie ils arrivent, l'été comme l'hiver.
+        </p>
+        <dl class="tr-facts fade-rise fade-rise-delay-2">
+          <div><dt>Sans arrêt, l'été</dt><dd><b>{noStop.length}</b> {noStop.length > 1 ? "modèles" : "modèle"}</dd><dd>{noStopWinter.length} par -5 °C</dd></div>
+          <div><dt>Arrêts, en médiane</dt><dd><b>{formatNumber(medianStops)}</b> l'été</dd><dd>{stopsText(medianStopsWinter)} par -5 °C</dd></div>
+          {fastest && (
+            <div><dt>Le plus rapide</dt><dd><b>{duration(fastest.summer.totalMin)}</b></dd><dd>{fastest.name}, {stopsText(fastest.summer.stops)}</dd></div>
+          )}
+        </dl>
+        <a href={weekLink(null)} class="btn btn-secondary btn-sm mt-6 self-start fade-rise fade-rise-delay-2">
+          Le même trajet depuis chez vous, sur la carte <ArrowRight size={15} strokeWidth={2} className="btn-arrow" aria-hidden="true" />
+        </a>
+      </Tile>
+    </BentoGrid>
+
+    <section aria-labelledby="classement-title" class="no-glossary">
+      <div class="tr-head">
+        <h2 id="classement-title" class="section-title">Le classement</h2>
+        <div class="tr-seg" role="group" aria-label="Saison">
+          <button type="button" aria-pressed="true" data-tr-season="summer"><Sun size={14} strokeWidth={2.4} aria-hidden="true" />En été</button>
+          <button type="button" aria-pressed="false" data-tr-season="winter"><Snowflake size={14} strokeWidth={2.4} aria-hidden="true" />En hiver (-5 °C)</button>
+        </div>
+      </div>
+      <p class="tr-lead">
+        Du plus rapide au plus lent, conduite et recharge comprises. Chaque modèle dans sa version la plus rapide sur ce trajet ;
+        touchez une ligne pour voir ses arrêts.
+      </p>
+
+      {/* Une seule liste : l'ordre (style order) et les chiffres changent avec la saison */}
+      <div class="tr-panel" data-season="summer" data-tr-list>
+        <div class="tr-cols" aria-hidden="true">
+          <span>Modèle</span><span>Arrêts</span><span>Recharge</span><span>Trajet</span><span>Arrivée</span>
+        </div>
+        <ol class="tr-rows">
+          {rows.map((r, i) => {
+            const wi = winterRank.get(r.vehicle.slug)!;
+            return (
+              <li class="tr-row" style={`--os:${2 * i};--ow:${2 * wi}`} data-rest-s={i >= SHOWN ? "1" : undefined} data-rest-w={wi >= SHOWN ? "1" : undefined}>
+                <button type="button" class="tr-row-head" aria-expanded="false" data-tr-toggle>
+                  <span class="tr-rank tabular"><span data-s>{i + 1}</span><span data-w>{wi + 1}</span></span>
+                  <span class="tr-name">
+                    <b>{r.name}</b>
+                    <span>{versionText(r)}</span>
+                  </span>
+                  {([["s", r.summer], ["w", r.winter]] as const).map(([k, leg]) =>
+                    leg ? (
+                      <>
+                        <span class="tr-stops" data-zero={leg.stops === 0 ? "1" : undefined} {...{ [`data-${k}`]: true }}>{stopsText(leg.stops)}</span>
+                        <span class="tr-num tabular" {...{ [`data-${k}`]: true }}>{leg.stops ? duration(leg.chargeMin) : "aucune"}</span>
+                        <span class="tr-num tr-total tabular" {...{ [`data-${k}`]: true }}>{duration(leg.totalMin)}</span>
+                        <span class="tr-num tabular" {...{ [`data-${k}`]: true }}>{pct(leg.arrive)}</span>
+                      </>
+                    ) : (
+                      <span class="tr-gap" {...{ [`data-${k}`]: true }}>Borne rapide hors du tracé</span>
+                    )
+                  )}
+                  <i class="tr-chev" aria-hidden="true" />
+                </button>
+                <div class="tr-reveal">
+                  <div>
+                    <div class="tr-detail">
+                      {([["s", r.summer], ["w", r.winter]] as const).map(([k, leg]) => (
+                        <div {...{ [`data-${k}`]: true }}>
+                          {leg && leg.list.length > 0 ? (
+                            <ol class="tr-stoplist">
+                              {leg.list.map((st) => (
+                                <li>
+                                  <span class="tabular">km {formatNumber(st.km)}</span>
+                                  <span><b>{st.name}</b> {formatNumber(st.kw)} kW</span>
+                                  <span class="tabular">{pct(st.arrive)} → {pct(st.leave)}, <b>{duration(st.minutes)}</b></span>
+                                </li>
+                              ))}
+                            </ol>
+                          ) : leg ? (
+                            <p>Départ batterie pleine, arrivée avec {pct(leg.arrive)} : aucun arrêt nécessaire.</p>
+                          ) : (
+                            <p>Par -5 °C, un tronçon du tracé n'a pas de borne rapide à portée : il faut sortir des grands axes pour recharger.</p>
+                          )}
+                        </div>
+                      ))}
+                      <p class="tr-detail-foot">
+                        Autonomie <Confidence code={r.measured ? "tested" : "estimated"} />
+                        {" · "}courbe de charge {r.curveMeasured ? "relevée" : "estimée"}
+                      </p>
+                      <p class="tr-detail-links">
+                        <a href={url(`/vehicules/${r.vehicle.slug}/?config=${r.configId}`)}>La fiche →</a>
+                        <a href={weekLink(r)}>Ce trajet sur la carte →</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+          {rows.length > SHOWN && (
+            <li class="tr-more-item" style={`--os:${2 * SHOWN - 1};--ow:${2 * SHOWN - 1}`}>
+              <button type="button" class="tr-more" aria-expanded="false" data-tr-more>
+                Les {rows.length - SHOWN} autres modèles <i class="tr-chev" aria-hidden="true" />
+              </button>
+            </li>
+          )}
+        </ol>
+      </div>
+      {result.unable.length > 0 && (
+        <p class="tr-note">
+          Pas dans le classement : {result.unable.filter((u) => u.reason === "no-dc").map((u) => u.name).join(", ") || "aucun modèle sans charge rapide"}
+          {result.unable.some((u) => u.reason === "no-dc") && " (pas de charge rapide)"}
+          {result.unable.some((u) => u.reason === "gap") && <>, et {result.unable.filter((u) => u.reason === "gap").map((u) => u.name).join(", ")} (trop peu d'autonomie entre deux bornes du tracé)</>}.
+        </p>
+      )}
+    </section>
+
+    {topStations.length > 0 && (
+      <section aria-labelledby="bornes-title" class="no-glossary">
+        <h2 id="bornes-title" class="section-title">Les bornes du trajet</h2>
+        <p class="tr-lead">Là où s'arrêtent le plus de modèles l'été : des stations rapides à moins de 2 km de l'itinéraire.</p>
+        <BentoGrid>
+          <Tile size="full" class="md:!p-7">
+            <ol class="tr-stations">
+              {topStations.map((st) => (
+                <li>
+                  <span class="tr-station-km tabular">km {formatNumber(st.km)}</span>
+                  <span class="tr-station-name"><b>{st.name}</b> · jusqu'à {formatNumber(st.kw)} kW</span>
+                  <span class="tr-station-n">{st.n} {st.n > 1 ? "modèles s'y arrêtent" : "modèle s'y arrête"}</span>
+                </li>
+              ))}
+            </ol>
+          </Tile>
+        </BentoGrid>
+      </section>
+    )}
+
+    <section aria-labelledby="methode-title">
+      <h2 id="methode-title" class="section-title">Comment c'est calculé</h2>
+      <ul class="tr-method">
+        <li>Itinéraire le plus rapide sur le réseau routier d'OpenStreetMap, 130 km/h sur autoroute, d'un centre-ville à l'autre.</li>
+        <li>
+          Départ batterie pleine, jamais moins de 10 % à une borne ou à l'arrivée. Chaque arrêt recharge ce qu'il faut, jusqu'à 80 %
+          (90 % si cela évite un arrêt de plus), sur une borne de 50 kW et plus à moins de 2 km du tracé (base nationale IRVE),
+          la plus puissante quand elle est à portée.
+        </li>
+        <li>
+          Temps de charge sur la courbe de la version, relevée par Bjørn Nyland quand elle existe ; consommation tirée de l'autonomie
+          réelle de la fiche, mesurée ou estimée, et le badge le dit. L'hiver (-5 °C) suit le <a href={url("/methodologie/#hiver")}>modèle d'hiver d'Evly</a>.
+        </li>
+        <li>Ni pause, ni attente à la borne, ni dénivelé{axis.group === "ski" ? " : la montée finale vers la station consomme davantage, gardez de la marge" : ""}.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="faq-title">
+      <h2 id="faq-title" class="section-title">Questions fréquentes</h2>
+      <FaqList entries={faq} />
+    </section>
+
+    <LinkChips
+      groups={[
+        { title: `Depuis ${axis.from.name}`, links: sameFrom.map((a) => ({ label: tripTitle(a), href: url(`/trajets/${a.slug}/`) })) },
+        { title: TRIP_GROUPS[axis.group], links: [...sameGroup.slice(0, 8).map((a) => ({ label: tripTitle(a), href: url(`/trajets/${a.slug}/`) })), { label: "Tous les grands trajets →", href: url("/trajets/"), accent: true }] },
+      ]}
+    />
+  </div>
+</BaseLayout>
+
+<script>
+  function setup() {
+    document.querySelectorAll<HTMLButtonElement>("[data-tr-toggle]").forEach((btn) => {
+      if (btn.dataset.ready) return;
+      btn.dataset.ready = "1";
+      btn.addEventListener("click", () => {
+        const open = btn.getAttribute("aria-expanded") !== "true";
+        btn.setAttribute("aria-expanded", String(open));
+        (btn.nextElementSibling as HTMLElement | null)?.toggleAttribute("data-open", open);
+      });
+    });
+    document.querySelectorAll<HTMLButtonElement>("[data-tr-more]").forEach((btn) => {
+      if (btn.dataset.ready) return;
+      btn.dataset.ready = "1";
+      btn.addEventListener("click", () => {
+        const open = btn.getAttribute("aria-expanded") !== "true";
+        btn.setAttribute("aria-expanded", String(open));
+        btn.closest(".tr-rows")?.toggleAttribute("data-all", open);
+      });
+    });
+    const seasons = [...document.querySelectorAll<HTMLButtonElement>("[data-tr-season]")];
+    seasons.forEach((btn) => {
+      if (btn.dataset.ready) return;
+      btn.dataset.ready = "1";
+      btn.addEventListener("click", () => {
+        for (const b of seasons) b.setAttribute("aria-pressed", String(b === btn));
+        const list = document.querySelector<HTMLElement>("[data-tr-list]");
+        if (list) list.dataset.season = btn.dataset.trSeason!;
+      });
+    });
+  }
+  setup();
+  document.addEventListener("astro:page-load", setup);
+</script>
+
+<style is:global>
+  /* Global, préfixé .trp / .tr- : pas d'attribut de portée sur les centaines d'éléments du classement */
+  .trp .section-title { font-family: var(--font-display); font-size: clamp(1.375rem, 2.2vw, 1.75rem); font-weight: 600; letter-spacing: -0.022em; line-height: 1.15; margin-bottom: 0.5rem; }
+  .tr-lead { margin: 0 0 0.9rem; max-width: 75ch; font-size: 14.5px; color: var(--color-text-muted); }
+  .tr-note { margin-top: 1rem; max-width: 85ch; font-size: 13px; color: var(--color-text-faint); }
+
+  .tr-facts { display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 0.6rem; margin-top: 1.75rem; }
+  @media (min-width: 640px) { .tr-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .tr-facts > div { padding: 1rem 1.1rem; border-radius: var(--radius-tile-sm); background: var(--color-surface-accent); }
+  .tr-facts dt { font-size: 12.5px; font-weight: 600; color: var(--color-accent-dim); }
+  .tr-facts dd { font-size: 13.5px; color: var(--color-text-muted); }
+  .tr-facts dd b { font-family: var(--font-display); font-size: 2rem; font-weight: 800; letter-spacing: -0.04em; color: var(--color-text); font-variant-numeric: tabular-nums; }
+
+  .tr-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; margin-bottom: 0.25rem; }
+  .tr-seg { display: inline-flex; padding: 3px; border-radius: 999px; background: var(--color-bg-subtle); }
+  .tr-seg button { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.9rem; border-radius: 999px; font-size: 13.5px; font-weight: 600; color: var(--color-text-muted); transition: background-color 200ms var(--ease-out-expo), color 200ms ease; }
+  .tr-seg button[aria-pressed="true"] { background: var(--color-surface-elevated); color: var(--color-text); box-shadow: var(--shadow-sm); }
+
+  .tr-panel { border-radius: var(--radius-tile); background: var(--color-surface); border: 1px solid var(--color-border); padding: 0.5rem 1.25rem 0.75rem; }
+  @media (min-width: 768px) { .tr-panel { padding-inline: 2rem; } }
+  /* Grille commune aux en-têtes et aux lignes */
+  .tr-cols, .tr-row-head { display: grid; grid-template-columns: 2rem minmax(0, 1fr) auto auto; align-items: center; gap: 0.2rem 0.9rem; }
+  @media (min-width: 768px) { .tr-cols, .tr-row-head { grid-template-columns: 2rem minmax(0, 1fr) 6.5rem 5.5rem 5.5rem 4.5rem 1rem; } }
+  .tr-cols { display: none; padding: 0.6rem 0; font-size: 12.5px; font-weight: 600; color: var(--color-text-faint); }
+  @media (min-width: 768px) { .tr-cols { display: grid; } .tr-cols span:first-child { grid-column: 2; } }
+  .tr-rows { display: flex; flex-direction: column; }
+  .tr-row, .tr-more-item { order: var(--os); }
+  .tr-row { border-top: 1px solid var(--color-border); }
+  [data-season="winter"] .tr-row, [data-season="winter"] .tr-more-item { order: var(--ow); }
+  [data-season="summer"] [data-w], [data-season="winter"] [data-s] { display: none !important; }
+  [data-season="summer"] .tr-rows:not([data-all]) [data-rest-s],
+  [data-season="winter"] .tr-rows:not([data-all]) [data-rest-w] { display: none; }
+  .tr-row-head { width: 100%; padding: 0.7rem 0; text-align: left; }
+  .tr-rank { font-size: 13px; color: var(--color-text-faint); }
+  .tr-name { display: flex; flex-direction: column; min-width: 0; }
+  .tr-name b { font-size: 15px; font-weight: 650; letter-spacing: -0.01em; }
+  .tr-name span { font-size: 12.5px; color: var(--color-text-faint); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .tr-stops { font-size: 14px; font-weight: 600; }
+  .tr-stops[data-zero] { color: var(--color-accent); }
+  .tr-num { display: none; font-size: 14px; color: var(--color-text-muted); }
+  .tr-total { display: block; font-family: var(--font-display); font-size: 17px; font-weight: 800; letter-spacing: -0.02em; color: var(--color-text); }
+  @media (min-width: 768px) { .tr-num { display: block; } }
+  .tr-gap { grid-column: span 2; font-size: 13px; color: var(--color-warning); }
+  @media (min-width: 768px) { .tr-gap { grid-column: span 4; } }
+  .tr-chev { display: inline-block; width: 7px; height: 7px; margin: 0 4px 3px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); transition: transform 260ms var(--ease-out-expo); }
+  .tr-row-head .tr-chev { display: none; color: var(--color-text-faint); }
+  @media (min-width: 768px) { .tr-row-head .tr-chev { display: inline-block; } }
+  [aria-expanded="true"] > .tr-chev { transform: translateY(3px) rotate(225deg); }
+  @media (hover: hover) and (pointer: fine) { .tr-row-head:hover .tr-name b { color: var(--color-accent); } }
+
+  .tr-reveal { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 320ms var(--ease-out-expo); }
+  .tr-reveal > div { overflow: hidden; min-height: 0; }
+  .tr-reveal[data-open] { grid-template-rows: 1fr; }
+  .tr-detail { display: flex; flex-direction: column; gap: 0.6rem; padding: 0 0 0.9rem 2.9rem; font-size: 14px; color: var(--color-text-muted); }
+  .tr-stoplist { display: flex; flex-direction: column; gap: 0.3rem; }
+  .tr-stoplist li { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 0 0.75rem; }
+  .tr-stoplist li span:last-child { grid-column: 2; }
+  @media (min-width: 768px) { .tr-stoplist li { grid-template-columns: 4.5rem minmax(0, 1fr) auto; } .tr-stoplist li span:last-child { grid-column: auto; } }
+  .tr-stoplist b { color: var(--color-text); font-weight: 600; }
+  .tr-detail-foot { font-size: 12.5px; color: var(--color-text-faint); }
+  .tr-detail-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; }
+  .tr-detail-links a { font-size: 13.5px; font-weight: 600; color: var(--color-accent); }
+
+  .tr-more-item { border-top: 1px solid var(--color-border); }
+  .tr-rows[data-all] .tr-more-item { order: 9999 !important; }
+  .tr-more { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.8rem 0 0.3rem; font-size: 14px; font-weight: 600; color: var(--color-accent); }
+
+
+  .tr-stations { display: flex; flex-direction: column; gap: 0.6rem; font-size: 14.5px; }
+  .tr-stations li { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 0.1rem 1rem; }
+  @media (min-width: 768px) { .tr-stations li { grid-template-columns: 4.5rem minmax(0, 1fr) auto; } }
+  .tr-station-km { color: var(--color-text-faint); }
+  .tr-station-n { grid-column: 2; font-size: 13px; color: var(--color-text-muted); }
+  @media (min-width: 768px) { .tr-station-n { grid-column: auto; } }
+
+  .tr-method { display: flex; flex-direction: column; gap: 0.45rem; max-width: 85ch; margin-left: 1.25rem; list-style: disc; font-size: 14px; color: var(--color-text-muted); }
+  .tr-method a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }
+</style>

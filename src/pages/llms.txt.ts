@@ -5,15 +5,22 @@ import { CATEGORIES } from "@/data/categories";
 import { LEGAL_PAGES } from "@/data/legal";
 import { getVehicleSeoFacts, getMarketStatus } from "@/lib/seo";
 import { url } from "@/lib/url";
+import { duration, getTripResults, stopsText, tripTitle } from "@/lib/roadTrips";
 
 /**
  * /llms.txt : résumé du site au format proposé sur llmstxt.org, pour que les assistants IA
  * trouvent les bonnes pages et citent les chiffres avec leur niveau de confiance.
  */
-export const GET: APIRoute = ({ site }) => {
+export const GET: APIRoute = async ({ site }) => {
   const abs = (path: string) => new URL(url(path), site).toString();
   const n = (x: number) => x.toLocaleString("fr-FR").replace(/ | /g, " ");
   const vehicles = getAllVehicles();
+  const median = (xs: number[]) => [...xs].sort((a, b) => a - b)[Math.floor(xs.length / 2)] ?? 0;
+  const tripLines = (await getTripResults()).map((r) => {
+    const noStop = r.rows.filter((x) => x.summer.stops === 0).length;
+    const fastest = r.rows[0];
+    return `- [${tripTitle(r.axis)}](${abs(`/trajets/${r.axis.slug}/`)}): ${n(Math.round(r.km))} km, ${noStop} modèles sans arrêt l'été, ${stopsText(median(r.rows.map((x) => x.summer.stops)))} en médiane l'été et ${stopsText(median(r.rows.filter((x) => x.winter).map((x) => x.winter!.stops)))} par -5 °C${fastest ? `, le plus rapide ${fastest.name} en ${duration(fastest.summer.totalMin)}` : ""}.`;
+  });
 
   const vehicleLines = vehicles.map((v) => {
     const f = getVehicleSeoFacts(v);
@@ -61,6 +68,12 @@ Ces liens ouvrent directement la réponse ; on peut les composer pour répondre 
 - Quelle voiture pour un trajet et un budget : ${abs("/recommandation/")}?trajet=80&max=30000 (trajet quotidien aller-retour en km, budget d'achat en €). Options : maison=0 (sans prise à domicile), budget=loyer&max=300 (loyer mensuel), format=city|sedan|suv|van, foyer=family|large.
 - Un modèle sur un trajet réel : ${abs("/ma-semaine/")}?v=renault-5&domicile=Amiens&travail=Abbeville (communes ou adresses ; slug de la fiche). Options : vers=Lyon (grand trajet, arrêts de recharge sur les bornes du tracé), recharge=borne (sans prise à domicile), saison=ete (hiver par défaut), v=slug1,slug2 (jusqu'à 3 modèles).
 - Deux modèles face à face : ${abs("/comparer/")}slug1-vs-slug2/ pour les duels publiés (liste sur la page Duels), sinon ${abs("/comparer/")}?v=slug1,slug2.
+
+## Grands trajets
+
+Chaque page classe tout le catalogue sur l'itinéraire : arrêts sur les bornes rapides réelles du tracé, temps de charge sur la courbe de la version, 130 km/h, été et -5 °C.
+
+${tripLines.join("\n")}
 
 ## Sélections
 

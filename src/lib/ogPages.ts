@@ -76,6 +76,12 @@ export function getPageCards(): Record<string, PageCardData> {
       subtitle: "Autonomie réelle, prix après aides, recharge et coffre, sur les mêmes mesures.",
       vehicles: ["renault-5", "citroen-e-c3"],
     },
+    trajets: {
+      eyebrow: "Grands trajets",
+      title: "Combien d'arrêts pour Paris → Lyon, le ski, les vacances ?",
+      subtitle: "Tous les modèles classés sur les grands axes, arrêts sur les vraies bornes, été et hiver.",
+      vehicles: ["tesla-model-3", "renault-5", "kia-ev3"],
+    },
     observatoire: {
       eyebrow: "Observatoire",
       title: `L'autonomie réelle : -${gapPct} % sous l'annonce`,

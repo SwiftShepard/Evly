@@ -6,17 +6,18 @@ import { getBrands } from "@/lib/brands";
 import { CATEGORIES } from "@/data/categories";
 import { getAllDuels } from "@/lib/duel";
 import { getVehicleSeoFacts } from "@/lib/seo";
+import { duration, getTripResults, stopsText, tripTitle } from "@/lib/roadTrips";
 import { formatPrice } from "@/lib/format";
 
 /**
  * Cartes de partage (Open Graph) générées au build :
  *   /og/vehicules/{slug}.jpg, /og/marques/{marque}.jpg,
- *   /og/selections/{slug}.jpg, /og/duels/{a}-vs-{b}.jpg, /og/pages/{clé}.jpg
+ *   /og/selections/{slug}.jpg, /og/duels/{a}-vs-{b}.jpg, /og/trajets/{slug}.jpg, /og/pages/{clé}.jpg
  */
 
 type Card = { kind: "vehicle"; data: VehicleCardData } | { kind: "page"; data: PageCardData };
 
-export const getStaticPaths = (() => {
+export const getStaticPaths = (async () => {
   const all = getAllVehicles();
   const paths: { params: { path: string }; props: Card }[] = [];
 
@@ -82,6 +83,27 @@ export const getStaticPaths = (() => {
           title: `${d.a.name} ou ${d.b.name} ?`,
           subtitle: `${d.a.facts.rangeBest} km contre ${d.b.facts.rangeBest} km d'autonomie réelle. Prix, recharge et coffre.`,
           vehicles: [d.a.v.slug, d.b.v.slug],
+        },
+      },
+    });
+  }
+
+  for (const r of await getTripResults()) {
+    const noStop = r.rows.filter((x) => x.summer.stops === 0).length;
+    const fastest = r.rows[0];
+    paths.push({
+      params: { path: `trajets/${r.axis.slug}` },
+      props: {
+        kind: "page",
+        data: {
+          eyebrow: "Grand trajet en électrique",
+          title: `${tripTitle(r.axis)} : combien d'arrêts ?`,
+          subtitle: [
+            `${Math.round(r.km)} km, ${r.rows.length} modèles classés.`,
+            noStop ? `${noStop} sans arrêt l'été.` : "",
+            fastest ? `Le plus rapide : ${fastest.name}, ${duration(fastest.summer.totalMin)} (${stopsText(fastest.summer.stops)}).` : "",
+          ].filter(Boolean).join(" "),
+          vehicles: r.rows.slice(0, 3).map((x) => x.vehicle.slug),
         },
       },
     });

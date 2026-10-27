@@ -27,6 +27,7 @@ import FaqList from "@/components/seo/FaqList.astro";
 import LinkChips from "@/components/seo/LinkChips.astro";
 import { duelSlug } from "@/data/duels";
 import { duelsOf } from "@/lib/duel";
+import { duration, getTripResults, stopsText, tripTitle } from "@/lib/roadTrips";
 import RangeRail from "@/components/ui/RangeRail.astro";
 import { DEFAULTS as TCO_DEFAULTS } from "@/components/tco/TcoCalculator";
 import { ArrowRight, Map as MapIcon, Route } from "lucide-react";
@@ -203,6 +204,17 @@ const duelLinks = duelsOf(vehicle.slug).map(([a, b]) => {
   const other = allVehicles.find((v) => v.slug === (a === vehicle.slug ? b : a));
   return { label: `${getVehicleName(vehicle)} vs ${other ? getVehicleName(other) : b}`, href: url(`/comparer/${duelSlug(a, b)}/`) };
 });
+// Grands trajets les plus cherchés, pour ce modèle (pages /trajets/x-y/)
+const FICHE_TRIPS = ["paris-lyon", "paris-marseille", "paris-bordeaux", "lyon-marseille", "paris-nantes", "paris-val-thorens"];
+const tripLinks = (await getTripResults())
+  .filter((r) => FICHE_TRIPS.includes(r.axis.slug))
+  .flatMap((r) => {
+    const row = r.rows.find((x) => x.vehicle.slug === vehicle.slug);
+    return row
+      ? [{ label: `${tripTitle(r.axis)} : ${stopsText(row.summer.stops)}, ${duration(row.summer.totalMin)}`, href: url(`/trajets/${r.axis.slug}/`) }]
+      : [];
+  });
+if (tripLinks.length) tripLinks.push({ label: "Tous les grands trajets →", href: url("/trajets/"), accent: true } as (typeof tripLinks)[number]);
 const otherBrandModels = (brand?.vehicles ?? []).filter((v) => v.slug !== vehicle.slug);
 const relatedSelections = getCategoriesFor(vehicle, allVehicles);
 const pageUrl = new URL(url(`/vehicules/${vehicle.slug}/`), Astro.site).toString();
@@ -1372,6 +1384,7 @@ const configSubtitle = (label: string) => {
               links: relatedSelections.map((c) => ({ label: c.label, href: url(`/voitures-electriques/${c.slug}/`) })),
             },
             { title: "Face à face", links: duelLinks },
+            { title: "Ses grands trajets, l'été", links: tripLinks },
           ]}
         />
       </section>

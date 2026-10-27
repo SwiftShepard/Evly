@@ -35,10 +35,10 @@
   "consumption_winter_kWh_per_100km": 19,
   "dragCoefficient_Cx": 0.26,
   "chargingDC": {
-    "peakPower_kW": 105,
-    "time_10_80_min": 24,
-    "kWh_added_30min": 32,
-    "confidence": "manufacturer"
+    "peakPower_kW": 106,
+    "time_10_80_min": 23,
+    "kWh_added_30min": 41,
+    "confidence": "tested"
   },
   "chargingAC": {
     "onboardCharger_kW": 11,
@@ -51,24 +51,80 @@
   "v2l_option_EUR": null,
   "chargingCurve": [
     {
-      "soc": 0,
-      "power": 79
+      "soc": 10,
+      "power": 98
     },
     {
-      "soc": 10,
-      "power": 105
+      "soc": 15,
+      "power": 96
+    },
+    {
+      "soc": 20,
+      "power": 88
+    },
+    {
+      "soc": 25,
+      "power": 90
+    },
+    {
+      "soc": 30,
+      "power": 90
+    },
+    {
+      "soc": 35,
+      "power": 89
+    },
+    {
+      "soc": 40,
+      "power": 98
+    },
+    {
+      "soc": 45,
+      "power": 104
     },
     {
       "soc": 50,
-      "power": 84
+      "power": 103
+    },
+    {
+      "soc": 55,
+      "power": 102
+    },
+    {
+      "soc": 60,
+      "power": 106
+    },
+    {
+      "soc": 65,
+      "power": 105
+    },
+    {
+      "soc": 70,
+      "power": 98
+    },
+    {
+      "soc": 75,
+      "power": 87
     },
     {
       "soc": 80,
-      "power": 42
+      "power": 80
+    },
+    {
+      "soc": 85,
+      "power": 36
+    },
+    {
+      "soc": 90,
+      "power": 20
+    },
+    {
+      "soc": 95,
+      "power": 20
     },
     {
       "soc": 100,
-      "power": 8
+      "power": 5
     }
   ],
   "rangeTests": [],
@@ -208,7 +264,8 @@
       "power_hp": 116,
       "power_kW": 85,
       "wltp_consumption_kWh_100km": null,
-      "chemistry": "LFP"
+      "chemistry": "LFP",
+      "chargingDC_confidence": "manufacturer"
     },
     {
       "id": "vw-id2-life-37-116",
@@ -261,7 +318,8 @@
       "power_hp": 116,
       "power_kW": 85,
       "wltp_consumption_kWh_100km": null,
-      "chemistry": "LFP"
+      "chemistry": "LFP",
+      "chargingDC_confidence": "manufacturer"
     },
     {
       "id": "vw-id2-life-37-135",
@@ -314,7 +372,8 @@
       "power_hp": 135,
       "power_kW": 99,
       "wltp_consumption_kWh_100km": null,
-      "chemistry": "LFP"
+      "chemistry": "LFP",
+      "chargingDC_confidence": "manufacturer"
     },
     {
       "id": "vw-id2-style-37-135",
@@ -367,7 +426,8 @@
       "power_hp": 135,
       "power_kW": 99,
       "wltp_consumption_kWh_100km": null,
-      "chemistry": "LFP"
+      "chemistry": "LFP",
+      "chargingDC_confidence": "manufacturer"
     },
     {
       "id": "vw-id2-life-52-211",
@@ -389,29 +449,85 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 105,
-      "chargingDC_10_80_min": 24,
-      "chargingDC_kWh_30min": 32,
+      "chargingDC_peak_kW": 106,
+      "chargingDC_10_80_min": 23,
+      "chargingDC_kWh_30min": 41,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 79
+          "soc": 10,
+          "power": 98
         },
         {
-          "soc": 10,
-          "power": 105
+          "soc": 15,
+          "power": 96
+        },
+        {
+          "soc": 20,
+          "power": 88
+        },
+        {
+          "soc": 25,
+          "power": 90
+        },
+        {
+          "soc": 30,
+          "power": 90
+        },
+        {
+          "soc": 35,
+          "power": 89
+        },
+        {
+          "soc": 40,
+          "power": 98
+        },
+        {
+          "soc": 45,
+          "power": 104
         },
         {
           "soc": 50,
-          "power": 84
+          "power": 103
+        },
+        {
+          "soc": 55,
+          "power": 102
+        },
+        {
+          "soc": 60,
+          "power": 106
+        },
+        {
+          "soc": 65,
+          "power": 105
+        },
+        {
+          "soc": 70,
+          "power": 98
+        },
+        {
+          "soc": 75,
+          "power": 87
         },
         {
           "soc": 80,
-          "power": 42
+          "power": 80
+        },
+        {
+          "soc": 85,
+          "power": 36
+        },
+        {
+          "soc": 90,
+          "power": 20
+        },
+        {
+          "soc": 95,
+          "power": 20
         },
         {
           "soc": 100,
-          "power": 8
+          "power": 5
         }
       ],
       "availability": "available",
@@ -419,7 +535,8 @@
       "usableCapacity_kWh": 52,
       "power_hp": 211,
       "power_kW": 155,
-      "wltp_consumption_kWh_100km": null
+      "wltp_consumption_kWh_100km": null,
+      "chargingDC_confidence": "tested"
     },
     {
       "id": "vw-id2-style-52-211",
@@ -441,29 +558,85 @@
         "confidence": "estimated"
       },
       "rangeTests": [],
-      "chargingDC_peak_kW": 105,
-      "chargingDC_10_80_min": 24,
-      "chargingDC_kWh_30min": 32,
+      "chargingDC_peak_kW": 106,
+      "chargingDC_10_80_min": 23,
+      "chargingDC_kWh_30min": 41,
       "chargingCurve": [
         {
-          "soc": 0,
-          "power": 79
+          "soc": 10,
+          "power": 98
         },
         {
-          "soc": 10,
-          "power": 105
+          "soc": 15,
+          "power": 96
+        },
+        {
+          "soc": 20,
+          "power": 88
+        },
+        {
+          "soc": 25,
+          "power": 90
+        },
+        {
+          "soc": 30,
+          "power": 90
+        },
+        {
+          "soc": 35,
+          "power": 89
+        },
+        {
+          "soc": 40,
+          "power": 98
+        },
+        {
+          "soc": 45,
+          "power": 104
         },
         {
           "soc": 50,
-          "power": 84
+          "power": 103
+        },
+        {
+          "soc": 55,
+          "power": 102
+        },
+        {
+          "soc": 60,
+          "power": 106
+        },
+        {
+          "soc": 65,
+          "power": 105
+        },
+        {
+          "soc": 70,
+          "power": 98
+        },
+        {
+          "soc": 75,
+          "power": 87
         },
         {
           "soc": 80,
-          "power": 42
+          "power": 80
+        },
+        {
+          "soc": 85,
+          "power": 36
+        },
+        {
+          "soc": 90,
+          "power": 20
+        },
+        {
+          "soc": 95,
+          "power": 20
         },
         {
           "soc": 100,
-          "power": 8
+          "power": 5
         }
       ],
       "availability": "available",
@@ -471,7 +644,8 @@
       "usableCapacity_kWh": 52,
       "power_hp": 211,
       "power_kW": 155,
-      "wltp_consumption_kWh_100km": null
+      "wltp_consumption_kWh_100km": null,
+      "chargingDC_confidence": "tested"
     }
   ],
   "warranty": {

@@ -104,6 +104,8 @@ const MAPPING = {
   ],
   "volvo-ex30": [{ car: "Volvo EX30 69 kWh", kWh: 64, configs: ["start-sm-er", "plus-sm-er", "ultra-sm-er", "plus-tm"] }],
   "volvo-es90": [{ car: "Volvo ES90 92 kWh", kWh: 88, configs: ["start-sm", "plus-sm", "ultra-sm"] }],
+  // ID. Polo : relevé de la batterie NMC de 56 kWh bruts (52 utiles), pas de la LFP de 37 kWh
+  "vw-id2": [{ car: "VW ID Polo 56 kWh", kWh: 52, configs: ["life-52-211", "style-52-211"] }],
   "vw-id7": [
     { car: "VW ID7 82 kWh March 2024", kWh: 77, configs: ["pro", "tourer"] },
     { car: "VW ID7 GTX Tourer 91 kWh", kWh: 86, configs: ["pro-s-86-kwh"] },
