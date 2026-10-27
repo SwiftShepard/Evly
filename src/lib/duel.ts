@@ -1,8 +1,8 @@
 import type { Vehicle } from "@/data/schemas";
-import { DUEL_GROUPS, duelSlug } from "@/data/duels";
-import { getAllVehicles, getVehicleBySlug } from "@/lib/vehicles";
+import { DUEL_GROUPS, DUEL_SEEDS, duelSlug } from "@/data/duels";
+import { getAllVehicles, getVehicleBySlug, isStrictUtility } from "@/lib/vehicles";
 import { getValueComparisons, type ValueComparison } from "@/lib/valueComparisons";
-import { getVehicleName, getVehicleSeoFacts, isMasculine, withArticle, withDe, type VehicleSeoFacts } from "@/lib/seo";
+import { getBodyInfo, getMarketStatus, getVehicleName, getVehicleSeoFacts, isMasculine, withArticle, withDe, type VehicleSeoFacts } from "@/lib/seo";
 import { confidenceLevel, isMeasured } from "@/lib/confidence";
 import { formatKm, formatNumber, formatPrice } from "@/lib/format";
 
@@ -250,15 +250,74 @@ export interface DuelGroup {
   pairs: [string, string][];
 }
 
+/* ── Rivaux calculés : les modèles les plus recherchés face à leurs voisins de gamme ── */
+
+/** Rivaux gardés par modèle recherché, et écarts tolérés pour rester comparable */
+const RIVALS_PER_SEED = 4;
+const PRICE_GAP = 0.25;
+const LENGTH_GAP_MM = 350;
+
+/** Rubrique de la page des duels, d'après la carrosserie et le segment */
+function duelFamily(v: Vehicle): string | null {
+  const { category } = getBodyInfo(v);
+  const seg = v.segment.trim().charAt(0).toUpperCase();
+  if (category === "utilitaire" || category === "quadricycle") return null;
+  if (category === "citadine") return "Citadines";
+  if (category === "monospace") return "Ludospaces et vans";
+  if (category === "suv") return seg === "A" || seg === "B" ? "Petits SUV" : seg === "E" || seg === "F" ? "Grands SUV" : "SUV familiaux";
+  if (category === "compacte") return "Compactes";
+  return "Berlines";
+}
+
 /**
- * Toutes les paires qui ont une page : la liste tenue à la main (data/duels.ts), puis les paires
- * « à prix égal » absentes de celle-ci (dans un sens comme dans l'autre).
+ * Pour chaque modèle de DUEL_SEEDS, ses rivaux les plus proches : même rubrique, prix d'entrée à
+ * 25 % près, longueur à 35 cm près, du plus proche au plus lointain (prix, puis gabarit). Seuls
+ * les modèles vendus et dont le prix est connu ; jamais un utilitaire.
+ */
+function autoPairs(): { family: string; pair: [string, string] }[] {
+  const cars = getAllVehicles()
+    .filter((v) => !isStrictUtility(v) && getMarketStatus(v) === "available")
+    .map((v) => ({ v, family: duelFamily(v), price: getVehicleSeoFacts(v).priceMin }))
+    .filter((c): c is { v: Vehicle; family: string; price: number } => c.family !== null && c.price != null);
+  const bySlug = new Map(cars.map((c) => [c.v.slug, c]));
+  const out: { family: string; pair: [string, string] }[] = [];
+  for (const slug of DUEL_SEEDS) {
+    const seed = bySlug.get(slug);
+    if (!seed) continue;
+    const rivals = cars
+      .filter((c) => c.v.slug !== slug && c.family === seed.family && c.v.model !== seed.v.model)
+      .filter((c) => Math.abs(Math.log(c.price / seed.price)) <= Math.log(1 + PRICE_GAP))
+      .filter((c) => Math.abs(c.v.length_mm - seed.v.length_mm) <= LENGTH_GAP_MM)
+      .map((c) => ({
+        c,
+        score: Math.abs(Math.log(c.price / seed.price)) * 2 + Math.abs(c.v.length_mm - seed.v.length_mm) / 1000 + (c.v.brand === seed.v.brand ? 0.3 : 0),
+      }))
+      .sort((a, b) => a.score - b.score)
+      .slice(0, RIVALS_PER_SEED);
+    for (const { c } of rivals) out.push({ family: seed.family, pair: [slug, c.v.slug] });
+  }
+  return out;
+}
+
+/**
+ * Toutes les paires qui ont une page : la liste tenue à la main (data/duels.ts), les rivaux
+ * calculés des modèles les plus recherchés, rangés dans la même rubrique, puis les paires
+ * « à prix égal » absentes des deux (dans un sens comme dans l'autre).
  */
 let groupsCache: DuelGroup[] | null = null;
 export function getDuelGroups(): DuelGroup[] {
   if (groupsCache) return groupsCache;
   const key = (a: string, b: string) => [a, b].sort().join("|");
   const seen = new Set(DUEL_GROUPS.flatMap((g) => g.pairs.map(([a, b]) => key(a, b))));
+  const groups: DuelGroup[] = DUEL_GROUPS.map((g) => ({ label: g.label, pairs: [...g.pairs] }));
+  for (const { family, pair } of autoPairs()) {
+    const k = key(pair[0], pair[1]);
+    if (seen.has(k)) continue;
+    seen.add(k);
+    let group = groups.find((g) => g.label === family);
+    if (!group) groups.push((group = { label: family, pairs: [] }));
+    group.pairs.push(pair);
+  }
   const value: [string, string][] = [];
   for (const c of getValuePairs()) {
     const k = key(c.reference.slug, c.alternative.slug);
@@ -266,7 +325,9 @@ export function getDuelGroups(): DuelGroup[] {
     seen.add(k);
     value.push([c.reference.slug, c.alternative.slug]);
   }
-  groupsCache = [...DUEL_GROUPS, ...(value.length ? [{ label: "À prix égal", pairs: value }] : [])];
+  const ORDER = ["Citadines", "Petits SUV", "Compactes", "SUV familiaux", "Grands SUV", "Berlines", "Ludospaces et vans"];
+  groups.sort((a, b) => (ORDER.indexOf(a.label) + 1 || 99) - (ORDER.indexOf(b.label) + 1 || 99));
+  groupsCache = [...groups, ...(value.length ? [{ label: "À prix égal", pairs: value }] : [])];
   return groupsCache;
 }
 

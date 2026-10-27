@@ -18,6 +18,10 @@ const duelLinks = [
   { label: "Tous les duels →", href: url("/comparer/duels/"), accent: true },
 ];
 
+// Comparateur vide : six duels parmi les plus demandés, chargés en un clic
+const START = [["renault-5", "peugeot-e-208"], ["tesla-model-y", "skoda-enyaq"], ["kia-ev3", "skoda-elroq"], ["tesla-model-3", "bmw-i4"], ["renault-5", "citroen-e-c3"], ["peugeot-e-3008", "renault-scenic"]];
+const suggestions: [string, string, string][] = START.filter(([a, b]) => vehicles.some((v) => v.slug === a) && vehicles.some((v) => v.slug === b)).map(([a, b]) => [a!, b!, `${nameOf(a!)} vs ${nameOf(b!)}`]);
+
 // Serialize vehicles data for the React island
 const vehiclesData = vehicles.map((v) => ({
   slug: v.slug,
@@ -98,7 +102,7 @@ const vehiclesData = vehicles.map((v) => ({
 
   <!-- Comparateur : zone élargie, brise le container -->
   <div class="comparator-wide pb-12">
-    <ComparatorView client:load vehicles={vehiclesData} />
+    <ComparatorView client:load vehicles={vehiclesData} suggestions={suggestions} />
   </div>
 
   <!-- ═════════ SECTION SEO / DÉCOUVERTE ═════════ -->

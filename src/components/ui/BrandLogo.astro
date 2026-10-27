@@ -53,9 +53,12 @@ for (const [path, content] of Object.entries(logoModules)) {
       .replace(/fill\s*:\s*(?:#(?:000|000000)|rgb\(\s*0\s*,\s*0\s*,\s*0\s*\)|black)\s*;?/gi, "fill:currentColor;")
       .replace(/\bcolor\s*:\s*(?:#fff(?:fff)?|rgb\(\s*255\s*,\s*255\s*,\s*255\s*\)|white)\s*;?/gi, "");
 
-    // Prevent ID collision between different SVGs inlined on the same page
-    const randomId = Math.floor(Math.random() * 1000000).toString(36);
-    const uniqueSuffix = `-${target}-${randomId}`;
+    // Prevent ID collision between different SVGs inlined on the same page. Rang du logo dans la
+    // page plutôt qu'un tirage au hasard : le HTML ne change pas d'un build à l'autre (IndexNow)
+    const locals = Astro.locals as Record<string, unknown>;
+    const rank = ((locals.evlyLogoCount as number | undefined) ?? 0) + 1;
+    locals.evlyLogoCount = rank;
+    const uniqueSuffix = `-${target}-${rank}`;
 
     // Prevent CSS class name collision between different SVGs inlined on the same page
     const classNames = [];

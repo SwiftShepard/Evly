@@ -5,6 +5,21 @@
  * depuis les fiches (src/lib/duel.ts) ; ajouter une paire suffit. Les paires « à prix égal »
  * (ex-bons plans, src/lib/valueComparisons.ts) s'y ajoutent au build (lib/duel, duelPairs).
  */
+/**
+ * Modèles les plus recherchés en France : chacun reçoit en plus ses rivaux les plus proches
+ * (même gabarit, prix voisin), calculés au build par lib/duel (getDuelGroups). L'ordre ne
+ * compte pas ; le modèle de cette liste vient en premier dans l'URL du duel.
+ */
+export const DUEL_SEEDS: string[] = [
+  "renault-5", "peugeot-e-208", "tesla-model-y", "tesla-model-3", "renault-twingo", "citroen-e-c3", "dacia-spring",
+  "renault-4", "renault-scenic", "renault-megane-2026", "peugeot-e-2008", "peugeot-e-3008", "peugeot-e-5008", "mg-mg4",
+  "kia-ev3", "kia-ev2", "kia-ev4", "skoda-elroq", "skoda-enyaq", "vw-id3", "vw-id2", "vw-id4", "bmw-ix1", "bmw-i4",
+  "bmw-ix3-neue-klasse", "fiat-grande-panda", "fiat-600e", "hyundai-inster", "hyundai-kona", "hyundai-ioniq-5",
+  "byd-dolphin-surf", "byd-atto-3", "citroen-e-c4", "citroen-e-c5-aircross", "volvo-ex30", "mini-cooper", "jeep-avenger",
+  "ford-puma-gen-e", "toyota-c-hr-plus", "cupra-born", "opel-frontera-electric", "leapmotor-t03", "audi-q4-e-tron",
+  "mercedes-cla", "kia-ev6", "nissan-leaf", "alpine-a290",
+];
+
 export const DUEL_GROUPS: { label: string; pairs: [string, string][] }[] = [
   {
     label: "Citadines",

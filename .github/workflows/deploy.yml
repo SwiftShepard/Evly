@@ -44,6 +44,18 @@ jobs:
 
       - run: npm run build
 
+      # Pages nouvelles ou modifiées par rapport au site en ligne, signalées après le déploiement
+      - name: IndexNow, pages à signaler
+        continue-on-error: true
+        run: node scripts/indexnow.mjs --out indexnow.json
+
+      - uses: actions/upload-artifact@v4
+        continue-on-error: true
+        with:
+          name: indexnow
+          path: indexnow.json
+          if-no-files-found: ignore
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist/
@@ -57,3 +69,18 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: indexnow
+
+      - name: IndexNow (Bing, Yandex, Seznam)
+        continue-on-error: true
+        run: |
+          if [ -s indexnow.json ]; then
+            curl -sS -o /dev/null -w "IndexNow : HTTP %{http_code}\n" -X POST https://api.indexnow.org/indexnow \
+              -H "Content-Type: application/json; charset=utf-8" --data @indexnow.json
+          else
+            echo "Aucune page à signaler."
+          fi

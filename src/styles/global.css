@@ -1562,3 +1562,59 @@
   line-height: 1.4;
   color: var(--color-text-faint);
 }
+
+/* ----------------------------------------------------------------- */
+/* Comparateur vide (ComparatorView) : un duel ou ses favoris en un clic */
+/* ----------------------------------------------------------------- */
+
+.cmp-start {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--radius-tile);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+.cmp-start-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.9rem;
+}
+.cmp-start-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-faint);
+}
+.cmp-start-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.cmp-start-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface-elevated);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-text);
+  transition: border-color 200ms ease, background-color 200ms ease;
+}
+.cmp-start-chip:active {
+  transform: scale(0.97);
+}
+@media (hover: hover) and (pointer: fine) {
+  .cmp-start-chip:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+}
+.cmp-start-fav {
+  background: var(--color-surface-accent);
+  border-color: transparent;
+}

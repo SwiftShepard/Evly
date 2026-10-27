@@ -4,9 +4,10 @@ import ComparatorCard from "./ComparatorCard";
 import ComparisonTable from "./ComparisonTable";
 import VehicleSelectModal from "./VehicleSelectModal";
 import { generateInsights, type ConfiguredCard } from "@/lib/insights";
-import { Plus, Share2, Check, LayoutGrid, Rows3, Table2 } from "lucide-react";
+import { Plus, Share2, Check, LayoutGrid, Rows3, Table2, Star, Link as LinkIcon } from "lucide-react";
 import { ceeForProfile } from "@/lib/cee";
 import { useUserProfile } from "@/lib/userProfile";
+import { useFavorites } from "@/lib/useFavorites";
 
 interface CardState {
   slug: string;
@@ -16,6 +17,8 @@ interface CardState {
 
 interface Props {
   vehicles: Vehicle[];
+  /** Duels proposés quand le comparateur est vide : [slug, slug, libellé] */
+  suggestions?: [string, string, string][];
 }
 
 const MAX_CARDS = 4;
@@ -24,8 +27,9 @@ const MAX_CARDS = 4;
  * Composant principal du comparateur configurable.
  * Gère l'état des cartes, la synchro URL, et les insights.
  */
-export default function ComparatorView({ vehicles }: Props) {
+export default function ComparatorView({ vehicles, suggestions = [] }: Props) {
   const { profile } = useUserProfile();
+  const { favorites } = useFavorites();
   const [cards, setCards] = useState<CardState[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -222,8 +226,23 @@ export default function ComparatorView({ vehicles }: Props) {
   }, [configuredCards]);
 
   // Share handler
+  // État vide : un duel ou ses favoris en un clic, chaque modèle dans sa première version
+  const loadSlugs = (slugs: string[]) => {
+    const next = slugs
+      .map((slug) => vehicleMap.get(slug))
+      .filter((v): v is Vehicle => !!v && !!v.configurations[0])
+      .slice(0, MAX_CARDS)
+      .map((v) => ({ slug: v.slug, configId: v.configurations[0]!.id, soh: 100 }));
+    if (next.length) updateCards(() => next);
+  };
+  const favoriteSlugs = favorites.filter((slug) => vehicleMap.has(slug));
+
   const handleShare = async () => {
     try {
+      if (navigator.share && matchMedia("(pointer: coarse)").matches) {
+        await navigator.share({ title: "Comparatif Evly", url: window.location.href });
+        return;
+      }
       await navigator.clipboard.writeText(window.location.href);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -360,14 +379,45 @@ export default function ComparatorView({ vehicles }: Props) {
                 </>
               ) : (
                 <>
-                  <Share2 aria-hidden="true" size={13} />
-                  Partager
+                  <LinkIcon aria-hidden="true" size={13} />
+                  Copier le lien
                 </>
               )}
             </button>
           )}
         </div>
       </div>
+
+      {/* Comparateur vide : de quoi commencer en un clic */}
+      {cards.length === 0 && (suggestions.length > 0 || favoriteSlugs.length > 0) && (
+        <div className="cmp-start">
+          {favoriteSlugs.length > 0 && (
+            <div className="cmp-start-row">
+              <span className="cmp-start-label">Vos favoris</span>
+              <button type="button" className="cmp-start-chip cmp-start-fav" onClick={() => loadSlugs(favoriteSlugs)}>
+                <Star aria-hidden="true" size={14} strokeWidth={2.2} />
+                {favoriteSlugs.length > MAX_CARDS
+                  ? `Comparer les ${MAX_CARDS} premiers de vos ${favoriteSlugs.length} favoris`
+                  : favoriteSlugs.length === 1
+                    ? "Commencer par votre favori"
+                    : `Comparer vos ${favoriteSlugs.length} favoris`}
+              </button>
+            </div>
+          )}
+          {suggestions.length > 0 && (
+            <div className="cmp-start-row">
+              <span className="cmp-start-label">{favoriteSlugs.length > 0 ? "Ou un duel en un clic" : "Commencer par un duel"}</span>
+              <ul className="cmp-start-list">
+                {suggestions.map(([a, b, label]) => (
+                  <li key={`${a}-${b}`}>
+                    <button type="button" className="cmp-start-chip" onClick={() => loadSlugs([a, b])}>{label}</button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Table view */}
       {viewMode === "table" && (
