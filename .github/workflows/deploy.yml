@@ -10,9 +10,6 @@ permissions:
   pages: write
   id-token: write
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 concurrency:
   group: pages
   cancel-in-progress: true
@@ -21,12 +18,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           # Historique complet : la page /nouveautes/ et son flux RSS se lisent dans git
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm
@@ -34,7 +31,7 @@ jobs:
       - run: npm ci
 
       - name: Cache des images optimisées et des cartes de partage
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: node_modules/.astro
           key: astro-assets-${{ hashFiles('src/assets/**', 'src/lib/og.ts', 'src/data/vehicles/**') }}
@@ -49,14 +46,14 @@ jobs:
         continue-on-error: true
         run: node scripts/indexnow.mjs --out indexnow.json
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         continue-on-error: true
         with:
           name: indexnow
           path: indexnow.json
           if-no-files-found: ignore
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: dist/
 
@@ -68,9 +65,9 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         continue-on-error: true
         with:
           name: indexnow
