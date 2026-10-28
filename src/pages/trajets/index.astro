@@ -11,6 +11,7 @@ import { TRIP_GROUPS, type TripGroup } from "@/data/trips";
 import { duration, getTripResults, stopsText, tripTitle } from "@/lib/roadTrips";
 import { formatKm } from "@/lib/format";
 import { url } from "@/lib/url";
+import { fitDescription } from "@/lib/seo";
 import { ArrowRight } from "lucide-react";
 
 const results = await getTripResults();
@@ -19,7 +20,10 @@ const groups = (Object.keys(TRIP_GROUPS) as TripGroup[])
   .filter((g) => g.trips.length > 0);
 const models = results[0]?.rows.length ?? 0;
 
-const description = `${results.length} grands trajets en voiture électrique (Paris → Lyon, Paris → Marseille, stations de ski…) : pour chacun, les ${models} modèles du catalogue classés, avec leurs arrêts sur les vraies bornes rapides, l'été et l'hiver.`;
+const description = fitDescription([
+  `${results.length} grands trajets en voiture électrique, de Paris → Lyon aux stations de ski : ${models} modèles classés.`,
+  "Arrêts sur les vraies bornes, été et hiver.",
+]);
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
@@ -39,7 +43,7 @@ const jsonLd = {
 };
 ---
 
-<BaseLayout title="Grands trajets en voiture électrique : arrêts et temps, modèle par modèle" description={description} jsonLd={jsonLd} ogImage="/og/pages/trajets.jpg">
+<BaseLayout title="Grands trajets en voiture électrique : arrêts et temps par modèle" description={description} jsonLd={jsonLd} ogImage="/og/pages/trajets.jpg">
   <div class="container-edit pt-2 md:pt-3 fade-rise">
     <Breadcrumbs items={[{ label: "Accueil", path: "/" }, { label: "Grands trajets" }]} />
   </div>

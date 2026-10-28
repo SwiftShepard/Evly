@@ -1,15 +1,21 @@
 /**
  * Hypothèses de coût communes au calculateur de coût réel, à Ma semaine, aux fiches et à l'accueil.
- * Module sans dépendance : le calculateur (components/tco) et lib/map/fuel en dépendent tous deux.
+ * Ne dépend que de données datées (data/electricity, data/fuelPrices) : le calculateur
+ * (components/tco) et lib/map/fuel en dépendent tous deux sans boucle d'import.
  */
+import { TARIF_BLEU } from "@/data/electricity";
+import { FUEL_PRICES } from "@/data/fuelPrices";
+
 export const COST_DEFAULTS = {
   km_per_year: 15000,
   years: 5,
-  elec_home_eur_kwh: 0.21,
+  /** Tarif réglementé de base d'EDF, arrondi au centime */
+  elec_home_eur_kwh: Math.round(TARIF_BLEU.base * 100) / 100,
   elec_fast_eur_kwh: 0.45,
   fast_charge_pct: 20,
-  diesel_eur_l: 1.72,
-  essence_eur_l: 1.78,
+  /** Moyennes nationales du flux officiel des prix des carburants */
+  diesel_eur_l: FUEL_PRICES.gazole,
+  essence_eur_l: FUEL_PRICES.e10,
   ice_conso_l_100: 6.5,
   ice_price: 30000,
   ice_maintenance_eur_yr: 1100,

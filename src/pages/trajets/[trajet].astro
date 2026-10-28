@@ -15,6 +15,7 @@ import { TRIP_AXES, TRIP_GROUPS } from "@/data/trips";
 import { duration, getTripResults, stopsText, tripTitle, type TripResult, type TripRow } from "@/lib/roadTrips";
 import { formatKm, formatNumber, formatPrice } from "@/lib/format";
 import { url } from "@/lib/url";
+import { fitDescription, fitTitle } from "@/lib/seo";
 import { ArrowRight, Snowflake, Sun } from "lucide-react";
 
 export async function getStaticPaths() {
@@ -98,7 +99,11 @@ const faq = [
   },
 ];
 
-const description = `${name} en voiture électrique : ${formatKm(Math.round(result.km))}, ${duration(result.driveMin)} de route. ${noStop.length} modèles sans arrêt l'été, ${rows.length} modèles classés avec leurs arrêts sur les vraies bornes, été et hiver.`;
+const description = fitDescription([
+  `${name} en voiture électrique : ${formatKm(Math.round(result.km))}, ${duration(result.driveMin)} de route.`,
+  noStop.length ? `${noStop.length} ${noStop.length > 1 ? "modèles passent" : "modèle passe"} sans arrêt l'été.` : "Aucun modèle ne passe sans arrêt l'été.",
+  `${rows.length} modèles classés, arrêts sur les vraies bornes, été et hiver.`,
+]);
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -106,7 +111,7 @@ const jsonLd = {
 };
 ---
 
-<BaseLayout title={`${name} en voiture électrique : arrêts et temps de trajet`} description={description} jsonLd={jsonLd} ogImage={`/og/trajets/${axis.slug}.jpg`}>
+<BaseLayout title={fitTitle([`${name} en voiture électrique : arrêts et temps de trajet`, `${name} en électrique : arrêts et temps de trajet`, `${name} en voiture électrique`])} description={description} jsonLd={jsonLd} ogImage={`/og/trajets/${axis.slug}.jpg`}>
   <div class="container-edit pt-2 md:pt-3 fade-rise">
     <Breadcrumbs items={[{ label: "Accueil", path: "/" }, { label: "Grands trajets", path: "/trajets/" }, { label: name }]} />
   </div>

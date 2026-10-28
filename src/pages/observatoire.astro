@@ -24,6 +24,7 @@ import { getVehicleBySlug } from "@/lib/vehicles";
 import { getVehicleName } from "@/lib/seo";
 import { formatKm, formatNumber } from "@/lib/format";
 import { url } from "@/lib/url";
+import { fitDescription } from "@/lib/seo";
 import { ArrowRight, ChevronDown, Download } from "lucide-react";
 
 const facts = getObservatoryFacts();
@@ -80,7 +81,10 @@ const faq = [
   },
 ];
 
-const description = `Autonomie réelle des voitures électriques : ${pct(facts.medianGapPct)} sous l'annonce WLTP en médiane, sur ${facts.measuredModels} modèles mesurés sur route. Classement par marque et par modèle, autoroute, hiver, données ouvertes en CSV.`;
+const description = fitDescription([
+  `Autonomie réelle des voitures électriques : ${pct(facts.medianGapPct)} sous l'annonce WLTP en médiane, sur ${facts.measuredModels} modèles mesurés sur route.`,
+  "Par marque, par modèle, données ouvertes.",
+]);
 const site = Astro.site;
 const jsonLd = [
   {

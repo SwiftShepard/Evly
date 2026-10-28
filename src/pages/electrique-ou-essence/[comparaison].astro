@@ -1,0 +1,345 @@
+---
+/**
+ * « {Modèle} électrique ou essence ? » (roadmap M10) : la version électrique d'entrée face à son
+ * jumeau thermique, prix relevés et sources datées (data/iceTwins), calcul de lib/evVsIce. Le
+ * curseur des kilomètres recalcule l'écart et la rentabilité dans le navigateur, mêmes formules.
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BentoGrid from "@/components/ui/BentoGrid.astro";
+import Tile from "@/components/ui/Tile.astro";
+import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
+import Confidence from "@/components/ui/Confidence.astro";
+import FaqList from "@/components/seo/FaqList.astro";
+import LinkChips from "@/components/seo/LinkChips.astro";
+import { EVI, energyLabel, getEvVsIce, type EvVsIce } from "@/lib/evVsIce";
+import { FUEL_PRICES, REAL_WORLD_GAP } from "@/data/fuelPrices";
+import { ICE_TWINS_DATE } from "@/data/iceTwins";
+import { TARIF_BLEU } from "@/data/electricity";
+import { CHARGING_LOSSES } from "@/lib/costDefaults";
+import { eur as eurCents, eurKwh } from "@/lib/chargingCost";
+import { duelsOf } from "@/lib/duel";
+import { duelSlug } from "@/data/duels";
+import { getVehicleBySlug } from "@/lib/vehicles";
+import { fitDescription, fitTitle, getVehicleName } from "@/lib/seo";
+import { formatKm, formatNumber, formatPrice } from "@/lib/format";
+import { url } from "@/lib/url";
+import { ArrowRight } from "lucide-react";
+
+export function getStaticPaths() {
+  return getEvVsIce().map((c) => ({ params: { comparaison: c.twin.slug }, props: { c } }));
+}
+
+interface Props {
+  c: EvVsIce;
+}
+
+const { c } = Astro.props;
+const { twin } = c;
+const energy = energyLabel(twin);
+const iceShort = c.iceName;
+const twinKind = twin.sameModel ? "Le même modèle, en version thermique" : `L'équivalent ${energy} le plus proche dans la gamme ${c.vehicle.brand}`;
+const question = `${c.evName} ou ${iceShort} ${energy} ?`;
+// « la Peugeot E-208 », « l'Opel Corsa Electric », « l'Avenger essence » : des voitures, donc au féminin
+const la = (s: string) => (/^[aeiouyé]/i.test(s) ? `l'${s}` : `la ${s}`);
+const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+const laEv = la(c.evName);
+const laIce = `${la(iceShort)} ${energy}`;
+const longDate = (iso: string) => {
+  const d = new Date(`${iso}T12:00:00`);
+  return `${d.getDate() === 1 ? "1er" : d.getDate()} ${d.toLocaleDateString("fr-FR", { month: "long", year: "numeric" })}`;
+};
+const eur = (n: number) => formatPrice(Math.round(n));
+// « 5,60 € » : toujours deux décimales
+const eur2 = eurCents;
+const years = (y: number) => (y < 1 ? "moins d'un an" : `${formatNumber(Math.ceil(y))} ans`);
+
+const breakText = c.gap <= 0 ? "dès l'achat" : c.breakevenYears !== null ? `en ${years(c.breakevenYears)}` : "jamais";
+// Écart de l'électrique sur un poste : « -1 250 € » quand elle coûte moins
+const signed = (ev: number, ice: number) => (ev === ice ? "=" : `${ev < ice ? "-" : "+"}${eur(Math.abs(ev - ice))}`);
+
+const verdict =
+  c.gap <= 0
+    ? `Prime déduite, ${laEv} coûte déjà ${eur(-c.gap)} de moins que ${laIce} à l'achat, et ses 100 km reviennent à ${eur2(c.ev100)} contre ${eur2(c.ice100)}.`
+    : c.breakevenYears !== null && c.breakevenYears <= EVI.years
+      ? `${cap(laEv)} coûte ${eur(c.gap)} de plus à l'achat, prime déduite, et les rattrape en ${years(c.breakevenYears)} à ${formatNumber(EVI.km)} km par an : ${eur(c.yearlySaving)} d'économie chaque année.`
+      : `${cap(laEv)} coûte ${eur(c.gap)} de plus à l'achat, prime déduite. À ${formatNumber(EVI.km)} km par an, elle ne les rattrape pas en ${EVI.years} ans${c.breakevenKm ? ` : il faut rouler ${formatNumber(Math.round(c.breakevenKm / 1000) * 1000)} km par an` : ""}.`;
+
+const rows = [
+  { label: "Achat", ev: c.evNet, ice: twin.price, note: c.aid ? `prime CEE de ${eur(c.aid)} déduite` : "sans prime CEE" },
+  { label: `Énergie, ${EVI.years} ans`, ev: EVI.years * (EVI.km / 100) * c.ev100, ice: EVI.years * (EVI.km / 100) * c.ice100, note: `${formatNumber(EVI.km)} km par an` },
+  { label: `Entretien, ${EVI.years} ans`, ev: EVI.years * EVI.maintEv, ice: EVI.years * EVI.maintIce, note: "hypothèse du simulateur" },
+  { label: `Assurance, ${EVI.years} ans`, ev: EVI.years * EVI.insEv, ice: EVI.years * EVI.insIce, note: "hypothèse du simulateur" },
+];
+
+// Données du curseur : les mêmes formules, dans le navigateur
+const sim = { gap: c.gap, ev100: c.ev100, ice100: c.ice100, fixedEv: EVI.maintEv + EVI.insEv, fixedIce: EVI.maintIce + EVI.insIce, evNet: c.evNet, icePrice: twin.price, years: EVI.years };
+
+// Les comparaisons de prix voisin d'abord
+const others = getEvVsIce()
+  .filter((o) => o.twin.slug !== twin.slug)
+  .sort((a, b) => Math.abs(a.evNet - c.evNet) - Math.abs(b.evNet - c.evNet))
+  .slice(0, 8);
+const duels = duelsOf(c.vehicle.slug).slice(0, 6).map(([a, b]) => {
+  const other = getVehicleBySlug(a === c.vehicle.slug ? b : a);
+  return { label: `${c.evName} vs ${other ? getVehicleName(other) : b}`, href: url(`/comparer/${duelSlug(a, b)}/`) };
+});
+
+const chipGroups = [
+  {
+    title: "Électrique ou thermique, d'autres modèles",
+    links: [
+      ...others.map((o) => ({ label: `${o.evName} ou ${o.iceName} ${energyLabel(o.twin)}`, href: url(`/electrique-ou-essence/${o.twin.slug}/`) })),
+      { label: "Toutes les comparaisons →", href: url("/electrique-ou-essence/"), accent: true },
+    ],
+  },
+  { title: `${c.evName} face aux autres électriques`, links: duels },
+];
+
+const faq = [
+  {
+    question: `${cap(laEv)} est-elle plus chère que ${laIce} ?`,
+    answer: `À l'achat, ${laEv} (${c.evVersion}) coûte ${eur(c.evPrice)}${c.aid ? `, ${eur(c.evNet)} après la prime CEE de tout ménage` : ""}, contre ${eur(twin.price)} pour ${la(twin.name)} ${twin.version}. ${c.gap > 0 ? `L'écart est donc de ${eur(c.gap)}.` : `L'électrique est donc moins chère de ${eur(-c.gap)}.`} Les ménages modestes touchent une prime plus élevée.`,
+  },
+  {
+    question: `Au bout de combien de temps ${laEv} est-elle rentable ?`,
+    answer: c.gap <= 0
+      ? `Dès l'achat : elle coûte moins cher et chaque année lui fait gagner environ ${eur(c.yearlySaving)} à ${formatNumber(EVI.km)} km.`
+      : c.breakevenYears !== null
+        ? `À ${formatNumber(EVI.km)} km par an, en ${years(c.breakevenYears)} : elle fait gagner environ ${eur(c.yearlySaving)} par an en énergie, entretien et assurance.${c.breakevenKm ? ` Pour être rentable en ${EVI.years} ans, il faut rouler ${formatNumber(Math.round(c.breakevenKm / 1000) * 1000)} km par an.` : ""}`
+        : "Au kilométrage moyen, elle ne coûte pas moins cher à l'usage.",
+  },
+  {
+    question: `Combien coûtent 100 km en ${c.evName} et en ${iceShort} ${energy} ?`,
+    answer: `Environ ${eur2(c.ev100)} en électrique (${formatNumber(c.evKwh100, 1)} kWh/100 km réels, 80 % à la maison au tarif de base, 20 % sur borne rapide) contre ${eur2(c.ice100)} en ${energy} (${formatNumber(c.iceL100, 1)} l/100 km réels, SP95-E10 à ${formatNumber(FUEL_PRICES.e10, 2)} €/l).`,
+  },
+];
+
+const title = fitTitle([
+  `${question.replace(/ \?$/, "")} : laquelle coûte le moins cher ?`,
+  `${question.replace(/ \?$/, "")} : le vrai coût`,
+  question,
+]);
+const description = fitDescription([verdict, `Coût sur ${EVI.years} ans, au kilomètre et selon votre kilométrage.`]);
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })),
+};
+---
+
+<BaseLayout title={title} description={description} jsonLd={jsonLd} ogImage={`/og/electrique-ou-essence/${twin.slug}.jpg`}>
+  <div class="container-edit pt-2 md:pt-3 fade-rise">
+    <Breadcrumbs items={[{ label: "Accueil", path: "/" }, { label: "Électrique ou essence", path: "/electrique-ou-essence/" }, { label: question.replace(/ \?$/, "") }]} />
+  </div>
+
+  <div class="eo container-edit pt-2 pb-8 md:pt-3 md:pb-12 flex flex-col gap-10">
+    <BentoGrid>
+      <Tile size="full" variant="elevated" class="md:!p-8">
+        <span class="label-eyebrow fade-rise">Électrique ou {energy} · prix relevés en octobre 2026</span>
+        <h1 class="display-2 mt-3 max-w-4xl fade-rise fade-rise-delay-1">{question}</h1>
+        <p class="mt-4 max-w-3xl text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed fade-rise fade-rise-delay-2">{verdict}</p>
+        <dl class="eo-facts no-glossary fade-rise fade-rise-delay-2">
+          <div>
+            <dt>À l'achat</dt>
+            <dd><b>{eur(c.evNet)}</b> contre {eur(twin.price)}</dd>
+            <dd>{c.aid ? `électrique, prime CEE de ${eur(c.aid)} déduite` : "électrique, sans prime CEE"}</dd>
+          </div>
+          <div>
+            <dt>Aux 100 km</dt>
+            <dd><b>{eur2(c.ev100)}</b> contre {eur2(c.ice100)}</dd>
+            <dd>consommations réelles, électricité et {energy === "hybride" ? "essence (hybride)" : "essence"}</dd>
+          </div>
+          <div>
+            <dt>Rentable</dt>
+            <dd><b>{breakText}</b></dd>
+            <dd>à {formatNumber(EVI.km)} km par an</dd>
+          </div>
+        </dl>
+      </Tile>
+    </BentoGrid>
+
+    <section aria-labelledby="km-title" class="no-glossary">
+      <h2 id="km-title" class="eo-title">Selon vos kilomètres</h2>
+      <BentoGrid>
+        <Tile size="full" class="md:!p-7">
+          <div class="eo-control">
+            <label for="eo-km">Kilomètres par an</label>
+            <input id="eo-km" type="range" min="5000" max="40000" step="1000" value={EVI.km} class="trip-range" data-eo-km />
+            <output for="eo-km" class="eo-km-out tabular" data-eo-out>{formatNumber(EVI.km)} km</output>
+          </div>
+          <dl class="eo-sim" data-eo-sim={JSON.stringify(sim)}>
+            <div><dt>Économie par an</dt><dd class="tabular" data-eo-saving>{eur(c.yearlySaving)}</dd></div>
+            <div><dt>Écart rattrapé</dt><dd class="tabular" data-eo-break>{breakText}</dd></div>
+            <div><dt>Sur {EVI.years} ans, électrique</dt><dd class="tabular" data-eo-total-ev>{eur(c.total.ev)}</dd></div>
+            <div><dt>Sur {EVI.years} ans, {energy}</dt><dd class="tabular" data-eo-total-ice>{eur(c.total.ice)}</dd></div>
+          </dl>
+          <p class="eo-note">Achat, énergie, entretien et assurance ; sans la revente, qui dépend de l'état et du marché.</p>
+        </Tile>
+      </BentoGrid>
+    </section>
+
+    <section aria-labelledby="detail-title" class="no-glossary">
+      <h2 id="detail-title" class="eo-title">Sur {EVI.years} ans, poste par poste</h2>
+      <BentoGrid>
+        <Tile size="full" class="!px-0 md:!px-0 !py-2">
+          <div class="overflow-x-auto">
+            <table class="eo-table">
+              <thead>
+                <tr><th scope="col">Poste</th><th scope="col">{c.evName}</th><th scope="col">{iceShort} {energy}</th><th scope="col">Écart</th></tr>
+              </thead>
+              <tbody>
+                {rows.map((r) => (
+                  <tr>
+                    <th scope="row">{r.label}<span>{r.note}</span></th>
+                    <td data-numeric>{eur(r.ev)}</td>
+                    <td data-numeric>{eur(r.ice)}</td>
+                    <td data-numeric data-better={r.ev < r.ice ? "ev" : r.ev > r.ice ? "ice" : undefined}>{signed(r.ev, r.ice)}</td>
+                  </tr>
+                ))}
+                <tr class="eo-total">
+                  <th scope="row">Total</th>
+                  <td data-numeric><b>{eur(c.total.ev)}</b></td>
+                  <td data-numeric><b>{eur(c.total.ice)}</b></td>
+                  <td data-numeric data-better={c.total.ev < c.total.ice ? "ev" : "ice"}>{signed(c.total.ev, c.total.ice)}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </Tile>
+      </BentoGrid>
+    </section>
+
+    <section aria-labelledby="usage-title" class="no-glossary">
+      <h2 id="usage-title" class="eo-title">Au quotidien</h2>
+      <BentoGrid>
+        <Tile size="2x1" class="md:!p-7">
+          <h3 class="eo-sub">{c.evName}</h3>
+          <p class="eo-version">{c.evVersion} · {formatPrice(c.evPrice)}</p>
+          <ul class="eo-list">
+            <li><b>{formatKm(c.range.mixed)}</b> d'autonomie réelle, {formatKm(c.range.winter)} par -5 °C <Confidence code={(c.config.realRange ?? c.vehicle.realRange).confidence} /></li>
+            {c.dcMin && <li>De 10 à 80 % en <b>{c.dcMin} min</b> sur borne rapide</li>}
+            <li>{formatNumber(c.evKwh100, 1)} kWh/100 km réels, batterie de {formatNumber(c.battery, Number.isInteger(c.battery) ? 0 : 1)} kWh</li>
+          </ul>
+          <a href={url(`/vehicules/${c.vehicle.slug}/?config=${c.config.id}`)} class="eo-link">La fiche complète <ArrowRight size={13} strokeWidth={2.2} aria-hidden="true" /></a>
+        </Tile>
+        <Tile size="2x1" class="md:!p-7">
+          <h3 class="eo-sub">{twin.name}</h3>
+          <p class="eo-version">{twin.version} · {formatPrice(twin.price)}</p>
+          <ul class="eo-list">
+            <li><b>{formatNumber(c.iceL100, 1)} l/100 km</b> en conditions réelles ({formatNumber(twin.wltpL100, 1)} l homologués WLTP)</li>
+            <li>{formatNumber(twin.co2)} g de CO2 par km homologués</li>
+            <li>{twinKind}</li>
+          </ul>
+          <a href={twin.source} class="eo-link" rel="noopener" target="_blank">Fiche de L'argus ↗</a>
+        </Tile>
+      </BentoGrid>
+    </section>
+
+    <section aria-labelledby="hyp-title" class="no-glossary">
+      <h2 id="hyp-title" class="eo-title">Les hypothèses</h2>
+      <ul class="eo-hyp">
+        <li>Prix catalogue de la version thermique relevé sur L'argus le {longDate(ICE_TWINS_DATE)} (tarif du {longDate(twin.priceDate)}){twin.note ? `. ${twin.note}` : ""}.</li>
+        <li>
+          Consommation réelle du thermique : l'homologation WLTP plus {formatNumber(REAL_WORLD_GAP.petrol * 100, 1)} %, l'écart mesuré par la
+          Commission européenne sur les relevés embarqués de 617 000 voitures (<a href={REAL_WORLD_GAP.sourceUrl} rel="noopener" target="_blank">rapport COM(2024) 122</a>).
+          L'électrique, elle, consomme selon son autonomie réelle (fiche), {formatNumber((CHARGING_LOSSES - 1) * 100)} % de pertes de recharge comprises.
+        </li>
+        <li>
+          Énergie : SP95-E10 à {formatNumber(FUEL_PRICES.e10, 2)} €/l (moyenne nationale du {longDate(FUEL_PRICES.date)}, <a href={FUEL_PRICES.sourceUrl} rel="noopener" target="_blank">flux officiel</a>) ;
+          électricité à {eurKwh(TARIF_BLEU.base)} à la maison (tarif de base d'EDF) pour 80 % des recharges et {formatNumber(EVI.elecFast, 2)} €/kWh sur borne rapide pour 20 %.
+          En heures creuses, l'électrique coûte encore moins : <a href={url("/recharge-a-domicile/")}>le guide de la recharge</a>.
+        </li>
+        <li>
+          Prime CEE de tout ménage ; un ménage modeste touche davantage (<a href={url("/aides/")}>votre prime</a>). Entretien et assurance : moyennes du
+          simulateur, {formatPrice(EVI.maintEv)} et {formatPrice(EVI.insEv)} par an en électrique, {formatPrice(EVI.maintIce)} et {formatPrice(EVI.insIce)} en thermique.
+        </li>
+      </ul>
+      <a href={url(`/simulateur/?v=${c.vehicle.slug}`)} class="btn btn-secondary btn-sm mt-4">
+        Votre cas exact, revente comprise, dans le simulateur <ArrowRight size={15} strokeWidth={2} className="btn-arrow" aria-hidden="true" />
+      </a>
+    </section>
+
+    <section aria-labelledby="faq-title">
+      <h2 id="faq-title" class="eo-title">Questions fréquentes</h2>
+      <FaqList entries={faq} />
+    </section>
+
+    <LinkChips groups={chipGroups} />
+  </div>
+</BaseLayout>
+
+<script>
+  function setup() {
+    const input = document.querySelector<HTMLInputElement>("[data-eo-km]");
+    const box = document.querySelector<HTMLElement>("[data-eo-sim]");
+    if (!input || !box || input.dataset.ready) return;
+    input.dataset.ready = "1";
+    const s = JSON.parse(box.dataset.eoSim!) as Record<string, number>;
+    const nf = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 });
+    const num = (n: number) => nf.format(Math.round(n)).replace(/ /g, " ");
+    const eur = (n: number) => `${num(n)} €`;
+    const out = document.querySelector<HTMLElement>("[data-eo-out]")!;
+    const set = (sel: string, text: string) => {
+      const el = box.querySelector<HTMLElement>(sel);
+      if (el) el.textContent = text;
+    };
+    const render = () => {
+      const km = Number(input.value);
+      input.style.setProperty("--fill", `${((km - 5000) / 35000) * 100}%`);
+      out.textContent = `${num(km)} km`;
+      const ev = (km / 100) * s.ev100! + s.fixedEv!;
+      const ice = (km / 100) * s.ice100! + s.fixedIce!;
+      const saving = ice - ev;
+      set("[data-eo-saving]", eur(saving));
+      const y = s.gap! <= 0 ? 0 : saving > 0 ? s.gap! / saving : null;
+      set("[data-eo-break]", y === 0 ? "dès l'achat" : y === null ? "jamais" : y < 1 ? "en moins d'un an" : `en ${Math.ceil(y)} ans`);
+      set("[data-eo-total-ev]", eur(s.evNet! + s.years! * ev));
+      set("[data-eo-total-ice]", eur(s.icePrice! + s.years! * ice));
+    };
+    input.addEventListener("input", render);
+    render();
+  }
+  setup();
+  document.addEventListener("astro:page-load", setup);
+</script>
+
+<style>
+  .eo-title { font-family: var(--font-display); font-size: clamp(1.375rem, 2.2vw, 1.75rem); font-weight: 600; letter-spacing: -0.022em; line-height: 1.15; margin-bottom: 0.6rem; }
+  .eo-sub { font-size: 17px; font-weight: 700; }
+  .eo-version { margin: 0.15rem 0 0.7rem; font-size: 13px; color: var(--color-text-faint); }
+  .eo-list { display: flex; flex-direction: column; gap: 0.4rem; font-size: 14.5px; color: var(--color-text-muted); }
+  .eo-list b { color: var(--color-text); }
+  .eo-link { display: inline-flex; align-items: center; gap: 0.25rem; margin-top: 0.9rem; font-size: 13.5px; font-weight: 600; color: var(--color-accent); }
+  .eo-note { margin-top: 0.8rem; font-size: 12.5px; color: var(--color-text-faint); }
+  .eo-hyp { display: flex; flex-direction: column; gap: 0.5rem; max-width: 85ch; margin-left: 1.25rem; list-style: disc; font-size: 14px; color: var(--color-text-muted); }
+  .eo-hyp a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }
+
+  .eo-facts { display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 0.6rem; margin-top: 1.75rem; }
+  @media (min-width: 640px) { .eo-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .eo-facts > div { padding: 0.8rem 1rem; border-radius: var(--radius-tile-sm); background: var(--color-surface-accent); }
+  .eo-facts dt { font-size: 12.5px; font-weight: 600; color: var(--color-accent-dim); }
+  .eo-facts dd { font-size: 13.5px; color: var(--color-text-muted); }
+  .eo-facts dd b { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 1.7rem); font-weight: 800; letter-spacing: -0.035em; color: var(--color-text); font-variant-numeric: tabular-nums; }
+
+  .eo-control { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 0.4rem 1rem; max-width: 36rem; }
+  .eo-control label { grid-column: 1 / -1; font-size: 13.5px; font-weight: 600; }
+  .eo-km-out { min-width: 7rem; text-align: right; font-family: var(--font-display); font-size: 24px; font-weight: 800; letter-spacing: -0.03em; color: var(--color-accent); }
+  .eo-sim { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem 1.5rem; margin-top: 1.4rem; }
+  @media (min-width: 768px) { .eo-sim { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .eo-sim dt { font-size: 12.5px; font-weight: 600; color: var(--color-text-faint); }
+  .eo-sim dd { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; }
+
+  .eo-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .eo-table th, .eo-table td { padding: 0.65rem 0.35rem; border-bottom: 1px solid var(--color-border); text-align: left; vertical-align: baseline; }
+  .eo-table :is(th, td):first-child { padding-left: 0.7rem; }
+  .eo-table :is(th, td):last-child { padding-right: 0.7rem; }
+  @media (min-width: 640px) { .eo-table { font-size: 14.5px; } .eo-table th, .eo-table td { padding: 0.7rem 1.25rem; } }
+  @media (min-width: 768px) { .eo-table th, .eo-table td, .eo-table :is(th, td):is(:first-child, :last-child) { padding-inline: 2rem; } }
+  .eo-table thead th { font-size: 12.5px; font-weight: 600; color: var(--color-text-faint); }
+  .eo-table tbody th { font-weight: 600; }
+  .eo-table tbody th span { display: block; font-size: 12px; font-weight: 400; color: var(--color-text-faint); }
+  .eo-table td { color: var(--color-text-muted); }
+  .eo-table td[data-better="ev"] { color: var(--color-accent); font-weight: 700; }
+  .eo-table .eo-total th, .eo-table .eo-total td { border-bottom: 0; }
+  .eo-table .eo-total b { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; color: var(--color-text); }
+</style>

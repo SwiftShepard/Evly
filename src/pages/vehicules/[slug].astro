@@ -29,6 +29,7 @@ import { duelSlug } from "@/data/duels";
 import { duelsOf } from "@/lib/duel";
 import { duration, getTripResults, stopsText, tripTitle } from "@/lib/roadTrips";
 import { winterRankOf } from "@/lib/winterRanking";
+import { energyLabel, evVsIceForVehicle } from "@/lib/evVsIce";
 import { chargeCosts, eur, eurKwh, realConsumption, tariffDate } from "@/lib/chargingCost";
 import { batteryOf } from "@/lib/map/versions";
 import RangeRail from "@/components/ui/RangeRail.astro";
@@ -207,6 +208,8 @@ const duelLinks = duelsOf(vehicle.slug).map(([a, b]) => {
   const other = allVehicles.find((v) => v.slug === (a === vehicle.slug ? b : a));
   return { label: `${getVehicleName(vehicle)} vs ${other ? getVehicleName(other) : b}`, href: url(`/comparer/${duelSlug(a, b)}/`) };
 });
+// Face à son jumeau thermique (page /electrique-ou-essence/x/), quand il existe
+const evVsIce = evVsIceForVehicle(vehicle.slug);
 // Grands trajets les plus cherchés, pour ce modèle (pages /trajets/x-y/)
 const FICHE_TRIPS = ["paris-lyon", "paris-marseille", "paris-bordeaux", "lyon-marseille", "paris-nantes", "paris-val-thorens"];
 const tripLinks = (await getTripResults())
@@ -837,6 +840,7 @@ const configSubtitle = (label: string) => {
         <p class="trip-panel-foot">
           Calcul sur 21 jours de trajet par mois, avec la consommation réelle déduite de l'autonomie de la version (mesurée ou estimée, comme l'indique son badge). Électricité à {formatNumber(tripRates.home, 2)}&nbsp;€/kWh à domicile ou {formatNumber(tripRates.fast, 2)}&nbsp;€/kWh sur borne rapide, essence à {formatNumber(tripRates.fuel, 2)}&nbsp;€/l pour {formatNumber(tripRates.fuelConso, 1)}&nbsp;l/100&nbsp;km.
           <a href={url(`/simulateur/?v=${vehicle.slug}`)} class="text-[var(--color-accent)] font-semibold underline underline-offset-2 hover:no-underline">Coût complet sur plusieurs années</a>
+          {evVsIce && <>{" · "}<a href={url(`/electrique-ou-essence/${evVsIce.twin.slug}/`)} class="text-[var(--color-accent)] font-semibold underline underline-offset-2 hover:no-underline">Face à {evVsIce.twin.sameModel ? "la" : "une"} {evVsIce.iceName} {energyLabel(evVsIce.twin)}</a></>}
         </p>
       </section>
 

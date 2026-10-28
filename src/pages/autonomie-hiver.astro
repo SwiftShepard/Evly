@@ -17,6 +17,7 @@ import { TRIP_AXES } from "@/data/trips";
 import { tripTitle } from "@/lib/roadTrips";
 import { formatKm, formatNumber, formatPrice } from "@/lib/format";
 import { url } from "@/lib/url";
+import { fitDescription } from "@/lib/seo";
 import { ArrowRight } from "lucide-react";
 
 const rows = getWinterRanking();
@@ -57,7 +58,11 @@ const faq = [
   },
 ];
 
-const description = `Autonomie des voitures électriques en hiver : ${rows.length} modèles classés par -5 °C, perte médiane de ${pct(medianLoss)}. ${over300} modèles dépassent 300 km. Choisissez la température, la liste se recalcule.`;
+const description = fitDescription([
+  `Autonomie des voitures électriques en hiver : ${rows.length} modèles classés par -5 °C, perte médiane de ${pct(medianLoss)}.`,
+  `${over300} modèles dépassent 300 km.`,
+  "La liste se recalcule à votre température.",
+]);
 const jsonLd = [
   {
     "@context": "https://schema.org",

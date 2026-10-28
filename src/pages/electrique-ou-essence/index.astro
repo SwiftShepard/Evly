@@ -1,0 +1,162 @@
+---
+/**
+ * Électrique ou essence, tous les modèles (roadmap M10) : chaque électrique face à son jumeau
+ * thermique, classés par ce que l'électrique fait gagner sur 5 ans. Calcul de lib/evVsIce.
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BentoGrid from "@/components/ui/BentoGrid.astro";
+import Tile from "@/components/ui/Tile.astro";
+import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
+import FaqList from "@/components/seo/FaqList.astro";
+import { EVI, energyLabel, getEvVsIce } from "@/lib/evVsIce";
+import { FUEL_PRICES, REAL_WORLD_GAP } from "@/data/fuelPrices";
+import { TARIF_BLEU } from "@/data/electricity";
+import { formatNumber, formatPrice } from "@/lib/format";
+import { eur as eurCents, eurKwh } from "@/lib/chargingCost";
+import { fitDescription } from "@/lib/seo";
+import { url } from "@/lib/url";
+import { ArrowRight } from "lucide-react";
+
+const list = [...getEvVsIce()].sort((a, b) => b.total.ice - b.total.ev - (a.total.ice - a.total.ev));
+const wins = list.filter((c) => c.total.ev < c.total.ice).length;
+const median = (xs: number[]) => [...xs].sort((a, b) => a - b)[Math.floor(xs.length / 2)]!;
+const ev100 = median(list.map((c) => c.ev100));
+const ice100 = median(list.map((c) => c.ice100));
+const kmNeeded = median(list.map((c) => c.breakevenKm ?? 0));
+const eur = (n: number) => formatPrice(Math.round(n));
+// « 5,60 € » : toujours deux décimales
+const eur2 = eurCents;
+const pairName = (c: (typeof list)[number]) => `${c.evName} ou ${c.iceName} ${energyLabel(c.twin)}`;
+const breakeven = (c: (typeof list)[number]) =>
+  c.gap <= 0 ? "moins chère dès l'achat" : c.breakevenYears === null ? "jamais rentable" : c.breakevenYears < 1 ? "rentable en moins d'un an" : `rentable en ${Math.ceil(c.breakevenYears)} ans`;
+
+const lead = `Sur ${EVI.years} ans à ${formatNumber(EVI.km)} km par an, l'électrique revient moins cher que son équivalent thermique pour ${wins} modèles sur ${list.length}, prime déduite.`;
+const description = fitDescription([lead, `${list.length} modèles vendus en électrique et en essence ou hybride, prix d'octobre 2026.`]);
+
+const faq = [
+  {
+    question: "Une voiture électrique coûte-t-elle moins cher qu'une essence ?",
+    answer: `À l'achat, souvent non, même après la prime. À l'usage, oui : environ ${eur2(ev100)} aux 100 km en électrique contre ${eur2(ice100)} en essence, et un entretien moins cher. ${lead}`,
+  },
+  {
+    question: "À partir de combien de kilomètres par an l'électrique est-elle rentable ?",
+    answer: `Pour la moitié des modèles comparés, à partir d'environ ${formatNumber(Math.round(kmNeeded / 1000) * 1000)} km par an pour rattraper l'écart d'achat en ${EVI.years} ans. Plus on roule, plus l'électrique gagne ; recharger en heures creuses avance encore la date.`,
+  },
+  {
+    question: "Pourquoi ne pas compter la revente ?",
+    answer: "La décote dépend de l'état, du kilométrage et du marché de l'occasion, qui bouge vite pour l'électrique. Le simulateur de coût réel permet de la régler pour votre cas.",
+  },
+];
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Électrique ou essence, modèle par modèle",
+    description,
+    url: new URL(url("/electrique-ou-essence/"), Astro.site).toString(),
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: list.length,
+      itemListElement: list.map((c, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: `${pairName(c)} ?`,
+        url: new URL(url(`/electrique-ou-essence/${c.twin.slug}/`), Astro.site).toString(),
+      })),
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })),
+  },
+];
+---
+
+<BaseLayout title="Électrique ou essence : laquelle coûte le moins, modèle par modèle" description={description} jsonLd={jsonLd} ogImage="/og/pages/electrique-ou-essence.jpg">
+  <div class="container-edit pt-2 md:pt-3 fade-rise">
+    <Breadcrumbs items={[{ label: "Accueil", path: "/" }, { label: "Électrique ou essence" }]} />
+  </div>
+
+  <div class="container-edit pt-2 pb-8 md:pt-3 md:pb-12 flex flex-col gap-10">
+    <BentoGrid>
+      <Tile size="full" variant="elevated" class="md:!p-8">
+        <span class="label-eyebrow fade-rise">Électrique ou thermique · {list.length} modèles</span>
+        <h1 class="display-2 mt-3 max-w-4xl fade-rise fade-rise-delay-1">Électrique ou essence : laquelle coûte le moins ?</h1>
+        <p class="mt-4 max-w-3xl text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed fade-rise fade-rise-delay-2">
+          Les modèles vendus dans les deux versions, au même niveau de finition : prix catalogue, prime déduite, consommations réelles
+          des deux côtés. {lead}
+        </p>
+        <a href={url("/simulateur/")} class="btn btn-secondary btn-sm mt-6 self-start fade-rise fade-rise-delay-2">
+          Votre cas exact, revente comprise <ArrowRight size={15} strokeWidth={2} className="btn-arrow" aria-hidden="true" />
+        </a>
+      </Tile>
+    </BentoGrid>
+
+    <section aria-labelledby="eo-list-title">
+      <h2 id="eo-list-title" class="section-title">Du plus au moins avantageux pour l'électrique</h2>
+      <ul class="eoh-grid">
+        {list.map((c) => {
+          const diff = c.total.ice - c.total.ev;
+          return (
+            <li>
+              <a href={url(`/electrique-ou-essence/${c.twin.slug}/`)} class="eoh-card">
+                <span class="eoh-title">{pairName(c)} ?</span>
+                <span class="eoh-meta tabular">{eur(c.evNet)} contre {eur(c.twin.price)} · {eur2(c.ev100)} contre {eur2(c.ice100)} aux 100 km</span>
+                <span class="eoh-line" data-win={diff > 0 ? "ev" : "ice"}>
+                  <b class="tabular">{diff > 0 ? "-" : "+"}{eur(Math.abs(diff))}</b> sur {EVI.years} ans en électrique, {breakeven(c)}
+                </span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+
+    <section aria-labelledby="eo-hyp-title">
+      <h2 id="eo-hyp-title" class="section-title">Comment c'est calculé</h2>
+      <ul class="eoh-hyp">
+        <li>La version électrique d'entrée de gamme face à la version thermique de même finition, prix catalogue relevés en octobre 2026 (L'argus pour le thermique).</li>
+        <li>Prime CEE de tout ménage déduite ; les ménages modestes touchent davantage (<a href={url("/aides/")}>votre prime</a>).</li>
+        <li>
+          Thermique : consommation WLTP plus {formatNumber(REAL_WORLD_GAP.petrol * 100, 1)} %, l'écart mesuré par la Commission européenne sur
+          617 000 voitures ; SP95-E10 à {formatNumber(FUEL_PRICES.e10, 2)} €/l. Électrique : consommation tirée de l'autonomie réelle,
+          80 % des recharges à la maison à {eurKwh(TARIF_BLEU.base)}, 20 % sur borne rapide.
+        </li>
+        <li>Entretien et assurance : moyennes du simulateur. La revente n'est pas comptée.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="eo-faq-title">
+      <h2 id="eo-faq-title" class="section-title">Questions fréquentes</h2>
+      <FaqList entries={faq} />
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .section-title { font-family: var(--font-display); font-size: clamp(1.375rem, 2.2vw, 1.75rem); font-weight: 600; letter-spacing: -0.022em; line-height: 1.15; margin-bottom: 0.75rem; }
+  .eoh-grid { display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 0.75rem; }
+  @media (min-width: 640px) { .eoh-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1024px) { .eoh-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .eoh-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    height: 100%;
+    padding: 1.1rem 1.2rem;
+    border-radius: var(--radius-tile);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    transition: border-color 200ms ease, box-shadow 260ms var(--ease-out-expo), transform 260ms var(--ease-out-expo);
+  }
+  .eoh-card:active { transform: scale(0.985); transition-duration: 120ms; }
+  @media (hover: hover) and (pointer: fine) { .eoh-card:hover { border-color: var(--color-border-strong); box-shadow: var(--shadow-md); } }
+  .eoh-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.25; }
+  .eoh-meta { font-size: 13px; color: var(--color-text-faint); }
+  .eoh-line { font-size: 13.5px; color: var(--color-text-muted); }
+  .eoh-line b { font-weight: 700; }
+  .eoh-line[data-win="ev"] b { color: var(--color-accent); }
+  .eoh-hyp { display: flex; flex-direction: column; gap: 0.5rem; max-width: 85ch; margin-left: 1.25rem; list-style: disc; font-size: 14px; color: var(--color-text-muted); }
+  .eoh-hyp a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }
+</style>

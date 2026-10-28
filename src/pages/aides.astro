@@ -27,6 +27,7 @@ import { getAllVehicles, isStrictUtility } from "@/lib/vehicles";
 import { getVehicleSeoFacts } from "@/lib/seo";
 import { formatPrice } from "@/lib/format";
 import { url } from "@/lib/url";
+import { fitDescription } from "@/lib/seo";
 import { ArrowRight } from "lucide-react";
 
 const CATEGORIES: HouseholdCategory[] = ["precarite", "modeste", "gros_rouleur", "autres"];
@@ -64,7 +65,10 @@ const faq = [
   },
 ];
 
-const description = `Aides 2026 pour une voiture électrique : prime CEE jusqu'à ${eur(PRIME_GRID.standard.precarite)} (${eur(PRIME_GRID.europe.precarite)} produite en Europe) selon vos revenus, leasing social dès 94 €/mois, cas des sociétés. Calculez la vôtre.`;
+const description = fitDescription([
+  `Aides 2026 pour une voiture électrique : prime CEE jusqu'à ${eur(PRIME_GRID.standard.precarite)} (${eur(PRIME_GRID.europe.precarite)} produite en Europe) selon vos revenus, leasing social dès 94 €/mois.`,
+  "Calculez la vôtre.",
+]);
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",

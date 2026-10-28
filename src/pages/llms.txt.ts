@@ -6,6 +6,8 @@ import { LEGAL_PAGES } from "@/data/legal";
 import { getVehicleSeoFacts, getMarketStatus } from "@/lib/seo";
 import { url } from "@/lib/url";
 import { duration, getTripResults, stopsText, tripTitle } from "@/lib/roadTrips";
+import { EVI, energyLabel, getEvVsIce } from "@/lib/evVsIce";
+import { FUEL_PRICES } from "@/data/fuelPrices";
 
 /**
  * /llms.txt : résumé du site au format proposé sur llmstxt.org, pour que les assistants IA
@@ -20,6 +22,13 @@ export const GET: APIRoute = async ({ site }) => {
     const noStop = r.rows.filter((x) => x.summer.stops === 0).length;
     const fastest = r.rows[0];
     return `- [${tripTitle(r.axis)}](${abs(`/trajets/${r.axis.slug}/`)}): ${n(Math.round(r.km))} km, ${noStop} modèles sans arrêt l'été, ${stopsText(median(r.rows.map((x) => x.summer.stops)))} en médiane l'été et ${stopsText(median(r.rows.filter((x) => x.winter).map((x) => x.winter!.stops)))} par -5 °C${fastest ? `, le plus rapide ${fastest.name} en ${duration(fastest.summer.totalMin)}` : ""}.`;
+  });
+
+  const eviLines = getEvVsIce().map((c) => {
+    const e = (x: number) => `${n(Math.round(x))} €`;
+    const e2 = (x: number) => `${x.toFixed(2).replace(".", ",")} €`;
+    const diff = c.total.ice - c.total.ev;
+    return `- [${c.evName} ou ${c.iceName} ${energyLabel(c.twin)}](${abs(`/electrique-ou-essence/${c.twin.slug}/`)}): ${c.evVersion} à ${e(c.evNet)} après prime contre ${c.twin.version} à ${e(c.twin.price)} ; ${e2(c.ev100)} contre ${e2(c.ice100)} aux 100 km ; sur ${EVI.years} ans, l'électrique coûte ${diff > 0 ? `${e(diff)} de moins` : `${e(-diff)} de plus`}.`;
   });
 
   const vehicleLines = vehicles.map((v) => {
@@ -50,6 +59,7 @@ Pour citer un chiffre : indiquez la page Evly et son niveau de confiance (« mes
 - [Catalogue des voitures électriques](${abs("/vehicules/")}): tous les modèles, filtres par prix, autonomie, recharge, coffre et aides.
 - [Comparateur](${abs("/comparer/")}): jusqu'à 4 véhicules côte à côte.
 - [Électrique ou thermique : coût réel](${abs("/simulateur/")}): coût total sur 1 à 10 ans, en particulier ou pour une société, avec la consommation réelle de la version.
+- [Électrique ou essence, modèle par modèle](${abs("/electrique-ou-essence/")}): chaque électrique face à sa version essence ou hybride (liste plus bas).
 - [Ma semaine en électrique](${abs("/ma-semaine/")}): depuis une adresse, semaine type avec un modèle (travail, courses, loisirs), recharges à la maison, au travail ou sur borne publique, coût de l'énergie face à l'essence, kilométrage annuel et forfait de location (LLD, LOA), carte de l'autonomie aller-retour en été et en hiver. Calcul dans le navigateur, sur les vraies routes.
 - [Recommandation guidée](${abs("/recommandation/")}): questionnaire de choix selon l'usage.
 - [Duels](${abs("/comparer/duels/")}): deux modèles face à face (autonomie réelle, prix après aides, recharge, coffre), dont les paires [à prix égal](${abs("/bons-plans/")}).
@@ -76,6 +86,12 @@ Ces liens ouvrent directement la réponse ; on peut les composer pour répondre 
 Chaque page classe tout le catalogue sur l'itinéraire : arrêts sur les bornes rapides réelles du tracé, temps de charge sur la courbe de la version, 130 km/h, été et -5 °C.
 
 ${tripLines.join("\n")}
+
+## Électrique ou essence
+
+La version électrique d'entrée face à la version thermique de même finition : prix catalogue (prime CEE de tout ménage déduite), consommations réelles des deux côtés (WLTP + 20,4 % pour l'essence, écart mesuré par la Commission européenne), SP95-E10 à ${FUEL_PRICES.e10.toFixed(2).replace(".", ",")} €/l, ${n(EVI.km)} km par an, entretien et assurance moyens, revente non comptée.
+
+${eviLines.join("\n")}
 
 ## Sélections
 

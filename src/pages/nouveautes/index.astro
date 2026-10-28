@@ -13,6 +13,7 @@ import { getVehicleBySlug } from "@/lib/vehicles";
 import { getVehicleName } from "@/lib/seo";
 import { formatNumber } from "@/lib/format";
 import { url } from "@/lib/url";
+import { fitDescription } from "@/lib/seo";
 import { ArrowRight, ChevronDown, Rss } from "lucide-react";
 
 const updates = getDataUpdates();
@@ -34,7 +35,10 @@ const rows = updates.map((u) => ({
   }),
 }));
 
-const description = `Les nouveautés des données d'Evly : nouveaux modèles, autonomies mesurées sur route, courbes de recharge et prix, mise à jour par mise à jour${last ? ` (dernière le ${fmtDate(last.date)})` : ""}. Aussi en flux RSS.`;
+const description = fitDescription([
+  "Les nouveautés des données d'Evly : nouveaux modèles, autonomies mesurées sur route, courbes de recharge et prix, mise à jour par mise à jour.",
+  "Aussi en flux RSS.",
+]);
 ---
 
 <BaseLayout title="Nouveautés des données : modèles, autonomies mesurées, prix" description={description} ogImage="/og/pages/nouveautes.jpg">

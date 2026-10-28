@@ -31,7 +31,7 @@ function summary(d: Duel) {
   return [range ? `Plus loin : ${range}` : "Autonomie au coude-à-coude", price ? `moins cher : ${price}` : null].filter(Boolean).join(" · ");
 }
 
-const description = `${total} duels de voitures électriques : deux modèles face à face sur l'autonomie réelle, le prix après prime CEE, la recharge et le coffre, chiffres tirés des fiches et confiance de chaque mesure affichée.`;
+const description = `${total} duels de voitures électriques : deux modèles face à face sur l'autonomie réelle, le prix après prime CEE, la recharge et le coffre.`;
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",

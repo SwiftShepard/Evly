@@ -17,6 +17,7 @@ import { getAllVehicles, getVehicleBySlug, isStrictUtility } from "@/lib/vehicle
 import { getMarketStatus, getVehicleName } from "@/lib/seo";
 import { formatNumber } from "@/lib/format";
 import { url } from "@/lib/url";
+import { fitDescription } from "@/lib/seo";
 import { ArrowRight } from "lucide-react";
 
 // Les modèles qu'on cherche le plus, dans la version affichée par défaut sur leur fiche
@@ -78,7 +79,10 @@ const faq = [
   },
 ];
 
-const description = `Recharger sa voiture électrique chez soi : ${eur(per100(TARIF_BLEU.hc))} aux 100 km en heures creuses au tarif d'EDF du ${date}. Coût d'une recharge modèle par modèle, heures creuses ou Tempo, prise renforcée ou borne.`;
+const description = fitDescription([
+  `Recharger sa voiture électrique chez soi : ${eur(per100(TARIF_BLEU.hc))} aux 100 km en heures creuses, tarif d'EDF du ${date}.`,
+  "Coût par modèle, Tempo, prise ou borne.",
+]);
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -86,7 +90,7 @@ const jsonLd = {
 };
 ---
 
-<BaseLayout title="Recharger sa voiture électrique à la maison : coût, tarifs et installation" description={description} jsonLd={jsonLd} ogImage="/og/pages/recharge.jpg">
+<BaseLayout title="Recharger sa voiture électrique à la maison : coût et installation" description={description} jsonLd={jsonLd} ogImage="/og/pages/recharge.jpg">
   <div class="container-edit pt-2 md:pt-3 fade-rise">
     <Breadcrumbs items={[{ label: "Accueil", path: "/" }, { label: "Aides", path: "/aides/" }, { label: "Recharger chez soi" }]} />
   </div>

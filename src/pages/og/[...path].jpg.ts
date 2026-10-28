@@ -8,11 +8,14 @@ import { getAllDuels } from "@/lib/duel";
 import { getVehicleSeoFacts } from "@/lib/seo";
 import { duration, getTripResults, stopsText, tripTitle } from "@/lib/roadTrips";
 import { formatPrice } from "@/lib/format";
+import { energyLabel, getEvVsIce } from "@/lib/evVsIce";
+import { eur as eurCents } from "@/lib/chargingCost";
 
 /**
  * Cartes de partage (Open Graph) générées au build :
  *   /og/vehicules/{slug}.jpg, /og/marques/{marque}.jpg,
- *   /og/selections/{slug}.jpg, /og/duels/{a}-vs-{b}.jpg, /og/trajets/{slug}.jpg, /og/pages/{clé}.jpg
+ *   /og/selections/{slug}.jpg, /og/duels/{a}-vs-{b}.jpg, /og/trajets/{slug}.jpg,
+ *   /og/electrique-ou-essence/{slug}.jpg, /og/pages/{clé}.jpg
  */
 
 type Card = { kind: "vehicle"; data: VehicleCardData } | { kind: "page"; data: PageCardData };
@@ -104,6 +107,22 @@ export const getStaticPaths = (async () => {
             fastest ? `Le plus rapide : ${fastest.name}, ${duration(fastest.summer.totalMin)} (${stopsText(fastest.summer.stops)}).` : "",
           ].filter(Boolean).join(" "),
           vehicles: r.rows.slice(0, 3).map((x) => x.vehicle.slug),
+        },
+      },
+    });
+  }
+
+  for (const c of getEvVsIce()) {
+    const energy = energyLabel(c.twin);
+    paths.push({
+      params: { path: `electrique-ou-essence/${c.twin.slug}` },
+      props: {
+        kind: "page",
+        data: {
+          eyebrow: `Électrique ou ${energy}`,
+          title: `${c.evName} ou ${c.iceName} ${energy} ?`,
+          subtitle: `${eurCents(c.ev100)} contre ${eurCents(c.ice100)} aux 100 km. Achat après prime, coût sur 5 ans et rentabilité.`,
+          vehicles: [c.vehicle.slug],
         },
       },
     });

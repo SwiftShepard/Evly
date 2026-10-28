@@ -327,6 +327,25 @@ export function getVehicleTitle(v: Vehicle): string {
 
 const DESC_MAX = 158;
 
+/** Premier titre qui tient dans ce que Google affiche (BaseLayout ajoute « | Evly » s'il reste la place) */
+export function fitTitle(candidates: string[], max = 68): string {
+  return candidates.find((t) => t.length <= max) ?? candidates.at(-1)!;
+}
+
+/**
+ * Description en phrases entières : on ajoute les phrases tant qu'elles tiennent dans la limite ;
+ * la première, si elle déborde seule, est coupée au dernier mot avec des points de suspension.
+ */
+export function fitDescription(sentences: string[], max = DESC_MAX): string {
+  let out = "";
+  for (const s of sentences.filter(Boolean)) {
+    const next = out ? `${out} ${s}` : s;
+    if (next.length <= max) out = next;
+    else if (!out) return `${s.slice(0, max - 1).replace(/\s+\S*$/, "")}…`;
+  }
+  return out;
+}
+
 /** Meta description : les chiffres qu'on cherche (prix, autonomie réelle, recharge), sans promesse fausse. */
 export function getVehicleDescription(v: Vehicle): string {
   const f = getVehicleSeoFacts(v);

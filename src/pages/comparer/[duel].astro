@@ -19,7 +19,7 @@ import type { DuelCard } from "@/lib/shareCard";
 import { getVehicleImage } from "@/lib/vehicleImageAsset";
 import { DUELS, duelSlug } from "@/data/duels";
 import { duelPairs, getAllDuels, type Duel, type DuelSide } from "@/lib/duel";
-import { getVehicleName } from "@/lib/seo";
+import { fitDescription, fitTitle, getVehicleName } from "@/lib/seo";
 import { getVehicleBySlug } from "@/lib/vehicles";
 import { formatPrice } from "@/lib/format";
 import { url } from "@/lib/url";
@@ -35,8 +35,13 @@ interface Props {
 
 const { duel } = Astro.props;
 const { a: A, b: B } = duel;
-const title = `${A.name} ou ${B.name} : autonomie réelle, prix, recharge`;
-const description = `${A.name} contre ${B.name} : autonomie réelle mesurée ou estimée, prix après prime CEE, recharge 10 → 80 %, coffre. ${duel.verdict[0] ?? ""}`.slice(0, 300);
+const title = fitTitle([
+  `${A.name} ou ${B.name} : autonomie réelle, prix, recharge`,
+  `${A.name} ou ${B.name} : autonomie, prix, recharge`,
+  `${A.name} ou ${B.name} : le comparatif`,
+  `${A.name} ou ${B.name} ?`,
+]);
+const description = fitDescription([`${A.name} ou ${B.name} : autonomie réelle, prix après prime, recharge et coffre, sur les mêmes mesures.`, duel.verdict[0] ?? ""]);
 const pageUrl = url(`/comparer/${duel.slug}/`);
 const compareHref = url(`/comparer/?v=${A.v.slug}:${A.best.id},${B.v.slug}:${B.best.id}`);
 

@@ -88,6 +88,12 @@ export function getPageCards(): Record<string, PageCardData> {
       subtitle: "Tout le catalogue classé par -5 °C, et à la température de votre choix.",
       vehicles: ["tesla-model-y", "kia-ev3", "renault-5"],
     },
+    "electrique-ou-essence": {
+      eyebrow: "Électrique ou essence",
+      title: "Laquelle coûte le moins, modèle par modèle ?",
+      subtitle: "Chaque électrique face à sa version essence ou hybride : achat après prime, coût sur 5 ans, rentabilité.",
+      vehicles: ["peugeot-e-208", "renault-5", "citroen-e-c3"],
+    },
     trajets: {
       eyebrow: "Grands trajets",
       title: "Combien d'arrêts pour Paris → Lyon, le ski, les vacances ?",
