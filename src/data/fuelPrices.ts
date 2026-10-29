@@ -1,7 +1,8 @@
 /**
  * Carburant, pour comparer l'électrique au thermique sur les pages statiques (simulateur par
  * défaut, « Électrique ou essence », fiches). Ma semaine lit le même flux en direct.
- * À mettre à jour quand les prix bougent nettement (relever la moyenne du flux officiel).
+ * Relevé chaque lundi par l'Action « Prix des carburants » (scripts/fuel-prices.mjs), qui ne
+ * réécrit ce bloc que si un prix bouge d'au moins 2 centimes : garder son format.
  */
 
 /** Moyenne nationale des stations mises à jour dans la semaine (flux instantané prix-carburants) */

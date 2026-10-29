@@ -1,6 +1,9 @@
 import React, { useEffect, useState, useMemo } from "react";
 import type { Vehicle } from "@/data/schemas";
 import { calculateCeeAid } from "@/lib/cee";
+import { COST_DEFAULTS, residualPct } from "@/lib/costDefaults";
+import { computeTco } from "@/lib/tco";
+import { iceTwinOf, realL100 } from "@/data/iceTwins";
 import { url } from "@/lib/url";
 import { formatNumber } from "@/lib/format";
 import { ArrowLeft, Printer, RotateCcw, AlertTriangle, Sparkles, CheckCircle2 } from "lucide-react";
@@ -38,23 +41,29 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
 
     const slug = params.get("v") || "";
     const configId = params.get("config") || "";
-    const kmPerYear = parseInt(params.get("km") || "15000", 10);
-    const years = parseInt(params.get("years") || "5", 10);
-    
+    // Réglages du simulateur ; sans eux, ses valeurs par défaut (lib/costDefaults, jumeau thermique)
+    const num = (key: string, fallback: number) => {
+      const x = parseFloat(params.get(key) ?? "");
+      return Number.isFinite(x) ? x : fallback;
+    };
+    const twin = iceTwinOf(slug);
+    const kmPerYear = num("km", COST_DEFAULTS.km_per_year);
+    const years = num("years", COST_DEFAULTS.years);
+
     // Electric parameters
-    const elecHome = parseFloat(params.get("eh") || "0.25");
-    const elecFast = parseFloat(params.get("ef") || "0.45");
-    const fastPct = parseInt(params.get("fp") || "20", 10);
-    const evMaint = parseInt(params.get("evm") || "150", 10);
-    const evInsurance = parseInt(params.get("evins") || "600", 10);
-    const evResidual = parseInt(params.get("evres") || "40", 10);
+    const elecHome = num("eh", COST_DEFAULTS.elec_home_eur_kwh);
+    const elecFast = num("ef", COST_DEFAULTS.elec_fast_eur_kwh);
+    const fastPct = num("fp", COST_DEFAULTS.fast_charge_pct);
+    const evMaint = num("evm", COST_DEFAULTS.ev_maintenance_eur_yr);
+    const evInsurance = num("evins", COST_DEFAULTS.insurance_ev_eur_yr);
+    const evResidual = num("evres", residualPct("ev", years));
 
     // Thermal (ICE) parameters
-    const fuelPrice = parseFloat(params.get("fprice") || "1.90");
-    const iceConso = parseFloat(params.get("iconso") || "6.5");
-    const iceMaint = parseInt(params.get("icem") || "350", 10);
-    const iceInsurance = parseInt(params.get("iceins") || "800", 10);
-    const iceResidual = parseInt(params.get("iceres") || "45", 10);
+    const fuelPrice = num("fprice", COST_DEFAULTS.essence_eur_l);
+    const iceConso = num("iconso", twin ? realL100(twin) : COST_DEFAULTS.ice_conso_l_100);
+    const iceMaint = num("icem", COST_DEFAULTS.ice_maintenance_eur_yr);
+    const iceInsurance = num("iceins", COST_DEFAULTS.insurance_ice_eur_yr);
+    const iceResidual = num("iceres", residualPct("ice", years));
 
     const vehicle = vehicles.find((v) => v.slug === slug);
     if (!vehicle) return null;
@@ -76,45 +85,46 @@ export default function PremiumReportDashboard({ vehicles }: Props) {
       notes: null,
     };
 
-    // Computations
-    const totalKm = kmPerYear * years;
-    
-    // ev energy
-    const avgElecPrice = elecHome * (1 - fastPct / 100) + elecFast * (fastPct / 100);
-    const evConso = config.wltp_consumption_kWh_100km || vehicle.consumption_mixed_kWh_per_100km || 16.0;
-    const evEnergyTotal = Math.round((totalKm / 100) * evConso * avgElecPrice);
-
-    // ice energy
-    const iceEnergyTotal = Math.round((totalKm / 100) * iceConso * fuelPrice);
-
-    // Purchase prices
+    // Même calcul que le simulateur (lib/tco) : consommation réelle, pertes de recharge, jumeau thermique
     const evPrice = config.price_EUR || 35000;
-    const icePrice = Math.round(evPrice * 0.90); // ICE equivalent is roughly 10% cheaper catalog-wise
-
-    // Depreciation
-    const evDepreciationTotal = Math.round(evPrice * (1 - evResidual / 100));
-    const iceDepreciationTotal = Math.round(icePrice * (1 - iceResidual / 100));
-
-    // Maintenance & Insurance
-    const evMaintTotal = evMaint * years;
-    const iceMaintTotal = iceMaint * years;
-    const evInsTotal = evInsurance * years;
-    const iceInsTotal = iceInsurance * years;
-
+    const icePrice = num("iprice", twin?.price ?? COST_DEFAULTS.ice_price);
+    const rr = config.realRange ?? vehicle.realRange;
+    const evConso = num("econso", Math.round(((config.usableCapacity_kWh ?? vehicle.usableCapacity_kWh) / rr.mixed_km) * 1000) / 10);
     // Prime CEE de tout ménage (barème de src/lib/cee.ts), même chiffre que la fiche
-    const { amount: aidsAmount } = calculateCeeAid({
-      vehicle,
-      price: evPrice,
-      profileType: "particular",
-      category: "autres",
+    const totalAids = num("aid", calculateCeeAid({ vehicle, price: evPrice, profileType: "particular", category: "autres" }).amount);
+    const tco = computeTco({
+      km: kmPerYear,
+      years,
+      evPrice,
+      evAid: totalAids,
+      evConso,
+      elecHome,
+      elecFast,
+      fastPct,
+      icePrice,
+      iceConso,
+      fuelPrice,
+      evMaint,
+      iceMaint,
+      evInsurance,
+      iceInsurance,
+      evResidualPct: evResidual,
+      iceResidualPct: iceResidual,
     });
-    const totalAids = aidsAmount;
-
-    // TCO
-    const evTotal = Math.round(evDepreciationTotal + evEnergyTotal + evMaintTotal + evInsTotal - totalAids);
-    const iceTotal = Math.round(iceDepreciationTotal + iceEnergyTotal + iceMaintTotal + iceInsTotal);
+    const totalKm = tco.totalKm;
+    const evEnergyTotal = Math.round(tco.ev.energy);
+    const iceEnergyTotal = Math.round(tco.ice.energy);
+    // Décote affichée hors prime (la prime a sa ligne)
+    const evDepreciationTotal = Math.round(evPrice - tco.ev.resale);
+    const iceDepreciationTotal = Math.round(tco.ice.depreciation);
+    const evMaintTotal = Math.round(tco.ev.maintenance);
+    const iceMaintTotal = Math.round(tco.ice.maintenance);
+    const evInsTotal = Math.round(tco.ev.insurance);
+    const iceInsTotal = Math.round(tco.ice.insurance);
+    const evTotal = Math.round(tco.ev.total);
+    const iceTotal = Math.round(tco.ice.total);
     const savings = iceTotal - evTotal;
-    const savingsPct = Math.round((savings / iceTotal) * 100);
+    const savingsPct = Math.round(tco.savingsPct);
 
     // Weather autonomy based on real specifications
     const baseRange = config.realRange?.mixed_km || vehicle.realRange.mixed_km || 350;

@@ -10,7 +10,7 @@ import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
 import FaqList from "@/components/seo/FaqList.astro";
 import { EVI, energyLabel, getEvVsIce } from "@/lib/evVsIce";
 import { FUEL_PRICES, REAL_WORLD_GAP } from "@/data/fuelPrices";
-import { TARIF_BLEU } from "@/data/electricity";
+import { RESALE_3Y } from "@/data/runningCosts";
 import { formatNumber, formatPrice } from "@/lib/format";
 import { eur as eurCents, eurKwh } from "@/lib/chargingCost";
 import { fitDescription } from "@/lib/seo";
@@ -28,23 +28,27 @@ const eur = (n: number) => formatPrice(Math.round(n));
 const eur2 = eurCents;
 const pairName = (c: (typeof list)[number]) => `${c.evName} ou ${c.iceName} ${energyLabel(c.twin)}`;
 const breakeven = (c: (typeof list)[number]) =>
-  c.gap <= 0 ? "moins chère dès l'achat" : c.breakevenYears === null ? "jamais rentable" : c.breakevenYears < 1 ? "rentable en moins d'un an" : `rentable en ${Math.ceil(c.breakevenYears)} ans`;
+  c.breakevenYears === 0
+    ? "moins chère dès l'achat"
+    : c.breakevenYears === null
+      ? "achat jamais rattrapé à l'usage"
+      : `achat rattrapé à l'usage en ${Math.max(1, Math.ceil(c.breakevenYears))} an${Math.ceil(c.breakevenYears) > 1 ? "s" : ""}`;
 
-const lead = `Sur ${EVI.years} ans à ${formatNumber(EVI.km)} km par an, l'électrique revient moins cher que son équivalent thermique pour ${wins} modèles sur ${list.length}, prime déduite.`;
+const lead = `Sur ${EVI.years} ans à ${formatNumber(EVI.km)} km par an, l'électrique revient moins cher que son équivalent thermique pour ${wins} modèles sur ${list.length}, prime déduite et revente comprise.`;
 const description = fitDescription([lead, `${list.length} modèles vendus en électrique et en essence ou hybride, prix d'octobre 2026.`]);
 
 const faq = [
   {
     question: "Une voiture électrique coûte-t-elle moins cher qu'une essence ?",
-    answer: `À l'achat, souvent non, même après la prime. À l'usage, oui : environ ${eur2(ev100)} aux 100 km en électrique contre ${eur2(ice100)} en essence, et un entretien moins cher. ${lead}`,
+    answer: `À l'achat, souvent non, même après la prime. À l'usage, oui : environ ${eur2(ev100)} aux 100 km en électrique contre ${eur2(ice100)} en essence, et un entretien moins cher. Elle se revend en revanche moins bien. ${lead}`,
   },
   {
     question: "À partir de combien de kilomètres par an l'électrique est-elle rentable ?",
-    answer: `Pour la moitié des modèles comparés, à partir d'environ ${formatNumber(Math.round(kmNeeded / 1000) * 1000)} km par an pour rattraper l'écart d'achat en ${EVI.years} ans. Plus on roule, plus l'électrique gagne ; recharger en heures creuses avance encore la date.`,
+    answer: `Pour la moitié des modèles comparés, à partir d'environ ${formatNumber(Math.round(kmNeeded / 1000) * 1000)} km par an pour coûter moins sur ${EVI.years} ans, revente comprise. Plus on roule, plus l'électrique gagne ; recharger en heures creuses avance encore la date.`,
   },
   {
-    question: "Pourquoi ne pas compter la revente ?",
-    answer: "La décote dépend de l'état, du kilométrage et du marché de l'occasion, qui bouge vite pour l'électrique. Le simulateur de coût réel permet de la régler pour votre cas.",
+    question: "Une électrique se revend-elle moins bien ?",
+    answer: `Oui, aujourd'hui. Après 3 ans et 60 000 km, une électrique garde en moyenne ${RESALE_3Y.ev} % de son prix catalogue, contre ${RESALE_3Y.ice} % pour une essence (Autovista, grands marchés européens). Ces comparaisons le comptent ; le simulateur permet de régler la revente pour votre cas.`,
   },
 ];
 const jsonLd = [
@@ -104,7 +108,7 @@ const jsonLd = [
                 <span class="eoh-title">{pairName(c)} ?</span>
                 <span class="eoh-meta tabular">{eur(c.evNet)} contre {eur(c.twin.price)} · {eur2(c.ev100)} contre {eur2(c.ice100)} aux 100 km</span>
                 <span class="eoh-line" data-win={diff > 0 ? "ev" : "ice"}>
-                  <b class="tabular">{diff > 0 ? "-" : "+"}{eur(Math.abs(diff))}</b> sur {EVI.years} ans en électrique, {breakeven(c)}
+                  <b class="tabular">{diff > 0 ? "-" : "+"}{eur(Math.abs(diff))}</b> sur {EVI.years} ans en électrique, revente comprise ; {breakeven(c)}
                 </span>
               </a>
             </li>
@@ -121,9 +125,13 @@ const jsonLd = [
         <li>
           Thermique : consommation WLTP plus {formatNumber(REAL_WORLD_GAP.petrol * 100, 1)} %, l'écart mesuré par la Commission européenne sur
           617 000 voitures ; SP95-E10 à {formatNumber(FUEL_PRICES.e10, 2)} €/l. Électrique : consommation tirée de l'autonomie réelle,
-          80 % des recharges à la maison à {eurKwh(TARIF_BLEU.base)}, 20 % sur borne rapide.
+          {100 - EVI.fastPct} % des recharges à la maison à {eurKwh(EVI.elecHome)}, {EVI.fastPct} % sur borne rapide.
         </li>
-        <li>Entretien et assurance : moyennes du simulateur. La revente n'est pas comptée.</li>
+        <li>
+          Entretien et assurance : moyennes 2025 du parc (Roole data, Assurland). Revente après {EVI.years} ans : {EVI.resEv} % du prix
+          catalogue pour l'électrique, {EVI.resIce} % pour le thermique, d'après les valeurs mesurées à 3 ans par Autovista.
+        </li>
+        <li>Le même calcul que le <a href={url("/simulateur/")}>simulateur de coût réel</a>, où tout se règle.</li>
       </ul>
     </section>
 

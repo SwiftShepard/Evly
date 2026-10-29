@@ -2,7 +2,10 @@ import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import { url } from "@/lib/url";
 import { CEE_PRICE_CAP_EUR } from "@/lib/cee";
 import { formatNumber } from "@/lib/format";
-import { CHARGING_LOSSES, COST_DEFAULTS } from "@/lib/costDefaults";
+import { COST_DEFAULTS, residualPct } from "@/lib/costDefaults";
+import { computeTco } from "@/lib/tco";
+import { iceTwinOf, realL100 } from "@/data/iceTwins";
+import { INSURANCE, MAINTENANCE, RESALE_3Y } from "@/data/runningCosts";
 
 /* ---------------------------------------------------------------- */
 /* Types                                                             */
@@ -41,10 +44,6 @@ interface Props {
   initialMode?: Mode;
 }
 
-/** TVA récupérable par une société assujettie : 100 % sur l'électricité, 80 % sur le carburant */
-const VAT = 0.2;
-const ELEC_HT = 1 / (1 + VAT);
-const FUEL_HT = 1 - 0.8 * (VAT / (1 + VAT));
 const KM_DEFAULT: Record<Mode, number> = { particulier: 15000, entreprise: 25000 };
 
 /* ---------------------------------------------------------------- */
@@ -240,25 +239,19 @@ function DepreciationInsight({
           <circle cx="8" cy="8" r="7" />
           <path d="M8 5v3" /><circle cx="8" cy="11" r="0.5" fill="currentColor" />
         </svg>
-        <span className="tco-depreciation-title">Pourquoi le VE se déprécie moins</span>
+        <span className="tco-depreciation-title">Ce que dit le marché de l'occasion</span>
       </div>
 
       <div className="tco-depreciation-body">
         <p>
-          Les préjugés sur le véhicule électrique (durabilité de la batterie,
-          risque d'incendie, coût réel) se déconstruisent progressivement à mesure
-          que les retours d'expérience s'accumulent. Les batteries modernes
-          conservent 80 à 90 % de leur capacité après 200 000 km, les risques
-          d'incendie sont statistiquement inférieurs aux thermiques, et le coût
-          d'entretien est 2 à 3 fois moindre.
+          Aujourd'hui, l'électrique perd plus de valeur que le thermique. Après 3 ans et 60 000 km, une électrique se revend en
+          moyenne {RESALE_3Y.ev} % de son prix catalogue, contre {RESALE_3Y.ice} % pour une essence
+          (<a href={RESALE_3Y.sourceUrl} target="_blank" rel="noopener">Autovista</a>, grands marchés européens, fin 2025). Les
+          valeurs par défaut prolongent ce rythme sur la durée choisie.
         </p>
         <p>
-          <strong>L'interdiction de vente de véhicules thermiques neufs dans l'UE
-          à partir de 2035</strong> accélérera mécaniquement la dépréciation
-          des thermiques : un marché de revente qui se rétrécit, des coûts de
-          carburant croissants, et des ZFE (zones à faibles émissions) qui
-          restreignent leur usage dans les centres urbains. À l'inverse,
-          un VE acheté aujourd'hui conservera sa pertinence sur le long terme.
+          Les électriques récentes à grande autonomie tiennent mieux leur valeur ; les petites, que les primes et le leasing
+          social ont rendues moins chères neuves, décotent davantage. Réglez ces pourcentages selon le modèle et son état.
         </p>
         <div className="tco-depreciation-values">
           <div className="tco-depreciation-val ev">
@@ -272,11 +265,6 @@ function DepreciationInsight({
             <span className="tco-depreciation-val-hint">du prix neuf conservé</span>
           </div>
         </div>
-        <p className="tco-depreciation-footer">
-          La tendance s'inversera : avec des batteries plus durables, un entretien
-          négligeable, une sécurité accrue et une demande croissante, la valeur
-          résiduelle des VE dépassera celle des thermiques bien avant 2035.
-        </p>
       </div>
     </div>
   );
@@ -306,6 +294,7 @@ export default function TcoCalculator({ vehicles, initialMode = "particulier" }:
         const found = vehicles.find((v) => v.slug === vParam);
         if (found) {
           setSelectedSlug(vParam);
+          applyTwin(vParam);
           const configParam = params.get("config") || params.get("c");
           if (configParam && found.configs.some((c) => c.id === configParam)) {
             setSelectedConfigId(configParam);
@@ -342,11 +331,27 @@ export default function TcoCalculator({ vehicles, initialMode = "particulier" }:
   const [evConsoOverride, setEvConsoOverride] = useState<number | null>(null);
   const evConso = evConsoOverride ?? activeConso;
 
-  // ICE ref
+  // Thermique comparé : le jumeau relevé du modèle (data/iceTwins) tant que la personne n'a rien
+  // réglé à la main, sinon un thermique type
+  const initialTwin = iceTwinOf(vehicles[0]?.slug ?? "");
   const [fuelType, setFuelType] = useState<"diesel" | "essence">("essence");
   const [fuelPrice, setFuelPrice] = useState(DEFAULTS.essence_eur_l);
-  const [iceConso, setIceConso] = useState(DEFAULTS.ice_conso_l_100);
-  const [icePrice, setIcePrice] = useState(DEFAULTS.ice_price);
+  const [iceConso, setIceConso] = useState(initialTwin ? realL100(initialTwin) : DEFAULTS.ice_conso_l_100);
+  const [icePrice, setIcePrice] = useState(initialTwin?.price ?? DEFAULTS.ice_price);
+  const [iceTouched, setIceTouched] = useState(false);
+  const twin = iceTouched ? undefined : iceTwinOf(selectedSlug);
+  function applyTwin(slug: string) {
+    if (iceTouched) return;
+    const t = iceTwinOf(slug);
+    setFuelType("essence");
+    setFuelPrice(DEFAULTS.essence_eur_l);
+    setIcePrice(t?.price ?? DEFAULTS.ice_price);
+    setIceConso(t ? realL100(t) : DEFAULTS.ice_conso_l_100);
+  }
+  const touchIce = <T,>(set: (v: T) => void) => (v: T) => {
+    setIceTouched(true);
+    set(v);
+  };
 
   // Maintenance
   const [evMaint, setEvMaint] = useState(DEFAULTS.ev_maintenance_eur_yr);
@@ -358,9 +363,19 @@ export default function TcoCalculator({ vehicles, initialMode = "particulier" }:
     DEFAULTS.insurance_ice_eur_yr
   );
 
-  // Residual value
-  const [evResidual, setEvResidual] = useState(DEFAULTS.ev_residual_pct);
-  const [iceResidual, setIceResidual] = useState(DEFAULTS.ice_residual_pct);
+  // Revente : suit la durée de détention (data/runningCosts) tant qu'elle n'est pas réglée à la main
+  const [residualTouched, setResidualTouched] = useState(false);
+  const [evResidual, setEvResidual] = useState(residualPct("ev", DEFAULTS.years));
+  const [iceResidual, setIceResidual] = useState(residualPct("ice", DEFAULTS.years));
+  useEffect(() => {
+    if (residualTouched) return;
+    setEvResidual(residualPct("ev", years));
+    setIceResidual(residualPct("ice", years));
+  }, [years, residualTouched]);
+  const touchResidual = (set: (v: number) => void) => (v: number) => {
+    setResidualTouched(true);
+    set(v);
+  };
 
   // TVS
   const [tvsIce, setTvsIce] = useState(DEFAULTS.tvs_ice_eur_yr);
@@ -368,7 +383,7 @@ export default function TcoCalculator({ vehicles, initialMode = "particulier" }:
   // Advanced toggle
   const [showAdvanced, setShowAdvanced] = useState(false);
 
-  // Lien vers le rapport détaillé (F8), gratuit pendant la bêta
+  // Lien vers le rapport détaillé (F8, gratuit) : il reprend tous les réglages, pour le même calcul (lib/tco)
   const reportHref = selectedEv
     ? url(`/simulateur/rapport-premium/?${new URLSearchParams({
         v: selectedSlug,
@@ -378,8 +393,11 @@ export default function TcoCalculator({ vehicles, initialMode = "particulier" }:
         eh: elecHome.toString(),
         ef: elecFast.toString(),
         fp: fastPct.toString(),
+        econso: evConso.toString(),
+        aid: aidsFor(selectedEv).toString(),
         fprice: fuelPrice.toString(),
         iconso: iceConso.toString(),
+        iprice: icePrice.toString(),
         evm: evMaint.toString(),
         icem: iceMaint.toString(),
         evins: evInsurance.toString(),
@@ -390,18 +408,16 @@ export default function TcoCalculator({ vehicles, initialMode = "particulier" }:
     : null;
 
   // Update EV conso when vehicle changes
-  const handleVehicleChange = useCallback(
-    (slug: string) => {
-      setSelectedSlug(slug);
-      const v = vehicles.find((ve) => ve.slug === slug);
-      if (v) {
-        const firstConfig = v.configs[0] ?? null;
-        setSelectedConfigId(firstConfig?.id ?? null);
-        setEvConsoOverride(null);
-      }
-    },
-    [vehicles]
-  );
+  const handleVehicleChange = (slug: string) => {
+    setSelectedSlug(slug);
+    applyTwin(slug);
+    const v = vehicles.find((ve) => ve.slug === slug);
+    if (v) {
+      const firstConfig = v.configs[0] ?? null;
+      setSelectedConfigId(firstConfig?.id ?? null);
+      setEvConsoOverride(null);
+    }
+  };
 
   // Update when config changes
   const handleConfigChange = useCallback(
@@ -423,6 +439,7 @@ export default function TcoCalculator({ vehicles, initialMode = "particulier" }:
 
   const handleFuelType = useCallback(
     (ft: "diesel" | "essence") => {
+      setIceTouched(true);
       setFuelType(ft);
       setFuelPrice(ft === "diesel" ? DEFAULTS.diesel_eur_l : DEFAULTS.essence_eur_l);
       setIceConso(ft === "diesel" ? 5.8 : 6.5);
@@ -430,123 +447,45 @@ export default function TcoCalculator({ vehicles, initialMode = "particulier" }:
     []
   );
 
-  // Computation
+  // Calcul partagé avec le rapport et les pages « Électrique ou essence » (lib/tco)
   const result = useMemo(() => {
     const ev = selectedEv;
     if (!ev) return null;
-
-    const totalKm = kmPerYear * years;
-
-    // EV purchase
-    // Pas de prime au-dessus du plafond de prix (version plus chère que celle d'entrée)
-    const evPurchaseNet = Math.max(0, activePrice - aidsFor(ev));
-    const evResidualVal = activePrice * (evResidual / 100);
-    const evDepreciation = evPurchaseNet - evResidualVal;
-
-    // EV energy
-    // Prix de l'énergie consommée, pertes de recharge comprises (comme Ma semaine) ;
-    // une société récupère la TVA de l'électricité et 80 % de celle du carburant
-    const avgElecPrice =
-      (elecHome * (1 - fastPct / 100) + elecFast * (fastPct / 100)) * CHARGING_LOSSES * (pro ? ELEC_HT : 1);
-    const fuelCost = fuelPrice * (pro ? FUEL_HT : 1);
-    const evEnergyCost = (totalKm * evConso) / 100 * avgElecPrice;
-
-    // EV maintenance + insurance
-    const evMaintenanceCost = evMaint * years;
-    const evInsuranceCost = evInsurance * years;
-
-    const evTotal =
-      evDepreciation + evEnergyCost + evMaintenanceCost + evInsuranceCost;
-
-    // ICE purchase
-    const iceResidualVal = icePrice * (iceResidual / 100);
-    const iceDepreciation = icePrice - iceResidualVal;
-
-    // ICE energy
-    const iceEnergyCost = (totalKm * iceConso) / 100 * fuelCost;
-
-    // ICE maintenance + insurance + TVS
-    const iceMaintenanceCost = iceMaint * years;
-    const iceInsuranceCost = iceInsurance * years;
-    const iceTvsCost = pro ? tvsIce * years : 0;
-
-    const iceTotal =
-      iceDepreciation +
-      iceEnergyCost +
-      iceMaintenanceCost +
-      iceInsuranceCost +
-      iceTvsCost;
-
-    const savings = iceTotal - evTotal;
-    const savingsPct = iceTotal > 0 ? (savings / iceTotal) * 100 : 0;
-
-    // Cost per km
-    const evPerKm = totalKm > 0 ? evTotal / totalKm : 0;
-    const icePerKm = totalKm > 0 ? iceTotal / totalKm : 0;
-
-    // Breakdowns
-    const evBreakdown = {
-      depreciation: evDepreciation,
-      energy: evEnergyCost,
-      maintenance: evMaintenanceCost,
-      insurance: evInsuranceCost,
-      tvs: 0,
+    const inputs = {
+      km: kmPerYear,
+      years,
+      // Pas de prime au-dessus du plafond de prix (version plus chère que celle d'entrée)
+      evPrice: activePrice,
+      evAid: aidsFor(ev),
+      evConso,
+      elecHome,
+      elecFast,
+      fastPct,
+      icePrice,
+      iceConso,
+      fuelPrice,
+      evMaint,
+      iceMaint,
+      evInsurance,
+      iceInsurance,
+      evResidualPct: evResidual,
+      iceResidualPct: iceResidual,
+      pro,
+      tvsIce,
     };
-
-    const iceBreakdown = {
-      depreciation: iceDepreciation,
-      energy: iceEnergyCost,
-      maintenance: iceMaintenanceCost,
-      insurance: iceInsuranceCost,
-      tvs: iceTvsCost,
-    };
-
-    // Breakeven in years
-    const evFixedAnnual = evDepreciation / years;
-    const iceFixedAnnual = iceDepreciation / years;
-    const evVarAnnual =
-      (kmPerYear * evConso / 100) * avgElecPrice + evMaint + evInsurance;
-    const iceVarAnnual =
-      (kmPerYear * iceConso / 100) * fuelCost +
-      iceMaint +
-      iceInsurance +
-      (pro ? tvsIce : 0);
-    const annualDiff = iceVarAnnual - evVarAnnual;
-    const fixedOvercost = evFixedAnnual - iceFixedAnnual;
-    let breakeven: number | null = null;
-    if (annualDiff > 0 && fixedOvercost > 0) {
-      breakeven = fixedOvercost / annualDiff;
-    } else if (fixedOvercost <= 0) {
-      breakeven = 0;
-    }
-
-    // Max for bar chart
+    const r = computeTco(inputs);
     const maxBar = Math.max(
-      evBreakdown.depreciation,
-      iceBreakdown.depreciation,
-      evBreakdown.energy,
-      iceBreakdown.energy,
-      evBreakdown.maintenance,
-      iceBreakdown.maintenance,
-      evBreakdown.insurance,
-      iceBreakdown.insurance,
-      iceBreakdown.tvs
+      r.ev.depreciation,
+      r.ice.depreciation,
+      r.ev.energy,
+      r.ice.energy,
+      r.ev.maintenance,
+      r.ice.maintenance,
+      r.ev.insurance,
+      r.ice.insurance,
+      r.ice.tvs
     );
-
-    return {
-      evTotal,
-      iceTotal,
-      savings,
-      savingsPct,
-      evPerKm,
-      icePerKm,
-      evBreakdown,
-      iceBreakdown,
-      breakeven,
-      maxBar,
-      totalKm,
-      avgElecPrice,
-    };
+    return { ...r, evTotal: r.ev.total, iceTotal: r.ice.total, evBreakdown: r.ev, iceBreakdown: r.ice, breakeven: r.paybackYears, maxBar };
   }, [
     selectedEv,
     activePrice,
@@ -800,7 +739,7 @@ export default function TcoCalculator({ vehicles, initialMode = "particulier" }:
                 min={3}
                 max={15}
                 step={0.1}
-                onChange={setIceConso}
+                onChange={touchIce(setIceConso)}
               />
             </div>
             <NumberField
@@ -810,8 +749,20 @@ export default function TcoCalculator({ vehicles, initialMode = "particulier" }:
               min={10000}
               max={80000}
               step={500}
-              onChange={setIcePrice}
+              onChange={touchIce(setIcePrice)}
             />
+            {!iceTouched && (
+              <p className="tco-hint">
+                {twin ? (
+                  <>
+                    Comparée à la <a href={url(`/electrique-ou-essence/${twin.slug}/`)}>{twin.name} {twin.version}</a> : prix
+                    catalogue relevé sur L'argus, consommation homologuée plus 20 %, l'écart mesuré sur route.
+                  </>
+                ) : (
+                  "Thermique type : une compacte essence, consommation réelle moyenne. Réglez-la sur le modèle qui vous intéresse."
+                )}
+              </p>
+            )}
           </div>
         </div>
 
@@ -869,15 +820,15 @@ export default function TcoCalculator({ vehicles, initialMode = "particulier" }:
                 <span className="tco-savings-sep">·</span>
                 <span className="tco-breakeven">
                   {result.breakeven < 1
-                    ? "rentable dès la 1re année"
-                    : `rentable en ${fmtPct(result.breakeven)} an${result.breakeven >= 2 ? "s" : ""}`}
+                    ? "achat rattrapé en moins d'un an"
+                    : `achat rattrapé en ${Math.ceil(result.breakeven)} ans`}
                 </span>
               </>
             )}
             {result.breakeven === 0 && (
               <>
                 <span className="tco-savings-sep">·</span>
-                <span className="tco-breakeven">immédiat</span>
+                <span className="tco-breakeven">moins chère à l'achat</span>
               </>
             )}
           </div>
@@ -964,7 +915,7 @@ export default function TcoCalculator({ vehicles, initialMode = "particulier" }:
             </div>
           </div>
           <div className="flex items-center justify-between gap-4 mt-1 border-t border-[var(--color-border)] pt-3">
-            <span className="text-xs font-semibold text-[var(--color-accent)]">Gratuit pendant la bêta</span>
+            <span className="text-xs font-semibold text-[var(--color-accent)]">Gratuit</span>
             {reportHref && (
               <a
                 href={reportHref}
@@ -1034,6 +985,10 @@ export default function TcoCalculator({ vehicles, initialMode = "particulier" }:
                 onChange={setIceMaint}
               />
             </div>
+            <p className="tco-hint">
+              Moyennes 2025 des automobilistes : {MAINTENANCE.evMonthly} € par mois en électrique, {MAINTENANCE.iceMonthly} € en
+              thermique (<a href={MAINTENANCE.sourceUrl} target="_blank" rel="noopener">Roole data</a>).
+            </p>
           </div>
 
           {/* ── Insurance ──────────────────────────────── */}
@@ -1062,6 +1017,10 @@ export default function TcoCalculator({ vehicles, initialMode = "particulier" }:
                 onChange={setIceInsurance}
               />
             </div>
+            <p className="tco-hint">
+              Primes moyennes 2025 : {fmt(INSURANCE.ev)} € en électrique, {fmt(INSURANCE.essence)} € en essence
+              (<a href={INSURANCE.sourceUrl} target="_blank" rel="noopener">baromètre Assurland</a>).
+            </p>
           </div>
 
           {/* ── Residual value ─────────────────────────── */}
@@ -1074,19 +1033,19 @@ export default function TcoCalculator({ vehicles, initialMode = "particulier" }:
               label={`VE après ${years} ans`}
               unit="% du prix neuf"
               value={evResidual}
-              min={10}
+              min={0}
               max={80}
-              step={5}
-              onChange={setEvResidual}
+              step={1}
+              onChange={touchResidual(setEvResidual)}
             />
             <SliderField
               label={`Thermique après ${years} ans`}
               unit="% du prix neuf"
               value={iceResidual}
-              min={10}
+              min={0}
               max={80}
-              step={5}
-              onChange={setIceResidual}
+              step={1}
+              onChange={touchResidual(setIceResidual)}
             />
             <DepreciationInsight
               years={years}

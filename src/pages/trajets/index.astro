@@ -8,8 +8,8 @@ import BentoGrid from "@/components/ui/BentoGrid.astro";
 import Tile from "@/components/ui/Tile.astro";
 import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
 import { TRIP_GROUPS, type TripGroup } from "@/data/trips";
-import { duration, getTripResults, stopsText, tripTitle } from "@/lib/roadTrips";
-import { formatKm } from "@/lib/format";
+import { costText, duration, getTripResults, iceTripCost, stopsText, tripCostMedian, tripTitle } from "@/lib/roadTrips";
+import { formatKm, formatPrice } from "@/lib/format";
 import { url } from "@/lib/url";
 import { fitDescription } from "@/lib/seo";
 import { ArrowRight } from "lucide-react";
@@ -78,6 +78,7 @@ const jsonLd = {
                   <span class="tg-line">
                     <b class="tabular">{noStop}</b> {noStop > 1 ? "modèles passent" : "modèle passe"} sans arrêt l'été
                   </span>
+                  <span class="tg-line">Énergie de l'aller : <b class="tabular">{costText(tripCostMedian(r))}</b> en médiane, {formatPrice(Math.round(iceTripCost(r.km)))} en essence</span>
                   {fastest && (
                     <span class="tg-line">Le plus rapide : {fastest.name}, {duration(fastest.summer.totalMin)} ({stopsText(fastest.summer.stops)})</span>
                   )}

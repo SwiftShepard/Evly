@@ -12,7 +12,10 @@ import Confidence from "@/components/ui/Confidence.astro";
 import FaqList from "@/components/seo/FaqList.astro";
 import LinkChips from "@/components/seo/LinkChips.astro";
 import { TRIP_AXES, TRIP_GROUPS } from "@/data/trips";
-import { duration, getTripResults, stopsText, tripTitle, type TripResult, type TripRow } from "@/lib/roadTrips";
+import { costText, duration, getTripResults, iceTripCost, stopsText, tripCost, tripCostMedian, tripTitle, type TripLeg, type TripResult, type TripRow } from "@/lib/roadTrips";
+import { FAST_EUR_KWH, TARIF_BLEU } from "@/data/electricity";
+import { CHARGING_LOSSES, COST_DEFAULTS } from "@/lib/costDefaults";
+import { eurKwh } from "@/lib/chargingCost";
 import { formatKm, formatNumber, formatPrice } from "@/lib/format";
 import { url } from "@/lib/url";
 import { fitDescription, fitTitle } from "@/lib/seo";
@@ -64,7 +67,22 @@ for (const r of rows)
     cur.kw = Math.max(cur.kw, s.kw);
     stations.set(key, cur);
   }
-const topStations = [...stations.values()].sort((a, b) => b.n - a.n).slice(0, 5);
+const topStations = [...stations.values()].sort((a, b) => b.n - a.n).slice(0, 5).sort((a, b) => a.km - b.km);
+
+// Énergie de l'aller, l'été : départ rechargé à la maison, puis les bornes du trajet (fourchette des réseaux)
+const costs = rows.map((r) => tripCost(r.summer));
+const costMedian = tripCostMedian(result);
+const cheapestIdx = costs.reduce((best, c, i) => (c.total[1] < costs[best]!.total[1] ? i : best), 0);
+const cheapest = rows[cheapestIdx];
+const iceCost = iceTripCost(result.km);
+// « 31 à 47 € d'énergie : 6 € à la maison avant de partir, 25 à 41 € sur les bornes »
+const costLine = (leg: TripLeg) => {
+  const c = tripCost(leg);
+  return leg.kwhRoad > 0.5
+    ? `${costText(c.total)} d'énergie : ${costText([c.home, c.home])} à la maison avant de partir, ${costText(c.road)} sur les bornes.`
+    : `${costText(c.total)} d'énergie, rechargée à la maison avant de partir.`;
+};
+const fastText =`${formatNumber(FAST_EUR_KWH[0], 2)} à ${formatNumber(FAST_EUR_KWH[1], 2)} €/kWh`;
 
 const weekLink = (r: TripRow | null) => {
   const p = new URLSearchParams();
@@ -92,6 +110,10 @@ const faq = [
     answer: `${duration(result.driveMin)} de route à 130 km/h, plus le temps des arrêts : ${medianCharge ? `${duration(medianCharge)} de recharge en médiane pour les modèles qui s'arrêtent` : "aucun arrêt pour la plupart des modèles"}. ${fastest ? `Le plus rapide, ${fastest.name}, arrive en ${duration(fastest.summer.totalMin)} (${stopsText(fastest.summer.stops)}).` : ""}`,
   },
   {
+    question: `Combien coûte ${axis.from.name}-${axis.to.name} en voiture électrique ?`,
+    answer: `L'énergie d'un aller revient à ${costText(costMedian)} en médiane l'été pour les ${rows.length} modèles : départ batterie pleine, rechargée à la maison au tarif de base d'EDF, puis les bornes rapides du trajet, de ${fastText} selon le réseau et l'abonnement.${cheapest ? ` Le moins cher, ${cheapest.name}, revient à ${costText(costs[cheapestIdx]!.total)}.` : ""} En essence, une compacte à ${formatNumber(COST_DEFAULTS.ice_conso_l_100, 1)} l/100 km brûle pour ${formatPrice(Math.round(iceCost))} de SP95-E10. Les péages sont les mêmes.`,
+  },
+  {
     question: `Quelle voiture électrique pour faire ${axis.from.name}-${axis.to.name} en hiver ?`,
     answer: fastestWinter
       ? `Par -5 °C, ${fastestWinter.name} est la plus rapide : ${duration(fastestWinter.winter!.totalMin)} au total, ${stopsText(fastestWinter.winter!.stops)}. ${noStopWinter.length ? `${noStopWinter.length} modèles passent encore sans s'arrêter (${list(noStopWinter, 3)}).` : "Aucun modèle ne passe sans s'arrêter."}`
@@ -101,6 +123,7 @@ const faq = [
 
 const description = fitDescription([
   `${name} en voiture électrique : ${formatKm(Math.round(result.km))}, ${duration(result.driveMin)} de route.`,
+  `Énergie de l'aller : ${costText(costMedian)} en médiane, contre ${formatPrice(Math.round(iceCost))} en essence.`,
   noStop.length ? `${noStop.length} ${noStop.length > 1 ? "modèles passent" : "modèle passe"} sans arrêt l'été.` : "Aucun modèle ne passe sans arrêt l'été.",
   `${rows.length} modèles classés, arrêts sur les vraies bornes, été et hiver.`,
 ]);
@@ -111,7 +134,7 @@ const jsonLd = {
 };
 ---
 
-<BaseLayout title={fitTitle([`${name} en voiture électrique : arrêts et temps de trajet`, `${name} en électrique : arrêts et temps de trajet`, `${name} en voiture électrique`])} description={description} jsonLd={jsonLd} ogImage={`/og/trajets/${axis.slug}.jpg`}>
+<BaseLayout title={fitTitle([`${name} en voiture électrique : arrêts, temps et coût`, `${name} en électrique : arrêts, temps et coût`, `${name} en électrique : arrêts et temps de trajet`, `${name} en voiture électrique`])} description={description} jsonLd={jsonLd} ogImage={`/og/trajets/${axis.slug}.jpg`}>
   <div class="container-edit pt-2 md:pt-3 fade-rise">
     <Breadcrumbs items={[{ label: "Accueil", path: "/" }, { label: "Grands trajets", path: "/trajets/" }, { label: name }]} />
   </div>
@@ -129,6 +152,7 @@ const jsonLd = {
         <dl class="tr-facts fade-rise fade-rise-delay-2">
           <div><dt>Sans arrêt, l'été</dt><dd><b>{noStop.length}</b> {noStop.length > 1 ? "modèles" : "modèle"}</dd><dd>{noStopWinter.length} par -5 °C</dd></div>
           <div><dt>Arrêts, en médiane</dt><dd><b>{formatNumber(medianStops)}</b> l'été</dd><dd>{stopsText(medianStopsWinter)} par -5 °C</dd></div>
+          <div><dt>L'énergie de l'aller</dt><dd><b>{costText(costMedian)}</b></dd><dd>en médiane l'été, contre {formatPrice(Math.round(iceCost))} en essence</dd></div>
           {fastest && (
             <div><dt>Le plus rapide</dt><dd><b>{duration(fastest.summer.totalMin)}</b></dd><dd>{fastest.name}, {stopsText(fastest.summer.stops)}</dd></div>
           )}
@@ -153,9 +177,9 @@ const jsonLd = {
       </p>
 
       {/* Une seule liste : l'ordre (style order) et les chiffres changent avec la saison */}
-      <div class="tr-panel" data-season="summer" data-tr-list>
+      <div class="tr-panel" data-season="summer" data-tr-list style={`--tr-from:${JSON.stringify(axis.from.name)};--tr-to:${JSON.stringify(axis.to.name)}`}>
         <div class="tr-cols" aria-hidden="true">
-          <span>Modèle</span><span>Arrêts</span><span>Recharge</span><span>Trajet</span><span>Arrivée</span>
+          <span>Modèle</span><span>Arrêts</span><span>Recharge</span><span>Trajet</span><span>Énergie</span><span>Arrivée</span>
         </div>
         <ol class="tr-rows">
           {rows.map((r, i) => {
@@ -174,6 +198,7 @@ const jsonLd = {
                         <span class="tr-stops" data-zero={leg.stops === 0 ? "1" : undefined} {...{ [`data-${k}`]: true }}>{stopsText(leg.stops)}</span>
                         <span class="tr-num tabular" {...{ [`data-${k}`]: true }}>{leg.stops ? duration(leg.chargeMin) : "aucune"}</span>
                         <span class="tr-num tr-total tabular" {...{ [`data-${k}`]: true }}>{duration(leg.totalMin)}</span>
+                        <span class="tr-num tabular" {...{ [`data-${k}`]: true }}>{costText(tripCost(leg).total)}</span>
                         <span class="tr-num tabular" {...{ [`data-${k}`]: true }}>{pct(leg.arrive)}</span>
                       </>
                     ) : (
@@ -187,6 +212,12 @@ const jsonLd = {
                     <div class="tr-detail">
                       {([["s", r.summer], ["w", r.winter]] as const).map(([k, leg]) => (
                         <div {...{ [`data-${k}`]: true }}>
+                          {leg && (
+                            <div class="tr-line" aria-hidden="true">
+                              {leg.list.map((st, j) => <i style={`--x:${Math.min(1, st.km / result.km).toFixed(3)}`}>{j + 1}</i>)}
+                            </div>
+                          )}
+                          {leg && <p class="tr-cost">{costLine(leg)}</p>}
                           {leg && leg.list.length > 0 ? (
                             <ol class="tr-stoplist">
                               {leg.list.map((st) => (
@@ -239,9 +270,12 @@ const jsonLd = {
     {topStations.length > 0 && (
       <section aria-labelledby="bornes-title" class="no-glossary">
         <h2 id="bornes-title" class="section-title">Les bornes du trajet</h2>
-        <p class="tr-lead">Là où s'arrêtent le plus de modèles l'été : des stations rapides à moins de 2 km de l'itinéraire.</p>
+        <p class="tr-lead">Là où s'arrêtent le plus de modèles l'été : des stations rapides à moins de 2 km de l'itinéraire, dans l'ordre du trajet.</p>
         <BentoGrid>
           <Tile size="full" class="md:!p-7">
+            <div class="tr-line tr-line-lg" aria-hidden="true" style={`--tr-from:${JSON.stringify(axis.from.name)};--tr-to:${JSON.stringify(axis.to.name)}`}>
+              {topStations.map((st, j) => <i style={`--x:${Math.min(1, st.km / result.km).toFixed(3)}`}>{j + 1}</i>)}
+            </div>
             <ol class="tr-stations">
               {topStations.map((st) => (
                 <li>
@@ -271,6 +305,12 @@ const jsonLd = {
         <li>
           Temps de charge sur la courbe de la version, relevée par Bjørn Nyland quand elle existe ; consommation tirée de l'autonomie
           réelle de la fiche, mesurée ou estimée, et le badge le dit. L'hiver (-5 °C) suit le <a href={url("/methodologie/#hiver")}>modèle d'hiver d'Evly</a>.
+        </li>
+        <li>
+          Énergie : batterie pleine au départ, rechargée à la maison au tarif de base d'EDF ({eurKwh(TARIF_BLEU.base)}), puis les bornes
+          rapides de {fastText} selon le réseau et l'abonnement, {formatNumber((CHARGING_LOSSES - 1) * 100)} % de pertes de recharge comprises.
+          L'essence : une compacte à {formatNumber(COST_DEFAULTS.ice_conso_l_100, 1)} l/100 km, sa consommation réelle moyenne (à 130 km/h, elle
+          brûle plutôt davantage), SP95-E10 à {formatNumber(COST_DEFAULTS.essence_eur_l, 2)} €/l. Les péages, les mêmes, ne sont pas comptés.
         </li>
         <li>Ni pause, ni attente à la borne, ni dénivelé{axis.group === "ski" ? " : la montée finale vers la station consomme davantage, gardez de la marge" : ""}.</li>
       </ul>
@@ -332,7 +372,8 @@ const jsonLd = {
   .tr-note { margin-top: 1rem; max-width: 85ch; font-size: 13px; color: var(--color-text-faint); }
 
   .tr-facts { display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 0.6rem; margin-top: 1.75rem; }
-  @media (min-width: 640px) { .tr-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (min-width: 640px) { .tr-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1024px) { .tr-facts { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
   .tr-facts > div { padding: 1rem 1.1rem; border-radius: var(--radius-tile-sm); background: var(--color-surface-accent); }
   .tr-facts dt { font-size: 12.5px; font-weight: 600; color: var(--color-accent-dim); }
   .tr-facts dd { font-size: 13.5px; color: var(--color-text-muted); }
@@ -347,7 +388,7 @@ const jsonLd = {
   @media (min-width: 768px) { .tr-panel { padding-inline: 2rem; } }
   /* Grille commune aux en-têtes et aux lignes */
   .tr-cols, .tr-row-head { display: grid; grid-template-columns: 2rem minmax(0, 1fr) auto auto; align-items: center; gap: 0.2rem 0.9rem; }
-  @media (min-width: 768px) { .tr-cols, .tr-row-head { grid-template-columns: 2rem minmax(0, 1fr) 6.5rem 5.5rem 5.5rem 4.5rem 1rem; } }
+  @media (min-width: 768px) { .tr-cols, .tr-row-head { grid-template-columns: 2rem minmax(0, 1fr) 6.5rem 5.5rem 5.5rem 6.5rem 4.5rem 1rem; } }
   .tr-cols { display: none; padding: 0.6rem 0; font-size: 12.5px; font-weight: 600; color: var(--color-text-faint); }
   @media (min-width: 768px) { .tr-cols { display: grid; } .tr-cols span:first-child { grid-column: 2; } }
   .tr-rows { display: flex; flex-direction: column; }
@@ -368,7 +409,7 @@ const jsonLd = {
   .tr-total { display: block; font-family: var(--font-display); font-size: 17px; font-weight: 800; letter-spacing: -0.02em; color: var(--color-text); }
   @media (min-width: 768px) { .tr-num { display: block; } }
   .tr-gap { grid-column: span 2; font-size: 13px; color: var(--color-warning); }
-  @media (min-width: 768px) { .tr-gap { grid-column: span 4; } }
+  @media (min-width: 768px) { .tr-gap { grid-column: span 5; } }
   .tr-chev { display: inline-block; width: 7px; height: 7px; margin: 0 4px 3px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); transition: transform 260ms var(--ease-out-expo); }
   .tr-row-head .tr-chev { display: none; color: var(--color-text-faint); }
   @media (min-width: 768px) { .tr-row-head .tr-chev { display: inline-block; } }
@@ -379,10 +420,20 @@ const jsonLd = {
   .tr-reveal > div { overflow: hidden; min-height: 0; }
   .tr-reveal[data-open] { grid-template-rows: 1fr; }
   .tr-detail { display: flex; flex-direction: column; gap: 0.6rem; padding: 0 0 0.9rem 2.9rem; font-size: 14px; color: var(--color-text-muted); }
-  .tr-stoplist { display: flex; flex-direction: column; gap: 0.3rem; }
-  .tr-stoplist li { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 0 0.75rem; }
+  .tr-stoplist { display: flex; flex-direction: column; gap: 0.3rem; counter-reset: tr-stop; }
+  .tr-stoplist li { counter-increment: tr-stop; }
+  /* Ligne de route : départ à gauche, arrivée à droite, un repère numéroté par arrêt (le même numéro dans la liste) */
+  .tr-line { position: relative; height: 2.35rem; max-width: 46rem; container-type: inline-size; background: linear-gradient(color-mix(in srgb, var(--color-accent) 24%, transparent), color-mix(in srgb, var(--color-accent) 24%, transparent)) no-repeat 0 7px / 100% 4px; }
+  .tr-line::before, .tr-line::after { position: absolute; bottom: 0; font-size: 11.5px; font-weight: 600; color: var(--color-text-faint); }
+  .tr-line::before { content: var(--tr-from); left: 0; }
+  .tr-line::after { content: var(--tr-to); right: 0; }
+  .tr-line i, .tr-stoplist li > span:first-child::before { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: var(--color-accent); color: var(--color-accent-on); font-size: 10.5px; font-style: normal; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .tr-line i { position: absolute; top: 0; left: 0; translate: calc(var(--x) * 100cqw - 50%) 0; box-shadow: 0 0 0 3px var(--color-surface); }
+  .tr-stoplist li > span:first-child::before { content: counter(tr-stop); margin-right: 0.45rem; vertical-align: 1px; }
+  .tr-cost { color: var(--color-text); font-weight: 500; }
+  .tr-stoplist li { display: grid; grid-template-columns: 6rem minmax(0, 1fr); gap: 0 0.75rem; }
   .tr-stoplist li span:last-child { grid-column: 2; }
-  @media (min-width: 768px) { .tr-stoplist li { grid-template-columns: 4.5rem minmax(0, 1fr) auto; } .tr-stoplist li span:last-child { grid-column: auto; } }
+  @media (min-width: 768px) { .tr-stoplist li { grid-template-columns: 6rem minmax(0, 1fr) auto; } .tr-stoplist li span:last-child { grid-column: auto; } }
   .tr-stoplist b { color: var(--color-text); font-weight: 600; }
   .tr-detail-foot { font-size: 12.5px; color: var(--color-text-faint); }
   .tr-detail-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; }
@@ -393,9 +444,11 @@ const jsonLd = {
   .tr-more { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.8rem 0 0.3rem; font-size: 14px; font-weight: 600; color: var(--color-accent); }
 
 
-  .tr-stations { display: flex; flex-direction: column; gap: 0.6rem; font-size: 14.5px; }
-  .tr-stations li { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 0.1rem 1rem; }
-  @media (min-width: 768px) { .tr-stations li { grid-template-columns: 4.5rem minmax(0, 1fr) auto; } }
+  .tr-stations { display: flex; flex-direction: column; gap: 0.6rem; font-size: 14.5px; counter-reset: tr-stop; }
+  .tr-stations li { display: grid; grid-template-columns: 6rem minmax(0, 1fr); gap: 0.1rem 1rem; counter-increment: tr-stop; }
+  @media (min-width: 768px) { .tr-stations li { grid-template-columns: 6rem minmax(0, 1fr) auto; } }
+  .tr-line-lg { max-width: none; margin-bottom: 1.25rem; }
+  .tr-stations .tr-station-km::before { content: counter(tr-stop); display: inline-grid; place-items: center; width: 18px; height: 18px; margin-right: 0.45rem; vertical-align: 1px; border-radius: 50%; background: var(--color-accent); color: var(--color-accent-on); font-size: 10.5px; font-weight: 700; }
   .tr-station-km { color: var(--color-text-faint); }
   .tr-station-n { grid-column: 2; font-size: 13px; color: var(--color-text-muted); }
   @media (min-width: 768px) { .tr-station-n { grid-column: auto; } }

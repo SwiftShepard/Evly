@@ -1,0 +1,46 @@
+name: Prix des carburants
+
+# Chaque lundi : relève la moyenne nationale du SP95-E10 et du gazole sur le flux officiel
+# (scripts/fuel-prices.mjs). Si un prix a bougé d'au moins 2 centimes, ou si le relevé a plus
+# de 4 semaines, met à jour src/data/fuelPrices.ts sur main puis relance le déploiement : un
+# push fait avec le jeton de l'Action ne déclenche pas deploy.yml de lui-même.
+on:
+  schedule:
+    - cron: "41 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: fuel-prices
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Moyennes du flux officiel
+        id: fuel
+        run: node scripts/fuel-prices.mjs
+
+      - name: Mise à jour de main et déploiement
+        if: steps.fuel.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SUMMARY: ${{ steps.fuel.outputs.summary }}
+        run: |
+          day=$(TZ=Europe/Paris date +%Y-%m-%d)
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/fuelPrices.ts
+          git commit -m "données : prix des carburants du $day" -m "$SUMMARY"
+          git push origin HEAD:main
+          gh workflow run deploy.yml --ref main

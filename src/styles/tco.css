@@ -382,6 +382,12 @@
   line-height: 1.5;
   margin: 0;
 }
+.tco-hint a,
+.tco-depreciation-body a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 
 /* ══════════════════════════════════════════════════════ */
 /* Results                                               */

@@ -20,6 +20,8 @@ import { chargersOnRoute, planRoadTrip, type HwSpeed, type RoadPlan, type RouteC
 import { weekVersions } from "@/lib/map/versions";
 import { getAllVehicles, isStrictUtility } from "@/lib/vehicles";
 import { getMarketStatus, getVehicleName } from "@/lib/seo";
+import { FAST_EUR_KWH, TARIF_BLEU } from "@/data/electricity";
+import { CHARGING_LOSSES, COST_DEFAULTS } from "@/lib/costDefaults";
 
 const ROOT = process.cwd();
 const GRAPH_FILE = path.join(ROOT, "public/carte/routes.bin.gz");
@@ -145,6 +147,9 @@ export interface TripLeg {
   totalMin: number;
   /** Batterie à destination (0-1) */
   arrive: number;
+  /** Énergie de l'aller (kWh batterie), dont la part rechargée sur les bornes du trajet */
+  kwh: number;
+  kwhRoad: number;
   list: { name: string; kw: number; km: number; minutes: number; arrive: number; leave: number }[];
 }
 
@@ -179,6 +184,8 @@ const legOf = (p: RoadPlan): TripLeg => ({
   driveMin: p.driveMinutes,
   totalMin: p.driveMinutes + p.chargeMinutes,
   arrive: p.arrive,
+  kwh: p.kwh,
+  kwhRoad: p.kwhRoad,
   list: p.stops.map((s) => ({ name: s.name, kw: s.kw, km: s.km, minutes: s.minutes, arrive: s.arrive, leave: s.leave })),
 });
 
@@ -242,6 +249,35 @@ export function getTripResults(): Promise<TripResult[]> {
 
 export async function getTripResult(slug: string): Promise<TripResult | undefined> {
   return (await getTripResults()).find((r) => r.axis.slug === slug);
+}
+
+/* ── Coût de l'énergie ─────────────────────────────────────────── */
+
+/**
+ * Énergie d'un aller, pertes de recharge comprises : départ batterie pleine, rechargée à la maison au
+ * tarif de base d'EDF, puis les bornes rapides du trajet dans la fourchette des réseaux (data/electricity).
+ */
+export function tripCost(leg: TripLeg) {
+  const home = Math.max(0, leg.kwh - leg.kwhRoad) * CHARGING_LOSSES * TARIF_BLEU.base;
+  const road = FAST_EUR_KWH.map((p) => leg.kwhRoad * CHARGING_LOSSES * p) as [number, number];
+  return { home, road, total: [home + road[0], home + road[1]] as [number, number] };
+}
+
+/** Énergie de l'aller du modèle médian, l'été : bas et haut de la fourchette, chacun en médiane */
+export function tripCostMedian(r: TripResult): [number, number] {
+  const costs = r.rows.map((x) => tripCost(x.summer).total);
+  const med = (xs: number[]) => [...xs].sort((a, b) => a - b)[Math.floor(xs.length / 2)] ?? 0;
+  return [med(costs.map((c) => c[0])), med(costs.map((c) => c[1]))];
+}
+
+/** Le même aller en essence : une compacte à sa consommation réelle moyenne, SP95-E10 du flux officiel */
+export const iceTripCost = (km: number) => (km / 100) * COST_DEFAULTS.ice_conso_l_100 * COST_DEFAULTS.essence_eur_l;
+
+/** « 9 € », « 24 à 33 € » : à l'euro, une fourchette quand les bornes font varier le prix */
+export function costText([lo, hi]: [number, number]): string {
+  const a = Math.round(lo);
+  const b = Math.round(hi);
+  return b - a < 1 ? `${Math.max(1, a)} €` : `${a} à ${b} €`;
 }
 
 /* ── Textes ────────────────────────────────────────────────────── */

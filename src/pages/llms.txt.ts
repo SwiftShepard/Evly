@@ -5,7 +5,7 @@ import { CATEGORIES } from "@/data/categories";
 import { LEGAL_PAGES } from "@/data/legal";
 import { getVehicleSeoFacts, getMarketStatus } from "@/lib/seo";
 import { url } from "@/lib/url";
-import { duration, getTripResults, stopsText, tripTitle } from "@/lib/roadTrips";
+import { costText, duration, getTripResults, iceTripCost, stopsText, tripCostMedian, tripTitle } from "@/lib/roadTrips";
 import { EVI, energyLabel, getEvVsIce } from "@/lib/evVsIce";
 import { FUEL_PRICES } from "@/data/fuelPrices";
 
@@ -21,7 +21,7 @@ export const GET: APIRoute = async ({ site }) => {
   const tripLines = (await getTripResults()).map((r) => {
     const noStop = r.rows.filter((x) => x.summer.stops === 0).length;
     const fastest = r.rows[0];
-    return `- [${tripTitle(r.axis)}](${abs(`/trajets/${r.axis.slug}/`)}): ${n(Math.round(r.km))} km, ${noStop} modèles sans arrêt l'été, ${stopsText(median(r.rows.map((x) => x.summer.stops)))} en médiane l'été et ${stopsText(median(r.rows.filter((x) => x.winter).map((x) => x.winter!.stops)))} par -5 °C${fastest ? `, le plus rapide ${fastest.name} en ${duration(fastest.summer.totalMin)}` : ""}.`;
+    return `- [${tripTitle(r.axis)}](${abs(`/trajets/${r.axis.slug}/`)}): ${n(Math.round(r.km))} km, ${noStop} modèles sans arrêt l'été, ${stopsText(median(r.rows.map((x) => x.summer.stops)))} en médiane l'été et ${stopsText(median(r.rows.filter((x) => x.winter).map((x) => x.winter!.stops)))} par -5 °C${fastest ? `, le plus rapide ${fastest.name} en ${duration(fastest.summer.totalMin)}` : ""}, énergie de l'aller ${costText(tripCostMedian(r)).replace(/ /g, " ")} en médiane l'été contre ${n(Math.round(iceTripCost(r.km)))} € en essence.`;
   });
 
   const eviLines = getEvVsIce().map((c) => {
@@ -83,13 +83,13 @@ Ces liens ouvrent directement la réponse ; on peut les composer pour répondre 
 
 ## Grands trajets
 
-Chaque page classe tout le catalogue sur l'itinéraire : arrêts sur les bornes rapides réelles du tracé, temps de charge sur la courbe de la version, 130 km/h, été et -5 °C.
+Chaque page classe tout le catalogue sur l'itinéraire : arrêts sur les bornes rapides réelles du tracé, temps de charge sur la courbe de la version, 130 km/h, été et -5 °C. Énergie : départ batterie pleine rechargée à la maison au tarif de base d'EDF, puis bornes rapides de 0,40 à 0,70 €/kWh selon le réseau ; essence : compacte à 6,5 l/100 km ; péages non comptés.
 
 ${tripLines.join("\n")}
 
 ## Électrique ou essence
 
-La version électrique d'entrée face à la version thermique de même finition : prix catalogue (prime CEE de tout ménage déduite), consommations réelles des deux côtés (WLTP + 20,4 % pour l'essence, écart mesuré par la Commission européenne), SP95-E10 à ${FUEL_PRICES.e10.toFixed(2).replace(".", ",")} €/l, ${n(EVI.km)} km par an, entretien et assurance moyens, revente non comptée.
+La version électrique d'entrée face à la version thermique de même finition : prix catalogue (prime CEE de tout ménage déduite), consommations réelles des deux côtés (WLTP + 20,4 % pour l'essence, écart mesuré par la Commission européenne), SP95-E10 à ${FUEL_PRICES.e10.toFixed(2).replace(".", ",")} €/l, ${n(EVI.km)} km par an, entretien et assurance moyens de 2025 (Roole data, Assurland), revente après ${EVI.years} ans de ${EVI.resEv} % du prix catalogue en électrique et ${EVI.resIce} % en thermique (d'après Autovista) : le même calcul que le simulateur.
 
 ${eviLines.join("\n")}
 

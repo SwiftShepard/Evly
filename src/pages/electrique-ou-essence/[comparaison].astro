@@ -14,8 +14,8 @@ import LinkChips from "@/components/seo/LinkChips.astro";
 import { EVI, energyLabel, getEvVsIce, type EvVsIce } from "@/lib/evVsIce";
 import { FUEL_PRICES, REAL_WORLD_GAP } from "@/data/fuelPrices";
 import { ICE_TWINS_DATE } from "@/data/iceTwins";
-import { TARIF_BLEU } from "@/data/electricity";
-import { CHARGING_LOSSES } from "@/lib/costDefaults";
+import { INSURANCE, MAINTENANCE, RESALE_3Y } from "@/data/runningCosts";
+import { CHARGING_LOSSES, residualPct } from "@/lib/costDefaults";
 import { eur as eurCents, eurKwh } from "@/lib/chargingCost";
 import { duelsOf } from "@/lib/duel";
 import { duelSlug } from "@/data/duels";
@@ -51,28 +51,47 @@ const longDate = (iso: string) => {
 const eur = (n: number) => formatPrice(Math.round(n));
 // « 5,60 € » : toujours deux décimales
 const eur2 = eurCents;
-const years = (y: number) => (y < 1 ? "moins d'un an" : `${formatNumber(Math.ceil(y))} ans`);
 
-const breakText = c.gap <= 0 ? "dès l'achat" : c.breakevenYears !== null ? `en ${years(c.breakevenYears)}` : "jamais";
+// Écart d'achat rattrapé à l'usage (la revente est dans le total) : « en 3 ans », arrondi à l'année entamée
+const yearsText = (y: number) => (y < 1 ? "moins d'un an" : `${formatNumber(Math.ceil(y))} an${Math.ceil(y) > 1 ? "s" : ""}`);
+const breakText = c.breakevenYears === 0 ? "moins chère à l'achat" : c.breakevenYears !== null ? `en ${yearsText(c.breakevenYears)}` : "jamais à l'usage";
 // Écart de l'électrique sur un poste : « -1 250 € » quand elle coûte moins
-const signed = (ev: number, ice: number) => (ev === ice ? "=" : `${ev < ice ? "-" : "+"}${eur(Math.abs(ev - ice))}`);
+const signed = (ev: number, ice: number) => (Math.round(ev) === Math.round(ice) ? "=" : `${ev < ice ? "-" : "+"}${eur(Math.abs(ev - ice))}`);
+const kmRound = (km: number) => formatNumber(Math.round(km / 1000) * 1000);
 
-const verdict =
+// Le verdict suit le coût sur la durée, revente comprise : le même chiffre que le simulateur
+const saving = c.total.ice - c.total.ev;
+const verdict = [
   c.gap <= 0
-    ? `Prime déduite, ${laEv} coûte déjà ${eur(-c.gap)} de moins que ${laIce} à l'achat, et ses 100 km reviennent à ${eur2(c.ev100)} contre ${eur2(c.ice100)}.`
-    : c.breakevenYears !== null && c.breakevenYears <= EVI.years
-      ? `${cap(laEv)} coûte ${eur(c.gap)} de plus à l'achat, prime déduite, et les rattrape en ${years(c.breakevenYears)} à ${formatNumber(EVI.km)} km par an : ${eur(c.yearlySaving)} d'économie chaque année.`
-      : `${cap(laEv)} coûte ${eur(c.gap)} de plus à l'achat, prime déduite. À ${formatNumber(EVI.km)} km par an, elle ne les rattrape pas en ${EVI.years} ans${c.breakevenKm ? ` : il faut rouler ${formatNumber(Math.round(c.breakevenKm / 1000) * 1000)} km par an` : ""}.`;
+    ? `Prime déduite, ${laEv} coûte ${eur(-c.gap)} de moins que ${laIce} à l'achat.`
+    : `Prime déduite, ${laEv} coûte ${eur(c.gap)} de plus que ${laIce} à l'achat.`,
+  saving >= 0
+    ? `Sur ${EVI.years} ans à ${formatNumber(EVI.km)} km par an, revente comprise, elle revient ${eur(saving)} moins cher${c.gap > 0 && c.breakevenYears ? ` : l'écart d'achat est rattrapé à l'usage en ${yearsText(c.breakevenYears)}` : ""}.`
+    : `Sur ${EVI.years} ans à ${formatNumber(EVI.km)} km par an, revente comprise, elle coûte ${eur(-saving)} de plus, faute d'une revente aussi bonne${c.breakevenKm ? ` ; elle devient gagnante au-delà de ${kmRound(c.breakevenKm)} km par an` : ""}.`,
+].join(" ");
 
+const { tco } = c;
 const rows = [
-  { label: "Achat", ev: c.evNet, ice: twin.price, note: c.aid ? `prime CEE de ${eur(c.aid)} déduite` : "sans prime CEE" },
-  { label: `Énergie, ${EVI.years} ans`, ev: EVI.years * (EVI.km / 100) * c.ev100, ice: EVI.years * (EVI.km / 100) * c.ice100, note: `${formatNumber(EVI.km)} km par an` },
-  { label: `Entretien, ${EVI.years} ans`, ev: EVI.years * EVI.maintEv, ice: EVI.years * EVI.maintIce, note: "hypothèse du simulateur" },
-  { label: `Assurance, ${EVI.years} ans`, ev: EVI.years * EVI.insEv, ice: EVI.years * EVI.insIce, note: "hypothèse du simulateur" },
+  { label: "Achat", ev: tco.ev.purchase, ice: tco.ice.purchase, note: c.aid ? `prime CEE de ${eur(c.aid)} déduite` : "sans prime CEE" },
+  { label: `Revente après ${EVI.years} ans`, ev: -tco.ev.resale, ice: -tco.ice.resale, note: `${EVI.resEv} % et ${EVI.resIce} % du prix catalogue` },
+  { label: `Énergie, ${EVI.years} ans`, ev: tco.ev.energy, ice: tco.ice.energy, note: `${formatNumber(EVI.km)} km par an` },
+  { label: `Entretien, ${EVI.years} ans`, ev: tco.ev.maintenance, ice: tco.ice.maintenance, note: "moyennes 2025 du parc" },
+  { label: `Assurance, ${EVI.years} ans`, ev: tco.ev.insurance, ice: tco.ice.insurance, note: "primes moyennes 2025" },
 ];
 
-// Données du curseur : les mêmes formules, dans le navigateur
-const sim = { gap: c.gap, ev100: c.ev100, ice100: c.ice100, fixedEv: EVI.maintEv + EVI.insEv, fixedIce: EVI.maintIce + EVI.insIce, evNet: c.evNet, icePrice: twin.price, years: EVI.years };
+// Données du curseur : les mêmes formules (lib/tco), dans le navigateur ; revente selon la durée
+const sim = {
+  ev100: c.ev100,
+  ice100: c.ice100,
+  fixedEv: EVI.maintEv + EVI.insEv,
+  fixedIce: EVI.maintIce + EVI.insIce,
+  evPrice: c.evPrice,
+  evNet: c.evNet,
+  icePrice: twin.price,
+  years: EVI.years,
+  resEv: Array.from({ length: 10 }, (_, i) => residualPct("ev", i + 1)),
+  resIce: Array.from({ length: 10 }, (_, i) => residualPct("ice", i + 1)),
+};
 
 // Les comparaisons de prix voisin d'abord
 const others = getEvVsIce()
@@ -102,15 +121,19 @@ const faq = [
   },
   {
     question: `Au bout de combien de temps ${laEv} est-elle rentable ?`,
-    answer: c.gap <= 0
-      ? `Dès l'achat : elle coûte moins cher et chaque année lui fait gagner environ ${eur(c.yearlySaving)} à ${formatNumber(EVI.km)} km.`
-      : c.breakevenYears !== null
-        ? `À ${formatNumber(EVI.km)} km par an, en ${years(c.breakevenYears)} : elle fait gagner environ ${eur(c.yearlySaving)} par an en énergie, entretien et assurance.${c.breakevenKm ? ` Pour être rentable en ${EVI.years} ans, il faut rouler ${formatNumber(Math.round(c.breakevenKm / 1000) * 1000)} km par an.` : ""}`
-        : "Au kilométrage moyen, elle ne coûte pas moins cher à l'usage.",
+    answer: [
+      c.breakevenYears === 0
+        ? "Dès l'achat : elle coûte moins cher, prime déduite."
+        : c.breakevenYears !== null
+          ? `À ${formatNumber(EVI.km)} km par an, elle fait gagner environ ${eur(c.yearlySaving)} par an en énergie, entretien et assurance : l'écart d'achat est rattrapé en ${yearsText(c.breakevenYears)}.`
+          : "À l'usage, elle ne coûte pas moins cher.",
+      `Elle se revend en revanche moins bien, les électriques gardant moins de valeur que les thermiques aujourd'hui : sur ${EVI.years} ans, revente comprise, elle ${saving >= 0 ? `revient ${eur(saving)} moins cher` : `coûte ${eur(-saving)} de plus`}.`,
+      saving < 0 && c.breakevenKm ? `Pour qu'elle coûte moins sur ${EVI.years} ans, il faut rouler plus de ${kmRound(c.breakevenKm)} km par an.` : "",
+    ].filter(Boolean).join(" "),
   },
   {
     question: `Combien coûtent 100 km en ${c.evName} et en ${iceShort} ${energy} ?`,
-    answer: `Environ ${eur2(c.ev100)} en électrique (${formatNumber(c.evKwh100, 1)} kWh/100 km réels, 80 % à la maison au tarif de base, 20 % sur borne rapide) contre ${eur2(c.ice100)} en ${energy} (${formatNumber(c.iceL100, 1)} l/100 km réels, SP95-E10 à ${formatNumber(FUEL_PRICES.e10, 2)} €/l).`,
+    answer: `Environ ${eur2(c.ev100)} en électrique (${formatNumber(c.evKwh100, 1)} kWh/100 km réels, ${100 - EVI.fastPct} % à la maison au tarif de base, ${EVI.fastPct} % sur borne rapide) contre ${eur2(c.ice100)} en ${energy} (${formatNumber(c.iceL100, 1)} l/100 km réels, SP95-E10 à ${formatNumber(FUEL_PRICES.e10, 2)} €/l).`,
   },
 ];
 
@@ -119,7 +142,7 @@ const title = fitTitle([
   `${question.replace(/ \?$/, "")} : le vrai coût`,
   question,
 ]);
-const description = fitDescription([verdict, `Coût sur ${EVI.years} ans, au kilomètre et selon votre kilométrage.`]);
+const description = fitDescription([verdict, `Coût sur ${EVI.years} ans et selon votre kilométrage.`]);
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -150,9 +173,9 @@ const jsonLd = {
             <dd>consommations réelles, électricité et {energy === "hybride" ? "essence (hybride)" : "essence"}</dd>
           </div>
           <div>
-            <dt>Rentable</dt>
-            <dd><b>{breakText}</b></dd>
-            <dd>à {formatNumber(EVI.km)} km par an</dd>
+            <dt>Sur {EVI.years} ans</dt>
+            <dd><b>{signed(c.total.ev, c.total.ice)}</b> en électrique</dd>
+            <dd>revente comprise, à {formatNumber(EVI.km)} km par an</dd>
           </div>
         </dl>
       </Tile>
@@ -168,12 +191,12 @@ const jsonLd = {
             <output for="eo-km" class="eo-km-out tabular" data-eo-out>{formatNumber(EVI.km)} km</output>
           </div>
           <dl class="eo-sim" data-eo-sim={JSON.stringify(sim)}>
-            <div><dt>Économie par an</dt><dd class="tabular" data-eo-saving>{eur(c.yearlySaving)}</dd></div>
-            <div><dt>Écart rattrapé</dt><dd class="tabular" data-eo-break>{breakText}</dd></div>
+            <div><dt>Gain à l'usage, par an</dt><dd class="tabular" data-eo-saving>{eur(c.yearlySaving)}</dd></div>
+            <div><dt>Écart d'achat rattrapé</dt><dd class="tabular" data-eo-break>{breakText}</dd></div>
             <div><dt>Sur {EVI.years} ans, électrique</dt><dd class="tabular" data-eo-total-ev>{eur(c.total.ev)}</dd></div>
             <div><dt>Sur {EVI.years} ans, {energy}</dt><dd class="tabular" data-eo-total-ice>{eur(c.total.ice)}</dd></div>
           </dl>
-          <p class="eo-note">Achat, énergie, entretien et assurance ; sans la revente, qui dépend de l'état et du marché.</p>
+          <p class="eo-note">Achat moins revente, énergie, entretien et assurance : le calcul du simulateur, avec ses valeurs par défaut.</p>
         </Tile>
       </BentoGrid>
     </section>
@@ -246,16 +269,25 @@ const jsonLd = {
         </li>
         <li>
           Énergie : SP95-E10 à {formatNumber(FUEL_PRICES.e10, 2)} €/l (moyenne nationale du {longDate(FUEL_PRICES.date)}, <a href={FUEL_PRICES.sourceUrl} rel="noopener" target="_blank">flux officiel</a>) ;
-          électricité à {eurKwh(TARIF_BLEU.base)} à la maison (tarif de base d'EDF) pour 80 % des recharges et {formatNumber(EVI.elecFast, 2)} €/kWh sur borne rapide pour 20 %.
+          électricité à {eurKwh(EVI.elecHome)} à la maison (tarif de base d'EDF) pour {100 - EVI.fastPct} % des recharges et {formatNumber(EVI.elecFast, 2)} €/kWh sur borne rapide pour {EVI.fastPct} %.
           En heures creuses, l'électrique coûte encore moins : <a href={url("/recharge-a-domicile/")}>le guide de la recharge</a>.
         </li>
         <li>
-          Prime CEE de tout ménage ; un ménage modeste touche davantage (<a href={url("/aides/")}>votre prime</a>). Entretien et assurance : moyennes du
-          simulateur, {formatPrice(EVI.maintEv)} et {formatPrice(EVI.insEv)} par an en électrique, {formatPrice(EVI.maintIce)} et {formatPrice(EVI.insIce)} en thermique.
+          Prime CEE de tout ménage ; un ménage modeste touche davantage (<a href={url("/aides/")}>votre prime</a>).
+        </li>
+        <li>
+          Entretien : {MAINTENANCE.evMonthly} € par mois en électrique, {MAINTENANCE.iceMonthly} € en thermique, moyennes 2025 du parc
+          (<a href={MAINTENANCE.sourceUrl} rel="noopener" target="_blank">Roole data</a>). Assurance : {formatPrice(INSURANCE.ev)} et
+          {formatPrice(INSURANCE.essence)} par an, primes moyennes 2025 (<a href={INSURANCE.sourceUrl} rel="noopener" target="_blank">baromètre Assurland</a>).
+        </li>
+        <li>
+          Revente : après 3 ans et 60 000 km, une électrique garde en moyenne {RESALE_3Y.ev} % de son prix catalogue, une essence
+          {RESALE_3Y.ice} % (<a href={RESALE_3Y.sourceUrl} rel="noopener" target="_blank">Autovista</a>, grands marchés européens) ; prolongé
+          au même rythme, {EVI.resEv} % et {EVI.resIce} % après {EVI.years} ans.
         </li>
       </ul>
-      <a href={url(`/simulateur/?v=${c.vehicle.slug}`)} class="btn btn-secondary btn-sm mt-4">
-        Votre cas exact, revente comprise, dans le simulateur <ArrowRight size={15} strokeWidth={2} className="btn-arrow" aria-hidden="true" />
+      <a href={url(`/simulateur/?v=${c.vehicle.slug}&config=${c.config.id}`)} class="btn btn-secondary btn-sm mt-4">
+        La même comparaison, à vos réglages, dans le simulateur <ArrowRight size={15} strokeWidth={2} className="btn-arrow" aria-hidden="true" />
       </a>
     </section>
 
@@ -274,7 +306,7 @@ const jsonLd = {
     const box = document.querySelector<HTMLElement>("[data-eo-sim]");
     if (!input || !box || input.dataset.ready) return;
     input.dataset.ready = "1";
-    const s = JSON.parse(box.dataset.eoSim!) as Record<string, number>;
+    const s = JSON.parse(box.dataset.eoSim!) as Record<"ev100" | "ice100" | "fixedEv" | "fixedIce" | "evPrice" | "evNet" | "icePrice" | "years", number> & { resEv: number[]; resIce: number[] };
     const nf = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 });
     const num = (n: number) => nf.format(Math.round(n)).replace(/ /g, " ");
     const eur = (n: number) => `${num(n)} €`;
@@ -283,18 +315,24 @@ const jsonLd = {
       const el = box.querySelector<HTMLElement>(sel);
       if (el) el.textContent = text;
     };
+    // Coût sur n années, revente comprise (lib/tco) : achat moins revente, puis l'usage
+    const totals = (km: number, n: number) => ({
+      ev: s.evNet - (s.evPrice * s.resEv[n - 1]!) / 100 + n * ((km / 100) * s.ev100 + s.fixedEv),
+      ice: s.icePrice - (s.icePrice * s.resIce[n - 1]!) / 100 + n * ((km / 100) * s.ice100 + s.fixedIce),
+    });
     const render = () => {
       const km = Number(input.value);
       input.style.setProperty("--fill", `${((km - 5000) / 35000) * 100}%`);
       out.textContent = `${num(km)} km`;
-      const ev = (km / 100) * s.ev100! + s.fixedEv!;
-      const ice = (km / 100) * s.ice100! + s.fixedIce!;
-      const saving = ice - ev;
+      const saving = (km / 100) * (s.ice100 - s.ev100) + s.fixedIce - s.fixedEv;
       set("[data-eo-saving]", eur(saving));
-      const y = s.gap! <= 0 ? 0 : saving > 0 ? s.gap! / saving : null;
-      set("[data-eo-break]", y === 0 ? "dès l'achat" : y === null ? "jamais" : y < 1 ? "en moins d'un an" : `en ${Math.ceil(y)} ans`);
-      set("[data-eo-total-ev]", eur(s.evNet! + s.years! * ev));
-      set("[data-eo-total-ice]", eur(s.icePrice! + s.years! * ice));
+      // Écart d'achat rattrapé à l'usage (lib/tco, paybackYears)
+      const gap = s.evNet - s.icePrice;
+      const y = gap <= 0 ? 0 : saving > 0 ? Math.ceil(gap / saving) : null;
+      set("[data-eo-break]", y === 0 ? "moins chère à l'achat" : y === null ? "jamais à l'usage" : y < 1 ? "en moins d'un an" : `en ${y} an${y > 1 ? "s" : ""}`);
+      const t = totals(km, s.years);
+      set("[data-eo-total-ev]", eur(t.ev));
+      set("[data-eo-total-ice]", eur(t.ice));
     };
     input.addEventListener("input", render);
     render();

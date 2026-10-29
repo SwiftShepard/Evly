@@ -8,6 +8,8 @@
  * Chaque consommation a été recoupée avec le CO2 homologué de la même fiche.
  */
 
+import { REAL_WORLD_GAP } from "@/data/fuelPrices";
+
 export interface IceTwin {
   /** Fiche électrique et version comparée (l'entrée de gamme, en général) */
   ev: string;
@@ -58,3 +60,9 @@ export const ICE_TWINS: IceTwin[] = [
 export function getIceTwin(slug: string): IceTwin | undefined {
   return ICE_TWINS.find((t) => t.slug === slug);
 }
+
+/** Jumeau thermique d'une fiche électrique (simulateur, fiches) */
+export const iceTwinOf = (evSlug: string) => ICE_TWINS.find((t) => t.ev === evSlug);
+
+/** Consommation réelle : l'homologation WLTP plus l'écart mesuré par la Commission européenne, au dixième */
+export const realL100 = (t: IceTwin) => Math.round(t.wltpL100 * (1 + REAL_WORLD_GAP.petrol) * 10) / 10;

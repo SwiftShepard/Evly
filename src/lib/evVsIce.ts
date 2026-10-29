@@ -1,15 +1,15 @@
 /**
  * Électrique ou essence (roadmap M10) : la version électrique d'entrée face à son jumeau thermique
- * (data/iceTwins), sur les hypothèses du simulateur de coût réel (lib/costDefaults) :
- * consommation réelle des deux côtés (autonomie réelle de la fiche pour l'électrique, WLTP corrigé
+ * (data/iceTwins), avec le calcul du simulateur de coût réel (lib/tco) et ses hypothèses par défaut
+ * (lib/costDefaults) : le simulateur ouvert sur le même modèle donne les mêmes chiffres.
+ * Consommation réelle des deux côtés (autonomie réelle de la fiche pour l'électrique, WLTP corrigé
  * de l'écart mesuré par la Commission européenne pour le thermique), prime CEE de tout ménage,
- * entretien et assurance moyens. La revente n'est pas comptée : elle se règle dans le simulateur.
+ * entretien, assurance et revente moyens (data/runningCosts).
  */
 import type { Vehicle, VehicleConfiguration } from "@/data/schemas";
-import { ICE_TWINS, type IceTwin } from "@/data/iceTwins";
-import { FUEL_PRICES, REAL_WORLD_GAP } from "@/data/fuelPrices";
-import { TARIF_BLEU } from "@/data/electricity";
-import { COST_DEFAULTS, CHARGING_LOSSES } from "@/lib/costDefaults";
+import { ICE_TWINS, realL100, type IceTwin } from "@/data/iceTwins";
+import { COST_DEFAULTS, residualPct } from "@/lib/costDefaults";
+import { computeTco, type TcoInputs, type TcoResult } from "@/lib/tco";
 import { isVehicleEligibleCEE, primeFor } from "@/lib/cee";
 import { batteryOf } from "@/lib/map/versions";
 import { getVehicleBySlug } from "@/lib/vehicles";
@@ -19,15 +19,16 @@ import { getVehicleName } from "@/lib/seo";
 export const EVI = {
   km: COST_DEFAULTS.km_per_year,
   years: COST_DEFAULTS.years,
-  elecHome: TARIF_BLEU.base,
+  elecHome: COST_DEFAULTS.elec_home_eur_kwh,
   elecFast: COST_DEFAULTS.elec_fast_eur_kwh,
-  fastShare: COST_DEFAULTS.fast_charge_pct / 100,
-  fuel: FUEL_PRICES.e10,
-  gap: REAL_WORLD_GAP.petrol,
+  fastPct: COST_DEFAULTS.fast_charge_pct,
+  fuel: COST_DEFAULTS.essence_eur_l,
   maintEv: COST_DEFAULTS.ev_maintenance_eur_yr,
   maintIce: COST_DEFAULTS.ice_maintenance_eur_yr,
   insEv: COST_DEFAULTS.insurance_ev_eur_yr,
   insIce: COST_DEFAULTS.insurance_ice_eur_yr,
+  resEv: residualPct("ev", COST_DEFAULTS.years),
+  resIce: residualPct("ice", COST_DEFAULTS.years),
 };
 
 export interface EvVsIce {
@@ -43,33 +44,25 @@ export interface EvVsIce {
   aid: number;
   evNet: number;
   battery: number;
-  /** Consommations réelles : kWh/100 km (batterie) et l/100 km */
+  /** Consommations réelles, au dixième comme dans le simulateur : kWh/100 km (batterie) et l/100 km */
   evKwh100: number;
   iceL100: number;
-  /** Prix moyen du kWh payé (80 % à la maison, 20 % sur borne rapide) */
-  eurKwh: number;
   /** Énergie aux 100 km (€) */
   ev100: number;
   ice100: number;
   /** Écart à l'achat, prime déduite (positif : l'électrique coûte plus cher) */
   gap: number;
-  /** Ce que l'électrique fait gagner chaque année au kilométrage par défaut */
+  /** Ce que l'électrique fait gagner chaque année à l'usage, au kilométrage par défaut */
   yearlySaving: number;
-  /** Années pour rattraper l'écart à l'achat (0 : moins chère dès l'achat ; null : jamais) */
+  /** Années d'usage pour rattraper l'écart à l'achat (0 : moins chère dès l'achat ; null : jamais) ; la revente est dans le total */
   breakevenYears: number | null;
-  /** Kilomètres par an à partir desquels l'électrique est rentable sur la durée */
+  /** Kilomètres par an à partir desquels l'électrique coûte moins sur la durée, revente comprise */
   breakevenKm: number | null;
+  /** Coût sur la durée par défaut, poste par poste (lib/tco) */
+  tco: TcoResult;
   total: { ev: number; ice: number };
   range: { mixed: number; winter: number };
   dcMin: number | null;
-}
-
-/** Coûts annuels (énergie, entretien, assurance) pour un kilométrage donné */
-function yearly(c: Pick<EvVsIce, "ev100" | "ice100">, km: number) {
-  return {
-    ev: (km / 100) * c.ev100 + EVI.maintEv + EVI.insEv,
-    ice: (km / 100) * c.ice100 + EVI.maintIce + EVI.insIce,
-  };
 }
 
 function compute(twin: IceTwin): EvVsIce | null {
@@ -79,21 +72,33 @@ function compute(twin: IceTwin): EvVsIce | null {
   const rr = config.realRange ?? vehicle.realRange;
   const battery = batteryOf(vehicle, config);
   const aid = isVehicleEligibleCEE(vehicle, config.price_EUR) ? primeFor(vehicle, "autres") : 0;
-  const evNet = config.price_EUR - aid;
-  const evKwh100 = (battery / rr.mixed_km) * 100;
-  const eurKwh = EVI.elecHome * (1 - EVI.fastShare) + EVI.elecFast * EVI.fastShare;
-  const ev100 = evKwh100 * CHARGING_LOSSES * eurKwh;
-  const iceL100 = twin.wltpL100 * (1 + EVI.gap);
-  const ice100 = iceL100 * EVI.fuel;
-  const base = { ev100, ice100 };
-  const y = yearly(base, EVI.km);
-  const yearlySaving = y.ice - y.ev;
-  const gap = evNet - twin.price;
-  const breakevenYears = gap <= 0 ? 0 : yearlySaving > 0 ? gap / yearlySaving : null;
-  // Kilométrage annuel qui rattrape l'écart sur la durée : gap = années × (km × écart au km + écart fixe)
-  const perKm = (ice100 - ev100) / 100;
+  const evKwh100 = Math.round((battery / rr.mixed_km) * 1000) / 10;
+  const iceL100 = realL100(twin);
+  const inputs: TcoInputs = {
+    km: EVI.km,
+    years: EVI.years,
+    evPrice: config.price_EUR,
+    evAid: aid,
+    evConso: evKwh100,
+    elecHome: EVI.elecHome,
+    elecFast: EVI.elecFast,
+    fastPct: EVI.fastPct,
+    icePrice: twin.price,
+    iceConso: iceL100,
+    fuelPrice: EVI.fuel,
+    evMaint: EVI.maintEv,
+    iceMaint: EVI.maintIce,
+    evInsurance: EVI.insEv,
+    iceInsurance: EVI.insIce,
+    evResidualPct: EVI.resEv,
+    iceResidualPct: EVI.resIce,
+  };
+  const tco = computeTco(inputs);
+  // Kilométrage annuel où les deux coûts sur la durée s'égalent : écart de décote = années × (km × écart au km + écart fixe)
+  const perKm = (tco.ice100 - tco.ev100) / 100;
   const fixed = EVI.maintIce + EVI.insIce - EVI.maintEv - EVI.insEv;
-  const breakevenKm = gap <= 0 ? 0 : perKm > 0 ? Math.max(0, (gap / EVI.years - fixed) / perKm) : null;
+  const depGap = tco.ev.depreciation - tco.ice.depreciation;
+  const breakevenKm = perKm > 0 ? Math.max(0, (depGap / EVI.years - fixed) / perKm) : null;
   return {
     twin,
     vehicle,
@@ -104,18 +109,18 @@ function compute(twin: IceTwin): EvVsIce | null {
     evVersion: config.label,
     evPrice: config.price_EUR,
     aid,
-    evNet,
+    evNet: tco.ev.purchase,
     battery,
     evKwh100,
     iceL100,
-    eurKwh,
-    ev100,
-    ice100,
-    gap,
-    yearlySaving,
-    breakevenYears,
+    ev100: tco.ev100,
+    ice100: tco.ice100,
+    gap: tco.gap,
+    yearlySaving: tco.yearlySaving,
+    breakevenYears: tco.paybackYears,
     breakevenKm,
-    total: { ev: evNet + EVI.years * y.ev, ice: twin.price + EVI.years * y.ice },
+    tco,
+    total: { ev: tco.ev.total, ice: tco.ice.total },
     range: { mixed: rr.mixed_km, winter: rr.winter_minus5_km },
     dcMin: config.chargingDC_10_80_min ?? vehicle.chargingDC.time_10_80_min ?? null,
   };
