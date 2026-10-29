@@ -1,6 +1,6 @@
 import type { Vehicle } from "@/data/schemas";
 import { formatNumber } from "@/lib/format";
-import { isVehicleEligibleCEE, primeFor } from "@/lib/cee";
+import { isVehicleEligibleCEE, primeFor, primeGridOf } from "@/lib/cee";
 import { confidenceOf, type ConfidenceLevel } from "@/lib/confidence";
 
 export interface VehicleCardSummary {
@@ -10,6 +10,8 @@ export interface VehicleCardSummary {
   cheapestPrice: number | null;
   /** Prime CEE de tout ménage si la version d'entrée y est éligible, sinon 0 */
   totalAids: number;
+  /** Grille de la prime de la version la moins chère (null : pas de prime), pour « votre prix » */
+  primeGrid: "standard" | "europe" | null;
   /** Prix après cette prime, null si pas de tarif */
   priceAided: number | null;
   rangeConfidence: ConfidenceLevel;
@@ -49,6 +51,7 @@ export function getVehicleCardSummary(v: Vehicle): VehicleCardSummary {
     subtitle,
     cheapestPrice,
     totalAids,
+    primeGrid: primeGridOf(v, cheapestPrice),
     priceAided,
     rangeConfidence: confidence.level,
     rangeConfidenceLabel: confidence.label,

@@ -5,16 +5,23 @@ import RangeRail from "@/components/ui/RangeRail.astro";
 import TripStudio from "@/components/home/TripStudio.astro";
 import TripMatches from "@/components/home/TripMatches.astro";
 import HeroCars from "@/components/home/HeroCars.astro";
-import { getAllVehicles, getVehicleBySlug } from "@/lib/vehicles";
+import { getAllVehicles, getVehicleBySlug, isStrictUtility } from "@/lib/vehicles";
 import { getFleetGap, getMeasuredGap, type MeasuredGap } from "@/lib/rangeGap";
 import { formatNumber } from "@/lib/format";
 import { DEFAULTS as TCO_DEFAULTS } from "@/components/tco/TcoCalculator";
 import { url } from "@/lib/url";
 import { CEE_MAX_EUR } from "@/lib/cee";
+import { CHARGING_LOSSES } from "@/lib/costDefaults";
+import { costText, getTripResult, getTripResults, iceTripCost, stopsText, tripCostMedian } from "@/lib/roadTrips";
+import { getEvVsIce, evVsIceOf } from "@/lib/evVsIce";
+import { getWinterRanking } from "@/lib/winterRanking";
+import { eur as eurCents } from "@/lib/chargingCost";
 import { ArrowRight, ArrowUpRight, ShieldCheck, FileSearch, Calculator, Scale } from "lucide-react";
 
 const vehicles = getAllVehicles();
 const totalVehicles = vehicles.length;
+// Le catalogue des voitures (sans les utilitaires, qui ont leur page Pro), comme /vehicules/
+const totalCars = vehicles.filter((v) => !isStrictUtility(v)).length;
 const totalTests = vehicles.reduce((sum, v) => sum + v.rangeTests.length, 0);
 const fleetGap = getFleetGap(vehicles);
 
@@ -25,11 +32,47 @@ const leasingMin = Math.min(
   )
 );
 
-// Coût de 100 km aux tarifs par défaut du calculateur TCO
-const tcoExample = getVehicleBySlug("renault-5")!;
-const evCost100 = tcoExample.consumption_mixed_kWh_per_100km * TCO_DEFAULTS.elec_home_eur_kwh;
-const iceCost100 = TCO_DEFAULTS.ice_conso_l_100 * TCO_DEFAULTS.essence_eur_l;
-const euros = (n: number) => `${formatNumber(n, 2)} €`;
+// 100 km rechargés à la maison : la Renault 5 face à la Clio, consommations réelles de « Électrique ou essence »
+const r5 = evVsIceOf("renault-5-ou-clio")!;
+const evCost100 = r5.evKwh100 * CHARGING_LOSSES * TCO_DEFAULTS.elec_home_eur_kwh;
+const iceCost100 = r5.iceL100 * TCO_DEFAULTS.essence_eur_l;
+// « 3,76 € » : toujours deux décimales
+const euros = eurCents;
+// « 6,0 » plutôt que « 6 » : une décimale toujours affichée
+const dec1 = (x: number) => x.toLocaleString("fr-FR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+
+// Les vraies questions : un chiffre par page de réponse
+const median = (xs: number[]) => [...xs].sort((a, b) => a - b)[Math.floor(xs.length / 2)] ?? 0;
+const lyon = (await getTripResult("paris-lyon"))!;
+const tripCount = (await getTripResults()).length;
+const lyonStops = median(lyon.rows.map((r) => r.summer.stops));
+const evi = getEvVsIce();
+const eviWins = evi.filter((c) => c.total.ev < c.total.ice).length;
+const r5Diff = Math.round(r5.total.ice - r5.total.ev);
+const winterLoss = Math.round(median(getWinterRanking().map((w) => w.lossPct)));
+const asks = [
+  {
+    href: url(`/trajets/${lyon.axis.slug}/`),
+    eyebrow: "Grands trajets",
+    title: "Paris → Lyon en électrique ?",
+    figure: stopsText(lyonStops),
+    text: `en médiane l'été, et ${costText(tripCostMedian(lyon))} d'énergie contre ${Math.round(iceTripCost(lyon.km))} € d'essence. ${tripCount} trajets, tout le catalogue classé.`,
+  },
+  {
+    href: url("/electrique-ou-essence/"),
+    eyebrow: "Électrique ou essence",
+    title: "Laquelle coûte le moins ?",
+    figure: `${eviWins} sur ${evi.length}`,
+    text: `modèles moins chers en électrique sur 5 ans, revente comprise. La Renault 5 face à la Clio : ${r5Diff >= 0 ? "-" : "+"}${formatNumber(Math.abs(r5Diff))} €.`,
+  },
+  {
+    href: url("/autonomie-hiver/"),
+    eyebrow: "Autonomie en hiver",
+    title: "Ce qu'il reste quand il gèle",
+    figure: `-${winterLoss} %`,
+    text: "d'autonomie par -5 °C pour le modèle médian, chimie et pompe à chaleur comprises. Tout le catalogue classé.",
+  },
+];
 
 // La preuve : modèles connus testés, du plus fidèle au plus optimiste
 const PROOF_SLUGS = ["tesla-model-y", "mg-mg4", "tesla-model-3", "byd-dolphin", "vw-id3", "citroen-e-c3", "renault-5", "kia-ev3", "peugeot-e-208", "hyundai-kona"];
@@ -47,7 +90,7 @@ const pillars = [
   { icon: Scale, title: "De votre côté", text: "Si un modèle déçoit à l'usage ou qu'un constructeur cache un chiffre gênant, on l'écrit. Notre objectif, c'est que vous en ayez pour votre argent, pas de vendre une voiture." },
 ];
 
-const description = `Comparez les ${totalVehicles} voitures électriques du marché français : autonomie réelle mesurée, prix après aides et recharge. Indépendant, sans publicité ni commission.`;
+const description = `Comparez les ${totalCars} voitures électriques du marché français : autonomie réelle mesurée, prix après aides et recharge. Indépendant, sans publicité ni commission.`;
 ---
 
 <BaseLayout title="Comparateur de voitures électriques : autonomie réelle | Evly" description={description}>
@@ -58,18 +101,18 @@ const description = `Comparez les ${totalVehicles} voitures électriques du marc
       <div class="hero-grid grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 relative z-10">
         <div class="lg:col-span-6 pt-2 md:pt-8 lg:pt-0 lg:pb-12 lg:self-center">
           {/* Le H1 porte la requête visée ; le slogan reste le titre visuel */}
-          <h1 class="text-[14.5px] font-medium text-[var(--color-lime)] mb-6 fade-rise">Comparateur indépendant de voitures électriques</h1>
-          <p class="display-1 text-[var(--color-accent-on)] fade-rise fade-rise-delay-1 !text-[clamp(2.9rem,6.2vw,5.9rem)]">
+          <h1 class="text-[14.5px] font-medium text-[var(--color-lime)] mb-3 sm:mb-6 fade-rise">Comparateur indépendant de voitures électriques</h1>
+          <p class="display-1 text-[var(--color-accent-on)] fade-rise fade-rise-delay-1 !text-[clamp(2.6rem,6.2vw,5.9rem)]">
             L'électrique, enfin <span class="text-[var(--color-lime)]">clair.</span>
           </p>
-          <p class="mt-7 text-[18px] text-[color-mix(in_srgb,var(--color-accent-on)_80%,transparent)] max-w-[40ch] leading-relaxed fade-rise fade-rise-delay-2">
+          <p class="mt-4 sm:mt-7 text-[16px] sm:text-[18px] text-[color-mix(in_srgb,var(--color-accent-on)_80%,transparent)] max-w-[40ch] leading-relaxed fade-rise fade-rise-delay-2">
             On mesure l'autonomie sur route, on calcule le vrai prix, et on vous dit franchement pour qui c'est fait.
           </p>
-          <div class="mt-9 flex flex-col sm:flex-row gap-3 fade-rise fade-rise-delay-3">
-            <a href={url("/recommandation/")} class="btn btn-lime h-[3.25rem] px-7 text-[16px]">
+          <div class="mt-6 sm:mt-9 flex gap-2 sm:gap-3 fade-rise fade-rise-delay-3">
+            <a href={url("/recommandation/")} class="btn btn-lime flex-1 sm:flex-none h-12 sm:h-[3.25rem] px-4 sm:px-7 text-[15px] sm:text-[16px]">
               Trouver mon VE <ArrowRight size={18} strokeWidth={2.25} className="btn-arrow" aria-hidden="true" />
             </a>
-            <a href={url("/vehicules/")} class="btn btn-ghost-light h-[3.25rem] px-7 text-[16px]">Explorer le catalogue</a>
+            <a href={url("/vehicules/")} class="btn btn-ghost-light flex-1 sm:flex-none h-12 sm:h-[3.25rem] px-4 sm:px-7 text-[15px] sm:text-[16px]"><span class="sm:hidden">Le catalogue</span><span class="hidden sm:inline">Explorer le catalogue</span></a>
           </div>
         </div>
         <HeroCars class="lg:col-span-6" />
@@ -146,8 +189,8 @@ const description = `Comparez les ${totalVehicles} voitures électriques du marc
         <span class="mt-auto block">
           <span class="text-[14px] text-[var(--color-text-muted)]">100 km rechargés à la maison</span>
           <span class="mt-2 flex items-baseline gap-3"><span class="font-display text-[44px] font-extrabold tracking-[-0.04em] text-[var(--color-accent)]">{euros(evCost100)}</span><span class="text-[14px] text-[var(--color-text-muted)]">Renault 5</span></span>
-          <span class="flex items-baseline gap-3"><span class="font-display text-[28px] font-extrabold tracking-[-0.03em] text-[var(--color-text-faint)] line-through decoration-2">{euros(iceCost100)}</span><span class="text-[14px] text-[var(--color-text-muted)]">essence, {formatNumber(TCO_DEFAULTS.ice_conso_l_100, 1)}&nbsp;l/100</span></span>
-          <span class="block mt-3 text-[12px] text-[var(--color-text-faint)]">À {formatNumber(TCO_DEFAULTS.elec_home_eur_kwh, 2)}&nbsp;€/kWh et {formatNumber(TCO_DEFAULTS.essence_eur_l, 2)}&nbsp;€/l, réglables dans le calculateur.</span>
+          <span class="flex items-baseline gap-3"><span class="font-display text-[28px] font-extrabold tracking-[-0.03em] text-[var(--color-text-faint)] line-through decoration-2">{euros(iceCost100)}</span><span class="text-[14px] text-[var(--color-text-muted)]">Clio essence, {dec1(r5.iceL100)}&nbsp;l/100</span></span>
+          <span class="block mt-3 text-[12px] text-[var(--color-text-faint)]">À {TCO_DEFAULTS.elec_home_eur_kwh.toLocaleString("fr-FR", { minimumFractionDigits: 2 })}&nbsp;€/kWh et {formatNumber(TCO_DEFAULTS.essence_eur_l, 2)}&nbsp;€/l, réglables dans le calculateur.</span>
         </span>
       </a>
       <a href={url("/aides/")} class="tool tool-leasing">
@@ -161,13 +204,30 @@ const description = `Comparez les ${totalVehicles} voitures électriques du marc
     </div>
   </section>
 
+  {/* ═════════ LES VRAIES QUESTIONS ═════════ */}
+  <section class="container-edit mt-24 md:mt-32">
+    <h2 class="display-2 mb-8 px-1">Les vraies questions, chiffrées.</h2>
+    <ul class="asks no-glossary">
+      {asks.map((a) => (
+        <li>
+          <a href={a.href} class="ask">
+            <span class="tool-top"><span class="label-eyebrow">{a.eyebrow}</span><ArrowUpRight size={20} strokeWidth={2} className="tool-arrow" aria-hidden="true" /></span>
+            <span class="ask-title">{a.title}</span>
+            <span class="ask-figure">{a.figure}</span>
+            <span class="ask-text">{a.text}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
   {/* ═════════ INDÉPENDANCE ═════════ */}
   <section class="container-edit mt-24 md:mt-32">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
       <div class="lg:col-span-4 px-1">
         <h2 class="display-2 max-w-[12ch]">Aucune marque ne nous paie.</h2>
         <dl class="mt-8 grid grid-cols-2 gap-4">
-          <div><dt class="text-[13px] text-[var(--color-text-faint)]">Modèles suivis</dt><dd class="font-display text-[44px] font-extrabold tracking-[-0.04em] leading-none mt-1">{totalVehicles}</dd></div>
+          <div><dt class="text-[13px] text-[var(--color-text-faint)]">Modèles suivis</dt><dd class="font-display text-[44px] font-extrabold tracking-[-0.04em] leading-none mt-1">{totalVehicles}</dd><dd class="mt-1 text-[13px] text-[var(--color-text-faint)]">dont {totalVehicles - totalCars} utilitaires</dd></div>
           <div><dt class="text-[13px] text-[var(--color-text-faint)]">Essais sur route</dt><dd class="font-display text-[44px] font-extrabold tracking-[-0.04em] leading-none mt-1">{totalTests}</dd></div>
         </dl>
       </div>
@@ -271,6 +331,23 @@ const description = `Comparez les ${totalVehicles} voitures électriques du marc
     .tool-cars :global(img:first-child) { transform: scaleX(-1); }
     .vs { align-self: center; font-size: 22px; font-weight: 800; color: var(--color-accent); }
     .tool-tco { background: var(--color-surface); border: 1px solid var(--color-border); }
+
+    .asks { display: grid; gap: 0.75rem; }
+    @media (min-width: 768px) { .asks { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    .ask {
+      display: flex; flex-direction: column; gap: 0.4rem; height: 100%; padding: 1.75rem; border-radius: 28px;
+      background: var(--color-surface); border: 1px solid var(--color-border);
+      transition: transform 260ms var(--ease-out-expo), box-shadow 260ms var(--ease-out-expo), border-color 200ms ease;
+    }
+    .ask:active { transform: scale(0.985); transition-duration: 120ms; }
+    @media (hover: hover) and (pointer: fine) {
+      .ask:hover { border-color: var(--color-border-strong); box-shadow: var(--shadow-md); }
+      .ask:hover :global(.tool-arrow) { transform: rotate(45deg); }
+    }
+    .ask :global(.tool-arrow) { flex-shrink: 0; transition: transform 300ms var(--ease-out-expo); }
+    .ask-title { margin-top: 0.5rem; font-family: var(--font-display); font-size: 23px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; }
+    .ask-figure { margin-top: auto; padding-top: 1rem; font-family: var(--font-display); font-size: 44px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; color: var(--color-accent); font-variant-numeric: tabular-nums; }
+    .ask-text { font-size: 14.5px; line-height: 1.5; color: var(--color-text-muted); }
     .tool-leasing { background: var(--color-ink); color: var(--color-accent-on); }
 
     .pillar { padding: 1.75rem; border-radius: var(--radius-tile); background: var(--color-surface); border: 1px solid var(--color-border); }

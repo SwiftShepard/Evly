@@ -2,6 +2,7 @@ import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import { url } from "@/lib/url";
 import { CEE_PRICE_CAP_EUR } from "@/lib/cee";
 import { formatNumber } from "@/lib/format";
+import { myPrime, type MyPrime } from "@/lib/myPrime";
 import { COST_DEFAULTS, residualPct } from "@/lib/costDefaults";
 import { computeTco } from "@/lib/tco";
 import { iceTwinOf, realL100 } from "@/data/iceTwins";
@@ -31,6 +32,8 @@ export interface TcoVehicleSummary {
   /** Prime CEE de tout ménage, et d'une personne morale (mode entreprise) */
   aids_EUR: number;
   aidsPro_EUR: number;
+  /** Grille de la prime (null : pas de prime), pour la prime du profil du visiteur (lib/myPrime) */
+  primeGrid: "standard" | "europe" | null;
   consumption_kWh_100km: number;
   realRange_mixed_km: number;
   configs: ConfigSummary[];
@@ -318,7 +321,17 @@ export default function TcoCalculator({ vehicles, initialMode = "particulier" }:
   const activeRange = selectedConfig?.realRange_mixed_km ?? selectedEv?.realRange_mixed_km ?? 300;
 
   // Prime de la version selon le mode (aucune au-dessus du plafond de prix)
-  const aidsFor = (ev: TcoVehicleSummary) => (activePrice > CEE_PRICE_CAP_EUR ? 0 : pro ? ev.aidsPro_EUR : ev.aids_EUR);
+  // « Votre prix » (lib/myPrime) : la prime du profil enregistré par le visiteur, sinon celle de tout ménage
+  const [mine, setMine] = useState<MyPrime | null>(null);
+  useEffect(() => {
+    const read = () => setMine(myPrime());
+    read();
+    window.addEventListener("profile-changed", read);
+    return () => window.removeEventListener("profile-changed", read);
+  }, []);
+  const household = mine?.category ? mine : null;
+  const aidsFor = (ev: TcoVehicleSummary) =>
+    activePrice > CEE_PRICE_CAP_EUR ? 0 : pro ? ev.aidsPro_EUR : household && ev.primeGrid ? household.of(ev.primeGrid) : ev.aids_EUR;
 
   // Usage params
   const [kmPerYear, setKmPerYear] = useState(KM_DEFAULT[initialMode]);
@@ -404,6 +417,7 @@ export default function TcoCalculator({ vehicles, initialMode = "particulier" }:
         iceins: iceInsurance.toString(),
         evres: evResidual.toString(),
         iceres: iceResidual.toString(),
+        ...(pro ? { pro: "1", tvs: tvsIce.toString() } : household ? { aidlabel: household.label } : {}),
       }).toString()}`)
     : null;
 
@@ -526,7 +540,9 @@ export default function TcoCalculator({ vehicles, initialMode = "particulier" }:
         <span className="tco-mode-hint">
           {pro
             ? "Prime CEE d'une personne morale, taxes du thermique, TVA récupérable sur l'énergie."
-            : "Prime CEE de tout ménage ; la vôtre peut être plus élevée selon vos revenus."}
+            : household
+              ? <>Prime CEE de votre profil, {household.label}, d'après les revenus enregistrés (<a href={url("/aides/")}>modifier</a>).</>
+              : <>Prime CEE de tout ménage ; la vôtre peut être plus élevée selon vos revenus (<a href={url("/aides/")}>votre prime</a>).</>}
         </span>
       </div>
       {/* ══════════════════════════════════════════════════ */}
@@ -581,7 +597,7 @@ export default function TcoCalculator({ vehicles, initialMode = "particulier" }:
               <span className="tco-stat-value">{fmt(activePrice)} €</span>
             </div>
             <div className="tco-ev-stat">
-              <span className="tco-stat-label">{pro ? "Prime CEE (société)" : "Prime CEE (tout ménage)"}</span>
+              <span className="tco-stat-label">{pro ? "Prime CEE (société)" : household ? "Prime CEE (votre profil)" : "Prime CEE (tout ménage)"}</span>
               <span className="tco-stat-value accent">
                 -{fmt(aidsFor(selectedEv))} €
               </span>
@@ -910,7 +926,7 @@ export default function TcoCalculator({ vehicles, initialMode = "particulier" }:
             <div className="flex flex-col gap-0.5">
               <h2 className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)]">Rapport PDF détaillé</h2>
               <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
-                TCO sur-mesure, météo, planificateur & aides 2026 détaillées.
+                Cette comparaison, l'autonomie de la version, la recharge et les grands trajets, sur deux pages.
               </p>
             </div>
           </div>

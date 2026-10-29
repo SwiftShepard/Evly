@@ -1,6 +1,6 @@
 import type { TcoVehicleSummary } from "@/components/tco/TcoCalculator";
 import { getAllVehicles } from "@/lib/vehicles";
-import { MORAL_PERSON_PRIME_EUR, isVehicleEligibleCEE, primeFor } from "@/lib/cee";
+import { MORAL_PERSON_PRIME_EUR, isVehicleEligibleCEE, primeFor, primeGridOf } from "@/lib/cee";
 import { batteryOf } from "@/lib/map/versions";
 
 /**
@@ -41,6 +41,7 @@ export function getTcoVehicles(): TcoVehicleSummary[] {
         price_EUR: cheapest.price_EUR!,
         aids_EUR: eligible ? primeFor(v, "autres") : 0,
         aidsPro_EUR: eligible ? MORAL_PERSON_PRIME_EUR : 0,
+        primeGrid: primeGridOf(v, cheapest.price_EUR),
         consumption_kWh_100km: configs[0]?.consumption_kWh_100km ?? real(v.realRange.mixed_km, v.usableCapacity_kWh),
         realRange_mixed_km: v.realRange.mixed_km,
         configs,

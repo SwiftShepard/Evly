@@ -109,6 +109,12 @@ export function primeFor(vehicle: Vehicle, category: HouseholdCategory): number 
   return PRIME_GRID[europeStatus(vehicle) === "confirmed" ? "europe" : "standard"][category];
 }
 
+/** Grille de la prime d'une version éligible (« europe » si la production est confirmée), null sinon : pour « votre prix » (lib/myPrime) */
+export function primeGridOf(vehicle: Vehicle, price: number | null): "standard" | "europe" | null {
+  if (!isVehicleEligibleCEE(vehicle, price)) return null;
+  return europeStatus(vehicle) === "confirmed" ? "europe" : "standard";
+}
+
 /**
  * Détermine si le véhicule est éligible au dispositif CEE 2026.
  */

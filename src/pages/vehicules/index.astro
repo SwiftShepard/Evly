@@ -463,7 +463,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
         <div class="catalog-grid flex-1 min-w-0">
           <BentoGrid>
             <Tile size="full" variant="elevated">
-              <h1 class="display-1 max-w-3xl fade-rise fade-rise-delay-2">
+              <h1 class="display-1 max-w-3xl max-sm:!text-[2.15rem] fade-rise fade-rise-delay-2">
                 Toutes les voitures électriques
                 <span class="text-[var(--color-accent)]">· {SEO_YEAR}.</span>
               </h1>
@@ -484,9 +484,11 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                   <span><i class="rail-key rail-key-need"></i>Votre semaine</span>
                 </span>
               </div>
-              <div class="mt-6 pt-5 border-t border-[var(--color-border)] flex flex-wrap xl:flex-nowrap items-center gap-2 fade-rise fade-rise-delay-3">
+              <div class="sort-bar mt-6 pt-5 border-t border-[var(--color-border)] flex flex-wrap xl:flex-nowrap items-center gap-2 fade-rise fade-rise-delay-3">
                 <span id="results-count" class="results-count" aria-live="polite">{vehicles.length} modèles</span>
                 <span class="w-px h-4 bg-[var(--color-border)] mx-1" aria-hidden="true"></span>
+                {/* Sur téléphone, une ligne qui défile ; ailleurs, en ligne avec le reste */}
+                <div class="sort-scroll">
                 <span class="text-[13px] text-[var(--color-text-faint)] mr-1">Trier</span>
                 <button class="sort-btn" data-sort="default" data-active="true">Défaut</button>
                 <button class="sort-btn" data-sort="price-asc">Prix ↑</button>
@@ -494,6 +496,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                 <button class="sort-btn" data-sort="range-desc">Autonomie réelle</button>
                 <button class="sort-btn" data-sort="dc-desc">Recharge DC</button>
                 <button class="sort-btn" data-sort="ratio-desc">Rapport km/€ ★</button>
+                </div>
                 <span class="flex-1"></span>
                 <div
                   id="price-mode-toggle"
@@ -501,7 +504,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                   title="* Prime CEE de tout ménage, jusqu'à 7 070 € selon vos revenus (9 420 € si la voiture et sa batterie sont produites en Europe). Montants indicatifs d'octobre 2026 ; version éco-scorée ADEME, sous 47 000 € et 2,4 t."
                 >
                   <button class="price-toggle-btn" data-mode="gross" data-active="true">Brut</button>
-                  <button class="price-toggle-btn" data-mode="aided">Après prime CEE*</button>
+                  <button class="price-toggle-btn" data-mode="aided" data-aided-label>Après prime CEE*</button>
                 </div>
               </div>
             </Tile>
@@ -525,6 +528,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
               data-usage={usageTags}
               data-price={s.cheapestPrice ?? ""}
               data-price-aided={s.priceAided ?? ""}
+              data-prime-grid={s.primeGrid ?? ""}
               data-range={v.realRange.mixed_km}
               data-range-highway={v.realRange.highway_130_km}
               data-wltp={v.wltp_max_km}
@@ -605,7 +609,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                       {s.cheapestPrice !== null ? (
                         <>
                           <span class="price-mode-gross">Dès</span>
-                          <span class="price-mode-aided">Après prime CEE*</span>
+                          <span class="price-mode-aided" data-aided-label>Après prime CEE*</span>
                         </>
                       ) : "Prix"}
                     </span>
@@ -615,7 +619,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
                           <span data-numeric class="display-stat text-xl sm:text-2xl md:text-3xl">{formatPrice(s.cheapestPrice)}</span>
                         </div>
                         <div class="price-mode-aided flex flex-col items-end gap-0.5">
-                          <span data-numeric class="display-stat text-xl sm:text-2xl md:text-3xl" style="color:var(--color-accent)">{formatPrice(s.priceAided!)}</span>
+                          <span data-numeric data-aided-price class="display-stat text-xl sm:text-2xl md:text-3xl" style="color:var(--color-accent)">{formatPrice(s.priceAided!)}</span>
                           {s.totalAids > 0
                             ? <span class="text-[12px] text-[var(--color-text-faint)] line-through">{formatPrice(s.cheapestPrice)}</span>
                             : <span class="text-[12px] text-[var(--color-text-faint)]">aucune aide</span>}
@@ -692,6 +696,8 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
 
   <script>
     import { readTrip, onTripChange, weekNeed, paintRails, type Trip } from "@/lib/trip";
+    import { myPrime, type PrimeGrid } from "@/lib/myPrime";
+    import { formatPrice } from "@/lib/format";
 
     const PAGE_SIZE = 24;
 
@@ -1234,7 +1240,25 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
         });
       }
 
+      // ── Votre prix (lib/myPrime) : la prime du profil enregistré, sinon celle de tout ménage ──
+      function applyMyPrime() {
+        const mine = myPrime();
+        if (!mine?.category) return;
+        document.querySelectorAll<HTMLElement>('[data-prime-grid]').forEach((card) => {
+          const g = card.dataset.primeGrid as PrimeGrid | '';
+          const price = Number(card.dataset.price);
+          if (!g || !price) return;
+          const net = Math.max(0, price - mine.of(g));
+          card.dataset.priceAided = String(net);
+          const el = card.querySelector<HTMLElement>('[data-aided-price]');
+          if (el) el.textContent = formatPrice(net);
+        });
+        document.querySelectorAll<HTMLElement>('[data-aided-label]').forEach((el) => { el.textContent = 'Après votre prime*'; });
+        document.querySelector('#price-mode-toggle')?.setAttribute('title', `* Prime CEE de votre profil (${mine.label}), d'après les revenus enregistrés sur la page des aides. Montants indicatifs ; version éco-scorée ADEME, sous 47 000 € et 2,4 t.`);
+      }
+
       // ── Initialisation depuis l'URL ─────────────────────────
+      applyMyPrime();
       readURL();
       searchInputs.forEach((input) => { input.value = currentSearch; });
       syncAllChips();
@@ -1473,6 +1497,14 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
     body[data-price-mode="aided"] div.price-mode-aided { display: flex; flex-direction: column; gap: 1px; }
 
     /* ── Sort buttons ───────────────────────────────────── */
+    .sort-scroll { display: contents; }
+    @media (max-width: 639px) {
+      /* Le nombre de modèles et la bascule de prix sur la première ligne, les tris dessous */
+      .sort-bar .sort-scroll { order: 3; display: flex; align-items: center; gap: 0.5rem; width: calc(100% + 2 * var(--tile-padding)); margin-inline: calc(-1 * var(--tile-padding)); padding-inline: var(--tile-padding); overflow-x: auto; scrollbar-width: none; }
+      .sort-bar .sort-scroll::-webkit-scrollbar { display: none; }
+      .sort-bar .sort-scroll > * { flex-shrink: 0; }
+      .sort-bar > [aria-hidden="true"] { display: none; }
+    }
     .sort-btn {
       font-family: var(--font-sans);
       font-size: 0.8125rem;

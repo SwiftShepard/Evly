@@ -16,6 +16,7 @@ import { FUEL_PRICES, REAL_WORLD_GAP } from "@/data/fuelPrices";
 import { ICE_TWINS_DATE } from "@/data/iceTwins";
 import { INSURANCE, MAINTENANCE, RESALE_3Y } from "@/data/runningCosts";
 import { CHARGING_LOSSES, residualPct } from "@/lib/costDefaults";
+import { costCurve, curveEur, curveSvg } from "@/lib/costCurve";
 import { eur as eurCents, eurKwh } from "@/lib/chargingCost";
 import { duelsOf } from "@/lib/duel";
 import { duelSlug } from "@/data/duels";
@@ -52,6 +53,9 @@ const eur = (n: number) => formatPrice(Math.round(n));
 // « 5,60 € » : toujours deux décimales
 const eur2 = eurCents;
 
+// « 6,0 » plutôt que « 6 » : une décimale toujours affichée
+const dec1 = (x: number) => x.toLocaleString("fr-FR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+
 // Écart d'achat rattrapé à l'usage (la revente est dans le total) : « en 3 ans », arrondi à l'année entamée
 const yearsText = (y: number) => (y < 1 ? "moins d'un an" : `${formatNumber(Math.ceil(y))} an${Math.ceil(y) > 1 ? "s" : ""}`);
 const breakText = c.breakevenYears === 0 ? "moins chère à l'achat" : c.breakevenYears !== null ? `en ${yearsText(c.breakevenYears)}` : "jamais à l'usage";
@@ -87,11 +91,28 @@ const sim = {
   fixedIce: EVI.maintIce + EVI.insIce,
   evPrice: c.evPrice,
   evNet: c.evNet,
+  aid: c.aid,
+  grid: c.primeGrid,
+  km: EVI.km,
   icePrice: twin.price,
   years: EVI.years,
   resEv: Array.from({ length: 10 }, (_, i) => residualPct("ev", i + 1)),
   resIce: Array.from({ length: 10 }, (_, i) => residualPct("ice", i + 1)),
 };
+
+// Courbes de dépense cumulée (lib/costCurve), au kilométrage par défaut ; le curseur les recalcule
+const curveInput = {
+  evNet: c.evNet,
+  icePrice: twin.price,
+  evYear: (EVI.km / 100) * c.ev100 + EVI.maintEv + EVI.insEv,
+  iceYear: (EVI.km / 100) * c.ice100 + EVI.maintIce + EVI.insIce,
+};
+const curve = costCurve(curveInput);
+const curveNames = { ev: "Électrique", ice: energy === "hybride" ? "Hybride" : "Essence" };
+const curveRows = [0, 1, 2, 3, 4, 5, 6, 8, 10].map((n) => ({ label: n === 0 ? "l'achat" : `${n} an${n > 1 ? "s" : ""}`, ev: curveEur(curve.at(n).ev), ice: curveEur(curve.at(n).ice) }));
+const chartLabel = curve.cross
+  ? `Dépense cumulée sur 10 ans : l'électrique part de ${curveEur(c.evNet)}, le thermique de ${curveEur(twin.price)} ; l'écart d'achat est rattrapé après ${Math.ceil(curve.cross.year)} ans.`
+  : `Dépense cumulée sur 10 ans : ${curveEur(curve.evEnd.value)} en électrique contre ${curveEur(curve.iceEnd.value)} en thermique.`;
 
 // Les comparaisons de prix voisin d'abord
 const others = getEvVsIce()
@@ -133,7 +154,7 @@ const faq = [
   },
   {
     question: `Combien coûtent 100 km en ${c.evName} et en ${iceShort} ${energy} ?`,
-    answer: `Environ ${eur2(c.ev100)} en électrique (${formatNumber(c.evKwh100, 1)} kWh/100 km réels, ${100 - EVI.fastPct} % à la maison au tarif de base, ${EVI.fastPct} % sur borne rapide) contre ${eur2(c.ice100)} en ${energy} (${formatNumber(c.iceL100, 1)} l/100 km réels, SP95-E10 à ${formatNumber(FUEL_PRICES.e10, 2)} €/l).`,
+    answer: `Environ ${eur2(c.ev100)} en électrique (${dec1(c.evKwh100)} kWh/100 km réels, ${100 - EVI.fastPct} % à la maison au tarif de base, ${EVI.fastPct} % sur borne rapide) contre ${eur2(c.ice100)} en ${energy} (${dec1(c.iceL100)} l/100 km réels, SP95-E10 à ${formatNumber(FUEL_PRICES.e10, 2)} €/l).`,
   },
 ];
 
@@ -161,6 +182,7 @@ const jsonLd = {
         <span class="label-eyebrow fade-rise">Électrique ou {energy} · prix relevés en octobre 2026</span>
         <h1 class="display-2 mt-3 max-w-4xl fade-rise fade-rise-delay-1">{question}</h1>
         <p class="mt-4 max-w-3xl text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed fade-rise fade-rise-delay-2">{verdict}</p>
+        <p class="eo-mine" data-eo-mine hidden></p>
         <dl class="eo-facts no-glossary fade-rise fade-rise-delay-2">
           <div>
             <dt>À l'achat</dt>
@@ -190,13 +212,36 @@ const jsonLd = {
             <input id="eo-km" type="range" min="5000" max="40000" step="1000" value={EVI.km} class="trip-range" data-eo-km />
             <output for="eo-km" class="eo-km-out tabular" data-eo-out>{formatNumber(EVI.km)} km</output>
           </div>
+          <figure class="cc" data-cc>
+            <figcaption class="cc-head">
+              <span class="cc-title">Ce que vous aurez dépensé, année après année</span>
+              <span class="cc-legend">
+                <span><i class="cc-key cc-key-ev"></i>{c.evName}</span>
+                <span><i class="cc-key cc-key-ice"></i>{twin.name} {energy}</span>
+              </span>
+            </figcaption>
+            <div class="cc-plot" tabindex="0" role="img" aria-label={chartLabel} data-cc-plot data-ice-name={curveNames.ice} set:html={curveSvg(curve, curveNames)} />
+            <div class="cc-tip" data-cc-tip hidden></div>
+            <p class="eo-note">Achat prime déduite, puis énergie, entretien et assurance chaque année ; la revente, à la fin, est dans le total.</p>
+            <details class="cc-table">
+              <summary>Les valeurs, année par année</summary>
+              <table>
+                <thead><tr><th scope="col">Après</th><th scope="col">Électrique</th><th scope="col">{energy === "hybride" ? "Hybride" : "Essence"}</th></tr></thead>
+                <tbody data-cc-rows>
+                  {curveRows.map((r) => (
+                    <tr><th scope="row">{r.label}</th><td>{r.ev}</td><td>{r.ice}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            </details>
+          </figure>
           <dl class="eo-sim" data-eo-sim={JSON.stringify(sim)}>
             <div><dt>Gain à l'usage, par an</dt><dd class="tabular" data-eo-saving>{eur(c.yearlySaving)}</dd></div>
             <div><dt>Écart d'achat rattrapé</dt><dd class="tabular" data-eo-break>{breakText}</dd></div>
             <div><dt>Sur {EVI.years} ans, électrique</dt><dd class="tabular" data-eo-total-ev>{eur(c.total.ev)}</dd></div>
             <div><dt>Sur {EVI.years} ans, {energy}</dt><dd class="tabular" data-eo-total-ice>{eur(c.total.ice)}</dd></div>
           </dl>
-          <p class="eo-note">Achat moins revente, énergie, entretien et assurance : le calcul du simulateur, avec ses valeurs par défaut.</p>
+          <p class="eo-note">Achat moins revente, énergie, entretien et assurance : le calcul du simulateur, avec ses valeurs par défaut<span data-eo-mine-note></span>.</p>
         </Tile>
       </BentoGrid>
     </section>
@@ -241,7 +286,7 @@ const jsonLd = {
           <ul class="eo-list">
             <li><b>{formatKm(c.range.mixed)}</b> d'autonomie réelle, {formatKm(c.range.winter)} par -5 °C <Confidence code={(c.config.realRange ?? c.vehicle.realRange).confidence} /></li>
             {c.dcMin && <li>De 10 à 80 % en <b>{c.dcMin} min</b> sur borne rapide</li>}
-            <li>{formatNumber(c.evKwh100, 1)} kWh/100 km réels, batterie de {formatNumber(c.battery, Number.isInteger(c.battery) ? 0 : 1)} kWh</li>
+            <li>{dec1(c.evKwh100)} kWh/100 km réels, batterie de {formatNumber(c.battery, Number.isInteger(c.battery) ? 0 : 1)} kWh</li>
           </ul>
           <a href={url(`/vehicules/${c.vehicle.slug}/?config=${c.config.id}`)} class="eo-link">La fiche complète <ArrowRight size={13} strokeWidth={2.2} aria-hidden="true" /></a>
         </Tile>
@@ -249,7 +294,7 @@ const jsonLd = {
           <h3 class="eo-sub">{twin.name}</h3>
           <p class="eo-version">{twin.version} · {formatPrice(twin.price)}</p>
           <ul class="eo-list">
-            <li><b>{formatNumber(c.iceL100, 1)} l/100 km</b> en conditions réelles ({formatNumber(twin.wltpL100, 1)} l homologués WLTP)</li>
+            <li><b>{dec1(c.iceL100)} l/100 km</b> en conditions réelles ({dec1(twin.wltpL100)} l homologués WLTP)</li>
             <li>{formatNumber(twin.co2)} g de CO2 par km homologués</li>
             <li>{twinKind}</li>
           </ul>
@@ -301,12 +346,20 @@ const jsonLd = {
 </BaseLayout>
 
 <script>
+  import { myPrime } from "@/lib/myPrime";
+  import { CURVE, costCurve, curveEur, curveSvg, yearAt, type Curve } from "@/lib/costCurve";
+  import { url } from "@/lib/url";
+
   function setup() {
     const input = document.querySelector<HTMLInputElement>("[data-eo-km]");
     const box = document.querySelector<HTMLElement>("[data-eo-sim]");
     if (!input || !box || input.dataset.ready) return;
     input.dataset.ready = "1";
-    const s = JSON.parse(box.dataset.eoSim!) as Record<"ev100" | "ice100" | "fixedEv" | "fixedIce" | "evPrice" | "evNet" | "icePrice" | "years", number> & { resEv: number[]; resIce: number[] };
+    const s = JSON.parse(box.dataset.eoSim!) as Record<"ev100" | "ice100" | "fixedEv" | "fixedIce" | "evPrice" | "evNet" | "icePrice" | "years" | "aid" | "km", number> & {
+      resEv: number[];
+      resIce: number[];
+      grid: "standard" | "europe" | null;
+    };
     const nf = new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 });
     const num = (n: number) => nf.format(Math.round(n)).replace(/ /g, " ");
     const eur = (n: number) => `${num(n)} €`;
@@ -320,8 +373,86 @@ const jsonLd = {
       ev: s.evNet - (s.evPrice * s.resEv[n - 1]!) / 100 + n * ((km / 100) * s.ev100 + s.fixedEv),
       ice: s.icePrice - (s.icePrice * s.resIce[n - 1]!) / 100 + n * ((km / 100) * s.ice100 + s.fixedIce),
     });
+    // Courbes de dépense cumulée (lib/costCurve) : redessinées à la largeur réelle, survol et clavier
+    const plot = document.querySelector<HTMLElement>("[data-cc-plot]");
+    const tip = document.querySelector<HTMLElement>("[data-cc-tip]");
+    const ROW_YEARS = [0, 1, 2, 3, 4, 5, 6, 8, 10];
+    let curve: Curve | null = null;
+    let hover: number | null = null;
+    const names = { ev: "Électrique", ice: plot?.dataset.iceName ?? "Thermique" };
+    const showHover = (n: number) => {
+      const svg = plot?.querySelector("svg");
+      if (!curve || !svg || !tip || !plot) return;
+      hover = n;
+      const v = curve.at(n);
+      const x = curve.x(n);
+      const hair = svg.querySelector(".cc-hair");
+      hair?.setAttribute("x1", String(x));
+      hair?.setAttribute("x2", String(x));
+      hair?.setAttribute("visibility", "visible");
+      for (const [k, val] of [["ev", v.ev], ["ice", v.ice]] as const) {
+        const dot = svg.querySelector(`.cc-hover.cc-dot-${k}`);
+        dot?.setAttribute("cx", String(x));
+        dot?.setAttribute("cy", String(curve.y(val)));
+        dot?.setAttribute("visibility", "visible");
+      }
+      tip.replaceChildren();
+      const head = document.createElement("b");
+      head.textContent = n === 0 ? "À l'achat" : `Après ${n} an${n > 1 ? "s" : ""}`;
+      tip.append(head);
+      for (const [k, val, name] of [["ev", v.ev, names.ev], ["ice", v.ice, names.ice]] as const) {
+        const row = document.createElement("span");
+        const key = document.createElement("i");
+        key.className = `cc-key cc-key-${k}`;
+        const value = document.createElement("strong");
+        value.textContent = curveEur(val);
+        row.append(key, value, document.createTextNode(` ${name.toLowerCase()}`));
+        tip.append(row);
+      }
+      tip.hidden = false;
+      const left = plot.offsetLeft + x;
+      tip.style.left = `${Math.min(Math.max(left, plot.offsetLeft + 70), plot.offsetLeft + plot.clientWidth - 70)}px`;
+      tip.style.top = `${plot.offsetTop + 4}px`;
+    };
+    const hideHover = () => {
+      hover = null;
+      if (tip) tip.hidden = true;
+      plot?.querySelectorAll(".cc-hair, .cc-hover").forEach((el) => el.setAttribute("visibility", "hidden"));
+    };
+    const draw = (km: number) => {
+      if (!plot) return;
+      curve = costCurve(
+        { evNet: s.evNet, icePrice: s.icePrice, evYear: (km / 100) * s.ev100 + s.fixedEv, iceYear: (km / 100) * s.ice100 + s.fixedIce },
+        Math.max(300, Math.round(plot.clientWidth)) || CURVE.w,
+      );
+      plot.innerHTML = curveSvg(curve, names);
+      document.querySelectorAll("[data-cc-rows] tr").forEach((tr, k) => {
+        const v = curve!.at(ROW_YEARS[k]!);
+        const cells = tr.querySelectorAll("td");
+        if (cells[0]) cells[0].textContent = curveEur(v.ev);
+        if (cells[1]) cells[1].textContent = curveEur(v.ice);
+      });
+      if (hover !== null) showHover(hover);
+    };
+    if (plot) {
+      plot.addEventListener("pointermove", (e) => curve && showHover(yearAt(curve, e.clientX - plot.getBoundingClientRect().left)));
+      plot.addEventListener("pointerleave", hideHover);
+      plot.addEventListener("focus", () => showHover(hover ?? 5));
+      plot.addEventListener("blur", hideHover);
+      plot.addEventListener("keydown", (e) => {
+        if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+        e.preventDefault();
+        showHover(Math.max(0, Math.min(CURVE.years, (hover ?? 5) + (e.key === "ArrowRight" ? 1 : -1))));
+      });
+      let frame = 0;
+      new ResizeObserver(() => {
+        cancelAnimationFrame(frame);
+        frame = requestAnimationFrame(() => draw(Number(input.value)));
+      }).observe(plot);
+    }
     const render = () => {
       const km = Number(input.value);
+      draw(km);
       input.style.setProperty("--fill", `${((km - 5000) / 35000) * 100}%`);
       out.textContent = `${num(km)} km`;
       const saving = (km / 100) * (s.ice100 - s.ev100) + s.fixedIce - s.fixedEv;
@@ -334,12 +465,66 @@ const jsonLd = {
       set("[data-eo-total-ev]", eur(t.ev));
       set("[data-eo-total-ice]", eur(t.ice));
     };
+    // Votre prix (lib/myPrime) : la prime du profil enregistré remplace celle de tout ménage
+    const mine = myPrime();
+    if (mine?.category && s.grid && mine.of(s.grid) !== s.aid) {
+      const aid = mine.of(s.grid);
+      s.evNet = s.evPrice - aid;
+      const t = totals(s.km, s.years);
+      const diff = t.ice - t.ev;
+      const line = document.querySelector<HTMLElement>("[data-eo-mine]");
+      if (line) {
+        line.innerHTML = `Avec votre profil (${mine.label}), la prime passe à <b>${eur(aid)}</b> : l'électrique coûte ${eur(s.evNet)} à l'achat et,
+          sur ${s.years} ans, ${diff >= 0 ? `revient <b>${eur(diff)} moins cher</b>` : `coûte <b>${eur(-diff)} de plus</b>`} que le thermique.
+          <a href="${url("/aides/")}">Modifier mon profil</a>`;
+        line.hidden = false;
+      }
+      const note = box.parentElement?.querySelector<HTMLElement>("[data-eo-mine-note]");
+      if (note) note.textContent = `, avec votre prime de ${eur(aid)}`;
+    }
     input.addEventListener("input", render);
     render();
   }
   setup();
   document.addEventListener("astro:page-load", setup);
 </script>
+
+<style is:global>
+  /* Courbes de dépense cumulée (lib/costCurve) : SVG injecté, d'où le style global préfixé .cc- */
+  .cc { --cc-ev: var(--color-accent); --cc-ice: #4f6db0; position: relative; margin: 1.4rem 0 0.4rem; }
+  .cc-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.4rem 1rem; margin-bottom: 0.5rem; }
+  .cc-title { font-size: 14px; font-weight: 650; }
+  .cc-legend { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; font-size: 12.5px; color: var(--color-text-muted); }
+  .cc-legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+  .cc-key { display: inline-block; width: 14px; height: 2px; border-radius: 2px; background: var(--cc-ev); }
+  .cc-key-ice { background: var(--cc-ice); }
+  .cc-plot { position: relative; border-radius: 12px; outline-offset: 4px; touch-action: pan-y; }
+  .cc-plot svg { display: block; max-width: 100%; height: auto; overflow: visible; }
+  .cc-plot:focus-visible { outline: 2px solid var(--color-accent); }
+  .cc-grid { stroke: var(--color-border); stroke-width: 1; }
+  .cc-ty, .cc-tx { font-size: 11px; fill: var(--color-text-faint); font-variant-numeric: tabular-nums; }
+  .cc-ev, .cc-ice { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .cc-ev { stroke: var(--cc-ev); }
+  .cc-ice { stroke: var(--cc-ice); }
+  .cc-dot, .cc-hover { stroke: var(--color-surface); stroke-width: 2; }
+  .cc-dot-ev { fill: var(--cc-ev); }
+  .cc-dot-ice { fill: var(--cc-ice); }
+  .cc-cross { fill: var(--color-surface); stroke: var(--color-text); stroke-width: 2; }
+  .cc-cross-text { font-size: 11.5px; font-weight: 650; fill: var(--color-text); paint-order: stroke; stroke: var(--color-surface); stroke-width: 4px; }
+  .cc-leader, .cc-hair { stroke: var(--color-border-strong); stroke-width: 1; }
+  .cc-end-name { font-size: 11.5px; fill: var(--color-text-muted); }
+  .cc-end-value { font-size: 13px; font-weight: 700; fill: var(--color-text); font-variant-numeric: tabular-nums; }
+  .cc-tip { position: absolute; z-index: 2; translate: -50% 0; display: flex; flex-direction: column; gap: 0.2rem; min-width: 9.5rem; padding: 0.5rem 0.7rem; border-radius: 10px; background: var(--color-surface-elevated); border: 1px solid var(--color-border); box-shadow: var(--shadow-md); font-size: 12.5px; color: var(--color-text-muted); pointer-events: none; }
+  .cc-tip b { font-size: 12px; font-weight: 600; color: var(--color-text-faint); }
+  .cc-tip span { display: flex; align-items: center; gap: 0.45rem; white-space: nowrap; }
+  .cc-tip strong { color: var(--color-text); font-weight: 700; font-variant-numeric: tabular-nums; }
+  .cc-table { margin-top: 0.5rem; font-size: 13px; }
+  .cc-table summary { cursor: pointer; width: fit-content; font-weight: 600; color: var(--color-accent); }
+  .cc-table table { margin-top: 0.5rem; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  .cc-table th, .cc-table td { padding: 0.25rem 1.25rem 0.25rem 0; text-align: left; border-bottom: 1px solid var(--color-border); }
+  .cc-table thead th { font-size: 12px; font-weight: 600; color: var(--color-text-faint); }
+  .cc-table tbody th { font-weight: 500; color: var(--color-text-muted); }
+</style>
 
 <style>
   .eo-title { font-family: var(--font-display); font-size: clamp(1.375rem, 2.2vw, 1.75rem); font-weight: 600; letter-spacing: -0.022em; line-height: 1.15; margin-bottom: 0.6rem; }
@@ -348,6 +533,8 @@ const jsonLd = {
   .eo-list { display: flex; flex-direction: column; gap: 0.4rem; font-size: 14.5px; color: var(--color-text-muted); }
   .eo-list b { color: var(--color-text); }
   .eo-link { display: inline-flex; align-items: center; gap: 0.25rem; margin-top: 0.9rem; font-size: 13.5px; font-weight: 600; color: var(--color-accent); }
+  .eo-mine { margin-top: 0.9rem; max-width: 48rem; padding: 0.7rem 1rem; border-radius: var(--radius-tile-sm); border: 1px solid var(--color-accent); font-size: 14.5px; line-height: 1.5; color: var(--color-text); }
+  .eo-mine a { color: var(--color-accent); font-weight: 600; }
   .eo-note { margin-top: 0.8rem; font-size: 12.5px; color: var(--color-text-faint); }
   .eo-hyp { display: flex; flex-direction: column; gap: 0.5rem; max-width: 85ch; margin-left: 1.25rem; list-style: disc; font-size: 14px; color: var(--color-text-muted); }
   .eo-hyp a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }

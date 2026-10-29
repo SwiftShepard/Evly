@@ -383,6 +383,7 @@
   margin: 0;
 }
 .tco-hint a,
+.tco-mode-hint a,
 .tco-depreciation-body a {
   color: var(--color-accent);
   text-decoration: underline;

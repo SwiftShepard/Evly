@@ -53,7 +53,9 @@ const pos = (k: number, n: number) => (k === 0 ? "c" : k === 1 ? "r" : k === n -
 
 <style is:global>
   /* Ligne de sol commune : roues de la voiture du premier plan et centre du halo */
-  .hero-cars { --ground: 3.25rem; position: relative; min-height: 17rem; align-self: end; }
+  /* Sur téléphone, assez bas pour laisser voir « Mon trajet » sous le hero */
+  .hero-cars { --ground: 3rem; position: relative; min-height: 14.5rem; align-self: end; }
+  @media (min-width: 640px) { .hero-cars { --ground: 3.25rem; min-height: 17rem; } }
   @media (min-width: 1024px) { .hero-cars { --ground: 4rem; min-height: 30rem; align-self: stretch; } }
   .hero-cars .podium {
     position: absolute; left: 8%; right: -4%; height: 8rem; bottom: calc(var(--ground) - 4rem); border-radius: 50%;

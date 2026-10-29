@@ -10,7 +10,7 @@ import type { Vehicle, VehicleConfiguration } from "@/data/schemas";
 import { ICE_TWINS, realL100, type IceTwin } from "@/data/iceTwins";
 import { COST_DEFAULTS, residualPct } from "@/lib/costDefaults";
 import { computeTco, type TcoInputs, type TcoResult } from "@/lib/tco";
-import { isVehicleEligibleCEE, primeFor } from "@/lib/cee";
+import { isVehicleEligibleCEE, primeFor, primeGridOf } from "@/lib/cee";
 import { batteryOf } from "@/lib/map/versions";
 import { getVehicleBySlug } from "@/lib/vehicles";
 import { getVehicleName } from "@/lib/seo";
@@ -40,8 +40,9 @@ export interface EvVsIce {
   iceName: string;
   evVersion: string;
   evPrice: number;
-  /** Prime CEE de tout ménage (0 si la version n'y a pas droit) */
+  /** Prime CEE de tout ménage (0 si la version n'y a pas droit) et sa grille, pour « votre prix » */
   aid: number;
+  primeGrid: "standard" | "europe" | null;
   evNet: number;
   battery: number;
   /** Consommations réelles, au dixième comme dans le simulateur : kWh/100 km (batterie) et l/100 km */
@@ -109,6 +110,7 @@ function compute(twin: IceTwin): EvVsIce | null {
     evVersion: config.label,
     evPrice: config.price_EUR,
     aid,
+    primeGrid: primeGridOf(vehicle, config.price_EUR),
     evNet: tco.ev.purchase,
     battery,
     evKwh100,
