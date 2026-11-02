@@ -7,12 +7,12 @@
 
 /** Moyenne nationale des stations mises à jour dans la semaine (flux instantané prix-carburants) */
 export const FUEL_PRICES = {
-  date: "2026-10-28",
+  date: "2026-11-02",
   sourceUrl: "https://data.economie.gouv.fr/explore/dataset/prix-des-carburants-en-france-flux-instantane-v2/",
-  /** SP95-E10, €/l (5 813 stations) */
-  e10: 2.11,
-  /** Gazole, €/l (6 889 stations) */
-  gazole: 2.39,
+  /** SP95-E10, €/l (5 804 stations) */
+  e10: 2.1,
+  /** Gazole, €/l (7 561 stations) */
+  gazole: 2.27,
 };
 
 /**
