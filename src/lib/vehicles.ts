@@ -35,6 +35,11 @@ export function getAllVehicles(): Vehicle[] {
   return vehicles;
 }
 
+/** Dernière mise à jour des fiches (ISO), d'un groupe de modèles ou de tout le catalogue */
+export function lastDataUpdate(list: Vehicle[] = vehicles): string {
+  return list.reduce((latest, v) => (v.lastUpdated > latest ? v.lastUpdated : latest), "");
+}
+
 export function getVehicleBySlug(slug: string): Vehicle | undefined {
   return vehicles.find((v) => v.slug === slug);
 }

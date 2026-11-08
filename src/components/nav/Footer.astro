@@ -1,6 +1,6 @@
 ---
 import { url } from "@/lib/url";
-import { getAllVehicles } from "@/lib/vehicles";
+import { getAllVehicles, lastDataUpdate } from "@/lib/vehicles";
 import { getCategory } from "@/data/categories";
 import { LEGAL_PAGES } from "@/data/legal";
 import { formatDate } from "@/lib/format";
@@ -22,7 +22,7 @@ const FOOTER_BRANDS: [string, string][] = [
 const vehicles = getAllVehicles();
 const totalVehicles = vehicles.length;
 // Date de la fiche la plus récemment mise à jour : reflète l'état réel des données
-const lastDataUpdate = vehicles.reduce((latest, v) => (v.lastUpdated > latest ? v.lastUpdated : latest), "");
+const updated = lastDataUpdate(vehicles);
 
 const cols = [
   {
@@ -91,7 +91,7 @@ const cols = [
           les fiches constructeur. Aucun lien affilié, aucun cookie : seule une mesure d'audience anonyme est utilisée.
         </p>
         <p class="text-sm text-[var(--color-text-faint)]">
-          {totalVehicles} modèles suivis, données mises à jour le {formatDate(lastDataUpdate)}.
+          {totalVehicles} modèles suivis, données mises à jour le {formatDate(updated)}.
         </p>
       </div>
 

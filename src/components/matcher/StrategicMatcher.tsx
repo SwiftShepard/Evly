@@ -168,7 +168,7 @@ export default function StrategicMatcher({ vehicles, images }: Props) {
         </div>
 
         <div className="mq-foot">
-          <button type="button" className="btn btn-secondary mq-back" onClick={() => go(step - 1)} disabled={step === 0}>
+          <button type="button" className="btn btn-secondary mq-back" onClick={() => go(step - 1)} disabled={step === 0} aria-label="Retour">
             <ArrowLeft size={16} strokeWidth={2.25} aria-hidden="true" />
             <span>Retour</span>
           </button>

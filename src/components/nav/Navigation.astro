@@ -74,8 +74,9 @@ function isGroupActive(group: (typeof navigationStructure)[0]): boolean {
 <header class="nav-shell sticky top-0 z-40 pt-2.5 md:pt-3">
   <div class="container-edit">
     <div class="nav-header nav-pill">
-      <a href={url("/")} class="flex items-baseline gap-2.5 min-h-[44px] py-2 pl-1.5 shrink-0" aria-label="Evly, accueil">
-        <Wordmark size="lg" />
+      <a href={url("/")} class="flex items-baseline gap-2.5 min-h-[44px] py-2 pl-1.5 shrink-0">
+        <Wordmark size="lg" decorative />
+        <span class="sr-only">Evly, accueil</span>
       </a>
 
       <button type="button" class="search-trigger hidden lg:flex" data-search-open aria-haspopup="dialog">

@@ -487,7 +487,6 @@ export default function ComparatorView({ vehicles, suggestions = [] }: Props) {
                 e.currentTarget.style.borderColor = "var(--color-border-strong)";
                 e.currentTarget.style.backgroundColor = "transparent";
               }}
-              aria-label="Ajouter un véhicule au comparatif"
             >
               <div
                 className="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300"

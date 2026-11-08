@@ -8,12 +8,12 @@ import VehicleImage from "@/components/ui/VehicleImage.astro";
 import RangeRail from "@/components/ui/RangeRail.astro";
 import Confidence from "@/components/ui/Confidence.astro";
 import { Route } from "lucide-react";
-import { getAllVehicles, isStrictUtility } from "@/lib/vehicles";
-import { SEO_YEAR } from "@/lib/seo";
+import { getAllVehicles, isStrictUtility, lastDataUpdate } from "@/lib/vehicles";
+import { SEO_YEAR, getVehicleName } from "@/lib/seo";
 import { CATEGORIES } from "@/data/categories";
 import { getBrands } from "@/lib/brands";
 import LinkChips from "@/components/seo/LinkChips.astro";
-import { formatPrice } from "@/lib/format";
+import { formatDate, formatPrice } from "@/lib/format";
 import { getVehicleCardSummary } from "@/lib/vehicleCard";
 import { url } from "@/lib/url";
 import FavoriteButton from "@/components/ui/FavoriteButton";
@@ -34,6 +34,20 @@ const HYBRID_SLUGS = new Set([
 ]);
 
 const vehicles = getAllVehicles().filter((v) => !isStrictUtility(v));
+// Le catalogue en données structurées : la liste des modèles, datée de leur dernière mise à jour
+const updated = lastDataUpdate(vehicles);
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: `Voitures électriques ${SEO_YEAR}`,
+  dateModified: updated,
+  url: new URL(url("/vehicules/"), Astro.site).toString(),
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: vehicles.length,
+    itemListElement: vehicles.map((v, i) => ({ "@type": "ListItem", position: i + 1, name: getVehicleName(v), url: new URL(url(`/vehicules/${v.slug}/`), Astro.site).toString() })),
+  },
+};
 
 // Cartes rendues visibles au chargement ; le reste via « Voir plus »
 const PAGE_SIZE = 24;
@@ -147,6 +161,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
   title={`Voitures électriques ${SEO_YEAR} : liste, prix et autonomie réelle`}
   description={`Liste complète des ${vehicles.length} voitures électriques vendues en France en ${SEO_YEAR} : filtrez par prix, autonomie réelle mesurée, recharge rapide, leasing social et aides.`}
   ogImage="/og/pages/vehicules.jpg"
+  jsonLd={jsonLd}
 >
   <div class="py-6 md:py-10">
     <div class="container-edit">
@@ -469,6 +484,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
               </h1>
               <p class="mt-4 text-[var(--color-text-muted)] text-sm md:text-base max-w-2xl fade-rise fade-rise-delay-3">
                 Filtrez par budget, autonomie réelle ou vitesse de charge : pas besoin de connaître les marques pour trouver la bonne voiture.
+                Données du {formatDate(updated)}.
               </p>
               <div class="trip-strip fade-rise fade-rise-delay-3 no-glossary">
                 <span class="inline-flex items-center gap-2 text-[14.5px]">
@@ -546,7 +562,7 @@ function hasCEE(v: Vehicle) { return v.availableAids?.some(a => /coup\s*de\s*pou
               class="vehicle-card contents"
               style={i >= PAGE_SIZE ? "display: none" : undefined}
             >
-              <Tile size="2x1" variant="default" href={url(`/vehicules/${v.slug}/`)} ariaLabel={`Fiche ${v.brand} ${v.model}`} class="reveal vcard">
+              <Tile size="2x1" variant="default" href={url(`/vehicules/${v.slug}/`)} class="reveal vcard">
                 <div class="flex items-center justify-between gap-3">
                   <div class="flex items-center gap-2 text-[var(--color-text-muted)] min-w-0">
                     <BrandLogo brand={v.brand} class="w-4 h-4" />

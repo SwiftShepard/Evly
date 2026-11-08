@@ -16,7 +16,8 @@ import { costText, duration, getTripResults, iceTripCost, stopsText, tripCost, t
 import { FAST_EUR_KWH, TARIF_BLEU } from "@/data/electricity";
 import { CHARGING_LOSSES, COST_DEFAULTS } from "@/lib/costDefaults";
 import { eurKwh } from "@/lib/chargingCost";
-import { formatKm, formatNumber, formatPrice } from "@/lib/format";
+import { formatDate, formatKm, formatNumber, formatPrice } from "@/lib/format";
+import { lastDataUpdate } from "@/lib/vehicles";
 import { url } from "@/lib/url";
 import { fitDescription, fitTitle } from "@/lib/seo";
 import { ArrowRight, Snowflake, Sun } from "lucide-react";
@@ -121,6 +122,7 @@ const faq = [
   },
 ];
 
+const updated = lastDataUpdate();
 const description = fitDescription([
   `${name} en voiture électrique : ${formatKm(Math.round(result.km))}, ${duration(result.driveMin)} de route.`,
   `Énergie de l'aller : ${costText(costMedian)} en médiane, contre ${formatPrice(Math.round(iceCost))} en essence.`,
@@ -130,6 +132,7 @@ const description = fitDescription([
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
+  dateModified: updated,
   mainEntity: faq.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })),
 };
 ---
@@ -142,7 +145,7 @@ const jsonLd = {
   <div class="trp container-edit pt-2 pb-8 md:pt-3 md:pb-12 flex flex-col gap-10">
     <BentoGrid>
       <Tile size="full" variant="elevated" class="md:!p-8">
-        <span class="label-eyebrow fade-rise">Grand trajet · {TRIP_GROUPS[axis.group]}</span>
+        <span class="label-eyebrow fade-rise">Grand trajet · {TRIP_GROUPS[axis.group]} · données du {formatDate(updated)}</span>
         <h1 class="display-2 mt-3 max-w-4xl fade-rise fade-rise-delay-1">{name} en voiture électrique</h1>
         <p class="mt-4 max-w-3xl text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed fade-rise fade-rise-delay-2">
           {formatKm(Math.round(result.km))} par la route, {duration(result.driveMin)} de conduite sans bouchon ni pause. Voici les {rows.length} modèles
@@ -394,6 +397,8 @@ const jsonLd = {
   .tr-rows { display: flex; flex-direction: column; }
   .tr-row, .tr-more-item { order: var(--os); }
   .tr-row { border-top: 1px solid var(--color-border); }
+  /* 148 lignes : le navigateur ne met en page que celles qui approchent de l'écran */
+  .tr-row { content-visibility: auto; contain-intrinsic-size: auto 62px; }
   [data-season="winter"] .tr-row, [data-season="winter"] .tr-more-item { order: var(--ow); }
   [data-season="summer"] [data-w], [data-season="winter"] [data-s] { display: none !important; }
   [data-season="summer"] .tr-rows:not([data-all]) [data-rest-s],

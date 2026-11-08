@@ -13,10 +13,10 @@ import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
 import FaqList from "@/components/seo/FaqList.astro";
 import LinkChips from "@/components/seo/LinkChips.astro";
 import { CATEGORIES, type CategoryColumn, type VehicleCategory } from "@/data/categories";
-import { getAllVehicles } from "@/lib/vehicles";
+import { getAllVehicles, lastDataUpdate } from "@/lib/vehicles";
 import { getBrands } from "@/lib/brands";
 import { getBodyInfo, getVehicleName, getVehicleSeoFacts } from "@/lib/seo";
-import { formatPrice } from "@/lib/format";
+import { formatDate, formatPrice } from "@/lib/format";
 import { url } from "@/lib/url";
 
 export function getStaticPaths() {
@@ -43,10 +43,12 @@ const columnLabels: Record<CategoryColumn, string> = {
 };
 const hasAidedColumn = category.columns.includes("aided");
 
+const updated = lastDataUpdate(list);
 const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
+    dateModified: updated,
     name: category.h1,
     description,
     url: new URL(url(`/voitures-electriques/${category.slug}/`), Astro.site).toString(),
@@ -92,7 +94,7 @@ const others = CATEGORIES.filter((c) => c.slug !== category.slug);
   <div class="container-edit pt-2 pb-8 md:pt-3 md:pb-12 flex flex-col gap-10">
     <BentoGrid>
       <Tile size="full" variant="elevated" class="md:!p-8">
-        <span class="label-eyebrow fade-rise">{category.eyebrow} · {list.length} modèles</span>
+        <span class="label-eyebrow fade-rise">{category.eyebrow} · {list.length} modèles · données du {formatDate(updated)}</span>
         <h1 class="display-2 mt-3 max-w-4xl fade-rise fade-rise-delay-1">{category.h1}</h1>
         <div class="mt-4 flex flex-col gap-3 max-w-3xl fade-rise fade-rise-delay-2">
           {intro.map((p) => <p class="text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed">{p}</p>)}

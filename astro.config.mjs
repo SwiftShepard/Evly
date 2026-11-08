@@ -114,9 +114,11 @@ export default defineConfig({
     format: 'directory',
     inlineStylesheets: 'auto',
   },
+  // Préchargement à l'intention (survol, focus, toucher) : « viewport » téléchargeait chaque page
+  // dont un lien passait à l'écran, près de 500 Ko dès l'arrivée sur l'accueil d'un téléphone
   prefetch: {
     prefetchAll: true,
-    defaultStrategy: 'viewport',
+    defaultStrategy: 'hover',
   },
   integrations: [
     react(),

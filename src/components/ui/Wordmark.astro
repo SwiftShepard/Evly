@@ -2,9 +2,11 @@
 interface Props {
   size?: "sm" | "md" | "lg";
   class?: string;
+  /** Dans un lien qui porte déjà son nom : masqué aux lecteurs d'écran */
+  decorative?: boolean;
 }
 
-const { size = "md", class: className = "" } = Astro.props;
+const { size = "md", class: className = "", decorative = false } = Astro.props;
 
 const sizeMap = {
   sm: "text-sm",
@@ -20,8 +22,9 @@ const sizeMap = {
     sizeMap[size],
     className,
   ]}
-  role="img"
-  aria-label="Evly"
+  role={decorative ? undefined : "img"}
+  aria-label={decorative ? undefined : "Evly"}
+  aria-hidden={decorative ? "true" : undefined}
 >
   <span aria-hidden="true">ev</span><span
     aria-hidden="true"

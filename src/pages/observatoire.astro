@@ -216,11 +216,11 @@ const jsonLd = [
             <ol class="obs-rows">
               {col.list.map((m, i) => (
                 <li>
-                  <a href={url(`/vehicules/${m.vehicle.slug}/?config=${m.config.id}`)} class="obs-row" aria-label={`${getVehicleName(m.vehicle)} : ${m.realKm} km mesurés pour ${m.wltpKm} km annoncés (${signed(m.gapPct)}).`}>
-                    <span class="obs-row-name" aria-hidden="true">{getVehicleName(m.vehicle)}</span>
-                    <span class="obs-row-values" aria-hidden="true"><b>{m.realKm}</b> / {m.wltpKm} km</span>
+                  <a href={url(`/vehicules/${m.vehicle.slug}/?config=${m.config.id}`)} class="obs-row">
+                    <span class="obs-row-name">{getVehicleName(m.vehicle)}</span>
+                    <span class="obs-row-values"><b>{m.realKm}</b><span class="sr-only"> km mesurés pour</span><span aria-hidden="true"> /</span> {m.wltpKm} km<span class="sr-only"> annoncés, écart :</span></span>
                     <RangeRail real={m.realKm} wltp={m.wltpKm} winter={m.row.winter ?? m.realKm} scale={RAIL_SCALE} reveal index={i} class="obs-row-rail" />
-                    <span class="obs-row-gap" aria-hidden="true">{signed(m.gapPct)}</span>
+                    <span class="obs-row-gap">{signed(m.gapPct)}</span>
                   </a>
                 </li>
               ))}

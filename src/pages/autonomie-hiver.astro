@@ -15,7 +15,8 @@ import { getWinterRanking } from "@/lib/winterRanking";
 import { ESTIMATE_MARGIN, WINTER_C, tempFactor } from "@/lib/winter";
 import { TRIP_AXES } from "@/data/trips";
 import { tripTitle } from "@/lib/roadTrips";
-import { formatKm, formatNumber, formatPrice } from "@/lib/format";
+import { formatDate, formatKm, formatNumber, formatPrice } from "@/lib/format";
+import { lastDataUpdate } from "@/lib/vehicles";
 import { url } from "@/lib/url";
 import { fitDescription } from "@/lib/seo";
 import { ArrowRight } from "lucide-react";
@@ -63,10 +64,12 @@ const description = fitDescription([
   `${over300} modèles dépassent 300 km.`,
   "La liste se recalcule à votre température.",
 ]);
+const updated = lastDataUpdate();
 const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    dateModified: updated,
     mainEntity: faq.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })),
   },
   {
@@ -93,7 +96,7 @@ const skiTrips = TRIP_AXES.filter((a) => a.group === "ski");
   <div class="hv container-edit pt-2 pb-8 md:pt-3 md:pb-12 flex flex-col gap-10">
     <BentoGrid>
       <Tile size="full" variant="elevated" class="md:!p-8">
-        <span class="label-eyebrow fade-rise">Hiver · {rows.length} modèles</span>
+        <span class="label-eyebrow fade-rise">Hiver · {rows.length} modèles · données du {formatDate(updated)}</span>
         <h1 class="display-2 mt-3 max-w-4xl fade-rise fade-rise-delay-1">L'autonomie en hiver, modèle par modèle.</h1>
         <p class="mt-4 max-w-3xl text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed fade-rise fade-rise-delay-2">
           Ce qu'il reste de l'autonomie réelle quand il gèle : chauffage de l'habitacle et batterie froide, selon la chimie et la

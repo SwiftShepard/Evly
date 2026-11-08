@@ -668,6 +668,9 @@
 .tco-bar-amount {
   position: absolute;
   right: 8px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--color-surface);
   top: 50%;
   transform: translateY(-50%);
   font-family: var(--font-mono, ui-monospace, monospace);

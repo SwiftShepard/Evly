@@ -157,11 +157,11 @@ const description = `Comparez les ${totalCars} voitures électriques du marché 
             const winter = g.config.realRange?.winter_minus5_km ?? g.vehicle.realRange.winter_minus5_km;
             return (
               <li>
-                <a href={url(`/vehicules/${g.vehicle.slug}/`)} class="proof-row group" aria-label={`${g.vehicle.brand} ${g.vehicle.model} : ${g.realKm} km mesurés sur route pour ${g.wltpKm} km annoncés, soit ${Math.round(g.gapPct)} % de moins.`}>
-                  <span class="proof-name" aria-hidden="true">{g.vehicle.brand} {g.vehicle.model.replace(/ & .*$/, "")}</span>
-                  <span class="proof-values" aria-hidden="true"><b>{g.realKm}</b> / {g.wltpKm} km</span>
+                <a href={url(`/vehicules/${g.vehicle.slug}/`)} class="proof-row group">
+                  <span class="proof-name">{g.vehicle.brand} {g.vehicle.model.replace(/ & .*$/, "")}</span>
+                  <span class="proof-values"><b>{g.realKm}</b><span class="sr-only"> km mesurés sur route pour</span><span aria-hidden="true"> /</span> {g.wltpKm} km<span class="sr-only"> annoncés, écart :</span></span>
                   <RangeRail real={g.realKm} wltp={g.wltpKm} winter={winter} scale={PROOF_SCALE} reveal index={i} class="proof-rail" />
-                  <span class="proof-gap" aria-hidden="true">-{formatNumber(Math.round(g.gapPct))}&nbsp;%</span>
+                  <span class="proof-gap">-{formatNumber(Math.round(g.gapPct))}&nbsp;%</span>
                 </a>
               </li>
             );

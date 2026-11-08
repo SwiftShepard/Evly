@@ -13,7 +13,8 @@ import FaqList from "@/components/seo/FaqList.astro";
 import LinkChips from "@/components/seo/LinkChips.astro";
 import { getBrands, type Brand } from "@/lib/brands";
 import { SEO_YEAR, getMarketStatus, getVehicleName, getVehicleSeoFacts, inCountry, withArticle } from "@/lib/seo";
-import { formatPrice } from "@/lib/format";
+import { formatDate, formatPrice } from "@/lib/format";
+import { lastDataUpdate } from "@/lib/vehicles";
 import { url } from "@/lib/url";
 
 export function getStaticPaths() {
@@ -108,10 +109,12 @@ if (leasing.length) {
   });
 }
 
+const updated = lastDataUpdate(brand.vehicles);
 const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
+    dateModified: updated,
     name: `Voitures électriques ${b}`,
     description,
     url: new URL(url(`/marques/${brand.slug}/`), Astro.site).toString(),
@@ -153,7 +156,7 @@ const otherBrands = getBrands().filter((o) => o.slug !== brand.slug);
       <Tile size="full" variant="elevated" class="md:!p-8">
         <div class="flex items-center gap-3 text-[var(--color-text-muted)] fade-rise">
           <BrandLogo brand={b} class="w-7 h-7" />
-          <span class="label-eyebrow">Marque · {plural(brand.vehicles.length, "modèle", "modèles")}</span>
+          <span class="label-eyebrow">Marque · {plural(brand.vehicles.length, "modèle", "modèles")} · données du {formatDate(updated)}</span>
         </div>
         <h1 class="display-2 mt-3 fade-rise fade-rise-delay-1">Voitures électriques {b}</h1>
         <p class="mt-4 text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed max-w-3xl fade-rise fade-rise-delay-2">
