@@ -6,7 +6,7 @@ import { LEGAL_PAGES } from "@/data/legal";
 import { getVehicleSeoFacts, getMarketStatus } from "@/lib/seo";
 import { url } from "@/lib/url";
 import { costText, duration, getTripResults, iceTripCost, stopsText, tripCostMedian, tripTitle } from "@/lib/roadTrips";
-import { EVI, energyLabel, getEvVsIce } from "@/lib/evVsIce";
+import { EVI, getEvVsIce, pairLabel } from "@/lib/evVsIce";
 import { FUEL_PRICES } from "@/data/fuelPrices";
 
 /**
@@ -28,7 +28,7 @@ export const GET: APIRoute = async ({ site }) => {
     const e = (x: number) => `${n(Math.round(x))} €`;
     const e2 = (x: number) => `${x.toFixed(2).replace(".", ",")} €`;
     const diff = c.total.ice - c.total.ev;
-    return `- [${c.evName} ou ${c.iceName} ${energyLabel(c.twin)}](${abs(`/electrique-ou-essence/${c.twin.slug}/`)}): ${c.evVersion} à ${e(c.evNet)} après prime contre ${c.twin.version} à ${e(c.twin.price)} ; ${e2(c.ev100)} contre ${e2(c.ice100)} aux 100 km ; sur ${EVI.years} ans, l'électrique coûte ${diff > 0 ? `${e(diff)} de moins` : `${e(-diff)} de plus`}.`;
+    return `- [${pairLabel(c)}](${abs(`/electrique-ou-essence/${c.twin.slug}/`)}): ${c.evVersion} à ${e(c.evNet)} après prime contre ${c.twin.version} à ${e(c.twin.price)} ; ${e2(c.ev100)} contre ${e2(c.ice100)} aux 100 km ; sur ${EVI.years} ans, l'électrique coûte ${diff > 0 ? `${e(diff)} de moins` : `${e(-diff)} de plus`}.`;
   });
 
   const vehicleLines = vehicles.map((v) => {

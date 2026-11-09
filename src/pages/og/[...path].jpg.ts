@@ -8,7 +8,7 @@ import { getAllDuels } from "@/lib/duel";
 import { getVehicleSeoFacts } from "@/lib/seo";
 import { duration, getTripResults, stopsText, tripTitle } from "@/lib/roadTrips";
 import { formatPrice } from "@/lib/format";
-import { energyLabel, getEvVsIce } from "@/lib/evVsIce";
+import { energyLabel, getEvVsIce, pairLabel } from "@/lib/evVsIce";
 import { eur as eurCents } from "@/lib/chargingCost";
 
 /**
@@ -120,7 +120,7 @@ export const getStaticPaths = (async () => {
         kind: "page",
         data: {
           eyebrow: `Électrique ou ${energy}`,
-          title: `${c.evName} ou ${c.iceName} ${energy} ?`,
+          title: `${pairLabel(c)} ?`,
           subtitle: `${eurCents(c.ev100)} contre ${eurCents(c.ice100)} aux 100 km. Achat après prime, coût sur 5 ans et rentabilité.`,
           vehicles: [c.vehicle.slug],
         },

@@ -12,7 +12,7 @@ import Confidence from "@/components/ui/Confidence.astro";
 import FaqList from "@/components/seo/FaqList.astro";
 import LinkChips from "@/components/seo/LinkChips.astro";
 import { TRIP_AXES, TRIP_GROUPS } from "@/data/trips";
-import { costText, duration, getTripResults, iceTripCost, stopsText, tripCost, tripCostMedian, tripTitle, type TripLeg, type TripResult, type TripRow } from "@/lib/roadTrips";
+import { arrivalInfo, costText, duration, getTripResults, iceTripCost, stopsText, tripCost, tripCostMedian, tripTitle, type TripLeg, type TripResult, type TripRow } from "@/lib/roadTrips";
 import { FAST_EUR_KWH, TARIF_BLEU } from "@/data/electricity";
 import { CHARGING_LOSSES, COST_DEFAULTS } from "@/lib/costDefaults";
 import { eurKwh } from "@/lib/chargingCost";
@@ -101,6 +101,26 @@ const sameFrom = TRIP_AXES.filter((a) => a.slug !== axis.slug && a.from.name ===
 const sameGroup = TRIP_AXES.filter((a) => a.slug !== axis.slug && a.group === axis.group && a.from.name !== axis.from.name);
 const list = (xs: TripRow[], n = 4) => xs.slice(0, n).map((r) => r.name).join(", ");
 
+// À l'arrivée : dernière borne rapide de la route, bornes sur place (base IRVE), propre à chaque destination
+const arrival = await arrivalInfo(axis.slug);
+// « à Val Thorens », « aux Arcs », « à L'Alpe d'Huez »
+const atPlace = (name: string) => (/^Les /.test(name) ? `aux ${name.slice(4)}` : /^Le /.test(name) ? `au ${name.slice(3)}` : `à ${name}`);
+const arrivalLines = arrival
+  ? [
+      arrival.lastFast
+        ? `Dernière borne rapide du tracé : ${arrival.lastFast.name}, jusqu'à ${formatNumber(arrival.lastFast.kw)} kW, à ${formatNumber(arrival.lastFast.kmBefore)} km de l'arrivée.`
+        : "Aucune borne rapide sur le tracé avant l'arrivée.",
+      arrival.nearby.points === 0
+        ? "Aucune borne déclarée dans la base nationale IRVE à moins de 3 km : prévoyez de recharger avant d'arriver."
+        : arrival.nearby.fastPoints === 0
+          ? `Sur place, à moins de 3 km : ${formatNumber(arrival.nearby.points)} points de recharge déclarés dans ${formatNumber(arrival.nearby.stations)} stations (base IRVE), aucun rapide : la recharge se fait lentement, au parking ou à l'hébergement.`
+          : `Sur place, à moins de 3 km : ${formatNumber(arrival.nearby.points)} points de recharge déclarés dans ${formatNumber(arrival.nearby.stations)} stations (base IRVE), dont ${formatNumber(arrival.nearby.fastPoints)} rapides (jusqu'à ${formatNumber(arrival.nearby.maxKw)} kW).`,
+      ...(axis.group === "ski"
+        ? ["La montée finale vers la station n'entre pas dans le calcul : elle consomme davantage, plus encore par grand froid. Quittez la dernière borne rapide avec de la marge."]
+        : []),
+    ]
+  : [];
+
 const faq = [
   {
     question: `Combien d'arrêts pour faire ${axis.from.name}-${axis.to.name} en voiture électrique ?`,
@@ -120,6 +140,9 @@ const faq = [
       ? `Par -5 °C, ${fastestWinter.name} est la plus rapide : ${duration(fastestWinter.winter!.totalMin)} au total, ${stopsText(fastestWinter.winter!.stops)}. ${noStopWinter.length ? `${noStopWinter.length} modèles passent encore sans s'arrêter (${list(noStopWinter, 3)}).` : "Aucun modèle ne passe sans s'arrêter."}`
       : "Aucun modèle ne fait ce trajet par -5 °C sans s'écarter des grands axes.",
   },
+  ...(arrivalLines.length
+    ? [{ question: `Où recharger en arrivant ${atPlace(axis.to.name)} en voiture électrique ?`, answer: arrivalLines.join(" ") }]
+    : []),
 ];
 
 const updated = lastDataUpdate();
@@ -269,6 +292,20 @@ const jsonLd = {
         </p>
       )}
     </section>
+
+    {arrivalLines.length > 0 && (
+      <section aria-labelledby="arrivee-title" class="no-glossary">
+        <h2 id="arrivee-title" class="section-title">Arriver {atPlace(axis.to.name)}</h2>
+        <BentoGrid>
+          <Tile size="full" class="md:!p-7">
+            <ul class="tr-arrival">
+              {arrivalLines.map((l) => <li>{l}</li>)}
+            </ul>
+            <a href={weekLink(null)} class="tr-arrival-link">Les bornes autour de l'arrivée, sur la carte <ArrowRight size={13} strokeWidth={2.2} aria-hidden="true" /></a>
+          </Tile>
+        </BentoGrid>
+      </section>
+    )}
 
     {topStations.length > 0 && (
       <section aria-labelledby="bornes-title" class="no-glossary">
@@ -458,6 +495,8 @@ const jsonLd = {
   .tr-station-n { grid-column: 2; font-size: 13px; color: var(--color-text-muted); }
   @media (min-width: 768px) { .tr-station-n { grid-column: auto; } }
 
+  .tr-arrival { display: flex; flex-direction: column; gap: 0.5rem; max-width: 80ch; margin-left: 1.1rem; list-style: disc; font-size: 15px; line-height: 1.5; color: var(--color-text); }
+  .tr-arrival-link { display: inline-flex; align-items: center; gap: 0.25rem; margin-top: 0.9rem; font-size: 13.5px; font-weight: 600; color: var(--color-accent); }
   .tr-method { display: flex; flex-direction: column; gap: 0.45rem; max-width: 85ch; margin-left: 1.25rem; list-style: disc; font-size: 14px; color: var(--color-text-muted); }
   .tr-method a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }
 </style>

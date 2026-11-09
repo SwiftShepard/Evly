@@ -140,3 +140,9 @@ export const evVsIceForVehicle = (evSlug: string) => getEvVsIce().find((c) => c.
 
 /** « essence » ou « hybride », avec l'article qu'il faut */
 export const energyLabel = (t: IceTwin) => (t.energy === "hybride" ? "hybride" : "essence");
+
+/** « Peugeot E-208 ou 208 essence », ou « Mini Cooper électrique ou essence » quand les deux portent le même nom */
+export const pairLabel = (c: EvVsIce) =>
+  c.evName === c.iceName || c.evName.endsWith(` ${c.iceName}`)
+    ? `${c.evName} électrique ou ${energyLabel(c.twin)}`
+    : `${c.evName} ou ${c.iceName} ${energyLabel(c.twin)}`;

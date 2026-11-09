@@ -14,7 +14,12 @@ import LinkChips from "@/components/seo/LinkChips.astro";
 import { getBrands, type Brand } from "@/lib/brands";
 import { SEO_YEAR, getMarketStatus, getVehicleName, getVehicleSeoFacts, inCountry, withArticle } from "@/lib/seo";
 import { formatDate, formatPrice } from "@/lib/format";
-import { lastDataUpdate } from "@/lib/vehicles";
+import { getVehicleBySlug, lastDataUpdate } from "@/lib/vehicles";
+import { brandNumbers } from "@/lib/brandNumbers";
+import { duelPairs } from "@/lib/duel";
+import { duelSlug } from "@/data/duels";
+import { getEvVsIce, pairLabel } from "@/lib/evVsIce";
+import { ArrowRight } from "lucide-react";
 import { url } from "@/lib/url";
 
 export function getStaticPaths() {
@@ -109,6 +114,23 @@ if (leasing.length) {
   });
 }
 
+// La marque face au catalogue : écart à l'annonce, hiver, Paris → Lyon, coût sur 5 ans
+const nums = await brandNumbers(b);
+faq.push(...nums.faq);
+
+// Maillage : les duels et les pages « électrique ou essence » de la marque
+const mineSlugs = new Set(brand.vehicles.map((v) => v.slug));
+const nameOf = (slug: string) => {
+  const v = getVehicleBySlug(slug);
+  return v ? getVehicleName(v) : slug;
+};
+const brandDuels = duelPairs()
+  .filter(([x, y]) => mineSlugs.has(x) || mineSlugs.has(y))
+  .map(([x, y]) => ({ label: `${nameOf(x)} vs ${nameOf(y)}`, href: url(`/comparer/${duelSlug(x, y)}/`) }));
+const brandEvIce = getEvVsIce()
+  .filter((c) => mineSlugs.has(c.vehicle.slug))
+  .map((c) => ({ label: pairLabel(c), href: url(`/electrique-ou-essence/${c.twin.slug}/`) }));
+
 const updated = lastDataUpdate(brand.vehicles);
 const jsonLd = [
   {
@@ -183,6 +205,23 @@ const otherBrands = getBrands().filter((o) => o.slug !== brand.slug);
       </section>
     )}
 
+    {nums.figures.length > 0 && (
+      <section aria-labelledby="chiffres-title" class="no-glossary">
+        <h2 id="chiffres-title" class="brand-section-title">{b} en chiffres, face au catalogue</h2>
+        <ul class="brand-nums">
+          {nums.figures.map((n) => (
+            <li class="brand-num">
+              <h3>{n.title}</h3>
+              <p class="brand-num-value">{n.value}</p>
+              <p class="brand-num-detail">{n.detail}</p>
+              <p>{n.text}</p>
+              <a href={n.href}>{n.link} <ArrowRight size={13} strokeWidth={2.2} aria-hidden="true" /></a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
     <section aria-labelledby="faq-title">
       <h2 id="faq-title" class="brand-section-title">{b} électrique : vos questions</h2>
       <BentoGrid>
@@ -192,6 +231,8 @@ const otherBrands = getBrands().filter((o) => o.slug !== brand.slug);
       </BentoGrid>
       <LinkChips
         groups={[
+          { title: `Duels ${b}`, links: brandDuels },
+          { title: "Électrique ou essence", links: brandEvIce },
           { title: "Autres marques", links: otherBrands.map((o) => ({ label: o.name, href: url(`/marques/${o.slug}/`) })) },
         ]}
       />
@@ -208,4 +249,12 @@ const otherBrands = getBrands().filter((o) => o.slug !== brand.slug);
     line-height: 1.15;
     margin-bottom: 0.75rem;
   }
+  .brand-nums { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+  @media (min-width: 720px) { .brand-nums { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .brand-num { display: flex; flex-direction: column; gap: 0.35rem; padding: 1.25rem 1.35rem; border-radius: var(--radius-tile); background: var(--color-surface); border: 1px solid var(--color-border); }
+  .brand-num h3 { font-size: 13px; font-weight: 600; color: var(--color-text-faint); }
+  .brand-num-value { font-family: var(--font-display); font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .brand-num-detail { font-size: 14px; font-weight: 600; color: var(--color-text-muted); }
+  .brand-num p:not([class]) { margin-top: 0.25rem; font-size: 14px; line-height: 1.5; color: var(--color-text); }
+  .brand-num a { margin-top: auto; padding-top: 0.5rem; display: inline-flex; align-items: center; gap: 0.25rem; font-size: 13.5px; font-weight: 600; color: var(--color-accent); }
 </style>

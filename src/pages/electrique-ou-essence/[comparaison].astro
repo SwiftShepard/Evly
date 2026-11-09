@@ -11,7 +11,7 @@ import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
 import Confidence from "@/components/ui/Confidence.astro";
 import FaqList from "@/components/seo/FaqList.astro";
 import LinkChips from "@/components/seo/LinkChips.astro";
-import { EVI, energyLabel, getEvVsIce, type EvVsIce } from "@/lib/evVsIce";
+import { EVI, energyLabel, getEvVsIce, pairLabel, type EvVsIce } from "@/lib/evVsIce";
 import { FUEL_PRICES, REAL_WORLD_GAP } from "@/data/fuelPrices";
 import { ICE_TWINS_DATE } from "@/data/iceTwins";
 import { INSURANCE, MAINTENANCE, RESALE_3Y } from "@/data/runningCosts";
@@ -39,11 +39,16 @@ const { twin } = c;
 const energy = energyLabel(twin);
 const iceShort = c.iceName;
 const twinKind = twin.sameModel ? "Le même modèle, en version thermique" : `L'équivalent ${energy} le plus proche dans la gamme ${c.vehicle.brand}`;
-const question = `${c.evName} ou ${iceShort} ${energy} ?`;
+const question = `${pairLabel(c)} ?`;
 // « la Peugeot E-208 », « l'Opel Corsa Electric », « l'Avenger essence » : des voitures, donc au féminin
 const la = (s: string) => (/^[aeiouyé]/i.test(s) ? `l'${s}` : `la ${s}`);
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 const laEv = la(c.evName);
+// Tarif de plus de deux ans au jour du relevé (pas du build) : la fiche n'a rien publié depuis, on le dit
+const staleTariff =
+  (Date.parse(ICE_TWINS_DATE) - Date.parse(twin.priceDate)) / 86_400_000 > 730
+    ? " Ce tarif a plus de deux ans : c'est le dernier que L'argus publie pour cette version, toujours au catalogue, et le prix réel a pu changer depuis."
+    : "";
 const laIce = `${la(iceShort)} ${energy}`;
 const longDate = (iso: string) => {
   const d = new Date(`${iso}T12:00:00`);
@@ -128,7 +133,7 @@ const chipGroups = [
   {
     title: "Électrique ou thermique, d'autres modèles",
     links: [
-      ...others.map((o) => ({ label: `${o.evName} ou ${o.iceName} ${energyLabel(o.twin)}`, href: url(`/electrique-ou-essence/${o.twin.slug}/`) })),
+      ...others.map((o) => ({ label: pairLabel(o), href: url(`/electrique-ou-essence/${o.twin.slug}/`) })),
       { label: "Toutes les comparaisons →", href: url("/electrique-ou-essence/"), accent: true },
     ],
   },
@@ -306,7 +311,7 @@ const jsonLd = {
     <section aria-labelledby="hyp-title" class="no-glossary">
       <h2 id="hyp-title" class="eo-title">Les hypothèses</h2>
       <ul class="eo-hyp">
-        <li>Prix catalogue de la version thermique relevé sur L'argus le {longDate(ICE_TWINS_DATE)} (tarif du {longDate(twin.priceDate)}){twin.note ? `. ${twin.note}` : ""}.</li>
+        <li>Prix catalogue de la version thermique relevé sur L'argus le {longDate(ICE_TWINS_DATE)} (tarif du {longDate(twin.priceDate)}){twin.note ? `. ${twin.note}` : ""}.{staleTariff}</li>
         <li>
           Consommation réelle du thermique : l'homologation WLTP plus {formatNumber(REAL_WORLD_GAP.petrol * 100, 1)} %, l'écart mesuré par la
           Commission européenne sur les relevés embarqués de 617 000 voitures (<a href={REAL_WORLD_GAP.sourceUrl} rel="noopener" target="_blank">rapport COM(2024) 122</a>).

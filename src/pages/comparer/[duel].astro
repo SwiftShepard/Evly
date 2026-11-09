@@ -19,6 +19,7 @@ import type { DuelCard } from "@/lib/shareCard";
 import { getVehicleImage } from "@/lib/vehicleImageAsset";
 import { DUELS, duelSlug } from "@/data/duels";
 import { duelPairs, getAllDuels, type Duel, type DuelSide } from "@/lib/duel";
+import { duelNumbers } from "@/lib/duelNumbers";
 import { fitDescription, fitTitle, getVehicleName } from "@/lib/seo";
 import { getVehicleBySlug } from "@/lib/vehicles";
 import { formatPrice } from "@/lib/format";
@@ -56,6 +57,15 @@ const tripLine = (s: DuelSide, daily: number) => {
     : { fit: false, days, text: `Moins d'une semaine de trajet en hiver, quelle que soit la version` };
 };
 
+// Ce qui sépare vraiment les deux : coût sur 5 ans, Paris → Lyon, hiver (lib/duelNumbers)
+const nums = await duelNumbers(A.v, B.v);
+const faq = nums.faq ? [...duel.faq, nums.faq] : duel.faq;
+const numBlocks = [
+  nums.cost && { title: "Sur 5 ans", a: formatPrice(Math.round(nums.cost.a / 10) * 10), b: formatPrice(Math.round(nums.cost.b / 10) * 10), text: nums.cost.text, href: url(`/simulateur/?v=${A.v.slug}`), link: "Votre cas dans le simulateur" },
+  nums.trip && { title: `${nums.trip.title}, l'été`, a: nums.trip.a, b: nums.trip.b, text: nums.trip.text, href: url(`/trajets/${nums.trip.slug}/`), link: "Tout le classement du trajet" },
+  nums.winter && { title: "Par -5 °C", a: nums.winter.a, b: nums.winter.b, text: nums.winter.text, href: url("/autonomie-hiver/"), link: "Le classement d'hiver" },
+].filter((x): x is NonNullable<typeof x> => !!x);
+
 const jsonLd = [
   {
     "@context": "https://schema.org",
@@ -69,7 +79,7 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: duel.faq.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })),
+    mainEntity: faq.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })),
   },
 ];
 
@@ -179,6 +189,25 @@ const shareCard: DuelCard = {
       </div>
     </section>
 
+    {numBlocks.length > 0 && (
+      <section aria-labelledby="chiffres-title" class="no-glossary">
+        <h2 id="chiffres-title" class="section-title">Ce qui les sépare, en chiffres</h2>
+        <ul class="duel-nums">
+          {numBlocks.map((n) => (
+            <li class="duel-num">
+              <h3>{n.title}</h3>
+              <dl>
+                <div><dt>{A.name}</dt><dd>{n.a}</dd></div>
+                <div><dt>{B.name}</dt><dd>{n.b}</dd></div>
+              </dl>
+              <p>{n.text}</p>
+              <a href={n.href}>{n.link} <ArrowRight size={13} strokeWidth={2.2} aria-hidden="true" /></a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
     <section aria-labelledby="comparatif-title">
       <h2 id="comparatif-title" class="section-title">Le comparatif</h2>
       <BentoGrid>
@@ -248,7 +277,7 @@ const shareCard: DuelCard = {
       <h2 id="faq-title" class="section-title">Questions fréquentes</h2>
       <BentoGrid>
         <Tile size="full">
-          <FaqList entries={duel.faq} />
+          <FaqList entries={faq} />
         </Tile>
       </BentoGrid>
       <LinkChips
@@ -331,6 +360,16 @@ const shareCard: DuelCard = {
   @media (min-width: 768px) { .duel-trip-head { grid-template-columns: 1fr minmax(16rem, 22rem); } .duel-trip-head .trip-range { grid-column: 2; } }
   .duel-trip-control { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; font-size: 14px; color: var(--color-text-muted); }
   .duel-trip-km { font-family: var(--font-display); font-size: 26px; font-weight: 800; letter-spacing: -0.035em; color: var(--color-accent); white-space: nowrap; }
+  .duel-nums { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+  @media (min-width: 900px) { .duel-nums { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .duel-num { display: flex; flex-direction: column; gap: 0.6rem; padding: 1.25rem 1.35rem; border-radius: var(--radius-tile); background: var(--color-surface); border: 1px solid var(--color-border); }
+  .duel-num h3 { font-size: 13px; font-weight: 600; color: var(--color-text-faint); }
+  .duel-num dl { display: flex; flex-direction: column; gap: 0.35rem; }
+  .duel-num dl div { display: flex; justify-content: space-between; align-items: baseline; gap: 0.75rem; }
+  .duel-num dt { min-width: 0; font-size: 14px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .duel-num dd { flex-shrink: 0; font-size: 14px; color: var(--color-text-muted); text-align: right; font-variant-numeric: tabular-nums; }
+  .duel-num p { font-size: 14px; line-height: 1.5; color: var(--color-text); }
+  .duel-num a { margin-top: auto; display: inline-flex; align-items: center; gap: 0.25rem; font-size: 13.5px; font-weight: 600; color: var(--color-accent); }
   .duel-trip-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin-top: 1.5rem; }
   @media (min-width: 640px) { .duel-trip-grid { grid-template-columns: 1fr 1fr; } }
   .duel-trip-card { padding: 1.1rem 1.25rem; border-radius: var(--radius-tile-sm); background: var(--color-surface-elevated); }

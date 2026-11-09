@@ -8,7 +8,7 @@ import BentoGrid from "@/components/ui/BentoGrid.astro";
 import Tile from "@/components/ui/Tile.astro";
 import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
 import FaqList from "@/components/seo/FaqList.astro";
-import { EVI, energyLabel, getEvVsIce } from "@/lib/evVsIce";
+import { EVI, getEvVsIce, pairLabel } from "@/lib/evVsIce";
 import { FUEL_PRICES, REAL_WORLD_GAP } from "@/data/fuelPrices";
 import { RESALE_3Y } from "@/data/runningCosts";
 import { formatNumber, formatPrice } from "@/lib/format";
@@ -26,7 +26,7 @@ const kmNeeded = median(list.map((c) => c.breakevenKm ?? 0));
 const eur = (n: number) => formatPrice(Math.round(n));
 // « 5,60 € » : toujours deux décimales
 const eur2 = eurCents;
-const pairName = (c: (typeof list)[number]) => `${c.evName} ou ${c.iceName} ${energyLabel(c.twin)}`;
+const pairName = pairLabel;
 const breakeven = (c: (typeof list)[number]) =>
   c.breakevenYears === 0
     ? "moins chère dès l'achat"

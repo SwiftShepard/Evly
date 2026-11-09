@@ -16,7 +16,7 @@ import crypto from "node:crypto";
 import type { Vehicle } from "@/data/schemas";
 import { TRIP_AXES, type TripAxis } from "@/data/trips";
 import { DETOUR, exploreFrom, haversine, nearbyNodes, parseGraph, type Reach, type RoadGraph } from "@/lib/map/roadGraph";
-import { chargersOnRoute, planRoadTrip, type HwSpeed, type RoadPlan, type RouteCharger } from "@/lib/map/roadtrip";
+import { MIN_STATION_KW, chargersOnRoute, planRoadTrip, type HwSpeed, type RoadPlan, type RouteCharger } from "@/lib/map/roadtrip";
 import { weekVersions } from "@/lib/map/versions";
 import { getAllVehicles, isStrictUtility } from "@/lib/vehicles";
 import { getMarketStatus, getVehicleName } from "@/lib/seo";
@@ -249,6 +249,42 @@ export function getTripResults(): Promise<TripResult[]> {
 
 export async function getTripResult(slug: string): Promise<TripResult | undefined> {
   return (await getTripResults()).find((r) => r.axis.slug === slug);
+}
+
+/* ── À l'arrivée ───────────────────────────────────────────────── */
+
+/** Rayon autour du point d'arrivée pour compter les bornes « sur place » */
+const ARRIVAL_M = 3_000;
+
+export interface ArrivalInfo {
+  /** Dernière borne rapide du tracé avant l'arrivée (hors bornes sur place) */
+  lastFast: { name: string; kw: number; kmBefore: number } | null;
+  /** Bornes à moins de 3 km du point d'arrivée (base IRVE) */
+  nearby: { stations: number; points: number; fastPoints: number; maxKw: number };
+}
+
+/** Ce qu'on trouve en arrivant : dernière borne rapide de la route, bornes sur place */
+export async function arrivalInfo(slug: string): Promise<ArrivalInfo | null> {
+  const route = (await getAxisRoutes())[slug];
+  const axis = TRIP_AXES.find((a) => a.slug === slug);
+  if (!route || !axis) return null;
+  const kmAt = route.cum.map(([hw, ex, rd]) => hw + ex + rd);
+  const total = kmAt.at(-1)!;
+  const before = route.chargers
+    .map((c) => ({ name: c.name, kw: c.kw, kmBefore: total - kmAt[c.at]! }))
+    .filter((c) => c.kmBefore > ARRIVAL_M / 1000)
+    .sort((a, b) => a.kmBefore - b.kmBefore || b.kw - a.kw);
+  const near = chargersAlong([[axis.to.lon, axis.to.lat]]).filter((c) => haversine(c.lat, c.lon, axis.to.lat, axis.to.lon) <= ARRIVAL_M);
+  const fast = near.filter((c) => c.kw >= MIN_STATION_KW);
+  return {
+    lastFast: before[0] ? { ...before[0], kmBefore: Math.round(before[0].kmBefore) } : null,
+    nearby: {
+      stations: near.length,
+      points: near.reduce((s, c) => s + c.points, 0),
+      fastPoints: fast.reduce((s, c) => s + c.points, 0),
+      maxKw: near.reduce((m, c) => Math.max(m, c.kw), 0),
+    },
+  };
 }
 
 /* ── Coût de l'énergie ─────────────────────────────────────────── */
