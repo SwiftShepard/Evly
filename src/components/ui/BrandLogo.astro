@@ -36,8 +36,13 @@ let patchedSvg: string | null = null;
 for (const [path, content] of Object.entries(logoModules)) {
   const stem = path.split("/").at(-1)!.slice(0, -4); // filename without .svg
   if (normalize(stem) === target) {
-    // Strip XML declarations and comments before the <svg> tag
-    let raw = content.replace(/<\?xml[^?]*\?>\s*/gi, "").replace(/<!--[\s\S]*?-->\s*/g, "");
+    // Strip XML declarations and comments before the <svg> tag. Titre et description aussi :
+    // le logo est décoratif, et les fichiers gardent le nom de leur auteur (« FIAT-LOGO »,
+    // « logo_en ») que les robots liraient sur chaque page
+    let raw = content
+      .replace(/<\?xml[^?]*\?>\s*/gi, "")
+      .replace(/<!--[\s\S]*?-->\s*/g, "")
+      .replace(/<(title|desc)\b[^>]*>[\s\S]*?<\/\1>\s*/gi, "");
     // Strip any fixed width/height on the <svg> root, inject our class
     patchedSvg = raw.replace(/<svg([^>]*)>/i, (_m, attrs: string) => {
       const cleaned = attrs

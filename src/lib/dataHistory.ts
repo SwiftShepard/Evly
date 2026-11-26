@@ -9,8 +9,10 @@
  * faux où chaque fiche semblerait nouvelle.
  */
 import { execFileSync, spawnSync } from "node:child_process";
+import type { Vehicle } from "@/data/schemas";
 import { SOURCES } from "@/data/sources";
 import { formatKm, formatNumber, formatPrice } from "@/lib/format";
+import { getAllVehicles } from "@/lib/vehicles";
 
 const DIR = "src/data/vehicles";
 const MEASURED = new Set(["bjorn_nyland", "tested"]);
@@ -188,6 +190,42 @@ export function getDataUpdates(): DataUpdate[] {
   }
   cache = updates.reverse();
   return cache;
+}
+
+/* ── Dates des données affichées sur le site ──────────────────── */
+
+const parisDay = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Paris", year: "numeric", month: "2-digit", day: "2-digit" });
+let lastChange: Map<string, string> | null = null;
+
+/** Jour (AAAA-MM-JJ, heure de Paris) de la dernière modification réelle de chaque fiche dans git */
+function lastChangeBySlug(): Map<string, string> {
+  if (lastChange) return lastChange;
+  lastChange = new Map();
+  // Du plus récent au plus ancien : la première date vue est la dernière modification
+  for (const u of getDataUpdates()) {
+    const day = parisDay.format(new Date(u.date));
+    for (const v of u.vehicles) if (!lastChange.has(v.slug)) lastChange.set(v.slug, day);
+  }
+  return lastChange;
+}
+
+/**
+ * Date d'une fiche : la plus récente entre son champ `lastUpdated` et sa dernière modification
+ * dans git (une mesure ou un prix ajouté sans toucher au champ). Seule source des dates de
+ * données affichées, pour que le pied de page, l'observatoire et les fiches disent la même chose.
+ * Dates de commit, jamais celle du build : le HTML reste identique d'un build à l'autre.
+ */
+export function vehicleUpdatedOn(v: Vehicle): string {
+  const fromGit = lastChangeBySlug().get(v.slug) ?? "";
+  return fromGit > v.lastUpdated ? fromGit : v.lastUpdated;
+}
+
+/** Dernière mise à jour d'un groupe de fiches, tout le catalogue par défaut */
+export function dataUpdatedOn(list: Vehicle[] = getAllVehicles()): string {
+  return list.reduce((latest, v) => {
+    const day = vehicleUpdatedOn(v);
+    return day > latest ? day : latest;
+  }, "");
 }
 
 /** Ordre d'affichage : nouveaux modèles, puis mesures, puis le reste */

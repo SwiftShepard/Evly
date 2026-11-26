@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
-import { getAllVehicles } from "@/lib/vehicles";
+import { catalogSummary, getAllVehicles } from "@/lib/vehicles";
+import { vehicleUpdatedOn } from "@/lib/dataHistory";
 import { getBrands } from "@/lib/brands";
 import { CATEGORIES } from "@/data/categories";
 import { LEGAL_PAGES } from "@/data/legal";
@@ -43,14 +44,14 @@ export const GET: APIRoute = async ({ site }) => {
     if (status === "discontinued") parts.push("plus commercialisé");
     if (status === "upcoming") parts.push("à venir");
     if (status === "preorder") parts.push("en précommande");
-    return `- [${f.name}](${abs(`/vehicules/${v.slug}/`)}): ${parts.join(", ")}. Mise à jour ${v.lastUpdated}.`;
+    return `- [${f.name}](${abs(`/vehicules/${v.slug}/`)}): ${parts.join(", ")}. Mise à jour ${vehicleUpdatedOn(v)}.`;
   });
 
   const body = `# Evly
 
 > Comparateur indépendant de voitures électriques pour le marché français : autonomies réelles mesurées (tests Bjørn Nyland, EVKX, ArenaEV, presse), temps de recharge, prix publics, aides (prime CEE, leasing social) et coût total de possession. Aucune publicité, aucun lien affilié, aucune rémunération des constructeurs.
 
-Langue : français. ${vehicles.length} modèles. Les pages sont du HTML statique, lisible sans JavaScript ; chaque fiche contient des données structurées schema.org.
+Langue : français. ${catalogSummary(vehicles)}. Les pages sont du HTML statique, lisible sans JavaScript ; chaque fiche contient des données structurées schema.org.
 
 Pour citer un chiffre : indiquez la page Evly et son niveau de confiance (« mesurée » ou « estimée » pour l'autonomie). Les prix et les aides sont indicatifs et datés sur chaque fiche ; ils doivent être confirmés auprès du constructeur et des organismes officiels.
 

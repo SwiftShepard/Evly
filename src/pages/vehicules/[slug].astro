@@ -16,6 +16,7 @@ import SohSlider from "@/components/vehicle/SohSlider.tsx";
 import TemperatureSlider from "@/components/vehicle/TemperatureSlider.tsx";
 import CeeSimulator from "@/components/vehicle/CeeSimulator.tsx";
 import { getAllVehicles, getVehicleBySlug } from "@/lib/vehicles";
+import { vehicleUpdatedOn } from "@/lib/dataHistory";
 import { getSource, getSources, type TrustLevel } from "@/data/sources";
 import { formatDate, formatHours, formatLiters, formatMm, formatNm, formatNumber, formatPrice, formatSeconds } from "@/lib/format";
 import { url } from "@/lib/url";
@@ -194,6 +195,7 @@ const seoFacts = getVehicleSeoFacts(vehicle);
 const vehicleName = getVehicleName(vehicle);
 const marketStatus = getMarketStatus(vehicle);
 const pageTitle = getVehicleTitle(vehicle);
+const updatedOn = vehicleUpdatedOn(vehicle);
 const description = getVehicleDescription(vehicle);
 const lead = getVehicleLead(vehicle);
 const laVehicle = withArticle(vehicle);
@@ -308,7 +310,7 @@ const jsonLd = {
     name: `Avis Evly sur ${laVehicle}`,
     author: { "@type": "Organization", name: "Evly", url: Astro.site?.toString() },
     publisher: { "@id": `${Astro.site}#organization` },
-    dateModified: vehicle.lastUpdated,
+    dateModified: updatedOn,
     reviewBody: `${vehicle.verdict.idealUserProfile} ${vehicle.verdict.notIdealFor}`,
     positiveNotes: notes(vehicle.verdict.strengths),
     negativeNotes: notes(vehicle.verdict.weaknesses),
@@ -606,7 +608,7 @@ const configSubtitle = (label: string) => {
   ogImage={`/og/vehicules/${vehicle.slug}.jpg`}
   ogImageAlt={`${vehicleName} : autonomie réelle, prix et recharge`}
   ogType="article"
-  modifiedTime={vehicle.lastUpdated}
+  modifiedTime={updatedOn}
 >
   <!-- Fil d'ariane -->
   <div class="container-edit pt-2 md:pt-3 fade-rise flex items-center gap-x-4 gap-y-1 flex-wrap">
@@ -1368,7 +1370,7 @@ const configSubtitle = (label: string) => {
                 </p>
                 <div class="flex flex-col gap-1 mt-2">
                   <span class="label-eyebrow">Dernière mise à jour</span>
-                  <span class="font-mono text-sm text-[var(--color-text)]">{formatDate(vehicle.lastUpdated)}</span>
+                  <span class="font-mono text-sm text-[var(--color-text)]">{formatDate(updatedOn)}</span>
                 </div>
                 <div class="flex flex-col gap-1">
                   <span class="label-eyebrow">Crédit photo</span>

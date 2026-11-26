@@ -1,5 +1,5 @@
 import type { PageCardData } from "@/lib/og";
-import { getAllVehicles } from "@/lib/vehicles";
+import { catalogCounts, catalogSummary, getAllVehicles } from "@/lib/vehicles";
 import { getBrands } from "@/lib/brands";
 import { SEO_YEAR } from "@/lib/seo";
 import { getFleetGap } from "@/lib/rangeGap";
@@ -18,12 +18,12 @@ export function getPageCards(): Record<string, PageCardData> {
     accueil: {
       eyebrow: "Comparateur indépendant",
       title: "Voitures électriques : autonomies réelles et vrais prix",
-      subtitle: `${total} modèles comparés, sans publicité ni commission.`,
+      subtitle: `${catalogSummary()} comparés, sans publicité ni commission.`,
       vehicles: ["renault-5", "tesla-model-y", "peugeot-e-3008"],
     },
     vehicules: {
       eyebrow: "Catalogue",
-      title: `Les ${total} voitures électriques du marché français`,
+      title: `Les ${catalogCounts().cars} voitures électriques du marché français`,
       subtitle: "Filtrez par budget, autonomie réelle, recharge et aides.",
       vehicles: ["kia-ev3", "vw-id3", "renault-4"],
     },

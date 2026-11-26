@@ -10,6 +10,7 @@
 import type { Vehicle, VehicleConfiguration } from "@/data/schemas";
 import { SOURCES } from "@/data/sources";
 import { getAllVehicles } from "@/lib/vehicles";
+import { vehicleUpdatedOn } from "@/lib/dataHistory";
 import { getMeasuredGap, type MeasuredGap } from "@/lib/rangeGap";
 import { confidenceLevel, type ConfidenceLevel } from "@/lib/confidence";
 import { getMarketStatus, getVehicleName } from "@/lib/seo";
@@ -196,6 +197,6 @@ export function getOpenDataRecords(site: URL | undefined): Record<string, string
     lien_essai: r.testUrl,
     prix_eur: r.config.price_EUR ?? null,
     fiche: new URL(url(`/vehicules/${r.vehicle.slug}/?config=${encodeURIComponent(r.config.id)}`), site).toString(),
-    mise_a_jour: r.vehicle.lastUpdated,
+    mise_a_jour: vehicleUpdatedOn(r.vehicle),
   }));
 }

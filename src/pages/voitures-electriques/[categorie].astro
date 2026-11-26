@@ -13,7 +13,8 @@ import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
 import FaqList from "@/components/seo/FaqList.astro";
 import LinkChips from "@/components/seo/LinkChips.astro";
 import { CATEGORIES, type CategoryColumn, type VehicleCategory } from "@/data/categories";
-import { getAllVehicles, lastDataUpdate } from "@/lib/vehicles";
+import { getAllVehicles } from "@/lib/vehicles";
+import { dataUpdatedOn } from "@/lib/dataHistory";
 import { getBrands } from "@/lib/brands";
 import { getBodyInfo, getVehicleName, getVehicleSeoFacts } from "@/lib/seo";
 import { formatDate, formatPrice } from "@/lib/format";
@@ -43,7 +44,7 @@ const columnLabels: Record<CategoryColumn, string> = {
 };
 const hasAidedColumn = category.columns.includes("aided");
 
-const updated = lastDataUpdate(list);
+const updated = dataUpdatedOn(list);
 const jsonLd = [
   {
     "@context": "https://schema.org",

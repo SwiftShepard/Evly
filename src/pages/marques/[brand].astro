@@ -14,7 +14,8 @@ import LinkChips from "@/components/seo/LinkChips.astro";
 import { getBrands, type Brand } from "@/lib/brands";
 import { SEO_YEAR, getMarketStatus, getVehicleName, getVehicleSeoFacts, inCountry, withArticle } from "@/lib/seo";
 import { formatDate, formatPrice } from "@/lib/format";
-import { getVehicleBySlug, lastDataUpdate } from "@/lib/vehicles";
+import { getVehicleBySlug } from "@/lib/vehicles";
+import { dataUpdatedOn } from "@/lib/dataHistory";
 import { brandNumbers } from "@/lib/brandNumbers";
 import { duelPairs } from "@/lib/duel";
 import { duelSlug } from "@/data/duels";
@@ -131,7 +132,7 @@ const brandEvIce = getEvVsIce()
   .filter((c) => mineSlugs.has(c.vehicle.slug))
   .map((c) => ({ label: pairLabel(c), href: url(`/electrique-ou-essence/${c.twin.slug}/`) }));
 
-const updated = lastDataUpdate(brand.vehicles);
+const updated = dataUpdatedOn(brand.vehicles);
 const jsonLd = [
   {
     "@context": "https://schema.org",

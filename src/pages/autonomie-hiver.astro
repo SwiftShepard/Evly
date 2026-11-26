@@ -16,7 +16,7 @@ import { ESTIMATE_MARGIN, WINTER_C, tempFactor } from "@/lib/winter";
 import { TRIP_AXES } from "@/data/trips";
 import { tripTitle } from "@/lib/roadTrips";
 import { formatDate, formatKm, formatNumber, formatPrice } from "@/lib/format";
-import { lastDataUpdate } from "@/lib/vehicles";
+import { dataUpdatedOn } from "@/lib/dataHistory";
 import { url } from "@/lib/url";
 import { fitDescription } from "@/lib/seo";
 import { ArrowRight } from "lucide-react";
@@ -64,7 +64,7 @@ const description = fitDescription([
   `${over300} modèles dépassent 300 km.`,
   "La liste se recalcule à votre température.",
 ]);
-const updated = lastDataUpdate();
+const updated = dataUpdatedOn();
 const jsonLd = [
   {
     "@context": "https://schema.org",

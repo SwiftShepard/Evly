@@ -8,7 +8,8 @@ import VehicleImage from "@/components/ui/VehicleImage.astro";
 import RangeRail from "@/components/ui/RangeRail.astro";
 import Confidence from "@/components/ui/Confidence.astro";
 import { Route } from "lucide-react";
-import { getAllVehicles, isStrictUtility, lastDataUpdate } from "@/lib/vehicles";
+import { getAllVehicles, isStrictUtility } from "@/lib/vehicles";
+import { dataUpdatedOn } from "@/lib/dataHistory";
 import { SEO_YEAR, getVehicleName } from "@/lib/seo";
 import { CATEGORIES } from "@/data/categories";
 import { getBrands } from "@/lib/brands";
@@ -35,7 +36,7 @@ const HYBRID_SLUGS = new Set([
 
 const vehicles = getAllVehicles().filter((v) => !isStrictUtility(v));
 // Le catalogue en données structurées : la liste des modèles, datée de leur dernière mise à jour
-const updated = lastDataUpdate(vehicles);
+const updated = dataUpdatedOn(vehicles);
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",

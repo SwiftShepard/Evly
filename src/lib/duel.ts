@@ -1,6 +1,7 @@
 import type { Vehicle } from "@/data/schemas";
 import { DUEL_GROUPS, DUEL_SEEDS, duelSlug } from "@/data/duels";
 import { getAllVehicles, getVehicleBySlug, isStrictUtility } from "@/lib/vehicles";
+import { dataUpdatedOn } from "@/lib/dataHistory";
 import { getValueComparisons, type ValueComparison } from "@/lib/valueComparisons";
 import { getBodyInfo, getMarketStatus, getVehicleName, getVehicleSeoFacts, isMasculine, withArticle, withDe, type VehicleSeoFacts } from "@/lib/seo";
 import { confidenceLevel, isMeasured } from "@/lib/confidence";
@@ -229,7 +230,7 @@ export function getDuel(aSlug: string, bSlug: string): Duel | null {
     pick,
     faq,
     scale,
-    lastUpdated: [va.lastUpdated, vb.lastUpdated].sort().at(-1)!,
+    lastUpdated: dataUpdatedOn([va, vb]),
   };
 }
 

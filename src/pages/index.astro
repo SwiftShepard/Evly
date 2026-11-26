@@ -5,7 +5,7 @@ import RangeRail from "@/components/ui/RangeRail.astro";
 import TripStudio from "@/components/home/TripStudio.astro";
 import TripMatches from "@/components/home/TripMatches.astro";
 import HeroCars from "@/components/home/HeroCars.astro";
-import { getAllVehicles, getVehicleBySlug, isStrictUtility } from "@/lib/vehicles";
+import { catalogSummary, getAllVehicles, getVehicleBySlug, isStrictUtility } from "@/lib/vehicles";
 import { getFleetGap, getMeasuredGap, type MeasuredGap } from "@/lib/rangeGap";
 import { formatNumber } from "@/lib/format";
 import { DEFAULTS as TCO_DEFAULTS } from "@/components/tco/TcoCalculator";
@@ -259,7 +259,7 @@ const description = `Comparez les ${totalCars} voitures électriques du marché 
           Petite citadine pour la ville, SUV familial pour les vacances ou utilitaire pour le travail : nos outils filtrent et comparent objectivement le catalogue selon vos besoins réels. On intègre aussi la prime CEE (le coup de pouce qui a remplacé le bonus écologique) et l'éligibilité au leasing social pour vous montrer le prix que vous paierez vraiment, pas le prix catalogue.
         </p>
         <p>
-          Aucun constructeur ni aucune concession ne nous rémunère. Notre base de données rassemble {totalVehicles} modèles, avec pour chacun l'autonomie réellement constatée sur route (souvent inférieure à l'annonce du constructeur), la vitesse de recharge, et le coût complet sur plusieurs années, pas seulement le prix affiché en vitrine.
+          Aucun constructeur ni aucune concession ne nous rémunère. Notre base de données rassemble {catalogSummary(vehicles)}, avec pour chacun l'autonomie réellement constatée sur route (souvent inférieure à l'annonce du constructeur), la vitesse de recharge, et le coût complet sur plusieurs années, pas seulement le prix affiché en vitrine.
         </p>
         <p>
           Vous ne savez pas par où commencer ? Répondez à quelques questions simples sur votre <a href={url("/recommandation/")} class="text-[var(--color-accent)] underline underline-offset-2 hover:no-underline">quotidien avec notre outil de recommandation</a>, ou allez directement voir nos <a href={url("/bons-plans/")} class="text-[var(--color-accent)] underline underline-offset-2 hover:no-underline">duels à prix égal</a> : les cas où, pour le même budget qu'un modèle connu, une autre voiture électrique fait tout simplement mieux.

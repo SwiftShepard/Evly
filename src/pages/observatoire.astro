@@ -19,7 +19,7 @@ import {
   getMeasuredModels,
   getObservatoryFacts,
 } from "@/lib/observatory";
-import { getDataUpdates, itemText } from "@/lib/dataHistory";
+import { dataUpdatedOn, getDataUpdates, itemText } from "@/lib/dataHistory";
 import { getVehicleBySlug } from "@/lib/vehicles";
 import { getVehicleName } from "@/lib/seo";
 import { formatKm, formatNumber } from "@/lib/format";
@@ -53,7 +53,7 @@ const recent = getDataUpdates()
     return { date: u.date, name: current ? getVehicleName(current) : v.name, href: current ? url(`/vehicules/${v.slug}/`) : null, text: itemText(it) };
   });
 const dateFmt = new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "long", timeZone: "Europe/Paris" });
-const lastUpdate = getDataUpdates()[0]?.date;
+const lastUpdate = dataUpdatedOn();
 const updatedLabel = lastUpdate ? new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "long", year: "numeric", timeZone: "Europe/Paris" }).format(new Date(lastUpdate)) : null;
 
 const coverage = [

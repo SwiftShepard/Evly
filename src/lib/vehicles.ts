@@ -35,11 +35,6 @@ export function getAllVehicles(): Vehicle[] {
   return vehicles;
 }
 
-/** Dernière mise à jour des fiches (ISO), d'un groupe de modèles ou de tout le catalogue */
-export function lastDataUpdate(list: Vehicle[] = vehicles): string {
-  return list.reduce((latest, v) => (v.lastUpdated > latest ? v.lastUpdated : latest), "");
-}
-
 export function getVehicleBySlug(slug: string): Vehicle | undefined {
   return vehicles.find((v) => v.slug === slug);
 }
@@ -74,4 +69,16 @@ const STRICT_UTILITY_SLUGS = new Set([
 
 export function isStrictUtility(v: Vehicle): boolean {
   return STRICT_UTILITY_SLUGS.has(v.slug);
+}
+
+/** Taille du catalogue : voitures particulières et utilitaires, comptées pareil sur tout le site */
+export function catalogCounts(list: Vehicle[] = vehicles) {
+  const utilities = list.filter(isStrictUtility).length;
+  return { models: list.length, cars: list.length - utilities, utilities };
+}
+
+/** « 156 voitures et 20 utilitaires » : la formule affichée partout où l'on compte tout le catalogue */
+export function catalogSummary(list: Vehicle[] = vehicles): string {
+  const { cars, utilities } = catalogCounts(list);
+  return utilities ? `${cars} voitures et ${utilities} utilitaires` : `${cars} voitures`;
 }

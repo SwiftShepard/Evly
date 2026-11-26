@@ -4,7 +4,7 @@ import ComparatorCard from "./ComparatorCard";
 import ComparisonTable from "./ComparisonTable";
 import VehicleSelectModal from "./VehicleSelectModal";
 import { generateInsights, type ConfiguredCard } from "@/lib/insights";
-import { Plus, Share2, Check, LayoutGrid, Rows3, Table2, Star, Link as LinkIcon } from "lucide-react";
+import { Plus, Share2, Check, LayoutGrid, Rows3, Table2, Star } from "lucide-react";
 import { ceeForProfile } from "@/lib/cee";
 import { useUserProfile } from "@/lib/userProfile";
 import { useFavorites } from "@/lib/useFavorites";
@@ -358,29 +358,27 @@ export default function ComparatorView({ vehicles, suggestions = [] }: Props) {
             </div>
           )}
 
-          {/* Share button */}
+          {/* Partage : l'adresse garde les modèles, les versions et les réglages */}
           {cards.length >= 2 && (
             <button
               type="button"
               onClick={handleShare}
-              className="btn-interactive inline-flex items-center gap-2 px-3 py-2 text-xs font-medium rounded-lg transition-all duration-300"
+              className="btn-interactive inline-flex items-center gap-2 px-3.5 py-1.5 text-[13px] font-semibold rounded-lg transition-colors duration-300"
               style={{
-                backgroundColor: copied
-                  ? "var(--color-surface-accent)"
-                  : "var(--color-bg-subtle)",
-                color: copied ? "var(--color-accent)" : "var(--color-text-muted)",
-                border: `0.5px solid ${copied ? "var(--color-accent)" : "var(--color-border)"}`,
+                backgroundColor: copied ? "var(--color-surface-accent)" : "var(--color-accent)",
+                color: copied ? "var(--color-accent)" : "var(--color-accent-on)",
+                border: "0.5px solid var(--color-accent)",
               }}
             >
               {copied ? (
                 <>
-                  <Check aria-hidden="true" size={13} />
+                  <Check aria-hidden="true" size={14} />
                   Lien copié
                 </>
               ) : (
                 <>
-                  <LinkIcon aria-hidden="true" size={13} />
-                  Copier le lien
+                  <Share2 aria-hidden="true" size={14} />
+                  <span>Partager<span className="hidden sm:inline"> la comparaison</span></span>
                 </>
               )}
             </button>

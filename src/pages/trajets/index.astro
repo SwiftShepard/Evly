@@ -10,7 +10,7 @@ import Breadcrumbs from "@/components/nav/Breadcrumbs.astro";
 import { TRIP_GROUPS, type TripGroup } from "@/data/trips";
 import { costText, duration, getTripResults, iceTripCost, stopsText, tripCostMedian, tripTitle } from "@/lib/roadTrips";
 import { formatDate, formatKm, formatPrice } from "@/lib/format";
-import { lastDataUpdate } from "@/lib/vehicles";
+import { dataUpdatedOn } from "@/lib/dataHistory";
 import { url } from "@/lib/url";
 import { fitDescription } from "@/lib/seo";
 import { ArrowRight } from "lucide-react";
@@ -25,7 +25,7 @@ const description = fitDescription([
   `${results.length} grands trajets en voiture électrique, de Paris → Lyon aux stations de ski : ${models} modèles classés.`,
   "Arrêts sur les vraies bornes, été et hiver.",
 ]);
-const updated = lastDataUpdate();
+const updated = dataUpdatedOn();
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",

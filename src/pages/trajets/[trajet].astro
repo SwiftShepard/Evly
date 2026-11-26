@@ -17,7 +17,7 @@ import { FAST_EUR_KWH, TARIF_BLEU } from "@/data/electricity";
 import { CHARGING_LOSSES, COST_DEFAULTS } from "@/lib/costDefaults";
 import { eurKwh } from "@/lib/chargingCost";
 import { formatDate, formatKm, formatNumber, formatPrice } from "@/lib/format";
-import { lastDataUpdate } from "@/lib/vehicles";
+import { dataUpdatedOn } from "@/lib/dataHistory";
 import { url } from "@/lib/url";
 import { fitDescription, fitTitle } from "@/lib/seo";
 import { ArrowRight, Snowflake, Sun } from "lucide-react";
@@ -145,7 +145,7 @@ const faq = [
     : []),
 ];
 
-const updated = lastDataUpdate();
+const updated = dataUpdatedOn();
 const description = fitDescription([
   `${name} en voiture électrique : ${formatKm(Math.round(result.km))}, ${duration(result.driveMin)} de route.`,
   `Énergie de l'aller : ${costText(costMedian)} en médiane, contre ${formatPrice(Math.round(iceCost))} en essence.`,
