@@ -1,0 +1,47 @@
+name: Veille des aides
+
+# Chaque lundi : compare les fiches Service-Public de la prime coup de pouce et du leasing social
+# à leur état relu (scripts/aids-watch.json), et vérifie l'âge du barème de src/lib/cee.ts
+# (scripts/aids-watch.mjs). N'écrit rien dans le dépôt : ouvre une issue « Veille des aides »,
+# ou la complète si elle est déjà ouverte et que le constat a changé.
+on:
+  schedule:
+    - cron: "17 7 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: aids-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Fiches officielles et âge du barème
+        run: node scripts/aids-watch.mjs --out report.md
+
+      - name: Ouvrir ou compléter l'issue
+        if: hashFiles('report.md') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Veille des aides : à relire"
+          # Empreinte du constat : un constat identique à celui déjà signalé ne recommente pas
+          mark="<!-- veille:$(sha256sum report.md | cut -c1-16) -->"
+          printf '\n%s\n' "$mark" >> report.md
+          n=$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[0].number // empty')
+          if [ -z "$n" ]; then
+            gh issue create --title "$title" --body-file report.md
+          elif ! gh issue view "$n" --json body,comments --jq '.body, .comments[].body' | grep -qF "$mark"; then
+            gh issue comment "$n" --body-file report.md
+          fi

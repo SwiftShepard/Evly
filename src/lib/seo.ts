@@ -1,6 +1,6 @@
 import type { Vehicle } from "@/data/schemas";
 import { formatNumber, formatPrice } from "@/lib/format";
-import { isVehicleEligibleCEE, primeFor } from "@/lib/cee";
+import { CEE_PRICE_CAP_EUR, isVehicleEligibleCEE, primeFor } from "@/lib/cee";
 import { isMeasured } from "@/lib/confidence";
 
 /**
@@ -361,12 +361,20 @@ export function getVehicleDescription(v: Vehicle): string {
   const charge = f.dcMin != null ? `10-80 % en ${f.dcMin} min` : null;
   const leasing = f.leasingMin != null ? `leasing social dès ${f.leasingMin} €/mois` : null;
   const aided = f.priceAfterAids != null ? `${formatPrice(f.priceAfterAids)} après prime CEE` : null;
+  // Réponse à « [modèle] éligible à la prime ? » quand le prix seul l'exclut (fait certain, pas l'éco-score).
+  // Pas pour les fourgons : le coup de pouce vise les voitures particulières, le plafond n'y a pas de sens
+  const overCap =
+    status !== "discontinued" && status !== "upcoming" && !/fourgon|utilitaire/i.test(v.bodyType) &&
+    f.priceMin != null && f.priceMin > CEE_PRICE_CAP_EUR;
 
   const head = `${f.name}${elec} : `;
   const facts = [price, range, charge].filter(Boolean).join(", ");
   const tails = [
+    leasing && aided ? `. ${aided.charAt(0).toUpperCase()}${aided.slice(1)}, leasing social dès ${f.leasingMin} €/mois.` : null,
     leasing ? `. ${leasing.charAt(0).toUpperCase()}${leasing.slice(1)}, fiche technique et avis.` : null,
     aided ? `. ${aided.charAt(0).toUpperCase()}${aided.slice(1)}, fiche technique et avis.` : null,
+    overCap ? ". Au-dessus du plafond de la prime CEE, fiche technique et avis." : null,
+    overCap ? ". Au-dessus du plafond de la prime CEE." : null,
     ". Aides, fiche technique et avis indépendant.",
     ". Fiche technique et avis indépendant.",
     ".",

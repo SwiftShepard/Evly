@@ -3,4 +3,16 @@
 User-agent: *
 Allow: /
 
+# Moteurs de recherche : pas les copies des outils ouvertes par un lien (?domicile=, ?v=, ?config=…).
+# Leur balise canonique renvoie déjà à la page sans paramètre ; on évite à Google et Bing d'en
+# explorer des milliers (7 800 liens pour 538 pages). Les aperçus de partage restent permis.
+User-agent: Googlebot
+User-agent: Bingbot
+# « * » couvre aussi les variantes sans barre finale (/vehicules?q=, /vehicules/x?config=)
+Disallow: /ma-semaine*?
+Disallow: /simulateur*?
+Disallow: /comparer*?
+Disallow: /vehicules*?
+Allow: /
+
 Sitemap: https://ev-ly.com/sitemap-index.xml

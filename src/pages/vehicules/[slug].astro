@@ -17,6 +17,7 @@ import TemperatureSlider from "@/components/vehicle/TemperatureSlider.tsx";
 import CeeSimulator from "@/components/vehicle/CeeSimulator.tsx";
 import { getAllVehicles, getVehicleBySlug } from "@/lib/vehicles";
 import { vehicleUpdatedOn } from "@/lib/dataHistory";
+import { utilityNumbers } from "@/lib/utilityNumbers";
 import { getSource, getSources, type TrustLevel } from "@/data/sources";
 import { formatDate, formatHours, formatLiters, formatMm, formatNm, formatNumber, formatPrice, formatSeconds } from "@/lib/format";
 import { url } from "@/lib/url";
@@ -383,6 +384,11 @@ if (vehicle.verdict.notIdealFor) {
   });
 }
 
+// Fourgons et jumeaux (G16) : rang face aux autres fourgons, écarts avec les modèles de même base
+const util = utilityNumbers(vehicle, allVehicles);
+const hasUtil = util.figures.length > 0 || util.twins !== null;
+if (util.faq) faqEntries.push(util.faq);
+
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -585,6 +591,7 @@ const tocSections = [
   { id: "prix", label: "Prix & aides" },
   { id: "fiche-technique", label: "Fiche technique" },
   { id: "sources", label: "Tests & sources" },
+  ...(hasUtil ? [{ id: "comparaison", label: util.figures.length ? "Face aux fourgons" : "Ses jumeaux" }] : []),
   { id: "faq", label: "Questions" },
   { id: "alternatives", label: "Alternatives" },
 ];
@@ -1225,7 +1232,7 @@ const configSubtitle = (label: string) => {
                       <p class="text-xs text-[var(--color-text-muted)] leading-relaxed max-w-sm">
                         <span class="font-semibold text-[var(--color-text)]">Loyer plafonné</span> (barème 2026), sous conditions de revenus. 1<sup>er</sup> loyer pris en charge.
                       </p>
-                      <a href={url("/leasing-social")} class="font-mono text-[11px] text-[var(--color-accent)] hover:underline self-start min-h-[32px] inline-flex items-center">Vérifier mon éligibilité ↗</a>
+                      <a href={url("/leasing-social/")} class="font-mono text-[11px] text-[var(--color-accent)] hover:underline self-start min-h-[32px] inline-flex items-center">Vérifier mon éligibilité ↗</a>
                     </div>
                   </Tile>
                 )}
@@ -1376,7 +1383,7 @@ const configSubtitle = (label: string) => {
                   <span class="label-eyebrow">Crédit photo</span>
                   <span class="font-mono text-xs text-[var(--color-text-muted)]">{vehicle.imageCredit}</span>
                 </div>
-                <a href={url("/methodologie") + "#sources"} class="font-mono text-xs text-[var(--color-accent)] hover:underline self-start min-h-[44px] inline-flex items-center">Méthodologie complète ↗</a>
+                <a href={url("/methodologie/") + "#sources"} class="font-mono text-xs text-[var(--color-accent)] hover:underline self-start min-h-[44px] inline-flex items-center">Méthodologie complète ↗</a>
               </div>
               <ol class="lg:col-span-8 flex flex-col">
                 {sources.map((source, idx) => (
@@ -1396,6 +1403,49 @@ const configSubtitle = (label: string) => {
           </Tile>
         </BentoGrid>
       </section>
+
+      <!-- ═══ 7 bis. Fourgons et jumeaux (G16) ═══ -->
+      {hasUtil && (
+        <section id="comparaison" class="vehicle-section no-glossary" aria-labelledby="comparaison-title">
+          <header class="vehicle-section-head">
+            <h2 id="comparaison-title" class="vehicle-section-title">
+              {util.figures.length ? `${vehicleName} face aux ${util.vans} fourgons` : `${vehicleName} et ses jumeaux`}
+            </h2>
+            <p class="vehicle-section-sub">
+              {util.figures.length
+                ? `Son rang dans le catalogue Evly, version la plus favorable de chaque modèle${util.twins ? ", puis ce qui le distingue des modèles de même base" : ""}.`
+                : "Les modèles qui partagent sa base, et ce qui les distingue."}
+            </p>
+          </header>
+          <BentoGrid>
+            {util.figures.length > 0 && (
+              <Tile size="full" class="reveal">
+                <ul class="util-figs">
+                  {util.figures.map((f) => (
+                    <li>
+                      <h3>{f.title}</h3>
+                      <p class="util-value tabular">{f.value}</p>
+                      <p class="util-rank">{f.rank}</p>
+                      {f.text && <p class="util-text">{f.text}</p>}
+                    </li>
+                  ))}
+                </ul>
+              </Tile>
+            )}
+            {util.twins && (
+              <Tile size="full" class="reveal">
+                <p class="util-lead">{util.twins.lead}</p>
+                <ul class="util-twins">
+                  {util.twins.lines.map((l) => (
+                    <li><a href={l.href}>{l.name}</a> : {l.text.charAt(0).toLowerCase() + l.text.slice(1)}</li>
+                  ))}
+                </ul>
+                {util.twins.summary && <p class="util-lead">{util.twins.summary}</p>}
+              </Tile>
+            )}
+          </BentoGrid>
+        </section>
+      )}
 
       <!-- ═══ 8. Questions fréquentes ═══ -->
       <section id="faq" class="vehicle-section" aria-labelledby="faq-title">
@@ -2057,6 +2107,16 @@ const configSubtitle = (label: string) => {
     line-height: 1.15;
     color: var(--color-text);
   }
+  /* Fourgons et jumeaux (G16) */
+  .util-figs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem 1.5rem; }
+  @media (min-width: 900px) { .util-figs { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .util-figs h3 { font-size: 12px; font-weight: 600; color: var(--color-text-faint); }
+  .util-value { margin-top: 0.25rem; font-family: var(--font-display); font-size: 1.75rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1; color: var(--color-text); }
+  .util-rank { margin-top: 0.35rem; font-size: 13px; font-weight: 600; color: var(--color-accent); }
+  .util-text { margin-top: 0.35rem; font-size: 13px; line-height: 1.45; color: var(--color-text-muted); }
+  .util-lead { font-size: 0.9375rem; line-height: 1.55; color: var(--color-text-muted); max-width: 75ch; }
+  .util-twins { margin: 0.75rem 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9375rem; line-height: 1.5; color: var(--color-text-muted); max-width: 75ch; }
+  .util-twins a { font-weight: 600; color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }
   .vehicle-section-sub {
     font-size: 0.875rem;
     line-height: 1.5;

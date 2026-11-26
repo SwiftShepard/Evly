@@ -67,7 +67,7 @@ const jsonLd = [
         "@type": "ListItem",
         "position": 2,
         "name": "Leasing Social 2026",
-        "item": new URL("/leasing-social", Astro.site).toString()
+        "item": new URL("/leasing-social/", Astro.site).toString()
       }
     ]
   },
@@ -461,7 +461,7 @@ const jsonLd = [
               Vérifier mon éligibilité officielle ↗
             </a>
             <a
-              href={url("/vehicules")}
+              href={url("/vehicules/")}
               class="inline-flex items-center justify-center gap-2 px-5 py-3 border border-[var(--color-border-strong)] text-sm font-mono tracking-tight text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-text)] transition-colors"
             >
               Voir tous les véhicules →

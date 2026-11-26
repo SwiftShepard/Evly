@@ -17,6 +17,7 @@ import { TRIP_AXES } from "@/data/trips";
 import { tripTitle } from "@/lib/roadTrips";
 import { formatDate, formatKm, formatNumber, formatPrice } from "@/lib/format";
 import { dataUpdatedOn } from "@/lib/dataHistory";
+import { DATA_LICENSE } from "@/lib/observatory";
 import { url } from "@/lib/url";
 import { fitDescription } from "@/lib/seo";
 import { ArrowRight } from "lucide-react";
@@ -147,6 +148,11 @@ const skiTrips = TRIP_AXES.filter((a) => a.group === "ski");
         Barre claire : l'autonomie réelle d'été du même modèle. Mesurée : le mixte vient d'un essai sur route (Bjørn Nyland ou
         presse) et seul le froid est calculé ; estimée : le mixte aussi est estimé, avec une marge de prudence de
         {formatNumber((1 - ESTIMATE_MARGIN) * 100)} %.
+      </p>
+      <p class="hv-note">
+        L'autonomie par -5 °C de chaque version est dans les <a href={url("/observatoire/#donnees")}>données ouvertes</a>
+        (<a href={url("/donnees/autonomie-reelle.csv")}>CSV</a>, <a href={url("/donnees/autonomie-reelle.json")}>JSON</a>,
+        licence {DATA_LICENSE.name}), reprise libre en citant « Source : Evly, autonomie en hiver (<span class="whitespace-nowrap">ev-ly.com/autonomie-hiver/</span>) ».
       </p>
     </section>
 

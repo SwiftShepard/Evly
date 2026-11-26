@@ -417,7 +417,7 @@ export default function ComparisonTable({ cards, onRemove, onConfigChange, onAdd
 
                   {/* Link to fiche */}
                   <a
-                    href={url(`/vehicules/${card.vehicle.slug}?config=${card.config.id}${card.soh && card.soh !== 100 ? `&soh=${card.soh}` : ""}`)}
+                    href={url(`/vehicules/${card.vehicle.slug}/?config=${card.config.id}${card.soh && card.soh !== 100 ? `&soh=${card.soh}` : ""}`)}
                     className="font-mono text-[9px] transition-colors"
                     style={{ color: "var(--color-text-faint)" }}
                     onMouseEnter={(e) => { e.currentTarget.style.color = "var(--color-accent)"; }}

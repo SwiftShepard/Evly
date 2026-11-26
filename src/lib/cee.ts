@@ -63,6 +63,11 @@ export const PRIME_GRID: Record<"standard" | "europe", Record<HouseholdCategory,
   europe: { precarite: 9420, modeste: 8050, gros_rouleur: 8050, autres: 4830 },
 };
 export const CEE_GRID_LABEL = "offre publiée pour les achats d'octobre 2026";
+/**
+ * Jour où les montants de PRIME_GRID ont été relevés sur leur source. L'Action « Veille des aides »
+ * (scripts/aids-watch.mjs) ouvre une issue au-delà de 3 mois : à changer à chaque relecture.
+ */
+export const CEE_GRID_CHECKED = "2026-10-17";
 
 /** Prime de tout ménage, voiture non produite en Europe : celle des prix « après aides » génériques */
 export const CEE_BASE_EUR = PRIME_GRID.standard.autres;

@@ -495,7 +495,7 @@ export default function ComparatorCard({
         style={{ borderTop: "0.5px solid var(--color-border)" }}
       >
         <a
-          href={url(`/vehicules/${vehicle.slug}?config=${config.id}${soh !== 100 ? `&soh=${soh}` : ""}`)}
+          href={url(`/vehicules/${vehicle.slug}/?config=${config.id}${soh !== 100 ? `&soh=${soh}` : ""}`)}
           className="flex items-center justify-between gap-2 text-xs font-medium transition-colors"
           style={{ color: "var(--color-text-muted)" }}
           onMouseEnter={(e) => {

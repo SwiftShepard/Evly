@@ -12,6 +12,7 @@ import FaqList from "@/components/seo/FaqList.astro";
 import VehicleMiniCard from "@/components/vehicle/VehicleMiniCard.astro";
 import AidsEstimator from "@/components/aids/AidsEstimator.tsx";
 import {
+  CEE_GRID_CHECKED,
   CEE_GRID_LABEL,
   CEE_PRICE_CAP_EUR,
   CEE_WEIGHT_CAP_KG,
@@ -25,10 +26,15 @@ import {
 } from "@/lib/cee";
 import { getAllVehicles, isStrictUtility } from "@/lib/vehicles";
 import { getVehicleSeoFacts } from "@/lib/seo";
-import { formatPrice } from "@/lib/format";
+import { formatDate, formatPrice } from "@/lib/format";
 import { url } from "@/lib/url";
 import { fitDescription } from "@/lib/seo";
 import { ArrowRight } from "lucide-react";
+
+// Rappel au build, jamais dans le HTML (rendu identique d'un build à l'autre) ; la veille des aides ouvre aussi une issue
+if (Date.now() - new Date(CEE_GRID_CHECKED).getTime() > 92 * 86_400_000) {
+  console.warn(`[aides] barème CEE relevé le ${CEE_GRID_CHECKED}, il y a plus de 3 mois : à relever dans src/lib/cee.ts`);
+}
 
 const CATEGORIES: HouseholdCategory[] = ["precarite", "modeste", "gros_rouleur", "autres"];
 const eur = (n: number) => formatPrice(n);
@@ -135,7 +141,7 @@ const jsonLd = {
             </li>
             <li>
               La réglementation fixe un coefficient par catégorie, pas un montant : la prime dépend de l'organisme qui la verse.
-              Les montants ci-dessus sont ceux de l'{CEE_GRID_LABEL}, la grille de référence d'Evly.
+              Les montants ci-dessus sont ceux de l'{CEE_GRID_LABEL}, la grille de référence d'Evly, relevée le {formatDate(CEE_GRID_CHECKED)}.
             </li>
             <li>
               « Produite en Europe » : voiture et batterie produites dans l'Espace économique européen. Evly ne compte la prime
